@@ -1,0 +1,294 @@
+{
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: fixture earned-reincarnating-rebirth: persistent hero state\n+ actual - expected\n\n+ 'recovering'\n- 'reincarnating'\n     ^\n\n    at file:///home/g/p/riddle/docs/evidence/handoff-menus/hero-hub-diagnostic/hero-hub-reincarnating.mjs:927:29",
+  "wasmScope": {
+    "mode": "current-local-package",
+    "fixtureManifest": {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    "local": {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    },
+    "expected": {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    }
+  },
+  "inputs": {
+    "docs/evidence/cut220/core/fixtures/earned-reincarnating-rebirth.game.json.gz": {
+      "bytes": 152985,
+      "sha256": "747124b845a46563de05e31aa1ea1fd03eb6b83d3a84aab16884a7ecdea3b45b"
+    }
+  },
+  "deliveries": [
+    {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    },
+    {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    },
+    {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    },
+    {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    }
+  ],
+  "records": [
+    {
+      "diagnostic": {
+        "entry": "earned-reincarnating-rebirth",
+        "expected": "reincarnating",
+        "actual": "recovering",
+        "loadStarted": "2026-10-15T14:30:07.138Z",
+        "observedAt": "2026-10-15T14:30:08.582Z",
+        "fixture": "docs/evidence/cut220/core/fixtures/earned-reincarnating-rebirth.game.json.gz",
+        "fixtureRawSha256": "90034ee0a6f7ddf30cc561c072ddf04b161aa4dadef801e8639d2ae0f1ecf173",
+        "clock": 320400,
+        "hero": {
+          "progression": {
+            "temperament": {
+              "available": true,
+              "label": "6 delves · D5",
+              "blocked": null,
+              "required_completed": 6,
+              "completed": 132,
+              "completed_remaining": 0,
+              "required_depth": 5,
+              "depth_remaining": 0
+            },
+            "inherited": {
+              "available": true,
+              "label": "8 delves · D8",
+              "blocked": null,
+              "required_completed": 8,
+              "completed": 132,
+              "completed_remaining": 0,
+              "required_depth": 8,
+              "depth_remaining": 0
+            },
+            "family": {
+              "available": false,
+              "label": "12 delves · D13",
+              "blocked": "Choose a lasting trait first",
+              "required_completed": 12,
+              "completed": 132,
+              "completed_remaining": 0,
+              "required_depth": 13,
+              "depth_remaining": 0
+            },
+            "actual_temperament": "skittish",
+            "next_temperament": "skittish",
+            "temperament_choices": [
+              "skittish",
+              "unbowed",
+              "light_hands",
+              "iron_gut"
+            ],
+            "inherited_offer": [
+              {
+                "condition_effect": "D9 or deeper",
+                "gift_effect": "Restore 1 HP per hero action while active",
+                "cost_effect": "Max HP −10% (at least 1 HP)",
+                "chip": "marsh-blood · frail",
+                "head": "marsh-blood",
+                "formula": "[deep] → mend +1 · frail",
+                "when": "deep",
+                "gift": "mend",
+                "cost": "frail",
+                "tier": "common",
+                "source": "commitment",
+                "learned": false
+              },
+              {
+                "condition_effect": "Boss in sight",
+                "gift_effect": "Damage reduction +1 per hit while active",
+                "cost_effect": "Max HP −10% (at least 1 HP)",
+                "chip": "unbowed · frail",
+                "head": "unbowed",
+                "formula": "[boss] → guard +1 · frail",
+                "when": "boss",
+                "gift": "guard",
+                "cost": "frail",
+                "tier": "common",
+                "source": "commitment",
+                "learned": false
+              },
+              {
+                "condition_effect": "Below 50% HP",
+                "gift_effect": "Restore 1 HP per hero action while active",
+                "cost_effect": "Healing potions restore 67% of their normal amount",
+                "chip": "tough-blooded · thin",
+                "head": "tough-blooded",
+                "formula": "[hurt] → mend +1 · thin",
+                "when": "hurt",
+                "gift": "mend",
+                "cost": "thin",
+                "tier": "common",
+                "source": "commitment",
+                "learned": false
+              }
+            ],
+            "inherited_chosen": null,
+            "actual_inherited": null,
+            "family_contexts": [
+              {
+                "condition_effect": "Below 50% HP",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "hurt",
+                "label": "Below 50% HP",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              },
+              {
+                "condition_effect": "At least 2 adjacent foes",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "crowded",
+                "label": "Two nearby foes",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              },
+              {
+                "condition_effect": "Boss in sight",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "boss",
+                "label": "Boss in sight",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              },
+              {
+                "condition_effect": "No foes in sight",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "quiet",
+                "label": "No foes visible",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              },
+              {
+                "condition_effect": "D9 or deeper",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "deep",
+                "label": "D9 or deeper",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              },
+              {
+                "condition_effect": "First 20 turns of each floor",
+                "gift_effect": "Choose a lasting trait first",
+                "cost_effect": "Choose a lasting trait first",
+                "learned": false,
+                "id": "first",
+                "label": "First 20 turns",
+                "effect": "Choose a lasting trait first",
+                "available": false,
+                "blocked": "Choose a lasting trait first"
+              }
+            ],
+            "family_chosen": null,
+            "actual_family": null,
+            "commitment_blocked": null,
+            "leash_available": true,
+            "leash_blocked": null,
+            "temperament_order_available": true
+          },
+          "id": "1:1",
+          "name": "Rook Ash",
+          "incarnation": 9,
+          "rebirths": 1,
+          "state": "recovering",
+          "recovery_s": 60,
+          "rest_s": 60,
+          "need": "recovery",
+          "attributes": [
+            {
+              "id": "health",
+              "name": "Vitality",
+              "rank": 0,
+              "value": 0,
+              "next_price": 15
+            },
+            {
+              "id": "damage",
+              "name": "Strength",
+              "rank": 0,
+              "value": 0,
+              "next_price": 15
+            },
+            {
+              "id": "armour",
+              "name": "Guard",
+              "rank": 0,
+              "value": 0,
+              "next_price": 15
+            }
+          ],
+          "guild": {
+            "id": "guild",
+            "name": "Guild reception",
+            "available": true,
+            "body": "Hire the Scout here to schedule delves while away."
+          },
+          "pool": {
+            "id": "recovery",
+            "name": "Recovery pool",
+            "available": true,
+            "body": "Rest completes automatically. Nothing needs tending."
+          },
+          "device": {
+            "id": "reincarnation",
+            "name": "Clone vat",
+            "available": true,
+            "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+          },
+          "rebirth": {
+            "available": false,
+            "blocked": "Finish recovery",
+            "token": "5435cd429a90dab5",
+            "refund": 0,
+            "points_after": 200,
+            "required_depth": 8,
+            "delves_remaining": 8,
+            "seconds_remaining": 3600,
+            "resets": [
+              "Legacy attributes and branches",
+              "Current clone's deeds",
+              "Lasting traits and family lean"
+            ],
+            "retains": [
+              "Name and identity",
+              "Refunded Legacy",
+              "Class XP and learned skills",
+              "Temperament",
+              "Kits and discoveries",
+              "Town, Gold and dungeon progress",
+              "Companion ownership"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "omitted": [],
+  "errors": []
+}

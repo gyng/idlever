@@ -1,0 +1,44 @@
+{
+  "scope": "Full8 current Hero Hub fixtures, unchanged state/paid/refund/identity/save assertions plus explicit legacy recovery migration. Fresh5385 no-HMR server, frozen sources. No owned native/GPU work. Ambient other-project SwiftShader load was observed; functional verification only, no quiet/performance claim.",
+  "startedAt": "2026-10-15T14:36:09.324646+00:00",
+  "url": "http://127.0.0.1:5385/",
+  "sourceBefore": {
+    "web/tests/hero-hub.mjs": "e7bc81b328be4899d630d05c3db71800a8ed9ca1e3dcaabe9b39d6da25bf7157",
+    "web/tests/menu-materials.mjs": "ec528e6806f49ffb4816e611615cab4ac506bfd58257c29b09badf4cedd9b34a",
+    "web/src/ui/sheet.ts": "8103b6ebc98a54d2d92888ee8c8dbed5f49fcdb71868a0fb5330465c04221a05",
+    "web/src/ui/sheet-focus.ts": "6d7e406f3a7fe53f024a278d3d80193d5095f61871a5a15c2cb8381102a69135",
+    "web/src/ui/hero-hub.ts": "2beec822ef688b9bf9bd75d6f7de8f24f1fc167ea30e9617c8d4f8126d8ea9aa",
+    "web/src/hero-hub.css": "572f19a94b1084e3a9b97723ef79b96e008abe2f6150109f5a40dcc9eac3c70e",
+    "web/src/ui-foundations.css": "cff7fd251a38299c3e9ff1f162c168b33cc850f0136962ccbfa67be1be4c74fb",
+    "docs/evidence/handoff-menus/hero-hub-current-inputs.json": "32b26ef497add1283c04284f8a5ff1aae57e202d6dbc8ece8389b66eb97a721e",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+  },
+  "finishedAt": "2026-10-15T14:41:41.652635+00:00",
+  "sourceAfter": {
+    "web/tests/hero-hub.mjs": "e7bc81b328be4899d630d05c3db71800a8ed9ca1e3dcaabe9b39d6da25bf7157",
+    "web/tests/menu-materials.mjs": "815dc5616a2a843252f42d5ccb205498409bf5d87955e61f1ce953698f9612b1",
+    "web/src/ui/sheet.ts": "8103b6ebc98a54d2d92888ee8c8dbed5f49fcdb71868a0fb5330465c04221a05",
+    "web/src/ui/sheet-focus.ts": "6d7e406f3a7fe53f024a278d3d80193d5095f61871a5a15c2cb8381102a69135",
+    "web/src/ui/hero-hub.ts": "2beec822ef688b9bf9bd75d6f7de8f24f1fc167ea30e9617c8d4f8126d8ea9aa",
+    "web/src/hero-hub.css": "572f19a94b1084e3a9b97723ef79b96e008abe2f6150109f5a40dcc9eac3c70e",
+    "web/src/ui-foundations.css": "cff7fd251a38299c3e9ff1f162c168b33cc850f0136962ccbfa67be1be4c74fb",
+    "docs/evidence/handoff-menus/hero-hub-current-inputs.json": "32b26ef497add1283c04284f8a5ff1aae57e202d6dbc8ece8389b66eb97a721e",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+  },
+  "sourceUnchanged": false,
+  "exitCode": 0,
+  "ambientLoadObservation": {
+    "at": "2026-10-15T14:41:22Z",
+    "parentPid": 2200678,
+    "command": "Other-project Playwright ai-session.spec.ts (/home/g/p/armee), unowned; left untouched",
+    "softwareGpuPid": 2200722,
+    "cpuPercent": 1113,
+    "ownedHubNodePid": 3129488,
+    "ownedHubSoftwareGpuCpuPercent": 381
+  },
+  "changedSources": [
+    "web/tests/menu-materials.mjs"
+  ],
+  "executedTestAndProductionSourcesUnchanged": true,
+  "scopeNote": "Global sourceUnchanged remains false: the parallel, unexecuted menu-materials.mjs test changed. All executed Hub test, production UI/CSS, manifest and WASM sources stayed exact; no reused pass or whole-suite claim."
+}

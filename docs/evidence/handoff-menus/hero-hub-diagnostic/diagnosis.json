@@ -1,0 +1,24 @@
+{
+  "stateFailure": {
+    "entry": "earned-reincarnating-rebirth",
+    "expected": "reincarnating",
+    "actual": "recovering",
+    "loadStarted": "2026-10-15T14:30:07.138Z",
+    "observedAt": "2026-10-15T14:30:08.582Z",
+    "fixture": "docs/evidence/cut220/core/fixtures/earned-reincarnating-rebirth.game.json.gz",
+    "fixtureRawSha256": "90034ee0a6f7ddf30cc561c072ddf04b161aa4dadef801e8639d2ae0f1ecf173",
+    "clock": 320400
+  },
+  "legacySource": {
+    "persistentRecoveryTicksField": "absent",
+    "remainingTicks": 600,
+    "currentFallbackTotal": 12000,
+    "currentState": "recovering",
+    "contract": "docs/CUT230_EARLY_PACING.md\u00a72",
+    "nativeRegression": "crates/idlever-core/src/persistent.rs:517"
+  },
+  "fix": "Refresh actual-current reincarnating fixture via confirmed public reclone; preserve historical asset and strict per-entry equality; explicitly cover legacy migration as eighth case.",
+  "gameplayChanges": false,
+  "historicalManifestSha256": "a9fd43f592e7b2aca731ec5e3731173f210273426a55f2325f798dc6031a2bc0",
+  "urlDiagnosticFailure": "Critical-three functional diagnostic reached final source-fetch, then failed Invalid URL because its custom base lacked trailing slash; not claimed a complete pass."
+}

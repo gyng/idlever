@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {gzipSync,gunzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
+import {launchBrowser} from '../../../../tools/browser.mjs';
+const out='docs/evidence/handoff-menus/hero-hub-diagnostic/current';mkdirSync(out,{recursive:true});
+const sha=v=>createHash('sha256').update(v).digest('hex');
+const original=JSON.parse(readFileSync('docs/evidence/cut220/ui-inputs.json'));
+const source=original.entries.find(e=>e.id==='earned-ready'),legacy=original.entries.find(e=>e.id==='earned-reincarnating-rebirth');
+const bytes=readFileSync(source.home),raw=gunzipSync(bytes).toString();assert.equal(sha(bytes),source.sha256);assert.equal(sha(raw),source.rawSha256);
+const b=await launchBrowser();try{const p=await b.newPage();await p.goto('http://127.0.0.1:5382/?fresh=1&seed=1&runs=0');await p.waitForFunction(()=>window.__idlever?.booted);const result=await p.evaluate(async raw=>{const e=window.__idlever.engine;const before=await e.load(raw);let refusal;try{await e.upgradeHero('damage');}catch(error){refusal=String(error);}const bought=await e.lineage();const preview=bought.persistent_hero.rebirth;if(!preview.available)throw Error(JSON.stringify(preview));const after=await e.rebirthHero(preview.token);return{before,bought,refusal,preview,after,save:await e.save()};},raw);
+assert.equal(result.before.persistent_hero.state,'ready');assert.equal(result.after.persistent_hero.state,'reincarnating');assert.equal(result.after.persistent_hero.recovery_s,1200);assert.equal(result.after.gold,result.before.gold);assert.equal(result.after.persistent_hero.name,result.before.persistent_hero.name);assert.equal(result.after.persistent_hero.rebirths,result.before.persistent_hero.rebirths+1);assert.equal(result.preview.refund,165);assert.match(result.refusal,/More Legacy needed/);
+const file=`${out}/earned-current-reincarnating-rebirth.game.json.gz`;writeFileSync(file,gzipSync(result.save));writeFileSync(`${out}/public-preparation.json`,JSON.stringify({at:new Date().toISOString(),source,wasm:sha(readFileSync('web/src/engine/pkg/idlever_wasm_bg.wasm')),actions:['engine.load(earned-ready)','engine.upgradeHero("damage") correctly refused: existing rank2 next costs110, only35Legacy','engine.rebirthHero(current preview.token)','engine.save()'],before:result.before,bought:result.bought,refusal:result.refusal,preview:result.preview,after:result.after,saved:{file,sha256:sha(readFileSync(file)),rawSha256:sha(result.save)},legacy},null,2));console.log(JSON.stringify({state:result.after.persistent_hero.state,recovery_s:result.after.persistent_hero.recovery_s,refund:result.preview.refund,gold:result.after.gold}));}finally{await b.close();}

@@ -8,10 +8,12 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { launchBrowser } from "../../tools/browser.mjs";
 const root = fileURLToPath(new URL("../../", import.meta.url));
-const url =
+const baseUrl =
   process.env.IDLEVER_TEST_URL ??
   execFileSync("bash", ["tools/dev.sh"], { cwd: root, encoding: "utf8" }).trim();
-const manifestPath = process.env.IDLEVER_HUB_INPUTS ?? "docs/evidence/cut220/ui-inputs.json";
+const url = baseUrl.replace(/\/+$/, "") + "/";
+const manifestPath =
+  process.env.IDLEVER_HUB_INPUTS ?? "docs/evidence/handoff-menus/hero-hub-current-inputs.json";
 const manifest = JSON.parse(readFileSync(resolve(root, manifestPath)));
 const out = process.env.IDLEVER_HUB_OUT;
 if (out) mkdirSync(resolve(root, out), { recursive: true });
@@ -94,6 +96,37 @@ try {
     await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
     assert.equal(await page.locator("[data-gold-delta],.gold-drop").count(), 0);
     checks++;
+    if (entry.legacyRecovery) {
+      const fixture = JSON.parse(raw);
+      assert.equal(
+        Object.hasOwn(fixture.lineage.persistent, "recovery_ticks"),
+        false,
+        "legacy fixture truly lacks recorded recovery length",
+      );
+      assert.equal(
+        fixture.lineage.persistent.recovery_until_tick - fixture.lineage.total_turns,
+        600,
+        "legacy remaining recovery is preserved",
+      );
+      const current = await state();
+      assert.equal(
+        current.persistent_hero.state,
+        "recovering",
+        "legacy600/12000 recovery is past its first10 ticks",
+      );
+      assert.equal(
+        current.persistent_hero.recovery_s,
+        60,
+        "migration does not extend the owed legacy recovery",
+      );
+      checks += 4;
+      records.push({
+        entry: entry.id,
+        functional: "legacy-missing-recovery-length",
+        state: current.persistent_hero.state,
+        recovery_s: current.persistent_hero.recovery_s,
+      });
+    }
   }
   async function settle() {
     await page.evaluate(async () => {

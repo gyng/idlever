@@ -1,0 +1,238 @@
+{
+  "entry": "earned-delving-queued",
+  "expected": "away",
+  "actual": "away",
+  "loadStarted": "2026-10-15T14:27:51.493Z",
+  "observedAt": "2026-10-15T14:27:54.521Z",
+  "fixture": "docs/evidence/cut220/core/fixtures/earned-delving-queued.game.json.gz",
+  "fixtureRawSha256": "baabde5fd1e134cc3ce2613d0305933eabc9cfda5f8f5b52aa4cf63f994a155e",
+  "clock": 320400,
+  "hero": {
+    "progression": {
+      "temperament": {
+        "available": true,
+        "label": "6 delves · D5",
+        "blocked": null,
+        "required_completed": 6,
+        "completed": 132,
+        "completed_remaining": 0,
+        "required_depth": 5,
+        "depth_remaining": 0
+      },
+      "inherited": {
+        "available": true,
+        "label": "8 delves · D8",
+        "blocked": null,
+        "required_completed": 8,
+        "completed": 132,
+        "completed_remaining": 0,
+        "required_depth": 8,
+        "depth_remaining": 0
+      },
+      "family": {
+        "available": true,
+        "label": "12 delves · D13",
+        "blocked": null,
+        "required_completed": 12,
+        "completed": 132,
+        "completed_remaining": 0,
+        "required_depth": 13,
+        "depth_remaining": 0
+      },
+      "actual_temperament": "skittish",
+      "next_temperament": "skittish",
+      "temperament_choices": [
+        "skittish",
+        "unbowed",
+        "light_hands",
+        "iron_gut"
+      ],
+      "inherited_offer": [],
+      "inherited_chosen": {
+        "condition_effect": "Below 50% HP",
+        "gift_effect": "Restore 1 HP per hero action while active",
+        "cost_effect": "Healing potions restore 67% of their normal amount",
+        "chip": "tough-blooded · thin",
+        "head": "tough-blooded",
+        "formula": "[hurt] → mend +1 · thin",
+        "when": "hurt",
+        "gift": "mend",
+        "cost": "thin",
+        "tier": "common",
+        "source": "commitment",
+        "learned": false
+      },
+      "actual_inherited": {
+        "condition_effect": "Below 50% HP",
+        "gift_effect": "Restore 1 HP per hero action while active",
+        "cost_effect": "Healing potions restore 67% of their normal amount",
+        "chip": "tough-blooded · thin",
+        "head": "tough-blooded",
+        "formula": "[hurt] → mend ? · thin",
+        "when": "hurt",
+        "gift": "mend",
+        "cost": "thin",
+        "tier": "common",
+        "source": "commitment",
+        "learned": false
+      },
+      "family_contexts": [
+        {
+          "condition_effect": "Below 50% HP",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "hurt",
+          "label": "Below 50% HP",
+          "effect": "[hurt] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        },
+        {
+          "condition_effect": "At least 2 adjacent foes",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "crowded",
+          "label": "Two nearby foes",
+          "effect": "[crowded] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        },
+        {
+          "condition_effect": "Boss in sight",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "boss",
+          "label": "Boss in sight",
+          "effect": "[boss] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        },
+        {
+          "condition_effect": "No foes in sight",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "quiet",
+          "label": "No foes visible",
+          "effect": "[quiet] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        },
+        {
+          "condition_effect": "D9 or deeper",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "deep",
+          "label": "D9 or deeper",
+          "effect": "[deep] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        },
+        {
+          "condition_effect": "First 20 turns of each floor",
+          "gift_effect": "Restore 1 HP per hero action while active",
+          "cost_effect": "Healing potions restore 67% of their normal amount",
+          "learned": false,
+          "id": "first",
+          "label": "First 20 turns",
+          "effect": "[first] → mend +1 · thin",
+          "available": false,
+          "blocked": "Confirm a reclone to change family context"
+        }
+      ],
+      "family_chosen": "hurt",
+      "actual_family": "hurt",
+      "commitment_blocked": "Confirm a reclone to change lasting traits",
+      "leash_available": true,
+      "leash_blocked": null,
+      "temperament_order_available": true
+    },
+    "id": "1:1",
+    "name": "Rook Ash",
+    "incarnation": 8,
+    "rebirths": 0,
+    "state": "away",
+    "recovery_s": 0,
+    "rest_s": 0,
+    "need": "none",
+    "attributes": [
+      {
+        "id": "health",
+        "name": "Vitality",
+        "rank": 2,
+        "value": 6,
+        "next_price": 110
+      },
+      {
+        "id": "damage",
+        "name": "Strength",
+        "rank": 2,
+        "value": 2,
+        "next_price": 110
+      },
+      {
+        "id": "armour",
+        "name": "Guard",
+        "rank": 2,
+        "value": 2,
+        "next_price": 110
+      }
+    ],
+    "guild": {
+      "id": "guild",
+      "name": "Guild reception",
+      "available": true,
+      "body": "Hire the Scout here to schedule delves while away."
+    },
+    "pool": {
+      "id": "recovery",
+      "name": "Recovery pool",
+      "available": true,
+      "body": "Rest completes automatically. Nothing needs tending."
+    },
+    "device": {
+      "id": "reincarnation",
+      "name": "Clone vat",
+      "available": true,
+      "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+    },
+    "rebirth": {
+      "available": false,
+      "blocked": "Hero away",
+      "token": "5511c9546d44d4f6",
+      "refund": 165,
+      "points_after": 200,
+      "required_depth": 8,
+      "delves_remaining": 0,
+      "seconds_remaining": 0,
+      "resets": [
+        "Legacy attributes and branches",
+        "Current clone's deeds",
+        "Lasting traits and family lean"
+      ],
+      "retains": [
+        "Name and identity",
+        "Refunded Legacy",
+        "Class XP and learned skills",
+        "Temperament",
+        "Kits and discoveries",
+        "Town, Gold and dungeon progress",
+        "Companion ownership"
+      ]
+    }
+  },
+  "live": {
+    "activity": "exploring",
+    "run_id": 133,
+    "heir": 8,
+    "depth": 1,
+    "start": 1,
+    "hp": 56,
+    "max_hp": 56,
+    "turn": 1
+  }
+}

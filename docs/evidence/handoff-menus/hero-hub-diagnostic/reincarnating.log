@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: fixture earned-reincarnating-rebirth: persistent hero state
++ actual - expected
+
++ 'recovering'
+- 'reincarnating'
+     ^
+
+    at file:///home/g/p/riddle/docs/evidence/handoff-menus/hero-hub-diagnostic/hero-hub-reincarnating.mjs:927:29 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'recovering',
+  expected: 'reincarnating',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0
