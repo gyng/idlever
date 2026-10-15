@@ -1,7 +1,7 @@
 # Cut235 — later-worker feats and week-one cadence
 
 Owner order: Cut231 §5b, then the second hero, then the first Legacy payoff.
-This cut is unfinished until the evidence below passes on the final source.
+Scoped acceptance passed on2026-10-15; source-bound evidence is recorded below.
 The full handoff/acceptance ledger remains in scope beyond this cut.
 
 ## Required behavior
@@ -65,7 +65,7 @@ The acceptance script itself now rejects the WIP's lower-middle median,
 missing/duplicate seeds and an unchanged spread whose median bar fails.
 Its in-session synthetic checks passed; real candidate results remain required.
 
-## Resume measurements (not final acceptance)
+## Historical candidate measurements (not final acceptance)
 
 The corrected feat predicates passed11 focused native tests, then the Session
 sharing/legacy-gate corrections passed15. The first4-seed ×7-day PICKED probe
@@ -73,7 +73,7 @@ showed existing rank days[4,8,12] gaps[48,48,40,48]h and candidate[2,4,6]
 gaps[24,24,24,24]h. Candidate hire times were unchanged by rank timing; Apprentice
 and Drillmaster each missed the count-median bar on1/4, so all16 seeds remain
 necessary. Profiles, exact binary identity and full exploratory outputs are
-in `evidence/cut235/resume/`. Candidate rank days[2,4,6] are now under validation.
+in `evidence/cut235/resume/`. Rank days[2,4,6] subsequently passed the final acceptance below.
 
 The first16-seed hire probe (3days; source/binary bound in hires-16x3-runtime.json)
 measured Apprentice14/16 and all other later workers16/16 except Drillmaster10/16.
@@ -97,6 +97,20 @@ remain required before acceptance.
   after-saves, fresh browser Gold564/24 and targeted5/5 pass. Routine40/40
   passes before the parallel Cut240/241 renderer/menu changes. No new settlement
   regeneration was needed on this package.
-- Final16-seed pacing and routine full gate are active, not yet accepted.
-  Fresh client integration after Cut240/241 is still required. This scoped
-  evidence does not close second-hero, Legacy-payoff or whole-handoff acceptance.
+- Final16-seed pacing24/24 PASS1220s; routine full metrics/QA/dayplayer all exit0.
+  Additional targeted16-seed node evidence proves all eligible PICKED/HANDS lit48h
+  and all eligible PICKED bought72h on every seed, using exact timeline events.
+  Fresh client integration after Cut240/241 passes41/41 routine groups in378.1s
+  on CI Node22, with launch/terminal source hashes unchanged. See
+  `resume/client-joint-v5{-identity,}.json` under this cut’s evidence directory.
+- After the Cut242 atlas integration, all five worker/Gold/Journal contract
+  groups pass125.8s with unchanged launch/terminal source hashes; Gold564/24
+  checks the same87de package. This targeted run predates the final cosmetic
+  Fens selector change, whose replay/context-loss proof belongs to Cut242.
+- The actual worker progress/feat loop now explicitly includes320 as well as
+  400/1440; its fresh final-source run passes120checks, including unfinished,
+  met and hire states at each width (`resume/worker-final-three-widths.json`).
+
+All seven scoped acceptance requirements above are satisfied. Historical
+failures are retained. This does not close second-hero, Legacy-payoff, broad
+163-group current/206-group exhaustive client audits, or whole-handoff acceptance.

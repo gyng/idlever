@@ -1,9 +1,20 @@
-# Full queue acceptance ledger — resumed2026-10-13
+# Full queue acceptance ledger — audited 2026-10-15
 
 Goal: resume and finish all queued items verified and refined. This ledger
 preserves the entire scope and records what evidence is missing. A scoped cut
 or a targeted pass never marks a broader requirement complete. Previous pause
 is revoked; prior raw release/balance evidence is historical for changed code.
+
+This audit reconciles source and preserved evidence through Cuts222–236 on
+the original audit snapshot `781b148f`. Subsequent local checkpoints are art
+`ddcac657`, integrated Cut235 WIP `c6f4ec4a` and the Journal wrapping fix
+`cdde0cf3`. Cut235 scoped provenance/timing acceptance now passes;
+current corrected native source now passes965tests, Clippy, full16-seed hire/cadence,
+24-row pacing and bounded routine full gate; fresh current routine client41/41 and final targeted5/5 pass after
+the Cut240/241 and strict fixture/focus refinements. This ledger does not certify the
+current dirty tree. Historical test counts below retain their
+original source/runtime scope. Full requirement inventory and prioritized missing
+proofs: [acceptance-audit.json](evidence/handoff-resume/acceptance-audit.json).
 
 ## Current product requirements
 
@@ -11,56 +22,65 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 |---|---|---|---|
 | 1 | Automatic loot settlement; simplify Keep and Storehouse | Partial | Cuts196/201 conversion and storage retirement; Cut206 removes watched Keep flow with real Bank/Return/Death checks. Backend/API retirement and wider acceptance remain |
 | 2 | A simpler banking model | Partial | Cut196 Bank/Return100% Gold, Death secured/protection; XP separate. Actual receipts/ledger pass; earned pacing remains |
-| 3 | Stage early progression | Partial | Cut219 stages Forge after Scout/four personal completed delves/actual credited exit Gold; survivor temperament/inherited/family gates implemented. Final905 native tests, unchanged targeted16-seed pacing/value rows and805 real-WASM assertions/36 views pass. Whole current-game regression and broader progression acceptance remain |
+| 3 | Stage early progression | Partial | Cut219 staging remains implemented. Cut230 Scout after two sends measures median4.9/worst7.2min on16 seeds; depth recovery is60s throughD14, rising to20min atD28. Cut233 cadence30 is16/16 under the owner-amended between-looks clock; routine full gate and24-row pacing pack pass on d161. Cut235 corrected departure/identity feats are checkpointed1620a540:965native, full16-seed hire/cadence, pacing24/24 and bounded full gate pass; current41-group routine client integration passes; final worker progress120checks covers320/400/1440. Day2–7 beat gap is24h on all16 PICKED/DAILY seeds; second hero day1–2, first-Legacy payoff and broader progression acceptance remain open. See evidence/cut230/README.md, evidence/cut233/README.md and CUT231_PROGRESSION.md |
 | 4 | Remove cage friction; explain run endings | Partial | Cut210 automatic caches, no choice/timer/preference UI; actual strict loot/Gold/Watch checks pass. Native855pass/Clippy pass; broader pacing and run-ending refinement remain |
 | 5 | Clickable heroes and town objects | Partial | Cuts192/194: building help and actual three-hero touch/keyboard targets. Cut221 real71ca72 moving Ready samples at320/400/1440 normal/200% pass44px targets, correct actor centers, no actor/label overlaps and unchanged saves after presentation-only crossing separation. Future base objects and persistent routines remain |
 | 6 | Home-building tooltips and hover states | Scoped pass | Current four buildings: ready/locked/built help, keyboard/hover/no accidental construction. Cut207 label/badge/tag bounds and actor journeys pass; future buildings must adopt these conventions |
-| 7 | Bloodline tabs and visible branching trees | Partial | Cut197 tabs/Cut205 thirty icons and current tree journeys checked. Cut220 unified five-section Hero screen passes2704 checks/all7 cases/30 compact views and retained805/all10/36 survivor journeys on66b8; delayed resident/navigation guards pass. Paper-doll and mobile-tab visual refinement remain. Cut225 preserves larger cumulative-tree requirement for all five old classes (six→twelve interaction nodes, four-tier paths) plus new Clown/Engineer; extension not implemented |
+| 7 | Bloodline tabs and visible branching trees | Partial | Cut220 Hub routes/compact journeys and later phone Actual/Next/tall-tab refinements pass their scoped checks (evidence/cut220/ui/). Class art plus four canonical gear anchors is implemented; layered equipment paper doll and a genuine fixture with differing Actual/Next items remain unproved. Cut225 adds Clown/Engineer six-node trees; the five old classes still require six→twelve interaction nodes and four-tier paths |
 | 8 | Large-desktop typography | Partial | Cuts204/207: current320/400/1440 normal/200% Forge/Bloodlines/quest and Home controls/labels checked; narrow overflow and44px targets fixed. Other menus and broader typography refinement remain |
-| 9 | Send → Delve | Cut193 in progress | Focused geometry/copy/Chronicle checks; integrated validation pending |
-| 10 | Distinct chunky menu materials | Partial | Cut204 iron Forge, ink Bloodlines, parchment quest card;10 paired menu frames/54 state cells/365 contrast ranges. Remaining menu family open |
+| 9 | Send → Delve | Scoped pass | Delve naming is integrated. Cut222 migrated ui:frame/screens/class-switch/post-clear journeys pass; Cut227 cut118 passes19 checks and cut120 passes33 after restoring truthful recovery refusal. See CUT222_WISH_RETIREMENT.md and evidence/cut227/tests/README.md. These are scoped integrated journeys, not whole-client acceptance |
+| 10 | Distinct chunky menu materials | Partial | Cut241f4932f82 adopts current utility/build/hero/records/evidence children through semantic families.62 geometry cases,1284 visible contrast samples,54 design state cells and26-case Full/Low/Off+missing-art sets pass; strict Hub8cases11838checks pass021b146f. Root closes actual callback-focus regression with original3width descent tests and118menu checks. Fresh41-group integration passes; broader unseen-state/boundary/type review remains; evidence/handoff-menus/README.md |
 | 11 | Quest/progression journal | Partial | Cut208 foundation plus326 earned real-client checks: actual Porter/Scout prices, automatic quest settlement, completed milestone routes, owner/refusal boundaries and24 viewport/font states. New persistent-hero integration remains |
 | 12 | Run-details scroll stability | Scoped pass | Cut193: measured expansion geometry at320/400/1440; final-package integrated checks4/4 |
-| 13 | Song/wish purpose and busywork audit | Source audit / contract | Cut222 confirms five decorative labels share a recurring paid Legacy purchase; song has no music/activity effect. Retirement contract preserves earned points/history, implemented; scoped native/IDLE/browser acceptance passes; engaging-policy impact and GPU camp screenshot pending |
-| 14 | Base as an ant farm / garden | Open | Pending |
+| 13 | Song/wish purpose and busywork audit | Scoped pass | Cut222 retirement preserves earned Legacy/history; native, matched16-seed IDLE and real-WASM260-check retirement acceptance pass. Engaging baseline-runtime paired16-seed PICKED/PICKED+L audit shows median31 Legacy/~6.2k Gold removed per resident/fortnight with no systematic milestone/King shift; multi-resident bound is analytic. Six-layout private-GPU camp captures pass. CUT222_WISH_RETIREMENT.md §§Browser acceptance/Engaging-policy impact; broader current-game acceptance remains separate |
+| 14 | Base as an ant farm / garden | Partial | Cut228 Forge vignette reads actual Rust forge_work: smith hammers only during real work and the fitted home hero visits. Real-WASM31 checks, Full/reduced exact-save proof, private-GPU400/1440 day/night captures and matched IDLE/PICKED16×14 invariance pass (evidence/cut228/README.md). Other workers/buildings, settled multihero routines and whole-town review remain |
 | 15 | Delving portraits over the cave | Scoped pass | Cut194: actual two-delver portraits, ID/watch navigation and 8h refresh at400/1440; broader states/layout audit remains |
 | 16 | Desktop bottom-bar space | Scoped pass | Cut217 finald69524 viewport/font states and actual controls pass; desktop console content-width, meaningful controls retained |
 | 17 | Floating delve controls | Scoped pass | Cut217 finald695 adaptive dock, actual resizefocus/map/Speed/Pause/Hand/Town proof; +156px height and17.88–22.75% normal desktop unobscured area |
 | 18 | Compact top bar | Scoped pass | Cut217 finald69524 state geometry, compact bloodline marker and Gold icon/value with full accessible meanings; current/historical hero identity checks pass |
 | 19 | Forge leash and pet progression | Partial | Cut219 built Forge grants permanent free leash reuse; Scout plus an actual pet gates Kennel. Scoped native and final e846 real-WASM stage journeys pass; broader pet identity/pacing and full changed-game acceptance remain |
-| 20 | Clown class | Open | Pending |
-| 21 | Engineer class | Open | Pending |
+| 20 | Clown class | Partial | Cut225 Clown, two paths and record-only unlock implemented; later tuning yields default medianD28 on10 earned72h seeds. Cut227 tool cues, one-time unlock plate and Hub Abilities are implemented; class-tools43 checks pass in the final Cut236 focused suite. Cut236 all3 looks/portraits/default walk/insignia/decoy art integrated with fallbacks. The sampled skilled Clown reachesD28 median40h versus default Rogue44h, meeting that owner comparison; skilled Rogue24h remains stronger. Full class-contract acceptance and broader earned build causality remain; see CUT225_CLOWN_ENGINEER.md and evidence/cut225/clown-tuning/classes-after-summary.txt |
+| 21 | Engineer class | Partial | Cut225 Engineer, two paths, actual sentry, weaker mace/stronger turret tuning implemented. Ten earned72h seed comparisons: default medianD28/32h versus FighterD28/28h; skilledD33 versus FighterD33. Cut227 cues/unlock plate/Hub Abilities and Cut236 all3 looks/portraits/default walk/insignia/sentry art integrated; class-tools43 checks pass. Broader earned comparisons, cue visibility/cooldown refinement and full class-contract acceptance remain |
 | 22 | Build trials and satisfying delve endings | Open | Pending |
 | 23 | Diegetic live view for understanding builds | Open | Pending |
 | 24 | Explain forge floating gold | Scoped pass | Forge upgrade badge labels pass15 layouts. Actual DOM/worker diagnosis identifies the nearby $600 as Apprentice hire; explicit Hire label and purpose implemented. Current66b8 home494+25 passes measured wider badge/hint keepouts,44px targets, owner routing and exact saves; the original overlap failure remains. Gold-transaction FX remains item25 |
 | 25 | Gold transaction particles | Partial | Cut223 current66b8 GPU integration passes137 checks/six layouts including actual Forge/Savings/worker/resident purchases, Return, clipping/occlusion, active-preference/navigation cleanup and verified54.4s motion recording. Further564 real-WASM checks/24 cases cover actual Bank, secured/lost Death, living-pet fetch protection and three-owner8h settlement at all six layouts, including exact native/WASM final saves/ledgers, owner receipts and repeated-read silence. Fetch receipts remain with their death in the Gold sheet. Final frame cost and broader final visual review remain open |
 | 26 | Supplies → Bloodline Loadouts | Partial | Cuts197/203 existing preparation plus permanent shapes/named reusable kits; earned real-worker CRUD/reload/free use at3 widths. Old-panel retirement/pet depth remain |
 | 27 | Unlocked items are free to use | Scoped pass | Cut191: seven native cases,829-test integrated pass and73 real-worker assertions; full offline/multihero balance remains |
-| 28 | Live side depth map | Partial | Cut21263 checks plus six whole-Watch viewport/font cases pass, actual earned known boss metadata, dense17POI model, GL/Canvas and keepouts. Broader visual/build readability review remains |
+| 28 | Live side depth map | Partial | Cut212 functional side-map/fallback/metadata checks retained. Cut234 slim rail uses2.5% of canvas at400px (was9.4%),3.2% at320px; real-WASM private-GPU geometry in evidence/cut234/rail-area.json and depth-rail journey pass. This closes the sampled≤10% phone-area proposal only; broad fight-state/build-readability review remains |
 | 29 | Subtle live movement trail | Partial | Cut212 bounded factual hero trail, pause/seek/load/context-loss and Low/reduced/Off preferences checked; six integrated Watch layouts pass. Controlled active CPU p95+0.5ms; broader visual review remains |
 | 30 | Hover, pressed and selected control states | Partial | Cut204 scoped material controls pass real states/focus/canceled press; other control families remain |
 | 31 | Guided unlocks for Tactics / Orders / Heirs | Partial | Cut208 earned Tactics/Orders/Class/Loadouts/Workers routes and automatic quest settlement pass; completed open links remain usable. Persistent-hero guidance integration remains |
 | 32 | Remove top/bottom bar sheens | Scoped pass | Cut193 source removal; UI validation and retained material/control feedback |
 | 33 | Chronicle empty state | Scoped pass | Cut193 current-bloodline empty/other-record/real-record checks; future persistent-hero model still pending |
-| 34 | Guild hall, scouts and guild inspiration | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Survivor-friendly trait unlocks and broader guild content remain |
-| 35 | Recovery pool and ordinary reincarnation | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Survivor-friendly trait unlocks and broader guild content remain |
-| 36 | Persistent hero names, stats and needs | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Survivor-friendly trait unlocks and broader guild content remain |
-| 37 | Easy builds/specs; deliberate hero NG+ | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Survivor-friendly trait unlocks and broader guild content remain |
+| 34 | Guild hall, scouts and guild inspiration | In progress | Cut211 real persistent identity, staged service metadata, depth-scaled death recovery (Cut230:60s throughD14→20min atD28), lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Cut219 survivor trait gates landed; Cut236 packed Guild/pool/cloning art passes20 GPU integration rows with retained fallbacks. Broader guild content and changed-game acceptance remain |
+| 35 | Recovery pool and ordinary reincarnation | In progress | Cut211 real persistent identity, staged service metadata, depth-scaled death recovery (Cut230:60s throughD14→20min atD28), lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Cut219 survivor trait gates landed; Cut236 packed Guild/pool/cloning art passes20 GPU integration rows with retained fallbacks. Broader guild content and changed-game acceptance remain |
+| 36 | Persistent hero names, stats and needs | In progress | Cut211 real persistent identity, staged service metadata, depth-scaled death recovery (Cut230:60s throughD14→20min atD28), lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Cut219 survivor trait gates landed; Cut236 packed Guild/pool/cloning art passes20 GPU integration rows with retained fallbacks. Broader guild content and changed-game acceptance remain |
+| 37 | Easy builds/specs; deliberate hero NG+ | In progress | Cut211 real persistent identity, staged service metadata, depth-scaled death recovery (Cut230:60s throughD14→20min atD28), lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Cut219 survivor trait gates landed; Cut236 packed Guild/pool/cloning art passes20 GPU integration rows with retained fallbacks. Broader guild content and changed-game acceptance remain |
 | 38 | Building construction and upgrade animations | Scoped pass | Cut195: real construction/upgrades,21 transition cases, GL400/day and Canvas1440/night preferences; quiet frame-cost and broader visual review remain |
 | 39 | Legendary drops auto-kept as permanent Forge choices | Scoped pass | Cut215:16 current native semantic/reset/parity cases,7 existing-kit cases, Clippy,8-seed targeted pacing and16 earned first sources. Actual menus305/48 layouts, controlled catalogue103/24, discovery221/42 layouts, final old-grind-row16 checks; free reuse/permanent town-wide ownership/shared gear ranks/duplicates. Later earned bosses/duplicate timing and broad balance/fun remain open |
 | 40 | Legendary armour sets inspired by D2/D3 | In progress | Cut216 proposal: helm/body/boots, equipped2/3 and3/3 bonuses, permanent automatic collection/free reuse, viable2+1 hybrids, staged missing-piece unlocks. Follow set/pins/free next-departure refill and bounded Scout source focus designed; existing Apprentice spending retained. Core slots/effects/follow/pins/bounded source focus implemented;10 semantic tests plus pure completion-status regression pass. All16 earned collections; timing check-in bounds/source identities recorded. Actual cb19 UI2872/72 layouts and finald695225/4 status views, full free CRUD and final screenshots pass. Broader earned build causality/balance/fun remain open |
-| R1 | Dedicated class-skill icons | Scoped pass | Cut205 all30 IDs/270 size-state cells, tree/review integration; Cut203/206 actual immutable live skill attribution. Wider recognition/art review remains |
+| R1 | Dedicated class-skill icons | Scoped pass | Cut20530 original skill IDs/270 size-state cells and tree/review fallbacks retained. Cut225 adds new-class skill icons; Cut236 adds Clown/Engineer insignias, portraits and tools with art QC525frames/0warnings/failures. Wider recognition/art review and icons for future expanded old-class trees remain |
 | R2 | Combat animations and FX | Partial | Cut209 bounded factual GL/Canvas cues, controlled pixels/43 model checks/19 final-package context-loss checks. Legacy effects/speed parity and broader feel remain |
-| R3 | Biome encounter variety | Open | Retained scope; targeted economy checks do not certify this work |
-| R4 | Class and loot identity | Open | Retained scope; targeted economy checks do not certify this work |
-| R5 | Lived-in home base | Open | Retained scope; targeted economy checks do not certify this work |
-| R6 | Dungeon visual landmarks | Open | Retained scope; targeted economy checks do not certify this work |
+| R3 | Biome encounter variety | Open | Current catalogue:6 original earned checkpoints, exact kits/maps/traces; one read-only87de capsule reconstruction with24GL/Canvas400/1440stills and exact parent save. Actual gas/pack, drain/summon and reflect/armours/bell events identified; historical ticks33697→30689 mismatch explicit. Causal counter superiority, six legal paired compositions and broader balance remain missing; evidence/handoff-content/README.md |
+| R4 | Class and loot identity | Open | Evidence/handoff-content pins historical actual package/kit ownership and current reconstructed action cues; no copying final-camp upgrades into historical send builds. Earned affordable class-build causality and broader identity acceptance remain missing |
+| R5 | Lived-in home base | Partial | Cut228 real Forge vignette and fitted-hero visit delivered with31 real-WASM checks, actual-work-only/reduced-motion/save proof and private-GPU400/1440 day/night captures (evidence/cut228/README.md). Other building/worker routines and earned settled-town review remain; retired Storehouse hauling must not be reintroduced |
+| R6 | Dungeon visual landmarks | Open | Actual24replay stills and9pixel-exact prop crops expose6thematic-art gaps despite no missing files. Cut242f62d31c2 integrates6versioned masters and opt-in source/refinement repair; all6 naturally visible at400/1440, other368tiles unchanged, artQC525/0 and ctxloss19 pass. These decorative substitutions do not certify semantic landmarks; evidence/handoff-content/remaining-requirements.json |
 
 ## Retained work beyond numbered additions
 
-- Owner dimensional-lighting addition: Cut199 Forge and animated characters
-  prototype in progress; no broader acceptance yet. Cut200 design-system research
-  follows that visual checkpoint, preserving Idlever art and menu materials.
+- Owner dimensional-lighting addition: Cut221 House/Forge and painted-hero
+  mapping is default on supported GL; its frozen expanded CPU/cold proof passes
+  warm increment≤0.10ms and cold median−5ms. Cut224 Guild/pool relief and cached
+  path/stream cues are also default; scoped frozen CPU/cold proof passes warm
+  increment≤0.10ms and cold median−18.8ms (one cold outlier100.9ms). These measure
+  CPU submission/UI, not GPU FPS. Normal-load128 graphics states/494 home
+  assertions/25 phases pass at their recorded packages. Cut236 packed services
+  have20 functional GPU comparison rows, not a new cost proof. Cut240a74777a0 repairs observed Canvas night washout:16matched phase/frame rows, real Forge contrast88%, exact save/cache, fades and explicit diagnostic smith visible/clipped/outside transitions pass. No natural resident-edge/performance claim. Whole-landscape
+  mapping, continuous day/night consistency and broader visual/cost review remain open.
+  Evidence: CUT221_TOWN_VOLUME.md, CUT224_BASE_DEPTH.md, CUT236_ART_GAPS.md.
+  Cut200 research is complete at its source/static-audit scope; broader design
+  system adoption and remaining menu materials/type/interaction review remain.
 - Cut198 town terrain optimization scoped pass: identical pixels, measured43%
   startup/53% construction paint reduction; broader frame-cost review remains.
 
@@ -75,9 +95,14 @@ is revoked; prior raw release/balance evidence is historical for changed code.
   are not acceptance of this resumed work.
 - Base vignettes/dungeon landmarks/day-night consistency/cold town cost passes:
   open, coordinated with living base/building/movement/material work.
-- Required current-game regression, relevant exhaustive invariants, save/replay/
-  offline parity, actual paid-earned comparisons and all client acceptance:
-  open for changed game truth. Old green cannot certify the new economy.
+- Cut233 routine full current-game gate,24-row16-seed pacing pack,939 native
+  tests/6 ignored, default Clippy, routine client subset and564/24 settlement
+  checks pass at d161 (evidence/cut233/README.md; quiet-machine follow-ups at
+  3975f10b). This does not certify the exhaustive balance/migration audit or
+  entire client inventory. Cut236 targeted3-group art/client acceptance does not
+  replace those broader checks. Required final-candidate regression, relevant
+  exhaustive invariants, save/replay/offline parity and actual paid-earned build
+  comparisons remain open as their source changes and full scope require.
 - Appropriate independent fun-verdict review of a final frozen candidate:
   unverified. Preserve score/copy/benchmark evidence; do not claim fun>=80.
 

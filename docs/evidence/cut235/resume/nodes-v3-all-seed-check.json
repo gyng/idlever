@@ -1,0 +1,2706 @@
+{
+  "scope": "All16 PICKED and HANDS cases: every open-chore node by48h actually lit by48h; all16 PICKED eligible nodes bought by72h. Additional targeted node check, not whole gate.",
+  "inputs": [
+    {
+      "path": "docs/evidence/cut235/resume/nodes-v3-16seed-raw-leg.txt",
+      "sha256": "cb1c6a022c0ec9848cba90823a036fc93841eb922b5637b1243b43ccfe215af3"
+    },
+    {
+      "path": "docs/evidence/cut235/resume/nodes-v3-16seed-timeline.json",
+      "sha256": "4247c4dc15a7407a92e9564ef7b63cc6e860829b0ce2ede1ae48a5fc8cb962ab"
+    }
+  ],
+  "eligibilityNote": "DP_NODES prints open hours rounded to0.1h. Including every printed open<=48/72 is conservative: rounding cannot exclude any node opened by the deadline. Lit/hire comparisons use full-precision actual timeline events, never rounded ready/hire diagnostics.",
+  "runtimeKey": "14048f5d5093c543",
+  "rows": [
+    {
+      "bot": "PICKED",
+      "seed": 1,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.13446527777777778,
+        "scout": 0.06550694444444444,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.16217361111111112,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.13585416666666666,
+        "scout": 0.06828472222222222,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.1635625,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.3,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.3,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 2,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.11319444444444444,
+        "scout": 0.07888888888888888,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.14763888888888888,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.11458333333333333,
+        "scout": 0.08166666666666668,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.1490277777777778,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.2,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 3,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.13215277777777776,
+        "scout": 0.07159722222222223,
+        "apprentice": 24.0,
+        "clerk": 40.0,
+        "drillmaster": 0.18332638888888889,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.13354166666666664,
+        "scout": 0.07437500000000001,
+        "apprentice": 24.0,
+        "clerk": 40.0,
+        "drillmaster": 0.1847152777777778,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          24.0,
+          24.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.4,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.4,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 4,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.1410486111111111,
+        "scout": 0.0902638888888889,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.2318333333333333,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.14243749999999997,
+        "scout": 0.09304166666666666,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.2332222222222222,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          16.0,
+          16.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 5,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.15990277777777778,
+        "scout": 0.10116666666666665,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.22681249999999997,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.16129166666666667,
+        "scout": 0.10394444444444444,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.22820138888888888,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.4,
+          16.0,
+          16.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 6,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.14650694444444443,
+        "scout": 0.09365972222222223,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.27625,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.1478958333333333,
+        "scout": 0.09504861111111111,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.27763888888888894,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.3,
+          0.3
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 7,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.15370833333333334,
+        "scout": 0.08055555555555555,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.12009722222222223,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.15509722222222225,
+        "scout": 0.08333333333333333,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.20780555555555555,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.2,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.1,
+          0.2
+        ],
+        "kennel_hand": [
+          0.3,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.3,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 8,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.16095833333333334,
+        "scout": 0.10797222222222222,
+        "apprentice": 0.7314375000000001,
+        "clerk": 40.0,
+        "drillmaster": 0.21859722222222225,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.16234722222222225,
+        "scout": 0.11074999999999999,
+        "apprentice": 0.732826388888889,
+        "clerk": 40.0,
+        "drillmaster": 0.2199861111111111,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          0.7,
+          0.7
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.4,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.4,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 9,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.17806944444444445,
+        "scout": 0.07402777777777778,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 0.24793055555555554,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.17945833333333333,
+        "scout": 0.07680555555555556,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 0.24931944444444445,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.5,
+          32.0,
+          32.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 10,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.1696527777777778,
+        "scout": 0.0999375,
+        "apprentice": 0.7174444444444444,
+        "clerk": 40.0,
+        "drillmaster": 0.14118055555555556,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.17104166666666665,
+        "scout": 0.10271527777777777,
+        "apprentice": 0.7202222222222223,
+        "clerk": 40.0,
+        "drillmaster": 0.14256944444444444,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.2,
+          0.7,
+          0.7
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "kennel_hand": [
+          0.4,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.4,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 11,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.11527777777777778,
+        "scout": 0.08131944444444444,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.186875,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.11666666666666667,
+        "scout": 0.08409722222222223,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.18826388888888887,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.2,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.3,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.3,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 12,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.17747222222222223,
+        "scout": 0.11927777777777777,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.2316527777777778,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.17886111111111108,
+        "scout": 0.12205555555555556,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.23304166666666667,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          16.0,
+          16.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.4,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.4,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 13,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.1129861111111111,
+        "scout": 0.07944444444444444,
+        "apprentice": 0.7183472222222222,
+        "clerk": 40.0,
+        "drillmaster": 0.18565277777777778,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.11437499999999999,
+        "scout": 0.08222222222222222,
+        "apprentice": 0.7211250000000001,
+        "clerk": 40.0,
+        "drillmaster": 0.18704166666666666,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          0.7,
+          0.7
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.4,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.4,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 14,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.18243055555555554,
+        "scout": 0.06891666666666667,
+        "apprentice": 0.7225277777777778,
+        "clerk": 40.0,
+        "drillmaster": 0.23930555555555555,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.18381944444444445,
+        "scout": 0.07030555555555555,
+        "apprentice": 0.7239166666666665,
+        "clerk": 40.0,
+        "drillmaster": 0.24069444444444443,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          0.7,
+          0.7
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 15,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.12347222222222222,
+        "scout": 0.0751388888888889,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.17569444444444443,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.1248611111111111,
+        "scout": 0.07791666666666666,
+        "apprentice": 8.0,
+        "clerk": 40.0,
+        "drillmaster": 0.17708333333333334,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 48.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          8.0,
+          8.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          48.0,
+          48.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "PICKED",
+      "seed": 16,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 0.14142361111111112,
+        "scout": 0.08916666666666666,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.1947708333333333,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "herald",
+        "guide",
+        "kennel_keeper"
+      ],
+      "exactHireHours": {
+        "porter": 0.14281249999999998,
+        "scout": 0.09194444444444444,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 0.19615972222222222,
+        "kennel_hand": 40.0,
+        "herald": 40.0,
+        "guide": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          0.3,
+          16.0,
+          16.0
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          40.0
+        ],
+        "drillmaster": [
+          0.0,
+          0.2,
+          0.2
+        ],
+        "kennel_hand": [
+          0.5,
+          40.0,
+          40.0
+        ],
+        "herald": [
+          24.0,
+          40.0,
+          40.0
+        ],
+        "guide": [
+          32.0,
+          40.0,
+          40.0
+        ],
+        "kennel_keeper": [
+          0.5,
+          48.0,
+          48.0
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 1,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.06550694444444444,
+        "apprentice": 24.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          24.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          72.0,
+          72.0,
+          null
+        ],
+        "guide": [
+          80.0,
+          80.0,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 2,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.07888888888888888,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          72.0,
+          72.0,
+          null
+        ],
+        "guide": [
+          80.0,
+          80.0,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 3,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.07159722222222223,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 4,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.0902638888888889,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 5,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.10116666666666665,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 6,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.09365972222222223,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 16.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          16.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 7,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.08055555555555555,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 8,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.10797222222222222,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 9,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.07402777777777778,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 10,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.0999375,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 11,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.08131944444444444,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 12,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.11927777777777777,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 13,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.07944444444444444,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 14,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.06891666666666667,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 16.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          16.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          16.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 15,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.0751388888888889,
+        "apprentice": 16.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          16.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    },
+    {
+      "bot": "HANDS",
+      "seed": 16,
+      "eligibleAt48": [
+        "porter",
+        "scout",
+        "apprentice",
+        "clerk",
+        "drillmaster",
+        "kennel_hand",
+        "kennel_keeper"
+      ],
+      "exactLitHours": {
+        "porter": 8.0,
+        "scout": 0.08916666666666666,
+        "apprentice": 32.0,
+        "clerk": 40.0,
+        "drillmaster": 8.0,
+        "kennel_hand": 40.0,
+        "kennel_keeper": 48.0
+      },
+      "allEligibleLitBy48": true,
+      "pickedEligibleAt72": [],
+      "exactHireHours": {},
+      "nodeDebugRounded": {
+        "porter": [
+          0.0,
+          8.0,
+          8.0
+        ],
+        "scout": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "apprentice": [
+          8.0,
+          32.0,
+          null
+        ],
+        "clerk": [
+          8.0,
+          40.0,
+          null
+        ],
+        "drillmaster": [
+          0.0,
+          8.0,
+          null
+        ],
+        "kennel_hand": [
+          8.0,
+          40.0,
+          null
+        ],
+        "herald": [
+          null,
+          null,
+          null
+        ],
+        "guide": [
+          null,
+          null,
+          null
+        ],
+        "kennel_keeper": [
+          8.0,
+          48.0,
+          null
+        ]
+      }
+    }
+  ],
+  "result": "PASS"
+}

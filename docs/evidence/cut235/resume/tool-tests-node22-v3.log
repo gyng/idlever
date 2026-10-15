@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: saved-camp checks reject incomplete or ambiguous requests
+ok 1 - saved-camp checks reject incomplete or ambiguous requests
+  ---
+  duration_ms: 2.562809
+  type: 'test'
+  ...
+# Subtest: references bind exact inputs and workloads and require uncorrupted full bytes
+ok 2 - references bind exact inputs and workloads and require uncorrupted full bytes
+  ---
+  duration_ms: 1.637818
+  type: 'test'
+  ...
+# Subtest: plan: failed refuses without earlier state; resume runs everything
+ok 3 - plan: failed refuses without earlier state; resume runs everything
+  ---
+  duration_ms: 2.201694
+  type: 'test'
+  ...
+# Subtest: --failed and --resume rerun only what needs it, and identity changes invalidate
+ok 4 - --failed and --resume rerun only what needs it, and identity changes invalidate
+  ---
+  duration_ms: 1864.428969
+  type: 'test'
+  ...
+# Subtest: a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+ok 5 - a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+  ---
+  duration_ms: 593.835517
+  type: 'test'
+  ...
+# Subtest: save comparison detects adjacent integers that Number rounds together
+ok 6 - save comparison detects adjacent integers that Number rounds together
+  ---
+  duration_ms: 2.170924
+  type: 'test'
+  ...
+# Subtest: comparison preserves safe counters, floats, arrays and quoted seed-like text
+ok 7 - comparison preserves safe counters, floats, arrays and quoted seed-like text
+  ---
+  duration_ms: 0.337904
+  type: 'test'
+  ...
+# Subtest: shared wallet matches equal-valued exits by bloodline and retains intervening movements
+ok 8 - shared wallet matches equal-valued exits by bloodline and retains intervening movements
+  ---
+  duration_ms: 3.62303
+  type: 'test'
+  ...
+# Subtest: pet-fetched Gold remains with its death after later shared-wallet exits
+ok 9 - pet-fetched Gold remains with its death after later shared-wallet exits
+  ---
+  duration_ms: 0.477705
+  type: 'test'
+  ...
+# Subtest: native bridge covers every client method and rejects unsupported bindings
+ok 10 - native bridge covers every client method and rejects unsupported bindings
+  ---
+  duration_ms: 44.909183
+  type: 'test'
+  ...
+# Subtest: checkpoint memento accounts for every serde-skipped engine field
+ok 11 - checkpoint memento accounts for every serde-skipped engine field
+  ---
+  duration_ms: 9.278374
+  type: 'test'
+  ...
+# Subtest: native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+ok 12 - native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+  ---
+  duration_ms: 249.419594
+  type: 'test'
+  ...
+# Subtest: native transport rejects remote connections and cross-origin requests
+ok 13 - native transport rejects remote connections and cross-origin requests
+  ---
+  duration_ms: 417.625314
+  type: 'test'
+  ...
+# Subtest: native edits coalesce, serialize and rebuild edits that arrive during a build
+ok 14 - native edits coalesce, serialize and rebuild edits that arrive during a build
+  ---
+  duration_ms: 87.240054
+  type: 'test'
+  ...
+# Subtest: failed builds surface errors, recover on an edit and stop after close
+ok 15 - failed builds surface errors, recover on an edit and stop after close
+  ---
+  duration_ms: 62.490101
+  type: 'test'
+  ...
+# Subtest: only compilation inputs trigger builds, not generated outputs or browser assets
+ok 16 - only compilation inputs trigger builds, not generated outputs or browser assets
+  ---
+  duration_ms: 1.297574
+  type: 'test'
+  ...
+# Subtest: test-only edits skip rebuilds only with current cfg declaration and compiler proof
+ok 17 - test-only edits skip rebuilds only with current cfg declaration and compiler proof
+  ---
+  duration_ms: 59.704331
+  type: 'test'
+  ...
+# Subtest: real compiler separates unit tests from runtime and included inputs
+ok 18 - real compiler separates unit tests from runtime and included inputs
+  ---
+  duration_ms: 7192.035164
+  type: 'test'
+  ...
+# sweep.test: all PASS
+# Subtest: tools/sweep.test.mjs
+ok 9 - tools/sweep.test.mjs
+  ---
+  duration_ms: 3792.081313
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7421.233904

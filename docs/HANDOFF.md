@@ -1,4 +1,4 @@
-# Idlever handoff — active queue, parked 2026-10-15
+# Idlever handoff — active queue, resumed 2026-10-15
 
 Read this file, PLAN.md, docs/CUT30_5.md and AGENTS.md before resuming.
 The objective remains **resume and finish all queued items verified and refined**.
@@ -9,10 +9,101 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-origin/main 3975f10b (2026-10-15; WASM d161212b…, 6883918 bytes, fast build, untracked pkg — rebuild
-with `tools/wasm.sh`; gold-settlements default docs/evidence/cut233/settlements-inputs-d161.json).
-**PARKED 2026-10-15 (owner).** See "Parked — resume here" below.
+Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
+Current package is fast WASM87de61e9… (6912832bytes); settlement default
+`docs/evidence/cut235/final/settlements-inputs-87de.json`. Native replay4/4 exact, including after-saves.
+Earlier d161/3975f10b evidence below is historical, not the current source/package identity.
+**ACTIVE 2026-10-15 (owner: finish handoff).** The pause is revoked; see the current resume update below.
 Do not stage unrelated mine.bars or scratchpad wholesale.
+
+## Current resume — 2026-10-15
+
+Full owner goal remains active: all numbered/R/retained work and independent final acceptance, not just art or Cut235.
+Art checkpoint committed as `ddcac657`; Journal wrapping regression fixed locally as `cdde0cf3`; parked Cut235 cherry-picked as `c6f4ec4a`; corrected scoped acceptance is now PASS.
+Candidate checkpoint1620a540 fixes actual-run feat provenance and shared/grandfathered town latches while retaining
+hero-local manual-level/start/pet provenance. Final proposed feats are in CUT235_FEATS.md. Rank days now[2,4,6].
+The strict hire helper enforces standard median, all16 paired seeds, >=14/16 per worker and days2–7 cadence.
+
+Preserved candidate evidence (superseded where final results below differ):
+- Current departure/pet-identity source: focused26/26 PASS; workspace965 PASS/6ignored,90.92s tests;
+  default all-targets workspace Clippy warnings denied PASS30.28s. Evidence workspace-v3* / focused-v3.md / clippy-v3.log.
+  Earlier957-test/82.70s result remains historical; type/format/lint/copy PASS.
+- Prior-candidate16seed×3day hire probe (before final temporal/identity corrections): Apprentice14/16, Drillmaster15/16, five others16/16 against baseline count medians.
+  Earlier new-record Drillmaster10/16 FAIL preserved. Initial4seed×7day rank probe: gaps24h on4/4 vs40–48h old.
+- Earlier candidate WASM6914841bytes, SHA2566214dd8aad079b75b2453d11515fa9931e4eb22676cccaf89143465efba64a55.
+  Superseded settlement default `docs/evidence/cut235/settled/settlements-inputs-6214.json`; native Gold/ledger/ExitLine exact4/4.
+  Only two after-save feat-latch migrations regenerated; report-only manifest/failures retained.
+- Prior-candidate full16seed×14day timeline intentionally stopped (SIGTERM at12:59UTC) after concrete temporal
+  provenance defects were found. Source snapshot/runtime/logs in `resume/timeline-floor-clear-16x14-*` retained,
+  completed job caches and checkpoints retained. No full timeline was written; no final cadence/gate claim.
+- Focused fresh-server browser5-group run finished4/5: worker-first-act/cut120/glossary/settlements PASS;
+  journal-earned FAIL at320px/200% text (manual3): panel32px overflow despite document/window0px.
+  Report `docs/evidence/cut235/resume/client-targeted.json`; diagnostic failure in `journal-diagnostic.json`.
+  Glossary article min-width/wrapping fix passes journal-earned326 checks (journal-fixed.json). Concurrent glossary
+  height check failed; waiting for fonts/finite opening animations passes its unchanged32 checks (glossary-settled.json).
+  Final-package routine acceptance still required. Do not attribute the real32px overflow to a stale dev server.
+
+Additional source review found Guide/pet manual prerequisites reading current metadata instead of departure snapshots.
+Corrected temporal false positives/negatives and exact pet identity with real departure/lifecycle tests (focused26/26 PASS); the stopped snapshot is prior-candidate evidence.
+Workspace/build/WASM/repin terminal PASS. Source-bound workspace-v3-identity.json / focused-v3.md / repin-v3.log.
+Corrected16-seed×3-day hire diagnostic terminal PASS: Apprentice14/16, Drillmaster15/16, five others16/16.
+Evidence hires-identity-16x3-{runtime,comparison}.json; snapshot f45f26cb…, runtime14048f5d… . Not fortnight acceptance.
+Final-package fresh targeted browser5/5 PASS in178.2s: worker-first-act, cut12033, glossary32, journal-earned326,
+gold-settlements564/24. Report client-v3-targeted.json. Web build with /idlever/ base PASS; format/lint/copy/type PASS.
+Fresh routine client40/40 PASS390.4s, including clarity:paint5/watch-live-edge10 timing checks without owned native load.
+Report/log `resume/client-v3-routine.{json,log}`. This is the routine subset, not162-group current/205 exhaustive audits.
+Original full-timeline wrapper97618 exited143; exact child3001327 confirmed absent at13:41UTC. Partial evidence
+preserved as timeline-identity-16x14-*-interrupted-1. Same native binary/runtime/args resumed from actual caches/checkpoints
+DETACHED: wrapper3023412, child3023450; /tmp/idlever-cut235-timeline-detached.log and resume/timeline-identity-16x14*.
+IDLE/PICKED16/16 completed before interruption, DAILY14/16; AWAY/DAILY-nodes resumed saved days4–14.
+Resumed timeline terminal0 at13:54:10UTC; final full capture and strict comparison now PASS.
+PICKED seven hire bars: Apprentice14/16, Drillmaster15/16, five others16/16; PICKED/DAILY day2–7 max gap24h on all16seeds.
+All16 IDLE records match every field exported in Cut232 (current-only looks timestamps have no baseline).
+Additional targeted node rows now PASS22s: all16 PICKED/HANDS eligible nodes lit by48h and PICKED bought by72h.
+  Exact events/raw leg bound in resume/nodes-v3-all-seed-check.json; targeted deadlines, not a new HANDS fortnight.
+Artifacts: resume/timeline-identity-16x14-{comparison.md,summary.json}, picked-node-availability-16x14.json,
+idle-timeline-baseline-equality.json. No complete internal-save parity claim from exported timeline equality.
+Native terminal PASS:16seed pacing24/24 (1220s), routine full alllegs0 (metrics198.9s/qa81.2s/dayplayer238.6s).
+Logs resume/{pacing-v3,full-v3}.log; final-gates-v3.status0/0. Original detached wrappers are terminal; do not poll/restart them.
+Engine/tuning snapshot unchanged. No exhaustive balance/migration claim; final changed-UI client results follow.
+Parallel work while native source is frozen:
+- Diagnostic test-only repair committed9e906a8a: choice_check old54-point fixtures failed2/3; current8-rank cost/refusal
+  tests now3/3 and default Clippy PASS. Production preparation/game behavior unchanged; failure/pass logs retained.
+- Test-only recovery harness isolation committedbe67b652: real temporary Git fixture and fresh hard-kill state;
+  required tools19/19 PASS, cache corruption/crash checks PASS. Production identity checks unchanged.
+- Cut240 committeda74777a0: observed Canvas night additive washout obscures buildings/actors, unlike GL. Same-state16 lighting captures
+  plus96natural/80stress samples are in evidence/handoff-lighting. Cut240 Canvas-only bounded warm mask now passes
+  16matched-frame exposure rows, real Forge contrast88%, both-backend fade and diagnostic earned-smith edge culling,
+  Full/Low/Off/reduced exact save/cache, clock36/ctxloss19and static checks. Root accepted paired phone visuals;
+  evidence/cut240/summary.json. No performance or complete retained-lighting acceptance claim.
+- Cut241 committedf4932f82: current utility/build/hero/record/evidence materials,62 geometry cases,
+  1284 visible contrast samples0fail,54 design-state cells and26-case Full/Low/Off+missing-art sets pass.
+  Root callback-focus follow-up passes118menu checks and original descent3widths; current Hub manifest021b146f
+  passes8cases11838checks including explicit legacy recovery migration. No new gameplay/WASM change.
+  Existing Forge/Hub/Journal/main-menu art retained; broader unseen-state/boundary/PC-small-label review remains open.
+The40/40 routine pass predates these UI changes. Combined named39 run terminal36/39 FAIL (client-joint-v4.json):
+  targeted Hub scope exposed stale reincarnating fixture (fixed021b146f, full8cases11838checks PASS);
+  menu double-slash URL caused actual bootstrap SecurityError (testbase normalized); real descent callback-focus
+  regression fixed by releasing modal/inert ownership before onClose (original3widths+118menu checks PASS).
+Fresh full41-group routine terminal PASS378.1s on CI Node22; no exclusions/reused groups.
+Evidence resume/client-joint-v5{-identity,}.json proves launch/terminal web/src+tests+atlas hashes unchanged.
+Wrappers3144710/3144726 are terminal; do not poll/restart. No globally quiet-host performance claim.
+After the Cut242 atlas integration, final targeted worker/cut120/glossary/Journal/Gold5/5 PASS125.8s,
+source unchanged (client-joint-v6-targeted{-identity,}.json); this predates only the final cosmetic Fens selector.
+Actual worker progress loop extended to320/400/1440: fresh final-source120checks PASS25.3s
+(worker-final-three-widths.json), including unfinished/met/hire states. Cut235 scoped acceptance now PASS;
+second hero, Legacy payoff and the full40/R1–R6/fun/exhaustive objective remain unfinished.
+Combined-source format468files/lint/copy108files2710literals and /idlever/ web build PASS; existing bundle/import warnings retained.
+Queued second-hero contract: docs/CUT237_SECOND_HERO.md (acquisition policy unresolved; no behavior changed).
+Owner question pending for second hero: confirmed250-Gold founding conflicts with literal IDLE's no taps after Scout;
+choose first-session recruitment order, a day1 purchase offer with strict IDLE unchanged, or earned automatic resident.
+Art push to https://github.com/gyng/idlever.git branch cut236-art was auto-review rejected; exact owner approval pending.
+No files were pushed. Continue unaffected local work; no release is inferred.
+
+Acceptance ledger reconciled with existing Cuts222–236 evidence; full64-requirement audit:
+`docs/evidence/handoff-resume/acceptance-audit.json`. Still finish the fixed owner queue in order.
+Queued Legacy payoff contract: docs/CUT238_LEGACY_PAYOFF.md (unimplemented/unmeasured; policy unresolved).
+Queued away-forecast implementation/accuracy proposal: docs/CUT239_AWAY_FORECAST.md (unimplemented/unmeasured).
 
 ## Parked 2026-10-15 — resume here
 
@@ -28,7 +119,7 @@ journal-earned fail against the main checkout's :5219 server too (glossary PASSE
 runner server — :5219 is likely a stale dev server; recheck with `node tests/run.mjs glossary journal-earned`).
 
 **Owner queue (order fixed, each verified at 16 seeds via `node tools/gates.mjs --pacing` + routine full gate):**
-1. Cut235 feats for later workers (in flight; §5b of docs/CUT231_PROGRESSION.md). Target: day 2–7 beat gap ≤24 h.
+1. Cut235 feats for later workers — scoped acceptance PASS (current update above supersedes parked WIP). Target day2–7 gap≤24h passes all16 PICKED seeds.
 2. Second hero on day 1–2 (default players found a bloodline; answers the day-2 cliff).
 3. First reset payoff on day 1 (default Legacy order or a spend at the first death; +50–200%).
 Then: docs/research/PACKAGE_GRADES_2026-10.md learnings not yet done — #5 away forecast names the stall,
@@ -90,9 +181,9 @@ marks, plots, arrivals, reveals wait for a quiet report; held reveals owed; stan
 gate PASS; WASM `05744d70…`; gold-settlements default `docs/evidence/cut232/settlements-inputs-0574.json`; client
 routine 38/38. Evidence: evidence/cut232/README.md.
 
-## Current engine and checks
+## Historical engine and checks — Cut222 (superseded)
 
-Real directory web/src/engine/pkg,6688669bytes, SHA256
+Historical Cut222 package: real directory web/src/engine/pkg,6688669bytes, SHA256
 `a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb` (Cut222).
 Earlier66b8 package proofs below remain historical.
 Root WASM28784 terminal PASS. Full client format/lint/copy and web build pass at
@@ -324,3 +415,39 @@ The previous954-line handoff is preserved byte-for-byte at
 `7d517137a75cf57484528de673dfd2f4de8c9d9717f2ead3105b7b8601a9e127`.
 It contains superseded pauses/prototypes and historical validation; this file
 and current evidence control current state.
+
+
+## Current art/content follow-up — Cut242
+
+Cut242 committed locally as `f62d31c2`: six distinct Fens stump/fishtrap,
+Crypt sarcophagus/coffin and Foundry anvil/coalbin props replace generic slots.
+Built-in imagegen masters are versioned in art/generated/; exact prompts are
+art/prompts/cut242-biome-props.json. Original masters remain untouched.
+Opt-in source/margin/refinement pipeline retains the selected painted geometry;
+368 other tiles are byte-identical,525 atlas rectangles unchanged, zero changed
+pixels outside six frames. Final art QC525frames/0warnings/0failures.
+The existing Fens corner choice now actually selects its previously unused crate;
+all placement thresholds/density/gameplay are unchanged. Six subjects are observed
+naturally at400/1440 in real GL replay views. Canvas retains its usable primitive
+fallback and existing omission of cosmetic dungeon dressing. Six atlas404 views,
+19 context-loss checks, build/tsc/format/lint pass. Saves/replay JSON/WASM unchanged.
+Evidence: docs/evidence/cut242/README.md, natural-prop-crops.png, CURATION.json.
+112 curated paths22.22MiB committed; duplicates/original attempts retained locally
+with SHA inventory. No push or performance claim.
+
+Read-only content catalogue remains in evidence/handoff-content: six original
+earned checkpoints and one current87de reconstruction (historical ticks33697 vs
+current30689 explicitly retained). Cut242's committed replay proof is self-contained.
+R3 causal counter superiority, R4 earned class/loadout comparisons and R6 semantic
+landmarks remain open; decorative prop delivery does not certify those requirements.
+
+## Next work and live-state discipline
+
+Cut235 scoped acceptance passes; next fixed progression item is Cut237 second hero,
+whose paid acquisition/default-IDLE policy question remains unresolved. Do not silently
+choose a standing order, free arrival or bot-policy amendment. Cut238 follows Cut237;
+a read-only fresh-Session Legacy affordability/first-rank counterfactual diagnostic
+is being prepared in examples/legacy_first_rank.rs. No production policy changed.
+Query actual process handles before describing that probe as live or terminal.
+All root timeline/native/browser jobs listed above are terminal. Broader menu-state
+review continues separately; owner audio listening and independent fun>=80 remain open.

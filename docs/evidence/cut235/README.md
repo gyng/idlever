@@ -1,11 +1,22 @@
 # Cut235 — later-worker feats: current validation and preserved experiments
 
-Current corrected source passes965 native tests, Clippy, real-WASM settlement
-replay4/4, focused browser5/5, routine browser40/40 and the full16-seed fortnight
-hire/cadence comparison. PICKED and DAILY maximum day2–7 gap is24h. Final
-16-seed pacing and routine full gate are active; integration after concurrent
-Cut240/241 UI changes is still required. Current package:87de61e9…; authoritative
-contract: [CUT235_FEATS.md](../../CUT235_FEATS.md). See terminal sections below.
+Scoped Cut235 acceptance passed2026-10-15:965 native tests, Clippy, native
+settlement replay4/4, full16-seed fortnight hire/cadence comparison, pacing24/24
+and routine full gate. PICKED/DAILY maximum days2–7 gap is24h on every seed.
+Fresh post-Cut240/241 routine client41/41 passes378.1s (Node22; exact source
+identity unchanged). Post-atlas contract groups5/5 pass125.8s; the final actual
+worker loop separately passes120checks at320/400/1440 after the cosmetic Fens
+selector amendment. Current WASM87de61e9… is unchanged throughout. Contract:
+[CUT235_FEATS.md](../../CUT235_FEATS.md). The broader queue remains open.
+
+Final browser reports: `resume/client-joint-v5{,-identity}.json`,
+`resume/client-joint-v6-targeted{,-identity}.json` and
+`resume/worker-final-three-widths.json`. The v6 wrapper log’s “5/41” banner is
+imprecise: JSON correctly records a five-group targeted selection, including
+Gold/Journal groups outside the routine subset. It is not another full suite.
+The earlier named39 integration failure is preserved in client-joint-v4.json;
+its stale recovery fixture, URL bootstrap and real close-callback focus issues
+were repaired before the fresh41-group pass. No exhaustive acceptance claim.
 
 The following parked WIP and earlier candidate measurements are historical.
 They preserve observed failures and superseded feat definitions; they are not
@@ -253,3 +264,31 @@ and proves all16 IDLE records exactly equal in every field exported by Cut232:
 all depth/day, first-session, milestone and event fields. Current-only `looks`
 timestamps have no baseline and are explicitly not compared. This proves
 exported no-pick progression invariance, not complete internal save equality.
+
+
+### Final native contract — PASS
+
+`resume/pacing-v3.log` terminal exit0:24/24pacing rows at16seeds,1220s;
+TUNED/PICKED D33 ratio1.25; RANDOM comparison15/16 atD13 and16/16 atD23;
+IDLE/engagement/automation/current cadence bars unchanged and pass.
+`resume/full-v3.log` and `final-gates-v3.status`: routine full allPASS,
+metrics198.9s/QA81.2s/dayplayer238.6s. This is the bounded current-game gate,
+not the omitted exhaustive balance/migration audit.
+
+Additional targeted16-seed node rows pass22s. `nodes-v3-all-seed-check.json`
+binds raw fullstdout leg and exact timeline events: every eligible PICKED/HANDS
+node lit by48h on all16seeds, every eligible PICKED node bought by72h on all16.
+The source DP_NODES display rounds open times to0.1h; including every rounded
+open<=deadline is conservative and cannot exclude an eligible node. All lit
+and hire comparisons use full-precision timeline events. These node-targeted
+jobs stop at their required deadlines; no new full HANDS fortnight is claimed.
+
+Current UI integration remains required. The combined named39 run used targeted
+rather than routine-critical Hub scope and failed3groups (full errors in
+client-joint-v4.json): stale legacy reincarnation fixture, malformed double-slash
+menu URL, and genuine descent close-callback focus regression. Current Hero Hub
+11838/8cases passes after strict public-action fixture repair021b146f; original
+legacy input remains and has explicit migration assertions. Root fixes the URL
+and modal close lifecycle; original numbered3widths and118menu checks pass.
+A fresh full41-group routine runs on CI Node22 as client-joint-v5, with no
+exclusions; no whole final browser pass is claimed until its terminal result.

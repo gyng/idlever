@@ -128,7 +128,7 @@ try {
   }
   // Cut231 §5: live progress toward the next worker on its trigger — the pill, the tracker and the works card draw the wire's own count
   // (`count`/`need`, the core's `progress`) and its time fallback (`eta_h`), on the real engine; a send moves the count.
-  for (const width of stateWidths([400, 1440])) {
+  for (const width of stateWidths([320, 400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 } });
     await p.goto(`${url}?fresh=1&seed=3&runs=0`);
     await p.waitForFunction(() => window.__idlever?.booted);

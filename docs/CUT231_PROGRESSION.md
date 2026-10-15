@@ -10,7 +10,7 @@ routine 2-seed gate.
 |---|------|----------------|--------|
 | 1 | First automation ≤5 min; Scout ≤8 min every seed (Cut230) | `scout` worst ≤8 min 16/16; `porter` ≤5 min | in progress (Cut230) |
 | 3 | Depth-scaled death recovery; short early waits (Cut230) | runs in first 30 min ≥4 every seed; tuned-picked ≥1.15; picked-idle; idle-* | in progress (Cut230) |
-| 5 | Next-worker progress on its trigger ("2/3 sends"); later rungs from counts to feats (time fallback for IDLE kept) | worker-first-act/journal journeys show live progress; `nodes-lit` ≤48 h | client part landed (below); feats proposed (5b) |
+| 5 | Next-worker progress on its trigger ("2/3 sends"); later rungs from counts to feats (time fallback for IDLE kept) | worker-first-act/journal journeys show live progress; `nodes-lit` ≤48 h | Cut235 scoped acceptance PASS; 16seed cadence/pacing/full + current routine client (CUT235_FEATS.md) |
 | 2 | Pre-Scout absence pays: a small capped camp chest (≤2 h of first-floor gold), no sends; cap vanishes with the Scout | new row "IDLE absent pre-Scout returns gold > 0"; `conserved`; return-pick journey shows the line | queued after Cut230 |
 | 4 | Explicit unlock cadence: a beat every 3–5 min for 30 min, then ~1 h, 3 h, 8 h, d1, d2, d4, d7; never two decisions at once | dayplayer unlock-timestamp dump; row: max gap in first 30 min ≤6 min, simultaneous decisions ≤1; `picked-stages`/`idle-stages` | Cut232 (CUT232_CADENCE.md): decisions ≤ 1 **16/16** (was worst 5, 0/16); gap med 6.0 · worst 7.4 min, 8/16 (was 6.4 · 9.1) — single watched runs > 6 min; bar options with the lead |
 | 6 | A second hero on day 1–2 (IdleOn's idle lever) | bloodline founding median ≤ day 2 on IDLE/PICKED; no pacing regressions | queued |
@@ -44,7 +44,9 @@ string), `fallback_h` and `eta_h` (hours until the fallback lights it; absent on
 
 Evidence: `docs/evidence/cut231/` (GPU, 400 and 1440).
 
-## Item 5b — later rungs from counts to feats (proposal, not implemented)
+## Item 5b — later rungs from counts to feats (Cut235 scoped acceptance PASS)
+
+Final shipped feat names, departure provenance and acceptance are in [CUT235_FEATS.md](CUT235_FEATS.md). The candidate table below is retained as design history.
 
 Round 2 and the comparables (Increlution counts punished; AD challenges, Trimps void maps praised): "automation rewards a
 feat, not a repetition count". The Porter and the Scout keep counts — they teach the chore itself (the Scout moves to 2

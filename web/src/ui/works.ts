@@ -195,7 +195,7 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
     // Cut231 §5: the goal's worker counting toward its trigger — a count goal names its chore (`scout · 2/3 sends`), a send or a
     // chest (each advances the worker) carries the count quietly beside it (`scout 1/3`); the time fallback rides quietly (`or 6h`)
     const prog = management ? null : workerProgress(node);
-    // Cut235: a feat goal names its feat, met or not (`apprentice · forged boss kill`, `✓` once met), no bar; its fallback quietly
+    // Cut235: a feat goal names its feat, met or not (`apprentice · forged new best`, `✓` once met), no bar; its fallback quietly
     const goal = p.kind === "count" || p.kind === "feat";
     const text = management
       ? /* copy:label */ `Workers · ${hired} hired`

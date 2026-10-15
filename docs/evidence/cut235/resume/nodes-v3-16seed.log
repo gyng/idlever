@@ -1,0 +1,21 @@
+dayplayer: targeted rows nodes-lit,nodes-bought — configurations PICKED,HANDS
+dayplayer: HANDS s6 done in 5s 
+dayplayer: HANDS s3 done in 5s 
+dayplayer: HANDS s5 done in 6s 
+dayplayer: HANDS s4 done in 7s 
+dayplayer: HANDS s8 done in 5s 
+dayplayer: HANDS s7 done in 5s 
+dayplayer: HANDS s9 done in 5s 
+dayplayer: HANDS s10 done in 6s 
+dayplayer: HANDS s12 done in 6s 
+dayplayer: HANDS s11 done in 6s 
+dayplayer: HANDS s13 done in 6s 
+dayplayer: HANDS s14 done in 5s 
+dayplayer: HANDS s15 done in 5s 
+dayplayer: HANDS s16 done in 5s 
+dayplayer: timeline → docs/evidence/cut235/resume/nodes-v3-16seed-timeline.json
+bar (targeted)                                                                value  result
+Every node whose chore exists lit by 48 h (PICKED, HANDS median unlit)              0 · 0  PASS
+Every node whose chore exists bought by 72 h (PICKED median unbought) 0 (9 hired by day 14)  PASS
+dayplayer (targeted: nodes-lit,nodes-bought, 22s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `nodes-lit,nodes-bought` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
