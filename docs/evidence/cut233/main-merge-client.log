@@ -1,0 +1,7 @@
+client suite: targeted (5 selected; 162 current full; 205 exhaustive groups)
+ok   glossary        24.6s (12.6s)  glossary: 32 checks PASS; registry 62 terms, every one an entry once met (real WASM)
+ok   depth-rail      40.2s (28.2s)  depth-rail: 31 checks PASS; unobscured watch % {"320":96.8,"400":97.5,"768":98.8,"1440":97.4} (real WASM)
+ok   gold-settlements 85.3s (73.3s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6883918,"sha256":"d161212ba1b44b52689ba8ab872c2c6b9a99815f51cedac49a161070f7adfdff"},{"bytes":6883918,"sha256":"d161212ba1b44b52689ba8ab872c2c6b9a99815f51cedac49a161070f7adfdff"},{"bytes":6883918,"sha256":"d161212ba1b44b52689ba8ab872c2c6b9a99815f51cedac49a161070f7adfdff"},{"bytes":6883918,"sha256":"d161212ba1b44b52689ba8ab872c2c6b9a99815f51cedac49a161070f7adfdff"}]}
+ok   clarity:paint   114.1s (28.8s)  clarity paint: ok (5 checks)
+ok   watch-live-edge 141.7s (27.6s)  watch-live-edge: ok (10 checks)
+ok: 5/5 client gates in 141.7s
