@@ -14,8 +14,8 @@ timings.
 
 Legacy comparisons can now run directly without browser-prepared saves:
 `node tools/choice-check.mjs SAVE --choices bold --upgrades health,armour,damage,all --hours 8 --out NEW_DIR`.
-Each upgrade path independently completes the selected bloodline's available
-ranks using actual core prices and earned points, then runs the original
+Each upgrade path independently completes the selected bloodline's requested
+roots through the current cap using actual core prices and earned points, then runs the original
 loadout and each requested package choice. Current ranks can lower the cost;
 complete paths are unchanged controls. Every path must be affordable at home
 before any case plays. `all` costs more than an individual path. No automatic

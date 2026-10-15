@@ -96,38 +96,100 @@ mod tests {
         s.lineage.bloodline.as_mut().unwrap().points = points;
         s
     }
+    fn root_cost() -> u32 { idlever_core::legacy::root_prices().iter().sum() }
+
     #[test]
     fn real_costs_partial_and_complete_paths() {
-        let source = town(54); let before = source.save();
+        let root = root_cost();
+        assert_eq!(idlever_core::legacy::CAP, 8);
+        assert_eq!(root, 20_265, "current shipping curve's full root cost");
+        let all_cost = root * idlever_core::legacy::IDS.len() as u32;
+        assert_eq!(all_cost, 60_795, "all three roots must be funded independently");
+        let source = town(all_cost); let before = source.save();
         let (all, spent) = upgrade_path(&source, "all").unwrap();
-        assert_eq!(spent,54);assert_eq!(all.lineage.gold,source.lineage.gold);
-        assert_eq!(all.lineage.bloodline.as_ref().unwrap().points,0);
-        for id in idlever_core::legacy::IDS { assert_eq!(all.lineage.bloodline.as_ref().unwrap().upgrades[id],3); }
-        let (same, spent) = upgrade_path(&all,"all").unwrap();assert_eq!(spent,0);assert_eq!(same.save(),all.save());
-        let (mut partial, _) = upgrade_path(&source,"health").unwrap();
-        partial.lineage.bloodline.as_mut().unwrap().upgrades.insert("damage".into(),2);
-        let (finished,spent)=upgrade_path(&partial,"damage").unwrap();assert_eq!(spent,9);
-        assert_eq!(finished.lineage.bloodline.as_ref().unwrap().upgrades["damage"],3);
-        assert_eq!(source.save(),before);
+        assert_eq!(spent, 60_795);
+        assert_eq!(all.lineage.gold, source.lineage.gold);
+        let inherited = all.lineage.bloodline.as_ref().unwrap();
+        assert_eq!(inherited.points, 0);
+        assert_eq!(inherited.spent, spent);
+        for id in idlever_core::legacy::IDS { assert_eq!(inherited.upgrades[id], idlever_core::legacy::CAP); }
+        for path in ["all", "health"] {
+            let (same, spent) = upgrade_path(&all, path).unwrap();
+            assert_eq!(spent, 0);
+            assert_eq!(same.save(), all.save(), "already capped paths are unchanged controls");
+        }
+        assert_eq!(source.save(), before);
+
+        // Start from two genuine purchases, not an invented cheaper price or cap.
+        let mut partial = town(root);
+        partial.upgrade_hero("damage").unwrap();
+        partial.upgrade_hero("damage").unwrap();
+        assert_eq!(partial.lineage.bloodline.as_ref().unwrap().upgrades["damage"], 2);
+        assert_eq!(partial.lineage.bloodline.as_ref().unwrap().points, 20_210);
+        assert_eq!(partial.lineage.bloodline.as_ref().unwrap().spent, 55);
+        let before = partial.save();
+        let (finished, spent) = upgrade_path(&partial, "damage").unwrap();
+        assert_eq!(spent, 20_210);
+        assert_eq!(spent, idlever_core::legacy::root_prices()[2..].iter().sum::<u32>());
+        let inherited = finished.lineage.bloodline.as_ref().unwrap();
+        assert_eq!(inherited.upgrades["damage"], idlever_core::legacy::CAP);
+        assert_eq!(inherited.points, 0);
+        assert_eq!(inherited.spent, root);
+        assert_eq!(finished.lineage.gold, partial.lineage.gold);
+        assert_eq!(partial.save(), before);
     }
+
     #[test]
     fn refused_paths_do_not_mutate_source() {
-        let mut s=town(17);let before=s.save();
-        assert!(upgrade_path(&s,"health").is_err());assert!(upgrade_path(&s,"unknown").is_err());assert_eq!(s.save(),before);
-        s.lineage.bloodline.as_mut().unwrap().points=54;s.send();let before=s.save();
-        assert!(upgrade_path(&s,"all").is_err());assert_eq!(s.save(),before);
+        for points in [17, root_cost() - 1] {
+            let s = town(points); let before = s.save();
+            assert_eq!(upgrade_path(&s, "health").unwrap_err(), "health: More Legacy needed");
+            assert_eq!(s.save(), before, "even a partly prepared clone is discarded on full-path refusal");
+            assert_eq!(s.lineage.bloodline.as_ref().unwrap().spent, 0);
+        }
+        let s = town(root_cost()); let before = s.save();
+        assert_eq!(upgrade_path(&s, "unknown").unwrap_err(), "unknown upgrade path unknown");
+        assert_eq!(s.save(), before);
+        // Enough for each individual root but one point short of all: preparation must reject the entire path.
+        let s = town(root_cost() * idlever_core::legacy::IDS.len() as u32 - 1); let before = s.save();
+        assert_eq!(upgrade_path(&s, "all").unwrap_err(), "all: More Legacy needed");
+        assert_eq!(s.save(), before);
+
+        let mut s = town(root_cost() * idlever_core::legacy::IDS.len() as u32);
+        s.send();
+        assert!(idlever_core::legacy::away(&s.active), "the funded refusal exercises a real away hero");
+        let before = s.save();
+        assert_eq!(upgrade_path(&s, "all").unwrap_err(), "all: hero away");
+        assert_eq!(s.save(), before);
     }
+
     #[test]
     fn only_selected_bloodline_spends() {
-        let mut s=town(54);let mut other=idlever_core::Game::new_resident(2);
-        other.lineage.bloodline_id=2;other.lineage.bloodline.as_mut().unwrap().points=99;
-        s.others.insert(2,other);s.next_id=3;
-        let before=s.others[&2].save();let (changed,spent)=upgrade_path(&s,"armour").unwrap();
-        assert_eq!(spent,18);assert_eq!(changed.selected,1);assert_eq!(changed.others[&2].save(),before);
-        assert_eq!(s.lineage.bloodline.as_ref().unwrap().points,54);
-        s.select_bloodline(2).unwrap();let before=s.others[&1].save();
-        let (changed,spent)=upgrade_path(&s,"health").unwrap();assert_eq!(spent,18);
-        assert_eq!(changed.selected,2);assert_eq!(changed.others[&1].save(),before);
-        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().points,81);
+        let root = root_cost();
+        let mut s = town(root); let mut other = idlever_core::Game::new_resident(2);
+        other.lineage.bloodline_id = 2;
+        other.lineage.bloodline.as_mut().unwrap().points = root + 7;
+        s.others.insert(2, other); s.next_id = 3;
+        let before = s.others[&2].save(); let source = s.save();
+        let (changed, spent) = upgrade_path(&s, "armour").unwrap();
+        assert_eq!(spent, 20_265);
+        assert_eq!(changed.selected, 1);
+        assert_eq!(changed.others[&2].save(), before);
+        assert_eq!(changed.lineage.gold, s.lineage.gold);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().points, 0);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().spent, root);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().upgrades["armour"], idlever_core::legacy::CAP);
+        assert_eq!(s.save(), source);
+
+        s.select_bloodline(2).unwrap(); let before = s.others[&1].save(); let source = s.save();
+        let (changed, spent) = upgrade_path(&s, "health").unwrap();
+        assert_eq!(spent, 20_265);
+        assert_eq!(changed.selected, 2);
+        assert_eq!(changed.others[&1].save(), before);
+        assert_eq!(changed.lineage.gold, s.lineage.gold);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().points, 7);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().spent, root);
+        assert_eq!(changed.lineage.bloodline.as_ref().unwrap().upgrades["health"], idlever_core::legacy::CAP);
+        assert_eq!(s.save(), source);
     }
 }

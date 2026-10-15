@@ -1,0 +1,30 @@
+   Compiling idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+    Finished `fast` profile [optimized] target(s) in 5.37s
+     Running unittests examples/choice_check.rs (target/fast/examples/choice_check-1b9ee75513d2a516)
+
+running 3 tests
+test tests::real_costs_partial_and_complete_paths ... FAILED
+test tests::only_selected_bloodline_spends ... FAILED
+test tests::refused_paths_do_not_mutate_source ... ok
+
+failures:
+
+---- tests::real_costs_partial_and_complete_paths stdout ----
+
+thread 'tests::real_costs_partial_and_complete_paths' (74) panicked at crates/idlever-core/examples/choice_check.rs:102:57:
+called `Result::unwrap()` on an `Err` value: "all: More Legacy needed"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::only_selected_bloodline_spends stdout ----
+
+thread 'tests::only_selected_bloodline_spends' (73) panicked at crates/idlever-core/examples/choice_check.rs:125:86:
+called `Result::unwrap()` on an `Err` value: "armour: More Legacy needed"
+
+
+failures:
+    tests::only_selected_bloodline_spends
+    tests::real_costs_partial_and_complete_paths
+
+test result: FAILED. 1 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p idlever-core --example choice_check`

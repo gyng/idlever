@@ -16,6 +16,18 @@ the previous earned Legacy/WASM audit; test partial/capped paths, insufficient
 points and selected-only multihero ownership. Measure three warm expanded
 runs against the old15 separate invocations. No gate/balance changes or deploy.
 
+Compatibility check 2026-10-15: the current eight-rank shipping curve costs
+20,265 points per root and 60,795 for all three from rank 0. A "partial path"
+means previously purchased ranks reduce that full completion cost; the tool
+still refuses a budget that cannot finish the requested path. Two stale native
+tests still assumed the earlier three-rank 54-point tree and failed. Their
+fixtures/assertions now use current prices/cap, with explicit current totals,
+real prior purchases, atomic refusal, funded away refusal, capped controls and
+selected-only ownership. All 3 example tests pass; production diagnostic/game
+behavior is unchanged. Logs: `evidence/cut235/resume/choice-check-tests-{before,after}.log`.
+The historical 30-case WASM comparison and timings below retain their original
+pricing/runtime scope; they are not rerun-current evidence.
+
 Verified: all30 expanded reports and raw final saves exactly equal prior
 real-WASM Legacy audit outputs across seeds1/3/5. Original invocation's
 version1/no upgrade fields/0-baseline and1-bold filenames and exact results
