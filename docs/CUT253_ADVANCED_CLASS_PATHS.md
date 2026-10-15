@@ -7,6 +7,11 @@ It does not replace that extension with the completed painted equipment figure,
 the existing new classes, or a recursive tree renderer. Those are separate work.
 Status: contract only; no new native effects, points or earned-play claims yet.
 
+Owner art refinement: the flat SVG draft sheets are too basic for final skill
+art. Finished icons need original painted ability moments with personality,
+using the classic strategy-game reference and Idlever palette. Keep SVG drafts
+as primitive fallback material; art preparation is not native interaction proof.
+
 ## Required content and compatibility
 
 Fighter, Rogue, Ranger, Caster and Gunner each have12nodes: the existing6, four

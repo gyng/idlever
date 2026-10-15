@@ -1,5 +1,10 @@
 # Advanced insignia artwork draft
 
+Owner follow-up: these flat diagrams are explicitly **not final art**. The owner
+requested more personality with classic painted strategy-game ability icons.
+The code-native paths may serve as fallbacks; painted candidates/provenance are
+in `../painted-samples/` and `art/ADVANCED_SKILLS.md`. Original raw previews remain.
+
 2026-10-16, root engineering art review. These30SVG compositions correspond to
 the30interactions in Cut225/Cut253. They use the existing BONE/INK/MIST native
 icon system; no image generation or bitmap replacement is involved.
