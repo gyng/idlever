@@ -1,0 +1,196 @@
+{
+  "recordedAtUtc": "2026-10-15T21:55:10.905546+00:00",
+  "pidNamespace": "pid:[4026532214]",
+  "ownedKnownPids": [
+    8092,
+    7816,
+    151306,
+    151333,
+    151334,
+    151342,
+    186574,
+    186726,
+    222318,
+    222340,
+    224265,
+    278033,
+    278035,
+    278185
+  ],
+  "ownedStillPresent": [],
+  "foreign276644Present": false,
+  "intervalSeconds": 3.016564293007832,
+  "topObservedCpu": [
+    {
+      "pid": 304665,
+      "name": "chrome-headless",
+      "ppid": 304648,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1058.4889595760092
+    },
+    {
+      "pid": 304645,
+      "name": "chrome-headless",
+      "ppid": 304633,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 26.188734045256727
+    },
+    {
+      "pid": 304633,
+      "name": "node-MainThread",
+      "ppid": 304602,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 13.92312442912383
+    },
+    {
+      "pid": 2568078,
+      "name": "codex",
+      "ppid": 2509117,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 4.309538513776423
+    },
+    {
+      "pid": 2510367,
+      "name": "codex",
+      "ppid": 2508080,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 3.6465325885800506
+    },
+    {
+      "pid": 4176924,
+      "name": "codex",
+      "ppid": 4175630,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 3.6465325885800506
+    },
+    {
+      "pid": 4186,
+      "name": "codex",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1.9890177755891185
+    },
+    {
+      "pid": 304667,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1.9890177755891185
+    },
+    {
+      "pid": 3103150,
+      "name": "node-MainThread",
+      "ppid": 2132,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1.9890177755891185
+    },
+    {
+      "pid": 304856,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9945088877945593
+    },
+    {
+      "pid": 3479518,
+      "name": "(udev-worker)",
+      "ppid": 97,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9945088877945593
+    },
+    {
+      "pid": 97,
+      "name": "systemd-udevd",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6630059251963728
+    },
+    {
+      "pid": 612,
+      "name": "dockerd",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6630059251963728
+    },
+    {
+      "pid": 306959,
+      "name": "python3",
+      "ppid": 306958,
+      "state": "R",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6630059251963728
+    },
+    {
+      "pid": 3478978,
+      "name": "(udev-worker)",
+      "ppid": 97,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6630059251963728
+    }
+  ],
+  "observedBrowserDisplayProcesses": [
+    {
+      "pid": 304665,
+      "name": "chrome-headless",
+      "ppid": 304648,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1058.4889595760092
+    },
+    {
+      "pid": 304645,
+      "name": "chrome-headless",
+      "ppid": 304633,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 26.188734045256727
+    },
+    {
+      "pid": 304667,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1.9890177755891185
+    },
+    {
+      "pid": 304856,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9945088877945593
+    },
+    {
+      "pid": 304648,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.0
+    },
+    {
+      "pid": 304649,
+      "name": "chrome-headless",
+      "ppid": 304645,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.0
+    }
+  ],
+  "scope": "Same namespace as positively observed native8092. Read-only short Linux-process sample; owner reports allownedjobs terminal. Not host/Windows-wide quiet proof."
+}

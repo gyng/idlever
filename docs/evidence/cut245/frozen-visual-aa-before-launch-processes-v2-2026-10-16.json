@@ -1,0 +1,180 @@
+{
+  "recordedAtUtc": "2026-10-15T21:57:11.020794+00:00",
+  "pidNamespace": "pid:[4026532214]",
+  "ownedKnownPids": [
+    8092,
+    7816,
+    151306,
+    151333,
+    151334,
+    151342,
+    186574,
+    186726,
+    222318,
+    222340,
+    224265,
+    278033,
+    278035,
+    278185
+  ],
+  "ownedStillPresent": [],
+  "priorBlockingForeignPidsPresent": [],
+  "intervalSeconds": 3.0237150180037133,
+  "topObservedCpu": [
+    {
+      "pid": 309619,
+      "name": "chrome-headless",
+      "ppid": 309602,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1386.7047572387494
+    },
+    {
+      "pid": 310508,
+      "name": "chrome-headless",
+      "ppid": 309603,
+      "state": "R",
+      "foreignArmee": false,
+      "intervalCpuPercent": 29.433990792809134
+    },
+    {
+      "pid": 309600,
+      "name": "chrome-headless",
+      "ppid": 309569,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 23.481048834712904
+    },
+    {
+      "pid": 2510367,
+      "name": "codex",
+      "ppid": 2508080,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 4.299346969736166
+    },
+    {
+      "pid": 2568078,
+      "name": "codex",
+      "ppid": 2509117,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 4.299346969736166
+    },
+    {
+      "pid": 309569,
+      "name": "node-MainThread",
+      "ppid": 309557,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 3.6379089743921402
+    },
+    {
+      "pid": 3479518,
+      "name": "(udev-worker)",
+      "ppid": 97,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1.322875990688051
+    },
+    {
+      "pid": 97,
+      "name": "systemd-udevd",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9921569930160382
+    },
+    {
+      "pid": 309903,
+      "name": "chrome-headless",
+      "ppid": 309600,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9921569930160382
+    },
+    {
+      "pid": 310667,
+      "name": "python3",
+      "ppid": 310666,
+      "state": "R",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9921569930160382
+    },
+    {
+      "pid": 612,
+      "name": "dockerd",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6614379953440255
+    },
+    {
+      "pid": 4186,
+      "name": "codex",
+      "ppid": 1,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.6614379953440255
+    }
+  ],
+  "observedBrowserDisplayProcesses": [
+    {
+      "pid": 309619,
+      "name": "chrome-headless",
+      "ppid": 309602,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 1386.7047572387494
+    },
+    {
+      "pid": 310508,
+      "name": "chrome-headless",
+      "ppid": 309603,
+      "state": "R",
+      "foreignArmee": false,
+      "intervalCpuPercent": 29.433990792809134
+    },
+    {
+      "pid": 309600,
+      "name": "chrome-headless",
+      "ppid": 309569,
+      "state": "S",
+      "foreignArmee": true,
+      "intervalCpuPercent": 23.481048834712904
+    },
+    {
+      "pid": 309903,
+      "name": "chrome-headless",
+      "ppid": 309600,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.9921569930160382
+    },
+    {
+      "pid": 309602,
+      "name": "chrome-headless",
+      "ppid": 309600,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.0
+    },
+    {
+      "pid": 309603,
+      "name": "chrome-headless",
+      "ppid": 309600,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.0
+    },
+    {
+      "pid": 309621,
+      "name": "chrome-headless",
+      "ppid": 309600,
+      "state": "S",
+      "foreignArmee": false,
+      "intervalCpuPercent": 0.0
+    }
+  ],
+  "scope": "Near-launch3s process-view sample only, not fullhost/Windows quiet. Prior heavy foreign work not modified."
+}
