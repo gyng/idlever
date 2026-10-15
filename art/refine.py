@@ -82,6 +82,12 @@ def load_r26() -> dict[str, np.ndarray]:
 
 def refine_all(out_dir: Path) -> list[str]:
     old = load_r26()
+    manifest = json.loads((ROOT / "manifest.json").read_text())
+    painted = {f"{a['biome']}_env_{a['name']}" for a in manifest["assets"]
+               if a.get("register") == "painted" and a.get("refine_source") == "painted"}
+    unknown = painted - old.keys()
+    if unknown:
+        raise ValueError(f"painted refinement needs an existing r26 group: {sorted(unknown)}")
     by: dict[tuple[str, str], list[str]] = {}
     for tid in old:
         biome, name = tid.split("_env_", 1)
@@ -94,7 +100,10 @@ def refine_all(out_dir: Path) -> list[str]:
         L_all = np.concatenate([lum(old[t])[old[t][..., 3] > 0] for t in tids])
         p2, p98 = np.percentile(L_all, [2, 98])
         for tid in tids:
-            a = old[tid].copy()
+            # Group normalization deliberately stays on the frozen r26 register above:
+            # a selected new silhouette must not shift the other props' palette/value.
+            a = (np.asarray(Image.open(out_dir / f"{tid}.png").convert("RGBA"), np.float32)
+                 if tid in painted else old[tid].copy())
             op = a[..., 3] > 0
             L = lum(a)
             u = np.clip((L - p2) / max(1e-3, p98 - p2), 0, 1) ** gam

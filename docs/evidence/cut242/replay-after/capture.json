@@ -1,0 +1,5151 @@
+{
+  "scope": "Current87de replay reconstruction from existing earned capsule131; historical tick mismatch retained; no new choices or progression, no performance claim",
+  "source": {
+    "web/src/render/index.ts": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa",
+    "web/src/render/view2d.ts": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+    "web/src/render/atlas.ts": "d6618c368d37b01f3e6ba929d650d73364ff809e49b3bd813bda83a40e056545",
+    "web/src/render/fallback.ts": "29b1aabbdf1b554cf95a39561b2e554e3e0e164a6378c3913693b9dd3376519b",
+    "web/src/render/state.ts": "e8bd86a1a89e7a1fdfc757b3e9dddb223c906c7fc88d025e4e3d4ce7bec5e5ed",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "e82871560e2344f440d1cc350a0645d8e53137c1cf405303e6d9f50bd40e9f2e"
+  },
+  "servedModules": [
+    {
+      "url": "/src/render/atlas.ts",
+      "sha256": "ac35eab0a2061cc49163e603c3044555663cb17be418421de69169bfc936c00f"
+    },
+    {
+      "url": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "url": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "url": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "url": "/src/render/palette.ts",
+      "sha256": "c57dd27e4c39963a2f2e7e3a14662bee8b3f0a57214c6749aacff51855e1be68"
+    },
+    {
+      "url": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "url": "/src/render/index.ts",
+      "sha256": "73ad318777b0820f11889113ab85598376b838954b3bad7e5624720199f66cce"
+    },
+    {
+      "url": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "url": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "url": "/src/render/tags.ts",
+      "sha256": "8fda6e9e50d3d26393494d873df2c42541b63c78e00de74d053fcdaf88dcb019"
+    },
+    {
+      "url": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "url": "/src/render/state.ts",
+      "sha256": "dbe96bf3eff8d62c33cd23124275a4770878f2d1499849f4133075578bad98b3"
+    },
+    {
+      "url": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "url": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "url": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "url": "/src/render/view2d.ts",
+      "sha256": "e44c120e47b59bf300b2bee1cacef246d16f20a493dc5e05435eab25b81a9bfa"
+    },
+    {
+      "url": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "url": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "url": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "url": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "url": "/src/render/fallback.ts",
+      "sha256": "fffca16300ac8a11294696bdcece018c010ac72d43534c07f6e5173fb27b26e3"
+    },
+    {
+      "url": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "url": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    },
+    {
+      "url": "/src/render/atlas.ts",
+      "sha256": "ac35eab0a2061cc49163e603c3044555663cb17be418421de69169bfc936c00f"
+    },
+    {
+      "url": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "url": "/src/render/palette.ts",
+      "sha256": "c57dd27e4c39963a2f2e7e3a14662bee8b3f0a57214c6749aacff51855e1be68"
+    },
+    {
+      "url": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "url": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "url": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "url": "/src/render/index.ts",
+      "sha256": "73ad318777b0820f11889113ab85598376b838954b3bad7e5624720199f66cce"
+    },
+    {
+      "url": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "url": "/src/render/tags.ts",
+      "sha256": "8fda6e9e50d3d26393494d873df2c42541b63c78e00de74d053fcdaf88dcb019"
+    },
+    {
+      "url": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "url": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "url": "/src/render/state.ts",
+      "sha256": "dbe96bf3eff8d62c33cd23124275a4770878f2d1499849f4133075578bad98b3"
+    },
+    {
+      "url": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "url": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "url": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "url": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "url": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "url": "/src/render/view2d.ts",
+      "sha256": "e44c120e47b59bf300b2bee1cacef246d16f20a493dc5e05435eab25b81a9bfa"
+    },
+    {
+      "url": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "url": "/src/render/fallback.ts",
+      "sha256": "fffca16300ac8a11294696bdcece018c010ac72d43534c07f6e5173fb27b26e3"
+    },
+    {
+      "url": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "url": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "url": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    }
+  ],
+  "rows": [
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 400,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-gl-400.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          180,
+          -47
+        ],
+        "ents": 4,
+        "drawn": 4,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "fens_env_barrel",
+          "x": 140,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 68,
+          "y": -24,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 92,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 204,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 220,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 60,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 20,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 12,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 84,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 20,
+          "y": -152,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 20,
+          "y": -160,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 129,
+            "right": 231,
+            "bottom": -128,
+            "top": 34
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 400,
+      "target": 13872,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13870,
+        "src": 125,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "attack"
+      },
+      "file": "replay-fens-water-pack-gl-400.png",
+      "stats": {
+        "tick": 13872,
+        "hero": [
+          13,
+          4.8
+        ],
+        "camera": [
+          124,
+          -54
+        ],
+        "ents": 8,
+        "drawn": 3,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "fens_env_barrel",
+          "x": 140,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 156,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 108,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 68,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 124,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 92,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 140,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 172,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 132,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 28,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 156,
+          "y": -200,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 148,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 52,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 100,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 73,
+            "right": 175,
+            "bottom": -135,
+            "top": 27
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 400,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-gl-400.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          96,
+          -43
+        ],
+        "ents": 9,
+        "drawn": 2,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "crypt_env_barrel",
+          "x": 204,
+          "y": -24,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 244,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 28,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 204,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 28,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 60,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 244,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 172,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 148,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 188,
+          "y": -96,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -104,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 100,
+          "y": -112,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 20,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 108,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 204,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 60,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 236,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 212,
+          "y": -160,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 60,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 116,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 36,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 44,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 140,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 124,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 45,
+            "right": 147,
+            "bottom": -124,
+            "top": 38
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 400,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-gl-400.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          144,
+          -103
+        ],
+        "ents": 19,
+        "drawn": 8,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "crypt_env_barrel",
+          "x": 212,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 108,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 164,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 244,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 180,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 140,
+          "y": -112,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 60,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 100,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 92,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 52,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 52,
+          "y": -200,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 188,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 196,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 116,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 132,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 28,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 93,
+            "right": 195,
+            "bottom": -184,
+            "top": -22
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 400,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-gl-400.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          45.5,
+          -117.5
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 60,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 60,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 108,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 108,
+          "y": -120,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 60,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 92,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 204,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 68,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 28,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 148,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 188,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 196,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 12,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 140,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 140,
+          "y": -232,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 12,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 44,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 180,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 97,
+            "bottom": -198,
+            "top": -36
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 400,
+      "target": 21962,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21960,
+        "text": "armours"
+      },
+      "file": "replay-foundry-support-gl-400.png",
+      "stats": {
+        "tick": 21962,
+        "hero": [
+          6,
+          10
+        ],
+        "camera": [
+          56,
+          -87
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 212,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 28,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 172,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 92,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 212,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 124,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 164,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 236,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 244,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 132,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 36,
+          "y": -120,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 68,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 68,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 36,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 84,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 36,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 60,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 124,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 164,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 5,
+            "right": 107,
+            "bottom": -168,
+            "top": -6
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 400,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-canvas-400.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 4,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 400,
+      "target": 13872,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13870,
+        "src": 125,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "attack"
+      },
+      "file": "replay-fens-water-pack-canvas-400.png",
+      "stats": {
+        "tick": 13872,
+        "hero": [
+          13,
+          4.8
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 8,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 400,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-canvas-400.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 400,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-canvas-400.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 19,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 400,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-canvas-400.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 400,
+      "target": 21962,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21960,
+        "text": "armours"
+      },
+      "file": "replay-foundry-support-canvas-400.png",
+      "stats": {
+        "tick": 21962,
+        "hero": [
+          6,
+          10
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 1440,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-gl-1440.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          180,
+          -47
+        ],
+        "ents": 4,
+        "drawn": 4,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "fens_env_barrel",
+          "x": 140,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 68,
+          "y": -24,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 92,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 204,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 220,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 60,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 20,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 12,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 84,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 20,
+          "y": -152,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 20,
+          "y": -160,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 119,
+            "right": 241,
+            "bottom": -81,
+            "top": -13
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 1440,
+      "target": 13872,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13870,
+        "src": 125,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "attack"
+      },
+      "file": "replay-fens-water-pack-gl-1440.png",
+      "stats": {
+        "tick": 13872,
+        "hero": [
+          13,
+          4.8
+        ],
+        "camera": [
+          124,
+          -53.5
+        ],
+        "ents": 8,
+        "drawn": 3,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "fens_env_barrel",
+          "x": 140,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 156,
+          "y": -16,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 108,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 68,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 124,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 92,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 140,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 172,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 132,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 28,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 236,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 156,
+          "y": -200,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 148,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_crate",
+          "x": 52,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "fens_env_barrel",
+          "x": 100,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 63,
+            "right": 185,
+            "bottom": -87,
+            "top": -19
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 1440,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-gl-1440.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          96,
+          -43
+        ],
+        "ents": 9,
+        "drawn": 2,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "crypt_env_barrel",
+          "x": 204,
+          "y": -24,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 244,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 28,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 204,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 28,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 60,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 244,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 172,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 148,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 188,
+          "y": -96,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -104,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 100,
+          "y": -112,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 20,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 108,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 204,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 60,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 236,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 212,
+          "y": -160,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 60,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 116,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 36,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 44,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 140,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 124,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 35,
+            "right": 157,
+            "bottom": -77,
+            "top": -9
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 1440,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-gl-1440.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          144,
+          -103
+        ],
+        "ents": 19,
+        "drawn": 8,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "crypt_env_barrel",
+          "x": 212,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 108,
+          "y": -56,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 44,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 164,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 244,
+          "y": -80,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 180,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 140,
+          "y": -112,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 60,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 100,
+          "y": -168,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 92,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 52,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 92,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 52,
+          "y": -200,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 188,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 196,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_barrel",
+          "x": 116,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 132,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "crypt_env_crate",
+          "x": 28,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": 83,
+            "right": 205,
+            "bottom": -137,
+            "top": -69
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 1440,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-gl-1440.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          45.5,
+          -117.5
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 60,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 60,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 108,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 108,
+          "y": -120,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 60,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 92,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 204,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 68,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 28,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 148,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 188,
+          "y": -184,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 196,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 12,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 140,
+          "y": -216,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 140,
+          "y": -232,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 12,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 44,
+          "y": -240,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 180,
+          "y": -248,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -15,
+            "right": 107,
+            "bottom": -151,
+            "top": -83
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 1440,
+      "target": 21962,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21960,
+        "text": "armours"
+      },
+      "file": "replay-foundry-support-gl-1440.png",
+      "stats": {
+        "tick": 21962,
+        "hero": [
+          6,
+          10
+        ],
+        "camera": [
+          56,
+          -87
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "naturalProps": [
+        {
+          "key": "foundry_env_crate",
+          "x": 44,
+          "y": -32,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 212,
+          "y": -40,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 28,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 108,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 172,
+          "y": -48,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 92,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 212,
+          "y": -64,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 124,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 164,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 236,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 244,
+          "y": -72,
+          "w": 8,
+          "h": 8,
+          "dim": 1,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 132,
+          "y": -88,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 36,
+          "y": -120,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": true,
+          "fullyVisible": true
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 36,
+          "y": -128,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": true,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 68,
+          "y": -144,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 68,
+          "y": -176,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 36,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 84,
+          "y": -192,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 36,
+          "y": -208,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 60,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 76,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_barrel",
+          "x": 124,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        },
+        {
+          "key": "foundry_env_crate",
+          "x": 164,
+          "y": -224,
+          "w": 8,
+          "h": 8,
+          "dim": 0.52,
+          "camera": {
+            "left": -5,
+            "right": 117,
+            "bottom": -121,
+            "top": -53
+          },
+          "visible": false,
+          "fullyVisible": false
+        }
+      ]
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-canvas-1440.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 4,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 13872,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13870,
+        "src": 125,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "attack"
+      },
+      "file": "replay-fens-water-pack-canvas-1440.png",
+      "stats": {
+        "tick": 13872,
+        "hero": [
+          13,
+          4.8
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 8,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-canvas-1440.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-canvas-1440.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 19,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-canvas-1440.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 21962,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21960,
+        "text": "armours"
+      },
+      "file": "replay-foundry-support-canvas-1440.png",
+      "stats": {
+        "tick": 21962,
+        "hero": [
+          6,
+          10
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "naturalProps": []
+    }
+  ],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "captured",
+  "limit": "Still frames of current-runtime reconstruction; no claim of historical bit identity, counter superiority, natural choice adoption, full visibility coverage or measured cost."
+}

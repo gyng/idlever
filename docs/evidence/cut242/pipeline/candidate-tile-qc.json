@@ -1,0 +1,146 @@
+{
+  "scope": "Temporary complete pipeline only; production atlas unchanged; runtime replay review pending",
+  "candidate_root": "/tmp/idlever-cut242-candidate",
+  "changed_tiles": [
+    "crypt_env_barrel.png",
+    "crypt_env_crate.png",
+    "fens_env_barrel.png",
+    "fens_env_crate.png",
+    "foundry_env_barrel.png",
+    "foundry_env_crate.png"
+  ],
+  "non_target_changes": [],
+  "non_target_pngs_byte_identical": 368,
+  "atlas_frame_rectangles_identical": true,
+  "atlas_changed_pixels_outside_six_frames": 0,
+  "original_masters_unchanged": true,
+  "selected_masters_unchanged": true,
+  "rows": [
+    {
+      "tile": "fens_env_barrel.png",
+      "source": "generated/envp_fens_stump_v2.png",
+      "source_sha256": "a99790e2d4f8ce171d458113fb63072bb8dbbba06b54a56dd7ab238e6e5a6f15",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 109,
+      "opaque_colors": 18,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 2,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "1b46562c5be3390286f6c811d89b8c66d0ae1191029f221b68e75e58dd9566de"
+    },
+    {
+      "tile": "fens_env_crate.png",
+      "source": "generated/envp_fens_fish_trap_v2.png",
+      "source_sha256": "d2f151289f2e625067d0d47c9af02f1e2d23e73dd2b59b85c4b252162da3067c",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 103,
+      "opaque_colors": 13,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 1,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "ba3441008e343a4d223919e071609bc1b36f7d168e88630aa13838336a5093b1"
+    },
+    {
+      "tile": "crypt_env_barrel.png",
+      "source": "generated/envp_crypt_sarcophagus_v2.png",
+      "source_sha256": "8e82718a07b5f69248534be470d885988c23eda84b5028a8158eacac2a39da01",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 103,
+      "opaque_colors": 13,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 1,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "811c097a8dee052455bafe7f9cc6592463f726071021e83b2dadbe5bd5bfe33d"
+    },
+    {
+      "tile": "crypt_env_crate.png",
+      "source": "generated/envp_crypt_coffin_v2.png",
+      "source_sha256": "01caaa08b70547756664f9a83bcda16c0bffd7fb08ef489c75e032cc2b0b5cc8",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 106,
+      "opaque_colors": 13,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 1,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "c8ec10cee76d4efc426c242002eeb658da663447afd8414fbafc2808e686f836"
+    },
+    {
+      "tile": "foundry_env_barrel.png",
+      "source": "generated/envp_foundry_anvil_v2.png",
+      "source_sha256": "eed1803f442b710de18f778bf33c63c0d0faaf61ed39597d98bf5eab26f62d51",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 107,
+      "opaque_colors": 18,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 1,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "7fa69e5a0fd170ac24de707a04a71be476fb1dcfe059de7b1a73c47eff7e474b"
+    },
+    {
+      "tile": "foundry_env_crate.png",
+      "source": "generated/envp_foundry_coal_bin_v2.png",
+      "source_sha256": "665a145fb63f5c84a50bc74f06c6634b07933b9832d0306563cf25ae857346ed",
+      "size": [
+        16,
+        16
+      ],
+      "opaque_pixels": 112,
+      "opaque_colors": 13,
+      "alpha": [
+        0,
+        255
+      ],
+      "nontransparent_edge_pixels": 0,
+      "source_edge_alpha_gt16": 0,
+      "source_edge_alpha_max": 1,
+      "refine_alpha_xor_pixels": 0,
+      "tile_sha256": "4672e66b4b7e097e2c2fe8621cd26d31c291ce3f95bdab70e94742edb3175481"
+    }
+  ],
+  "pipeline_sources": {
+    "art/manifest.json": "8128fba4f420d8991806d06922a8f1de7b0e353323f2abb9441937ef8ca3cf00",
+    "art/painted.py": "d4d7f3881201fc86b548ca977c9d64ed21eaa0ff4a315b6a5a6541efa8d295d8",
+    "art/refine.py": "558679b37b270354eb73e17080629f0503a33181d2f0262db5d2496fedcc67d2",
+    "art/art-qc.py": "db8f1d4a9d6ccdd4e6b998cec5a8b184c21b680db0bd7a27f339738fd0d8b0fe"
+  }
+}

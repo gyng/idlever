@@ -288,10 +288,12 @@ def add_manifest() -> None:
     print(f"manifest: +{n} painted entries")
 
 
-def convert(src: Path, bg: str, texels: tuple[int, int], key_source) -> Image.Image:
+def convert(src: Path, bg: str, texels: tuple[int, int], key_source, margin: int = 0) -> Image.Image:
     """1024 painting -> a 16x16 tile at full colour: box (area) downscale, a light local-contrast lift (a box average softens the
     forms), <= PAINT_COLOURS colours; keyed props: keyed, cropped to alpha, fitted bottom-centred, a 1-texel dark rim."""
     tw, th = texels
+    if margin < 0 or 2 * margin + 2 >= min(tw, th):
+        raise ValueError(f"invalid painted margin {margin} for {texels}")
     if bg == "env":
         im = Image.open(src).convert("RGB").resize((tw, th), Image.Resampling.BOX)
         a = np.asarray(im, np.float32)
@@ -336,13 +338,17 @@ def convert(src: Path, bg: str, texels: tuple[int, int], key_source) -> Image.Im
     lab = rgba[..., 3] > 16
     rgba[..., 3] = np.where(lab, rgba[..., 3], 0)
     h, w = rgba.shape[:2]
-    s = min((tw - 2) / w, (th - 1) / h)
+    # An explicit margin reserves transparent pixels outside the ink contour. Legacy
+    # assets retain their original fit; new silhouettes keep both rim and core intact.
+    inner_w = tw - 2 * margin - 2
+    inner_h = th - 2 * margin - 2 if margin else th - 1
+    s = min(inner_w / w, inner_h / h)
     nw, nh = max(1, round(w * s)), max(1, round(h * s))
     obj = Image.fromarray(rgba.astype(np.uint8), "RGBA").resize((nw, nh), Image.Resampling.BOX)
     o = np.asarray(obj).copy()
     o[..., 3] = np.where(o[..., 3] >= 128, 255, 0)
     out = np.zeros((th, tw, 4), np.uint8)
-    x0, y0 = (tw - nw) // 2, th - nh
+    x0, y0 = (tw - nw) // 2, th - margin - 1 - nh if margin else th - nh
     out[y0:y0 + nh, x0:x0 + nw] = o
     solid = out[..., 3] > 0
     rim = np.zeros_like(solid)
@@ -362,12 +368,14 @@ def convert_all(src_dir: Path, out_dir: Path, key_source) -> list[str]:
     for a in m["assets"]:
         if a.get("register") != "painted":
             continue
-        src = src_dir / f"{a['id']}.png"
+        src = ROOT / a["source"] if a.get("source") else src_dir / f"{a['id']}.png"
         if not src.exists():
+            if a.get("source"):
+                raise FileNotFoundError(f"selected painted source: {src}")
             continue
         tw, th = (int(v) for v in a["texels"].split("x"))
         tid = f"{a['biome']}_env_{a['name']}"
-        convert(src, a["bg"], (tw, th), key_source).save(out_dir / f"{tid}.png")
+        convert(src, a["bg"], (tw, th), key_source, a.get("margin", 0)).save(out_dir / f"{tid}.png")
         written.append(tid)
     (out_dir / "_painted.json").write_text(json.dumps(sorted(written)) + "\n")
     return written

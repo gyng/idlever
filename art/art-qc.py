@@ -45,6 +45,10 @@ def main() -> int:
     manifest_ids = set(ids)
     keyed_ids = {a["id"] for a in assets if a["bg"] == "keyed"}
     generated_ids = {p.stem for p in GENERATED.glob("*.png")}
+    selected_sources = [ROOT / a["source"] for a in assets if a.get("source")]
+    for src in selected_sources:
+        if not src.is_file():
+            failures.append(f"missing selected source: {src}")
     tile_ids = {p.stem for p in TILES.glob("*.png") if not p.name.startswith("_")}
 
     optional = {a["id"] for a in assets if a.get("register") == "painted"}   # gfx round 18: a painted piece not yet drawn falls back to the ramp tile
@@ -57,7 +61,8 @@ def main() -> int:
     missing_sources = sorted(manifest_ids - generated_ids - optional)
     if missing_sources:
         failures.append(f"missing generated sources: {', '.join(missing_sources)}")
-    orphans = sorted(generated_ids - manifest_ids)
+    selected_generated_ids = {src.stem for src in selected_sources if src.parent == GENERATED}
+    orphans = sorted(generated_ids - manifest_ids - selected_generated_ids)
     if orphans:
         failures.append(f"unregistered generated sources: {', '.join(orphans)}")
     if not tile_ids:
@@ -74,7 +79,7 @@ def main() -> int:
     ah, aw = atlas.shape[:2]
 
     # freshness: atlas must not be older than any source it packs
-    newest_src = max([p.stat().st_mtime for p in list(GENERATED.glob("*.png")) + list(TILES.glob("*.png"))] + [0])
+    newest_src = max([p.stat().st_mtime for p in list(GENERATED.glob("*.png")) + list(TILES.glob("*.png")) + selected_sources if p.is_file()] + [0])
     if atlas_png.stat().st_mtime < newest_src:
         failures.append("atlas.png is older than art/generated or art/tiles (re-run pack.py)")
 
@@ -153,7 +158,7 @@ def main() -> int:
             failures.append(f"{fid}: {int(bright_edge.sum())} edge pixels are not dark ink (outline lost)")
 
     for a in assets:
-        src = GENERATED / f"{a['id']}.png"
+        src = ROOT / a["source"] if a.get("source") else GENERATED / f"{a['id']}.png"
         if not src.exists():
             continue
         im = Image.open(src)

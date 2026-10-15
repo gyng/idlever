@@ -1,0 +1,6824 @@
+{
+  "input": "docs/evidence/handoff-menus/input.game.json.gz",
+  "inputGzipSha256": "c23224542c7db35def1793352a6fd49215d0ca87d047775514183f88c510b714",
+  "inputTextSha256": "81cf516f103571313aa251556417d0c50aa15b712c4d6f38398182631a176892",
+  "wasmSha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae",
+  "wasmBytes": 6912832,
+  "operation": "Game.load(existing earned save); Game.replay(131); no new send, choice, tick or offline advance",
+  "scope": "Current-runtime reconstruction from actual saved departure capsule; historical per-event identity unavailable",
+  "parentSaveBeforeSha256": "81cf516f103571313aa251556417d0c50aa15b712c4d6f38398182631a176892",
+  "parentSaveAfterSha256": "81cf516f103571313aa251556417d0c50aa15b712c4d6f38398182631a176892",
+  "exactSaveUnchanged": true,
+  "expectedHistoricalRunLog": {
+    "id": 131,
+    "heir": 8,
+    "via": "away",
+    "absence": 1,
+    "clock_s": 314456,
+    "start": 1,
+    "depth": 28,
+    "tier": "return",
+    "reason": "hurt \u00b7 went home",
+    "gold": 2400,
+    "found": 31,
+    "turns": 33697,
+    "finds": [
+      {
+        "id": 443,
+        "kind": "hearthglass_boots",
+        "known": true,
+        "label": "Hearthglass Boots",
+        "free": false,
+        "rarity": "legendary"
+      },
+      {
+        "id": 39,
+        "kind": "bow",
+        "known": true,
+        "label": "bow +1",
+        "free": false,
+        "rarity": "uncommon"
+      },
+      {
+        "id": 143,
+        "kind": "fire",
+        "known": true,
+        "label": "fire potion",
+        "free": false,
+        "rarity": "uncommon"
+      },
+      {
+        "id": 452,
+        "kind": "silence",
+        "known": true,
+        "label": "silence scroll",
+        "free": false,
+        "rarity": "uncommon"
+      },
+      {
+        "id": 32,
+        "kind": "leash",
+        "known": true,
+        "label": "leash (8)",
+        "free": false
+      },
+      {
+        "id": 48,
+        "kind": "scroll",
+        "known": false,
+        "label": "inked scroll?",
+        "free": false
+      }
+    ]
+  },
+  "reconstructedTicks": 30689,
+  "reconstructedHash": "36740c8aa06c3c1e",
+  "ticksMatchRecorded": false,
+  "floors": [
+    {
+      "depth": 1,
+      "biome": "warrens",
+      "entities": [
+        {
+          "id": 6,
+          "kind": "rat",
+          "x": 17,
+          "y": 27,
+          "hp": 13,
+          "tags": []
+        },
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 18,
+          "y": 28,
+          "hp": 13,
+          "tags": []
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 29,
+          "y": 26,
+          "hp": 4,
+          "tags": []
+        },
+        {
+          "id": 3,
+          "kind": "rat",
+          "x": 29,
+          "y": 23,
+          "hp": 4,
+          "tags": []
+        }
+      ],
+      "events": 383,
+      "eventKinds": [
+        "note",
+        "move",
+        "rule",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "pickup",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 2,
+      "biome": "warrens",
+      "entities": [
+        {
+          "id": 6,
+          "kind": "rat",
+          "x": 14,
+          "y": 20,
+          "hp": 13,
+          "tags": []
+        },
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 16,
+          "y": 20,
+          "hp": 13,
+          "tags": []
+        },
+        {
+          "id": 9,
+          "kind": "monkey",
+          "x": 12,
+          "y": 3,
+          "hp": 7,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        }
+      ],
+      "events": 347,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "steal",
+        "hurt",
+        "die",
+        "heal",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 3,
+      "biome": "warrens",
+      "entities": [
+        {
+          "id": 6,
+          "kind": "rat",
+          "x": 2,
+          "y": 6,
+          "hp": 8,
+          "tags": []
+        },
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 3,
+          "y": 7,
+          "hp": 13,
+          "tags": []
+        },
+        {
+          "id": 16,
+          "kind": "jackal",
+          "x": 10,
+          "y": 8,
+          "hp": 5,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 17,
+          "kind": "jackal",
+          "x": 8,
+          "y": 7,
+          "hp": 5,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 15,
+          "kind": "jackal",
+          "x": 8,
+          "y": 10,
+          "hp": 5,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 12,
+          "kind": "jackal",
+          "x": 13,
+          "y": 17,
+          "hp": 5,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 13,
+          "kind": "jackal",
+          "x": 13,
+          "y": 21,
+          "hp": 5,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 18,
+          "kind": "goblin",
+          "x": 18,
+          "y": 17,
+          "hp": 7,
+          "tags": []
+        },
+        {
+          "id": 14,
+          "kind": "monkey",
+          "x": 3,
+          "y": 23,
+          "hp": 7,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        }
+      ],
+      "events": 565,
+      "eventKinds": [
+        "note",
+        "rule",
+        "heal",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "pickup",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 4,
+      "biome": "warrens",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 26,
+          "y": 19,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 23,
+          "kind": "jackal",
+          "x": 13,
+          "y": 11,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 24,
+          "kind": "jackal",
+          "x": 12,
+          "y": 12,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 21,
+          "kind": "monkey",
+          "x": 9,
+          "y": 6,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 22,
+          "kind": "jackal",
+          "x": 15,
+          "y": 11,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 20,
+          "kind": "monkey",
+          "x": 3,
+          "y": 2,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        }
+      ],
+      "events": 176,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 5,
+      "biome": "burrows",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 14,
+          "y": 13,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 33,
+          "kind": "goblin_captain",
+          "x": 17,
+          "y": 4,
+          "hp": 14,
+          "tags": [
+            "summoner",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 37,
+          "kind": "goblin",
+          "x": 17,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 27,
+          "kind": "jackal",
+          "x": 16,
+          "y": 4,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 26,
+          "kind": "jackal",
+          "x": 13,
+          "y": 4,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 34,
+          "kind": "monkey",
+          "x": 14,
+          "y": 4,
+          "hp": 10,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 35,
+          "kind": "monkey",
+          "x": 14,
+          "y": 5,
+          "hp": 10,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 36,
+          "kind": "monkey",
+          "x": 14,
+          "y": 6,
+          "hp": 10,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 25,
+          "kind": "jackal",
+          "x": 13,
+          "y": 3,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        }
+      ],
+      "events": 233,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "telegraph",
+        "spawn",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 4610,
+          "e": {
+            "id": 37,
+            "kind": "goblin",
+            "x": 16,
+            "y": 5,
+            "hp": 9,
+            "max_hp": 9,
+            "tags": [
+              "summoned"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "depth": 6,
+      "biome": "burrows",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 12,
+          "y": 2,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 47,
+          "kind": "jackal",
+          "x": 14,
+          "y": 15,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 49,
+          "kind": "jackal",
+          "x": 13,
+          "y": 14,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 46,
+          "kind": "jackal",
+          "x": 12,
+          "y": 16,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 38,
+          "kind": "goblin_archer",
+          "x": 17,
+          "y": 14,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 48,
+          "kind": "jackal",
+          "x": 14,
+          "y": 14,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 39,
+          "kind": "monkey",
+          "x": 20,
+          "y": 23,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 50,
+          "kind": "goblin_conjurer",
+          "x": 13,
+          "y": 13,
+          "hp": 10,
+          "tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 51,
+          "kind": "spectral_blade",
+          "x": 20,
+          "y": 19,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 52,
+          "kind": "spectral_blade",
+          "x": 21,
+          "y": 19,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 53,
+          "kind": "spectral_blade",
+          "x": 12,
+          "y": 17,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 54,
+          "kind": "spectral_blade",
+          "x": 13,
+          "y": 15,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 43,
+          "kind": "jackal",
+          "x": 6,
+          "y": 24,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 44,
+          "kind": "jackal",
+          "x": 3,
+          "y": 26,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 45,
+          "kind": "jackal",
+          "x": 4,
+          "y": 28,
+          "hp": 6,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 41,
+          "kind": "goblin",
+          "x": 16,
+          "y": 28,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 42,
+          "kind": "goblin",
+          "x": 18,
+          "y": 29,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 40,
+          "kind": "goblin",
+          "x": 23,
+          "y": 26,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 55,
+          "kind": "goblin",
+          "x": 11,
+          "y": 25,
+          "hp": 9,
+          "tags": []
+        }
+      ],
+      "events": 650,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "telegraph",
+        "projectile",
+        "attack",
+        "spawn",
+        "hurt",
+        "die",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 5860,
+          "e": {
+            "id": 50,
+            "kind": "goblin_conjurer",
+            "x": 12,
+            "y": 6,
+            "hp": 10,
+            "max_hp": 10,
+            "tags": [
+              "caster",
+              "summoner"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 5940,
+          "e": {
+            "id": 51,
+            "kind": "spectral_blade",
+            "x": 20,
+            "y": 19,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 5940,
+          "e": {
+            "id": 52,
+            "kind": "spectral_blade",
+            "x": 21,
+            "y": 19,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 6090,
+          "e": {
+            "id": 53,
+            "kind": "spectral_blade",
+            "x": 12,
+            "y": 17,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 6090,
+          "e": {
+            "id": 54,
+            "kind": "spectral_blade",
+            "x": 13,
+            "y": 15,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "depth": 7,
+      "biome": "burrows",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 17,
+          "y": 3,
+          "hp": 8,
+          "tags": []
+        },
+        {
+          "id": 57,
+          "kind": "ogre",
+          "x": 3,
+          "y": 6,
+          "hp": 32,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 58,
+          "kind": "goblin",
+          "x": 4,
+          "y": 9,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 60,
+          "kind": "goblin",
+          "x": 2,
+          "y": 10,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 59,
+          "kind": "goblin",
+          "x": 4,
+          "y": 11,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 61,
+          "kind": "goblin",
+          "x": 16,
+          "y": 17,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 56,
+          "kind": "monkey",
+          "x": 15,
+          "y": 20,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 63,
+          "kind": "goblin",
+          "x": 20,
+          "y": 13,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 62,
+          "kind": "goblin",
+          "x": 20,
+          "y": 19,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 67,
+          "kind": "monkey",
+          "x": 23,
+          "y": 19,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 65,
+          "kind": "bloat",
+          "x": 22,
+          "y": 28,
+          "hp": 6,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 66,
+          "kind": "bloat",
+          "x": 22,
+          "y": 29,
+          "hp": 6,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 64,
+          "kind": "bloat",
+          "x": 20,
+          "y": 28,
+          "hp": 6,
+          "tags": [
+            "gas"
+          ]
+        }
+      ],
+      "events": 436,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "telegraph",
+        "die",
+        "heal",
+        "spawn",
+        "overlay",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "overlay",
+          "t": 8120,
+          "x": 22,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8120,
+          "x": 22,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8120,
+          "x": 22,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 8120,
+          "id": 1,
+          "dmg": 3,
+          "hp": 50,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 8130,
+          "id": 1,
+          "dmg": 3,
+          "hp": 47,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 19,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 20,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 19,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 20,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 21,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 19,
+          "y": 29,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 20,
+          "y": 29,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 8230,
+          "x": 21,
+          "y": 29,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 8230,
+          "id": 1,
+          "dmg": 3,
+          "hp": 46,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 8,
+      "biome": "burrows",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 28,
+          "y": 23,
+          "hp": 8,
+          "tags": []
+        },
+        {
+          "id": 72,
+          "kind": "goblin_archer",
+          "x": 21,
+          "y": 15,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 71,
+          "kind": "goblin_archer",
+          "x": 18,
+          "y": 16,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 77,
+          "kind": "jackal",
+          "x": 15,
+          "y": 22,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 79,
+          "kind": "jackal",
+          "x": 16,
+          "y": 23,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 70,
+          "kind": "goblin_archer",
+          "x": 14,
+          "y": 23,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 76,
+          "kind": "jackal",
+          "x": 14,
+          "y": 24,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 78,
+          "kind": "jackal",
+          "x": 14,
+          "y": 22,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 69,
+          "kind": "goblin_archer",
+          "x": 12,
+          "y": 21,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 68,
+          "kind": "goblin_archer",
+          "x": 7,
+          "y": 19,
+          "hp": 9,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 73,
+          "kind": "monkey",
+          "x": 10,
+          "y": 11,
+          "hp": 8,
+          "tags": [
+            "thief",
+            "fast"
+          ]
+        },
+        {
+          "id": 74,
+          "kind": "goblin_warlord",
+          "x": 9,
+          "y": 3,
+          "hp": 22,
+          "tags": [
+            "boss",
+            "summoner",
+            "buffer",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 75,
+          "kind": "goblin",
+          "x": 10,
+          "y": 3,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 82,
+          "kind": "goblin",
+          "x": 9,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 81,
+          "kind": "goblin",
+          "x": 10,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 83,
+          "kind": "goblin",
+          "x": 9,
+          "y": 3,
+          "hp": 9,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 84,
+          "kind": "goblin",
+          "x": 7,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "summoned"
+          ]
+        }
+      ],
+      "events": 531,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "telegraph",
+        "callout",
+        "projectile",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 9220,
+          "e": {
+            "id": 81,
+            "kind": "goblin",
+            "x": 9,
+            "y": 2,
+            "hp": 9,
+            "max_hp": 9,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 9220,
+          "e": {
+            "id": 82,
+            "kind": "goblin",
+            "x": 8,
+            "y": 3,
+            "hp": 9,
+            "max_hp": 9,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 9270,
+          "e": {
+            "id": 83,
+            "kind": "goblin",
+            "x": 9,
+            "y": 3,
+            "hp": 9,
+            "max_hp": 9,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 9270,
+          "e": {
+            "id": 84,
+            "kind": "goblin",
+            "x": 7,
+            "y": 4,
+            "hp": 9,
+            "max_hp": 9,
+            "tags": [
+              "summoned"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "depth": 9,
+      "biome": "fens",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 5,
+          "y": 25,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 86,
+          "kind": "ogre",
+          "x": 20,
+          "y": 25,
+          "hp": 33,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 87,
+          "kind": "ogre",
+          "x": 19,
+          "y": 27,
+          "hp": 33,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 88,
+          "kind": "captive",
+          "x": 24,
+          "y": 10,
+          "hp": 17,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 85,
+          "kind": "ogre",
+          "x": 18,
+          "y": 8,
+          "hp": 33,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 89,
+          "kind": "bloat",
+          "x": 17,
+          "y": 20,
+          "hp": 7,
+          "tags": [
+            "gas"
+          ]
+        }
+      ],
+      "events": 548,
+      "eventKinds": [
+        "note",
+        "rule",
+        "heal",
+        "move",
+        "callout",
+        "attack",
+        "telegraph",
+        "hurt",
+        "die",
+        "pickup",
+        "spawn",
+        "overlay",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 10160,
+          "e": {
+            "id": 89,
+            "kind": "bloat",
+            "x": 24,
+            "y": 13,
+            "hp": 7,
+            "max_hp": 7,
+            "tags": [
+              "gas"
+            ]
+          }
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 15,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 16,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 17,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 15,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 16,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 17,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 15,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 16,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 10310,
+          "x": 17,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 10310,
+          "id": 1,
+          "dmg": 3,
+          "hp": 53,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 10,
+      "biome": "fens",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 11,
+          "y": 24,
+          "hp": 9,
+          "tags": []
+        },
+        {
+          "id": 97,
+          "kind": "monkey",
+          "x": 2,
+          "y": 14,
+          "hp": 11,
+          "tags": [
+            "thief",
+            "fast",
+            "guest"
+          ]
+        },
+        {
+          "id": 98,
+          "kind": "captive",
+          "x": 15,
+          "y": 2,
+          "hp": 17,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 94,
+          "kind": "bloat",
+          "x": 26,
+          "y": 8,
+          "hp": 7,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 91,
+          "kind": "bloat",
+          "x": 21,
+          "y": 8,
+          "hp": 7,
+          "tags": [
+            "gas"
+          ]
+        }
+      ],
+      "events": 216,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "pickup",
+        "overlay",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 22,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 23,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 24,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 22,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 23,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 24,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 22,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 23,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11600,
+          "x": 24,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 11600,
+          "id": 1,
+          "dmg": 3,
+          "hp": 53,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 11610,
+          "id": 1,
+          "dmg": 3,
+          "hp": 51,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 11620,
+          "x": 21,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11620,
+          "x": 21,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11620,
+          "x": 20,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11620,
+          "x": 21,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 11620,
+          "id": 1,
+          "dmg": 3,
+          "hp": 51,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 11,
+      "biome": "fens",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 13,
+          "y": 12,
+          "hp": 10,
+          "tags": []
+        },
+        {
+          "id": 102,
+          "kind": "captive",
+          "x": 22,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 104,
+          "kind": "bloat",
+          "x": 26,
+          "y": 10,
+          "hp": 8,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 99,
+          "kind": "bloat",
+          "x": 17,
+          "y": 21,
+          "hp": 8,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 103,
+          "kind": "ogre",
+          "x": 12,
+          "y": 25,
+          "hp": 34,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        }
+      ],
+      "events": 267,
+      "eventKinds": [
+        "note",
+        "rule",
+        "heal",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "overlay",
+        "pickup",
+        "telegraph",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 22,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 23,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 24,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 22,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 23,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 24,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 22,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 23,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 11810,
+          "x": 24,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 11810,
+          "id": 1,
+          "dmg": 3,
+          "hp": 53,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 19,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 20,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 21,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 19,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 20,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 21,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 19,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 20,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 12170,
+          "x": 21,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 12170,
+          "id": 1,
+          "dmg": 3,
+          "hp": 53,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 12190,
+          "id": 1,
+          "dmg": 3,
+          "hp": 52,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 12,
+      "biome": "fens",
+      "entities": [
+        {
+          "id": 7,
+          "kind": "goblin",
+          "x": 15,
+          "y": 13,
+          "hp": 10,
+          "tags": []
+        },
+        {
+          "id": 110,
+          "kind": "jackal",
+          "x": 13,
+          "y": 7,
+          "hp": 8,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 112,
+          "kind": "jackal",
+          "x": 13,
+          "y": 7,
+          "hp": 8,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 111,
+          "kind": "jackal",
+          "x": 13,
+          "y": 6,
+          "hp": 8,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 116,
+          "kind": "wraith",
+          "x": 21,
+          "y": 17,
+          "hp": 14,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 109,
+          "kind": "goblin",
+          "x": 14,
+          "y": 5,
+          "hp": 11,
+          "tags": []
+        },
+        {
+          "id": 114,
+          "kind": "goblin",
+          "x": 20,
+          "y": 5,
+          "hp": 11,
+          "tags": []
+        },
+        {
+          "id": 115,
+          "kind": "goblin",
+          "x": 19,
+          "y": 5,
+          "hp": 11,
+          "tags": []
+        },
+        {
+          "id": 117,
+          "kind": "wraith",
+          "x": 14,
+          "y": 15,
+          "hp": 14,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 108,
+          "kind": "jackal",
+          "x": 20,
+          "y": 7,
+          "hp": 8,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 107,
+          "kind": "jackal",
+          "x": 22,
+          "y": 8,
+          "hp": 8,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 118,
+          "kind": "wraith",
+          "x": 15,
+          "y": 12,
+          "hp": 14,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 105,
+          "kind": "goblin",
+          "x": 26,
+          "y": 15,
+          "hp": 11,
+          "tags": []
+        },
+        {
+          "id": 113,
+          "kind": "bloat",
+          "x": 17,
+          "y": 26,
+          "hp": 8,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 106,
+          "kind": "goblin",
+          "x": 27,
+          "y": 14,
+          "hp": 11,
+          "tags": []
+        }
+      ],
+      "events": 377,
+      "eventKinds": [
+        "note",
+        "hurt",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "die",
+        "heal",
+        "max_hp",
+        "drain",
+        "pickup",
+        "overlay",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "max_hp",
+          "t": 12570,
+          "id": 1,
+          "max": 54,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 12570,
+          "text": "drained"
+        },
+        {
+          "k": "drain",
+          "t": 12660,
+          "cause": "starving"
+        },
+        {
+          "k": "drain",
+          "t": 12900,
+          "cause": "starving"
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 19,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 20,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 21,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 19,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 20,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 21,
+          "y": 21,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 19,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 20,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13090,
+          "x": 21,
+          "y": 22,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 13090,
+          "id": 1,
+          "dmg": 3,
+          "hp": 47,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13110,
+          "id": 1,
+          "dmg": 3,
+          "hp": 46,
+          "cause": "gas"
+        },
+        {
+          "k": "drain",
+          "t": 13140,
+          "cause": "starving"
+        }
+      ]
+    },
+    {
+      "depth": 13,
+      "biome": "fens",
+      "entities": [
+        {
+          "id": 121,
+          "kind": "eel",
+          "x": 10,
+          "y": 24,
+          "hp": 17,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 125,
+          "kind": "jackal",
+          "x": 15,
+          "y": 9,
+          "hp": 9,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 124,
+          "kind": "goblin_archer",
+          "x": 18,
+          "y": 16,
+          "hp": 12,
+          "tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 123,
+          "kind": "bloat",
+          "x": 17,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 126,
+          "kind": "jackal",
+          "x": 20,
+          "y": 14,
+          "hp": 9,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 122,
+          "kind": "pink_jelly",
+          "x": 19,
+          "y": 4,
+          "hp": 25,
+          "tags": [
+            "splitter"
+          ]
+        },
+        {
+          "id": 130,
+          "kind": "pink_jelly",
+          "x": 16,
+          "y": 5,
+          "hp": 11,
+          "tags": [
+            "splitter"
+          ]
+        },
+        {
+          "id": 131,
+          "kind": "pink_jelly",
+          "x": 16,
+          "y": 6,
+          "hp": 1,
+          "tags": [
+            "splitter"
+          ]
+        },
+        {
+          "id": 120,
+          "kind": "bloat",
+          "x": 29,
+          "y": 9,
+          "hp": 9,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 128,
+          "kind": "bloat",
+          "x": 24,
+          "y": 20,
+          "hp": 9,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 129,
+          "kind": "bloat",
+          "x": 28,
+          "y": 26,
+          "hp": 9,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 127,
+          "kind": "bloat_mother",
+          "x": 26,
+          "y": 27,
+          "hp": 19,
+          "tags": [
+            "boss",
+            "gas",
+            "telegraph"
+          ]
+        }
+      ],
+      "events": 603,
+      "eventKinds": [
+        "note",
+        "rule",
+        "callout",
+        "move",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "telegraph",
+        "projectile",
+        "overlay",
+        "spawn",
+        "pickup",
+        "max_hp",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 14,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 15,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 16,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 14,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 15,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 16,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 14,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 15,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 13810,
+          "x": 16,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 13810,
+          "id": 122,
+          "dmg": 3,
+          "hp": 22,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13810,
+          "id": 1,
+          "dmg": 3,
+          "hp": 48,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13820,
+          "id": 122,
+          "dmg": 3,
+          "hp": 8,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13820,
+          "id": 131,
+          "dmg": 3,
+          "hp": 1,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13830,
+          "id": 122,
+          "dmg": 3,
+          "hp": 1,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 13830,
+          "id": 131,
+          "dmg": 3,
+          "hp": 0,
+          "cause": "gas"
+        },
+        {
+          "k": "die",
+          "t": 13830,
+          "id": 131,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 26,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 27,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 28,
+          "y": 8,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 26,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 27,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 28,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 26,
+          "y": 10,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 27,
+          "y": 10,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14270,
+          "x": 28,
+          "y": 10,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 14270,
+          "id": 1,
+          "dmg": 3,
+          "hp": 50,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 25,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 26,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 27,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 25,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 26,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 27,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 25,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 26,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14530,
+          "x": 27,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 14530,
+          "id": 1,
+          "dmg": 3,
+          "hp": 50,
+          "cause": "gas"
+        },
+        {
+          "k": "callout",
+          "t": 14648,
+          "text": "mother swells",
+          "why": "gas burst next"
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 25,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 26,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 27,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 25,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 26,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 27,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 26,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14662,
+          "x": 27,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 50
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 24,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 25,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 26,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 27,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 28,
+          "y": 24,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 24,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 25,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 26,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 27,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 28,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 28,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 28,
+          "y": 27,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "overlay",
+          "t": 14700,
+          "x": 28,
+          "y": 28,
+          "ov": "gas",
+          "ttl": 30
+        },
+        {
+          "k": "hurt",
+          "t": 14700,
+          "id": 1,
+          "dmg": 3,
+          "hp": 49,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 14710,
+          "id": 1,
+          "dmg": 3,
+          "hp": 45,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 14720,
+          "id": 1,
+          "dmg": 3,
+          "hp": 43,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 14730,
+          "x": 25,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14730,
+          "x": 26,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 14730,
+          "x": 27,
+          "y": 23,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 14730,
+          "id": 1,
+          "dmg": 3,
+          "hp": 43,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 14740,
+          "id": 1,
+          "dmg": 3,
+          "hp": 41,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 14760,
+          "id": 1,
+          "dmg": 3,
+          "hp": 40,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 14,
+      "biome": "crypt",
+      "entities": [
+        {
+          "id": 133,
+          "kind": "ghoul",
+          "x": 3,
+          "y": 14,
+          "hp": 17,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 134,
+          "kind": "ghoul",
+          "x": 4,
+          "y": 13,
+          "hp": 17,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 139,
+          "kind": "skeleton",
+          "x": 5,
+          "y": 14,
+          "hp": 19,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 136,
+          "kind": "wraith",
+          "x": 12,
+          "y": 2,
+          "hp": 15,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 141,
+          "kind": "skeleton",
+          "x": 15,
+          "y": 26,
+          "hp": 19,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 140,
+          "kind": "ogre",
+          "x": 28,
+          "y": 12,
+          "hp": 35,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 135,
+          "kind": "bloat",
+          "x": 20,
+          "y": 4,
+          "hp": 9,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 137,
+          "kind": "skeleton",
+          "x": 27,
+          "y": 19,
+          "hp": 19,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 138,
+          "kind": "skeleton",
+          "x": 27,
+          "y": 23,
+          "hp": 19,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 143,
+          "kind": "jackal",
+          "x": 27,
+          "y": 26,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 144,
+          "kind": "jackal",
+          "x": 26,
+          "y": 28,
+          "hp": 4,
+          "tags": [
+            "pack",
+            "fast"
+          ]
+        }
+      ],
+      "events": 426,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "max_hp",
+        "pickup",
+        "spawn",
+        "telegraph",
+        "overlay",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "max_hp",
+          "t": 15290,
+          "id": 1,
+          "max": 55,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 15290,
+          "text": "drained"
+        },
+        {
+          "k": "max_hp",
+          "t": 15299,
+          "id": 1,
+          "max": 54,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 15299,
+          "text": "drained"
+        },
+        {
+          "k": "spawn",
+          "t": 15640,
+          "e": {
+            "id": 146,
+            "kind": "goblin_conjurer",
+            "x": 13,
+            "y": 15,
+            "hp": 13,
+            "max_hp": 13,
+            "tags": [
+              "caster",
+              "summoner"
+            ]
+          }
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 22,
+          "y": 3,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 23,
+          "y": 3,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 21,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 22,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 23,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 21,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 22,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 15970,
+          "x": 23,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 15970,
+          "id": 1,
+          "dmg": 3,
+          "hp": 51,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 15,
+      "biome": "crypt",
+      "entities": [
+        {
+          "id": 152,
+          "kind": "ghoul",
+          "x": 25,
+          "y": 5,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 158,
+          "kind": "ghoul",
+          "x": 25,
+          "y": 4,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 160,
+          "kind": "ghoul",
+          "x": 25,
+          "y": 5,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 153,
+          "kind": "ghoul",
+          "x": 25,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 159,
+          "kind": "ghoul",
+          "x": 28,
+          "y": 3,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 154,
+          "kind": "skeleton",
+          "x": 16,
+          "y": 6,
+          "hp": 20,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 163,
+          "kind": "bloat",
+          "x": 9,
+          "y": 4,
+          "hp": 10,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 164,
+          "kind": "bloat",
+          "x": 9,
+          "y": 6,
+          "hp": 10,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 161,
+          "kind": "bloat",
+          "x": 8,
+          "y": 6,
+          "hp": 10,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 147,
+          "kind": "ghoul",
+          "x": 7,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 162,
+          "kind": "bloat",
+          "x": 6,
+          "y": 9,
+          "hp": 10,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 149,
+          "kind": "ghoul",
+          "x": 4,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 148,
+          "kind": "ghoul",
+          "x": 6,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 157,
+          "kind": "ghoul",
+          "x": 6,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 155,
+          "kind": "ghoul",
+          "x": 5,
+          "y": 19,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 156,
+          "kind": "ghoul",
+          "x": 6,
+          "y": 20,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        }
+      ],
+      "events": 487,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "telegraph",
+        "overlay",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 12,
+          "y": 3,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 10,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 11,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 12,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 10,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 11,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16780,
+          "x": 12,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 16780,
+          "id": 1,
+          "dmg": 3,
+          "hp": 50,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 16790,
+          "x": 10,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16790,
+          "x": 11,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16790,
+          "x": 12,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 16790,
+          "id": 1,
+          "dmg": 3,
+          "hp": 47,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 16800,
+          "id": 147,
+          "dmg": 4,
+          "hp": 14,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 10,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 11,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 12,
+          "y": 4,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 10,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 11,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 12,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 10,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 11,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16830,
+          "x": 12,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 16830,
+          "id": 1,
+          "dmg": 3,
+          "hp": 45,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 8,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 10,
+          "y": 5,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 8,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 9,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 10,
+          "y": 6,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 16880,
+          "x": 8,
+          "y": 7,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 16880,
+          "id": 1,
+          "dmg": 3,
+          "hp": 44,
+          "cause": "gas"
+        }
+      ]
+    },
+    {
+      "depth": 16,
+      "biome": "crypt",
+      "entities": [
+        {
+          "id": 167,
+          "kind": "wraith",
+          "x": 6,
+          "y": 17,
+          "hp": 16,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 170,
+          "kind": "bloat",
+          "x": 18,
+          "y": 17,
+          "hp": 10,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 171,
+          "kind": "ghoul",
+          "x": 16,
+          "y": 4,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 172,
+          "kind": "ghoul",
+          "x": 16,
+          "y": 5,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 173,
+          "kind": "ghoul",
+          "x": 16,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 180,
+          "kind": "ghoul",
+          "x": 17,
+          "y": 27,
+          "hp": 18,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 174,
+          "kind": "wraith",
+          "x": 27,
+          "y": 28,
+          "hp": 16,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        }
+      ],
+      "events": 355,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "max_hp",
+        "hurt",
+        "tame",
+        "pickup",
+        "die",
+        "heal",
+        "overlay",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "max_hp",
+          "t": 17374,
+          "id": 1,
+          "max": 55,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 17374,
+          "text": "drained"
+        },
+        {
+          "k": "max_hp",
+          "t": 17382,
+          "id": 1,
+          "max": 54,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 17382,
+          "text": "drained"
+        },
+        {
+          "k": "overlay",
+          "t": 17630,
+          "x": 16,
+          "y": 9,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 17630,
+          "x": 15,
+          "y": 10,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 17630,
+          "x": 16,
+          "y": 10,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "overlay",
+          "t": 17630,
+          "x": 16,
+          "y": 11,
+          "ov": "gas",
+          "ttl": 40
+        },
+        {
+          "k": "hurt",
+          "t": 17630,
+          "id": 1,
+          "dmg": 3,
+          "hp": 51,
+          "cause": "gas"
+        },
+        {
+          "k": "max_hp",
+          "t": 18374,
+          "id": 1,
+          "max": 53,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 18374,
+          "text": "drained"
+        },
+        {
+          "k": "max_hp",
+          "t": 18382,
+          "id": 1,
+          "max": 52,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 18382,
+          "text": "drained"
+        }
+      ]
+    },
+    {
+      "depth": 17,
+      "biome": "crypt",
+      "entities": [
+        {
+          "id": 193,
+          "kind": "skeleton",
+          "x": 20,
+          "y": 14,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 183,
+          "kind": "ghoul",
+          "x": 26,
+          "y": 14,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 192,
+          "kind": "skeleton",
+          "x": 20,
+          "y": 15,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 184,
+          "kind": "ghoul",
+          "x": 22,
+          "y": 15,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 199,
+          "kind": "spectral_blade",
+          "x": 15,
+          "y": 12,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 195,
+          "kind": "goblin_conjurer",
+          "x": 13,
+          "y": 12,
+          "hp": 15,
+          "tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 200,
+          "kind": "spectral_blade",
+          "x": 18,
+          "y": 11,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 201,
+          "kind": "spectral_blade",
+          "x": 18,
+          "y": 13,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 186,
+          "kind": "ghoul",
+          "x": 12,
+          "y": 10,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 187,
+          "kind": "ghoul",
+          "x": 12,
+          "y": 8,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 188,
+          "kind": "ghoul",
+          "x": 13,
+          "y": 9,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 202,
+          "kind": "spectral_blade",
+          "x": 12,
+          "y": 12,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 203,
+          "kind": "spectral_blade",
+          "x": 14,
+          "y": 12,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 182,
+          "kind": "skeleton",
+          "x": 9,
+          "y": 13,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 194,
+          "kind": "wraith",
+          "x": 8,
+          "y": 16,
+          "hp": 17,
+          "tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 181,
+          "kind": "skeleton",
+          "x": 7,
+          "y": 18,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 191,
+          "kind": "ghoul",
+          "x": 20,
+          "y": 27,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 197,
+          "kind": "captive",
+          "x": 22,
+          "y": 27,
+          "hp": 21,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 189,
+          "kind": "ghoul",
+          "x": 23,
+          "y": 27,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 190,
+          "kind": "ghoul",
+          "x": 20,
+          "y": 27,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        }
+      ],
+      "events": 534,
+      "eventKinds": [
+        "note",
+        "rule",
+        "heal",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "pickup",
+        "spawn",
+        "max_hp",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 18720,
+          "e": {
+            "id": 198,
+            "kind": "spectral_blade",
+            "x": 17,
+            "y": 11,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 18720,
+          "e": {
+            "id": 199,
+            "kind": "spectral_blade",
+            "x": 15,
+            "y": 12,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 18870,
+          "e": {
+            "id": 200,
+            "kind": "spectral_blade",
+            "x": 18,
+            "y": 11,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 18870,
+          "e": {
+            "id": 201,
+            "kind": "spectral_blade",
+            "x": 18,
+            "y": 13,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 19020,
+          "e": {
+            "id": 202,
+            "kind": "spectral_blade",
+            "x": 12,
+            "y": 12,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 19020,
+          "e": {
+            "id": 203,
+            "kind": "spectral_blade",
+            "x": 14,
+            "y": 12,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "max_hp",
+          "t": 19177,
+          "id": 1,
+          "max": 55,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "callout",
+          "t": 19177,
+          "text": "drained"
+        }
+      ]
+    },
+    {
+      "depth": 18,
+      "biome": "crypt",
+      "entities": [
+        {
+          "id": 208,
+          "kind": "skeleton",
+          "x": 28,
+          "y": 5,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 207,
+          "kind": "skeleton",
+          "x": 27,
+          "y": 3,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 209,
+          "kind": "goblin_conjurer",
+          "x": 14,
+          "y": 9,
+          "hp": 15,
+          "tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 222,
+          "kind": "spectral_blade",
+          "x": 22,
+          "y": 8,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 223,
+          "kind": "spectral_blade",
+          "x": 21,
+          "y": 9,
+          "hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        },
+        {
+          "id": 221,
+          "kind": "skeleton",
+          "x": 7,
+          "y": 6,
+          "hp": 21,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 216,
+          "kind": "ghoul",
+          "x": 8,
+          "y": 11,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 217,
+          "kind": "ghoul",
+          "x": 5,
+          "y": 11,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 220,
+          "kind": "lich",
+          "x": 5,
+          "y": 3,
+          "hp": 47,
+          "tags": [
+            "boss",
+            "undead",
+            "summoner",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 225,
+          "kind": "skeleton",
+          "x": 5,
+          "y": 4,
+          "hp": 4,
+          "tags": [
+            "undead",
+            "summoned"
+          ]
+        },
+        {
+          "id": 224,
+          "kind": "skeleton",
+          "x": 6,
+          "y": 2,
+          "hp": 4,
+          "tags": [
+            "undead",
+            "summoned"
+          ]
+        },
+        {
+          "id": 227,
+          "kind": "skeleton",
+          "x": 6,
+          "y": 3,
+          "hp": 4,
+          "tags": [
+            "undead",
+            "summoned"
+          ]
+        },
+        {
+          "id": 228,
+          "kind": "skeleton",
+          "x": 4,
+          "y": 3,
+          "hp": 4,
+          "tags": [
+            "undead",
+            "summoned"
+          ]
+        },
+        {
+          "id": 212,
+          "kind": "ghoul",
+          "x": 6,
+          "y": 18,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 213,
+          "kind": "ghoul",
+          "x": 5,
+          "y": 20,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 214,
+          "kind": "ghoul",
+          "x": 5,
+          "y": 22,
+          "hp": 19,
+          "tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 226,
+          "kind": "ogre",
+          "x": 5,
+          "y": 6,
+          "hp": 37,
+          "tags": [
+            "heavy",
+            "telegraph"
+          ]
+        }
+      ],
+      "events": 554,
+      "eventKinds": [
+        "note",
+        "rule",
+        "heal",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "spawn",
+        "telegraph",
+        "max_hp",
+        "pickup",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 20170,
+          "e": {
+            "id": 222,
+            "kind": "spectral_blade",
+            "x": 22,
+            "y": 8,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 20170,
+          "e": {
+            "id": 223,
+            "kind": "spectral_blade",
+            "x": 21,
+            "y": 9,
+            "hp": 3,
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 20529,
+          "e": {
+            "id": 224,
+            "kind": "skeleton",
+            "x": 6,
+            "y": 2,
+            "hp": 21,
+            "max_hp": 21,
+            "tags": [
+              "undead",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 20529,
+          "e": {
+            "id": 225,
+            "kind": "skeleton",
+            "x": 5,
+            "y": 4,
+            "hp": 21,
+            "max_hp": 21,
+            "tags": [
+              "undead",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "max_hp",
+          "t": 20604,
+          "id": 1,
+          "max": 55,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "max_hp",
+          "t": 20612,
+          "id": 1,
+          "max": 54,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "spawn",
+          "t": 20629,
+          "e": {
+            "id": 227,
+            "kind": "skeleton",
+            "x": 6,
+            "y": 3,
+            "hp": 21,
+            "max_hp": 21,
+            "tags": [
+              "undead",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 20629,
+          "e": {
+            "id": 228,
+            "kind": "skeleton",
+            "x": 4,
+            "y": 3,
+            "hp": 21,
+            "max_hp": 21,
+            "tags": [
+              "undead",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "max_hp",
+          "t": 20637,
+          "id": 1,
+          "max": 53,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "max_hp",
+          "t": 20645,
+          "id": 1,
+          "max": 52,
+          "delta": -1,
+          "cause": "drain"
+        },
+        {
+          "k": "max_hp",
+          "t": 20654,
+          "id": 1,
+          "max": 51,
+          "delta": -1,
+          "cause": "drain"
+        }
+      ]
+    },
+    {
+      "depth": 19,
+      "biome": "foundry",
+      "entities": [
+        {
+          "id": 234,
+          "kind": "captive",
+          "x": 7,
+          "y": 18,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 236,
+          "kind": "bell_sentinel",
+          "x": 7,
+          "y": 27,
+          "hp": 18,
+          "tags": [
+            "alarm"
+          ]
+        }
+      ],
+      "events": 78,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "overlay",
+        "callout",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "callout",
+          "t": 21650,
+          "text": "bell!"
+        }
+      ]
+    },
+    {
+      "depth": 20,
+      "biome": "foundry",
+      "entities": [
+        {
+          "id": 250,
+          "kind": "smith",
+          "x": 6,
+          "y": 11,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 249,
+          "kind": "smith",
+          "x": 6,
+          "y": 11,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 247,
+          "kind": "forge_imp",
+          "x": 6,
+          "y": 18,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 253,
+          "kind": "forge_imp",
+          "x": 4,
+          "y": 20,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 243,
+          "kind": "forge_imp",
+          "x": 8,
+          "y": 21,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 252,
+          "kind": "forge_imp",
+          "x": 7,
+          "y": 21,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 254,
+          "kind": "bloat",
+          "x": 6,
+          "y": 22,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 255,
+          "kind": "bloat",
+          "x": 7,
+          "y": 22,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 256,
+          "kind": "bloat",
+          "x": 6,
+          "y": 23,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 257,
+          "kind": "bloat",
+          "x": 6,
+          "y": 23,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 245,
+          "kind": "smith",
+          "x": 10,
+          "y": 24,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        }
+      ],
+      "events": 339,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "overlay",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "callout",
+          "t": 21900,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 21930,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 21960,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 21990,
+          "text": "armours"
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 6,
+          "y": 16,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 7,
+          "y": 16,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 8,
+          "y": 16,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 6,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 7,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 8,
+          "y": 17,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 6,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 7,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22130,
+          "x": 8,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 22130,
+          "id": 1,
+          "dmg": 3,
+          "hp": 50,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 22140,
+          "id": 1,
+          "dmg": 3,
+          "hp": 47,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 5,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 6,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 7,
+          "y": 18,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 5,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 6,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 7,
+          "y": 19,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 5,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 6,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 22190,
+          "x": 7,
+          "y": 20,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 22190,
+          "id": 1,
+          "dmg": 3,
+          "hp": 46,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 22200,
+          "id": 1,
+          "dmg": 3,
+          "hp": 43,
+          "cause": "gas"
+        },
+        {
+          "k": "callout",
+          "t": 22240,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 22270,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 22300,
+          "text": "armours"
+        }
+      ]
+    },
+    {
+      "depth": 21,
+      "biome": "foundry",
+      "entities": [
+        {
+          "id": 262,
+          "kind": "iron_golem",
+          "x": 4,
+          "y": 14,
+          "hp": 32,
+          "tags": [
+            "reflect_melee"
+          ]
+        },
+        {
+          "id": 260,
+          "kind": "slag_crawler",
+          "x": 7,
+          "y": 12,
+          "hp": 34,
+          "tags": [
+            "heavy",
+            "fire",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 265,
+          "kind": "bell_sentinel",
+          "x": 11,
+          "y": 12,
+          "hp": 18,
+          "tags": [
+            "alarm"
+          ]
+        },
+        {
+          "id": 268,
+          "kind": "slag_crawler",
+          "x": 12,
+          "y": 11,
+          "hp": 34,
+          "tags": [
+            "heavy",
+            "fire",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 263,
+          "kind": "forge_imp",
+          "x": 5,
+          "y": 4,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 264,
+          "kind": "forge_imp",
+          "x": 7,
+          "y": 6,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 270,
+          "kind": "smith",
+          "x": 15,
+          "y": 24,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 261,
+          "kind": "skeleton",
+          "x": 24,
+          "y": 18,
+          "hp": 22,
+          "tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 269,
+          "kind": "captive",
+          "x": 22,
+          "y": 20,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 259,
+          "kind": "forge_imp",
+          "x": 20,
+          "y": 19,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 258,
+          "kind": "forge_imp",
+          "x": 19,
+          "y": 22,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        }
+      ],
+      "events": 443,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "overlay",
+        "callout",
+        "attack",
+        "hurt",
+        "telegraph",
+        "die",
+        "heal",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "callout",
+          "t": 22650,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 22650,
+          "src": 262,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 22680,
+          "text": "bell!"
+        },
+        {
+          "k": "callout",
+          "t": 22700,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 22700,
+          "src": 262,
+          "dst": 1,
+          "dmg": 5,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 22710,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 22710,
+          "src": 262,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 22720,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 22720,
+          "src": 262,
+          "dst": 1,
+          "dmg": 5,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 22730,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 22730,
+          "src": 262,
+          "dst": 1,
+          "dmg": 5,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 23350,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 23380,
+          "text": "armours"
+        }
+      ]
+    },
+    {
+      "depth": 22,
+      "biome": "foundry",
+      "entities": [
+        {
+          "id": 271,
+          "kind": "smith",
+          "x": 16,
+          "y": 15,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 282,
+          "kind": "iron_golem",
+          "x": 15,
+          "y": 20,
+          "hp": 32,
+          "tags": [
+            "reflect_melee"
+          ]
+        },
+        {
+          "id": 275,
+          "kind": "bell_sentinel",
+          "x": 24,
+          "y": 24,
+          "hp": 18,
+          "tags": [
+            "alarm"
+          ]
+        },
+        {
+          "id": 283,
+          "kind": "bloat",
+          "x": 22,
+          "y": 26,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 284,
+          "kind": "bloat",
+          "x": 24,
+          "y": 25,
+          "hp": 12,
+          "tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 276,
+          "kind": "captive",
+          "x": 25,
+          "y": 27,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 277,
+          "kind": "smith",
+          "x": 25,
+          "y": 29,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 278,
+          "kind": "smith",
+          "x": 23,
+          "y": 29,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 285,
+          "kind": "bell_sentinel",
+          "x": 20,
+          "y": 25,
+          "hp": 18,
+          "tags": [
+            "alarm"
+          ]
+        }
+      ],
+      "events": 396,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "tame",
+        "fact",
+        "die",
+        "heal",
+        "pickup",
+        "overlay",
+        "telegraph",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "callout",
+          "t": 23873,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 23903,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 23933,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 23993,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 23993,
+          "src": 282,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 24003,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 24003,
+          "src": 282,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 24013,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 24013,
+          "src": 282,
+          "dst": 1,
+          "dmg": 5,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 24023,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 24023,
+          "src": 282,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 24033,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 24033,
+          "src": 282,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 24283,
+          "text": "bell!"
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 19,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 20,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 21,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 19,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 20,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24313,
+          "x": 21,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 24320,
+          "id": 1,
+          "dmg": 3,
+          "hp": 35,
+          "cause": "gas"
+        },
+        {
+          "k": "hurt",
+          "t": 24330,
+          "id": 275,
+          "dmg": 3,
+          "hp": 15,
+          "cause": "gas"
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 19,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 20,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 21,
+          "y": 25,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 19,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 20,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "overlay",
+          "t": 24373,
+          "x": 21,
+          "y": 26,
+          "ov": "gas",
+          "ttl": 20
+        },
+        {
+          "k": "hurt",
+          "t": 24380,
+          "id": 1,
+          "dmg": 3,
+          "hp": 36,
+          "cause": "gas"
+        },
+        {
+          "k": "callout",
+          "t": 24413,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24433,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24443,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24463,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24493,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24503,
+          "text": "bell!"
+        }
+      ]
+    },
+    {
+      "depth": 23,
+      "biome": "foundry",
+      "entities": [
+        {
+          "id": 292,
+          "kind": "forge_imp",
+          "x": 11,
+          "y": 13,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 286,
+          "kind": "captive",
+          "x": 10,
+          "y": 14,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 295,
+          "kind": "smith",
+          "x": 8,
+          "y": 15,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 287,
+          "kind": "slag_crawler",
+          "x": 9,
+          "y": 22,
+          "hp": 34,
+          "tags": [
+            "heavy",
+            "fire",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 291,
+          "kind": "smith",
+          "x": 13,
+          "y": 23,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 296,
+          "kind": "foundry_master",
+          "x": 16,
+          "y": 26,
+          "hp": 49,
+          "tags": [
+            "boss",
+            "reflect_melee",
+            "buffer",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 294,
+          "kind": "forge_imp",
+          "x": 20,
+          "y": 29,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        },
+        {
+          "id": 297,
+          "kind": "smith",
+          "x": 19,
+          "y": 26,
+          "hp": 20,
+          "tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 293,
+          "kind": "forge_imp",
+          "x": 22,
+          "y": 29,
+          "hp": 17,
+          "tags": [
+            "thief"
+          ]
+        }
+      ],
+      "events": 383,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "pickup",
+        "overlay",
+        "telegraph",
+        "discovery",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "callout",
+          "t": 24673,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24703,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24733,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24953,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 24983,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25223,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25253,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25253,
+          "src": 296,
+          "dst": 1,
+          "dmg": 5,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25253,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25258,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25263,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25263,
+          "src": 296,
+          "dst": 1,
+          "dmg": 3,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25273,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25273,
+          "src": 296,
+          "dst": 1,
+          "dmg": 2,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25283,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25283,
+          "src": 296,
+          "dst": 1,
+          "dmg": 2,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25283,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25293,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25293,
+          "src": 296,
+          "dst": 1,
+          "dmg": 3,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25303,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25303,
+          "src": 296,
+          "dst": 1,
+          "dmg": 2,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25308,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25313,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25313,
+          "src": 296,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25323,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25323,
+          "src": 296,
+          "dst": 1,
+          "dmg": 3,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25333,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25333,
+          "src": 296,
+          "dst": 1,
+          "dmg": 4,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25341,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25341,
+          "src": 296,
+          "dst": 1,
+          "dmg": 3,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25343,
+          "text": "armours"
+        },
+        {
+          "k": "callout",
+          "t": 25349,
+          "text": "reflected!"
+        },
+        {
+          "k": "attack",
+          "t": 25349,
+          "src": 296,
+          "dst": 1,
+          "dmg": 3,
+          "hit": true,
+          "verb": "reflect"
+        },
+        {
+          "k": "callout",
+          "t": 25373,
+          "text": "armours"
+        }
+      ]
+    },
+    {
+      "depth": 24,
+      "biome": "deep",
+      "entities": [
+        {
+          "id": 299,
+          "kind": "captive",
+          "x": 24,
+          "y": 17,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 306,
+          "kind": "cave_troll",
+          "x": 26,
+          "y": 17,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 305,
+          "kind": "lurker",
+          "x": 22,
+          "y": 23,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 302,
+          "kind": "cave_troll",
+          "x": 21,
+          "y": 24,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 301,
+          "kind": "lurker",
+          "x": 19,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 300,
+          "kind": "lurker",
+          "x": 26,
+          "y": 8,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 303,
+          "kind": "lurker",
+          "x": 27,
+          "y": 4,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 309,
+          "kind": "cave_troll",
+          "x": 18,
+          "y": 11,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 304,
+          "kind": "deep_eel",
+          "x": 8,
+          "y": 19,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 308,
+          "kind": "lurker",
+          "x": 7,
+          "y": 25,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 307,
+          "kind": "lurker",
+          "x": 4,
+          "y": 27,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        }
+      ],
+      "events": 528,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 25,
+      "biome": "deep",
+      "entities": [
+        {
+          "id": 311,
+          "kind": "lurker",
+          "x": 10,
+          "y": 23,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 312,
+          "kind": "lurker",
+          "x": 11,
+          "y": 21,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 314,
+          "kind": "lurker",
+          "x": 5,
+          "y": 23,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 317,
+          "kind": "deep_eel",
+          "x": 3,
+          "y": 20,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 316,
+          "kind": "siren",
+          "x": 3,
+          "y": 18,
+          "hp": 22,
+          "tags": [
+            "aura"
+          ]
+        },
+        {
+          "id": 318,
+          "kind": "cave_troll",
+          "x": 14,
+          "y": 4,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 315,
+          "kind": "lurker",
+          "x": 6,
+          "y": 5,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        }
+      ],
+      "events": 264,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 26,
+      "biome": "deep",
+      "entities": [
+        {
+          "id": 330,
+          "kind": "captive",
+          "x": 27,
+          "y": 12,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 334,
+          "kind": "deep_eel",
+          "x": 28,
+          "y": 12,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 333,
+          "kind": "deep_eel",
+          "x": 26,
+          "y": 9,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 336,
+          "kind": "captive",
+          "x": 30,
+          "y": 10,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        }
+      ],
+      "events": 142,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 27,
+      "biome": "deep",
+      "entities": [
+        {
+          "id": 341,
+          "kind": "lurker",
+          "x": 7,
+          "y": 8,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 342,
+          "kind": "cave_troll",
+          "x": 8,
+          "y": 5,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 346,
+          "kind": "lurker",
+          "x": 16,
+          "y": 6,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 345,
+          "kind": "lurker",
+          "x": 19,
+          "y": 9,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 339,
+          "kind": "mirror_shade",
+          "x": 23,
+          "y": 6,
+          "hp": 22,
+          "tags": [
+            "mirror"
+          ]
+        },
+        {
+          "id": 348,
+          "kind": "mirror_shade",
+          "x": 21,
+          "y": 23,
+          "hp": 22,
+          "tags": [
+            "mirror"
+          ]
+        },
+        {
+          "id": 344,
+          "kind": "captive",
+          "x": 15,
+          "y": 24,
+          "hp": 22,
+          "tags": [
+            "ally",
+            "captive"
+          ]
+        },
+        {
+          "id": 350,
+          "kind": "cave_troll",
+          "x": 12,
+          "y": 14,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 343,
+          "kind": "deep_eel",
+          "x": 9,
+          "y": 28,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 337,
+          "kind": "mirror_shade",
+          "x": 27,
+          "y": 25,
+          "hp": 22,
+          "tags": [
+            "mirror"
+          ]
+        }
+      ],
+      "events": 475,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "pickup",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "spawn",
+        "descend"
+      ],
+      "namedThreatEvents": []
+    },
+    {
+      "depth": 28,
+      "biome": "deep",
+      "entities": [
+        {
+          "id": 360,
+          "kind": "cave_troll",
+          "x": 21,
+          "y": 15,
+          "hp": 42,
+          "tags": [
+            "regen"
+          ]
+        },
+        {
+          "id": 357,
+          "kind": "siren",
+          "x": 16,
+          "y": 17,
+          "hp": 22,
+          "tags": [
+            "aura"
+          ]
+        },
+        {
+          "id": 358,
+          "kind": "siren",
+          "x": 13,
+          "y": 13,
+          "hp": 22,
+          "tags": [
+            "aura"
+          ]
+        },
+        {
+          "id": 356,
+          "kind": "lurker",
+          "x": 16,
+          "y": 12,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 364,
+          "kind": "lurker",
+          "x": 12,
+          "y": 12,
+          "hp": 20,
+          "tags": [
+            "blind",
+            "grudge"
+          ]
+        },
+        {
+          "id": 355,
+          "kind": "lurker",
+          "x": 11,
+          "y": 19,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 370,
+          "kind": "lurker",
+          "x": 12,
+          "y": 12,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 359,
+          "kind": "deep_eel",
+          "x": 15,
+          "y": 11,
+          "hp": 24,
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 369,
+          "kind": "lurker",
+          "x": 16,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 373,
+          "kind": "lurker",
+          "x": 17,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 371,
+          "kind": "lurker",
+          "x": 13,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 372,
+          "kind": "lurker",
+          "x": 18,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 374,
+          "kind": "lurker",
+          "x": 14,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 375,
+          "kind": "lurker",
+          "x": 16,
+          "y": 10,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 376,
+          "kind": "lurker",
+          "x": 19,
+          "y": 10,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 361,
+          "kind": "lurker_queen",
+          "x": 14,
+          "y": 10,
+          "hp": 90,
+          "tags": [
+            "boss",
+            "blind",
+            "brood",
+            "summoner",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 377,
+          "kind": "lurker",
+          "x": 13,
+          "y": 13,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 378,
+          "kind": "lurker",
+          "x": 11,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 351,
+          "kind": "lurker",
+          "x": 17,
+          "y": 11,
+          "hp": 18,
+          "tags": [
+            "blind"
+          ]
+        },
+        {
+          "id": 379,
+          "kind": "lurker",
+          "x": 11,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 380,
+          "kind": "lurker",
+          "x": 12,
+          "y": 13,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 381,
+          "kind": "lurker",
+          "x": 11,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 382,
+          "kind": "lurker",
+          "x": 13,
+          "y": 13,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 383,
+          "kind": "lurker",
+          "x": 12,
+          "y": 12,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 384,
+          "kind": "lurker",
+          "x": 10,
+          "y": 12,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 385,
+          "kind": "lurker",
+          "x": 15,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        },
+        {
+          "id": 386,
+          "kind": "lurker",
+          "x": 16,
+          "y": 15,
+          "hp": 18,
+          "tags": [
+            "blind",
+            "summoned"
+          ]
+        }
+      ],
+      "events": 541,
+      "eventKinds": [
+        "note",
+        "rule",
+        "move",
+        "callout",
+        "attack",
+        "hurt",
+        "die",
+        "heal",
+        "pickup",
+        "telegraph",
+        "spawn",
+        "homeward",
+        "ending",
+        "exit"
+      ],
+      "namedThreatEvents": [
+        {
+          "k": "spawn",
+          "t": 30348,
+          "e": {
+            "id": 369,
+            "kind": "lurker",
+            "x": 20,
+            "y": 2,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30348,
+          "e": {
+            "id": 370,
+            "kind": "lurker",
+            "x": 20,
+            "y": 3,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30368,
+          "e": {
+            "id": 371,
+            "kind": "lurker",
+            "x": 19,
+            "y": 3,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30368,
+          "e": {
+            "id": 372,
+            "kind": "lurker",
+            "x": 21,
+            "y": 3,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30378,
+          "e": {
+            "id": 373,
+            "kind": "lurker",
+            "x": 19,
+            "y": 5,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30378,
+          "e": {
+            "id": 374,
+            "kind": "lurker",
+            "x": 19,
+            "y": 4,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30398,
+          "e": {
+            "id": 375,
+            "kind": "lurker",
+            "x": 18,
+            "y": 6,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30398,
+          "e": {
+            "id": 376,
+            "kind": "lurker",
+            "x": 20,
+            "y": 6,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30498,
+          "e": {
+            "id": 377,
+            "kind": "lurker",
+            "x": 13,
+            "y": 13,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30498,
+          "e": {
+            "id": 378,
+            "kind": "lurker",
+            "x": 11,
+            "y": 15,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30518,
+          "e": {
+            "id": 379,
+            "kind": "lurker",
+            "x": 11,
+            "y": 15,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30518,
+          "e": {
+            "id": 380,
+            "kind": "lurker",
+            "x": 12,
+            "y": 13,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30538,
+          "e": {
+            "id": 381,
+            "kind": "lurker",
+            "x": 11,
+            "y": 15,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30538,
+          "e": {
+            "id": 382,
+            "kind": "lurker",
+            "x": 13,
+            "y": 13,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30558,
+          "e": {
+            "id": 383,
+            "kind": "lurker",
+            "x": 12,
+            "y": 12,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30558,
+          "e": {
+            "id": 384,
+            "kind": "lurker",
+            "x": 10,
+            "y": 12,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30658,
+          "e": {
+            "id": 385,
+            "kind": "lurker",
+            "x": 15,
+            "y": 15,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        },
+        {
+          "k": "spawn",
+          "t": 30658,
+          "e": {
+            "id": 386,
+            "kind": "lurker",
+            "x": 16,
+            "y": 15,
+            "hp": 18,
+            "max_hp": 18,
+            "tags": [
+              "blind",
+              "summoned"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

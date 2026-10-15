@@ -1069,7 +1069,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
             : k < 0.42
               ? "stump"
               : k < 0.62
-                ? "reeds"
+                ? "crate"
                 : k < 0.76
                   ? "barrel"
                   : k < 0.88
