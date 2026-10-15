@@ -1,0 +1,22 @@
+// Exact final-source native timeline runner. Capture identity before any later build can replace the executable.
+import {readFileSync,writeFileSync,copyFileSync,mkdirSync,openSync,closeSync,existsSync} from 'node:fs';
+import {spawn,execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {runtimeKey} from '../../../../tools/runtime-key.mjs';
+const arg=(key,fallback)=>{const i=process.argv.indexOf(key);return i<0?fallback:process.argv[i+1];};
+const out=arg('--out','docs/evidence/cut235/resume/timeline-16x14');
+const seeds=arg('--seeds','16'),days=arg('--days','14'),bots=arg('--bots','idle,picked,daily,away'),threads=arg('--threads','16');
+const sha=b=>createHash('sha256').update(b).digest('hex');
+const build=arg('--build','/tmp/idlever-cut235-final-build.jsonl');
+const core=readFileSync(build,'utf8').trim().split('\n').map(JSON.parse).find(m=>m.reason==='compiler-artifact'&&m.target.name==='idlever_core'&&m.target.kind.includes('lib')&&!m.profile.test);
+const key=runtimeKey(core,process.cwd(),execFileSync('rustc',['-vV'],{encoding:'utf8'}));
+const bytes=readFileSync('target/fast/examples/dayplayer'),bin=`target/cut235/dayplayer-${sha(bytes).slice(0,16)}`;
+mkdirSync('target/cut235',{recursive:true});copyFileSync('target/fast/examples/dayplayer',bin);
+const args=['--bots',bots,'--seeds',seeds,'--days',days,'--threads',threads,'--timeline',`${out}.json`,'--resume'];
+const stdout=openSync(`${out}.out`,'w'),stderr=openSync(`${out}.err`,'w');
+const identity={sourceHead:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDiffSha256:sha(execFileSync('git',['diff','--','crates/idlever-core','tuning/balance.json'])),runtimeKey:key,binary:bin,binarySha256:sha(bytes),args,startedAt:new Date().toISOString(),scope:Number(days)>=14&&Number(seeds)===16?'16-seed fortnight timeline; acceptance must still be evaluated':'Exploratory only; never full acceptance'};
+writeFileSync(`${out}-runtime.json`,JSON.stringify(identity,null,2)+'\n');
+const child=spawn(bin,args,{env:{...process.env,IDLEVER_SRC_KEY:key},stdio:['ignore',stdout,stderr]});
+console.log(`timeline live pid ${child.pid}, ${seeds} seeds ×${days}days, bots ${bots}`);
+child.on('error',error=>{throw error;});
+child.on('exit',(code,signal)=>{closeSync(stdout);closeSync(stderr);Object.assign(identity,{finishedAt:new Date().toISOString(),exitCode:code,signal,timelineWritten:existsSync(`${out}.json`)});writeFileSync(`${out}-runtime.json`,JSON.stringify(identity,null,2)+'\n');console.log(`timeline terminal ${code}; capture ${identity.timelineWritten?'written':'missing'}`);process.exitCode=code??1;});

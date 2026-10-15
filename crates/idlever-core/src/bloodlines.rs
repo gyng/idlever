@@ -18,6 +18,29 @@ pub struct Session {
 }
 impl Deref for Session { type Target=Game; fn deref(&self)->&Game { &self.active } }
 impl DerefMut for Session { fn deref_mut(&mut self)->&mut Game { &mut self.active } }
+/// Cut235: earned worker outcomes belong to the town. Only interest and quest counts use town-wide measures;
+/// record, start and pet provenance stays on the hero that performed the manual chore.
+fn worker_feats_from(source: &LineageState, dest: &mut LineageState) {
+    for id in ["clerk", "herald"] {
+        if let Some(&at) = source.tree.feat_base.get(id) {
+            if dest.tree.feat_base.get(id).is_none_or(|old| at < *old) {
+                dest.tree.feat_base.insert(id.into(), at);
+            }
+        }
+    }
+    for id in source.tree.feats.iter() {
+        if !dest.tree.feats.contains(id) { dest.tree.feats.insert(id.clone()); }
+    }
+    for n in crate::tree::NODES.iter().filter(|n| n.feat().is_some()) {
+        // An eligible count on an old resident remains a town hire on a fresh v3 resident.
+        let grandfathered = source.tree.v < 3 && crate::tree::count(source, n.id) >= n.need() && crate::tree::chore_open(source, n);
+        if crate::tree::feat_done(source, n.id) || grandfathered {
+            if !dest.tree.feats.contains(n.id) { dest.tree.feats.insert(n.id.into()); }
+            // Preserve an already offered Cut235 hire across selection without introducing another decision.
+            if source.tree.shown.contains(n.id) && !dest.tree.shown.contains(n.id) { dest.tree.shown.insert(n.id.into()); }
+        }
+    }
+}
 /// These are town resources. Hero policy, facts, XP, gear, clocks and progression
 /// are deliberately not copied when changing bloodlines.
 fn town_from(source: &LineageState, dest: &mut LineageState) {
@@ -40,6 +63,7 @@ fn town_from(source: &LineageState, dest: &mut LineageState) {
     dest.tree.acts.clone_from(&source.tree.acts);
     dest.tree.ranks.clone_from(&source.tree.ranks);
     dest.tree.perks.clone_from(&source.tree.perks);
+    worker_feats_from(source, dest);
 }
 /// Cut 120 §3: copy one order (a `tree::SHAREABLE` key) between bloodlines' switches.
 pub fn copy_order(from: &crate::wire::StandingSwitches, to: &mut crate::wire::StandingSwitches, key: &str) {
@@ -117,6 +141,10 @@ impl Session {
         s.active.lineage.town.owned_shapes=owned.clone();
         s.active.lineage.town.piece_victories=victories.clone();
         for g in s.others.values_mut() {g.lineage.town.owned_shapes=owned.clone();g.lineage.town.piece_victories=victories.clone();}
+        // Older Cut235 sessions may have earned the same town worker on an unselected resident. Reconcile only
+        // feat metadata here; the selected wallet and each hero's run/start/record provenance stay authoritative.
+        for g in s.others.values() { worker_feats_from(&g.lineage, &mut s.active.lineage); }
+        for g in s.others.values_mut() { worker_feats_from(&s.active.lineage, &mut g.lineage); }
         Ok(s)
     }
     pub fn save(&self)->String { serde_json::to_string(self).unwrap_or_default() }

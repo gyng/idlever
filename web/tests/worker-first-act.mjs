@@ -201,7 +201,7 @@ try {
       const app0 = L1.tree.nodes.find((x) => x.id === "apprentice");
       check(
         app0.goal === "feat" &&
-          app0.feat === "forged boss kill" &&
+          app0.feat === "forged new best" &&
           app0.feat_done === false &&
           app0.count === undefined &&
           app0.need === undefined &&
@@ -307,7 +307,7 @@ try {
                   progress: undefined,
                   chore: "forge",
                   goal: "feat",
-                  feat: "forged boss kill",
+                  feat: "forged new best",
                   feat_done: done,
                   fallback_h: 30,
                   ...(eta ? { eta_h: eta } : { eta_h: undefined }),
@@ -329,7 +329,7 @@ try {
             next:
               state === "lit"
                 ? { kind: "buy", node: "apprentice", text: "apprentice · $30" }
-                : { kind: "feat", node: "apprentice", text: "apprentice · forged boss kill" },
+                : { kind: "feat", node: "apprentice", text: "apprentice · forged new best" },
           },
         };
         a.go({ kind: "camp" });
@@ -338,7 +338,7 @@ try {
       await new Promise((r) => setTimeout(r, 400));
       const fp = document.querySelector(".next-pill");
       check(
-        fp.querySelector(".pill-t").textContent === "apprentice · forged boss kill · or 20h" &&
+        fp.querySelector(".pill-t").textContent === "apprentice · forged new best · or 20h" &&
           !fp.querySelector(".pill-bar") &&
           fp.dataset.kind === "feat" &&
           fp.dataset.featDone === "false",
@@ -346,7 +346,7 @@ try {
       );
       const ft = document.querySelector('.task-tracker [data-worker="apprentice"]');
       check(
-        ft?.querySelector(".task-obj")?.textContent === "forged boss kill · or 20h" &&
+        ft?.querySelector(".task-obj")?.textContent === "forged new best · or 20h" &&
           !ft.querySelector(".task-bar") &&
           ft.dataset.featDone === "false",
         `feat tracker line: ${ft?.textContent}`,
@@ -355,7 +355,7 @@ try {
       await new Promise((r) => setTimeout(r, 200));
       const fc = document.querySelector('.works-sheet .wnode.cur[data-node="apprentice"]');
       check(
-        fc?.querySelector(".wn-state")?.textContent === "forged boss kill · or 20h" &&
+        fc?.querySelector(".wn-state")?.textContent === "forged new best · or 20h" &&
           !fc.querySelector(".wn-bar") &&
           fc.dataset.featDone === "false",
         `feat works card: ${fc?.querySelector(".wn-state")?.textContent}`,
@@ -367,9 +367,9 @@ try {
       const fp2 = document.querySelector(".next-pill");
       const ft2 = document.querySelector('.task-tracker [data-worker="apprentice"]');
       check(
-        fp2.querySelector(".pill-t").textContent === "apprentice · ✓ forged boss kill" &&
+        fp2.querySelector(".pill-t").textContent === "apprentice · ✓ forged new best" &&
           fp2.dataset.featDone === "true" &&
-          ft2?.querySelector(".task-obj")?.textContent === "✓ forged boss kill",
+          ft2?.querySelector(".task-obj")?.textContent === "✓ forged new best",
         `feat met: ${fp2.textContent} · ${ft2?.textContent}`,
       );
       // offered: the hire with its price, no feat line

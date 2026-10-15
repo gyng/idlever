@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-10-15T13:03:54.783117+00:00",
+  "head": "cdde0cf3f6dc84baf1456f70c35707e9e679c23b",
+  "command": "CARGO_BUILD_JOBS=16 cargo test -q --workspace --profile fast -- --test-threads=16",
+  "files": {
+    "crates/idlever-core/src/tree.rs": "59330947b8edc011c21c530a4464701c9d4e0311f0ffe5b5fc485def8e8e2f54",
+    "crates/idlever-core/src/engine.rs": "da3e030a78ca1c88b63dfc766b2728888247662ef84c57e1ae4cadadc2ae3194",
+    "crates/idlever-core/src/bloodlines.rs": "9cb22ab980305779be1e8f9d573a4a9ef520b51b1a1f3351e049509f026bfaec",
+    "crates/idlever-core/src/lib.rs": "7277aa2f3eddda495f3a5bbc884ebff8c7741a4af407fb455a69132f6161a535",
+    "crates/idlever-core/src/tests_cut235.rs": "61ee14d244243d3aaeda120b51b2b9e75e51cfb0962c9511a319f69dd191862a",
+    "crates/idlever-core/src/tests_cut120.rs": "1fc552682438448b252de57db12c08cec3afeddd952a936815d5d95781d6e4c6",
+    "crates/idlever-core/src/balance.rs": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99",
+    "tuning/balance.json": "c6df92386d54856dd4c13e88e2a4db42002bdfc65f490534456cc115e23a142a"
+  },
+  "note": "Identity captured at launch on stable native source; terminal evidence pending.",
+  "sourceUnchangedAtTerminal": true,
+  "result": {
+    "passed": 965,
+    "failed": 0,
+    "ignored": 6,
+    "librarySeconds": 90.92,
+    "workspaceAndDoctests": "all terminal normal"
+  },
+  "recordedAt": "2026-10-15T13:09:57.063246+00:00"
+}

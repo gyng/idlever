@@ -268,7 +268,7 @@ pub const DEFAULT: Balance = Balance {
         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
     },
     tree: TreeTune {
-        reserve_units: 3, guide_gap: 4, rank_days: [4, 8, 12], rank_price_units: 1,
+        reserve_units: 3, guide_gap: 4, rank_days: [2, 4, 6], rank_price_units: 1,
         porter_bonus_pct: 2, apprentice_off_pct: 5, clerk_bonus_permille: 25, scout_rest_off_pct: 5, safer_start_pct: 5, drill_rank_off: 1,
         wall_deaths: 2, wall_near: 2, wall_retry: 3, stone_memory: 12,
     },

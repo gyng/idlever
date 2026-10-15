@@ -58,12 +58,12 @@ impl NodeDef {
 /// by hand, never a new chore or tap. The porter and the Scout count (they teach the chore itself).
 pub fn feat_name(id: &str) -> Option<&'static str> {
     Some(match id {
-        // a band boss falls for the first time after a forge step bought by hand
-        "apprentice" => "forged boss kill",
-        // a run comes home by a Bank exit carrying the clerk's price or more, the bank built
-        "clerk" => "full haul banked",
-        // a new record floor after a stance level bought by hand
-        "drillmaster" => "levelled new best",
+        // a run carrying a forge step bought by hand sets a new record
+        "apprentice" => "forged new best",
+        // a deposit by hand earns its first nightly interest
+        "clerk" => "interest paid",
+        // a run wearing a package level bought by hand clears a floor
+        "drillmaster" => "levelled floor clears",
         // a pet gains a level on a run, the kennel built
         "kennel_hand" => "pet levels up",
         // a quest is kept after a swap by hand
@@ -182,6 +182,17 @@ pub struct Tree {
     /// present once the chore was done by hand.
     #[serde(default, skip_serializing_if = "crate::shared::map_is_empty")]
     pub feat_base: crate::shared::Shared<BTreeMap<String, u32>>,
+    /// Cut235: this hero's packages levelled by a successful hand spend (id → level reached). Kept separate from
+    /// town feat latches so another resident cannot claim the hand-levelled package's run outcome.
+    #[serde(default, skip_serializing_if = "crate::shared::map_is_empty")]
+    pub levelled_by_hand: crate::shared::Shared<BTreeMap<String, u32>>,
+    /// Cut235: this hero's successfully hand-selected pets, by identity (never copied between residents).
+    #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
+    pub fielded_by_hand: crate::shared::Shared<BTreeSet<u32>>,
+    /// Cut235: identities descended from this hero's successful hand breedings. Egg identities transfer to their
+    /// hatched pet, and a lost pet's identity transfers through its recovery egg.
+    #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
+    pub bred_by_hand: crate::shared::Shared<BTreeSet<u32>>,
     /// Cut235: the workers whose feat is met (kept once met).
     #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
     pub feats: crate::shared::Shared<BTreeSet<String>>,
@@ -526,6 +537,10 @@ pub fn ready(l: &LineageState, n: &NodeDef) -> bool {
 
 /// Its trigger is met: the count (Cut235: a feat worker's feat), or the fallback age with its chore open.
 pub fn trigger_met(l: &LineageState, n: &NodeDef) -> bool {
+    // Cut235: an outcome already earned for the town remains eligible on a resident whose own chore is still shut.
+    if n.feat().is_some() && l.tree.feats.contains(n.id) {
+        return true;
+    }
     if n.chore.is_empty() {
         return true;
     }
@@ -545,54 +560,59 @@ pub fn feat_done(l: &LineageState, id: &str) -> bool {
     l.tree.feats.contains(id) || feat_live(l, id)
 }
 
-/// Band bosses slain, by kind (the apprentice's feat measure).
-fn bosses_slain(l: &LineageState) -> u32 {
-    l.kills.iter().filter(|k| !k.starts_with("spectral_") && crate::defs::monster_def(k).boss).count() as u32
-}
-
 /// Cut235: the measure a feat beats, at its chore's first time by hand.
 fn feat_measure(l: &LineageState, id: &str) -> u32 {
     match id {
-        "apprentice" => bosses_slain(l),
-        "drillmaster" => l.best_depth,
+        "apprentice" => l.best_depth,
+        "clerk" => l.town.interest.max(0) as u32,
         "herald" => l.town.quests_done,
         _ => 0,
     }
 }
 
-/// Cut235: the feats the lineage's state shows (the pets' feats are a run's, `note_feats`).
+/// Cut235: the feats the lineage's state shows (deep starts and pets are a run's, `note_feats`).
 fn feat_live(l: &LineageState, id: &str) -> bool {
     let Some(base) = l.tree.feat_base.get(id).copied() else { return false };
     match id {
-        "apprentice" => bosses_slain(l) > base,
-        "drillmaster" => l.best_depth > base,
+        "clerk" => l.town.interest.max(0) as u32 > base,
         "herald" => l.town.quests_done > base,
-        "guide" => l.tree.start_by_hand.is_some_and(|(s, at)| s > 1 && l.best_depth > at),
         _ => false,
     }
 }
 
-/// Cut235: whether a feat needs its chore done by hand first (the clerk's and the kennel-hand's are the run's alone: their
-/// chores need a building the idle player never raises, so the idle climb is untouched either way).
-fn feat_by_hand(id: &str) -> bool {
-    !matches!(id, "clerk" | "kennel_hand")
-}
-
-/// Cut235: a run's end — the feats it met are kept (a full haul banked, a pet that levelled on it, a pup bred by hand on
-/// it; the state's feats). Before the report's offer (`news::settle`), so a met feat is offered at a quiet report.
-pub(crate) fn note_feats(game: &mut Game, run: &crate::engine::Run, tier: crate::engine::ExitTier) {
+/// Cut235: a run's end — latch the chore outcomes it met before the report's offer (`news::settle`).
+pub(crate) fn note_feats(game: &mut Game, run: &crate::engine::Run, _tier: crate::engine::ExitTier) {
     let l = &game.lineage;
     if l.pkg.literal || game.sim {
         return;
     }
+    let sent = game.sent_state.as_ref().map(|s| &s.lineage);
     let met: Vec<&'static str> = NODES
         .iter()
         .filter(|n| n.feat().is_some() && !hired(l, n.id) && !l.tree.feats.contains(n.id) && chore_open(l, n))
-        .filter(|n| !feat_by_hand(n.id) || l.tree.feat_base.contains_key(n.id))
         .filter(|n| match n.id {
-            "clerk" => tier == crate::engine::ExitTier::Bank && !run.timed_out && run.kept(tier) >= price(l, n),
-            "kennel_hand" => run.companions.iter().any(|rec| l.all_companions().any(|c| c.id == rec.id && c.level > rec.level)),
-            "kennel_keeper" => run.companions.iter().any(|c| c.gen > 0),
+            "clerk" | "herald" => l.tree.feat_base.contains_key(n.id),
+            _ => sent.is_some_and(|at_send| at_send.tree.feat_base.contains_key(n.id)),
+        })
+        .filter(|n| match n.id {
+            "apprentice" => game.sent_state.as_ref().is_some_and(|sent| {
+                sent.lineage.tree.feat_base.get("apprentice").is_some_and(|at| run.max_depth > *at)
+                    && crate::kit::KIT_SLOTS.iter().any(|slot| crate::kit::owned(&sent.lineage, slot) > 0)
+                    && run.max_depth > run.best_at_send.unwrap_or(run.record0)
+            }),
+            "drillmaster" => run.max_depth > run.start && game.sent_state.as_ref().is_some_and(|sent| {
+                let p = &sent.lineage.pkg;
+                sent.lineage.tree.levelled_by_hand.iter().any(|(id, lv)| {
+                    (p.stance == *id || p.tactics.contains(id) || p.temperament.as_ref() == Some(id)) && p.level(id) >= *lv
+                })
+            }),
+            "kennel_hand" => sent.is_some_and(|at_send| run.companions.iter().any(|rec| {
+                at_send.tree.fielded_by_hand.contains(&rec.id) && l.all_companions().any(|c| c.id == rec.id && c.level > rec.level)
+            })),
+            "kennel_keeper" => sent.is_some_and(|at_send| run.companions.iter().any(|c| c.gen > 0 && at_send.tree.bred_by_hand.contains(&c.id))),
+            "guide" => sent.and_then(|at_send| at_send.tree.start_by_hand).is_some_and(|(s, at)| {
+                run.start > 1 && run.start == s && run.max_depth > at && run.max_depth > run.best_at_send.unwrap_or(run.record0)
+            }),
             id => feat_live(l, id),
         })
         .map(|n| n.id)

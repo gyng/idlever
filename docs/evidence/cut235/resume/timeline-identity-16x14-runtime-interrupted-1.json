@@ -1,0 +1,31 @@
+{
+  "sourceHead": "cdde0cf3f6dc84baf1456f70c35707e9e679c23b",
+  "sourceDiffSha256": "be570c5a312cc0f09f69f984712bb5bb803926295281471cd6e3d2663cb65959",
+  "runtimeKey": "14048f5d5093c543",
+  "binary": "target/cut235/dayplayer-f45f26cb077c7a5d",
+  "binarySha256": "f45f26cb077c7a5d60eed00d3cb1a31efabf92444f6c448a03349870b2c1680a",
+  "args": [
+    "--bots",
+    "idle,picked,daily,away",
+    "--seeds",
+    "16",
+    "--days",
+    "14",
+    "--threads",
+    "16",
+    "--timeline",
+    "docs/evidence/cut235/resume/timeline-identity-16x14.json",
+    "--resume"
+  ],
+  "startedAt": "2026-10-15T13:25:14.867Z",
+  "scope": "16-seed fortnight timeline; acceptance must still be evaluated",
+  "interruption": {
+    "observedAt": "2026-10-15T13:41:53.562140+00:00",
+    "wrapperExecSession": 97618,
+    "wrapperExitCode": 143,
+    "childPid": 3001327,
+    "childAbsentConfirmed": true,
+    "timelineWritten": false,
+    "action": "Resume exact binary/runtime/arguments with existing completed-case cache and checkpoints; detached to survive tool wrapper lifetime."
+  }
+}

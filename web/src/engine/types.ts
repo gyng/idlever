@@ -1023,7 +1023,7 @@ export type WorkNode = {
   rank_adds?: string; // week 2: the rank's small real edge now (`bonus`) and what the next rank adds (`rank_adds`), ≤ 4 words (`+4% hauls`, `−10% steps`, `25‰ interest`, `−5% rest`, `half toll`, `levels −◆1`, `insures its finds`); keeper, kennel-hand and herald ranks are looks (none)
   goal?: "count" | "feat";
   feat?: string;
-  feat_done?: boolean; // Cut235 (core): a later worker's goal — `feat` (absent: `count`, its `count`/`need`); the feat's name ≤ 3 words (`forged boss kill`) and whether it is met (then `ready`, offered at a quiet report); a feat node carries no `count`/`need`/`progress`
+  feat_done?: boolean; // Cut235 (core): a later worker's goal — `feat` (absent: `count`, its `count`/`need`); the feat's name ≤ 3 words (`forged new best`) and whether it is met (then `ready`, offered at a quiet report); a feat node carries no `count`/`need`/`progress`
 };
 /** Cut 30.5 (core) — the `next` pill: the single next goal. `kind` buy (the lit node, affordable) · chest (a haul waits, before the porter) ·
  *  send (the hero waits for a SEND, before the scout) · gold (the lit node, short: `have`/`need` in gold) · count (a node's chores by hand:

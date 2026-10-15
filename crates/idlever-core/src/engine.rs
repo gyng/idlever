@@ -5746,6 +5746,10 @@ impl Game {
                 }
                 let eid = self.lineage.new_comp_id();
                 self.lineage.eggs.push(Egg { id: eid, kind: rec.kind.clone(), tags: rec.tags.clone(), gen: rec.gen, hatch_in: egg_rests, from_loss: true, sire: String::new() });
+                if self.lineage.tree.bred_by_hand.contains(&rec.id) {
+                    self.lineage.tree.bred_by_hand.remove(&rec.id);
+                    self.lineage.tree.bred_by_hand.insert(eid);
+                }
                 self.lineage.eggs_laid += 1;
                 // Cut 5 §4: the lost companion may be met again, gone wild, by a later heir.
                 let heir = run.heir;
@@ -6598,6 +6602,10 @@ impl Game {
             crate::petstats::bump(crate::petstats::Stat::LossHatched, 1);
         }
         let id = self.lineage.new_comp_id();
+        if self.lineage.tree.bred_by_hand.contains(&e.id) {
+            self.lineage.tree.bred_by_hand.remove(&e.id);
+            self.lineage.tree.bred_by_hand.insert(id);
+        }
         let name = crate::descent::grudge_name(&mut self.lineage.rng);
         // Cut 119 §4: a bred egg's pup carries its sire's name and its generation (`Rook II`)
         let bred = !e.sire.is_empty() && !self.lineage.pets.off;
@@ -6636,9 +6644,6 @@ impl Game {
 
     /// `set_party`; `by_hand` counts toward the kennel-hand (a worker's fielding does not).
     pub fn set_party_by(&mut self, ids: Vec<u32>, by_hand: bool) -> Result<(), String> {
-        if by_hand && !ids.is_empty() {
-            crate::tree::did(&mut self.lineage, "field");
-        }
         let slots = self.lineage.party_slots() as usize;
         let mut all: Vec<Companion> = std::mem::take(&mut self.lineage.party);
         all.append(&mut self.lineage.kennel);
@@ -6653,6 +6658,12 @@ impl Game {
         }
         self.lineage.party = party;
         self.lineage.kennel = all;
+        if by_hand && !self.lineage.party.is_empty() {
+            crate::tree::did(&mut self.lineage, "field");
+            if !self.lineage.pkg.literal && !crate::tree::hired(&self.lineage, "kennel_hand") {
+                for c in &self.lineage.party { self.lineage.tree.fielded_by_hand.insert(c.id); }
+            }
+        }
         Ok(())
     }
 
@@ -6707,8 +6718,11 @@ impl Game {
         self.lineage.eggs.push(Egg { id: eid, kind: ca.kind.clone(), tags, gen: ca.gen.max(cb.gen) + 1, hatch_in, from_loss: false, sire: String::new() });
         self.lineage.eggs_laid += 1;
         self.lineage.bred.insert(ca.kind);
-        // Cut 120 §5: a breed by hand counts toward the kennel keeper
+        // Cut 120 §5: a breed by hand counts toward the kennel keeper.
         crate::tree::did(&mut self.lineage, "breed");
+        if !self.lineage.pkg.literal && !crate::tree::hired(&self.lineage, "kennel_keeper") {
+            self.lineage.tree.bred_by_hand.insert(eid);
+        }
         Ok(())
     }
 

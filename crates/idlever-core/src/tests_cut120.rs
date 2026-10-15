@@ -334,8 +334,8 @@ fn the_next_worker_shows_progress_and_eta() {
     g.lineage.clock_s = 10 * 3600;
     let w = tree::wire(&g.lineage, false);
     let a = w.nodes.iter().find(|n| n.id == "apprentice").unwrap();
-    // (Cut235: the apprentice's goal is a feat — no count on the wire, its feat undone until a boss falls)
-    assert_eq!((a.progress.as_deref(), a.goal.as_deref(), a.feat.as_deref(), a.feat_done), (None, Some("feat"), Some("forged boss kill"), Some(false)));
+    // (Cut235: the apprentice's goal is a feat — no count on the wire, its feat undone until a forged run sets a record)
+    assert_eq!((a.progress.as_deref(), a.goal.as_deref(), a.feat.as_deref(), a.feat_done), (None, Some("feat"), Some("forged new best"), Some(false)));
     assert_eq!((a.fallback_h, a.eta_h), (Some(30), Some(20)));
     assert_eq!(w.next_worker.as_deref(), Some("apprentice"));
     let p = w.nodes.iter().find(|n| n.id == "porter").unwrap();

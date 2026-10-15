@@ -278,6 +278,9 @@ impl Game {
     pub fn spend_level(&mut self, id: &str) -> Result<u32, String> {
         let lv = packages::spend_level(&mut self.lineage, id)?;
         tree::did(&mut self.lineage, "level");
+        if !self.lineage.pkg.literal && !tree::hired(&self.lineage, "drillmaster") {
+            self.lineage.tree.levelled_by_hand.insert(id.into(), lv);
+        }
         Ok(lv)
     }
     /// Cut 113 §3: take one offer of the return's pick waiting at camp (`returns::take`).

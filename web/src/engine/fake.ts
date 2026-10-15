@@ -6871,9 +6871,9 @@ const BUILD30: [string, string][] = [
 // run: an absence then yields only the run in flight).
 // Cut235 (core `tree::feat_name`): the later workers' feats (≤ 3 words); the porter and the scout count
 const FEATS235: Record<string, string> = {
-  apprentice: "forged boss kill",
-  clerk: "full haul banked",
-  drillmaster: "levelled new best",
+  apprentice: "forged new best",
+  clerk: "interest paid",
+  drillmaster: "levelled floor clears",
   kennel_hand: "pet levels up",
   herald: "swapped quest kept",
   guide: "deep start record",

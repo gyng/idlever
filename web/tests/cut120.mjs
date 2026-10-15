@@ -425,7 +425,7 @@ try {
               count: undefined,
               need: undefined,
               goal: "feat",
-              feat: "forged boss kill",
+              feat: "forged new best",
               feat_done: false,
               chore: "forge",
               eta_h: 30,
@@ -480,7 +480,7 @@ try {
         .map((e) => e.textContent ?? "")
         .join(" | "),
     }));
-    const carried = (t) => /forged boss kill/.test(t) && /or 30h/.test(t);
+    const carried = (t) => /forged new best/.test(t) && /or 30h/.test(t);
     check(
       r.text === "" && (carried(hud.pill) || carried(hud.tracker)),
       `the next worker's feat rides the pill or the tracker, not a post marker (pill: ${hud.pill}; tracker: ${hud.tracker}; marker: ${r.text || "none"})`,
