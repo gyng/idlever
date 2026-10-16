@@ -102,6 +102,11 @@ identically with and without the perf change
 predate this session and need a UI-owner revalidation. The desktop scene Tasks overlay
 keeps fixed-size text at 200% by a deliberate Cut229 decision (a rem cap covered
 scene buildings); the phone Menu/Tasks typography is now measured at exactly 2.00×.
+The O2 read-hold moved the camp's `unlockDeltas` ask after the report mounts, so in flows where
+the core sends no `short` the report's PENDING list can paint before those deltas arrive and fall
+back to its cost order (`report.ts:1338` already tolerates a missing `delta`) — a preference, not a
+wrong value; the mechanism and the two options are in
+`docs/evidence/mechanics/cut257-run-log-2026-10-16.md` §O4.
 
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start
