@@ -1,0 +1,2356 @@
+{
+  "utc": "2026-10-16T00:44:53.421023+00:00",
+  "status": "PASS_VERIFICATION_OF_RETAINED_MIXED_OUTCOMES_NOT_ACCEPTANCE",
+  "cases": [
+    {
+      "case": "fighter-seed3",
+      "exit_code": 0,
+      "requested_s": 1180920,
+      "clock_s": 1180920,
+      "steps": 43,
+      "stages": [
+        {
+          "clock_s": 720120,
+          "lifetime_deaths": 269,
+          "observed_step": 27,
+          "save": "campaign-0027.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "fighter",
+        "level": 10,
+        "best": 33,
+        "completed": 611,
+        "deaths": 509,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 611,
+          "defeats": 509,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 11973081
+        }
+      },
+      "actual_last_session_sha256": "242ae4c981cb632d8522917669e625ae5c74ce43875dc23382c2cb1f7babc559",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "fighter-seed5",
+      "exit_code": 1,
+      "requested_s": 1123320,
+      "clock_s": 1123320,
+      "steps": 41,
+      "stages": [
+        {
+          "clock_s": 892920,
+          "lifetime_deaths": 332,
+          "observed_step": 33,
+          "save": "campaign-0033.session.json",
+          "stage": 1
+        }
+      ],
+      "last_observed": {
+        "class": "fighter",
+        "level": 9,
+        "best": 34,
+        "completed": 536,
+        "deaths": 456,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 536,
+          "defeats": 456,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 11404650
+        }
+      },
+      "actual_last_session_sha256": "0b4ab9bf1e1025c49f4b8b6f85d2f27983807ac58300b2cc6c9012e5c12e2bf9",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 449,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "rogue-seed1",
+      "exit_code": 0,
+      "requested_s": 921720,
+      "clock_s": 921720,
+      "steps": 34,
+      "stages": [
+        {
+          "clock_s": 403320,
+          "lifetime_deaths": 60,
+          "observed_step": 16,
+          "save": "campaign-0016.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "rogue",
+        "level": 10,
+        "best": 33,
+        "completed": 398,
+        "deaths": 271,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 398,
+          "defeats": 271,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 9437595
+        }
+      },
+      "actual_last_session_sha256": "821d0e6da2147194e3b136f3752e07830c870463c60656a020a07b9b356f9869",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "rogue-seed3",
+      "exit_code": 0,
+      "requested_s": 950520,
+      "clock_s": 950520,
+      "steps": 35,
+      "stages": [
+        {
+          "clock_s": 288120,
+          "lifetime_deaths": 17,
+          "observed_step": 12,
+          "save": "campaign-0012.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "rogue",
+        "level": 10,
+        "best": 33,
+        "completed": 451,
+        "deaths": 347,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 451,
+          "defeats": 347,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 9702911
+        }
+      },
+      "actual_last_session_sha256": "1b91159cbfc8797d336aaf78df1f8d48903d3186bd6d5011057e3de7bb8cf6f7",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "rogue-seed5",
+      "exit_code": 0,
+      "requested_s": 1152120,
+      "clock_s": 1152120,
+      "steps": 42,
+      "stages": [
+        {
+          "clock_s": 748920,
+          "lifetime_deaths": 271,
+          "observed_step": 28,
+          "save": "campaign-0028.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "rogue",
+        "level": 10,
+        "best": 33,
+        "completed": 594,
+        "deaths": 477,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 594,
+          "defeats": 477,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 11697995
+        }
+      },
+      "actual_last_session_sha256": "36dd0330ad0ac45ef689fd0b3cf0fe287961ff7822282ae53eccaa391a2ce707",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "ranger-seed1",
+      "exit_code": 0,
+      "requested_s": 432120,
+      "clock_s": 432120,
+      "steps": 17,
+      "stages": [
+        {
+          "clock_s": 345720,
+          "lifetime_deaths": 32,
+          "observed_step": 14,
+          "save": "campaign-0014.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "ranger",
+        "level": 10,
+        "best": 33,
+        "completed": 169,
+        "deaths": 43,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 169,
+          "defeats": 43,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 4372153
+        }
+      },
+      "actual_last_session_sha256": "3260f768b3be736d75c4ac05cce323edc53d38f6c1790c7fb2a8bbe64db9be85",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "ranger-seed3",
+      "exit_code": 0,
+      "requested_s": 432120,
+      "clock_s": 432120,
+      "steps": 17,
+      "stages": [
+        {
+          "clock_s": 345720,
+          "lifetime_deaths": 31,
+          "observed_step": 14,
+          "save": "campaign-0014.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "ranger",
+        "level": 10,
+        "best": 33,
+        "completed": 175,
+        "deaths": 47,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 175,
+          "defeats": 47,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 4435956
+        }
+      },
+      "actual_last_session_sha256": "89e50d353e9e98e2e02779f8dc3569713171a1c2def57d7b8edc4f833b6c57b5",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "ranger-seed5",
+      "exit_code": 0,
+      "requested_s": 576120,
+      "clock_s": 576120,
+      "steps": 22,
+      "stages": [
+        {
+          "clock_s": 460920,
+          "lifetime_deaths": 88,
+          "observed_step": 18,
+          "save": "campaign-0018.session.json",
+          "stage": 1
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 2
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 3
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 4
+        }
+      ],
+      "last_observed": {
+        "class": "ranger",
+        "level": 10,
+        "best": 33,
+        "completed": 240,
+        "deaths": 116,
+        "gold": 2775,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 240,
+          "defeats": 116,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 5949262
+        }
+      },
+      "actual_last_session_sha256": "a938a2d5df2aaa0e2ba6ce3a42cc35763a1c96ab8f0a3e7bd2b75268eb54f6cb",
+      "paired": true,
+      "status": "ALL_STAGES_OBSERVED"
+    },
+    {
+      "case": "caster-seed1",
+      "exit_code": 1,
+      "requested_s": 921720,
+      "clock_s": 921720,
+      "steps": 34,
+      "stages": [
+        {
+          "clock_s": 604920,
+          "lifetime_deaths": 105,
+          "observed_step": 23,
+          "save": "campaign-0023.session.json",
+          "stage": 1
+        }
+      ],
+      "last_observed": {
+        "class": "caster",
+        "level": 9,
+        "best": 34,
+        "completed": 359,
+        "deaths": 216,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 359,
+          "defeats": 216,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 9437162
+        }
+      },
+      "actual_last_session_sha256": "518099122a62073d3c2c4e9066cf065c4ba24111f794c506409185ddb2b27549",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 20,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "caster-seed3",
+      "exit_code": 1,
+      "requested_s": 1094520,
+      "clock_s": 1094520,
+      "steps": 40,
+      "stages": [
+        {
+          "clock_s": 1094520,
+          "lifetime_deaths": 444,
+          "observed_step": 40,
+          "save": "campaign-0040.session.json",
+          "stage": 1
+        }
+      ],
+      "last_observed": {
+        "class": "caster",
+        "level": 9,
+        "best": 34,
+        "completed": 562,
+        "deaths": 444,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 562,
+          "defeats": 444,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 11040294
+        }
+      },
+      "actual_last_session_sha256": "c6fe169422fe1d84fe99bdcbef82022d7ebb3e0add378ced4e323574ddd5500c",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 6689,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "caster-seed5",
+      "exit_code": 1,
+      "requested_s": 1123320,
+      "clock_s": 1123320,
+      "steps": 41,
+      "stages": [
+        {
+          "clock_s": 662520,
+          "lifetime_deaths": 181,
+          "observed_step": 25,
+          "save": "campaign-0025.session.json",
+          "stage": 1
+        }
+      ],
+      "last_observed": {
+        "class": "caster",
+        "level": 9,
+        "best": 34,
+        "completed": 546,
+        "deaths": 417,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 546,
+          "defeats": 417,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 11381848
+        }
+      },
+      "actual_last_session_sha256": "0f9ab115b850377b469780c895f06fa33fe90f1f2c41b39a469d3d894515b44d",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 8197,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "gunner-seed1",
+      "exit_code": 1,
+      "requested_s": 489720,
+      "clock_s": 489720,
+      "steps": 19,
+      "stages": [],
+      "last_observed": {
+        "class": "gunner",
+        "level": 7,
+        "best": 34,
+        "completed": 148,
+        "deaths": 88,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 148,
+          "defeats": 88,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 5122804
+        }
+      },
+      "actual_last_session_sha256": "78f97333621a803d0da56e639d285623cc396525a9b14b479cf24cd170353ee0",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 5740,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "gunner-seed3",
+      "exit_code": 1,
+      "requested_s": 460920,
+      "clock_s": 460920,
+      "steps": 18,
+      "stages": [],
+      "last_observed": {
+        "class": "gunner",
+        "level": 8,
+        "best": 34,
+        "completed": 141,
+        "deaths": 76,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 141,
+          "defeats": 76,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 5072289
+        }
+      },
+      "actual_last_session_sha256": "b017ded3dfcad66a467f7bec1d77be73b20f8619e1e8f1fdd65f897ec9f4db2e",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 12000,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    },
+    {
+      "case": "gunner-seed5",
+      "exit_code": 1,
+      "requested_s": 633720,
+      "clock_s": 633720,
+      "steps": 24,
+      "stages": [],
+      "last_observed": {
+        "class": "gunner",
+        "level": 8,
+        "best": 34,
+        "completed": 188,
+        "deaths": 121,
+        "gold": 2850,
+        "kit": {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        "persistent": {
+          "completed": 188,
+          "defeats": 121,
+          "exit_gold_credit": true,
+          "last_rebirth_completed": 0,
+          "last_rebirth_s": 0,
+          "name": "",
+          "rebirths": 0,
+          "recovery_ticks": 12000,
+          "recovery_until_tick": 6768921
+        }
+      },
+      "actual_last_session_sha256": "beaddd97ab1e06b66aad5b5bb87d63bfe240558ce36af1c01f70d4a79d278d52",
+      "paired": false,
+      "status": "EXECUTION_REFUSED_INCOMPLETE_NOT_HORIZON_CENSOR",
+      "error": "Finish recovery",
+      "remaining_recovery_ticks_at_last_checkpoint": 8400,
+      "precondition": "ended at home with positive actual persistent recovery; prepare calls public begin_descent before recovery wait"
+    }
+  ],
+  "branches": [
+    {
+      "case": "fighter-seed3",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 38935,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 10,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 3158,
+      "remaining_points": 10
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        67
+      ],
+      "events": 36306,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2850,
+      "runs": 17,
+      "deaths": 9,
+      "max_actual_depth": 34,
+      "actual_record_gold_sum": 1388,
+      "remaining_points": 7
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "selected",
+      "actual_run_ids": [
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        1091
+      ],
+      "events": 36060,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2850,
+      "runs": 17,
+      "deaths": 9,
+      "max_actual_depth": 34,
+      "actual_record_gold_sum": 1388,
+      "remaining_points": 6
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 39997,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 420,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 17,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 0,
+      "remaining_points": 10
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        280
+      ],
+      "events": 55372,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 420,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 13,
+      "deaths": 7,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 1050,
+      "remaining_points": 7
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "selected",
+      "actual_run_ids": [
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        1304
+      ],
+      "events": 55665,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 420,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 13,
+      "deaths": 7,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 1050,
+      "remaining_points": 6
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 47997,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 780,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 16,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 223,
+      "remaining_points": 10
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        280
+      ],
+      "events": 60526,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 780,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 14,
+      "deaths": 5,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 763,
+      "remaining_points": 7
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "selected",
+      "actual_run_ids": [
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        1304
+      ],
+      "events": 61109,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 780,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 14,
+      "deaths": 5,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 763,
+      "remaining_points": 6
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 43245,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 16,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 97,
+      "remaining_points": 10
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611,
+        612,
+        613
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        280
+      ],
+      "events": 49626,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 19,
+      "deaths": 4,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 718,
+      "remaining_points": 7
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "selected",
+      "actual_run_ids": [
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611,
+        612,
+        613
+      ],
+      "actual_class": "rogue",
+      "actual_weapons": [
+        "dagger"
+      ],
+      "class_skill_masks": [
+        1304
+      ],
+      "events": 50278,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 19,
+      "deaths": 4,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 718,
+      "remaining_points": 6
+    },
+    {
+      "case": "ranger-seed1",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 29336,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 18,
+      "deaths": 4,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4285,
+      "remaining_points": 10
+    },
+    {
+      "case": "ranger-seed1",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        552
+      ],
+      "events": 27024,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 18,
+      "deaths": 3,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4536,
+      "remaining_points": 7
+    },
+    {
+      "case": "ranger-seed1",
+      "branch": "selected",
+      "actual_run_ids": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        2600
+      ],
+      "events": 32492,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 600,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 3,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4535,
+      "remaining_points": 6
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 28319,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 20,
+      "deaths": 5,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 1482,
+      "remaining_points": 10
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        552
+      ],
+      "events": 26472,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 20,
+      "deaths": 4,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 1826,
+      "remaining_points": 7
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "selected",
+      "actual_run_ids": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        2600
+      ],
+      "events": 26344,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 180,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 20,
+      "deaths": 5,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 952,
+      "remaining_points": 6
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 28972,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 1200,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 19,
+      "deaths": 3,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4227,
+      "remaining_points": 10
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        552
+      ],
+      "events": 29299,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 1200,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 18,
+      "deaths": 4,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4626,
+      "remaining_points": 7
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "selected",
+      "actual_run_ids": [
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "actual_class": "ranger",
+      "actual_weapons": [
+        "bow"
+      ],
+      "class_skill_masks": [
+        2600
+      ],
+      "events": 29629,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 1200,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 19,
+      "deaths": 2,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 3165,
+      "remaining_points": 6
+    }
+  ],
+  "all_cases": 14,
+  "all_stages": 7,
+  "execution_refusals": 7,
+  "horizon_censored": 0,
+  "zero_lifetime_defeat_all_stages": 0,
+  "source_unchanged": true,
+  "raw_fired_above_matched_anomalies": [
+    {
+      "case": "fighter-seed3",
+      "branch": "no-selection",
+      "run_id": 614,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 370,
+        "blocked": {
+          "paralysed": 2
+        },
+        "fired": 18,
+        "fired_on": {
+          "mirror_king": 10,
+          "mirror_shade": 4
+        },
+        "matched": 16,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 8,
+          "mirror": 346
+        }
+      }
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "no-selection",
+      "run_id": 621,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 594,
+        "blocked": {
+          "paralysed": 10
+        },
+        "fired": 74,
+        "fired_on": {
+          "mirror_king": 40,
+          "mirror_shade": 12,
+          "sentinel": 3,
+          "warden": 5
+        },
+        "matched": 71,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 7,
+          "mirror": 516
+        }
+      }
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "parent-only",
+      "run_id": 621,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 431,
+        "fired": 39,
+        "fired_on": {
+          "mirror_king": 30,
+          "mirror_shade": 4
+        },
+        "matched": 37,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 16,
+          "mirror": 378
+        }
+      }
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "selected",
+      "run_id": 621,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 431,
+        "fired": 39,
+        "fired_on": {
+          "mirror_king": 30,
+          "mirror_shade": 4
+        },
+        "matched": 37,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 16,
+          "mirror": 378
+        }
+      }
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 403,
+      "row_index": 6,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 297,
+        "fired": 13,
+        "fired_on": {
+          "mirror_king": 9
+        },
+        "matched": 9,
+        "sends": 0,
+        "unmet": {
+          "boss": 288
+        }
+      }
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 406,
+      "row_index": 6,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 412,
+        "fired": 10,
+        "fired_on": {
+          "mirror_king": 9
+        },
+        "matched": 9,
+        "sends": 0,
+        "unmet": {
+          "boss": 403
+        }
+      }
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 412,
+      "row_index": 6,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 445,
+        "fired": 7,
+        "fired_on": {
+          "mirror_king": 6
+        },
+        "matched": 6,
+        "sends": 0,
+        "unmet": {
+          "boss": 435,
+          "hp>35": 4
+        }
+      }
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "no-selection",
+      "run_id": 457,
+      "row_index": 6,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 600,
+        "fired": 25,
+        "fired_on": {
+          "mirror_king": 22
+        },
+        "matched": 22,
+        "sends": 0,
+        "unmet": {
+          "boss": 572,
+          "hp>35": 6
+        }
+      }
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "no-selection",
+      "run_id": 462,
+      "row_index": 6,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 358,
+        "fired": 7,
+        "fired_on": {
+          "mirror_king": 6
+        },
+        "matched": 6,
+        "sends": 0,
+        "unmet": {
+          "boss": 351,
+          "hp>35": 1
+        }
+      }
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 597,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 547,
+        "fired": 23,
+        "fired_on": {
+          "mirror_king": 8,
+          "mirror_shade": 13
+        },
+        "matched": 22,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 4,
+          "mirror": 521
+        }
+      }
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 598,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 438,
+        "fired": 55,
+        "fired_on": {
+          "acolyte": 1,
+          "echo": 6,
+          "mirror_king": 6,
+          "mirror_shade": 32,
+          "warden": 8
+        },
+        "matched": 53,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 6,
+          "mirror": 379
+        }
+      }
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 607,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 587,
+        "fired": 31,
+        "fired_on": {
+          "echo": 2,
+          "mirror_king": 12,
+          "mirror_shade": 15
+        },
+        "matched": 30,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 10,
+          "mirror": 547
+        }
+      }
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 608,
+      "row_index": 0,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:mirror_king",
+        "verb": {
+          "a": "cadence",
+          "v": "tactic"
+        }
+      },
+      "raw_tally": {
+        "actions": 375,
+        "fired": 36,
+        "fired_on": {
+          "acolyte": 1,
+          "echo": 5,
+          "mirror_king": 9,
+          "mirror_shade": 15,
+          "warden": 5
+        },
+        "matched": 35,
+        "sends": 0,
+        "unmet": {
+          "hp>35": 7,
+          "mirror": 333
+        }
+      }
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "no-selection",
+      "run_id": 187,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 394,
+        "fired": 5,
+        "fired_on": {
+          "mirror_king": 4
+        },
+        "matched": 4,
+        "sends": 0,
+        "unmet": {
+          "boss": 389,
+          "hp>35": 1
+        }
+      }
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "no-selection",
+      "run_id": 190,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 399,
+        "fired": 10,
+        "fired_on": {
+          "mirror_king": 9
+        },
+        "matched": 9,
+        "sends": 0,
+        "unmet": {
+          "boss": 384,
+          "hp>35": 6
+        }
+      }
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "selected",
+      "run_id": 185,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 310,
+        "fired": 9,
+        "fired_on": {
+          "mirror_king": 7
+        },
+        "matched": 7,
+        "sends": 0,
+        "unmet": {
+          "boss": 302,
+          "hp>35": 1
+        }
+      }
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "no-selection",
+      "run_id": 247,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 380,
+        "fired": 9,
+        "fired_on": {
+          "mirror_king": 8
+        },
+        "matched": 8,
+        "sends": 0,
+        "unmet": {
+          "boss": 369,
+          "hp>35": 3
+        }
+      }
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "no-selection",
+      "run_id": 252,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 487,
+        "fired": 5,
+        "fired_on": {
+          "mirror_king": 4
+        },
+        "matched": 4,
+        "sends": 0,
+        "unmet": {
+          "boss": 479,
+          "hp>35": 4
+        }
+      }
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "selected",
+      "run_id": 252,
+      "row_index": 5,
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "origin": "drill:goblin_warlord",
+        "verb": {
+          "a": "tag:boss",
+          "v": "attack"
+        }
+      },
+      "raw_tally": {
+        "actions": 582,
+        "fired": 13,
+        "fired_on": {
+          "mirror_king": 12
+        },
+        "matched": 12,
+        "sends": 0,
+        "unmet": {
+          "boss": 567,
+          "hp>35": 3
+        }
+      }
+    }
+  ],
+  "limits": "No retry; seven public recovery refusals are incomplete, not336h censoring. Raw reasons are per-run reconstruction, not directly measured spent waste. No watched RNG comparison, all5 UI, recognition, fun or fullcontract acceptance."
+}

@@ -1,0 +1,466 @@
+{
+  "scope": "Read-only accounting semantics review; original raw fired/matched fields unchanged. A hunting row can act with lapsed conditions (turn.rs800\u2013814), whereas tally_rows independently uses predecision held (394\u2013397,939\u2013975). fired<=matched is not an authored invariant. Hunt event counts show this pathway exists in each flagged run/slot; they do not independently recover which hunt ticks had failing conditions. No per-rule causal/spent-waste inference.",
+  "cases": [
+    {
+      "case": "fighter-seed3",
+      "branch": "no-selection",
+      "run_id": 614,
+      "row_index": 0,
+      "fired_minus_matched": 2,
+      "actual_reconstructed_hunt_events_at_slot": 4,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3450,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3460,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "no-selection",
+      "run_id": 621,
+      "row_index": 0,
+      "fired_minus_matched": 3,
+      "actual_reconstructed_hunt_events_at_slot": 13,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 5274,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 5296,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "parent-only",
+      "run_id": 621,
+      "row_index": 0,
+      "fired_minus_matched": 2,
+      "actual_reconstructed_hunt_events_at_slot": 2,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3720,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3730,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "fighter-seed3",
+      "branch": "selected",
+      "run_id": 621,
+      "row_index": 0,
+      "fired_minus_matched": 2,
+      "actual_reconstructed_hunt_events_at_slot": 2,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3720,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3730,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 403,
+      "row_index": 6,
+      "fired_minus_matched": 4,
+      "actual_reconstructed_hunt_events_at_slot": 4,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 2870,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 2890,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 406,
+      "row_index": 6,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 4134,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed1",
+      "branch": "no-selection",
+      "run_id": 412,
+      "row_index": 6,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 5227,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "no-selection",
+      "run_id": 457,
+      "row_index": 6,
+      "fired_minus_matched": 3,
+      "actual_reconstructed_hunt_events_at_slot": 3,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 5888,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 5899,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed3",
+      "branch": "no-selection",
+      "run_id": 462,
+      "row_index": 6,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 6,
+          "t": 3520,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 597,
+      "row_index": 0,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 1190,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 598,
+      "row_index": 0,
+      "fired_minus_matched": 2,
+      "actual_reconstructed_hunt_events_at_slot": 2,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 1210,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 4384,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 607,
+      "row_index": 0,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 4300,
+          "text": "hunt mirror shade",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "rogue-seed5",
+      "branch": "no-selection",
+      "run_id": 608,
+      "row_index": 0,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 3600,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "no-selection",
+      "run_id": 187,
+      "row_index": 5,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 3937,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "no-selection",
+      "run_id": 190,
+      "row_index": 5,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 4027,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed3",
+      "branch": "selected",
+      "run_id": 185,
+      "row_index": 5,
+      "fired_minus_matched": 2,
+      "actual_reconstructed_hunt_events_at_slot": 2,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 3020,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 3040,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "no-selection",
+      "run_id": 247,
+      "row_index": 5,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 4039,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "no-selection",
+      "run_id": 252,
+      "row_index": 5,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 4780,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    {
+      "case": "ranger-seed5",
+      "branch": "selected",
+      "run_id": 252,
+      "row_index": 5,
+      "fired_minus_matched": 1,
+      "actual_reconstructed_hunt_events_at_slot": 1,
+      "hunt_event_examples": [
+        {
+          "k": "rule",
+          "row": 5,
+          "t": 5606,
+          "text": "hunt mirror king",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        }
+      ]
+    }
+  ],
+  "all19_have_hunts": true
+}

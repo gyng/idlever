@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-16T00:50:08.713673+00:00",
+  "positive_native_wait_return": 0,
+  "native_pid_in_launch_namespace": 117,
+  "wrapper_pid_in_launch_namespace": 2,
+  "launch_pid_namespace": "pid:[4026532422]",
+  "exec_session": 4651,
+  "positive_exec_terminal_exit": 0,
+  "proof": "Native Popen.wait returned and was reaped before terminal.json; foreground exec session4651 subsequently positively returned exit0. Numeric IDs are execution-namespace IDs, not host PIDs. No cross-namespace absence claim."
+}

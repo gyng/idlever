@@ -1,0 +1,13 @@
+# Recovery-aware recorder V3 — 2026-10-16
+
+One authorized genuine Fighter5 continuation, not a fresh seed or a no-death survivor. The original sevenrefusal batch and exactcheckpoint bytes remain unchanged. This is engineering observation, not player feedback, canonical IDLE/PICKED or whole-contract acceptance.
+
+The only native edit is advanced_campaign.rs: a genuine ended/home hero with positive persistent remaining advances through public Session.advance(remaining×100ms), records exact clocks/ticks, then requests public begin_descent. --seconds supports the original residual requested horizon without rounding; strict resume identity remains exact. Core/helper/Cargo/WASM are unchanged. Default scoped exampleClippy and fast examplebuild passed. Before source/protocol/binary are retained.
+
+The retained Corin Ash owner1/Fighter/seed5 checkpoint is byteexact both original.session and campaign0000. Genuine fresh chain retains456previousdefeats; continuation fresh_origin=false, final475defeats, zero-defeat=false. Remaining86280requested seconds plus prior1123320 equals original1209600(336h), not another336h. Three requests28800/28800/28680; final shorter flagtrue. Public recovery advanced449ticks/44900ms, Gold2850unchanged, remaining449→0. Actual clock1123320→1123364 during recovery; final1209644=336h44s. **This is a requested336h horizon, not a strict actual-clock336h acceptance.** Tick fractions remain native state.
+
+All4stages observed by the third check-in, personalL10/historicalD34; preexisting stage1 is re-observed locally, with its original parent timestamp retained. All3eight-hour pair endpoints have17completedruns/10deaths/maxD33. Independent verification covers51realturn0capsules/115937reconstructed events, native complete-vector publicReplay equality, and raw owner/run/slot-count transport. Equal aggregate outcomes do not establish no effect or a payoff. Raw counters remain slot-labelled by captured source rules, not immutable per-rule causal measurements or spent waste.
+
+Build/source/package identity is exact in final-identity.json and pilot launch/terminal sidecars. Native Popen.wait returned0 and foreground tool4651 ended0; PIDs2/117 were private namespace IDs, no hostPID absence claim. Verification-script assumptions about retained prefrontier capsules and a local variable were corrected with original error logs preserved; no campaign rerun occurred. Lossless archive verifies every extracted raw member SHA/size; raw files stay local.
+
+Shelf life: source-bound engineering observations expire for recommendations after relevant rules, preparation, pacing, recorder protocol or player context changes. No full5classes,3seeds,zero-defeat,fun,recognition or strictclock gate is inferred.

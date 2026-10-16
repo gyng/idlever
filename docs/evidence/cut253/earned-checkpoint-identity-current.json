@@ -1,0 +1,1921 @@
+{
+  "scope": "Curated owned campaign/earnedUI/independentartreview checkpoints. Historical vs successor identity remains explicit within evidence; current source only example/protocol. No staging or acceptance inferred.",
+  "paths": [
+    {
+      "path": "crates/idlever-core/examples/advanced_campaign.rs",
+      "sha256": "11865fc33884927728c86cfa304223899518d91a78e23ab0238f52a1a87afc13",
+      "bytes": 22092
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/archive.log",
+      "sha256": "c46a0bcc04f398ef7896a2e5789d4fa6ea9473a43d83590c55a02b9a8c3f7040",
+      "bytes": 491
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/archive.py",
+      "sha256": "5b9e5bc32ec1ab3a61c0c81fcc7aa867a29086bf2a8d523f0ecf9d5b4c794c71",
+      "bytes": 1798
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/checkpoint-paths.txt",
+      "sha256": "8dda8c8f820dd6c5d783957979a5c4dcb24e682faaaf0a5cafc1afb950184d68",
+      "bytes": 2015
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/counter-semantics-review.json",
+      "sha256": "acbffa1b85764176387eace7cff5c27ae3dc368538c8b83fe6d7e3500b618658",
+      "bytes": 10755
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/observations-2026-10-16.md",
+      "sha256": "933512cc8d7c163d9cda68d637064dedb6b4e806bb47f0d51d0844a3a057ad29",
+      "bytes": 5422
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/process-end.json",
+      "sha256": "e4147c559c539588af5090cb74132e804c47703f1372560848132ff868df8916",
+      "bytes": 809
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/caster-seed1.tar.gz",
+      "sha256": "1aac748c778543f0e7f961d55eab2af8964783cf4d99015fd7ae183517b149e3",
+      "bytes": 16546203
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/caster-seed3.tar.gz",
+      "sha256": "b279df0d44254497ebeac28012af481501ecb14caec181c15f38735586aa856b",
+      "bytes": 19109549
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/caster-seed5.tar.gz",
+      "sha256": "013a4b8318af688bca1b4fd758044e6ca8c00a03fd8c7aeda029faadba0b23ba",
+      "bytes": 20650972
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/fighter-seed3.tar.gz",
+      "sha256": "07df923cbeff52baec6376306b03b89a756daa4ee10293174079f18fd0228744",
+      "bytes": 29374411
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/fighter-seed5.tar.gz",
+      "sha256": "ae4e1866d3d2da8833c560ecdb3d1de6e0b99cbc312ffa7d63a24fff745037de",
+      "bytes": 20601267
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/gunner-seed1.tar.gz",
+      "sha256": "7435db111973d1f1af88c4fbe56c9740b111a146baf3aeb2a9b67a9e3ba84e11",
+      "bytes": 8080618
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/gunner-seed3.tar.gz",
+      "sha256": "24b3f23a1077f4a3823fc72f8e01a2847d51dc9eeb98fa998f5a70ee67a658e1",
+      "bytes": 7049100
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/gunner-seed5.tar.gz",
+      "sha256": "b278570f6e3f9bed6ce6bb62c1021ea15bc4d52e71ceda0674acf837469e6950",
+      "bytes": 10832340
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/ranger-seed1.tar.gz",
+      "sha256": "b286a75d5dfa553946a0ce404d0e5689666af4871a9363e8cce4d9ee928c2ff0",
+      "bytes": 13317430
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/ranger-seed3.tar.gz",
+      "sha256": "6c156438617f5e76f1807d9f27f950e006c37e539a6a0e1a3efe1dc4640da5aa",
+      "bytes": 13206149
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/ranger-seed5.tar.gz",
+      "sha256": "2faf9027c07ede8a62ffa7505ac14760a9341251ac03c709c9ad19d74f2b5a89",
+      "bytes": 16012521
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/rogue-seed1.tar.gz",
+      "sha256": "986ed6f0dfc81e1e15eb1d4bb96634bfeef0b38c5f92f5852119e885c55b175b",
+      "bytes": 25612751
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/rogue-seed3.tar.gz",
+      "sha256": "cd3e887fa18c11332a86c9d90ba7181b21240d9ed8ea7782fb4bd605451d37fb",
+      "bytes": 24370472
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-archives/rogue-seed5.tar.gz",
+      "sha256": "587767334b0454f5a9c51addf51105a816e4f63941b4e3408ad9fd5c3467c00b",
+      "bytes": 29854208
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/raw-inventory.json",
+      "sha256": "973081730996bdda8ef9c0988c2c9eadd06868671830d57df5641a736f80451f",
+      "bytes": 403296
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/run-v1-static-error.py",
+      "sha256": "4abc3c9358619d05ad164adb38e3f53b2cfd34b1edc0cd9fd22c7c43a9f0625f",
+      "bytes": 4383
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/run.py",
+      "sha256": "c26e3c588c49408cfc3d38a96490a38eff6a9b3dbbb9531e914b58850875201c",
+      "bytes": 4384
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/status.json",
+      "sha256": "08709d9fb0a21b4f4e356a94c1da7c75ddaa6cd6d542964960951051df4628eb",
+      "bytes": 30795
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/terminal.json",
+      "sha256": "08709d9fb0a21b4f4e356a94c1da7c75ddaa6cd6d542964960951051df4628eb",
+      "bytes": 30795
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verification-v1-failure.txt",
+      "sha256": "e8cc480a2bed91e211ae8868310385ccf7d78bde5b1bb68d545b657a52d7eb48",
+      "bytes": 458
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verification-v2-optional-capsule-failure.log",
+      "sha256": "047845fb8778618724867eb330f1d3c4ad17ff06a9fbf5a278ef882681500893",
+      "bytes": 292
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verification.json",
+      "sha256": "22f5ee5823e7cc5afec464e813281d5bf6d152d64c8a9a84942724db50d4ec88",
+      "bytes": 52818
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verification.log",
+      "sha256": "57914d2c68edb208d39e6e73cfce9890f06b52b49fd54baa699fbd545c2b3bad",
+      "bytes": 228
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verify-v1-assumed-fired-subset-matched.py",
+      "sha256": "44873fa8a89a0d7547b33b40f119df873c97091c537e55e800bfc5fd9517d27e",
+      "bytes": 7319
+    },
+    {
+      "path": "docs/evidence/cut253/earned-cohorts-v2/verify.py",
+      "sha256": "327bfbf1ae34579d68d5c6480a36937abb126d94b69c7a73211b373aa6dd9c4a",
+      "bytes": 7593
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/all15-summary.json",
+      "sha256": "3a96ca6532dda1f4999f0452f9579f2f572702a91a4e155ab41d3e458ab2665a",
+      "bytes": 56201
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/archive.log",
+      "sha256": "0c56cc8ccf8314adbaa0ed829ca85d190314f3c3fb9c8470ea4e44211661c182",
+      "bytes": 205
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/archive.py",
+      "sha256": "5b9e5bc32ec1ab3a61c0c81fcc7aa867a29086bf2a8d523f0ecf9d5b4c794c71",
+      "bytes": 1798
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/checkpoint-paths.txt",
+      "sha256": "ffe451fb7dcfa066ae58097b820d50347c4cbc3e0e3e8b3c6899a02cbdd32c48",
+      "bytes": 1322
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/observations-2026-10-16.md",
+      "sha256": "6039d0301d3ddcea9965350d3da0bd1e156588daeed3929db31c2fd8a9ff5437",
+      "bytes": 4463
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/post-batch-source-view.json",
+      "sha256": "ba8ffc27700fc3c565d43180fe8f82b9c0406c5c311f5955dcd3219c5ca6e380",
+      "bytes": 352
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/process-end.json",
+      "sha256": "a4b81be59a1fe86bc30e6763b456f7410e2be99d95f38e7443c06f0763711a49",
+      "bytes": 449
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/caster-seed1.tar.gz",
+      "sha256": "a93882af6fc019fb18b8b0863df092ff416a301b12a6233ec3a31288bde194ee",
+      "bytes": 7813586
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/caster-seed3.tar.gz",
+      "sha256": "85681b468c7ed71e7988935c49227f52cbf30435e153371d98bfe5b455199801",
+      "bytes": 7030729
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/caster-seed5.tar.gz",
+      "sha256": "0d758ba471dbe6ce364bcd7cb5b153033f61d27740d056f637acffdf59ef2a70",
+      "bytes": 6538069
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/gunner-seed1.tar.gz",
+      "sha256": "f84d7891d9c62d72be3e7dc25f1520eacee688fd6c9cb8cfd6ff706b27618410",
+      "bytes": 10473412
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/gunner-seed3.tar.gz",
+      "sha256": "543c7cb6decb33ae5d791de13766d007da4f49f67ed94be5b201839703800b97",
+      "bytes": 7105455
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-archives/gunner-seed5.tar.gz",
+      "sha256": "b14b4c4b2071bf390faaf9615f3a21af16fc23acc0db78292fc7168eab2da18d",
+      "bytes": 8238089
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/raw-inventory.json",
+      "sha256": "fd599968f92af712f8ab046e5899ebbf7a7a368828a9aa7d13eb604aabbb6463",
+      "bytes": 158643
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/run.py",
+      "sha256": "bd95c344c4ffe34d1278113b1bb5ed1c1c1283121b65fa7180839495ace1e468",
+      "bytes": 5292
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/status.json",
+      "sha256": "4911c96798bac838537d8b7ad0f571470137e5d735d57b207cf818566a7901cc",
+      "bytes": 25156
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/terminal.json",
+      "sha256": "4911c96798bac838537d8b7ad0f571470137e5d735d57b207cf818566a7901cc",
+      "bytes": 25156
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/verification.json",
+      "sha256": "7dd28bde5a70ca12a19b86d19e68b4ace270c73bb10b4a1ed4676c9ae1809323",
+      "bytes": 41521
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/verification.log",
+      "sha256": "ccef016512372475e7fba2976e076e340bbdbaa7f46e6bdcbf0b53564a3ac9ad",
+      "bytes": 117
+    },
+    {
+      "path": "docs/evidence/cut253/earned-continuations-v3/verify.py",
+      "sha256": "f044553a1b6be55a4c3101a99466cf40f70cdbdf34b948cbd70a2921f6794c32",
+      "bytes": 7883
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1.log",
+      "sha256": "a352f833e8434f9baaec750ffa9925f6bb70cb94eb01bc7bd58e88f927fe36f4",
+      "bytes": 555
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1/failure.png",
+      "sha256": "62d993cfacbcccbdf3a0a3d551990ac4f41af5055edf9c43debd5aa5aad839a2",
+      "bytes": 213627
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1/processes.json",
+      "sha256": "e8fe8e6fa95b08f6c7337643f4ccd1ada1dac8d3433047f79ca13ee76dea550b",
+      "bytes": 57
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1/results.json",
+      "sha256": "439a288959949e75c8666a739e99c4e52e5a840a5047d6d321399749000646e7",
+      "bytes": 35345
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-1/vite.log",
+      "sha256": "05cb2a6387eb1fca6c23141114fb37f58f0ed0e51329abdb69f5cf1742b07fd2",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2.log",
+      "sha256": "b6312df42e7f8901deb5ca80b03f050ba9a59cae541fdeb6f11dabf7ca527379",
+      "bytes": 297
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/402-1x-current-leaf.png",
+      "sha256": "7aa2e188c389f5e294b140907674db9ff832a79a4bc50052ec1c75f8334d07f5",
+      "bytes": 209879
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/402-1x-full-leaf.png",
+      "sha256": "e5bd1aa3a877111175c6c8dce7db64d5d1b9262a8917549fd9e16c2a5835c7c7",
+      "bytes": 183782
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/failure.png",
+      "sha256": "27170792fb49d6ff9f56708991687a352d67ee9a9698735172b26e46fb0a3392",
+      "bytes": 209413
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/learned-402-1x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/processes.json",
+      "sha256": "e0f90389071df1124ed1658496bca162fb2dba3303b5aab82d3bdcbf852cf924",
+      "bytes": 1009
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/results.json",
+      "sha256": "4031d6b0a237d1fb9ea197b9d2be098fc5416a68641fc385d076eae01a23222d",
+      "bytes": 56550
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-2/vite.log",
+      "sha256": "59b2f1e4e9f572da124858e8e07d08a5ff8cbf58bef496887ca6f8063bb4045e",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/1440-1x-current-leaf.png",
+      "sha256": "0f8ce65bcedf8ae4f580e67111b32a108abc16ec872507f334bbde01a0cc1e87",
+      "bytes": 789603
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/1440-1x-full-leaf.png",
+      "sha256": "f430ade398bcddc93d26c703e2b9f1cbfc8fd7222c901b8d81c4505d6e5466a1",
+      "bytes": 773637
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/1440-2x-current-leaf.png",
+      "sha256": "fc82a269f871bb6ad1d20bf754387b989a8ed0cba23c0a2a7b5b9b702c897a4e",
+      "bytes": 804895
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/1440-2x-full-leaf.png",
+      "sha256": "d715b1326ac419e2a75a52d810332cf8de97a78d5c75b9532a956cbc5dbd0cb0",
+      "bytes": 750235
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/402-1x-current-leaf.png",
+      "sha256": "6c630711bf48a4b05a53715c44c2148c58808b556db0bbb695b1c4def7c8dbdb",
+      "bytes": 209936
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/402-1x-full-leaf.png",
+      "sha256": "6ec33fa680607c26f949df19a8faf326c636442f7070ff657e03ada2d9d30fb0",
+      "bytes": 183844
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/402-1x-network-fallback.png",
+      "sha256": "b64689a7902c5ee4a8af22cc5081e8ad40345626d945f72969156b8755f2afa5",
+      "bytes": 187041
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/402-2x-current-leaf.png",
+      "sha256": "ccc2cb21f39b2b93a30aeae141d830acc44eda3f7ac71c2578e270a625c5e890",
+      "bytes": 207921
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/402-2x-full-leaf.png",
+      "sha256": "99f197c43970daf9b779ba3ee376848af039aa21089c70de5999334c0c268518",
+      "bytes": 181780
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/learned-1440-1x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/learned-1440-2x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/learned-402-1x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/learned-402-2x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/processes.json",
+      "sha256": "afd81482b28521a7f012057cd0316c72cfaab3a9def33d69dc1fda6749ece432",
+      "bytes": 1009
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/results.json",
+      "sha256": "01fef70b9b7beca0e0716ff5814be4d431061db036ada4f07fa9f97bc98b25fe",
+      "bytes": 182092
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/attempt-3/vite.log",
+      "sha256": "3aeb21c892a925b2f2bcebaa7197055a37fab56aa05bf8cc62d4ef2340bd9e78",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/check-v1-superseded.mjs",
+      "sha256": "d181c28b43d220bd384d280f6e7a2448d0389bf0def5670c0483aca7dc58a490",
+      "bytes": 10622
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/check-v2-superseded.mjs",
+      "sha256": "f88d1edd8dfddfe53ec4ddfd4816da56a6549deb186015cd51211d61746e5ecd",
+      "bytes": 10633
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/check-v3-prereadability.mjs",
+      "sha256": "57b456a0288224be739175836e40ddb8896e097a93c4ed58808c4dd08d77f746",
+      "bytes": 12021
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/check.mjs",
+      "sha256": "2ade563aa58e6ab37f0b902b4d89a217ca35e8f884f3f9e3799658ca57bf2870",
+      "bytes": 12501
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/checkpoint-paths-current.txt",
+      "sha256": "bd1f26f363e035888411d21638549dec5ddd6c84f9a0fb5336957093455b9abe",
+      "bytes": 6366
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/checkpoint-paths.txt",
+      "sha256": "d3a6207512bb494e25c018887fc9518a60dc24ba818180b6f0b1bd34702f8506",
+      "bytes": 4145
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher-2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher-3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher-successor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher-supplement-2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher-supplement.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/observations-2026-10-16.md",
+      "sha256": "ca0679367ea7ffb190193fae2f1363c7a6213b3de7ef80f962fdedfdfbcc54eb",
+      "bytes": 5752
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/pre-readability-source/class-tree.css",
+      "sha256": "d1a17daf9a58925f13a6634dc27eedc3edd4be9933da6276a701055d2e6a1cda",
+      "bytes": 5987
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/pre-readability-source/hero-hub.css",
+      "sha256": "fb080b10a6e4342302491bcffa16db6b1a70d1280f3694e265c28eeac20c80a7",
+      "bytes": 11168
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/pre-readability-source/ui-foundations.css",
+      "sha256": "1534b5b4f6082ab6a6da3ca5087fd41349f654064fb410c4e7679919fbc4fed4",
+      "bytes": 16573
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/process-end.json",
+      "sha256": "a1efa80a3b03069d239fa9d5f5204258d82722e1520cadf452e1b7050767e379",
+      "bytes": 1574
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/raw-inventory-current.json",
+      "sha256": "b5caf8eabcd8750fe0ec1259b4630bbe9d0296c2c8e5cb6b2cc1d002308320a9",
+      "bytes": 22654
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/raw-inventory.json",
+      "sha256": "be0ea938dd25004e9fa10c9ed43860dc0c8c7167bb28f9de26a3f0c0245c3d94",
+      "bytes": 14714
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/script-supersession.json",
+      "sha256": "237eb66b1e9e996baf2fc338d1685fef7e25ada5c2f8875d047e0afa6c00ab47",
+      "bytes": 510
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/1440-1x-current-leaf.png",
+      "sha256": "174a7011fc90366192c83694918dbbb4fe1e451e4c7423cbae95af7275585ca8",
+      "bytes": 789714
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/1440-1x-full-leaf.png",
+      "sha256": "45908bb48263e82d923e5e7de53cd5a29d1c7b77a3725b279d0c5f13f6e7a6b9",
+      "bytes": 773806
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/1440-2x-current-leaf.png",
+      "sha256": "7401f3d48a6b60213b8b1fd3d4e6f9254eaf10388f3f1d60b9aa2c6a29007cd5",
+      "bytes": 824178
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/1440-2x-full-leaf.png",
+      "sha256": "430cfcea8acf78c4881595e58817c9a248a40f520dcdabab22a8688687ba9fd5",
+      "bytes": 769241
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/402-1x-current-leaf.png",
+      "sha256": "6b8e42a89451c8abb0d3a5254538913fbae507da7a95eab4eb891dc28b9bac3b",
+      "bytes": 209926
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/402-1x-full-leaf.png",
+      "sha256": "efffa2aa1ecddf2f03f931d6dab6ed6f82bd743ae792e841abdb0ac8738f40a5",
+      "bytes": 183813
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/402-1x-network-fallback.png",
+      "sha256": "9d18eab7eb04a2fcf69417394793a530648bf73db1c9d7f802b28e3c7546079a",
+      "bytes": 184071
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/402-2x-current-leaf.png",
+      "sha256": "55d73bbf809f1ab2f76d0327640df6972a1ac5ed573b53c39ab7ee6d37b85aab",
+      "bytes": 205957
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/402-2x-full-leaf.png",
+      "sha256": "f9cca259d9bf15e1da38f31a5772b6e4d4a2af65124b57266115fa82cd29509b",
+      "bytes": 195546
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/learned-1440-1x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/learned-1440-2x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/learned-402-1x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/learned-402-2x.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/process-end.json",
+      "sha256": "5a20ce61b36a76cc26b4a40ab85caff2b4cf1cb8b8d6e14d5cc69626d89abb03",
+      "bytes": 683
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/processes.json",
+      "sha256": "2a353154964666bcaac74f910eb9c6d16cbfa1afb2ad9df28f6fa3eaca989e51",
+      "bytes": 1009
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/reset-1440-1x.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/reset-1440-2x.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/reset-402-1x.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/reset-402-2x.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/results.json",
+      "sha256": "e31dc893db726dd11ad12303e1f73c68ad9485ab0f43cfba97b1a2fd99024233",
+      "bytes": 182807
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-1/vite.log",
+      "sha256": "04953b5e1061695399f528c018c11dcff2e9bc246484d2bfe35ea22b02139ac3",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/successor-observations-2026-10-16.md",
+      "sha256": "aa958122ae2ad16aa12df4aed807e8f60eb0530cf7dba849add06d2a73da3f4b",
+      "bytes": 3629
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1/after-reset.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1/before.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1/results.json",
+      "sha256": "ec42bbef958564cc4969b9f04e655825b21df43e2d86942870b7753afc5e03bc",
+      "bytes": 47587
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-1/vite.log",
+      "sha256": "97528cb0d36bc082ca710e9923bef20c56fb189ff533157b5a741df40bcdc74a",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2/after-reset.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2/before.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2/results.json",
+      "sha256": "6a5875ce55b3044a833d2e0f956653efe840f8a679b14e9097d8643634d42421",
+      "bytes": 48622
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-2/vite.log",
+      "sha256": "c65cf16775c1c031eae255eab9425bc669435c672c5081b3fe0741a14985a3d6",
+      "bytes": 450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement-v1-superseded.mjs",
+      "sha256": "2e3232b169ddc5e85c63ce6e29a22ae9d9b628aef0242cfdec807590d74fd4af",
+      "bytes": 8082
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/supplement.mjs",
+      "sha256": "b5b55369aacd0acc0e85fecfd9d96af6772e27a1162c40503d5f608ee79ec617",
+      "bytes": 8222
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/verification-successor.json",
+      "sha256": "3cfcea27ebbeb84fd13be823075154834bdd8afc91afbc0ced29d62bef423df6",
+      "bytes": 2715
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/verification.json",
+      "sha256": "d8d4a88dfd0255e14c293ad6573d0a691a8152269f257bb88b0fc79f85219a87",
+      "bytes": 2162
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/verify-successor.py",
+      "sha256": "61205314871dca2adca66151d5860cb413ca1356a3c75f511a1ad4ce70b0ff0d",
+      "bytes": 3089
+    },
+    {
+      "path": "docs/evidence/cut253/earned-fighter-ui/verify.py",
+      "sha256": "749b8232d72359c45c9af08c6bc7c20d26f6b951f7706fcef2b00761d6325bfa",
+      "bytes": 3768
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/build.log",
+      "sha256": "d8a453886ff98d5eee9b522a9891d43d272163dd3679e9bbafd44c390ad0519e",
+      "bytes": 132
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign.log",
+      "sha256": "79f8c4bb51a18489264b61b688a6ecea5016a098616a724b12b20e2df42a0cd4",
+      "bytes": 2325
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0000.session.json.gz",
+      "sha256": "3b42bfa8828d99ce01daa6d16a2f2a70a2a0ef9a63d10ec1ba0b2250541b78bc",
+      "bytes": 1991
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.report.json.gz",
+      "sha256": "9872829d8d9c514e6dd3b44dd89e328827bf6acdabae8c78bdd0a0729214d29a",
+      "bytes": 2437
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.session.json.gz",
+      "sha256": "258bd2c28c915cf4bc692b10f6a81e73659fa31248e13bb576808f5db2afc601",
+      "bytes": 10968
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.report.json.gz",
+      "sha256": "f838d715b1094d5f1fc03e1f7da7e11e27c007748187cb0bcc88db946e88f084",
+      "bytes": 2279
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.session.json.gz",
+      "sha256": "f8900a5336a8042b9e4f9d230f0c1e79200ab4bafa8cdd4003335e1d67b3793c",
+      "bytes": 11587
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.report.json.gz",
+      "sha256": "23442e9e5ef9f9381ab657dc35c58756ca380c193adebf8bea9d26f9efb93e8e",
+      "bytes": 11406
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.session.json.gz",
+      "sha256": "b3b77a36d1eb10d1da60e9fe8d30396dc5ffe536655489a92f9e344c55ac9996",
+      "bytes": 71108
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.report.json.gz",
+      "sha256": "e3835d155c36a6a445afc6c62be92cb02d80ae1ea0e3765b83087616c1dcae73",
+      "bytes": 11476
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.session.json.gz",
+      "sha256": "aed5c222a876e5293285513cc1dd35b9f6a62f58d576965af9e7164a5e3abf05",
+      "bytes": 110153
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.report.json.gz",
+      "sha256": "d5b65b3e5a8b65004e676b8565e8ab9e3bf797c2784cf8927d6f9b6cc9e5498d",
+      "bytes": 9650
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.session.json.gz",
+      "sha256": "58b9f45720cf69c75ab9f3f82515aed3a05621dd2472ec3384ef3eba9c7c65d9",
+      "bytes": 124746
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.report.json.gz",
+      "sha256": "8f80cfcc1147d76d97250f4594280eb565e3fb4dc1b04224ea1fac426f873ba1",
+      "bytes": 10735
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.session.json.gz",
+      "sha256": "8fd1d9fca0da5e3fe654e0fca458d1681825682a06ec0edfe373976b13ef54f5",
+      "bytes": 155580
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.report.json.gz",
+      "sha256": "0fb3b379b352e4fd7390dd2ec6f65448a3e73679f437eda8eb3c8514cddd1b21",
+      "bytes": 10928
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.session.json.gz",
+      "sha256": "0f2a54886cbc4390f3ddbe6d57ead38699527fd75eb64a68a1f3b3766dcdad55",
+      "bytes": 196472
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.report.json.gz",
+      "sha256": "acb35c625271d0f1c5d6000f5985c9bdf0b4de51abff8ad33a9c45a2083117d1",
+      "bytes": 11902
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.session.json.gz",
+      "sha256": "f13b33cf80ab229222d929229e4ae4c00506d2ef9dd1a0fac4f8b7b2340e5423",
+      "bytes": 257841
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.report.json.gz",
+      "sha256": "a4d220e597a642cbfadef9b6276aa353712b8a33f920777bc6fb0f2538548e27",
+      "bytes": 12928
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.session.json.gz",
+      "sha256": "1dd53781948b2d19ef578581cab7e91152abfe590d45924e5292fab6b176e277",
+      "bytes": 306378
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.report.json.gz",
+      "sha256": "9d0910e1e3dcf803dedb263d72d541eb78f00714d122c021eb48a0fb6ead3069",
+      "bytes": 11146
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.session.json.gz",
+      "sha256": "cb62284f425f1ee33516c783037792b82515f5b5cf43afcdab09f9af3761db79",
+      "bytes": 340178
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.report.json.gz",
+      "sha256": "4487c5b62a54838b076220fbd9194f560164a52e28d5f5ec349a673d368744fa",
+      "bytes": 15039
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.session.json.gz",
+      "sha256": "1fe70ffb91ed2303607c73c3652b4a0351b8ed642ba39daf0e03e48789892b98",
+      "bytes": 422006
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.report.json.gz",
+      "sha256": "a4291e4b7d42ae56894b82c9d469dba9bd54822fec89182139995822bbf36020",
+      "bytes": 15827
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.session.json.gz",
+      "sha256": "b7a6c398f6ad7660aed827583bb928ec16d8c7a6f7988b36a2a9963c674134ae",
+      "bytes": 488997
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.report.json.gz",
+      "sha256": "cd43cbfcf2fa7d9511fb6377e065cd486485a0309a782a1cd6672e20871fc290",
+      "bytes": 12890
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.session.json.gz",
+      "sha256": "f2669c603336128d5cad354d9c703962b238f2da7d28d209cd9d1b8649021466",
+      "bytes": 579551
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.report.json.gz",
+      "sha256": "ea948a0dbe9cc4b8651af9dc0502c6660a4f1998fe1878e3c8913cd796e30aa0",
+      "bytes": 12450
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.session.json.gz",
+      "sha256": "3af8eb04eaa8c5e0d44af1722fe48c916833423bd0f80ad207093c9d108b57d0",
+      "bytes": 656541
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.report.json.gz",
+      "sha256": "ec7442700c85deef0245c373f90673cadc77d1d12ccd461058544a8c7e3c922f",
+      "bytes": 12474
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.session.json.gz",
+      "sha256": "97b404a5347900210ce5701eafe1356d750ed54bbd876ac397ed72b7cc4879a7",
+      "bytes": 662112
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.report.json.gz",
+      "sha256": "3e1239b6f1f9d18f3b5fd06f04848e1e601c016f2548b2a7da2c517cbc07ff8d",
+      "bytes": 11180
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.session.json.gz",
+      "sha256": "4c58e0b743c086cdbc4b1b308ca7def63d94b7bb83559612232664f947958148",
+      "bytes": 653790
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.report.json.gz",
+      "sha256": "dfc5e8052517342b294ff46e7a4f7171f2cc1bc5cebcef2425cf79e2e7269b5a",
+      "bytes": 14605
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.session.json.gz",
+      "sha256": "a0932b1aa399a2443905a8c0a4c96b4d7a94aa02386e6cf9b5e383e730cf5b14",
+      "bytes": 635102
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.report.json.gz",
+      "sha256": "275031069f4f964003cd70c7c8c70ea8d590f3dd5c8b4f3322b56896ab9145ed",
+      "bytes": 12672
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.session.json.gz",
+      "sha256": "89dbe6e30801c9b08110917be7cf97364be73b3cec48ccc65eb894b2a1c079ba",
+      "bytes": 635784
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.report.json.gz",
+      "sha256": "832d25820cf9e2a25afc5492b2dc2380318e73b62a03ecc88fcd79d2de223940",
+      "bytes": 12911
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.session.json.gz",
+      "sha256": "5b9f13360daf1604a64ebbdad94cf610286c242fd2094969d678192bdc359310",
+      "bytes": 639186
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.report.json.gz",
+      "sha256": "802e01dc955e676d6a29cf09e4613070979cd56cafea5deb6ea9bd4cc17346a2",
+      "bytes": 12747
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.session.json.gz",
+      "sha256": "4c78ed83b3efebd13b3fe7f7ab52cf9eefc82c73c86edf54e0842ab07df4a259",
+      "bytes": 638392
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.report.json.gz",
+      "sha256": "68676ef175f580fb3cb1e21866d8924bdbedd650bd32d80770c2b0218ba0ab12",
+      "bytes": 13726
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.session.json.gz",
+      "sha256": "a7994f8c50f7ff675d417b09ca3e360769b4ec583ed276fd4a4e3e9010c0de99",
+      "bytes": 643181
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.report.json.gz",
+      "sha256": "18ec9a02e14cb5de4f4ea6cce18a1960fe282ebc4f777ced1de771ad2066b70f",
+      "bytes": 13886
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.session.json.gz",
+      "sha256": "c70e7ef79077563b1e69f36f6e045423af672668e9ada9c7d15ef5cb09e0c49d",
+      "bytes": 648879
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.report.json.gz",
+      "sha256": "f6c9f7d3ba1ff5f4c71c290c5526dc8af649893caa12dd9130f9d4fdcb2f02d1",
+      "bytes": 13511
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.session.json.gz",
+      "sha256": "9884b74505631e3a491906c791478eeb93e2a8eaa8749b69f3bd8c26225f8940",
+      "bytes": 647541
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.report.json.gz",
+      "sha256": "86a2fa08bf6ab587241903964f659409a256146819cd14795a3f40be5c6e3364",
+      "bytes": 11592
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.session.json.gz",
+      "sha256": "bfa3845ea7cbd6a5427cc29d5ad7d16311f88ae3e08b0ab6538b6559f48aaa91",
+      "bytes": 653173
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.report.json.gz",
+      "sha256": "9bbf48b2b2cd2d1f0452609b8bd7af13eff60b4f77c10eeb42a91f72b6a730af",
+      "bytes": 13472
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.session.json.gz",
+      "sha256": "9cee143641a67ed0bba5121e82f60a989c0fc10cc5569f65809b55b267f76239",
+      "bytes": 661870
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.report.json.gz",
+      "sha256": "de3bcc1f507b641185c14fd03cea627ac6d743f6cfc24fb1699d5dd97f4fabcd",
+      "bytes": 12010
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.session.json.gz",
+      "sha256": "2b0309f2e33a57a6c10547bcf5b86ae3bdc3479fcd47d206fedf1f5039d3f127",
+      "bytes": 665535
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.report.json.gz",
+      "sha256": "303ef01cf258c5afae427b9afc7da36b0d4302f1d66dc4f6a7b2c8080ea588a0",
+      "bytes": 14850
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.session.json.gz",
+      "sha256": "b5253120b92f8b2e0d1c6724af0d5dde5641961d233ae07b50895977180739d7",
+      "bytes": 672213
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.report.json.gz",
+      "sha256": "b24b71cc2539ca95b1194eeb64b509e6b3d93762d957e44c8cef6d5985c47c9c",
+      "bytes": 14236
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.session.json.gz",
+      "sha256": "52312598ea0cb9e6c582c792c0d7803709581ef141e45c7cb5b762530d91f8b3",
+      "bytes": 674882
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.report.json.gz",
+      "sha256": "7e9f6297bbfb866850e173f49bb12219ef90f04f09d252d15f767d469bb3d2e1",
+      "bytes": 13696
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.session.json.gz",
+      "sha256": "9be4960b976489b5b6a94ba21361ec6562385dc2266248ed131f807aa805f01b",
+      "bytes": 675208
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.report.json.gz",
+      "sha256": "b32b16f75da1e2d9c1f56215917ced08f3b1b04608ab5abae2b1b74d314cb35d",
+      "bytes": 13816
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/original.session.json.gz",
+      "sha256": "8818cf070fe86912fc0ad892cf2f8063a2b3660f0bfa88a2f929960893e54ae8",
+      "bytes": 1990
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-preparation.actions.json.gz",
+      "sha256": "453d3ebfc3e660d7225aa261f52f32828957275cc5e98727f1db5902aa8bef87",
+      "bytes": 120
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-prepared-no-selection.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/actions.json.gz",
+      "sha256": "68433ac2490ea1489ab0fa739057fe71c7d6843ae152225a0d6eaf3e299438b8",
+      "bytes": 23
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/after.session.json.gz",
+      "sha256": "ddd553a1d3068091ad17bd03ef59393e43e1421f139202b3779f3fb68ee2a320",
+      "bytes": 679854
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/first-slice-with-send-capsule.session.json.gz",
+      "sha256": "0e26357e728a1b06f9d8e1ba0605e3c5dc0c6c9a5609edddd9d405b6b895e57b",
+      "bytes": 669301
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/prepared.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/receipts.json.gz",
+      "sha256": "7ca3a7e5d197b2130fe86cf43b31f9583a79ac5d95725f005701524a0d9ec15d",
+      "bytes": 1513
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/report.json.gz",
+      "sha256": "4785926239e902d9eaaa603499654d281e3e1f9ec15c7c7de5cede48e7bba99c",
+      "bytes": 14670
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/result.json.gz",
+      "sha256": "f4853201dd0a743310febc8df51d4f94de6a6ab46956f70ba9b1f423b4976b28",
+      "bytes": 3700
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/actions.json.gz",
+      "sha256": "ae8a8901922ab8571ef2131d051a521bd4cf256fef0d52c47844f67bf92e75ea",
+      "bytes": 202
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/after.session.json.gz",
+      "sha256": "dac750261666e0d773b663b83027ac3867d5a0e200f17bc3f75dfd5d8822135f",
+      "bytes": 680003
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/first-slice-with-send-capsule.session.json.gz",
+      "sha256": "a205d9a13113275ac2fb27c7c030828c03854ca90ab0bac85c2d8e3b0ab804de",
+      "bytes": 669371
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/prepared.session.json.gz",
+      "sha256": "a7dd72b98423c53411e942e9e25db8cd193cd1a921b610e670609f36ca3dd352",
+      "bytes": 676248
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/receipts.json.gz",
+      "sha256": "cbf827c7a66fde33e9ea71733f76be535e6df62121fe2b1552283c5b8f814db2",
+      "bytes": 1705
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/report.json.gz",
+      "sha256": "e9c7020b03790733a82cb68b01a7163c84f121e4ee48be4ba6fa5f30652747e8",
+      "bytes": 15007
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/result.json.gz",
+      "sha256": "00cf25aad72eaf7a020b5ff5ef3b3b637eee0a5577e54804eb2bc0421903e97d",
+      "bytes": 3868
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/actions.json.gz",
+      "sha256": "d93e5c5347c567115a1681a30c31d47a5bc2fd601fa0613fa5d97ad2703365c4",
+      "bytes": 217
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/after.session.json.gz",
+      "sha256": "337e0b2379aa4f83e7216c7fe9df22957137a783df64248582df0ba67ce9290f",
+      "bytes": 681876
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/first-slice-with-send-capsule.session.json.gz",
+      "sha256": "83869378c4ac0c03192103134d637867e7cde7c23c4ba8d16c560a054e79ae55",
+      "bytes": 669392
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/prepared.session.json.gz",
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/receipts.json.gz",
+      "sha256": "4fdef0b37006bf4a1e376aab4d01d90788c70e568af8eefc6ead660952e7e120",
+      "bytes": 2118
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/report.json.gz",
+      "sha256": "ca2a4b387e6632e7963f2828f00061cf6db3c7bb9fd1ae97d9b064f0b108e9e1",
+      "bytes": 14891
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/result.json.gz",
+      "sha256": "d43f8f555d1a085efd0a60cfe9b43dea01a6dc9d780f63f645cd9237e7f0d540",
+      "bytes": 3825
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/paired-frontier.session.json.gz",
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/result.json.gz",
+      "sha256": "a0e50a3a4efbde3681610defaac4628af760ef8e31f560824900221aa413eba4",
+      "bytes": 16827
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/state.json.gz",
+      "sha256": "a0e50a3a4efbde3681610defaac4628af760ef8e31f560824900221aa413eba4",
+      "bytes": 16827
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-additions.json",
+      "sha256": "6ba8f98a9bf6286ffab76eea2bbe1364f930dd4f954444fd8b161895287a1c78",
+      "bytes": 550
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths-v2.txt",
+      "sha256": "21d9b9e59dd79f275e8fefb484d668dc6edfdfdaf8a456c14b5124b17fe77b5b",
+      "bytes": 8926
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths.txt",
+      "sha256": "af68d9552af732b8b76585a49f1056a88265ad3f7c2fde40a77e3bf81a9bc34e",
+      "bytes": 8653
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher-host.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/observations-2026-10-16.md",
+      "sha256": "5790b77cb5ac7d7cff97bae20815e3c89c7d2a5ae9711c4f9b1a0364850c30ae",
+      "bytes": 4386
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/process-end.json",
+      "sha256": "4e0ba3ca8b26b29139478c6f5038ca5b795269e977194bf8a6438c463d213b95",
+      "bytes": 305
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/process.json",
+      "sha256": "b17cc99888ce81e47a59565ba1828da85597427754bd56538fa106203ede1e39",
+      "bytes": 782
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/raw-inventory.json",
+      "sha256": "39c1fdb9f499a50d8c21ec7f360b710e3cf45ade74d565de4d91bf53ce8ab80d",
+      "bytes": 43994
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/run.py",
+      "sha256": "3016524b7489da1ff2a6a629eeaba235b1203b50794b79b5b16c3a8c50000343",
+      "bytes": 1601
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/terminal.json",
+      "sha256": "0da396fd8a9be27cdc32e07582780f477ac36238f8b0a4a89a09c3e9fa1460af",
+      "bytes": 1079
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/verification.json",
+      "sha256": "56fb82d157a5c5800f7c7ca2ebf3f127784ec483417a5ad103db2c5d39fd32ea",
+      "bytes": 7856
+    },
+    {
+      "path": "docs/evidence/cut253/earned-pilot-seed1-fighter/verify.py",
+      "sha256": "7a2a0a5d0207e1df30311cd2be7212ae13d5f0125acaa7e2f24eba147b08a0ea",
+      "bytes": 5254
+    },
+    {
+      "path": "docs/evidence/cut253/earned-preparation/protocol-v3-superseded.md",
+      "sha256": "9a8959376751005f3407c14c22e7cc2b4478a03abc428e36f196dd73abd4507a",
+      "bytes": 4940
+    },
+    {
+      "path": "docs/evidence/cut253/earned-preparation/protocol-v4-superseded.md",
+      "sha256": "00af02ff5223ee6fcd7f365791d51651cea262d6c03df5565e0dbf3974289ab9",
+      "bytes": 6326
+    },
+    {
+      "path": "docs/evidence/cut253/earned-preparation/protocol.md",
+      "sha256": "d0833465ae02e4e437388a85e7b997ff297b426932178cd4d8e006b324479495",
+      "bytes": 8113
+    },
+    {
+      "path": "docs/evidence/cut253/earned-preparation/successor-proposal.md",
+      "sha256": "5568ddf7c0883e5dfc627d922d3cad25565305d004f0fa6fcfe380823cd1ce07",
+      "bytes": 3847
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/before/advanced_campaign.binary.gz",
+      "sha256": "a9be56f62e309753a01ec4d2db7875887ee68e45b799ec3f3c3c61055dad973d",
+      "bytes": 3892715
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/before/advanced_campaign.rs",
+      "sha256": "5eb967cb887ad24f0776c8e6f72152100782217734155b9649960f018ee8375d",
+      "bytes": 14456
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/before/identity.json",
+      "sha256": "bf7cb7106e7fed577bc1eddad7a582aba5c6c4841920d903adc5f246ddaa88fb",
+      "bytes": 16688
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/checkpoint-paths.txt",
+      "sha256": "7e1f88fb867645a52be9a8513e1b8c8a62e5c2f69b8cb716b09c4ccbc922cb34",
+      "bytes": 10009
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/checks/build.log",
+      "sha256": "83dcf06ef07e5d2b02fa82dd0519f930b19812f6f3752a9fd6e7d9c27ab2ee3c",
+      "bytes": 131
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/checks/clippy.log",
+      "sha256": "13d4e2534ff1709b2f3f48fd3b61918eb11e9c2e7a371ddb1b1002baf6c6f6b5",
+      "bytes": 145
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/checks/source-boundary.json",
+      "sha256": "db9684965b6c026d7e974c1bbce42f164ad5eec0b4431f122ee3355cd20169d5",
+      "bytes": 393
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/observations-2026-10-16.md",
+      "sha256": "4e0ac93da162e1fad485cd9c7ba7092f795c3f876be49cd32e30c7106f5095ae",
+      "bytes": 3691
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign.log",
+      "sha256": "79f8c4bb51a18489264b61b688a6ecea5016a098616a724b12b20e2df42a0cd4",
+      "bytes": 2325
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/branch-row-reasons.json.gz",
+      "sha256": "3c832438faca17d5c28789881e6050d89e5f479af88f0a2a29301998d84c7042",
+      "bytes": 1662
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/departures.json.gz",
+      "sha256": "e73a58514391c2d9b072db41c3faed2b97736221407728c27c2930d04683e573",
+      "bytes": 377
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/first-actual-departure.capsule.json.gz",
+      "sha256": "aea93b36c4c8c7d44c741fd3a83cafc7a21c49fa203f29fa972c6575bf218a10",
+      "bytes": 28290
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/result.json.gz",
+      "sha256": "e1eff8998bc72c1a7a3daa996bc3446cfefa56cc9e6fb3979fd6583512351722",
+      "bytes": 3786
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000305.reconstruction.json.gz",
+      "sha256": "cd4089d412401558197008d388ac00a108e3f93a40a47399a18ddaf040820d56",
+      "bytes": 29118
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000306.reconstruction.json.gz",
+      "sha256": "1fb334bf27153b4dfff4da15413a6055399ba7d03d96215b327626f23fbdb202",
+      "bytes": 26624
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000307.reconstruction.json.gz",
+      "sha256": "05db4a5800c07d3e1e7854a04168586791f9c85d80f1e4b9226860c01a669dc4",
+      "bytes": 64197
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000308.reconstruction.json.gz",
+      "sha256": "8b5993309c373822c6174caaf992be99cc1b74e1b9c11f1941582f32e022da1f",
+      "bytes": 26570
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000309.reconstruction.json.gz",
+      "sha256": "47037145a736118d123232cc23a5aeb9b84bae64d85470e1acc769964a33d92a",
+      "bytes": 24227
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000310.reconstruction.json.gz",
+      "sha256": "dae1ff6017e6c721f4348ed7043df8d4fcfb7fe8a6434eacbf073189b0efa6e5",
+      "bytes": 76103
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000311.reconstruction.json.gz",
+      "sha256": "5989525bca7ce2ebb85f82d28fdce8e5088ba0a7799aab168368d140ba8e6bf4",
+      "bytes": 28402
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000312.reconstruction.json.gz",
+      "sha256": "a9d642438bb0686954716cd82423ee8ca7c3bd676879df3a5746f372d17181f8",
+      "bytes": 64024
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000313.reconstruction.json.gz",
+      "sha256": "f734fea36c264c91572901ceeb95f3a091286c485324dc56547988bc6184552f",
+      "bytes": 59553
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000314.reconstruction.json.gz",
+      "sha256": "4d58c4cf30573f637062b433c0197e65236c3bc82820047d84f3555d1c7e2089",
+      "bytes": 69637
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000315.reconstruction.json.gz",
+      "sha256": "2ec0baa4940ce07ae2e8ebdc1370d694ae5a3bd7dbf35f9a7d3de11999313e6f",
+      "bytes": 56263
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/run-000316.reconstruction.json.gz",
+      "sha256": "2532f176ca355b4cc0d7b1aae1299a44a19821cf020e0cf1f38410eb3c2d3e88",
+      "bytes": 60860
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000305.capsule.json.gz",
+      "sha256": "aea93b36c4c8c7d44c741fd3a83cafc7a21c49fa203f29fa972c6575bf218a10",
+      "bytes": 28290
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000306.capsule.json.gz",
+      "sha256": "2353ef9a5dfac596f16e29174fedef2477aad5efa86f242e83ec35add906fb0b",
+      "bytes": 28337
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000307.capsule.json.gz",
+      "sha256": "e35cd8d641c284481a77d3e3a56e631b46c75e8e7f5580c529170dfc435cb674",
+      "bytes": 28359
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000308.capsule.json.gz",
+      "sha256": "35aa98af253a7d4ad527dae4465296bcf6909dc85cfdc654bb2c88c613650203",
+      "bytes": 28647
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000309.capsule.json.gz",
+      "sha256": "0dc7deca059eb4581964b65e1505c93b27a2b038d620023fba140d95640cf322",
+      "bytes": 28759
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000310.capsule.json.gz",
+      "sha256": "aedb6a9bc1ac60c7d5acbc8eaf3e295106e347e09d71a782e71a1315744c8e3e",
+      "bytes": 28513
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000311.capsule.json.gz",
+      "sha256": "9f160288ccb370682893c57d120793cbbe844ae4a75db053bf08037eb8d41c98",
+      "bytes": 28758
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000312.capsule.json.gz",
+      "sha256": "1f17b71d7f222cb6ee51f86aaba412d8ac05489a61f4cc18c10d15ac3033b875",
+      "bytes": 28674
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000313.capsule.json.gz",
+      "sha256": "8fc3b38043b3373ecc304977ae2ac677520b8f6fdeb12d05b619ab3e8a034ba4",
+      "bytes": 28700
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000314.capsule.json.gz",
+      "sha256": "f35ac9afc0bba299dd476f903c2be66fe4da09d3956fc6d9b3822311de3d4881",
+      "bytes": 29268
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000315.capsule.json.gz",
+      "sha256": "4aee812199c3d2a7e179c3684f564354ac7c5e654601bf81fbc208f6a48d2b10",
+      "bytes": 28947
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/no-selection/send-000316.capsule.json.gz",
+      "sha256": "36b091a633ec82f0026b324b543e16dfdf72353b2800e6aeb54f6073d30f189d",
+      "bytes": 28956
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/branch-row-reasons.json.gz",
+      "sha256": "21c186288b066897a2f08ee1fb56fec8e4a5cde903ce2e0a1f7f74fbda187b04",
+      "bytes": 1970
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/departures.json.gz",
+      "sha256": "749bc96288243251c677210ca523ac1ca78f5ac2ee987096646586b8147ee5ea",
+      "bytes": 391
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/first-actual-departure.capsule.json.gz",
+      "sha256": "083e6677c5e1e77dfc9bf5051259b6ade806cf76725bddebbf20b5e72dde469c",
+      "bytes": 28438
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/result.json.gz",
+      "sha256": "c5a67130d5c4b2de698f945f4581c5e5fb092ba5ededdb979147e3473530082e",
+      "bytes": 3957
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000305.reconstruction.json.gz",
+      "sha256": "6027124c176df70e599860b360667c7ff09fdcb9acc05c9d69e78ba4bb82e071",
+      "bytes": 29823
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000306.reconstruction.json.gz",
+      "sha256": "4a64f7b47be366b8fcb9e46feef58d64d5d1b9ab7e0a6d39e4797d9c64882ead",
+      "bytes": 54132
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000307.reconstruction.json.gz",
+      "sha256": "00c30b34a3f10d608ab67416c9c3a5ad50eca3ccec42796b34da2de2acd702e0",
+      "bytes": 24857
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000308.reconstruction.json.gz",
+      "sha256": "485e1af2bd1a8903831199371f238c2ffee600a22011cac94398839a5ada0031",
+      "bytes": 66814
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000309.reconstruction.json.gz",
+      "sha256": "0583e17894fa49d045df60a4350b40b1bc3992f8c9cf02568c74ba596fbe14ae",
+      "bytes": 27298
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000310.reconstruction.json.gz",
+      "sha256": "7bf24900428ee81de7b936cc1ae1ea1daeb6e997cb8c997697565f704aa01b86",
+      "bytes": 61905
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000311.reconstruction.json.gz",
+      "sha256": "3ec6c96c5d7b2ce7e0811ab8ab720aca8eb766972526b7324574745c05ad3edb",
+      "bytes": 55205
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000312.reconstruction.json.gz",
+      "sha256": "45314f38c0d221e2cd0be716ac038dcd5b09b5c9c52fff28d309427dc174d517",
+      "bytes": 24480
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000313.reconstruction.json.gz",
+      "sha256": "e07edc4dfe1833a66b5eff6854b3836291566a800cf74a7610132aaf9821238c",
+      "bytes": 60419
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000314.reconstruction.json.gz",
+      "sha256": "44f83b7743a417075a4a4d42aa71bfa6e512a20426467a17d0b458cdf0e1411a",
+      "bytes": 55722
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000315.reconstruction.json.gz",
+      "sha256": "0ef1ef04a45b18326f8cc0506c0ab68c09bf43d2b79c87a5ee10401a33db0acd",
+      "bytes": 56305
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000316.reconstruction.json.gz",
+      "sha256": "d41fcb0dd765d83f691229ce9988a27c4714162781e47536d8b1e9043adc2e22",
+      "bytes": 51426
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/run-000317.reconstruction.json.gz",
+      "sha256": "d0d5536b7fc4efb44a85e1bf658d93d00ed4f281f9a965c3cb50c93660650f79",
+      "bytes": 62940
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000305.capsule.json.gz",
+      "sha256": "083e6677c5e1e77dfc9bf5051259b6ade806cf76725bddebbf20b5e72dde469c",
+      "bytes": 28438
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000306.capsule.json.gz",
+      "sha256": "40e7ff330ade25fc594922014845f5bdc76fe921dfdf21dfee0c3e0ce09a00f5",
+      "bytes": 28887
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000307.capsule.json.gz",
+      "sha256": "dd3bfb9362973406d4c50dfcb5f2d45fe9d5516f3323952bbdd7b7ceaf2ccd2e",
+      "bytes": 29466
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000308.capsule.json.gz",
+      "sha256": "ed09d0129d2ad48aea3993c87ba0adc147c623585b7bdcdec9bbc80ea65e2d80",
+      "bytes": 29339
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000309.capsule.json.gz",
+      "sha256": "66492945b24b4a2c0a4fb42a0f939a67e1398f00bcdc6824b0672391d5842c3b",
+      "bytes": 29158
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000310.capsule.json.gz",
+      "sha256": "c787968fbed1fe6b89f97c89afeeb2d481f07072271ee596d31f453a064f8ef7",
+      "bytes": 29034
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000311.capsule.json.gz",
+      "sha256": "42c83dd2f1711acb8bba974c32753d4f86de958a6eec47e15bb20abd82fab7f2",
+      "bytes": 29199
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000312.capsule.json.gz",
+      "sha256": "c81728760f37e2985894c1d8164f34f6cfc5a2cdaabe423bbbd257d2d3ac2ceb",
+      "bytes": 29293
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000313.capsule.json.gz",
+      "sha256": "0b09cd3f161a3c2942ff747416f9354d89ab21d6f7c2988166a5e635f2bd4979",
+      "bytes": 29012
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000314.capsule.json.gz",
+      "sha256": "1b86a281dea48edc70a44ac8b3e177378f370f18ae9674eaaf326bee47962723",
+      "bytes": 29421
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000315.capsule.json.gz",
+      "sha256": "2ccc204ffe7c009ae9d046091599e9bfa64ccf580c05604ad3b4a589c1d43f65",
+      "bytes": 29475
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000316.capsule.json.gz",
+      "sha256": "ae5a73733acfd57341becf251a531727f4306e587df0acd94c2df5bc6ac2f9ea",
+      "bytes": 29487
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/parent-only/send-000317.capsule.json.gz",
+      "sha256": "8a1e726956365c63c4ff12f824460339696607d3301e2995a79904e1a0e9b157",
+      "bytes": 29263
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/branch-row-reasons.json.gz",
+      "sha256": "fe8b2e94fbeaea35a2d76fb07a3d314a32f849407a23e223c43fe2a553b246f4",
+      "bytes": 2036
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/departures.json.gz",
+      "sha256": "8c15278cb7b6f55bba5493257d13994213fd6a11cbd9aa166f0ec70b9530447c",
+      "bytes": 381
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/first-actual-departure.capsule.json.gz",
+      "sha256": "4c9ab314df455684f5cbe149976cbeedae9eb232fd85e9cb90b32d6f708e7064",
+      "bytes": 28481
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/result.json.gz",
+      "sha256": "223a8359edccf73deb9885d5db413cda443b1e9a8f39cacf45ce5d3bcebbbb63",
+      "bytes": 3916
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000305.reconstruction.json.gz",
+      "sha256": "49f1b74f7964084c22210835e81be1f98e3b3fc4d1e1e7edfb305ffff6d77372",
+      "bytes": 29847
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000306.reconstruction.json.gz",
+      "sha256": "6f7b87a8141be4f3aa67634d12603d0f8cdc3cb955baed9ebe08923e64e2fe5d",
+      "bytes": 58473
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000307.reconstruction.json.gz",
+      "sha256": "b401af521819da9c4bae65393db48ad2a23552495a3221501c1c3c414c9465e9",
+      "bytes": 24774
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000308.reconstruction.json.gz",
+      "sha256": "00ee1eec2f6488ed9333b63ac63659e327685870cc8ff07446a00eefc4a858f3",
+      "bytes": 67550
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000309.reconstruction.json.gz",
+      "sha256": "cafc805a0f40e26b6ab6611f8dd95754ec95f405b6b3529995377564057e0c73",
+      "bytes": 27386
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000310.reconstruction.json.gz",
+      "sha256": "83bc3ea5245037cd4a6ea05715c78ce2126c7d555b221c88a39731133493ab74",
+      "bytes": 62682
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000311.reconstruction.json.gz",
+      "sha256": "70c57f28600a8daaba85087505a232b81ada96c869cb441bf5c724c4b4fbb7e9",
+      "bytes": 55437
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000312.reconstruction.json.gz",
+      "sha256": "355c35a2258faa9294f44f1060ba4bdf6ba4cd91f966e3caa1661e29e88f1a3d",
+      "bytes": 24508
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000313.reconstruction.json.gz",
+      "sha256": "1314e5018fcace30d337984c619866f386be1377c148feecf909ef8c6fa8338c",
+      "bytes": 68741
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000314.reconstruction.json.gz",
+      "sha256": "a58c9bf4b6a63b875e36ec6efc375682b18f7a7d59f74b77dd940937da1e0cf9",
+      "bytes": 62854
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000315.reconstruction.json.gz",
+      "sha256": "cbef62ae3883e9152d9221a2a86ded717777a49d581dd7b75e405d7b226696af",
+      "bytes": 63922
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/run-000316.reconstruction.json.gz",
+      "sha256": "240dc85f959ce0014286003ad5c04b58a56206cc2212b26f601f781dd9df3a39",
+      "bytes": 56043
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000305.capsule.json.gz",
+      "sha256": "4c9ab314df455684f5cbe149976cbeedae9eb232fd85e9cb90b32d6f708e7064",
+      "bytes": 28481
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000306.capsule.json.gz",
+      "sha256": "9f9cd02b462286c0e1be4f8931eb893f5292441b03d9c4df295fe85742246dd2",
+      "bytes": 28955
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000307.capsule.json.gz",
+      "sha256": "450a50b97cc6f66cdad7a65499684aeb47f3db8738b18d19bfe551f68d05a432",
+      "bytes": 29307
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000308.capsule.json.gz",
+      "sha256": "b4b2e622f0eb3b878a028dd8be084be6a406da195cd041f756c136d37f1a3a4d",
+      "bytes": 29204
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000309.capsule.json.gz",
+      "sha256": "08fcab70b87baffb713a1068f21996761d8a524699ddd403c44d4be5eb34f264",
+      "bytes": 29048
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000310.capsule.json.gz",
+      "sha256": "0de6d20c79392e3ed51ec2876dcb203ffc8929390b1115724806d06288bdf10e",
+      "bytes": 28941
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000311.capsule.json.gz",
+      "sha256": "6b61e54aeace68861920bf13a040d4a504fde6ed3e5ad677081bab1741bfd820",
+      "bytes": 29292
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000312.capsule.json.gz",
+      "sha256": "c765cceb68afd832d69161bd3200cba0ade63d8112958cdf9a6d779c09ad3d5b",
+      "bytes": 29415
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000313.capsule.json.gz",
+      "sha256": "dae72fe388849a0290205c565dd5f6812144b0a86f56d4110befdc4008a08ff7",
+      "bytes": 29102
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000314.capsule.json.gz",
+      "sha256": "dc1cee1d100bc7751218096420862715f7488093377c197a94c5c1c2106bb56b",
+      "bytes": 29714
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000315.capsule.json.gz",
+      "sha256": "eee9e7630cf0c505bb00670bd58a53da3d2fe063d0176dc53e0236789a31d213",
+      "bytes": 29427
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/pair/selected/send-000316.capsule.json.gz",
+      "sha256": "209f21d8f9aa4b0b3efe7c0f2fa4ac282197cf58d85bec8521dd9dabb8b17383",
+      "bytes": 29345
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/result.json.gz",
+      "sha256": "808721b57312fb1230b33ebdd29f624190b5187011b47a11889d4a402fa835fc",
+      "bytes": 16827
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/state.json.gz",
+      "sha256": "808721b57312fb1230b33ebdd29f624190b5187011b47a11889d4a402fa835fc",
+      "bytes": 16827
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/launcher.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/process.json",
+      "sha256": "406e4af545d2693c78ec902b6c9399d84c7aae1ad53e5f05864a325119ed7bc7",
+      "bytes": 832
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/run.py",
+      "sha256": "9d12e588f11131fe5a63febc9b3bf00787625c25ea338b905716122be77d58ac",
+      "bytes": 1651
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/pilot/terminal.json",
+      "sha256": "6924fc10294b83d4aa3505b2a5be24d6d2c6d8969b54fcedae0c295de2e786bf",
+      "bytes": 1129
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/raw-inventory.json",
+      "sha256": "16c13161522e43a9607afb54f891814717c7b05ab0f5f32b73a6fcff4dc52cba",
+      "bytes": 93336
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/verification.json",
+      "sha256": "921ccdde1ede428a7cd93a51e073e6b452ba4d01a25e52674c7101ba2a4eeff4",
+      "bytes": 17403
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v2/verify.py",
+      "sha256": "c281b1c153a8b65aea63859067d75529d5fb9571b6744fc3930c1b4f1cc1192d",
+      "bytes": 6638
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/archive.log",
+      "sha256": "36b6d0a1b48ee6a41d91cb5f757ebd1c146ac7ae9fe209db9f8d81b04b9f3abc",
+      "bytes": 123
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/archive.py",
+      "sha256": "7aa7f14ff7edd2d43f4e4fa80fbf5d390909928afa46cec0f6b7eb1988ed70ad",
+      "bytes": 1268
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/before/advanced_campaign.binary.gz",
+      "sha256": "09f05c2494b545e2af626d84caea05876331e1ad2f571ea2c3ef11d88659a65b",
+      "bytes": 4018330
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/before/advanced_campaign.rs",
+      "sha256": "63d4c528a45655a70337d8edb1b91ee8beb9d3fc970301ba91e4cd2cf5d6458d",
+      "bytes": 20455
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/before/identity.json",
+      "sha256": "1778a7b87416b95ec1631fa7889c6be4611f5079cd6c80964edcfd8f425cc537",
+      "bytes": 530
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/before/protocol.md",
+      "sha256": "00af02ff5223ee6fcd7f365791d51651cea262d6c03df5565e0dbf3974289ab9",
+      "bytes": 6326
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/checkpoint-paths.txt",
+      "sha256": "fba63faedd1ba9e3f99a2cd0125bf372036376772be15a86a05bdd1ca052fab4",
+      "bytes": 1351
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/checks/build.log",
+      "sha256": "d53004697ec6086d17c317666d923250793c31977395ec26dbf3facc3a71e8d1",
+      "bytes": 131
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/checks/clippy.log",
+      "sha256": "7211cf08b13c972aa8bb6cae37156c6a934eebe62c78a72ce637b9cf1e0a99c3",
+      "bytes": 144
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/fighter5-continuation.tar.gz",
+      "sha256": "9da4f19e46dbb52817386ab08c29ffd7c8ebff9ce44b2b077a91ce190b949ed7",
+      "bytes": 9886464
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/final-identity.json",
+      "sha256": "0af3cd17e45e99e9cb0d485a0f33da0ea8d817b5e6b18ab54876a11812d0a312",
+      "bytes": 1108
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/observations-2026-10-16.md",
+      "sha256": "40db39e13c5d9a71ca789f3897066e58a5c75d60576e23f5aecc3ca875a08fb9",
+      "bytes": 2744
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/process-end.json",
+      "sha256": "899547e4de3dd1dc7f044a6bcbace187c4e8b8431be702a23d00c34ab1a77a58",
+      "bytes": 507
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/raw-inventory.json",
+      "sha256": "56687cb5266a51985da461047adff5b8465f668a0612cf04b13bcc4ed3842823",
+      "bytes": 30640
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/run-fighter5.py",
+      "sha256": "13834b0860665bd918ff33e5cd5d71a305838875f62ea8006624550117536194",
+      "bytes": 2639
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/verification-v1-preexisting-capsule-assumption.log",
+      "sha256": "fe07a2a2bd7d3ec601be0d55ed54e98cf5336f59aeba90930b93c01be401bfb0",
+      "bytes": 1181
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/verification-v2-local-name-shadow.log",
+      "sha256": "e7c2c30405f0cd9ad243c91bf6cf03bb57616e2e0f6104559308d421783928d3",
+      "bytes": 1262
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/verification.json",
+      "sha256": "5c569bd0bb37de4a139a97ed22d29e560789b89fe569b6d0c19603c99872b623",
+      "bytes": 3939
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/verification.log",
+      "sha256": "a9a3c8926c7bb9e7ebb30ec67c61b59f99f83309402f453faf1ed48a0063224c",
+      "bytes": 91
+    },
+    {
+      "path": "docs/evidence/cut253/earned-recorder-v3/verify.py",
+      "sha256": "1906ce0acab9e0b630ff484de6f117f15ea6867139d76374bc6527706c2511c9",
+      "bytes": 7475
+    },
+    {
+      "path": "docs/evidence/cut254/independent-review/identity.json",
+      "sha256": "7d1c90dc2645b877dcbf73106086caa62f9eb8e357ec9623e944a78c1dffeb00",
+      "bytes": 40141
+    },
+    {
+      "path": "docs/evidence/cut254/independent-review/observations-2026-10-16.md",
+      "sha256": "0afc700cd08fdf9620a8915aef23109ad36dc05910f13f427c87e16c048e422e",
+      "bytes": 7355
+    }
+  ],
+  "bytes": 368016041
+}

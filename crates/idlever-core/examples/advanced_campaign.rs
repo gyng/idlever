@@ -1,10 +1,10 @@
 //! Cut253 earned diagnostic; public actions only, no grants. See earned-preparation/protocol.md.
-//! advanced_campaign OUT_DIR SEED CLASS [--from PLAIN_SESSION] [--hours 336] [--resume]
+//! advanced_campaign OUT_DIR SEED CLASS [--from PLAIN_SESSION] [--hours 336 | --seconds EXACT_REMAINING] [--resume]
 use idlever_core::{bloodlines::Session, class_tree, hero::Class, legacy, persistent, tree, Ev};
 #[path = "gunner_support/mod.rs"]
 mod support;
 use serde_json::{json, Value};
-use std::{fs, path::{Path, PathBuf}, process::Command};
+use std::{collections::{BTreeMap, BTreeSet}, fs, path::{Path, PathBuf}, process::Command};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 fn digest(path: &Path) -> Result<String> {
@@ -63,6 +63,20 @@ fn prepare(s:&mut Session,class:Class)->Result<Vec<Value>> {
     let mut actions=vec![];
     if s.active.lineage.ended {
         let tier=s.active.lineage.endgame.as_ref().map_or(1,|p|p.tier.max(1));
+        // A genuine clear may finish its count-mode tail while still recovering.
+        // Public time advancement pays that remaining100ms/tick before the
+        // public descent request; it is not another requested absence sample.
+        let remaining=persistent::remaining(&s.active.lineage);
+        if remaining>0 {
+            let gold=s.active.lineage.gold;let ticks=s.active.lineage.total_turns;let clock=s.active.lineage.clock_s;
+            let ms=remaining.checked_mul(100).ok_or("recovery duration overflow")?;
+            s.advance(ms);
+            actions.push(action(s,"advance_ended_recovery",json!({"remaining_ticks_before":remaining,"elapsed_ms":ms,
+                "total_ticks_before":ticks,"total_ticks_after":s.active.lineage.total_turns,
+                "clock_s_before":clock,"clock_s_after":s.active.lineage.clock_s,
+                "remaining_ticks_after":persistent::remaining(&s.active.lineage),"requested_absence_s_charged":0}),gold));
+            if persistent::remaining(&s.active.lineage)>0 {return Err("public ended recovery wait did not finish".into());}
+        }
         let gold=s.active.lineage.gold;s.begin_descent(tier)?;actions.push(action(s,"begin_descent",json!(tier),gold));
     }
     let gold=s.active.lineage.gold;let paid=support::camp(s,false);
@@ -89,6 +103,68 @@ fn learn(s:&mut Session,id:&str,actions:&mut Vec<Value>)->Result<()> {
     s.learn_class_skill(id)?;assert_eq!(s.active.lineage.gold,gold);
     actions.push(action(s,"learn_class_skill",json!({"id":id,"points_before":tree.points,"before_save_bytes":before.len()}),gold));Ok(())
 }
+
+/// Reason evaluations are not spent actions: several rows can be evaluated
+/// during one action, and an earlier row winning is not a refusal or waste.
+#[derive(Default, serde::Serialize)]
+struct RowAggregate {
+    owner:u32,
+    row:idlever_core::Row,
+    evaluated_run_ids:BTreeSet<u32>,
+    evaluations:u64,
+    fired:u64,
+    matched:u64,
+    blocked_reasons:BTreeMap<String,u64>,
+    unmet_conditions:BTreeMap<String,u64>,
+    fired_on:BTreeMap<String,u64>,
+}
+impl RowAggregate {
+    fn add(&mut self,id:u32,t:&idlever_core::engine::RowTally) {
+        if t.actions==0 {return;}
+        self.evaluated_run_ids.insert(id);
+        self.evaluations+=u64::from(t.actions);
+        self.fired+=u64::from(t.fired);
+        self.matched+=u64::from(t.matched);
+        for (source,dest) in [(&t.blocked,&mut self.blocked_reasons),(&t.unmet,&mut self.unmet_conditions),(&t.fired_on,&mut self.fired_on)] {
+            for (key,value) in source {*dest.entry(key.clone()).or_default()+=u64::from(*value);}
+        }
+    }
+}
+
+/// Diagnostic reconstruction only. Like public replay, preserve the captured
+/// watched/offline flags, run, rules and RNG; collect events before settlement
+/// consumes the real per-run tally. Never change the measured Session.
+fn reconstruct(branch:&Path,cap:&idlever_core::engine::Capsule,rec:&idlever_core::RunRec,replay:&idlever_core::Replay)->Result<Vec<(idlever_core::Row,idlever_core::engine::RowTally)>> {
+    assert!(cap.inputs.is_empty(),"this campaign never manually steers a run");
+    let mut g=(*cap.game).clone();
+    g.events=cap.pre.clone();
+    let rules=g.lineage.rules().clone();
+    let mut events=vec![];
+    idlever_core::engine::without_history(|| {
+        while g.run.as_ref().is_some_and(|r|r.over.is_none()) {
+            assert!(g.run.as_ref().unwrap().turn<idlever_core::engine::MAX_TURNS_PER_RUN);
+            g.tick();
+            events.append(&mut g.events);
+        }
+    });
+    let run=g.run.as_ref().ok_or("reconstruction lost its real run")?;
+    assert_eq!(run.turn,rec.turns,"actual/reconstruction duration");
+    assert_eq!(run.depth,rec.depth,"actual/reconstruction final depth");
+    assert_eq!(run.start.max(1),rec.start,"actual/reconstruction start");
+    assert_eq!(run.over.ok_or("reconstruction did not finish")?.name(),rec.tier,"actual/reconstruction outcome");
+    let public_events:Vec<_>=replay.floors.iter().flat_map(|f|f.events.iter().cloned()).collect();
+    assert_eq!(events,public_events,"complete public replay event sequence");
+    assert_eq!(idlever_core::engine::events_hash(&events),replay.hash);
+    let rows:Vec<_>=rules.rows.into_iter().enumerate().map(|(i,row)|(row,g.row_tally.get(i).cloned().unwrap_or_default())).collect();
+    emit(branch,&format!("run-{:06}.reconstruction.json",rec.id),&json!({
+        "scope":"Reconstructed per-run before-settlement state, not an extra actual run or direct watched-event proof",
+        "owner":cap.game.lineage.bloodline_id,"run_id":rec.id,"actual_record":rec,
+        "public_replay_events_exact":true,"public_replay_hash":replay.hash,
+        "terminal_run":run,"raw_row_tally":g.row_tally,"rows":rows,"events":events
+    }))?;
+    Ok(rows)
+}
+
 fn pair(dir:&Path,source:&Session,class:Class)->Result<()> {
     assert_eq!(source.active.lineage.class,class);
     assert!(source.active.lineage.class_paths.get(class.name()).is_none_or(|ids|ids.is_empty()),"reference must have no selected current-class skills");
@@ -110,12 +186,42 @@ fn pair(dir:&Path,source:&Session,class:Class)->Result<()> {
         emit(&branch,"actions.json",&json!(actions))?;immutable(&branch.join("prepared.session.json"),&s.save())?;
         let origin=s.save();let mut records=vec![];let mut receipts=vec![];
         let mut last=s.active.lineage.run_log.iter().map(|r|r.id).max().unwrap_or(0);
+        let frontier_id=last;
+        let mut captured=BTreeMap::new();
+        let mut sends=vec![];
+        let mut reasons:BTreeMap<String,RowAggregate>=BTreeMap::new();
         for slice in 1..=480 {
             let report=s.run_offline_slice(60,slice==480);
-            if slice==1 {immutable(&branch.join("first-slice-with-send-capsule.session.json"),&s.save())?;}
+            // Observe existing real send capsules after the unchanged transport
+            // call. No extra tick/send/rest removal is allowed for capture.
+            for cap in s.active.capsules.0.iter().filter(|c|c.id>frontier_id) {
+                if captured.contains_key(&cap.id) {continue;}
+                let sent=cap.game.run.as_ref().ok_or("send capsule has no run")?;
+                assert_eq!(sent.turn,0,"capture actual departure, never post-run reconstruction");
+                assert_eq!(sent.id,cap.id);
+                assert_eq!(cap.game.lineage.bloodline_id,s.selected,"capture actual owner");
+                assert_eq!(cap.game.lineage.seed,s.active.lineage.seed);
+                assert_eq!(sent.hero.class,class);
+                let path=format!("send-{:06}.capsule.json",cap.id);
+                emit(&branch,&path,&json!(cap))?;
+                if captured.is_empty() {emit(&branch,"first-actual-departure.capsule.json",&json!(cap))?;}
+                sends.push(json!({"owner":s.selected,"run_id":cap.id,"capsule":path,
+                    "observed_after_requested_s":slice*60,"capsule_clock_s":cap.game.lineage.clock_s,
+                    "started_total_tick":sent.started_turn,"turn":sent.turn,"class":sent.hero.class.name(),
+                    "weapon":sent.hero.weapon.as_ref().map(|w|&w.kind),"class_skills":sent.hero.class_skills}));
+                captured.insert(cap.id,cap.clone());
+            }
             for rec in s.active.lineage.run_log.iter().filter(|r|r.id>last) {
+                let cap=captured.get(&rec.id).ok_or("new departure capsule evicted before capture; no omitted run allowed")?;
                 let replay=s.replay(rec.id).ok_or("actual run capsule missing before receipt capture")?;
                 assert_eq!(replay.ticks,rec.turns,"actual/replay duration mismatch");
+                let rows=reconstruct(&branch,cap,rec,&replay)?;
+                for (row,tally) in rows {
+                    // Include origin as well as conditions/verb: Row's own
+                    // PartialEq intentionally ignores origin, this report must not.
+                    let key=serde_json::to_string(&(s.selected,&row))?;
+                    reasons.entry(key).or_insert_with(||RowAggregate {owner:s.selected,row,..Default::default()}).add(rec.id,&tally);
+                }
                 let named:Vec<_>=replay.floors.iter().flat_map(|f|&f.events).filter(|e|matches!(e,Ev::ClassInteraction {..})).collect();
                 receipts.push(json!({"run":rec,"replay_hash":replay.hash,"replay_ticks":replay.ticks,"kind":"reconstructed_named_events_endpoint_duration_checked","interactions":named}));
                 records.push(json!(rec));
@@ -125,23 +231,30 @@ fn pair(dir:&Path,source:&Session,class:Class)->Result<()> {
         }
         immutable(&branch.join("after.session.json"),&s.save())?;
         emit(&branch,"receipts.json",&json!(receipts))?;
+        assert_eq!(records.len(),captured.len(),"every actual departure must have one completed record");
+        emit(&branch,"departures.json",&json!(sends))?;
+        emit(&branch,"branch-row-reasons.json",&json!({"scope":"Sum reconstructed raw per-run slot tallies labelled by capsule-start rule and actual owner; slot-label grouping is not proof of immutable per-rule attribution; no cumulative subtraction or decay inversion",
+            "spent_waste":"Not measured. Blocked/precedence/condition evaluations are not interchangeable with spent actions.",
+            "rows":reasons.into_values().collect::<Vec<_>>() }))?;
         emit(&branch,"result.json",&json!({"before":stamp(source),"after":stamp(&s),"branch":label,"selected":selected,"chain":ids,
-            "requested_seconds":28800,"actual_runs":records,"row_why":s.active.lineage.row_why(),
+            "requested_seconds":28800,"actual_runs":records,"cumulative_row_why_reference":s.active.lineage.row_why(),
             "no_selection_source_unchanged":frontier.save()==fs::read_to_string(pairdir.join("no-selection.session.json"))?,
-            "branch_origin_bytes":origin.len(),"receipt_limit":"Reconstructed events, not direct watched/event/RNG equivalence proof"}))?;
+            "branch_origin_bytes":origin.len(),"receipt_limit":"Complete diagnostic event sequences equal public replay; actual RunRec durations/depth/outcomes match. Still reconstructed, not direct watched-event/RNG capture."}))?;
     } Ok(())
 }
 fn main()->Result<()> {
     let args:Vec<_>=std::env::args().collect();
-    if args.len()<4 {return Err("advanced_campaign OUT SEED CLASS [--from PLAIN_SESSION] [--hours 336] [--resume]".into());}
+    if args.len()<4 {return Err("advanced_campaign OUT SEED CLASS [--from PLAIN_SESSION] [--hours 336 | --seconds EXACT_REMAINING] [--resume]".into());}
     let dir=Path::new(&args[1]);let seed:u64=args[2].parse()?;if ![1,3,5].contains(&seed){return Err("genuine cohort seeds are1/3/5".into());}
     let class=Class::parse(&args[3]).filter(|c|Class::ALL.contains(c)).ok_or("original class required")?;
     let option=|name:&str|args.iter().position(|a|a==name).and_then(|i|args.get(i+1));
-    let hours:u64=option("--hours").map_or(Ok(336),|v|v.parse())?;if hours==0||!hours.is_multiple_of(8){return Err("positive eight-hour horizon required".into());}
+    if option("--hours").is_some()&&option("--seconds").is_some(){return Err("choose hours or exact seconds, not both".into());}
+    let requested_bound_s=if let Some(value)=option("--seconds") {let n:u64=value.parse()?;if n==0{return Err("positive exact horizon required".into());}n}
+        else {let hours:u64=option("--hours").map_or(Ok(336),|v|v.parse())?;if hours==0||!hours.is_multiple_of(8){return Err("positive eight-hour horizon required".into());}hours.checked_mul(3600).ok_or("requested horizon overflow")?};
     idlever_core::chronicle::use_shipping_words();idlever_core::forecast::set_parallel_sims(false);
     if std::env::var_os("IDLEVER_BALANCE_JSON").is_some()||std::env::var_os("IDLEVER_BALANCE_FILE").is_some(){return Err("no diagnostic tuning overrides".into());}
     let from=option("--from");let origin=if let Some(path)=from {fs::read_to_string(path)?}else{Session::new(seed).save()};
-    let id=identity()?;let config=json!({"seed":seed,"class":class.name(),"hours":hours,"from":from,"identity":id});
+    let id=identity()?;let config=json!({"seed":seed,"class":class.name(),"requested_bound_s":requested_bound_s,"from":from,"identity":id});
     let (mut s,mut state)=if args.iter().any(|a|a=="--resume") {
         let state:Value=serde_json::from_str(&fs::read_to_string(dir.join("state.json"))?)?;
         if state["config"]!=config||fs::read_to_string(dir.join("original.session.json"))?!=origin {return Err("resume source/config/binary mismatch".into());}
@@ -162,7 +275,7 @@ fn main()->Result<()> {
         pair(dir,&s,class)?;state["paired"]=json!(true);
         let n=state["steps"].as_u64().unwrap() as usize;checkpoint(dir,&s,&mut state,n)?;
     }
-    while state["requested_s"].as_u64().unwrap()<hours*3600 && (s.active.lineage.class!=class||stage(&s)<4) {
+    while state["requested_s"].as_u64().unwrap()<requested_bound_s && (s.active.lineage.class!=class||stage(&s)<4) {
         let n=state["steps"].as_u64().unwrap() as usize+1;
         let mut actions=prepare(&mut s,class)?;
         if !tree::auto_send(&s.active.lineage) {
@@ -171,7 +284,7 @@ fn main()->Result<()> {
             let gold=s.active.lineage.gold;s.try_send()?;actions.push(action(&s,"manual_send",json!(null),gold));
         }
         let quantum=if tree::auto_send(&s.active.lineage){28800}else{60};
-        let duration=quantum.min(hours*3600-state["requested_s"].as_u64().unwrap());
+        let duration=quantum.min(requested_bound_s-state["requested_s"].as_u64().unwrap());
         let report=s.run_offline_mode(duration,false,false);assert!(!report.sampled);
         emit(dir,&format!("campaign-{n:04}.report.json"),&json!(report))?;
         let observed=stamp(&s);state["checks"].as_array_mut().unwrap().push(json!({"step":n,"actions":actions,"requested_s":duration,"nominal_quantum_s":quantum,"shortened_final_sample":duration<quantum,"observed":observed}));

@@ -1,12 +1,15 @@
 # Cut253 earned campaign preparation — 2026-10-16
 
-Prepared source only; no campaign has run. This is a chosen, paid eight-hour
+This is a chosen, paid eight-hour
 check-in campaign, not canonical IDLE, PICKED, a balance gate or fun acceptance.
 Run only after coordination with the native-check owner and a frozen source.
 This corrects protocol-v1-superseded.md: the incremental reference includes
 the immediate advanced parent, not merely its old ancestors.
 Protocol-v2-superseded.md preserves the draft before the requested-horizon
 correction: final samples now stop at the exact remaining requested duration.
+Protocol-v3-superseded.md and earned-recorder-v2/before preserve the original
+recorder/source/binary boundary. The original seed1 pilot completed all stages
+at224h2min with171defeats; its three actual8h outcomes remain historical.
 
 - Fifteen independent cases: original five classes × genuine seeds1/3/5.
   Fresh cases use Session::new and the public free House. Optional existing-save
@@ -45,10 +48,24 @@ correction: final samples now stop at the exact remaining requested duration.
   Eight-hour branches have no manual upkeep or later purchases. Ordinary workers
   retain their identical actual policy and may spend earned Gold; record it.
 - Pair transport is public run_offline_slice(60s), final call closes the same8h
-  absence. At each slice retain newly completed run records and replay-named
-  interaction receipts before capsule eviction. Replay tick mismatch fails
-  loudly. Receipts are reconstructed and labelled accordingly, not direct live
-  event-stream equivalence; whole/watched/reload acceptance remains separate.
+  absence. After each existing call, archive genuine newly generated in-memory
+  send capsules, with actual owner/run identity and turn0; the first actual new
+  capsule is captured regardless of how long recovery precedes departure. No
+  extra send/tick/rest removal is introduced for recording. Every completed
+  record must match an archived capsule; eviction/missing captures fail loudly.
+  Retain the original capture-observation interval and the capsule's clock,
+  without inventing a more precise departure time from a batched clock.
+  Retain completed records and replay-named interaction receipts. A separate
+  diagnostic clone of each real send advances through Game.tick with captured
+  flags/rules/RNG unchanged, stopping before settlement consumes row_tally.
+  Complete event vectors must exactly equal public replay; actual recorded
+  duration/start/final depth/outcome must match. Retain the full terminal Run,
+  events and raw per-run row tallies keyed by actual owner/run/full row identity
+  (including origin). Sum these raw tallies, never subtract or invert decayed
+  cumulative counters. Unmet/precedence/blocked evaluations remain distinct;
+  they are not a measured quantity of spent wasted actions. These diagnostics
+  are reconstructed, not direct live event/RNG capture; whole/watched/reload
+  acceptance remains separate.
   Retain final complete report, meters, blocked/unmet row statistics and saves.
   Missing triggers and harmful outcomes remain results, not silently retried.
 - Atomic resumable campaign state references immutable checkpoint outputs.
@@ -62,7 +79,37 @@ correction: final samples now stop at the exact remaining requested duration.
   Censoring does not satisfy acceptance: all four stages, three genuine cohort
   seeds and the zero-defeat survivor remain required beyond this bounded pilot.
 
-First authorized execution should be one seed1 Fighter sanity, then inspect
+The authorized recorder successor is one fresh seed1 Fighter sanity, then inspect
 costs, actual class/weapon, clocks, stage/censoring and receipt coverage before
-scheduling the remaining cases with at most four native processes. No execution
-or compile is authorized by this preparation document alone.
+scheduling the remaining cases with at most four native processes. Its complete
+after-saves/reports/stage clocks must match the retained original pilot; recorder
+identity and additive diagnostics are the only intended changes. No further
+cohort is authorized by this preparation document alone.
+
+## V3 recovery-aware continuation amendment — 2026-10-16
+
+Protocol-v4-superseded.md and earned-recorder-v3/before preserve the exact
+previous source/protocol/binary. The remaining14batch has seven all-stage
+completions and seven public Finish recovery refusals, retained unaltered.
+Only when genuinely home AND ended AND persistent remaining>0, preparation
+now advances the real Session by remaining_ticks×100ms before public
+begin_descent. Source units: persistent::remaining is recovery_until_tick
+minus total_turns; Session/Game advancement uses100ms/tick. Record exact
+before/after ticks, clock, remaining and elapsed milliseconds. This is real
+recovery time, charged separately from requested absence samples as before;
+no forced home, rest removal, grant or authored rule change.
+
+An isolated lawful continuation uses --from exact retained checkpoint bytes
+and --seconds (original336×3600 minus originalrequested_s), never another336h.
+Preserve sidecar parent provenance linking genuine fresh origin, every parent
+checkpoint and actual defeats. This new continuation has fresh_origin=false;
+its local zero-defeat/fresh flags are not rewritten. Resume identity equality
+remains strict, including the exact remaining-second horizon and source input.
+The exact-second mode also caps the final requested sample without rounding.
+
+Raw why counters are slot-indexed. Per-run diagnostic rules are capsule-start
+labels; cross-run full-row groupings transport these raw slot counts exactly,
+without independently proving that rules never change/recompile at a slot.
+The19fired>matched observations remain raw anomalies; no spent-waste or
+immutable per-rule causal claim is made. No other native source, helper,
+Cargo, tuning or WASM mutation is authorized by this recorder correction.

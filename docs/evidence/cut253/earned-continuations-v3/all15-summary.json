@@ -1,0 +1,1751 @@
+{
+  "utc": "2026-10-16T00:54:36.160587+00:00",
+  "scope": "All15genuine fresh chains linked without editing historical saves. Original7FinishRecoveryrefusals stay preserved;7authorized continuations are distinct successor artifacts. Requested336h budget per chain; actual recovery additional, no strictclock/zero-defeat/fullcontract/fun claim. Receipt phases distinguish armed/consumed/applied; no trigger inferred merely from row fire.",
+  "cases": [
+    {
+      "case": "fighter-seed1",
+      "result": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 806520,
+      "actual_final_clock_s": 806520,
+      "lifetime_defeats": 171,
+      "first_observed_stages": [
+        {
+          "clock_s": 460920,
+          "lifetime_deaths": 77,
+          "observed_step": 18,
+          "save": "campaign-0018.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/campaign-0018.session.json"
+        },
+        {
+          "clock_s": 806520,
+          "lifetime_deaths": 171,
+          "observed_step": 30,
+          "save": "campaign-0030.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/campaign-0030.session.json"
+        },
+        {
+          "clock_s": 806520,
+          "lifetime_deaths": 171,
+          "observed_step": 30,
+          "save": "campaign-0030.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/campaign-0030.session.json"
+        },
+        {
+          "clock_s": 806520,
+          "lifetime_deaths": 171,
+          "observed_step": 30,
+          "save": "campaign-0030.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-recorder-v2/pilot/campaign/campaign-0030.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 12,
+          "deaths": 7,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 655,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 13,
+          "deaths": 10,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 374,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:fighter_rally",
+              "phase": "applied",
+              "effect": "bash_cooldown",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 12,
+          "deaths": 9,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 374,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [
+            {
+              "phase": "applied",
+              "effect": "melee_block",
+              "count": 15
+            },
+            {
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 14
+            },
+            {
+              "phase": "consumed",
+              "effect": "melee_block",
+              "count": 15
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "applied",
+              "effect": "melee_block",
+              "count": 15
+            },
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 14
+            },
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "consumed",
+              "effect": "melee_block",
+              "count": 15
+            },
+            {
+              "skill": "path:fighter_rally",
+              "phase": "applied",
+              "effect": "bash_cooldown",
+              "count": 4
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -48960
+    },
+    {
+      "case": "fighter-seed3",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 1180920,
+      "actual_final_clock_s": 1180920,
+      "lifetime_defeats": 509,
+      "first_observed_stages": [
+        {
+          "clock_s": 720120,
+          "lifetime_deaths": 269,
+          "observed_step": 27,
+          "save": "campaign-0027.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/campaign-0027.session.json"
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/campaign-0043.session.json"
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/campaign-0043.session.json"
+        },
+        {
+          "clock_s": 1180920,
+          "lifetime_deaths": 509,
+          "observed_step": 43,
+          "save": "campaign-0043.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed3/campaign/campaign-0043.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 17,
+          "deaths": 10,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 3158,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 17,
+          "deaths": 9,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 1388,
+          "net_wallet_gold_change": 75,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:fighter_rally",
+              "phase": "applied",
+              "effect": "bash_cooldown",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 17,
+          "deaths": 9,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 1388,
+          "net_wallet_gold_change": 75,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 2
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 2
+            },
+            {
+              "skill": "path:fighter_rally",
+              "phase": "applied",
+              "effect": "bash_cooldown",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -46360
+    },
+    {
+      "case": "fighter-seed5",
+      "result": "docs/evidence/cut253/earned-recorder-v3/fighter5-continuation/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed5/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 1209600,
+      "actual_final_clock_s": 1209644,
+      "lifetime_defeats": 475,
+      "first_observed_stages": [
+        {
+          "clock_s": 892920,
+          "lifetime_deaths": 332,
+          "observed_step": 33,
+          "save": "campaign-0033.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/fighter-seed5/campaign/campaign-0033.session.json"
+        },
+        {
+          "clock_s": 1209644,
+          "lifetime_deaths": 475,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-recorder-v3/fighter5-continuation/campaign/campaign-0003.session.json"
+        },
+        {
+          "clock_s": 1209644,
+          "lifetime_deaths": 475,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-recorder-v3/fighter5-continuation/campaign/campaign-0003.session.json"
+        },
+        {
+          "clock_s": 1209644,
+          "lifetime_deaths": 475,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-recorder-v3/fighter5-continuation/campaign/campaign-0003.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 17,
+          "deaths": 10,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 4739,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 17,
+          "deaths": 10,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 3216,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "selected",
+          "runs": 17,
+          "deaths": 10,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "sword"
+          ],
+          "actual_record_gold_sum": 3216,
+          "net_wallet_gold_change": 0,
+          "capstone": "fighter_holdfast",
+          "capstone_receipts": [
+            {
+              "phase": "applied",
+              "effect": "melee_block",
+              "count": 1
+            },
+            {
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 3
+            },
+            {
+              "phase": "consumed",
+              "effect": "melee_block",
+              "count": 1
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "applied",
+              "effect": "melee_block",
+              "count": 1
+            },
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "armed",
+              "effect": "melee_block",
+              "count": 3
+            },
+            {
+              "skill": "path:fighter_holdfast",
+              "phase": "consumed",
+              "effect": "melee_block",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -37760
+    },
+    {
+      "case": "rogue-seed1",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 921720,
+      "actual_final_clock_s": 921720,
+      "lifetime_defeats": 271,
+      "first_observed_stages": [
+        {
+          "clock_s": 403320,
+          "lifetime_deaths": 60,
+          "observed_step": 16,
+          "save": "campaign-0016.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/campaign-0016.session.json"
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/campaign-0034.session.json"
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/campaign-0034.session.json"
+        },
+        {
+          "clock_s": 921720,
+          "lifetime_deaths": 271,
+          "observed_step": 34,
+          "save": "campaign-0034.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed1/campaign/campaign-0034.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 17,
+          "deaths": 17,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 0,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 13,
+          "deaths": 7,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 1050,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 293
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1513
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 293
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 13,
+          "deaths": 7,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 1050,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "damage",
+              "count": 293
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_ghostwalk",
+              "phase": "armed",
+              "effect": "damage",
+              "count": 293
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 293
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1513
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 293
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -47560
+    },
+    {
+      "case": "rogue-seed3",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 950520,
+      "actual_final_clock_s": 950520,
+      "lifetime_defeats": 347,
+      "first_observed_stages": [
+        {
+          "clock_s": 288120,
+          "lifetime_deaths": 17,
+          "observed_step": 12,
+          "save": "campaign-0012.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/campaign-0012.session.json"
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/campaign-0035.session.json"
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/campaign-0035.session.json"
+        },
+        {
+          "clock_s": 950520,
+          "lifetime_deaths": 347,
+          "observed_step": 35,
+          "save": "campaign-0035.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed3/campaign/campaign-0035.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 17,
+          "deaths": 16,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 223,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 14,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 763,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 583
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1039
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 583
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 14,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 763,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "damage",
+              "count": 583
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_ghostwalk",
+              "phase": "armed",
+              "effect": "damage",
+              "count": 583
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 583
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1039
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 583
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -45760
+    },
+    {
+      "case": "rogue-seed5",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 1152120,
+      "actual_final_clock_s": 1152120,
+      "lifetime_defeats": 477,
+      "first_observed_stages": [
+        {
+          "clock_s": 748920,
+          "lifetime_deaths": 271,
+          "observed_step": 28,
+          "save": "campaign-0028.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/campaign-0028.session.json"
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/campaign-0042.session.json"
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/campaign-0042.session.json"
+        },
+        {
+          "clock_s": 1152120,
+          "lifetime_deaths": 477,
+          "observed_step": 42,
+          "save": "campaign-0042.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/rogue-seed5/campaign/campaign-0042.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 17,
+          "deaths": 16,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 97,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 19,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 718,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 652
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1932
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 652
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 19,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 718,
+          "net_wallet_gold_change": 0,
+          "capstone": "rogue_ghostwalk",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "damage",
+              "count": 652
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:rogue_ghostwalk",
+              "phase": "armed",
+              "effect": "damage",
+              "count": 652
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "applied",
+              "effect": "energy",
+              "count": 652
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "armed",
+              "effect": "energy",
+              "count": 1932
+            },
+            {
+              "skill": "path:rogue_veiled_route",
+              "phase": "consumed",
+              "effect": "energy",
+              "count": 652
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -50760
+    },
+    {
+      "case": "ranger-seed1",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 432120,
+      "actual_final_clock_s": 432120,
+      "lifetime_defeats": 43,
+      "first_observed_stages": [
+        {
+          "clock_s": 345720,
+          "lifetime_deaths": 32,
+          "observed_step": 14,
+          "save": "campaign-0014.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/campaign-0014.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/campaign-0017.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/campaign-0017.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 43,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed1/campaign/campaign-0017.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 18,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 4285,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 18,
+          "deaths": 3,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 4536,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:ranger_split_mark",
+              "phase": "applied",
+              "effect": "mark",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 17,
+          "deaths": 3,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 4535,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -41760
+    },
+    {
+      "case": "ranger-seed3",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 432120,
+      "actual_final_clock_s": 432120,
+      "lifetime_defeats": 47,
+      "first_observed_stages": [
+        {
+          "clock_s": 345720,
+          "lifetime_deaths": 31,
+          "observed_step": 14,
+          "save": "campaign-0014.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/campaign-0014.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/campaign-0017.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/campaign-0017.session.json"
+        },
+        {
+          "clock_s": 432120,
+          "lifetime_deaths": 47,
+          "observed_step": 17,
+          "save": "campaign-0017.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed3/campaign/campaign-0017.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 20,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 1482,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 20,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 1826,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "selected",
+          "runs": 20,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 952,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -53960
+    },
+    {
+      "case": "ranger-seed5",
+      "result": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/original.session.json",
+      "linked_continuation": false,
+      "requested_total_s": 576120,
+      "actual_final_clock_s": 576120,
+      "lifetime_defeats": 116,
+      "first_observed_stages": [
+        {
+          "clock_s": 460920,
+          "lifetime_deaths": 88,
+          "observed_step": 18,
+          "save": "campaign-0018.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/campaign-0018.session.json"
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/campaign-0022.session.json"
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/campaign-0022.session.json"
+        },
+        {
+          "clock_s": 576120,
+          "lifetime_deaths": 116,
+          "observed_step": 22,
+          "save": "campaign-0022.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/ranger-seed5/campaign/campaign-0022.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 19,
+          "deaths": 3,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 4227,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 18,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 4626,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:ranger_split_mark",
+              "phase": "applied",
+              "effect": "mark",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 19,
+          "deaths": 2,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "bow"
+          ],
+          "actual_record_gold_sum": 3165,
+          "net_wallet_gold_change": 0,
+          "capstone": "ranger_moving_line",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -44960
+    },
+    {
+      "case": "caster-seed1",
+      "result": "docs/evidence/cut253/earned-continuations-v3/caster-seed1/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/caster-seed1/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 979320,
+      "actual_final_clock_s": 979322,
+      "lifetime_defeats": 229,
+      "first_observed_stages": [
+        {
+          "clock_s": 604920,
+          "lifetime_deaths": 105,
+          "observed_step": 23,
+          "save": "campaign-0023.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/caster-seed1/campaign/campaign-0023.session.json"
+        },
+        {
+          "clock_s": 979322,
+          "lifetime_deaths": 229,
+          "observed_step": 2,
+          "save": "campaign-0002.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed1/campaign/campaign-0002.session.json"
+        },
+        {
+          "clock_s": 979322,
+          "lifetime_deaths": 229,
+          "observed_step": 2,
+          "save": "campaign-0002.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed1/campaign/campaign-0002.session.json"
+        },
+        {
+          "clock_s": 979322,
+          "lifetime_deaths": 229,
+          "observed_step": 2,
+          "save": "campaign-0002.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed1/campaign/campaign-0002.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 15,
+          "deaths": 8,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 4039,
+          "net_wallet_gold_change": 75,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 16,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 8978,
+          "net_wallet_gold_change": 0,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "selected",
+          "runs": 16,
+          "deaths": 5,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 8978,
+          "net_wallet_gold_change": 0,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -48960
+    },
+    {
+      "case": "caster-seed3",
+      "result": "docs/evidence/cut253/earned-continuations-v3/caster-seed3/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/caster-seed3/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 1180920,
+      "actual_final_clock_s": 1181588,
+      "lifetime_defeats": 464,
+      "first_observed_stages": [
+        {
+          "clock_s": 1094520,
+          "lifetime_deaths": 444,
+          "observed_step": 40,
+          "save": "campaign-0040.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/caster-seed3/campaign/campaign-0040.session.json"
+        },
+        {
+          "clock_s": 1181588,
+          "lifetime_deaths": 464,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed3/campaign/campaign-0003.session.json"
+        },
+        {
+          "clock_s": 1181588,
+          "lifetime_deaths": 464,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed3/campaign/campaign-0003.session.json"
+        },
+        {
+          "clock_s": 1181588,
+          "lifetime_deaths": 464,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed3/campaign/campaign-0003.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 11,
+          "deaths": 9,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 2663,
+          "net_wallet_gold_change": -75,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 15,
+          "deaths": 2,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 4983,
+          "net_wallet_gold_change": 0,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "selected",
+          "runs": 15,
+          "deaths": 2,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 4983,
+          "net_wallet_gold_change": 0,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -43560
+    },
+    {
+      "case": "caster-seed5",
+      "result": "docs/evidence/cut253/earned-continuations-v3/caster-seed5/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/caster-seed5/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 1152120,
+      "actual_final_clock_s": 1152939,
+      "lifetime_defeats": 419,
+      "first_observed_stages": [
+        {
+          "clock_s": 662520,
+          "lifetime_deaths": 181,
+          "observed_step": 25,
+          "save": "campaign-0025.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-cohorts-v2/caster-seed5/campaign/campaign-0025.session.json"
+        },
+        {
+          "clock_s": 1152939,
+          "lifetime_deaths": 419,
+          "observed_step": 1,
+          "save": "campaign-0001.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed5/campaign/campaign-0001.session.json"
+        },
+        {
+          "clock_s": 1152939,
+          "lifetime_deaths": 419,
+          "observed_step": 1,
+          "save": "campaign-0001.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed5/campaign/campaign-0001.session.json"
+        },
+        {
+          "clock_s": 1152939,
+          "lifetime_deaths": 419,
+          "observed_step": 1,
+          "save": "campaign-0001.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/caster-seed5/campaign/campaign-0001.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 10,
+          "deaths": 8,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 1430,
+          "net_wallet_gold_change": 0,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 17,
+          "deaths": 6,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 4277,
+          "net_wallet_gold_change": 75,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "selected",
+          "runs": 17,
+          "deaths": 6,
+          "actual_max_depth": 34,
+          "actual_weapon_kinds": [
+            "dagger"
+          ],
+          "actual_record_gold_sum": 4277,
+          "net_wallet_gold_change": 75,
+          "capstone": "caster_conduct",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -50760
+    },
+    {
+      "case": "gunner-seed1",
+      "result": "docs/evidence/cut253/earned-continuations-v3/gunner-seed1/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/gunner-seed1/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 950520,
+      "actual_final_clock_s": 952106,
+      "lifetime_defeats": 189,
+      "first_observed_stages": [
+        {
+          "clock_s": 721706,
+          "lifetime_deaths": 145,
+          "observed_step": 8,
+          "save": "campaign-0008.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed1/campaign/campaign-0008.session.json"
+        },
+        {
+          "clock_s": 952106,
+          "lifetime_deaths": 189,
+          "observed_step": 16,
+          "save": "campaign-0016.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed1/campaign/campaign-0016.session.json"
+        },
+        {
+          "clock_s": 952106,
+          "lifetime_deaths": 189,
+          "observed_step": 16,
+          "save": "campaign-0016.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed1/campaign/campaign-0016.session.json"
+        },
+        {
+          "clock_s": 952106,
+          "lifetime_deaths": 189,
+          "observed_step": 16,
+          "save": "campaign-0016.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed1/campaign/campaign-0016.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 8,
+          "deaths": 3,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 3457,
+          "net_wallet_gold_change": 0,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 9,
+          "deaths": 6,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 1717,
+          "net_wallet_gold_change": 1158,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 95
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 352
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 95
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 9,
+          "deaths": 6,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 1717,
+          "net_wallet_gold_change": 1158,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 81
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 95
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 352
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 95
+            },
+            {
+              "skill": "path:gunner_long_watch",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 81
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -51960
+    },
+    {
+      "case": "gunner-seed3",
+      "result": "docs/evidence/cut253/earned-continuations-v3/gunner-seed3/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/gunner-seed3/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 777720,
+      "actual_final_clock_s": 778920,
+      "lifetime_defeats": 127,
+      "first_observed_stages": [
+        {
+          "clock_s": 606120,
+          "lifetime_deaths": 95,
+          "observed_step": 5,
+          "save": "campaign-0005.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed3/campaign/campaign-0005.session.json"
+        },
+        {
+          "clock_s": 778920,
+          "lifetime_deaths": 127,
+          "observed_step": 11,
+          "save": "campaign-0011.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed3/campaign/campaign-0011.session.json"
+        },
+        {
+          "clock_s": 778920,
+          "lifetime_deaths": 127,
+          "observed_step": 11,
+          "save": "campaign-0011.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed3/campaign/campaign-0011.session.json"
+        },
+        {
+          "clock_s": 778920,
+          "lifetime_deaths": 127,
+          "observed_step": 11,
+          "save": "campaign-0011.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed3/campaign/campaign-0011.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 4,
+          "deaths": 1,
+          "actual_max_depth": 30,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 2034,
+          "net_wallet_gold_change": -300,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 7,
+          "deaths": 5,
+          "actual_max_depth": 32,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 3630,
+          "net_wallet_gold_change": -150,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 110
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 503
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 110
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 7,
+          "deaths": 5,
+          "actual_max_depth": 32,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 3630,
+          "net_wallet_gold_change": -150,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 98
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 110
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 503
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 110
+            },
+            {
+              "skill": "path:gunner_long_watch",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 98
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -53960
+    },
+    {
+      "case": "gunner-seed5",
+      "result": "docs/evidence/cut253/earned-continuations-v3/gunner-seed5/campaign/result.json",
+      "genuine_fresh_origin_parent": "docs/evidence/cut253/earned-cohorts-v2/gunner-seed5/campaign/original.session.json",
+      "linked_continuation": true,
+      "requested_total_s": 979320,
+      "actual_final_clock_s": 980160,
+      "lifetime_defeats": 191,
+      "first_observed_stages": [
+        {
+          "clock_s": 720960,
+          "lifetime_deaths": 145,
+          "observed_step": 3,
+          "save": "campaign-0003.session.json",
+          "stage": 1,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed5/campaign/campaign-0003.session.json"
+        },
+        {
+          "clock_s": 980160,
+          "lifetime_deaths": 191,
+          "observed_step": 12,
+          "save": "campaign-0012.session.json",
+          "stage": 2,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed5/campaign/campaign-0012.session.json"
+        },
+        {
+          "clock_s": 980160,
+          "lifetime_deaths": 191,
+          "observed_step": 12,
+          "save": "campaign-0012.session.json",
+          "stage": 3,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed5/campaign/campaign-0012.session.json"
+        },
+        {
+          "clock_s": 980160,
+          "lifetime_deaths": 191,
+          "observed_step": 12,
+          "save": "campaign-0012.session.json",
+          "stage": 4,
+          "source": "docs/evidence/cut253/earned-continuations-v3/gunner-seed5/campaign/campaign-0012.session.json"
+        }
+      ],
+      "branches": [
+        {
+          "branch": "no-selection",
+          "runs": 10,
+          "deaths": 3,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 2798,
+          "net_wallet_gold_change": 75,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": []
+        },
+        {
+          "branch": "parent-only",
+          "runs": 8,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 1439,
+          "net_wallet_gold_change": 75,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 45
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 168
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 45
+            }
+          ]
+        },
+        {
+          "branch": "selected",
+          "runs": 8,
+          "deaths": 4,
+          "actual_max_depth": 33,
+          "actual_weapon_kinds": [
+            "long_gun"
+          ],
+          "actual_record_gold_sum": 1439,
+          "net_wallet_gold_change": 75,
+          "capstone": "gunner_long_watch",
+          "capstone_receipts": [
+            {
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 31
+            }
+          ],
+          "all_named_interaction_receipts": [
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "applied",
+              "effect": "aim_settle",
+              "count": 45
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 168
+            },
+            {
+              "skill": "path:gunner_chamber_chain",
+              "phase": "consumed",
+              "effect": "aim_settle",
+              "count": 45
+            },
+            {
+              "skill": "path:gunner_long_watch",
+              "phase": "armed",
+              "effect": "aim_settle",
+              "count": 31
+            }
+          ]
+        }
+      ],
+      "net_recorded_manual_preparation_gold_change": -50760
+    }
+  ],
+  "all4stages_observed_chains": 15,
+  "zero_lifetime_defeat_chains": 0
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/g/p/riddle/docs/evidence/cut253/earned-cohorts-v2/verify.py", line 63, in <module>
+    for cap in end['live_capsule']['kills']:assert cap==load(b/f"send-{cap['id']:06}.capsule.json")
+               ~~~^^^^^^^^^^^^^^^^
+KeyError: 'live_capsule'

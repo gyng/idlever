@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/g/p/riddle/docs/evidence/cut253/earned-recorder-v3/verify.py", line 54, in <module>
+    for cap in end.get('live_capsule',{}).get('kills',[]):assert cap==load(b/f"send-{cap['id']:06}.capsule.json")
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g/p/riddle/docs/evidence/cut253/earned-recorder-v3/verify.py", line 3, in <lambda>
+    load=lambda q:json.loads(q.read_text())
+                             ^^^^^^^^^^^^^
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/g/p/riddle/docs/evidence/cut253/earned-recorder-v3/fighter5-continuation/campaign/pair/no-selection/send-000562.capsule.json'

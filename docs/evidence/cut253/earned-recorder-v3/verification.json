@@ -1,0 +1,165 @@
+{
+  "utc": "2026-10-16T00:49:27.694783+00:00",
+  "status": "PASS_LAWFUL_LINKED_CONTINUATION",
+  "actual_parent_checkpoint_bytes_exact": true,
+  "local_fresh_origin": false,
+  "parent_fresh_origin": true,
+  "parent_lifetime_defeats": 456,
+  "final_lifetime_defeats": 475,
+  "original_total_requested_s": 1209600,
+  "continuation_requested_s": 86280,
+  "final_shortened_sample_s": 28680,
+  "actual_recovery": [
+    {
+      "clock_s": 1123364,
+      "detail": {
+        "clock_s_after": 1123364,
+        "clock_s_before": 1123320,
+        "elapsed_ms": 44900,
+        "remaining_ticks_after": 0,
+        "remaining_ticks_before": 449,
+        "requested_absence_s_charged": 0,
+        "total_ticks_after": 11404650,
+        "total_ticks_before": 11404201
+      },
+      "gold_after": 2850,
+      "gold_before": 2850,
+      "method": "advance_ended_recovery"
+    }
+  ],
+  "final_clock_s": 1209644,
+  "only_changed_scope": [
+    "crates/idlever-core/examples/advanced_campaign.rs",
+    "docs/evidence/cut253/earned-preparation/protocol.md"
+  ],
+  "branches": [
+    {
+      "case": "fighter-seed5-continuation",
+      "branch": "no-selection",
+      "actual_run_ids": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        0
+      ],
+      "events": 38890,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 660,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 10,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 4739,
+      "remaining_points": 10
+    },
+    {
+      "case": "fighter-seed5-continuation",
+      "branch": "parent-only",
+      "actual_run_ids": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        67
+      ],
+      "events": 38522,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 660,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 10,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 3216,
+      "remaining_points": 7
+    },
+    {
+      "case": "fighter-seed5-continuation",
+      "branch": "selected",
+      "actual_run_ids": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586
+      ],
+      "actual_class": "fighter",
+      "actual_weapons": [
+        "sword"
+      ],
+      "class_skill_masks": [
+        1091
+      ],
+      "events": 38525,
+      "raw_owner_run_row_sums_exact": true,
+      "complete_event_vector_equals_public_replay_native_assertion": true,
+      "first_departure_observed_after_s": 660,
+      "requested_s": 28800,
+      "gold_before": 2775,
+      "gold_after": 2775,
+      "runs": 17,
+      "deaths": 10,
+      "max_actual_depth": 33,
+      "actual_record_gold_sum": 3216,
+      "remaining_points": 6
+    }
+  ],
+  "raw_counter_anomalies": [],
+  "limits": "One lawful continuation; zero-defeat remains false. Parent original refusal preserved. Raw slot labels/groupings are not independently proven immutable per-rule identity; no spentwaste claim."
+}
