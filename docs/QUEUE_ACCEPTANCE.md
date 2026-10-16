@@ -1,9 +1,9 @@
 # Full queue acceptance ledger — audited 2026-10-15
 
-Goal: resume and finish all queued items verified and refined. This ledger
+Goal: resume and finish all queued items verified and refined. Owner requested
+parking2026-10-16; goal paused, scope unchanged. This ledger
 preserves the entire scope and records what evidence is missing. A scoped cut
-or a targeted pass never marks a broader requirement complete. Previous pause
-is revoked; prior raw release/balance evidence is historical for changed code.
+or a targeted pass never marks a broader requirement complete. Prior raw release/balance evidence remains historical for changed code.
 
 This audit reconciles source and preserved evidence through Cuts222–236 on
 the original audit snapshot `781b148f`. Subsequent local checkpoints are art
@@ -36,7 +36,7 @@ Painted Hub equipment integration85980886 now passes scoped current-source
 layout, strict art identity/reachability, owner, fallback and preference checks.
 Three neutral looks/seven new wearable layers complete the known19gear art-fit
 inventory (15public owned preparations plus4isolated unowned art previews).
-Cut252 recursive tree presentation passes scoped earned third-tier and controlled fourth-tier checks (adf83a0e). Cut253 five-class native interaction extension has1013native tests/Clippy and scoped baseline/new-WASM proofs; genuine cohorts/advanced parity/value and broaderR7 remain open. Cut251 paused-worker correction
+Cut252 recursive tree presentation passes scoped earned third-tier and controlled fourth-tier checks (adf83a0e). Cut253 five-class native interaction extension has1013native tests/Clippy and scoped baseline/new-WASM proofs; all15genuine chains now observe all4stages but0/15zero-defeat and chosen capstone application gaps remain; five genuine class UI journeys pass at recorded pre-Cut255source. Advanced watched/offline/WASM parity/value and broaderR7 remain open. Cut251 paused-worker correction
 019d0bf9 has32observations/184runtime assertions/800refreshes with exact saves;
 the original response-count metadata failure is preserved and independently
 verified, not described as a fresh whole-script pass. BroaderR5 remains open.
@@ -159,3 +159,11 @@ failures, superseded-contract deviations and unknown causes visible. Only mark
 the entire goal complete when all owner requirements and retained work above
 are finished, refined and verified. Commit/push concrete checkpoints; no new
 release deployment is implied without a release decision.
+
+Parking2026-10-16: Cut255Home/256Hub changes are checkpointed WIP. Preserve the
+independent13includingTasks failure, later full-matrix Locate failures, failed
+RAF candidate (reverted),200% header crowding and fixed small desktop Tasks text.
+Separate client recovery legs pass but are not a fresh11/11/fullHome acceptance.
+Native tests-only priority1–3 pass51advanced/16tree/defaultClippy with identical
+production/WASM; priority4 is unstarted. Two new GunnerV2masters are unselected.
+See HANDOFF.md's parked resume order; all40/full/exhaustive/fun scope remains.

@@ -1,15 +1,58 @@
-# Idlever handoff — active queue, resumed 2026-10-15
+# Idlever handoff — parked 2026-10-16
 
 Read this file, PLAN.md, docs/CUT30_5.md and AGENTS.md before resuming.
 The objective remains **resume and finish all queued items verified and refined**.
-The earlier pause is revoked. All40 items, R1–R6, lighting, content and fun review
-remain in scope: [acceptance ledger](QUEUE_ACCEPTANCE.md), [queue](WORK_QUEUE.md).
+Owner requested parking2026-10-16. The goal is paused after the checkpoints
+below; resume only on owner request. All40items, R1–R6, lighting, content and
+fun review remain in scope: [acceptance ledger](QUEUE_ACCEPTANCE.md), [queue](WORK_QUEUE.md).
 A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
+Local remote-tracking origin/main remains781b148f; no push/release was made.
+Parked Home/Hub source checkpointc4d81a2e includes its contracts/recovery logs;
+full independent proof/failures are in cut255/home-proof/checkpoint-paths.txt.
+Recent local checkpoints include4e3c41ea painted revisions, e2ad34a8 text/gates,
+a0919a77 genuine campaigns, c4d6be80 earnedUI/charge tests,8dbf1c57 arming
+counterexamples,2606f608 routing/receipts and221307d8 unselected Gunner candidates.
+Resume from the parked Home WIP, not a new generation/timing batch:
+
+1. Finish Cut255 on the current native-earned three-resident source. The first
+   independent census found13includingTasks; the successor groups that same
+   complete component into mobile Menu. Full primary402×681normal/200% proof
+   is still uncompleted. Preserve all actors, actual callback identity and the
+   unchanged12bar. Desktop keeps its compact roster/Tasks overlay.
+2. Resolve actual cross-owner Locate on the current remounted scene. Same-owner
+   isolated ring checks pass; the bounded cross-owner candidate failed despite
+   accepted selection/state conservation. The speculative RAF/event hunk was
+   reverted and saved as a patch; do not assume it fixed the issue.
+3. Refine the tall200% Hero Hub header, retaining distinct canonical personal/
+   class XP and live HP. Current expanded Training crowds the initial view;
+   whole-body scrolling works but compactness/ancestor-clipped usability remain
+   open. Desktop Tasks small text stays fixed-size; phone Menu/Tasks typography
+   is unreached. Read CUT255/CUT256 and cut255 dated observations first.
+4. Two GunnerV2 masters/prompts are saved but UNSELECTED (221307d8). Review the
+   brighter brass-ring mechanism/expressive veteran before adoption; export,
+   hashes and actual72icon matrix are still required if selected. Active library
+   remains72paintings/4213764bytes; no final art/recognition acceptance.
+5. Native negative priority1–3 are checkpointed (51advanced/16tree-stage,
+   Clippy/format), production runtime unchanged. Priority4 was NOT started.
+   Advanced earned payoff/zero-defeat/WASM parity, all40/R1–R6, exhaustive audits
+   and independent fun>=80 remain open. Do not restart completed pacing/full or
+   failed GPU controls; no new GPU timing run is authorized.
+
+All launched validation/native/browser jobs are terminal at parking. The old
+owned temporary Vite5298 was stopped and parent/child positively absent; shared
+5219 was left alone. No priority4, compact-header implementation, new campaign,
+new full matrix, push or release was started for parking. Older unrelated
+untracked art/evidence/scratch files remain untouched; use curated inventories.
+The final58-path Home proof inventory and lossless85-member archive preserve
+every relevant source epoch, including the rejected RAF source. All artifact
+hashes verified at checkpoint;18recorded wrapper/Node/Vite PIDs are absent.
+Uncompressed duplicate raws stay local and are not separate acceptance.
+
+
 Current development package is fast WASMef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79
 (6944684bytes); default settlements manifest is
 `docs/evidence/cut253/runtime/settlements-inputs-ef4b.json`. Cut253 native/client
@@ -220,10 +263,40 @@ labels remain capture-start diagnostics, not immutable rule attribution.
 The read-only30node negative matrix exposes further refusal/consumed-reload gaps.
 After all actual campaign jobs terminated, acceptance_audit began tests-only
 priority1 consumption/refusal/spent-save checks; production/WASM unchanged.
-Remaining four genuine earned class UI journeys are now active sequentially in
-cut253/earned-other-classes-ui/ (wrapper833912; one headless lane). Their current
-all-web/src identity guard prohibits UI/art edits until actual terminal. Root
-recorded Cut255Home density design only; no implementation or15>12pass yet.
+The remaining four earned class UI journeys are terminal16/16layoutsPASS,
+plus the Fighter4/4 above; c4d6be80 saves their exact prior source/ef4b proofs.
+All16complete reset saves equal original;16learned saves differ only in actual
+class_paths/compiledsets,64servedef4bresponses,4realcapstoneimagefailures.
+This is scoped5classUI acceptance at that source, not chosen-path payoff/fun or
+current Home successor certification.
+
+Priority1 tests-only phase passes31advanced and16tree/stage tests, defaultClippy
+and formatting; actual14refusal/14consumer/spent-reload prefixes plus Holdfast2
+charges are checked. Priority2 (8dbf1c57) passes41advanced/16tree/defaultClippy:10new
+groups/32selected-node counterexample contexts across26node deltas, not26fully
+accepted nodes. Production59inputs/rlib/native/WASM remain byteexact d445c982/ef4b.
+Original fixture/oracle failures and actual physical-repeat limits are retained.
+Priority3 (2606f608) is terminal:51advanced/16tree/defaultClippy/format pass;
+actual14Armed metadata and scoped recipient/source/LOS/reflection/projectile/
+guard controls are checked. All59production inputs/rlib/native/WASM remain
+byteexact. No core fix or pacing repeat; priority4/fullnegative matrix stays open.
+
+Cut255 now implements passive HomeLegacy, mobile roster-card removal and
+Menu grouping, but first independent full disclosure census finds13including
+Tasks against the unchanged12bar. Retained old runsui selector omittedsummary;
+no exclusion or densitypass is claimed. Initial11group regression8/11: actual
+Menu→Settingsfocus failed, and two older tests target removed hero-sheet reads.
+The successor moves the same complete live Tasks component into mobile Menu
+(desktop overlay retained), restores connected header focus before utilities,
+and Cut256restores missing personalXP/classTraining/liveHPdetail in currentHub.
+The failed3recover3/3 with118modalchecks and canonical/controlled progress
+checks; this is separate from the initial8/11. Copylint caught a4wordcombined
+training label; split into two tagged text literals with identical display.
+Later8affected groups pass7/8; Heroes fails only its old first-small-child
+Bloodline selector after the new XP line. Correct semantic read then passes1/1
+in27.2s. Do not relabel these epochs as a fresh11/11. Final TSC/lint/format/copy
+pass; full Home proof is incomplete/failed as the parked notes above explain.
+All source epochs/failures remain under cut255/.
 Use production-only depfile/rlib identity to distinguish test edits from runtime
 changes; do not relabel passing old gates as exercising newly added tests.
 
@@ -245,8 +318,8 @@ in-run observations were retained; no host/Windows-wide quiet claim follows.
 No retry/off-equivalence/candidate follows. c4caa3e0 curates terminal proof.
 Native scoped implementation/strict baseline and new-WASM proofs above are
 closed at their stated boundaries. Native pacing/full and all earned campaign jobs are terminal. The separate
-negative test phase may be live; consult its actual agent/handles before starting
-a duplicate. No new GPU timing run is allowed or inferred from ordinary browser
+negative phases1–3 are also terminal and parked; do not start priority4 until
+owner resumes. No new GPU timing run is allowed or inferred from ordinary browser
 checks. Production core/WASM remain unchanged at the gated identity.
 
 Latest scoped UI checkpoint400ade46 includes compact Home, resize correction,
