@@ -37,7 +37,19 @@ Resume from the parked Home WIP, not a new generation/timing batch:
    hashes and actual72icon matrix are still required if selected. Active library
    remains72paintings/4213764bytes; no final art/recognition acceptance.
 5. Native negative priority1–3 are checkpointed (51advanced/16tree-stage,
-   Clippy/format), production runtime unchanged. Priority4 was NOT started.
+   Clippy/format), production runtime unchanged. **Priority4 is now DONE too**
+   (commit aae04bbb): eight tests-only additions in `class_advanced_tests.rs` cover
+   the 10/11-tick and 39/40-tick boundaries, Vanish 0–3 retention and shrinking
+   misses, the mark/Slow 50 caps with real partial deltas, Ward/Slow/Aim/reload
+   identities across a public reload, half-debit refunds that never reach full
+   energy, fractional-pace/timed-speed AimSettle in all four clocks, and
+   conservation of hp/loot/ammo/cooldowns. Production bytes are unchanged (60
+   inputs, runtime key `7b802dde894ffa88`, WASM `51d041d0…`), workspace 1055
+   tests/6 ignored, clippy and rustfmt clean; one sub-item (a real net debit of
+   exactly 0 with a pending refund) is unreachable and recorded as a gap rather
+   than asserted. Evidence `docs/evidence/cut257/negative-priority4/`; the old
+   cut253 gate key `d445c9825416e54e` is correctly no longer reproducible, since
+   Cut257 changed production after that gate closed.
    Advanced earned payoff/zero-defeat/WASM parity, all40/R1–R6, exhaustive audits
    and independent fun>=80 remain open. Do not restart completed pacing/full or
    failed GPU controls; no new GPU timing run is authorized.
