@@ -91,6 +91,18 @@ iteration).** State of the resume order:
    build-phase split corrects `docs/ITERATION_SPEED.md` §3.5's engine.rs claim
    (~10 %, not "toward 5 s") — `docs/evidence/mechanics/*`.
 
+**Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
+`hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is
+fixed) and stops in its material-contrast stage
+(`docs/evidence/cut255/hero-hub-contrast.log`; the pre-compaction source never reached
+that stage, so it is not a known-good→known-bad regression). `cut13` and `cut29` fail four
+assertions each — stale forge-kit-ladder, keep-sheet, exit-line and day-0 expectations —
+identically with and without the perf change
+(`docs/evidence/mechanics/lazy-verdict-groups.log` vs `baseline-cut13-cut29.log`), so they
+predate this session and need a UI-owner revalidation. The desktop scene Tasks overlay
+keeps fixed-size text at 200% by a deliberate Cut229 decision (a rem cap covered
+scene buildings); the phone Menu/Tasks typography is now measured at exactly 2.00×.
+
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start
 a generation batch. Nothing is *absent*: a fresh audit of this checkout finds 0
