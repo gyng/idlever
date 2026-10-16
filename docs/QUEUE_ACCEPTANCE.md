@@ -126,7 +126,7 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   Owner's personality feedback reopens final art: Cut253 supplies30painted
   advanced candidates, current client648cell/72primitive/30painted-fallback
   checks pass at scoped catalogue level. Cut254 now paints all42original nodes:
-  72/72selected exports/registry,4193234bytes,0missing/invalid,216hashes checked.
+  72/72selected exports/registry,4213764bytes,0missing/invalid,216hashes checked.
   Currentef4b matrix passes648painted cells/72primitive and72blocked-image cases.
   Independent seven-sheet review still flags dark/repeated compositions.
   Full painted consistency/actual gameplay/recognition remain open;

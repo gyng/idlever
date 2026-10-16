@@ -30,17 +30,18 @@ purchase refusal/exactsave; fresh class-tree recovery passes320/400/1440.
 WatchRecovery attribution and skill fallback checks pass. A later72painting
 matrix passes separately; do not relabel the initial batch as4/4.
 
-Required new-source pacing is LIVE, not accepted: host wrapper/PGID745149,
-pacingNode745163, process namespace4026532214,16threads. Durable evidence is
-`docs/evidence/cut253/gates-current/state.json`, wrapper.log and pacing.log.
-Only terminalPASS plus unchanged relevant core/harness/runtime/package bytes
-starts routine --full with16RANDOM seeds; failure stops without tuning/retry.
-Exact hashes guard source; HEAD is metadata, so art/docs commits are safe.
-The guard includes ALL crates/**/*.rs, including advanced_campaign.rs; defer
-the proposed campaign-harness correction until this gate sequence terminates.
-Do not restart from a stale tool handle or an observation timeout. The first
-sandbox-local detached launch produced no live child/evidence and is preserved
-separately, not counted as a gate start.
+Cut253 new-source pacing and routine full are now BOTH terminalPASS, with
+unchanged280guard bytes/package through completion. Pacing24rows/16seeds took
+1546s. Routine full runs18current-player cases and actual16RANDOM seeds; QA48s,
+allmetrics/dayplayer selected bars pass, native sourceKeyd445c9825416e54e.
+Exact child args, observed actual binaries, cache scopes and positive terminal/
+process absence receipts are in cut253/gates-current/. Wrapper745149 and all
+recorded children are terminal; do not restart. The first empty sandbox-local
+launch stays historical, not a completed job. Broader exhaustive/all40/fun remain
+unaccepted. The all-Rust source freeze is released after the actual terminal.
+Production core/WASM stay unchanged. The separately recorded example-only
+advanced_campaign V2/V3 recorder successors pass scoped build/default Clippy;
+prior gate identities are preserved, not relabelled as testing those recorders.
 
 Prior Cut249 runtime8879 had979tests/6ignored, Clippy, strict settlement/parity,
 24pacing rows/256configuration-seed pairs and routine full18current-player cases/
@@ -128,8 +129,9 @@ Cut253 extends all five old classes to12nodes/30actual bounded sequence
 interactions, with personal staged pick budget up to10 and canonical next-pick/
 earned-stage wire. Native28causal/persistence and16tree/stage checks are included
 in the passing1013workspace suite. Full per-node refusal/miss/once combinations,
-genuine5class/3seed cohorts, zero-defeat path, new advanced watched/offline/WASM
-parity and chosen-path value remain open; no broadR7 claim follows.
+zero-defeat path, new advanced watched/offline/WASM parity and chosen-path value
+remain open. All15genuine class/seed chains now observe the four stages, with
+limits below; no broadR7 claim follows.
 
 Client checkpoint7be668d5 shows Rust budget/next_pick, only recorded earned-stage
 notices and named phase/unit-aware interaction receipts. Viewer seen-state is
@@ -139,8 +141,8 @@ passes36wire cases, four normal/200%phone/desktop views,8notice guards and exact
 Source-hashed native catalogue fixture is authored content, not an earned save.
 
 Owner's WC3-personality feedback now has a full72painted candidate library:
-Cut254 saves42original-node first passes plus twoV2composition corrections with
-exact built-in prompts. All72selected192square lossless exports total4193234bytes;
+Cut254 saves42original-node first passes, two early-node, four Rogue and three CasterV2corrections with
+exact built-in prompts. All72selected192square lossless exports now total4213764bytes;
 216master/prompt/export hashes verified,0missing/invalid. Full registry active;
 normal advanced-only export cannot downgrade it. Current ef4b client passes
 648state/size cells/72unique primitives/648painted/72real image-failure fallbacks,
@@ -153,6 +155,33 @@ cohesion, relevant200%/earned journeys remain open. Preserve rejectedV1/dated
 observations and revalidate after revisions. See art/ADVANCED_SKILLS.md and
 cut254/independent-review/; no final art or fun claim.
 
+Genuine earned Fighter UI now passes four primary402×681/1440×900 normal/200%
+configurations, using the untouched pilot frontier and realef4b. Public ancestor
+chain/cancel/reset/awaymask1091/refusals/keyboard/44px/overflow/image-failure
+fallback pass. Each complete reset JSON equals the original earned frontier,
+including full hereditary/family/Gold/gear/history. Initial geometry/input4/4pass
+exposed a separate actual200%readabilityFAIL: descendant14px and Learn/Reset16px
+stayed fixed while surrounding text doubled. Two CSS relative-unit fixes retain
+normal sizes and now measure exact2.0ratios; root inspected phone/desktop2xcaptures.
+Old font measurements/failures remain, not relabelled. This is only1of5required
+extended-class journeys, one resident; no broad owner/recognition/fun acceptance.
+See cut253/earned-fighter-ui/checkpoint-paths-current.txt and successor notes.
+
+Rogue tiny-size refinement replaces Afterimage/TellThief/Ghostwalk/SilentFinish
+with broader pale ghost/eye/boot/ribbon-blade compositions. Four exact built-in
+prompts and versioned masters are preserved;68other selected assets are
+byte-identical. New648cell/72primitive/72actualimage-failure matrix passes with
+served hashes/exactsave; static checks pass. Root reviewed the actual class
+board: these four have clearer24px focal masses, while Veiled route and remaining
+Gunner/Caster/Engineer priorities stay open. No independent recognition claim.
+Three CasterV2successors now brighten Chilling charge/Ice lock/Shatter ward with
+finger-cast bolt/frozen fist/breaking ward;69other selections unchanged. Fresh
+648cells/72primitive/72actualfailures, served hashes/exactsave and static checks
+pass. Actual-size root review sees stronger silhouette separation; Storm cell,
+Conduct and Last wall remain muted. See cut254/caster-v2/. Local artwork
+checkpoint4e3c41ea preserves all seven revised masters/prompts and scoped proofs.
+Readability/gates/audit checkpoint e2ad34a8 preserves the CSS and UI proof.
+
 Freshseed1Fighter earned pilot is terminal0, raw lossless proof/independent audit
 in cut253/earned-pilot-seed1-fighter/. All4stages observed by224h2m (L10/D33,
 304completed),171lifetime defeats, so zero-defeat FAIL. Actual8h branches:
@@ -160,8 +189,43 @@ none12runs/7deaths, parent-only13/10, Holdfast12/9, allD33. Named reconstructed
 Rally/Holdfast receipts exist; no overall selected benefit follows. Skill learns
 cost0Gold. Wrong first-slice capture held older capsules; actual new-run capsules
 are in retained endpoint saves. row_why is lifetime-cumulative, not branch-only
-wasted actions. These limitations are preserved; successor-proposal.md has no
-execution or source change. Only this seed/class ran; cohorts remain required.
+wasted actions. These limitations and superseded proposal remain historical. V2now captures
+37actual turn0 Fighter capsules (masks0/67/1091),169143complete reconstructed
+events exact to publicReplay, and81actual pilot save/report artifacts byteexact
+to the original. row counters are raw slot diagnostics, never spent waste.
+
+The remaining14V2cohorts are terminal: seven observed all4stages; seven refused
+public begin_descent while genuinely recovering. Original failures/checkpoints
+are immutable (cut253/earned-cohorts-v2). Local checkpoint a0919a77 preserves original and successor evidence.
+V3only fixes that harness precondition
+with public advance(remaining ticks×100ms) before begin_descent and adds exact
+--seconds residual budgets. One isolated Fighter5 then six remaining lawful
+continuations are terminal0, same owners/history and original requested336h
+budgets, no grants/forced home/new336h. Actual preparation clock advances are
+reported separately: requested336h is not strict actual-clock336h acceptance.
+
+All15genuine chains now observe all4stages; zero-defeat remains0/15FAIL. Actual
+capstone outcomes expose important unclosed value gaps: all Ranger Moving line
+and Caster Conduct branches have0receipts; actual Caster weapons are Dagger.
+Rogue Ghostwalk/Gunner Long watch show armed-only receipts in all three seeds.
+Fighter Holdfast applied15/0/1times byseed1/3/5. Row firing is not effect proof,
+and equal/harmful outcomes remain. Controlled causal tests cannot replace these
+missing earned payoffs. Read earned-continuations-v3/all15-summary.json and
+dated observations before choosing fixes; all counts are recorder/source-bound.
+
+Raw fired>matched counters are preserved:19flagged run/slot pairs include actual
+hunt events, whose source deliberately permits firing with lapsed conditions.
+The old verifier inequality was unsupported, not a proven engine defect. Slot
+labels remain capture-start diagnostics, not immutable rule attribution.
+The read-only30node negative matrix exposes further refusal/consumed-reload gaps.
+After all actual campaign jobs terminated, acceptance_audit began tests-only
+priority1 consumption/refusal/spent-save checks; production/WASM unchanged.
+Remaining four genuine earned class UI journeys are now active sequentially in
+cut253/earned-other-classes-ui/ (wrapper833912; one headless lane). Their current
+all-web/src identity guard prohibits UI/art edits until actual terminal. Root
+recorded Cut255Home density design only; no implementation or15>12pass yet.
+Use production-only depfile/rlib identity to distinguish test edits from runtime
+changes; do not relabel passing old gates as exercising newly added tests.
 
 R6 advancing-clock single-context A/A controls are terminal5/6PASS; Foundry400
 fails absolute0.249856ms against unchanged0.20ms limit. No retry-to-green or
@@ -180,9 +244,10 @@ families were observed/left untouched, then a stable visibleLinux window and
 in-run observations were retained; no host/Windows-wide quiet claim follows.
 No retry/off-equivalence/candidate follows. c4caa3e0 curates terminal proof.
 Native scoped implementation/strict baseline and new-WASM proofs above are
-closed at their stated boundaries. Native/default audit jobs are terminal; only
-the specifically named pacing wrapper is live. No new GPU timing run is allowed
-or inferred from ordinary browser checks. Core source stays frozen for pacing.
+closed at their stated boundaries. Native pacing/full and all earned campaign jobs are terminal. The separate
+negative test phase may be live; consult its actual agent/handles before starting
+a duplicate. No new GPU timing run is allowed or inferred from ordinary browser
+checks. Production core/WASM remain unchanged at the gated identity.
 
 Latest scoped UI checkpoint400ade46 includes compact Home, resize correction,
 functional equipment figure and curated R4/R6 preparation. Subsequent routine
