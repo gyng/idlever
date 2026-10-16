@@ -6,10 +6,14 @@ import {gunzipSync,gzipSync} from 'node:zlib';
 import {createHash} from 'node:crypto';
 import {Game,initSync} from '../../../web/src/engine/pkg/idlever_wasm.js';
 const input='docs/evidence/handoff-menus/input.game.json.gz';
-const output='docs/evidence/handoff-content/departure-readiness-e62c';
 const hash=b=>createHash('sha256').update(b).digest('hex');
+// The epoch label is the engine's own identity. The 2026-10-16 version pinned the wasm to
+// `e62c0867…` and hardcoded `departure-readiness-e62c/`, so it refused to run on any later build
+// (the R3 pair lane hit exactly that on 2026-10-17). Deriving the directory from the identity
+// keeps a run from ever mixing builds and leaves the earlier epoch's outputs where they are; the
+// identity is recorded in results.json and re-checked after the run.
 const wasm=readFileSync('web/src/engine/pkg/idlever_wasm_bg.wasm');
-assert.equal(hash(wasm),'e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c');
+const output=`docs/evidence/handoff-content/departure-readiness-${hash(wasm).slice(0,4)}`;
 initSync({module:wasm});
 const sourceBytes=readFileSync(input),raw=gunzipSync(sourceBytes).toString();
 const source=Game.fromSave(raw);

@@ -5,17 +5,21 @@ are legal and names the exact commands, and that the one missing piece is a **sc
 harness** (a thin wrapper over `choice_check`'s JSON — "small, not a new system"). Two
 concrete blockers were found by trying the lane on today's tree:
 
-1. **The legality runner is pinned to a superseded engine.**
-   `node docs/evidence/handoff-content/departure-readiness.mjs` aborts immediately:
-   it asserts `web/src/engine/pkg/idlever_wasm_bg.wasm` equals
-   `e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c`
-   (`departure-readiness.mjs:12`) and today's engine is
-   `51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191`. The pin is
-   **intentional** — the script writes `departure-readiness-e62c/` and the epoch label is
-   tied to that build — so a current run must be a **new epoch**
-   (`departure-readiness-51d0/`), not an edit that rewrites the old one. The choice is a
-   copy with a refreshed pin (duplicates 48 lines) or an identity parameter that keeps the
-   old epoch's outputs intact. Owner call, small either way.
+1. **The legality runner is pinned to a superseded engine — resolved 2026-10-17.**
+   It asserted `web/src/engine/pkg/idlever_wasm_bg.wasm` equals `e62c0867…` while today's
+   engine is `51d041d0…`, so it refused to run (the R3 pair lane hit exactly that). The
+   script now derives its epoch directory from the engine's own identity
+   (`departure-readiness-${sha.slice(0,4)}`), so it runs on any build, **can never mix two
+   builds in one directory**, and left the `-e62c` outputs where they are; the identity is
+   still recorded in `results.json` and re-checked after the run.
+
+   **The current epoch is recorded** (`departure-readiness-51d0/results.json`, status
+   PASS): all **six tactic packages are legal and free** on this earned camp — `gas_step`,
+   `pack_break`, `corridor_fighting`, `reflect_read`, `boss_focus`, `hunter`, each leaving
+   gold exactly `12021` — which is the ground truth R3's §5 pairs assumed. The class swaps
+   are constrained: `fighter` and `rogue` are legal, while `ranger`, `caster` and `gunner`
+   are **not unlocked** on this camp, so any class-based composition needs an unlocked
+   class first.
 2. **The scene-level wrapper does not exist yet**, as the review states. Until it does, the
    outcomes a pair can cite are `choice_check`'s per-case `ReturnReport` (command B), i.e.
    carry/return/death and depth, not the named scene's own event.
