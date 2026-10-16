@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-16",
+  "phase": "cut257 negative-priority4",
+  "phases": [
+    {
+      "phase": "identity-before",
+      "command": "python3 docs/evidence/cut257/negative-priority4/capture-identity.py docs/evidence/cut257/negative-priority4/production-identity-before-tests.json",
+      "exitCode": 0,
+      "result": "selected target/fast/deps/libidlever_core-a8cd7cd54e1ba70a.rlib, runtimeKey 7b802dde894ffa88, 60 production Rust inputs, no test module in the depfile",
+      "artifact": "production-identity-before-tests.json"
+    },
+    {
+      "phase": "focused-run-v1",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 101,
+      "passed": 5,
+      "failed": 3,
+      "red": [
+        "priority4_rally_tenth_tick_history_and_execution_fortieth_tick_boundary: a killed Bloat mother's hazard moved the hero off the kill tile, so the boundary boss was three tiles away and the melee bash was refused",
+        "priority4_refunds_pay_half_the_real_net_debit_and_never_reach_full_energy: p4_leftover asserted the exact leftover before the action's own applied refund",
+        "priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses: Game::save() carries the run's event buffer and the reference save was captured before the clear",
+        "priority4_ward_slow_aim_and_reload_identities_survive_a_public_reload: the public reload's own observation tick ages ward_t by 1",
+        "priority4_promised_energy_and_settlement_conserve_hp_loot_ammo_and_cooldowns: the reload completion's real refund can cross the actor's own clock, so 'the enabled fork never acts before the cleared fork' is the honest direction",
+        "priority4_aim_settle_honours_fractional_pace_timed_speed_and_the_first_tick: a fractional pace cannot advance a ten-tick crossing; the applied deficit is the evidence"
+      ],
+      "artifact": "advanced-v1.log",
+      "note": "All six were fixture/assertion errors in this file, not production defects; no expected value or semantic requirement was relaxed (observations-2026-10-16.json)."
+    },
+    {
+      "phase": "focused-run-v2",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 101,
+      "passed": 7,
+      "failed": 1,
+      "red": [
+        "priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses: the retained-window loop's three real ticks decayed vanish_cd to 97, not 100"
+      ],
+      "artifact": "advanced-v2.log"
+    },
+    {
+      "phase": "focused-run-v3",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "artifact": "advanced-v3.log"
+    },
+    {
+      "phase": "module-v1",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "exitCode": 0,
+      "passed": 63,
+      "failed": 0,
+      "artifact": "native-v1.log",
+      "note": "55 pre-existing tests in the module plus the 8 new ones."
+    },
+    {
+      "phase": "tree-stage",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- class_tree --nocapture",
+      "exitCode": 0,
+      "passed": 19,
+      "failed": 0,
+      "artifact": "tree-stage-v1.log",
+      "note": "The class_tree/class_tree_tests selection (16 tree-stage tests) plus three other lib tests whose names match the filter."
+    },
+    {
+      "phase": "workspace-v1",
+      "command": "cargo test -q --workspace --profile fast",
+      "exitCode": 0,
+      "passed": 1055,
+      "ignored": 6,
+      "failed": 0,
+      "artifact": "workspace-v1.log"
+    },
+    {
+      "phase": "clippy-v1",
+      "command": "cargo clippy --workspace --all-targets --profile fast -- -D warnings",
+      "exitCode": 101,
+      "red": [
+        "clippy::type_complexity on the paired conservation-case array type in class_advanced_tests.rs"
+      ],
+      "artifact": "clippy-v1.log"
+    },
+    {
+      "phase": "fix",
+      "what": "added the P4Case type alias (compile-time only; no test body changed)",
+      "artifact": "crates/idlever-core/src/class_advanced_tests.rs"
+    },
+    {
+      "phase": "focused-run-v4",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "artifact": "advanced-v4.log"
+    },
+    {
+      "phase": "module-v2",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "exitCode": 0,
+      "passed": 63,
+      "failed": 0,
+      "artifact": "native-v2.log"
+    },
+    {
+      "phase": "clippy-v2",
+      "command": "cargo clippy --workspace --all-targets --profile fast -- -D warnings",
+      "exitCode": 0,
+      "artifact": "clippy-v2.log"
+    },
+    {
+      "phase": "workspace-v2",
+      "command": "cargo test -q --workspace --profile fast",
+      "exitCode": 0,
+      "passed": 1055,
+      "ignored": 6,
+      "failed": 0,
+      "artifact": "workspace-v2.log"
+    },
+    {
+      "phase": "format",
+      "command": "rustfmt --edition 2021 crates/idlever-core/src/class_advanced_tests.rs",
+      "exitCode": 0,
+      "result": "16 regions reformatted (11 of this phase's new code, 5 left by the Cut257 commit); rustfmt --check then exits 0",
+      "note": "token-level formatting only; every check was re-run on the formatted source below"
+    },
+    {
+      "phase": "focused-run-v5 (final source)",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "artifact": "advanced-v5.log",
+      "note": "the observed priority4 lines are identical to v3/v4 apart from the parallel scheduler's interleaving order"
+    },
+    {
+      "phase": "module-v3 (final source)",
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "exitCode": 0,
+      "passed": 63,
+      "failed": 0,
+      "artifact": "native-v3.log"
+    },
+    {
+      "phase": "workspace-v3 (final source)",
+      "command": "cargo test -q --workspace --profile fast",
+      "exitCode": 0,
+      "passed": 1055,
+      "ignored": 6,
+      "failed": 0,
+      "artifact": "workspace-v3.log"
+    },
+    {
+      "phase": "clippy-v3 (final source)",
+      "command": "cargo clippy --workspace --all-targets --profile fast -- -D warnings",
+      "exitCode": 0,
+      "artifact": "clippy-v3.log"
+    },
+    {
+      "phase": "identity-after",
+      "command": "python3 docs/evidence/cut257/negative-priority4/capture-identity.py docs/evidence/cut257/negative-priority4/production-identity-after-tests.json --compare docs/evidence/cut257/negative-priority4/production-identity-before-tests.json",
+      "exitCode": 0,
+      "result": "production inputs, all four rlib candidates, the runtime key and the WASM unchanged; three native example binaries changed through peer/environment target churn",
+      "artifact": "production-identity-after-tests.json"
+    }
+  ]
+}

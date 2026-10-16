@@ -1,0 +1,205 @@
+{
+  "recordedUtc": "2026-10-16T13:14:45.303309+00:00",
+  "scope": "Read-only production-only identity at an explicit cfg(test)-only boundary; the capture neither rebuilds nor recompiles any artifact.",
+  "gateReference": "docs/evidence/cut253/gates-current/wrapper-terminal.json",
+  "gateReferenceSha256": "bac8bc9b0453d3118e0490d69f5f3c5d7f532407311b2e90de1ace47729463d1",
+  "runtimeKeyMethod": "Exact tools/runtime-key.mjs algorithm over the selected production rlib, the fast profile/features, the three manifests and the recorded compiler.",
+  "selectedBy": "Newest fast-profile non-test core rlib whose rustc depfile lists only production Rust inputs; every candidate and its key are recorded below, so no Cargo-artifact invocation is claimed and none is needed.",
+  "profile": {
+    "opt_level": "3",
+    "debuginfo": 0,
+    "debug_assertions": false,
+    "overflow_checks": false,
+    "test": false
+  },
+  "features": [],
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+  "selectedRuntimeKey": "7b802dde894ffa88",
+  "selectedProductionLibrary": {
+    "path": "target/fast/deps/libidlever_core-a8cd7cd54e1ba70a.rlib",
+    "sha256": "7369816e9c368d5c9c8c1b4d85ecb4c68120584b774a55597e5e99dfa4eed927",
+    "bytes": 51242270,
+    "builtUtc": "2026-10-16T12:05:44.025670+00:00",
+    "runtimeKey": "7b802dde894ffa88",
+    "compilerDependencyFile": {
+      "path": "target/fast/deps/idlever_core-a8cd7cd54e1ba70a.d",
+      "sha256": "a1c6e1667e4841806fb11e48d35cccf28c25f6a054fa7c5beecbe0bd51f17b47",
+      "productionInputs": 60
+    }
+  },
+  "rlibCandidates": [
+    {
+      "path": "target/fast/deps/libidlever_core-a8cd7cd54e1ba70a.rlib",
+      "sha256": "7369816e9c368d5c9c8c1b4d85ecb4c68120584b774a55597e5e99dfa4eed927",
+      "bytes": 51242270,
+      "builtUtc": "2026-10-16T12:05:44.025670+00:00",
+      "runtimeKey": "7b802dde894ffa88",
+      "compilerDependencyFile": {
+        "path": "target/fast/deps/idlever_core-a8cd7cd54e1ba70a.d",
+        "sha256": "a1c6e1667e4841806fb11e48d35cccf28c25f6a054fa7c5beecbe0bd51f17b47",
+        "productionInputs": 60
+      }
+    },
+    {
+      "path": "target/fast/deps/libidlever_core-197689112a1f5567.rlib",
+      "sha256": "515ba2d685b55733f13d4d3d538c42e2b48eeb26fa66d330fd03a4ee112eda67",
+      "bytes": 51242130,
+      "builtUtc": "2026-10-16T12:04:16.046644+00:00",
+      "runtimeKey": "526caeae1690b60b",
+      "compilerDependencyFile": {
+        "path": "target/fast/deps/idlever_core-197689112a1f5567.d",
+        "sha256": "f91a829e24633a081485d3446a3f54fe589be20fd13c2c586d9a254018467465",
+        "productionInputs": 60
+      }
+    },
+    {
+      "path": "target/fast/deps/libidlever_core-0c5915e7b3af3bd8.rlib",
+      "sha256": "68bd0d6e568655a7e55e5f4272e202a8937a70f35757a63845f043d2e2074d5a",
+      "bytes": 51227156,
+      "builtUtc": "2026-10-16T11:25:17.920630+00:00",
+      "runtimeKey": "f77baca886196307",
+      "compilerDependencyFile": {
+        "path": "target/fast/deps/idlever_core-0c5915e7b3af3bd8.d",
+        "sha256": "371986122b247d8de9f72c42509ba14ddb99eb03e515540b716ec95ce51664a0",
+        "productionInputs": 60
+      }
+    },
+    {
+      "path": "target/fast/deps/libidlever_core-041ef9d46bf77c9f.rlib",
+      "sha256": "7c7b7547352c07413e55be4fe156f2086cf44a017e188d17b2b6234c8ddad525",
+      "bytes": 50491824,
+      "builtUtc": "2026-10-15T12:14:50.628584+00:00",
+      "runtimeKey": "2a273473bebb36ea",
+      "compilerDependencyFile": {
+        "path": "target/fast/deps/idlever_core-041ef9d46bf77c9f.d",
+        "sha256": "a39766d1550dba0034dedef55afc0cd430f4b1c08453ba643d9c6c9851d83161",
+        "productionInputs": 59
+      }
+    }
+  ],
+  "productionInputs": {
+    "crates/idlever-core/src/lib.rs": "51d9bee2a1302c21c8dcf3aef02571638fb6d7edad39703486b4d0ea317cfe17",
+    "crates/idlever-core/src/ai.rs": "7d127b35de4aa38e154e4c11b32765eabacf229acaaddd2ba43ed2d7a6ea46dc",
+    "crates/idlever-core/src/balance.rs": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99",
+    "crates/idlever-core/src/chronicle.rs": "18356482ec2da983b774075135a68f56d69460aebe08b4dced6c32e0d341f0bd",
+    "crates/idlever-core/src/defs.rs": "89853cd749d810620c6373559641d1edd4c7c0f81dfc9174b9c16fcf239e66fa",
+    "crates/idlever-core/src/descent.rs": "e57e0c0e72d24203fa25f7b43a576cf901d2c394382052aba7abcbcb7a34f16b",
+    "crates/idlever-core/src/engine.rs": "f6cfd7f86aa365c4421461a4fdaca10b3f8bf07fbf7592e9247b3f989e373613",
+    "crates/idlever-core/src/endgame.rs": "a82408a7e6fb65b2b79ec046998bab098b53ca832ee97456e9cb075542eed0b4",
+    "crates/idlever-core/src/facts.rs": "59a3f70cc1d9ead74a89929982fc376cb89ff097e8f59516bcc1f205d3bf5dd5",
+    "crates/idlever-core/src/feats.rs": "04990cca12bf876c53418f1361f8b684330a9b03b66c0bc3f39d09f0e82df2b8",
+    "crates/idlever-core/src/fold.rs": "215dfa58b4437aee4d1b935f9d4aa36d3c07e17bc6eb8421f10fcc0501fa8fd6",
+    "crates/idlever-core/src/divergence.rs": "fd3c73c6548d0b4dbfb06ee6b7cf732f0e56cee570d0df3b087050b3a5457eb2",
+    "crates/idlever-core/src/forecast.rs": "dfd39647c0482780568f15cb36a44b989085c7ec6c87aac95117d428666dd6b9",
+    "crates/idlever-core/src/gen.rs": "087fba3a98b74f4a76384d1db1bb50e726cd13ea96de3130f1d1b5709cf88304",
+    "crates/idlever-core/src/firearm.rs": "c4342b7eac98cf80c9956dccdf9ecbd942df63b5b51a71a46af74cd2fc7d5310",
+    "crates/idlever-core/src/geom.rs": "13288dac1b289271f927478195a4a0a1dcd65f7004444d2f1058f2e8a2b2f3c8",
+    "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369",
+    "crates/idlever-core/src/item.rs": "d10d765f18cd387e551aa620feb65d21e51e86352a36b0efefaa4f8bab916a75",
+    "crates/idlever-core/src/journal.rs": "fdd7dac4d7d2ac2b58f8d46043b5e0936ba3532a3cc2332560357a01afcc3be5",
+    "crates/idlever-core/src/kit.rs": "49877ec25171d853ca92e61ae91164399c4f13868b558ca27f4f4bc150ed7bca",
+    "crates/idlever-core/src/hero_build.rs": "cde2d6c1f0cad8c1ece11cd908bbee9b82f072521bb1b208c706c1b7cc8627bc",
+    "crates/idlever-core/src/armour_sets.rs": "03f5fc3d04c6fc4fa52be3dd45d8c8dde625b1c8cfb63d9fd6ec9c2883995618",
+    "crates/idlever-core/src/legacy.rs": "8c9405909c59a4f053b226f1e727a50a7bd2978baec934deea96419b432d44e8",
+    "crates/idlever-core/src/legendary.rs": "2b3066b7a1e2d8f5d49125401eb4d49a7cc066645a5b7bb54ba4477ae43e29b9",
+    "crates/idlever-core/src/specialization.rs": "969fcb04b162460a4a06b89673b46f8b6d296723499dd5486c156e7ffec96f84",
+    "crates/idlever-core/src/class_tree.rs": "5ae07c31fb2373ff5f086cd8176b61c71699e1afe93d6f5e45ba40e84e8a8ccf",
+    "crates/idlever-core/src/class_advanced.rs": "6c04a5bcc646f0c38c5bcc2b147067bc3560775f06ee8e3620ee298c4b50af36",
+    "crates/idlever-core/src/bloodlines.rs": "44874dae444237b37d3dfdf2db66eb8de645562609ef4920cfd4a8600781004e",
+    "crates/idlever-core/src/meta.rs": "5260a102df17f1cf446977ec4dac31330678efc8be262840b3a5118d7baf6763",
+    "crates/idlever-core/src/news.rs": "8756bf51aa08db88164c04787622abd23bb078889781e139a26eab46c732fb32",
+    "crates/idlever-core/src/monster.rs": "ec728595c562a0248bb573b24bd97519fa003b61e95fe5b430972e5a5d9019c5",
+    "crates/idlever-core/src/oath.rs": "6756fde5017b5d92e1f70ea022db5c062d399c4ded6026ed255aac165b7e5d9d",
+    "crates/idlever-core/src/packages.rs": "3a7f212221942816f5ca7c431bcbe96dcf5681c600246fea2b979a2d6dc188f5",
+    "crates/idlever-core/src/petstats.rs": "489da1114e2bbad95fbe95ef05885a8dcb52d3a7e23977cf9f7da37623bf2bea",
+    "crates/idlever-core/src/pets.rs": "943f8eae0759c4a30df3f235d21b9477851e6fd7ed39c623b819a9e10a73cf81",
+    "crates/idlever-core/src/persistent.rs": "3ac986a30cba11d71d16d639a7ec5ac90ab2aa9c9fa60c727f795ca301ecc5a6",
+    "crates/idlever-core/src/progression.rs": "b7d146c7717f67b89ce1a7aa5f387f947e0a6fde66badb4c7d7a03fe205c8c65",
+    "crates/idlever-core/src/offline.rs": "b41251823c8e55ee3e266cf23f7aa72d8c86c5825974375a348500d14f49c0cb",
+    "crates/idlever-core/src/probes.rs": "c30bcde709f6b9d7a5a4748b98af289d376d47ea65f4a9c7c862c8e4e3553608",
+    "crates/idlever-core/src/provenance.rs": "f567e9c0ab9b57bed1c4591d2c5d53370567eeb5232fd3f12bcf1d588926ae30",
+    "crates/idlever-core/src/returns.rs": "08203d865abba514ea2ad2bbf69fba09967f83b2646db01174e5fe264956cbba",
+    "crates/idlever-core/src/rng.rs": "177d3208e9ffa962bdcc21f367b33e1f8c2129a8b76eef3a989b1793fc6f09d4",
+    "crates/idlever-core/src/rules.rs": "edda0a1614bbd05255b70c550aef49c9d831fb945c3bf6ed4511da9de7092ae2",
+    "crates/idlever-core/src/save.rs": "8a201c4f325978a42e85c51a1f407ef8408262377ca3e2e970ccb8252fcd5022",
+    "crates/idlever-core/src/shared.rs": "2eafeae644e071d241edeb0af20897c743d6b34dc988997fdb99f879d4d7821f",
+    "crates/idlever-core/src/sifter.rs": "46b474045646535fe72cb9ce1f733cf9528f49f5552d2248161233210c9fbc8b",
+    "crates/idlever-core/src/situations.rs": "2d12714d015cbf5905b5d33ef2de1cdde410cfdb246d4cc087cc58a6b87887b6",
+    "crates/idlever-core/src/systems.rs": "3be5059e19fd70fc4a46c861f6950aca3c0c05f8dacf015ee6ef16f6b3302c2a",
+    "crates/idlever-core/src/wall.rs": "aa74b76d24779062722e0542c22685f3a6787a869ceeef7f8f291e87fac32557",
+    "crates/idlever-core/src/meters.rs": "c05146609f8bb1df214a8aa5de4039db4ce5d75c58f7704ded14f0b25b68f5e4",
+    "crates/idlever-core/src/tiles.rs": "0cd54df0eaaae151265314d5880aa6a2554d6a21fc9f82dbb30551e76e76cd3f",
+    "crates/idlever-core/src/tokens.rs": "55a93873680ce2d28928e59fc52ad42a95687ffed4a22fda9890b7df13e35ddf",
+    "crates/idlever-core/src/tools.rs": "2fc10af027f3ce86d434ef8ee22be97dd81337a366f2b46c5f56089127b77407",
+    "crates/idlever-core/src/town.rs": "d6325837cd47b4e92e8ba3a037a3209d986cb94ae686ddff352775e454636aa5",
+    "crates/idlever-core/src/tree.rs": "252eeb5f5738f2b4d411a26d81556ace3ac071847dc9b77af299c115e65c8c5c",
+    "crates/idlever-core/src/trace.rs": "2034c087a4ac022ac6ac25fb820a72b8cf5ca6831a9b653798b6e872ef4aa87f",
+    "crates/idlever-core/src/traits.rs": "f248204678e0cc229f912c721c58c2ffbf71b1d2ef5665e9c87fe904174ea74f",
+    "crates/idlever-core/src/turn.rs": "4b23660d1e550f9d882ecd3069461af4dc22a72205af975fa38fafd3ad52502c",
+    "crates/idlever-core/src/wire.rs": "23e38990d6061baaa0a619d01a94e86ad58609ad7d7c2ca93621df0de64ebbc1",
+    "crates/idlever-core/src/traits.json": "c0fa1e294bc9f131bc665a37bd7216d286f6f9deb1160886c0ba38505b35b73f"
+  },
+  "productionInputsCount": 60,
+  "testModuleInProductionDepfile": false,
+  "productionInputsVsCut253Audit": {
+    "count": 66,
+    "changed": [
+      "crates/idlever-core/src/ai.rs",
+      "crates/idlever-core/src/class_advanced.rs",
+      "crates/idlever-core/src/class_tree.rs"
+    ],
+    "onlyInAudit": [
+      "Cargo.lock",
+      "Cargo.toml",
+      "crates/idlever-core/Cargo.toml",
+      "crates/idlever-wasm/Cargo.toml",
+      "crates/idlever-wasm/src/lib.rs",
+      "tools/runtime-key.mjs"
+    ],
+    "onlyNow": []
+  },
+  "cut253GateEpoch": {
+    "gateSourceKey": "d445c9825416e54e",
+    "productionLibrary": {
+      "path": "target/fast/deps/libidlever_core-197689112a1f5567.rlib",
+      "sha256": "beab2f6bbf189575578974b249d9e68f374c6ed73caeb2dc49ed73483c888bbf",
+      "bytes": 51259162
+    },
+    "reproducibleFromCurrentBytes": false,
+    "note": "The Cut253 gate key was recorded before the Cut257 production commit 43aa5655 (ai.rs, class_advanced.rs, class_tree.rs). It is a superseded production epoch; the binding contract for this cfg(test)-only phase is byte-identity of every production input, rlib, native binary and WASM before vs after the tests."
+  },
+  "nativeBinaries": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "466abf0b972ee8527aac54880df47c36a0e52651e6d8d8786e5c354d990275da",
+      "bytes": 12663064
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "db0144e3a0ceb7271ca8cfb822b72a150ecd42692361cfdf1e264f1055d91833",
+      "bytes": 11956256
+    },
+    "target/fast/examples/qa": {
+      "sha256": "602e0b60b9224d06d98933966cc58c18f7bdb8b5be17d0e6a9871c7f9b83557a",
+      "bytes": 10858888
+    },
+    "target/fast/examples/native_dev": {
+      "sha256": "86e88d8077ee8375c2446d4bf5b46b2e9bbb20597ae9db60f33a7d3e1fe6c83f",
+      "bytes": 11484176
+    }
+  },
+  "wasm": {
+    "path": "web/src/engine/pkg/idlever_wasm_bg.wasm",
+    "sha256": "51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191",
+    "bytes": 6946459
+  },
+  "laterCheckContract": "After cfg(test)-only edits, re-hash every production input, every rlib candidate, the native binaries and the WASM and reproduce each key. Any difference is a production-byte change and must be reported, not absorbed.",
+  "comparison": {
+    "before": "docs/evidence/cut257/negative-priority4/production-identity-before-tests.json",
+    "productionInputsUnchanged": true,
+    "changedInputs": [],
+    "selectedLibraryUnchanged": true,
+    "runtimeKeyUnchanged": true,
+    "allCandidateArtifactsUnchanged": true,
+    "nativeBinariesUnchanged": false,
+    "wasmUnchanged": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "phase": "cut257 negative-priority4 (priority item 4: boundary clocks, per-cast identity and conservation)",
+  "date": "2026-10-16",
+  "sourceEdits": [
+    "crates/idlever-core/src/class_advanced_tests.rs"
+  ],
+  "evidence": [
+    "docs/evidence/cut257/negative-priority4/README.md",
+    "docs/evidence/cut257/negative-priority4/results.json",
+    "docs/evidence/cut257/negative-priority4/cases.json",
+    "docs/evidence/cut257/negative-priority4/phases.json",
+    "docs/evidence/cut257/negative-priority4/observations-2026-10-16.json",
+    "docs/evidence/cut257/negative-priority4/checkpoint-paths.json",
+    "docs/evidence/cut257/negative-priority4/capture-identity.py",
+    "docs/evidence/cut257/negative-priority4/production-identity-before-tests.json",
+    "docs/evidence/cut257/negative-priority4/production-identity-after-tests.json",
+    "docs/evidence/cut257/negative-priority4/test-module-before.rs",
+    "docs/evidence/cut257/negative-priority4/advanced-v1.log",
+    "docs/evidence/cut257/negative-priority4/advanced-v2.log",
+    "docs/evidence/cut257/negative-priority4/advanced-v3.log",
+    "docs/evidence/cut257/negative-priority4/advanced-v4.log",
+    "docs/evidence/cut257/negative-priority4/advanced-v5.log",
+    "docs/evidence/cut257/negative-priority4/native-v1.log",
+    "docs/evidence/cut257/negative-priority4/native-v2.log",
+    "docs/evidence/cut257/negative-priority4/native-v3.log",
+    "docs/evidence/cut257/negative-priority4/tree-stage-v1.log",
+    "docs/evidence/cut257/negative-priority4/workspace-v1.log",
+    "docs/evidence/cut257/negative-priority4/workspace-v2.log",
+    "docs/evidence/cut257/negative-priority4/workspace-v3.log",
+    "docs/evidence/cut257/negative-priority4/clippy-v1.log",
+    "docs/evidence/cut257/negative-priority4/clippy-v2.log",
+    "docs/evidence/cut257/negative-priority4/clippy-v3.log"
+  ],
+  "notes": [
+    "Only cfg(test) source changed; no production helper, no production code, no gate, no wasm/release build and no pacing run took place in this phase.",
+    "Root/main owns the checkpoint commit and any parking of the remaining priority items."
+  ]
+}

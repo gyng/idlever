@@ -1,0 +1,119 @@
+
+running 63 tests
+priority2 ambush actual hit=true sameRngSeed=0
+priority2 shield_bash actual hit=true sameRngSeed=0
+paired fighter_rally: enabled=-30, control=-50
+priority2 ambush actual hit=false sameRngSeed=3
+priority2 shoot actual hit=true sameRngSeed=0
+paired fighter_oathguard: enabled=999, control=997
+priority2 shoot actual hit=false sameRngSeed=3
+paired fighter_opening_cut: enabled=-40, control=-50
+..................priority2 incoming hit=false intercepted=false seed=3
+priority2 incoming hit=true intercepted=false seed=0
+.priority4 aim_settle plain pace=0 speed_t=0 settled=10 control=0 next_on=21 next_off=22
+..priority2 fire actual hit=true sameRngSeed=0
+priority2 incoming hit=true intercepted=true seed=1
+priority4 aim_settle fractional_pace_5 pace=5 speed_t=0 settled=6 control=0 next_on=21 next_off=22
+priority2 fire actual hit=true sameRngSeed=0
+.priority2 fire actual hit=false sameRngSeed=3
+priority4 aim_settle fractional_pace_9 pace=9 speed_t=0 settled=2 control=0 next_on=21 next_off=22
+priority2 close_burst actual hit=true sameRngSeed=0
+.priority4 aim_settle timed_speed pace=0 speed_t=5 settled=10 control=0 next_on=19 next_off=20
+priority4 aim_settle deficits plain=10 pace5=6 pace9=2 speed_t5=10 arrivals=[("plain", 21, 22), ("fractional_pace_5", 21, 22), ("fractional_pace_9", 21, 22), ("timed_speed", 19, 20)]
+.priority4 aim_settle no_future_tick energy=95 next=13
+.priority2 attack actual hit=false sameRngSeed=3
+paired fighter_siege_rhythm: enabled=-920, control=-922
+priority4 ward_identity source=0 spent_nova=[20] new_cast_expected=true
+priority4 snare remaining=3 applied=[3] double_cd=0
+priority4 spotter inherited=45 marked=50 applied=[5]
+.priority4 ward_identity new_source=433791696906 new_shatter=[20]
+priority2 shield_bash actual hit=false sameRngSeed=3
+priority4 refund tier=Common real_debit=50 applied=[25] energy=75 disabled_energy=50
+.priority2 bolt actual hit=true sameRngSeed=0
+..priority4 refund tier=Uncommon real_debit=25 applied=[12] energy=87 disabled_energy=75
+priority2 bolt actual hit=true sameRngSeed=0
+..priority4 snare remaining=0 applied=[] double_cd=0
+priority4 refund zero_room consumed=[1] applied=[] energy=99
+priority4 opening_cut remaining=4 hurt=2 applied=[4]
+priority4 opening_cut remaining=0 hurt=2 applied=[]
+..paired fighter_holdfast: enabled=799, control=797
+priority4 spotter inherited=50 marked=50 applied=[]
+priority4 ice_lock bits=[8] control=false slow_t=40 applied=[10]
+priority4 refund combined applied=[5] second=[] energy=99
+priority4 ice_lock bits=[1, 4, 8] control=false slow_t=50 applied=[5]
+...priority4 ice_lock bits=[1, 4, 8] control=true slow_t=50 applied=[]
+..paired fighter_execution_arc: enabled=-30, control=-50
+paired rogue_afterimage: enabled=-80, control=-100
+.....paired rogue_tell_thief: enabled=-90, control=-100
+..paired rogue_veiled_route: enabled=50, control=0
+.paired rogue_patient_ambush: enabled=3, control=0
+priority4 slow_identity source=0 new_source=133143986179 ward_cd=49 applied=[10, 10]
+paired rogue_ghostwalk: enabled=-917, control=-919
+paired rogue_silent_finish: enabled=50, control=0
+paired ranger_spotter: enabled=40, control=30
+paired ranger_quiver_thread: enabled=-20, control=-40
+priority4 aim_identity source=0 spent_recovery=[1] new_source=4294967296 new_recovery=[1, 1]
+priority4 rally elapsed=10 bash_cd=50 applied=[20] disabled_applied=[]
+priority4 rally elapsed=11 bash_cd=70 applied=[] disabled_applied=[]
+priority4 execution elapsed=39 paid=false bash_cd=70
+priority4 execution elapsed=40 paid=true bash_cd=50
+.priority4 reload_identity source=4294967297 item=1 fast=false debit=100 loaded=1 applied=[50]
+priority4 patient_ambush pre=1 miss_seed=3 retained=1 disabled_retained=0
+...paired ranger_corridor_volley: enabled=-964, control=-1000
+paired ranger_split_mark: enabled=20, control=0
+priority4 conserve veiled_route bit=8 world_equal=true applied=[50] energy=50 disabled_energy=0
+priority1 refusal Oathguard verb=shield_bash remaining=1 exactSave=true
+priority2 incoming hit=true intercepted=true seed=2
+paired ranger_patient_snare: enabled=-20, control=-40
+priority1 refusal SiegeRhythm verb=shield_bash remaining=1 exactSave=true
+priority1 refusal Holdfast verb=second_wind remaining=2 exactSave=true
+priority4 conserve moving_line bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0
+priority2 incoming hit=true intercepted=true seed=2
+priority1 refusal Afterimage verb=shadowstep remaining=1 exactSave=true
+paired ranger_moving_line: enabled=50, control=0
+priority1 refusal SilentFinish verb=shadowstep remaining=1 exactSave=true
+.priority1 refusal VeiledRoute verb=shadowstep remaining=1 exactSave=true
+priority4 conserve breach_route bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0
+paired caster_chilling_charge: enabled=-40, control=-50
+priority4 conserve chamber_chain bit=7 world_equal=true applied=[1] energy=10 disabled_energy=0
+paired caster_storm_cell: enabled=-998, control=-1000
+.priority4 patient_ambush pre=2 miss_seed=3 retained=2 disabled_retained=0
+priority4 patient_ambush pre=3 miss_seed=3 retained=3 disabled_retained=0
+priority4 patient_ambush shrink=3,2,1 expired=0 vanish_cd=97
+priority1 refusal Ghostwalk verb=backstab remaining=1 exactSave=true
+priority4 conserve long_watch bit=10 world_equal=true applied=[1] energy=10 disabled_energy=0
+priority1 refusal CorridorVolley verb=shoot remaining=1 exactSave=true
+priority1 refusal MovingLine verb=kite remaining=1 exactSave=true
+priority1 refusal StormCell verb=bolt remaining=1 exactSave=true
+priority1 refusal ChamberChain verb=aimed_shot remaining=1 exactSave=true
+priority4 conserve smoke_walk world_equal=true energy=40 disabled_energy=90 actions=4 disabled_actions=3
+priority1 consumer Oathguard spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 refusal LongWatch verb=aimed_shot remaining=1 exactSave=true
+priority1 refusal BreachRoute verb=smoke_retreat remaining=1 exactSave=true
+priority1 refusal SmokeWalk verb=reload remaining=1 exactSave=true
+.......paired caster_ice_lock: enabled=40, control=30
+paired caster_shatter_ward: enabled=-130, control=-150
+paired caster_conduct: enabled=10, control=0
+paired caster_last_wall: enabled=-30, control=-50
+paired gunner_rangefinder: enabled=1, control=0
+paired gunner_chamber_chain: enabled=10, control=0
+paired gunner_smoke_walk: enabled=440, control=390
+paired gunner_cycling_breach: enabled=-90, control=-100
+paired gunner_long_watch: enabled=10, control=0
+paired gunner_breach_route: enabled=50, control=0
+.priority1 consumer SiegeRhythm spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Holdfast spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Afterimage spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer SilentFinish spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer VeiledRoute spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Ghostwalk spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer CorridorVolley spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer MovingLine spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.priority1 consumer StormCell spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer ChamberChain spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.priority1 consumer LongWatch spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer BreachRoute spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer SmokeWalk spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.
+test result: ok. 63 passed; 0 failed; 0 ignored; 0 measured; 998 filtered out; finished in 0.90s
+

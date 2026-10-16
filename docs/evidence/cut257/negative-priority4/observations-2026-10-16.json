@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-16",
+  "scope": "Cut257 negative-suite priority item 4 (boundary clocks, per-cast identity and conservation). Observations made while writing the controlled tests; not a claim about earned play, balance or fun.",
+  "observations": [
+    {
+      "id": "O1",
+      "kind": "test-construction, not a production defect",
+      "happened": "The Execution 39/40 boundary test could not bash at T+39: the hero stood at (2,3) instead of (4,5) and had lost 3 hp.",
+      "cause": "A killed Bloat mother leaves a hazard the hero steps out of on his own rules (`choose_and_act`'s `hazard -> step out`), so by T+39 the boundary boss spawned at the kill tile was three tiles away and the melee bash was refused (`verb_attack` returns false for a bash out of reach).",
+      "action": "The boundary bash and kill now spawn the fresh boss adjacent to the hero's actual position, so the real melee charge and kill are asserted at both 39 and 40.",
+      "confidence": "high; reproduced from the observed monster/hero positions and the engine's own hazard override"
+    },
+    {
+      "id": "O2",
+      "kind": "harness fact",
+      "happened": "A full-save comparison in the retained-Vanish test differed only in `game.events`.",
+      "cause": "`Game::save()` serializes the run's event buffer, and the buffer had been cleared after the reference save was taken.",
+      "action": "The reference save is captured after the event clear, as the pre-existing refusal tests do; the refusal itself emits nothing.",
+      "confidence": "high"
+    },
+    {
+      "id": "O3",
+      "kind": "policy reading",
+      "happened": "A fractional pace does not advance a ten-tick crossing (a nine-tick window cannot reach 100 from fractional bonuses alone), so 'the pace moves the next action turn' was the wrong oracle.",
+      "cause": "Fractional pace adds at most one energy per tick; the deficit the settlement fills is the quantity that really depends on it.",
+      "action": "The test pins the applied settlement energy per clock (plain 10, pace 5 six, pace 9 two) plus the exact one-tick advance against the node-free fork, and the timed speed's earlier arrival (20 vs 22).",
+      "confidence": "high"
+    },
+    {
+      "id": "O4",
+      "kind": "real engine behaviour worth recording",
+      "happened": "In the Smoke-walk conservation pair the enabled fork ended the comparison turn with 40 energy and no extra action, while the node-free fork had 90 energy after an extra Hold.",
+      "cause": "The refund is applied in the completion tick before that tick's energy accrual, so it changes when the actor's own clock crosses 100.",
+      "action": "The conservation assertion is 'the enabled fork never acts before the cleared fork' (real energy, no node-invented action) plus world equality; the observed counts are printed.",
+      "confidence": "high"
+    },
+    {
+      "id": "O5",
+      "kind": "unreached sub-case",
+      "happened": "No reachable real action queues a node refund with a real net debit of exactly 0.",
+      "cause": "`class_advanced::after_action`'s `debit` is `ACT_ENERGY - (energy after the traits' own step)`. The only 100 % energy return is `light hands` and it is gated to a taking `pick_up`, which never queues an energy refund; `sure` caps at 75 % (`retreat`/`back_corridor`/`kite`/homeward return/bank/explore) and the physical reload always records a real action debit.",
+      "action": "Tested the reachable neighbours instead: two real trait-reduced debits (50 -> 25 and 25 -> 12), a real promise with zero room (Consumed [1], Applied [], 99 energy) and two concurrent refunds sharing one budget ([5] then nothing, 99 energy). Recorded here so the gap is not silent.",
+      "confidence": "high for the reachability argument; the untested state remains untested"
+    },
+    {
+      "id": "O6",
+      "kind": "identity epoch (outside this phase)",
+      "happened": "The Cut253 gate native runtime key d445c9825416e54e is not reproducible from any current fast-profile core rlib (all four candidates give different keys).",
+      "cause": "The Cut257 production commit 43aa5655 changed ai.rs, class_advanced.rs and class_tree.rs after that gate closed; the audit's recorded inputs differ in exactly those three files.",
+      "action": "Recorded both epochs in production-identity-before/after-tests.json. This cfg(test)-only phase's binding contract is byte-identity of every production input, rlib candidate, native binary and WASM across its own edits, which holds.",
+      "confidence": "high"
+    }
+  ],
+  "limits": [
+    "Controlled arenas, masks, RNG-selected branches and hand-set clocks/clocks leftovers are component fixtures, not earned public campaigns or claims about how often a branch fires in play.",
+    "Only priority item 4's seven sub-items are covered; the other matrix dimensions (armed-charge refusals, routing, hazards) stay with priority 1-3 and their own limits.",
+    "No pacing/full gate, no wasm or release build, no client test and no fun/balance claim was made or inferred; the production identity files pin the bytes those prior proofs stand on."
+  ]
+}

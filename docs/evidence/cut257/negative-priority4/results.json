@@ -1,0 +1,207 @@
+{
+  "recordedUtc": "2026-10-16",
+  "status": "PASS",
+  "scope": "Cut257 negative-suite priority item 4 only: boundary clocks, per-cast identity and conservation. cfg(test)-only source; no production helper was added and no expected value or semantic requirement was relaxed.",
+  "sourcePath": "crates/idlever-core/src/class_advanced_tests.rs",
+  "testSourceSha256": "63ca133bf18b73c270682dd27f7369aca554e1dfc3f688fae41b892a50d6fd52",
+  "testSourceLines": 4580,
+  "testSourceBeforeSha256": "e92b7c918cf283d080dfbb0aef903eb2ab532bc29df8cdcd6f8f7e11063f5528",
+  "testSourceBefore": "test-module-before.rs (git HEAD at the phase start, 120695 bytes; the new tests add 45274 bytes)",
+  "newTests": 8,
+  "newTestNames": [
+    "priority4_rally_tenth_tick_history_and_execution_fortieth_tick_boundary",
+    "priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses",
+    "priority4_spotter_and_ice_lock_clamp_at_fifty_with_real_partial_deltas",
+    "priority4_small_remaining_cooldowns_apply_only_the_real_delta",
+    "priority4_ward_slow_aim_and_reload_identities_survive_a_public_reload",
+    "priority4_refunds_pay_half_the_real_net_debit_and_never_reach_full_energy",
+    "priority4_aim_settle_honours_fractional_pace_timed_speed_and_the_first_tick",
+    "priority4_promised_energy_and_settlement_conserve_hp_loot_ammo_and_cooldowns"
+  ],
+  "subItems": "cases.json: per sub-item the test name, scene, real actions, the exact assertions added and the observed output line",
+  "checks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "exitCode": 0,
+      "passed": 8,
+      "failed": 0,
+      "log": "advanced-v5.log",
+      "logSha256": "007c97653efa5a90416ddf09c3c8bad7c3cc16b5ab2629874617b7d7d34e9cd6",
+      "note": "final source"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "exitCode": 0,
+      "passed": 63,
+      "failed": 0,
+      "log": "native-v3.log",
+      "logSha256": "ad13ebc2efcfea3dbc25a5c9f536bcd2c229a01b0527a620e004bd7840fcc21d",
+      "note": "the whole module: 55 pre-existing tests plus the 8 new ones, final source"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- class_tree --nocapture",
+      "exitCode": 0,
+      "passed": 19,
+      "failed": 0,
+      "log": "tree-stage-v1.log",
+      "logSha256": "d3cf62998846e96634aaec7e9354a303d7e42ca838ad953681a29ba86653d21a",
+      "note": "the 16 tree-stage tests plus three other lib tests whose names match the filter; this selection is untouched by the phase"
+    },
+    {
+      "command": "cargo test -q --workspace --profile fast",
+      "exitCode": 0,
+      "passed": 1055,
+      "ignored": 6,
+      "failed": 0,
+      "seconds": 116,
+      "log": "workspace-v3.log",
+      "logSha256": "dc47288295db505ea30d1cc638f00baf2e6415cdcfdca6b11e20777d72d3fceb",
+      "note": "final source; the Cut257 checkpoint recorded 1047 workspace tests, +8 new = 1055"
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets --profile fast -- -D warnings",
+      "exitCode": 0,
+      "seconds": 32,
+      "log": "clippy-v3.log",
+      "logSha256": "05cf6758f751a7a3152f82898d4b557d41743e1a903940962e950d52fc3f363e",
+      "note": "final source"
+    },
+    {
+      "command": "rustfmt --edition 2021 --check crates/idlever-core/src/class_advanced_tests.rs",
+      "exitCode": 0,
+      "note": "final source; see formattingNote"
+    }
+  ],
+  "formattingNote": "At the phase start the module was NOT rustfmt-clean: the Cut257 commit left five regions unformatted (lines 252, 262, 590, 597, 876 of the pre-edit file) and this phase's new code added eleven more. `rustfmt --edition 2021 <file>` was run once, which formatted exactly those sixteen regions. Verification that no token changed: with every whitespace character stripped, the pre-edit module is a verbatim prefix of the final module (83305 identical leading characters, no suffix difference) and this phase's 32437 characters are appended at the end; the focused, module, workspace and clippy checks were then re-run green on the formatted source.",
+  "retainedBeforeFinalSource": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "log": "advanced-v4.log",
+      "logSha256": "b6f8867144816e8bba6a673eaea66717b1034223c5eabf852ab472df104453fe",
+      "passed": 8,
+      "exitCode": 0,
+      "note": "green 8/8 before the clippy-only P4Case alias edit"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- priority4 --nocapture",
+      "log": "advanced-v3.log",
+      "logSha256": "9c05a3e0b2497880d1926f47ad4f10267b78ac405af83b6361fb4f778ac9ca73",
+      "passed": 8,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "log": "native-v2.log",
+      "passed": 63,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core --lib -- advanced_tests --nocapture",
+      "log": "native-v1.log",
+      "passed": 63,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -q --workspace --profile fast",
+      "log": "workspace-v2.log",
+      "passed": 1055,
+      "ignored": 6,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -q --workspace --profile fast",
+      "log": "workspace-v1.log",
+      "passed": 1055,
+      "ignored": 6,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets --profile fast -- -D warnings",
+      "log": "clippy-v2.log",
+      "logSha256": "66246fceb5e623cc0ba56e839ada8f6218d3e7462928e11123c9f728914307a5",
+      "exitCode": 0
+    }
+  ],
+  "retainedRedPhases": [
+    {
+      "log": "advanced-v1.log",
+      "logSha256": "bf5398f2405bde0d5b824389fa688764e753f78b316568ab1526b564ca220138",
+      "passed": 5,
+      "failed": 3,
+      "reasons": [
+        "execution boundary: the hero stepped out of a killed Bloat mother's hazard, so the fresh boss was not adjacent and the melee bash was refused (test construction)",
+        "refund: p4_leftover asserted the exact leftover before the action's own applied refund (helper assumption)",
+        "patient ambush: the reference save was captured before the event-buffer clear, and Game::save() carries that buffer (test construction)",
+        "ward identity: the public reload's own observation tick ages ward_t by one (assertion)",
+        "conservation: the reload completion's real refund can cross the actor's own clock, so the honest direction is 'the enabled fork never acts before the cleared fork'",
+        "aim settle: a fractional pace cannot advance a ten-tick crossing; the applied deficit is the evidence"
+      ],
+      "productionDefect": false,
+      "note": "Every one was a fixture/assertion error in this file. No production code was changed and no expected value was relaxed."
+    },
+    {
+      "log": "advanced-v2.log",
+      "logSha256": "8bb4fe6d60832af425404acbb69ec41a417ef86bf5afa795e2f20b13a96392e4",
+      "passed": 7,
+      "failed": 1,
+      "reasons": [
+        "patient ambush: the retained-window loop's three real ticks decayed vanish_cd to 97; the assertion now pins the exact one-tick decay per real tick instead of 100"
+      ],
+      "productionDefect": false
+    },
+    {
+      "log": "clippy-v1.log",
+      "logSha256": "de97ea69374a7de6c8ce0cd8982135586adb1544274768e644b83f90b9986a59",
+      "exitCode": 101,
+      "reasons": ["clippy::type_complexity on the paired conservation-case array type"],
+      "productionDefect": false
+    }
+  ],
+  "productionDefectEstablished": false,
+  "productionIdentity": {
+    "before": "production-identity-before-tests.json",
+    "beforeSha256": "a060ed607eac38e9f41c8f6a5af560cc3fcbb5605f2c8804087257f642ad30b7",
+    "after": "production-identity-after-tests.json",
+    "afterSha256": "b124c47ff4d10289ede38815d7e66118018e52c00069773c63b3d7123de2c0ad",
+    "recipe": "capture-identity.py reproduces the tools/runtime-key.mjs key from the selected fast-profile non-test core rlib, its rustc depfile (60 production Rust inputs, no test module), the fast profile/features and the recorded compiler; it also hashes every rlib candidate, the native examples and the shipped WASM. It performs no build.",
+    "selectedRuntimeKeyBefore": "7b802dde894ffa88",
+    "selectedRuntimeKeyAfter": "7b802dde894ffa88",
+    "selectedLibrary": "target/fast/deps/libidlever_core-a8cd7cd54e1ba70a.rlib (51242270 bytes, sha256 7369816e9c368d5c9c8c1b4d85ecb4c68120584b774a55597e5e99dfa4eed927)",
+    "productionInputsUnchanged": true,
+    "changedInputs": [],
+    "allCandidateRlibsUnchanged": true,
+    "wasmUnchanged": true,
+    "wasm": "web/src/engine/pkg/idlever_wasm_bg.wasm (6946459 bytes, sha256 51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191)",
+    "nativeExamples": {
+      "native_dev": "unchanged (86e88d8077ee...)",
+      "dayplayer": "185ba91b411b... -> 466abf0b972e... (12662816 -> 12663064 bytes)",
+      "metrics": "06975db7a390... -> db0144e3a0ce... (11955448 -> 11956256 bytes)",
+      "qa": "5fdbd4b2998f... -> 602e0b60b922... (10858000 -> 10858888 bytes)",
+      "note": "The three example binaries changed during the session while keeping an older, preserved mtime (20:05:46-48) and their cargo deps hardlink targets are now absent, while no invocation of this phase wrote them (their mtimes predate the focused, module, clippy and workspace runs). The live perf-attribution peer's target-directory work is the likely cause; recorded as an unexplained peer/environment artifact change, not as a production-source change. The examples are not an input to the gate's runtime key, which hashes the rlib, the three manifests and the compiler."
+    },
+    "cut253GateEpoch": {
+      "gateSourceKey": "d445c9825416e54e",
+      "recordedProductionLibrary": "target/fast/deps/libidlever_core-197689112a1f5567.rlib, sha256 beab2f6bbf18..., 51259162 bytes",
+      "reproducibleFromCurrentBytes": false,
+      "reason": "Cut257 commit 43aa5655 changed ai.rs, class_advanced.rs and class_tree.rs after that gate closed; the audit's recorded production inputs differ in exactly those three files, so no current artifact reproduces the old key (the four current candidates give 7b802dde894ffa88, 526caeae1690b60b, f77baca886196307, 2a273473bebb36ea). Both epochs are recorded rather than relabelled."
+    },
+    "conclusion": "All production inputs, all core rlib candidates, the reproduced runtime key and the shipped WASM are byte-identical across this cfg(test)-only phase; three native example binaries changed through peer/environment target churn, which is reported and not absorbed."
+  },
+  "unreached": [
+    {
+      "subItem": 5,
+      "case": "a real action that queues an energy refund with a real net debit of exactly 0",
+      "why": "class_advanced::after_action derives its debit as ACT_ENERGY minus the energy the heir's traits returned during the action. The only 100 % return is `light hands`, gated to a taking `pick_up`, which never queues an energy refund; `sure` caps at 75 % and the physical reload path always records a real action debit.",
+      "substitutesTested": [
+        "two real trait-reduced debits (50 -> Applied [25]; 25 -> Applied [12])",
+        "a real promise with zero room on the clock (Consumed [1], Applied [], energy 99)",
+        "two concurrent refunds sharing one budget (Applied [5] then none, energy 99 < ACT_ENERGY)"
+      ]
+    }
+  ],
+  "limits": [
+    "Controlled arenas, manual masks, controlled clocks (p4_leftover) and RNG-selected branches are component fixtures, never earned play; a selected branch is evidence about that branch, not about cadence.",
+    "Only priority item 4's seven sub-items are covered; priority 1-3 and their own limits are unchanged. No pacing/full gate, wasm/release build, client test, parity or fun claim is made or inferred.",
+    "Production red phases stay red in advanced-v1/v2 and clippy-v1; later green phases are distinct and are not relabelled."
+  ]
+}

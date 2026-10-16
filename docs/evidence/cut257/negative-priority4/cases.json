@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-16",
+  "phase": "cut257 priority item 4: boundary clocks, per-cast identity and conservation",
+  "source": "crates/idlever-core/src/class_advanced_tests.rs",
+  "method": "Controlled arenas and direct actual verbs/scheduler only. No charge is granted, no expected value is relaxed, and every negative names the real hit/Hurt/kill/debit it rests on. Fixed RNG seeds are shared by the enabled/disabled forks (a selected branch is component evidence, never earned play).",
+  "subItems": [
+    {
+      "id": 1,
+      "item": "Rally's 10-tick history and Execution's 39/40-tick boundary (outside the shared 14-Combo expiry test)",
+      "tests": [
+        {
+          "name": "priority4_rally_tenth_tick_history_and_execution_fortieth_tick_boundary",
+          "scene": "Fighter [6]: bloat_mother at (5,5), bulwark_t=30, a real landed incoming melee blow writes last_block_t=turn; then real scheduler ticks to t+10 / t+11, hp=500, bash_cd=70, one legal second_wind. Fighter [9,11]: boss shield_bash arms Siege rhythm, bash_cd=70, a real ordinary attack kills a 1-hp boss at turn T (the charged kill), then fork, real ticks to T+39 / T+40, a fresh real boss bash and a real killing attack.",
+          "realActions": ["monster_attack (melee hit)", "g.tick()", "second_wind", "shield_bash", "attack"],
+          "assertions": [
+            "last_block_t == the real blow's turn",
+            "at 10 ticks: Applied BashCooldown == [20], bash_cd 70 -> 50",
+            "at 11 ticks: Applied BashCooldown == [] and bash_cd stays 70",
+            "the identical prefix with the node's own bit cleared (0x3f) still takes a legal wind and pays nothing (p2_no_receipt [6])",
+            "first charged kill: Applied BashCooldown == [20], bash_cd 50, execution_t == Some(T), the boss hp <= 0",
+            "kill at T+39: no new receipt, bash_cd stays 70, execution_t stays Some(T)",
+            "kill at T+40: Applied BashCooldown == [20,20], bash_cd 50, execution_t == Some(T+40), the boss hp <= 0"
+          ],
+          "observed": [
+            "priority4 rally elapsed=10 bash_cd=50 applied=[20] disabled_applied=[]",
+            "priority4 rally elapsed=11 bash_cd=70 applied=[] disabled_applied=[]",
+            "priority4 execution elapsed=39 paid=false bash_cd=70",
+            "priority4 execution elapsed=40 paid=true bash_cd=50"
+          ]
+        }
+      ],
+      "reached": true,
+      "note": "The kill is a real charged melee kill (Siege charge consumed, monster hp <= 0) both times, so the 39-tick negative is not a different action firing. A killed Bloat mother's burst moves the hero off the kill tile, so the boundary bash is aimed at the hero's actual position."
+    },
+    {
+      "id": 2,
+      "item": "Retained Vanish 0/1/2/3 and shrinking repeated misses",
+      "tests": [
+        {
+          "name": "priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses",
+          "scene": "Rogue [9]: non-kit sword (80% aim), vanish_t = 0/1/2/3/30, a real Ambush on the fixed seed that misses (seed 3 for the shared pair) or hits.",
+          "realActions": ["ambush", "g.tick()"],
+          "assertions": [
+            "pre 0: the Ambush is refused (-act), the complete save is unchanged, no Applied Vanish",
+            "pre 1/2/3 on a real miss (Ev::Attack hit=false): vanish_t stays 1/2/3 and Applied Vanish == [pre] (3 is never invented)",
+            "the same fixed miss seed with the node cleared: the miss reproduces (hit=false) and vanish_t == 0 with no receipt",
+            "a real landed Ambush clears vanish_t to 0 with no Applied Vanish",
+            "three successive real misses retain 3 then 2 then 1 (shrinking, never refreshed)",
+            "each real tick decays vanish_cd by exactly 1 and vanish_t by 1 (no restoration, no new invulnerability)",
+            "at vanish_t 0 the Ambush is refused with an exact save and no receipt"
+          ],
+          "observed": [
+            "priority4 patient_ambush pre=1 miss_seed=3 retained=1 disabled_retained=0",
+            "priority4 patient_ambush pre=2 miss_seed=3 retained=2 disabled_retained=0",
+            "priority4 patient_ambush pre=3 miss_seed=3 retained=3 disabled_retained=0",
+            "priority4 patient_ambush shrink=3,2,1 expired=0 vanish_cd=97"
+          ]
+        }
+      ],
+      "reached": true
+    },
+    {
+      "id": 3,
+      "item": "mark/Slow 50 caps and actual small remaining cooldown deltas",
+      "tests": [
+        {
+          "name": "priority4_spotter_and_ice_lock_clamp_at_fifty_with_real_partial_deltas",
+          "scene": "Ranger [6,10]: a real trap plus a real marked foe (marked 45 / 50) stepping onto it. Caster: a real ward and a real slow on a boss, base slow 30 + 5*skill(Caster,4) + 10*skill(Caster,1)*boss (+5 Control legacy) with Ice lock bit 8.",
+          "realActions": ["trap", "move_monster onto the trap", "ward", "slow"],
+          "assertions": [
+            "marked 45 -> marked 50 with Applied Mark == [5] (no negative, no false 10)",
+            "marked 50 -> marked 50 with no Applied Mark at all",
+            "bits [8] (base 30): slow_t 40, Applied Slow == [10]",
+            "bits [1,4,8] (base 45): slow_t 50 (the cap), Applied Slow == [5]",
+            "bits [1,4,8] + Control legacy (base 50): slow_t 50, no Applied Slow",
+            "unwarded fresh slow: slow_t 45 and no Applied Slow"
+          ],
+          "observed": [
+            "priority4 spotter inherited=45 marked=50 applied=[5]",
+            "priority4 spotter inherited=50 marked=50 applied=[]",
+            "priority4 ice_lock bits=[8] control=false slow_t=40 applied=[10]",
+            "priority4 ice_lock bits=[1, 4, 8] control=false slow_t=50 applied=[5]",
+            "priority4 ice_lock bits=[1, 4, 8] control=true slow_t=50 applied=[]"
+          ]
+        },
+        {
+          "name": "priority4_small_remaining_cooldowns_apply_only_the_real_delta",
+          "scene": "Ranger [6,10]: a real marked trap trigger with double_cd 3 / 0. Fighter [8]: a real Cleave with two damaged recipients and bash_cd 4 / 0.",
+          "realActions": ["trap", "move_monster onto the trap", "cleave"],
+          "assertions": [
+            "double_cd 3 -> Applied DoubleShotCooldown [3], double_cd 0 (never a flat 20, never negative)",
+            "double_cd 0 -> no Applied DoubleShotCooldown (the real trap trigger and mark extension still happened: marked 40)",
+            "bash_cd 4 -> Applied BashCooldown [4], bash_cd 0, with two real Cleave recipients damaged",
+            "bash_cd 0 -> no Applied BashCooldown"
+          ],
+          "observed": [
+            "priority4 snare remaining=3 applied=[3] double_cd=0",
+            "priority4 snare remaining=0 applied=[] double_cd=0",
+            "priority4 opening_cut remaining=4 hurt=2 applied=[4]",
+            "priority4 opening_cut remaining=0 hurt=2 applied=[]"
+          ]
+        }
+      ],
+      "reached": true
+    },
+    {
+      "id": 4,
+      "item": "old/new Ward, Slow, Aim and physical reload identities across a reload",
+      "tests": [
+        {
+          "name": "priority4_ward_slow_aim_and_reload_identities_survive_a_public_reload",
+          "scene": "(a) Caster [9,11] real ward. (b) Caster [6] real ward then real slow on a boss (the chilling charge). (c) Gunner [6] real aimed_shot then a real fire (the Rangefinder recovery). (d) Gunner [7,8] a real reload, a real smoke_retreat arming Smoke walk and the physical completion. Every case passes p1_canonical (one real observation tick + public Game::load).",
+          "realActions": ["ward", "nova", "slow", "bolt", "aimed_shot", "fire", "reload", "smoke_retreat", "finish_reload", "g.tick()"],
+          "assertions": [
+            "the reload boundary is idempotent (Game::load(save).save() == save)",
+            "WardCast/AimCast/ReloadCast/SlowCast source+flags are byte-identical after the public reload",
+            "the reloaded ward shatters once (Consumed Ward [ward_t], Applied NovaCooldown [20]) and the spent cast cannot shatter again after the real Nova cooldown",
+            "a genuinely new ward cast has a different source, absorbed 0, both flags false, and shatters once",
+            "the reloaded original slow pays the chilling charge once (Applied WardCooldown [10]) and the spent cast cannot pay again; after the real slow runs out a new cast pays once more",
+            "the reloaded aim sequence (recovered=true) cannot recover again (loaded 0, no new Chamber receipt) and a new aim recovers once ([1,1])",
+            "the reloaded physical completion still happens (loaded 1), pays the refund once ([50]) and the reloaded and never-reloaded forks save byte-identically"
+          ],
+          "observed": [
+            "priority4 ward_identity source=0 spent_nova=[20] new_cast_expected=true",
+            "priority4 ward_identity new_source=433791696906 new_shatter=[20]",
+            "priority4 slow_identity source=0 new_source=133143986179 ward_cd=49 applied=[10, 10]",
+            "priority4 aim_identity source=0 spent_recovery=[1] new_source=4294967296 new_recovery=[1, 1]",
+            "priority4 reload_identity source=4294967297 item=1 fast=false debit=100 loaded=1 applied=[50]"
+          ]
+        }
+      ],
+      "reached": true,
+      "note": "A distinct successful cast legitimately earns a new benefit: the new-cast halves are asserted as their own receipts, never as a once-only lock."
+    },
+    {
+      "id": 5,
+      "item": "Refunds: real net debit < 100 / 0, combined caps, energy < 100",
+      "tests": [
+        {
+          "name": "priority4_refunds_pay_half_the_real_net_debit_and_never_reach_full_energy",
+          "scene": "(a) Ranger [9,11] real volley arms Moving line, the real `sure` gift (When::Always, Cost::None, Common step 1 / Uncommon step 2) returns 50% / 75% of a real Kite's energy, then the real scheduled kite. (b) Rogue [8] real smoke then a real shadowstep whose clock is left at 99. (c) Rogue [8,11] real smoke, a real Ambush that kills a foe below 25% (arms Silent finish) and a real shadowstep whose clock is left at 94.",
+          "realActions": ["volley", "kite (scheduled)", "smoke", "ambush", "shadowstep (scheduled)"],
+          "assertions": [
+            "Common: the real net debit is 50 and Applied Energy == [25] (energy 75); the identical fork with the node's bit cleared gets only the gift's 50 and no receipt",
+            "Uncommon: the real net debit is 25 and Applied Energy == [12] (energy 87)",
+            "zero room (clock at 99): Consumed == [1] but Applied Energy == [] and energy stays 99 < ACT_ENERGY",
+            "combined (clock at 94): Consumed [1] for both nodes, Applied Energy == [5] for the first only, energy 99 (one shared budget)",
+            "the cleared fork of the combined pair consumes nothing and stays at 94"
+          ],
+          "observed": [
+            "priority4 refund tier=Common real_debit=50 applied=[25] energy=75 disabled_energy=50",
+            "priority4 refund tier=Uncommon real_debit=25 applied=[12] energy=87 disabled_energy=75",
+            "priority4 refund zero_room consumed=[1] applied=[] energy=99",
+            "priority4 refund combined applied=[5] second=[] energy=99"
+          ]
+        }
+      ],
+      "reached": "partial",
+      "note": "The real net debit 0 variant with a pending refund was NOT reached; see results.json unreached[0] for the exact reason and the reachable substitutes tested."
+    },
+    {
+      "id": 6,
+      "item": "AimSettle: fractional pace / timed speed and at-least-one-future-tick cases",
+      "tests": [
+        {
+          "name": "priority4_aim_settle_honours_fractional_pace_timed_speed_and_the_first_tick",
+          "scene": "Gunner [7]: real empty gun, scheduled fast_reload, real physical completion (arms Chamber chain), then a real scheduled aimed_shot with hero.pace = 0/5/9 or hero.speed_t = 5, and a variant whose clock is left at 95. Each enabled fork pairs with the identical fork whose bit 7 is cleared.",
+          "realActions": ["fast_reload (scheduled)", "finish_reload", "aimed_shot (scheduled)", "g.tick()"],
+          "assertions": [
+            "every case: Consumed AimSettle [1], Applied AimSettle [1], aim.shortened true, the cleared fork has no cast and no receipt",
+            "the settled clock's next real action lands exactly one scheduler tick earlier than the cleared fork's (next_on == next_off - 1) for plain, pace 5, pace 9 and speed_t 5",
+            "the promised energy equals the actor's own deficit: plain 10, pace 5 six, pace 9 two (the fractional pace is really summed per tick)",
+            "the timed speed advances the clock the settlement is measured against (next_off 20 vs 22)",
+            "at-least-one-future-tick (clock at 95): Consumed [1] but no Applied AimSettle, shortened false, energy identical to the cleared fork and the next action turn identical"
+          ],
+          "observed": [
+            "priority4 aim_settle plain pace=0 speed_t=0 settled=10 control=0 next_on=21 next_off=22",
+            "priority4 aim_settle fractional_pace_5 pace=5 speed_t=0 settled=6 control=0 next_on=21 next_off=22",
+            "priority4 aim_settle fractional_pace_9 pace=9 speed_t=0 settled=2 control=0 next_on=21 next_off=22",
+            "priority4 aim_settle timed_speed pace=0 speed_t=5 settled=10 control=0 next_on=19 next_off=20",
+            "priority4 aim_settle deficits plain=10 pace5=6 pace9=2 speed_t5=10 arrivals=[(\"plain\", 21, 22), (\"fractional_pace_5\", 21, 22), (\"fractional_pace_9\", 21, 22), (\"timed_speed\", 19, 20)]",
+            "priority4 aim_settle no_future_tick energy=95 next=13"
+          ]
+        }
+      ],
+      "reached": true
+    },
+    {
+      "id": 7,
+      "item": "Conservation: HP, Gold, physical chambers/capacity and normal cooldowns stay conserved when only energy or settlement is promised",
+      "tests": [
+        {
+          "name": "priority4_promised_energy_and_settlement_conserve_hp_loot_ammo_and_cooldowns",
+          "scene": "Five paired scenarios, each the same real verb sequence once with the tested node and once with only its bit cleared: rogue [8] smoke+shadowstep; ranger [9,11] volley+kite; gunner [11] close-burst kill+smoke_retreat; gunner [7] fast-reload+aim; gunner [6,7,10] the full long-watch prefix. Plus the gunner [8] reload+smoke+physical completion pair.",
+          "realActions": ["smoke", "shadowstep (scheduled)", "volley", "kite (scheduled)", "close_burst", "smoke_retreat (scheduled)", "fast_reload (scheduled)", "aimed_shot (scheduled)", "reload (scheduled)", "finish_reload"],
+          "assertions": [
+            "the conserved world (hp, run.loot gold, every monster hp, floor items + pack count, bash/vanish/double/ward/nova/blink/cleave cooldowns, gun fast/smoke/finish ready clocks, chamber load, firearm capacity, the physical reload identity, the turn) is identical with the node on and with its bit cleared",
+            "the cleared node emits no Applied output; the enabled one emits exactly one",
+            "energy nodes: Applied Energy [50] and energy == the cleared fork's energy + 50, always < ACT_ENERGY",
+            "settlement nodes: Applied AimSettle [1], energy strictly above the cleared fork and < ACT_ENERGY",
+            "the reload-completion refund's world (including the turn) is identical and the enabled fork never acts before the cleared fork (the extra energy is the real clock's own crossing)"
+          ],
+          "observed": [
+            "priority4 conserve veiled_route bit=8 world_equal=true applied=[50] energy=50 disabled_energy=0",
+            "priority4 conserve moving_line bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0",
+            "priority4 conserve breach_route bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0",
+            "priority4 conserve chamber_chain bit=7 world_equal=true applied=[1] energy=10 disabled_energy=0",
+            "priority4 conserve long_watch bit=10 world_equal=true applied=[1] energy=10 disabled_energy=0",
+            "priority4 conserve smoke_walk world_equal=true energy=40 disabled_energy=90 actions=4 disabled_actions=3"
+          ]
+        }
+      ],
+      "reached": true
+    }
+  ]
+}

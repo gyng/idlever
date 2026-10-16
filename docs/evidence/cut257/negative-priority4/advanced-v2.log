@@ -1,0 +1,56 @@
+
+running 8 tests
+priority4 refund tier=Common real_debit=50 applied=[25] energy=75 disabled_energy=50
+priority4 conserve veiled_route bit=8 world_equal=true applied=[50] energy=50 disabled_energy=0
+priority4 aim_settle plain pace=0 speed_t=0 settled=10 control=0 next_on=21 next_off=22
+priority4 refund tier=Uncommon real_debit=25 applied=[12] energy=87 disabled_energy=75
+priority4 conserve moving_line bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0
+priority4 aim_settle fractional_pace_5 pace=5 speed_t=0 settled=6 control=0 next_on=21 next_off=22
+priority4 refund zero_room consumed=[1] applied=[] energy=99
+priority4 conserve breach_route bit=11 world_equal=true applied=[50] energy=50 disabled_energy=0
+priority4 aim_settle fractional_pace_9 pace=9 speed_t=0 settled=2 control=0 next_on=21 next_off=22
+priority4 refund combined applied=[5] second=[] energy=99
+priority4 conserve chamber_chain bit=7 world_equal=true applied=[1] energy=10 disabled_energy=0
+priority4 aim_settle timed_speed pace=0 speed_t=5 settled=10 control=0 next_on=19 next_off=20
+priority4 aim_settle deficits plain=10 pace5=6 pace9=2 speed_t5=10 arrivals=[("plain", 21, 22), ("fractional_pace_5", 21, 22), ("fractional_pace_9", 21, 22), ("timed_speed", 19, 20)]
+priority4 conserve long_watch bit=10 world_equal=true applied=[1] energy=10 disabled_energy=0
+priority4 aim_settle no_future_tick energy=5 next=13
+priority4 conserve smoke_walk world_equal=true energy=40 disabled_energy=90 actions=4 disabled_actions=3
+...priority4 rally elapsed=10 bash_cd=50 applied=[20] disabled_applied=[]
+priority4 rally elapsed=11 bash_cd=70 applied=[] disabled_applied=[]
+priority4 execution elapsed=39 paid=false bash_cd=70
+priority4 execution elapsed=40 paid=true bash_cd=50
+.priority4 patient_ambush pre=1 miss_seed=3 retained=1 disabled_retained=0
+priority4 patient_ambush pre=2 miss_seed=3 retained=2 disabled_retained=0
+priority4 patient_ambush pre=3 miss_seed=3 retained=3 disabled_retained=0
+
+thread 'ai::advanced_tests::priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses' (1939364) panicked at crates/idlever-core/src/class_advanced_tests.rs:3594:5:
+assertion `left == right` failed
+  left: 97
+ right: 100
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ 4/8
+ai::advanced_tests::priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses --- FAILED
+priority4 spotter inherited=45 marked=50 applied=[5]
+priority4 spotter inherited=50 marked=50 applied=[]
+priority4 ice_lock bits=[8] control=false slow_t=40 applied=[10]
+priority4 ice_lock bits=[1, 4, 8] control=false slow_t=50 applied=[5]
+priority4 ice_lock bits=[1, 4, 8] control=true slow_t=50 applied=[]
+priority4 ward_identity source=0 spent_nova=[20] new_cast_expected=true
+priority4 ward_identity new_source=433791696906 new_shatter=[20]
+.priority4 snare remaining=3 applied=[3] double_cd=0
+priority4 snare remaining=0 applied=[] double_cd=0
+priority4 opening_cut remaining=4 hurt=2 applied=[4]
+priority4 opening_cut remaining=0 hurt=2 applied=[]
+.priority4 slow_identity source=0 new_source=133143986179 ward_cd=49 applied=[10, 10]
+priority4 aim_identity source=0 spent_recovery=[1] new_source=4294967296 new_recovery=[1, 1]
+priority4 reload_identity source=4294967297 item=1 fast=false debit=100 loaded=1 applied=[50]
+.
+failures:
+
+failures:
+    ai::advanced_tests::priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 1053 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

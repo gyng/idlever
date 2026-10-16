@@ -252,18 +252,36 @@ fn holdfast_blocks_the_melee_hits_it_was_armed_for() {
     assert!(act(&mut g, "second_wind"));
     assert_eq!(receipt(&g, 10, Phase::Armed, Effect::MeleeBlock), vec![2]);
     let armed_at = g.run.as_ref().unwrap().turn;
-    let expires_t = g.run.as_ref().unwrap().hero.advanced.as_ref().unwrap().charges
-        [&Combo::Holdfast]
+    let expires_t = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .charges[&Combo::Holdfast]
         .expires_t;
-    assert_eq!(expires_t - armed_at, 40, "window outlasts the melee cadence");
+    assert_eq!(
+        expires_t - armed_at,
+        40,
+        "window outlasts the melee cadence"
+    );
     for _ in 0..30 {
         g.tick();
     }
     let hp = g.run.as_ref().unwrap().hero.hp;
     enemy_hit(&mut g, mi, "attack");
-    assert_eq!(receipt(&g, 10, Phase::Consumed, Effect::MeleeBlock), vec![1]);
+    assert_eq!(
+        receipt(&g, 10, Phase::Consumed, Effect::MeleeBlock),
+        vec![1]
+    );
     assert_eq!(receipt(&g, 10, Phase::Applied, Effect::MeleeBlock), vec![2]);
-    assert_eq!(g.run.as_ref().unwrap().hero.hp, hp - 3, "two of five blocked");
+    assert_eq!(
+        g.run.as_ref().unwrap().hero.hp,
+        hp - 3,
+        "two of five blocked"
+    );
     // The second authored charge spends on the next blow, a third takes the full hit.
     let hp = g.run.as_ref().unwrap().hero.hp;
     enemy_hit(&mut g, mi, "attack");
@@ -590,11 +608,17 @@ fn chilling_charge_reduces_a_running_ward_cooldown() {
     let running = g.run.as_ref().unwrap().hero.ward_cd;
     hit_verb(&mut g, "bolt");
     assert_eq!(g.run.as_ref().unwrap().hero.ward_cd, running - 10);
-    assert_eq!(receipt(&g, 6, Phase::Applied, Effect::WardCooldown), vec![10]);
+    assert_eq!(
+        receipt(&g, 6, Phase::Applied, Effect::WardCooldown),
+        vec![10]
+    );
     // Once per original slow: the next bolt on the same slow is silent.
     hit_verb(&mut g, "bolt");
     assert_eq!(g.run.as_ref().unwrap().hero.ward_cd, running - 10);
-    assert_eq!(receipt(&g, 6, Phase::Applied, Effect::WardCooldown), vec![10]);
+    assert_eq!(
+        receipt(&g, 6, Phase::Applied, Effect::WardCooldown),
+        vec![10]
+    );
     // Negative: with no ward running the same trigger stays silent (amount 0 emits nothing).
     let mut idle = arena(Class::Caster, &[6, 10]);
     let boss = foe(&mut idle, "bloat_mother", 5, 5);
@@ -876,10 +900,21 @@ fn long_watch_survives_the_aim_cadence_and_applies_to_the_next_aim() {
     assert!(act(&mut g, "fire"));
     assert_eq!(receipt(&g, 10, Phase::Armed, Effect::AimSettle), vec![1]);
     let armed_at = g.run.as_ref().unwrap().turn;
-    let expires_t = g.run.as_ref().unwrap().hero.advanced.as_ref().unwrap().charges
-        [&Combo::LongWatch]
+    let expires_t = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .charges[&Combo::LongWatch]
         .expires_t;
-    assert_eq!(expires_t - armed_at, 100, "window covers the branch cadence");
+    assert_eq!(
+        expires_t - armed_at,
+        100,
+        "window covers the branch cadence"
+    );
     foe(&mut g, "goblin", 7, 5);
     for _ in 0..30 {
         g.tick();
@@ -3301,4 +3336,1245 @@ fn priority3_actual_reload_arm_source_precedes_same_tick_followup_action() {
         Effect::AimSettle,
         &[(at, 1, None, Some(at + 10))],
     );
+}
+
+// ---------------------------------------------------------------------------------------------
+// Priority4: boundary clocks, per-cast identity and conservation. The same rules as the phases
+// above: actual verbs and the real scheduler only, no charge is granted, a fixed RNG seed is
+// shared by every enabled/disabled pair, and each negative names the real hit/Hurt/kill/debit
+// it rests on. Distinct successful casts may legitimately earn a new benefit.
+
+/// Advance the real scheduler clock to `at`, never past it.
+fn p4_at(g: &mut Game, at: u32) {
+    while g.run.as_ref().unwrap().turn < at {
+        g.tick();
+    }
+    assert_eq!(g.run.as_ref().unwrap().turn, at, "real scheduler clock");
+}
+
+/// One real scheduler debit (as `scheduled`) whose clock then holds exactly `leftover` energy:
+/// the actor's clock starts above the threshold. A controlled overshoot, never a charge, a
+/// bypassed verb or an extra action.
+fn p4_leftover(g: &mut Game, verb: &str, leftover: i32) {
+    assert!((0..crate::engine::ACT_ENERGY).contains(&leftover));
+    crate::tests::rules(g, vec![Row::new(vec![], Verb::new(verb))]);
+    let r = g.run.as_mut().unwrap();
+    let at = r.turn + 1;
+    r.hero.energy = crate::engine::ACT_ENERGY + leftover
+        - r.hero.speed()
+        - crate::kit::pace_energy(r.hero.pace, at);
+    let actions = r.actions;
+    g.tick();
+    assert_eq!(
+        g.run.as_ref().unwrap().actions,
+        actions + 1,
+        "one real scheduler debit"
+    );
+    // The action's own node refund may land in this same tick, so the clock holds at least the
+    // leftover; every scenario asserts the exact post-action energy it means to test.
+    assert!(
+        g.run.as_ref().unwrap().hero.energy >= leftover,
+        "the real clock keeps at least the leftover"
+    );
+    crate::tests::rules(g, vec![Row::new(vec![], Verb::new("hold"))]);
+}
+
+/// The turn of the next real scheduler action.
+fn p4_next(g: &mut Game, within: u32) -> u32 {
+    let actions = g.run.as_ref().unwrap().actions;
+    for _ in 0..within {
+        g.tick();
+        if g.run.as_ref().unwrap().actions > actions {
+            return g.run.as_ref().unwrap().turn;
+        }
+    }
+    panic!("no real scheduler action within {within} ticks");
+}
+
+fn p4_loaded(g: &Game) -> u8 {
+    g.run
+        .as_ref()
+        .unwrap()
+        .hero
+        .weapon
+        .as_ref()
+        .unwrap()
+        .firearm
+        .unwrap()
+        .loaded
+}
+
+/// One actual Ambush on the fixed seed that produced `want`, so an enabled/disabled pair can
+/// share the branch instead of each buying its own draw.
+fn p4_ambush(g: &Game, want: bool) -> (Game, u64) {
+    for seed in 0..512 {
+        let mut b = g.clone();
+        b.events.clear();
+        b.run.as_mut().unwrap().rng = Rng::new(seed);
+        if !act(&mut b, "ambush") {
+            continue;
+        }
+        if !b
+            .events
+            .iter()
+            .any(|e| matches!(e,Ev::Attack {src,hit,..} if *src==HERO_ID && *hit==want))
+        {
+            continue;
+        }
+        return (b, seed);
+    }
+    panic!("no actual Ambush hit={want} branch");
+}
+
+#[test]
+fn priority4_rally_tenth_tick_history_and_execution_fortieth_tick_boundary() {
+    // Rally: the recorded block history is a 10-tick window (`ai.rs` second wind). A real
+    // landed incoming melee blow writes it; a legal Wind at exactly 10 ticks still pays and at
+    // 11 it does not.
+    for (elapsed, expected) in [(10u32, vec![20i32]), (11u32, vec![])] {
+        let mut g = arena(Class::Fighter, &[6]);
+        let mi = foe(&mut g, "bloat_mother", 5, 5);
+        g.run.as_mut().unwrap().hero.bulwark_t = 30;
+        enemy_hit(&mut g, mi, "attack");
+        let blocked = g
+            .run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .last_block_t
+            .expect("a real blocked melee blow records the history");
+        assert_eq!(blocked, g.run.as_ref().unwrap().turn);
+        p4_at(&mut g, blocked + elapsed);
+        {
+            let r = g.run.as_mut().unwrap();
+            r.hero.hp = 500;
+            r.hero.bash_cd = 70;
+        }
+        let mut off = g.clone();
+        off.run.as_mut().unwrap().hero.class_skills &= 0x3f;
+        assert!(act(&mut g, "second_wind"), "a legal, non-refused Wind");
+        assert_eq!(
+            receipt(&g, 6, Phase::Applied, Effect::BashCooldown),
+            expected,
+            "elapsed {elapsed} ticks since the real block"
+        );
+        assert_eq!(
+            g.run.as_ref().unwrap().hero.bash_cd,
+            70 - expected.iter().sum::<i32>(),
+            "only the real remaining cooldown is reduced"
+        );
+        // The identical actual prefix and Wind with the node's own bit cleared pays nothing.
+        assert!(act(&mut off, "second_wind"));
+        assert_eq!(off.run.as_ref().unwrap().hero.bash_cd, 70);
+        p2_no_receipt(&off, &[6]);
+        println!(
+            "priority4 rally elapsed={elapsed} bash_cd={} applied={:?} disabled_applied={:?}",
+            g.run.as_ref().unwrap().hero.bash_cd,
+            receipt(&g, 6, Phase::Applied, Effect::BashCooldown),
+            receipt(&off, 6, Phase::Applied, Effect::BashCooldown)
+        );
+    }
+    // Execution arc: a real charged kill mints the 40-tick lock; the next charged kill pays at
+    // exactly 40 ticks and not at 39.
+    let mut g = arena(Class::Fighter, &[9, 11]);
+    let boss = foe(&mut g, "bloat_mother", 5, 5);
+    assert!(
+        act(&mut g, "shield_bash"),
+        "a real boss bash arms Siege rhythm"
+    );
+    {
+        let r = g.run.as_mut().unwrap();
+        r.hero.bash_cd = 70;
+        r.monsters[boss].hp = 1;
+    }
+    assert!(act(&mut g, "attack"));
+    assert!(
+        g.run.as_ref().unwrap().monsters[boss].hp <= 0,
+        "the charged melee attack really killed"
+    );
+    let first = g.run.as_ref().unwrap().turn;
+    assert_eq!(
+        receipt(&g, 11, Phase::Applied, Effect::BashCooldown),
+        vec![20]
+    );
+    assert_eq!(g.run.as_ref().unwrap().hero.bash_cd, 50);
+    assert_eq!(
+        g.run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .execution_t,
+        Some(first)
+    );
+    for (elapsed, paid) in [(39u32, false), (40u32, true)] {
+        let mut fork = g.clone();
+        p4_at(&mut fork, first + elapsed);
+        // A killed Bloat mother's burst can move the hero off the tile he killed it on, so the
+        // real melee bash is aimed at the hero's actual position.
+        let here = fork.run.as_ref().unwrap().hero.pos;
+        let boss = foe(&mut fork, "bloat_mother", here.x + 1, here.y);
+        fork.run.as_mut().unwrap().hero.bash_cd = 0;
+        assert!(
+            act(&mut fork, "shield_bash"),
+            "a real boss bash arms the parent again"
+        );
+        {
+            let r = fork.run.as_mut().unwrap();
+            r.hero.bash_cd = 70;
+            r.monsters[boss].hp = 1;
+        }
+        assert!(act(&mut fork, "attack"));
+        assert!(
+            fork.run.as_ref().unwrap().monsters[boss].hp <= 0,
+            "the charged melee attack really killed {elapsed} ticks after the first"
+        );
+        assert_eq!(
+            receipt(&fork, 11, Phase::Applied, Effect::BashCooldown),
+            if paid { vec![20, 20] } else { vec![20] },
+            "charged kill {elapsed} ticks after the first"
+        );
+        assert_eq!(
+            fork.run.as_ref().unwrap().hero.bash_cd,
+            if paid { 50 } else { 70 }
+        );
+        assert_eq!(
+            fork.run
+                .as_ref()
+                .unwrap()
+                .hero
+                .advanced
+                .as_ref()
+                .unwrap()
+                .execution_t,
+            Some(if paid { first + elapsed } else { first })
+        );
+        println!(
+            "priority4 execution elapsed={elapsed} paid={paid} bash_cd={}",
+            fork.run.as_ref().unwrap().hero.bash_cd
+        );
+    }
+}
+
+#[test]
+fn priority4_patient_ambush_retains_zero_through_three_and_shrinks_repeated_misses() {
+    let setup = |pre: i32| {
+        let mut g = arena(Class::Rogue, &[9]);
+        foe(&mut g, "goblin", 5, 5);
+        let r = g.run.as_mut().unwrap();
+        r.hero.weapon = Some(Item::new(900, "sword")).into();
+        r.hero.vanish_t = pre;
+        r.hero.vanish_cd = 100;
+        g
+    };
+    // pre 0 has no legal Ambush at all: an actual refusal, never a fabricated 0 receipt.
+    let mut zero = setup(0);
+    let save = zero.save();
+    assert!(!act(&mut zero, "ambush"));
+    assert_eq!(zero.save(), save);
+    assert!(receipt(&zero, 9, Phase::Applied, Effect::Vanish).is_empty());
+    // pre 1/2/3 retain exactly their pre-existing ticks on a real miss, never inventing 3.
+    for pre in [1, 2, 3] {
+        let (miss, seed) = p4_ambush(&setup(pre), false);
+        assert_eq!(miss.run.as_ref().unwrap().hero.vanish_t, pre);
+        assert_eq!(receipt(&miss, 9, Phase::Applied, Effect::Vanish), vec![pre]);
+        assert_eq!(miss.run.as_ref().unwrap().hero.vanish_cd, 100);
+        // The same fixed miss seed with the node cleared retains nothing at all.
+        let mut off = setup(pre);
+        {
+            let r = off.run.as_mut().unwrap();
+            r.hero.class_skills &= 0x3f;
+            r.rng = Rng::new(seed);
+        }
+        assert!(act(&mut off, "ambush"));
+        assert!(
+            off.events
+                .iter()
+                .any(|e| matches!(e,Ev::Attack {src,hit:false,..} if *src==HERO_ID)),
+            "the shared seed reproduces the real miss"
+        );
+        assert_eq!(off.run.as_ref().unwrap().hero.vanish_t, 0);
+        p2_no_receipt(&off, &[9]);
+        println!(
+            "priority4 patient_ambush pre={pre} miss_seed={seed} retained={} disabled_retained={}",
+            miss.run.as_ref().unwrap().hero.vanish_t,
+            off.run.as_ref().unwrap().hero.vanish_t
+        );
+    }
+    // A real landed Ambush clears Vanish outright.
+    for pre in [1, 3, 30] {
+        let (hit, _seed) = p4_ambush(&setup(pre), true);
+        assert_eq!(hit.run.as_ref().unwrap().hero.vanish_t, 0);
+        assert!(receipt(&hit, 9, Phase::Applied, Effect::Vanish).is_empty());
+    }
+    // Repeated real misses shrink the retained window and cannot extend the original allowance;
+    // the window then runs out with no refresh and no cooldown restoration.
+    let mut shrink = setup(30);
+    for expect in [3i32, 2, 1] {
+        let (miss, _seed) = p4_ambush(&shrink, false);
+        shrink = miss;
+        assert_eq!(shrink.run.as_ref().unwrap().hero.vanish_t, expect);
+        assert_eq!(
+            receipt(&shrink, 9, Phase::Applied, Effect::Vanish),
+            vec![expect]
+        );
+        let cd = shrink.run.as_ref().unwrap().hero.vanish_cd;
+        shrink.tick();
+        assert_eq!(shrink.run.as_ref().unwrap().hero.vanish_t, expect - 1);
+        assert_eq!(
+            shrink.run.as_ref().unwrap().hero.vanish_cd,
+            cd - 1,
+            "the real one-tick decay only, never a restoration"
+        );
+    }
+    // (the save carries the run's own event buffer, so it is captured after the clear)
+    shrink.events.clear();
+    let save = shrink.save();
+    assert!(
+        !act(&mut shrink, "ambush"),
+        "no vanish ticks, no legal Ambush"
+    );
+    assert_eq!(shrink.save(), save);
+    assert!(receipt(&shrink, 9, Phase::Applied, Effect::Vanish).is_empty());
+    assert!(
+        shrink.run.as_ref().unwrap().hero.vanish_cd < 100,
+        "the three real ticks only decayed the vanish cooldown"
+    );
+    println!(
+        "priority4 patient_ambush shrink=3,2,1 expired={} vanish_cd={}",
+        shrink.run.as_ref().unwrap().hero.vanish_t,
+        shrink.run.as_ref().unwrap().hero.vanish_cd
+    );
+}
+
+#[test]
+fn priority4_spotter_and_ice_lock_clamp_at_fifty_with_real_partial_deltas() {
+    // Spotter: a real marked trap trigger adds 10 up to the authored cap 50 and emits only the
+    // actual delta, never a negative or a false full 10.
+    for (inherited, expected) in [(45i32, vec![5i32]), (50i32, vec![])] {
+        let mut g = arena(Class::Ranger, &[6, 10]);
+        let mi = foe(&mut g, "goblin", 6, 5);
+        g.run.as_mut().unwrap().monsters[mi].marked = inherited;
+        assert!(act(&mut g, "trap"));
+        {
+            let (r, mut cx) = g.ctx();
+            move_monster(r, &mut cx, mi, Pos::new(5, 5));
+        }
+        let marked = g.run.as_ref().unwrap().monsters[mi].marked;
+        assert!(marked >= inherited, "no negative mark");
+        assert_eq!(marked, 50, "the authored cap");
+        assert_eq!(receipt(&g, 6, Phase::Applied, Effect::Mark), expected);
+        println!(
+            "priority4 spotter inherited={inherited} marked={marked} applied={:?}",
+            receipt(&g, 6, Phase::Applied, Effect::Mark)
+        );
+    }
+    // Ice lock: the same authored 10 fills only the room left under the cap. The boss's base
+    // slow is authored 30 + 5*skill(4) + 10*skill(1)*boss (+5 with the Control legacy), and a
+    // real running Ward is required.
+    for (bits, control, expected, duration) in [
+        (vec![8u32], false, vec![10i32], 40i32),
+        (vec![1, 4, 8], false, vec![5], 50),
+        (vec![1, 4, 8], true, vec![], 50),
+    ] {
+        let mut g = arena(Class::Caster, &bits);
+        foe(&mut g, "bloat_mother", 6, 5);
+        if control {
+            g.run.as_mut().unwrap().hero.legacy_effects |= crate::legacy::CONTROL;
+        }
+        assert!(act(&mut g, "ward"), "the reward needs a running ward clock");
+        assert!(act(&mut g, "slow"));
+        assert_eq!(g.run.as_ref().unwrap().monsters[0].slow_t, duration);
+        assert_eq!(receipt(&g, 8, Phase::Applied, Effect::Slow), expected);
+        println!(
+            "priority4 ice_lock bits={bits:?} control={control} slow_t={duration} applied={:?}",
+            receipt(&g, 8, Phase::Applied, Effect::Slow)
+        );
+    }
+    // The same fresh Slow with no running Ward is the unwarded control: base duration, no add.
+    let mut bare = arena(Class::Caster, &[1, 4, 8]);
+    foe(&mut bare, "bloat_mother", 6, 5);
+    assert!(act(&mut bare, "slow"));
+    assert_eq!(bare.run.as_ref().unwrap().monsters[0].slow_t, 45);
+    assert!(receipt(&bare, 8, Phase::Applied, Effect::Slow).is_empty());
+}
+
+#[test]
+fn priority4_small_remaining_cooldowns_apply_only_the_real_delta() {
+    // Patient snare: a real marked trap trigger reduces only the cooldown that is really left
+    // (3, then 0), never a flat 20 and never below zero.
+    for (remaining, expected) in [(3i32, vec![3i32]), (0, vec![])] {
+        let mut g = arena(Class::Ranger, &[6, 10]);
+        let mi = foe(&mut g, "goblin", 6, 5);
+        {
+            let r = g.run.as_mut().unwrap();
+            r.monsters[mi].marked = 30;
+            r.hero.double_cd = remaining;
+        }
+        assert!(act(&mut g, "trap"));
+        {
+            let (r, mut cx) = g.ctx();
+            move_monster(r, &mut cx, mi, Pos::new(5, 5));
+        }
+        assert!(
+            g.run.as_ref().unwrap().monsters[mi].marked == 40,
+            "the real trap trigger and mark extension happened"
+        );
+        assert_eq!(
+            receipt(&g, 10, Phase::Applied, Effect::DoubleShotCooldown),
+            expected
+        );
+        assert_eq!(g.run.as_ref().unwrap().hero.double_cd, 0, "never negative");
+        println!(
+            "priority4 snare remaining={remaining} applied={:?} double_cd={}",
+            receipt(&g, 10, Phase::Applied, Effect::DoubleShotCooldown),
+            g.run.as_ref().unwrap().hero.double_cd
+        );
+    }
+    // Opening cut: two real Cleave recipients reduce only the Bash clock that really runs.
+    for (remaining, expected) in [(4i32, vec![4i32]), (0, vec![])] {
+        let mut g = arena(Class::Fighter, &[8]);
+        foe(&mut g, "goblin", 5, 5);
+        foe(&mut g, "goblin", 4, 6);
+        g.run.as_mut().unwrap().hero.bash_cd = remaining;
+        assert!(act(&mut g, "cleave"));
+        let hurt = g
+            .run
+            .as_ref()
+            .unwrap()
+            .monsters
+            .iter()
+            .filter(|m| m.hp < 1000)
+            .count();
+        assert!(hurt >= 2, "two real Cleave recipients took damage");
+        assert_eq!(
+            receipt(&g, 8, Phase::Applied, Effect::BashCooldown),
+            expected
+        );
+        assert_eq!(g.run.as_ref().unwrap().hero.bash_cd, 0);
+        println!(
+            "priority4 opening_cut remaining={remaining} hurt={hurt} applied={:?}",
+            receipt(&g, 8, Phase::Applied, Effect::BashCooldown)
+        );
+    }
+}
+
+#[test]
+fn priority4_ward_slow_aim_and_reload_identities_survive_a_public_reload() {
+    // (a) Ward: one real cast's identity, absorbed count and shatter flag belong to that cast.
+    let mut g = arena(Class::Caster, &[9, 11]);
+    foe(&mut g, "bloat_mother", 5, 5);
+    assert!(act(&mut g, "ward"));
+    let ward = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .ward
+        .clone()
+        .unwrap();
+    let ward_t = g.run.as_ref().unwrap().hero.ward_t;
+    let reloaded = p1_canonical(g, Combo::StormCell);
+    assert_eq!(
+        Game::load(&reloaded.save()).unwrap().save(),
+        reloaded.save(),
+        "the reload boundary is idempotent"
+    );
+    assert_eq!(
+        reloaded
+            .run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .ward
+            .as_ref()
+            .unwrap(),
+        &ward,
+        "the Ward cast identity survives a public reload"
+    );
+    assert_eq!(
+        reloaded.run.as_ref().unwrap().hero.ward_t,
+        ward_t - 1,
+        "only the one real observation tick aged the thrown ward"
+    );
+    let ward_t = reloaded.run.as_ref().unwrap().hero.ward_t;
+    // The reloaded original cast shatters exactly once.
+    let mut spent = reloaded.clone();
+    assert!(act(&mut spent, "nova"));
+    assert_eq!(
+        receipt(&spent, 9, Phase::Consumed, Effect::Ward),
+        vec![ward_t]
+    );
+    assert_eq!(
+        receipt(&spent, 9, Phase::Applied, Effect::NovaCooldown),
+        vec![20]
+    );
+    // The spent cast cannot shatter a second time, even with the real Nova cooldown run out.
+    let at = spent.run.as_ref().unwrap().turn;
+    p4_at(&mut spent, at + 130);
+    assert!(act(&mut spent, "nova"));
+    assert_eq!(
+        receipt(&spent, 9, Phase::Applied, Effect::NovaCooldown),
+        vec![20]
+    );
+    assert_eq!(spent.run.as_ref().unwrap().hero.ward_t, 0);
+    println!(
+        "priority4 ward_identity source={} spent_nova={:?} new_cast_expected=true",
+        ward.source,
+        receipt(&spent, 9, Phase::Applied, Effect::NovaCooldown)
+    );
+    // A genuinely new ward cast is a new identity and may qualify once more.
+    let mut fresh = reloaded.clone();
+    let at = fresh.run.as_ref().unwrap().turn;
+    p4_at(&mut fresh, at + 100);
+    assert!(act(&mut fresh, "ward"));
+    let second = fresh
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .ward
+        .clone()
+        .unwrap();
+    assert_ne!(
+        second.source, ward.source,
+        "a distinct cast has a new identity"
+    );
+    assert!(!second.shatter_used && !second.last_wall_used && second.absorbed == 0);
+    assert!(act(&mut fresh, "nova"));
+    assert_eq!(receipt(&fresh, 9, Phase::Consumed, Effect::Ward), vec![30]);
+    assert_eq!(
+        receipt(&fresh, 9, Phase::Applied, Effect::NovaCooldown),
+        vec![20]
+    );
+    println!(
+        "priority4 ward_identity new_source={} new_shatter={:?}",
+        second.source,
+        receipt(&fresh, 9, Phase::Applied, Effect::NovaCooldown)
+    );
+
+    // (b) Slow: the per-target original-cast marker survives the reload, the original slow pays
+    // the chilling charge once, and a genuinely new slow cast pays once again.
+    let mut g = arena(Class::Caster, &[6]);
+    let boss = foe(&mut g, "bloat_mother", 5, 5);
+    assert!(
+        act(&mut g, "ward"),
+        "a real running ward clock for the reward"
+    );
+    assert!(act(&mut g, "slow"));
+    let marker = g.run.as_ref().unwrap().monsters[boss]
+        .advanced_slow
+        .clone()
+        .unwrap();
+    let reloaded = p1_canonical(g, Combo::Ghostwalk);
+    assert_eq!(
+        reloaded.run.as_ref().unwrap().monsters[boss]
+            .advanced_slow
+            .as_ref()
+            .unwrap(),
+        &marker,
+        "the original slow's cast identity survives a public reload"
+    );
+    let mut again = reloaded.clone();
+    hit_verb(&mut again, "bolt");
+    assert_eq!(
+        receipt(&again, 6, Phase::Applied, Effect::WardCooldown),
+        vec![10]
+    );
+    assert_eq!(
+        again.run.as_ref().unwrap().hero.ward_cd,
+        reloaded.run.as_ref().unwrap().hero.ward_cd - 10
+    );
+    // The spent original slow cannot pay a second time.
+    hit_verb(&mut again, "bolt");
+    assert_eq!(
+        receipt(&again, 6, Phase::Applied, Effect::WardCooldown),
+        vec![10]
+    );
+    // Once the real slow runs out, a distinct cast is a new identity and pays once more.
+    let at = again.run.as_ref().unwrap().turn;
+    p4_at(&mut again, at + 30);
+    let ward_cd = again.run.as_ref().unwrap().hero.ward_cd;
+    assert!(act(&mut again, "slow"), "the slow really ran out");
+    let second = again.run.as_ref().unwrap().monsters[boss]
+        .advanced_slow
+        .clone()
+        .unwrap();
+    assert_ne!(second.source, marker.source);
+    assert!(!second.chilling_used);
+    hit_verb(&mut again, "bolt");
+    assert_eq!(
+        receipt(&again, 6, Phase::Applied, Effect::WardCooldown),
+        vec![10, 10]
+    );
+    assert_eq!(again.run.as_ref().unwrap().hero.ward_cd, ward_cd - 10);
+    println!(
+        "priority4 slow_identity source={} new_source={} ward_cd={} applied={:?}",
+        marker.source,
+        second.source,
+        again.run.as_ref().unwrap().hero.ward_cd,
+        receipt(&again, 6, Phase::Applied, Effect::WardCooldown)
+    );
+
+    // (c) Aim: the recorded aim sequence (item, target, recovered) survives the reload, its one
+    // recovery cannot repeat, and a genuinely new aim recovers once again.
+    let mut g = arena(Class::Gunner, &[6]);
+    foe(&mut g, "bloat_mother", 6, 5);
+    assert!(act(&mut g, "aimed_shot"));
+    let aim = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .aim
+        .clone()
+        .unwrap();
+    assert!(!aim.recovered);
+    assert!(act(&mut g, "fire"));
+    let recovered = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .aim
+        .clone()
+        .unwrap();
+    assert!(
+        recovered.recovered,
+        "the real Rangefinder recovery happened"
+    );
+    assert_eq!(receipt(&g, 6, Phase::Applied, Effect::Chamber), vec![1]);
+    assert_eq!(p4_loaded(&g), 1);
+    let reloaded = p1_canonical(g, Combo::ChamberChain);
+    assert_eq!(
+        reloaded
+            .run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .aim
+            .as_ref()
+            .unwrap(),
+        &recovered,
+        "the aim sequence survives a public reload"
+    );
+    let mut spent = reloaded.clone();
+    assert!(act(&mut spent, "fire"));
+    assert_eq!(p4_loaded(&spent), 0, "the round really left the chamber");
+    assert_eq!(
+        receipt(&spent, 6, Phase::Applied, Effect::Chamber),
+        vec![1],
+        "the spent aim sequence cannot recover again"
+    );
+    // A new aim is a new identity and recovers once again.
+    let mut fresh = reloaded.clone();
+    assert!(act(&mut fresh, "aimed_shot"));
+    let second = fresh
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .aim
+        .clone()
+        .unwrap();
+    assert_ne!(second.source, recovered.source);
+    assert!(!second.recovered);
+    assert!(act(&mut fresh, "fire"));
+    assert_eq!(
+        receipt(&fresh, 6, Phase::Applied, Effect::Chamber),
+        vec![1, 1]
+    );
+    assert_eq!(p4_loaded(&fresh), 1);
+    println!(
+        "priority4 aim_identity source={} spent_recovery={:?} new_source={} new_recovery={:?}",
+        recovered.source,
+        receipt(&spent, 6, Phase::Applied, Effect::Chamber),
+        second.source,
+        receipt(&fresh, 6, Phase::Applied, Effect::Chamber)
+    );
+
+    // (d) Physical reload: the cast identity (source, item, fast flag, recorded debit) survives
+    // the reload, the physical completion still happens, pays once, and the reloaded and
+    // never-reloaded forks are byte-identical.
+    let mut g = arena(Class::Gunner, &[7, 8]);
+    foe(&mut g, "goblin", 5, 5);
+    empty_gun(&mut g);
+    scheduled(&mut g, "reload");
+    let deadline = g.run.as_ref().unwrap().gun_reload.unwrap().at;
+    while g.run.as_ref().unwrap().turn < deadline - 10 {
+        g.tick();
+    }
+    scheduled(&mut g, "smoke_retreat");
+    let cast = g
+        .run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .reload
+        .clone()
+        .unwrap();
+    assert!(!cast.fast);
+    let reloaded = p1_canonical(g.clone(), Combo::SmokeWalk);
+    let live = p1_canonical(g, Combo::SmokeWalk);
+    assert_eq!(reloaded.save(), live.save(), "the reload changed no byte");
+    assert_eq!(
+        reloaded
+            .run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .reload
+            .as_ref()
+            .unwrap(),
+        &cast,
+        "the physical reload cast survives a public reload"
+    );
+    let mut after = reloaded.clone();
+    let mut before = live.clone();
+    finish_reload(&mut after);
+    finish_reload(&mut before);
+    assert_eq!(
+        after.save(),
+        before.save(),
+        "the physical completion is identical across the public reload"
+    );
+    assert_eq!(p4_loaded(&after), 1);
+    assert!(after.run.as_ref().unwrap().gun_reload.is_none());
+    assert_eq!(receipt(&after, 8, Phase::Applied, Effect::Energy), vec![50]);
+    assert_eq!(
+        receipt(&after, 8, Phase::Applied, Effect::Energy),
+        receipt(&before, 8, Phase::Applied, Effect::Energy)
+    );
+    for _ in 0..5 {
+        after.tick();
+    }
+    assert_eq!(
+        receipt(&after, 8, Phase::Applied, Effect::Energy),
+        vec![50],
+        "one physical completion pays once"
+    );
+    println!(
+        "priority4 reload_identity source={} item={} fast={} debit={} loaded={} applied={:?}",
+        cast.source,
+        cast.item,
+        cast.fast,
+        cast.energy_debit,
+        p4_loaded(&after),
+        receipt(&after, 8, Phase::Applied, Effect::Energy)
+    );
+}
+
+#[test]
+fn priority4_refunds_pay_half_the_real_net_debit_and_never_reach_full_energy() {
+    // (a) A real trait-reduced debit: the `sure` gift returns 50 % / 75 % of a real Kite's
+    // action energy, so Moving line's half is 25 / 12 — never a flat 50 and never a debit that
+    // was not really spent.
+    for (tier, expected) in [
+        (crate::traits::Tier::Common, vec![25i32]),
+        (crate::traits::Tier::Uncommon, vec![12]),
+    ] {
+        let mut on = volley_arena(&[9, 11]);
+        assert!(act(&mut on, "volley"));
+        assert_eq!(receipt(&on, 11, Phase::Armed, Effect::Energy), vec![1]);
+        on.run.as_mut().unwrap().worn.blood = Some(
+            crate::traits::Shape::new(
+                crate::traits::When::Always,
+                crate::traits::Gift::Sure,
+                crate::traits::Cost::None,
+            )
+            .at(tier),
+        );
+        let mut off = on.clone();
+        off.run.as_mut().unwrap().hero.class_skills &= !(1 << 11);
+        scheduled(&mut on, "kite");
+        scheduled(&mut off, "kite");
+        assert_eq!(
+            receipt(&on, 11, Phase::Applied, Effect::Energy),
+            expected,
+            "half the real net debit"
+        );
+        assert!(receipt(&off, 11, Phase::Applied, Effect::Energy).is_empty());
+        assert_eq!(
+            on.run.as_ref().unwrap().hero.energy,
+            off.run.as_ref().unwrap().hero.energy + expected[0],
+            "the promise moves the actor's own clock by the applied amount"
+        );
+        assert!(on.run.as_ref().unwrap().hero.energy < crate::engine::ACT_ENERGY);
+        println!(
+            "priority4 refund tier={tier:?} real_debit={} applied={:?} energy={} disabled_energy={}",
+            crate::engine::ACT_ENERGY - off.run.as_ref().unwrap().hero.energy,
+            receipt(&on, 11, Phase::Applied, Effect::Energy),
+            on.run.as_ref().unwrap().hero.energy,
+            off.run.as_ref().unwrap().hero.energy
+        );
+    }
+    // (b) A refund promise with no room on the real clock pays nothing: the charge is really
+    // spent (Consumed), the promise emits no energy and the actor stays under full.
+    let mut g = arena(Class::Rogue, &[8]);
+    foe(&mut g, "goblin", 5, 5);
+    assert!(act(&mut g, "smoke"));
+    p4_leftover(&mut g, "shadowstep", 99);
+    assert_eq!(receipt(&g, 8, Phase::Consumed, Effect::Energy), vec![1]);
+    assert!(
+        receipt(&g, 8, Phase::Applied, Effect::Energy).is_empty(),
+        "no room, no energy"
+    );
+    assert_eq!(g.run.as_ref().unwrap().hero.energy, 99);
+    let mut off = arena(Class::Rogue, &[8]);
+    foe(&mut off, "goblin", 5, 5);
+    assert!(act(&mut off, "smoke"));
+    off.run.as_mut().unwrap().hero.class_skills &= !(1 << 8);
+    p4_leftover(&mut off, "shadowstep", 99);
+    assert!(receipt(&off, 8, Phase::Consumed, Effect::Energy).is_empty());
+    assert_eq!(
+        g.run.as_ref().unwrap().hero.energy,
+        off.run.as_ref().unwrap().hero.energy
+    );
+    println!(
+        "priority4 refund zero_room consumed={:?} applied={:?} energy={}",
+        receipt(&g, 8, Phase::Consumed, Effect::Energy),
+        receipt(&g, 8, Phase::Applied, Effect::Energy),
+        g.run.as_ref().unwrap().hero.energy
+    );
+    // (c) Two concurrent refunds share one real budget: the first takes all of the room, the
+    // second pays nothing, and the actor never reaches full energy.
+    let mut g = arena(Class::Rogue, &[8, 11]);
+    let mi = foe(&mut g, "goblin", 5, 5);
+    foe(&mut g, "goblin", 7, 5);
+    {
+        let r = g.run.as_mut().unwrap();
+        r.hero.vanish_t = 30;
+        r.monsters[mi].hp = 1;
+    }
+    assert!(act(&mut g, "smoke"));
+    assert!(act(&mut g, "ambush"));
+    assert!(
+        g.run.as_ref().unwrap().monsters[mi].hp <= 0,
+        "the Ambush really killed a foe below 25 %"
+    );
+    p4_leftover(&mut g, "shadowstep", 94);
+    assert_eq!(receipt(&g, 8, Phase::Consumed, Effect::Energy), vec![1]);
+    assert_eq!(receipt(&g, 11, Phase::Consumed, Effect::Energy), vec![1]);
+    assert_eq!(receipt(&g, 8, Phase::Applied, Effect::Energy), vec![5]);
+    assert!(
+        receipt(&g, 11, Phase::Applied, Effect::Energy).is_empty(),
+        "one shared budget"
+    );
+    assert_eq!(g.run.as_ref().unwrap().hero.energy, 99);
+    let mut off = arena(Class::Rogue, &[8, 11]);
+    let mi = foe(&mut off, "goblin", 5, 5);
+    foe(&mut off, "goblin", 7, 5);
+    {
+        let r = off.run.as_mut().unwrap();
+        r.hero.vanish_t = 30;
+        r.monsters[mi].hp = 1;
+    }
+    assert!(act(&mut off, "smoke"));
+    assert!(act(&mut off, "ambush"));
+    off.run.as_mut().unwrap().hero.class_skills &= !(1 << 8) & !(1 << 11);
+    p4_leftover(&mut off, "shadowstep", 94);
+    assert!(receipt(&off, 8, Phase::Consumed, Effect::Energy).is_empty());
+    assert!(receipt(&off, 11, Phase::Consumed, Effect::Energy).is_empty());
+    assert_eq!(off.run.as_ref().unwrap().hero.energy, 94);
+    println!(
+        "priority4 refund combined applied={:?} second={:?} energy={}",
+        receipt(&g, 8, Phase::Applied, Effect::Energy),
+        receipt(&g, 11, Phase::Applied, Effect::Energy),
+        g.run.as_ref().unwrap().hero.energy
+    );
+}
+
+fn p4_aim(pace: i32, speed_t: i32, leftover: Option<i32>, off: bool) -> Game {
+    let mut g = arena(Class::Gunner, &[7]);
+    foe(&mut g, "goblin", 6, 5);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 7);
+    }
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    finish_reload(&mut g);
+    {
+        let r = g.run.as_mut().unwrap();
+        r.hero.pace = pace;
+        r.hero.speed_t = speed_t;
+    }
+    match leftover {
+        Some(left) => p4_leftover(&mut g, "aimed_shot", left),
+        None => scheduled(&mut g, "aimed_shot"),
+    }
+    g
+}
+
+#[test]
+fn priority4_aim_settle_honours_fractional_pace_timed_speed_and_the_first_tick() {
+    // The authored settlement is one real scheduler tick and is computed from the same
+    // fractional pace / timed speed the actor's clock really uses. Every case aims on the same
+    // real turn, so the applied settlement energy can be compared across clocks.
+    let mut settles: Vec<(&str, i32, i32, i32, u32, u32)> = Vec::new();
+    for (label, pace, speed_t) in [
+        ("plain", 0, 0),
+        ("fractional_pace_5", 5, 0),
+        ("fractional_pace_9", 9, 0),
+        ("timed_speed", 0, 5),
+    ] {
+        let mut on = p4_aim(pace, speed_t, None, false);
+        let mut off = p4_aim(pace, speed_t, None, true);
+        assert_eq!(
+            on.run.as_ref().unwrap().turn,
+            off.run.as_ref().unwrap().turn,
+            "{label}: the same real aim turn"
+        );
+        assert_eq!(
+            receipt(&on, 7, Phase::Consumed, Effect::AimSettle),
+            vec![1],
+            "{label}: the real fast-reload charge was consumed"
+        );
+        assert_eq!(
+            receipt(&on, 7, Phase::Applied, Effect::AimSettle),
+            vec![1],
+            "{label}: the settlement was applied"
+        );
+        assert!(
+            on.run
+                .as_ref()
+                .unwrap()
+                .hero
+                .advanced
+                .as_ref()
+                .unwrap()
+                .aim
+                .as_ref()
+                .unwrap()
+                .shortened
+        );
+        assert!(
+            off.run.as_ref().unwrap().hero.advanced.is_none(),
+            "{label}: the disabled control never had the cast"
+        );
+        assert!(receipt(&off, 7, Phase::Applied, Effect::AimSettle).is_empty());
+        let settled = on.run.as_ref().unwrap().hero.energy;
+        let control = off.run.as_ref().unwrap().hero.energy;
+        assert!(settled > control, "{label}: the settlement moved the clock");
+        assert!(settled < crate::engine::ACT_ENERGY);
+        let next_on = p4_next(&mut on, 40);
+        let next_off = p4_next(&mut off, 40);
+        assert_eq!(
+            next_on,
+            next_off - 1,
+            "{label}: the next real action lands exactly one tick sooner"
+        );
+        println!(
+            "priority4 aim_settle {label} pace={pace} speed_t={speed_t} settled={settled} \
+             control={control} next_on={next_on} next_off={next_off}"
+        );
+        settles.push((label, pace, speed_t, settled - control, next_on, next_off));
+    }
+    // The promised energy is the real deficit of the actor's own clock: the fractional pace
+    // shrinks it, and the timed speed advances the clock the settlement is measured against, so
+    // the settlement is never a fixed grant.
+    let case = |label: &str| {
+        settles
+            .iter()
+            .find(|s| s.0 == label)
+            .copied()
+            .unwrap_or_else(|| panic!("missing {label}"))
+    };
+    assert!(
+        case("fractional_pace_9").3 < case("plain").3,
+        "the fractional pace really shrinks the promised deficit"
+    );
+    assert!(
+        case("fractional_pace_5").3 < case("plain").3,
+        "a smaller fractional pace shrinks it less"
+    );
+    assert!(
+        case("timed_speed").5 < case("plain").5,
+        "the timed speed really advances the actor's clock"
+    );
+    println!(
+        "priority4 aim_settle deficits plain={} pace5={} pace9={} speed_t5={} arrivals={:?}",
+        case("plain").3,
+        case("fractional_pace_5").3,
+        case("fractional_pace_9").3,
+        case("timed_speed").3,
+        settles.iter().map(|s| (s.0, s.4, s.5)).collect::<Vec<_>>()
+    );
+    // At-least-one-future-tick: when the real clock is already about to act, the consumed
+    // promise settles nothing and emits no applied energy.
+    let mut on = p4_aim(0, 0, Some(95), false);
+    let mut off = p4_aim(0, 0, Some(95), true);
+    assert_eq!(receipt(&on, 7, Phase::Consumed, Effect::AimSettle), vec![1]);
+    assert!(
+        receipt(&on, 7, Phase::Applied, Effect::AimSettle).is_empty(),
+        "no future tick to settle"
+    );
+    assert!(
+        !on.run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .aim
+            .as_ref()
+            .unwrap()
+            .shortened
+    );
+    let settled = on.run.as_ref().unwrap().hero.energy;
+    assert_eq!(settled, off.run.as_ref().unwrap().hero.energy);
+    let next_on = p4_next(&mut on, 5);
+    let next_off = p4_next(&mut off, 5);
+    assert_eq!(next_on, next_off, "no earlier action");
+    println!("priority4 aim_settle no_future_tick energy={settled} next={next_on}");
+}
+
+/// What a promised energy refund or aim settlement must leave alone.
+#[derive(Debug, PartialEq, Eq)]
+struct P4World {
+    hp: i32,
+    loot: i32,
+    monster_hp: Vec<i32>,
+    items: usize,
+    cooldowns: Vec<i32>,
+    ready: Vec<u32>,
+    loaded: u8,
+    capacity: u8,
+    reload: Option<(u32, u32, u32)>,
+    turn: u32,
+}
+
+fn p4_world(g: &Game) -> P4World {
+    let r = g.run.as_ref().unwrap();
+    let w = r.hero.weapon.as_ref().unwrap();
+    P4World {
+        hp: r.hero.hp,
+        loot: r.loot,
+        monster_hp: r.monsters.iter().map(|m| m.hp).collect(),
+        items: r.items.len() + r.hero.inv.len(),
+        cooldowns: vec![
+            r.hero.bash_cd,
+            r.hero.vanish_cd,
+            r.hero.double_cd,
+            r.hero.ward_cd,
+            r.hero.nova_cd,
+            r.hero.blink_cd,
+            r.hero.cleave_cd,
+        ],
+        ready: vec![
+            r.gun_skills.as_ref().map_or(0, |s| s.fast_ready),
+            r.gun_skills.as_ref().map_or(0, |s| s.smoke_ready),
+            r.gun_skills.as_ref().map_or(0, |s| s.finish_ready),
+        ],
+        loaded: w.firearm.map_or(0, |f| f.loaded),
+        capacity: crate::firearm::Profile::of(&w.kind).map_or(0, |p| p.capacity),
+        reload: r.gun_reload.map(|q| (q.item, q.at, q.duration)),
+        turn: r.turn,
+    }
+}
+
+/// The same real verb, once with the tested node and once with only its bit cleared.
+fn p4_veiled(off: bool) -> Game {
+    let mut g = arena(Class::Rogue, &[8]);
+    foe(&mut g, "goblin", 5, 5);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 8);
+    }
+    assert!(act(&mut g, "smoke"));
+    scheduled(&mut g, "shadowstep");
+    g
+}
+
+fn p4_moving_line(off: bool) -> Game {
+    let mut g = volley_arena(&[9, 11]);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 11);
+    }
+    assert!(act(&mut g, "volley"));
+    scheduled(&mut g, "kite");
+    g
+}
+
+fn p4_breach_route(off: bool) -> Game {
+    let mut g = arena(Class::Gunner, &[11]);
+    {
+        let r = g.run.as_mut().unwrap();
+        let mut w = Item::new(crate::kit::WEAPON_ID, "short_gun");
+        w.enchant = 20;
+        r.hero.weapon = Some(w).into();
+        r.gun_skills = Some(Default::default());
+    }
+    let mi = foe(&mut g, "goblin", 5, 5);
+    foe(&mut g, "goblin", 6, 6);
+    g.run.as_mut().unwrap().monsters[mi].hp = 1;
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 11);
+    }
+    assert!(act(&mut g, "close_burst"));
+    scheduled(&mut g, "smoke_retreat");
+    g
+}
+
+fn p4_chamber_chain(off: bool) -> Game {
+    let mut g = arena(Class::Gunner, &[7]);
+    foe(&mut g, "goblin", 6, 5);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 7);
+    }
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    finish_reload(&mut g);
+    scheduled(&mut g, "aimed_shot");
+    g
+}
+
+fn p4_long_watch(off: bool) -> Game {
+    let mut g = arena(Class::Gunner, &[6, 7, 10]);
+    let boss = foe(&mut g, "goblin_warlord", 6, 5);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 10);
+    }
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    finish_reload(&mut g);
+    scheduled(&mut g, "aimed_shot");
+    g.run.as_mut().unwrap().monsters[boss].hp = 1;
+    assert!(act(&mut g, "fire"));
+    foe(&mut g, "goblin", 7, 5);
+    let at = g.run.as_ref().unwrap().turn;
+    p4_at(&mut g, at + 30);
+    scheduled(&mut g, "aimed_shot");
+    g
+}
+
+/// One paired conservation case: its label, its real-verb builder, the tested node's bit and
+/// the effect that promise is made in.
+type P4Case = (&'static str, fn(bool) -> Game, u32, Effect);
+
+#[test]
+fn priority4_promised_energy_and_settlement_conserve_hp_loot_ammo_and_cooldowns() {
+    // Only the actor's own clock may move: hp, carried gold, item count, the ordinary cooldowns,
+    // the gun's ready clocks, chambers and capacity and the physical reload identity are equal
+    // with the node on and with its bit cleared.
+    let cases: [P4Case; 5] = [
+        ("veiled_route", p4_veiled, 8, Effect::Energy),
+        ("moving_line", p4_moving_line, 11, Effect::Energy),
+        ("breach_route", p4_breach_route, 11, Effect::Energy),
+        ("chamber_chain", p4_chamber_chain, 7, Effect::AimSettle),
+        ("long_watch", p4_long_watch, 10, Effect::AimSettle),
+    ];
+    for (name, build, bit, effect) in cases {
+        let on = build(false);
+        let off = build(true);
+        let (won, woff) = (p4_world(&on), p4_world(&off));
+        assert_eq!(won, woff, "{name}: only the promised energy may differ");
+        let applied = receipt(&on, bit, Phase::Applied, effect);
+        assert_eq!(applied.len(), 1, "{name}: exactly one applied output");
+        assert!(
+            receipt(&off, bit, Phase::Applied, effect).is_empty(),
+            "{name}: the cleared node promises nothing"
+        );
+        let (energy, control) = (
+            on.run.as_ref().unwrap().hero.energy,
+            off.run.as_ref().unwrap().hero.energy,
+        );
+        assert!(energy < crate::engine::ACT_ENERGY);
+        match effect {
+            Effect::Energy => {
+                assert_eq!(applied, vec![50]);
+                assert_eq!(
+                    energy,
+                    control + 50,
+                    "{name}: the real refund, nothing more"
+                );
+            }
+            _ => {
+                assert_eq!(applied, vec![1]);
+                assert!(energy > control, "{name}: the settlement moved the clock");
+            }
+        }
+        println!(
+            "priority4 conserve {name} bit={bit} world_equal=true applied={applied:?} \
+             energy={energy} disabled_energy={control}"
+        );
+    }
+    // The physical reload completion's refund is applied on the completion tick itself: the
+    // world (including the turn) is still identical and the promise never invents an action for
+    // its owner — the extra energy can only leave the node-free fork's own clock crossing alone.
+    let on = p4_smoke_walk(false);
+    let off = p4_smoke_walk(true);
+    assert_eq!(
+        p4_world(&on),
+        p4_world(&off),
+        "smoke_walk: only the promised energy may differ"
+    );
+    assert_eq!(receipt(&on, 8, Phase::Applied, Effect::Energy), vec![50]);
+    assert!(receipt(&off, 8, Phase::Applied, Effect::Energy).is_empty());
+    assert_eq!(p4_loaded(&on), 1, "the physical reload completed");
+    assert_eq!(p4_loaded(&off), 1);
+    assert!(on.run.as_ref().unwrap().hero.energy < crate::engine::ACT_ENERGY);
+    // The refund is real energy on the real clock: a crossing it causes is the actor's own next
+    // action, never a node-invented one, so the enabled fork can only act at or after the
+    // node-free fork.
+    assert!(
+        on.run.as_ref().unwrap().actions >= off.run.as_ref().unwrap().actions,
+        "the refund never delays the actor's own clock"
+    );
+    println!(
+        "priority4 conserve smoke_walk world_equal=true energy={} disabled_energy={} \
+         actions={} disabled_actions={}",
+        on.run.as_ref().unwrap().hero.energy,
+        off.run.as_ref().unwrap().hero.energy,
+        on.run.as_ref().unwrap().actions,
+        off.run.as_ref().unwrap().actions
+    );
+}
+
+fn p4_smoke_walk(off: bool) -> Game {
+    let mut g = arena(Class::Gunner, &[8]);
+    foe(&mut g, "goblin", 5, 5);
+    if off {
+        g.run.as_mut().unwrap().hero.class_skills &= !(1 << 8);
+    }
+    empty_gun(&mut g);
+    scheduled(&mut g, "reload");
+    let at = g.run.as_ref().unwrap().gun_reload.unwrap().at;
+    while g.run.as_ref().unwrap().turn < at - 10 {
+        g.tick();
+    }
+    scheduled(&mut g, "smoke_retreat");
+    finish_reload(&mut g);
+    g
 }
