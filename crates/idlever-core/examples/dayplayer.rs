@@ -2103,7 +2103,12 @@ fn main() {
                 "pets" => {
                     let d = |o: &SeedOut| 100.0 * o.deaths as f64 / o.sends.max(1) as f64;
                     let (a, b) = (mean(t, &d), mean(w, &d));
-                    (a, b, "% deaths", a < b)
+                    // Owner 2026-10-17: ±2 points. The clause's own record shows the effect it tests is
+                    // 0.02–1.95 points with no significant paired signal at 16 seeds (4 pass / 2 fail
+                    // across the six cached source keys, one failure turning on +0.02 —
+                    // `docs/evidence/mechanics/pets-clause-finding-2026-10-16.md`), so a strict `<` reports
+                    // noise. The sibling `bank` clause already carries a 1 % margin.
+                    (a, b, "% deaths", a < b + 2.0)
                 }
                 "quests" => {
                     let q = |o: &SeedOut| o.quests as f64;

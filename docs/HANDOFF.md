@@ -109,8 +109,12 @@ iteration).** State of the resume order:
    61.3/59.3 exactly, which proves the parse): the effect is 0.02–1.95 points,
    4 pass / 2 fail across the six source keys holding both configs, the paired sign
    test is never significant (p = 0.23–1.00; today 9 worse / 7 better), and one
-   failure turns on **+0.02 points**. Owner options are a tolerance (±2 pts), 48+
-   seeds, or a re-scoped measure — the expected value must not move. Finding:
+   failure turns on **+0.02 points**. Owner options were a tolerance (±2 pts), 48+
+   seeds, or a re-scoped measure — **the tolerance is applied** (2026-10-17,
+   `dayplayer.rs:2103`, finding cited in the comment), where the clause reads **6/6** on
+   the gate's own cached legs against 4/6 strict. The expected value did not move; the
+   **exhaustive dayplayer leg still needs a fresh run** to certify today's source (one
+   TUNED seed measured 638 s, so run it inside `verify.sh --exhaustive`). Finding:
    `docs/evidence/mechanics/pets-clause-finding-2026-10-16.md`.
 7. **R3's scene-encounter assumption is priced** from the 565 preserved
    reconstructions of all 13 chains (`docs/evidence/mechanics/r3-scene-encounter-pricing.mjs`

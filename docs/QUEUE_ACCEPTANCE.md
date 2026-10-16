@@ -201,7 +201,12 @@ gate's own cached legs** (`docs/evidence/mechanics/pets-clause-finding-2026-10-1
 the effect is 0.02–1.95 points, 4 pass / 2 fail across the six source keys that carry
 both configs, paired sign test p = 0.23–1.00, and one failure turns on +0.02 points) —
 so it needs an owner-accepted tolerance (+2 pts or ≥48 seeds) or a re-scoped measure,
-not an expected-value edit
+not an expected-value edit. **Resolved 2026-10-17:** the owner took the ±2-point
+tolerance, applied in `dayplayer.rs:2103` with this finding cited; the clause reads
+**6/6 under it** on the gate's own cached legs (4/6 strict, one of the two failures
+turning on +0.02 points), and the **exhaustive dayplayer leg still needs a fresh run**
+to certify today's source (a measured attempt spent 638 s on a single TUNED seed, so it
+belongs in `verify.sh --exhaustive`, not ad hoc)
 (`docs/evidence/cut257/exhaustive-audit-findings.md`). Perf chores landed (the
 worst-death verdict out of the absence; the foreground catalogue reads held off the
 batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md`

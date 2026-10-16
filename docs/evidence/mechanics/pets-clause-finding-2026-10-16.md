@@ -46,7 +46,7 @@ coin flip).
 
 1. **Tolerance**: accept "pets within ±2 points is neutral" (the only failing clause
    becomes PASS, and the bar keeps its meaning for larger effects). Cheapest, and it
-   matches the measured effect size.
+   matches the measured effect size. — **chosen and applied 2026-10-17** (below).
 2. **More seeds**: raise the pets clause's sample (48+ seeds) so a real 2-point effect
    could be resolved; costs wall time on every exhaustive run.
 3. **Re-scope the measure**: compare a statistic pets should move more strongly (e.g.
@@ -54,31 +54,46 @@ coin flip).
    causes), leaving the death-rate clause as descriptive only.
 4. **Leave it**: the exhaustive audit keeps reporting exactly this one failure.
 
-## Ready to apply, once you pick (this is the whole change)
+## Applied 2026-10-17: option 1, the ±2-point tolerance (owner-authorized)
 
-The clause is one expression, `crates/idlever-core/examples/dayplayer.rs` (~2110):
+The owner chose the tolerance. The clause is one expression,
+`crates/idlever-core/examples/dayplayer.rs:2103`:
 
 ```rust
 "pets" => {
     let d = |o: &SeedOut| 100.0 * o.deaths as f64 / o.sends.max(1) as f64;
     let (a, b) = (mean(t, &d), mean(w, &d));
-    (a, b, "% deaths", a < b)          // ← today
+    // Owner 2026-10-17: ±2 points — the effect this tests is 0.02–1.95 points with no
+    // significant paired signal at 16 seeds (this finding), so a strict `<` reports noise.
+    (a, b, "% deaths", a < b + 2.0)
 }
 ```
 
-- **Option 1 (tolerance)** — `a < b + 2.0`, i.e. pets must not be worse by more than two
-  points. Consistent with the sibling clauses, which already carry margins (`bank` uses
-  `a > b * 1.01`). Comment it with the measured effect size and this finding.
-- **Option 2 (more seeds)** — no code change: run the row with a larger sample
-  (`node tools/gates.mjs --rows each-system --seeds 48`), which also re-samples every other
-  system's clause at 48 seeds.
-- **Option 3 (re-scope)** — replace the death-rate measure with one pets should move
-  (e.g. deaths per send where companions were actually fielded); this is content/rules
-  work, not a one-line edit.
-- **Option 4 (leave it)** — nothing to apply; the exhaustive audit keeps reporting this
-  one failure.
+Verified against the gate's **own cached legs**, which is the only affordable way to read the
+new bar's verdict (the cost note below): every key carrying both configs now passes.
 
-Either applied form needs the row re-run and the result recorded with the new value.
+| source key | seeds | with | without | Δ (pts) | strict `<` | `a < b + 2.0` |
+|---|---|---|---|---|---|---|
+| `32ec69646de439fb` | 16 | 32.5 % | 33.4 % | −0.95 | PASS | PASS |
+| `392c4756e09d775a` (the reported failure) | 16 | 61.3 % | 59.3 % | +1.95 | FAIL | **PASS** |
+| `4fd4d0e184912ad3` | 16 | 10.6 % | 11.0 % | −0.40 | PASS | PASS |
+| `7b74699adc230110` | 16 | 10.6 % | 11.0 % | −0.40 | PASS | PASS |
+| `f40be1bf3e2f0fa2` | 16 | 10.6 % | 11.0 % | −0.40 | PASS | PASS |
+| `d7ce4c265843bde1` | 15 | 10.7 % | 10.7 % | +0.02 | FAIL | **PASS** |
+
+4/6 strict → **6/6 under the tolerance**; `pets-clause-analysis.mjs` now prints both verdicts.
+
+What this does and does not settle:
+
+- The clause no longer fails on an effect it cannot resolve at 16 seeds; it tests "pets must
+  not be worse by more than two points", consistent with `bank`'s existing 1 % margin.
+- **The exhaustive audit's dayplayer leg still needs a fresh run** to certify today's source:
+  the cached legs above belong to their own source keys, and editing this expression changes
+  the cache key. That run is expensive — a measured attempt at 16 seeds spent 638 s on one
+  TUNED seed and had not finished its first configuration after 900 s — so pay it inside
+  `tools/verify.sh --exhaustive` (or `tools/gates.mjs --exhaustive`), not ad hoc.
+- Options 2 (48 seeds) and 3 (a re-scoped measure) remain open as better science; option 4 is
+  withdrawn because the noise is now documented rather than suspected.
 
 Do not move the expected value to obtain green. Limits: cached legs only (no new
 simulation), one day-depth per leg, and the bar's own per-seed aggregation is

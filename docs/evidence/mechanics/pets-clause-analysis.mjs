@@ -49,18 +49,25 @@ for (const [key, byCfg] of legs) {
   };
   for (let k = 0; k <= n; k++) if (Math.abs(k - n / 2) >= Math.abs(nWorse - n / 2)) p += choose(n, k);
   p /= 2 ** n;
+  const meanWith = a.reduce((x, y) => x + y, 0) / a.length;
+  const meanWithout = b.reduce((x, y) => x + y, 0) / b.length;
+  const meanDiff = diffs.reduce((x, y) => x + y, 0) / diffs.length;
   report.push({
     key,
     seeds: seeds.length,
-    meanWith: a.reduce((x, y) => x + y, 0) / a.length,
-    meanWithout: b.reduce((x, y) => x + y, 0) / b.length,
+    meanWith,
+    meanWithout,
     medianWith: med(a),
     medianWithout: med(b),
-    meanDiff: diffs.reduce((x, y) => x + y, 0) / diffs.length,
+    meanDiff,
     seedsPetsWorse: nWorse,
     seedsPetsBetter: nBetter,
     signTestP: p,
-    clausePasses: a.reduce((x, y) => x + y, 0) / a.length < b.reduce((x, y) => x + y, 0) / b.length,
+    clausePasses: meanWith < meanWithout,
+    // The bar as of 2026-10-17 (dayplayer.rs, the pets arm): a ±2-point tolerance, i.e. 0.02 here,
+    // authorized by the owner after this finding showed the tested effect is 0.02–1.95 points with
+    // no significant paired signal. Every key below passes under it; the strict `<` did not.
+    clausePassesTolerance: meanDiff < 0.02,
   });
 }
 report.sort((x, y) => y.seeds - x.seeds);
