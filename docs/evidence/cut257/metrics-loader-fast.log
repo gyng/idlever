@@ -1,0 +1,742 @@
+stances D13 stone: guarded 0.031 hunter 0.010 bold 0.000
+stances D13 D1: guarded -0.014 hunter -0.082 bold -0.201
+stances D23 stone: hunter 0.271 bold 0.073 guarded 0.073
+stances D23 D1: guarded -0.013 hunter -0.060 bold -0.250
+stances D28 stone: bold 0.000 guarded 0.000 hunter 0.000
+stances D28 D1: guarded -0.018 hunter -0.043 bold -0.250
+  slow scene 497 ms on Some("fighter"): Some((1, 16842, None, None))
+  slow scene 517 ms on Some("fighter"): Some((1, 25065, Some(8), Some(0)))
+  slow scene 604 ms on Some("fighter"): Some((29, 15317, None, None))
+bot        best-depth mean  ≤D8  ≥D10  ≥D23  ≥D29  mean-death-depth  runs  deaths   dice
+DEFAULT               8.00    1     0     0     0              5.15    39      39   0.0%
+EDITED               18.00    0     1     0     0             11.69    13       8   0.0%
+RANDOM                8.00    1     0     0     0              5.15    40      40   0.0%
+PASSIVE               1.00    1     0     0     0              1.00   249      54   0.0%
+LEARNED               8.00    1     0     0     0              6.07    27      23   0.0%
+PETS                  8.00    1     0     0     0              6.56    36      32  12.5%
+LEVELLED              8.00    1     0     0     0              6.74    31      31   0.0%
+TRIVIAL               8.00    1     0     0     0              6.65    20      14   0.0%
+COUNTERED            13.00    0     1     0     0              8.18    22      22   0.0%
+FULL                 33.00    0     1     1     1             23.53    17       9   0.0%
+FULL−D23             28.00    0     1     1     0             17.45    22      12   0.0%
+FULL−D28             28.00    0     1     1     0             21.84    19      13  12.5%
+FULL−D33             33.00    0     1     1     1             23.53    17       9   0.0%
+
+run depth histogram (% of runs ending at depth ≥ d):
+DEFAULT   D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 92.3 │ D5 66.7 │ D6 33.3 │ D7 20.5 │ D8  2.6 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+EDITED    D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 100.0 │ D5 100.0 │ D6 100.0 │ D7 92.3 │ D8 84.6 │ D9 69.2 │ D10 69.2 │ D11 69.2 │ D12 69.2 │ D13 46.2
+RANDOM    D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 90.0 │ D5 62.5 │ D6 37.5 │ D7 20.0 │ D8  5.0 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+PASSIVE   D1 100.0 │ D2  0.0 │ D3  0.0 │ D4  0.0 │ D5  0.0 │ D6  0.0 │ D7  0.0 │ D8  0.0 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+LEARNED   D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 96.3 │ D5 85.2 │ D6 59.3 │ D7 37.0 │ D8 29.6 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+PETS      D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 100.0 │ D5 100.0 │ D6 77.8 │ D7 50.0 │ D8 27.8 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+LEVELLED  D1 100.0 │ D2 100.0 │ D3 100.0 │ D4 100.0 │ D5 100.0 │ D6 87.1 │ D7 58.1 │ D8 29.0 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+TRIVIAL   D1 100.0 │ D2 100.0 │ D3 95.0 │ D4 90.0 │ D5 90.0 │ D6 75.0 │ D7 60.0 │ D8 55.0 │ D9  0.0 │ D10  0.0 │ D11  0.0 │ D12  0.0 │ D13  0.0
+COUNTERED D1 100.0 │ D2 100.0 │ D3 95.5 │ D4 90.9 │ D5 90.9 │ D6 77.3 │ D7 72.7 │ D8 63.6 │ D9 36.4 │ D10 31.8 │ D11 22.7 │ D12 22.7 │ D13 13.6
+FULL      D8 94.1 │ D13 82.4 │ D18 76.5 │ D19 64.7 │ D23 64.7 │ D24 64.7 │ D28 64.7 │ D29 11.8 │ D33 11.8 │ D34  0.0
+FULL−D23  D8 95.5 │ D13 81.8 │ D18 72.7 │ D19 45.5 │ D23 22.7 │ D24  4.5 │ D28  4.5 │ D29  0.0 │ D33  0.0 │ D34  0.0
+FULL−D28  D8 94.7 │ D13 89.5 │ D18 84.2 │ D19 52.6 │ D23 52.6 │ D24 52.6 │ D28 47.4 │ D29  0.0 │ D33  0.0 │ D34  0.0
+FULL−D33  D8 94.1 │ D13 82.4 │ D18 76.5 │ D19 64.7 │ D23 64.7 │ D24 64.7 │ D28 64.7 │ D29 11.8 │ D33 11.8 │ D34  0.0
+
+run length (ticks): p10 / median / p90 / max, share in 3600–7200 (6–12 min) · per 8 h: runs · banked · returned · rest share
+DEFAULT     3740 /   6220 /  10629 /  13100   54%   39.0 · 0.0 · 0.0 · 8%
+EDITED     10277 /  16460 /  23013 /  29498   0%   13.0 · 5.0 · 0.0 · 24%
+LEARNED     5100 /   7866 /  13447 /  16231   41%   27.0 · 0.0 · 4.0 · 21%
+PETS        3990 /   5778 /   8838 /  11466   69%   36.0 · 0.0 · 4.0 · 23%
+LEVELLED    5929 /   9503 /  12303 /  13984   39%   31.0 · 0.0 · 0.0 · 6%
+TRIVIAL     3360 /  11270 /  14770 /  17578   20%   20.0 · 0.0 · 6.0 · 28%
+COUNTERED   4787 /  12248 /  21530 /  27820   14%   22.0 · 0.0 · 0.0 · 5%
+FULL       16878 /  44164 /  61459 /  68494   6%   5.7 · 2.0 · 0.7 · 23%
+verdict sample: 104 verdicts, raw dice share 1.9% · death-weighted 1.8% · row 6.2%
+routes (Cut 26 §5): 1 of 12 swapped routes sampled across 1 seeds
+  DEFAULT  on routes: best-depth mean 8.00 · mean death depth 4.93 · ≤D8 100% · ≥D10 0%
+  EDITED   on routes: best-depth mean 18.00 · mean death depth 7.50 · ≤D8 0% · ≥D10 100%
+  RANDOM   on routes: best-depth mean 8.00 · mean death depth 5.05 · ≤D8 100% · ≥D10 0%
+  PASSIVE  on routes: best-depth mean 1.00 · mean death depth 1.00 · ≤D8 100% · ≥D10 0%
+  LEARNED  on routes: best-depth mean 8.00 · mean death depth 5.86 · ≤D8 100% · ≥D10 0%
+  D5 near best (from afa0eed.raterAJ): HP<40% → drink heal | boss · in burrows → hit boss | foes 1+ → attack | HP<90% → rest
+  D5 far best (from 307dbed.raterAO): HP<40% → drink heal | boss → throw poison | foes 1+ → attack | HP<90% → rest
+lanes D5 (Cut 26 §3; 4 rows, L3, 96 paired sends × 3 seeds): near burrows best afa0eed.raterAJ 94% (on fens 44%) · far fens best 307dbed.raterAO 71% (on burrows 74%) · $/h 725 · 714 · EDITED's 93% · 38%
+first fork (Cut 26 §4): sends to D4's two stairs, preset + first patch: median 1 · "1"
+D9 fork seen by the end of a 4 h absence: 79% of 61 cohort lineages
+marks per 8 h (Cut 15 §1): DEFAULT 23.0 (0.0 frontier) · EDITED 61.0 (0.0 frontier)
+shown patches fire in 97% of fresh reseeded replays (n=120)
+death() with forecast deltas: mean 0.69 s over 4
+per-tick cost: quiet DEFAULT 0.94 µs · EDITED 1.22 µs · FULL 1.38 µs · batches incl. reports, contended: median 4.78 µs over 3 (32 threads)
+captain: DEFAULT left D5 alive in 50% of 26 runs that reached it
+situations (Cut 7 §3):
+  den      D3   appears  100%   preset pass    0% (left 100%)   answered pass  100% (left 100%)   row: see den → attack
+  lock     D6   appears  100%   preset pass    0% (left 100%)   answered pass  100% (left 100%)   row: gas · adj 1+ → retreat
+  captive  D9   appears  100%   preset pass    0% (left 100%)   answered pass  100% (left 100%)   row: see captive → free
+  hunger   D12  appears  100%   preset pass    0% (left 100%)   answered pass  100% (left 100%)   row: see hunger → pray row
+thief guard (Cut 12 §2): den snatches without the card 1 · with it 0 (0%) over 1 seeds
+twists (Cut 12 §4): D3–10 over 1 seeds · kinds min 6 · floors without one 0 · repeats 0 · captive 1 · den 1 · lock 1 · nest 2 · shrine 1 · vault 2
+counter try (Cut 10 §2): D9 reach 0.00 → top 1.00 · end 0.00 (mean of 1); named 1/1; lifted ≥ 0.3 1/1
+root patches (Cut 11 §2): 0 theft/lock deaths · root patch shown 0 (0%) · its delta ≥ the best symptom's 0 (0%; bar 80%, informational — deviation) · 0 more with the root under the baseline (Cut 14 §1: not offered)
+stalls (Cut 13 §1): DEFAULT 0/39 (0.0%) · EDITED (good) 0/13 (0.0%) · FULL 0/17 (0.0%)
+  cohort set 075d8e2.raterAM: 0/9 (0.0%) · death 33.3% (no return row 100.0%) · dances 0
+  cohort set 075d8e2.raterAN: 0/9 (0.0%) · death 11.1% (no return row 100.0%) · dances 0
+  cohort set 1a7d834.blind-a: 0/6 (0.0%) · death 33.3% (no return row 33.3%) · dances 0
+  cohort set 1a7d834.blind-b: 0/6 (0.0%) · death 33.3% (no return row 20.0%) · dances 0
+  cohort set 1fb7786.blind-a: 0/9 (0.0%) · death 66.7% (no return row 57.1%) · dances 0
+  cohort set 1fb7786.blind-b: 0/5 (0.0%) · death 20.0% (no return row 20.0%) · dances 0
+  cohort set 205d408.raterAA: 0/9 (0.0%) · death 22.2% (no return row 100.0%) · dances 0
+  cohort set 205d408.raterAB: 0/8 (0.0%) · death 0.0% (no return row 81.8%) · dances 0
+  cohort set 238bd67.raterW: 0/11 (0.0%) · death 63.6% (no return row 91.7%) · dances 0
+  cohort set 238bd67.raterX: 0/6 (0.0%) · death 16.7% (no return row 16.7%) · dances 0
+  cohort set 23ed91f.qaL: 0/11 (0.0%) · death 63.6% · dances 0
+  cohort set 2cb9e88.raterS: 0/10 (0.0%) · death 30.0% · dances 0
+  cohort set 2cb9e88.raterT: 0/20 (0.0%) · death 85.0% · dances 0
+  cohort set 2cb9e88.raterT-run4: 0/10 (0.0%) · death 20.0% · dances 0
+  cohort set 307dbed-ctl.raterAQ: 0/7 (0.0%) · death 14.3% (no return row 100.0%) · dances 0
+  cohort set 307dbed-ctl.raterAR: 0/6 (0.0%) · death 33.3% (no return row 100.0%) · dances 0
+  cohort set 307dbed.raterAO: 0/9 (0.0%) · death 33.3% · dances 0
+  cohort set 307dbed.raterAP: 0/11 (0.0%) · death 36.4% · dances 0
+  cohort set 32971ad.raterY: 0/10 (0.0%) · death 40.0% (no return row 40.0%) · dances 0
+  cohort set 32971ad.raterZ: 0/9 (0.0%) · death 22.2% (no return row 84.6%) · dances 0
+  cohort set 3ab97ea.blind-a: 0/7 (0.0%) · death 28.6% (no return row 28.6%) · dances 0
+  cohort set 3ab97ea.blind-b: 0/7 (0.0%) · death 28.6% (no return row 28.6%) · dances 0
+  cohort set 420f27c.raterAS: 0/10 (0.0%) · death 30.0% · dances 0
+  cohort set 420f27c.raterAS-stall: 0/9 (0.0%) · death 33.3% · dances 0
+  cohort set 420f27c.raterAT: 0/9 (0.0%) · death 0.0% (no return row 93.8%) · dances 0
+  cohort set 44193ac.raterAE: 0/17 (0.0%) · death 100.0% · dances 0
+  cohort set 44193ac.raterAF: 0/9 (0.0%) · death 11.1% · dances 0
+  cohort set 4b15a61.raterAK: 0/9 (0.0%) · death 66.7% (no return row 77.8%) · dances 0
+  cohort set 4b15a61.raterAL: 0/8 (0.0%) · death 0.0% (no return row 92.9%) · dances 0
+  cohort set 4b15a61.raterAL-preboss: 0/11 (0.0%) · death 36.4% (no return row 93.3%) · dances 0
+  cohort set 5331f40.blind-a: 0/9 (0.0%) · death 100.0% (no return row 100.0%) · dances 0
+  cohort set 5331f40.blind-b: 0/11 (0.0%) · death 90.9% (no return row 90.9%) · dances 0
+  cohort set 631fe23.raterAU: 0/10 (0.0%) · death 50.0% · dances 0
+  cohort set 631fe23.raterAV: 0/9 (0.0%) · death 0.0% (no return row 100.0%) · dances 0
+  cohort set 6da3ed0.raterAG: 0/8 (0.0%) · death 0.0% (no return row 93.3%) · dances 0
+  cohort set 6da3ed0.raterAH: 0/7 (0.0%) · death 0.0% (no return row 81.8%) · dances 0
+  cohort set 77030eb.blind-a: 0/7 (0.0%) · death 42.9% (no return row 87.5%) · dances 0
+  cohort set 77030eb.blind-b: 0/9 (0.0%) · death 66.7% (no return row 66.7%) · dances 0
+  cohort set 778fa1b.qaV: 0/9 (0.0%) · death 11.1% · dances 0
+  cohort set 7f7fc2b.blind-a: 0/8 (0.0%) · death 50.0% (no return row 16.7%) · dances 0
+  cohort set 7f7fc2b.blind-b: 0/8 (0.0%) · death 62.5% (no return row 62.5%) · dances 0
+  cohort set 8231993.raterU: 0/10 (0.0%) · death 30.0% (no return row 100.0%) · dances 0
+  cohort set 8231993.raterV: 0/9 (0.0%) · death 22.2% (no return row 100.0%) · dances 0
+  cohort set 8cf9050.blind-a: 0/6 (0.0%) · death 50.0% (no return row 33.3%) · dances 0
+  cohort set 8cf9050.blind-b: 0/6 (0.0%) · death 33.3% (no return row 33.3%) · dances 0
+  cohort set 9621b19.blind-a: 0/6 (0.0%) · death 16.7% (no return row 0.0%) · dances 0
+  cohort set 9621b19.blind-b: 0/6 (0.0%) · death 33.3% (no return row 33.3%) · dances 0
+  cohort set 9720ff7.raterAW: 0/7 (0.0%) · death 28.6% · dances 0
+  cohort set 9720ff7.raterAX: 0/9 (0.0%) · death 22.2% (no return row 100.0%) · dances 0
+  cohort set afa0eed.raterAI: 0/9 (0.0%) · death 22.2% · dances 0
+  cohort set afa0eed.raterAJ: 0/8 (0.0%) · death 0.0% (no return row 85.7%) · dances 0
+  cohort set b58b431.blind-a: 0/6 (0.0%) · death 16.7% (no return row 20.0%) · dances 0
+  cohort set b58b431.blind-b: 0/6 (0.0%) · death 33.3% (no return row 33.3%) · dances 0
+  cohort set b8dd77c.blind-a: 0/9 (0.0%) · death 55.6% (no return row 70.0%) · dances 0
+  cohort set b8dd77c.blind-b: 0/8 (0.0%) · death 37.5% (no return row 37.5%) · dances 0
+  cohort set c4705f9.blind-a: 0/7 (0.0%) · death 14.3% (no return row 28.6%) · dances 0
+  cohort set c4705f9.blind-b: 0/6 (0.0%) · death 33.3% (no return row 42.9%) · dances 0
+  cohort set d34605e.blind-a: 0/5 (0.0%) · death 0.0% (no return row 0.0%) · dances 0
+  cohort set d34605e.blind-b: 0/7 (0.0%) · death 28.6% (no return row 33.3%) · dances 0
+  cohort set fba365b.raterAC: 0/8 (0.0%) · death 0.0% · dances 0
+  cohort set fba365b.raterAD: 0/8 (0.0%) · death 37.5% (no return row 50.0%) · dances 0
+card ↔ chore loops (Cut 27 §4): 0/518 sends · worst 0.0% 
+  no-HP stretch 075d8e2.raterAM: p50 40 · p99 60 · max 60 · driven off 1/9
+  no-HP stretch 075d8e2.raterAN: p50 19 · p99 54 · max 54 · driven off 0/9
+  no-HP stretch 1a7d834.blind-a: p50 26 · p99 29 · max 29 · driven off 0/6
+  no-HP stretch 1a7d834.blind-b: p50 28 · p99 35 · max 35 · driven off 0/6
+  no-HP stretch 1fb7786.blind-a: p50 30 · p99 45 · max 45 · driven off 0/9
+  no-HP stretch 1fb7786.blind-b: p50 29 · p99 60 · max 60 · driven off 0/5
+  no-HP stretch 205d408.raterAA: p50 12 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 205d408.raterAB: p50 16 · p99 34 · max 34 · driven off 0/8
+  no-HP stretch 238bd67.raterW: p50 19 · p99 59 · max 59 · driven off 0/11
+  no-HP stretch 238bd67.raterX: p50 55 · p99 58 · max 58 · driven off 0/6
+  no-HP stretch 23ed91f.qaL: p50 29 · p99 59 · max 59 · driven off 0/11
+  no-HP stretch 2cb9e88.raterS: p50 14 · p99 34 · max 34 · driven off 0/10
+  no-HP stretch 2cb9e88.raterT: p50 14 · p99 45 · max 45 · driven off 0/20
+  no-HP stretch 2cb9e88.raterT-run4: p50 12 · p99 35 · max 35 · driven off 0/10
+  no-HP stretch 307dbed-ctl.raterAQ: p50 21 · p99 47 · max 47 · driven off 0/7
+  no-HP stretch 307dbed-ctl.raterAR: p50 45 · p99 60 · max 60 · driven off 0/6
+  no-HP stretch 307dbed.raterAO: p50 20 · p99 40 · max 40 · driven off 0/9
+  no-HP stretch 307dbed.raterAP: p50 18 · p99 34 · max 34 · driven off 0/11
+  no-HP stretch 32971ad.raterY: p50 23 · p99 34 · max 34 · driven off 0/10
+  no-HP stretch 32971ad.raterZ: p50 22 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 3ab97ea.blind-a: p50 33 · p99 35 · max 35 · driven off 0/7
+  no-HP stretch 3ab97ea.blind-b: p50 29 · p99 60 · max 60 · driven off 0/7
+  no-HP stretch 420f27c.raterAS: p50 23 · p99 44 · max 44 · driven off 0/10
+  no-HP stretch 420f27c.raterAS-stall: p50 26 · p99 41 · max 41 · driven off 0/9
+  no-HP stretch 420f27c.raterAT: p50 17 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 44193ac.raterAE: p50 17 · p99 37 · max 37 · driven off 0/17
+  no-HP stretch 44193ac.raterAF: p50 23 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 4b15a61.raterAK: p50 31 · p99 46 · max 46 · driven off 0/9
+  no-HP stretch 4b15a61.raterAL: p50 17 · p99 36 · max 36 · driven off 0/8
+  no-HP stretch 4b15a61.raterAL-preboss: p50 17 · p99 34 · max 34 · driven off 0/11
+  no-HP stretch 5331f40.blind-a: p50 26 · p99 60 · max 60 · driven off 0/9
+  no-HP stretch 5331f40.blind-b: p50 33 · p99 52 · max 52 · driven off 0/11
+  no-HP stretch 631fe23.raterAU: p50 34 · p99 54 · max 54 · driven off 0/10
+  no-HP stretch 631fe23.raterAV: p50 18 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 6da3ed0.raterAG: p50 23 · p99 34 · max 34 · driven off 0/8
+  no-HP stretch 6da3ed0.raterAH: p50 17 · p99 60 · max 60 · driven off 0/7
+  no-HP stretch 77030eb.blind-a: p50 37 · p99 60 · max 60 · driven off 0/7
+  no-HP stretch 77030eb.blind-b: p50 30 · p99 60 · max 60 · driven off 0/9
+  no-HP stretch 778fa1b.qaV: p50 25 · p99 40 · max 40 · driven off 0/9
+  no-HP stretch 7f7fc2b.blind-a: p50 26 · p99 59 · max 59 · driven off 0/8
+  no-HP stretch 7f7fc2b.blind-b: p50 26 · p99 60 · max 60 · driven off 0/8
+  no-HP stretch 8231993.raterU: p50 20 · p99 36 · max 36 · driven off 0/10
+  no-HP stretch 8231993.raterV: p50 21 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch 8cf9050.blind-a: p50 26 · p99 40 · max 40 · driven off 0/6
+  no-HP stretch 8cf9050.blind-b: p50 47 · p99 60 · max 60 · driven off 0/6
+  no-HP stretch 9621b19.blind-a: p50 23 · p99 31 · max 31 · driven off 0/6
+  no-HP stretch 9621b19.blind-b: p50 35 · p99 60 · max 60 · driven off 0/6
+  no-HP stretch 9720ff7.raterAW: p50 29 · p99 44 · max 44 · driven off 0/7
+  no-HP stretch 9720ff7.raterAX: p50 19 · p99 34 · max 34 · driven off 0/9
+  no-HP stretch afa0eed.raterAI: p50 21 · p99 56 · max 56 · driven off 0/9
+  no-HP stretch afa0eed.raterAJ: p50 19 · p99 60 · max 60 · driven off 0/8
+  no-HP stretch b58b431.blind-a: p50 29 · p99 47 · max 47 · driven off 0/6
+  no-HP stretch b58b431.blind-b: p50 26 · p99 41 · max 41 · driven off 0/6
+  no-HP stretch b8dd77c.blind-a: p50 26 · p99 60 · max 60 · driven off 0/9
+  no-HP stretch b8dd77c.blind-b: p50 26 · p99 60 · max 60 · driven off 0/8
+  no-HP stretch c4705f9.blind-a: p50 17 · p99 34 · max 34 · driven off 0/7
+  no-HP stretch c4705f9.blind-b: p50 40 · p99 60 · max 60 · driven off 0/6
+  no-HP stretch d34605e.blind-a: p50 29 · p99 60 · max 60 · driven off 0/5
+  no-HP stretch d34605e.blind-b: p50 32 · p99 49 · max 49 · driven off 0/7
+  no-HP stretch fba365b.raterAC: p50 19 · p99 44 · max 44 · driven off 0/8
+  no-HP stretch fba365b.raterAD: p50 29 · p99 45 · max 45 · driven off 0/8
+
+net gold per send (Cut 22 §1; 8 h watched, repeat on): home + salvage − spent − tolls (+ other) over sends
+  075d8e2.raterAM: D1 14.0 sends · home 86% · +$149.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +16.7 other → net +166.6/send · a return nets +168.9 · supply thefts 0.07/send (12 thefts) │ waystone: 23.0 sends · net +167.7/send · +$47.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +120.3 other · home 74%
+    $/h: D1 +288 · waystone +476 · after unlock D1 +300 · its paid sends +605 (17 of 17 sends paid a passage)
+  075d8e2.raterAN: D1 13.0 sends · home 85% · +$167.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +33.0 other → net +200.8/send · a return nets +169.4 · supply thefts 0.08/send (12 thefts) │ waystone: 29.0 sends · net +168.7/send · +$28.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +140.3 other · home 62%
+    $/h: D1 +323 · waystone +594 · after unlock D1 +340 · its paid sends +716 (25 of 25 sends paid a passage)
+  1a7d834.blind-a: D1 13.0 sends · home 31% · +$172.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +141.2 other → net +314.2/send (not mostly home) · a return nets +783.0 · supply thefts 0.08/send (11 thefts) │ waystone: 19.0 sends · net +312.9/send · +$104.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +208.5 other · home 53%
+    $/h: D1 +490 · waystone +743 · after unlock D1 +479 · its paid sends +962 (13 of 13 sends paid a passage)
+  1a7d834.blind-b: D1 11.0 sends · home 45% · +$243.6 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +110.2 other → net +353.8/send (not mostly home) · a return nets +777.5 · supply thefts 0.09/send (10 thefts) │ waystone: 20.0 sends · net +254.0/send · +$77.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +176.6 other · home 85%
+    $/h: D1 +480 · waystone +627 · after unlock D1 +453 · its paid sends +625 (19 of 19 sends paid a passage)
+  1fb7786.blind-a: D1 10.0 sends · home 90% · +$380.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +380.1/send · a return nets +256.8 · supply thefts 0.10/send (10 thefts) │ waystone: 23.0 sends · net +229.6/send · +$59.7 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +169.9 other · home 74%
+    $/h: D1 +451 · waystone +636 · after unlock D1 +493 · its paid sends +752 (20 of 20 sends paid a passage)
+  1fb7786.blind-b: D1 10.0 sends · home 70% · +$381.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +66.3 other → net +447.3/send · a return nets +631.0 · supply thefts 0.10/send (10 thefts) │ waystone: 19.0 sends · net +381.9/send · +$113.7 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +268.2 other · home 68%
+    $/h: D1 +549 · waystone +907 · after unlock D1 +572 · its paid sends +1145 (15 of 15 sends paid a passage)
+  205d408.raterAA: D1 12.0 sends · home 100% · +$223.3 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +223.3/send · a return nets +140.2 · supply thefts 0.08/send (12 thefts) │ waystone: 24.0 sends · net +165.5/send · +$38.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +126.6 other · home 83%
+    $/h: D1 +329 · waystone +475 · after unlock D1 +334 · its paid sends +526 (21 of 21 sends paid a passage)
+  205d408.raterAB: D1 12.0 sends · home 75% · +$249.3 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +61.7 other → net +311.0/send · a return nets +246.2 · supply thefts 0.08/send (10 thefts) │ waystone: 21.0 sends · net +236.9/send · +$71.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +165.7 other · home 90%
+    $/h: D1 +466 · waystone +612 · after unlock D1 +449 · its paid sends +630 (19 of 19 sends paid a passage)
+  238bd67.raterW: D1 14.0 sends · home 57% · +$200.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +58.0 other → net +258.2/send (not mostly home) · a return nets +194.4 · supply thefts 0.07/send (14 thefts) │ waystone: 35.0 sends · net +173.9/send · +$40.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +133.6 other · home 43%
+    $/h: D1 +412 · waystone +742 · after unlock D1 +420 · its paid sends +899 (31 of 31 sends paid a passage)
+  238bd67.raterX: D1 12.0 sends · home 75% · +$224.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +53.1 other → net +277.8/send · a return nets +174.0 · supply thefts 0.08/send (11 thefts) │ waystone: 45.0 sends · net +206.8/send · +$28.7 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +178.1 other · home 22%
+    $/h: D1 +405 · waystone +1156 · after unlock D1 +423 · its paid sends +1360 (43 of 43 sends paid a passage)
+  23ed91f.qaL: D1 13.0 sends · home 92% · +$171.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +13.0 other → net +184.8/send · a return nets +0.0 · supply thefts 0.08/send (12 thefts) │ waystone: 30.0 sends · net +167.9/send · +$47.6 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +120.4 other · home 43%
+    $/h: D1 +289 · waystone +599 · after unlock D1 +286 · its paid sends +621 (29 of 29 sends paid a passage)
+  2cb9e88.raterS: D1 15.0 sends · home 100% · +$123.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +123.8/send · a return nets +0.0 · supply thefts 0.07/send (13 thefts) │ waystone: 24.0 sends · net +133.8/send · +$45.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +88.4 other · home 75%
+    $/h: D1 +224 · waystone +400 · after unlock D1 +222 · its paid sends +410 (23 of 23 sends paid a passage)
+  2cb9e88.raterT: D1 21.0 sends · home 52% · +$69.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +31.2 other → net +100.7/send (not mostly home) · a return nets +0.0 · supply thefts 0.10/send (16 thefts) │ waystone: 33.0 sends · net +111.3/send · +$30.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +80.4 other · home 48%
+    $/h: D1 +262 · waystone +450 · after unlock D1 +263 · its paid sends +464 (32 of 32 sends paid a passage)
+  2cb9e88.raterT-run4: D1 17.0 sends · home 100% · +$82.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +82.7/send · a return nets +0.0 · supply thefts 0.06/send (13 thefts) │ waystone: 24.0 sends · net +82.0/send · +$4.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +77.9 other · home 100%
+    $/h: D1 +173 · waystone +241 · after unlock D1 +171 · its paid sends +244 (23 of 23 sends paid a passage)
+  307dbed-ctl.raterAQ: D1 15.0 sends · home 20% · +$121.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +189.5 other → net +310.5/send (not mostly home) · a return nets +324.3 · supply thefts 0.07/send (14 thefts) │ waystone: 15.0 sends · net +310.5/send · +$121.0 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +189.5 other · home 20%
+    $/h: D1 +553 · waystone +553 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  307dbed-ctl.raterAR: D1 14.0 sends · home 36% · +$167.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +109.9 other → net +277.0/send (not mostly home) · a return nets +428.0 · supply thefts 0.07/send (14 thefts) │ waystone: 14.0 sends · net +277.0/send · +$167.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +109.9 other · home 36%
+    $/h: D1 +484 · waystone +484 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  307dbed.raterAO: D1 13.0 sends · home 85% · +$199.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +10.5 other → net +209.7/send · a return nets +0.0 · supply thefts 0.08/send (11 thefts) │ waystone: 24.0 sends · net +194.5/send · +$59.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +135.3 other · home 79%
+    $/h: D1 +340 · waystone +576 · after unlock D1 +348 · its paid sends +601 (23 of 23 sends paid a passage)
+  307dbed.raterAP: D1 14.0 sends · home 79% · +$192.3 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +25.9 other → net +218.1/send · a return nets +0.0 · supply thefts 0.07/send (12 thefts) │ waystone: 32.0 sends · net +136.1/send · +$35.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +100.9 other · home 59%
+    $/h: D1 +356 · waystone +533 · after unlock D1 +359 · its paid sends +551 (31 of 31 sends paid a passage)
+  32971ad.raterY: D1 16.0 sends · home 69% · +$136.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +48.1 other → net +184.9/send · a return nets +0.0 · supply thefts 0.06/send (16 thefts) │ waystone: 32.0 sends · net +198.1/send · +$30.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +167.9 other · home 59%
+    $/h: D1 +347 · waystone +769 · after unlock D1 +353 · its paid sends +805 (31 of 31 sends paid a passage)
+  32971ad.raterZ: D1 14.0 sends · home 79% · +$145.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +29.4 other → net +174.6/send · a return nets +192.9 · supply thefts 0.07/send (14 thefts) │ waystone: 38.0 sends · net +147.3/send · +$21.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +126.2 other · home 50%
+    $/h: D1 +300 · waystone +681 · after unlock D1 +292 · its paid sends +745 (36 of 36 sends paid a passage)
+  3ab97ea.blind-a: D1 12.0 sends · home 50% · +$216.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +177.8 other → net +394.4/send (not mostly home) · a return nets +279.0 · supply thefts 0.08/send (11 thefts) │ waystone: 20.0 sends · net +294.7/send · +$100.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +194.2 other · home 75%
+    $/h: D1 +557 · waystone +725 · after unlock D1 +568 · its paid sends +805 (17 of 17 sends paid a passage)
+  3ab97ea.blind-b: D1 11.0 sends · home 73% · +$301.4 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +62.1 other → net +363.5/send · a return nets +322.0 · supply thefts 0.09/send (11 thefts) │ waystone: 21.0 sends · net +312.3/send · +$114.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +198.0 other · home 71%
+    $/h: D1 +494 · waystone +780 · after unlock D1 +532 · its paid sends +877 (19 of 19 sends paid a passage)
+  420f27c.raterAS: D1 12.0 sends · home 92% · +$267.4 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +1.9 other → net +269.3/send · a return nets +0.0 · supply thefts 0.08/send (11 thefts) │ waystone: 23.0 sends · net +187.1/send · +$53.7 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +133.3 other · home 78%
+    $/h: D1 +385 · waystone +533 · after unlock D1 +375 · its paid sends +546 (21 of 21 sends paid a passage)
+  420f27c.raterAS-stall: D1 14.0 sends · home 64% · +$194.6 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +54.1 other → net +248.6/send · a return nets +0.0 · supply thefts 0.07/send (12 thefts) │ waystone: 23.0 sends · net +222.4/send · +$38.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +183.7 other · home 83%
+    $/h: D1 +399 · waystone +619 · after unlock D1 +404 · its paid sends +653 (22 of 22 sends paid a passage)
+  420f27c.raterAT: D1 13.0 sends · home 92% · +$200.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +16.3 other → net +216.5/send · a return nets +174.3 · supply thefts 0.08/send (12 thefts) │ waystone: 34.0 sends · net +185.5/send · +$27.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +158.4 other · home 53%
+    $/h: D1 +330 · waystone +787 · after unlock D1 +320 · its paid sends +828 (33 of 33 sends paid a passage)
+  44193ac.raterAE: D1 20.0 sends · home 10% · +$93.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +139.2 other → net +232.8/send (not mostly home) · a return nets +0.0 · supply thefts 0.05/send (15 thefts) │ waystone: 67.0 sends · net +184.5/send · +$21.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +163.4 other · home 4%
+    $/h: D1 +576 · waystone +1542 · after unlock D1 +635 · its paid sends +2342 (57 of 57 sends paid a passage)
+  44193ac.raterAF: D1 14.0 sends · home 71% · +$205.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +48.9 other → net +254.6/send · a return nets +921.0 · supply thefts 0.07/send (13 thefts) │ waystone: 28.0 sends · net +283.7/send · +$67.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +215.9 other · home 57%
+    $/h: D1 +414 · waystone +966 · after unlock D1 +425 · its paid sends +1016 (27 of 27 sends paid a passage)
+  4b15a61.raterAK: D1 13.0 sends · home 62% · +$210.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +86.3 other → net +297.0/send · a return nets +169.0 · supply thefts 0.08/send (11 thefts) │ waystone: 66.0 sends · net +202.6/send · +$13.6 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +189.0 other · home 14%
+    $/h: D1 +447 · waystone +1632 · after unlock D1 +456 · its paid sends +1904 (63 of 63 sends paid a passage)
+  4b15a61.raterAL: D1 13.0 sends · home 92% · +$172.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +13.3 other → net +186.2/send · a return nets +191.6 · supply thefts 0.08/send (12 thefts) │ waystone: 21.0 sends · net +202.4/send · +$66.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +135.5 other · home 86%
+    $/h: D1 +302 · waystone +522 · after unlock D1 +309 · its paid sends +634 (17 of 17 sends paid a passage)
+  4b15a61.raterAL-preboss: D1 13.0 sends · home 100% · +$159.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +159.0/send · a return nets +159.0 · supply thefts 0.08/send (11 thefts) │ waystone: 13.0 sends · net +159.0/send · +$159.0 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +0.0 other · home 100%
+    $/h: D1 +250 · waystone +250 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  5331f40.blind-a: D1 19.0 sends · home 0% · +$36.4 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +195.9 other → net +232.3/send (not mostly home) · a return nets +0.0 · supply thefts 0.05/send (18 thefts) │ waystone: 19.0 sends · net +232.3/send · +$36.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +195.9 other · home 0%
+    $/h: D1 +509 · waystone +509 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  5331f40.blind-b: D1 14.0 sends · home 21% · +$98.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +234.5 other → net +333.4/send (not mostly home) · a return nets +434.3 · supply thefts 0.07/send (14 thefts) │ waystone: 14.0 sends · net +333.4/send · +$98.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +234.5 other · home 21%
+    $/h: D1 +566 · waystone +566 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  631fe23.raterAU: D1 19.0 sends · home 26% · +$89.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +138.9 other → net +228.8/send (not mostly home) · a return nets +0.0 · supply thefts 0.05/send (15 thefts) │ waystone: 19.0 sends · net +228.8/send · +$89.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +138.9 other · home 26%
+    $/h: D1 +541 · waystone +541 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  631fe23.raterAV: D1 14.0 sends · home 79% · +$189.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +18.5 other → net +208.4/send · a return nets +229.8 · supply thefts 0.07/send (13 thefts) │ waystone: 22.0 sends · net +252.4/send · +$106.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +145.8 other · home 64%
+    $/h: D1 +345 · waystone +661 · after unlock D1 +329 · its paid sends +1068 (14 of 14 sends paid a passage)
+  6da3ed0.raterAG: D1 13.0 sends · home 100% · +$168.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +168.2/send · a return nets +156.1 · supply thefts 0.08/send (13 thefts) │ waystone: 21.0 sends · net +186.1/send · +$26.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +159.9 other · home 100%
+    $/h: D1 +267 · waystone +486 · after unlock D1 +265 · its paid sends +559 (18 of 18 sends paid a passage)
+  6da3ed0.raterAH: D1 15.0 sends · home 80% · +$178.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +28.2 other → net +206.7/send · a return nets +230.2 · supply thefts 0.07/send (15 thefts) │ waystone: 15.0 sends · net +206.7/send · +$178.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +28.2 other · home 80%
+    $/h: D1 +349 · waystone +349 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  77030eb.blind-a: D1 10.0 sends · home 80% · +$359.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +22.2 other → net +381.7/send · a return nets +441.4 · supply thefts 0.10/send (10 thefts) │ waystone: 10.0 sends · net +381.7/send · +$359.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +22.2 other · home 80%
+    $/h: D1 +476 · waystone +476 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  77030eb.blind-b: D1 9.0 sends · home 56% · +$343.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +166.3 other → net +509.6/send (not mostly home) · a return nets +561.5 · supply thefts 0.11/send (9 thefts) │ waystone: 35.0 sends · net +206.7/send · +$24.1 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +182.6 other · home 49%
+    $/h: D1 +553 · waystone +882 · after unlock D1 +560 · its paid sends +941 (34 of 34 sends paid a passage)
+  778fa1b.qaV: D1 15.0 sends · home 87% · +$133.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +6.0 other → net +139.8/send · a return nets +238.8 · supply thefts 0.07/send (12 thefts) │ waystone: 21.0 sends · net +114.2/send · +$34.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +79.4 other · home 86%
+    $/h: D1 +251 · waystone +296 · after unlock D1 +252 · its paid sends +300 (20 of 20 sends paid a passage)
+  7f7fc2b.blind-a: D1 10.0 sends · home 70% · +$425.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +131.1 other → net +556.6/send · a return nets +651.0 · supply thefts 0.10/send (10 thefts) │ waystone: 27.0 sends · net +238.6/send · +$30.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +207.8 other · home 67%
+    $/h: D1 +653 · waystone +783 · after unlock D1 +692 · its paid sends +838 (26 of 26 sends paid a passage)
+  7f7fc2b.blind-b: D1 11.0 sends · home 45% · +$243.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +161.3 other → net +405.0/send (not mostly home) · a return nets +787.3 · supply thefts 0.09/send (11 thefts) │ waystone: 21.0 sends · net +352.7/send · +$106.7 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +246.0 other · home 76%
+    $/h: D1 +553 · waystone +886 · after unlock D1 +513 · its paid sends +989 (18 of 18 sends paid a passage)
+  8231993.raterU: D1 15.0 sends · home 60% · +$146.3 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +21.1 other → net +167.5/send · a return nets +144.1 · supply thefts 0.07/send (12 thefts) │ waystone: 15.0 sends · net +167.5/send · +$146.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +21.1 other · home 60%
+    $/h: D1 +297 · waystone +297 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  8231993.raterV: D1 14.0 sends · home 86% · +$180.4 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +15.1 other → net +195.4/send · a return nets +152.4 · supply thefts 0.07/send (12 thefts) │ waystone: 20.0 sends · net +184.6/send · +$66.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +118.5 other · home 90%
+    $/h: D1 +318 · waystone +460 · after unlock D1 +341 · its paid sends +584 (14 of 14 sends paid a passage)
+  8cf9050.blind-a: D1 11.0 sends · home 36% · +$287.5 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +95.3 other → net +382.7/send (not mostly home) · a return nets +0.0 · supply thefts 0.09/send (10 thefts) │ waystone: 22.0 sends · net +321.1/send · +$89.6 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +231.5 other · home 64%
+    $/h: D1 +500 · waystone +847 · after unlock D1 +458 · its paid sends +937 (19 of 19 sends paid a passage)
+  8cf9050.blind-b: D1 10.0 sends · home 70% · +$580.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +64.8 other → net +644.9/send · a return nets +547.0 · supply thefts 0.10/send (10 thefts) │ waystone: 24.0 sends · net +257.8/send · +$56.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +201.7 other · home 75%
+    $/h: D1 +737 · waystone +742 · after unlock D1 +747 · its paid sends +785 (23 of 23 sends paid a passage)
+  9621b19.blind-a: D1 11.0 sends · home 82% · +$297.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +19.4 other → net +316.5/send · a return nets +411.0 · supply thefts 0.09/send (10 thefts) │ waystone: 18.0 sends · net +258.3/send · +$126.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +131.4 other · home 67%
+    $/h: D1 +415 · waystone +543 · after unlock D1 +438 · its paid sends +590 (16 of 16 sends paid a passage)
+  9621b19.blind-b: D1 11.0 sends · home 73% · +$350.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +97.9 other → net +447.9/send · a return nets +305.8 · supply thefts 0.09/send (11 thefts) │ waystone: 23.0 sends · net +304.2/send · +$98.6 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +205.6 other · home 52%
+    $/h: D1 +553 · waystone +873 · after unlock D1 +600 · its paid sends +998 (21 of 21 sends paid a passage)
+  9720ff7.raterAW: D1 15.0 sends · home 27% · +$113.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +178.0 other → net +291.7/send (not mostly home) · a return nets +0.0 · supply thefts 0.07/send (12 thefts) │ waystone: 26.0 sends · net +179.8/send · +$40.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +139.4 other · home 69%
+    $/h: D1 +516 · waystone +575 · after unlock D1 +533 · its paid sends +601 (24 of 24 sends paid a passage)
+  9720ff7.raterAX: D1 14.0 sends · home 93% · +$150.4 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +16.4 other → net +166.8/send · a return nets +164.2 · supply thefts 0.07/send (12 thefts) │ waystone: 15.0 sends · net +182.7/send · +$133.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +49.3 other · home 100%
+    $/h: D1 +274 · waystone +341 · after unlock D1 +338 · its paid sends +620 (5 of 5 sends paid a passage)
+  afa0eed.raterAI: D1 14.0 sends · home 100% · +$129.9 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +129.9/send · a return nets +0.0 · supply thefts 0.07/send (11 thefts) │ waystone: 21.0 sends · net +117.9/send · +$35.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +82.4 other · home 90%
+    $/h: D1 +220 · waystone +302 · after unlock D1 +225 · its paid sends +312 (20 of 20 sends paid a passage)
+  afa0eed.raterAJ: D1 13.0 sends · home 100% · +$144.2 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +0.0 other → net +144.2/send · a return nets +125.7 · supply thefts 0.08/send (10 thefts) │ waystone: 19.0 sends · net +176.2/send · +$74.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +101.9 other · home 100%
+    $/h: D1 +234 · waystone +402 · after unlock D1 +250 · its paid sends +570 (12 of 12 sends paid a passage)
+  b58b431.blind-a: D1 13.0 sends · home 54% · +$218.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +146.8 other → net +365.7/send (not mostly home) · a return nets +607.5 · supply thefts 0.08/send (13 thefts) │ waystone: 23.0 sends · net +231.3/send · +$66.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +164.8 other · home 74%
+    $/h: D1 +537 · waystone +637 · after unlock D1 +603 · its paid sends +748 (20 of 20 sends paid a passage)
+  b58b431.blind-b: D1 12.0 sends · home 50% · +$335.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +116.4 other → net +451.4/send (not mostly home) · a return nets +999.5 · supply thefts 0.08/send (12 thefts) │ waystone: 29.0 sends · net +244.2/send · +$38.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +205.3 other · home 59%
+    $/h: D1 +615 · waystone +848 · after unlock D1 +626 · its paid sends +900 (28 of 28 sends paid a passage)
+  b8dd77c.blind-a: D1 12.0 sends · home 42% · +$310.7 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +108.2 other → net +418.9/send (not mostly home) · a return nets +1029.7 · supply thefts 0.08/send (11 thefts) │ waystone: 33.0 sends · net +208.7/send · +$35.2 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +173.5 other · home 48%
+    $/h: D1 +606 · waystone +856 · after unlock D1 +603 · its paid sends +927 (31 of 31 sends paid a passage)
+  b8dd77c.blind-b: D1 14.0 sends · home 57% · +$220.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +74.9 other → net +295.7/send (not mostly home) · a return nets +179.3 · supply thefts 0.07/send (14 thefts) │ waystone: 14.0 sends · net +295.7/send · +$220.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +74.9 other · home 57%
+    $/h: D1 +480 · waystone +480 · after unlock D1 +0 · its paid sends +0 (0 of 0 sends paid a passage)
+  c4705f9.blind-a: D1 13.0 sends · home 46% · +$178.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +57.2 other → net +236.0/send (not mostly home) · a return nets +347.5 · supply thefts 0.08/send (9 thefts) │ waystone: 29.0 sends · net +149.9/send · +$34.3 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +115.5 other · home 62%
+    $/h: D1 +365 · waystone +536 · after unlock D1 +362 · its paid sends +565 (27 of 27 sends paid a passage)
+  c4705f9.blind-b: D1 11.0 sends · home 45% · +$508.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +71.0 other → net +579.1/send (not mostly home) · a return nets +407.0 · supply thefts 0.09/send (11 thefts) │ waystone: 17.0 sends · net +336.1/send · +$177.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +158.7 other · home 53%
+    $/h: D1 +729 · waystone +712 · after unlock D1 +944 · its paid sends +885 (12 of 12 sends paid a passage) · FAIL
+  d34605e.blind-a: D1 14.0 sends · home 36% · +$142.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +193.1 other → net +335.1/send (not mostly home) · a return nets +742.0 · supply thefts 0.07/send (14 thefts) │ waystone: 26.0 sends · net +204.4/send · +$42.4 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +162.0 other · home 65%
+    $/h: D1 +541 · waystone +638 · after unlock D1 +569 · its paid sends +687 (24 of 24 sends paid a passage)
+  d34605e.blind-b: D1 11.0 sends · home 91% · +$304.8 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +14.5 other → net +319.4/send · a return nets +313.3 · supply thefts 0.09/send (10 thefts) │ waystone: 22.0 sends · net +330.9/send · +$112.9 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +218.0 other · home 68%
+    $/h: D1 +428 · waystone +833 · after unlock D1 +435 · its paid sends +880 (21 of 21 sends paid a passage)
+  fba365b.raterAC: D1 15.0 sends · home 80% · +$150.1 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +17.0 other → net +167.1/send · a return nets +0.0 · supply thefts 0.07/send (14 thefts) │ waystone: 23.0 sends · net +162.1/send · +$41.5 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +120.7 other · home 91%
+    $/h: D1 +308 · waystone +449 · after unlock D1 +313 · its paid sends +464 (22 of 22 sends paid a passage)
+  fba365b.raterAD: D1 13.0 sends · home 92% · +$218.0 home · +$0.0 salvage · −$0.0 spent · −$0.0 tolls · +1.8 other → net +219.8/send · a return nets +305.0 · supply thefts 0.08/send (10 thefts) │ waystone: 21.0 sends · net +258.3/send · +$116.8 home · +$0.0 salvage · −$0.0 spent · tolls −$0.0 · +141.6 other · home 62%
+    $/h: D1 +335 · waystone +650 · after unlock D1 +330 · its paid sends +688 (19 of 19 sends paid a passage)
+  bought-supply thefts 93 of 1198 thefts over 2317 sends (0.040/send; Cut 22 §2 target ≤ 0.1)
+  leash thefts 0 over 2317 sends (0.000/send; worst set  0.000; Cut 23 §5 target ≤ 0.1)
+
+bank vs return (Cut 27 §3; 4 h watched from D1 × 1 seeds; each set's exit rows all bank │ all return)
+  075d8e2.raterAM: bank 10 sends · $315/h · death 60% (walk 50%, 154 ticks) · D6 70% │ return 8 sends · $242/h · death 25% (walk 12%, 55 ticks) · D6 50% │ bank wins [gold/h +30%, D6 +20] · return wins [death -35]
+  075d8e2.raterAN: bank 8 sends · $320/h · death 25% (walk 25%, 175 ticks) · D9 50% │ return 7 sends · $280/h · death 14% (walk 14%, 57 ticks) · D9 29% │ bank wins [gold/h +14%, D9 +21] · return wins [death -11]
+  1a7d834.blind-a: bank 7 sends · $466/h · death 57% (walk 43%, 382 ticks) · D13 57% │ return 5 sends · $386/h · death 0% (walk 0%, 55 ticks) · D13 60% │ bank wins [gold/h +21%] · return wins [death -57]
+  1a7d834.blind-b: bank 7 sends · $526/h · death 57% (walk 14%, 123 ticks) · D13 57% │ return 6 sends · $484/h · death 33% (walk 17%, 62 ticks) · D13 67% │ bank wins [] · return wins [death -24]
+  1fb7786.blind-a: bank 6 sends · $362/h · death 0% (walk 0%, 283 ticks) · D11 50% │ return 6 sends · $350/h · death 0% (walk 0%, 63 ticks) · D11 50% │ bank wins [] · return wins []
+  1fb7786.blind-b: bank 7 sends · $557/h · death 86% (walk 29%, 318 ticks) · D13 57% │ return 5 sends · $561/h · death 40% (walk 0%, 67 ticks) · D13 80% │ bank wins [] · return wins [death -46, D13 +23]
+  205d408.raterAA: bank 7 sends · $299/h · death 14% (walk 14%, 178 ticks) · D6 100% │ return 7 sends · $290/h · death 0% (walk 0%, 62 ticks) · D6 100% │ bank wins [] · return wins [death -14]
+  205d408.raterAB: bank 7 sends · $398/h · death 14% (walk 0%, 185 ticks) · D8 71% │ return 6 sends · $457/h · death 0% (walk 0%, 62 ticks) · D8 83% │ bank wins [] · return wins [gold/h +15%, death -14, D8 +12]
+  238bd67.raterW: bank 9 sends · $403/h · death 56% (walk 56%, 60 ticks) · D7 56% │ return 8 sends · $377/h · death 38% (walk 12%, 53 ticks) · D7 88% │ bank wins [] · return wins [death -18, D7 +32]
+  238bd67.raterX: bank 7 sends · $362/h · death 43% (walk 14%, 171 ticks) · D12 57% │ return 6 sends · $364/h · death 17% (walk 17%, 49 ticks) · D12 67% │ bank wins [] · return wins [death -26]
+  23ed91f.qaL: bank 7 sends · $270/h · death 0% (walk 0%, 0 ticks) · D8 100% │ return 7 sends · $277/h · death 0% (walk 0%, 0 ticks) · D8 100% │ bank wins [] · return wins []
+  2cb9e88.raterS: bank 8 sends · $215/h · death 0% (walk 0%, 277 ticks) · D6 100% │ return 8 sends · $211/h · death 0% (walk 0%, 63 ticks) · D6 100% │ bank wins [] · return wins []
+  2cb9e88.raterT: bank 10 sends · $262/h · death 40% (walk 0%, 30 ticks) · D8 60% │ return 15 sends · $364/h · death 73% (walk 0%, 30 ticks) · D8 27% │ bank wins [death -33, D8 +33] · return wins [gold/h +39%]
+  2cb9e88.raterT-run4: bank 9 sends · $174/h · death 0% (walk 0%, 35 ticks) · D5 100% │ return 9 sends · $174/h · death 0% (walk 0%, 35 ticks) · D5 100% │ bank wins [] · return wins []
+  307dbed-ctl.raterAQ: bank 7 sends · $522/h · death 71% (walk 29%, 96 ticks) · D12 71% │ return 8 sends · $513/h · death 75% (walk 38%, 39 ticks) · D12 50% │ bank wins [D12 +21] · return wins []
+  307dbed-ctl.raterAR: bank 7 sends · $447/h · death 57% (walk 14%, 128 ticks) · D8 100% │ return 8 sends · $467/h · death 62% (walk 38%, 37 ticks) · D8 100% │ bank wins [] · return wins []
+  307dbed.raterAO: bank 8 sends · $257/h · death 12% (walk 12%, 225 ticks) · D6 62% │ return 7 sends · $236/h · death 0% (walk 0%, 60 ticks) · D6 57% │ bank wins [] · return wins [death -12]
+  307dbed.raterAP: bank 8 sends · $271/h · death 12% (walk 0%, 412 ticks) · D8 50% │ return 8 sends · $280/h · death 25% (walk 0%, 58 ticks) · D8 50% │ bank wins [death -12] · return wins []
+  32971ad.raterY: bank 8 sends · $316/h · death 38% (walk 38%, 160 ticks) · D6 88% │ return 8 sends · $286/h · death 38% (walk 25%, 46 ticks) · D6 88% │ bank wins [gold/h +10%] · return wins []
+  32971ad.raterZ: bank 7 sends · $294/h · death 29% (walk 14%, 256 ticks) · D8 71% │ return 8 sends · $292/h · death 38% (walk 38%, 37 ticks) · D8 38% │ bank wins [D8 +34] · return wins []
+  3ab97ea.blind-a: bank 6 sends · $405/h · death 33% (walk 33%, 106 ticks) · D12 67% │ return 6 sends · $405/h · death 33% (walk 33%, 46 ticks) · D12 67% │ bank wins [] · return wins []
+  3ab97ea.blind-b: bank 6 sends · $340/h · death 33% (walk 33%, 184 ticks) · D11 50% │ return 6 sends · $370/h · death 17% (walk 17%, 56 ticks) · D11 50% │ bank wins [] · return wins [death -17]
+  420f27c.raterAS: bank 6 sends · $386/h · death 17% (walk 0%, 136 ticks) · D11 50% │ return 6 sends · $443/h · death 17% (walk 0%, 65 ticks) · D11 50% │ bank wins [] · return wins [gold/h +15%]
+  420f27c.raterAS-stall: bank 6 sends · $311/h · death 0% (walk 0%, 195 ticks) · D9 50% │ return 7 sends · $279/h · death 0% (walk 0%, 61 ticks) · D9 29% │ bank wins [gold/h +12%, D9 +21] · return wins []
+  420f27c.raterAT: bank 7 sends · $299/h · death 0% (walk 0%, 149 ticks) · D8 57% │ return 7 sends · $285/h · death 14% (walk 14%, 49 ticks) · D8 43% │ bank wins [death -14, D8 +14] · return wins []
+  44193ac.raterAE: bank 12 sends · $409/h · death 92% (walk 0%, 138 ticks) · D7 67% │ return 12 sends · $409/h · death 92% (walk 0%, 63 ticks) · D7 67% │ bank wins [] · return wins []
+  44193ac.raterAF: bank 7 sends · $294/h · death 14% (walk 0%, 244 ticks) · D6 86% │ return 7 sends · $216/h · death 0% (walk 0%, 62 ticks) · D6 86% │ bank wins [gold/h +36%] · return wins [death -14]
+  4b15a61.raterAK: bank 9 sends · $528/h · death 78% (walk 11%, 80 ticks) · D10 56% │ return 8 sends · $466/h · death 62% (walk 0%, 60 ticks) · D10 50% │ bank wins [gold/h +13%] · return wins [death -15]
+  4b15a61.raterAL: bank 9 sends · $274/h · death 22% (walk 22%, 198 ticks) · D6 56% │ return 7 sends · $285/h · death 0% (walk 0%, 63 ticks) · D6 86% │ bank wins [] · return wins [death -22, D6 +30]
+  4b15a61.raterAL-preboss: bank 9 sends · $326/h · death 56% (walk 56%, 91 ticks) · D8 56% │ return 7 sends · $239/h · death 0% (walk 0%, 63 ticks) · D8 14% │ bank wins [gold/h +37%, D8 +41] · return wins [death -56]
+  5331f40.blind-a: bank 8 sends · $482/h · death 100% (walk 0%, 0 ticks) · D13 50% │ return 8 sends · $482/h · death 100% (walk 0%, 0 ticks) · D13 50% │ bank wins [] · return wins []
+  5331f40.blind-b: bank 8 sends · $558/h · death 88% (walk 38%, 388 ticks) · D13 50% │ return 6 sends · $400/h · death 33% (walk 0%, 66 ticks) · D13 17% │ bank wins [gold/h +39%, D13 +33] · return wins [death -54]
+  631fe23.raterAU: bank 12 sends · $472/h · death 83% (walk 17%, 101 ticks) · D8 75% │ return 10 sends · $451/h · death 70% (walk 10%, 52 ticks) · D8 80% │ bank wins [] · return wins [death -13]
+  631fe23.raterAV: bank 8 sends · $360/h · death 25% (walk 25%, 124 ticks) · D8 50% │ return 8 sends · $357/h · death 25% (walk 25%, 55 ticks) · D8 38% │ bank wins [D8 +12] · return wins []
+  6da3ed0.raterAG: bank 7 sends · $274/h · death 0% (walk 0%, 258 ticks) · D8 57% │ return 7 sends · $267/h · death 0% (walk 0%, 61 ticks) · D8 43% │ bank wins [D8 +14] · return wins []
+  6da3ed0.raterAH: bank 8 sends · $366/h · death 38% (walk 38%, 131 ticks) · D8 50% │ return 8 sends · $309/h · death 38% (walk 25%, 53 ticks) · D8 38% │ bank wins [gold/h +19%, D8 +12] · return wins []
+  77030eb.blind-a: bank 6 sends · $502/h · death 50% (walk 33%, 87 ticks) · D13 50% │ return 6 sends · $394/h · death 33% (walk 33%, 58 ticks) · D13 0% │ bank wins [gold/h +27%, D13 +50] · return wins [death -17]
+  77030eb.blind-b: bank 8 sends · $523/h · death 75% (walk 62%, 391 ticks) · D13 50% │ return 7 sends · $427/h · death 43% (walk 29%, 53 ticks) · D13 29% │ bank wins [gold/h +23%, D13 +21] · return wins [death -32]
+  778fa1b.qaV: bank 8 sends · $220/h · death 12% (walk 12%, 280 ticks) · D5 50% │ return 9 sends · $236/h · death 11% (walk 11%, 55 ticks) · D5 56% │ bank wins [] · return wins []
+  7f7fc2b.blind-a: bank 6 sends · $469/h · death 33% (walk 17%, 208 ticks) · D13 50% │ return 5 sends · $453/h · death 20% (walk 20%, 64 ticks) · D13 60% │ bank wins [] · return wins [death -13, D13 +10]
+  7f7fc2b.blind-b: bank 7 sends · $429/h · death 57% (walk 14%, 182 ticks) · D11 57% │ return 6 sends · $472/h · death 17% (walk 0%, 63 ticks) · D11 83% │ bank wins [] · return wins [gold/h +10%, death -40, D11 +26]
+  8231993.raterU: bank 9 sends · $425/h · death 67% (walk 22%, 175 ticks) · D7 56% │ return 8 sends · $327/h · death 25% (walk 0%, 61 ticks) · D7 50% │ bank wins [gold/h +30%] · return wins [death -42]
+  8231993.raterV: bank 9 sends · $341/h · death 33% (walk 22%, 267 ticks) · D7 56% │ return 7 sends · $287/h · death 14% (walk 14%, 56 ticks) · D7 71% │ bank wins [gold/h +19%] · return wins [death -19, D7 +16]
+  8cf9050.blind-a: bank 5 sends · $502/h · death 40% (walk 20%, 182 ticks) · D13 60% │ return 6 sends · $445/h · death 67% (walk 33%, 50 ticks) · D13 67% │ bank wins [gold/h +13%, death -27] · return wins []
+  8cf9050.blind-b: bank 6 sends · $510/h · death 33% (walk 0%, 166 ticks) · D13 50% │ return 5 sends · $388/h · death 0% (walk 0%, 52 ticks) · D13 20% │ bank wins [gold/h +31%, D13 +30] · return wins [death -33]
+  9621b19.blind-a: bank 6 sends · $344/h · death 17% (walk 0%, 271 ticks) · D9 50% │ return 7 sends · $311/h · death 14% (walk 0%, 64 ticks) · D9 57% │ bank wins [gold/h +11%] · return wins []
+  9621b19.blind-b: bank 5 sends · $468/h · death 0% (walk 0%, 165 ticks) · D13 60% │ return 5 sends · $404/h · death 0% (walk 0%, 58 ticks) · D13 20% │ bank wins [gold/h +16%, D13 +40] · return wins []
+  9720ff7.raterAW: bank 8 sends · $426/h · death 75% (walk 62%, 82 ticks) · D12 50% │ return 7 sends · $447/h · death 43% (walk 43%, 51 ticks) · D12 43% │ bank wins [] · return wins [death -32]
+  9720ff7.raterAX: bank 8 sends · $278/h · death 12% (walk 12%, 202 ticks) · D6 75% │ return 8 sends · $232/h · death 0% (walk 0%, 61 ticks) · D6 75% │ bank wins [gold/h +20%] · return wins [death -12]
+  afa0eed.raterAI: bank 7 sends · $211/h · death 0% (walk 0%, 110 ticks) · D7 57% │ return 7 sends · $209/h · death 0% (walk 0%, 60 ticks) · D7 57% │ bank wins [] · return wins []
+  afa0eed.raterAJ: bank 7 sends · $215/h · death 0% (walk 0%, 323 ticks) · D6 57% │ return 8 sends · $217/h · death 0% (walk 0%, 62 ticks) · D6 62% │ bank wins [] · return wins []
+  b58b431.blind-a: bank 6 sends · $405/h · death 33% (walk 33%, 156 ticks) · D11 50% │ return 6 sends · $381/h · death 17% (walk 17%, 57 ticks) · D11 50% │ bank wins [] · return wins [death -17]
+  b58b431.blind-b: bank 7 sends · $618/h · death 57% (walk 43%, 168 ticks) · D12 57% │ return 7 sends · $519/h · death 43% (walk 29%, 48 ticks) · D12 57% │ bank wins [gold/h +19%] · return wins [death -14]
+  b8dd77c.blind-a: bank 7 sends · $557/h · death 71% (walk 29%, 269 ticks) · D13 71% │ return 6 sends · $391/h · death 50% (walk 0%, 53 ticks) · D13 67% │ bank wins [gold/h +43%] · return wins [death -21]
+  b8dd77c.blind-b: bank 9 sends · $514/h · death 56% (walk 44%, 200 ticks) · D8 78% │ return 9 sends · $364/h · death 44% (walk 33%, 45 ticks) · D8 78% │ bank wins [gold/h +41%] · return wins [death -11]
+  c4705f9.blind-a: bank 7 sends · $291/h · death 29% (walk 14%, 169 ticks) · D9 71% │ return 6 sends · $398/h · death 17% (walk 0%, 64 ticks) · D9 67% │ bank wins [] · return wins [gold/h +37%, death -12]
+  c4705f9.blind-b: bank 6 sends · $514/h · death 50% (walk 50%, 309 ticks) · D12 67% │ return 5 sends · $403/h · death 20% (walk 20%, 52 ticks) · D12 60% │ bank wins [gold/h +28%] · return wins [death -30]
+  d34605e.blind-a: bank 8 sends · $356/h · death 75% (walk 50%, 338 ticks) · D12 50% │ return 6 sends · $383/h · death 33% (walk 17%, 54 ticks) · D12 33% │ bank wins [D12 +17] · return wins [death -42]
+  d34605e.blind-b: bank 6 sends · $408/h · death 0% (walk 0%, 285 ticks) · D13 50% │ return 7 sends · $350/h · death 29% (walk 29%, 42 ticks) · D13 14% │ bank wins [gold/h +17%, death -29, D13 +36] · return wins []
+  fba365b.raterAC: bank 9 sends · $286/h · death 22% (walk 22%, 217 ticks) · D7 56% │ return 8 sends · $245/h · death 0% (walk 0%, 61 ticks) · D7 50% │ bank wins [gold/h +16%] · return wins [death -22]
+  fba365b.raterAD: bank 7 sends · $372/h · death 43% (walk 43%, 359 ticks) · D8 86% │ return 7 sends · $334/h · death 14% (walk 14%, 58 ticks) · D8 71% │ bank wins [gold/h +12%, D8 +14] · return wins [death -29]
+
+forge (Cut 23 §1; an 8 h absence from an empty purse): income · first step · steps bought · next step · nights to it (median) · affordable seeds
+  075d8e2.raterAM: home 86% · +$2332 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D11.0 · FAIL
+  075d8e2.raterAN: home 85% · +$2611 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  1a7d834.blind-a: home 31% · +$4084 · first $425 · bought 0.0 · next $425 · 0.00 nights · affordable 0% · best D16.0 (not mostly home)
+  1a7d834.blind-b: home 45% · +$3892 · first $475 · bought 0.0 · next $475 · 0.00 nights · affordable 0% · best D18.0 (not mostly home)
+  1fb7786.blind-a: home 90% · +$3801 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D18.0 · FAIL
+  1fb7786.blind-b: home 70% · +$4473 · first $425 · bought 0.0 · next $425 · 0.00 nights · affordable 0% · best D14.0 · FAIL
+  205d408.raterAA: home 100% · +$2680 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D12.0 · FAIL
+  205d408.raterAB: home 75% · +$3732 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  238bd67.raterW: home 57% · +$3615 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D12.0 (not mostly home)
+  238bd67.raterX: home 75% · +$3334 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D12.0 · FAIL
+  23ed91f.qaL: home 92% · +$2403 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D8.0 · FAIL
+  2cb9e88.raterS: home 100% · +$1857 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D6.0 · FAIL
+  2cb9e88.raterT: home 52% · +$2115 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D8.0 (not mostly home)
+  2cb9e88.raterT-run4: home 100% · +$1406 · first $225 · bought 0.0 · next $225 · 0.00 nights · affordable 0% · best D5.0 · FAIL
+  307dbed-ctl.raterAQ: home 20% · +$4658 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  307dbed-ctl.raterAR: home 36% · +$3878 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D14.0 (not mostly home)
+  307dbed.raterAO: home 85% · +$2726 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  307dbed.raterAP: home 79% · +$3054 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  32971ad.raterY: home 69% · +$2958 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  32971ad.raterZ: home 79% · +$2444 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  3ab97ea.blind-a: home 50% · +$4733 · first $400 · bought 0.0 · next $400 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  3ab97ea.blind-b: home 73% · +$3998 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  420f27c.raterAS: home 92% · +$3232 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  420f27c.raterAS-stall: home 64% · +$3481 · first $400 · bought 0.0 · next $400 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  420f27c.raterAT: home 92% · +$2815 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D11.0 · FAIL
+  44193ac.raterAE: home 10% · +$4655 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  44193ac.raterAF: home 71% · +$3565 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  4b15a61.raterAK: home 62% · +$3861 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D12.0 · FAIL
+  4b15a61.raterAL: home 92% · +$2421 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D11.0 · FAIL
+  4b15a61.raterAL-preboss: home 100% · +$2067 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D8.0 · FAIL
+  5331f40.blind-a: home 0% · +$4414 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  5331f40.blind-b: home 21% · +$4668 · first $400 · bought 0.0 · next $400 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  631fe23.raterAU: home 26% · +$4347 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D14.0 (not mostly home)
+  631fe23.raterAV: home 79% · +$2917 · first $225 · bought 0.0 · next $225 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  6da3ed0.raterAG: home 100% · +$2187 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D9.0 · FAIL
+  6da3ed0.raterAH: home 80% · +$3100 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D12.0 · FAIL
+  77030eb.blind-a: home 80% · +$3817 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D18.0 · FAIL
+  77030eb.blind-b: home 56% · +$4586 · first $325 · bought 0.0 · next $325 · 0.00 nights · affordable 0% · best D21.0 (not mostly home)
+  778fa1b.qaV: home 87% · +$2097 · first $225 · bought 0.0 · next $225 · 0.00 nights · affordable 0% · best D8.0 · FAIL
+  7f7fc2b.blind-a: home 70% · +$5566 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D21.0 · FAIL
+  7f7fc2b.blind-b: home 45% · +$4455 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D22.0 (not mostly home)
+  8231993.raterU: home 60% · +$2512 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+  8231993.raterV: home 86% · +$2736 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  8cf9050.blind-a: home 36% · +$4210 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D19.0 (not mostly home)
+  8cf9050.blind-b: home 70% · +$6449 · first $375 · bought 0.0 · next $375 · 0.00 nights · affordable 0% · best D28.0 · FAIL
+  9621b19.blind-a: home 82% · +$3482 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D18.0 · FAIL
+  9621b19.blind-b: home 73% · +$4927 · first $400 · bought 0.0 · next $400 · 0.00 nights · affordable 0% · best D18.0 · FAIL
+  9720ff7.raterAW: home 27% · +$4375 · first $275 · bought 0.0 · next $275 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  9720ff7.raterAX: home 93% · +$2335 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D12.0 · FAIL
+  afa0eed.raterAI: home 100% · +$1819 · first $225 · bought 0.0 · next $225 · 0.00 nights · affordable 0% · best D7.0 · FAIL
+  afa0eed.raterAJ: home 100% · +$1875 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  b58b431.blind-a: home 54% · +$4754 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  b58b431.blind-b: home 50% · +$5417 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D18.0 (not mostly home)
+  b8dd77c.blind-a: home 42% · +$5027 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D19.0 (not mostly home)
+  b8dd77c.blind-b: home 57% · +$4140 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D18.0 (not mostly home)
+  c4705f9.blind-a: home 46% · +$3068 · first $325 · bought 0.0 · next $325 · 0.00 nights · affordable 0% · best D13.0 (not mostly home)
+  c4705f9.blind-b: home 45% · +$6370 · first $350 · bought 0.0 · next $350 · 0.00 nights · affordable 0% · best D28.0 (not mostly home)
+  d34605e.blind-a: home 36% · +$4692 · first $425 · bought 0.0 · next $425 · 0.00 nights · affordable 0% · best D15.0 (not mostly home)
+  d34605e.blind-b: home 91% · +$3513 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D18.0 · FAIL
+  fba365b.raterAC: home 80% · +$2506 · first $250 · bought 0.0 · next $250 · 0.00 nights · affordable 0% · best D10.0 · FAIL
+  fba365b.raterAD: home 92% · +$2858 · first $300 · bought 0.0 · next $300 · 0.00 nights · affordable 0% · best D13.0 · FAIL
+kitted bots (every forge step): best-depth mean · mean run depth
+  DEFAULT    kitted   8.00 ·  7.66   (unkitted 8.00 · 5.15)
+  EDITED     kitted  23.00 · 16.00   (unkitted 18.00 · 11.69)
+  RANDOM     kitted   8.00 ·  7.37   (unkitted 8.00 · 5.15)
+  PASSIVE    kitted   1.00 ·  1.00   (unkitted 1.00 · 1.00)
+  LEARNED    kitted   8.00 ·  7.88   (unkitted 8.00 · 6.07)
+  TRIVIAL    kitted   8.00 ·  8.00   (unkitted 8.00 · 6.65)
+  FULL−D23   kitted  33.00 · 26.71   (unkitted 28.00 · 17.45)
+  FULL−D28   kitted  28.00 · 27.38   (unkitted 28.00 · 21.84)
+  FULL−D33   kitted  33.00 · 28.12   (unkitted 33.00 · 23.53)
+
+lever (Cut 25 §1; the set's lineage after 24 h, 64 paired sends × 3 seeds): whole-forge bank move · best row move (the first past the forge) per seed
+  075d8e2.raterAM: forge +41.1 · row ≥ +98.4 (+39/+100 drop R1 (forged) · +39/+98 drop R1 (forged) · +45/+97 drop R1 (forged))
+  075d8e2.raterAN: forge +30.7 · row ≥ +81.8 (+27/+83 drop R2 (forged) · +27/+78 drop R2 (forged) · +39/+84 drop R2 (forged))
+  1a7d834.blind-a: forge +3.6 · row ≥ +51.0 (+6/+75 drop R5 (forged) · +0/+12 drop R2 (forged) · +5/+66 drop R5 (forged))
+  1a7d834.blind-b: forge +6.2 · row ≥ +22.9 (-12/+2 drop R1 (forged) · +0/+11 drop R1 (forged) · +31/+56 drop R6 (forged))
+  1fb7786.blind-a: forge -17.7 · row ≥ +3.6 (-28/+3 drop R2 (forged) · -12/+3 drop R2 (forged) · -12/+5 drop R2 (forged))
+  1fb7786.blind-b: forge -14.6 · row ≥ +0.0 (-22/+0 none · -11/+0 none · -11/+0 none)
+  205d408.raterAA: forge +51.0 · row ≥ +100.0 (+42/+100 drop R1 (forged) · +42/+100 drop R1 (forged) · +69/+100 drop R1 (forged))
+  205d408.raterAB: forge +41.1 · row ≥ +97.4 (+36/+97 drop R2 (forged) · +45/+98 drop R2 (forged) · +42/+97 drop R2 (forged))
+  238bd67.raterW: forge +58.3 · row ≥ +93.8 (+56/+94 drop R1 (forged) · +56/+97 drop R1 (forged) · +62/+91 drop R1 (forged))
+  238bd67.raterX: forge +9.9 · row ≥ +36.5 (+5/+38 drop R1 (bare) · +9/+25 drop R1 (bare) · +16/+47 drop R1 (bare))
+  23ed91f.qaL: forge +6.8 · row ≥ +45.8 (+6/+100 drop R5 (forged) · +5/+16 drop R3 (forged) · +9/+22 drop R3 (forged))
+  2cb9e88.raterS: forge +0.5 · row ≥ +18.8 (+0/+6 drop R1 (forged) · +0/+31 drop R3 (forged) · +2/+19 drop R3 (forged))
+  2cb9e88.raterT: forge +22.9 · row ≥ +34.9 (+33/+38 drop R1 · +11/+31 drop R2 (forged) · +25/+36 drop R2 (forged))
+  2cb9e88.raterT-run4: forge +0.0 · row ≥ +20.3 (+0/+22 drop R2 (bare) · +0/+11 drop R2 (bare) · +0/+28 drop R2 (bare))
+  307dbed-ctl.raterAQ: forge +0.0 · row ≥ +0.0 (+0/+0 none · +0/+0 none · +0/+0 none)
+  307dbed-ctl.raterAR: forge +34.9 · row ≥ +62.5 (+36/+58 drop R1 (forged) · +53/+66 drop R1 (forged) · +16/+64 drop R1 (forged))
+  307dbed.raterAO: forge +5.2 · row ≥ +12.0 (+3/+9 R1 below R2 · +9/+17 drop R4 (bare) · +3/+9 R2 hp<40)
+  307dbed.raterAP: forge -8.3 · row ≥ +4.2 (+0/+12 drop R6 (forged) · -11/+0 none · -14/+0 none)
+  32971ad.raterY: forge +8.9 · row ≥ +89.6 (+14/+89 drop R6 (forged) · +3/+94 drop R6 (forged) · +9/+86 drop R6 (forged))
+  32971ad.raterZ: forge +42.2 · row ≥ +96.4 (+52/+100 drop R1 (forged) · +30/+92 drop R1 (forged) · +45/+97 drop R1 (forged))
+  3ab97ea.blind-a: forge -22.9 · row ≥ +19.3 (-34/+16 drop R2 (forged) · -27/+20 drop R2 (forged) · -8/+22 drop R2 (forged))
+  3ab97ea.blind-b: forge -1.0 · row ≥ +12.0 (-6/+0 none · +3/+9 drop R3 (forged) · +0/+27 drop R6 (forged))
+  420f27c.raterAS: forge +13.0 · row ≥ +97.4 (+9/+98 drop R7 (forged) · +12/+97 drop R7 (forged) · +17/+97 drop R7 (forged))
+  420f27c.raterAS-stall: forge +10.9 · row ≥ +99.0 (+9/+98 drop R7 (forged) · +14/+100 drop R7 (forged) · +9/+98 drop R7 (forged))
+  420f27c.raterAT: forge +39.6 · row ≥ +99.0 (+34/+98 drop R1 (forged) · +41/+98 drop R1 (forged) · +44/+100 drop R1 (forged))
+  44193ac.raterAE: forge +32.3 · row ≥ +82.3 (+23/+86 drop R1 (forged) · +38/+75 drop R1 (forged) · +36/+86 drop R1 (forged))
+  44193ac.raterAF: forge -8.9 · row ≥ +28.1 (-22/+2 drop R1 (forged) · +0/+39 drop R5 (forged) · -5/+44 drop R5 (forged))
+  4b15a61.raterAK: forge +19.8 · row ≥ +35.9 (+11/+27 drop R1 (forged) · +19/+44 drop R1 (forged) · +30/+38 drop R2 (forged))
+  4b15a61.raterAL-preboss: forge +0.0 · row ≥ +63.5 (+0/+69 + boss → hit boss at R1 · +0/+59 + boss → hit boss at R1 · +0/+62 + boss → hit boss at R1)
+  5331f40.blind-a: forge +1.6 · row ≥ +14.6 (+0/+6 drop R11 · +2/+22 drop R11 · +3/+16 drop R11)
+  5331f40.blind-b: forge -1.0 · row ≥ +21.9 (+0/+6 drop R2 (forged) · +8/+59 R11 above R1 · -11/+0 none)
+  631fe23.raterAU: forge +12.0 · row ≥ +31.8 (+17/+34 drop R1 (bare) · +12/+28 drop R1 (bare) · +6/+33 drop R1 (bare))
+  631fe23.raterAV: forge +56.2 · row ≥ +99.0 (+58/+98 drop R1 (forged) · +58/+100 drop R1 (forged) · +53/+98 drop R1 (forged))
+  6da3ed0.raterAG: forge +16.7 · row ≥ +85.9 (+11/+88 drop R1 (forged) · +19/+83 drop R1 (forged) · +20/+88 drop R1 (forged))
+  6da3ed0.raterAH: forge +28.6 · row ≥ +99.5 (+27/+100 drop R2 (forged) · +30/+98 drop R2 (forged) · +30/+100 drop R2 (forged))
+  77030eb.blind-a: forge -1.0 · row ≥ +37.5 (-2/+55 R8 above R1 · -2/+5 drop R2 (bare) · +0/+53 R8 above R1)
+  77030eb.blind-b: forge +6.2 · row ≥ +31.8 (+2/+12 drop R2 (forged) · +6/+38 drop R5 (forged) · +11/+45 drop R5 (forged))
+  778fa1b.qaV: forge -33.9 · row ≥ +4.2 (-28/+0 none · -34/+0 none · -39/+12 drop R2 (forged))
+  7f7fc2b.blind-a: forge -8.3 · row ≥ +2.6 (-12/+0 none · -5/+8 drop R4 (forged) · -8/+0 none)
+  7f7fc2b.blind-b: forge +31.8 · row ≥ +57.8 (+30/+55 drop R5 (forged) · +30/+55 drop R5 (forged) · +36/+64 drop R5 (forged))
+  8231993.raterV: forge +17.7 · row ≥ +99.0 (+20/+98 drop R1 (forged) · +16/+100 drop R1 (forged) · +17/+98 drop R1 (forged))
+  8cf9050.blind-a: forge -2.6 · row ≥ +9.4 (-6/+3 drop R1 (forged) · -5/+8 drop R3 (forged) · +3/+17 drop R4 (forged))
+  8cf9050.blind-b: forge +8.3 · row ≥ +42.2 (+11/+48 drop R6 (forged) · +6/+39 drop R6 (forged) · +8/+39 drop R6 (forged))
+  9621b19.blind-a: forge +9.4 · row ≥ +31.2 (+3/+27 drop R6 (forged) · +8/+34 drop R6 (forged) · +17/+33 drop R6 (forged))
+  9621b19.blind-b: forge +0.0 · row ≥ +27.1 (+5/+38 drop R7 (forged) · +8/+44 drop R7 (forged) · -12/+0 none)
+  9720ff7.raterAW: forge +13.5 · row ≥ +30.7 (+11/+31 drop R9 · +8/+30 R8 foes>=2 · +22/+31 drop R1)
+  9720ff7.raterAX: forge +52.1 · row ≥ +98.4 (+45/+98 drop R1 (forged) · +67/+97 drop R1 (forged) · +44/+100 drop R1 (forged))
+  afa0eed.raterAI: forge +1.6 · row ≥ +14.1 (+3/+12 drop R1 (bare) · +0/+17 drop R1 (bare) · +2/+12 drop R1 (bare))
+  afa0eed.raterAJ: forge +40.1 · row ≥ +99.5 (+45/+100 drop R1 (forged) · +41/+100 drop R1 (forged) · +34/+98 drop R1 (forged))
+  b58b431.blind-a: forge -4.7 · row ≥ +15.1 (+0/+23 drop R1 (forged) · -12/+8 drop R1 (forged) · -2/+14 drop R1 (forged))
+  b58b431.blind-b: forge -12.0 · row ≥ +5.7 (-22/+8 drop R1 (forged) · -2/+8 drop R1 (forged) · -12/+2 drop R1 (forged))
+  b8dd77c.blind-a: forge +5.2 · row ≥ +23.4 (+17/+55 R16 foes>=2 · +8/+16 drop R5 (forged) · -9/+0 none)
+  b8dd77c.blind-b: forge -13.0 · row ≥ +4.2 (-11/+8 drop R1 (forged) · -17/+2 drop R1 (forged) · -11/+3 drop R1 (forged))
+  c4705f9.blind-a: forge +19.8 · row ≥ +67.7 (+16/+62 drop R7 (forged) · +25/+69 drop R7 (forged) · +19/+72 drop R7 (forged))
+  c4705f9.blind-b: forge -14.1 · row ≥ +1.0 (-17/+0 none · -12/+0 none · -12/+3 drop R1 (forged))
+  d34605e.blind-a: forge +10.4 · row ≥ +29.7 (+52/+83 drop R7 (forged) · -19/+0 none · -2/+6 drop R5 (forged))
+  d34605e.blind-b: forge -18.8 · row ≥ +1.0 (-31/+2 drop R1 (forged) · -20/+0 none · -5/+2 drop R1 (forged))
+  fba365b.raterAC: forge +5.7 · row ≥ +100.0 (+6/+100 drop R7 (forged) · +6/+100 drop R7 (forged) · +5/+100 drop R7 (forged))
+  fba365b.raterAD: forge -0.5 · row ≥ +15.6 (-12/+6 drop R1 (forged) · +5/+12 drop R1 (forged) · +6/+28 drop R1 (forged))
+
+oaths (Cut 28 §1; the set's lineage after 8 h, searches of 3 steps on 16/48 sends): per set and oath, the oath share with the set → with its best set · the night's chance · rows from the bank-optimal set
+  420f27c.raterAS: bank-optimal 100% via ["drop R1 HP<40% → drink heal", "+ HP<30% → drink heal at R2"]
+    bold    reach D13 · no return  17% →  75% · night 100% · diff 3 · ["R3 → HP<90% → rest", "R2 → D13+ → bank"]
+    tamer   tame · a new kind    0% →  25% · night  99% · diff 4 · ["R9 → foes 1+ → tame", "drop R8 always → kite archers", "R4 → D13+ → bank"]
+    fire    Mother · fire        0% →  50% · night 100% · diff 4 · ["R3 → boss → throw fire", "R2 → HP<90% → rest", "drop R6 always → gas step"]
+    slayer  slay · Mother        0% →  71% · night 100% · diff 4 · ["R3 → HP<90% → rest", "R2 → boss → throw fire", "drop R6 always → gas step"]
+    lean    reach D12 · no rest  42% →  42% · night 100% · diff 1 · []
+  420f27c.raterAT: bank-optimal 96% via ["R7 → HP<90% → rest"]
+    bold    reach D12 · no return   0% →  94% · night 100% · diff 2 · ["R5 depth>=12", "R2 → HP<90% → rest"]
+    tamer   tame · a new kind    0% →  38% · night 100% · diff 3 · ["R2 → foes 1+ → tame", "R5 → HP<90% → rest", "R1 hp<40"]
+    fire    Warlord · fire       0% →  48% · night 100% · diff 1 · ["R2 → boss → throw fire", "R7 → HP<90% → rest"]
+    slayer  slay · Mother        0% →  54% · night 100% · diff 2 · ["R5 → HP<90% → rest", "R2 → boss → throw fire", "drop R7 ranged · HP>50% → hit ranged"]
+    lean    reach D11 · no rest  60% →  62% · night 100% · diff 1 · ["R7 hp>60"]
+  631fe23.raterAU: bank-optimal 90% via ["R5 hp<40"]
+    bold    reach D9 · no return  23% →  33% · night 100% · diff 2 · ["R4 → HP<90% → rest"]
+    tamer   tame · a new kind    0% →  23% · night  98% · diff 2 · ["R6 → foes 1+ → tame"]
+    fire    Warlord · fire       0% →  42% · night 100% · diff 3 · ["R4 → boss → throw fire", "R3 → HP<90% → rest", "R3 hp<80"]
+    slayer  slay · Warlord      10% →  60% · night 100% · diff 3 · ["R4 → HP<90% → rest", "R2 → boss → throw fire"]
+    lean    reach D8 · no rest   0% →  73% · night 100% · diff 2 · ["drop R6 HP<75% → rest"]
+  631fe23.raterAV: bank-optimal 88% via ["R6 → HP<90% → rest"]
+    bold    reach D14 · no return   0% →  33% · night 100% · diff 3 · ["drop every forbidden row", "R4 → HP<90% → rest", "R4 hp<80"]
+    tamer   tame · a new kind    0% →  21% · night  98% · diff 2 · ["R6 → foes 1+ → tame", "R4 hp<50"]
+    fire    Mother · fire        0% →  25% · night  99% · diff 3 · ["R5 → HP<90% → rest", "R2 → boss → throw fire", "R1 hp<30"]
+    slayer  slay · Mother        0% →  54% · night 100% · diff 2 · ["R5 → HP<90% → rest", "R2 → boss → throw fire", "R6 → D14+ → bank"]
+    lean    reach D13 · no rest  35% →  42% · night 100% · diff 2 · ["R1 hp<30"]
+  lever with every oath reward · 420f27c.raterAS: forge +9.4 · row ≥ +98.4 (drop R7 (forged))
+  lever with every oath reward · 420f27c.raterAT: forge +34.4 · row ≥ +98.4 (drop R1 (forged))
+  lever with every oath reward · 631fe23.raterAU: forge +17.2 · row ≥ +34.4 (drop R1 (bare))
+  lever with every oath reward · 631fe23.raterAV: forge +57.8 · row ≥ +98.4 (drop R1 (forged))
+
+death mix (Cut 23 §2; cohort sets, 4 h × 1 seeds): deaths · walking home (hp % at the turn) · top killer · top cause (walk × killer) · sampled verdicts
+  075d8e2.raterAM: 3 · walk 100% (hp 22%) · killer ogre 67% · top walk · ogre 67% · OVER HALF · dice × walk · ogre ×1, row × walk · goblin ×1
+  075d8e2.raterAN: 1 · walk 100% (hp 17%) · killer eel 100% · top walk · eel 100% · OVER HALF · row × walk · eel ×1
+  1a7d834.blind-a: 2 · walk 100% (hp 20%) · killer ogre 100% · top walk · ogre 100% · OVER HALF · dice × walk · ogre ×1, order × walk · ogre ×1
+  1a7d834.blind-b: 2 · walk 100% (hp 24%) · killer goblin_archer 100% · top walk · goblin_archer 100% · OVER HALF · dice × walk · goblin_archer ×1, gap × walk · goblin_archer ×1
+  1fb7786.blind-a: 6 · walk 100% (hp 30%) · killer eel 17% · top walk · eel 17% · gap × walk · eel ×1, gap × walk · gas ×1
+  1fb7786.blind-b: 1 · walk 100% (hp 42%) · killer gas 100% · top walk · gas 100% · OVER HALF · gap × walk · gas ×1
+  205d408.raterAA: 2 · walk 100% (hp 21%) · killer goblin 50% · top walk · goblin 50% · dice × walk · spectral_blade ×1, row × walk · goblin ×1
+  205d408.raterAB: no deaths
+  238bd67.raterW: 7 · walk 29% (hp 6%) · killer ogre 43% · top ogre 43% · gap × ogre ×1, gap × walk · goblin_conjurer ×1
+  238bd67.raterX: 1 · walk 100% (hp 5%) · killer goblin 100% · top walk · goblin 100% · OVER HALF · gap × walk · goblin ×1
+  23ed91f.qaL: 7 · walk 0% (hp 0%) · killer goblin 43% · top goblin 43% · gap × goblin ×1, gap × spectral_blade ×1
+  2cb9e88.raterS: 3 · walk 0% (hp 0%) · killer goblin_archer 100% · top goblin_archer 100% · OVER HALF · gap × goblin_archer ×2
+  2cb9e88.raterT: 17 · walk 0% (hp 0%) · killer jackal 35% · top jackal 35% · gap × ogre ×1, gap × skeleton ×1
+  2cb9e88.raterT-run4: 2 · walk 0% (hp 0%) · killer jackal 50% · top jackal 50% · gap × jackal ×1, row × own gas ×1
+  307dbed-ctl.raterAQ: 1 · walk 100% (hp 17%) · killer jackal 100% · top walk · jackal 100% · OVER HALF · gap × walk · jackal ×1
+  307dbed-ctl.raterAR: 2 · walk 0% (hp 0%) · killer gas 50% · top gas 50% · dice × gas ×1, dice × ogre ×1
+  307dbed.raterAO: 3 · walk 100% (hp 27%) · killer pink_jelly 67% · top walk · pink_jelly 67% · OVER HALF · gap × walk · goblin_conjurer ×1, order × walk · pink_jelly ×1
+  307dbed.raterAP: 4 · walk 75% (hp 15%) · killer goblin 25% · top jackal 25% · row × jackal ×1, row × walk · goblin ×1
+  32971ad.raterY: 4 · walk 75% (hp 22%) · killer gas 25% · top gas 25% · gap × walk · goblin_captain ×1, row × walk · goblin ×1
+  32971ad.raterZ: 2 · walk 50% (hp 15%) · killer goblin 50% · top goblin_archer 50% · gap × goblin_archer ×1, row × walk · goblin ×1
+  3ab97ea.blind-a: 2 · walk 100% (hp 34%) · killer goblin_warlord 50% · top walk · goblin_warlord 50% · gap × walk · goblin_warlord ×1, gap × walk · ogre ×1
+  3ab97ea.blind-b: 2 · walk 50% (hp 27%) · killer jackal 50% · top ogre 50% · gap × ogre ×1, gap × walk · jackal ×1
+  420f27c.raterAS: 3 · walk 100% (hp 25%) · killer goblin_captain 67% · top walk · goblin_captain 67% · OVER HALF · dice × walk · goblin_captain ×1, gap × walk · goblin_captain ×1
+  420f27c.raterAS-stall: 3 · walk 100% (hp 27%) · killer goblin_archer 33% · top walk · goblin_archer 33% · dice × walk · ogre ×1, row × walk · goblin_archer ×1
+  420f27c.raterAT: no deaths
+  44193ac.raterAE: 17 · walk 0% (hp 0%) · killer gas 29% · top gas 29% · gap × goblin ×1, row × gas ×1
+  44193ac.raterAF: 1 · walk 100% (hp 18%) · killer goblin_warlord 100% · top walk · goblin_warlord 100% · OVER HALF · row × walk · goblin_warlord ×1
+  4b15a61.raterAK: 6 · walk 0% (hp 0%) · killer own fire 67% · top own fire 67% · OVER HALF · gap × goblin ×1, row × own fire ×1
+  4b15a61.raterAL: no deaths
+  4b15a61.raterAL-preboss: 4 · walk 100% (hp 6%) · killer goblin 50% · top walk · goblin 50% · gap × walk · goblin ×1, row × walk · goblin ×1
+  5331f40.blind-a: 9 · walk 0% (hp 0%) · killer gas 44% · top gas 44% · gap × goblin ×1, order × gas ×1
+  5331f40.blind-b: 10 · walk 50% (hp 39%) · killer goblin_archer 50% · top walk · goblin_archer 30% · order × goblin_archer ×1, order × walk · goblin_archer ×1
+  631fe23.raterAU: 5 · walk 40% (hp 12%) · killer gas 60% · top gas 60% · OVER HALF · dice × walk · rat ×1, route × walk · jackal ×1
+  631fe23.raterAV: no deaths
+  6da3ed0.raterAG: no deaths
+  6da3ed0.raterAH: no deaths
+  77030eb.blind-a: 3 · walk 67% (hp 8%) · killer gas 100% · top walk · gas 67% · OVER HALF · order × walk · gas ×1, row × walk · gas ×1
+  77030eb.blind-b: 6 · walk 50% (hp 26%) · killer goblin_archer 33% · top walk · goblin_archer 33% · gap × goblin_warlord ×1, order × wraith ×1
+  778fa1b.qaV: 1 · walk 100% (hp 22%) · killer goblin_archer 100% · top walk · goblin_archer 100% · OVER HALF · row × walk · goblin_archer ×1
+  7f7fc2b.blind-a: 4 · walk 75% (hp 31%) · killer goblin 50% · top goblin 25% · gap × goblin ×1, row × walk · jackal ×1
+  7f7fc2b.blind-b: 5 · walk 60% (hp 37%) · killer gas 80% · top gas 40% · gap × gas ×1, order × walk · gas ×1
+  8231993.raterU: 3 · walk 33% (hp 5%) · killer goblin 33% · top ogre 33% · gap × spectral_blade ×1, row × walk · goblin ×1
+  8231993.raterV: 2 · walk 100% (hp 22%) · killer goblin_captain 50% · top walk · goblin_captain 50% · dice × walk · spectral_blade ×1, row × walk · goblin_captain ×1
+  8cf9050.blind-a: 3 · walk 33% (hp 40%) · killer gas 67% · top gas 67% · OVER HALF · gap × gas ×1, gap × walk · pink_jelly ×1
+  8cf9050.blind-b: 2 · walk 100% (hp 40%) · killer eel 50% · top walk · eel 50% · gap × walk · eel ×1, gap × walk · goblin ×1
+  9621b19.blind-a: 1 · walk 100% (hp 28%) · killer goblin 100% · top walk · goblin 100% · OVER HALF · gap × walk · goblin ×1
+  9621b19.blind-b: 2 · walk 100% (hp 38%) · killer eel 50% · top walk · eel 50% · gap × walk · jackal ×1, row × walk · eel ×1
+  9720ff7.raterAW: 2 · walk 50% (hp 27%) · killer goblin_warlord 50% · top goblin_warlord 50% · order × goblin_warlord ×1, row × walk · spectral_blade ×1
+  9720ff7.raterAX: 2 · walk 100% (hp 22%) · killer goblin_captain 50% · top walk · goblin_captain 50% · dice × walk · spectral_blade ×1, row × walk · goblin_captain ×1
+  afa0eed.raterAI: 2 · walk 0% (hp 0%) · killer goblin 50% · top goblin 50% · gap × goblin ×1, gap × goblin_archer ×1
+  afa0eed.raterAJ: no deaths
+  b58b431.blind-a: 1 · walk 100% (hp 42%) · killer goblin 100% · top walk · goblin 100% · OVER HALF · dice × walk · goblin ×1
+  b58b431.blind-b: 2 · walk 100% (hp 40%) · killer gas 50% · top walk · gas 50% · gap × walk · gas ×1, gap × walk · ogre ×1
+  b8dd77c.blind-a: 5 · walk 40% (hp 36%) · killer goblin 40% · top goblin 20% · order × goblin_archer ×1, order × walk · jackal ×1
+  b8dd77c.blind-b: 3 · walk 100% (hp 38%) · killer gas 33% · top walk · gas 33% · gap × walk · skeleton ×1, row × walk · gas ×1
+  c4705f9.blind-a: 1 · walk 100% (hp 23%) · killer gas 100% · top walk · gas 100% · OVER HALF · dice × walk · gas ×1
+  c4705f9.blind-b: 2 · walk 100% (hp 42%) · killer gas 50% · top walk · gas 50% · dice × walk · goblin_archer ×1, gap × walk · gas ×1
+  d34605e.blind-a: no deaths
+  d34605e.blind-b: 2 · walk 100% (hp 31%) · killer eel 50% · top walk · eel 50% · gap × walk · eel ×1, order × walk · gas ×1
+  fba365b.raterAC: no deaths
+  fba365b.raterAD: 3 · walk 67% (hp 12%) · killer goblin_archer 67% · top walk · goblin_archer 67% · OVER HALF · gap × walk · goblin_archer ×1, row × walk · goblin_archer ×1
+  sets with one cause over half their deaths: 20/52
+paired edit delta (Cut 22 §3): 1188 one-notch edits over 61 sets · paired ± / absolute ± 0.21 (worst set 778fa1b.qaV 0.75)
+divergence (Cut 27 §2): 1135 edits ≥ 5 pts over 61 sets · found 1135 (100%) · at a row 1132 · inside ± with a scene 524 · slowest 604 ms
+progression 307dbed-ctl.raterAQ s1: best D33 · unlock days 8 · stall 5 (raw 5) · marks ≤ 8 · purse 0.50×
+progression 307dbed-ctl.raterAQ s2: best D28 · unlock days 8 · stall 5 (raw 5) · marks ≤ 8 · purse 0.50×
+progression 307dbed-ctl.raterAR s1: best D19 · unlock days 9 · stall 1 (raw 1) · marks ≤ 8 · purse 0.49×
+progression 307dbed-ctl.raterAR s2: best D19 · unlock days 8 · stall 1 (raw 1) · marks ≤ 8 · purse 0.50×
+progression 307dbed.raterAO s1: best D28 · unlock days 7 · stall 6 (raw 6) · marks ≤ 8 · purse 0.50×
+progression 307dbed.raterAO s2: best D28 · unlock days 9 · stall 8 (raw 8) · marks ≤ 8 · purse 0.50×
+progression 307dbed.raterAP s1: best D28 · unlock days 5 · stall 8 (raw 8) · marks ≤ 8 · purse 0.50×
+progression 307dbed.raterAP s2: best D28 · unlock days 10 · stall 8 (raw 8) · marks ≤ 8 · purse 0.50×
+progression 420f27c.raterAS s1: best D30 · unlock days 8 · stall 5 (raw 5) · marks ≤ 8 · purse 0.48×
+progression 420f27c.raterAS s2: best D28 · unlock days 5 · stall 8 (raw 8) · marks ≤ 8 · purse 0.49×
+progression 420f27c.raterAS-stall s1: best D28 · unlock days 9 · stall 7 (raw 7) · marks ≤ 8 · purse 0.50×
+progression 420f27c.raterAS-stall s2: best D28 · unlock days 7 · stall 9 (raw 9) · marks ≤ 8 · purse 0.50×
+progression 420f27c.raterAT s1: best D16 · unlock days 10 · stall 2 (raw 2) · marks ≤ 8 · purse 0.50×
+progression 420f27c.raterAT s2: best D16 · unlock days 6 · stall 1 (raw 1) · marks ≤ 8 · purse 0.50×
+progression 631fe23.raterAU s1: best D33 · unlock days 8 · stall 3 (raw 3) · marks ≤ 8 · purse 0.50×
+progression 631fe23.raterAU s2: best D28 · unlock days 5 · stall 7 (raw 7) · marks ≤ 8 · purse 0.50×
+progression 631fe23.raterAV s1: best D18 · unlock days 9 · stall 1 (raw 2) · marks ≤ 8 · purse 0.51×
+progression 631fe23.raterAV s2: best D18 · unlock days 9 · stall 1 (raw 2) · marks ≤ 8 · purse 0.51×
+
+gate                                                              value  result
+DEFAULT dies by ≤ D8 ≥ 80% of seeds                                100%  retired (pass)
+DEFAULT/EDITED never swear an oath                              0 seeds  retired (pass)
+EDITED reaches ≥ D10 ≥ 50% of seeds                                100%  PASS
+EDITED − DEFAULT (≥ D10) ≥ 15 pts                               100 pts  retired (pass)
+RANDOM loses 100%                                                  100%  PASS
+PASSIVE loses by ≤ D3 100%                                         100%  retired (pass)
+LEARNED mean depth ≤ DEFAULT + 2                           6.07 vs 5.15  retired (pass)
+PETS dies by ≤ D8 ≥ 80% of seeds                                   100%  retired (pass)
+LEVELLED dies by ≤ D9 ≥ 80% of seeds                               100%  retired (pass)
+TRIVIAL never passes D8 ≥ 90% of seeds                             100%  retired (pass)
+COUNTERED reaches ≥ D14 ≥ 50% of seeds                               0%  retired (fail)
+FULL reaches ≥ D29 ≥ 50% of seeds (3 × 8 h)                        100%  PASS
+FULL−D23 never passes D23 ≥ 90% of seeds                             0%  retired (fail)
+FULL−D28 never passes D28 ≥ 90% of seeds                           100%  retired (pass)
+FULL−D33 never passes D33 ≥ 90% of seeds                           100%  retired (pass)
+Unfair deaths (dice) ≤ 5% (n=104, death-weighted, ±4.2 sample)               1.8%  PASS
+Deaths tracing to a row (gap + row) ≥ 70%                         93.5%  PASS
+Routes: DEFAULT dies by ≤ D8 ≥ 80% of seeds                        100%  retired (pass)
+Routes: EDITED − DEFAULT (≥ D10) ≥ 15 pts                       100 pts  retired (pass)
+Routes: RANDOM loses 100%                                          100%  retired (pass)
+Routes: PASSIVE loses by ≤ D3 100%                                 100%  retired (pass)
+Routes: LEARNED mean depth ≤ DEFAULT + 2                   5.86 vs 4.93  retired (pass)
+Routes: dice ≤ 5% (n=20, death-weighted, ±9.6 sample)               0.0%  PASS
+Lanes D5: no set dominates (cross-lane loss ≥ 15 pts, paired)          +27 · +20  retired (pass)
+Lanes D5: both viable (EDITED's best ≥ 50% band end)          93% · 38%  FAIL
+Lanes D5: gold/hr ratio ≤ 1.5×                                    1.01×  PASS
+Lanes: rule-set diversity over band clears ≥ 0.5 (n=21)       16/21 = 0.76  PASS
+First fork (D5) seen within 6 sends ≥ 50% of fresh lineages               100%  PASS
+D9 fork seen by cohort lineages by the absence's end ≥ 50% (n=61)                79%  PASS
+Top death cause share < 35% (goblin)                              16.3%  PASS
+Events per 600 ticks (renderable) ≥ 6                              43.6  PASS
+Replay hash identical (seed+rules+elapsed)             0066be8c7a88fb95  PASS
+Forecast known_to == best_depth + 1                                 all  PASS
+Expeditions per 8 h (EDITED) in 6–16                 13.0 · DEFAULT 39.0  PASS
+DEFAULT yields 0 xp/gold over 8 h                                   581  retired (fail)
+EDITED banks ≥ 3 runs per 8 h                                       5.0  PASS
+Patches whose row fired in ≥ 50% of replays (n=10)                 100%  PASS
+Verdict time ≤ 0.4 s (single-threaded mean of 12)                0.06 s  PASS
+Per-tick cost ≤ 6 µs (quiet, DEFAULT/EDITED/FULL)               1.38 µs  PASS
+Offline 8 h: learned ≥ 1 and pending ≥ 1 every seed               min 8  PASS
+Story lines ≤ 12 words, table verb (n=4061)                      100.0%  PASS
+Reel ≥ 2 distinct (threat, resolution) pairs per 8 h (n=6)               100%  PASS
+Top reel line names a row, trait or companion ≥ 80%                100%  PASS
+Situations: ≥ 1 per run on D1–5 ≥ 90% (n=357)                     95.8%  PASS
+Situation den (D3–5) met by D6 ≥ 90% (n=215)                       100%  PASS
+DEFAULT passes the den ≤ 20% of seeds                                0%  retired (pass)
+Situation lock (D6–7) met by D8 ≥ 90% (n=137)                      100%  PASS
+DEFAULT passes the lock ≤ 20% of seeds                               0%  retired (pass)
+Situation captive (D9–11) met by D12 ≥ 90% (n=83)                  100%  PASS
+DEFAULT passes the captive ≤ 20% of seeds                            0%  retired (pass)
+Situation hunger (D12–12) met by D13 ≥ 90% (n=72)                  100%  PASS
+DEFAULT passes the hunger ≤ 20% of seeds                             0%  retired (pass)
+Thief guard cuts den snatches ≤ 20% of without (n=1)                 0%  PASS
+Twists D3–10: ≥ 4 kinds every seed, one per floor, none twice min 6 · 0 gaps · 0 rep  PASS
+Forecast names the absent counter (D9 try)                          1/1  PASS
+Counter at the top lifts D9 reach ≥ 0.3                             1/1  PASS
+State reasons carry a because ≥ 95% (1933 over 306 deaths)              99.4%  PASS
+Root patch shown on theft/lock roots ≥ 80% (n=0, +0 under base)           0% · n=0  FAIL
+Dice deaths name an alternative 100% (n=2)                          2/2  PASS
+Stalls ≤ 1% of sends on DEFAULT (n=39)                             0.0%  PASS
+Stalls ≤ 1% of sends on every cohort set (61 sets, n=518)  0.0% · worst 0.0%  retired (pass)
+Card ↔ chore loops ≤ 1% of sends on every cohort set (n=518)  0.0% · worst 0.0%  PASS
+Bloodless dances ≤ 1% of sends on every cohort set (≥ 60 foe-facing actions, ≥ 30 retreats, n=518) 0.0% · worst 0.0%   PASS
+Longest no-HP stretch p99 ≤ 60 actions, every cohort set (n=518, driven off 1) worst 60 075d8e2.raterAM  PASS
+AL's pre-boss set: the Warlord drives it off, no fight > 60 driven 0 · longer 0  FAIL
+Return row: 0 < death share < without it (46 cohort sets; = if it never acts) 33/46 · worst +33.3 pts  FAIL
+Leash thefts ≤ 0.1 per send, every cohort set (n=2317) 0.000 · worst 0.000  PASS
+Net gold per send ≥ +$20 on every mostly-home cohort set (39)  39/39 · worst +83  PASS
+Waystone $/h ≥ D1 $/h, cohort sets paid a passage (50) 49/50 · worst 0.94× c4705f9.blind-b  FAIL
+Bank and return each win a set by ≥ 10 pts (61 sets) return 37 · bank 34  PASS
+Forge: a step after 8 h, next ≤ 3 nights (39 mostly-home sets) 0/39 · worst 0.0 n  FAIL
+KITTED (DEFAULT + every step) dies by ≤ D8 ≥ 80%                   100%  retired (pass)
+Kitted: EDITED − KITTED (≥ D10) ≥ 15 pts                        100 pts  retired (pass)
+Kitted: RANDOM loses 100%                                          100%  retired (pass)
+Kitted: PASSIVE loses by ≤ D3 100%                                 100%  retired (pass)
+Kitted: LEARNED mean depth ≤ KITTED + 2                    7.88 vs 7.66  retired (pass)
+Kitted: TRIVIAL never passes D8 ≥ 90%                              100%  retired (pass)
+Kitted: FULL−D23 never passes D23 ≥ 90%                              0%  retired (fail)
+Kitted: FULL−D28 never passes D28 ≥ 90%                            100%  retired (pass)
+Kitted: FULL−D33 never passes D33 ≥ 90%                            100%  retired (pass)
+Whole forge's bank move < best row's (59 banking sets) 59/59 · min gap +0  retired (pass)
+Oath best set ≠ bank-optimal by ≥ 2 rows (20 oath·sets) 17/20 · min 1 raterAS reach D12 · no rest  retired (fail)
+Oath completable ≥ 20%/night by a set (20 oath·sets) 20/20 · min 98% raterAV tame · a new kind  retired (pass)
+Lever holds with every oath reward (4 sets)           4/4 · min gap +17  retired (pass)
+Paired edit ± ≤ ½ absolute ± (1188 cohort edits)                   0.21  PASS
+Divergence found ≥ 90% of ≥ 5-pt edits (1135 cohort edits) 100% · at a row 100%  PASS
+Progression: days with an unlock, oath kept or system ≥ 10 / 14 (mean, 18 rater lineages)  7.8 (content 7.7)  retired (fail)
+Progression: marks unspent at any check-in after day 2 ≤ 8                  8  retired (pass)
+Progression: longest stall (counter known) ≤ 3 d on ≥ 13/18 lineages               7/18  retired (fail)
+Progression: purse ≤ max(1.5 days' net, 10 units) after day 3              0.51×  retired (pass)
+Progression: no marks for standing still (frontier source)                  0  PASS
+Stall verdicts: ≥ 1 patch fired ≥ 50% (n=0)                   0/0 · n=0  FAIL
+Stall reel line's cause == the trace's (n=0)                  0/0 · n=0  FAIL
+Expeditions per 8 h, IDLE (fresh · D13) in 6–24             15.4 · 13.0  PASS
+A fresh lineage's first 20-min absence after the scout's hire returns ≥ 1 run ≥ 95%       100% (30/30)  PASS
+A 20-min absence returns ≥ 1 run ≥ 95% (fresh 30 + D13 1)               100%  PASS
+Lanes D5 (IDLE): both reach D8, weaker ≥ ½ the stronger (n=0) near 0.00 · far 0.00 · n=0  FAIL
+A drill-needed item is in the pack at its wall ≥ 90% (n=12)               100%  PASS
+Steady is the safest default: fewest deaths a send from D1 steady 3% guarded 6% bold 99% hunter 32%  PASS
+Guarded, Bold, Hunter each best at ≥ 1 wall by ≥ 0.02, none at all (5 won) guarded 4 hunter 1  FAIL
+Quests keepable ≥ 20%/night by a package set, pen closed (n=8) worst 100% bank D19  PASS
+
+causes: goblin 16% · jackal 14% · goblin_archer 10% · rat 9% · gas 8% · ogre 8% · goblin_warlord 6% · goblin_captain 6%
+gates: FAIL (1 seeds × 8 h × 8 verdicts/seed, 532s)
+10 gate(s) FAIL

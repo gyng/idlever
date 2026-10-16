@@ -179,7 +179,7 @@ pub fn lock_text_static(id: &str) -> String {
 pub const OATH_DRAW_COST: u32 = 2;
 pub const OATH_DRAW_TIER: u32 = 2;
 
-/// The eight tactic cards (Cut 2 §3) plus the four mastery cards (class L10).
+/// The eight tactic cards (Cut 2 §3) plus the five mastery cards (class L10).
 pub const TACTIC_CARDS: [&str; 8] = ["corridor_fighting", "kite_archers", "stair_dance", "gas_step", "pack_break", "thief_guard", "boss_focus", "last_stand"];
 pub const MASTERY_CARDS: [&str; 5] = ["phalanx", "hit_and_fade", "hawkeye", "archmage", "gunslinger"];
 /// Cut 3: the tier-2 tactic cards.

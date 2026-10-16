@@ -183,7 +183,27 @@ fn cohort_sets() -> Vec<(String, RuleSet)> {
             let name = e.file_name().to_string_lossy().to_string();
             let stem = name.strip_suffix(".rules.json")?.to_string();
             let text = std::fs::read_to_string(e.path()).ok()?;
-            let set = RuleSet::parse(&text).unwrap_or_else(|err| panic!("{name}: {err}"));
+            // Cut257 chore: two preserved blind-cohort cards wrap the exported rules string under a
+            // label (`text`, `rulesText`) instead of writing the set directly (docs/CLAUDE_HANDOFF.md:
+            // "exact returned string labeled riddle-rules-text"). Unwrap them instead of editing that
+            // evidence; a card that is neither a set nor a labelled wrapper still panics, so this stays
+            // strict — before it, the metrics leg died on the first such card and ran no cohort bars.
+            let set = match RuleSet::parse(&text) {
+                Ok(set) => set,
+                Err(err) => {
+                    let wrapped = serde_json::from_str::<serde_json::Value>(&text).ok().and_then(|v| {
+                        ["text", "rulesText"]
+                            .iter()
+                            .find_map(|k| v.get(*k).and_then(|s| s.as_str()).map(str::to_owned))
+                    });
+                    match wrapped {
+                        Some(inner) => {
+                            RuleSet::parse(&inner).unwrap_or_else(|e| panic!("{name}: wrapped: {e}"))
+                        }
+                        None => panic!("{name}: {err}"),
+                    }
+                }
+            };
             Some((stem, set))
         })
         .collect();
