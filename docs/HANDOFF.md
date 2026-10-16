@@ -136,8 +136,18 @@ iteration).** State of the resume order:
    the sibling checkout `../eval-fun` (named by `eval/RATING.md` and `eval/score.sh`),
    so `brief`/`score` fail loudly without it. Frozen candidate `e33d50b`
    (`scratchpad/fun-eval/e33d50b`, package `4b5f19dc…`, identity `7332150e…`) is ready
-   for a blind rater; the *verdict* is still unverified until real raters file cards,
-   and the transcript/API fan-out of `ITERATION_SPEED.md` §1.3/§1.5 is not included.
+   for a blind rater — **the first card has landed**: `blind-a` filed
+   `eval/cards/e33d50b.blind-a.json` (**65.7, `promising`**; gates flagged tension and
+   attribution; ~45 of the brief's 40+20 minutes, 1 of 3 deaths read, both declared) and
+   the coordinator triaged it against the code
+   (`docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`): the headline "the
+   config layer is read-only for the first ~50 minutes" is the **designed** late pen
+   (`web/src/ui/camp.ts:750`, `editor.el.hidden = !pen`), the "orphaned rule-slot shop"
+   is a misreading of `panel-store` (the closed panels' parking lot — all four real
+   panels have visible controls), the thin 20 m/4 h absence report is design plus
+   legitimate feel feedback, and the unlabelled painted controls are the UI lane's.
+   The *verdict* still needs a second card for α, and the transcript/API fan-out of
+   `ITERATION_SPEED.md` §1.3/§1.5 is not included.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is
@@ -159,8 +169,10 @@ An independent package rating of this build (card `eval/package/idlever.51d041d0
 observations `docs/evidence/eval-2026-10-16/observations.md`) measured a UI defect at
 the target viewport: the Behaviour panel's label column clips (`COM/BAT/STYL/E`,
 `clientWidth 38` vs `scrollWidth 44` at 14.875 px), and one sheet header sits partly
-behind its own top edge. Its score (package 66.6, `shippable` 60–67) leaves `fun`
-unassessed — no blind fun card exists for this build.
+behind its own top edge. Its score (package 66.6, `shippable` 60–67) left `fun`
+unassessed at the time; a blind fun card for the same engine now exists (wasm
+`51d041d0…`, 65.7 `promising` — resume item 8), and it independently saw the same
+label/control legibility problem.
 
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start

@@ -154,7 +154,14 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   recorded identity, blind packet with structural leak checks, collect, score from the
   cards alone; `calibrate` is byte-deterministic and reproduces all twelve blind
   cohorts that carry an acceptance record, and a real freeze served 367/367 manifest
-  bytes). Frozen candidate `e33d50b` awaits real raters; a harness is not a verdict.
+  bytes). Frozen candidate `e33d50b` now has its **first blind card**
+  (`eval/cards/e33d50b.blind-a.json`: **65.7, `promising`**, gates flagged tension and
+  attribution, ~45 active minutes, 1 of 3 deaths read, both declared; the coordinator
+  triaged it against the code in
+  `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md` — the late pen and the
+  parking-lot "orphan shop" are design/misreadings, the unlabelled painted controls are
+  the UI lane's). α needs a second card on the same immutable build, so a harness and
+  one rater are still not the verdict.
 
 ## Completion rule
 
