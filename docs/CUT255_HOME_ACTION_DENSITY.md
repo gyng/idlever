@@ -58,18 +58,30 @@ hide buildings or treat locate as equivalent to Hub just to obtain a pass.
   Record original failures and dated source/viewport/input observations. A local
   Chromium approximation is not real iPhone/Safari or fun acceptance.
 
-Status2026-10-16: implemented WIP, parked at owner's request. Initial button-only
-accounting reaches12, but the independent disclosure census finds13including
-Tasks. That failure remains; the current successor moves the complete existing
-tracker into mobile Menu without dropping its callbacks/progress. Full primary
-phone acceptance is still unproved: later proof attempts stop on Locate before
-phone cases. Same-owner isolated Locate works; cross-owner selection preserves
-canonical state/Gold but the connected ring is missing. A speculative RAF/event
-fix failed its bounded proof and was reverted exactly; its patch/raw evidence
-remain. Native-earned Heroes route assertions and separate UI recoveries pass
-at their recorded scopes, not a fresh complete11group or full Home contract.
-Desktop200% expanded Hub header crowds the initial content; whole-body scroll
-reaches content but compact-header refinement and exact clipped geometry remain.
-Desktop Tasks summary/head/objective text also stays fixed-size at200%; phone
-Menu/Tasks text scaling is untested. Read current cut255 observations before
-resuming; do not carry a density, typography or full visual pass forward.
+Status2026-10-16 (resumed): the Home contract's own four-case matrix now
+**passes** on the current source — `docs/evidence/cut255/home-proof/attempt-5`
+(exit 0, status PASS, four cases 402×681/1440×900 at normal and 200%, no page
+errors, served `ef4b58d7…`). At 402×681 the complete physical inventory inside
+`.camp` is exactly the 12 expected functions at both text scales; the Tasks
+tracker lives in the Menu panel on mobile and adds no Home function. Menu→Journal
+and Menu→Settings pass by pointer and keyboard with focus back on the connected
+Menu stud and exact unchanged saves; the three residents, House and expanded
+roster all resolve the canonical Hub with canonical personal/class XP and live
+HP; an away-owner Watch route works; the fresh pre-House flow and read-only save
+equality pass. Two defects found and fixed while getting there (see
+`docs/evidence/cut255/locate-fix-observations-2026-10-16.md`): the roster locate
+wrote into the disposed scene after a remount, and the town's scene clock could
+start negative so `focusHero` could silently do nothing. Both the parked bounded
+cross-owner proof (`cross-owner-locate-2`) and the four-case matrix are green.
+
+Affected client journeys: 11/12 (`docs/evidence/cut255/affected-current.log`);
+TypeScript/lint/format/copy pass. `hero-hub` now passes the density/geometry
+stage it previously failed (the Hub's 200%-text horizontal overflow) and stops
+later in its material-contrast stage — a Hub presentation finding, recorded for
+the UI owner in `docs/evidence/cut255/observations-2026-10-16-resume.md`; the
+pre-compaction source never reached that stage (it failed geometry first), so
+this is not a known-good→known-bad regression. Phone 200% Menu/Tasks typography
+now measures exactly 2.00×. Desktop 200% Hub tabs are inside the initial view;
+the 200% phone Hub still needs scrolling (its tall tab stack is a deliberate
+font-relative rule). Do not carry a density, typography or full visual pass
+forward.

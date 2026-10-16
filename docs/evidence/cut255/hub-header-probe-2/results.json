@@ -1,0 +1,5052 @@
+{
+  "at": "2026-10-16T09:15:37.869Z",
+  "scriptSha256": "7ed90a3385ff03848bbdd255c861fb4f44d924d8cb902e6cd4b79349227fcf51",
+  "preparedSha256": "cb2d952807e1ad17fd39767426cf1e359b232a6356abeff15ae5e9f71b426dd0",
+  "cases": [
+    {
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 1,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102,
+              "w": 281.9,
+              "h": 308
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "8px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 44,
+              "y": 110,
+              "w": 72,
+              "h": 88
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 124,
+              "y": 110,
+              "w": 185.9,
+              "h": 134
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 124,
+              "y": 110,
+              "w": 185.9,
+              "h": 36
+            },
+            "font": "24px",
+            "line": "36px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 124,
+              "y": 148,
+              "w": 47,
+              "h": 24
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 179,
+              "y": 151,
+              "w": 107,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 124,
+              "y": 174,
+              "w": 46,
+              "h": 24
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 178,
+              "y": 177,
+              "w": 72,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 124,
+              "y": 200,
+              "w": 185.9,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 124,
+              "y": 200,
+              "w": 185.9,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "18.2px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 44,
+              "y": 252,
+              "w": 112.5,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 44,
+              "y": 304,
+              "w": 265.9,
+              "h": 96
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 44,
+              "y": 304,
+              "w": 87.8,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 139.9,
+              "y": 304,
+              "w": 105.5,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 44,
+              "y": 356,
+              "w": 100.9,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 426,
+              "w": 281.9,
+              "h": 144
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 426,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 180,
+              "y": 426,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 476,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 586,
+              "w": 281.9,
+              "h": 2012.5
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 85.7,
+              "y": 595,
+              "w": 74.1,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "18.2px",
+            "pad": "4px 8px",
+            "minH": "44px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 2496,
+          "scrollH": 2496,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102,
+              "w": 281.9,
+              "h": 308
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "8px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 44,
+              "y": 110,
+              "w": 72,
+              "h": 88
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 124,
+              "y": 110,
+              "w": 185.9,
+              "h": 134
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 124,
+              "y": 110,
+              "w": 185.9,
+              "h": 36
+            },
+            "font": "24px",
+            "line": "36px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 124,
+              "y": 148,
+              "w": 47,
+              "h": 24
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 179,
+              "y": 151,
+              "w": 107,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 124,
+              "y": 174,
+              "w": 46,
+              "h": 24
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 178,
+              "y": 177,
+              "w": 72,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 124,
+              "y": 200,
+              "w": 185.9,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 124,
+              "y": 200,
+              "w": 185.9,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "18.2px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 44,
+              "y": 252,
+              "w": 112.5,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 44,
+              "y": 304,
+              "w": 265.9,
+              "h": 96
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 44,
+              "y": 304,
+              "w": 87.8,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 139.9,
+              "y": 304,
+              "w": 105.5,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 44,
+              "y": 356,
+              "w": 100.9,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 426,
+              "w": 281.9,
+              "h": 144
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 426,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 180,
+              "y": 426,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 476,
+              "w": 138,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "16.8px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 586,
+              "w": 281.9,
+              "h": 2012.5
+            },
+            "font": "16px",
+            "line": "24px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 85.7,
+              "y": 595,
+              "w": 74.1,
+              "h": 44
+            },
+            "font": "14px",
+            "line": "18.2px",
+            "pad": "4px 8px",
+            "minH": "44px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 2496,
+          "scrollH": 2496,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 2,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102.5,
+              "w": 281.9,
+              "h": 824.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 118.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 266.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 318.5,
+              "w": 161.9,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 403.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 455.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 561.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 249.9,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 779.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 852.1,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1027.3,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1095.9,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1321.7,
+              "w": 281.9,
+              "h": 4809.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 111.4,
+              "y": 1338.7,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6029,
+          "scrollH": 6029,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102.5,
+              "w": 281.9,
+              "h": 824.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 118.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 266.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 318.5,
+              "w": 161.9,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 403.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 455.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 561.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 249.9,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 779.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 852.1,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1027.3,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1095.9,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1321.7,
+              "w": 281.9,
+              "h": 4809.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 111.4,
+              "y": 1338.7,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6029,
+          "scrollH": 6029,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 428,
+              "y": 126,
+              "w": 536,
+              "h": 237.5
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "8px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 436,
+              "y": 134,
+              "w": 72,
+              "h": 88
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 516,
+              "y": 134,
+              "w": 440,
+              "h": 115.5
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 516,
+              "y": 134,
+              "w": 440,
+              "h": 40.5
+            },
+            "font": "27px",
+            "line": "40.5px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 516,
+              "y": 176.5,
+              "w": 54,
+              "h": 27
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 578,
+              "y": 181.5,
+              "w": 107,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 693,
+              "y": 176.5,
+              "w": 51,
+              "h": 27
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 752,
+              "y": 181.5,
+              "w": 72,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 516,
+              "y": 205.5,
+              "w": 440,
+              "h": 44
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 516,
+              "y": 205.5,
+              "w": 440,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "20.8px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 436,
+              "y": 257.5,
+              "w": 123,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 436,
+              "y": 309.5,
+              "w": 520,
+              "h": 44
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 436,
+              "y": 309.5,
+              "w": 96.2,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 540.2,
+              "y": 309.5,
+              "w": 115,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 663.2,
+              "y": 309.5,
+              "w": 111.4,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 428,
+              "y": 379.5,
+              "w": 536,
+              "h": 96
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 428,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 609.3,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 790.7,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 428,
+              "y": 491.5,
+              "w": 536,
+              "h": 1653
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 655.8,
+              "y": 614.1,
+              "w": 80.4,
+              "h": 44.8
+            },
+            "font": "16px",
+            "line": "20.8px",
+            "pad": "4px 8px",
+            "minH": "44px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 2019,
+          "scrollH": 2019,
+          "scrollTop": 0,
+          "clientW": 536,
+          "scrollW": 536
+        },
+        "hubRect": {
+          "x": 428,
+          "w": 536,
+          "right": 964
+        },
+        "offenders": [],
+        "windowH": 900,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 428,
+              "y": 126,
+              "w": 536,
+              "h": 237.5
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "8px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 436,
+              "y": 134,
+              "w": 72,
+              "h": 88
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 516,
+              "y": 134,
+              "w": 440,
+              "h": 115.5
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 516,
+              "y": 134,
+              "w": 440,
+              "h": 40.5
+            },
+            "font": "27px",
+            "line": "40.5px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 516,
+              "y": 176.5,
+              "w": 54,
+              "h": 27
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 578,
+              "y": 181.5,
+              "w": 107,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 693,
+              "y": 176.5,
+              "w": 51,
+              "h": 27
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 752,
+              "y": 181.5,
+              "w": 72,
+              "h": 20.3
+            },
+            "font": "14px",
+            "line": "20.3px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 516,
+              "y": 205.5,
+              "w": 440,
+              "h": 44
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 516,
+              "y": 205.5,
+              "w": 440,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "20.8px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 436,
+              "y": 257.5,
+              "w": 123,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 436,
+              "y": 309.5,
+              "w": 520,
+              "h": 44
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 436,
+              "y": 309.5,
+              "w": 96.2,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 540.2,
+              "y": 309.5,
+              "w": 115,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 663.2,
+              "y": 309.5,
+              "w": 111.4,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 428,
+              "y": 379.5,
+              "w": 536,
+              "h": 96
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 428,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 609.3,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 790.7,
+              "y": 379.5,
+              "w": 173.3,
+              "h": 44
+            },
+            "font": "16px",
+            "line": "19.2px",
+            "pad": "2px 8px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 428,
+              "y": 491.5,
+              "w": 536,
+              "h": 1653
+            },
+            "font": "18px",
+            "line": "27px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 655.8,
+              "y": 614.1,
+              "w": 80.4,
+              "h": 44.8
+            },
+            "font": "16px",
+            "line": "20.8px",
+            "pad": "4px 8px",
+            "minH": "44px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 2019,
+          "scrollH": 2019,
+          "scrollTop": 0,
+          "clientW": 536,
+          "scrollW": 536
+        },
+        "hubRect": {
+          "x": 428,
+          "w": 536,
+          "right": 964
+        },
+        "offenders": [],
+        "windowH": 900,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 2,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 428,
+              "y": 132.5,
+              "w": 536,
+              "h": 517.8
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 444,
+              "y": 148.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 532,
+              "y": 148.5,
+              "w": 416,
+              "h": 251.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 532,
+              "y": 148.5,
+              "w": 416,
+              "h": 81
+            },
+            "font": "54px",
+            "line": "81px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 532,
+              "y": 233.5,
+              "w": 107,
+              "h": 54
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 655,
+              "y": 243.5,
+              "w": 210,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 532,
+              "y": 291.5,
+              "w": 101,
+              "h": 54
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 649,
+              "y": 301.5,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 532,
+              "y": 349.5,
+              "w": 416,
+              "h": 50.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 532,
+              "y": 349.5,
+              "w": 416,
+              "h": 50.6
+            },
+            "font": "32px",
+            "line": "41.6px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 444,
+              "y": 416.1,
+              "w": 230,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 444,
+              "y": 493.5,
+              "w": 504,
+              "h": 138.8
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 444,
+              "y": 493.5,
+              "w": 177.4,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 637.4,
+              "y": 493.5,
+              "w": 219,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 444,
+              "y": 570.9,
+              "w": 206.8,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 428,
+              "y": 682.3,
+              "w": 536,
+              "h": 215.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 428,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 612,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 796,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 428,
+              "y": 929.8,
+              "w": 536,
+              "h": 3960.4
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 512.6,
+              "y": 946.8,
+              "w": 143.8,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "41.6px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 4758,
+          "scrollH": 4758,
+          "scrollTop": 0,
+          "clientW": 536,
+          "scrollW": 536
+        },
+        "hubRect": {
+          "x": 428,
+          "w": 536,
+          "right": 964
+        },
+        "offenders": [],
+        "windowH": 900,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 428,
+              "y": 132.5,
+              "w": 536,
+              "h": 517.8
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 444,
+              "y": 148.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 532,
+              "y": 148.5,
+              "w": 416,
+              "h": 251.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 532,
+              "y": 148.5,
+              "w": 416,
+              "h": 81
+            },
+            "font": "54px",
+            "line": "81px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 532,
+              "y": 233.5,
+              "w": 107,
+              "h": 54
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 655,
+              "y": 243.5,
+              "w": 210,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 532,
+              "y": 291.5,
+              "w": 101,
+              "h": 54
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 649,
+              "y": 301.5,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 532,
+              "y": 349.5,
+              "w": 416,
+              "h": 50.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 532,
+              "y": 349.5,
+              "w": 416,
+              "h": 50.6
+            },
+            "font": "32px",
+            "line": "41.6px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 444,
+              "y": 416.1,
+              "w": 230,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 444,
+              "y": 493.5,
+              "w": 504,
+              "h": 138.8
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 444,
+              "y": 493.5,
+              "w": 177.4,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 637.4,
+              "y": 493.5,
+              "w": 219,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 444,
+              "y": 570.9,
+              "w": 206.8,
+              "h": 61.4
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 428,
+              "y": 682.3,
+              "w": 536,
+              "h": 215.6
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 428,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 612,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 796,
+              "y": 682.3,
+              "w": 168,
+              "h": 99.8
+            },
+            "font": "32px",
+            "line": "38.4px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 428,
+              "y": 929.8,
+              "w": 536,
+              "h": 3960.4
+            },
+            "font": "36px",
+            "line": "54px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 512.6,
+              "y": 946.8,
+              "w": 143.8,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "41.6px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 4758,
+          "scrollH": 4758,
+          "scrollTop": 0,
+          "clientW": 536,
+          "scrollW": 536
+        },
+        "hubRect": {
+          "x": 428,
+          "w": 536,
+          "right": 964
+        },
+        "offenders": [],
+        "windowH": 900,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 1000
+      },
+      "scale": 2,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 33.6,
+              "y": 100.1,
+              "w": 204.8,
+              "h": 1028.9
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 49.6,
+              "y": 116.1,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 49.6,
+              "y": 220.1,
+              "w": 172.8,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 49.6,
+              "y": 220.1,
+              "w": 172.8,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 49.6,
+              "y": 368.1,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 49.6,
+              "y": 420.1,
+              "w": 172.8,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 49.6,
+              "y": 505.3,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 49.6,
+              "y": 557.3,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 49.6,
+              "y": 601.9,
+              "w": 172.8,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 49.6,
+              "y": 601.9,
+              "w": 172.8,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 49.6,
+              "y": 663.3,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 49.6,
+              "y": 842,
+              "w": 172.8,
+              "h": 269
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 49.6,
+              "y": 842,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 49.6,
+              "y": 914.6,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 49.6,
+              "y": 1020.8,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 33.6,
+              "y": 1161,
+              "w": 204.8,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 33.6,
+              "y": 1161,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 33.6,
+              "y": 1229.6,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 33.6,
+              "y": 1298.2,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 33.6,
+              "y": 1524,
+              "w": 204.8,
+              "h": 5475.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 70.4,
+              "y": 1533,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6899,
+          "scrollH": 6899,
+          "scrollTop": 0,
+          "clientW": 205,
+          "scrollW": 205
+        },
+        "hubRect": {
+          "x": 33.6,
+          "w": 204.8,
+          "right": 238.4
+        },
+        "offenders": [],
+        "windowH": 1000,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 33.6,
+              "y": 100.1,
+              "w": 204.8,
+              "h": 1028.9
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 49.6,
+              "y": 116.1,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 49.6,
+              "y": 220.1,
+              "w": 172.8,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 49.6,
+              "y": 220.1,
+              "w": 172.8,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 49.6,
+              "y": 368.1,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 49.6,
+              "y": 420.1,
+              "w": 172.8,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 49.6,
+              "y": 505.3,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 49.6,
+              "y": 557.3,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 49.6,
+              "y": 601.9,
+              "w": 172.8,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 49.6,
+              "y": 601.9,
+              "w": 172.8,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 49.6,
+              "y": 663.3,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 49.6,
+              "y": 842,
+              "w": 172.8,
+              "h": 269
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 49.6,
+              "y": 842,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 49.6,
+              "y": 914.6,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 49.6,
+              "y": 1020.8,
+              "w": 172.8,
+              "h": 90.2
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 33.6,
+              "y": 1161,
+              "w": 204.8,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 33.6,
+              "y": 1161,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 33.6,
+              "y": 1229.6,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 33.6,
+              "y": 1298.2,
+              "w": 204.8,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 33.6,
+              "y": 1524,
+              "w": 204.8,
+              "h": 5475.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 70.4,
+              "y": 1533,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6899,
+          "scrollH": 6899,
+          "scrollTop": 0,
+          "clientW": 205,
+          "scrollW": 205
+        },
+        "hubRect": {
+          "x": 33.6,
+          "w": 204.8,
+          "right": 238.4
+        },
+        "offenders": [],
+        "windowH": 1000,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 400,
+        "height": 1000
+      },
+      "scale": 2,
+      "openTraining": false,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102.5,
+              "w": 280,
+              "h": 824.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 118.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 160,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 160,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 266.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 318.5,
+              "w": 160,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 403.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 455.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 160,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 160,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 561.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 248,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 779.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 852,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 958.6,
+              "w": 280,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 958.6,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1027.2,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1095.8,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1321.6,
+              "w": 280,
+              "h": 4793.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 110.4,
+              "y": 1330.6,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6013,
+          "scrollH": 6013,
+          "scrollTop": 0,
+          "clientW": 280,
+          "scrollW": 280
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 280,
+          "right": 316
+        },
+        "offenders": [],
+        "windowH": 1000,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102.5,
+              "w": 280,
+              "h": 824.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 118.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 160,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 160,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 266.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 318.5,
+              "w": 160,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 403.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 455.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 160,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 160,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 561.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 248,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 779.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 852,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 958.6,
+              "w": 280,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 958.6,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1027.2,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1095.8,
+              "w": 280,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1321.6,
+              "w": 280,
+              "h": 4793.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 110.4,
+              "y": 1330.6,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6013,
+          "scrollH": 6013,
+          "scrollTop": 0,
+          "clientW": 280,
+          "scrollW": 280
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 280,
+          "right": 316
+        },
+        "offenders": [],
+        "windowH": 1000,
+        "trainingOpen": false
+      }
+    },
+    {
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 2,
+      "openTraining": true,
+      "closedInInitialView": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 102.5,
+              "w": 281.9,
+              "h": 824.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 118.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 427.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 118.5,
+              "w": 161.9,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 266.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 318.5,
+              "w": 161.9,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 403.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 455.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 500.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 561.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 249.9,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 706.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 779.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 852.1,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 958.7,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1027.3,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1095.9,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1321.7,
+              "w": 281.9,
+              "h": 4809.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 111.4,
+              "y": 1338.7,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6029,
+          "scrollH": 6029,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": false
+      },
+      "captured": {
+        "parts": [
+          {
+            "label": "header",
+            "sel": ".hero-hub-header",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 36,
+              "y": 65.5,
+              "w": 281.9,
+              "h": 968.1
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "16px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "face",
+            "sel": ".hero-hub-face",
+            "text": "",
+            "rect": {
+              "x": 52,
+              "y": 81.5,
+              "w": 72,
+              "h": 88
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "identity",
+            "sel": ".hero-hub-identity",
+            "text": "Bryn ThornfighterHero L1 · XP ",
+            "rect": {
+              "x": 140,
+              "y": 81.5,
+              "w": 161.9,
+              "h": 571.2
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "identity/name",
+            "sel": ".hero-hub-identity h2",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 140,
+              "y": 81.5,
+              "w": 161.9,
+              "h": 144
+            },
+            "font": "48px",
+            "line": "72px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/class",
+            "sel": ".hero-hub-identity > span",
+            "text": "fighter",
+            "rect": {
+              "x": 140,
+              "y": 229.5,
+              "w": 95,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/progress",
+            "sel": "[data-hub-hero-progress]",
+            "text": "Hero L1 · XP 0/60",
+            "rect": {
+              "x": 140,
+              "y": 281.5,
+              "w": 161.9,
+              "h": 81.2
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/life",
+            "sel": "[data-hub-life-state]",
+            "text": "Ready",
+            "rect": {
+              "x": 140,
+              "y": 366.7,
+              "w": 91,
+              "h": 48
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/bloodline",
+            "sel": ".hero-hub-identity > small:not([data-hub-hero-progress])",
+            "text": "Bloodline 2",
+            "rect": {
+              "x": 140,
+              "y": 418.7,
+              "w": 142,
+              "h": 40.6
+            },
+            "font": "28px",
+            "line": "40.6px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training",
+            "sel": "[data-hub-training]",
+            "text": "TrainingClass L1 · Class XP 0 ",
+            "rect": {
+              "x": 140,
+              "y": 463.3,
+              "w": 161.9,
+              "h": 189.4
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "identity/training-summary",
+            "sel": "[data-hub-training] > summary",
+            "text": "Training",
+            "rect": {
+              "x": 140,
+              "y": 463.3,
+              "w": 161.9,
+              "h": 45.4
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "4px 0px 5px",
+            "minH": "44px",
+            "display": "flex"
+          },
+          {
+            "label": "secondary/button",
+            "sel": ".hero-hub-secondary button",
+            "text": "Appearance",
+            "rect": {
+              "x": 52,
+              "y": 668.7,
+              "w": 203,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents",
+            "sel": ".hero-hub-residents",
+            "text": "Vale AshBryn ThornCorin Flint",
+            "rect": {
+              "x": 52,
+              "y": 813.9,
+              "w": 249.9,
+              "h": 201.8
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "flex"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Vale Ash",
+            "rect": {
+              "x": 52,
+              "y": 813.9,
+              "w": 158.6,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Bryn Thorn",
+            "rect": {
+              "x": 52,
+              "y": 886.5,
+              "w": 194,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "residents/button",
+            "sel": ".hero-hub-residents button",
+            "text": "Corin Flint",
+            "rect": {
+              "x": 52,
+              "y": 959.1,
+              "w": 185.7,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs",
+            "sel": ".hero-hub-tabs",
+            "text": "GearSkillsBehaviourPetsAttribu",
+            "rect": {
+              "x": 36,
+              "y": 1065.7,
+              "w": 281.9,
+              "h": 331
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "grid"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Gear",
+            "rect": {
+              "x": 36,
+              "y": 1065.7,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Skills",
+            "rect": {
+              "x": 36,
+              "y": 1134.3,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "tabs/tab",
+            "sel": "[data-hub-tab]",
+            "text": "Behaviour",
+            "rect": {
+              "x": 36,
+              "y": 1202.9,
+              "w": 281.9,
+              "h": 56.6
+            },
+            "font": "28px",
+            "line": "33.6px",
+            "pad": "2px 16px 5px",
+            "minH": "44px",
+            "display": "block"
+          },
+          {
+            "label": "content",
+            "sel": ".hero-hub-content",
+            "text": "ActualNext delveWeaponswordAct",
+            "rect": {
+              "x": 36,
+              "y": 1428.7,
+              "w": 281.9,
+              "h": 4809.5
+            },
+            "font": "32px",
+            "line": "48px",
+            "pad": "0px",
+            "minH": "auto",
+            "display": "block"
+          },
+          {
+            "label": "content/first-action",
+            "sel": ".hero-hub-content button, .hero-hub-content summary",
+            "text": "Actual",
+            "rect": {
+              "x": 111.4,
+              "y": 1445.7,
+              "w": 131.2,
+              "h": 88
+            },
+            "font": "28px",
+            "line": "36.4px",
+            "pad": "8px 16px",
+            "minH": "88px",
+            "display": "block"
+          }
+        ],
+        "docOverflow": 0,
+        "hubScroll": {
+          "clientH": 6173,
+          "scrollH": 6173,
+          "scrollTop": 0,
+          "clientW": 282,
+          "scrollW": 282
+        },
+        "hubRect": {
+          "x": 36,
+          "w": 281.9,
+          "right": 318
+        },
+        "offenders": [],
+        "windowH": 681,
+        "trainingOpen": true
+      }
+    }
+  ],
+  "errors": [],
+  "vitePid": 1340502,
+  "port": 36631,
+  "status": "PROBED",
+  "closedUtc": "2026-10-16T09:15:56.482Z"
+}

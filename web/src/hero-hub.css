@@ -22,9 +22,18 @@
 .hero-hub-header {
   display: grid;
   grid-template-columns: 72px minmax(0, 1fr);
-  gap: 0.75rem;
-  padding: 0.75rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   border-bottom: 2px solid var(--ui-edge, #b89448);
+}
+/* At 200% root text every rem gap doubles while the face keeps its 72 CSS px, so on a narrow hub the
+   identity column collapsed to ~60px and its own words hung 3px out of the window. From 8rem of hub
+   width down the block takes its own row under the face — `rem`, so bigger text reaches the threshold at
+   a wider viewport, the same font-relative convention as the tab rules below. */
+@container hero-navigation (max-width: 8rem) {
+  .hero-hub-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .hero-hub-face {
   width: 72px;
@@ -40,15 +49,29 @@
   object-fit: cover;
   object-position: 50% 30%;
 }
+/* The short identity values pack onto shared lines (the name and the training fold keep their own row), so
+   a 200% header is a few wrapped lines instead of one line per value. */
 .hero-hub-identity {
-  display: grid;
-  gap: 0.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.125rem 0.5rem;
   min-width: 0;
 }
-.hero-hub-identity [data-hub-training] > summary {
+.hero-hub-identity > * {
+  min-inline-size: 0;
+}
+.hero-hub-identity > h2,
+.hero-hub-identity > [data-hub-training] {
+  flex: 1 0 100%;
+}
+/* Cut256: the fold keeps a 44 CSS px target instead of the material's font-scaled 2.75rem height (88px at
+   a 200% root font), like the Hub's other controls. */
+.hero-hub .hero-hub-identity [data-hub-training] > summary {
   display: flex;
   align-items: center;
   min-block-size: 44px;
+  padding-block: 4px 5px;
   cursor: pointer;
 }
 .hero-hub-secondary,

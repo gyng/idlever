@@ -2791,7 +2791,7 @@ export function createTownView(host: HTMLElement): TownView {
       raf = requestAnimationFrame(loop);
       return;
     }
-    const dt = Math.min(0.1, (now - last) / 1000);
+    const dt = Math.max(0, Math.min(0.1, (now - last) / 1000));
     last = now;
     lastDraw = now;
     t += dt;

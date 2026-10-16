@@ -54,3 +54,30 @@ The fourteen alternate-look town walk paintings remain optional: the existing
 `townWalkIds` fallback preserves each resident's selected look using its idle pose.
 Equipment paper-doll layering, further worker routines, whole-landscape relief,
 audio listening, exhaustive audits and fun acceptance are separate outstanding work.
+
+## Pending art work — 2026-10-16 (generation blocked)
+
+**Blocker: Codex is out of quota for the week (owner, 2026-10-16).** Every new
+painting in this project is a Codex/imagegen run; none can start until the quota
+resets. Record only — do not open a generation batch, and do not treat a saved
+candidate as integrated.
+
+Audit of this checkout (`art/pack.py`'s own rule over `art/manifest.json`, plus
+the generated registries): **0** missing manifest masters, 72/72 class-skill
+exports (`missing`/`invalid` empty; 4213764 bytes; 216 source/prompt/export
+hashes pinned), 10 equipment layers. So the pending list is refinement, version
+selection and layout — no placeholder or absent file is outstanding. (`art-qc`:
+525 frames/0 failures is CUT236's recorded run, not re-measured here.)
+
+| Pending | What is missing | Evidence to read first |
+|---|---|---|
+| Gunner ability V2 selection | `art/generated/skill_gunner_chamber_chain_v2.png`, `skill_gunner_long_watch_v2.png` + exact prompts are saved but unselected. Engineering review: both are far brighter at 24/32px than V1; chamber chain's brass cylinder may read as a gear/ring rather than a reload. Adopting needs `art/export_advanced_skills.py --library` and the 72-icon matrix — no generation. | `docs/evidence/cut254/gunner-v2/observations-2026-10-16.md`, `saved-candidates.json`, `preview-states.png` |
+| Skill polish (remaining classes) | Rogue Veiled route; Caster Storm cell, Conduct, Last wall (muted); Gunner Rangefinder/smoke walk/cycling breach/breach route; repeated Engineer compositions; Fighter Rally/Oathguard/Execution arc repeated gauntlet close-ups and busy Siege rhythm; Ranger Split mark/Moving line excess scenery. | `docs/evidence/cut254/independent-review/observations-2026-10-16.md`, `art/ADVANCED_SKILLS.md` |
+| Dungeon weapon identity (R4) | Actual hero sprites still paint Ranger sword as Bow, Caster dagger/bow as Staff, short gun as the long shoulder gun; Crownsplitter is not distinct. Snapshot.weapon carries canonical gear, so these are sprite paintings. | HANDOFF §Cut246 dated visual review, `docs/evidence/cut246/` |
+| Paper doll mounts | Rejected V1/V2 mounts; a V3 approval decision remains. Owner permits the more abstract composition; knowledge already generated (3 neutral looks + 7 wearable masters). | `docs/evidence/cut220/painted-8879/`, `art/EQUIPMENT.md` |
+| Town walk alternates | 14 optional alternate-look walk paintings; the existing idle-pose fallback covers them. | this file, §Delivered |
+| Landmark layout (R6) | Canvas Crypt centrepiece is partly clipped at its upper viewport edge in the real nearby-gas view — layout, not new painting. | HANDOFF §R6, `docs/evidence/cut245/` |
+
+Revalidate every row after a painting, export, display-size, frame or context
+change; these are dated engineering observations, not owner or recognition
+acceptance.

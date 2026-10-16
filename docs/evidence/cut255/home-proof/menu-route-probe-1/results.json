@@ -1,0 +1,121 @@
+{
+  "at": "2026-10-16T09:03:41.405Z",
+  "scriptSha256": "29a92adc15a42e38b1aace4b761e0189665c7eea9bd4c795e776fa588ce91734",
+  "preparedSha256": "cb2d952807e1ad17fd39767426cf1e359b232a6356abeff15ae5e9f71b426dd0",
+  "steps": [
+    {
+      "step": "menu-open",
+      "sheets": [
+        {
+          "cls": "sheet-wrap centered",
+          "hidden": false,
+          "rects": 1,
+          "back": false,
+          "material": null,
+          "title": "Menu",
+          "visible": true
+        }
+      ],
+      "active": {
+        "tag": "BUTTON",
+        "cls": "stud close-stud ad-host ad-paused",
+        "inCamp": false,
+        "connected": true
+      },
+      "journal": false,
+      "inMovie": "camp"
+    },
+    {
+      "step": "tasks-open",
+      "sheets": [
+        {
+          "cls": "sheet-wrap centered",
+          "hidden": false,
+          "rects": 1,
+          "back": false,
+          "material": null,
+          "title": "Menu",
+          "visible": true
+        }
+      ],
+      "active": {
+        "tag": "SUMMARY",
+        "cls": "task-summary",
+        "inCamp": false,
+        "connected": true
+      },
+      "journal": false,
+      "inMovie": "camp"
+    },
+    {
+      "step": "task-entry-clicked",
+      "sheets": [
+        {
+          "cls": "sheet-wrap centered under",
+          "hidden": true,
+          "rects": 0,
+          "back": false,
+          "material": null,
+          "title": "Menu",
+          "visible": false
+        },
+        {
+          "cls": "sheet-wrap centered",
+          "hidden": false,
+          "rects": 1,
+          "back": true,
+          "material": "journal",
+          "title": "Journal",
+          "visible": true
+        }
+      ],
+      "active": {
+        "tag": "BUTTON",
+        "cls": "sheet-back stud",
+        "inCamp": false,
+        "connected": true
+      },
+      "journal": true,
+      "inMovie": "camp"
+    },
+    {
+      "step": "escape-1",
+      "sheets": [
+        {
+          "cls": "sheet-wrap centered",
+          "hidden": false,
+          "rects": 1,
+          "back": false,
+          "material": null,
+          "title": "Menu",
+          "visible": true
+        }
+      ],
+      "active": {
+        "tag": "BUTTON",
+        "cls": "task-entry",
+        "inCamp": false,
+        "connected": true
+      },
+      "journal": false,
+      "inMovie": "camp"
+    },
+    {
+      "step": "escape-2",
+      "sheets": [],
+      "active": {
+        "tag": "BUTTON",
+        "cls": "gear stud",
+        "inCamp": true,
+        "connected": true
+      },
+      "journal": false,
+      "inMovie": "camp"
+    }
+  ],
+  "errors": [],
+  "vitePid": 1320744,
+  "port": 37763,
+  "status": "PROBED",
+  "closedUtc": "2026-10-16T09:03:46.469Z"
+}

@@ -42,6 +42,49 @@ Resume from the parked Home WIP, not a new generation/timing batch:
    and independent fun>=80 remain open. Do not restart completed pacing/full or
    failed GPU controls; no new GPU timing run is authorized.
 
+**Resumed 2026-10-16 (owner). Cut255 and the Hub header are done at their
+contract scope; the owner has since moved UI work to Codex/Claude and asked this
+agent to work on game-mechanic reviews and chores (perf optimization, build-speed
+iteration).** State of the resume order:
+
+1. **Cut255 — PASS.** `docs/evidence/cut255/home-proof/attempt-5` (four cases,
+   402×681/1440×900 normal/200%, exit 0, served `ef4b58d7…`): the 402 inventory is
+   exactly the 12 expected functions at both scales, owners/Legacy/locate/away
+   watch/fresh pre-House/exact saves all pass, and phone Menu/Tasks typography
+   measures exactly 2.00×. Two defects were fixed on the way (roster locate wrote
+   into the disposed scene after a remount; the scene clock could start negative,
+   so `focusHero` silently did nothing) — `docs/evidence/cut255/locate-fix-observations-2026-10-16.md`,
+   parked bounded proof now green in `cross-owner-locate-2`. Affected client
+   journeys 11/12, `tsc`/lint/format/copy pass.
+2. **Hub header (Cut256) — compacted, one UI stage open.** Measured header heights
+   1440×900 2× 696→518, 402×681 2× 959→824, 320×1000 2× 1383→1029; the Hub's 3 px
+   overflow at 320/200% (which failed `hero-hub`'s geometry gate) is gone and the
+   200% desktop tab row is now in the initial view. `hero-hub` now stops in its
+   material-contrast stage — Hub presentation work, handed to the UI owner with
+   `docs/evidence/cut255/observations-2026-10-16-resume.md` and
+   `docs/evidence/cut255/hero-hub-contrast.log`.
+3. New work this session: a source+evidence review of the advanced-skill payoff
+   gaps — `docs/evidence/mechanics/skill-payoff-review-2026-10-16.md` — which
+   classifies each flagged row as a real arming/effect defect, a no-op, or a
+   diagnostic artifact, with `file:line` mechanisms and the smallest fix + proving
+   test for each (Ranger `moving_line`/`split_mark` arming, Caster `conduct`
+   policy-inert pick + `chilling_charge` zero-amount reward, Rogue `ghostwalk`
+   missing payoff verb, Gunner `long_watch` window shorter than its own aim
+   cadence, Fighter `holdfast` negligible value; `fired>matched` is not a bug).
+
+**Art generation is blocked: Codex is out of quota for the week (owner,
+2026-10-16).** No new painting can be produced until it resets, so do not start
+a generation batch. Nothing is *absent*: a fresh audit of this checkout finds 0
+missing manifest masters (mirrors `art/pack.py`),72/72 class-skill exports
+(4213764bytes, `missing`/`invalid` empty in art/class-skills.json and
+art/advanced-skills.json) and10equipment layers. What remains is refinement and
+version selection, not placeholders — the full pending register (skill polish,
+dungeon weapon identityV2revisions, paper-doll V3, town-walk alternates) and its
+evidence pointers are recorded in `docs/CUT236_ART_GAPS.md` §"Pending art work".
+Two GunnerV2 masters stay UNSELECTED (item4); adopting them needs the exporter
+and the72icon matrix but no new generation, and any revision they inspire waits
+on the quota.
+
 All launched validation/native/browser jobs are terminal at parking. The old
 owned temporary Vite5298 was stopped and parent/child positively absent; shared
 5219 was left alone. No priority4, compact-header implementation, new campaign,

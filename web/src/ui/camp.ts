@@ -619,8 +619,10 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     externalOpen: true,
     compactHome: true,
     focus: () => {
-      town.el.scrollIntoView({ block: "nearest" });
-      town.view.focusHero();
+      // Selecting another owner remounts the camp (`App.selectBloodline` → `go(camp)`), so this captured
+      // scene is the disposed one by the time the roster calls back. Locate through the window event
+      // instead: the camp that is standing now answers it, on the frame after the new scene has laid out.
+      requestAnimationFrame(() => window.dispatchEvent(new Event("idlever:focus-hero")));
     },
     rules: () => {
       app.editing = true;
