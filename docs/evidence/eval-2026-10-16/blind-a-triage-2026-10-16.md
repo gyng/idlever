@@ -23,6 +23,16 @@ the four headline claims are design, not defects:
 | "the 20 m and 4 h absences return one three-way pick and nothing else, while the 8 h returns a whole night" | `AGENTS.md`: before the scout is hired an absence finishes at most the run in flight | **By design**, but the *report* for short absences is thin — legitimate feedback about the idle feel |
 | "`Guild reception`, `Recovery pool`, `Build forge` are unlabelled patches of the painting" | UI lane; corroborated independently by `eval/package/idlever.51d041d0.rater-PackageRater.json`, which measured the Behaviour panel's label column clipping (`clientWidth 38` vs `scrollWidth 44` at 14.875 px) | **Genuinely open**, owned by the UI lane (Codex/Claude), not a core defect |
 
+A fifth gripe checked, because it is the kind of thing that should reach the right lane
+with evidence: "the speed tile prints `Normal 4×` and `Fights only 36×` with no
+explanation". The tile **is** player-facing (`web/src/ui/watch.ts:715–748`: the `Speed`
+tile carries the mode name plus the clock it is playing at, and its `Watch speed` sheet
+holds `Normal`/`Fights only`/`Fast`), and the code already carries a note from an earlier
+blind pair with the same complaint ("blind c4705f9 (A, B: `fights only` 16× persisted
+across runs and both believed they watched at 1×)"). Two independent blind cohorts have
+now misread the same tile, so the legibility gap is repeatable, not one rater's mistake —
+a UI-lane item (the reason exists only as a `title` tooltip on a hidden span).
+
 What the card is actually worth: a first instrument-verified fun reading for this build
 with its limits declared, plus one pacing finding (the late pen) and one presentation
 finding (unlabelled painted controls) already in the UI owner's hands. It does **not**

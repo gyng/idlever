@@ -172,7 +172,12 @@ the target viewport: the Behaviour panel's label column clips (`COM/BAT/STYL/E`,
 behind its own top edge. Its score (package 66.6, `shippable` 60–67) left `fun`
 unassessed at the time; a blind fun card for the same engine now exists (wasm
 `51d041d0…`, 65.7 `promising` — resume item 8), and it independently saw the same
-label/control legibility problem.
+label/control legibility problem. A second, repeatable legibility item for this lane: the
+player-facing `Speed` tile (`web/src/ui/watch.ts:715–748`) prints the mode and the live
+clock together (`Normal 4×`, `Fights only 36×`) with its reason only in a `title` tooltip
+on a hidden span, and **two independent blind cohorts have misread it** (c4705f9's pair
+believed they watched at 1× while `fights only 16×` persisted; e33d50b's `blind-a` called
+it unexplained) — `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`.
 
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start
