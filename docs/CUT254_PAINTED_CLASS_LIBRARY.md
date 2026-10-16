@@ -41,8 +41,8 @@ not final artistic approval.
    regression checks and static checks pass; native advanced progression and
    broader handoff/fun/performance acceptance remain separate requirements.
 
-Current status:42original-node first passes plus two targetedV2revisions saved;
-complete72candidate library mapped/exported,4193234bytes. Current ef4b client
+Current status:42original-node first passes plus two early-node and four advanced Rogue and three CasterV2revisions saved;
+complete72candidate library mapped/exported,4213764bytes. Current ef4b client
 passes648painted state/size cells,72distinct primitives,72actual image failures,
 served hashes/exact save and live Recovery attribution. Static checks pass.
 Independent seven-sheet visual review still flags dark/repeated compositions;

@@ -86,7 +86,14 @@
     "ranger_corridor_volley": 2,
     "ranger_patient_snare": 2,
     "fighter_boss_guard": 2,
-    "rogue_ambusher": 2
+    "rogue_ambusher": 2,
+    "rogue_afterimage": 2,
+    "rogue_tell_thief": 2,
+    "rogue_ghostwalk": 2,
+    "rogue_silent_finish": 2,
+    "caster_chilling_charge": 2,
+    "caster_ice_lock": 2,
+    "caster_shatter_ward": 2
   },
   "output_size": [
     192,
@@ -348,31 +355,31 @@
     },
     {
       "id": "rogue_afterimage",
-      "source": "art/generated/skill_rogue_afterimage_v1.png",
-      "source_sha256": "09f368b6d10401b5952b5a280961fc8d6ccfddd84b9593797a5327bcde6c7d16",
+      "source": "art/generated/skill_rogue_afterimage_v2.png",
+      "source_sha256": "30acd473a720c9b3b6b850286c638e5ec86d8e9ad6793be5d7dc8d3cc02fc7d3",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_rogue_afterimage_v1.txt",
-      "prompt_sha256": "bfce06316261c89508086bec1d52e49ce83237063976220ea684f877d548ef87",
-      "output": "web/public/ui/skills/rogue_afterimage-v1.webp",
-      "output_sha256": "98ecedf6fbea241638cab35d4e0b8294e96b9d22603d0af72185dd3ae7e14b16",
-      "bytes": 51994
+      "prompt": "art/prompts/skill_rogue_afterimage_v2.txt",
+      "prompt_sha256": "5a7203fc764e44a280ccabd17ae67fe5bc5293479462d048598e40a91cc3b80a",
+      "output": "web/public/ui/skills/rogue_afterimage-v2.webp",
+      "output_sha256": "0e3ba0acab7480ca2ee097db66887ec24136752fa702854afba35c2148240712",
+      "bytes": 55754
     },
     {
       "id": "rogue_tell_thief",
-      "source": "art/generated/skill_rogue_tell_thief_v1.png",
-      "source_sha256": "c763b506c2f9cbdcf7aaa5586af56607288b8cc0b9b9495b25eb8c26d61be310",
+      "source": "art/generated/skill_rogue_tell_thief_v2.png",
+      "source_sha256": "edb3d471e2d63216289ef69d242143e90c4b9e513db6799b33097ddc56bff1f8",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_rogue_tell_thief_v1.txt",
-      "prompt_sha256": "c03f1cf7fb3048b1964792e7c6b0d8a808c062353f1f64fdf2b2b7cff626d2cd",
-      "output": "web/public/ui/skills/rogue_tell_thief-v1.webp",
-      "output_sha256": "a04c8204b7d22db4614c48696f4f8ff21d532f26878337c09a9cdda290fa5826",
-      "bytes": 50296
+      "prompt": "art/prompts/skill_rogue_tell_thief_v2.txt",
+      "prompt_sha256": "07de49081ca279913b8537a5e00e79703aa112b8aa86b433df7a194df895c8e7",
+      "output": "web/public/ui/skills/rogue_tell_thief-v2.webp",
+      "output_sha256": "55c5770a9d51e4767989a73bbb0531f69e6dc94ae81ac9e8ee6197bec41f6cbe",
+      "bytes": 53360
     },
     {
       "id": "rogue_veiled_route",
@@ -404,31 +411,31 @@
     },
     {
       "id": "rogue_ghostwalk",
-      "source": "art/generated/skill_rogue_ghostwalk_v1.png",
-      "source_sha256": "a58ffc4028905621f761ffc5222b5b208a72e2a6818547ddaadba3ba8ee34b9c",
+      "source": "art/generated/skill_rogue_ghostwalk_v2.png",
+      "source_sha256": "95cd8b5e9ac3f1dc2c9ab64444cad1566bd415b8209e4ca7b94d05062cd73cf4",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_rogue_ghostwalk_v1.txt",
-      "prompt_sha256": "aef2865ea0bbd521aeb9094302dc51435b41f78c298088dba23038a2366871bd",
-      "output": "web/public/ui/skills/rogue_ghostwalk-v1.webp",
-      "output_sha256": "947a4ecc83b5078362e1a972141b4bedc27629100da6c4b42ba1baca62961aa9",
-      "bytes": 57118
+      "prompt": "art/prompts/skill_rogue_ghostwalk_v2.txt",
+      "prompt_sha256": "817251866e370e8a3760ae67cefc9327b59d9d4c492ded0027bdf01d94db3184",
+      "output": "web/public/ui/skills/rogue_ghostwalk-v2.webp",
+      "output_sha256": "8aad3da8a6fd9f89a0fe4f9b7bbc12606a52071e48bd1a353be73d71beea670b",
+      "bytes": 59126
     },
     {
       "id": "rogue_silent_finish",
-      "source": "art/generated/skill_rogue_silent_finish_v1.png",
-      "source_sha256": "ab6b131dbffd30881dec3e3c0f7f2b2537d5d3a845fc4cc2488c94cf70999f90",
+      "source": "art/generated/skill_rogue_silent_finish_v2.png",
+      "source_sha256": "2e72bd72971bd35127f09c3f9bae0d5e7d58cdaead997fdf679c90ae0531e44d",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_rogue_silent_finish_v1.txt",
-      "prompt_sha256": "2abe9a9116eee089747fbbdcab479438bfdf480723c8961b58b98d1a8b181c09",
-      "output": "web/public/ui/skills/rogue_silent_finish-v1.webp",
-      "output_sha256": "648e4c84e6be065971824ac6139f49e1c2417020dc4ad7dfe206346351bc5b12",
-      "bytes": 46324
+      "prompt": "art/prompts/skill_rogue_silent_finish_v2.txt",
+      "prompt_sha256": "72fa81df8d85019692d11caa6a418cfc22be4eb977762a4d6b5b64c6d5f04dcb",
+      "output": "web/public/ui/skills/rogue_silent_finish-v2.webp",
+      "output_sha256": "05071ef9a2481bc49b55a674354ca00802f40fcbeae12e60718e4f398d0ddd84",
+      "bytes": 53906
     },
     {
       "id": "ranger_hunter",
@@ -684,17 +691,17 @@
     },
     {
       "id": "caster_chilling_charge",
-      "source": "art/generated/skill_caster_chilling_charge_v1.png",
-      "source_sha256": "34ac4ff42bc21c53ca004b1ba9fc9ad59c012ed160043c06a1f1010add418474",
+      "source": "art/generated/skill_caster_chilling_charge_v2.png",
+      "source_sha256": "bd0b0178430e6d49103c88e85fdf9dfdb49a80c79233a2261bbaab8806df5acd",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_caster_chilling_charge_v1.txt",
-      "prompt_sha256": "2dac7cfd23c3103e23711b3de930987c2b85e8895602b7b5eaf82870b43d1971",
-      "output": "web/public/ui/skills/caster_chilling_charge-v1.webp",
-      "output_sha256": "f2347fe091dd746d6f91a799de473733318e9e50cd69f56ff35aff704cd177c8",
-      "bytes": 58562
+      "prompt": "art/prompts/skill_caster_chilling_charge_v2.txt",
+      "prompt_sha256": "5e3ac4bfefea26990fae2794e29cd1ab9a341f91d3b16e63221028eb0173a500",
+      "output": "web/public/ui/skills/caster_chilling_charge-v2.webp",
+      "output_sha256": "4ccbba4dddb71217d79cfdf96e2519c469a57d9cbd14caf2bcf0b2f21bd1f87e",
+      "bytes": 56232
     },
     {
       "id": "caster_storm_cell",
@@ -712,31 +719,31 @@
     },
     {
       "id": "caster_ice_lock",
-      "source": "art/generated/skill_caster_ice_lock_v1.png",
-      "source_sha256": "2cefbb3cc59b9e17c0a2da6988ab21895f1d4cd2dd471c94053742a4019c44f4",
+      "source": "art/generated/skill_caster_ice_lock_v2.png",
+      "source_sha256": "df17d3ca0b74c68364d6e7deb9a9bf1fcba22565827e00a7ae536e7112a1c61b",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_caster_ice_lock_v1.txt",
-      "prompt_sha256": "71e419daa7b4346de5724dd5335d8fde23175d68e1b23906f34e9ae66a9604f2",
-      "output": "web/public/ui/skills/caster_ice_lock-v1.webp",
-      "output_sha256": "657c67a8dd1de4f7179c31d9683a2b2d16daa1a7e24c9a164197ecb5affa1efa",
-      "bytes": 54598
+      "prompt": "art/prompts/skill_caster_ice_lock_v2.txt",
+      "prompt_sha256": "6421c975d4ee909cfdd8b54d4deeaaf96df762ae5053408a40a1f2e55658f9ea",
+      "output": "web/public/ui/skills/caster_ice_lock-v2.webp",
+      "output_sha256": "377d35c9de18558bb8d66b4938e7b6a244ce72b404098f5a06a5026060531903",
+      "bytes": 59770
     },
     {
       "id": "caster_shatter_ward",
-      "source": "art/generated/skill_caster_shatter_ward_v1.png",
-      "source_sha256": "d2107079c3ff6813d35411205d82dc24f5d049731ae8269f57b9d202c567c14b",
+      "source": "art/generated/skill_caster_shatter_ward_v2.png",
+      "source_sha256": "05a55a50e85ed5fc06b59b6d9edc6b5d967f7aa6e430dd5b2499c38240ea6db1",
       "source_size": [
         1254,
         1254
       ],
-      "prompt": "art/prompts/skill_caster_shatter_ward_v1.txt",
-      "prompt_sha256": "9abb96b22403e98bd52f9af29b528088785e4e703c06b7fc041dcf3772dd0521",
-      "output": "web/public/ui/skills/caster_shatter_ward-v1.webp",
-      "output_sha256": "751fd3344baf9ea5ae49333b740451a509456c7fe0f3cdfd7450c3ad74a2513d",
-      "bytes": 57670
+      "prompt": "art/prompts/skill_caster_shatter_ward_v2.txt",
+      "prompt_sha256": "719b35f8775176569a1db664e23d82ea5ce4f608c1de4423bb88cf4c7615f45f",
+      "output": "web/public/ui/skills/caster_shatter_ward-v2.webp",
+      "output_sha256": "aee04eaac8de85a5e4fa4b2ef2624b6c79f617ce81c0c833054aab10434a4df6",
+      "bytes": 58944
     },
     {
       "id": "caster_conduct",

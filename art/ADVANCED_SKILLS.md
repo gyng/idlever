@@ -29,8 +29,8 @@ an incomplete30master set. Export completion is not live integration acceptance.
 All skill names, ownership, costs, prerequisites, state and effects remain Rust
 truth; new art must not imply that unimplemented skills are already available.
 
-Current status:30of30advanced painted candidates exported (1662290bytes), with
-client registration in progress. Thirty first-pass masters and five version2 revisions are saved
+Current status:30of30advanced painted candidates exported (1682820bytes), with
+client registration complete at scoped catalogue level. Thirty first-pass masters, five initial, four later Rogue and three later Caster version2 revisions are saved
 with exact prompts and built-in provenance. The revised Patient Ambush and four
 Ranger compositions use broader visible paint and square framing. Four rejected
 non-square Ranger originals remain untouched; the exporter refuses non-square
@@ -57,7 +57,7 @@ paint, export, frames or displayed size changes; don't carry a pass forward.
 Cut254 now supplies all42original-node paintings, with two targetedV2revisions
 (Boss guard's tall shield/mace and Ambusher's vertical strike). All44new masters
 and exact built-in prompts are saved; rejectedV1s remain. The complete72candidate
-library exports4193234bytes,0missing/invalid; art/class-skills.json pins all
+library exports4213764bytes,0missing/invalid; art/class-skills.json pins all
 216source/prompt/export hashes. The generated active registry now includes72.
 The normal advanced-only exporter cannot downgrade this complete registry.
 
@@ -74,3 +74,21 @@ style gap is removed, but variation and tiny-size clarity are still incomplete.
 Read cut254/independent-review/observations-2026-10-16.md before choosing revisions;
 its exact identity and shelf-life limits apply. No player recognition or fun
 claim follows from the inventory, hashes or rendering checks.
+
+Four advanced RogueV2revisions now replace the reviewed dark Afterimage, Tell
+thief, Ghostwalk and Silent finish. All four have broad brighter focal masses;
+68other selected paintings are unchanged byte-for-byte. Exact versioned masters/
+prompts and rogue-v2-provenance.json are saved. The updated648cell/72fallback
+state matrix passes (rogue-v2-states). Root reviewed the actual24/32/48board and
+finds improved separation via pale afterimage, large eye, boot/smoke and crimson
+ribbon/bright blade; this is engineering review, not unlabelled recognition.
+Veiled route and the other concrete review priorities remain open.
+
+Three CasterV2 revisions now replace the muted Chilling charge, Ice lock and
+Shatter ward compositions with an expressive finger-cast bolt, a braced frozen
+fist and an open palm breaking its ward. The other69selected assets are exact
+unchanged bytes. Full72exports total4213764bytes; advanced30total1682820bytes.
+The current648cell/72actual image-failure matrix passes with served hashes and
+exact save retention (cut254/caster-v2). Root's actual-size engineering review
+finds stronger separation; Storm cell, Conduct and Last wall remain muted.
+This does not establish player recognition or final library acceptance.

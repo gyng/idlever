@@ -43,6 +43,13 @@ def main():
         "ranger_patient_snare": 2,
         "fighter_boss_guard": 2,
         "rogue_ambusher": 2,
+        "rogue_afterimage": 2,
+        "rogue_tell_thief": 2,
+        "rogue_ghostwalk": 2,
+        "rogue_silent_finish": 2,
+        "caster_chilling_charge": 2,
+        "caster_ice_lock": 2,
+        "caster_shatter_ward": 2,
     }
     sources = {
         key: ROOT / f"art/generated/skill_{key}_v{versions.get(key, 1)}.png"

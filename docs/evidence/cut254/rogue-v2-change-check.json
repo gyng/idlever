@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-16",
+  "status": "PASS manifest/input identity only; not visual recognition",
+  "priorCommit": "17b24611",
+  "changed": [
+    "rogue_afterimage",
+    "rogue_tell_thief",
+    "rogue_ghostwalk",
+    "rogue_silent_finish"
+  ],
+  "unchangedAssets": 68,
+  "sourcePromptOutputHashesVerified": 216,
+  "outputBytes": 4209648,
+  "currentManifestSha256": "0f837957e68acb8c3e9de6b426a51b5593b9ab0a3d5b0736e6f37ea35842bdce",
+  "selected": {
+    "rogue_afterimage": {
+      "before": {
+        "id": "rogue_afterimage",
+        "source": "art/generated/skill_rogue_afterimage_v1.png",
+        "source_sha256": "09f368b6d10401b5952b5a280961fc8d6ccfddd84b9593797a5327bcde6c7d16",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_afterimage_v1.txt",
+        "prompt_sha256": "bfce06316261c89508086bec1d52e49ce83237063976220ea684f877d548ef87",
+        "output": "web/public/ui/skills/rogue_afterimage-v1.webp",
+        "output_sha256": "98ecedf6fbea241638cab35d4e0b8294e96b9d22603d0af72185dd3ae7e14b16",
+        "bytes": 51994
+      },
+      "after": {
+        "id": "rogue_afterimage",
+        "source": "art/generated/skill_rogue_afterimage_v2.png",
+        "source_sha256": "30acd473a720c9b3b6b850286c638e5ec86d8e9ad6793be5d7dc8d3cc02fc7d3",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_afterimage_v2.txt",
+        "prompt_sha256": "5a7203fc764e44a280ccabd17ae67fe5bc5293479462d048598e40a91cc3b80a",
+        "output": "web/public/ui/skills/rogue_afterimage-v2.webp",
+        "output_sha256": "0e3ba0acab7480ca2ee097db66887ec24136752fa702854afba35c2148240712",
+        "bytes": 55754
+      }
+    },
+    "rogue_tell_thief": {
+      "before": {
+        "id": "rogue_tell_thief",
+        "source": "art/generated/skill_rogue_tell_thief_v1.png",
+        "source_sha256": "c763b506c2f9cbdcf7aaa5586af56607288b8cc0b9b9495b25eb8c26d61be310",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_tell_thief_v1.txt",
+        "prompt_sha256": "c03f1cf7fb3048b1964792e7c6b0d8a808c062353f1f64fdf2b2b7cff626d2cd",
+        "output": "web/public/ui/skills/rogue_tell_thief-v1.webp",
+        "output_sha256": "a04c8204b7d22db4614c48696f4f8ff21d532f26878337c09a9cdda290fa5826",
+        "bytes": 50296
+      },
+      "after": {
+        "id": "rogue_tell_thief",
+        "source": "art/generated/skill_rogue_tell_thief_v2.png",
+        "source_sha256": "edb3d471e2d63216289ef69d242143e90c4b9e513db6799b33097ddc56bff1f8",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_tell_thief_v2.txt",
+        "prompt_sha256": "07de49081ca279913b8537a5e00e79703aa112b8aa86b433df7a194df895c8e7",
+        "output": "web/public/ui/skills/rogue_tell_thief-v2.webp",
+        "output_sha256": "55c5770a9d51e4767989a73bbb0531f69e6dc94ae81ac9e8ee6197bec41f6cbe",
+        "bytes": 53360
+      }
+    },
+    "rogue_ghostwalk": {
+      "before": {
+        "id": "rogue_ghostwalk",
+        "source": "art/generated/skill_rogue_ghostwalk_v1.png",
+        "source_sha256": "a58ffc4028905621f761ffc5222b5b208a72e2a6818547ddaadba3ba8ee34b9c",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_ghostwalk_v1.txt",
+        "prompt_sha256": "aef2865ea0bbd521aeb9094302dc51435b41f78c298088dba23038a2366871bd",
+        "output": "web/public/ui/skills/rogue_ghostwalk-v1.webp",
+        "output_sha256": "947a4ecc83b5078362e1a972141b4bedc27629100da6c4b42ba1baca62961aa9",
+        "bytes": 57118
+      },
+      "after": {
+        "id": "rogue_ghostwalk",
+        "source": "art/generated/skill_rogue_ghostwalk_v2.png",
+        "source_sha256": "95cd8b5e9ac3f1dc2c9ab64444cad1566bd415b8209e4ca7b94d05062cd73cf4",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_ghostwalk_v2.txt",
+        "prompt_sha256": "817251866e370e8a3760ae67cefc9327b59d9d4c492ded0027bdf01d94db3184",
+        "output": "web/public/ui/skills/rogue_ghostwalk-v2.webp",
+        "output_sha256": "8aad3da8a6fd9f89a0fe4f9b7bbc12606a52071e48bd1a353be73d71beea670b",
+        "bytes": 59126
+      }
+    },
+    "rogue_silent_finish": {
+      "before": {
+        "id": "rogue_silent_finish",
+        "source": "art/generated/skill_rogue_silent_finish_v1.png",
+        "source_sha256": "ab6b131dbffd30881dec3e3c0f7f2b2537d5d3a845fc4cc2488c94cf70999f90",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_silent_finish_v1.txt",
+        "prompt_sha256": "2abe9a9116eee089747fbbdcab479438bfdf480723c8961b58b98d1a8b181c09",
+        "output": "web/public/ui/skills/rogue_silent_finish-v1.webp",
+        "output_sha256": "648e4c84e6be065971824ac6139f49e1c2417020dc4ad7dfe206346351bc5b12",
+        "bytes": 46324
+      },
+      "after": {
+        "id": "rogue_silent_finish",
+        "source": "art/generated/skill_rogue_silent_finish_v2.png",
+        "source_sha256": "2e72bd72971bd35127f09c3f9bae0d5e7d58cdaead997fdf679c90ae0531e44d",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "prompt": "art/prompts/skill_rogue_silent_finish_v2.txt",
+        "prompt_sha256": "72fa81df8d85019692d11caa6a418cfc22be4eb977762a4d6b5b64c6d5f04dcb",
+        "output": "web/public/ui/skills/rogue_silent_finish-v2.webp",
+        "output_sha256": "05071ef9a2481bc49b55a674354ca00802f40fcbeae12e60718e4f398d0ddd84",
+        "bytes": 53906
+      }
+    }
+  }
+}

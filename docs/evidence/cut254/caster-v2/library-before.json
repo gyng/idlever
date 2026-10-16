@@ -1,0 +1,1111 @@
+{
+  "schema": 1,
+  "generation": "built-in image_gen",
+  "direction": "Owner2026-10-16: painted ability icons with classic strategy-game personality; flat SVG drafts rejected as final art",
+  "status": "export complete; integration and review separate",
+  "required": [
+    "fighter_warden",
+    "fighter_recovery",
+    "fighter_boss_guard",
+    "fighter_reaver",
+    "fighter_crowd_breaker",
+    "fighter_boss_breaker",
+    "fighter_rally",
+    "fighter_oathguard",
+    "fighter_opening_cut",
+    "fighter_siege_rhythm",
+    "fighter_holdfast",
+    "fighter_execution_arc",
+    "rogue_stalker",
+    "rogue_ambusher",
+    "rogue_boss_stalker",
+    "rogue_shade",
+    "rogue_escape_artist",
+    "rogue_counter_ambush",
+    "rogue_afterimage",
+    "rogue_tell_thief",
+    "rogue_veiled_route",
+    "rogue_patient_ambush",
+    "rogue_ghostwalk",
+    "rogue_silent_finish",
+    "ranger_hunter",
+    "ranger_boss_hunter",
+    "ranger_finisher",
+    "ranger_barrage",
+    "ranger_crossfire",
+    "ranger_marked_barrage",
+    "ranger_spotter",
+    "ranger_quiver_thread",
+    "ranger_corridor_volley",
+    "ranger_split_mark",
+    "ranger_patient_snare",
+    "ranger_moving_line",
+    "caster_channeler",
+    "caster_boss_channel",
+    "caster_storm",
+    "caster_guardian",
+    "caster_frost_guard",
+    "caster_nova_guard",
+    "caster_chilling_charge",
+    "caster_storm_cell",
+    "caster_ice_lock",
+    "caster_shatter_ward",
+    "caster_conduct",
+    "caster_last_wall",
+    "gunner_marksman",
+    "gunner_boss_marksman",
+    "gunner_quick_loader",
+    "gunner_breacher",
+    "gunner_smoke_screen",
+    "gunner_close_loader",
+    "gunner_rangefinder",
+    "gunner_chamber_chain",
+    "gunner_smoke_walk",
+    "gunner_cycling_breach",
+    "gunner_long_watch",
+    "gunner_breach_route",
+    "clown_bellkeeper",
+    "clown_false_exit",
+    "clown_ringmaster",
+    "clown_turncoat",
+    "clown_cruel_joke",
+    "clown_last_laugh",
+    "engineer_watchmaker",
+    "engineer_bastion",
+    "engineer_artificer",
+    "engineer_surveyor",
+    "engineer_mobile_works",
+    "engineer_relay"
+  ],
+  "missing": [],
+  "invalid": [],
+  "selected_versions": {
+    "rogue_patient_ambush": 2,
+    "ranger_spotter": 2,
+    "ranger_quiver_thread": 2,
+    "ranger_corridor_volley": 2,
+    "ranger_patient_snare": 2,
+    "fighter_boss_guard": 2,
+    "rogue_ambusher": 2,
+    "rogue_afterimage": 2,
+    "rogue_tell_thief": 2,
+    "rogue_ghostwalk": 2,
+    "rogue_silent_finish": 2
+  },
+  "output_size": [
+    192,
+    192
+  ],
+  "processing": "full square preserved; Lanczos resize; lossless RGB WebP; no semantic edits",
+  "assets": [
+    {
+      "id": "fighter_warden",
+      "source": "art/generated/skill_fighter_warden_v1.png",
+      "source_sha256": "71767e8ad1344151ec939a6534156d857b6851cbdbc8fd397504c28eb6291e7c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_warden_v1.txt",
+      "prompt_sha256": "b0eee754fb86be4ef9120e3ac39b17075cfcc3d02be624cf8934d30608bf9902",
+      "output": "web/public/ui/skills/fighter_warden-v1.webp",
+      "output_sha256": "b357ac5a2e532cdddbe00d6d66109fb2c9616edf1dd41816fd56ea27da6329d1",
+      "bytes": 61210
+    },
+    {
+      "id": "fighter_recovery",
+      "source": "art/generated/skill_fighter_recovery_v1.png",
+      "source_sha256": "9b73d47e2c24d0a3051e15865263ca3bd5a46e5adc25720e5a06d0581f24a626",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_recovery_v1.txt",
+      "prompt_sha256": "7e6bd329d8c8a7badba10c33f8245fdcf872666cadacb7740edbb1f21b46d120",
+      "output": "web/public/ui/skills/fighter_recovery-v1.webp",
+      "output_sha256": "283c63f0fb6736699d5a88e2da84d24f7f0f2a3ab9d2d451315e4f68d0b2c863",
+      "bytes": 59480
+    },
+    {
+      "id": "fighter_boss_guard",
+      "source": "art/generated/skill_fighter_boss_guard_v2.png",
+      "source_sha256": "c3d9d1f33b25ea0bba4f4ec80b66852d6ecde16de1378d65a95161c100ee28f1",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_boss_guard_v2.txt",
+      "prompt_sha256": "f948b73e728e585cebe886575ad940a63f2fc1993d734c794a1623b6df028972",
+      "output": "web/public/ui/skills/fighter_boss_guard-v2.webp",
+      "output_sha256": "f5815b22c6a63feda44cfe07053bc1e9b177a288c4ccd214c90fe756b5eb172b",
+      "bytes": 59044
+    },
+    {
+      "id": "fighter_reaver",
+      "source": "art/generated/skill_fighter_reaver_v1.png",
+      "source_sha256": "e50a4490e71565a68b85f8040a444b5aa5b39fb114a05bfb9d71af7bcc211a48",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_reaver_v1.txt",
+      "prompt_sha256": "4528c3910e5a1976c6b938e94bacb6a46edade7fc1ec2bb454b8c8773820f7c0",
+      "output": "web/public/ui/skills/fighter_reaver-v1.webp",
+      "output_sha256": "6f003e55704d9143a0ed456080138c06155a727bf484839189445e94a2db372a",
+      "bytes": 61056
+    },
+    {
+      "id": "fighter_crowd_breaker",
+      "source": "art/generated/skill_fighter_crowd_breaker_v1.png",
+      "source_sha256": "e1b625820e4702914c9f4671954e6c3bff0d0c4805bc34b70f3db94edf9cf051",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_crowd_breaker_v1.txt",
+      "prompt_sha256": "ed7613aac693689c530921c4a58440854cec309d7b163b0b9287fe88481db386",
+      "output": "web/public/ui/skills/fighter_crowd_breaker-v1.webp",
+      "output_sha256": "50bd8d4c57fbaa06733af50765a1e0cf117cc5cc759548dcbde1a462cb1274bb",
+      "bytes": 58958
+    },
+    {
+      "id": "fighter_boss_breaker",
+      "source": "art/generated/skill_fighter_boss_breaker_v1.png",
+      "source_sha256": "42566e40218f1aab618ba23fac87eb51395aceca049011c768db05622c305384",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_boss_breaker_v1.txt",
+      "prompt_sha256": "320e30d3fa560c2ec75d772fb29fb99149a4e8f3d0c84e3f58e5cfb072118b88",
+      "output": "web/public/ui/skills/fighter_boss_breaker-v1.webp",
+      "output_sha256": "3231b00db6ea263fc83c5fd5b2cf6d61615c3684760f28ac059df77f411479cd",
+      "bytes": 63544
+    },
+    {
+      "id": "fighter_rally",
+      "source": "art/generated/skill_fighter_rally_v1.png",
+      "source_sha256": "5fd7ec7df0ebac9a597d78c21e35c4a133386b621e2f86f6d9e86269c2578043",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_rally_v1.txt",
+      "prompt_sha256": "abf9bb1e55657426664641dfdffe3a16dbf7e14c9038568f85f8aca28fa1d566",
+      "output": "web/public/ui/skills/fighter_rally-v1.webp",
+      "output_sha256": "3d7ee21f7d1bddf5324fb484cf21a3c5f4280d9fa54678db3df96586b7487e7d",
+      "bytes": 58564
+    },
+    {
+      "id": "fighter_oathguard",
+      "source": "art/generated/skill_fighter_oathguard_v1.png",
+      "source_sha256": "fa03c40c844a1090aff13b3ec223fd78360e0b55e5f110ce3a0866dc073d788c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_oathguard_v1.txt",
+      "prompt_sha256": "d2449d62a1ab48793befde6f4098cd36bded05bb3b91f33b134bbc0fbe15c3c7",
+      "output": "web/public/ui/skills/fighter_oathguard-v1.webp",
+      "output_sha256": "aad912185da1607623b1b79a9dd1a5a883b2aae601e17f8a6cafd32c04add2ed",
+      "bytes": 59146
+    },
+    {
+      "id": "fighter_opening_cut",
+      "source": "art/generated/skill_fighter_opening_cut_v1.png",
+      "source_sha256": "98e99c23de48e34998195041184c8c799713547789ab99a9cf115e81e0f961fb",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_opening_cut_v1.txt",
+      "prompt_sha256": "09a150a42fafc8176fefece43010ddfe8da475c0cb07e8646fb79a3b52e45ccc",
+      "output": "web/public/ui/skills/fighter_opening_cut-v1.webp",
+      "output_sha256": "8f2fb4864752f53e0885e890b7650a624375370a9ec3ba333f1f115547fe7524",
+      "bytes": 56886
+    },
+    {
+      "id": "fighter_siege_rhythm",
+      "source": "art/generated/skill_fighter_siege_rhythm_v1.png",
+      "source_sha256": "619d9e791cd9194e355bb283b1262fda1978d6f8941d55ab9dbc64ee112d1448",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_siege_rhythm_v1.txt",
+      "prompt_sha256": "1f0e7c3b4e6ab08a7cae8d7380a6fa823618c0aa0b11b008ef0c885954400d4a",
+      "output": "web/public/ui/skills/fighter_siege_rhythm-v1.webp",
+      "output_sha256": "4a453042d920c90a51d9adb9d25a5822c344a327fa5e10ce57a2bd8237640157",
+      "bytes": 56706
+    },
+    {
+      "id": "fighter_holdfast",
+      "source": "art/generated/skill_fighter_holdfast_v1.png",
+      "source_sha256": "e73aa9fd7b9f796c67256a80879a737f4b21d31e5a702242b920bb7ced32d3b5",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_holdfast_v1.txt",
+      "prompt_sha256": "9adc6e38f66e6673db886d7c56dca979c0ed1084bea9b8c47c903dd27d6467c5",
+      "output": "web/public/ui/skills/fighter_holdfast-v1.webp",
+      "output_sha256": "8ae6dba79382541d324304eaefff556ab1b64cd00a596b0f9bf83c2064ed4edd",
+      "bytes": 62738
+    },
+    {
+      "id": "fighter_execution_arc",
+      "source": "art/generated/skill_fighter_execution_arc_v1.png",
+      "source_sha256": "c8e8e61562ab6e5b852ae5736f267260f4b6d5f958a742ea1487814cc549a14d",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_fighter_execution_arc_v1.txt",
+      "prompt_sha256": "0867a85093a7ca9cefe9ea968063ee79abd47b8f35cfbf52e2d14fa9a067964e",
+      "output": "web/public/ui/skills/fighter_execution_arc-v1.webp",
+      "output_sha256": "5ccea24c732a9f39150e271ec322187430cdecda310c49a33a3d8e241bf81b8a",
+      "bytes": 56042
+    },
+    {
+      "id": "rogue_stalker",
+      "source": "art/generated/skill_rogue_stalker_v1.png",
+      "source_sha256": "1926c8816c92f75c2dd92c363e5ee6eb0adcdf2cd33fca97c3b92c6857940c94",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_stalker_v1.txt",
+      "prompt_sha256": "51d6aaeaf31611acc7604f8c507be3d6b50341d8a9e5c8d3ad8b1e1b9f87e624",
+      "output": "web/public/ui/skills/rogue_stalker-v1.webp",
+      "output_sha256": "e204b3f95e928cb245069e23970ff939eddc3a88af5672f5faad9ec630692bed",
+      "bytes": 58574
+    },
+    {
+      "id": "rogue_ambusher",
+      "source": "art/generated/skill_rogue_ambusher_v2.png",
+      "source_sha256": "7a87307ea8bf66a1b2472ee77601d730d3e2b937f53fb09f34b5cbca73c99fbb",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_ambusher_v2.txt",
+      "prompt_sha256": "07da09e1218dc7b9deb67bea132075b25b0448128c8ef9abdc86497b4c18c435",
+      "output": "web/public/ui/skills/rogue_ambusher-v2.webp",
+      "output_sha256": "27b36d217257ce3515ed702bfa5a0086805ec4ddea89d9cd0602a38f47645455",
+      "bytes": 57680
+    },
+    {
+      "id": "rogue_boss_stalker",
+      "source": "art/generated/skill_rogue_boss_stalker_v1.png",
+      "source_sha256": "453475e1b21949b2dccf38146fd08d3c1e8b7559f234d1b7367d8a7ff4097138",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_boss_stalker_v1.txt",
+      "prompt_sha256": "10f38b1151002405c82e81de94ad5ba9b91948429324f54578e9ca72782045c0",
+      "output": "web/public/ui/skills/rogue_boss_stalker-v1.webp",
+      "output_sha256": "7d0a090f8c3dc992c9b3b950a4eb504c75109dbae74d0ea66a4be4d1c3566f34",
+      "bytes": 58764
+    },
+    {
+      "id": "rogue_shade",
+      "source": "art/generated/skill_rogue_shade_v1.png",
+      "source_sha256": "d72b6729336cd9ce18189da31cf579eb1c636c548fc70c7a13794d18493ed88b",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_shade_v1.txt",
+      "prompt_sha256": "f3107fd7e8873576fa32669d37a264ec2052a7b451c137952b9cfc587fdf9d7d",
+      "output": "web/public/ui/skills/rogue_shade-v1.webp",
+      "output_sha256": "f8439e240430b771986d15f7e378c8697203cb3da938ba5919568f0cde6e8a3d",
+      "bytes": 53730
+    },
+    {
+      "id": "rogue_escape_artist",
+      "source": "art/generated/skill_rogue_escape_artist_v1.png",
+      "source_sha256": "a9b206484273547929a27a1550d6c207bcb29bc26f821503b4948993e3ec315c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_escape_artist_v1.txt",
+      "prompt_sha256": "1dfe71dec68ddaf3217bd301b1af49717d748fc27138cdb2bede67ee9e492a6a",
+      "output": "web/public/ui/skills/rogue_escape_artist-v1.webp",
+      "output_sha256": "1e2e6d7db78119cce5e40c65033daa14905ad9cfc583aecefe19175fe3c6d5b9",
+      "bytes": 57394
+    },
+    {
+      "id": "rogue_counter_ambush",
+      "source": "art/generated/skill_rogue_counter_ambush_v1.png",
+      "source_sha256": "fde0e8c01623cef20631ac4979ec1e52aae811d72b30c7b7f55e825148916d9d",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_counter_ambush_v1.txt",
+      "prompt_sha256": "3945062e783eb0d07f250a5acc0d7f1702ce49937f941a01de084b027a6ffef5",
+      "output": "web/public/ui/skills/rogue_counter_ambush-v1.webp",
+      "output_sha256": "d10d97934fbcc1248ceda0a972216d06f01a4f0d50821fbfcfcad88ca6905df7",
+      "bytes": 56352
+    },
+    {
+      "id": "rogue_afterimage",
+      "source": "art/generated/skill_rogue_afterimage_v2.png",
+      "source_sha256": "30acd473a720c9b3b6b850286c638e5ec86d8e9ad6793be5d7dc8d3cc02fc7d3",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_afterimage_v2.txt",
+      "prompt_sha256": "5a7203fc764e44a280ccabd17ae67fe5bc5293479462d048598e40a91cc3b80a",
+      "output": "web/public/ui/skills/rogue_afterimage-v2.webp",
+      "output_sha256": "0e3ba0acab7480ca2ee097db66887ec24136752fa702854afba35c2148240712",
+      "bytes": 55754
+    },
+    {
+      "id": "rogue_tell_thief",
+      "source": "art/generated/skill_rogue_tell_thief_v2.png",
+      "source_sha256": "edb3d471e2d63216289ef69d242143e90c4b9e513db6799b33097ddc56bff1f8",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_tell_thief_v2.txt",
+      "prompt_sha256": "07de49081ca279913b8537a5e00e79703aa112b8aa86b433df7a194df895c8e7",
+      "output": "web/public/ui/skills/rogue_tell_thief-v2.webp",
+      "output_sha256": "55c5770a9d51e4767989a73bbb0531f69e6dc94ae81ac9e8ee6197bec41f6cbe",
+      "bytes": 53360
+    },
+    {
+      "id": "rogue_veiled_route",
+      "source": "art/generated/skill_rogue_veiled_route_v1.png",
+      "source_sha256": "f594e74ffba990cd236fc11f606425d7d631e7d13cffe60b597b5d0f8dc8a8fd",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_veiled_route_v1.txt",
+      "prompt_sha256": "1c38e77eb07544d86fa73560beb59c21958cb61c2fd1a40ad3714e01487d065a",
+      "output": "web/public/ui/skills/rogue_veiled_route-v1.webp",
+      "output_sha256": "4688667aa2841a80bf94e83a8eac3a2b83b7255ed48d03973f49b41a53a865d2",
+      "bytes": 51556
+    },
+    {
+      "id": "rogue_patient_ambush",
+      "source": "art/generated/skill_rogue_patient_ambush_v2.png",
+      "source_sha256": "9062ba58d919d8cfb3f4b5bb046de54327a38e93a7d83296c91a6662d9aa9fe9",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_patient_ambush_v2.txt",
+      "prompt_sha256": "3e3f11fc73259bf3d39e5ad8361672050baf8efebd135743089ad50ae4c6cf14",
+      "output": "web/public/ui/skills/rogue_patient_ambush-v2.webp",
+      "output_sha256": "0ab0f190e50cb52107a886a981deaf8304b5093b8367266add32c0c2fce96d3f",
+      "bytes": 56386
+    },
+    {
+      "id": "rogue_ghostwalk",
+      "source": "art/generated/skill_rogue_ghostwalk_v2.png",
+      "source_sha256": "95cd8b5e9ac3f1dc2c9ab64444cad1566bd415b8209e4ca7b94d05062cd73cf4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_ghostwalk_v2.txt",
+      "prompt_sha256": "817251866e370e8a3760ae67cefc9327b59d9d4c492ded0027bdf01d94db3184",
+      "output": "web/public/ui/skills/rogue_ghostwalk-v2.webp",
+      "output_sha256": "8aad3da8a6fd9f89a0fe4f9b7bbc12606a52071e48bd1a353be73d71beea670b",
+      "bytes": 59126
+    },
+    {
+      "id": "rogue_silent_finish",
+      "source": "art/generated/skill_rogue_silent_finish_v2.png",
+      "source_sha256": "2e72bd72971bd35127f09c3f9bae0d5e7d58cdaead997fdf679c90ae0531e44d",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_rogue_silent_finish_v2.txt",
+      "prompt_sha256": "72fa81df8d85019692d11caa6a418cfc22be4eb977762a4d6b5b64c6d5f04dcb",
+      "output": "web/public/ui/skills/rogue_silent_finish-v2.webp",
+      "output_sha256": "05071ef9a2481bc49b55a674354ca00802f40fcbeae12e60718e4f398d0ddd84",
+      "bytes": 53906
+    },
+    {
+      "id": "ranger_hunter",
+      "source": "art/generated/skill_ranger_hunter_v1.png",
+      "source_sha256": "145328393787ac1b8596cf00bbb6305d5da03445dfdc201ff213e7f8fcfc0fdb",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_hunter_v1.txt",
+      "prompt_sha256": "65889684178f103e429e57d7a6f664968ed6093ff4bb3f22bdf4043d5baac6f7",
+      "output": "web/public/ui/skills/ranger_hunter-v1.webp",
+      "output_sha256": "e09faef66eb481852f209ee01389b940b3e519e8c38889e093c68228cc73d36d",
+      "bytes": 57900
+    },
+    {
+      "id": "ranger_boss_hunter",
+      "source": "art/generated/skill_ranger_boss_hunter_v1.png",
+      "source_sha256": "ede23ccf682842bfb6b05f983e90fd040e2cab5e888b9287bab02f93528b82b0",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_boss_hunter_v1.txt",
+      "prompt_sha256": "c4a5b8ba183ccd579822bddec19f1b186ed33da93ff320002732431e4b21a50c",
+      "output": "web/public/ui/skills/ranger_boss_hunter-v1.webp",
+      "output_sha256": "f5e85400e417680328535d10d08a4c1ff81e4eec74255495f773afee03cf0ad4",
+      "bytes": 56882
+    },
+    {
+      "id": "ranger_finisher",
+      "source": "art/generated/skill_ranger_finisher_v1.png",
+      "source_sha256": "91b86341645a09eb05e86e752862383ed53b04075c94132baec660345073ddfa",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_finisher_v1.txt",
+      "prompt_sha256": "59fef8782f9198c0cb2423fdf6f0b6f1e1b26fb445abf898c6d168f957964e94",
+      "output": "web/public/ui/skills/ranger_finisher-v1.webp",
+      "output_sha256": "c4857b5b6bddc0f6f15b4f5f8aff4aa7b5381de5510135cc7ebbb310f627b13a",
+      "bytes": 54778
+    },
+    {
+      "id": "ranger_barrage",
+      "source": "art/generated/skill_ranger_barrage_v1.png",
+      "source_sha256": "62ea57efa2f875d3b85db48d17d182853153dc7b090110a330227ce179ed780f",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_barrage_v1.txt",
+      "prompt_sha256": "730e5f8a43f2a2972b6c07a2f48c5844b68a8b4e798fbc4e5a5b791ca002701a",
+      "output": "web/public/ui/skills/ranger_barrage-v1.webp",
+      "output_sha256": "0535c458b9579350647c87e20061147ae1013959f92adcf41074ac5ae81f0a81",
+      "bytes": 57884
+    },
+    {
+      "id": "ranger_crossfire",
+      "source": "art/generated/skill_ranger_crossfire_v1.png",
+      "source_sha256": "f7577c79aeb587722add41e0f434742cf005694da3c0bf998341f0f0159abdb7",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_crossfire_v1.txt",
+      "prompt_sha256": "d126a790b7335597c88e0310ec000d05e68d0e0c43aad738f5550f11f3cf1a01",
+      "output": "web/public/ui/skills/ranger_crossfire-v1.webp",
+      "output_sha256": "0ff567bf40b917f388bfc38d66184a3c489d62d90188ebb772281c61b4533347",
+      "bytes": 57186
+    },
+    {
+      "id": "ranger_marked_barrage",
+      "source": "art/generated/skill_ranger_marked_barrage_v1.png",
+      "source_sha256": "fe7314cdd3b8abc1497d30702f774ac8ca4cf06a96fdf8e45411a7973054feb0",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_marked_barrage_v1.txt",
+      "prompt_sha256": "1a7aca660b5bf2ef85850d6c46d1cb30890291dd86354a37ad95301fc4fd353f",
+      "output": "web/public/ui/skills/ranger_marked_barrage-v1.webp",
+      "output_sha256": "e6a72a79a27946d09d4d25faeaba76c19840fd33263bd0a0305eb390ae27ba99",
+      "bytes": 59302
+    },
+    {
+      "id": "ranger_spotter",
+      "source": "art/generated/skill_ranger_spotter_v2.png",
+      "source_sha256": "4bb7acd55109b8cea4859621d26b9133de086bc8eabf15f6667ca4a025d06bfb",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_spotter_v2.txt",
+      "prompt_sha256": "a4862739268b3b74060c5c480d523f02d35319ca2f72c52acf33f7b2d80e426a",
+      "output": "web/public/ui/skills/ranger_spotter-v2.webp",
+      "output_sha256": "f0d9e20e88d8188bec385ff885f01f5b9cfc7c9c573c86ab4e61461ebaffa898",
+      "bytes": 58842
+    },
+    {
+      "id": "ranger_quiver_thread",
+      "source": "art/generated/skill_ranger_quiver_thread_v2.png",
+      "source_sha256": "004b21f2b036cc1d00cda5246f7edb16af790e77bccd52688be17cc001e50e47",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_quiver_thread_v2.txt",
+      "prompt_sha256": "04a62bb67e013ed489ac6e83dd6ff93c684ab35d75d581fdf67211d3bc17773e",
+      "output": "web/public/ui/skills/ranger_quiver_thread-v2.webp",
+      "output_sha256": "58a8f9f1f4265521dd4a4157f1e8209a5fe27895a29fb3e805499f066eba1d79",
+      "bytes": 55464
+    },
+    {
+      "id": "ranger_corridor_volley",
+      "source": "art/generated/skill_ranger_corridor_volley_v2.png",
+      "source_sha256": "476144e886554aef424e195df4e67010683fb2e5efab79e5cdcc92cefb7b7b9a",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_corridor_volley_v2.txt",
+      "prompt_sha256": "bc2f0897ef8b3be645850dfecf99a9413ae98dfec18d31501e4fae60619925cd",
+      "output": "web/public/ui/skills/ranger_corridor_volley-v2.webp",
+      "output_sha256": "49851223c56feccb2d873a813c23791f2a804da78de11bc0b37b1c3a0726b529",
+      "bytes": 55556
+    },
+    {
+      "id": "ranger_split_mark",
+      "source": "art/generated/skill_ranger_split_mark_v1.png",
+      "source_sha256": "16139dd2bd5051e20e0685b9b35d64a757bc76e1c9290db03f69386fc99fed4c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_split_mark_v1.txt",
+      "prompt_sha256": "deacfb0d4eff85701f4b32468002d2c0f32d51e2cc484e1dbaa30d2672a52b7d",
+      "output": "web/public/ui/skills/ranger_split_mark-v1.webp",
+      "output_sha256": "5d167e1f3f94d80393d1712d07e2471644cf81e3d9f0495964f06fe7c047f887",
+      "bytes": 53402
+    },
+    {
+      "id": "ranger_patient_snare",
+      "source": "art/generated/skill_ranger_patient_snare_v2.png",
+      "source_sha256": "e26413aaf1a841bda75a1e40b45d6eb124b0514d0eaa34df4e4b9a586caa6bb5",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_patient_snare_v2.txt",
+      "prompt_sha256": "7b275f601cd93a3fca86bdc75ad210ce0a2089e60b66ad40bde93afe79ecede0",
+      "output": "web/public/ui/skills/ranger_patient_snare-v2.webp",
+      "output_sha256": "f271f60bea37063f577b9c1933dad983b65cb6033d977e85c97d47872f1f6e57",
+      "bytes": 58494
+    },
+    {
+      "id": "ranger_moving_line",
+      "source": "art/generated/skill_ranger_moving_line_v1.png",
+      "source_sha256": "10aca87dce919becd03d320455d42169c91ea7cadf07592fd9a6150dbf68a6f1",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_ranger_moving_line_v1.txt",
+      "prompt_sha256": "c34339bc7da4ee1604e4edd1b03a5d3e5e7af4df47689c7d9ea4aea993c6d6e2",
+      "output": "web/public/ui/skills/ranger_moving_line-v1.webp",
+      "output_sha256": "9e5d9b898cfc760efb4a8db07f3fca4b3bad61d85c50dcd76d5cc17467c42827",
+      "bytes": 54056
+    },
+    {
+      "id": "caster_channeler",
+      "source": "art/generated/skill_caster_channeler_v1.png",
+      "source_sha256": "3bebf0ffa7a517e21464e8b8c208cf09cb0b1dc22622ff48b522ec0ee39fc278",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_channeler_v1.txt",
+      "prompt_sha256": "40fd5b55b1bb1b8a2b95885457f156f0f3166e6a1015d4299b296b9d78e0da0a",
+      "output": "web/public/ui/skills/caster_channeler-v1.webp",
+      "output_sha256": "57be160f8fb880a3c94620e88d4d5415ceb497b32064105785b40876a9d18126",
+      "bytes": 67492
+    },
+    {
+      "id": "caster_boss_channel",
+      "source": "art/generated/skill_caster_boss_channel_v1.png",
+      "source_sha256": "f4adb70ff506c51047cbbe5fcf985784d9aa1f897bf4664bf7f60380a4f9897d",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_boss_channel_v1.txt",
+      "prompt_sha256": "3124c9e48d9935fc2f198c2ee302c4c77835dc44e571d188643fab6c35ae144d",
+      "output": "web/public/ui/skills/caster_boss_channel-v1.webp",
+      "output_sha256": "9f8b505a498ec2cfba444712d996fac8f65cdf8b8cad88daeab29bbde04a522a",
+      "bytes": 70718
+    },
+    {
+      "id": "caster_storm",
+      "source": "art/generated/skill_caster_storm_v1.png",
+      "source_sha256": "22cc2b7ab6934826ab491d6ab4a32bd066752c3c8daaf53ccad84ecaa8081af4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_storm_v1.txt",
+      "prompt_sha256": "43426db4956e09edaf150774b80151e45df2cbc9caed936dcb7a2480ca311ba3",
+      "output": "web/public/ui/skills/caster_storm-v1.webp",
+      "output_sha256": "7a2d148577bdf2684c346ca909204914807e6fe067c966c74d870f68723959e7",
+      "bytes": 70534
+    },
+    {
+      "id": "caster_guardian",
+      "source": "art/generated/skill_caster_guardian_v1.png",
+      "source_sha256": "d4152d8c4a3f111017e9d41bc2217de654afcbc018b173328874509b58da713c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_guardian_v1.txt",
+      "prompt_sha256": "e59425d73c9888b9b5bb416a3a5fe54a0a6ab1b7508178f019511193553c881a",
+      "output": "web/public/ui/skills/caster_guardian-v1.webp",
+      "output_sha256": "2d365e016a56b047d73a76c5caefd11f5d6646b82586e52c53d1d7eace28ce0c",
+      "bytes": 60256
+    },
+    {
+      "id": "caster_frost_guard",
+      "source": "art/generated/skill_caster_frost_guard_v1.png",
+      "source_sha256": "4a3960eb0b687c1eb61f8cc647db7857b50691120ee1ef137d9854740c120713",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_frost_guard_v1.txt",
+      "prompt_sha256": "6529afa578d2f1636819a1343b83d2bc56456248e43b2eb41d9913b293cf4e6a",
+      "output": "web/public/ui/skills/caster_frost_guard-v1.webp",
+      "output_sha256": "b8d32a3a1eef8ee881fc707b8aa6848055d76511b12fa08a6554a4afc08bc2d5",
+      "bytes": 64600
+    },
+    {
+      "id": "caster_nova_guard",
+      "source": "art/generated/skill_caster_nova_guard_v1.png",
+      "source_sha256": "a432769e616071c3a918956b218e6e2aad0b9197549ba4d4bf2bd8208cdc250c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_nova_guard_v1.txt",
+      "prompt_sha256": "44414b0ebb0555191fd9a79e165560e090c9fef4339c92c307cc9896bc50a7d6",
+      "output": "web/public/ui/skills/caster_nova_guard-v1.webp",
+      "output_sha256": "0cb08fdcbd552c39f084c8b035480c05a3e0601dec24976740c2553f5b667785",
+      "bytes": 63772
+    },
+    {
+      "id": "caster_chilling_charge",
+      "source": "art/generated/skill_caster_chilling_charge_v1.png",
+      "source_sha256": "34ac4ff42bc21c53ca004b1ba9fc9ad59c012ed160043c06a1f1010add418474",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_chilling_charge_v1.txt",
+      "prompt_sha256": "2dac7cfd23c3103e23711b3de930987c2b85e8895602b7b5eaf82870b43d1971",
+      "output": "web/public/ui/skills/caster_chilling_charge-v1.webp",
+      "output_sha256": "f2347fe091dd746d6f91a799de473733318e9e50cd69f56ff35aff704cd177c8",
+      "bytes": 58562
+    },
+    {
+      "id": "caster_storm_cell",
+      "source": "art/generated/skill_caster_storm_cell_v1.png",
+      "source_sha256": "59b2dd9b0a02ffdbe7a92342bb8e8f1ef56b4540751eece4f173b1e4b5dd46d6",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_storm_cell_v1.txt",
+      "prompt_sha256": "2cd4bde147a5e32dccd8881e2a70c13f55adfdc730e602f30acc85da92ebd81a",
+      "output": "web/public/ui/skills/caster_storm_cell-v1.webp",
+      "output_sha256": "8c5c86ee2e167968ee82a608e07f54edf735be2ce0574ac114396ca74d3feac7",
+      "bytes": 56912
+    },
+    {
+      "id": "caster_ice_lock",
+      "source": "art/generated/skill_caster_ice_lock_v1.png",
+      "source_sha256": "2cefbb3cc59b9e17c0a2da6988ab21895f1d4cd2dd471c94053742a4019c44f4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_ice_lock_v1.txt",
+      "prompt_sha256": "71e419daa7b4346de5724dd5335d8fde23175d68e1b23906f34e9ae66a9604f2",
+      "output": "web/public/ui/skills/caster_ice_lock-v1.webp",
+      "output_sha256": "657c67a8dd1de4f7179c31d9683a2b2d16daa1a7e24c9a164197ecb5affa1efa",
+      "bytes": 54598
+    },
+    {
+      "id": "caster_shatter_ward",
+      "source": "art/generated/skill_caster_shatter_ward_v1.png",
+      "source_sha256": "d2107079c3ff6813d35411205d82dc24f5d049731ae8269f57b9d202c567c14b",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_shatter_ward_v1.txt",
+      "prompt_sha256": "9abb96b22403e98bd52f9af29b528088785e4e703c06b7fc041dcf3772dd0521",
+      "output": "web/public/ui/skills/caster_shatter_ward-v1.webp",
+      "output_sha256": "751fd3344baf9ea5ae49333b740451a509456c7fe0f3cdfd7450c3ad74a2513d",
+      "bytes": 57670
+    },
+    {
+      "id": "caster_conduct",
+      "source": "art/generated/skill_caster_conduct_v1.png",
+      "source_sha256": "4138f51db6fa9783ba7e76d7221b64e268fb1431ac2bbab44f7e53d788c26968",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_conduct_v1.txt",
+      "prompt_sha256": "d9111e9ff50b2b83d22101f43e4191f49121b4663ce0b7b07414e7bff794b586",
+      "output": "web/public/ui/skills/caster_conduct-v1.webp",
+      "output_sha256": "37216e636ea4e1d1811248329b2406fcc514d08c1f2da82f9fd4e2b56365d93d",
+      "bytes": 57828
+    },
+    {
+      "id": "caster_last_wall",
+      "source": "art/generated/skill_caster_last_wall_v1.png",
+      "source_sha256": "f84dc903add719dc79cc171c667ff1982ef402e1c91deac976c73f506fe86605",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_caster_last_wall_v1.txt",
+      "prompt_sha256": "edc68b14a231be4f93af5becbe33e09855ace122b76a7a0a9ee5ef82eb5b6327",
+      "output": "web/public/ui/skills/caster_last_wall-v1.webp",
+      "output_sha256": "1c1b64d06dfe6495df5e2f14baa486b9073cd8cc809d4558a9a72c8d5bb1f5cf",
+      "bytes": 58210
+    },
+    {
+      "id": "gunner_marksman",
+      "source": "art/generated/skill_gunner_marksman_v1.png",
+      "source_sha256": "6aef312460d561bb8ec43ef440f2bbdce08824b0066136c90d5ca1a10d256fb7",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_marksman_v1.txt",
+      "prompt_sha256": "65c679fabffb1c0e064ba12f0c6b80dce62564cb65547a2bc07040eb2480c4b4",
+      "output": "web/public/ui/skills/gunner_marksman-v1.webp",
+      "output_sha256": "df508cfd8cfefc2d2402b741e92df0ece34d842fe364011e9c525cf0458ea83c",
+      "bytes": 58574
+    },
+    {
+      "id": "gunner_boss_marksman",
+      "source": "art/generated/skill_gunner_boss_marksman_v1.png",
+      "source_sha256": "4ff97045808be964ee0a8a12654c07703295f6d7dcceff79dba14af9f5b6980f",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_boss_marksman_v1.txt",
+      "prompt_sha256": "726e951a11eec55c59f1d145dd8056ebdae2b61ebc61dbf6b5f853bdd7a00410",
+      "output": "web/public/ui/skills/gunner_boss_marksman-v1.webp",
+      "output_sha256": "e72a1b4d0b4ae7fd1e4eb621201b395f9e08f21cd7fe7507a3a2fa0fedb451c3",
+      "bytes": 58592
+    },
+    {
+      "id": "gunner_quick_loader",
+      "source": "art/generated/skill_gunner_quick_loader_v1.png",
+      "source_sha256": "f0ac4b52f8fbbdabd6ea3f81ca95d92a15293d317b71b044b872b380cc3b5f07",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_quick_loader_v1.txt",
+      "prompt_sha256": "5ef02ac9b38719279c284504ed23f0ebecf570cc373e60ea655b04ff18d7f4bc",
+      "output": "web/public/ui/skills/gunner_quick_loader-v1.webp",
+      "output_sha256": "4e8c62fd293ec5fd5a8c65c107963fc3d621b592ebe791bd50581d2c079e4309",
+      "bytes": 62112
+    },
+    {
+      "id": "gunner_breacher",
+      "source": "art/generated/skill_gunner_breacher_v1.png",
+      "source_sha256": "01fc291aeee9c9a004abcd1085e3697a93294306925a3a738bc5693cb5c72e10",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_breacher_v1.txt",
+      "prompt_sha256": "2692d55bf455e54e3ef0a11919532c23206dc4e46f028827f5866821f8f89754",
+      "output": "web/public/ui/skills/gunner_breacher-v1.webp",
+      "output_sha256": "bf5bc9c6ba18cb1386ab5c47f9e233798bc9f9415d8940cd3c4f73e353a52eb8",
+      "bytes": 60870
+    },
+    {
+      "id": "gunner_smoke_screen",
+      "source": "art/generated/skill_gunner_smoke_screen_v1.png",
+      "source_sha256": "de6e4a54f43ea3a48d80ff517c0bf5f01456db11894c8bfcd9e8b0dc9ac6a9b4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_smoke_screen_v1.txt",
+      "prompt_sha256": "d390c6d4113d398ea3af368f2f67f87c86a00a861ea8e4b47a331625f4081eaa",
+      "output": "web/public/ui/skills/gunner_smoke_screen-v1.webp",
+      "output_sha256": "d46871e14ec9687ec556d03b9129b8d7d0a51fbe296cd0a2650bfed9106507dc",
+      "bytes": 61480
+    },
+    {
+      "id": "gunner_close_loader",
+      "source": "art/generated/skill_gunner_close_loader_v1.png",
+      "source_sha256": "ed275355e804c85a3d3b7ebd27491c9b2228b6df0ab29d0ded4951901bf19ec7",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_close_loader_v1.txt",
+      "prompt_sha256": "80f3c4c50077fd99af7d00ff8d72b30c789e98870648bafbf5f0b4b9fb98785b",
+      "output": "web/public/ui/skills/gunner_close_loader-v1.webp",
+      "output_sha256": "9b34f587106bf6b6b1e861bd806de28fef0c28fe21c02c30f89a5d937d215067",
+      "bytes": 59480
+    },
+    {
+      "id": "gunner_rangefinder",
+      "source": "art/generated/skill_gunner_rangefinder_v1.png",
+      "source_sha256": "1091965a49b5909af886e524a7df8c6ff693fa608ed2dbcc418f90811d4ce2bd",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_rangefinder_v1.txt",
+      "prompt_sha256": "a7091466e861e32feba1e278152d309bf3731d034d51fa27cfda43444ec68d8a",
+      "output": "web/public/ui/skills/gunner_rangefinder-v1.webp",
+      "output_sha256": "5a30b1188691899bec52ecac797139ada521abf8904b0ef1b07886587dfa7d6d",
+      "bytes": 53268
+    },
+    {
+      "id": "gunner_chamber_chain",
+      "source": "art/generated/skill_gunner_chamber_chain_v1.png",
+      "source_sha256": "4a43566751c1ccb626e69eee937abd26d5eb80d1267d102f27c3307040f4bb88",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_chamber_chain_v1.txt",
+      "prompt_sha256": "ee1403db6f51a7055ba6acd58b8aaa5c0e9692687adec49ad40b3aa36d180a45",
+      "output": "web/public/ui/skills/gunner_chamber_chain-v1.webp",
+      "output_sha256": "25acd03b0cc9b23f355068592117b12563ef90c872a9561076a9a5e0df9017d6",
+      "bytes": 54702
+    },
+    {
+      "id": "gunner_smoke_walk",
+      "source": "art/generated/skill_gunner_smoke_walk_v1.png",
+      "source_sha256": "8d84c668762d06cb95651f0fbf5c707762254f6c97d344087c8570b9ab63bc6c",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_smoke_walk_v1.txt",
+      "prompt_sha256": "8e42b7ae42d8e21c9881f95f719cd292737a0c94d8ea1f93de1128e083a0393a",
+      "output": "web/public/ui/skills/gunner_smoke_walk-v1.webp",
+      "output_sha256": "6a033be6b49ac4d831e905a533f4c1a48db82bcfbf6d84ac4803b86400111db9",
+      "bytes": 51878
+    },
+    {
+      "id": "gunner_cycling_breach",
+      "source": "art/generated/skill_gunner_cycling_breach_v1.png",
+      "source_sha256": "5598500b42528b3108010187d09062c87196c39b3a7e052de422bf3cd5a339c4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_cycling_breach_v1.txt",
+      "prompt_sha256": "a39ba05a18fb7de2d5bdee093f2adb1759e9ca5067af7ac7ff8d5a3e2cd5c7a9",
+      "output": "web/public/ui/skills/gunner_cycling_breach-v1.webp",
+      "output_sha256": "b1bc9d89ca1dd5e327974c1294f28a9abf1d09cb628d2cfadcf62c9b0ec08882",
+      "bytes": 53112
+    },
+    {
+      "id": "gunner_long_watch",
+      "source": "art/generated/skill_gunner_long_watch_v1.png",
+      "source_sha256": "cde5c10f49e4ac56364b688d2c9ed342186871037f7c005dd28de0729181c7d4",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_long_watch_v1.txt",
+      "prompt_sha256": "c7b4f6e4272df3e325a7ce6fbdeac37a85db4a45f38a7d3f33426f90d6343713",
+      "output": "web/public/ui/skills/gunner_long_watch-v1.webp",
+      "output_sha256": "0c9fa615f9d8ae4b77d71e2e44033847b7f900f91e28a0ac00317ce4b66d40df",
+      "bytes": 51986
+    },
+    {
+      "id": "gunner_breach_route",
+      "source": "art/generated/skill_gunner_breach_route_v1.png",
+      "source_sha256": "4587e448949d4a7f5a87ef6ca7459173df8874278a3f05d7008f9c8930a13cae",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_gunner_breach_route_v1.txt",
+      "prompt_sha256": "a866eb45af42fa357159371f60a4aa87e10b85329511a079c04f245189f9f931",
+      "output": "web/public/ui/skills/gunner_breach_route-v1.webp",
+      "output_sha256": "46b60e63f667505cab9a46ab6a7443c3d5a343df6217cba545da70bb233e267a",
+      "bytes": 53994
+    },
+    {
+      "id": "clown_bellkeeper",
+      "source": "art/generated/skill_clown_bellkeeper_v1.png",
+      "source_sha256": "811bf04e78fdb4c949f1bb1411b14df10721998ed2b1562e3c17ad96fd13af7e",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_bellkeeper_v1.txt",
+      "prompt_sha256": "3cca99617d865a3f3b5604cbae8401087ff45e79526b506fce8e3ffae4ea192f",
+      "output": "web/public/ui/skills/clown_bellkeeper-v1.webp",
+      "output_sha256": "8301f85503e2559fd192e2787b3bb93b70d4a0bbd7b9962d8c7d3f2d24a61ebb",
+      "bytes": 60596
+    },
+    {
+      "id": "clown_false_exit",
+      "source": "art/generated/skill_clown_false_exit_v1.png",
+      "source_sha256": "ec20a0a8263e2f4422fd68beba3a410bfcd7c0d3da6afe170dde48c1151d02dd",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_false_exit_v1.txt",
+      "prompt_sha256": "83d88c66235c5ef5f0f775e04f42b41249a350b14f5ac6d6265c94f6ff1e589e",
+      "output": "web/public/ui/skills/clown_false_exit-v1.webp",
+      "output_sha256": "191f9290024ad912958dc3c4038cb7d6358564cdc7f392e99de317564257cd26",
+      "bytes": 52970
+    },
+    {
+      "id": "clown_ringmaster",
+      "source": "art/generated/skill_clown_ringmaster_v1.png",
+      "source_sha256": "3ab42ab73a51d2f8dc4b1d51de9c87bbee1d2fdf417f9ed53c53214447230ab1",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_ringmaster_v1.txt",
+      "prompt_sha256": "1ff5f3c803e0b32e48e2fecb745ef6452f1d4d0d938c39214a84223aa36b8e64",
+      "output": "web/public/ui/skills/clown_ringmaster-v1.webp",
+      "output_sha256": "3c91f2f419e0ec90dbc9ce4a3df9d926435746f015deb02ffd68b1bdc463193a",
+      "bytes": 63118
+    },
+    {
+      "id": "clown_turncoat",
+      "source": "art/generated/skill_clown_turncoat_v1.png",
+      "source_sha256": "08eae4d43ab389a864701def8273161b1e0d78fef7c8943dc1aa0fbfa41c85fc",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_turncoat_v1.txt",
+      "prompt_sha256": "9c52f18935288b66f2634d8ca4e86f82f914279f6d228a94a7bba29067c38952",
+      "output": "web/public/ui/skills/clown_turncoat-v1.webp",
+      "output_sha256": "20e621a91ea681a2eae6185d2a3908beaf594dcd1434b3a702f9f1249f46c755",
+      "bytes": 57956
+    },
+    {
+      "id": "clown_cruel_joke",
+      "source": "art/generated/skill_clown_cruel_joke_v1.png",
+      "source_sha256": "7cf716a256515f4be1da80dae126ed7c2cf8be614618bbd234e5e5297189ecb9",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_cruel_joke_v1.txt",
+      "prompt_sha256": "7d04e7b39ba64aa089e753c43538f7678c1064fa202e23a9058cabb60d2f82e0",
+      "output": "web/public/ui/skills/clown_cruel_joke-v1.webp",
+      "output_sha256": "252e309b842a497a6756474c05f48c166fbf2695dcb40ed5a50986e8cf50e558",
+      "bytes": 61608
+    },
+    {
+      "id": "clown_last_laugh",
+      "source": "art/generated/skill_clown_last_laugh_v1.png",
+      "source_sha256": "87335da0fb0a2dc467bee6afb6d73ba7004e7b0be5bcaf10b871c0a57559f4d0",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_clown_last_laugh_v1.txt",
+      "prompt_sha256": "64a65dee3fd1b75cf22435141900a3009da1d9426504882291e9fb973d055c01",
+      "output": "web/public/ui/skills/clown_last_laugh-v1.webp",
+      "output_sha256": "277059019d723372f4ad2bdd96ead24e3c3a8fd09a1a4de655cc8a006541ea65",
+      "bytes": 58374
+    },
+    {
+      "id": "engineer_watchmaker",
+      "source": "art/generated/skill_engineer_watchmaker_v1.png",
+      "source_sha256": "5cbde1b8d7ee273e6190128d010ed233fd85e4d6cc11f853476d6f263fe4fbdb",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_watchmaker_v1.txt",
+      "prompt_sha256": "79c32338c5998b306121919852f166ba51a0f2965ec0d31bc797ca67826da1dd",
+      "output": "web/public/ui/skills/engineer_watchmaker-v1.webp",
+      "output_sha256": "e08b0c9734cf4bcc932269308fcd22f348212619c39b6280cce69f3c306bbb30",
+      "bytes": 63490
+    },
+    {
+      "id": "engineer_bastion",
+      "source": "art/generated/skill_engineer_bastion_v1.png",
+      "source_sha256": "251b69498faff5afe4ccea183e6620d47b4fd731509636de48f0b549418d559b",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_bastion_v1.txt",
+      "prompt_sha256": "aeb1a543899a0ef44153c2778cffbf3ea522f241af49410a5f59a0f220f2e9cc",
+      "output": "web/public/ui/skills/engineer_bastion-v1.webp",
+      "output_sha256": "27c9c8630e0992c25293fc1faef45ef56bf67bd2f46221348258917418d2c993",
+      "bytes": 62592
+    },
+    {
+      "id": "engineer_artificer",
+      "source": "art/generated/skill_engineer_artificer_v1.png",
+      "source_sha256": "ac4abf9211a7cc78e9e27b7b7adcfd099329759bc2b8295ce5f3f6b51946ef8b",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_artificer_v1.txt",
+      "prompt_sha256": "8e4e55fa7b89a7b3f4b498bbc8452d007b8c3f4ffa1ea83067f1e7f52a9497e4",
+      "output": "web/public/ui/skills/engineer_artificer-v1.webp",
+      "output_sha256": "92387eb4596460885ddad224426510d076dd0afb160a0bebbadb4dd8776f4291",
+      "bytes": 64754
+    },
+    {
+      "id": "engineer_surveyor",
+      "source": "art/generated/skill_engineer_surveyor_v1.png",
+      "source_sha256": "ca4f0df2b75f73cc4593f75923a8b4c6f2b34b20f12096d61afdf6c5e04e5875",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_surveyor_v1.txt",
+      "prompt_sha256": "96f19933747563c8f5ee5f615e1a9fafe63592d8ab8d8c97136a950311937a04",
+      "output": "web/public/ui/skills/engineer_surveyor-v1.webp",
+      "output_sha256": "1c66efef9dd9828541789bc4fba74a65d2dea71f8bf87110d7f8d9d252b03661",
+      "bytes": 58736
+    },
+    {
+      "id": "engineer_mobile_works",
+      "source": "art/generated/skill_engineer_mobile_works_v1.png",
+      "source_sha256": "30ea505e4e0cadcb8073cc505124a02c931faf8e9abf4b643ae202a3ce7ff335",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_mobile_works_v1.txt",
+      "prompt_sha256": "4d3019466e04df6390fedacb6b7ca4167b8723b24c17121436b80bb2ee4b3bc0",
+      "output": "web/public/ui/skills/engineer_mobile_works-v1.webp",
+      "output_sha256": "938f358e7c02dcafa0258e18cc11a7f410677cd282033d2f98ff19232e1b832e",
+      "bytes": 58798
+    },
+    {
+      "id": "engineer_relay",
+      "source": "art/generated/skill_engineer_relay_v1.png",
+      "source_sha256": "b89bff916fae909ceeb9150b3fb49f1aa7537e878c07310ed8a3cbf8d334cbd5",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/prompts/skill_engineer_relay_v1.txt",
+      "prompt_sha256": "4956c4a42cb8d084882db91a663c85ef928e4bbcbb50e926fc3cda3d19bdb326",
+      "output": "web/public/ui/skills/engineer_relay-v1.webp",
+      "output_sha256": "ac151e72eeb2a4c2e2106536354d05db040781a757daab54c73dcbb149af25f5",
+      "bytes": 59754
+    }
+  ],
+  "scope": "full72-node library"
+}
