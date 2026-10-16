@@ -180,8 +180,12 @@ and verified with fresh earned evidence (`docs/CUT257_SKILL_PAYOFF_FIXES.md`,
 bytes unchanged). The **exhaustive audit was run** (272 cases): its metrics leg was
 dead on two labelled cohort cards (repaired on the reader side) and its dayplayer leg
 reports exactly one failing clause — `each system adds value` on **pets**, a coin flip
-in the cached record (7 pass / 7 fail since 2026-10-03), needing an owner tolerance
-decision or a pets content change, not an expected-value edit
+in the cached record (7 pass / 7 fail since 2026-10-03) and now **quantified from the
+gate's own cached legs** (`docs/evidence/mechanics/pets-clause-finding-2026-10-16.md`:
+the effect is 0.02–1.95 points, 4 pass / 2 fail across the six source keys that carry
+both configs, paired sign test p = 0.23–1.00, and one failure turns on +0.02 points) —
+so it needs an owner-accepted tolerance (+2 pts or ≥48 seeds) or a re-scoped measure,
+not an expected-value edit
 (`docs/evidence/cut257/exhaustive-audit-findings.md`). Perf chores landed (the
 worst-death verdict out of the absence; the foreground catalogue reads held off the
 batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md`
