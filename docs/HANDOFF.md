@@ -36,6 +36,8 @@ pacingNode745163, process namespace4026532214,16threads. Durable evidence is
 Only terminalPASS plus unchanged relevant core/harness/runtime/package bytes
 starts routine --full with16RANDOM seeds; failure stops without tuning/retry.
 Exact hashes guard source; HEAD is metadata, so art/docs commits are safe.
+The guard includes ALL crates/**/*.rs, including advanced_campaign.rs; defer
+the proposed campaign-harness correction until this gate sequence terminates.
 Do not restart from a stale tool handle or an observation timeout. The first
 sandbox-local detached launch produced no live child/evidence and is preserved
 separately, not counted as a gate start.
