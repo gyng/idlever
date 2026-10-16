@@ -401,3 +401,82 @@ test("the score comes from the cards alone and repeats to the byte", needsEvalFu
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("collect reads a card's build as a claim about the build, with or without provenance", () => {
+  const root = sandbox();
+  try {
+    const fixture = packageFixture(join(root, "pkg"));
+    const dir = join(root, "frozen");
+    const cards = join(root, "cards");
+    assert.equal(
+      run("freeze", "--candidate", "smoke", "--dir", dir, "--package", fixture, "--no-serve")
+        .status,
+      0,
+    );
+    const commit = json(join(dir, "identity.json")).git.commit;
+    // The brief asks a rater for the identity it played, and the filed cards record provenance
+    // around the commit; both forms must land, and a card naming another build must not.
+    for (const [rater, build] of [
+      [
+        "r1",
+        `${commit} (wasm sha256 ${"a".repeat(64)}; dist manifest sha256 ${"b".repeat(64)})`,
+      ],
+      ["r2", commit],
+      ["r3", "smoke"],
+    ]) {
+      assert.equal(
+        run(
+          "brief",
+          "--candidate",
+          "smoke",
+          "--dir",
+          dir,
+          "--rater",
+          rater,
+          "--seed",
+          "7",
+          "--url",
+          "http://127.0.0.1:9/",
+        ).status,
+        0,
+      );
+      write(join(dir, `packets/${rater}/card/smoke.${rater}.json`), cardFixture(build));
+      const landed = run(
+        "collect",
+        "--candidate",
+        "smoke",
+        "--dir",
+        dir,
+        "--rater",
+        rater,
+        "--date",
+        "2026-01-02",
+        "--cards-dir",
+        cards,
+      );
+      assert.equal(landed.status, 0, landed.stderr);
+      assert.doesNotMatch(landed.stderr, /WARNING|says build/, `rater ${rater}: ${landed.stderr}`);
+    }
+    write(
+      join(dir, "packets/r1/card/smoke.r1.json"),
+      cardFixture("ffffffffffffffffffffffffffffffffffffffff (another build)"),
+    );
+    const foreign = run(
+      "collect",
+      "--candidate",
+      "smoke",
+      "--dir",
+      dir,
+      "--rater",
+      "r1",
+      "--date",
+      "2026-01-04",
+      "--cards-dir",
+      cards,
+    );
+    assert.notEqual(foreign.status, 0, "a card naming another build must be refused");
+    assert.match(foreign.stderr, /says build .*another build/s);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});

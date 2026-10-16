@@ -749,18 +749,21 @@ function cmdCollect(opts) {
   if (!card || typeof card !== "object") throw new Error(`${source} is not JSON`);
   if (!Array.isArray(card.axes) || card.axes.length < 16)
     throw new Error(`${source} has ${card.axes?.length ?? 0} axes: not a rater card`);
-  if (
-    card.build &&
-    !(String(card.build).startsWith(candidate) || candidate.startsWith(String(card.build)))
-  ) {
-    throw new Error(
-      `${source} says build ${card.build}, but this frozen candidate is ${candidate}`,
-    );
-  }
-  if (identity && card.build && !identity.git.commit.startsWith(String(card.build))) {
-    console.error(
-      `fun-eval collect: WARNING the card's build ${card.build} is not a prefix of the frozen commit ${identity.git.commit}`,
-    );
+  if (card.build) {
+    // A card's `build` is the rater's claim about what it played, and the brief asks for the
+    // identity, so the filed cards write "<commit> (wasm sha256 …; dist manifest sha256 …)".
+    // Accept any claim that names this candidate or this commit; refuse one that names neither.
+    const named = String(card.build);
+    const namesThisBuild =
+      named.startsWith(candidate) ||
+      candidate.startsWith(named) ||
+      (identity &&
+        (named.includes(identity.git.commit) || named.includes(identity.git.commitShort)));
+    if (!namesThisBuild)
+      throw new Error(
+        `${source} says build ${named}, but this frozen candidate is ${candidate}` +
+          (identity ? ` (commit ${identity.git.commitShort})` : ""),
+      );
   }
   const canonicalDir = resolve(opts.cardsDir ?? CARDS_DIR);
   const canonical = join(canonicalDir, `${candidate}.${opts.rater}.json`);

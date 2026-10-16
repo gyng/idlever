@@ -338,7 +338,7 @@ each card's own preset, which is the point of scoring from the cards alone.
 
 ## 10. Tests
 
-`node --test tools/fun-eval.test.mjs` (5 tests, ~2 s, no browser, no build, no network beyond
+`node --test tools/fun-eval.test.mjs` (6 tests, ~3 s, no browser, no build, no network beyond
 `127.0.0.1:9` which is never contacted):
 
 1. the manifest is the recorded sha256sum format and follows the bytes;
@@ -348,6 +348,11 @@ each card's own preset, which is the point of scoring from the cards alone.
    stray file, an edited document and an injected score target, and a re-`brief` restores it;
 4. `collect` keys the card by candidate/rater/date, lands both copies, and refuses a second collect
    without landing a new receipt;
-5. the score comes from the cards alone and repeats to the byte (deep-equal two runs, no timestamp).
+5. the score comes from the cards alone and repeats to the byte (deep-equal two runs, no timestamp);
+6. a card's `build` is read as a claim about the build — the provenance form the filed cards use
+   (`<commit> (wasm sha256 …; dist manifest sha256 …)`), a bare full or short commit, and the
+   candidate label all land, and a card naming another build is refused (found by the first real
+   collect: the rater's descriptive build string tripped a false "not a prefix of the frozen commit"
+   warning, which the old check emitted for every honest card).
 
 Tests 4 and 5 skip cleanly if `../eval-fun` is not checked out beside the repo.
