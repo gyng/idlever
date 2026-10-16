@@ -10,20 +10,41 @@ Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
 Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
-Current development package is fast WASM8879ed11… (6774306bytes); settlement
- default `docs/evidence/cut249/final/settlements-inputs-8879.json`. Cut249 persists
-previous-vision IDs needed for exact reload provenance. Combined247–249 native
-979tests/6ignored and Clippy pass; strict4settlements and paid/unpaid public
-partition/reload proofs pass. Cut249 pacing and routine full are terminal PASS:
-24targeted rows/256configuration-seed pairs, then QA/metrics/dayplayer with
-18current-player cases and16RANDOM seeds. That baseline source/six binaries/package identity is recorded; current Cut253
-native source is now work in progress, so those passes do not certify it. Wrapper7816 and all four child PIDs are positively terminal
-in their launch process view; do not restart them. See
-`evidence/cut249/gates-terminal.json` and retained logs/cache receipts.
-Exhaustive balance/migration, broader client and independent fun acceptance
-remain open. Terminal gate checkpoint is aa557ffc. Latest native source
-checkpoint7104eaf3 commits249source/closed correctness proofs;
-8caef551 preserves247/248 and prior UI. Compact UI/R7/method work follows.
+Current development package is fast WASMef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79
+(6944684bytes); default settlements manifest is
+`docs/evidence/cut253/runtime/settlements-inputs-ef4b.json`. Cut253 native/client
+implementation checkpoint7be668d5 passes1013workspace tests/6ignored and default
+all-target Clippy. Exact final202Rust/Cargo file identity is pinned in
+cut253/native-final-checks.json. Baseline8879vs current native has111strict
+byte-exact game/save/report/replay comparisons, including11complete actual
+public replays: freshseeds1/3/5 and genuine Fighter masks0/63 only. Intended new
+catalogue/progress/Journal wire differences are retained separately; broader
+all-class advanced behavior is not inferred.
+
+New package repin is terminal0: all4native settlement Gold/ledger/ExitLine and
+complete after-saves unchanged. Fresh browser settlement proof passes564checks/
+24cases, served ef4b bytes. Its initial4-group batch is3/4: old class-tree
+zero-choice-button expectation failed with newly visible locked descendants.
+Recovery updates the original-six scope, asserts12nodes and strict advanced
+purchase refusal/exactsave; fresh class-tree recovery passes320/400/1440.
+WatchRecovery attribution and skill fallback checks pass. A later72painting
+matrix passes separately; do not relabel the initial batch as4/4.
+
+Required new-source pacing is LIVE, not accepted: host wrapper/PGID745149,
+pacingNode745163, process namespace4026532214,16threads. Durable evidence is
+`docs/evidence/cut253/gates-current/state.json`, wrapper.log and pacing.log.
+Only terminalPASS plus unchanged relevant core/harness/runtime/package bytes
+starts routine --full with16RANDOM seeds; failure stops without tuning/retry.
+Exact hashes guard source; HEAD is metadata, so art/docs commits are safe.
+Do not restart from a stale tool handle or an observation timeout. The first
+sandbox-local detached launch produced no live child/evidence and is preserved
+separately, not counted as a gate start.
+
+Prior Cut249 runtime8879 had979tests/6ignored, Clippy, strict settlement/parity,
+24pacing rows/256configuration-seed pairs and routine full18current-player cases/
+16RANDOM seeds terminalPASS (aa557ffc, cut249/gates-terminal.json). These are
+baseline-source historical proofs, not new-source pacing/full/exhaustive/fun.
+Exhaustive balance/migration, broader client and independent fun>=80 remain open.
 
 Cut250 owner UI feedback is implemented: Heroes moves into the bottom dock,
 phone Home/Watch primary header is one row (62px), resource pills have8px side
@@ -101,18 +122,44 @@ refresh and existing320/400/1440 tree regression pass. Original harness and CSS
 failures remain in evidence/cut252/. This does not implement the old five
 classes' six-to-twelve extension or close broader R7.
 
-Cut253 native extension is source work in progress, owned by acceptance_audit:
-all five old classes,30actual sequence interactions, staged earned budget and
-frozen bounded charges remain required (CUT253_ADVANCED_CLASS_PATHS.md).
-Do not rebuild/overwrite runtime8879 or claim baseline gates certify dirty code.
-Owner rejected the flat30SVG insignias as too basic for final art and requested
-more personality, citing WC3 ability paintings. Thirty painted candidates are
-now saved/exported in99436ce4 (1662290bytes), with35masters/exact built-in prompts including
-fiveV2revisions. Actual24/32/48/96 review passes150sized image cells; engineering
-review still flags realism, dark Gunner values and Caster similarity. Patient
-AmbushV2 is the stronger expressive paint reference. All remain candidates. SVGs are draft/
-fallback material, not final art. No new icons are registered live; review at
-actual24/32/48px and eventual72catalogue cohesion remains. See art/ADVANCED_SKILLS.md.
+Cut253 extends all five old classes to12nodes/30actual bounded sequence
+interactions, with personal staged pick budget up to10 and canonical next-pick/
+earned-stage wire. Native28causal/persistence and16tree/stage checks are included
+in the passing1013workspace suite. Full per-node refusal/miss/once combinations,
+genuine5class/3seed cohorts, zero-defeat path, new advanced watched/offline/WASM
+parity and chosen-path value remain open; no broadR7 claim follows.
+
+Client checkpoint7be668d5 shows Rust budget/next_pick, only recorded earned-stage
+notices and named phase/unit-aware interaction receipts. Viewer seen-state is
+per-resident/class and awards no engine progress. Controlled pick-progress-v5
+passes36wire cases, four normal/200%phone/desktop views,8notice guards and exact
+8879save; that older controlled matrix is not newef4bearned progression.
+Source-hashed native catalogue fixture is authored content, not an earned save.
+
+Owner's WC3-personality feedback now has a full72painted candidate library:
+Cut254 saves42original-node first passes plus twoV2composition corrections with
+exact built-in prompts. All72selected192square lossless exports total4193234bytes;
+216master/prompt/export hashes verified,0missing/invalid. Full registry active;
+normal advanced-only export cannot downgrade it. Current ef4b client passes
+648state/size cells/72unique primitives/648painted/72real image-failure fallbacks,
+served hashes/exactsave and live WatchRecovery. Primary phone402×681 is visible
+viewport; desktop board is a scroll inventory, per-class boards are components.
+Static checks pass. These candidates resolve the old42plain/30painted gap, but
+root/independent seven-class review still flags dark Rogue/advancedCaster/Gunner
+and repeated Engineer compositions. Targeted polish, final tiny-size recognition/
+cohesion, relevant200%/earned journeys remain open. Preserve rejectedV1/dated
+observations and revalidate after revisions. See art/ADVANCED_SKILLS.md and
+cut254/independent-review/; no final art or fun claim.
+
+Freshseed1Fighter earned pilot is terminal0, raw lossless proof/independent audit
+in cut253/earned-pilot-seed1-fighter/. All4stages observed by224h2m (L10/D33,
+304completed),171lifetime defeats, so zero-defeat FAIL. Actual8h branches:
+none12runs/7deaths, parent-only13/10, Holdfast12/9, allD33. Named reconstructed
+Rally/Holdfast receipts exist; no overall selected benefit follows. Skill learns
+cost0Gold. Wrong first-slice capture held older capsules; actual new-run capsules
+are in retained endpoint saves. row_why is lifetime-cumulative, not branch-only
+wasted actions. These limitations are preserved; successor-proposal.md has no
+execution or source change. Only this seed/class ran; cohorts remain required.
 
 R6 advancing-clock single-context A/A controls are terminal5/6PASS; Foundry400
 fails absolute0.249856ms against unchanged0.20ms limit. No retry-to-green or
@@ -129,12 +176,11 @@ all-scene measurement stability or landmark cost. Wrapper317341/node317353/
 privateXvfb317504 are positively terminal. Near-launch foreign heavy browser
 families were observed/left untouched, then a stable visibleLinux window and
 in-run observations were retained; no host/Windows-wide quiet claim follows.
-No retry/off-equivalence/candidate follows. feat_review curates terminal proof.
-Root's30icon export/headless review is terminal0with awaited cleanup; local
-compute is released to acceptance_audit for first native checks, still no WASM
-rebuild. Current source is unaccepted until actual checks finish. First native compile
-exited101on a controlled-test argument order; corrected test is compiling in
-session89113(native-actual-actions-v2.log), not yet a pass. No WASM rebuild.
+No retry/off-equivalence/candidate follows. c4caa3e0 curates terminal proof.
+Native scoped implementation/strict baseline and new-WASM proofs above are
+closed at their stated boundaries. Native/default audit jobs are terminal; only
+the specifically named pacing wrapper is live. No new GPU timing run is allowed
+or inferred from ordinary browser checks. Core source stays frozen for pacing.
 
 Latest scoped UI checkpoint400ade46 includes compact Home, resize correction,
 functional equipment figure and curated R4/R6 preparation. Subsequent routine

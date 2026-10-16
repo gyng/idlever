@@ -1,0 +1,318 @@
+{
+  "status": "PASS_SCOPED_ARTIFACT_CHECKS",
+  "scope": "Independent JSON/hash arithmetic only; no native/browser rerun; not full Cut253 acceptance.",
+  "source_files_verified": 101,
+  "stages": [
+    {
+      "clock_s": 460920,
+      "lifetime_deaths": 77,
+      "observed_step": 18,
+      "save": "campaign-0018.session.json",
+      "stage": 1,
+      "level": 9,
+      "depth": 28,
+      "completed": 163
+    },
+    {
+      "clock_s": 806520,
+      "lifetime_deaths": 171,
+      "observed_step": 30,
+      "save": "campaign-0030.session.json",
+      "stage": 2,
+      "level": 10,
+      "depth": 33,
+      "completed": 304
+    },
+    {
+      "clock_s": 806520,
+      "lifetime_deaths": 171,
+      "observed_step": 30,
+      "save": "campaign-0030.session.json",
+      "stage": 3,
+      "level": 10,
+      "depth": 33,
+      "completed": 304
+    },
+    {
+      "clock_s": 806520,
+      "lifetime_deaths": 171,
+      "observed_step": 30,
+      "save": "campaign-0030.session.json",
+      "stage": 4,
+      "level": 10,
+      "depth": 33,
+      "completed": 304
+    }
+  ],
+  "requested_horizon_s": 1209600,
+  "actual_requested_s": 806520,
+  "campaign_status": "ALL_STAGES_OBSERVED",
+  "zero_defeat_gate": "FAIL:171 genuine lifetime defeats",
+  "paired": [
+    {
+      "branch": "no-selection",
+      "runs": 12,
+      "depth": 33,
+      "deaths": 7,
+      "banked": 1,
+      "returned": 4,
+      "actions": 13817,
+      "seconds": 14883.5,
+      "gold": {
+        "earned": 29783,
+        "fetched": 276,
+        "home": 655,
+        "ledger": {
+          "earned": 26621,
+          "net": 0,
+          "spent": 26621,
+          "terms": [
+            {
+              "amount": 15315,
+              "label": "carried"
+            },
+            {
+              "amount": -8276,
+              "label": "lost"
+            },
+            {
+              "amount": 3222,
+              "label": "bank"
+            },
+            {
+              "amount": -18345,
+              "label": "sinks"
+            },
+            {
+              "amount": 7808,
+              "label": "recovered"
+            },
+            {
+              "amount": 276,
+              "label": "fetched"
+            }
+          ]
+        },
+        "lost": 8276,
+        "net": 0,
+        "passage": 6384,
+        "recovered": 7808,
+        "salvage": 0,
+        "spent": 0,
+        "spent_by_workers": 18345,
+        "wake": 0,
+        "wake_cap": 40,
+        "wake_n": 0
+      },
+      "receipt_counts": [],
+      "holdfast_actual_damage_prevented": 0,
+      "actual_retained_send_capsules": [
+        {
+          "id": 315,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 0,
+          "turn": 0
+        },
+        {
+          "id": 316,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 0,
+          "turn": 0
+        }
+      ],
+      "row_why_scope": "cumulative; not a branch-only wasted-action measure"
+    },
+    {
+      "branch": "parent-only",
+      "runs": 13,
+      "depth": 33,
+      "deaths": 10,
+      "banked": 0,
+      "returned": 3,
+      "actions": 15100,
+      "seconds": 15604.9,
+      "gold": {
+        "earned": 30601,
+        "fetched": 190,
+        "home": 374,
+        "ledger": {
+          "earned": 27761,
+          "net": 0,
+          "spent": 27761,
+          "terms": [
+            {
+              "amount": 15638,
+              "label": "carried"
+            },
+            {
+              "amount": -8491,
+              "label": "lost"
+            },
+            {
+              "amount": 3933,
+              "label": "bank"
+            },
+            {
+              "amount": -19270,
+              "label": "sinks"
+            },
+            {
+              "amount": 8000,
+              "label": "recovered"
+            },
+            {
+              "amount": 190,
+              "label": "fetched"
+            }
+          ]
+        },
+        "lost": 8491,
+        "net": 0,
+        "passage": 6773,
+        "recovered": 8000,
+        "salvage": 0,
+        "spent": 0,
+        "spent_by_workers": 19270,
+        "wake": 0,
+        "wake_cap": 40,
+        "wake_n": 0
+      },
+      "receipt_counts": [
+        {
+          "skill": "path:fighter_rally",
+          "phase": "applied",
+          "effect": "bash_cooldown",
+          "n": 4
+        }
+      ],
+      "holdfast_actual_damage_prevented": 0,
+      "actual_retained_send_capsules": [
+        {
+          "id": 316,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 67,
+          "turn": 0
+        },
+        {
+          "id": 317,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 67,
+          "turn": 0
+        }
+      ],
+      "row_why_scope": "cumulative; not a branch-only wasted-action measure"
+    },
+    {
+      "branch": "selected",
+      "runs": 12,
+      "depth": 33,
+      "deaths": 9,
+      "banked": 0,
+      "returned": 3,
+      "actions": 13975,
+      "seconds": 14433.5,
+      "gold": {
+        "earned": 28631,
+        "fetched": 191,
+        "home": 374,
+        "ledger": {
+          "earned": 27125,
+          "net": 0,
+          "spent": 27125,
+          "terms": [
+            {
+              "amount": 14409,
+              "label": "carried"
+            },
+            {
+              "amount": -7855,
+              "label": "lost"
+            },
+            {
+              "amount": 4674,
+              "label": "bank"
+            },
+            {
+              "amount": -19270,
+              "label": "sinks"
+            },
+            {
+              "amount": 7851,
+              "label": "recovered"
+            },
+            {
+              "amount": 191,
+              "label": "fetched"
+            }
+          ]
+        },
+        "lost": 7855,
+        "net": 0,
+        "passage": 6180,
+        "recovered": 7851,
+        "salvage": 0,
+        "spent": 0,
+        "spent_by_workers": 19270,
+        "wake": 0,
+        "wake_cap": 40,
+        "wake_n": 0
+      },
+      "receipt_counts": [
+        {
+          "skill": "path:fighter_holdfast",
+          "phase": "applied",
+          "effect": "melee_block",
+          "n": 15
+        },
+        {
+          "skill": "path:fighter_holdfast",
+          "phase": "armed",
+          "effect": "melee_block",
+          "n": 14
+        },
+        {
+          "skill": "path:fighter_holdfast",
+          "phase": "consumed",
+          "effect": "melee_block",
+          "n": 15
+        },
+        {
+          "skill": "path:fighter_rally",
+          "phase": "applied",
+          "effect": "bash_cooldown",
+          "n": 4
+        }
+      ],
+      "holdfast_actual_damage_prevented": 15,
+      "actual_retained_send_capsules": [
+        {
+          "id": 315,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 1091,
+          "turn": 0
+        },
+        {
+          "id": 316,
+          "class": "fighter",
+          "weapon": "sword",
+          "class_skills": 1091,
+          "turn": 0
+        }
+      ],
+      "row_why_scope": "cumulative; not a branch-only wasted-action measure"
+    }
+  ],
+  "limitations": [
+    "All4 stages first observed at sampled check-ins; stages2/3/4 share a check-in, not separate exact crossing times.",
+    "Only seed1 Fighter ran; other4 classes, seeds3/5, zero-defeat survivor remain required.",
+    "first-slice-with-send-capsule files precede new departure due rest; their name overstates capture. Actual successor capsules above come from after-saves.",
+    "Named interaction events are reconstructed with exact actual-run tick checks, not independently captured watched events/full RNG equality.",
+    "row_why is cumulative, so branch wasted-action totals have not been isolated.",
+    "336h is a maximum; progression stops at all4 observed stages after224.0333h. No cap-extension/retry."
+  ]
+}

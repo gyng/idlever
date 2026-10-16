@@ -1,0 +1,8 @@
+client suite: targeted (4 selected; 165 current full; 208 exhaustive groups)
+ok   skill-icons     24.7s (4.6s)  {"cells":648,"unique":72,"paintings":270,"failedImages":30,"errors":[]}
+ok   watch-loot-skill 29.2s (9.1s)  {"contract":"Cut210 controlled automatic loot and Cut205 factual live skill","results":[{"lane":"automatic","automatic":{"selected":1,"pendingChoice":null,"cageSheet":false,"cageTicker":false,"cageState":null,"firstBatch":12,"rawAtPickup":30,"carryAtPickup":7,"goldAtPickup":500},"raw":30,"carry":7,"gold":507,"engineGold":507,"exit":"return","pending":null},{"lane":"preference","raw":12,"carry":3},{"lane":"skill","skill":{"id":"fighter_recovery","name":"Recovery"},"filtered":{"tagged":1,"ordinary":0}}]}
+FAIL class-tree      31.4s (11.3s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/web/tests/class-tree.mjs:276:14 {
+ok   gold-settlements 76.8s (56.7s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6944684,"sha256":"ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"},{"bytes":6944684,"sha256":"ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"},{"bytes":6944684,"sha256":"ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"},{"bytes":6944684,"sha256":"ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"}]}
+FAIL: 3/4 client gates in 76.8s

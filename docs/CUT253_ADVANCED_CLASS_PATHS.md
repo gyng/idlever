@@ -7,8 +7,10 @@ It does not replace that extension with the completed painted equipment figure,
 the existing new classes, or a recursive tree renderer. Those are separate work.
 Status: native implementation passes scoped controlled checks:1013workspace
 tests/6ignored, default all-target Clippy,28causal/persistence and16tree/stage
-tests (native-final-checks.json). Current installed WASM remains8879; genuine
-earned campaigns, default-runtime comparison, new-WASM parity and pacing/full
+tests (native-final-checks.json). Current installed WASM isef4b; strict settlements
+and scoped default/original-six baseline comparisons pass. One genuine fresh
+Fighter pilot observes all stages but fails zero-defeat and establishes no
+overall chosen benefit. Remaining cohorts, advanced-WASM parity and pacing/full
 acceptance remain pending. Client catalogue/progress/notice checks are controlled
 presentation evidence, not earned advanced eligibility.
 

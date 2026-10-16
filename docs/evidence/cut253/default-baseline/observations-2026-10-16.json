@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-16",
+  "kind": "Engineer observations and automated measurements; not owner/player feedback",
+  "context": {
+    "sourceCommitReportedByParent": "7be668d5",
+    "sourceIdentity": "native-final-source-v3-before.json (all202 Rust/Cargo files match every baseline run)",
+    "binaries": {
+      "scratchpad/cut253-baseline-8879/native_dev": "c7bff5fc2ba2910a077036b5fd4cdc5079bfad0ea472599b4e128d6b0c319679",
+      "target/fast/examples/native_dev": "1a56c716f1ab63a0f7168164686e1081085a756b9927b5840e3536d77a213674"
+    },
+    "input": "Actual native public JSON-line calls; no browser/viewport involved",
+    "earnedInput": {
+      "path": "docs/evidence/cut220/actual-next-8879/canonical-parent.session.json.gz",
+      "gzipSha256": "eb9c4af1db4a19e1ac1c25195ecdd309c441d2c84fe2ba9c51fe3906b8cd4ee1",
+      "saveSha256": "227c409c99b19bd74969773e5c6355556a9445ff0dba4daff8ea6c31b0cd01cb"
+    },
+    "seeds": [
+      1,
+      3,
+      5
+    ]
+  },
+  "findings": [
+    {
+      "observed": "111strict complete game/save/report/replay result payloads are byte-identical across preserved8879 and currentCut253.",
+      "interpretation": "No default/original-six Fighter simulation or RNG regression observed in this bounded corpus.",
+      "confidence": "Exact automated comparison; does not generalize to all classes or fortnight gates."
+    },
+    {
+      "observed": "All11actual generated runs expose complete reconstructed public replay events, floor snapshots, hash and tick counts identically; replay reads preserve complete saves.",
+      "interpretation": "Retained offline replay reconstruction is unchanged on both actual earned8h branches.",
+      "confidence": "Exact recorded11capsules, not a watched/live event-stream equivalence proof."
+    },
+    {
+      "observed": "17Lineage responses differ only in appended advanced catalogue/budget/next-pick and corresponding Journal requirements/progress/state; all original6node objects remain exact.",
+      "interpretation": "This is the intended new content/progress wire, preserved as differences rather than normalized away.",
+      "confidence": "Exact structural diff paths in comparisons.json."
+    },
+    {
+      "observed": "Unselected actual frozen mask0 and public original6skills mask63 produce exact paired outcomes; Fighter remainsL8.",
+      "interpretation": "No advanced charge allocation/receipts or actual earned-stage transition is exercised here.",
+      "confidence": "Exact saved actor masks and lineage state; advanced campaign acceptance remains separate."
+    }
+  ],
+  "revalidate_when": [
+    "Any class definition/gate/order/combat trigger changes",
+    "Any scheduler/RNG/offline/Scout/replay/save/notice migration changes",
+    "Any source or binary/balance identity changes; old baseline observation does not certify a successor automatically"
+  ],
+  "liveOwnedProcesses": false
+}

@@ -1,0 +1,841 @@
+{
+  "scope": "Strict old/default comparison, genuine Fighter pilot with zero-defeat failure, rebuilt ef4b settlement and recovered class-tree evidence; pacing is live and not included",
+  "wasm": {
+    "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+    "bytes": 6944684
+  },
+  "paths": [
+    "docs/CUT253_ADVANCED_CLASS_PATHS.md",
+    "docs/HANDOFF.md",
+    "docs/QUEUE_ACCEPTANCE.md",
+    "docs/evidence/cut253/default-baseline/README.md",
+    "docs/evidence/cut253/default-baseline/archive-v1-preserved.py",
+    "docs/evidence/cut253/default-baseline/archive-validation.json",
+    "docs/evidence/cut253/default-baseline/archive.log",
+    "docs/evidence/cut253/default-baseline/archive.py",
+    "docs/evidence/cut253/default-baseline/build-current.log",
+    "docs/evidence/cut253/default-baseline/checkpoint-paths.json",
+    "docs/evidence/cut253/default-baseline/compare-v1-preserved.py",
+    "docs/evidence/cut253/default-baseline/compare-v2-preserved.py",
+    "docs/evidence/cut253/default-baseline/compare.py",
+    "docs/evidence/cut253/default-baseline/earned-none-v1.log",
+    "docs/evidence/cut253/default-baseline/earned-none-v1/comparisons.json",
+    "docs/evidence/cut253/default-baseline/earned-none-v1/identity.json",
+    "docs/evidence/cut253/default-baseline/earned-none-v1/summary.json",
+    "docs/evidence/cut253/default-baseline/earned-none-v2.log",
+    "docs/evidence/cut253/default-baseline/earned-none-v2/comparisons.json",
+    "docs/evidence/cut253/default-baseline/earned-none-v2/identity.json",
+    "docs/evidence/cut253/default-baseline/earned-none-v2/summary.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1.log",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/comparisons.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/identity.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/summary.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2.log",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/comparisons.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/identity.json",
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/summary.json",
+    "docs/evidence/cut253/default-baseline/fresh1-v1.log",
+    "docs/evidence/cut253/default-baseline/fresh1-v1/comparisons.json",
+    "docs/evidence/cut253/default-baseline/fresh1-v1/identity.json",
+    "docs/evidence/cut253/default-baseline/fresh1-v1/summary.json",
+    "docs/evidence/cut253/default-baseline/fresh3-v1.log",
+    "docs/evidence/cut253/default-baseline/fresh3-v1/comparisons.json",
+    "docs/evidence/cut253/default-baseline/fresh3-v1/identity.json",
+    "docs/evidence/cut253/default-baseline/fresh3-v1/summary.json",
+    "docs/evidence/cut253/default-baseline/fresh5-v1.log",
+    "docs/evidence/cut253/default-baseline/fresh5-v1/comparisons.json",
+    "docs/evidence/cut253/default-baseline/fresh5-v1/identity.json",
+    "docs/evidence/cut253/default-baseline/fresh5-v1/summary.json",
+    "docs/evidence/cut253/default-baseline/inventory.json",
+    "docs/evidence/cut253/default-baseline/observations-2026-10-16.json",
+    "docs/evidence/cut253/default-baseline/responses.compact.json.gz",
+    "docs/evidence/cut253/default-baseline/summarize-v1-preserved.py",
+    "docs/evidence/cut253/default-baseline/summarize.py",
+    "docs/evidence/cut253/default-baseline/summary-audit-v1.log",
+    "docs/evidence/cut253/default-baseline/summary-audit-v2.log",
+    "docs/evidence/cut253/default-baseline/summary-audit-v3-compact.log",
+    "docs/evidence/cut253/default-baseline/summary.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/build.log",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign.log",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0000.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/original.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-preparation.actions.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-prepared-no-selection.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/actions.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/after.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/first-slice-with-send-capsule.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/prepared.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/receipts.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/result.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/actions.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/after.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/first-slice-with-send-capsule.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/prepared.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/receipts.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/result.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/actions.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/after.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/first-slice-with-send-capsule.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/prepared.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/receipts.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/report.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/result.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/paired-frontier.session.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/result.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/state.json.gz",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-additions.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths-v2.txt",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths.txt",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher-host.log",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher.log",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/observations-2026-10-16.md",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/process-end.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/process.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/raw-inventory.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/run.py",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/terminal.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/verification.json",
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/verify.py",
+    "docs/evidence/cut253/earned-preparation/successor-proposal.md",
+    "docs/evidence/cut253/repin-runtime.exit",
+    "docs/evidence/cut253/repin-runtime.log",
+    "docs/evidence/cut253/runtime/class-tree-before-regression-fix.mjs",
+    "docs/evidence/cut253/runtime/class-tree-recovery.exit",
+    "docs/evidence/cut253/runtime/class-tree-recovery.log",
+    "docs/evidence/cut253/runtime/client-targeted-state.json",
+    "docs/evidence/cut253/runtime/client-targeted.exit",
+    "docs/evidence/cut253/runtime/client-targeted.log",
+    "docs/evidence/cut253/runtime/settlements-inputs-ef4b.json",
+    "web/tests/class-tree.mjs",
+    "web/tests/gold-settlements.mjs"
+  ],
+  "files": {
+    "docs/CUT253_ADVANCED_CLASS_PATHS.md": {
+      "sha256": "7cb4681f3ba3fb25bfd23b590653de56d396269ca110f3691b852212e02c96ea",
+      "bytes": 9649
+    },
+    "docs/HANDOFF.md": {
+      "sha256": "623761be16d5884a1461aef537b9b82ed5d3977479425bb08584977311fb1b5e",
+      "bytes": 69015
+    },
+    "docs/QUEUE_ACCEPTANCE.md": {
+      "sha256": "9d19a3f9068c2d961a2a3417a7f78df286d0cb723c1ceb76dc47d197882db47f",
+      "bytes": 27288
+    },
+    "docs/evidence/cut253/default-baseline/README.md": {
+      "sha256": "7a0c5bfffbead4a764ad001dd0bacaef63d31e2b86ee07e73f608249a406c664",
+      "bytes": 3759
+    },
+    "docs/evidence/cut253/default-baseline/archive-v1-preserved.py": {
+      "sha256": "de5c030d0bd7860e775ba1ecf5e6117d926aec4567c1680a9bd7a12fc2dbfd50",
+      "bytes": 3091
+    },
+    "docs/evidence/cut253/default-baseline/archive-validation.json": {
+      "sha256": "7445fab1f9946ccd89b2f38c159a70c2c39fbe411756915be60a8ef9ce6b5be5",
+      "bytes": 4086
+    },
+    "docs/evidence/cut253/default-baseline/archive.log": {
+      "sha256": "4622122efb5a7579e6cdc349bd0cdd20918bcdedba19a2081b5f1c6413372746",
+      "bytes": 313
+    },
+    "docs/evidence/cut253/default-baseline/archive.py": {
+      "sha256": "77a5263860241298a440f150c7a57e4a3a8ea500d1a6276cffe3670a2e74aac0",
+      "bytes": 3217
+    },
+    "docs/evidence/cut253/default-baseline/build-current.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/default-baseline/checkpoint-paths.json": {
+      "sha256": "007170d5775dde836c9caa4233fc5aade81cb26c76f004a15fbcebeeffc5261e",
+      "bytes": 6042
+    },
+    "docs/evidence/cut253/default-baseline/compare-v1-preserved.py": {
+      "sha256": "caa7e24be54f9897f54507b1f86af3334fbfe60e381153dbe5300aad0815d247",
+      "bytes": 5354
+    },
+    "docs/evidence/cut253/default-baseline/compare-v2-preserved.py": {
+      "sha256": "446e75a41e3a7f388436ed065ab457d5381e344cacf9b83a542be92f2fbcb65c",
+      "bytes": 5361
+    },
+    "docs/evidence/cut253/default-baseline/compare.py": {
+      "sha256": "12e7e6b852d89f4e82055c44ef6603e08b112d884fa5539bafa15f60955633b3",
+      "bytes": 5774
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v1.log": {
+      "sha256": "421606b82d4146b3035709d6c51aa0e0633bf47407ee9ed89404ff1abfa115e6",
+      "bytes": 268
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v1/comparisons.json": {
+      "sha256": "ad8790fa884baf9c3b2c61d61e4fee7a1e3e57853159aa057fbd950784fb83fe",
+      "bytes": 15835
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v1/identity.json": {
+      "sha256": "f31dc1cb1e5e475f5f23683f366facd3d9a486bb5404e1caa1459fe34891c4c4",
+      "bytes": 24345
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v1/summary.json": {
+      "sha256": "f288830bfb6cf1525e706e4d5d101b15e9fb7086a506205becb9c826d021acd0",
+      "bytes": 302
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v2.log": {
+      "sha256": "3a35c27e943157eb4b0312f9a833b4b3a06448b8d3b290c8dc231b251b01b0ec",
+      "bytes": 271
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v2/comparisons.json": {
+      "sha256": "a56a5a1e408170df4532f5b851dd46997c87a44e57680699cc9c448101d42e1b",
+      "bytes": 17642
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v2/identity.json": {
+      "sha256": "5a450e0a630284d5072a6be2d9e26bb137e2ab5d4f88afb1b274279e7cb71292",
+      "bytes": 24345
+    },
+    "docs/evidence/cut253/default-baseline/earned-none-v2/summary.json": {
+      "sha256": "7607df4b656f0eacfc89b01b0a38b857ac3fb0ca8c28eeaeee86ecab7e090532",
+      "bytes": 305
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1.log": {
+      "sha256": "fc016e3c0c3c15215f1b046eb81be0e9f323d39841d202ab2b98a798d9c2cb24",
+      "bytes": 271
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/comparisons.json": {
+      "sha256": "98c77a0971bc5e6375ec4ba6a2ee71b6a8747aed03a6925ce537f9cb46ead880",
+      "bytes": 67135
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/identity.json": {
+      "sha256": "3ab12c685752d482eaac462d349471df347fc897e04c0ec95fc945dd5b7d0741",
+      "bytes": 24348
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v1/summary.json": {
+      "sha256": "8c82f96a6857601cfacb596a1fb34d4ab91720d28c46f8865c60a00106947d5f",
+      "bytes": 305
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2.log": {
+      "sha256": "4471ce3bde47776e6d1405f83966379561f1245fd93654677cf7fefbcda93262",
+      "bytes": 274
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/comparisons.json": {
+      "sha256": "fb3e2b2f152ea3c1dc42b22d1475aecf6343a7b6ac9d763426c2264224b1b40d",
+      "bytes": 68674
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/identity.json": {
+      "sha256": "e08e4f78ad42fbd14fb28b47c8bc824989ee9b6331e10c4ecaeedce4abcc1964",
+      "bytes": 24348
+    },
+    "docs/evidence/cut253/default-baseline/earned-old-six-v2/summary.json": {
+      "sha256": "39bc82cada88ec9e03f08cc338d3279b6339fb985eb28415f63ad76ea74668c8",
+      "bytes": 308
+    },
+    "docs/evidence/cut253/default-baseline/fresh1-v1.log": {
+      "sha256": "e798e4674b21746d63ff66bbfd99c49253912c3b12e6cc051e70ff8206f77d23",
+      "bytes": 238
+    },
+    "docs/evidence/cut253/default-baseline/fresh1-v1/comparisons.json": {
+      "sha256": "a48aea4953d0813d62ac6220521435c1d2a282cb217516c56ca62ee575306f6c",
+      "bytes": 20098
+    },
+    "docs/evidence/cut253/default-baseline/fresh1-v1/identity.json": {
+      "sha256": "e5923d445769fef791a9af76889edae839b6a77b21dd644adb11bc3d5e04b817",
+      "bytes": 24065
+    },
+    "docs/evidence/cut253/default-baseline/fresh1-v1/summary.json": {
+      "sha256": "0eda53e3f54725853ce5d70e249b7145458f69f821d30625a3e7d6e3a52c386c",
+      "bytes": 270
+    },
+    "docs/evidence/cut253/default-baseline/fresh3-v1.log": {
+      "sha256": "ed097852611e53c59625e1e90b42ac5b5073a1097a9d716430352c02f59a2355",
+      "bytes": 266
+    },
+    "docs/evidence/cut253/default-baseline/fresh3-v1/comparisons.json": {
+      "sha256": "a48aea4953d0813d62ac6220521435c1d2a282cb217516c56ca62ee575306f6c",
+      "bytes": 20098
+    },
+    "docs/evidence/cut253/default-baseline/fresh3-v1/identity.json": {
+      "sha256": "8b834af022b5ec2c3df82046eeb688ef476dcc676f0c7d55405f61a31761bfd0",
+      "bytes": 24065
+    },
+    "docs/evidence/cut253/default-baseline/fresh3-v1/summary.json": {
+      "sha256": "f739284f1e009b794b73e2d9c7a38461c3801adeecb6ef01368925cf69d2f79f",
+      "bytes": 300
+    },
+    "docs/evidence/cut253/default-baseline/fresh5-v1.log": {
+      "sha256": "85db4bf79cd635f0ebf57dd5f61fefb0cce0fdb556cebdec23f3aa338f9260fd",
+      "bytes": 266
+    },
+    "docs/evidence/cut253/default-baseline/fresh5-v1/comparisons.json": {
+      "sha256": "a48aea4953d0813d62ac6220521435c1d2a282cb217516c56ca62ee575306f6c",
+      "bytes": 20098
+    },
+    "docs/evidence/cut253/default-baseline/fresh5-v1/identity.json": {
+      "sha256": "89b1d490c58e41e44ba3d2db5b2b88086ed567838ca075bdfb729c80aa4d7390",
+      "bytes": 24065
+    },
+    "docs/evidence/cut253/default-baseline/fresh5-v1/summary.json": {
+      "sha256": "74512e45175805d46403b5b7c1b4e8da0296a07a138b61b41d213fc9a8301748",
+      "bytes": 300
+    },
+    "docs/evidence/cut253/default-baseline/inventory.json": {
+      "sha256": "3b31bc25976faa20a6aa5377438b331e5a93a737933af72c69e7d8ba3c1ac023",
+      "bytes": 16577
+    },
+    "docs/evidence/cut253/default-baseline/observations-2026-10-16.json": {
+      "sha256": "f56b910a16394e2e5b4215e1f05a7addea35892048147e30b51cd4b1bdc8c68d",
+      "bytes": 2888
+    },
+    "docs/evidence/cut253/default-baseline/responses.compact.json.gz": {
+      "sha256": "d51c063bf0f5caac0ba555ca4605ddb3916f15f8df6efc811c4194c84a445ac5",
+      "bytes": 7189827
+    },
+    "docs/evidence/cut253/default-baseline/summarize-v1-preserved.py": {
+      "sha256": "55ac0f794bca6bc6d7095cedfe821d42af7636b2ac29f521a740c8715ab1f805",
+      "bytes": 5697
+    },
+    "docs/evidence/cut253/default-baseline/summarize.py": {
+      "sha256": "a5343ea95196257af26fa0aea6fc316b81cbe256708aa35575ec55fcc7f656cd",
+      "bytes": 5787
+    },
+    "docs/evidence/cut253/default-baseline/summary-audit-v1.log": {
+      "sha256": "8983bf40082d24101877ec6b0ee2a54cd0aa6d9abbeef40ea56528647e3176c3",
+      "bytes": 642
+    },
+    "docs/evidence/cut253/default-baseline/summary-audit-v2.log": {
+      "sha256": "fae00491cbeb9f84fd56976c50e015e12438239d4079ce968a883bfe7ea7d4c1",
+      "bytes": 84
+    },
+    "docs/evidence/cut253/default-baseline/summary-audit-v3-compact.log": {
+      "sha256": "52686cf31377fb0c984d9e2b150ffcc6af072e59dd2841e309ac4e81878fac2d",
+      "bytes": 84
+    },
+    "docs/evidence/cut253/default-baseline/summary.json": {
+      "sha256": "5ee3c46ec6ca7c67f176193d556282df1974b64358bb3aac2a1ff4483d58c71d",
+      "bytes": 6886
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/build.log": {
+      "sha256": "d8a453886ff98d5eee9b522a9891d43d272163dd3679e9bbafd44c390ad0519e",
+      "bytes": 132
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign.log": {
+      "sha256": "79f8c4bb51a18489264b61b688a6ecea5016a098616a724b12b20e2df42a0cd4",
+      "bytes": 2325
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0000.session.json.gz": {
+      "sha256": "3b42bfa8828d99ce01daa6d16a2f2a70a2a0ef9a63d10ec1ba0b2250541b78bc",
+      "bytes": 1991
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.report.json.gz": {
+      "sha256": "9872829d8d9c514e6dd3b44dd89e328827bf6acdabae8c78bdd0a0729214d29a",
+      "bytes": 2437
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0001.session.json.gz": {
+      "sha256": "258bd2c28c915cf4bc692b10f6a81e73659fa31248e13bb576808f5db2afc601",
+      "bytes": 10968
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.report.json.gz": {
+      "sha256": "f838d715b1094d5f1fc03e1f7da7e11e27c007748187cb0bcc88db946e88f084",
+      "bytes": 2279
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0002.session.json.gz": {
+      "sha256": "f8900a5336a8042b9e4f9d230f0c1e79200ab4bafa8cdd4003335e1d67b3793c",
+      "bytes": 11587
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.report.json.gz": {
+      "sha256": "23442e9e5ef9f9381ab657dc35c58756ca380c193adebf8bea9d26f9efb93e8e",
+      "bytes": 11406
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0003.session.json.gz": {
+      "sha256": "b3b77a36d1eb10d1da60e9fe8d30396dc5ffe536655489a92f9e344c55ac9996",
+      "bytes": 71108
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.report.json.gz": {
+      "sha256": "e3835d155c36a6a445afc6c62be92cb02d80ae1ea0e3765b83087616c1dcae73",
+      "bytes": 11476
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0004.session.json.gz": {
+      "sha256": "aed5c222a876e5293285513cc1dd35b9f6a62f58d576965af9e7164a5e3abf05",
+      "bytes": 110153
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.report.json.gz": {
+      "sha256": "d5b65b3e5a8b65004e676b8565e8ab9e3bf797c2784cf8927d6f9b6cc9e5498d",
+      "bytes": 9650
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0005.session.json.gz": {
+      "sha256": "58b9f45720cf69c75ab9f3f82515aed3a05621dd2472ec3384ef3eba9c7c65d9",
+      "bytes": 124746
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.report.json.gz": {
+      "sha256": "8f80cfcc1147d76d97250f4594280eb565e3fb4dc1b04224ea1fac426f873ba1",
+      "bytes": 10735
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0006.session.json.gz": {
+      "sha256": "8fd1d9fca0da5e3fe654e0fca458d1681825682a06ec0edfe373976b13ef54f5",
+      "bytes": 155580
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.report.json.gz": {
+      "sha256": "0fb3b379b352e4fd7390dd2ec6f65448a3e73679f437eda8eb3c8514cddd1b21",
+      "bytes": 10928
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0007.session.json.gz": {
+      "sha256": "0f2a54886cbc4390f3ddbe6d57ead38699527fd75eb64a68a1f3b3766dcdad55",
+      "bytes": 196472
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.report.json.gz": {
+      "sha256": "acb35c625271d0f1c5d6000f5985c9bdf0b4de51abff8ad33a9c45a2083117d1",
+      "bytes": 11902
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0008.session.json.gz": {
+      "sha256": "f13b33cf80ab229222d929229e4ae4c00506d2ef9dd1a0fac4f8b7b2340e5423",
+      "bytes": 257841
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.report.json.gz": {
+      "sha256": "a4d220e597a642cbfadef9b6276aa353712b8a33f920777bc6fb0f2538548e27",
+      "bytes": 12928
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0009.session.json.gz": {
+      "sha256": "1dd53781948b2d19ef578581cab7e91152abfe590d45924e5292fab6b176e277",
+      "bytes": 306378
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.report.json.gz": {
+      "sha256": "9d0910e1e3dcf803dedb263d72d541eb78f00714d122c021eb48a0fb6ead3069",
+      "bytes": 11146
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0010.session.json.gz": {
+      "sha256": "cb62284f425f1ee33516c783037792b82515f5b5cf43afcdab09f9af3761db79",
+      "bytes": 340178
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.report.json.gz": {
+      "sha256": "4487c5b62a54838b076220fbd9194f560164a52e28d5f5ec349a673d368744fa",
+      "bytes": 15039
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0011.session.json.gz": {
+      "sha256": "1fe70ffb91ed2303607c73c3652b4a0351b8ed642ba39daf0e03e48789892b98",
+      "bytes": 422006
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.report.json.gz": {
+      "sha256": "a4291e4b7d42ae56894b82c9d469dba9bd54822fec89182139995822bbf36020",
+      "bytes": 15827
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0012.session.json.gz": {
+      "sha256": "b7a6c398f6ad7660aed827583bb928ec16d8c7a6f7988b36a2a9963c674134ae",
+      "bytes": 488997
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.report.json.gz": {
+      "sha256": "cd43cbfcf2fa7d9511fb6377e065cd486485a0309a782a1cd6672e20871fc290",
+      "bytes": 12890
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0013.session.json.gz": {
+      "sha256": "f2669c603336128d5cad354d9c703962b238f2da7d28d209cd9d1b8649021466",
+      "bytes": 579551
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.report.json.gz": {
+      "sha256": "ea948a0dbe9cc4b8651af9dc0502c6660a4f1998fe1878e3c8913cd796e30aa0",
+      "bytes": 12450
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0014.session.json.gz": {
+      "sha256": "3af8eb04eaa8c5e0d44af1722fe48c916833423bd0f80ad207093c9d108b57d0",
+      "bytes": 656541
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.report.json.gz": {
+      "sha256": "ec7442700c85deef0245c373f90673cadc77d1d12ccd461058544a8c7e3c922f",
+      "bytes": 12474
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0015.session.json.gz": {
+      "sha256": "97b404a5347900210ce5701eafe1356d750ed54bbd876ac397ed72b7cc4879a7",
+      "bytes": 662112
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.report.json.gz": {
+      "sha256": "3e1239b6f1f9d18f3b5fd06f04848e1e601c016f2548b2a7da2c517cbc07ff8d",
+      "bytes": 11180
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0016.session.json.gz": {
+      "sha256": "4c58e0b743c086cdbc4b1b308ca7def63d94b7bb83559612232664f947958148",
+      "bytes": 653790
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.report.json.gz": {
+      "sha256": "dfc5e8052517342b294ff46e7a4f7171f2cc1bc5cebcef2425cf79e2e7269b5a",
+      "bytes": 14605
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0017.session.json.gz": {
+      "sha256": "a0932b1aa399a2443905a8c0a4c96b4d7a94aa02386e6cf9b5e383e730cf5b14",
+      "bytes": 635102
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.report.json.gz": {
+      "sha256": "275031069f4f964003cd70c7c8c70ea8d590f3dd5c8b4f3322b56896ab9145ed",
+      "bytes": 12672
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0018.session.json.gz": {
+      "sha256": "89dbe6e30801c9b08110917be7cf97364be73b3cec48ccc65eb894b2a1c079ba",
+      "bytes": 635784
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.report.json.gz": {
+      "sha256": "832d25820cf9e2a25afc5492b2dc2380318e73b62a03ecc88fcd79d2de223940",
+      "bytes": 12911
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0019.session.json.gz": {
+      "sha256": "5b9f13360daf1604a64ebbdad94cf610286c242fd2094969d678192bdc359310",
+      "bytes": 639186
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.report.json.gz": {
+      "sha256": "802e01dc955e676d6a29cf09e4613070979cd56cafea5deb6ea9bd4cc17346a2",
+      "bytes": 12747
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0020.session.json.gz": {
+      "sha256": "4c78ed83b3efebd13b3fe7f7ab52cf9eefc82c73c86edf54e0842ab07df4a259",
+      "bytes": 638392
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.report.json.gz": {
+      "sha256": "68676ef175f580fb3cb1e21866d8924bdbedd650bd32d80770c2b0218ba0ab12",
+      "bytes": 13726
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0021.session.json.gz": {
+      "sha256": "a7994f8c50f7ff675d417b09ca3e360769b4ec583ed276fd4a4e3e9010c0de99",
+      "bytes": 643181
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.report.json.gz": {
+      "sha256": "18ec9a02e14cb5de4f4ea6cce18a1960fe282ebc4f777ced1de771ad2066b70f",
+      "bytes": 13886
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0022.session.json.gz": {
+      "sha256": "c70e7ef79077563b1e69f36f6e045423af672668e9ada9c7d15ef5cb09e0c49d",
+      "bytes": 648879
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.report.json.gz": {
+      "sha256": "f6c9f7d3ba1ff5f4c71c290c5526dc8af649893caa12dd9130f9d4fdcb2f02d1",
+      "bytes": 13511
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0023.session.json.gz": {
+      "sha256": "9884b74505631e3a491906c791478eeb93e2a8eaa8749b69f3bd8c26225f8940",
+      "bytes": 647541
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.report.json.gz": {
+      "sha256": "86a2fa08bf6ab587241903964f659409a256146819cd14795a3f40be5c6e3364",
+      "bytes": 11592
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0024.session.json.gz": {
+      "sha256": "bfa3845ea7cbd6a5427cc29d5ad7d16311f88ae3e08b0ab6538b6559f48aaa91",
+      "bytes": 653173
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.report.json.gz": {
+      "sha256": "9bbf48b2b2cd2d1f0452609b8bd7af13eff60b4f77c10eeb42a91f72b6a730af",
+      "bytes": 13472
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0025.session.json.gz": {
+      "sha256": "9cee143641a67ed0bba5121e82f60a989c0fc10cc5569f65809b55b267f76239",
+      "bytes": 661870
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.report.json.gz": {
+      "sha256": "de3bcc1f507b641185c14fd03cea627ac6d743f6cfc24fb1699d5dd97f4fabcd",
+      "bytes": 12010
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0026.session.json.gz": {
+      "sha256": "2b0309f2e33a57a6c10547bcf5b86ae3bdc3479fcd47d206fedf1f5039d3f127",
+      "bytes": 665535
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.report.json.gz": {
+      "sha256": "303ef01cf258c5afae427b9afc7da36b0d4302f1d66dc4f6a7b2c8080ea588a0",
+      "bytes": 14850
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0027.session.json.gz": {
+      "sha256": "b5253120b92f8b2e0d1c6724af0d5dde5641961d233ae07b50895977180739d7",
+      "bytes": 672213
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.report.json.gz": {
+      "sha256": "b24b71cc2539ca95b1194eeb64b509e6b3d93762d957e44c8cef6d5985c47c9c",
+      "bytes": 14236
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0028.session.json.gz": {
+      "sha256": "52312598ea0cb9e6c582c792c0d7803709581ef141e45c7cb5b762530d91f8b3",
+      "bytes": 674882
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.report.json.gz": {
+      "sha256": "7e9f6297bbfb866850e173f49bb12219ef90f04f09d252d15f767d469bb3d2e1",
+      "bytes": 13696
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0029.session.json.gz": {
+      "sha256": "9be4960b976489b5b6a94ba21361ec6562385dc2266248ed131f807aa805f01b",
+      "bytes": 675208
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.report.json.gz": {
+      "sha256": "b32b16f75da1e2d9c1f56215917ced08f3b1b04608ab5abae2b1b74d314cb35d",
+      "bytes": 13816
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/campaign-0030.session.json.gz": {
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/original.session.json.gz": {
+      "sha256": "8818cf070fe86912fc0ad892cf2f8063a2b3660f0bfa88a2f929960893e54ae8",
+      "bytes": 1990
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-preparation.actions.json.gz": {
+      "sha256": "453d3ebfc3e660d7225aa261f52f32828957275cc5e98727f1db5902aa8bef87",
+      "bytes": 120
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/common-prepared-no-selection.session.json.gz": {
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection.session.json.gz": {
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/actions.json.gz": {
+      "sha256": "68433ac2490ea1489ab0fa739057fe71c7d6843ae152225a0d6eaf3e299438b8",
+      "bytes": 23
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/after.session.json.gz": {
+      "sha256": "ddd553a1d3068091ad17bd03ef59393e43e1421f139202b3779f3fb68ee2a320",
+      "bytes": 679854
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/first-slice-with-send-capsule.session.json.gz": {
+      "sha256": "0e26357e728a1b06f9d8e1ba0605e3c5dc0c6c9a5609edddd9d405b6b895e57b",
+      "bytes": 669301
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/prepared.session.json.gz": {
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/receipts.json.gz": {
+      "sha256": "7ca3a7e5d197b2130fe86cf43b31f9583a79ac5d95725f005701524a0d9ec15d",
+      "bytes": 1513
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/report.json.gz": {
+      "sha256": "4785926239e902d9eaaa603499654d281e3e1f9ec15c7c7de5cede48e7bba99c",
+      "bytes": 14670
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/no-selection/result.json.gz": {
+      "sha256": "f4853201dd0a743310febc8df51d4f94de6a6ab46956f70ba9b1f423b4976b28",
+      "bytes": 3700
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/actions.json.gz": {
+      "sha256": "ae8a8901922ab8571ef2131d051a521bd4cf256fef0d52c47844f67bf92e75ea",
+      "bytes": 202
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/after.session.json.gz": {
+      "sha256": "dac750261666e0d773b663b83027ac3867d5a0e200f17bc3f75dfd5d8822135f",
+      "bytes": 680003
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/first-slice-with-send-capsule.session.json.gz": {
+      "sha256": "a205d9a13113275ac2fb27c7c030828c03854ca90ab0bac85c2d8e3b0ab804de",
+      "bytes": 669371
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/prepared.session.json.gz": {
+      "sha256": "a7dd72b98423c53411e942e9e25db8cd193cd1a921b610e670609f36ca3dd352",
+      "bytes": 676248
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/receipts.json.gz": {
+      "sha256": "cbf827c7a66fde33e9ea71733f76be535e6df62121fe2b1552283c5b8f814db2",
+      "bytes": 1705
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/report.json.gz": {
+      "sha256": "e9c7020b03790733a82cb68b01a7163c84f121e4ee48be4ba6fa5f30652747e8",
+      "bytes": 15007
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/parent-only/result.json.gz": {
+      "sha256": "00cf25aad72eaf7a020b5ff5ef3b3b637eee0a5577e54804eb2bc0421903e97d",
+      "bytes": 3868
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/actions.json.gz": {
+      "sha256": "d93e5c5347c567115a1681a30c31d47a5bc2fd601fa0613fa5d97ad2703365c4",
+      "bytes": 217
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/after.session.json.gz": {
+      "sha256": "337e0b2379aa4f83e7216c7fe9df22957137a783df64248582df0ba67ce9290f",
+      "bytes": 681876
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/first-slice-with-send-capsule.session.json.gz": {
+      "sha256": "83869378c4ac0c03192103134d637867e7cde7c23c4ba8d16c560a054e79ae55",
+      "bytes": 669392
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/prepared.session.json.gz": {
+      "sha256": "cd7a037c40b025f95423369039cd3615dab22cabe8e218a7eb686bc492f46bae",
+      "bytes": 676270
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/receipts.json.gz": {
+      "sha256": "4fdef0b37006bf4a1e376aab4d01d90788c70e568af8eefc6ead660952e7e120",
+      "bytes": 2118
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/report.json.gz": {
+      "sha256": "ca2a4b387e6632e7963f2828f00061cf6db3c7bb9fd1ae97d9b064f0b108e9e1",
+      "bytes": 14891
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/pair/selected/result.json.gz": {
+      "sha256": "d43f8f555d1a085efd0a60cfe9b43dea01a6dc9d780f63f645cd9237e7f0d540",
+      "bytes": 3825
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/paired-frontier.session.json.gz": {
+      "sha256": "1540446f9dce4466c4ae6af056fca6a1a8baca8859da06cb2cde086053bb5099",
+      "bytes": 676177
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/result.json.gz": {
+      "sha256": "a0e50a3a4efbde3681610defaac4628af760ef8e31f560824900221aa413eba4",
+      "bytes": 16827
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/campaign/state.json.gz": {
+      "sha256": "a0e50a3a4efbde3681610defaac4628af760ef8e31f560824900221aa413eba4",
+      "bytes": 16827
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-additions.json": {
+      "sha256": "6ba8f98a9bf6286ffab76eea2bbe1364f930dd4f954444fd8b161895287a1c78",
+      "bytes": 550
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths-v2.txt": {
+      "sha256": "21d9b9e59dd79f275e8fefb484d668dc6edfdfdaf8a456c14b5124b17fe77b5b",
+      "bytes": 8926
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/checkpoint-paths.txt": {
+      "sha256": "af68d9552af732b8b76585a49f1056a88265ad3f7c2fde40a77e3bf81a9bc34e",
+      "bytes": 8653
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher-host.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/launcher.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/observations-2026-10-16.md": {
+      "sha256": "5790b77cb5ac7d7cff97bae20815e3c89c7d2a5ae9711c4f9b1a0364850c30ae",
+      "bytes": 4386
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/process-end.json": {
+      "sha256": "4e0ba3ca8b26b29139478c6f5038ca5b795269e977194bf8a6438c463d213b95",
+      "bytes": 305
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/process.json": {
+      "sha256": "b17cc99888ce81e47a59565ba1828da85597427754bd56538fa106203ede1e39",
+      "bytes": 782
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/raw-inventory.json": {
+      "sha256": "39c1fdb9f499a50d8c21ec7f360b710e3cf45ade74d565de4d91bf53ce8ab80d",
+      "bytes": 43994
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/run.py": {
+      "sha256": "3016524b7489da1ff2a6a629eeaba235b1203b50794b79b5b16c3a8c50000343",
+      "bytes": 1601
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/terminal.json": {
+      "sha256": "0da396fd8a9be27cdc32e07582780f477ac36238f8b0a4a89a09c3e9fa1460af",
+      "bytes": 1079
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/verification.json": {
+      "sha256": "56fb82d157a5c5800f7c7ca2ebf3f127784ec483417a5ad103db2c5d39fd32ea",
+      "bytes": 7856
+    },
+    "docs/evidence/cut253/earned-pilot-seed1-fighter/verify.py": {
+      "sha256": "7a2a0a5d0207e1df30311cd2be7212ae13d5f0125acaa7e2f24eba147b08a0ea",
+      "bytes": 5254
+    },
+    "docs/evidence/cut253/earned-preparation/successor-proposal.md": {
+      "sha256": "5568ddf7c0883e5dfc627d922d3cad25565305d004f0fa6fcfe380823cd1ce07",
+      "bytes": 3847
+    },
+    "docs/evidence/cut253/repin-runtime.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/repin-runtime.log": {
+      "sha256": "cc81e565f1bb7ac46959e0d7ae84a13a226de49e14c4ac0f898eb56fc58316d3",
+      "bytes": 1081
+    },
+    "docs/evidence/cut253/runtime/class-tree-before-regression-fix.mjs": {
+      "sha256": "30063f53e325d460263e6b6b63ac35b48063ca7928f26d74c30248af677cf3b5",
+      "bytes": 12658
+    },
+    "docs/evidence/cut253/runtime/class-tree-recovery.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/runtime/class-tree-recovery.log": {
+      "sha256": "e8131758fc48d7b72fa5a4e7faa1dae917d516a7f18f1156e07afc0471a246a1",
+      "bytes": 287
+    },
+    "docs/evidence/cut253/runtime/client-targeted-state.json": {
+      "sha256": "cc4a359b97399b5b122076560d6d36e57bea26a82323aae7656219931e3b907c",
+      "bytes": 2821
+    },
+    "docs/evidence/cut253/runtime/client-targeted.exit": {
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/runtime/client-targeted.log": {
+      "sha256": "35d439f3dd444695d873ee8d4545dcf5621f815033f1b95122b49e7c264e90db",
+      "bytes": 1426
+    },
+    "docs/evidence/cut253/runtime/settlements-inputs-ef4b.json": {
+      "sha256": "229ad5eddf75304a7a95df4a29a33970c2f526d86ecacfd48aa0587d52862f6f",
+      "bytes": 127948
+    },
+    "web/tests/class-tree.mjs": {
+      "sha256": "3692465bc01847b5ef6480eda77e24962a67a35e4b312fca62a1d9937e7d57ad",
+      "bytes": 13708
+    },
+    "web/tests/gold-settlements.mjs": {
+      "sha256": "18a42a40998897a96c1802c74f545e8f977f27279286ed864552744d0be9ac7f",
+      "bytes": 8869
+    }
+  }
+}

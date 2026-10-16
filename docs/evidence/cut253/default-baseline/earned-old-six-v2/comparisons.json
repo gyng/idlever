@@ -1,0 +1,2734 @@
+[
+  {
+    "method": "load",
+    "index": 0,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "save",
+    "index": 1,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "lineage",
+    "index": 2,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 3,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 4,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 5,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 6,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 7,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "learnClassSkill",
+    "index": 8,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/0",
+        "old": null,
+        "new": "Level9; historical depth23; a class point",
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/state",
+        "old": "complete",
+        "new": "later"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "exportRules",
+    "index": 9,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "save",
+    "index": 10,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "setWorker",
+    "index": 11,
+    "kind": "lineage",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": false,
+    "wireResultBytesExact": false,
+    "differences": [
+      {
+        "path": "/class_tree/budget",
+        "old": null,
+        "new": 6,
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/next_pick",
+        "old": null,
+        "new": {
+          "stage": "advanced",
+          "level": 8,
+          "required_level": 9,
+          "depth": 28,
+          "required_depth": 23,
+          "completed": 132,
+          "required_completed": 24,
+          "scout": true,
+          "requires_scout": true
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/6",
+        "old": null,
+        "new": {
+          "id": "fighter_rally",
+          "name": "Rally",
+          "parent": "fighter_recovery",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_rally"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_rally"
+            }
+          ],
+          "effect": "wind after block → bash cooldown −20 ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/7",
+        "old": null,
+        "new": {
+          "id": "fighter_oathguard",
+          "name": "Oathguard",
+          "parent": "fighter_boss_guard",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_oathguard"
+            }
+          ],
+          "effect": "boss bash → one melee block +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/8",
+        "old": null,
+        "new": {
+          "id": "fighter_opening_cut",
+          "name": "Opening cut",
+          "parent": "fighter_crowd_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "cleave"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_opening_cut"
+            }
+          ],
+          "effect": "cleave2hits → bash cooldown −10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/9",
+        "old": null,
+        "new": {
+          "id": "fighter_siege_rhythm",
+          "name": "Siege rhythm",
+          "parent": "fighter_boss_breaker",
+          "required_level": 9,
+          "required_depth": 23,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 9",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "class:path:fighter_siege_rhythm"
+            }
+          ],
+          "effect": "boss bash → next melee +2 for10ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/10",
+        "old": null,
+        "new": {
+          "id": "fighter_holdfast",
+          "name": "Holdfast",
+          "parent": "fighter_rally",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 55
+                },
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "second_wind"
+              },
+              "origin": "class:path:fighter_holdfast"
+            }
+          ],
+          "effect": "threatened wind → two melee blocks +2 for20ticks"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/class_tree/nodes/11",
+        "old": null,
+        "new": {
+          "id": "fighter_execution_arc",
+          "name": "Execution arc",
+          "parent": "fighter_siege_rhythm",
+          "required_level": 10,
+          "required_depth": 29,
+          "owned": false,
+          "available": false,
+          "blocked": "reach class level 10",
+          "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                }
+              ],
+              "verb": {
+                "v": "shield_bash"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            },
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "lowest"
+              },
+              "origin": "class:path:fighter_execution_arc"
+            }
+          ],
+          "effect": "charged kill → bash −20ticks;40tick cap"
+        },
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/progress/required",
+        "old": 6,
+        "new": 10
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/0",
+        "old": null,
+        "new": "Level9; historical depth23; a class point",
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/requirements/1",
+        "old": null,
+        "new": "Scout; class level9; personal D23; 24 completed delves",
+        "missing": "old"
+      },
+      {
+        "path": "/journal/chapters/1/entries/10/state",
+        "old": "complete",
+        "new": "later"
+      }
+    ],
+    "originalSixNodesExact": true
+  },
+  {
+    "method": "send",
+    "index": 12,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "save",
+    "index": 13,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "runOfflineQuick",
+    "index": 14,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "save",
+    "index": 15,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  },
+  {
+    "method": "replay",
+    "index": 16,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": [],
+    "runId": 133,
+    "replayAvailable": [
+      true,
+      true
+    ]
+  },
+  {
+    "method": "replay",
+    "index": 17,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": [],
+    "runId": 134,
+    "replayAvailable": [
+      true,
+      true
+    ]
+  },
+  {
+    "method": "replay",
+    "index": 18,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": [],
+    "runId": 135,
+    "replayAvailable": [
+      true,
+      true
+    ]
+  },
+  {
+    "method": "replay",
+    "index": 19,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": [],
+    "runId": 136,
+    "replayAvailable": [
+      true,
+      true
+    ]
+  },
+  {
+    "method": "replay",
+    "index": 20,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": [],
+    "runId": 137,
+    "replayAvailable": [
+      true,
+      true
+    ]
+  },
+  {
+    "method": "save",
+    "index": 21,
+    "kind": "strict",
+    "ok": [
+      true,
+      true
+    ],
+    "decodedExact": true,
+    "wireResultBytesExact": true,
+    "differences": []
+  }
+]

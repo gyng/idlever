@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+"""Read-only evidence audit; no game process or state mutation."""
+import datetime,gzip,hashlib,json,os
+from pathlib import Path
+from archive import load_rows
+root=Path(__file__).parent
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+selected=['fresh1-v1','fresh3-v1','fresh5-v1','earned-none-v2','earned-old-six-v2']
+cases=[]
+for name in selected:
+ d=root/name;checks=json.loads((d/'comparisons.json').read_text());identity=json.loads((d/'identity.json').read_text());strict=[c for c in checks if c['kind']=='strict'];lineage=[c for c in checks if c['kind']=='lineage']
+ assert all(c['decodedExact'] and c['wireResultBytesExact'] and c['ok']==[True,True] for c in strict)
+ assert all(c['ok']==[True,True] and c['originalSixNodesExact'] for c in lineage)
+ replays=[];read_purity={};report=None;mask=None
+ for side in ['old','new']:
+  rows=load_rows(d,side);saves=[r for r in rows if r['request']['method']=='save'];replayrows=[r for r in rows if r['request']['method']=='replay']
+  if replayrows:
+   read_purity[side]=saves[-2]['decoded']==saves[-1]['decoded'] and json.loads(saves[-2]['rawResponse'])['r']==json.loads(saves[-1]['rawResponse'])['r'];assert read_purity[side]
+  if side=='new':
+   report=next((r['decoded'] for r in rows if r['request']['method']=='runOfflineQuick'),None)
+   mask=next((r['decoded']['run']['hero'].get('class_skills',0) for r in saves if r['decoded'].get('run')),None)
+   for r in replayrows:
+    v=r['decoded'];assert v is not None
+    replays.append({'runId':v['run_id'],'hash':v['hash'],'ticks':v['ticks'],'floors':len(v['floors']),'events':sum(len(f['events']) for f in v['floors'])})
+ cases.append({'path':str(d),'strictByteExact':len(strict),'lineageWireComparisons':len(lineage),'originalSixNodeObjectsExact':True,'actualFrozenMask':mask,'elapsedSeconds':report.get('elapsed_s') if report else None,'runs':report.get('runs') if report else None,'deepest':report.get('deepest') if report else None,'replays':replays,'replayReadsPreserveByteExactSave':read_purity,'sourceUnchanged':identity['sourceUnchanged'],'processExit':identity['processExit']})
+now=datetime.datetime.now(datetime.timezone.utc).isoformat();summary={'date':'2026-10-16','kind':'Automated native comparison plus engineer interpretation; not player feedback','recordedUtc':now,'scope':'Public default/unselected and original six-pick Fighter behavior, prior8879 vs Cut253; no advanced selected nodes, no grants or save/RNG edits.','cases':cases,'rawRecordsMode':'compact' if os.environ.get('CUT253_COMPACT')=='1' else 'original-or-compact-fallback','strictByteExactTotal':sum(c['strictByteExact'] for c in cases),'completePublicReplayCount':sum(len(c['replays']) for c in cases),'newSourceMatchesFinalNativeChecks':True,'noLiveOwnedProcesses':True,'noWasmRebuildByThisHarness':True,'transportTiming':'raw ms values retained; transport duration is not game truth or performance acceptance','balanceEnvironmentObservedAtTerminal':{k:os.environ.get(k) for k in ['IDLEVER_BALANCE_FILE','IDLEVER_BALANCE_JSON']},'balanceObservationLimit':'Recorded at terminal, not invented as a prior environment capture. Harness inherited the unchanged tool environment and never sets a balance override.','harnessVersions':{'fresh1-v1':'compare-v1-preserved.py','fresh3-v1/fresh5-v1/earned-none-v1/earned-old-six-v1':'compare-v2-preserved.py','earned-none-v2/earned-old-six-v2':'compare.py'},'harnessIdentityMethod':'Scripts retained byte-exact after their respective terminal phases; owner performed no intervening source writes while each handle ran. Hash inventory is captured now, not represented as a start-time recording.','build':{'command':'cargo build -q --profile fast -p idlever-core --example native_dev','handle':64575,'exit':0,'log':'build-current.log'},'limits':['Only Fighter original six selected-node runtime covered; no five-class selected-path baseline claim.','Earned Fighter remainsL8 during these8h and produces no new advanced-stage notice; actual advanced milestones/receipts are separate acceptance.','Fresh cases cover600actual live ticks each, not fortnight pacing or complete fresh-town automation.','Complete public replay events are reconstructed from all11 retained actual run capsules; this is not a watched/live-stream versus replay equivalence claim.','No advanced campaign, statistical balance, package efficacy, fun, or performance acceptance.','Full Lineage wire intentionally differs: twelve-node catalogue, budget/next_pick, Journal eventual requirement/progress; all original six node objects remain exact. Differences are retained in comparisons.json, not erased.'],'revalidateWhen':['Any class definition/gate/order/combat trigger changes','Any scheduler/RNG/offline/Scout/replay/save/notice migration changes','Any source or binary/balance identity changes; old baseline observation does not certify a successor automatically']}
+current=json.loads((root/'earned-old-six-v2/identity.json').read_text())['sourceBefore'];final=json.loads((root.parent/'native-final-source-v3-before.json').read_text())['files'];assert current==final
+assert all(sha(p)==v for p,v in current.items());(root/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+manifest={str(p):{'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(root.rglob('*')) if p.is_file() and p.name!='inventory.json'};(root/'inventory.json').write_text(json.dumps({'date':'2026-10-16','files':manifest,'scope':'All scoped evidence; original v1 passes retained, v2 adds replay proof. No production source or binaries in this folder.'},indent=2)+'\n');print(json.dumps({'strictByteExact':summary['strictByteExactTotal'],'replays':summary['completePublicReplayCount'],'curatedFiles':len(manifest),'totalBytes':sum(v['bytes'] for v in manifest.values())}))

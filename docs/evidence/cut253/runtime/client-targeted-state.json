@@ -1,0 +1,86 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "7be668d57d275910f0080687ca4b50170f79527b",
+    "dirty": true,
+    "dirtyHash": "859dc7890ee4ea4cc67616f08986ec80bfcf284d15cb9acf1dc25a5218aae075",
+    "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+  },
+  "startedAt": "2026-10-15T23:30:44.403Z",
+  "finished": true,
+  "selected": [
+    "gold-settlements",
+    "class-tree",
+    "watch-loot-skill",
+    "skill-icons"
+  ],
+  "results": {
+    "skill-icons": {
+      "name": "skill-icons",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 4.583,
+      "endedAtSeconds": 24.737,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T23:31:09.140Z",
+      "identity": {
+        "head": "7be668d57d275910f0080687ca4b50170f79527b",
+        "dirty": true,
+        "dirtyHash": "859dc7890ee4ea4cc67616f08986ec80bfcf284d15cb9acf1dc25a5218aae075",
+        "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+      }
+    },
+    "watch-loot-skill": {
+      "name": "watch-loot-skill",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.075,
+      "endedAtSeconds": 29.225,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T23:31:13.628Z",
+      "identity": {
+        "head": "7be668d57d275910f0080687ca4b50170f79527b",
+        "dirty": true,
+        "dirtyHash": "859dc7890ee4ea4cc67616f08986ec80bfcf284d15cb9acf1dc25a5218aae075",
+        "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+      }
+    },
+    "class-tree": {
+      "name": "class-tree",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 11.285,
+      "endedAtSeconds": 31.431,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "finishedAt": "2026-10-15T23:31:15.835Z",
+      "identity": {
+        "head": "7be668d57d275910f0080687ca4b50170f79527b",
+        "dirty": true,
+        "dirtyHash": "859dc7890ee4ea4cc67616f08986ec80bfcf284d15cb9acf1dc25a5218aae075",
+        "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+      }
+    },
+    "gold-settlements": {
+      "name": "gold-settlements",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 56.703,
+      "endedAtSeconds": 76.842,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T23:32:01.245Z",
+      "identity": {
+        "head": "7be668d57d275910f0080687ca4b50170f79527b",
+        "dirty": true,
+        "dirtyHash": "859dc7890ee4ea4cc67616f08986ec80bfcf284d15cb9acf1dc25a5218aae075",
+        "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T23:32:01.246Z"
+}

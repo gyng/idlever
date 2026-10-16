@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/g/p/riddle/docs/evidence/cut253/default-baseline/summarize.py", line 20, in <module>
+    mask=next((r['decoded']['run']['hero']['class_skills'] for r in saves if r['decoded'].get('run')),None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g/p/riddle/docs/evidence/cut253/default-baseline/summarize.py", line 20, in <genexpr>
+    mask=next((r['decoded']['run']['hero']['class_skills'] for r in saves if r['decoded'].get('run')),None)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'class_skills'

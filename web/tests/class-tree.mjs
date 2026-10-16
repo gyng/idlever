@@ -233,7 +233,8 @@ try {
         () => !window.__idlever.rules.rows.some((r) => r.origin?.startsWith("class:path:")),
       ),
     );
-    // Every class can accumulate BOTH branches and ALL children, with no lost skills/resources.
+    // Every class retains BOTH original branches and all six level-funded nodes.
+    // Advanced descendants keep their separate personal stage requirements.
     for (const cls of ["fighter", "rogue", "ranger", "caster", "gunner"]) {
       await page.evaluate((cls) => window.showSkill(8, 18, cls), cls);
       const tree = await page.evaluate(() => window.__idlever.lineage.class_tree),
@@ -244,6 +245,8 @@ try {
       const ordered = tree.nodes
         .filter((n) => !n.parent)
         .flatMap((root) => [root, ...tree.nodes.filter((n) => n.parent === root.id)]);
+      assert.equal(tree.nodes.length, 12);
+      assert.equal(ordered.length, 6);
       for (const [i, node] of ordered.entries()) {
         await page
           .locator(".sheet-wrap:not([hidden])")
@@ -274,9 +277,39 @@ try {
         before,
       );
       assert.equal(
-        await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-choose").count(),
+        await page
+          .locator(".sheet-wrap:not([hidden])")
+          .locator(".class-path-choose:enabled")
+          .count(),
         0,
       );
+      const advancedRefusal = await page.evaluate(async () => {
+        const a = window.__idlever;
+        const next = a.lineage.class_tree.nodes.find((n) => n.required_level > 8);
+        if (!next) return { legacy: true };
+        const before = await a.engine.save();
+        let refused = false;
+        try {
+          await a.engine.learnClassSkill(next.id);
+        } catch {
+          refused = true;
+        }
+        return {
+          refused,
+          unchanged: (await a.engine.save()) === before,
+          budget: a.lineage.class_tree.budget,
+          owned: next.owned,
+          available: next.available,
+        };
+      });
+      if (!advancedRefusal.legacy)
+        assert.deepEqual(advancedRefusal, {
+          refused: true,
+          unchanged: true,
+          budget: 6,
+          owned: false,
+          available: false,
+        });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
     // Early middle tier shows one child and one later milestone; full map exposes all future nodes.
@@ -301,7 +334,7 @@ try {
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-tree-map summary").click();
     assert.equal(
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-tree-future:visible").count(),
-      4,
+      10,
     );
     assert.deepEqual(errors, []);
     console.log(
