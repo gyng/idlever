@@ -108,6 +108,13 @@ says `TARGETED … not a gate pass`. Run it after a pacing or economy edit, befo
 The log is `docs/evidence/iteration-tools/pacing-3823eb8b.log` (the bar lines only). `--fail-fast` would have stopped
 at cadence30's first failing seed.
 
+**The `each-system` row is the expensive tail, and it is not in the pacing pack.** It plays seven configurations
+(TUNED plus each TUNED − S) at 16 seeds, and the TUNED bot's wall search takes every core. Measured directly
+(2026-10-17, `--rows each-system --seeds 16`): **638 s on TUNED's very first seed**, and its first configuration had
+not finished after 900 s — hours, not the pacing pack's 51 minutes. Use `--tuned-seeds`/`--loo-seeds` for a smaller
+read when that is enough (the pets-clause finding used the gate's own cached legs for exactly this reason:
+`docs/evidence/mechanics/pets-clause-finding-2026-10-16.md`), and pay the full row inside `verify.sh --exhaustive`.
+
 ### `tools/sweep.mjs`: parallel balance sweep, no recompile
 
 ```sh
