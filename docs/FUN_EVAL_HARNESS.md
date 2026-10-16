@@ -180,16 +180,22 @@ given. The seed, port, URL and rater are all recorded in `PACKET.json` and in th
 
 ## 5. Collect — a named place per card, and no overwrites
 
-`collect` lands the rater's card in two places, keyed by (candidate, rater, date), and refuses if
-*either* exists — `writeFileSync(..., { flag: "wx" })`, so nothing overwrites a card:
+`collect` lands the rater's card **and its rule export** in two places each, keyed by
+(candidate, rater, date), and refuses per artifact if the target exists —
+`writeFileSync(..., { flag: "wx" })`, so nothing overwrites a card:
 
-- `eval/cards/<candidate>.<rater>.json` — the canonical path the scorer and every cohort record use;
-- `<frozen>/cards/<candidate>.<rater>.<YYYY-MM-DD>.json` — the dated immutable receipt;
-- plus an entry in `<frozen>/collected.json` (rater, date, sha256, total, verdict, identity).
+- `eval/cards/<candidate>.<rater>.json` and `eval/cards/<candidate>.<rater>.rules.json` — the
+  canonical paths the scorer and every cohort record use (the brief has the rater export
+  `window.__idlever.engine.exportRules()` beside the card, and the repository keeps both);
+- `<frozen>/cards/<candidate>.<rater>.<YYYY-MM-DD>.json` and its `.rules.json` — the dated
+  immutable receipts;
+- plus an entry in `<frozen>/collected.json` (rater, date, sha256, total, verdict, identity, rules).
 
-It validates before landing (JSON, ≥16 axes with `id`/`human`/`bot`, a `build` that matches the candidate)
-and warns when the card's build is not a prefix of the frozen commit. The second collect prints the
-existing paths and exits 2 — and lands no dated receipt for the new date.
+It validates before landing (JSON, ≥16 axes with `id`/`human`/`bot`, a `build` that names the
+candidate or the frozen commit — with or without the provenance the filed cards wrap around it)
+and refuses a card that names another build. A second collect prints the existing paths and exits 2
+without landing a new receipt for the new date; a rule export filed later still lands on its own,
+because the card and the export are refused independently.
 
 ## 6. Score — from the cards alone
 
@@ -338,7 +344,7 @@ each card's own preset, which is the point of scoring from the cards alone.
 
 ## 10. Tests
 
-`node --test tools/fun-eval.test.mjs` (6 tests, ~3 s, no browser, no build, no network beyond
+`node --test tools/fun-eval.test.mjs` (6 tests, ~8 s, no browser, no build, no network beyond
 `127.0.0.1:9` which is never contacted):
 
 1. the manifest is the recorded sha256sum format and follows the bytes;
@@ -346,8 +352,9 @@ each card's own preset, which is the point of scoring from the cards alone.
    heals a tampered `dist/` from the source package;
 3. the packet is the frozen brief plus exactly the four briefed documents, and `packet-check` catches a
    stray file, an edited document and an injected score target, and a re-`brief` restores it;
-4. `collect` keys the card by candidate/rater/date, lands both copies, and refuses a second collect
-   without landing a new receipt;
+4. `collect` keys the card by candidate/rater/date, lands both copies **and the rater's rule export**
+   beside them, refuses a second collect without landing a new receipt for either artifact, and still
+   lands a rule export filed after the card (the artifacts are refused independently);
 5. the score comes from the cards alone and repeats to the byte (deep-equal two runs, no timestamp);
 6. a card's `build` is read as a claim about the build — the provenance form the filed cards use
    (`<commit> (wasm sha256 …; dist manifest sha256 …)`), a bare full or short commit, and the

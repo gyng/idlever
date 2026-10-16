@@ -528,7 +528,7 @@ function renderBrief({ url, rater, port, seed, candidate, manifest, wasm }) {
     "",
     `Write the finished card to this directory as card/${candidate}.${rater}.json and the rule export as`,
     `card/${candidate}.${rater}.rules.json. Do not write into the repository's card directory. The`,
-    `coordinator lands the card with: node tools/fun-eval.mjs collect --candidate ${candidate} --rater ${rater}`,
+    `coordinator lands both with: node tools/fun-eval.mjs collect --candidate ${candidate} --rater ${rater}`,
     "",
     `Frozen identity: candidate ${candidate} · package manifest sha256 ${manifest} · wasm sha256 ${wasm} ·`,
     `driver port ${port} · seed ${seed} · URL ${url}`,
@@ -768,6 +768,11 @@ function cmdCollect(opts) {
   const canonicalDir = resolve(opts.cardsDir ?? CARDS_DIR);
   const canonical = join(canonicalDir, `${candidate}.${opts.rater}.json`);
   const dated = join(frozen, "cards", `${candidate}.${opts.rater}.${date}.json`);
+  const rulesSource = join(dirname(source), `${candidate}.${opts.rater}.rules.json`);
+  const rulesCanonical = join(canonicalDir, `${candidate}.${opts.rater}.rules.json`);
+  const rulesDated = join(frozen, "cards", `${candidate}.${opts.rater}.${date}.rules.json`);
+  const text = `${JSON.stringify(card, null, 2)}\n`;
+  let refused = false;
   const taken = [canonical, dated].filter((p) => existsSync(p));
   if (taken.length) {
     console.error(`fun-eval collect: REFUSING to overwrite an existing card`);
@@ -775,12 +780,42 @@ function cmdCollect(opts) {
     console.error(
       "  nothing overwrites a card; use a new --rater id, or accept the dated receipt already on file.",
     );
-    process.exit(2);
+    refused = true;
+  } else {
+    mkdirSync(dirname(canonical), { recursive: true });
+    mkdirSync(dirname(dated), { recursive: true });
+    for (const p of [canonical, dated]) writeFileSync(p, text, { flag: "wx" });
   }
-  mkdirSync(dirname(canonical), { recursive: true });
-  mkdirSync(dirname(dated), { recursive: true });
-  const text = `${JSON.stringify(card, null, 2)}\n`;
-  for (const p of [canonical, dated]) writeFileSync(p, text, { flag: "wx" });
+  // The brief has the rater file the rule export beside the card, and the repository keeps both
+  // (`eval/cards/<build>.<rater>.rules.json`), so it lands here too — under the same rule that
+  // nothing overwrites, and independently of the card, so a late export can still be filed.
+  let rulesLanded = null;
+  if (!existsSync(rulesSource)) {
+    console.error(
+      `fun-eval collect: no rule export beside the card (${rulesSource}); the brief asks for one`,
+    );
+  } else {
+    const rulesText = readFileSync(rulesSource, "utf8");
+    try {
+      JSON.parse(rulesText);
+    } catch {
+      throw new Error(`${rulesSource} is not JSON`);
+    }
+    const takenRules = [rulesCanonical, rulesDated].filter((p) => existsSync(p));
+    if (takenRules.length) {
+      console.error(`fun-eval collect: REFUSING to overwrite an existing rule export`);
+      for (const p of takenRules) console.error(`  exists: ${p}`);
+      refused = true;
+    } else {
+      for (const p of [rulesCanonical, rulesDated]) {
+        mkdirSync(dirname(p), { recursive: true });
+        writeFileSync(p, rulesText, { flag: "wx" });
+      }
+      rulesLanded = rulesCanonical;
+      console.log(`fun-eval collect: rule export landed ${rulesCanonical}  ${sha256(rulesText)}`);
+    }
+  }
+  if (refused) process.exit(2);
   const total = scoreCard(canonical);
   const entry = {
     candidate,
@@ -789,6 +824,7 @@ function cmdCollect(opts) {
     at: utc(),
     card: canonical,
     receipt: dated,
+    rules: rulesLanded,
     sha256: sha256(text),
     total: total?.total ?? null,
     verdict: total?.verdict ?? null,

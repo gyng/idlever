@@ -160,8 +160,11 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   triaged it against the code in
   `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md` — the late pen and the
   parking-lot "orphan shop" are design/misreadings, the unlabelled painted controls are
-  the UI lane's). α needs a second card on the same immutable build, so a harness and
-  one rater are still not the verdict.
+  the UI lane's). The **cohort is two cards**: `blind-b` (`eval/cards/e33d50b.blind-b.json`,
+  70.3, seed 741, 32 measured active minutes) lifts the harness's own report to **mean 68,
+  sd 3.25, α 0.700 — tentative**, i.e. a tentative reading about twelve points below the
+  fun ≥ 80 goal and short of the α ≥ 0.80 a decision needs. `fun ≥ 80` remains unverified,
+  with a measured direction of travel rather than a claim.
 
 ## Completion rule
 

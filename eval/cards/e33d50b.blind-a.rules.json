@@ -1,0 +1,146 @@
+{
+ "rows": [
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 45
+    },
+    {
+     "k": "foe_tag",
+     "t": "summoner"
+    }
+   ],
+   "verb": {
+    "v": "attack",
+    "a": "tag:summoner"
+   },
+   "origin": "player"
+  },
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 40
+    }
+   ],
+   "verb": {
+    "v": "return"
+   },
+   "origin": "player"
+  },
+  {
+   "conds": [
+    {
+     "k": "foe_tag",
+     "t": "boss"
+    },
+    {
+     "k": "hp>",
+     "n": 45
+    }
+   ],
+   "verb": {
+    "v": "attack",
+    "a": "tag:boss"
+   },
+   "origin": "drill:goblin_warlord"
+  },
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 45
+    }
+   ],
+   "verb": {
+    "v": "drink",
+    "a": "heal"
+   },
+   "origin": "stance:guarded"
+  },
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 30
+    },
+    {
+     "k": "depth>=",
+     "n": 22
+    }
+   ],
+   "verb": {
+    "v": "bank"
+   },
+   "origin": "stance:guarded"
+  },
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 30
+    }
+   ],
+   "verb": {
+    "v": "return"
+   },
+   "origin": "stance:guarded"
+  },
+  {
+   "conds": [
+    {
+     "k": "hp<",
+     "n": 100
+    }
+   ],
+   "verb": {
+    "v": "rest"
+   },
+   "origin": "stance:guarded"
+  },
+  {
+   "conds": [
+    {
+     "k": "lacks",
+     "t": "heal"
+    },
+    {
+     "k": "hp<",
+     "n": 45
+    }
+   ],
+   "verb": {
+    "v": "bank"
+   },
+   "origin": "stance:guarded"
+  },
+  {
+   "conds": [
+    {
+     "k": "foes>=",
+     "n": 1
+    }
+   ],
+   "verb": {
+    "v": "tame",
+    "a": "open"
+   },
+   "origin": "drill:tame"
+  },
+  {
+   "conds": [
+    {
+     "k": "foes>=",
+     "n": 1
+    }
+   ],
+   "verb": {
+    "v": "attack",
+    "a": "nearest"
+   },
+   "origin": "stance:guarded"
+  }
+ ],
+ "name": "fighter"
+}

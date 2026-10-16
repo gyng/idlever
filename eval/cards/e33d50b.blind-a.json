@@ -1,0 +1,230 @@
+{
+  "$comment": "Blind card, rater blind-a. Criterion probes and idle probes answered before awards. bot stays 'na' on every axis (caps applied later). One quoted observation per axis.",
+  "game": "Idlever",
+  "build": "e33d50bee5936436b6c5407584f1f4a7a24bc747 (wasm sha256 51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191; dist manifest sha256 4b5f19dc511d72857c3a00bbc8a620ff221258b80babf1dfa9afe07b39462f89)",
+  "genre": "idle-roguelike",
+  "presets": "../riddle/eval/presets.json",
+  "profile": null,
+  "tier": 1,
+  "evaluator": "blind-a (agent, blind to design history)",
+  "played": {
+    "url": "http://127.0.0.1:37521/",
+    "seed": 829,
+    "openedWith": "http://127.0.0.1:37521/?dev=1&seed=829&fresh=1 (once at the start)",
+    "absencesTaken": [
+      "http://127.0.0.1:37521/?dev=1&absent=20m (one load)",
+      "http://127.0.0.1:37521/?dev=1&absent=4h (one load)",
+      "http://127.0.0.1:37521/?dev=1&absent=8h (one load, overnight)"
+    ],
+    "viewport": "phone 400x800 CSS px at deviceScaleFactor 3",
+    "textScale": "browser default (16px root); the driver's phone profile; no text scaling applied by me",
+    "renderer": "headed Chromium on the GPU under WSLg (driver --headed --dpr 3)",
+    "driver": "tools/driver.mjs --dir scratchpad/rater-blind-a --port 37429 --headed --checkpoint"
+  },
+  "horizon": {
+    "activeMinutes": 45,
+    "activeMinutesBasis": "cold 25 (4 runs sent, 3 watched at 1x/Normal for 50s-200s each, every report screen read), 20m return 6, 4h return 6, 8h return 8 (report, editor, one full run watched end to end). 45 min, not the brief's 40+20; the two short returns were each under 5 min of real play because each returned exactly one pick.",
+    "absences": [
+      {
+        "length": "20m",
+        "returns": 1,
+        "whatCameBack": "camp intact, one new control 'pick'; Pick one sheet = 'drill Guarded +3 runs / legacy Legacy +2 (DEFAULT) / marks Marks +◆1'; no summary of the absence"
+      },
+      {
+        "length": "4h",
+        "returns": 1,
+        "whatCameBack": "OFFLINE badge, forecast grew to 'D9 fens → D13 · or crypt · untried', pick scaled to '+10 runs / +6 Legacy / +◆2', plus a 'Legacy auto-spend | balanced | not now' order prompt"
+      },
+      {
+        "length": "8h",
+        "returns": 1,
+        "whatCameBack": "'While away 8h | 10 RUNS | 3 died | D21 DEEPEST | NEW BEST | +$5877 GROSS GOLD | LEGENDARY FOUND' with three Effect/Tradeoff gear cards, three boss kills with '▶ watch kill', and 'HERE the pen · tactic slot 2' (the rule editor unlocked)"
+      }
+    ],
+    "runsWatched": 6,
+    "runsOffline": 10,
+    "deathsRead": 1,
+    "deathsReadNote": "1 death read in full (D8, screen + you-died line + full turn-by-turn rule trace with why-nots). The 8h report reported 3 more deaths ('3 died', '3/10 DEATHS', 'record D13 · 3 deaths · gas') but the individual deaths were not replayable or readable, so only 1 of the brief's 3 is truly read. GAP.",
+    "ruleEdits": 2,
+    "ruleEditsDetail": [
+      "wrote row 1 'hp < 45% · foe: summoner → attack summoner' (origin:\"player\" in the export)",
+      "wrote row 2 'hp < 40% → return' by editing the value chip on the return rule (origin:\"player\"); it fired in the last run: 'D13 · HP 38% → return'"
+    ],
+    "otherConfigChanges": [
+      "took the report's New choice: combat style Steady L1 -> Guarded L1, then Guarded L2",
+      "picked 'drill · Guarded +3 runs' at the 20m return",
+      "picked 'legacy +6' and then 'balanced' at the 4h return's Legacy auto-spend order offer",
+      "hired the free Porter ('hauls home · while away')"
+    ],
+    "resumedFromCheckpoint": 0,
+    "budget": "spent well inside the cap; no session death, no resume"
+  },
+  "killCriteria": {
+    "crashOrDataLoss": false,
+    "feltInputLatencyInCoreAct": false,
+    "firstSessionWithoutCoreAct": false,
+    "darkPatternInLoop": false,
+    "defaultRulesBeatEveryEdit": false,
+    "unfairDeathShareAbove10pct": false,
+    "returnWithNothingToDecide": false
+  },
+  "killCriteriaNotes": {
+    "crashOrDataLoss": "no crash, no page error; the save survived three reloads and two long-jump absences (gold $36 -> $4690 -> $5321 across the session).",
+    "darkPatternInLoop": "no evidence found: I saw a 20-minute rest gate ('rest 1200s', 'DEPARTS 20m', 'Rest completes automatically. Nothing needs tending.') and a wait-or-buy line on the drillmaster ('levelled floor clears · or 24h'), but I never found a button that skipped a wait for money.",
+    "defaultRulesBeatEveryEdit": "unmeasured, not cleared: the editor only opened after ~50 minutes (and only after the overnight), so I played exactly one run with a player-authored rule set. The bot proxy needs 30 seeds.",
+    "unfairDeathShareAbove10pct": "with 1 death read, the audit is thin; that death trace names addressable vocabulary ('no way ← warlord holds the way' blocked two rules, but the drill 'foe: boss · hp > 45% → attack boss' did fire, and my later 'attack summoner' rule matches the summons that killed her), so I do not call it unfair.",
+    "returnWithNothingToDecide": "false: the 20m and 4h returns each produced exactly one decision ('Pick one'), the 4h added an order offer, and the 8h added three Effect/Tradeoff gear choices and a new editor."
+  },
+  "criterion": {
+    "fun_1to7": 4,
+    "playAgainTomorrow_1to7": 5,
+    "recommend_0to10": 6,
+    "checkInTomorrowUnprompted_1to7": 4,
+    "delayedRecall": "same-day: I sent Iris into the pit, and on the last run she went down to D13 with my new 'hp < 40% → return' rule as her leash, killed the Goblin Warlord, found heir 4's bones ('Found heir 4's bones: 12 items.'), and came home with $631 when the log printed 'D13 · HP 38% → return'. The turn was the Bloat Mother's vents: 'VENTS! / Run ended / -​3 hp · gas', the hero walking out at 38% HP instead of the 3/36 HP that ended run one. The report then offered the same three-way pick again ('drill Guarded +16 runs / legacy Legacy +9 / marks Marks +◆2') and I noticed my Legacy had dropped from 18 to 4 because I had told the game to auto-spend it 'balanced'.",
+    "criterionNotes": "Answered before awarding. The cold session was fun to watch but empty to play: in 25 minutes the only decisions were 'which drill', 'which style' and 'when to send', because the whole configuration layer was read-only ('Read only / Custom rules · after Bloat Mother'). The overnight is where the game paid off, and one run after writing rules was the most fun I had."
+  },
+  "axes": [
+    {
+      "id": "clarity",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "time-to-first-rule-edit; misread rate on the trace",
+      "note": "The camp is legible (GOLD/LEGACY/D-best, 'COMBAT STYLE Guarded L1', 'FLOOR CHANCE D6 63%±34'), but I could not read the watch's speed tile and never knew what the number meant: it printed 'Speed | Normal | 4×' in one breath and 'Speed | Fights only | 36×' in another. And for the first ~40 minutes the configuration layer was simply not on screen: the priority editor was display:none at 400x800 and at 1280x800, and the only shop line was '+1 rule slot ⊘ fill rules ◆3 or $350' inside a display:none panel with no control that revealed it. Time-to-first-rule-edit: about 50 minutes."
+    },
+    {
+      "id": "decisions",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "rule decision gap; dominated-rule rate",
+      "note": "Idle boundary read (configuration at check-in): after the pen opened the choices are real - 'fight groups from narrow corridors' vs 'kite archers' vs 'mirror read' as extra tactics, a temperament ('skittish / unbowed / light hands / iron gut'), a route ('D5 burrows · D9 fens · D14 crypt'), and 4 writable priority rows in 8 slots. Before that, the whole cold session's decision surface was one of three picks: the sheet literally reads 'Pick one | drill Guarded +3 runs | legacy Legacy +2 | DEFAULT | marks Marks +◆1'."
+    },
+    {
+      "id": "mastery",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "depth-per-run vs sessions; rules-per-death trend",
+      "note": "Named lapse: the first ~40 minutes teach nothing a player can use - the rules are 'Read only' and the forecast says 'rough estimate 8 samples / More samples'. After that the curve is visible and graded: the vocabulary grows from ~15 live conditions to ~90 ('⊘ has: poison | buy poison' sits beside a live 'foe: summoner' and 'attack summoner'), the report teaches ('LEARNED goblin captain · telegraph · summoner' then 'COUNTERS: bloat mother | counter: throw fire, boss'), and depth went D3 -> D5 -> D8 -> D21 -> D13-banked on the same seed."
+    },
+    {
+      "id": "tension",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "bloody-clear share; bank-or-push margin",
+      "note": "Idle boundary read (stakes the player chose to carry): in the ordinary loop I chose nothing to risk - the delve is one tap on the gem, the forecast says 'full haul 38% · return 50% · death 2-47%', and the game then made it automatic ('DEPARTS 20m', the gem reading 'DELVE auto'). The hero's retreat rule fired before doubt ('D13 · HP 38% → return', 'hurt · went home · keeps 100%'), so there was no release to pay off. The stakes I did choose (the legendary Effect/Tradeoff cards, the drill) are the exception, not the loop."
+    },
+    {
+      "id": "feel",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "frame time; events per minute at 1x",
+      "note": "Watching is dense when it is a fight and empty when it is not: within one 400 s watch the log printed at 4-19 lines per 3 s ('D6 · gas → Iris Ash · −3 hp', 'D7 · Iris Ash → spectral blade · −5 hp', 'D8 · goblin warlord · calls goblins') but the same watch shows 'quiet · 26×' and 'skipped ahead' - the game fast-forwards travel itself, and the report later confirms 'TIME fight 13% · travel 87%'. AUDIO UNASSESSED: I cannot hear the WebAudio cues or the camp drone. I did not read window.__audio, so I make no claim about whether cues landed."
+    },
+    {
+      "id": "surprise",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "death-cause entropy; distinct situations per run",
+      "note": "Named lapse: inside a run the same three beats repeat for hundreds of turns ('quiet · 4× / pick up · gold $2 / scene'), and 'goblin', 'jackal' and 'monkey' recur dozens of times a floor. Against that, the situations I met did change what I configured: 'STOLEN! / The monkey stole the oily potion?', 'TAME FAILED · SLIPPED' and then 'Thusk the skeleton, gone wild.', 'The air stings: bloats in the doors.' followed by 'POPS! / IT SWELLS / burst → Iris Ash · −3 hp', 'A thief snatched the dagger.', 'WARLORD · ENRAGED · COUNTER: ATTACK BOSS', and 'Found heir 4's bones: 12 items.' - after the theft and the bloats I wrote the summoner rule and the earlier return threshold."
+    },
+    {
+      "id": "expression",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "rule-set diversity across clears",
+      "note": "The build can name my configuration - the death screen reads 'Guarded · bank at 30% · picked', and my export is recognisably mine: two rows with origin \"player\" ('hp<45 + foe_tag:summoner → attack tag:summoner', 'hp<40 → return') above the stance rows, saved as 'fighter · 2 rules'. But it takes the whole cold hour to get there, and until then the game's own label for the set was 'written: 0 of 0 rules'."
+    },
+    {
+      "id": "story",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "chronicle carries setup + turn + end",
+      "note": "Named lapse: a normal run's REEL is five short lines and the phrases recur run to run, so most runs produce no anecdote at all. The ones that do carry a real turn: 'Goblin Captain: telegraph / goblin: summoned / Goblin Captain: summoner / return at 25% saved him. / Returned with $101.' and the overnight's 'Thim · old hound · served Jora, Kael, Lark' next to 'Jora's pack · $387 · D13', 'the line is Warlordbane', 'Found heir 4's bones: 12 items.'"
+    },
+    {
+      "id": "pacing",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "run length; check-in length; dead time at 1x",
+      "note": "Three loops, judged whole. In-run: 'COMPLETED RUNS · 12.1M' with 'TIME fight 13% · travel 87% · chores 0%' - meaningful watching is a minority of a run and the engine skips the rest for me. Check-in: my 20m return was arrive-read-decide-leave in about 40 seconds, below the 2-10 minute band, and the report screen is where the time actually goes. Cadence: the three absences did differ - '+3 runs / +2 Legacy / +◆1' then '+10 / +6 / +◆2' then '10 RUNS · 3 died · D21' - but the decision each time was the same three-way pick."
+    },
+    {
+      "id": "failure",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "share of deaths with a matched-rule trace",
+      "note": "Named lapse: the pre-unlock horizon cannot produce a player-authored failure at all - for ~50 minutes the rows were 'Read only', so the rule that produced any loss was always a default. With that said this is the best-executed axis in the build: the death screen names cause, place and margin ('Iris · fell to goblin, summoned by the Warlord, D8 · pack $4 on D8', 'hero at 1/38 hp'), the trace adjudicates every turn ('12850 bank at 30% | 2 | 7', then 'return at 30% | hp not <30%', 'rest at 100% | not safe', 'bank at 30% | no way ← warlord holds the way'), and recovery is instant and free of tending ('Defeat regrows the same hero as a clone. Attributes and builds remain.', 'RECOVERING 1M')."
+    },
+    {
+      "id": "social",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "n/a",
+      "note": "No human co-presence exists in the build as I met it, and per the boundary a named companion alone is worth at most 0.3. There is a persistent named pet with a lineage I did not create ('Thim · old hound · served Jora, Kael, Lark') who fights in the log ('D6 · Foe → Thim · −1 hp'), plus a reputation counter ('REPUTATION +60 · ★1 · 307/400') and named heirs whose packs the report tracks ('Jora's pack · $387 · D13'). In about 45 minutes I formed no relationship with any of them."
+    },
+    {
+      "id": "autonomy",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "route/goal freedom in rules",
+      "note": "Real freedom over order and goal exists once open - 'SAVED SETUPS fighter · 2 rules · set 2 · set 3', a route picker, a temperament picker, and a menu Tasks list that told me exactly what the game still wanted. The game also front-loads its own goal every screen ('Goal D6 New record', 'THE WAY DOWN King · ~day 2 · 63% · next: harder dungeon'), so my own goals were mostly the ones it had just set. What I did that it did not ask for: I opened every sheet on every screen and rebuilt the priority list from the trace."
+    },
+    {
+      "id": "progression",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "unlock cadence; vocabulary growth",
+      "note": "All three declared layers were observed, so this is above 0.6. Within-run: kit and floor ('FOUND bow, sword, pearly potion?, leather', 'D1-14 100-38%', 'D8 · 13 rooms · a nest'). Between-run: 'Bloodline 1', 'the line is Warlordbane', sets, styles ('3/10 Classes · styles') and bought rules ('unlocks: action: throw ◆3 | rule: corridor fighting ◆4 | rule: pack break ◆4'). Automation-as-reward: 'AUTO RESTOCK on', 'scout · sent 10', 'porter · hauled $2755 · +2 upgrades · ◆30', 'drillmaster · levelled floor clears · or 24h', the gem reading 'DELVE auto'. Named lapse: none of that automation existed for the first ~50 minutes - I pressed the gem by hand every time, and the menu Tasks agreed ('DELVING 0/3')."
+    },
+    {
+      "id": "aesthetic",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "none",
+      "note": "Named lapse: the camp is one static painted scene - I found 'Guild reception' and 'Recovery pool' only by dumping the button list, because both hotspots are invisible pictures - and the town grows buildings silently (a second house with a red lantern appeared with no message). What is there is good and worth sitting in: a pixel-art pit with two torches feeding a beam onto a dirt campfire, a well, a forge; the forecast is a parchment scroll with a wax-coloured pen ('FORECAST rough estimate 8 samples'); the dungeon is a grey tile maze with the hero's red HP bar and a streaming log under it. AUDIO UNASSESSED."
+    },
+    {
+      "id": "return",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "offline yield vs active; decisions pending on return",
+      "note": "Idle core. Every absence produced something to read and a decision, and the payoff scaled with the gap: 20m -> 'drill · Guarded +3 runs / legacy · Legacy +2 / marks · Marks +◆1'; 4h -> '+10 runs / +6 Legacy / +◆2' plus a 'Legacy auto-spend | balanced | not now' order offer; 8h -> 'While away 8h | 10 RUNS | 3 died | D21 DEEPEST | NEW BEST | +$5877 GROSS GOLD | LEGENDARY FOUND' with three Effect/Tradeoff cards ('Crownsplitter · Effect · Deal +2 melee damage to stunned or slowed foes. · Tradeoff · Slower than a sword.') and three boss kills to replay. Time from arrival to a meaningful action: seconds. Named lapse: the 20m and 4h returns contain no report of what happened while away - no run log, no deaths, no chronicle - and the same three-way pick appears after every run too, so the short absences are one click, and the scaling is not readable in advance (Marks paid +◆1/+◆2/+◆2 for 20m/4h/8h)."
+    },
+    {
+      "id": "attribution",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "share of deaths attributable to a rule the player wrote",
+      "note": "Idle core, and the build scores itself against me: the cold report says 'WHO DECIDED defaults 14% · chores 86%' and later 'Guarded hero · D21 · picked 28% · lessons 1% · chores 70%'. The one death I read ended on a stance rule ('bank at 30% | fired'), not on anything I wrote - and I had written nothing, because 'written: 0 of 0 rules'. Credit is legible where it exists ('return at 25% saved him.' in the REEL, and my own line in the last run's log: 'D13 · HP 38% → return'), but for most of the horizon the agent was not playing my configuration, it was playing the shipped stance; that is the boundary this axis exists to catch."
+    }
+  ],
+  "criterionProbesWritten": {
+    "idleProbe_return": "What did I come back to? For 20m and 4h: one three-way pick and nothing else - no trace of what had happened. For 8h: a full night's report (10 runs, 3 deaths, D21, three legendaries with stated trade-offs, three watchable boss kills) and a new rule editor. What did I decide because of it: the Legacy auto-spend order, the pick, and whether to spend the new tokens; and I would not have rather stayed, because staying is what the auto-delve replaces.",
+    "idleProbe_attribution": "How did the last run end? 'VENTS! / Run ended / Heading home' - and the log line that decided it was mine: 'D13 · HP 38% → return'. Whose decision was that? Mine: I raised the return threshold from 30% to 40% after reading the D8 trace. First-person count in my own retelling: 7 ('I sent', 'I wrote', 'I noticed', 'my') against 4 for the hero.",
+    "funProbe": "Name a choice you made and why. Would you make it again? I switched the combat style from Steady L1 to Guarded L1 and watched the forecast jump from 'floor 6 <13%' to 'floor 6 63%'; yes, I would make it again, because the number moved the moment I clicked it.",
+    "tensionProbe": "Where did I sweat? Watching the D8 Warlord fight at 30/38 hp with 'WARLORD BREAKS' printing and no control but the pause. Did the game notice? Yes - it printed 'COUNTER: ATTACK BOSS' at the top of the fight, so it had already told me what it wanted."
+  },
+  "unassessed": [
+    "AUDIO: sound ships (WebAudio cues and a camp drone) but I cannot hear it on this setup; I did not open window.__audio, so this card praises and faults no cue and marks feel/pacing/aesthetic audio unknown.",
+    "WEIGHTS / weight-0 axes: eval/presets.json is NOT in the packet and I did not open it; the scorer resolved genre 'idle-roguelike' itself and weighted 15 axes (social does not appear, so it carried no weight and my 0.3 on it changed nothing). No axis was given 0 for weight by me.",
+    "BOT CAPS: every axis is bot \"na\" per the brief; the idle proxies (offline yield ÷ active yield per hour, default-vs-edited win-rate gap over 30 seeds, death-cause entropy over 100 runs, rules-per-death trend, automation cadence) need the sim across many seeds and were not run.",
+    "DEATHS: only 1 of the 3 deaths the brief asks for was readable; the overnight's '3 died' deaths were aggregate numbers with no screen.",
+    "The 40-minute cold horizon was not reached: 25 minutes cold (the editor's absence removed the reason to keep playing, and the 20m/4h returns paid off in under a minute each). Real active minutes, not claimed minutes.",
+    "Package layer (art/motion/ui/audio craft, eval/PACKAGE_EVAL.md) not scored - not in the packet.",
+    "The driver's 'watch' op kept sampling for its full duration after runs ended, so some of my wall time sits on a static report screen; I excluded that from the active-minute count."
+  ],
+  "blindness": {
+    "declaration": "I read ONLY, inside the packet scratchpad/fun-eval/e33d50b/packets/blind-a/: brief.txt, RATING.md, FUN_EVAL_IDLE.md, FRAMEWORK.md (sections 1-3), SCORECARD.template.json, PACKET.json. Outside the packet I read only tooling: the usage header and op implementations of tools/driver.mjs, tools/watch-control.mjs, and I ran tools/rater-checkpoint.mjs.",
+    "violations": "None. I did not open PLAN.md, research/, docs/CUT*.md, docs/HANDOFF*.md, docs/PLATEAU.md, docs/WORK_QUEUE.md, docs/ITERATION_SPEED.md, any other card, any cohort/calibration file, and I did not read the game's source code. I did use the dev inspection surface the brief allows (window.__idlever.vocab_, window.__idlever.engine.exportRules()), which is the build's own dev harness, not source.",
+    "notes": "I read the page's rendered DOM (elements' classes and text) with a handful of page.evaluate calls to find controls that the phone layout hides (section.editor, div.panel-store). That is reading what the page shows, which the driver's own compound ops do."
+  },
+  "gripes": [
+    "The configuration layer - the only thing an idle player actually does - was read-only for the first ~50 minutes: 'Read only / Custom rules · after Bloat Mother', with the priority editor at display:none in the phone layout and at 1280x800, and the rule-slot shop ('+1 rule slot ⊘ fill rules ◆3 or $350') inside a display:none panel I could not open.",
+    "The 20m and 4h absences come back to nothing but a three-way pick - no run log, no deaths, no 'while you were away' text - while the 8h absence comes back to a whole night. Same pick, three wildly different amounts of story.",
+    "Controls are unreadable or invisible: the speed tile prints 'Normal 4×' and 'Fights only 36×' with no explanation, and the useful hotspots ('Guild reception', 'Recovery pool', 'Build forge') are unlabelled patches of the painting."
+  ],
+  "friendPitch": [
+    "You send a hero down a pit and she plays herself; you read the report afterwards and find out what your orders did.",
+    "The game shows you why every death happened, turn by turn, and tells you which of your rules fired and which refused - 'bank at 30% | no way ← warlord holds the way'.",
+    "Leave it overnight and it plays ten runs for you: three heroic deaths, three legendary items with honest trade-offs, and three boss kills you can replay."
+  ]
+}

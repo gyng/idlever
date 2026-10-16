@@ -280,6 +280,8 @@ test(
       );
       const packetCard = join(dir, "packets/r1/card/smoke.r1.json");
       write(packetCard, cardFixture("smoke"));
+      const packetRules = join(dir, "packets/r1/card/smoke.r1.rules.json");
+      write(packetRules, `${JSON.stringify([{ name: "own rule", origin: "player" }], null, 2)}\n`);
 
       const landed = run(
         "collect",
@@ -300,6 +302,12 @@ test(
       assert.equal(existsSync(canonical), true);
       assert.equal(existsSync(dated), true);
       assert.equal(readFileSync(canonical, "utf8"), readFileSync(dated, "utf8"));
+
+      const rulesCanonical = join(cards, "smoke.r1.rules.json");
+      const rulesDated = join(dir, "cards/smoke.r1.2026-01-02.rules.json");
+      assert.equal(existsSync(rulesCanonical), true, "the rule export lands beside the card");
+      assert.equal(existsSync(rulesDated), true, "and as a dated receipt");
+      assert.equal(readFileSync(rulesCanonical, "utf8"), readFileSync(packetRules, "utf8"));
 
       const again = run(
         "collect",
@@ -325,6 +333,36 @@ test(
         existsSync(join(dir, "cards/smoke.r1.2026-01-03.json")),
         false,
         "a refusal must land no new receipt",
+      );
+      assert.equal(
+        existsSync(join(dir, "cards/smoke.r1.2026-01-03.rules.json")),
+        false,
+        "a refusal must land no new receipt for the export either",
+      );
+
+      // A rule export filed after the card still lands: the two artifacts are refused separately.
+      rmSync(rulesCanonical);
+      rmSync(rulesDated);
+      const late = run(
+        "collect",
+        "--candidate",
+        "smoke",
+        "--dir",
+        dir,
+        "--rater",
+        "r1",
+        "--date",
+        "2026-01-05",
+        "--cards-dir",
+        cards,
+      );
+      assert.equal(late.status, 2, "the card is still refused");
+      assert.match(late.stderr, /REFUSING to overwrite an existing card/);
+      assert.equal(existsSync(rulesCanonical), true, "the late rule export lands on its own");
+      assert.equal(existsSync(join(dir, "cards/smoke.r1.2026-01-05.rules.json")), true);
+      assert.equal(
+        readFileSync(rulesCanonical, "utf8"),
+        readFileSync(packetRules, "utf8"),
       );
     } finally {
       rmSync(root, { recursive: true, force: true });

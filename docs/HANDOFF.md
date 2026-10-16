@@ -146,8 +146,17 @@ iteration).** State of the resume order:
    is a misreading of `panel-store` (the closed panels' parking lot — all four real
    panels have visible controls), the thin 20 m/4 h absence report is design plus
    legitimate feel feedback, and the unlabelled painted controls are the UI lane's.
-   The *verdict* still needs a second card for α, and the transcript/API fan-out of
-   `ITERATION_SPEED.md` §1.3/§1.5 is not included.
+   The **cohort is now two cards**: `blind-b` filed `eval/cards/e33d50b.blind-b.json`
+   (**70.3, `promising`**; seed 741, 402×681 at 3×, 32 of the brief's 40 active minutes,
+   27 runs, 4 deaths with 3 read — all declared), so the harness reports **mean 68,
+   sd 3.25, α 0.700 — tentative** (`eval/RATING.md` wants α ≥ 0.80 for a decision). Read
+   honestly: a tentative reading of this build, about twelve points below the fun ≥ 80
+   goal, not the decision-grade verdict the requirement asks for. `blind-b` corroborates
+   `blind-a` on the late pen (the editor opened only after the 8 h absence), on the speed
+   tile's legibility and on panels clipping, and names the game's strength (the overnight
+   report, the twelve-replay death screen with its tick and its two priced fixes, the
+   decision share) — `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`. The
+   transcript/API fan-out of `ITERATION_SPEED.md` §1.3/§1.5 remains unbuilt.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is

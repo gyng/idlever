@@ -1,0 +1,231 @@
+{
+  "$comment": "Blind card, rater blind-b. Anchors: ../eval-fun/docs/FRAMEWORK.md section 3, idle boundaries: docs/FUN_EVAL_IDLE.md. One quoted observation per axis. bot: na everywhere (caps applied later). Criterion + probes answered before awards. Audio cannot be heard by an agent: unassessed.",
+  "game": "Idlever",
+  "build": "e33d50bee5936436b6c5407584f1f4a7a24bc747 (candidate e33d50b, wasm sha256 51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191, dist manifest 4b5f19dc511d72857c3a00bbc8a620ff221258b80babf1dfa9afe07b39462f89)",
+  "genre": "idle-roguelike",
+  "presets": "../riddle/eval/presets.json",
+  "profile": null,
+  "tier": 1,
+  "evaluator": "blind-b (agent rater, headed Chromium on GPU via tools/driver.mjs, port 36447, seed 741)",
+  "session": {
+    "url": "http://127.0.0.1:37147/?dev=1&seed=741&fresh=1 (normalises to ?dev=1&seed=741 after load); absences loaded as ?dev=1&absent=20m, ?dev=1&absent=4h, ?dev=1&absent=8h (the brief's exact URLs; no runs=1 added)",
+    "seed": 741,
+    "viewport": "402 x 681 CSS px, deviceScaleFactor 3 (driver --headed; the brief says 400x800 - the real viewport this driver opened is 402x681, measured from innerWidth/innerHeight)",
+    "textScale": "default (no zoom or font setting touched; Settings has no text-scale control)",
+    "activeMinutes": 32,
+    "wallClock": "first state read 15:37 UTC, last play 16:08 UTC on 2026-10-16; the three absences were simulated by one page load each and cost no real time",
+    "resumedFromCheckpoint": "0 (checkpoint status showed no save.json; cold start on seed 741). Checkpoint saved once at minute ~20 (scratchpad/blind-b/checkpoint) before the first absence.",
+    "budget": "hit the brief's 200-tool-call budget and filed immediately; I stopped short of the 40-minute cold horizon and did not read the 3rd death's full trace screen",
+    "runsWatched": 5,
+    "runsOffline": 22,
+    "runsTotal": 27,
+    "deathsRead": 3,
+    "ruleEdits": 6
+  },
+  "horizon": {
+    "activeMinutes": 32,
+    "absences": [
+      "20m -> 1 run, D4, +$109, '✦ painted pebble · keepsake', workers started (porter hauled $109, scout sent 1), pick-one (drill/legacy/marks) - felt like a short break",
+      "4h -> 8 runs, 1 died, D13 NEW BEST, +$1312 gross, legendary Crownsplitter (Effect/Tradeoff), 'Boss defeated: Goblin Warlord · Warlord fell · 2 tries', 3 new choices unlocked, pending forge buys - felt like an afternoon's work came back",
+      "8h -> 13 runs, 3 died, D13, +$4223 gross, legendary Hearthglass, 'Boss defeated: Bloat Mother', 'bones to recover: D12', per-rule firing counts, unlock offers (rule: corridor fighting ◆4) - felt like a night passed and the roster grew (5th heir, Skul 'served Sable, Toren, Una')"
+    ],
+    "runsWatched": 5,
+    "runsOffline": 22,
+    "ruleEdits": 6,
+    "ruleEditDetail": "2 player-authored rules in the priority editor (both origin 'player': 'unknown item + hp<50% -> read unknown' and 'hp<50% -> drink heal'), 2 stance level spends (◆2 -> Steady L2, ◆3 -> Steady L3), 1 temperament pick (iron gut), 1 extra-tactic pick (boss focus L1, 'summons first'). Free-form authoring was read-only until 'Bloat Mother' was slain during the 8h absence.",
+    "checkpoints": "one save at ~minute 20 (phase cold) before the first absence; partial card and notes kept in scratchpad/blind-b/checkpoint"
+  },
+  "killCriteria": {
+    "crashOrDataLoss": false,
+    "feltInputLatencyInCoreAct": false,
+    "firstSessionWithoutCoreAct": false,
+    "darkPatternInLoop": false,
+    "defaultRulesBeatEveryEdit": false,
+    "unfairDeathShareAbove10pct": false,
+    "returnWithNothingToDecide": false,
+    "notes": "darkPatternInLoop: nothing I saw could be skipped for money; the 20-minute rest ('Rest 1200s', later 'Rest assigned 141m/203m') is not purchasable. But the death screen puts 'BUY sword +1 $200' directly under 'YOU DIED', and the mother-reward pick is priced 'pick ◇◇◇◇ ok $480' - soft-currency nudges, recorded as friction, not as a criterion failure. unfairDeathShareAbove10pct: 4 deaths in the horizon; the closest to unfair is #8 D8 'died to goblin' whose own trace says 'bank at 25% fired' and then shows the goblins finishing him while he walked home; the game's own verdict machine called #20 'bad luck · 1 in 6' with '10/12 replays survive' and offered two computed fixes, so I did not judge the vocabulary unable to address it. defaultRulesBeatEveryEdit: not testable by me (the bot proxy is the coordinator's); the in-game preview proved edits move the odds ('EDIT · D9 63->13% · full haul 50->13%'), and my two authored rules fired ('own rules 1%')."
+  },
+  "criterion": {
+    "fun_1to7": 5,
+    "playAgainTomorrow_1to7": 5,
+    "recommend_0to10": 6,
+    "checkInTomorrowUnprompted_1to7": 6,
+    "delayedRecall": "same-day: I spent 2 upgrade tokens to give my fighter the 'Steady L2' stance, then sent him at a goal of D5 and watched a 4.7-minute run bank $52 after a rat died to a +1 sword. Then I hired the $80 Scout so he would go without me, and the 4-hour absence came back with 8 runs, one death, a legendary Crownsplitter and the Goblin Warlord dead on the second try. The next night came back with the Bloat Mother dead, 13 runs, 3 graves to recover and the rule editor finally unlocked - which is when I wrote my own 'unknown item + hp < 50% -> read unknown' and watched him identify a teleport scroll."
+  },
+  "criterionProbes": {
+    "fun": "5 - the returns were the best part ('While away 4h · 8 RUNS · 1 died · D13 NEW BEST · +$1312 GROSS GOLD · LEGENDARY FOUND Crownsplitter'); watching a run at 8-48x was mostly a fast scroll of 'D1 · Rook Ash -> Foe -5 hp'.",
+    "playAgainTomorrow": "5 - I want to see whether my authored rules change the D12 death rate, but not enough to sit through the auto-speed watch again.",
+    "recommend": "6 - a friend who liked Loop Hero would get a strong hook in the first absence ('A thief snatched the violet potion?.'), and I would warn them the rules they care about are locked behind Bloat Mother.",
+    "checkInTomorrowUnprompted": "6 - the scout makes the check-in self-starting and every absence returned a pick-one and a pending purchase."
+  },
+  "probes": [
+    "clarity: never truly lost - the first screen said 'Build house / Free' and the glossary turned every keyword into a sentence ('combat style: when to fight, heal and return'), but the rule panel hid its content behind '▸ Packages 10' and cut 'compare outcomes' off at the panel edge until I dragged it.",
+    "decisions: the strongest was the pre-send forecast ('floor chance D1 100% ... D5 38%±34 · RUN OUTCOMES full haul 75% · turn back 25% · death <32% · $61-120/run'), and the builder previewed consequences as I typed ('EDIT · D9 63->13% · full haul 50->13%').",
+    "mastery: 'COMBAT STYLE Steady L2 / ◆3 L3 / L3 + hp < 50% -> rest' - the ladder is visible and each level adds a readable rule row; my hero went L1 to L4 and the stance L1 to L3.",
+    "tension: stakes were mine to carry ('pack $37 on D8', '$197 secured', 'TRIAL Warlord D8 · +10 Legacy · opt in') but the run itself resolved in about 30 seconds of watching, and the death verdict then told me the odds were '1 in 6' after the fact.",
+    "feel: the watch flashes a red '−2 hp · rat' over the hero and logs 'D1 · Rook Ash → rat · −7 hp', and the Rail sprite moves smoothly, but the speed ran itself (chip 'quiet · 48x' -> 'fight · 1.5x' -> 'scene · 1.4x') and I never found a 1x control the brief assumes; audio unassessed.",
+    "surprise: 'A thief snatched the violet potion?.', 'The den wakes: they were never asleep.', 'hunger · max 42->27', 'grudge: Zelix the pink jelly · died $0', 'Sable's pack · $115 · D6' - between those, many minutes are 'D2 · rat · fell'.",
+    "expression: my saved setup is literally named in the roster ('fighter · 2 rules'), my temperament renamed the style ('Steady taster' then 'Steady slayer'), and Skul the old hound fights beside him ('D5 · Skul → jackal · −3 hp').",
+    "story: 'An ogre took him to 14 HP; banked; banked $109.' and 'Warlord took him to 2 HP; bank too late; died to a goblin.' - three-sentence REEL entries with a turn in them.",
+    "pacing: in-run play at 1x is unobservable because the watch auto-scales; check-ins ran long (the 8h report has dozens of sections); the cadence is distinct (20m = 1 run and a keepsake, 4h = 8 runs and a boss, 8h = 13 runs and a legendary) but every return then hands you the same 'rest 20m -> run -> report' wheel.",
+    "failure: 'YOU DIED · goblin · summoned by the Warlord · D8 · hero at 2/40 hp' with a tick table that shows 'bank at 25% fired' and 'drink heal at 35% · no item', then 'bad luck · 1 in 6 · 10/12 replays survive' and two computed fixes ('survives 12/12 · was 10/12 · reach D13 same').",
+    "social: no other people; the closest is the pet line 'Skul · old hound · served Sable, Toren, Una' and '3 pets released', plus tames ('TAMED goblin archer x3, pink jelly x2').",
+    "autonomy: I set 'route D5 burrows · D9 fens · D14 crypt', the goal ('Goal D14 New record'), the kit ('Reuse kit 1/3'), the legacy spend (default 'balanced', with 'not now' available) and opted into a trial, but the town also defaults to 'departs 20m' with the scout sending for me.",
+    "progression: three layers arrive at once in the 8h report - within-run ('collected $110 · $90 secured + 100% of $20 · ◆+4'), between-run ('Effect · Unlock this base shape for starting gear' on Crownsplitter/Hearthglass/Ironcap/Trailboots, waystones, '★4 · 1797/2500') and automation ('Hire drillmaster · House · $80', portfolio of apprentice/clerk/scout/porter).",
+    "aesthetic: the camp grows from a hole in the rock with a campfire to a lit town with houses, a well, a forge and a kennel; the absence report arrives on a parchment scroll with a floor-by-floor chance ladder - I would sit in the night town doing nothing for a minute.",
+    "return: every absence answered both halves - 20m gave '+$109 GOLD EARNED' and 'Pick one: drill Steady +3 runs | Legacy +2 | Marks +◆1'; 4h and 8h gave legendaries, bosses, deaths to read and 'PENDING forge sword +1 · $200 / bones to recover: D12'.",
+    "attribution: the report splits the decisions for me - 'WHO DECIDED · Steady slayer held D6 · own rules 1% · defaults 19% · chores 81%' - and a death trace names the rule, but 2 of my 3 read deaths landed on the game's default stance, so the honest answer to 'whose decision was that?' is often 'the defaults I leveled', not a rule I wrote."
+  ],
+  "unassessed": [
+    "audio: unassessed. I cannot hear the WebAudio cues or the camp drone, and I did not inspect window.__audio, so nothing about sound is praised or faulted anywhere on this card. Settings shows 'SOUND: mute'.",
+    "every bot proxy/cap: not run by me (the brief says caps are applied later). Offline-vs-active yield is reported only as what I saw (one run per 20-minute rest either way); I did not compute the 30-seed default-vs-edited win-rate gap, death-cause entropy over 100 runs, rule-set diversity or the check-in length distribution.",
+    "the package layer (eval/PACKAGE_EVAL.md) - not in my packet, not attempted.",
+    "the 1280x800 desktop/editor view; only the 402x681 phone viewport was played.",
+    "unreached game surfaces, recorded as gaps rather than inferred: D14+ (crypt/foundry, 'D15+ ?'), bloodlines 2-3 ($250 each), the 'Clone vat', 'the pen', 'vs line', 'replay diff', 'route' comparison tools, the 'enemy guide', most 'unlocks' entries, trials ('TRIAL Warlord D8 · +10 Legacy'), the 'gift live'/'party:' rule vocabulary, taming beyond the 5 tames I saw, the '✗ UNKNOWN ITEM' failure path under my own 'read unknown' rule, and whether the rule-preview numbers are accurate.",
+    "the 3rd death's full trace screen: I read 2 death screens in full (D8 goblin, D12 pink jelly) and a third only as its run-log verdict line ('☠ D8 died to goblin'), its DEATHS line ('pink jelly x2, spectral blade x1') and REEL sentence ('A blade took him to 2 HP; attacked; died to blade.').",
+    "the 40-minute cold horizon the brief fixes: I reached ~32 minutes of active play before the tool budget ended, so any axis claim about the whole horizon is short of the promised length.",
+    "reliability: this is a single card; nothing is claimed about inter-rater agreement."
+  ],
+  "blindness": {
+    "read": [
+      "the packet only: brief.txt, RATING.md, FUN_EVAL_IDLE.md, FRAMEWORK.md (sections 1-3), SCORECARD.template.json, PACKET.json",
+      "tooling, allowed by the handed-over instructions: the usage header of tools/driver.mjs plus the click/tap op implementation and tools/drive.sh, and tools/rater-checkpoint.mjs (used, not read for design)",
+      "the game as served at http://127.0.0.1:37147/ (its screens, text, screenshots, and dev-only page state via window.__idlever.engine.exportRules()), and my own notes/checkpoint files under scratchpad/blind-b/"
+    ],
+    "notRead": [
+      "PLAN.md, research/, docs/CUT*.md, docs/HANDOFF*.md, docs/PLATEAU.md, docs/WORK_QUEUE.md, docs/ITERATION_SPEED.md, our game source, any other card or cohort record, eval/calibration/, eval/cohorts/, any score this build is meant to reach, and the other packets/ directories"
+    ],
+    "violations": "none of the document list above was opened. I did inspect live page DOM/engine state in the dev build (rule exports, element geometry, button classes) to answer UI questions - page behaviour, not repository source; the brief explicitly permits inspecting window.__audio/__idlever in dev builds. I did not read any file outside my packet except the driver/checkpoint tooling named above."
+  },
+  "axes": [
+    {
+      "id": "clarity",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "time-to-first-rule-edit; misread rate on the trace",
+      "note": "Ready from the first tap ('Build house / Free' -> a hero and a 'DELVE 0/2' gem in two screens) and the glossary answers every keyword. Lapse: the Tactics panel cut 'compare outcomes' off at the panel edge with no scroll affordance until I dragged it, and the whole rule list hides under a collapsed '▸ Packages 10'."
+    },
+    {
+      "id": "decisions",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "rule decision gap; dominated-rule rate",
+      "note": "The pre-send forecast is a real decision surface ('RUN OUTCOMES full haul 75% · turn back 25% · death <32% · $61-120/run · rough') and the editor previews trade-offs live ('EDIT · D9 63->13% · full haul 50->13%'), but the recurring choice is 'send again' and the authored layer only opens after Bloat Mother, so most of the horizon's decisions were one-tap picks."
+    },
+    {
+      "id": "mastery",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "depth-per-run vs sessions; rules-per-death trend",
+      "note": "Visible ladder: 'Steady L2 · ◆3 L3 · L3 + hp < 50% -> rest', hero L1->L4, and learned vocabulary grew to 'foe: summoner', potion/scroll colours ('identify (silver)', 'aggravate (inked)') and trophies ('trophy: studied all fens'). Lapse: within the horizon I mainly spent points the game offered, and the rules-per-death trend is 10 rows over 4 deaths - not enough to show a curve."
+    },
+    {
+      "id": "tension",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "bloody-clear share; bank-or-push margin",
+      "note": "Stakes are chosen and named ('$197 secured', 'pack $37 on D8', 'Rook's pack · $37 · D8', 'one death in the report'), and the release pays ('+$1275 carried · recovered +$37 · graves brought home'). Lapse: a whole run resolves in ~30 seconds of watching, so the sweat came from reading the verdict ('bad luck · 1 in 6') rather than from the run."
+    },
+    {
+      "id": "feel",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "frame time; events per minute at 1x",
+      "note": "Consequence is loud where it matters - a red '−2 hp · rat' floats over the hero, 'TAME FAILED · NO' stamps, and combat lines read 'D4 · Rook Ash → jackal · −7 hp'. Lapse: the watch ran itself at 8x-48x with scene/fight slow-downs and I could not find the 1x the brief assumes (the Speed chip is display-only: data-mode 'fights', rate drifted 2x->16x->8x under me). Audio unassessed."
+    },
+    {
+      "id": "surprise",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "death-cause entropy; distinct situations per run",
+      "note": "Directly encountered: 'A thief snatched the violet potion?.', 'The den wakes: they were never asleep.', 'TWO STAIRS', 'hunger · max 42->27 · hunger −15', 'grudge: Zelix the pink jelly · died $0', 'skittish/unbowed/light hands/iron gut' unlocks, Warlord and Bloat Mother appearing. Lapse: the middle of most runs is the same rat/goblin/monkey fight ('RULES chores 79-86% · TIME travel 81-90%')."
+    },
+    {
+      "id": "expression",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "rule-set diversity across clears",
+      "note": "Something is recognisably mine: a saved setup named in the roster ('fighter · 2 rules'), a temperament that renames the style ('Steady taster', then 'Steady slayer'), 2 authored rules and 5 tamed pets. Lapse: the authored layer was 'Read only · Custom rules · after Bloat Mother' for most of the horizon, so 4 of my 6 edits were picks from menus the game handed me."
+    },
+    {
+      "id": "story",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "chronicle carries setup + turn + end",
+      "note": "The REEL has turns: 'An ogre took him to 14 HP; banked; banked $109.' and 'Warlord took him to 2 HP; bank too late; died to a goblin.' Lapse: many entries are flat ('D6: the Burrows. / The air stings: bloats in the doors. / Returned with $128.') and the death narrative is told about the agent ('Rook · fell to goblin'), not by me."
+    },
+    {
+      "id": "pacing",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "run length; check-in length; dead time at 1x",
+      "note": "Three loops reported: in-run is dense when events land but only at auto-speed (fight 10-22% / travel 78-90% of game time); check-ins ran longer than 2-10 min because each report is a multi-section scroll; the cadence is genuinely distinct (20m = 1 run + keepsake, 4h = 8 runs + a boss, 8h = 13 runs + a legendary). Lapse: every return then restarts the same 'Rest 20m -> run -> report' wheel."
+    },
+    {
+      "id": "failure",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "share of deaths with a matched-rule trace",
+      "note": "The death screen is the best thing in the build: 'goblin · summoned by the Warlord · D8 · hero at 2/40 hp', a damage ledger ('goblin −46 · goblin warlord −20 · healed +68'), a tick table naming the rule and why others did not fire ('bank at 25% fired', 'drink heal at 35% · no item'), 'bad luck · 1 in 6', '10/12 replays survive' and computed fixes ('survives 12/12 · was 10/12 · trade-off · past D12 34->0% · death 18->0%'). Named lapse: an errant death is still a 20-minute rest ('Rest assigned 141m'), and the screen pushes 'BUY sword +1 $200' under 'YOU DIED'."
+    },
+    {
+      "id": "social",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "n/a",
+      "note": "No human co-presence. The only relationship is the pet/companion: 'Skul · guard L1 / Skul · old hound · served Sable, Toren, Una' and '3 pets released', fighting beside the hero ('D5 · Skul → jackal · −3 hp'). Per the framework that supports at most 0.3."
+    },
+    {
+      "id": "autonomy",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "route/goal freedom in rules",
+      "note": "I set my own order of business: 'route D5 burrows · D9 fens · D14 crypt', 'Goal D14 New record', kit reuse ('Reuse kit 1/3', 'PREPARED KIT 0/3'), legacy spend (default 'balanced' with 'not now'), and opted into 'TRIAL Warlord D8 · +10 Legacy'. Lapse: the town's own defaults do the playing ('departs 20m', scout 'sends him each rest', 'AUTO CONTINUE on'), so the unattended path is the path of least resistance."
+    },
+    {
+      "id": "progression",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "unlock cadence; vocabulary growth",
+      "note": "All three layers declared and seen: within-run ('collected $110 · $90 secured + 100% of $20 · ◆+4 · 11 discovered'), between-run ('Free Forge choice · Effect · Unlock this base shape for starting gear' for Crownsplitter/Hearthglass/Ironcap/Trailboots, waystones, '★4 · 1797/2500'), and automation ('Hire drillmaster · House · $80' over a roster of apprentice/clerk/scout/porter). Lapse: the biggest jumps (D7->D13, two bosses, two legendaries) were handed over by the 4h/8h absences, not earned in play."
+    },
+    {
+      "id": "aesthetic",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "none",
+      "note": "The camp is deserted rock at minute one and a lit town with houses, a well, a forge and a kennel by the end, and the reports arrive on a parchment scroll with a floor-by-floor chance ladder and boss portrait. Lapse: at 402x681 the watch's tile grid leaves half the panel empty and the clipped sheet edges look unfinished. Audio unassessed."
+    },
+    {
+      "id": "return",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "offline yield vs active; decisions pending on return",
+      "note": "Every absence produced reading and a decision: 'While away 4h · 8 RUNS · 1 died · D13 NEW BEST · +$1312 GROSS GOLD · LEGENDARY FOUND Crownsplitter' with 'Pick one: drill +10 runs | Legacy +6 | Marks +◆2', and 8h added 'bones to recover: D12' plus per-rule firing counts. Named lapse: offline and active yield are the same pace (one run per 20-minute rest either way - 'Rest 1200s' / 'Rest assigned 141m'), which makes waiting the efficient way to play; and the pick-one is the same three-item menu each time."
+    },
+    {
+      "id": "attribution",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "share of deaths attributable to a rule the player wrote",
+      "note": "The game does the accounting for you - 'WHO DECIDED · Steady slayer held D6 · own rules 1% · defaults 19% · chores 81%' and a trace that names the rule that fired and the ones that refrained - but my authored rules were 1% of decisions and 2 of the 3 deaths I read ended on the default stance ('Steady · bank at 25% · default'), so 'whose decision was that?' was usually the game's, not mine. Lapse: authoring opened only after Bloat Mother."
+    }
+  ],
+  "package": {
+    "status": "not attempted",
+    "reason": "eval/PACKAGE_EVAL.md is not in this blind packet (the brief lists only RATING.md, FUN_EVAL_IDLE.md, FRAMEWORK.md 1-3, SCORECARD.template.json)."
+  },
+  "report": {
+    "scoreTotal": "see run below (eval/score.sh was run on this file after writing)",
+    "gripes": [
+      "The rule writer - the reason to play - says 'Read only · Custom rules · after Bloat Mother' for the first several hours, so the thing the game is about is not the thing the first hour is about, and the 200 calls I had ran out before I could play with it.",
+      "The watch chooses its own speed: the chip read 'quiet · 48x', then 16x, then 'fight · 1.5x', and tapping the Speed button changed nothing I could hold - so the 'watch at 1x' the brief assumes does not exist for me, and a whole run resolves in about 30 seconds.",
+      "Panels clip and hide: 'compare outcomes' was cut off at the Tactics panel edge until I dragged it, the rule list lives under a collapsed '▸ Packages 10', and the town prep sheet re-renders into the rule editor without saying it did - I spent a dozen calls looking for a screen I was already standing on."
+    ],
+    "tellAFriend": [
+      "Send the hero away for a night and the morning report is a scroll: 13 runs, 3 graves to dig up, two bosses down and a legendary with an effect and a trade-off.",
+      "When he dies the game replays the fight twelve times, tells you it was '1 in 6', shows the tick where 'bank at 25%' fired too late, and offers you two fixes with their costs printed side by side.",
+      "You never issue an order mid-run - you write the standing rules ('unknown item + hp < 50% -> read unknown'), watch them fire on a fast-forward map, and the report tells you what share of decisions were yours ('own rules 1% · defaults 19% · chores 81%')."
+    ]
+  }
+}
