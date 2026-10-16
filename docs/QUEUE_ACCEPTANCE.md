@@ -149,6 +149,12 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   comparisons remain open as their source changes and full scope require.
 - Appropriate independent fun-verdict review of a final frozen candidate:
   unverified. Preserve score/copy/benchmark evidence; do not claim fun>=80.
+  The **harness** this verdict needs now exists and is verified
+  (`tools/fun-eval.mjs` + `docs/FUN_EVAL_HARNESS.md`, commit `e33d50be`: freeze with
+  recorded identity, blind packet with structural leak checks, collect, score from the
+  cards alone; `calibrate` is byte-deterministic and reproduces all twelve blind
+  cohorts that carry an acceptance record, and a real freeze served 367/367 manifest
+  bytes). Frozen candidate `e33d50b` awaits real raters; a harness is not a verdict.
 
 ## Completion rule
 

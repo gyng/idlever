@@ -120,11 +120,24 @@ iteration).** State of the resume order:
    `warlord` never — so one new earned send can meet most named scenes, and the
    iron-golem-keyed reflect pair should be re-keyed on a common reflector. Presence
    is not proof a mechanic fired.
-8. **The fun-eval harness is being built** (the only path to an independent fun≥80):
-   freeze a candidate with recorded identity, hand raters only the frozen brief,
-   collect cards, score fun from the cards alone, calibrated against the recorded
-   cohorts. In flight by a delegated agent; nothing about it is accepted until its
-   calibration table and identity evidence are reviewed here.
+8. **The fun-eval harness is built and verified** (`tools/fun-eval.mjs`,
+   `tools/fun-eval.test.mjs`, `docs/FUN_EVAL_HARNESS.md`; commit `e33d50be`). It
+   freezes a candidate (fast wasm + `vite build` → hashed package + identity →
+   `vite preview` on a free port), serves/stops/verifies, writes the blind packet
+   (`eval/RATER_PROMPT.md` + four briefed documents, `FRAMEWORK.md` sliced verbatim),
+   checks it, collects cards keyed by candidate·rater·date, and scores fun from the
+   cards alone — reusing `eval/score.sh`, eval-fun's `fun-reliability.mjs` and the
+   driver rather than reimplementing them. Verified here, not just by the author:
+   5/5 tests, `calibrate` byte-deterministic and matching **all 12** blind cohorts
+   that carry an acceptance record (mean and α identical, max diff 0; the one cohort
+   with two cards but no score block, `d34605e`, is reported not comparable), and a
+   real freeze on this tree served **367/367 bytes matching the manifest** twice.
+   Prerequisite unchanged from the project's protocol: the rater framework lives in
+   the sibling checkout `../eval-fun` (named by `eval/RATING.md` and `eval/score.sh`),
+   so `brief`/`score` fail loudly without it. Frozen candidate `e33d50b`
+   (`scratchpad/fun-eval/e33d50b`, package `4b5f19dc…`, identity `7332150e…`) is ready
+   for a blind rater; the *verdict* is still unverified until real raters file cards,
+   and the transcript/API fan-out of `ITERATION_SPEED.md` §1.3/§1.5 is not included.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is
