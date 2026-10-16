@@ -119,6 +119,12 @@ the core sends no `short` the report's PENDING list can paint before those delta
 back to its cost order (`report.ts:1338` already tolerates a missing `delta`) — a preference, not a
 wrong value; the mechanism and the two options are in
 `docs/evidence/mechanics/cut257-run-log-2026-10-16.md` §O4.
+An independent package rating of this build (card `eval/package/idlever.51d041d0.rater-PackageRater.json`,
+observations `docs/evidence/eval-2026-10-16/observations.md`) measured a UI defect at
+the target viewport: the Behaviour panel's label column clips (`COM/BAT/STYL/E`,
+`clientWidth 38` vs `scrollWidth 44` at 14.875 px), and one sheet header sits partly
+behind its own top edge. Its score (package 66.6, `shippable` 60–67) leaves `fun`
+unassessed — no blind fun card exists for this build.
 
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start
