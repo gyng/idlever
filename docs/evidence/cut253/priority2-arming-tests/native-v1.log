@@ -1,0 +1,42 @@
+
+running 8 tests
+priority2 shield_bash actual hit=true sameRngSeed=0
+priority2 fire actual hit=true sameRngSeed=0
+priority2 incoming hit=false intercepted=false seed=3
+priority2 incoming hit=true intercepted=false seed=0
+priority2 ambush actual hit=true sameRngSeed=0
+priority2 fire actual hit=true sameRngSeed=0
+
+thread 'ai::advanced_tests::priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths' (95) panicked at crates/idlever-core/src/class_advanced_tests.rs:2197:9:
+assertion `left == right` failed: nova actually damaged exactly one recipient
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+priority2 shield_bash actual hit=false sameRngSeed=3
+priority2 ambush actual hit=false sameRngSeed=3
+.. 2/8
+ai::advanced_tests::priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths --- FAILED
+priority2 shoot actual hit=true sameRngSeed=0
+priority2 bolt actual hit=true sameRngSeed=0
+priority2 shoot actual hit=false sameRngSeed=3
+.priority2 bolt actual hit=true sameRngSeed=0
+..
+thread 'ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee' (94) panicked at crates/idlever-core/src/class_advanced_tests.rs:1979:5:
+no actual incoming hit=true intercepted=true
+ 6/8
+ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee --- FAILED
+
+thread 'ai::advanced_tests::priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward' (90) panicked at crates/idlever-core/src/class_advanced_tests.rs:1955:5:
+no actual fire hit=false branch
+ai::advanced_tests::priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward --- FAILED
+
+failures:
+
+failures:
+    ai::advanced_tests::priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward
+    ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee
+    ai::advanced_tests::priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths
+
+test result: FAILED. 5 passed; 3 failed; 0 ignored; 0 measured; 1022 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

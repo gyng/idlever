@@ -1868,3 +1868,676 @@ fn priority1_siege_spends_on_a_real_blocked_attack_without_claiming_damage() {
     assert_eq!(p1_charge(&g, Combo::SiegeRhythm).remaining, 0);
     p1_offline_parity(g, Combo::SiegeRhythm);
 }
+
+// Priority2 selected-node counterexamples. These are controlled component
+// contexts; every asserted exclusion follows an actual action/output oracle.
+fn p2_no_receipt(g: &Game, bits: &[u32]) {
+    for bit in bits {
+        let id = format!(
+            "path:{}",
+            crate::class_tree::catalogue(g.run.as_ref().unwrap().hero.class)[*bit as usize].id
+        );
+        assert!(
+            g.events
+                .iter()
+                .all(|e| !matches!(e, Ev::ClassInteraction {skill,..} if skill.id==id)),
+            "unexpected selected-node receipt {id}"
+        );
+    }
+}
+fn p2_roll(g: &Game, verb: &str, wanted: bool) -> Game {
+    for seed in 0..512 {
+        let mut chosen = g.clone();
+        chosen.events.clear();
+        chosen.run.as_mut().unwrap().rng = Rng::new(seed);
+        if !act(&mut chosen, verb) {
+            continue;
+        }
+        if !chosen
+            .events
+            .iter()
+            .any(|e| matches!(e,Ev::Attack {src,hit,..} if *src==HERO_ID && *hit==wanted))
+        {
+            continue;
+        }
+        // The same actual action/RNG fork with advanced nodes disabled must
+        // have the same hit and physical HP/ammunition outcome for a negative.
+        let mut control = g.clone();
+        control.events.clear();
+        let r = control.run.as_mut().unwrap();
+        r.hero.class_skills &= 0x3f;
+        r.rng = Rng::new(seed);
+        assert!(act(&mut control, verb));
+        assert!(control
+            .events
+            .iter()
+            .any(|e| matches!(e,Ev::Attack {src,hit,..} if *src==HERO_ID && *hit==wanted)));
+        assert_eq!(
+            chosen
+                .run
+                .as_ref()
+                .unwrap()
+                .monsters
+                .iter()
+                .map(|m| m.hp)
+                .collect::<Vec<_>>(),
+            control
+                .run
+                .as_ref()
+                .unwrap()
+                .monsters
+                .iter()
+                .map(|m| m.hp)
+                .collect::<Vec<_>>(),
+            "{verb} selected negative physical HP vs identical RNG control"
+        );
+        assert_eq!(
+            chosen
+                .run
+                .as_ref()
+                .unwrap()
+                .hero
+                .weapon
+                .as_ref()
+                .and_then(|w| w.firearm),
+            control
+                .run
+                .as_ref()
+                .unwrap()
+                .hero
+                .weapon
+                .as_ref()
+                .and_then(|w| w.firearm)
+        );
+        println!("priority2 {verb} actual hit={wanted} sameRngSeed={seed}");
+        return chosen;
+    }
+    panic!("no actual {verb} hit={wanted} branch");
+}
+fn p2_enemy(g: &Game, mi: usize, hit: bool, intercepted: bool) -> Game {
+    for seed in 0..512 {
+        let mut branch = g.clone();
+        branch.events.clear();
+        branch.run.as_mut().unwrap().rng = Rng::new(seed);
+        {
+            let (r, mut cx) = branch.ctx();
+            monster_attack(r, &mut cx, mi, 1, "attack");
+        }
+        let main = branch
+            .events
+            .iter()
+            .any(|e| matches!(e,Ev::Attack {dst,hit:h,..} if *dst==HERO_ID&&*h==hit));
+        let guarded = branch
+            .events
+            .iter()
+            .any(|e| matches!(e,Ev::Attack {verb:Some(v),hit:true,..} if v=="guarded"));
+        if main && guarded == intercepted {
+            let mut control = g.clone();
+            control.events.clear();
+            let r = control.run.as_mut().unwrap();
+            r.hero.class_skills &= 0x3f;
+            r.rng = Rng::new(seed);
+            {
+                let (r, mut cx) = control.ctx();
+                monster_attack(r, &mut cx, mi, 1, "attack");
+            }
+            assert_eq!(
+                branch.events, control.events,
+                "incoming negative same-RNG complete events"
+            );
+            assert_eq!(
+                branch.run.as_ref().unwrap().hero.hp,
+                control.run.as_ref().unwrap().hero.hp
+            );
+            println!("priority2 incoming hit={hit} intercepted={intercepted} seed={seed}");
+            return branch;
+        }
+    }
+    panic!("no actual incoming hit={hit} intercepted={intercepted}");
+}
+#[test]
+fn priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee() {
+    let mut base = arena(Class::Fighter, &[6]);
+    let mi = foe(&mut base, "goblin", 5, 5);
+    let mut miss = base.clone();
+    miss.run.as_mut().unwrap().hero.bulwark_t = 30;
+    miss = p2_enemy(&miss, mi, false, false);
+    assert_eq!(miss.run.as_ref().unwrap().hero.hp, 1000);
+    assert!(miss.run.as_ref().unwrap().hero.advanced.is_none());
+    let mut plain = p2_enemy(&base, mi, true, false);
+    assert!(plain.run.as_ref().unwrap().hero.hp < 1000);
+    assert!(plain.run.as_ref().unwrap().hero.advanced.is_none());
+    let mut hazard = base.clone();
+    {
+        let (r, mut cx) = hazard.ctx();
+        r.hero.bulwark_t = 30;
+        crate::turn::place_overlay(
+            r,
+            &mut cx,
+            r.hero.pos,
+            0,
+            crate::tiles::OverlayKind::Gas,
+            30,
+        );
+    }
+    for _ in 0..10 {
+        hazard.tick();
+    }
+    assert!(hazard.run.as_ref().unwrap().hero.hp < 1000);
+    assert!(hazard
+        .events
+        .iter()
+        .any(|e| matches!(e,Ev::Hurt {id,dmg,cause,..} if *id==HERO_ID&&*dmg>0&&cause=="gas")));
+    assert!(hazard.run.as_ref().unwrap().hero.advanced.is_none());
+    // A Goblin's whole roll is blunted by Bulwark3 before interception.
+    // The real stronger attacker leaves damage for an actual pet draw.
+    let mut pet = arena(Class::Fighter, &[6]);
+    let mi = foe(&mut pet, "ogre", 5, 5);
+    let c = crate::wire::Companion {
+        id: 7000001,
+        kind: "goblin".into(),
+        name: "Guard".into(),
+        level: 1,
+        tags: vec![],
+        gen: 0,
+        rules: crate::rules::RuleSet::default(),
+        max_rows: 2,
+        hp: 100,
+        max_hp: 100,
+        life: Default::default(),
+    };
+    {
+        let r = pet.run.as_mut().unwrap();
+        r.hero.bulwark_t = 30;
+        r.pets.on = true;
+        let mut m = crate::engine::companion_monster(500, &c, Pos::new(5, 6));
+        m.hp = 1000;
+        m.max_hp = 1000;
+        r.monsters.push(m);
+        r.companions.push(c);
+    }
+    pet = p2_enemy(&pet, mi, true, true);
+    assert_eq!(pet.run.as_ref().unwrap().hero.hp, 1000);
+    assert!(pet.run.as_ref().unwrap().monsters[1].hp < 1000);
+    assert!(pet.run.as_ref().unwrap().hero.advanced.is_none());
+    // Every excluded context still permits an actual healing Wind, without
+    // rewarding a nonexistent preceding block.
+    for g in [&mut miss, &mut plain, &mut hazard, &mut pet] {
+        g.run.as_mut().unwrap().hero.hp = 500;
+        g.run.as_mut().unwrap().hero.bash_cd = 50;
+        assert!(act(g, "second_wind"));
+        assert!(g.run.as_ref().unwrap().hero.hp > 500);
+        assert_eq!(g.run.as_ref().unwrap().hero.bash_cd, 50);
+        p2_no_receipt(g, &[6]);
+    }
+}
+#[test]
+fn priority2_bash_cleave_and_safe_wind_require_their_actual_qualifying_targets() {
+    let mut nonboss = arena(Class::Fighter, &[7, 9]);
+    foe(&mut nonboss, "goblin", 5, 5);
+    let nonboss = p2_roll(&nonboss, "shield_bash", true);
+    assert!(nonboss.run.as_ref().unwrap().monsters[0].hp < 1000);
+    p2_no_receipt(&nonboss, &[7, 9]);
+    let mut boss = arena(Class::Fighter, &[7, 9]);
+    foe(&mut boss, "bloat_mother", 5, 5);
+    boss.run
+        .as_mut()
+        .unwrap()
+        .hero
+        .weapon
+        .as_mut()
+        .unwrap()
+        .enchant = 0;
+    let boss = p2_roll(&boss, "shield_bash", false);
+    assert_eq!(boss.run.as_ref().unwrap().monsters[0].hp, 1000);
+    assert!(
+        boss.run.as_ref().unwrap().hero.bash_cd > 0,
+        "actual miss still spent Bash cooldown"
+    );
+    p2_no_receipt(&boss, &[7, 9]);
+    let mut cleave = arena(Class::Fighter, &[8]);
+    foe(&mut cleave, "goblin", 5, 5);
+    cleave.run.as_mut().unwrap().hero.bash_cd = 50;
+    assert!(act(&mut cleave, "cleave"));
+    assert_eq!(
+        cleave
+            .events
+            .iter()
+            .filter(
+                |e| matches!(e,Ev::Hurt {id,dmg,cause,..} if *id!=HERO_ID&&*dmg>0&&cause=="hero")
+            )
+            .count(),
+        1
+    );
+    assert_eq!(cleave.run.as_ref().unwrap().hero.bash_cd, 50);
+    p2_no_receipt(&cleave, &[8]);
+    let mut wind = arena(Class::Fighter, &[10]);
+    foe(&mut wind, "goblin", 7, 5);
+    wind.run.as_mut().unwrap().hero.hp = 500;
+    assert!(act(&mut wind, "second_wind"));
+    assert!(wind.run.as_ref().unwrap().hero.hp > 500);
+    assert!(crate::class_advanced::charge(wind.run.as_ref().unwrap(), Combo::Holdfast).is_none());
+    p2_no_receipt(&wind, &[10]);
+}
+#[test]
+fn priority2_exact_quarter_ambush_and_actual_missed_low_hp_finish_do_not_arm_silent() {
+    let mut exact = arena(Class::Rogue, &[11]);
+    let mi = foe(&mut exact, "goblin", 5, 5);
+    exact.run.as_mut().unwrap().monsters[mi].hp = 250;
+    exact.run.as_mut().unwrap().hero.vanish_t = 30;
+    let exact = p2_roll(&exact, "ambush", true);
+    assert!(exact.run.as_ref().unwrap().monsters[mi].hp < 250);
+    p2_no_receipt(&exact, &[11]);
+    let mut missed = arena(Class::Rogue, &[6, 11]);
+    let mi = foe(&mut missed, "goblin", 5, 5);
+    {
+        let r = missed.run.as_mut().unwrap();
+        r.monsters[mi].hp = 1;
+        r.hero.vanish_t = 30;
+        r.hero.weapon.as_mut().unwrap().enchant = 0;
+    }
+    let missed = p2_roll(&missed, "ambush", false);
+    assert_eq!(missed.run.as_ref().unwrap().monsters[mi].hp, 1);
+    p2_no_receipt(&missed, &[6, 11]);
+    for missed in [false, true] {
+        let mut quiver = arena(Class::Ranger, &[7]);
+        let mi = foe(&mut quiver, "goblin", 6, 5);
+        {
+            let r = quiver.run.as_mut().unwrap();
+            r.monsters[mi].hp = 200;
+            r.hero.double_cd = 40;
+            if missed {
+                r.hero.weapon.as_mut().unwrap().enchant = 0;
+            }
+        }
+        let quiver = p2_roll(&quiver, "shoot", !missed);
+        assert!(
+            quiver.run.as_ref().unwrap().monsters[mi].hp > 0,
+            "no actual kill"
+        );
+        assert_eq!(quiver.run.as_ref().unwrap().hero.double_cd, 40);
+        p2_no_receipt(&quiver, &[7]);
+    }
+}
+#[test]
+fn priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps() {
+    for expire in [false, true] {
+        let mut g = arena(Class::Ranger, &[6, 10]);
+        let mi = foe(&mut g, "goblin", 6, 5);
+        g.run.as_mut().unwrap().hero.double_cd = 40;
+        if expire {
+            assert!(act(&mut g, "mark"));
+            assert!(g.run.as_ref().unwrap().monsters[mi].marked > 0);
+            while g.run.as_ref().unwrap().monsters[mi].marked > 0 {
+                g.tick();
+            }
+            while g.run.as_ref().unwrap().hero.double_cd > 0 {
+                g.tick();
+            }
+            assert!(act(&mut g, "double_shot"));
+            assert!(g.run.as_ref().unwrap().hero.double_cd > 20);
+        }
+        assert!(act(&mut g, "trap"));
+        let cd = g.run.as_ref().unwrap().hero.double_cd;
+        g.events.clear();
+        let before = g.run.as_ref().unwrap().items.len();
+        {
+            let (r, mut cx) = g.ctx();
+            move_monster(r, &mut cx, mi, Pos::new(5, 5));
+        }
+        assert_eq!(
+            g.run.as_ref().unwrap().items.len() + 1,
+            before,
+            "actual physical trap consumed"
+        );
+        assert_eq!(g.run.as_ref().unwrap().monsters[mi].stun, 20);
+        assert_eq!(g.run.as_ref().unwrap().monsters[mi].marked, 0);
+        assert_eq!(g.run.as_ref().unwrap().hero.double_cd, cd);
+        p2_no_receipt(&g, &[6, 10]);
+    }
+}
+#[test]
+fn priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths() {
+    for class in [Class::Ranger, Class::Caster] {
+        let (bits, verb, combo) = if class == Class::Ranger {
+            (vec![8, 9, 11], "volley", Combo::CorridorVolley)
+        } else {
+            (vec![7], "nova", Combo::StormCell)
+        };
+        let mut g = arena(class, &bits);
+        let mi = foe(&mut g, "goblin", 5, 5);
+        if class == Class::Ranger {
+            assert!(act(&mut g, "mark"));
+            assert!(g.run.as_ref().unwrap().monsters[mi].marked > 0);
+            g.events.clear();
+        }
+        assert!(act(&mut g, verb));
+        let targets: std::collections::BTreeSet<_> = g
+            .events
+            .iter()
+            .filter_map(|e| match e {
+                Ev::Hurt { id, dmg, cause, .. }
+                    if *id != HERO_ID
+                        && *dmg > 0
+                        && cause
+                            == if class == Class::Caster {
+                                "fire"
+                            } else {
+                                "hero"
+                            } =>
+                {
+                    Some(*id)
+                }
+                _ => None,
+            })
+            .collect();
+        assert_eq!(
+            targets.len(),
+            1,
+            "{verb} actually damaged exactly one recipient"
+        );
+        assert!(crate::class_advanced::charge(g.run.as_ref().unwrap(), combo).is_none());
+        p2_no_receipt(&g, &bits);
+    }
+}
+#[test]
+fn priority2_unwarded_expired_ward_unslowed_and_nonboss_spells_stay_ordinary() {
+    for expired in [false, true] {
+        let mut g = arena(Class::Caster, &[8]);
+        let mi = foe(&mut g, "goblin", 6, 5);
+        if expired {
+            assert!(act(&mut g, "ward"));
+            while g.run.as_ref().unwrap().hero.ward_t > 0 {
+                g.tick();
+            }
+        }
+        g.events.clear();
+        assert!(act(&mut g, "slow"));
+        assert_eq!(
+            g.run.as_ref().unwrap().monsters[mi].slow_t,
+            30,
+            "actual ordinary Slow"
+        );
+        p2_no_receipt(&g, &[8]);
+    }
+    for boss in [false, true] {
+        let mut g = arena(Class::Caster, &[6, 10]);
+        let mi = foe(&mut g, if boss { "bloat_mother" } else { "goblin" }, 5, 5);
+        foe(&mut g, "goblin", 6, 5);
+        if !boss {
+            assert!(act(&mut g, "slow"));
+        }
+        g.run.as_mut().unwrap().hero.ward_cd = 50;
+        g.events.clear();
+        let g = p2_roll(&g, "bolt", true);
+        assert!(g.run.as_ref().unwrap().monsters[mi].hp < 1000);
+        assert_eq!(g.run.as_ref().unwrap().hero.ward_cd, 50);
+        assert_eq!(g.run.as_ref().unwrap().monsters[1].slow_t, 0);
+        p2_no_receipt(&g, &[6, 10]);
+    }
+}
+#[test]
+fn priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward() {
+    for (boss, prepared, hit) in [
+        (true, false, true),
+        (false, true, true),
+        (true, false, false), // Prepared shots canonically hit100%; no invented miss.
+    ] {
+        let mut g = arena(Class::Gunner, &[6, 10]);
+        let mi = foe(&mut g, if boss { "bloat_mother" } else { "goblin" }, 6, 5);
+        if !hit {
+            g.run
+                .as_mut()
+                .unwrap()
+                .hero
+                .weapon
+                .as_mut()
+                .unwrap()
+                .enchant = 0;
+        }
+        if prepared {
+            assert!(act(&mut g, "aimed_shot"));
+        }
+        let g = p2_roll(&g, "fire", hit);
+        assert_eq!(
+            g.run
+                .as_ref()
+                .unwrap()
+                .hero
+                .weapon
+                .as_ref()
+                .unwrap()
+                .firearm
+                .unwrap()
+                .loaded,
+            0,
+            "real shot spent its chamber, no recovery"
+        );
+        assert!(g.run.as_ref().unwrap().monsters[mi].hp > 0, "no kill");
+        p2_no_receipt(&g, &[6, 10]);
+    }
+    let mut burst = arena(Class::Gunner, &[9, 11]);
+    {
+        let r = burst.run.as_mut().unwrap();
+        r.hero.weapon = Some(Item::new(crate::kit::WEAPON_ID, "short_gun")).into();
+        r.hero.weapon.as_mut().unwrap().enchant = 20;
+        r.gun_skills.get_or_insert_with(Default::default).fast_ready = 100;
+    }
+    let mi = foe(&mut burst, "goblin", 5, 5);
+    let burst = p2_roll(&burst, "close_burst", true);
+    assert!(burst.run.as_ref().unwrap().monsters[mi].hp > 0);
+    assert_eq!(
+        burst
+            .run
+            .as_ref()
+            .unwrap()
+            .gun_skills
+            .as_ref()
+            .unwrap()
+            .fast_ready,
+        100
+    );
+    p2_no_receipt(&burst, &[9, 11]);
+}
+#[test]
+fn priority2_ordinary_reload_no_new_blind_and_lost_original_gun_cannot_arm() {
+    let mut ordinary = arena(Class::Gunner, &[7]);
+    foe(&mut ordinary, "goblin", 6, 5);
+    empty_gun(&mut ordinary);
+    scheduled(&mut ordinary, "reload");
+    finish_reload(&mut ordinary);
+    assert_eq!(
+        ordinary
+            .run
+            .as_ref()
+            .unwrap()
+            .hero
+            .weapon
+            .as_ref()
+            .unwrap()
+            .firearm
+            .unwrap()
+            .loaded,
+        1
+    );
+    p2_no_receipt(&ordinary, &[7]);
+    let mut blind = arena(Class::Gunner, &[8]);
+    let mi = foe(&mut blind, "goblin", 5, 5);
+    blind.run.as_mut().unwrap().monsters[mi].blind = 40;
+    let pos = blind.run.as_ref().unwrap().hero.pos;
+    assert!(act(&mut blind, "smoke_retreat"));
+    assert_ne!(
+        blind.run.as_ref().unwrap().hero.pos,
+        pos,
+        "actual legal Smoke movement"
+    );
+    assert_eq!(blind.run.as_ref().unwrap().monsters[mi].blind, 40);
+    p2_no_receipt(&blind, &[8]);
+    let mut lost = arena(Class::Gunner, &[7, 8]);
+    foe(&mut lost, "goblin", 5, 5);
+    empty_gun(&mut lost);
+    scheduled(&mut lost, "fast_reload");
+    scheduled(&mut lost, "smoke_retreat");
+    let smoke = p1_charge(&lost, Combo::SmokeWalk);
+    assert_eq!(smoke.remaining, 1);
+    let mut owned = lost.clone();
+    lost.events.clear();
+    owned.events.clear();
+    // Controlled ownership interruption after a real reload prefix. The
+    // engine's real drop helper preserves the original physical gun clock.
+    let item = lost.run.as_mut().unwrap().hero.weapon.take().unwrap();
+    let id = item.id;
+    {
+        let r = lost.run.as_mut().unwrap();
+        crate::turn::drop_near(r, r.hero.pos, item);
+    }
+    finish_reload(&mut lost);
+    finish_reload(&mut owned);
+    assert!(lost.run.as_ref().unwrap().gun_reload.is_none());
+    let gun = lost
+        .run
+        .as_ref()
+        .unwrap()
+        .items
+        .iter()
+        .find(|w| w.item.id == id)
+        .unwrap();
+    assert_eq!(
+        gun.item.firearm.unwrap().loaded,
+        1,
+        "unowned original gun physically completes"
+    );
+    p2_no_receipt(&lost, &[7, 8]);
+    assert_eq!(
+        p1_charge(&lost, Combo::SmokeWalk),
+        smoke,
+        "unowned completion cannot consume the owner's live charge"
+    );
+    assert_eq!(receipt(&owned, 8, Phase::Applied, Effect::Energy), vec![50]);
+    assert_eq!(p1_charge(&owned, Combo::SmokeWalk).remaining, 0);
+    let total = |g: &Game| {
+        let r = g.run.as_ref().unwrap();
+        i64::from(r.hero.energy) + i64::from(r.actions) * i64::from(crate::engine::ACT_ENERGY)
+    };
+    assert_eq!(
+        total(&owned) - total(&lost),
+        50,
+        "same physical completion: only actual owner receives refund"
+    );
+}
+
+#[test]
+fn priority2_real_charged_nonkill_or_miss_never_earns_execution_or_long_watch() {
+    for hit in [true, false] {
+        let mut g = arena(Class::Fighter, &[9, 11]);
+        let mi = foe(&mut g, "bloat_mother", 5, 5);
+        assert!(act(&mut g, "shield_bash"));
+        assert!(
+            crate::class_advanced::charge(g.run.as_ref().unwrap(), Combo::SiegeRhythm).is_some()
+        );
+        g.events.clear();
+        if hit {
+            hit_verb(&mut g, "attack");
+            assert_eq!(receipt(&g, 9, Phase::Applied, Effect::Damage), vec![2]);
+        } else {
+            g.run
+                .as_mut()
+                .unwrap()
+                .hero
+                .weapon
+                .as_mut()
+                .unwrap()
+                .enchant = 0;
+            g = p2_roll(&g, "attack", false);
+        }
+        assert!(g.run.as_ref().unwrap().monsters[mi].hp > 0);
+        assert_eq!(p1_charge(&g, Combo::SiegeRhythm).remaining, 0);
+        assert_eq!(g.run.as_ref().unwrap().hero.bash_cd, 50);
+        p2_no_receipt(&g, &[11]);
+    }
+    let mut g = arena(Class::Gunner, &[7, 10]);
+    let mi = foe(&mut g, "bloat_mother", 6, 5);
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    finish_reload(&mut g);
+    scheduled(&mut g, "aimed_shot");
+    assert_eq!(receipt(&g, 7, Phase::Applied, Effect::AimSettle), vec![1]);
+    assert!(
+        g.run
+            .as_ref()
+            .unwrap()
+            .hero
+            .advanced
+            .as_ref()
+            .unwrap()
+            .aim
+            .as_ref()
+            .unwrap()
+            .shortened
+    );
+    g.events.clear();
+    let before = g.run.as_ref().unwrap().monsters[mi].hp;
+    assert!(act(&mut g, "fire")); // Prepared fire canonically hits100%.
+    let hp = g.run.as_ref().unwrap().monsters[mi].hp;
+    assert!(
+        hp > 0 && hp < before,
+        "real charged prepared shot damaged but did not kill"
+    );
+    assert_eq!(
+        g.run
+            .as_ref()
+            .unwrap()
+            .hero
+            .weapon
+            .as_ref()
+            .unwrap()
+            .firearm
+            .unwrap()
+            .loaded,
+        0
+    );
+    assert!(crate::class_advanced::charge(g.run.as_ref().unwrap(), Combo::LongWatch).is_none());
+    p2_no_receipt(&g, &[10]);
+}
+
+#[test]
+fn priority2_unwarded_or_naturally_expired_cast_cannot_shatter_or_credit_absorption() {
+    for expired in [false, true] {
+        let mut g = arena(Class::Caster, &[9, 11]);
+        let mi = foe(&mut g, "goblin", 5, 5);
+        if expired {
+            assert!(act(&mut g, "ward"));
+            assert!(g
+                .run
+                .as_ref()
+                .unwrap()
+                .hero
+                .advanced
+                .as_ref()
+                .unwrap()
+                .ward
+                .is_some());
+            while g.run.as_ref().unwrap().hero.ward_t > 0 {
+                g.tick();
+            }
+        }
+        g.run.as_mut().unwrap().hero.blink_cd = 50;
+        g.events.clear();
+        let hp = g.run.as_ref().unwrap().hero.hp;
+        enemy_hit(&mut g, mi, "attack");
+        assert!(
+            g.run.as_ref().unwrap().hero.hp < hp,
+            "actual unwarded incoming HP damage"
+        );
+        assert_eq!(g.run.as_ref().unwrap().hero.blink_cd, 50);
+        let before = g.run.as_ref().unwrap().monsters[mi].hp;
+        assert!(act(&mut g, "nova"));
+        assert!(
+            g.run.as_ref().unwrap().monsters[mi].hp < before,
+            "actual Nova damage"
+        );
+        assert_eq!(g.run.as_ref().unwrap().hero.nova_cd, 150);
+        assert_eq!(g.run.as_ref().unwrap().hero.ward_t, 0);
+        p2_no_receipt(&g, &[9, 11]);
+    }
+}

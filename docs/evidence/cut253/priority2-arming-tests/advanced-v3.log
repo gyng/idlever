@@ -1,0 +1,79 @@
+
+running 40 tests
+paired fighter_rally: enabled=-30, control=-50
+paired fighter_oathguard: enabled=999, control=997
+paired fighter_opening_cut: enabled=-40, control=-50
+paired fighter_siege_rhythm: enabled=-920, control=-922
+paired fighter_holdfast: enabled=799, control=797
+paired fighter_execution_arc: enabled=-30, control=-50
+paired rogue_afterimage: enabled=-80, control=-100
+priority2 fire actual hit=true sameRngSeed=0
+paired rogue_tell_thief: enabled=-90, control=-100
+priority2 fire actual hit=true sameRngSeed=0
+priority2 ambush actual hit=true sameRngSeed=0
+paired rogue_veiled_route: enabled=50, control=0
+priority2 fire actual hit=false sameRngSeed=3
+priority2 shield_bash actual hit=true sameRngSeed=0
+paired rogue_patient_ambush: enabled=3, control=0
+paired rogue_ghostwalk: enabled=-917, control=-919
+priority2 attack actual hit=false sameRngSeed=3
+priority2 close_burst actual hit=true sameRngSeed=0
+priority2 ambush actual hit=false sameRngSeed=3
+paired rogue_silent_finish: enabled=50, control=0
+priority2 shield_bash actual hit=false sameRngSeed=3
+.paired ranger_spotter: enabled=40, control=30
+.priority2 incoming hit=false intercepted=false seed=3
+.priority2 incoming hit=true intercepted=false seed=0
+...paired ranger_quiver_thread: enabled=-20, control=-40
+............paired ranger_corridor_volley: enabled=-964, control=-1000
+priority2 incoming hit=true intercepted=true seed=1
+.priority2 bolt actual hit=true sameRngSeed=0
+.paired ranger_split_mark: enabled=20, control=0
+..priority2 shoot actual hit=true sameRngSeed=0
+priority2 bolt actual hit=true sameRngSeed=0
+paired ranger_patient_snare: enabled=-20, control=-40
+.paired ranger_moving_line: enabled=50, control=0
+.....paired caster_chilling_charge: enabled=-40, control=-50
+.priority2 shoot actual hit=false sameRngSeed=3
+.paired caster_storm_cell: enabled=-998, control=-1000
+....paired caster_ice_lock: enabled=40, control=30
+paired caster_shatter_ward: enabled=-130, control=-150
+paired caster_conduct: enabled=10, control=0
+priority1 refusal Oathguard verb=shield_bash remaining=1 exactSave=true
+priority1 refusal SiegeRhythm verb=shield_bash remaining=1 exactSave=true
+paired caster_last_wall: enabled=-30, control=-50
+priority1 refusal Holdfast verb=second_wind remaining=2 exactSave=true
+priority1 refusal Afterimage verb=shadowstep remaining=1 exactSave=true
+priority1 refusal SilentFinish verb=shadowstep remaining=1 exactSave=true
+paired gunner_rangefinder: enabled=1, control=0
+priority1 refusal VeiledRoute verb=shadowstep remaining=1 exactSave=true
+priority1 refusal Ghostwalk verb=backstab remaining=1 exactSave=true
+priority1 refusal CorridorVolley verb=shoot remaining=1 exactSave=true
+paired gunner_chamber_chain: enabled=10, control=0
+priority1 refusal MovingLine verb=kite remaining=1 exactSave=true
+priority1 refusal StormCell verb=bolt remaining=1 exactSave=true
+priority1 refusal ChamberChain verb=aimed_shot remaining=1 exactSave=true
+paired gunner_smoke_walk: enabled=440, control=390
+priority1 refusal LongWatch verb=aimed_shot remaining=1 exactSave=true
+priority1 refusal BreachRoute verb=smoke_retreat remaining=1 exactSave=true
+paired gunner_cycling_breach: enabled=-90, control=-100
+priority1 refusal SmokeWalk verb=reload remaining=1 exactSave=true
+.paired gunner_long_watch: enabled=10, control=0
+paired gunner_breach_route: enabled=50, control=0
+..priority1 consumer Oathguard spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer SiegeRhythm spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Holdfast spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Afterimage spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer SilentFinish spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.priority1 consumer VeiledRoute spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer Ghostwalk spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer CorridorVolley spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer MovingLine spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer StormCell spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer ChamberChain spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer LongWatch spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.priority1 consumer BreachRoute spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+priority1 consumer SmokeWalk spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+.
+test result: ok. 40 passed; 0 failed; 0 ignored; 0 measured; 991 filtered out; finished in 0.25s
+

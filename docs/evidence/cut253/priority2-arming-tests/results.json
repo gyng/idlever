@@ -1,0 +1,70 @@
+{
+  "recordedUtc": "2026-10-16T01:25:49.834141+00:00",
+  "status": "PASS",
+  "sourcePath": "crates/idlever-core/src/class_advanced_tests.rs",
+  "testSourceSha256": "6aca7eb1b04db90cc9a9476450ce0a8966cc74e749a72713e1149aabcb690522",
+  "newGroupedTests": 10,
+  "counterexampleContexts": 32,
+  "distinctNodesWithSpecificNewNegativeCase": 26,
+  "finalChecks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "session": 94968,
+      "exitCode": 0,
+      "passed": 41,
+      "seconds": 0.27,
+      "log": "advanced-v4.log"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core class_tree -- --nocapture",
+      "session": 47780,
+      "exitCode": 0,
+      "passed": 16,
+      "seconds": 10.93,
+      "log": "tree-stage-v4.log"
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "session": 44765,
+      "exitCode": 0,
+      "seconds": 19.53,
+      "log": "clippy-v4.log"
+    },
+    {
+      "command": "rustfmt --edition 2021 --check crates/idlever-core/src/class_advanced_tests.rs",
+      "exitCode": 0
+    }
+  ],
+  "retainedPriorPhases": "phases.json",
+  "productionIdentityComparison": {
+    "productionInputs": true,
+    "productionLibrary": true,
+    "nativeBinaries": true,
+    "wasm": true,
+    "gateSourceKey": true
+  },
+  "productionRustInputs": 59,
+  "runtimeKey": "d445c9825416e54e",
+  "rlibSha256": "beab2f6bbf189575578974b249d9e68f374c6ed73caeb2dc49ed73483c888bbf",
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "productionDefectEstablished": false,
+  "runtimeChange": false,
+  "ownedJobsLive": false,
+  "terminalSessions": [
+    3438,
+    2477,
+    59876,
+    94968,
+    47780,
+    44765
+  ],
+  "pacingFullReference": "../gates-current/wrapper-terminal.json",
+  "pacingNotRepeatedReason": "Exact59productionRust inputs/selected rlib/native binaries/WASM unchanged; only cfg(test) source edited.",
+  "limits": [
+    "Controlled component masks/geometry/RNG forks, not earned progression.",
+    "26node deltas are specific counterexamples, not complete negative coverage for26nodes/all30.",
+    "Prepared firearm miss is N/A at canonical100% hit; actual unprepared miss executed.",
+    "Ownership interruption uses actual engine drop helper in controlled fixture; no claim public player drop route.",
+    "Recipient/LOS/reflection/different attacker/source identity/receipt destinations/exact clocks/caps/cast replacement/net debit boundaries remain priority3/4."
+  ]
+}

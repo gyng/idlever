@@ -1,0 +1,33 @@
+{
+  "paths": [
+    "crates/idlever-core/src/class_advanced_tests.rs",
+    "docs/evidence/cut253/priority2-arming-tests/README.md",
+    "docs/evidence/cut253/priority2-arming-tests/cases.json",
+    "docs/evidence/cut253/priority2-arming-tests/node-coverage-delta.json",
+    "docs/evidence/cut253/priority2-arming-tests/production-identity-before-tests.json",
+    "docs/evidence/cut253/priority2-arming-tests/production-identity-after-tests.json",
+    "docs/evidence/cut253/priority2-arming-tests/results.json",
+    "docs/evidence/cut253/priority2-arming-tests/observations-2026-10-16.json",
+    "docs/evidence/cut253/priority2-arming-tests/phases.json",
+    "docs/evidence/cut253/priority2-arming-tests/native-v1.log",
+    "docs/evidence/cut253/priority2-arming-tests/native-v2.log",
+    "docs/evidence/cut253/priority2-arming-tests/advanced-v3.log",
+    "docs/evidence/cut253/priority2-arming-tests/advanced-v4.log",
+    "docs/evidence/cut253/priority2-arming-tests/tree-stage-v4.log",
+    "docs/evidence/cut253/priority2-arming-tests/clippy-v4.log",
+    "docs/evidence/cut253/priority2-arming-tests/test-module-v1.rs",
+    "docs/evidence/cut253/priority2-arming-tests/test-module-v2.rs",
+    "docs/evidence/cut253/priority2-arming-tests/test-module-v3.rs",
+    "docs/evidence/cut253/priority2-arming-tests/test-module-v4.rs",
+    "docs/evidence/cut253/priority2-arming-tests/checkpoint-paths.json"
+  ],
+  "localOnlyDuplicates": [
+    {
+      "path": "docs/evidence/cut253/priority2-arming-tests/test-module-before.rs",
+      "sha256": "af3062b4f505092eac4c6bd68ef21b498e682770dce2bfdeec778d262c84a19c",
+      "identicalTo": "docs/evidence/cut253/priority1-charge-tests/test-module-v4.rs"
+    }
+  ],
+  "referencedCommittedReproducer": "docs/evidence/cut253/priority1-charge-tests/capture-identity.py",
+  "scope": "Root owns staging/commits; no agent Git mutation."
+}

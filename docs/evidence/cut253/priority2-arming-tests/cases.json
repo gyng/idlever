@@ -1,0 +1,70 @@
+{
+  "scope": "32counterexample contexts in10grouped tests, not32nodes or complete30node negatives. Final status/results separately pinned.",
+  "contexts": 32,
+  "groups": [
+    {
+      "group": "Rally",
+      "contexts": 4,
+      "cases": "incoming miss; unmitigated melee; actual10tick Gas overlay; actual pet interception",
+      "actualOracle": "actual healing Wind; no cooldown reward; same-RNG incoming event/HP controls"
+    },
+    {
+      "group": "Fighter ordinary arming",
+      "contexts": 4,
+      "cases": "nonboss Bash; missed boss Bash; one damaged Cleave recipient; safe Wind",
+      "actualOracle": "actual HP damage/miss/cooldown/heal output"
+    },
+    {
+      "group": "Ambush/Quiver",
+      "contexts": 4,
+      "cases": "exact25% Ambush; actual low-HP Ambush miss; nonkill Shoot; missed Shoot",
+      "actualOracle": "actual hit/miss and physical HP/chamber same-RNG controls"
+    },
+    {
+      "group": "Trap",
+      "contexts": 2,
+      "cases": "unmarked; actual natural Mark expiry",
+      "actualOracle": "physical trap consumed/stun20; nonzero DoubleCD headroom; no Mark/cooldown benefit"
+    },
+    {
+      "group": "Multi-target",
+      "contexts": 2,
+      "cases": "one damaged real-mark Volley; one damaged Nova",
+      "actualOracle": "actual distinct Hurt recipient count1; selected paths no receipts"
+    },
+    {
+      "group": "Caster Slow/Bolt",
+      "contexts": 4,
+      "cases": "unwarded/expired Ward Slow; unslowed boss/slowed nonboss Bolt",
+      "actualOracle": "actual Slow30; actual Bolt target damage; no cooldown/copy"
+    },
+    {
+      "group": "Gun hit",
+      "contexts": 4,
+      "cases": "unprepared boss hit; prepared nonboss hit; actual unprepared miss; nonkill adjacent Burst",
+      "actualOracle": "actual chamber debit and HP/hit controls; no recovery/kill benefit"
+    },
+    {
+      "group": "Reload/Smoke ownership",
+      "contexts": 3,
+      "cases": "ordinary reload; already-blinded living Smoke foe; original gun physically dropped before completion",
+      "actualOracle": "loaded physical gun, actual moved Smoke, unchanged charge, owned-vs-unowned net50 refund control"
+    },
+    {
+      "group": "Charged nonkill/miss capstones",
+      "contexts": 3,
+      "cases": "actual charged Siege nonkill/miss; actual shortened prepared Aim nonkill",
+      "actualOracle": "real consumed parent charge/positive damage or actual miss; no Execution/LongWatch"
+    },
+    {
+      "group": "Expired/unwarded absorption and Nova",
+      "contexts": 2,
+      "cases": "no Ward cast; actual natural Ward expiry",
+      "actualOracle": "actual incoming HP damage and actual Nova damage; no LastWall/Shatter"
+    }
+  ],
+  "notApplicable": [
+    "Prepared firearm miss: actual attack roll uses100% hit. Unprepared actual miss is executed instead."
+  ],
+  "residualsReference": "../negative-audit-2026-10-16/priority.md priorities3/4 and matrix.json; historical unchanged, not retroactively relabelled."
+}

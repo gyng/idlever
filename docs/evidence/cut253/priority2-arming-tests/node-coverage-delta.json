@@ -1,0 +1,273 @@
+{
+  "testSourceSha256": "6aca7eb1b04db90cc9a9476450ce0a8966cc74e749a72713e1149aabcb690522",
+  "scope": "Specific executed arming counterexamples for26distinct nodes across32contexts; not complete negative acceptance for these nodes or all30. Historical audit remains unchanged.",
+  "rows": [
+    {
+      "id": "fighter_rally",
+      "class": "fighter",
+      "bit": 6,
+      "test": "priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee",
+      "sourceLine": 1999,
+      "actualCase": "actual incoming miss/unmitigated/gas/pet interception \u2192actual healing Wind without cooldown reward",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "fighter_oathguard",
+      "class": "fighter",
+      "bit": 7,
+      "test": "priority2_bash_cleave_and_safe_wind_require_their_actual_qualifying_targets",
+      "sourceLine": 2075,
+      "actualCase": "actual nonboss hit and boss miss Bash",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "fighter_opening_cut",
+      "class": "fighter",
+      "bit": 8,
+      "test": "priority2_bash_cleave_and_safe_wind_require_their_actual_qualifying_targets",
+      "sourceLine": 2075,
+      "actualCase": "one actually damaged Cleave recipient",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "fighter_siege_rhythm",
+      "class": "fighter",
+      "bit": 9,
+      "test": "priority2_bash_cleave_and_safe_wind_require_their_actual_qualifying_targets",
+      "sourceLine": 2075,
+      "actualCase": "actual nonboss hit and boss miss Bash",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "fighter_holdfast",
+      "class": "fighter",
+      "bit": 10,
+      "test": "priority2_bash_cleave_and_safe_wind_require_their_actual_qualifying_targets",
+      "sourceLine": 2075,
+      "actualCase": "actual healing Wind without adjacent threat",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "fighter_execution_arc",
+      "class": "fighter",
+      "bit": 11,
+      "test": "priority2_real_charged_nonkill_or_miss_never_earns_execution_or_long_watch",
+      "sourceLine": 2430,
+      "actualCase": "actual charged Siege nonkill and miss \u2192no Execution",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "rogue_afterimage",
+      "class": "rogue",
+      "bit": 6,
+      "test": "priority2_exact_quarter_ambush_and_actual_missed_low_hp_finish_do_not_arm_silent",
+      "sourceLine": 2123,
+      "actualCase": "actual low-HP Ambush miss",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "rogue_silent_finish",
+      "class": "rogue",
+      "bit": 11,
+      "test": "priority2_exact_quarter_ambush_and_actual_missed_low_hp_finish_do_not_arm_silent",
+      "sourceLine": 2123,
+      "actualCase": "exact25% pre-hit Ambush actual damage; low-HP actual miss",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_spotter",
+      "class": "ranger",
+      "bit": 6,
+      "test": "priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps",
+      "sourceLine": 2163,
+      "actualCase": "unmarked and naturally expired mark actual trap trigger",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_quiver_thread",
+      "class": "ranger",
+      "bit": 7,
+      "test": "priority2_exact_quarter_ambush_and_actual_missed_low_hp_finish_do_not_arm_silent",
+      "sourceLine": 2123,
+      "actualCase": "actual nonkill Shoot and missed Shoot",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_corridor_volley",
+      "class": "ranger",
+      "bit": 8,
+      "test": "priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths",
+      "sourceLine": 2200,
+      "actualCase": "one damaged Volley recipient after original Mark",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_split_mark",
+      "class": "ranger",
+      "bit": 9,
+      "test": "priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths",
+      "sourceLine": 2200,
+      "actualCase": "one damaged Volley recipient after original Mark, no copy destination",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_patient_snare",
+      "class": "ranger",
+      "bit": 10,
+      "test": "priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps",
+      "sourceLine": 2163,
+      "actualCase": "unmarked and naturally expired mark actual trap with cooldown headroom",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "ranger_moving_line",
+      "class": "ranger",
+      "bit": 11,
+      "test": "priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths",
+      "sourceLine": 2200,
+      "actualCase": "one damaged original-mark Volley without qualifying split",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_chilling_charge",
+      "class": "caster",
+      "bit": 6,
+      "test": "priority2_unwarded_expired_ward_unslowed_and_nonboss_spells_stay_ordinary",
+      "sourceLine": 2244,
+      "actualCase": "unslowed boss and genuinely slowed nonboss actual landed Bolt",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_storm_cell",
+      "class": "caster",
+      "bit": 7,
+      "test": "priority2_single_damaged_volley_and_nova_do_not_arm_multi_target_paths",
+      "sourceLine": 2200,
+      "actualCase": "one actually damaged Nova recipient",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_ice_lock",
+      "class": "caster",
+      "bit": 8,
+      "test": "priority2_unwarded_expired_ward_unslowed_and_nonboss_spells_stay_ordinary",
+      "sourceLine": 2244,
+      "actualCase": "actual Slow after absent/expired Ward",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_shatter_ward",
+      "class": "caster",
+      "bit": 9,
+      "test": "priority2_unwarded_or_naturally_expired_cast_cannot_shatter_or_credit_absorption",
+      "sourceLine": 2504,
+      "actualCase": "actual damaging Nova after absent/expired Ward",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_conduct",
+      "class": "caster",
+      "bit": 10,
+      "test": "priority2_unwarded_expired_ward_unslowed_and_nonboss_spells_stay_ordinary",
+      "sourceLine": 2244,
+      "actualCase": "unslowed boss and slowed nonboss landed Bolt, no copied slow",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "caster_last_wall",
+      "class": "caster",
+      "bit": 11,
+      "test": "priority2_unwarded_or_naturally_expired_cast_cannot_shatter_or_credit_absorption",
+      "sourceLine": 2504,
+      "actualCase": "actual incoming HP damage after absent/expired Ward",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_rangefinder",
+      "class": "gunner",
+      "bit": 6,
+      "test": "priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward",
+      "sourceLine": 2280,
+      "actualCase": "actual unprepared boss hit, prepared nonboss hit, unprepared miss; real chamber debit",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_chamber_chain",
+      "class": "gunner",
+      "bit": 7,
+      "test": "priority2_ordinary_reload_no_new_blind_and_lost_original_gun_cannot_arm",
+      "sourceLine": 2343,
+      "actualCase": "actual ordinary reload and physically unowned fast reload completion",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_smoke_walk",
+      "class": "gunner",
+      "bit": 8,
+      "test": "priority2_ordinary_reload_no_new_blind_and_lost_original_gun_cannot_arm",
+      "sourceLine": 2343,
+      "actualCase": "actual legal Smoke with already-blinded living foe; live original-gun ownership interruption before actual completion",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_cycling_breach",
+      "class": "gunner",
+      "bit": 9,
+      "test": "priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward",
+      "sourceLine": 2280,
+      "actualCase": "actual nonkill adjacent Burst with cooldown headroom",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_long_watch",
+      "class": "gunner",
+      "bit": 10,
+      "test": "priority2_real_charged_nonkill_or_miss_never_earns_execution_or_long_watch",
+      "sourceLine": 2430,
+      "actualCase": "actual shortened prepared Aim\u2192nonkill Fire",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    },
+    {
+      "id": "gunner_breach_route",
+      "class": "gunner",
+      "bit": 11,
+      "test": "priority2_actual_unprepared_nonboss_missed_and_nonkill_gun_hits_do_not_reward",
+      "sourceLine": 2280,
+      "actualCase": "actual nonkill adjacent Burst",
+      "status": "Executed final v4; authoritative terminal results.json",
+      "limits": "Only this actual counterexample dimension; no inferred complete miss/refusal/source/recipient/clock coverage."
+    }
+  ],
+  "notAddedThisPhase": [
+    "rogue_tell_thief",
+    "rogue_veiled_route",
+    "rogue_patient_ambush",
+    "rogue_ghostwalk"
+  ],
+  "remaining": "Recipient/LOS/reflection/source identity and priority4clock/cap/cast/energy boundaries remain open."
+}

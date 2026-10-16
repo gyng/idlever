@@ -1,0 +1,37 @@
+
+running 8 tests
+priority2 shield_bash actual hit=true sameRngSeed=0
+priority2 ambush actual hit=true sameRngSeed=0
+priority2 fire actual hit=true sameRngSeed=0
+priority2 incoming hit=false intercepted=false seed=3
+priority2 incoming hit=true intercepted=false seed=0
+
+thread 'ai::advanced_tests::priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps' (89) panicked at crates/idlever-core/src/class_advanced_tests.rs:2157:13:
+assertion failed: act(&mut g, "double_shot")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+priority2 fire actual hit=true sameRngSeed=0
+. 1/8
+ai::advanced_tests::priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps --- FAILED
+priority2 fire actual hit=false sameRngSeed=3
+priority2 bolt actual hit=true sameRngSeed=0
+priority2 shield_bash actual hit=false sameRngSeed=3
+priority2 ambush actual hit=false sameRngSeed=3
+priority2 close_burst actual hit=true sameRngSeed=0
+priority2 bolt actual hit=true sameRngSeed=0
+...priority2 shoot actual hit=true sameRngSeed=0
+priority2 shoot actual hit=false sameRngSeed=3
+..
+thread 'ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee' (87) panicked at crates/idlever-core/src/class_advanced_tests.rs:1979:5:
+no actual incoming hit=true intercepted=true
+ 7/8
+ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee --- FAILED
+
+failures:
+
+failures:
+    ai::advanced_tests::priority2_rally_excludes_actual_miss_unmitigated_hazard_and_intercepted_melee
+    ai::advanced_tests::priority2_unmarked_and_naturally_expired_marks_do_not_reward_actual_traps
+
+test result: FAILED. 6 passed; 2 failed; 0 ignored; 0 measured; 1022 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`
