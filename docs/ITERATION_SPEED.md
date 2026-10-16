@@ -1,3 +1,35 @@
+## Build-time phase split — 2026-10-16 (measured; corrects §3.5's engine.rs claim)
+
+Measured on this checkout (32-core WSL2, rustc 1.96.0, GNU ld, no lld/mold; the box was shared,
+so load is quoted per row and <5 % differences are noise). Full report and raw tables:
+`docs/evidence/mechanics/build-speed-audit-2026-10-16.md`.
+
+| what | wall | note |
+|---|---|---|
+| `cargo build --profile fast -p idlever-core --example dayplayer`, nothing changed | **0.10 s** | cargo's own no-op |
+| same after `touch crates/idlever-core/src/engine.rs` (mtime only) | **6.6 s** | file name is irrelevant — see below |
+| same after a **real** edit in `tick_inner`, with `--timings` | **12.3 s** | frontend **7.20** + codegen **2.53** + link **2.60** |
+| `cargo check --profile fast -p idlever-core` after a touch | **3.7–4.4 s** | the cheap inner loop |
+| `cargo check` warm, nothing changed | 0.02 s | |
+| `cargo build --profile fast --examples` (~100 bins) | 14.6 s | link is ~1.1 s each; never do this in the inner loop |
+| `tools/wasm.sh` (fast) unchanged / after a touch | **2.9–3.1 s** / **10.0 s** | cargo no-op + wasm-bindgen + copy |
+| `pnpm --dir web build` | 7.25 s | tsc 6.3 s + vite 0.92 s |
+
+**Where a core-edit cycle goes, and what does not help.** The frontend is ~60 % of the cycle and is
+*identical for a no-change rebuild and a real edit* (7.63 s at load 8.9 vs 7.20 s at load 37): parse,
+resolve, macro expansion, crate-metadata encode, dep-graph persist. The *codegen* term of a real edit
+is only ~1.2 s (1.31 s no-change → 2.53 s after the edit), and the link 1.1–2.6 s. Consequences:
+
+- **§3.5's "splitting engine.rs/ai.rs/turn.rs would cut the common case toward ~5 s" is not supported
+  by the phase split** — the measured bound is ~1.2 s of a ~12 s cycle (~10 %), and at
+  `codegen-units = 16` rustc packs several modules per CGU, so even that is not guaranteed. Do not
+  start that refactor for speed alone.
+- Raising `codegen-units` in `[profile.fast]` does **not** split `engine.rs` (still one ~18 MB CGU at
+  64) — it only parallelises cold builds, and it changes optimisation grouping, so timing rows move.
+- The practical inner loop is `cargo check` (3.7–4.4 s) or `cargo build --lib` (no example link), and
+  the outer loop already avoids one redundant `tsc` (`tools/verify.sh` now runs `vite build` alone
+  because its side job type-checked the client in the same invocation).
+
 ## Repin, pacing pack, sweep — 2026-10-15
 
 The owner asked for faster iteration. Three tools came out of it. They change no `.rs` file and none of them is a gate

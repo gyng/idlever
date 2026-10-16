@@ -555,7 +555,7 @@ fn advanced_definitions(class:Class)->Vec<Node> {
             ("oathguard","Oathguard","boss_guard","boss bash → one melee block +2 for10ticks",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash","")]),
             ("opening_cut","Opening cut","crowd_breaker","cleave2hits → bash cooldown −10ticks",vec![(vec![Cond::n("adj>=",2)],"cleave",""),(vec![Cond::n("adj>=",1)],"shield_bash","")]),
             ("siege_rhythm","Siege rhythm","boss_breaker","boss bash → next melee +2 for10ticks",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash",""),(vec![Cond::n("adj>=",1)],"attack","nearest")]),
-            ("holdfast","Holdfast","rally","threatened wind → two melee blocks +2 for20ticks",vec![(vec![Cond::n("hp<",55),Cond::n("adj>=",1)],"second_wind","")]),
+            ("holdfast","Holdfast","rally","threatened wind → two melee blocks +2 for40ticks",vec![(vec![Cond::n("hp<",55),Cond::n("adj>=",1)],"second_wind","")]),
             ("execution_arc","Execution arc","siege_rhythm","charged kill → bash −20ticks;40tick cap",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash",""),(vec![Cond::n("adj>=",1)],"attack","lowest")]),
         ],
         Class::Rogue=>vec![
@@ -563,7 +563,10 @@ fn advanced_definitions(class:Class)->Vec<Node> {
             ("tell_thief","Tell thief","boss_stalker","windup boss backstab → vanish cooldown −10ticks",vec![(vec![Cond::t("foe_tag","boss")],"backstab","")]),
             ("veiled_route","Veiled route","escape_artist","smoke blind → next shadowstep returns50%energy",vec![(vec![Cond::n("adj>=",1)],"smoke",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
             ("patient_ambush","Patient ambush","counter_ambush","missed ambush retains at most3vanish ticks",vec![(vec![Cond::n("adj>=",1)],"ambush","")]),
-            ("ghostwalk","Ghostwalk","veiled_route","smoke→shadowstep → next backstab +2damage",vec![(vec![Cond::n("adj>=",1)],"smoke",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
+            // The payoff verb leads: `smoke`/`shadowstep` are byte-identical to `veiled_route`'s own
+            // rows and are dropped by `packages::compile`, so only a row the parent does not hold can
+            // carry the authored "+2 on the next backstab" into the compiled set.
+            ("ghostwalk","Ghostwalk","veiled_route","smoke→shadowstep → next backstab +2damage",vec![(vec![Cond::n("adj>=",1)],"backstab",""),(vec![Cond::n("adj>=",1)],"smoke",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
             ("silent_finish","Silent finish","afterimage","ambush below25% → next shadowstep returns50%energy",vec![(vec![Cond::n("adj>=",1),Cond::n("foe_hp<",25)],"ambush","lowest"),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
         ],
         Class::Ranger=>vec![
@@ -575,11 +578,17 @@ fn advanced_definitions(class:Class)->Vec<Node> {
             ("moving_line","Moving line","split_mark","split-mark volley → next kite returns50%energy",vec![(vec![Cond::n("foes>=",2)],"volley",""),(vec![Cond::n("adj>=",1)],"kite","")]),
         ],
         Class::Caster=>vec![
-            ("chilling_charge","Chilling charge","boss_channel","slowed boss bolt → ward cooldown −10ticks;once per slow",vec![(vec![Cond::t("foe_tag","boss")],"slow","tag:boss"),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
+            // The authored reward lowers `ward_cd`, which only the `ward` verb writes; without a
+            // `ward` row of its own the branch never runs it (the sibling `guardian`/`ice_lock` rows
+            // are not owned by this chain). `foes>=1` keeps it distinct from `ice_lock`'s row.
+            ("chilling_charge","Chilling charge","boss_channel","slowed boss bolt → ward cooldown −10ticks;once per slow",vec![(vec![Cond::t("foe_tag","boss")],"slow","tag:boss"),(vec![Cond::n("hp<",70),Cond::n("foes>=",1)],"ward",""),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
             ("storm_cell","Storm cell","storm","nova2hits → next bolt one extra line foe at50%",vec![(vec![Cond::n("foes>=",2)],"nova",""),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
             ("ice_lock","Ice lock","frost_guard","warded slow +10ticks once;cap50",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",1)],"slow","nearest")]),
             ("shatter_ward","Shatter ward","nova_guard","warded nova consumes ward → nova cooldown −20ticks",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",2)],"nova","")]),
-            ("conduct","Conduct","chilling_charge","qualifying bolt → one visible adjacent slow copy≤10ticks",vec![(vec![Cond::t("foe_tag","boss")],"slow","tag:boss"),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
+            // Byte-identical to `chilling_charge`'s patterns ("slow tag:boss", "bolt nearest") this
+            // pick compiles to nothing (`Row::eq` ignores origin). The bolt at the slowed boss is the
+            // qualifying one, and the second visible foe is the neighbour the copy lands on.
+            ("conduct","Conduct","chilling_charge","qualifying bolt → one visible adjacent slow copy≤10ticks",vec![(vec![Cond::t("foe_tag","boss"),Cond::n("foes>=",2)],"bolt","tag:boss")]),
             ("last_wall","Last wall","ice_lock","ward absorbs4 → blink cooldown −20ticks once",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("hp<",45),Cond::n("foes>=",1)],"blink","")]),
         ],
         Class::Gunner=>vec![

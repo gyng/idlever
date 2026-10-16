@@ -1,5 +1,28 @@
 # Content and refinement queue — 2026-10-13
 
+## Owner pivot — 2026-10-16 (UI handoff; mechanics + chores here)
+
+Owner: UI work moves to Codex/Claude from here; this agent's focus becomes
+**game-mechanic reviews and chores** (performance optimization and build-speed
+iteration). Status at the pivot:
+
+- **Cut255 closed at its contract scope** (`docs/CUT255_HOME_ACTION_DENSITY.md`
+  status block): the four-case Home matrix passes, two interaction/renderer
+  defects were fixed (roster Locate into a disposed scene; a negative scene
+  clock), and the Hub header was compacted. `hero-hub` stops in its
+  material-contrast stage — Hub presentation, handed to the UI owner with its
+  evidence (`docs/evidence/cut255/`).
+- **Cut257 opened** (`docs/CUT257_SKILL_PAYOFF_FIXES.md`): the advanced-skill
+  payoff defects from the source+evidence review
+  (`docs/evidence/mechanics/skill-payoff-review-2026-10-16.md`) — Ranger
+  `moving_line`/`split_mark` arming, Rogue `ghostwalk`'s missing payoff verb,
+  Caster `conduct` policy-inert pick and `chilling_charge` zero-amount reward,
+  Gunner `long_watch`'s window shorter than its own cadence, Fighter `holdfast`'s
+  negligible value. `fired>matched` is a tally artifact, not a defect.
+- **Chores in flight**: a measured build/iteration-speed audit and a perf
+  attribution of the offline/absence path (native vs shipping wasm) — both
+  investigations report before any edit.
+
 ## Current checkpoint and owner additions
 
 Idlever alpha.2 is live at https://gyng.github.io/idlever/ from `79032ef5`.

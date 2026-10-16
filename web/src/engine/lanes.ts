@@ -51,6 +51,16 @@ const MEASURE_LANE: Record<string, number> = {
 }; // (Cut 28 §2: the move after a send on the forge's lane — beside the edits' vs and divergence on lane 2 it held the refine after a burst)
 const MEASURE_LANES =
   typeof navigator !== "undefined" && (navigator.hardwareConcurrency ?? 4) >= 6 ? 3 : 1;
+/** Cut 240 (perf-attribution 2026-10-16): the two cheap foreground reads an absence must not wait behind. The camp's
+ *  first paint asks `unlocks` (which then asks `unlockDeltas`) and `supplyCatalogue`, and on a return that paint runs
+ *  before the offline batch is posted, so on the one worker they ran ahead of its slices (measured on a D13 camp:
+ *  `unlocks` ×3 ≈113 ms + `supplyCatalogue` ×3 ≈159 ms against a 0.51 s tick loop; on a new town, whose absence does
+ *  no run at all, they were the whole 0.4 s). Both are pure reads whose call sites keep their answers apart with a
+ *  per-paint generation (`paintUnlocks`' `unlockGen`, `paintSupplies`' `supplyGen`), so a late answer is as good as an
+ *  early one. `holdReads`/`releaseReads` (cut 240 below) defer exactly these two for the length of an absence: the same
+ *  calls with the same values, one queue later — and no background measure is issued meanwhile, so no mirror sync
+ *  (`save` + `load` of a ~1.3 MB camp) runs inside the batch either. */
+export const HELD_WHILE_OFFLINE: Record<string, true> = { unlocks: true, supplyCatalogue: true };
 /** Foreground calls that leave the lineage as it was (the mirror stays in sync across them). */
 const READ_ONLY = new Set<string>([
   "death",
@@ -242,6 +252,20 @@ export function twoLanes(
       });
     return p;
   };
+  // Cut 240: the app's offline read-hold (see HELD_WHILE_OFFLINE). The held calls are posted again, in the order they
+  // were asked, when the app releases them; each caller's own generation guard keeps the last word.
+  let readsHeld = false;
+  let heldReads: {
+    m: string;
+    a: unknown[];
+    res: (r: unknown) => void;
+    rej: (e: unknown) => void;
+  }[] = [];
+  const drainHeldReads = (): void => {
+    const held = heldReads;
+    heldReads = [];
+    for (const h of held) onFg(h.m, h.a).then(h.res, h.rej);
+  };
   for (const m of Object.keys(F)) {
     if (refineLane && REFINE.has(m)) out[m] = (...a: unknown[]) => refineLane(m, a);
     else if (BACKGROUND.has(m)) out[m] = (...a: unknown[]) => onBackground(m, a);
@@ -258,7 +282,11 @@ export function twoLanes(
           });
         return p;
       };
-    else out[m] = (...a: unknown[]) => onFg(m, a);
+    else
+      out[m] = (...a: unknown[]) =>
+        readsHeld && HELD_WHILE_OFFLINE[m]
+          ? new Promise((res, rej) => heldReads.push({ m, a, res, rej }))
+          : onFg(m, a);
   }
   // QA 778fa1b: the refine runs on its lane, so the refined camp panel is cached on that lane's engine — the edit's move asked again after
   // it (`forecastVsRefined`: `forecastVs` on the same lane, behind the refine) pairs the refined panels (`ForecastVs.refined`)
@@ -273,6 +301,16 @@ export function twoLanes(
       : (...a: unknown[]) => onBackground("divergence", a);
   if (refineLane) out.refineLane = true as unknown as Calls[string];
   if (opts.mirror) out.parallelForecast = true as unknown as Calls[string]; // Cut 25 §4   // the app starts an edit's refine beside its first pass
+  // Cut 240: the app's offline read-hold — `holdReads` for the length of an absence, `releaseReads` after it (idempotent).
+  // (Absent on a bare engine, `?lanes=0`: the app calls both optionally.)
+  out.holdReads = (() => {
+    readsHeld = true;
+  }) as unknown as Calls[string];
+  out.releaseReads = (() => {
+    if (!readsHeld) return;
+    readsHeld = false;
+    drainHeldReads();
+  }) as unknown as Calls[string];
   return out as unknown as AsyncEngine;
 }
 

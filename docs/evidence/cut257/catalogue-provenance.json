@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-16",
+  "command": "RUST_MIN_STACK=33554432 CARGO_BUILD_JOBS=12 cargo run -q --profile fast -p idlever-core --example cut253_catalogue > docs/evidence/cut257/catalogue.json 2> docs/evidence/cut257/catalogue-export.log",
+  "exit": 0,
+  "scope": "Pure authored native catalogue regenerated after the Cut257 skill-row changes (Rogue ghostwalk backstab row, Caster chilling_charge ward row, Caster conduct rows, Fighter holdfast window text). Not earned state, ownership or runtime package proof.",
+  "note": "class_tree.rs changed this session, so the fixture sourceHashes and the embedded tactics were stale (web/tests/skill-icons.mjs refuses stale hashes). hero.rs untouched. A first attempt died on a rustc SIGSEGV in the LLVM optimizer under host load; the retry raised RUST_MIN_STACK and capped jobs (see catalogue-export.log). Regenerated a second time after the chilling_charge ward row was moved ahead of its bolt row (the row order is part of the catalogue).",
+  "files": {
+    "crates/idlever-core/src/class_tree.rs": "5ae07c31fb2373ff5f086cd8176b61c71699e1afe93d6f5e45ba40e84e8a8ccf",
+    "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369",
+    "crates/idlever-core/examples/cut253_catalogue.rs": "9c7006c9f93da8bdffce2fdc06b3f45c0f8a9b94919440b0037b40696c18d5eb",
+    "docs/evidence/cut257/catalogue.json": "b5a9b5786a3f686a3fedbd636459ef9019b70e1e3339d477b9270313a23b058b"
+  },
+  "nodes": 72
+}

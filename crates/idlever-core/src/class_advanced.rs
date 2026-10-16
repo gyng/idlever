@@ -478,57 +478,89 @@ pub fn slowed(run: &mut Run, cx: &mut Ctx, mi: usize) {
     }
 }
 
-pub fn bolt_hit(run: &mut Run, cx: &mut Ctx, mi: usize) {
-    if !has(run, Class::Caster, 6) || !run.monsters[mi].is_boss() || run.monsters[mi].slow_t <= 0 {
-        return;
-    }
-    let Some(marker) = run.monsters[mi].advanced_slow.as_mut() else {
-        return;
+/// The two foes a bolt conducts one original slow between. The bolt's own victim is always
+/// one endpoint — the conduit — so Conduct reaches a bolt that lands on a foe *next to* the
+/// slowed boss, not only on the slowed boss itself (Cut257: the earned caster rows fire
+/// `bolt nearest` 181–2481 times and `bolt tag:boss` never, and nearest puts the boss last,
+/// so the copy could never fire). A copied slow carries no marker (`slowed`), so a copy can
+/// never be conducted onward; the parent's own boss bolt keeps its boss-only reward.
+fn conduct_pair(run: &Run, victim: usize) -> Option<(usize, usize)> {
+    let carries = |i: usize| {
+        run.monsters[i]
+            .advanced_slow
+            .as_ref()
+            .is_some_and(|s| !s.conduct_used)
     };
-    if !marker.chilling_used {
-        marker.chilling_used = true;
-        let id = run.monsters[mi].id;
-        cooldown(run, cx, 6, Effect::WardCooldown, 10, Some(id));
+    let visible = |i: usize| {
+        let m = &run.monsters[i];
+        m.hp > 0
+            && m.hostile()
+            && run.floor.map.is_visible(m.pos)
+            && run.floor.map.los(run.hero.pos, m.pos)
+    };
+    let p = run.monsters[victim].pos;
+    // The victim itself carries the original boss slow: copy it onto one adjacent visible
+    // foe that carries less of it.
+    if run.monsters[victim].is_boss() && run.monsters[victim].slow_t > 0 && carries(victim) {
+        let cap = run.monsters[victim].slow_t.min(10);
+        if let Some(to) = (0..run.monsters.len()).find(|&i| {
+            i != victim
+                && run.monsters[i].pos.adjacent(p)
+                && visible(i)
+                && run.monsters[i].slow_t < cap
+        }) {
+            return Some((victim, to));
+        }
+    }
+    // An adjacent foe carries the original slow: it conducts onto the victim, which is the
+    // visible adjacent foe the bolt found.
+    let from = (0..run.monsters.len()).find(|&i| {
+        i != victim
+            && run.monsters[i].slow_t > 0
+            && run.monsters[i].pos.adjacent(p)
+            && carries(i)
+            && visible(i)
+    })?;
+    (visible(victim) && run.monsters[victim].slow_t < run.monsters[from].slow_t.min(10))
+        .then_some((from, victim))
+}
+
+pub fn bolt_hit(run: &mut Run, cx: &mut Ctx, mi: usize) {
+    // Chilling charge: the parent's authored case only — a bolt on the slowed boss — refunds
+    // the branch's ward clock, once per original slow.
+    if has(run, Class::Caster, 6) && run.monsters[mi].is_boss() && run.monsters[mi].slow_t > 0 {
+        if let Some(marker) = run.monsters[mi].advanced_slow.as_mut() {
+            if !marker.chilling_used {
+                marker.chilling_used = true;
+                let id = run.monsters[mi].id;
+                cooldown(run, cx, 6, Effect::WardCooldown, 10, Some(id));
+            }
+        }
     }
     if !has(run, Class::Caster, 10) {
         return;
     }
-    let Some(marker) = run.monsters[mi].advanced_slow.as_ref() else {
+    let Some((from, to)) = conduct_pair(run, mi) else {
         return;
     };
-    if marker.conduct_used {
-        return;
-    }
-    let p = run.monsters[mi].pos;
-    let Some(other) = (0..run.monsters.len()).filter(|&i| i != mi).find(|&i| {
-        let m = &run.monsters[i];
-        m.hp > 0
-            && m.hostile()
-            && m.pos.adjacent(p)
-            && run.floor.map.is_visible(m.pos)
-            && run.floor.map.los(run.hero.pos, m.pos)
-            && m.slow_t < run.monsters[mi].slow_t.min(10)
-    }) else {
-        return;
-    };
-    run.monsters[mi]
+    run.monsters[from]
         .advanced_slow
         .as_mut()
         .unwrap()
         .conduct_used = true;
-    let before = run.monsters[other].slow_t;
-    run.monsters[other].slow_t = run.monsters[mi].slow_t.min(10);
+    let before = run.monsters[to].slow_t;
+    run.monsters[to].slow_t = run.monsters[from].slow_t.min(10);
     // A copied effect is not an original cast, even if it replaces an expired marker.
-    run.monsters[other].advanced_slow = None;
+    run.monsters[to].advanced_slow = None;
     receipt(
         run,
         cx,
         10,
         Phase::Applied,
         Effect::Slow,
-        run.monsters[other].slow_t - before,
+        run.monsters[to].slow_t - before,
         ReceiptTarget {
-            target: Some(run.monsters[other].id),
+            target: Some(run.monsters[to].id),
             expires_t: None,
         },
     );
@@ -802,9 +834,14 @@ pub fn gun_hit(run: &mut Run, cx: &mut Ctx, mi: usize, prepared: bool, burst: bo
             Combo::LongWatch,
             10,
             Effect::AimSettle,
+            // Cut257: the authored 10-tick window was shorter than the branch's own arm→next
+            // aim cadence (measured n=79: min 30, median 89 ticks), so 0 of 79 arms ever
+            // landed. 100 covers that cadence; the charge count and the 1-tick settle are
+            // unchanged. Chamber chain keeps its own 10-tick window (it arms on the reload
+            // completion immediately before an aim, the working control).
             ChargeWindow {
                 count: 1,
-                ticks: 10,
+                ticks: 100,
             },
             Some(target),
         );

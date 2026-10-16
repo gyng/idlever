@@ -301,17 +301,28 @@ export class App {
   async absence(elapsed: number): Promise<void> {
     this.markRan(); // Cut 28 §2: the absence sends the rules now
     this.offlineRunning = true;
-    this.go({ kind: "camp" });
-    const report = await this.runOfflineChunked(Math.floor(elapsed));
-    await this.refresh();
-    this.queueGoldFeedback();
-    this.adoptSets();
-    this.runnerAt = Date.now();
-    // Cut 30.5: before the scout an absence with no send in flight ran nothing — the hero waited at home; no empty report
-    if (report.runs === 0 && this.lineage.tree && !this.lineage.tree.auto_send)
+    // Cut 240 (perf-attribution 2026-10-16): the camp's first paint asks `unlocks`/`supplyCatalogue` on the foreground
+    // worker, and on that one worker they ran ahead of the offline batch's slices (measured on a D13 camp: ~113 ms +
+    // ~159 ms; on a new town they were the whole absence). Held to the batch's end (`lanes.ts`; both calls are absent
+    // on a bare engine, e.g. `?lanes=0`) and released after everything the app waits for: the same calls with the same
+    // values, one queue later, with the camp's per-paint generation guards choosing the last word as they already do.
+    const held = this.engine as unknown as { holdReads?: () => void; releaseReads?: () => void };
+    held.holdReads?.();
+    try {
       this.go({ kind: "camp" });
-    else this.go({ kind: "report", report, absence: true });
-    await this.flush();
+      const report = await this.runOfflineChunked(Math.floor(elapsed));
+      await this.refresh();
+      this.queueGoldFeedback();
+      this.adoptSets();
+      this.runnerAt = Date.now();
+      // Cut 30.5: before the scout an absence with no send in flight ran nothing — the hero waited at home; no empty report
+      if (report.runs === 0 && this.lineage.tree && !this.lineage.tree.auto_send)
+        this.go({ kind: "camp" });
+      else this.go({ kind: "report", report, absence: true });
+      await this.flush();
+    } finally {
+      held.releaseReads?.();
+    }
   }
   private vocab_!: Vocabulary;
   get vocab(): Vocabulary {
@@ -987,14 +998,10 @@ export class App {
           if (!worst || depth >= worst.depth) worst = { id: r.worst_death_id, depth };
         }
       }
-      if (worst && !merged!.worst_death) {
-        b.set(/* copy:label */ "verdict");
-        try {
-          merged!.worst_death = await this.engine.death(worst.id);
-        } catch (e) {
-          console.warn("worst death", e);
-        }
-      }
+      // The verdict is one expensive recompute (measured ~1 s in wasm: 41–64 % of a deep absence).
+      // The report carries the id and pays for it only if the player opens `deepest`; older cores
+      // that hand over a finished `worst_death` are untouched.
+      if (worst && !merged!.worst_death) merged!.worst_death_id = worst.id;
     } finally {
       b.done();
       this.root.inert = false;

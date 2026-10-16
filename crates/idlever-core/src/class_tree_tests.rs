@@ -634,3 +634,137 @@ fn actual_nonfatal_settlement_crosses_one_stage_once_and_saved_notice_is_persona
     assert_eq!(offers(&restored.lineage,false).earned_stage.unwrap().picks,7);
     assert!(!restored.lineage.class_stages_announced.contains_key("caster"));
 }
+
+/// Cut257: Rogue `ghostwalk` armed (293/583/652 in the preserved earned runs) but its pick owned no
+/// `backstab` row, so its authored "+2 on the next backstab" could never be consumed. Its own row
+/// must survive `packages::compile`'s duplicate drop — the parent `veiled_route` already holds its
+/// byte-identical `smoke`/`shadowstep` patterns, so only a row the parent does not hold can carry the
+/// payoff into the compiled set.
+#[test]
+fn ghostwalk_pick_compiles_a_backstab_row() {
+    let mut g = advanced_home(Class::Rogue);
+    for id in ["rogue_shade", "rogue_escape_artist", "rogue_veiled_route"] {
+        learn(&mut g, id).unwrap();
+    }
+    assert_eq!(offers(&g.lineage, false).budget, 10);
+    let before = crate::packages::compile(&g.lineage).rows;
+    assert!(
+        !before.iter().any(|r| r.verb.v == "backstab"),
+        "the parent branch authors no backstab row"
+    );
+    learn(&mut g, "rogue_ghostwalk").unwrap();
+    let after = crate::packages::compile(&g.lineage).rows;
+    assert_eq!(
+        (
+            offers(&g.lineage, false).spent,
+            offers(&g.lineage, false).points
+        ),
+        (4, 6),
+        "four real picks out of the ten an eligible rogue holds"
+    );
+    assert_ne!(before, after, "the pick must change the compiled policy");
+    let own = after
+        .iter()
+        .find(|r| r.origin.as_deref() == Some("class:path:rogue_ghostwalk") && r.verb.v == "backstab")
+        .expect("the pick's own backstab row compiled in, not dropped as a duplicate");
+    assert_eq!(own.conds, vec![Cond::n("adj>=", 1)]);
+    assert_eq!(own.verb, Verb::new("backstab"));
+    assert_eq!(own.verb.a, None);
+    // The authored enablers stay in the set; the parent owns the surviving copies.
+    assert!(after
+        .iter()
+        .any(|r| r.verb.v == "smoke" && r.conds == vec![Cond::n("adj>=", 1)]));
+    assert!(after
+        .iter()
+        .any(|r| r.verb.v == "shadowstep" && r.conds == vec![Cond::n("foes>=", 1)]));
+}
+
+/// Cut257: `conduct`'s patterns were byte-identical to `chilling_charge`'s and `Row::eq` ignores
+/// origin, so `packages::compile` dropped them and the fourth pick bought no policy change at all
+/// (identical `row_fired` vectors in the preserved evidence). The pick must now add its own row:
+/// the qualifying bolt at the slowed boss, with the visible neighbour it copies onto.
+#[test]
+fn conduct_pick_is_not_a_duplicate_of_its_parent() {
+    let mut g = advanced_home(Class::Caster);
+    for id in ["caster_channeler", "caster_boss_channel", "caster_chilling_charge"] {
+        learn(&mut g, id).unwrap();
+    }
+    let parent = crate::packages::compile(&g.lineage).rows;
+    learn(&mut g, "caster_conduct").unwrap();
+    let picked = crate::packages::compile(&g.lineage).rows;
+    assert_eq!(
+        (
+            offers(&g.lineage, false).spent,
+            offers(&g.lineage, false).points
+        ),
+        (4, 6),
+        "four real picks out of the ten an eligible caster holds"
+    );
+    assert_ne!(
+        parent, picked,
+        "the pick must change the compiled policy, not only the row label"
+    );
+    for row in &parent {
+        assert!(picked.contains(row), "the pick keeps every parent row");
+    }
+    let own = picked
+        .iter()
+        .find(|r| r.origin.as_deref() == Some("class:path:caster_conduct"))
+        .expect("the pick's own row compiled in");
+    assert_eq!(own.conds, vec![Cond::t("foe_tag", "boss"), Cond::n("foes>=", 2)]);
+    assert_eq!(own.verb, Verb::arg("bolt", "tag:boss"));
+    assert!(
+        !parent.iter().any(|r| r.conds == own.conds && r.verb == own.verb),
+        "not byte-identical to any row the parent already holds"
+    );
+}
+
+/// Cut257: `chilling_charge`'s authored reward lowers `ward_cd`, which only the `ward` verb writes,
+/// and no row its chain owned ever ran `ward`, so the amount was always 0 (0 receipts in all nine
+/// caster branches). Its own `ward` row must compile in, and stay distinct from the sibling
+/// `guardian`/`frost_guard`/`ice_lock` rows it can legally be picked beside.
+#[test]
+fn chilling_charge_pick_compiles_its_own_ward_row() {
+    let mut g = advanced_home(Class::Caster);
+    for id in ["caster_channeler", "caster_boss_channel"] {
+        learn(&mut g, id).unwrap();
+    }
+    assert!(
+        !crate::packages::compile(&g.lineage).rows.iter().any(|r| r.verb.v == "ward"),
+        "the ancestor chain authors no ward row"
+    );
+    learn(&mut g, "caster_chilling_charge").unwrap();
+    assert_eq!(
+        (
+            offers(&g.lineage, false).spent,
+            offers(&g.lineage, false).points
+        ),
+        (3, 7),
+        "three real picks out of the ten an eligible caster holds"
+    );
+    let rows = crate::packages::compile(&g.lineage).rows;
+    let own = rows
+        .iter()
+        .find(|r| r.origin.as_deref() == Some("class:path:caster_chilling_charge") && r.verb.v == "ward")
+        .expect("the pick's own ward row compiled in");
+    assert_eq!(own.conds, vec![Cond::n("hp<", 70), Cond::n("foes>=", 1)]);
+    assert_eq!(own.verb, Verb::new("ward"));
+    let mut both = advanced_home(Class::Caster);
+    for id in [
+        "caster_channeler",
+        "caster_boss_channel",
+        "caster_chilling_charge",
+        "caster_guardian",
+        "caster_frost_guard",
+        "caster_ice_lock",
+    ] {
+        learn(&mut both, id).unwrap();
+    }
+    let rows = crate::packages::compile(&both.lineage).rows;
+    for id in ["caster_chilling_charge", "caster_ice_lock"] {
+        assert!(
+            rows.iter().any(|r| r.origin.as_deref() == Some(format!("class:path:{id}").as_str())),
+            "{id}'s authored ward row survives beside the other branch's"
+        );
+    }
+}

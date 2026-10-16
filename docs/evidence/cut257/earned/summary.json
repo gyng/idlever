@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-16",
+  "scope": "Cut257 gate 4: fresh earned continuations for the two classes whose capstones had zero receipts in the preserved campaigns (ranger-seed1 owns path:ranger_moving_line, caster-seed1 owns path:caster_conduct). Resumed from docs/evidence/cut253/earned-cohorts-v2 with each chain exact remaining requested seconds; no grants, no policy edits.",
+  "command": "bash docs/evidence/cut257/earned-run.sh",
+  "note_raws": "The ~180 MB of raw campaign session/report/reconstruction dumps stay local and untracked; this summary plus each branch receipts.json/result.json is the committed evidence. Reconstruct with the command above.",
+  "cases": {
+    "caster-seed1": {
+      "branches": {
+        "no-selection": {
+          "class_paths": null,
+          "interactions": 0,
+          "counts": {},
+          "receipts_sha256": "ad9dfbbbe5834dcf763310b87cef6db936852d3ddc955fced12f8fcdfd822278"
+        },
+        "parent-only": {
+          "class_paths": {
+            "caster": [
+              "caster_boss_channel",
+              "caster_channeler",
+              "caster_chilling_charge"
+            ]
+          },
+          "interactions": 3,
+          "counts": {
+            "path:caster_chilling_charge|applied|ward_cooldown|10": 3
+          },
+          "receipts_sha256": "5ad3c01a80d608830080ceb86859649698162f70e3178d2d11760ae43b0f38f9"
+        },
+        "selected": {
+          "class_paths": {
+            "caster": [
+              "caster_boss_channel",
+              "caster_channeler",
+              "caster_chilling_charge",
+              "caster_conduct"
+            ]
+          },
+          "interactions": 2,
+          "counts": {
+            "path:caster_chilling_charge|applied|ward_cooldown|10": 2
+          },
+          "receipts_sha256": "679df33398ca02912edfdc4f39a8e44d0a7698f166a6148e89675848c734fd13"
+        }
+      }
+    },
+    "ranger-seed1": {
+      "branches": {
+        "no-selection": {
+          "class_paths": null,
+          "interactions": 0,
+          "counts": {},
+          "receipts_sha256": "2b6d21d2dc389706b1c7d020f96549bfbb8c7959a5b4326abc6a3db1a1d7bdd1"
+        },
+        "parent-only": {
+          "class_paths": {
+            "ranger": [
+              "ranger_barrage",
+              "ranger_marked_barrage",
+              "ranger_split_mark"
+            ]
+          },
+          "interactions": 2,
+          "counts": {
+            "path:ranger_split_mark|applied|mark|5": 1,
+            "path:ranger_split_mark|applied|mark|17": 1
+          },
+          "receipts_sha256": "20ebb464e3c73c544d4e20bbc22baa2bf0b9b089fa08c95100f0bfdffdf91cd7"
+        },
+        "selected": {
+          "class_paths": {
+            "ranger": [
+              "ranger_barrage",
+              "ranger_marked_barrage",
+              "ranger_moving_line",
+              "ranger_split_mark"
+            ]
+          },
+          "interactions": 43,
+          "counts": {
+            "path:ranger_moving_line|armed|energy|1": 35,
+            "path:ranger_moving_line|consumed|energy|1": 4,
+            "path:ranger_moving_line|applied|energy|50": 4
+          },
+          "receipts_sha256": "e5a76fd605906eb1db06d66747edc6db70eca8fbad901043cb833da4a3e186ef"
+        }
+      }
+    }
+  }
+}

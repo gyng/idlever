@@ -832,7 +832,10 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
                 let add = run.hero.max_hp * 3 / 10 + 3 * run.hero.skill(Class::Fighter, 1);
                 run.hero.hp = (run.hero.hp + add).min(run.hero.max_hp);
                 if crate::class_advanced::has(run,Class::Fighter,6)&&run.hero.advanced.as_deref().and_then(|s|s.last_block_t).is_some_and(|t|run.turn.saturating_sub(t)<=10) {crate::class_advanced::cooldown(run,cx,6,crate::class_advanced::Effect::BashCooldown,20,None);}
-                if v.adj>0&&crate::class_advanced::has(run,Class::Fighter,10) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Holdfast, 10, crate::class_advanced::Effect::MeleeBlock, crate::class_advanced::ChargeWindow { count: 2, ticks: 20 }, None);}
+                // Cut257: at 20 ticks the authored two blocks rarely both landed (15/0/1 applied
+                // across 12 runs); the window now outlasts the melee cadence so both charges can
+                // be spent. The authored two blocks ×2 are unchanged.
+                if v.adj>0&&crate::class_advanced::has(run,Class::Fighter,10) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Holdfast, 10, crate::class_advanced::Effect::MeleeBlock, crate::class_advanced::ChargeWindow { count: 2, ticks: 40 }, None);}
                 callout(run, cx, "second wind");
                 true
             } else {
@@ -1136,18 +1139,30 @@ fn verb_volley(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     }
     if crate::class_advanced::enabled(run) {
         let hits:Vec<u32>=cx.events[before..].iter().filter_map(|e|match e {Ev::Attack {src,dst,hit:true,verb:Some(verb),..} if *src==HERO_ID&&verb=="shoot"&&initial_hp.iter().any(|&(id,hp)|id==*dst&&run.monsters.iter().any(|m|m.id==id&&m.hp<hp))=>Some(*dst),_=>None}).collect();
-        if hits.len()>=2&&crate::class_advanced::has(run,Class::Ranger,8) {
-            crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::CorridorVolley, 8, crate::class_advanced::Effect::Range, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);
+        if hits.len()>=2 {
+            if crate::class_advanced::has(run,Class::Ranger,8) {
+                crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::CorridorVolley, 8, crate::class_advanced::Effect::Range, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);
+            }
+            // Cut257: the two-hit volley itself arms Moving line. It used to sit inside the
+            // parent Split mark's copy block, so arming needed the marked boss on the ray and
+            // never happened (0/9 earned branches); the copy stays optional.
+            if crate::class_advanced::has(run,Class::Ranger,11) {
+                crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::MovingLine, 11, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);
+            }
         }
         if crate::class_advanced::has(run,Class::Ranger,9) {
-            let marked=targets.iter().copied().find(|&i|hits.contains(&run.monsters[i].id)&&run.monsters[i].marked>0&&!run.monsters[i].advanced_mark_copy);
+            // Cut257: the mark source is any marked, non-copied foe — not only a volley hit —
+            // so a marked foe off the nearest foe's ray (the usual case: the boss) still
+            // copies. The recipient is still a volley hit foe; the ≤20-tick copy rule and
+            // the copy-can't-chain provenance guard are unchanged.
+            let marked=run.monsters.iter().find(|m|m.hostile()&&m.hp>0&&m.marked>0&&!m.advanced_mark_copy).map(|m|m.id);
             if let Some(from)=marked {
-                if let Some(to)=targets.iter().copied().find(|&i|i!=from&&hits.contains(&run.monsters[i].id)&&run.monsters[i].marked<run.monsters[from].marked.min(20)) {
+                let source_mark=run.monsters.iter().find(|m|m.id==from).map_or(0,|m|m.marked);
+                if let Some(to)=targets.iter().copied().find(|&i|run.monsters[i].id!=from&&hits.contains(&run.monsters[i].id)&&run.monsters[i].marked<source_mark.min(20)) {
                     let previous=run.monsters[to].marked;
-                    run.monsters[to].marked=run.monsters[from].marked.min(20);
+                    run.monsters[to].marked=source_mark.min(20);
                     run.monsters[to].advanced_mark_copy=true;
                     crate::class_advanced::receipt(run, cx, 9, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Mark, run.monsters[to].marked-previous, crate::class_advanced::ReceiptTarget { target: Some(run.monsters[to].id), expires_t: None });
-                    if crate::class_advanced::has(run,Class::Ranger,11) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::MovingLine, 11, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
                 }
             }
         }

@@ -71,6 +71,25 @@ iteration).** State of the resume order:
    policy-inert pick + `chilling_charge` zero-amount reward, Rogue `ghostwalk`
    missing payoff verb, Gunner `long_watch` window shorter than its own aim
    cadence, Fighter `holdfast` negligible value; `fired>matched` is not a bug).
+4. **Cut257 landed and verified** (`docs/CUT257_SKILL_PAYOFF_FIXES.md` §Status):
+   the six rows above are fixed in `ai.rs` / `class_advanced.rs` / `class_tree.rs`
+   with their own tests; 1047 workspace tests pass, clippy clean, the catalogue
+   fixture was regenerated, `skill-icons` (648 cells/72 unique) and
+   `gold-settlements` (564 checks/24) pass on the new package `51d041d0…`, and the
+   affected pacing rows still pass at 16 seeds (`tuned-picked` D33 1.20…1.29,
+   was 1.23…1.42; bar 1.15). Fresh earned continuations for ranger-seed1 and
+   caster-seed1 now show real payoffs (`moving_line` applied ×4, `split_mark`
+   mark ×2, `chilling_charge` ward-cooldown ×5) — `docs/evidence/cut257/earned/`.
+   Caster `conduct` is still unreached in earned play because the branch's only
+   `slow` row is the parent's `slow tag:boss` (1 slow fire in 16 runs): owner
+   content tuning, recorded rather than papered over.
+5. Chores done alongside: the worst-death verdict no longer blocks an absence
+   (`app.ts` + the report's lazy `deepest` tile, with a pre/post attribution and a
+   baseline A/B showing `cut13`/`cut29`'s failures are pre-existing), the two
+   foreground reads wait for the offline batch (`lanes.ts`, values byte-identical),
+   `tools/verify.sh` no longer type-checks the client twice, and the measured
+   build-phase split corrects `docs/ITERATION_SPEED.md` §3.5's engine.rs claim
+   (~10 %, not "toward 5 s") — `docs/evidence/mechanics/*`.
 
 **Art generation is blocked: Codex is out of quota for the week (owner,
 2026-10-16).** No new painting can be produced until it resets, so do not start

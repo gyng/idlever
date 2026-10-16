@@ -20,7 +20,10 @@ cat "$tsclog"; rm -f "$log" "$tsclog"
 if [ "$mode" != "--quick" ]; then
   cargo clippy -q --workspace --all-targets -- -D warnings
   if [ "$mode" = "--full" ] || [ "$mode" = "--exhaustive" ]; then tools/wasm.sh --ship >/dev/null; else tools/wasm.sh >/dev/null; fi
-  ( cd web && pnpm -s build >/dev/null )
+  # `pnpm build` is `tsc && vite build`, and this run already type-checked the client in the side
+  # job above (measured: tsc 6.3 s of that step). Run vite alone here; CI and release builds keep
+  # the full `pnpm build` (tsc included).
+  ( cd web && pnpm -s exec vite build >/dev/null )
   if [ "$mode" = "--exhaustive" ]; then node tools/gates.mjs --exhaustive; elif [ "$mode" = "--full" ]; then node tools/gates.mjs --full; else node tools/gates.mjs; fi
 fi
 echo "verify${mode:+ $mode}: green in $(( $(date +%s) - t0 ))s"

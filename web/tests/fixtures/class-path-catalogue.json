@@ -76,7 +76,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "boss melee \u22121 damage",
+          "effect": "boss melee −1 damage",
           "id": "fighter_boss_guard",
           "name": "Boss guard",
           "owned": false,
@@ -134,7 +134,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "cleave cooldown \u221210 ticks",
+          "effect": "cleave cooldown −10 ticks",
           "id": "fighter_crowd_breaker",
           "name": "Crowd breaker",
           "owned": false,
@@ -220,7 +220,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "wind after block \u2192 bash cooldown \u221220 ticks",
+          "effect": "wind after block → bash cooldown −20 ticks",
           "id": "fighter_rally",
           "name": "Rally",
           "owned": false,
@@ -257,7 +257,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "boss bash \u2192 one melee block +2 for10ticks",
+          "effect": "boss bash → one melee block +2 for10ticks",
           "id": "fighter_oathguard",
           "name": "Oathguard",
           "owned": false,
@@ -282,7 +282,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "cleave2hits \u2192 bash cooldown \u221210ticks",
+          "effect": "cleave2hits → bash cooldown −10ticks",
           "id": "fighter_opening_cut",
           "name": "Opening cut",
           "owned": false,
@@ -319,7 +319,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "boss bash \u2192 next melee +2 for10ticks",
+          "effect": "boss bash → next melee +2 for10ticks",
           "id": "fighter_siege_rhythm",
           "name": "Siege rhythm",
           "owned": false,
@@ -357,7 +357,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "threatened wind \u2192 two melee blocks +2 for20ticks",
+          "effect": "threatened wind → two melee blocks +2 for40ticks",
           "id": "fighter_holdfast",
           "name": "Holdfast",
           "owned": false,
@@ -386,7 +386,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "charged kill \u2192 bash \u221220ticks;40tick cap",
+          "effect": "charged kill → bash −20ticks;40tick cap",
           "id": "fighter_execution_arc",
           "name": "Execution arc",
           "owned": false,
@@ -638,7 +638,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "vanish cooldown \u221210 ticks",
+          "effect": "vanish cooldown −10 ticks",
           "id": "rogue_counter_ambush",
           "name": "Counter ambush",
           "owned": false,
@@ -679,7 +679,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "ambush \u2192 next shadowstep cuts vanish cooldown20ticks",
+          "effect": "ambush → next shadowstep cuts vanish cooldown20ticks",
           "id": "rogue_afterimage",
           "name": "Afterimage",
           "owned": false,
@@ -716,7 +716,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "windup boss backstab \u2192 vanish cooldown \u221210ticks",
+          "effect": "windup boss backstab → vanish cooldown −10ticks",
           "id": "rogue_tell_thief",
           "name": "Tell thief",
           "owned": false,
@@ -741,7 +741,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "smoke blind \u2192 next shadowstep returns50%energy",
+          "effect": "smoke blind → next shadowstep returns50%energy",
           "id": "rogue_veiled_route",
           "name": "Veiled route",
           "owned": false,
@@ -803,7 +803,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "smoke\u2192shadowstep \u2192 next backstab +2damage",
+          "effect": "smoke→shadowstep → next backstab +2damage",
           "id": "rogue_ghostwalk",
           "name": "Ghostwalk",
           "owned": false,
@@ -811,6 +811,18 @@
           "required_depth": 29,
           "required_level": 10,
           "tactics": [
+            {
+              "conds": [
+                {
+                  "k": "adj>=",
+                  "n": 1
+                }
+              ],
+              "origin": "class:path:rogue_ghostwalk",
+              "verb": {
+                "v": "backstab"
+              }
+            },
             {
               "conds": [
                 {
@@ -840,7 +852,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "ambush below25% \u2192 next shadowstep returns50%energy",
+          "effect": "ambush below25% → next shadowstep returns50%energy",
           "id": "rogue_silent_finish",
           "name": "Silent finish",
           "owned": false,
@@ -978,7 +990,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "volley cooldown \u221210 ticks",
+          "effect": "volley cooldown −10 ticks",
           "id": "ranger_barrage",
           "name": "Barrage",
           "owned": false,
@@ -1079,7 +1091,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "marked trap trigger \u2192 mark +10ticks;cap50",
+          "effect": "marked trap trigger → mark +10ticks;cap50",
           "id": "ranger_spotter",
           "name": "Spotter",
           "owned": false,
@@ -1117,7 +1129,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "shot kills below25% \u2192 double-shot cooldown \u221220ticks",
+          "effect": "shot kills below25% → double-shot cooldown −20ticks",
           "id": "ranger_quiver_thread",
           "name": "Quiver thread",
           "owned": false,
@@ -1156,7 +1168,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "volley2hits \u2192 next shot +1range for10ticks",
+          "effect": "volley2hits → next shot +1range for10ticks",
           "id": "ranger_corridor_volley",
           "name": "Corridor volley",
           "owned": false,
@@ -1194,7 +1206,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "marked volley \u2192 one hit foe mark copy\u226420ticks",
+          "effect": "marked volley → one hit foe mark copy≤20ticks",
           "id": "ranger_split_mark",
           "name": "Split mark",
           "owned": false,
@@ -1232,7 +1244,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "marked trap trigger \u2192 double-shot cooldown \u221220ticks",
+          "effect": "marked trap trigger → double-shot cooldown −20ticks",
           "id": "ranger_patient_snare",
           "name": "Patient snare",
           "owned": false,
@@ -1270,7 +1282,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "split-mark volley \u2192 next kite returns50%energy",
+          "effect": "split-mark volley → next kite returns50%energy",
           "id": "ranger_moving_line",
           "name": "Moving line",
           "owned": false,
@@ -1531,7 +1543,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "slowed boss bolt \u2192 ward cooldown \u221210ticks;once per slow",
+          "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow",
           "id": "caster_chilling_charge",
           "name": "Chilling charge",
           "owned": false,
@@ -1555,6 +1567,22 @@
             {
               "conds": [
                 {
+                  "k": "hp<",
+                  "n": 70
+                },
+                {
+                  "k": "foes>=",
+                  "n": 1
+                }
+              ],
+              "origin": "class:path:caster_chilling_charge",
+              "verb": {
+                "v": "ward"
+              }
+            },
+            {
+              "conds": [
+                {
                   "k": "foes>=",
                   "n": 1
                 }
@@ -1570,7 +1598,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "nova2hits \u2192 next bolt one extra line foe at50%",
+          "effect": "nova2hits → next bolt one extra line foe at50%",
           "id": "caster_storm_cell",
           "name": "Storm cell",
           "owned": false,
@@ -1646,7 +1674,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "warded nova consumes ward \u2192 nova cooldown \u221220ticks",
+          "effect": "warded nova consumes ward → nova cooldown −20ticks",
           "id": "caster_shatter_ward",
           "name": "Shatter ward",
           "owned": false,
@@ -1683,7 +1711,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "qualifying bolt \u2192 one visible adjacent slow copy\u226410ticks",
+          "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks",
           "id": "caster_conduct",
           "name": "Conduct",
           "owned": false,
@@ -1696,24 +1724,15 @@
                 {
                   "k": "foe_tag",
                   "t": "boss"
+                },
+                {
+                  "k": "foes>=",
+                  "n": 2
                 }
               ],
               "origin": "class:path:caster_conduct",
               "verb": {
                 "a": "tag:boss",
-                "v": "slow"
-              }
-            },
-            {
-              "conds": [
-                {
-                  "k": "foes>=",
-                  "n": 1
-                }
-              ],
-              "origin": "class:path:caster_conduct",
-              "verb": {
-                "a": "nearest",
                 "v": "bolt"
               }
             }
@@ -1722,7 +1741,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "ward absorbs4 \u2192 blink cooldown \u221220ticks once",
+          "effect": "ward absorbs4 → blink cooldown −20ticks once",
           "id": "caster_last_wall",
           "name": "Last wall",
           "owned": false,
@@ -1833,7 +1852,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "fast reload \u22121 tick",
+          "effect": "fast reload −1 tick",
           "id": "gunner_quick_loader",
           "name": "Quick loader",
           "owned": false,
@@ -1947,7 +1966,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "fast cooldown \u221210 ticks",
+          "effect": "fast cooldown −10 ticks",
           "id": "gunner_close_loader",
           "name": "Close loader",
           "owned": false,
@@ -2015,7 +2034,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "completed fast reload \u2192 next aim settles1tick sooner",
+          "effect": "completed fast reload → next aim settles1tick sooner",
           "id": "gunner_chamber_chain",
           "name": "Chamber chain",
           "owned": false,
@@ -2048,7 +2067,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "smoke blind \u2192 completed reload returns50%energy",
+          "effect": "smoke blind → completed reload returns50%energy",
           "id": "gunner_smoke_walk",
           "name": "Smoke walk",
           "owned": false,
@@ -2080,7 +2099,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "adjacent close-burst kill \u2192 fast-reload cooldown \u221210ticks",
+          "effect": "adjacent close-burst kill → fast-reload cooldown −10ticks",
           "id": "gunner_cycling_breach",
           "name": "Cycling breach",
           "owned": false,
@@ -2113,7 +2132,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "charged aim kill \u2192 next aim settles1tick sooner",
+          "effect": "charged aim kill → next aim settles1tick sooner",
           "id": "gunner_long_watch",
           "name": "Long watch",
           "owned": false,
@@ -2146,7 +2165,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "close-burst kill \u2192 next smoke retreat returns50%energy",
+          "effect": "close-burst kill → next smoke retreat returns50%energy",
           "id": "gunner_breach_route",
           "name": "Breach route",
           "owned": false,
@@ -2218,7 +2237,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "curtain cooldown \u221210 ticks",
+          "effect": "curtain cooldown −10 ticks",
           "id": "clown_false_exit",
           "name": "False exit",
           "owned": false,
@@ -2355,7 +2374,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "counter cooldown \u221210 ticks",
+          "effect": "counter cooldown −10 ticks",
           "id": "clown_last_laugh",
           "name": "Last laugh",
           "owned": false,
@@ -2414,7 +2433,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "brace \u22121 more damage",
+          "effect": "brace −1 more damage",
           "id": "engineer_bastion",
           "name": "Bastion",
           "owned": false,
@@ -2489,7 +2508,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "relocate cooldown \u221210 ticks",
+          "effect": "relocate cooldown −10 ticks",
           "id": "engineer_mobile_works",
           "name": "Mobile works",
           "owned": false,
@@ -2514,7 +2533,7 @@
         {
           "available": false,
           "blocked": null,
-          "effect": "deploy cooldown \u221210 ticks",
+          "effect": "deploy cooldown −10 ticks",
           "id": "engineer_relay",
           "name": "Relay",
           "owned": false,
@@ -2553,9 +2572,9 @@
   ],
   "scope": "Authored native catalogue; not an earned save or owned-eligibility fixture",
   "sourceHashes": {
-    "crates/idlever-core/src/class_tree.rs": "ce903da2b906f9f30c85925bcaf4fd58f351e7e5b51c637cdfe0b960d0d83d34",
+    "crates/idlever-core/src/class_tree.rs": "5ae07c31fb2373ff5f086cd8176b61c71699e1afe93d6f5e45ba40e84e8a8ccf",
     "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369"
   },
   "generatedBy": "cargo run -q --profile fast -p idlever-core --example cut253_catalogue",
-  "nativeOutputSha256": "a96b311ac4cb7bdab98ebe9ea2de2f6f5fd574b7ea7a981dc3936b46b510e19d"
+  "nativeOutputSha256": "b5a9b5786a3f686a3fedbd636459ef9019b70e1e3339d477b9270313a23b058b"
 }

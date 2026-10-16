@@ -26,6 +26,7 @@ import { AUTO, autoDismiss } from "./autodismiss";
 import type { App, Mounted } from "../app";
 import type {
   Counter,
+  Death,
   ExitLine,
   Lineage,
   MeterWire,
@@ -1392,18 +1393,24 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     // QA e75ec29 (Q: "`open` opens ♟5's death, not the newest; the label names nothing"): it is the absence's worst death — it says so
     // QA 912e135 (qaW: "`worst` — I read it as the shallowest death"): the tile says what it ranks by — the deepest death (a stall at
     // its floor yields to it)
-    r.worst_death
+    r.worst_death || r.worst_death_id !== undefined
       ? cmdTile({
           id: "open",
           label: /* copy:button */ "deepest",
           icon: "trace",
-          onclick: () =>
-            app.go({
-              kind: "death",
-              death: r.worst_death!,
-              lost: r.lost ?? [],
-              from: { report: r },
-            }),
+          // The absence no longer blocks on the verdict: it hands over the id, and the one recompute
+          // (~1 s in wasm) is paid only if the player opens this tile — like the per-run verdict chips.
+          onclick: () => {
+            const open = (death: Death): void => {
+              closeAllSheets();
+              app.go({ kind: "death", death, lost: r.lost ?? [], from: { report: r } });
+            };
+            if (r.worst_death) return open(r.worst_death);
+            void app
+              .busy(/* copy:label */ "verdict", () => app.engine.death(r.worst_death_id!))
+              .then(open)
+              .catch((e) => console.warn("offline death", e));
+          },
         })
       : null,
     cmdTile({

@@ -240,6 +240,57 @@ fn opening_cut_requires_two_actual_cleave_hits_and_holdfast_has_two_charges() {
     );
 }
 #[test]
+fn holdfast_blocks_the_melee_hits_it_was_armed_for() {
+    // Cut257: the arm/consume pair. The wind arms two blocks; the melee blow that spends
+    // them lands on the branch's own cadence (here 30 ticks after the wind), which the old
+    // 20-tick window could not cover (earned chains: 15/0/1 applied, fighter-seed3 armed
+    // twice and spent nothing). The authored two blocks x2 are unchanged.
+    let mut g = arena(Class::Fighter, &[10]);
+    let mi = foe(&mut g, "bloat_mother", 5, 5);
+    g.run.as_mut().unwrap().monsters[mi].atk = (5, 5);
+    g.run.as_mut().unwrap().hero.hp = 500;
+    assert!(act(&mut g, "second_wind"));
+    assert_eq!(receipt(&g, 10, Phase::Armed, Effect::MeleeBlock), vec![2]);
+    let armed_at = g.run.as_ref().unwrap().turn;
+    let expires_t = g.run.as_ref().unwrap().hero.advanced.as_ref().unwrap().charges
+        [&Combo::Holdfast]
+        .expires_t;
+    assert_eq!(expires_t - armed_at, 40, "window outlasts the melee cadence");
+    for _ in 0..30 {
+        g.tick();
+    }
+    let hp = g.run.as_ref().unwrap().hero.hp;
+    enemy_hit(&mut g, mi, "attack");
+    assert_eq!(receipt(&g, 10, Phase::Consumed, Effect::MeleeBlock), vec![1]);
+    assert_eq!(receipt(&g, 10, Phase::Applied, Effect::MeleeBlock), vec![2]);
+    assert_eq!(g.run.as_ref().unwrap().hero.hp, hp - 3, "two of five blocked");
+    // The second authored charge spends on the next blow, a third takes the full hit.
+    let hp = g.run.as_ref().unwrap().hero.hp;
+    enemy_hit(&mut g, mi, "attack");
+    assert_eq!(
+        receipt(&g, 10, Phase::Consumed, Effect::MeleeBlock),
+        vec![1, 1]
+    );
+    assert_eq!(g.run.as_ref().unwrap().hero.hp, hp - 3);
+    let hp = g.run.as_ref().unwrap().hero.hp;
+    enemy_hit(&mut g, mi, "attack");
+    assert_eq!(
+        receipt(&g, 10, Phase::Consumed, Effect::MeleeBlock),
+        vec![1, 1]
+    );
+    assert_eq!(g.run.as_ref().unwrap().hero.hp, hp - 5, "no charge left");
+    // Negative: the same blow without the wind takes the full hit and blocks nothing.
+    let mut disarmed = arena(Class::Fighter, &[10]);
+    let mi = foe(&mut disarmed, "bloat_mother", 5, 5);
+    disarmed.run.as_mut().unwrap().monsters[mi].atk = (5, 5);
+    let hp = disarmed.run.as_ref().unwrap().hero.hp;
+    enemy_hit(&mut disarmed, mi, "attack");
+    assert_eq!(disarmed.run.as_ref().unwrap().hero.hp, hp - 5);
+    assert!(receipt(&disarmed, 10, Phase::Armed, Effect::MeleeBlock).is_empty());
+    assert!(receipt(&disarmed, 10, Phase::Consumed, Effect::MeleeBlock).is_empty());
+    assert!(receipt(&disarmed, 10, Phase::Applied, Effect::MeleeBlock).is_empty());
+}
+#[test]
 fn afterimage_and_tell_thief_use_real_ambush_and_observed_windup() {
     let mut g = arena(Class::Rogue, &[6]);
     foe(&mut g, "goblin", 5, 5);
@@ -412,16 +463,23 @@ fn corridor_volley_reaches_one_extra_tile_and_split_mark_copies_to_only_one_hit(
     assert_eq!(g.run.as_ref().unwrap().monsters[mi].hp, hp);
 }
 #[test]
-fn moving_line_requires_an_actual_mark_copy_then_a_legal_kite() {
+fn moving_line_arms_on_the_two_hit_volley_then_a_legal_kite() {
+    // Cut257: Moving line used to arm only inside the parent's mark-copy block, so it never
+    // armed at all (0/9 earned branches). It now arms on the two-hit volley itself (ai.rs),
+    // so the mark copy is optional — the negative case is a volley that lands on one foe.
     let mut g = volley_arena(&[9, 11]);
     assert!(act(&mut g, "volley"));
+    assert_eq!(receipt(&g, 11, Phase::Armed, Effect::Energy), vec![1]);
     scheduled(&mut g, "kite");
     assert_eq!(receipt(&g, 11, Phase::Applied, Effect::Energy), vec![50]);
-    let mut no_mark = volley_arena(&[9, 11]);
-    no_mark.run.as_mut().unwrap().monsters[0].marked = 0;
-    assert!(act(&mut no_mark, "volley"));
-    scheduled(&mut no_mark, "kite");
-    assert!(receipt(&no_mark, 11, Phase::Applied, Effect::Energy).is_empty());
+    let mut single = volley_arena(&[9, 11]);
+    single.run.as_mut().unwrap().monsters[1].hp = 0; // only one live foe on the ray
+    single.run.as_mut().unwrap().monsters[0].marked = 0;
+    single.run.as_mut().unwrap().hero.volley_cd = 0;
+    assert!(act(&mut single, "volley"));
+    assert!(receipt(&single, 11, Phase::Armed, Effect::Energy).is_empty());
+    scheduled(&mut single, "kite");
+    assert!(receipt(&single, 11, Phase::Applied, Effect::Energy).is_empty());
 }
 #[test]
 fn chilling_charge_and_conduct_share_original_slow_but_each_apply_once() {
@@ -457,6 +515,98 @@ fn chilling_charge_and_conduct_share_original_slow_but_each_apply_once() {
             .unwrap()
             .conduct_used
     );
+}
+#[test]
+fn conduct_copies_a_slow_onto_an_adjacent_foe() {
+    // Cut257: the bolt's own victim is the conduit, so a bolt that lands on a foe *next to*
+    // the slowed boss conducts — the earned rows fire `bolt nearest`, which never targeted
+    // the slowed boss, so the copy could never fire. The parent's refund stays boss-only.
+    let mut g = arena(Class::Caster, &[6, 10]);
+    let boss = foe(&mut g, "bloat_mother", 5, 5);
+    g.run.as_mut().unwrap().hero.ward_cd = 50;
+    assert!(act(&mut g, "slow"), "the authored slow row tags the boss");
+    let victim = foe(&mut g, "goblin", 4, 4);
+    assert!(g.run.as_ref().unwrap().monsters[boss].slow_t > 0);
+    let hp = g.run.as_ref().unwrap().monsters[victim].hp;
+    hit_verb(&mut g, "bolt");
+    assert!(
+        g.run.as_ref().unwrap().monsters[victim].hp < hp,
+        "the bolt landed on the neighbour of the slowed boss, not the boss"
+    );
+    assert_eq!(g.run.as_ref().unwrap().monsters[victim].slow_t, 10);
+    assert_eq!(receipt(&g, 10, Phase::Applied, Effect::Slow), vec![10]);
+    assert!(
+        g.run.as_ref().unwrap().monsters[victim]
+            .advanced_slow
+            .is_none(),
+        "a copy is not an original cast"
+    );
+    assert!(
+        g.run.as_ref().unwrap().monsters[boss]
+            .advanced_slow
+            .as_ref()
+            .unwrap()
+            .conduct_used
+    );
+    assert_eq!(
+        g.run.as_ref().unwrap().hero.ward_cd,
+        50,
+        "the parent's reward stays boss-only"
+    );
+    // One copy per original slow: the next bolt on the same victim is silent.
+    hit_verb(&mut g, "bolt");
+    assert_eq!(receipt(&g, 10, Phase::Applied, Effect::Slow), vec![10]);
+    // Negative: without the conduct bit the same bolt copies nothing.
+    let mut plain = arena(Class::Caster, &[6]);
+    let boss = foe(&mut plain, "bloat_mother", 5, 5);
+    assert!(act(&mut plain, "slow"));
+    let victim = foe(&mut plain, "goblin", 4, 4);
+    let hp = plain.run.as_ref().unwrap().monsters[victim].hp;
+    hit_verb(&mut plain, "bolt");
+    assert!(
+        plain.run.as_ref().unwrap().monsters[victim].hp < hp,
+        "the bolt still lands"
+    );
+    assert!(
+        plain.run.as_ref().unwrap().monsters[boss].slow_t > 0,
+        "the original slow is still on the boss"
+    );
+    assert_eq!(plain.run.as_ref().unwrap().monsters[victim].slow_t, 0);
+    assert!(receipt(&plain, 10, Phase::Applied, Effect::Slow).is_empty());
+}
+#[test]
+fn chilling_charge_reduces_a_running_ward_cooldown() {
+    // Cut257: the reward lowers `ward_cd`, which only the `ward` verb writes, and the pick
+    // had no ward row — so the amount was 0 forever. Driven through an actual ward cast.
+    let mut g = arena(Class::Caster, &[6, 10]);
+    let boss = foe(&mut g, "bloat_mother", 5, 5);
+    assert!(act(&mut g, "ward"), "the branch really runs a ward");
+    assert!(g.run.as_ref().unwrap().hero.ward_cd > 0);
+    assert!(act(&mut g, "slow"));
+    assert!(
+        g.run.as_ref().unwrap().monsters[boss].slow_t > 0,
+        "the original slow sits on the boss"
+    );
+    let running = g.run.as_ref().unwrap().hero.ward_cd;
+    hit_verb(&mut g, "bolt");
+    assert_eq!(g.run.as_ref().unwrap().hero.ward_cd, running - 10);
+    assert_eq!(receipt(&g, 6, Phase::Applied, Effect::WardCooldown), vec![10]);
+    // Once per original slow: the next bolt on the same slow is silent.
+    hit_verb(&mut g, "bolt");
+    assert_eq!(g.run.as_ref().unwrap().hero.ward_cd, running - 10);
+    assert_eq!(receipt(&g, 6, Phase::Applied, Effect::WardCooldown), vec![10]);
+    // Negative: with no ward running the same trigger stays silent (amount 0 emits nothing).
+    let mut idle = arena(Class::Caster, &[6, 10]);
+    let boss = foe(&mut idle, "bloat_mother", 5, 5);
+    assert!(act(&mut idle, "slow"));
+    assert!(
+        idle.run.as_ref().unwrap().monsters[boss].slow_t > 0,
+        "the same trigger, on the same slowed boss"
+    );
+    assert_eq!(idle.run.as_ref().unwrap().hero.ward_cd, 0);
+    hit_verb(&mut idle, "bolt");
+    assert_eq!(idle.run.as_ref().unwrap().hero.ward_cd, 0);
+    assert!(receipt(&idle, 6, Phase::Applied, Effect::WardCooldown).is_empty());
 }
 #[test]
 fn ice_lock_extends_only_a_fresh_warded_slow_and_refused_repeats_are_exact() {
@@ -709,6 +859,60 @@ fn long_watch_is_reachable_through_real_rangefinder_recovery_without_free_ammo()
         vec![1],
         "no double recovery"
     );
+}
+#[test]
+fn long_watch_survives_the_aim_cadence_and_applies_to_the_next_aim() {
+    // Cut257: the arm→next-aim gap measures min 30 / median 89 ticks against the authored
+    // 10-tick window, so no charged aim kill ever paid (0 consumed in 3 seeds). The window
+    // now covers the branch's own cadence; the charge count and the 1-tick settle are as
+    // authored. Chamber chain keeps its own 10-tick window (the working control).
+    let mut g = arena(Class::Gunner, &[6, 7, 10]);
+    let boss = foe(&mut g, "goblin_warlord", 6, 5);
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    finish_reload(&mut g);
+    scheduled(&mut g, "aimed_shot");
+    g.run.as_mut().unwrap().monsters[boss].hp = 1;
+    assert!(act(&mut g, "fire"));
+    assert_eq!(receipt(&g, 10, Phase::Armed, Effect::AimSettle), vec![1]);
+    let armed_at = g.run.as_ref().unwrap().turn;
+    let expires_t = g.run.as_ref().unwrap().hero.advanced.as_ref().unwrap().charges
+        [&Combo::LongWatch]
+        .expires_t;
+    assert_eq!(expires_t - armed_at, 100, "window covers the branch cadence");
+    foe(&mut g, "goblin", 7, 5);
+    for _ in 0..30 {
+        g.tick();
+    }
+    assert!(
+        receipt(&g, 10, Phase::Consumed, Effect::AimSettle).is_empty(),
+        "nothing spends the charge before the next aim"
+    );
+    scheduled(&mut g, "aimed_shot");
+    assert_eq!(receipt(&g, 10, Phase::Consumed, Effect::AimSettle), vec![1]);
+    assert_eq!(receipt(&g, 10, Phase::Applied, Effect::AimSettle), vec![1]);
+    // Negative: the same charged aim that does not kill never arms, so nothing settles.
+    let mut missed = arena(Class::Gunner, &[6, 7, 10]);
+    let boss = foe(&mut missed, "goblin_warlord", 6, 5);
+    empty_gun(&mut missed);
+    scheduled(&mut missed, "fast_reload");
+    finish_reload(&mut missed);
+    scheduled(&mut missed, "aimed_shot");
+    assert!(act(&mut missed, "fire"));
+    assert!(
+        missed.run.as_ref().unwrap().monsters[boss].hp > 0,
+        "the charged aim did not kill"
+    );
+    assert!(
+        receipt(&missed, 10, Phase::Armed, Effect::AimSettle).is_empty(),
+        "a non-kill charged aim does not arm"
+    );
+    for _ in 0..30 {
+        missed.tick();
+    }
+    scheduled(&mut missed, "aimed_shot");
+    assert!(receipt(&missed, 10, Phase::Consumed, Effect::AimSettle).is_empty());
+    assert!(receipt(&missed, 10, Phase::Applied, Effect::AimSettle).is_empty());
 }
 
 /// One identical controlled input per row, forked before its first actual action.
@@ -2598,7 +2802,14 @@ fn priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_
     for (g, combo) in armed_charge_fixtures() {
         let r = g.run.as_ref().unwrap();
         let c = p1_charge(&g, combo);
-        let ticks = if combo == Combo::Holdfast { 20 } else { 10 };
+        // Cut257: Holdfast's window is 40 ticks now (ai.rs) so the branch's own melee
+        // cadence can spend both authored charges; the count stays 2. Long watch's window
+        // is 100 ticks (class_advanced.rs) to cover its own arm→aim cadence.
+        let ticks = match combo {
+            Combo::Holdfast => 40,
+            Combo::LongWatch => 100,
+            _ => 10,
+        };
         let count = if combo == Combo::Holdfast { 2 } else { 1 };
         let dst = match combo {
             Combo::Oathguard
