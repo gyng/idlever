@@ -1,0 +1,145 @@
+{
+  "scope": "Controlled actual-action component cases, no earned progression claim. Final authoritative terminal status is results.json.",
+  "cases": [
+    {
+      "combo": "Oathguard",
+      "realPrefix": "boss Bash",
+      "consumer": "incoming landed melee",
+      "refusal": "repeat Bash cooldown",
+      "spentFollowup": "actual landed melee",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "SiegeRhythm",
+      "realPrefix": "boss Bash",
+      "consumer": "ordinary landed attack",
+      "refusal": "repeat Bash cooldown",
+      "spentFollowup": "ordinary landed attack; blocked attack separately",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "Holdfast",
+      "realPrefix": "Wind",
+      "consumer": "two incoming landed melee hits",
+      "refusal": "repeat once-per-run Wind",
+      "spentFollowup": "third actual landed hit",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": true
+    },
+    {
+      "combo": "Afterimage",
+      "realPrefix": "Ambush + real Vanish cooldown",
+      "consumer": "legal Shadowstep",
+      "refusal": "no awake target",
+      "spentFollowup": "second legal Shadowstep",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "SilentFinish",
+      "realPrefix": "low-HP Ambush",
+      "consumer": "scheduled Shadowstep",
+      "refusal": "no awake target",
+      "spentFollowup": "second legal Shadowstep",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "VeiledRoute",
+      "realPrefix": "Smoke",
+      "consumer": "scheduled Shadowstep",
+      "refusal": "no awake target",
+      "spentFollowup": "second legal Shadowstep",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "Ghostwalk",
+      "realPrefix": "Smoke then Shadowstep",
+      "consumer": "damaging Backstab",
+      "refusal": "no awake target",
+      "spentFollowup": "second landed Backstab",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "CorridorVolley",
+      "realPrefix": "multi-hit Volley",
+      "consumer": "actual extended-range Shoot",
+      "refusal": "no awake target",
+      "spentFollowup": "Shoot actually approaches without range extension",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "MovingLine",
+      "realPrefix": "actual mark-copy Volley",
+      "consumer": "scheduled moving Kite",
+      "refusal": "no awake target",
+      "spentFollowup": "second actual moving Kite; controlled nearer foe",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "StormCell",
+      "realPrefix": "multi-hit Nova",
+      "consumer": "landed Bolt with actual extra on-line victim",
+      "refusal": "no awake target",
+      "spentFollowup": "second landed Bolt without extra benefit",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "ChamberChain",
+      "realPrefix": "actual fast reload completion",
+      "consumer": "scheduled Aim",
+      "refusal": "real Fire empties chamber before Aim",
+      "spentFollowup": "same-target refusal then new-target legal Aim/full debit",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "LongWatch",
+      "realPrefix": "fast reload\u2192Aim\u2192prepared boss kill",
+      "consumer": "scheduled Aim",
+      "refusal": "real Fire empties chamber before Aim",
+      "spentFollowup": "same-target refusal then new-target legal Aim/full debit",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "BreachRoute",
+      "realPrefix": "actual adjacent burst kill",
+      "consumer": "scheduled Smoke",
+      "refusal": "controlled existing Smoke cooldown",
+      "spentFollowup": "natural cooldown refusal; no second legal Smoke claim",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    },
+    {
+      "combo": "SmokeWalk",
+      "realPrefix": "actual reload then late Smoke",
+      "consumer": "actual owned reload completion",
+      "refusal": "repeat Reload while actually reloading",
+      "spentFollowup": "full-gun Reload refusal; no second20tick completion inside10ticks claim",
+      "fullSaveRefusal": true,
+      "spentWholeSlicedReloadedSeconds": 3,
+      "holdfastPartialCheckpoint": false
+    }
+  ]
+}

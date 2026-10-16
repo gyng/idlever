@@ -1466,3 +1466,405 @@ fn every_actual_charge_has_public_offline_whole_sliced_reloaded_complete_parity(
         assert_eq!(input.save(), original, "immutable paired parent input");
     }
 }
+
+// Priority1: controlled component contexts, but every charge below is armed by
+// its real preceding verb. Geometry/cooldowns are fixture inputs, never earned
+// progression or injected charge state.
+fn p1_meta(combo: Combo) -> (u32, Effect) {
+    match combo {
+        Combo::Oathguard => (7, Effect::MeleeBlock),
+        Combo::Holdfast => (10, Effect::MeleeBlock),
+        Combo::SiegeRhythm => (9, Effect::Damage),
+        Combo::Afterimage => (6, Effect::VanishCooldown),
+        Combo::VeiledRoute => (8, Effect::Energy),
+        Combo::SilentFinish => (11, Effect::Energy),
+        Combo::Ghostwalk => (10, Effect::Damage),
+        Combo::CorridorVolley => (8, Effect::Range),
+        Combo::MovingLine => (11, Effect::Energy),
+        Combo::StormCell => (7, Effect::Damage),
+        Combo::ChamberChain => (7, Effect::AimSettle),
+        Combo::LongWatch => (10, Effect::AimSettle),
+        Combo::BreachRoute => (11, Effect::Energy),
+        Combo::SmokeWalk => (8, Effect::Energy),
+    }
+}
+fn p1_charge(g: &Game, combo: Combo) -> crate::class_advanced::Charge {
+    g.run
+        .as_ref()
+        .unwrap()
+        .hero
+        .advanced
+        .as_ref()
+        .unwrap()
+        .charges[&combo]
+        .clone()
+}
+fn p1_inputs() -> Vec<(Game, Combo)> {
+    armed_charge_fixtures()
+        .into_iter()
+        .map(|(mut g, combo)| {
+            match combo {
+                Combo::SiegeRhythm => {
+                    // Warlord shielding may zero a legal ordinary attack. Use
+                    // an unshielded boss for the positive damage oracle.
+                    g = arena(Class::Fighter, &[9]);
+                    foe(&mut g, "bloat_mother", 5, 5);
+                    assert!(act(&mut g, "shield_bash"));
+                }
+                Combo::Afterimage => {
+                    // A real Vanish creates a nonzero cooldown for the consumer.
+                    assert!(act(&mut g, "vanish"));
+                }
+                Combo::CorridorVolley => {
+                    // Isolate the extra-range target, as in the existing range test.
+                    for m in &mut g.run.as_mut().unwrap().monsters {
+                        m.hp = 0;
+                    }
+                    foe(&mut g, "goblin", 11, 5);
+                }
+                Combo::StormCell => {
+                    foe(&mut g, "goblin", 6, 5);
+                }
+                Combo::SmokeWalk => {
+                    // Normal reload lasts20ticks: starting it AFTER smoke cannot
+                    // finish inside10. Start the real reload, then smoke late.
+                    g = arena(Class::Gunner, &[8]);
+                    foe(&mut g, "goblin", 5, 5);
+                    empty_gun(&mut g);
+                    scheduled(&mut g, "reload");
+                    let at = g.run.as_ref().unwrap().gun_reload.unwrap().at;
+                    while g.run.as_ref().unwrap().turn < at - 10 {
+                        g.tick();
+                    }
+                    scheduled(&mut g, "smoke_retreat");
+                }
+                _ => {}
+            }
+            assert!(
+                crate::class_advanced::charge(g.run.as_ref().unwrap(), combo).is_some(),
+                "{combo:?} real active prefix"
+            );
+            g.events.clear();
+            (g, combo)
+        })
+        .collect()
+}
+fn p1_consume(g: &mut Game, combo: Combo) {
+    let old = p1_charge(g, combo);
+    let (bit, effect) = p1_meta(combo);
+    let hp = g.run.as_ref().unwrap().hero.hp;
+    let pos = g.run.as_ref().unwrap().hero.pos;
+    let vanish_cd = g.run.as_ref().unwrap().hero.vanish_cd;
+    let monster_hp: i32 = g
+        .run
+        .as_ref()
+        .unwrap()
+        .monsters
+        .iter()
+        .map(|m| m.hp.max(0))
+        .sum();
+    match combo {
+        Combo::Oathguard | Combo::Holdfast => {
+            let mi = g
+                .run
+                .as_ref()
+                .unwrap()
+                .monsters
+                .iter()
+                .position(|m| m.hp > 0 && m.hostile())
+                .unwrap();
+            enemy_hit(g, mi, "attack");
+            assert!(
+                g.run.as_ref().unwrap().hero.hp < hp,
+                "{combo:?} real remaining melee damage"
+            );
+        }
+        Combo::SiegeRhythm => hit_verb(g, "attack"),
+        Combo::Ghostwalk => hit_verb(g, "backstab"),
+        Combo::Afterimage => {
+            assert!(act(g, "shadowstep"));
+        }
+        Combo::VeiledRoute | Combo::SilentFinish => scheduled(g, "shadowstep"),
+        Combo::CorridorVolley => {
+            assert!(act(g, "shoot"));
+        }
+        Combo::MovingLine => scheduled(g, "kite"),
+        Combo::StormCell => hit_verb(g, "bolt"),
+        Combo::ChamberChain | Combo::LongWatch => scheduled(g, "aimed_shot"),
+        Combo::BreachRoute => scheduled(g, "smoke_retreat"),
+        Combo::SmokeWalk => {
+            assert!(g.run.as_ref().unwrap().gun_reload.is_some());
+            finish_reload(g);
+            assert!(g.run.as_ref().unwrap().gun_reload.is_none());
+            assert_eq!(
+                g.run
+                    .as_ref()
+                    .unwrap()
+                    .hero
+                    .weapon
+                    .as_ref()
+                    .unwrap()
+                    .firearm
+                    .unwrap()
+                    .loaded,
+                1
+            );
+        }
+    }
+    let new = p1_charge(g, combo);
+    assert_eq!(
+        new.remaining,
+        old.remaining - 1,
+        "{combo:?} exactly one physical charge"
+    );
+    assert_eq!(
+        (new.expires_t, new.source, new.target),
+        (old.expires_t, old.source, old.target),
+        "{combo:?} no refresh/retarget"
+    );
+    assert_eq!(
+        receipt(g, bit, Phase::Consumed, effect),
+        vec![1],
+        "{combo:?} one actual consumer"
+    );
+    let amounts = receipt(g, bit, Phase::Applied, effect);
+    assert_eq!(amounts.len(), 1, "{combo:?} exactly one actual benefit");
+    assert!(amounts[0] > 0, "{combo:?} nonzero applied output");
+    match combo {
+        Combo::Afterimage => assert_eq!(vanish_cd - g.run.as_ref().unwrap().hero.vanish_cd, 20),
+        Combo::VeiledRoute | Combo::SilentFinish | Combo::MovingLine => {
+            assert_ne!(
+                g.run.as_ref().unwrap().hero.pos,
+                pos,
+                "{combo:?} actual movement"
+            );
+            assert_eq!(amounts, vec![50]);
+            assert!(g.run.as_ref().unwrap().hero.energy < crate::engine::ACT_ENERGY);
+        }
+        Combo::BreachRoute | Combo::SmokeWalk => assert_eq!(amounts, vec![50]),
+        Combo::ChamberChain | Combo::LongWatch | Combo::CorridorVolley => {
+            assert_eq!(amounts, vec![1])
+        }
+        Combo::SiegeRhythm | Combo::Ghostwalk | Combo::StormCell => {
+            let after: i32 = g
+                .run
+                .as_ref()
+                .unwrap()
+                .monsters
+                .iter()
+                .map(|m| m.hp.max(0))
+                .sum();
+            assert!(after < monster_hp, "{combo:?} actual target HP reduced");
+        }
+        Combo::Oathguard | Combo::Holdfast => assert!(amounts[0] <= 2),
+    }
+}
+fn p1_canonical(mut g: Game, combo: Combo) -> Game {
+    // Real observation tick then public load reaches the same canonical offer
+    // boundary used by the prior full-save parity tests. No fields discarded.
+    g.sim = false;
+    g.tick();
+    let g = Game::load(&g.save()).unwrap();
+    assert_eq!(
+        Game::load(&g.save()).unwrap().save(),
+        g.save(),
+        "{combo:?} idempotent canonical checkpoint"
+    );
+    g
+}
+fn p1_offline_parity(mut input: Game, combo: Combo) {
+    input.events.clear();
+    let mut whole = input.clone();
+    let expected = crate::offline::run_offline_slice(&mut whole, 3, true);
+    let mut sliced = input;
+    for _ in 0..2 {
+        assert!(crate::offline::run_offline_slice(&mut sliced, 1, false).slice_pending);
+        sliced = Game::load(&sliced.save()).unwrap();
+    }
+    let actual = crate::offline::run_offline_slice(&mut sliced, 1, true);
+    assert_eq!(actual, expected, "{combo:?} spent complete report");
+    assert_eq!(sliced.save(), whole.save(), "{combo:?} spent complete Game");
+}
+#[test]
+fn priority1_all_fourteen_real_prefixes_refuse_without_spending_or_save_mutation() {
+    let cases = p1_inputs();
+    assert_eq!(cases.len(), 14);
+    for (mut g, combo) in cases {
+        let verb = match combo {
+            Combo::Oathguard | Combo::SiegeRhythm => "shield_bash",
+            Combo::Holdfast => "second_wind",
+            Combo::ChamberChain | Combo::LongWatch => {
+                // A real unprepared Fire spends the round, not the Aim charge.
+                assert!(act(&mut g, "fire"));
+                "aimed_shot"
+            }
+            Combo::SmokeWalk => "reload", // Actual reload still in flight.
+            Combo::BreachRoute => {
+                let r = g.run.as_mut().unwrap();
+                r.gun_skills
+                    .get_or_insert_with(Default::default)
+                    .smoke_ready = r.turn + 20;
+                "smoke_retreat" // Controlled legitimate cooldown refusal context.
+            }
+            _ => {
+                for m in &mut g.run.as_mut().unwrap().monsters {
+                    m.dormant = true;
+                }
+                match combo {
+                    Combo::Afterimage | Combo::VeiledRoute | Combo::SilentFinish => "shadowstep",
+                    Combo::Ghostwalk => "backstab",
+                    Combo::CorridorVolley => "shoot",
+                    Combo::MovingLine => "kite",
+                    Combo::StormCell => "bolt",
+                    _ => unreachable!(),
+                }
+            }
+        };
+        let before = p1_charge(&g, combo);
+        g.events.clear();
+        let save = g.save();
+        assert!(!act(&mut g, verb), "{combo:?} actual {verb} refusal");
+        assert_eq!(g.save(), save, "{combo:?} refusal complete save");
+        assert_eq!(
+            p1_charge(&g, combo),
+            before,
+            "{combo:?} refusal charge/deadline/source"
+        );
+        assert!(
+            g.events.is_empty(),
+            "{combo:?} refusal emits no false action"
+        );
+        println!(
+            "priority1 refusal {combo:?} verb={verb} remaining={} exactSave=true",
+            before.remaining
+        );
+    }
+}
+#[test]
+fn priority1_all_fourteen_actual_consumers_persist_spent_state_and_holdfast_partial() {
+    let cases = p1_inputs();
+    assert_eq!(cases.len(), 14);
+    for (mut g, combo) in cases {
+        let initial = p1_charge(&g, combo);
+        assert_eq!(
+            initial.remaining,
+            if combo == Combo::Holdfast { 2 } else { 1 }
+        );
+        p1_consume(&mut g, combo);
+        g = p1_canonical(g, combo);
+        if combo == Combo::Holdfast {
+            assert_eq!(
+                p1_charge(&g, combo).remaining,
+                1,
+                "first hit survives reload partially spent"
+            );
+            p1_offline_parity(g.clone(), combo);
+            g.events.clear();
+            p1_consume(&mut g, combo);
+            g = p1_canonical(g, combo);
+        }
+        assert_eq!(
+            p1_charge(&g, combo).remaining,
+            0,
+            "{combo:?} exhausted after actual use"
+        );
+        assert!(crate::class_advanced::charge(g.run.as_ref().unwrap(), combo).is_none());
+        assert_eq!(
+            p1_charge(&g, combo).source,
+            initial.source,
+            "{combo:?} original source retained"
+        );
+        p1_offline_parity(g.clone(), combo);
+        let (bit, effect) = p1_meta(combo);
+        g.events.clear();
+        match combo {
+            Combo::Oathguard | Combo::Holdfast => {
+                let mi = g
+                    .run
+                    .as_ref()
+                    .unwrap()
+                    .monsters
+                    .iter()
+                    .position(|m| m.hp > 0 && m.hostile())
+                    .unwrap();
+                let before = g.run.as_ref().unwrap().hero.hp;
+                enemy_hit(&mut g, mi, "attack");
+                assert!(g.run.as_ref().unwrap().hero.hp < before);
+            }
+            Combo::SiegeRhythm => hit_verb(&mut g, "attack"),
+            Combo::Ghostwalk => hit_verb(&mut g, "backstab"),
+            Combo::Afterimage | Combo::VeiledRoute | Combo::SilentFinish => {
+                assert!(act(&mut g, "shadowstep"));
+            }
+            Combo::CorridorVolley => {
+                let before = g.run.as_ref().unwrap().hero.pos;
+                assert!(act(&mut g, "shoot"));
+                assert_ne!(
+                    g.run.as_ref().unwrap().hero.pos,
+                    before,
+                    "spent range approaches instead"
+                );
+            }
+            Combo::MovingLine => {
+                // Controlled geometry makes a second actual kite step legal,
+                // rather than vacuously checking an in-place shot.
+                let pos = g.run.as_ref().unwrap().hero.pos;
+                foe(&mut g, "goblin", pos.x + 1, pos.y);
+                assert!(act(&mut g, "kite"));
+                assert_ne!(g.run.as_ref().unwrap().hero.pos, pos);
+            }
+            Combo::StormCell => hit_verb(&mut g, "bolt"),
+            Combo::ChamberChain | Combo::LongWatch => {
+                let save = g.save();
+                assert!(!act(&mut g, "aimed_shot"), "same prepared Aim is refused");
+                assert_eq!(g.save(), save);
+                // A genuinely different, nearer target permits a new Aim.
+                // Its real scheduler debit must receive no spent settle bonus.
+                let pos = g.run.as_ref().unwrap().hero.pos;
+                foe(&mut g, "goblin", pos.x + 1, pos.y);
+                scheduled(&mut g, "aimed_shot");
+                assert_eq!(g.run.as_ref().unwrap().hero.energy, 0);
+            }
+            Combo::BreachRoute | Combo::SmokeWalk => {
+                // Breach smoke is now cooling down. SmokeWalk has a full gun;
+                // another20tick reload cannot fit its original10tick window.
+                let verb = if combo == Combo::SmokeWalk {
+                    "reload"
+                } else {
+                    "smoke_retreat"
+                };
+                let save = g.save();
+                assert!(!act(&mut g, verb));
+                assert_eq!(g.save(), save);
+            }
+        }
+        assert!(
+            receipt(&g, bit, Phase::Consumed, effect).is_empty(),
+            "{combo:?} no repeated spend"
+        );
+        assert!(
+            receipt(&g, bit, Phase::Applied, effect).is_empty(),
+            "{combo:?} no repeated benefit"
+        );
+        assert_eq!(p1_charge(&g, combo).remaining, 0);
+        println!("priority1 consumer {combo:?} spentReload=true wholeSliceReportSave=true repeatNoBenefit=true");
+    }
+}
+
+#[test]
+fn priority1_siege_spends_on_a_real_blocked_attack_without_claiming_damage() {
+    let (mut g, _) = armed_charge_fixtures()
+        .into_iter()
+        .find(|(_, combo)| *combo == Combo::SiegeRhythm)
+        .unwrap();
+    g.events.clear();
+    let before = g.run.as_ref().unwrap().monsters[0].hp;
+    hit_verb(&mut g, "attack");
+    assert_eq!(g.run.as_ref().unwrap().monsters[0].hp, before);
+    assert_eq!(p1_charge(&g, Combo::SiegeRhythm).remaining, 0);
+    assert_eq!(receipt(&g, 9, Phase::Consumed, Effect::Damage), vec![1]);
+    assert!(receipt(&g, 9, Phase::Applied, Effect::Damage).is_empty());
+    let g = p1_canonical(g, Combo::SiegeRhythm);
+    assert_eq!(p1_charge(&g, Combo::SiegeRhythm).remaining, 0);
+    p1_offline_parity(g, Combo::SiegeRhythm);
+}

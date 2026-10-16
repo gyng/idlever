@@ -1,0 +1,34 @@
+
+running 2 tests
+priority1 refusal Oathguard verb=shield_bash remaining=1 exactSave=true
+priority1 refusal SiegeRhythm verb=shield_bash remaining=1 exactSave=true
+priority1 refusal Holdfast verb=second_wind remaining=2 exactSave=true
+priority1 refusal Afterimage verb=shadowstep remaining=1 exactSave=true
+priority1 refusal SilentFinish verb=shadowstep remaining=1 exactSave=true
+priority1 refusal VeiledRoute verb=shadowstep remaining=1 exactSave=true
+priority1 refusal Ghostwalk verb=backstab remaining=1 exactSave=true
+priority1 refusal CorridorVolley verb=shoot remaining=1 exactSave=true
+priority1 refusal MovingLine verb=kite remaining=1 exactSave=true
+priority1 refusal StormCell verb=bolt remaining=1 exactSave=true
+priority1 refusal ChamberChain verb=aimed_shot remaining=1 exactSave=true
+priority1 refusal LongWatch verb=aimed_shot remaining=1 exactSave=true
+priority1 refusal BreachRoute verb=smoke_retreat remaining=1 exactSave=true
+priority1 refusal SmokeWalk verb=reload remaining=1 exactSave=true
+.priority1 consumer Oathguard spentReload=true wholeSliceReportSave=true repeatNoBenefit=true
+
+thread 'ai::advanced_tests::priority1_all_fourteen_actual_consumers_persist_spent_state_and_holdfast_partial' (89) panicked at crates/idlever-core/src/class_advanced_tests.rs:1624:5:
+assertion `left == right` failed: SiegeRhythm exactly one actual benefit
+  left: 0
+ right: 1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ 1/2
+ai::advanced_tests::priority1_all_fourteen_actual_consumers_persist_spent_state_and_holdfast_partial --- FAILED
+
+failures:
+
+failures:
+    ai::advanced_tests::priority1_all_fourteen_actual_consumers_persist_spent_state_and_holdfast_partial
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 1019 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

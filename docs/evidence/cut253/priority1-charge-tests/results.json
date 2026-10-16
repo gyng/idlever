@@ -1,0 +1,93 @@
+{
+  "recordedUtc": "2026-10-16T01:09:59.396333+00:00",
+  "status": "PASS",
+  "productionScope": "Only class_advanced_tests.rs changed; cfg(test) module absent from actual production rlib dependency inputs. No core tuning/helpers/Cargo/WASM rebuild.",
+  "testSource": {
+    "path": "crates/idlever-core/src/class_advanced_tests.rs",
+    "sha256": "af3062b4f505092eac4c6bd68ef21b498e682770dce2bfdeec778d262c84a19c"
+  },
+  "checks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core priority1_ -- --nocapture",
+      "phase": "v1",
+      "session": 54477,
+      "exitCode": 101,
+      "log": "native-v1.log",
+      "passed": 1,
+      "failed": 1
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core priority1_ -- --nocapture",
+      "phase": "v2",
+      "exitCode": 101,
+      "log": "native-v2.log",
+      "scope": "Accidental identical rerun after failed textual-patch match; not independent coverage."
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core priority1_ -- --nocapture",
+      "phase": "v3",
+      "session": 93116,
+      "exitCode": 0,
+      "passed": 2,
+      "seconds": 0.16,
+      "log": "native-v3.log"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "phase": "v4 final",
+      "session": 40645,
+      "exitCode": 0,
+      "passed": 31,
+      "seconds": 0.21,
+      "log": "advanced-v4.log"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core class_tree -- --nocapture",
+      "phase": "v4 final",
+      "session": 16416,
+      "exitCode": 0,
+      "passed": 16,
+      "seconds": 10.08,
+      "log": "tree-stage-v4.log"
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "phase": "v4 final",
+      "session": 29259,
+      "exitCode": 0,
+      "seconds": 18.69,
+      "log": "clippy-v4.log"
+    },
+    {
+      "command": "rustfmt --edition 2021 --check crates/idlever-core/src/class_advanced_tests.rs",
+      "exitCode": 0
+    }
+  ],
+  "productionIdentityComparison": {
+    "productionInputs": true,
+    "productionLibrary": true,
+    "nativeBinaries": true,
+    "wasm": true,
+    "gateSourceKey": true
+  },
+  "productionRustInputs": 59,
+  "runtimeKey": "d445c9825416e54e",
+  "selectedRlibSha256": "beab2f6bbf189575578974b249d9e68f374c6ed73caeb2dc49ed73483c888bbf",
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "pacingFullReference": "../gates-current/wrapper-terminal.json",
+  "pacingNotRepeatedReason": "Exact production inputs/selected rlib/runtimeKey/native binaries/WASM unchanged. Only cfg(test) additions; affected tests/default Clippy executed.",
+  "positiveTerminalSessions": [
+    54477,
+    93116,
+    40645,
+    16416,
+    29259
+  ],
+  "ownedJobsLive": false,
+  "limits": [
+    "Controlled masks/arena/geometry/RNG-hit searches are component inputs, not earned progression.",
+    "Full saved-state comparison includes all fields; canonical observation/load checkpoint documented.",
+    "Natural Breach Smoke cooldown and20tick normal reload prevent a second legal completion within10tick charge windows; no fabricated legal-repeat proof.",
+    "Remaining priority2+ dimensions in historical30node audit remain unproved; this is not complete all-negatives acceptance."
+  ]
+}

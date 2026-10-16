@@ -1,0 +1,5883 @@
+{
+  "at": "2026-10-16T01:02:25.675Z",
+  "pid": 840950,
+  "scope": "One genuine earned caster advanced tree UI journey; no save patches/grants. Headless DOM/functional captures; no GPU/effect-payoff/recognition/fun claim.",
+  "class": "caster",
+  "chain": [
+    "caster_channeler",
+    "caster_boss_channel",
+    "caster_chilling_charge",
+    "caster_conduct"
+  ],
+  "capstone": "caster_conduct",
+  "expectedMask": 1091,
+  "input": "docs/evidence/cut253/earned-continuations-v3/caster-seed1/campaign/paired-frontier.session.json",
+  "inputSha256": "735e12e8b198a1c536d670da58e35f99217d4a169d3b635613e460ffe087150d",
+  "scriptSha256": "175fba80950f904254a411c70a32a651a49817b1701144f6463a95c6d08d050c",
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "sourceBefore": {
+    "web/src/ambient-motes.ts": "f7cf8a485fd2bfec473bde1b70fb600ea63077a5ff484402e48ea7d5793b21db",
+    "web/src/app.ts": "0c640a7e62092fcf44411f07e1fa77fed221b6cd2261913a1bdfd6778a749232",
+    "web/src/assets/hero.png": "881ffbcaafc212e49addad08846a5b82761355fa20624253af3477ba33262c5c",
+    "web/src/assets/typescript.svg": "e45b2f008f0a40c1011b0fd460081f8bb00df063a41240449159da164724d96c",
+    "web/src/assets/vite.svg": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f",
+    "web/src/audio.ts": "5fe265c0121111f649982b6f8e4d567e11b7fc86ed526e22b8d6cf38e0ec0657",
+    "web/src/autodismiss.css": "90ec02bdbd384f9978653ad576e8273a98db5ef7dd059f1ff38a07ceb7f2ad1f",
+    "web/src/bloodline-tabs.css": "da6e02efbbe11696602116ffd80459a4bf1a1ed7dc2bfefeaa3fb5c0bf09f030",
+    "web/src/chrome.css": "d6485f2c71273933794d3da0a5a494030ef951bf2a5731357acfe7300d6ae4c6",
+    "web/src/class-icons.css": "ab04d80803e9874a71e97b11c79d70921f3b7e3cf958fde769d9003a94d87abf",
+    "web/src/class-styles.css": "04d03f9434cb940833392689b0e0297adc699f7bfcaa7a77d304f835e0fc371b",
+    "web/src/class-tree.css": "19d60ce35a4622c563dc96c07ebf5dc8cbfeb281c6edb9f435df37dccc9bdaf9",
+    "web/src/collect.css": "3363e5dbad68160c7cd8d12781f1079b5325790d3fe219b2bad5630ea720a98e",
+    "web/src/crier.css": "3405a04d9a83853dcaa53f3471db3668b81691d0eccc3bfab2a4e4525974eba4",
+    "web/src/cut29.css": "33e1d2eedd50332f4c68bd1577d794e2af3b12ab5dacd46bc5389fb993da50c8",
+    "web/src/cut30.css": "191cc361efb6694d217ef0383d9d98fff84d90d1a5328af82df062b8c04d6214",
+    "web/src/death.css": "a165ca0221e7b95ffff4bba9d8abe50a96c60b82acd05636eda820dfa2b9c520",
+    "web/src/debug.ts": "d38090dc9cdf3341e82b68fa6030b8456b58270f72918e998441ea05fed524c3",
+    "web/src/depth-map.css": "8d8777b114d2db9197136c643af0c98802ad72cbfaa7d7ce09c66765387291fd",
+    "web/src/desktop-dock.css": "9a8e0d061ed18089c6519d46850690eb82e0ca959e4975d86a81d334f1ea69d7",
+    "web/src/dev/history.ts": "8fdd4f6077c8928639f2850d98c7b0b76df60fbef66ce9ea2fd62beb586ee615",
+    "web/src/engine/classes.ts": "2c44b26df30467f17c4a730e5aab258b702fbcee091f42334020c8530b05473e",
+    "web/src/engine/fake.ts": "106c66010cab22ca27bd32a21c88a30b4a97ff3c5b833a76769ba6c479be343b",
+    "web/src/engine/index.ts": "b76740d848e8bc80e3764e5139ebc1a2a6004833376f6062224d58c4378e090f",
+    "web/src/engine/lanes.ts": "1ca2adb0602dd83e820789b19859353e8e4728fc6b29df9aa689f0fbc374a29b",
+    "web/src/engine/native-api.json": "3c9664e29eedbd86ea247127c05dd4547ff4e1fda6c443bc36c64e493a7841ab",
+    "web/src/engine/native.ts": "77bacacd4182e3b72501942f92f21cb110f92f73eb78ed6e6629fb9bdbbab240",
+    "web/src/engine/pkg/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "web/src/engine/pkg/.idlever-build.json": "402232b6b894584a8622ec88f70309bd80d601dc39e0a35d066720aaa1526cd8",
+    "web/src/engine/pkg/idlever_wasm.d.ts": "00b7027e58ba6451755ca75ecd66995f895dad4343d0908d2b9836b984fae5e7",
+    "web/src/engine/pkg/idlever_wasm.js": "b50516107d41a7168a3ef18a9fd2fd4c8827a24bc534a1b443e0ffbe90cd2029",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm.d.ts": "8ea336d1d56bb89ea445a418acb01d3ce328cdead04a47564f0719b2b67e11fb",
+    "web/src/engine/pkg/package.json": "dacfea67d3c2dc77b8e272b5d091dae16d686202456ee389a6b7800bdc0330a9",
+    "web/src/engine/proxy.ts": "7bef83d9fc66a094b46b9d2fb21613461d05eef1dc0eb90012eebe52264f3034",
+    "web/src/engine/types.ts": "077a66d4c26745f65a8b9840333078c00be97a4d4fb52669fc25100024d57e93",
+    "web/src/engine/wasm.ts": "fca4fca6ec1b8d0392d0efa4751d89e6470cd58a4d895065668bcbae63e76adf",
+    "web/src/engine/worker.ts": "c001d1bcbcef8cb89563fb872205daeb73683871ccbdec4b59a2f2a3cade3f8f",
+    "web/src/feats.css": "dff370c8194422027bf740cc7f3c0aad1f5093f750851c7b47a1784f72aadfbb",
+    "web/src/forge-branches.css": "1d935439079f910cbd2e7daff28e61dfa3b5aca8a2abc1adbd8f43aaa836f4fc",
+    "web/src/game-menu.css": "308f09f9841926795b76d96e4b366e159cb311da877f030ee57348d1a6d6ceb2",
+    "web/src/hero-hub.css": "fb080b10a6e4342302491bcffa16db6b1a70d1280f3694e265c28eeac20c80a7",
+    "web/src/hero-life.css": "b49d91de5763f03dcbc80eedbe1088f77d8db947dac7dcde740ead865b74f89d",
+    "web/src/hero-progression.css": "10d38cfbc47782acc93f07864c937a942bc7479e5b3d7b3cbb704a3911908e8a",
+    "web/src/heroes-compact.css": "e6e3d82317644e23348e9fd9c188a5bf16ce0cd949d6aeb5d348cf993aab8447",
+    "web/src/items.css": "4f01f78344da3c3f8ab84e223cca60e6e2b70eeec416edcd9a432759d79ee0ac",
+    "web/src/journal.css": "3b8405bddddeaebe6f434738c72d800bc1f39c604d1cdf419f372cb25465ecf7",
+    "web/src/juice.css": "e21632df9b8dfde09717e79242e1d271aef6dabb21d141fcd0d352c78026b37d",
+    "web/src/juice.ts": "cc305952381b4c0e218a02c121a85f22f1b593cf507f5f86ca83b5e2afac1c5f",
+    "web/src/ladder.css": "ffcb9ef0a3f82a522099b40ea804fb238d97771f66b61f458db37c245dcc478b",
+    "web/src/legacy.css": "9e095b1482d96651095c7217d2b4b40f2df5c2407db130edb671c413c177863b",
+    "web/src/legendary-discovery.css": "75e5489933b05238b42e16076d83ae8bac076ea1f8a465abdecb630441b662b9",
+    "web/src/legendary-gear.css": "5bb3a2854ff0039e15f07916b37d2263cd7df6dc04daf28afa442dfb83421769",
+    "web/src/legible.css": "d297c6f61c45ae473ce6e7fbc18bdb1ebd6989c7d45bb7cd6e167d315d2a6eec",
+    "web/src/main.ts": "43709f0b4b8c363dc49bd3f78fdbde2fb93de21e0a8d492d55ed9b6a757b7991",
+    "web/src/pets.css": "c086145d6b3dd0d6758695955f36636fa9264a7649f4846bedfaea4fcb328f60",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/blit.ts": "d70a195a122accf891685b12705fb43aab30d7cd079358542a17c751ec13a46d",
+    "web/src/render/bloom.ts": "ab1b21053cc734998edd953f7e18112c68019a320ec8b60e170bba07db600bcf",
+    "web/src/render/combat-cues.ts": "f3cca506b68d4ebc6369d196936a3745874e7c4118e57f8daec18c75d64d4670",
+    "web/src/render/demo.ts": "cbce8f8b146c8988dac0b4aead7f4fd649f4cb0c5b74d42c4ec4ea00a3517d3b",
+    "web/src/render/fallback.ts": "37dab19e7981e49a79647539a55985118f88fd4e093f0d670664cb0afee06218",
+    "web/src/render/font.ts": "a6e3842e5aa949eadb959614170d2ae17565b058a079bfd3054b9a06a9fa2452",
+    "web/src/render/fx.ts": "b6bcbedc6394f9e7993afca3e00e650ea5b9a4e2e65d32b5cd59244bf39d4a06",
+    "web/src/render/fxpref.ts": "25c0e9330e8ba8aefe717e7961dea563fe07ad4319cd6ba5d3e6987d4234fca2",
+    "web/src/render/gputimer.ts": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4",
+    "web/src/render/home-service-art.ts": "2805dd205d50a6933724b073f95b7cf079e71a69424a566175181211336583b9",
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/landmarks.ts": "6926fd55137d553cb2bf384bbd9fdfb1220c8e687ed0b7a069453ef901d57560",
+    "web/src/render/layers.ts": "5ff43ac8117cf1cb766dbefcc481996b2c8b99e96e751378eff3152af679e8b2",
+    "web/src/render/light.ts": "ae521ca7b8745a72b188d53716b031501fee29ec0ca5a199e972e7e50b021fa4",
+    "web/src/render/look.ts": "ffc89a9b3b1d361ec8f1364497c9d065fb956d76ffa1105c62e34e45ed409b6d",
+    "web/src/render/movement-trail.ts": "d173bd9be6c0ba77ad3e13a984694280f85b63772d0c4162ab3c5deb4dfa169f",
+    "web/src/render/normals.ts": "8d0af1e5b6c0c0785e95a060eb903889a14e0635e499cd3a921644b7005dba98",
+    "web/src/render/palette.ts": "1e15f69411becd18afe7616c19334dffc6bc8b6b3d2b0ddc2e1023077ea65f32",
+    "web/src/render/quality.ts": "3b8adc201fed807dd0bddf729e757bfe0f03a26d23e09bf3c22572ce7fcac87f",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/tags.ts": "ddf82333c1f2591c29e273c8d84fa92321456d12839fcbcf9b04592bf5cb7fd0",
+    "web/src/render/tool-cues.ts": "1c2d926e44dbd8909398624db160d614ecc9db3bb40e69e0ab42789486fbbc02",
+    "web/src/render/tool-sprites.ts": "14627c106ce221d6f115ae76c9c363d6109c87dfa8b7b578ebe33412a912010e",
+    "web/src/render/town-terrain.ts": "1483b72e1a72c7a5ba79399e39d14a2c9d10589ab019e9b1e13a6404d4fd6f2d",
+    "web/src/render/town-volume.ts": "53c8b389d5f55dbdf8f06ef38f277062ceec7333e596a58e58f1549ef4ac47c0",
+    "web/src/render/town.ts": "96f80676fe960bcbc55d6740090ed0a1f3fa0831760cfbf423e0a0182dd8cde7",
+    "web/src/render/town_lights.json": "82f37f7e019f032a6fe471971662a0f2432024e02fd120935fcb2ab8a02203e5",
+    "web/src/render/types.ts": "37966fcd39b8e3bc1a3d1cc73c7b9d93acc42e239601b6e1c3870fd52223a93a",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/wash.ts": "1a953391302dc008ac59a1af57bf0fe1c15ca830768b884025725eeaa9bc5b97",
+    "web/src/report-juice.css": "f702df915b5343675ad5abe0bd9e53ce3e3eb511ff8368192821b824bdfe4909",
+    "web/src/return-pick.css": "55bf6a569a3420623ca3fc375aacc5a812df228f42732341138dd84624a627be",
+    "web/src/runclear.css": "6d95f332ecee0c5ac7d00fd61959595384aa48f42a9c4515327276f00bdd6bfa",
+    "web/src/runs.css": "1d92b71b98c69fd8bca209dbda9d369900e74c0d0a3e9ea6357ed2d5f0e9b4bd",
+    "web/src/set-equipment.css": "f903bd9cdf7368a013f1ddda7a51d654e4de22a747c3d2c560a1c58e945e59ff",
+    "web/src/skill-icons.css": "6745e05e0d8302bf3a2e963fab217edf03b90a14a2e2dfbc239546260dec4204",
+    "web/src/store.ts": "92467bd8403eda146cc69d7e4eb786aba2166dfd87c56b5fdd6a043792a78c30",
+    "web/src/styles.css": "6a43b0e01026d0f32d008df726a70123d42988282b567c42101f03cf7b3e27eb",
+    "web/src/tasks.css": "f00495685579fd39d44ac03330c4a1510e2ac894105eb3162b98fd8c2d8a6692",
+    "web/src/tips.css": "eb1b633b778266893583e0000e3097761898d6dd7fbc4da36373561a8fcbfef2",
+    "web/src/town.css": "ca52b96c4ab118bf2b70989ee5f572e65e5ebdba492f7e77658ae6b8669d38a8",
+    "web/src/ui/advanced-skill-marks.ts": "a3424d53d874ce2d2b18c4d3a5e97632e7517493a97a7eca3ce95f990afcbccf",
+    "web/src/ui/attrib.ts": "862e6a2b8e22194f528f25bb285355df81b5080009549105ee628da3c05e8b3b",
+    "web/src/ui/autodismiss.ts": "259c764993968797300e75e37979d521290bd98be5c9e0d3da3254e39b3a7e01",
+    "web/src/ui/bloodline-loadouts.ts": "d94fcba6b762671916f440394fcef45ef497bc1e80b7863d47f0d58129d9de0f",
+    "web/src/ui/bloodline-tabs.ts": "e747b6234885a033c93c40064e5e4d413e935209f68dfe2b1a375b14b8cb5d6d",
+    "web/src/ui/building-help.ts": "0882a6a275eac4aed736df495e023ee2c3bc7784e7609a288e6ab2876b1592d7",
+    "web/src/ui/camp.ts": "cc8d701f2714222352171d7fc57da6eab05040504fd1ae6771dc986062ddb559",
+    "web/src/ui/chain.ts": "a42c7c6cd4e948481bc7aab6f03a1ec33267df265351e32bbc1102649df865df",
+    "web/src/ui/checkin.ts": "a7ccba0e31f837cc8a6c269e2451ccc8af557c21005dcc9f5c0b0d5bd5c9e160",
+    "web/src/ui/chronicle.ts": "c324000b2e335e35ef5666a12ed872e70efa8597e17b355d0e2dbd09f1af8cbb",
+    "web/src/ui/class-icons.ts": "f017c787e4b4d5ac597c1d1ed0b3c0ade0dbd0f42b7c23d556da3d12bfadad31",
+    "web/src/ui/class-interaction.ts": "6dbb392f42eaab0161a002a44e86a055981194576196bbd8d33650eb540dab26",
+    "web/src/ui/class-skills.ts": "14bfcdede8d3d82b0f5c1ccb96c8adbd9858d0ff137d60f1e8ce87c1bf14ddff",
+    "web/src/ui/class-stage-notice.ts": "41c6dd301237a5330e1f79f469aae06e2b8924fcb34424bc2f69d9b8dd6c3acf",
+    "web/src/ui/class-styles.ts": "d17fc83e41d78317df7a167b5e30226600c80291d6b034ec62fca5c57cddec8c",
+    "web/src/ui/class-tree.ts": "db502882a251c913c13d01ebfb1818dd2bcba8130d15f2931f5908cf61d8057b",
+    "web/src/ui/class-unlock.ts": "5d5d4d0fd1157037bf896df292814176b94874927ade6c533358e2d99cf8b334",
+    "web/src/ui/class-xp.ts": "8a05d0920b0633316c5eb8043085f9f698d307b8e584886b5a64fab3de9ed997",
+    "web/src/ui/collect-send.ts": "92583961380aafb9afc071d6edf91fa8aff36741142bd202101225ef5d1429c6",
+    "web/src/ui/combat-log.ts": "fd2e0535080fcb5fa407bc942049f47e02d887f883fa8321ffa64924c0f2a211",
+    "web/src/ui/concepts.ts": "66c45ad8fdcb9f3e8fb9d9334e33b8f7efc1854c83b81c762cb6ec21ff872295",
+    "web/src/ui/control.ts": "22e448ea6caf6d5da8536c0e8a747ff593e004e9b6e2e02950b67ae118da13a8",
+    "web/src/ui/counter-name.ts": "6819265fb1e2626e6d85109b7499aafc245f8ad77540bde67025e5922ced6bac",
+    "web/src/ui/crier.ts": "3e1bb234ce13159d2fc980d75367517b4c8e7661738c3cae4f5e038d35a60af3",
+    "web/src/ui/death.ts": "bbe175d11ab5fda965e1e881a20498c518905918d1766b9696e85c4572c42921",
+    "web/src/ui/depth-map.ts": "406304f11a4cfea93b3abe37de5f4c692b5a37c0983e09decffcd5269ae162c2",
+    "web/src/ui/descent.ts": "ce9b554cae21e648eeda23a0faf9c0a7a86ed5e41f64050ef93f7a82a840a39f",
+    "web/src/ui/design-system-board.ts": "bc2114340f9d0e8898bf6c537d4de4d7f2dd90b210a5bec210f36fec45e7ce92",
+    "web/src/ui/divergence.ts": "d1caeceb0c0fdb2ea73e1c1b65c09ed35157a3d91e7c3fd0859f3e802fb13e76",
+    "web/src/ui/dom.ts": "cae19b8c134fe3cf5e9f73437119c5964d15d566a0606d29c90c40d7f8aad8b9",
+    "web/src/ui/editor.ts": "7fcb26cd453812f822dd290a5562269266a09f8b67d594f45c79b72e9c3495e3",
+    "web/src/ui/encounter-modifiers.ts": "90b9d058d21cc07124b3449b06ef5be7d4b5177748bfc8b341e8c8e2d4eb2bea",
+    "web/src/ui/ending.ts": "aba41b2ed7e2a1969b49b3180f9f2cc4fc2b9c8f44034c183765d5d96cdd6fa1",
+    "web/src/ui/enemy-tips.ts": "c7f1d21f3e2f9490c9dd7f143aecddda7c6f971d78c8f72d6a8eb4d0a4a98238",
+    "web/src/ui/exit-kind.ts": "71cb5f4025800597af0d2e51eeaa20a028c77c882ee315e5d20a8aa4d27b3c1b",
+    "web/src/ui/feats.ts": "9a44a2fd73ca0de589e79beb93fc9e4de50e13f2a602b6917f1cc9ea2b415d7a",
+    "web/src/ui/fold.ts": "97b2cb6663e611595c27094e099a5e3808dccf49bfff0a4d783f0961f67032ab",
+    "web/src/ui/forecast.ts": "becd5a052891c898804e7343b9266ea46d361a9dd3c8941e5c8cb5fc50aeacb0",
+    "web/src/ui/forge.ts": "126183e2241da51fd1018c703c8761795987816cbbc0c227f8483cb1617368a3",
+    "web/src/ui/frame.ts": "9528e2490e8c4b54d32bd03c3a21086a1574c746c1f66a2b8faae6cbe0f29829",
+    "web/src/ui/game-menu.ts": "26b1fcfda911a364805469fd0e1e152f6b41b9c7d9ef471d6b357b34d5d39953",
+    "web/src/ui/gold-transfers.ts": "d2388c5ecfd2d5dbc7d9fb45b2d6110088833b3610732bce0a11cbec1088cb28",
+    "web/src/ui/gold-words.ts": "4e9668dcedf2b81ed614afbf4978628fb40253d52bd3ce6957658e151356af65",
+    "web/src/ui/gold.ts": "af92d41896a3a325a756248fc0b6224ec407ac85417d6ad56a180b4dfe3d6c54",
+    "web/src/ui/gun-names.ts": "f2dac61db768be56caf371b78ae053e08d268c9eece47a4bb2b51d10f7d6efc4",
+    "web/src/ui/gun-status.ts": "a99ffe45db0d456dff8c529966899fb490f96de9ce368f0b80eeadcb1be4333f",
+    "web/src/ui/hero-equipment-figure.ts": "45d4600187208930ecd0e6182207fa5f161d51776108a58a095e5b9491019d01",
+    "web/src/ui/hero-hub.ts": "f140b7372edaef068f47926157fca7e26dfe09bf0668928251b7c57b191f209e",
+    "web/src/ui/hero-life.ts": "1e5c76b0613f9a1a3a43db1f2359cd6a0e043f8b37818944b6f5685d7c5d8b0d",
+    "web/src/ui/hero-presence.ts": "62135eb4a83ca1218dbe0d00fabf31b72cba0edf7456a0b98433b7069842f177",
+    "web/src/ui/hero-progression.ts": "b518fafaeeefa2f28f8ea5618b4791f142b915c6fb425a07b06f656cf64e570e",
+    "web/src/ui/heroes.ts": "88fb056f30673c3520980dcf700ec0bf08679ae5e7eef0bd38906f9957391c25",
+    "web/src/ui/items.ts": "a46f47ea716b0f2e9a5f41d2cfeaf100d8bc5767f0fbf5523dd6083ba07daebe",
+    "web/src/ui/journal-window.ts": "1bcbbf9f10bb4b9f9f50ef3c03d6c6e1ba92be59ddc96cf357da17ac4fe136bc",
+    "web/src/ui/journal.ts": "55db17a7842005bfcd08e3b78fee5c914cf1ce04add5b1c80cb16f17be8a4de4",
+    "web/src/ui/king-eta.ts": "84e61cd47b97ab1d1e045aa8d0cbb0c3935061b5ac069d3e4021e035bbfcfe00",
+    "web/src/ui/ladder.ts": "6ce3f299bc0aa19f429b0fe81171b95c61366d3f360071ef876e13cf01792ccf",
+    "web/src/ui/legacy-earned.ts": "5115d39c8eb88ac4921f81ce0820727ae46fbc980c2ac121a4c1845a8fe66220",
+    "web/src/ui/legacy.ts": "53dd967f5665dabb667842b80f3afa5a62f6b1f12088f29797508e4441dfd380",
+    "web/src/ui/legendary-discovery.ts": "d96fdc13688985ee7b80ca488674eade150258fbe81a14cdff1e1789095ddd3e",
+    "web/src/ui/legendary-gear.ts": "590ecccd9f97be6ae2eda134dfe5e801354e010d90ecee5c06283e2bdfa60eea",
+    "web/src/ui/look.ts": "7ee549145fdafa33b4537fa056002a69825d2899aa07ed9c3c55959b00ff2a67",
+    "web/src/ui/menu-material.ts": "d57630c2d3b9313330608b2edb62e66d8d049621a4e097398f8e9e82efb48443",
+    "web/src/ui/meters.ts": "3567181f3461e1212998983f5d956186a10934379ca80b1ddd7b9d245b6ce672",
+    "web/src/ui/oaths.ts": "1e61da235e98b7dcd989b8dff2485ea886d1702fe67b73a2fdb164f94c098a7a",
+    "web/src/ui/order-offer.ts": "39ac56aa46ffbdbc72c7fc71d6a8f726557a38c5b1f0dd96d4428550f12f6f0a",
+    "web/src/ui/orders.ts": "9826c8ab76358c79f79e7f6bd348c6c37ea4abb8296fc472d2a5cb9b7c9a861a",
+    "web/src/ui/packages.ts": "4a1bf229c2ace7e41275d7c63f81e587609b0f97631085660c4bf3327d26c312",
+    "web/src/ui/painted-skill-assets.ts": "69836983a52a7e7c25c9a34953b1c8f27f4d171bd1cafddf8d40cc30d61bc600",
+    "web/src/ui/party.ts": "c3abd3617d5d9441dd735e4a8e1e02de9a9410c92317a79699e55e249d637d8a",
+    "web/src/ui/patches.ts": "a7fb65d8d64ccde01c5b9288ba8c325c2937b183b38690588924c059bcd54dc2",
+    "web/src/ui/pets.ts": "4d0c2cc08dbe1e21abb527f97a22f948c3375ded94bfb5e238db914521bd44c4",
+    "web/src/ui/placeholder-view.ts": "984a9b88d28ccce1aefb207f9115f147827c403ff1067ddc271cc88454048218",
+    "web/src/ui/preparation.ts": "e69f9780ee7453ac5c19de78c82bc5b8b95a85ae0f3cd1001d9bcf375a3d886b",
+    "web/src/ui/progress-goal.ts": "96d6a6108fde43331f997a38caff60221f47b0d63f8f1b6c021cded1b3753f47",
+    "web/src/ui/progress.ts": "62db8c83d97217153ede9a63dfdcd49300c7d4509a70c1ec4d0446eb8b23863e",
+    "web/src/ui/quest.ts": "2ea1851eb20d01725fc74ef6357569d8631037e123bb3e8b183ccb3c3cd4e110",
+    "web/src/ui/replay.ts": "f18de44a934488b63890678fdcfd8083c315e2824d7a93712194f866d5c62efc",
+    "web/src/ui/report-bosses.ts": "0ef7a03db51db98da8e4e62c9946348a1682c785b12af81d197c484925601e21",
+    "web/src/ui/report-choices.ts": "638be78f158bc89f9ad17dddc01b95e28b26782aade63f1954c079b6c2c144ec",
+    "web/src/ui/report-juice.ts": "d3af921177fb7f64d7c69c7843886530afc005878c2c6c29ef67bd5f8e41d995",
+    "web/src/ui/report-supplies.ts": "7f7cba48cf01498fef946550647c1de06a293df22e2e912eecc266a2a598f867",
+    "web/src/ui/report.ts": "f5bd65981ce021107ef0da60a4eb4d62bbf6701c61cdc59e7761ce1f91cb846f",
+    "web/src/ui/return-pick.ts": "7da95e486f52d17d31ee65221b627c9b142abb30b1775350c7623c20451311f7",
+    "web/src/ui/reveal.ts": "34b00da513dc1e18f67d45ebd37f04daf102ce02d182aa9757b23b9c9d8b9e98",
+    "web/src/ui/route.ts": "6936ecb63e893b42479ca0654bf2efd225d101907cc1a10b8a7fec2b30b59e92",
+    "web/src/ui/runclear.ts": "381f8e7ce440e18671351ba6af5fb3a65e09d849ac3fa682a64a91857c74655d",
+    "web/src/ui/runlane.ts": "d33ba490728d2ab1b1d727282d06a312d64a9e8b71b6d3e33d51583d91997574",
+    "web/src/ui/runlog.ts": "036590292b61598a324d9c8be8bacc1eb8e95e5c8f494aeaa1e340ddd7a1befd",
+    "web/src/ui/runs.ts": "bbaa3e4da8a5fb3e0cb4fdead5cc9579383afd6aa77fbfb6835d7f29faeb9713",
+    "web/src/ui/salvage.ts": "68d8924b79e5ba033eb27efa38e697c4bada4f12f25b97979b1b31712c3e8b06",
+    "web/src/ui/set-equipment.ts": "a69c026f7ce84ea85cb5b9d61d6483d12e36ebb04a5b60b553a8372ba7a6528b",
+    "web/src/ui/settings.ts": "29c8031e68f9591964d97d8461c3016414093369470b040925a61925df01cd27",
+    "web/src/ui/sheet-focus.ts": "6d7e406f3a7fe53f024a278d3d80193d5095f61871a5a15c2cb8381102a69135",
+    "web/src/ui/sheet.ts": "8103b6ebc98a54d2d92888ee8c8dbed5f49fcdb71868a0fb5330465c04221a05",
+    "web/src/ui/skill-icons.ts": "97819dc39d27989fe752086c30715abeb004b628a0961366430ed102c88c861a",
+    "web/src/ui/skin.json": "9beff07a7485c237db9a9b4a94b9408d5ad0e23252850830b9b01cbf87d67a7d",
+    "web/src/ui/skin.ts": "453e65801d6c07086c7b8b7c038d44c5f92af19bad034ce5da29b426cc2db5b3",
+    "web/src/ui/starting-kits.ts": "55480b2725b4e148e3e8cd6d45c0cde0553462bd5e2fc347375ff9052758f922",
+    "web/src/ui/systems.ts": "9844dbd820de8377c3d1d533fdd0ae8e9a5bdeaf46e31756884ad44058ed8d14",
+    "web/src/ui/tactic-observer.ts": "4993c3e832eca5af20875ad5b0d2b8e3b13766d9f6e4e3106131cba877b6af5c",
+    "web/src/ui/tasks.ts": "a64afb8b2b04b1d1f9cf1d36be6443d110edb731cb62d662ec2491257520b762",
+    "web/src/ui/tips.ts": "1502e24b7badf9e0f3a8c0104b515e2e1b82f5aa4ee5bfd6f7ec0670fb660a57",
+    "web/src/ui/tokens.ts": "35c95adf8695c6cfe4381118e760c6fd48ef803bef4ddc6a56ffb0635b5fba9e",
+    "web/src/ui/town.ts": "a27c6fc7ffaba25e81d577112bc328782a9703e7c8d00cfa7d6f7af7870188a5",
+    "web/src/ui/trace.ts": "97e8ab00f3de28e37a5e339fc7b988779412d556e78a84dc519463e61a58864c",
+    "web/src/ui/tracks.ts": "b62fa137400a3cb22f4671bcbc3ef7b7c0ce65d162bbca6ed0b10e47190f370e",
+    "web/src/ui/unit-icon.ts": "520b3b5333c40575b3ba6a54ec6ba8515b3f7b17974ec7a28b6ff0cc6f0ec03e",
+    "web/src/ui/unlocks.ts": "5eec45d44d2bbc14a42112702d7933d68a7b7ba6313801c7e62265715ea40949",
+    "web/src/ui/viewer.ts": "89fa802c0d9d348548960688c79e63c327e6a68ff72091cca86ca9541c23abaf",
+    "web/src/ui/wall-preview.ts": "3bf77af4d403474f58c92105d3438b31f327501f9eeb234c2fdd8ea8798c9374",
+    "web/src/ui/wall.ts": "e846a5346ca14123de8fe38b208680677bba06e0bb071f1ab52b3acbdf0b7902",
+    "web/src/ui/watch.ts": "e75968793f9e8690261dfed7c500e0d03c69be6670ea037af6beb7b0690d92fc",
+    "web/src/ui/works.ts": "1d5b40b26886a38cfcafc4ed7a56551f12761a9372a0bb9e7feb9ece498ab39a",
+    "web/src/ui-foundations.css": "1534b5b4f6082ab6a6da3ca5087fd41349f654064fb410c4e7679919fbc4fed4",
+    "web/src/wide.css": "cf01a7d0e3a46de2f356f4299575dcf4b0aa84dabdfc93768e60d62c012b708b",
+    "web/src/works.css": "be78761e1bab194f76ca875d5d96f5ef764a29caa7c24ec2f21b07ab05759007"
+  },
+  "cases": [
+    {
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 1,
+      "captureKind": "viewport",
+      "status": "PASS",
+      "canonical": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 10,
+        "spent": 0,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": false,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "parentRefusal": "Error: learn parent skill",
+      "cancelExact": true,
+      "keyboardHops": [
+        0,
+        3,
+        8,
+        3,
+        9,
+        3,
+        10,
+        3
+      ],
+      "learnRetention": true,
+      "learned": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 6,
+        "spent": 4,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "current": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerLearnedSkill rulesbolt +1 damagefoe hp < 50% → bolt lowest",
+          "x": 50.046875,
+          "y": 249.8125,
+          "w": 253.90625,
+          "h": 99,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelLearnedSkill rulesboss slow +10 ticksfoe: boss → slow bossfoe: boss → bolt bos",
+          "x": 70.046875,
+          "y": 360.8125,
+          "w": 233.90625,
+          "h": 99,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeLearnedSkill rulesslowed boss bolt → ward cooldown −10ticks;once per slowfo",
+          "x": 90.046875,
+          "y": 383.8125,
+          "w": 213.90625,
+          "h": 125.296875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductLearnedSkill rulesqualifying bolt → one visible adjacent slow copy≤10ticksfoe: boss",
+          "x": 110.046875,
+          "y": 250.109375,
+          "w": 193.90625,
+          "h": 99,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "Stormnova +1 damageadjacent ≥ 2 → novafoe hp < 50% → bolt lowestL7 · D18Learn skill",
+          "x": 70.046875,
+          "y": 295.109375,
+          "w": 233.90625,
+          "h": 213.484375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "Guardianward +5 ticksfoes ≥ 2 · hp < 70% → wardL3 · D8Learn skill",
+          "x": 50.046875,
+          "y": 205.59375,
+          "w": 253.90625,
+          "h": 188.1875,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "full": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerL3 · D8Learned",
+          "x": 50.046875,
+          "y": 321.78125,
+          "w": 253.90625,
+          "h": 73.359375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelL5 · D13Learned",
+          "x": 70.046875,
+          "y": 407.140625,
+          "w": 233.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeL9 · D23Learned",
+          "x": 90.046875,
+          "y": 420.734375,
+          "w": 213.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductL10 · D29Learned",
+          "x": 110.046875,
+          "y": 255.328125,
+          "w": 193.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "StormL7 · D18Available",
+          "x": 70.046875,
+          "y": 355.921875,
+          "w": 233.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm_cell",
+          "text": "Storm cellL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 420.515625,
+          "w": 213.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "GuardianL3 · D8Available",
+          "x": 50.046875,
+          "y": 263.109375,
+          "w": 253.90625,
+          "h": 73.359375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_frost_guard",
+          "text": "Frost guardL5 · D13learn parent skill",
+          "x": 70.046875,
+          "y": 348.46875,
+          "w": 233.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_ice_lock",
+          "text": "Ice lockL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 420.0625,
+          "w": 213.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_last_wall",
+          "text": "Last wallL10 · D29learn parent skill",
+          "x": 110.046875,
+          "y": 255.65625,
+          "w": 193.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_nova_guard",
+          "text": "Nova guardL7 · D18learn parent skill",
+          "x": 70.046875,
+          "y": 356.25,
+          "w": 233.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_shatter_ward",
+          "text": "Shatter wardL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 420.84375,
+          "w": 213.90625,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "edges": [
+        [
+          "caster_boss_channel",
+          "caster_chilling_charge"
+        ],
+        [
+          "caster_channeler",
+          "caster_boss_channel"
+        ],
+        [
+          "caster_channeler",
+          "caster_storm"
+        ],
+        [
+          "caster_chilling_charge",
+          "caster_conduct"
+        ],
+        [
+          "caster_frost_guard",
+          "caster_ice_lock"
+        ],
+        [
+          "caster_guardian",
+          "caster_frost_guard"
+        ],
+        [
+          "caster_guardian",
+          "caster_nova_guard"
+        ],
+        [
+          "caster_ice_lock",
+          "caster_last_wall"
+        ],
+        [
+          "caster_nova_guard",
+          "caster_shatter_ward"
+        ],
+        [
+          "caster_storm",
+          "caster_storm_cell"
+        ]
+      ],
+      "fontMeasurements": {
+        "descendantName": 14,
+        "learnAction": 16,
+        "resetAction": 16
+      },
+      "targets": [
+        {
+          "text": "Skill rules",
+          "w": 229.90625,
+          "h": 44
+        },
+        {
+          "text": "Skill rules",
+          "w": 209.90625,
+          "h": 44
+        },
+        {
+          "text": "Skill rules",
+          "w": 189.90625,
+          "h": 44
+        },
+        {
+          "text": "Skill rules",
+          "w": 169.90625,
+          "h": 44
+        },
+        {
+          "text": "Learn skill",
+          "w": 211.90625,
+          "h": 56
+        },
+        {
+          "text": "Learn skill",
+          "w": 231.90625,
+          "h": 56
+        },
+        {
+          "text": "Full tree",
+          "w": 253.90625,
+          "h": 44
+        },
+        {
+          "text": "Reset skills",
+          "w": 148,
+          "h": 56
+        }
+      ],
+      "documentOverflow": 0,
+      "paint": [
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm_cell-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_frost_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_ice_lock-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_last_wall-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_nova_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_shatter_ward-v2.webp",
+          "decoded": true
+        }
+      ],
+      "layoutExact": true,
+      "resetCancelExact": true,
+      "resetWholeSaveExact": true,
+      "resetRetention": true,
+      "recoveryWait": {
+        "requestedMs": 298000,
+        "clockBefore": 979322,
+        "clockAfter": 979620,
+        "method": "public advance through real recovery, then public send if still home and step1"
+      },
+      "sent": {
+        "runId": 381,
+        "turn": 7,
+        "class": "caster",
+        "weapon": "dagger",
+        "mask": 1091
+      },
+      "awayRefusals": [
+        "Error: hero away",
+        "Error: hero away"
+      ],
+      "awayReadOnlyExact": true
+    },
+    {
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 2,
+      "captureKind": "viewport",
+      "status": "PASS",
+      "canonical": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 10,
+        "spent": 0,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": false,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "parentRefusal": "Error: learn parent skill",
+      "cancelExact": true,
+      "keyboardHops": [
+        0,
+        3,
+        8,
+        3,
+        9,
+        3,
+        10,
+        3
+      ],
+      "learnRetention": true,
+      "learned": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 6,
+        "spent": 4,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "current": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerLearnedSkill rulesbolt +1 damagefoe hp < 50% → bolt lowest",
+          "x": 50.046875,
+          "y": 193.125,
+          "w": 253.90625,
+          "h": 212.390625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelLearnedSkill rulesboss slow +10 ticksfoe: boss → slow bossfoe: boss → bolt bos",
+          "x": 70.046875,
+          "y": 266.515625,
+          "w": 233.90625,
+          "h": 242.390625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeLearnedSkill rulesslowed boss bolt → ward cooldown −10ticks;once per slowfo",
+          "x": 90.046875,
+          "y": 154.90625,
+          "w": 213.90625,
+          "h": 289.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductLearnedSkill rulesqualifying bolt → one visible adjacent slow copy≤10ticksfoe: boss",
+          "x": 110.046875,
+          "y": 297.09375,
+          "w": 193.90625,
+          "h": 212.390625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "Stormnova +1 damageadjacent ≥ 2 → novafoe hp < 50% → bolt lowestL7 · D18Learn skill",
+          "x": 70.046875,
+          "y": 90.484375,
+          "w": 233.90625,
+          "h": 417.953125,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "Guardianward +5 ticksfoes ≥ 2 · hp < 70% → wardL3 · D8Learn skill",
+          "x": 50.046875,
+          "y": 133.4375,
+          "w": 253.90625,
+          "h": 331.765625,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "full": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerL3 · D8Learned",
+          "x": 50.046875,
+          "y": 372.203125,
+          "w": 253.90625,
+          "h": 137.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelL5 · D13Learned",
+          "x": 70.046875,
+          "y": 226.390625,
+          "w": 233.90625,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeL9 · D23Learned",
+          "x": 90.046875,
+          "y": 319.578125,
+          "w": 213.90625,
+          "h": 189.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductL10 · D29Learned",
+          "x": 110.046875,
+          "y": 225.765625,
+          "w": 193.90625,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "StormL7 · D18Available",
+          "x": 70.046875,
+          "y": 361.953125,
+          "w": 233.90625,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm_cell",
+          "text": "Storm cellL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 205.140625,
+          "w": 213.90625,
+          "h": 187.78125,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "GuardianL3 · D8Available",
+          "x": 50.046875,
+          "y": 371.921875,
+          "w": 253.90625,
+          "h": 137.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_frost_guard",
+          "text": "Frost guardL5 · D13learn parent skill",
+          "x": 70.046875,
+          "y": 226.109375,
+          "w": 233.90625,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_ice_lock",
+          "text": "Ice lockL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 321.296875,
+          "w": 213.90625,
+          "h": 187.78125,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_last_wall",
+          "text": "Last wallL10 · D29learn parent skill",
+          "x": 110.046875,
+          "y": 206.078125,
+          "w": 193.90625,
+          "h": 187.78125,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_nova_guard",
+          "text": "Nova guardL7 · D18learn parent skill",
+          "x": 70.046875,
+          "y": 361.859375,
+          "w": 233.90625,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_shatter_ward",
+          "text": "Shatter wardL9 · D23learn parent skill",
+          "x": 90.046875,
+          "y": 206.046875,
+          "w": 213.90625,
+          "h": 187.78125,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "edges": [
+        [
+          "caster_boss_channel",
+          "caster_chilling_charge"
+        ],
+        [
+          "caster_channeler",
+          "caster_boss_channel"
+        ],
+        [
+          "caster_channeler",
+          "caster_storm"
+        ],
+        [
+          "caster_chilling_charge",
+          "caster_conduct"
+        ],
+        [
+          "caster_frost_guard",
+          "caster_ice_lock"
+        ],
+        [
+          "caster_guardian",
+          "caster_frost_guard"
+        ],
+        [
+          "caster_guardian",
+          "caster_nova_guard"
+        ],
+        [
+          "caster_ice_lock",
+          "caster_last_wall"
+        ],
+        [
+          "caster_nova_guard",
+          "caster_shatter_ward"
+        ],
+        [
+          "caster_storm",
+          "caster_storm_cell"
+        ]
+      ],
+      "fontMeasurements": {
+        "descendantName": 28,
+        "learnAction": 32,
+        "resetAction": 32
+      },
+      "fontRatios": {
+        "descendantName": 2,
+        "learnAction": 2,
+        "resetAction": 2
+      },
+      "targets": [
+        {
+          "text": "Skill rules",
+          "w": 229.90625,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 209.90625,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 189.90625,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 169.90625,
+          "h": 88
+        },
+        {
+          "text": "Learn skill",
+          "w": 211.90625,
+          "h": 76
+        },
+        {
+          "text": "Learn skill",
+          "w": 231.90625,
+          "h": 76
+        },
+        {
+          "text": "Full tree",
+          "w": 253.90625,
+          "h": 88
+        },
+        {
+          "text": "Reset skills",
+          "w": 226.609375,
+          "h": 76
+        }
+      ],
+      "documentOverflow": 0,
+      "paint": [
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm_cell-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_frost_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_ice_lock-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_last_wall-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_nova_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_shatter_ward-v2.webp",
+          "decoded": true
+        }
+      ],
+      "layoutExact": true,
+      "resetCancelExact": true,
+      "resetWholeSaveExact": true,
+      "resetRetention": true,
+      "recoveryWait": {
+        "requestedMs": 298000,
+        "clockBefore": 979322,
+        "clockAfter": 979620,
+        "method": "public advance through real recovery, then public send if still home and step1"
+      },
+      "sent": {
+        "runId": 381,
+        "turn": 7,
+        "class": "caster",
+        "weapon": "dagger",
+        "mask": 1091
+      },
+      "awayRefusals": [
+        "Error: hero away",
+        "Error: hero away"
+      ],
+      "awayReadOnlyExact": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "captureKind": "viewport",
+      "status": "PASS",
+      "canonical": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 10,
+        "spent": 0,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": false,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "parentRefusal": "Error: learn parent skill",
+      "cancelExact": true,
+      "keyboardHops": [
+        0,
+        3,
+        8,
+        3,
+        9,
+        3,
+        10,
+        3
+      ],
+      "learnRetention": true,
+      "learned": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 6,
+        "spent": 4,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "current": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerLearnedSkill rulesbolt +1 damagefoe hp < 50% → bolt lowest",
+          "x": 442,
+          "y": 384.5,
+          "w": 248,
+          "h": 102.109375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelLearnedSkill rulesboss slow +10 ticksfoe: boss → slow bossfoe: boss → bolt bos",
+          "x": 462,
+          "y": 498.609375,
+          "w": 228,
+          "h": 102.109375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeLearnedSkill rulesslowed boss bolt → ward cooldown −10ticks;once per slowfo",
+          "x": 482,
+          "y": 612.71875,
+          "w": 208,
+          "h": 128.40625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductLearnedSkill rulesqualifying bolt → one visible adjacent slow copy≤10ticksfoe: boss",
+          "x": 502,
+          "y": 660.125,
+          "w": 188,
+          "h": 102.109375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "Stormnova +1 damageadjacent ≥ 2 → novafoe hp < 50% → bolt lowestL7 · D18Learn skill",
+          "x": 462,
+          "y": 328.234375,
+          "w": 228,
+          "h": 215.796875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "Guardianward +5 ticksfoes ≥ 2 · hp < 70% → wardL3 · D8Learn skill",
+          "x": 702,
+          "y": 340.5,
+          "w": 248,
+          "h": 190.5,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "full": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerL3 · D8Learned",
+          "x": 442,
+          "y": 686.828125,
+          "w": 248,
+          "h": 75.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelL5 · D13Learned",
+          "x": 462,
+          "y": 391.421875,
+          "w": 228,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeL9 · D23Learned",
+          "x": 482,
+          "y": 492.015625,
+          "w": 208,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductL10 · D29Learned",
+          "x": 502,
+          "y": 592.609375,
+          "w": 188,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "StormL7 · D18Available",
+          "x": 462,
+          "y": 673.203125,
+          "w": 228,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm_cell",
+          "text": "Storm cellL9 · D23learn parent skill",
+          "x": 482,
+          "y": 391.796875,
+          "w": 208,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "GuardianL3 · D8Available",
+          "x": 702,
+          "y": 397.828125,
+          "w": 248,
+          "h": 75.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_frost_guard",
+          "text": "Frost guardL5 · D13learn parent skill",
+          "x": 722,
+          "y": 485.421875,
+          "w": 228,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_ice_lock",
+          "text": "Ice lockL9 · D23learn parent skill",
+          "x": 742,
+          "y": 586.015625,
+          "w": 208,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_last_wall",
+          "text": "Last wallL10 · D29learn parent skill",
+          "x": 762,
+          "y": 673.609375,
+          "w": 188,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_nova_guard",
+          "text": "Nova guardL7 · D18learn parent skill",
+          "x": 722,
+          "y": 391.203125,
+          "w": 228,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_shatter_ward",
+          "text": "Shatter wardL9 · D23learn parent skill",
+          "x": 742,
+          "y": 491.796875,
+          "w": 208,
+          "h": 88.59375,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "edges": [
+        [
+          "caster_boss_channel",
+          "caster_chilling_charge"
+        ],
+        [
+          "caster_channeler",
+          "caster_boss_channel"
+        ],
+        [
+          "caster_channeler",
+          "caster_storm"
+        ],
+        [
+          "caster_chilling_charge",
+          "caster_conduct"
+        ],
+        [
+          "caster_frost_guard",
+          "caster_ice_lock"
+        ],
+        [
+          "caster_guardian",
+          "caster_frost_guard"
+        ],
+        [
+          "caster_guardian",
+          "caster_nova_guard"
+        ],
+        [
+          "caster_ice_lock",
+          "caster_last_wall"
+        ],
+        [
+          "caster_nova_guard",
+          "caster_shatter_ward"
+        ],
+        [
+          "caster_storm",
+          "caster_storm_cell"
+        ]
+      ],
+      "fontMeasurements": {
+        "descendantName": 14,
+        "learnAction": 16,
+        "resetAction": 16
+      },
+      "targets": [
+        {
+          "text": "Skill rules",
+          "w": 224,
+          "h": 44.796875
+        },
+        {
+          "text": "Skill rules",
+          "w": 204,
+          "h": 44.796875
+        },
+        {
+          "text": "Skill rules",
+          "w": 184,
+          "h": 44.796875
+        },
+        {
+          "text": "Skill rules",
+          "w": 164,
+          "h": 44.796875
+        },
+        {
+          "text": "Learn skill",
+          "w": 206,
+          "h": 56
+        },
+        {
+          "text": "Learn skill",
+          "w": 226,
+          "h": 56
+        },
+        {
+          "text": "Full tree",
+          "w": 508,
+          "h": 44.796875
+        },
+        {
+          "text": "Reset skills",
+          "w": 148,
+          "h": 56
+        }
+      ],
+      "documentOverflow": 0,
+      "paint": [
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm_cell-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_frost_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_ice_lock-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_last_wall-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_nova_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_shatter_ward-v2.webp",
+          "decoded": true
+        }
+      ],
+      "layoutExact": true,
+      "resetCancelExact": true,
+      "resetWholeSaveExact": true,
+      "resetRetention": true,
+      "recoveryWait": {
+        "requestedMs": 298000,
+        "clockBefore": 979322,
+        "clockAfter": 979620,
+        "method": "public advance through real recovery, then public send if still home and step1"
+      },
+      "sent": {
+        "runId": 381,
+        "turn": 7,
+        "class": "caster",
+        "weapon": "dagger",
+        "mask": 1091
+      },
+      "awayRefusals": [
+        "Error: hero away",
+        "Error: hero away"
+      ],
+      "awayReadOnlyExact": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 2,
+      "captureKind": "viewport",
+      "status": "PASS",
+      "canonical": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 10,
+        "spent": 0,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": false,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "parentRefusal": "Error: learn parent skill",
+      "cancelExact": true,
+      "keyboardHops": [
+        0,
+        3,
+        8,
+        3,
+        9,
+        3,
+        10,
+        3
+      ],
+      "learnRetention": true,
+      "learned": {
+        "class": "caster",
+        "level": 10,
+        "xp": 662,
+        "next": 0,
+        "points": 6,
+        "spent": 4,
+        "budget": 10,
+        "next_pick": null,
+        "earned_stage": {
+          "stage": "mastery",
+          "picks": 10
+        },
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "caster_channeler",
+            "name": "Channeler",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_channeler"
+              }
+            ],
+            "effect": "bolt +1 damage"
+          },
+          {
+            "id": "caster_boss_channel",
+            "name": "Boss channel",
+            "parent": "caster_channeler",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_boss_channel"
+              }
+            ],
+            "effect": "boss slow +10 ticks"
+          },
+          {
+            "id": "caster_storm",
+            "name": "Storm",
+            "parent": "caster_channeler",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foe_hp<",
+                    "n": 50
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "lowest"
+                },
+                "origin": "class:path:caster_storm"
+              }
+            ],
+            "effect": "nova +1 damage"
+          },
+          {
+            "id": "caster_guardian",
+            "name": "Guardian",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": false,
+            "available": true,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_guardian"
+              }
+            ],
+            "effect": "ward +5 ticks"
+          },
+          {
+            "id": "caster_frost_guard",
+            "name": "Frost guard",
+            "parent": "caster_guardian",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_frost_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_frost_guard"
+              }
+            ],
+            "effect": "slow +5 ticks"
+          },
+          {
+            "id": "caster_nova_guard",
+            "name": "Nova guard",
+            "parent": "caster_guardian",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_nova_guard"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_nova_guard"
+              }
+            ],
+            "effect": "warded nova +1 damage"
+          },
+          {
+            "id": "caster_chilling_charge",
+            "name": "Chilling charge",
+            "parent": "caster_boss_channel",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_chilling_charge"
+              }
+            ],
+            "effect": "slowed boss bolt → ward cooldown −10ticks;once per slow"
+          },
+          {
+            "id": "caster_storm_cell",
+            "name": "Storm cell",
+            "parent": "caster_storm",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_storm_cell"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_storm_cell"
+              }
+            ],
+            "effect": "nova2hits → next bolt one extra line foe at50%"
+          },
+          {
+            "id": "caster_ice_lock",
+            "name": "Ice lock",
+            "parent": "caster_frost_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_ice_lock"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_ice_lock"
+              }
+            ],
+            "effect": "warded slow +10ticks once;cap50"
+          },
+          {
+            "id": "caster_shatter_ward",
+            "name": "Shatter ward",
+            "parent": "caster_nova_guard",
+            "required_level": 9,
+            "required_depth": 23,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "nova"
+                },
+                "origin": "class:path:caster_shatter_ward"
+              }
+            ],
+            "effect": "warded nova consumes ward → nova cooldown −20ticks"
+          },
+          {
+            "id": "caster_conduct",
+            "name": "Conduct",
+            "parent": "caster_chilling_charge",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  }
+                ],
+                "verb": {
+                  "v": "slow",
+                  "a": "tag:boss"
+                },
+                "origin": "class:path:caster_conduct"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "bolt",
+                  "a": "nearest"
+                },
+                "origin": "class:path:caster_conduct"
+              }
+            ],
+            "effect": "qualifying bolt → one visible adjacent slow copy≤10ticks"
+          },
+          {
+            "id": "caster_last_wall",
+            "name": "Last wall",
+            "parent": "caster_ice_lock",
+            "required_level": 10,
+            "required_depth": 29,
+            "owned": false,
+            "available": false,
+            "blocked": "learn parent skill",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "ward"
+                },
+                "origin": "class:path:caster_last_wall"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 45
+                  },
+                  {
+                    "k": "foes>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "blink"
+                },
+                "origin": "class:path:caster_last_wall"
+              }
+            ],
+            "effect": "ward absorbs4 → blink cooldown −20ticks once"
+          }
+        ]
+      },
+      "current": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerLearnedSkill rulesbolt +1 damagefoe hp < 50% → bolt lowest",
+          "x": 442,
+          "y": 242.765625,
+          "w": 508,
+          "h": 171.640625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelLearnedSkill rulesboss slow +10 ticksfoe: boss → slow bossfoe: boss → bolt bos",
+          "x": 462,
+          "y": 376.40625,
+          "w": 488,
+          "h": 171.640625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeLearnedSkill rulesslowed boss bolt → ward cooldown −10ticks;once per slowfo",
+          "x": 482,
+          "y": 243.046875,
+          "w": 468,
+          "h": 171.640625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductLearnedSkill rulesqualifying bolt → one visible adjacent slow copy≤10ticksfoe: boss",
+          "x": 502,
+          "y": 376.6875,
+          "w": 448,
+          "h": 171.640625,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "Stormnova +1 damageadjacent ≥ 2 → novafoe hp < 50% → bolt lowestL7 · D18Learn skill",
+          "x": 462,
+          "y": 157.328125,
+          "w": 488,
+          "h": 342.609375,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "Guardianward +5 ticksfoes ≥ 2 · hp < 70% → wardL3 · D8Learn skill",
+          "x": 442,
+          "y": 250.9375,
+          "w": 508,
+          "h": 297.015625,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "full": [
+        {
+          "id": "caster_channeler",
+          "text": "ChannelerL3 · D8Learned",
+          "x": 442,
+          "y": 404.953125,
+          "w": 508,
+          "h": 143.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_boss_channel",
+          "text": "Boss channelL5 · D13Learned",
+          "x": 462,
+          "y": 255.140625,
+          "w": 488,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_chilling_charge",
+          "text": "Chilling chargeL9 · D23Learned",
+          "x": 482,
+          "y": 400.328125,
+          "w": 468,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_conduct",
+          "text": "ConductL10 · D29Learned",
+          "x": 502,
+          "y": 255.515625,
+          "w": 448,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm",
+          "text": "StormL7 · D18Available",
+          "x": 462,
+          "y": 400.703125,
+          "w": 488,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_storm_cell",
+          "text": "Storm cellL9 · D23learn parent skill",
+          "x": 482,
+          "y": 255.890625,
+          "w": 468,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_guardian",
+          "text": "GuardianL3 · D8Available",
+          "x": 442,
+          "y": 405.078125,
+          "w": 508,
+          "h": 143.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_frost_guard",
+          "text": "Frost guardL5 · D13learn parent skill",
+          "x": 462,
+          "y": 255.265625,
+          "w": 488,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_ice_lock",
+          "text": "Ice lockL9 · D23learn parent skill",
+          "x": 482,
+          "y": 400.453125,
+          "w": 468,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_last_wall",
+          "text": "Last wallL10 · D29learn parent skill",
+          "x": 502,
+          "y": 255.640625,
+          "w": 448,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_nova_guard",
+          "text": "Nova guardL7 · D18learn parent skill",
+          "x": 462,
+          "y": 400.828125,
+          "w": 488,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        },
+        {
+          "id": "caster_shatter_ward",
+          "text": "Shatter wardL9 · D23learn parent skill",
+          "x": 482,
+          "y": 255.015625,
+          "w": 468,
+          "h": 147.1875,
+          "insideWidth": true,
+          "reachable": true
+        }
+      ],
+      "edges": [
+        [
+          "caster_boss_channel",
+          "caster_chilling_charge"
+        ],
+        [
+          "caster_channeler",
+          "caster_boss_channel"
+        ],
+        [
+          "caster_channeler",
+          "caster_storm"
+        ],
+        [
+          "caster_chilling_charge",
+          "caster_conduct"
+        ],
+        [
+          "caster_frost_guard",
+          "caster_ice_lock"
+        ],
+        [
+          "caster_guardian",
+          "caster_frost_guard"
+        ],
+        [
+          "caster_guardian",
+          "caster_nova_guard"
+        ],
+        [
+          "caster_ice_lock",
+          "caster_last_wall"
+        ],
+        [
+          "caster_nova_guard",
+          "caster_shatter_ward"
+        ],
+        [
+          "caster_storm",
+          "caster_storm_cell"
+        ]
+      ],
+      "fontMeasurements": {
+        "descendantName": 28,
+        "learnAction": 32,
+        "resetAction": 32
+      },
+      "fontRatios": {
+        "descendantName": 2,
+        "learnAction": 2,
+        "resetAction": 2
+      },
+      "targets": [
+        {
+          "text": "Skill rules",
+          "w": 484,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 464,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 444,
+          "h": 88
+        },
+        {
+          "text": "Skill rules",
+          "w": 424,
+          "h": 88
+        },
+        {
+          "text": "Learn skill",
+          "w": 466,
+          "h": 76
+        },
+        {
+          "text": "Learn skill",
+          "w": 486,
+          "h": 76
+        },
+        {
+          "text": "Full tree",
+          "w": 508,
+          "h": 88
+        },
+        {
+          "text": "Reset skills",
+          "w": 226.609375,
+          "h": 76
+        }
+      ],
+      "documentOverflow": 0,
+      "paint": [
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_channeler-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_boss_channel-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_chilling_charge-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_conduct-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_storm_cell-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_guardian-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_frost_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_ice_lock-v2.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_last_wall-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_nova_guard-v1.webp",
+          "decoded": true
+        },
+        {
+          "src": "/ui/skills/caster_shatter_ward-v2.webp",
+          "decoded": true
+        }
+      ],
+      "layoutExact": true,
+      "resetCancelExact": true,
+      "resetWholeSaveExact": true,
+      "resetRetention": true,
+      "recoveryWait": {
+        "requestedMs": 298000,
+        "clockBefore": 979322,
+        "clockAfter": 979620,
+        "method": "public advance through real recovery, then public send if still home and step1"
+      },
+      "sent": {
+        "runId": 381,
+        "turn": 7,
+        "class": "caster",
+        "weapon": "dagger",
+        "mask": 1091
+      },
+      "awayRefusals": [
+        "Error: hero away",
+        "Error: hero away"
+      ],
+      "awayReadOnlyExact": true
+    }
+  ],
+  "servedWasm": [
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    },
+    {
+      "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+      "bytes": 6944684
+    }
+  ],
+  "errors": [],
+  "vitePid": 840979,
+  "port": 37441,
+  "browserPid": null,
+  "fallback": {
+    "viewport": {
+      "width": 402,
+      "height": 681
+    },
+    "scale": 1,
+    "blockedRequests": 1,
+    "actualNetworkFailure": true,
+    "primitive": true,
+    "exactSave": true
+  },
+  "sourceAfter": {
+    "web/src/ambient-motes.ts": "f7cf8a485fd2bfec473bde1b70fb600ea63077a5ff484402e48ea7d5793b21db",
+    "web/src/app.ts": "0c640a7e62092fcf44411f07e1fa77fed221b6cd2261913a1bdfd6778a749232",
+    "web/src/assets/hero.png": "881ffbcaafc212e49addad08846a5b82761355fa20624253af3477ba33262c5c",
+    "web/src/assets/typescript.svg": "e45b2f008f0a40c1011b0fd460081f8bb00df063a41240449159da164724d96c",
+    "web/src/assets/vite.svg": "5be21acd42eb7b896e517f4e0f0f11eb5c5d9e54fbbcebe9453f033008fcca6f",
+    "web/src/audio.ts": "5fe265c0121111f649982b6f8e4d567e11b7fc86ed526e22b8d6cf38e0ec0657",
+    "web/src/autodismiss.css": "90ec02bdbd384f9978653ad576e8273a98db5ef7dd059f1ff38a07ceb7f2ad1f",
+    "web/src/bloodline-tabs.css": "da6e02efbbe11696602116ffd80459a4bf1a1ed7dc2bfefeaa3fb5c0bf09f030",
+    "web/src/chrome.css": "d6485f2c71273933794d3da0a5a494030ef951bf2a5731357acfe7300d6ae4c6",
+    "web/src/class-icons.css": "ab04d80803e9874a71e97b11c79d70921f3b7e3cf958fde769d9003a94d87abf",
+    "web/src/class-styles.css": "04d03f9434cb940833392689b0e0297adc699f7bfcaa7a77d304f835e0fc371b",
+    "web/src/class-tree.css": "19d60ce35a4622c563dc96c07ebf5dc8cbfeb281c6edb9f435df37dccc9bdaf9",
+    "web/src/collect.css": "3363e5dbad68160c7cd8d12781f1079b5325790d3fe219b2bad5630ea720a98e",
+    "web/src/crier.css": "3405a04d9a83853dcaa53f3471db3668b81691d0eccc3bfab2a4e4525974eba4",
+    "web/src/cut29.css": "33e1d2eedd50332f4c68bd1577d794e2af3b12ab5dacd46bc5389fb993da50c8",
+    "web/src/cut30.css": "191cc361efb6694d217ef0383d9d98fff84d90d1a5328af82df062b8c04d6214",
+    "web/src/death.css": "a165ca0221e7b95ffff4bba9d8abe50a96c60b82acd05636eda820dfa2b9c520",
+    "web/src/debug.ts": "d38090dc9cdf3341e82b68fa6030b8456b58270f72918e998441ea05fed524c3",
+    "web/src/depth-map.css": "8d8777b114d2db9197136c643af0c98802ad72cbfaa7d7ce09c66765387291fd",
+    "web/src/desktop-dock.css": "9a8e0d061ed18089c6519d46850690eb82e0ca959e4975d86a81d334f1ea69d7",
+    "web/src/dev/history.ts": "8fdd4f6077c8928639f2850d98c7b0b76df60fbef66ce9ea2fd62beb586ee615",
+    "web/src/engine/classes.ts": "2c44b26df30467f17c4a730e5aab258b702fbcee091f42334020c8530b05473e",
+    "web/src/engine/fake.ts": "106c66010cab22ca27bd32a21c88a30b4a97ff3c5b833a76769ba6c479be343b",
+    "web/src/engine/index.ts": "b76740d848e8bc80e3764e5139ebc1a2a6004833376f6062224d58c4378e090f",
+    "web/src/engine/lanes.ts": "1ca2adb0602dd83e820789b19859353e8e4728fc6b29df9aa689f0fbc374a29b",
+    "web/src/engine/native-api.json": "3c9664e29eedbd86ea247127c05dd4547ff4e1fda6c443bc36c64e493a7841ab",
+    "web/src/engine/native.ts": "77bacacd4182e3b72501942f92f21cb110f92f73eb78ed6e6629fb9bdbbab240",
+    "web/src/engine/pkg/.gitignore": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1",
+    "web/src/engine/pkg/.idlever-build.json": "402232b6b894584a8622ec88f70309bd80d601dc39e0a35d066720aaa1526cd8",
+    "web/src/engine/pkg/idlever_wasm.d.ts": "00b7027e58ba6451755ca75ecd66995f895dad4343d0908d2b9836b984fae5e7",
+    "web/src/engine/pkg/idlever_wasm.js": "b50516107d41a7168a3ef18a9fd2fd4c8827a24bc534a1b443e0ffbe90cd2029",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+    "web/src/engine/pkg/idlever_wasm_bg.wasm.d.ts": "8ea336d1d56bb89ea445a418acb01d3ce328cdead04a47564f0719b2b67e11fb",
+    "web/src/engine/pkg/package.json": "dacfea67d3c2dc77b8e272b5d091dae16d686202456ee389a6b7800bdc0330a9",
+    "web/src/engine/proxy.ts": "7bef83d9fc66a094b46b9d2fb21613461d05eef1dc0eb90012eebe52264f3034",
+    "web/src/engine/types.ts": "077a66d4c26745f65a8b9840333078c00be97a4d4fb52669fc25100024d57e93",
+    "web/src/engine/wasm.ts": "fca4fca6ec1b8d0392d0efa4751d89e6470cd58a4d895065668bcbae63e76adf",
+    "web/src/engine/worker.ts": "c001d1bcbcef8cb89563fb872205daeb73683871ccbdec4b59a2f2a3cade3f8f",
+    "web/src/feats.css": "dff370c8194422027bf740cc7f3c0aad1f5093f750851c7b47a1784f72aadfbb",
+    "web/src/forge-branches.css": "1d935439079f910cbd2e7daff28e61dfa3b5aca8a2abc1adbd8f43aaa836f4fc",
+    "web/src/game-menu.css": "308f09f9841926795b76d96e4b366e159cb311da877f030ee57348d1a6d6ceb2",
+    "web/src/hero-hub.css": "fb080b10a6e4342302491bcffa16db6b1a70d1280f3694e265c28eeac20c80a7",
+    "web/src/hero-life.css": "b49d91de5763f03dcbc80eedbe1088f77d8db947dac7dcde740ead865b74f89d",
+    "web/src/hero-progression.css": "10d38cfbc47782acc93f07864c937a942bc7479e5b3d7b3cbb704a3911908e8a",
+    "web/src/heroes-compact.css": "e6e3d82317644e23348e9fd9c188a5bf16ce0cd949d6aeb5d348cf993aab8447",
+    "web/src/items.css": "4f01f78344da3c3f8ab84e223cca60e6e2b70eeec416edcd9a432759d79ee0ac",
+    "web/src/journal.css": "3b8405bddddeaebe6f434738c72d800bc1f39c604d1cdf419f372cb25465ecf7",
+    "web/src/juice.css": "e21632df9b8dfde09717e79242e1d271aef6dabb21d141fcd0d352c78026b37d",
+    "web/src/juice.ts": "cc305952381b4c0e218a02c121a85f22f1b593cf507f5f86ca83b5e2afac1c5f",
+    "web/src/ladder.css": "ffcb9ef0a3f82a522099b40ea804fb238d97771f66b61f458db37c245dcc478b",
+    "web/src/legacy.css": "9e095b1482d96651095c7217d2b4b40f2df5c2407db130edb671c413c177863b",
+    "web/src/legendary-discovery.css": "75e5489933b05238b42e16076d83ae8bac076ea1f8a465abdecb630441b662b9",
+    "web/src/legendary-gear.css": "5bb3a2854ff0039e15f07916b37d2263cd7df6dc04daf28afa442dfb83421769",
+    "web/src/legible.css": "d297c6f61c45ae473ce6e7fbc18bdb1ebd6989c7d45bb7cd6e167d315d2a6eec",
+    "web/src/main.ts": "43709f0b4b8c363dc49bd3f78fdbde2fb93de21e0a8d492d55ed9b6a757b7991",
+    "web/src/pets.css": "c086145d6b3dd0d6758695955f36636fa9264a7649f4846bedfaea4fcb328f60",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/blit.ts": "d70a195a122accf891685b12705fb43aab30d7cd079358542a17c751ec13a46d",
+    "web/src/render/bloom.ts": "ab1b21053cc734998edd953f7e18112c68019a320ec8b60e170bba07db600bcf",
+    "web/src/render/combat-cues.ts": "f3cca506b68d4ebc6369d196936a3745874e7c4118e57f8daec18c75d64d4670",
+    "web/src/render/demo.ts": "cbce8f8b146c8988dac0b4aead7f4fd649f4cb0c5b74d42c4ec4ea00a3517d3b",
+    "web/src/render/fallback.ts": "37dab19e7981e49a79647539a55985118f88fd4e093f0d670664cb0afee06218",
+    "web/src/render/font.ts": "a6e3842e5aa949eadb959614170d2ae17565b058a079bfd3054b9a06a9fa2452",
+    "web/src/render/fx.ts": "b6bcbedc6394f9e7993afca3e00e650ea5b9a4e2e65d32b5cd59244bf39d4a06",
+    "web/src/render/fxpref.ts": "25c0e9330e8ba8aefe717e7961dea563fe07ad4319cd6ba5d3e6987d4234fca2",
+    "web/src/render/gputimer.ts": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4",
+    "web/src/render/home-service-art.ts": "2805dd205d50a6933724b073f95b7cf079e71a69424a566175181211336583b9",
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/landmarks.ts": "6926fd55137d553cb2bf384bbd9fdfb1220c8e687ed0b7a069453ef901d57560",
+    "web/src/render/layers.ts": "5ff43ac8117cf1cb766dbefcc481996b2c8b99e96e751378eff3152af679e8b2",
+    "web/src/render/light.ts": "ae521ca7b8745a72b188d53716b031501fee29ec0ca5a199e972e7e50b021fa4",
+    "web/src/render/look.ts": "ffc89a9b3b1d361ec8f1364497c9d065fb956d76ffa1105c62e34e45ed409b6d",
+    "web/src/render/movement-trail.ts": "d173bd9be6c0ba77ad3e13a984694280f85b63772d0c4162ab3c5deb4dfa169f",
+    "web/src/render/normals.ts": "8d0af1e5b6c0c0785e95a060eb903889a14e0635e499cd3a921644b7005dba98",
+    "web/src/render/palette.ts": "1e15f69411becd18afe7616c19334dffc6bc8b6b3d2b0ddc2e1023077ea65f32",
+    "web/src/render/quality.ts": "3b8adc201fed807dd0bddf729e757bfe0f03a26d23e09bf3c22572ce7fcac87f",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/tags.ts": "ddf82333c1f2591c29e273c8d84fa92321456d12839fcbcf9b04592bf5cb7fd0",
+    "web/src/render/tool-cues.ts": "1c2d926e44dbd8909398624db160d614ecc9db3bb40e69e0ab42789486fbbc02",
+    "web/src/render/tool-sprites.ts": "14627c106ce221d6f115ae76c9c363d6109c87dfa8b7b578ebe33412a912010e",
+    "web/src/render/town-terrain.ts": "1483b72e1a72c7a5ba79399e39d14a2c9d10589ab019e9b1e13a6404d4fd6f2d",
+    "web/src/render/town-volume.ts": "53c8b389d5f55dbdf8f06ef38f277062ceec7333e596a58e58f1549ef4ac47c0",
+    "web/src/render/town.ts": "96f80676fe960bcbc55d6740090ed0a1f3fa0831760cfbf423e0a0182dd8cde7",
+    "web/src/render/town_lights.json": "82f37f7e019f032a6fe471971662a0f2432024e02fd120935fcb2ab8a02203e5",
+    "web/src/render/types.ts": "37966fcd39b8e3bc1a3d1cc73c7b9d93acc42e239601b6e1c3870fd52223a93a",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/wash.ts": "1a953391302dc008ac59a1af57bf0fe1c15ca830768b884025725eeaa9bc5b97",
+    "web/src/report-juice.css": "f702df915b5343675ad5abe0bd9e53ce3e3eb511ff8368192821b824bdfe4909",
+    "web/src/return-pick.css": "55bf6a569a3420623ca3fc375aacc5a812df228f42732341138dd84624a627be",
+    "web/src/runclear.css": "6d95f332ecee0c5ac7d00fd61959595384aa48f42a9c4515327276f00bdd6bfa",
+    "web/src/runs.css": "1d92b71b98c69fd8bca209dbda9d369900e74c0d0a3e9ea6357ed2d5f0e9b4bd",
+    "web/src/set-equipment.css": "f903bd9cdf7368a013f1ddda7a51d654e4de22a747c3d2c560a1c58e945e59ff",
+    "web/src/skill-icons.css": "6745e05e0d8302bf3a2e963fab217edf03b90a14a2e2dfbc239546260dec4204",
+    "web/src/store.ts": "92467bd8403eda146cc69d7e4eb786aba2166dfd87c56b5fdd6a043792a78c30",
+    "web/src/styles.css": "6a43b0e01026d0f32d008df726a70123d42988282b567c42101f03cf7b3e27eb",
+    "web/src/tasks.css": "f00495685579fd39d44ac03330c4a1510e2ac894105eb3162b98fd8c2d8a6692",
+    "web/src/tips.css": "eb1b633b778266893583e0000e3097761898d6dd7fbc4da36373561a8fcbfef2",
+    "web/src/town.css": "ca52b96c4ab118bf2b70989ee5f572e65e5ebdba492f7e77658ae6b8669d38a8",
+    "web/src/ui/advanced-skill-marks.ts": "a3424d53d874ce2d2b18c4d3a5e97632e7517493a97a7eca3ce95f990afcbccf",
+    "web/src/ui/attrib.ts": "862e6a2b8e22194f528f25bb285355df81b5080009549105ee628da3c05e8b3b",
+    "web/src/ui/autodismiss.ts": "259c764993968797300e75e37979d521290bd98be5c9e0d3da3254e39b3a7e01",
+    "web/src/ui/bloodline-loadouts.ts": "d94fcba6b762671916f440394fcef45ef497bc1e80b7863d47f0d58129d9de0f",
+    "web/src/ui/bloodline-tabs.ts": "e747b6234885a033c93c40064e5e4d413e935209f68dfe2b1a375b14b8cb5d6d",
+    "web/src/ui/building-help.ts": "0882a6a275eac4aed736df495e023ee2c3bc7784e7609a288e6ab2876b1592d7",
+    "web/src/ui/camp.ts": "cc8d701f2714222352171d7fc57da6eab05040504fd1ae6771dc986062ddb559",
+    "web/src/ui/chain.ts": "a42c7c6cd4e948481bc7aab6f03a1ec33267df265351e32bbc1102649df865df",
+    "web/src/ui/checkin.ts": "a7ccba0e31f837cc8a6c269e2451ccc8af557c21005dcc9f5c0b0d5bd5c9e160",
+    "web/src/ui/chronicle.ts": "c324000b2e335e35ef5666a12ed872e70efa8597e17b355d0e2dbd09f1af8cbb",
+    "web/src/ui/class-icons.ts": "f017c787e4b4d5ac597c1d1ed0b3c0ade0dbd0f42b7c23d556da3d12bfadad31",
+    "web/src/ui/class-interaction.ts": "6dbb392f42eaab0161a002a44e86a055981194576196bbd8d33650eb540dab26",
+    "web/src/ui/class-skills.ts": "14bfcdede8d3d82b0f5c1ccb96c8adbd9858d0ff137d60f1e8ce87c1bf14ddff",
+    "web/src/ui/class-stage-notice.ts": "41c6dd301237a5330e1f79f469aae06e2b8924fcb34424bc2f69d9b8dd6c3acf",
+    "web/src/ui/class-styles.ts": "d17fc83e41d78317df7a167b5e30226600c80291d6b034ec62fca5c57cddec8c",
+    "web/src/ui/class-tree.ts": "db502882a251c913c13d01ebfb1818dd2bcba8130d15f2931f5908cf61d8057b",
+    "web/src/ui/class-unlock.ts": "5d5d4d0fd1157037bf896df292814176b94874927ade6c533358e2d99cf8b334",
+    "web/src/ui/class-xp.ts": "8a05d0920b0633316c5eb8043085f9f698d307b8e584886b5a64fab3de9ed997",
+    "web/src/ui/collect-send.ts": "92583961380aafb9afc071d6edf91fa8aff36741142bd202101225ef5d1429c6",
+    "web/src/ui/combat-log.ts": "fd2e0535080fcb5fa407bc942049f47e02d887f883fa8321ffa64924c0f2a211",
+    "web/src/ui/concepts.ts": "66c45ad8fdcb9f3e8fb9d9334e33b8f7efc1854c83b81c762cb6ec21ff872295",
+    "web/src/ui/control.ts": "22e448ea6caf6d5da8536c0e8a747ff593e004e9b6e2e02950b67ae118da13a8",
+    "web/src/ui/counter-name.ts": "6819265fb1e2626e6d85109b7499aafc245f8ad77540bde67025e5922ced6bac",
+    "web/src/ui/crier.ts": "3e1bb234ce13159d2fc980d75367517b4c8e7661738c3cae4f5e038d35a60af3",
+    "web/src/ui/death.ts": "bbe175d11ab5fda965e1e881a20498c518905918d1766b9696e85c4572c42921",
+    "web/src/ui/depth-map.ts": "406304f11a4cfea93b3abe37de5f4c692b5a37c0983e09decffcd5269ae162c2",
+    "web/src/ui/descent.ts": "ce9b554cae21e648eeda23a0faf9c0a7a86ed5e41f64050ef93f7a82a840a39f",
+    "web/src/ui/design-system-board.ts": "bc2114340f9d0e8898bf6c537d4de4d7f2dd90b210a5bec210f36fec45e7ce92",
+    "web/src/ui/divergence.ts": "d1caeceb0c0fdb2ea73e1c1b65c09ed35157a3d91e7c3fd0859f3e802fb13e76",
+    "web/src/ui/dom.ts": "cae19b8c134fe3cf5e9f73437119c5964d15d566a0606d29c90c40d7f8aad8b9",
+    "web/src/ui/editor.ts": "7fcb26cd453812f822dd290a5562269266a09f8b67d594f45c79b72e9c3495e3",
+    "web/src/ui/encounter-modifiers.ts": "90b9d058d21cc07124b3449b06ef5be7d4b5177748bfc8b341e8c8e2d4eb2bea",
+    "web/src/ui/ending.ts": "aba41b2ed7e2a1969b49b3180f9f2cc4fc2b9c8f44034c183765d5d96cdd6fa1",
+    "web/src/ui/enemy-tips.ts": "c7f1d21f3e2f9490c9dd7f143aecddda7c6f971d78c8f72d6a8eb4d0a4a98238",
+    "web/src/ui/exit-kind.ts": "71cb5f4025800597af0d2e51eeaa20a028c77c882ee315e5d20a8aa4d27b3c1b",
+    "web/src/ui/feats.ts": "9a44a2fd73ca0de589e79beb93fc9e4de50e13f2a602b6917f1cc9ea2b415d7a",
+    "web/src/ui/fold.ts": "97b2cb6663e611595c27094e099a5e3808dccf49bfff0a4d783f0961f67032ab",
+    "web/src/ui/forecast.ts": "becd5a052891c898804e7343b9266ea46d361a9dd3c8941e5c8cb5fc50aeacb0",
+    "web/src/ui/forge.ts": "126183e2241da51fd1018c703c8761795987816cbbc0c227f8483cb1617368a3",
+    "web/src/ui/frame.ts": "9528e2490e8c4b54d32bd03c3a21086a1574c746c1f66a2b8faae6cbe0f29829",
+    "web/src/ui/game-menu.ts": "26b1fcfda911a364805469fd0e1e152f6b41b9c7d9ef471d6b357b34d5d39953",
+    "web/src/ui/gold-transfers.ts": "d2388c5ecfd2d5dbc7d9fb45b2d6110088833b3610732bce0a11cbec1088cb28",
+    "web/src/ui/gold-words.ts": "4e9668dcedf2b81ed614afbf4978628fb40253d52bd3ce6957658e151356af65",
+    "web/src/ui/gold.ts": "af92d41896a3a325a756248fc0b6224ec407ac85417d6ad56a180b4dfe3d6c54",
+    "web/src/ui/gun-names.ts": "f2dac61db768be56caf371b78ae053e08d268c9eece47a4bb2b51d10f7d6efc4",
+    "web/src/ui/gun-status.ts": "a99ffe45db0d456dff8c529966899fb490f96de9ce368f0b80eeadcb1be4333f",
+    "web/src/ui/hero-equipment-figure.ts": "45d4600187208930ecd0e6182207fa5f161d51776108a58a095e5b9491019d01",
+    "web/src/ui/hero-hub.ts": "f140b7372edaef068f47926157fca7e26dfe09bf0668928251b7c57b191f209e",
+    "web/src/ui/hero-life.ts": "1e5c76b0613f9a1a3a43db1f2359cd6a0e043f8b37818944b6f5685d7c5d8b0d",
+    "web/src/ui/hero-presence.ts": "62135eb4a83ca1218dbe0d00fabf31b72cba0edf7456a0b98433b7069842f177",
+    "web/src/ui/hero-progression.ts": "b518fafaeeefa2f28f8ea5618b4791f142b915c6fb425a07b06f656cf64e570e",
+    "web/src/ui/heroes.ts": "88fb056f30673c3520980dcf700ec0bf08679ae5e7eef0bd38906f9957391c25",
+    "web/src/ui/items.ts": "a46f47ea716b0f2e9a5f41d2cfeaf100d8bc5767f0fbf5523dd6083ba07daebe",
+    "web/src/ui/journal-window.ts": "1bcbbf9f10bb4b9f9f50ef3c03d6c6e1ba92be59ddc96cf357da17ac4fe136bc",
+    "web/src/ui/journal.ts": "55db17a7842005bfcd08e3b78fee5c914cf1ce04add5b1c80cb16f17be8a4de4",
+    "web/src/ui/king-eta.ts": "84e61cd47b97ab1d1e045aa8d0cbb0c3935061b5ac069d3e4021e035bbfcfe00",
+    "web/src/ui/ladder.ts": "6ce3f299bc0aa19f429b0fe81171b95c61366d3f360071ef876e13cf01792ccf",
+    "web/src/ui/legacy-earned.ts": "5115d39c8eb88ac4921f81ce0820727ae46fbc980c2ac121a4c1845a8fe66220",
+    "web/src/ui/legacy.ts": "53dd967f5665dabb667842b80f3afa5a62f6b1f12088f29797508e4441dfd380",
+    "web/src/ui/legendary-discovery.ts": "d96fdc13688985ee7b80ca488674eade150258fbe81a14cdff1e1789095ddd3e",
+    "web/src/ui/legendary-gear.ts": "590ecccd9f97be6ae2eda134dfe5e801354e010d90ecee5c06283e2bdfa60eea",
+    "web/src/ui/look.ts": "7ee549145fdafa33b4537fa056002a69825d2899aa07ed9c3c55959b00ff2a67",
+    "web/src/ui/menu-material.ts": "d57630c2d3b9313330608b2edb62e66d8d049621a4e097398f8e9e82efb48443",
+    "web/src/ui/meters.ts": "3567181f3461e1212998983f5d956186a10934379ca80b1ddd7b9d245b6ce672",
+    "web/src/ui/oaths.ts": "1e61da235e98b7dcd989b8dff2485ea886d1702fe67b73a2fdb164f94c098a7a",
+    "web/src/ui/order-offer.ts": "39ac56aa46ffbdbc72c7fc71d6a8f726557a38c5b1f0dd96d4428550f12f6f0a",
+    "web/src/ui/orders.ts": "9826c8ab76358c79f79e7f6bd348c6c37ea4abb8296fc472d2a5cb9b7c9a861a",
+    "web/src/ui/packages.ts": "4a1bf229c2ace7e41275d7c63f81e587609b0f97631085660c4bf3327d26c312",
+    "web/src/ui/painted-skill-assets.ts": "69836983a52a7e7c25c9a34953b1c8f27f4d171bd1cafddf8d40cc30d61bc600",
+    "web/src/ui/party.ts": "c3abd3617d5d9441dd735e4a8e1e02de9a9410c92317a79699e55e249d637d8a",
+    "web/src/ui/patches.ts": "a7fb65d8d64ccde01c5b9288ba8c325c2937b183b38690588924c059bcd54dc2",
+    "web/src/ui/pets.ts": "4d0c2cc08dbe1e21abb527f97a22f948c3375ded94bfb5e238db914521bd44c4",
+    "web/src/ui/placeholder-view.ts": "984a9b88d28ccce1aefb207f9115f147827c403ff1067ddc271cc88454048218",
+    "web/src/ui/preparation.ts": "e69f9780ee7453ac5c19de78c82bc5b8b95a85ae0f3cd1001d9bcf375a3d886b",
+    "web/src/ui/progress-goal.ts": "96d6a6108fde43331f997a38caff60221f47b0d63f8f1b6c021cded1b3753f47",
+    "web/src/ui/progress.ts": "62db8c83d97217153ede9a63dfdcd49300c7d4509a70c1ec4d0446eb8b23863e",
+    "web/src/ui/quest.ts": "2ea1851eb20d01725fc74ef6357569d8631037e123bb3e8b183ccb3c3cd4e110",
+    "web/src/ui/replay.ts": "f18de44a934488b63890678fdcfd8083c315e2824d7a93712194f866d5c62efc",
+    "web/src/ui/report-bosses.ts": "0ef7a03db51db98da8e4e62c9946348a1682c785b12af81d197c484925601e21",
+    "web/src/ui/report-choices.ts": "638be78f158bc89f9ad17dddc01b95e28b26782aade63f1954c079b6c2c144ec",
+    "web/src/ui/report-juice.ts": "d3af921177fb7f64d7c69c7843886530afc005878c2c6c29ef67bd5f8e41d995",
+    "web/src/ui/report-supplies.ts": "7f7cba48cf01498fef946550647c1de06a293df22e2e912eecc266a2a598f867",
+    "web/src/ui/report.ts": "f5bd65981ce021107ef0da60a4eb4d62bbf6701c61cdc59e7761ce1f91cb846f",
+    "web/src/ui/return-pick.ts": "7da95e486f52d17d31ee65221b627c9b142abb30b1775350c7623c20451311f7",
+    "web/src/ui/reveal.ts": "34b00da513dc1e18f67d45ebd37f04daf102ce02d182aa9757b23b9c9d8b9e98",
+    "web/src/ui/route.ts": "6936ecb63e893b42479ca0654bf2efd225d101907cc1a10b8a7fec2b30b59e92",
+    "web/src/ui/runclear.ts": "381f8e7ce440e18671351ba6af5fb3a65e09d849ac3fa682a64a91857c74655d",
+    "web/src/ui/runlane.ts": "d33ba490728d2ab1b1d727282d06a312d64a9e8b71b6d3e33d51583d91997574",
+    "web/src/ui/runlog.ts": "036590292b61598a324d9c8be8bacc1eb8e95e5c8f494aeaa1e340ddd7a1befd",
+    "web/src/ui/runs.ts": "bbaa3e4da8a5fb3e0cb4fdead5cc9579383afd6aa77fbfb6835d7f29faeb9713",
+    "web/src/ui/salvage.ts": "68d8924b79e5ba033eb27efa38e697c4bada4f12f25b97979b1b31712c3e8b06",
+    "web/src/ui/set-equipment.ts": "a69c026f7ce84ea85cb5b9d61d6483d12e36ebb04a5b60b553a8372ba7a6528b",
+    "web/src/ui/settings.ts": "29c8031e68f9591964d97d8461c3016414093369470b040925a61925df01cd27",
+    "web/src/ui/sheet-focus.ts": "6d7e406f3a7fe53f024a278d3d80193d5095f61871a5a15c2cb8381102a69135",
+    "web/src/ui/sheet.ts": "8103b6ebc98a54d2d92888ee8c8dbed5f49fcdb71868a0fb5330465c04221a05",
+    "web/src/ui/skill-icons.ts": "97819dc39d27989fe752086c30715abeb004b628a0961366430ed102c88c861a",
+    "web/src/ui/skin.json": "9beff07a7485c237db9a9b4a94b9408d5ad0e23252850830b9b01cbf87d67a7d",
+    "web/src/ui/skin.ts": "453e65801d6c07086c7b8b7c038d44c5f92af19bad034ce5da29b426cc2db5b3",
+    "web/src/ui/starting-kits.ts": "55480b2725b4e148e3e8cd6d45c0cde0553462bd5e2fc347375ff9052758f922",
+    "web/src/ui/systems.ts": "9844dbd820de8377c3d1d533fdd0ae8e9a5bdeaf46e31756884ad44058ed8d14",
+    "web/src/ui/tactic-observer.ts": "4993c3e832eca5af20875ad5b0d2b8e3b13766d9f6e4e3106131cba877b6af5c",
+    "web/src/ui/tasks.ts": "a64afb8b2b04b1d1f9cf1d36be6443d110edb731cb62d662ec2491257520b762",
+    "web/src/ui/tips.ts": "1502e24b7badf9e0f3a8c0104b515e2e1b82f5aa4ee5bfd6f7ec0670fb660a57",
+    "web/src/ui/tokens.ts": "35c95adf8695c6cfe4381118e760c6fd48ef803bef4ddc6a56ffb0635b5fba9e",
+    "web/src/ui/town.ts": "a27c6fc7ffaba25e81d577112bc328782a9703e7c8d00cfa7d6f7af7870188a5",
+    "web/src/ui/trace.ts": "97e8ab00f3de28e37a5e339fc7b988779412d556e78a84dc519463e61a58864c",
+    "web/src/ui/tracks.ts": "b62fa137400a3cb22f4671bcbc3ef7b7c0ce65d162bbca6ed0b10e47190f370e",
+    "web/src/ui/unit-icon.ts": "520b3b5333c40575b3ba6a54ec6ba8515b3f7b17974ec7a28b6ff0cc6f0ec03e",
+    "web/src/ui/unlocks.ts": "5eec45d44d2bbc14a42112702d7933d68a7b7ba6313801c7e62265715ea40949",
+    "web/src/ui/viewer.ts": "89fa802c0d9d348548960688c79e63c327e6a68ff72091cca86ca9541c23abaf",
+    "web/src/ui/wall-preview.ts": "3bf77af4d403474f58c92105d3438b31f327501f9eeb234c2fdd8ea8798c9374",
+    "web/src/ui/wall.ts": "e846a5346ca14123de8fe38b208680677bba06e0bb071f1ab52b3acbdf0b7902",
+    "web/src/ui/watch.ts": "e75968793f9e8690261dfed7c500e0d03c69be6670ea037af6beb7b0690d92fc",
+    "web/src/ui/works.ts": "1d5b40b26886a38cfcafc4ed7a56551f12761a9372a0bb9e7feb9ece498ab39a",
+    "web/src/ui-foundations.css": "1534b5b4f6082ab6a6da3ca5087fd41349f654064fb410c4e7679919fbc4fed4",
+    "web/src/wide.css": "cf01a7d0e3a46de2f356f4299575dcf4b0aa84dabdfc93768e60d62c012b708b",
+    "web/src/works.css": "be78761e1bab194f76ca875d5d96f5ef764a29caa7c24ec2f21b07ab05759007"
+  },
+  "status": "PASS",
+  "closedUtc": "2026-10-16T01:04:16.702Z"
+}

@@ -1,0 +1,41 @@
+{
+  "recordedUtc": "2026-10-16T01:05:44.196835+00:00",
+  "phases": [
+    {
+      "phase": "v1",
+      "session": 54477,
+      "exitCode": 101,
+      "source": "test-module-v1.rs",
+      "sourceSha256": "82b0734a9bf115fcd188ff92ea14b1970d6f7cdc645e24fd74294ba9d0173b41",
+      "log": "native-v1.log",
+      "observed": "14actual refusal cases passed; Oathguard spent state passed; Siege applied-positive assertion failed on Warlord shield context. Legal attack consumed but actual base damage was blocked, so no Applied is intended."
+    },
+    {
+      "phase": "v2",
+      "exitCode": 101,
+      "source": "test-module-v2.rs",
+      "sourceSha256": "82b0734a9bf115fcd188ff92ea14b1970d6f7cdc645e24fd74294ba9d0173b41",
+      "log": "native-v2.log",
+      "observed": "Attempted textual fixture patch did not match formatted source (Python assertion); subsequent command repeated untouched v1 tests. No production change. Original red retained; not independent coverage."
+    },
+    {
+      "phase": "v3",
+      "session": 93116,
+      "status": "terminal",
+      "source": "test-module-v3.rs",
+      "sourceSha256": "9f68b95d9fb82393aceb57c3ad2c7d0061840f7d2befebec0622a425212181a1",
+      "log": "native-v3.log",
+      "observed": "Real Bloat Mother boss-Bash prefix replaces only Siege positive fixture; unshielded actual consumer must apply positive damage.",
+      "exitCode": 0
+    },
+    {
+      "phase": "v4",
+      "status": "terminal",
+      "exitCode": 0,
+      "source": "test-module-v4.rs",
+      "sourceSha256": "af3062b4f505092eac4c6bd68ef21b498e682770dce2bfdeec778d262c84a19c",
+      "log": "advanced-v4.log",
+      "observed": "31advanced PASS;16tree/stage PASS; default workspace all-targetClippy PASS. Adds real second moving Kite/retargetAim and blocked Siege negative."
+    }
+  ]
+}
