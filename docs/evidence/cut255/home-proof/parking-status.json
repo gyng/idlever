@@ -1,0 +1,69 @@
+{
+  "utc": "2026-10-16T01:49:32.062253+00:00",
+  "status": "PARKED_INCOMPLETE_NO_FULLMATRIX_ACCEPTANCE",
+  "phases": {
+    "attempt-1": {
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   'UNCLASSIFIED:<button class=\"task-entry\" data-entry-id=\"delve\" data-state=\"ready\" data-recommended=\"false\"><span class=\"task-pip\" aria',\n+   'UNCLASSIFIED:<button class=\"task-entry\" data-entry-id=\"loadout\" data-state=\"ready\" data-recommended=\"false\"><span class=\"task-pip\" ar',\n+   'UNCLASSIFIED:<button class=\"task-entry\" data-entry-id=\"scout\" data-state=\"active\" data-recommended=\"true\"><span class=\"task-pip\" aria',\n+   'UNCLASSIFIED:<summary class=\"task-summary\">Tasks<span class=\"task-count num\">6</span></summary>',\n    'clone',\n    'forge',\n    'gold',\n    'guild',\n    'heroes',\n\n    at file:///home/g/p/riddle/docs/evidence/cut255/home-proof/check.mjs:22:192",
+      "closedUtc": "2026-10-16T01:16:15.229Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/attempt-1/results.json",
+      "completed_cases": 0
+    },
+    "attempt-2": {
+      "status": "FAIL",
+      "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.town-hero-focus') to be visible\u001b[22m\n\n    at /home/g/p/riddle/docs/evidence/cut255/home-proof/check.mjs:41:140",
+      "closedUtc": "2026-10-16T01:31:02.231Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/attempt-2/results.json",
+      "completed_cases": 0
+    },
+    "attempt-3": {
+      "status": "FAIL",
+      "error": "page.waitForSelector: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.town-hero-focus')\u001b[22m\n\n    at /home/g/p/riddle/docs/evidence/cut255/home-proof/check.mjs:41:72",
+      "closedUtc": "2026-10-16T01:34:37.146Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/attempt-3/results.json",
+      "completed_cases": 1
+    },
+    "font-supplement-1": {
+      "status": "STARTUP_FAILED_BEFORE_BROWSER",
+      "error": null,
+      "closedUtc": null,
+      "sourceManifest": "docs/evidence/cut255/home-proof/font-supplement-1/results.json",
+      "completed_cases": 0
+    },
+    "locate-diagnostic-1": {
+      "status": "PASS_LOCATE_OBSERVED",
+      "error": null,
+      "closedUtc": "2026-10-16T01:33:09.059Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/locate-diagnostic-1/results.json",
+      "completed_cases": 0
+    },
+    "locate-diagnostic-2": {
+      "status": "PASS_LOCATE_OBSERVED",
+      "error": null,
+      "closedUtc": "2026-10-16T01:36:22.422Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/locate-diagnostic-2/results.json",
+      "completed_cases": 0
+    },
+    "cross-owner-locate-1": {
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(row.trace.some(x=>x.connected&&x.currentTown&&x.selected===2&&x.rect.w>=44&&x.rect.h>=44))\n\n    at file:///home/g/p/riddle/docs/evidence/cut255/home-proof/cross-owner-locate.mjs:28:171",
+      "closedUtc": "2026-10-16T01:41:47.937Z",
+      "sourceManifest": "docs/evidence/cut255/home-proof/cross-owner-locate-1/results.json",
+      "completed_cases": 0
+    }
+  },
+  "source_epochs": "source-epochs.json",
+  "all_scripts_exact": "script-epoch-map.json",
+  "process_end": "parking-process-end.json",
+  "open_limits": [
+    "Current12mobilegate fullmatrix not reached afterTasks grouping; originalgenuine13failure retained",
+    "PhoneMenu/Tasksfont and callback preservation unreached",
+    "200%Hubheader crowds initialcontent; compactrefinementdeferred",
+    "ComplexjourneyLocatefailures notexplained by isolatedsameownerpositives",
+    "Crossowneroldcapturedhook path confirmed bysource; RAFdispatchsuccessor stillfailed connectedring and wasreverted",
+    "No new broadcurrentHome/Hub/fun/Safari/GPU acceptance"
+  ],
+  "rejected_patch_reverted_reference": "docs/evidence/cut255/initial-regression/locate-fix-reverted.json",
+  "current_camp_restores_preRAF_sha256": "751e924c5df0bd19399c576ecd95875ffe4a4a31cdd29bdd3ebe2dffbeadf358",
+  "no_owned_live_jobs": true
+}

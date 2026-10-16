@@ -1,0 +1,51 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  [
++   'UNCLASSIFIED:<button class="task-entry" data-entry-id="delve" data-state="ready" data-recommended="false"><span class="task-pip" aria',
++   'UNCLASSIFIED:<button class="task-entry" data-entry-id="loadout" data-state="ready" data-recommended="false"><span class="task-pip" ar',
++   'UNCLASSIFIED:<button class="task-entry" data-entry-id="scout" data-state="active" data-recommended="true"><span class="task-pip" aria',
++   'UNCLASSIFIED:<summary class="task-summary">Tasks<span class="task-count num">6</span></summary>',
+    'clone',
+    'forge',
+    'gold',
+    'guild',
+    'heroes',
+
+    at file:///home/g/p/riddle/docs/evidence/cut255/home-proof/check.mjs:22:192 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'UNCLASSIFIED:<button class="task-entry" data-entry-id="delve" data-state="ready" data-recommended="false"><span class="task-pip" aria',
+    'UNCLASSIFIED:<button class="task-entry" data-entry-id="loadout" data-state="ready" data-recommended="false"><span class="task-pip" ar',
+    'UNCLASSIFIED:<button class="task-entry" data-entry-id="scout" data-state="active" data-recommended="true"><span class="task-pip" aria',
+    'UNCLASSIFIED:<summary class="task-summary">Tasks<span class="task-count num">6</span></summary>',
+    'clone',
+    'forge',
+    'gold',
+    'guild',
+    'heroes',
+    'hub:1',
+    'hub:2',
+    'hub:3',
+    'menu',
+    'recovery',
+    'savings',
+    'send'
+  ],
+  expected: [
+    'clone',   'forge',
+    'gold',    'guild',
+    'heroes',  'hub:1',
+    'hub:2',   'hub:3',
+    'menu',    'recovery',
+    'savings', 'send'
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v22.18.0

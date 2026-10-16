@@ -1,0 +1,17 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(row.trace.some(x=>x.connected&&x.currentTown&&x.selected===2&&x.rect.w>=44&&x.rect.h>=44))
+
+    at file:///home/g/p/riddle/docs/evidence/cut255/home-proof/cross-owner-locate.mjs:28:171 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.18.0

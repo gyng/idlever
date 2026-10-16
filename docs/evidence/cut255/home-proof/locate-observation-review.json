@@ -1,0 +1,52 @@
+{
+  "utc": "2026-10-16T01:38:09.038819+00:00",
+  "original": {
+    "attempt2": "post-settle Locate timeout atdesktopnormal; earlier source failed genuineTasks13gate separately.",
+    "attempt3": "normaldesktop fulljourney passes, desktop200 Locatewaittimeout despite prearmed5s locator. No exact cause established."
+  },
+  "positive_isolated_observations": [
+    {
+      "path": "locate-diagnostic-1",
+      "status": "PASS_LOCATE_OBSERVED",
+      "actualSaveExact": true,
+      "selected": 2,
+      "trace": [
+        {
+          "event": "added",
+          "time": 2957.4000000059605,
+          "rect": {
+            "x": 678,
+            "y": 464.19061279296875,
+            "w": 52,
+            "h": 52
+          },
+          "animation": "none"
+        }
+      ],
+      "clickWallMs": null,
+      "sourceUnchanged": true
+    },
+    {
+      "path": "locate-diagnostic-2",
+      "status": "PASS_LOCATE_OBSERVED",
+      "actualSaveExact": true,
+      "selected": 2,
+      "trace": [
+        {
+          "event": "added",
+          "time": 3198.199999988079,
+          "rect": {
+            "x": 682,
+            "y": 419.14373779296875,
+            "w": 52,
+            "h": 52
+          },
+          "animation": "none"
+        }
+      ],
+      "clickWallMs": 201,
+      "sourceUnchanged": true
+    }
+  ],
+  "scope": "These isolated publicclick observations prove feedback can work in both sizes, not why the longer sequence missed it. Do not relabel failedjourneys as passes or weaken Locatebar. ReducedMotion disablesanimation; assume neither expiry nor productbug without trace."
+}

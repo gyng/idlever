@@ -1,0 +1,14 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.waitForSelector: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('.town-hero-focus')[22m
+
+    at /home/g/p/riddle/docs/evidence/cut255/home-proof/check.mjs:41:72 {
+  log: [ "  - waiting for locator('.town-hero-focus')" ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.18.0
