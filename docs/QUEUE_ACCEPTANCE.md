@@ -167,3 +167,25 @@ Separate client recovery legs pass but are not a fresh11/11/fullHome acceptance.
 Native tests-only priority1–3 pass51advanced/16tree/defaultClippy with identical
 production/WASM; priority4 is unstarted. Two new GunnerV2masters are unselected.
 See HANDOFF.md's parked resume order; all40/full/exhaustive/fun scope remains.
+
+**Resumed2026-10-16 — the parked order is worked through, with the UI lane handed
+off.** Cut255 is closed at its contract scope (four-case matrix PASS, the 12-function
+inventory on mobile, two real defects fixed: locate into a disposed scene, a scene
+clock that could start negative) and Cut256's header is compacted with the 320/200%
+overflow gone; `hero-hub`'s remaining material-contrast stage, `cut13`/`cut29`'s four
+stale assertions each and the report's PENDING ordering are the UI owner's (Codex/
+Claude) per the owner's pivot. Cut257 (six authored advanced payoffs) is implemented
+and verified with fresh earned evidence (`docs/CUT257_SKILL_PAYOFF_FIXES.md`,
+`docs/evidence/cut257/`). Negative-matrix priority4 is **done** (8 tests, production
+bytes unchanged). The **exhaustive audit was run** (272 cases): its metrics leg was
+dead on two labelled cohort cards (repaired on the reader side) and its dayplayer leg
+reports exactly one failing clause — `each system adds value` on **pets**, a coin flip
+in the cached record (7 pass / 7 fail since 2026-10-03), needing an owner tolerance
+decision or a pets content change, not an expected-value edit
+(`docs/evidence/cut257/exhaustive-audit-findings.md`). Perf chores landed (the
+worst-death verdict out of the absence; the foreground catalogue reads held off the
+batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md`
+§3.5. R3 has its source-cited review and pair proposals
+(`docs/evidence/mechanics/r3-biome-review-2026-10-16.md` + verification note). Art
+work waits on the Codex quota (`docs/CUT236_ART_GAPS.md` §Pending art work). All40/R1–R6
+items keep their recorded next proofs; independent fun≥80 remains unverified.

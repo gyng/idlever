@@ -12,16 +12,30 @@ iteration). Status at the pivot:
   clock), and the Hub header was compacted. `hero-hub` stops in its
   material-contrast stage — Hub presentation, handed to the UI owner with its
   evidence (`docs/evidence/cut255/`).
-- **Cut257 opened** (`docs/CUT257_SKILL_PAYOFF_FIXES.md`): the advanced-skill
-  payoff defects from the source+evidence review
+- **Cut257 landed and verified** (`docs/CUT257_SKILL_PAYOFF_FIXES.md` §Status): the
+  advanced-skill payoff defects from the source+evidence review
   (`docs/evidence/mechanics/skill-payoff-review-2026-10-16.md`) — Ranger
   `moving_line`/`split_mark` arming, Rogue `ghostwalk`'s missing payoff verb,
   Caster `conduct` policy-inert pick and `chilling_charge` zero-amount reward,
   Gunner `long_watch`'s window shorter than its own cadence, Fighter `holdfast`'s
-  negligible value. `fired>matched` is a tally artifact, not a defect.
-- **Chores in flight**: a measured build/iteration-speed audit and a perf
-  attribution of the offline/absence path (native vs shipping wasm) — both
-  investigations report before any edit.
+  negligible value. Fresh earned continuations show the first three paying; caster
+  `conduct` stays unreached because the branch's only slow row is the parent's.
+  `fired>matched` is a tally artifact, not a defect.
+- **Chores landed**: the worst-death verdict no longer blocks an absence (the report
+  carries `worst_death_id` and pays for the recompute on click), the foreground
+  `unlocks`/`supplyCatalogue` reads are held off the offline batch (values
+  byte-identical), `tools/verify.sh` no longer type-checks the client twice, and the
+  build-phase split is measured — `docs/evidence/mechanics/build-speed-audit-2026-10-16.md`
+  and `perf-attribution-2026-10-16.md`, with the corrected claim in
+  `docs/ITERATION_SPEED.md`. O4 (`unlockDeltas`) was measured and deliberately not
+  landed (it changes a shipped value); its core-side variant needs an owner-accepted
+  contract plus a wasm rebuild.
+- **Next mechanic queue**: R3's six paired compositions (each needs a *new* earned
+  send that re-encounters the scene, since no historical checkpoint can be re-run —
+  `docs/evidence/mechanics/r3-biome-review-2026-10-16.md` §5), the `each system adds
+  value` pets clause (an owner tolerance decision), and the R4 class-verb gap the
+  ledger records. Independent fun≥80 still needs the blind-rater protocol on a
+  frozen candidate.
 
 ## Current checkpoint and owner additions
 
