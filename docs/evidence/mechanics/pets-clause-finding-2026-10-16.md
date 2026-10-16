@@ -54,6 +54,32 @@ coin flip).
    causes), leaving the death-rate clause as descriptive only.
 4. **Leave it**: the exhaustive audit keeps reporting exactly this one failure.
 
+## Ready to apply, once you pick (this is the whole change)
+
+The clause is one expression, `crates/idlever-core/examples/dayplayer.rs` (~2110):
+
+```rust
+"pets" => {
+    let d = |o: &SeedOut| 100.0 * o.deaths as f64 / o.sends.max(1) as f64;
+    let (a, b) = (mean(t, &d), mean(w, &d));
+    (a, b, "% deaths", a < b)          // ← today
+}
+```
+
+- **Option 1 (tolerance)** — `a < b + 2.0`, i.e. pets must not be worse by more than two
+  points. Consistent with the sibling clauses, which already carry margins (`bank` uses
+  `a > b * 1.01`). Comment it with the measured effect size and this finding.
+- **Option 2 (more seeds)** — no code change: run the row with a larger sample
+  (`node tools/gates.mjs --rows each-system --seeds 48`), which also re-samples every other
+  system's clause at 48 seeds.
+- **Option 3 (re-scope)** — replace the death-rate measure with one pets should move
+  (e.g. deaths per send where companions were actually fielded); this is content/rules
+  work, not a one-line edit.
+- **Option 4 (leave it)** — nothing to apply; the exhaustive audit keeps reporting this
+  one failure.
+
+Either applied form needs the row re-run and the result recorded with the new value.
+
 Do not move the expected value to obtain green. Limits: cached legs only (no new
 simulation), one day-depth per leg, and the bar's own per-seed aggregation is
 reproduced rather than re-derived from raw runs.
