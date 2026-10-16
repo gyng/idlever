@@ -310,6 +310,15 @@ each card's own preset, which is the point of scoring from the cards alone.
   identity they belong to. It cannot detect that a rater played a different build, ran a shortened
   horizon, or wrote a card from memory: those are the horizon and blindness rules in
   `eval/RATING.md` / `eval/RATER_PROMPT.md`, audited by the coordinator, not by this tool.
+- **Blindness is to design history, not to the goal.** The packet's `PACKET.json` excludes "any score
+  the build is meant to reach", but two of the four briefed documents *are* the project's precommitted
+  brief, and one of them states the target: `docs/FUN_EVAL_IDLE.md` ends with "This file's axes,
+  weights and **the fun ≥ 80 goal** are unchanged." So every rater this harness briefs knows the goal
+  score, exactly as the twelve recorded cohorts did. `packet-check` compares bytes and cannot see
+  semantics, and changing the brief is not the harness's call — it is the owner's (drop the goal from
+  the briefed copy, or accept that ratings are goal-aware). Checked on the first real packet
+  (`e33d50b`, rater `blind-a`): `RATING.md`'s two "80"s are the **α ≥ 0.80 decision** threshold, not a
+  score target, and no card, cohort record or coordinator note leaks in.
 - **It does not judge quality or fun.** It has no opinion anywhere; the only judgement in the chain is a
   rater's award on an anchor, and the only arithmetic is eval-fun's.
 
