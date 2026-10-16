@@ -102,6 +102,29 @@ iteration).** State of the resume order:
    `tools/verify.sh` no longer type-checks the client twice, and the measured
    build-phase split corrects `docs/ITERATION_SPEED.md` §3.5's engine.rs claim
    (~10 %, not "toward 5 s") — `docs/evidence/mechanics/*`.
+6. **The exhaustive audit's one failing clause is now quantified.** `pets` compares
+   unpaired 16-seed means of `deaths/sends` (TUNED vs TUNED-pets) and has flipped
+   7 pass / 7 fail since 2026-10-03. Replaying the gate's *own cached legs*
+   (`docs/evidence/mechanics/pets-clause-analysis.mjs` reproduces the reported
+   61.3/59.3 exactly, which proves the parse): the effect is 0.02–1.95 points,
+   4 pass / 2 fail across the six source keys holding both configs, the paired sign
+   test is never significant (p = 0.23–1.00; today 9 worse / 7 better), and one
+   failure turns on **+0.02 points**. Owner options are a tolerance (±2 pts), 48+
+   seeds, or a re-scoped measure — the expected value must not move. Finding:
+   `docs/evidence/mechanics/pets-clause-finding-2026-10-16.md`.
+7. **R3's scene-encounter assumption is priced** from the 565 preserved
+   reconstructions of all 13 chains (`docs/evidence/mechanics/r3-scene-encounter-pricing.mjs`
+   + the 2026-10-16 finding): gas, jackals/ghouls, wraiths, skeletons, acolytes,
+   ogres and mirror shades appear in 12–13/13 chains, but `eel`, `lich` and
+   `iron_golem` in only 3/13 (≤23 %, an upper bound given name confounds) and
+   `warlord` never — so one new earned send can meet most named scenes, and the
+   iron-golem-keyed reflect pair should be re-keyed on a common reflector. Presence
+   is not proof a mechanic fired.
+8. **The fun-eval harness is being built** (the only path to an independent fun≥80):
+   freeze a candidate with recorded identity, hand raters only the frozen brief,
+   collect cards, score fun from the cards alone, calibrated against the recorded
+   cohorts. In flight by a delegated agent; nothing about it is accepted until its
+   calibration table and identity evidence are reviewed here.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is
