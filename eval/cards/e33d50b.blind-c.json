@@ -1,0 +1,248 @@
+{
+  "$comment": "Blind card, rater blind-c, candidate e33d50b, seed 768. Criterion + idle probes answered before any award; every note quotes something seen on screen or read from the game's own save export. bot stays 'na' on every axis (caps applied later by the coordinator).",
+  "game": "Idlever",
+  "build": "e33d50bee5936436b6c5407584f1f4a7a24bc747 (short e33d50bee593); wasm 0.1.0 reported by Settings > ENGINE; page header reports 'ALPHA build 2026-10-16'; wasm sha256 51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191; dist manifest sha256 4b5f19dc511d72857c3a00bbc8a620ff221258b80babf1dfa9afe07b39462f89",
+  "genre": "idle-roguelike",
+  "presets": "../riddle/eval/presets.json",
+  "profile": null,
+  "tier": 1,
+  "evaluator": "blind-c (blind agent rater)",
+  "identity": {
+    "url": "http://127.0.0.1:37365/",
+    "freshOpen": "http://127.0.0.1:37365/?dev=1&seed=768&fresh=1 (opened once, at the start)",
+    "absenceLoads": [
+      "http://127.0.0.1:37365/?dev=1&absent=20m",
+      "http://127.0.0.1:37365/?dev=1&absent=4h",
+      "http://127.0.0.1:37365/?dev=1&absent=8h",
+      "http://127.0.0.1:37365/?dev=1&runs=1&absent=20m (retry with the RATING.md contract form)"
+    ],
+    "seed": 768,
+    "driverPort": 36805,
+    "driver": "node tools/driver.mjs --dir scratchpad/blind-c --port 36805 --headed --checkpoint",
+    "viewport": "402x681 CSS px, deviceScaleFactor 3 (the driver's phone viewport; the brief's nominal 400x800 is not what the harness opens). Measured in-page: innerWidth 402, innerHeight 681, devicePixelRatio 3. Screenshots are 1206x2043.",
+    "textScale": "no in-game text-scale control exists (Settings offers only mute / slowdowns / effects / auto-continue / save export-import / rules export-import / debug export / reset), so text is at the browser default: documentElement fontSize = 17px",
+    "gpu": "headed Chromium under WSLg; measured 60 fps in-page (121 rAF callbacks in 2006 ms)",
+    "desktopResize": "I resized the same page to 1280x800 twice, through the driver's js op, to check whether the rule editor needs the desktop layout RATING.md allows for the editor. It does not appear there either; the layout change was reverted immediately and all rated play is at 402x681."
+  },
+  "horizon": {
+    "activeMinutes": 40,
+    "activeMinutesNote": "40 real minutes of active play from a fresh lineage: the driver became ready at ~00:32 and the card was finalised at ~01:12, with the game being driven the whole time (first screenshot 00:33:05, rules export 01:08:07). About 11 of those minutes were spent watching runs at 1x through the driver's watch op, 4 of them lost to the Hand-mode freeze described under clarity, and the three absence loads plus ~7 minutes of return play sit inside the same span. Nothing here is padded, and no time is claimed for the checkpoint writes themselves.",
+    "absences": [
+      "20m — loaded as prescribed; no observable effect",
+      "4h — loaded as prescribed; no observable effect",
+      "8h — loaded as prescribed; no observable effect"
+    ],
+    "absenceDetail": "None of the three absence loads produced catch-up. __idlever.lastAbsence stayed null, the save's lineage.absences stayed 1, lineage.in_absence stayed true, GOLD stayed $305 across the 4h and the 8h loads, no welcome-back screen or offline report appeared, and offlineRunning/offlineIncomplete stayed false. The only return-side change was the bottom-bar pick counter (1 -> 3 -> 4) and the pick sheet itself. Because a 20 min break, an afternoon and a night all behave identically, the cadence the brief asks me to describe does not exist in this build.",
+    "runsWatched": 6,
+    "runsWatchedAt1x": 3,
+    "runsOffline": 0,
+    "ruleEdits": 2,
+    "ruleEditsDetail": "Two edits of my own in RUN SETUP (ORDERS): LEGACY SPEND 'off' -> 'damage', and AUTO RESTOCK 'on' -> 'off'; the town pill then read 'run setup restock off . legacy damage'. Plus one package swap on the report's 'New choices' (COMBAT STYLE 'Steady L1' -> 'Guarded L1'). Rule rows authored by me: 0 — the pen is locked (see gaps.major).",
+    "deathsRead": 0,
+    "resumedFromCheckpoint": 0,
+    "checkpoints": "2 saves, both in scratchpad/blind-c/checkpoint/ with notes.md and progress: one after the cold block (logged as 32 min) and one after the last absence (logged as 47 min, an over-count I am correcting here - the real active figure is 40 min and that is what activeMinutes records). The driver ran the whole session with --checkpoint, so browser-state.json is there too, but I never restored it and never resumed: the session did not die.",
+    "notes": "resumedFromCheckpoint: 0 times — the session never died. Checkpoints were written to scratchpad/blind-c/checkpoint/ after the cold block and after the last absence, with notes.md and progress."
+  },
+  "killCriteria": {
+    "crashOrDataLoss": false,
+    "feltInputLatencyInCoreAct": false,
+    "firstSessionWithoutCoreAct": false,
+    "darkPatternInLoop": false,
+    "defaultRulesBeatEveryEdit": false,
+    "unfairDeathShareAbove10pct": false,
+    "returnWithNothingToDecide": false
+  },
+  "killCriteriaNotes": {
+    "crashOrDataLoss": "Not observed. No page errors; the page sustained 60 fps for the session; the save survived every reload and the exports (save / rules) both produced valid JSON. Two marks against, neither a data loss: opening Hand mode froze the run's clock for minutes (see clarity), and the absent= loads were silently ignored.",
+    "feltInputLatencyInCoreAct": "Not observed. Taps landed immediately (the driver's 'act' settle ran 250-490 ms end to end including its own waits) and the engine reported 60 fps.",
+    "firstSessionWithoutCoreAct": "Not observed. Send -> watch -> read the report ran from minute two: the first run ended with 'Delve ended / 1 RUNS / D5 DEEPEST NEW BEST / $91 GOLD EARNED' inside the first ten minutes. Caveat: the act the brief treats as this build's core (writing rules) never unlocked in the whole session, so the *configuration* half of the core act was absent — recorded under gaps, not scored as this kill.",
+    "darkPatternInLoop": "Not observed in the money sense: the build has no purchases, and nothing is skippable for money (the 'fast' and 'skip' speed controls are free). Strictly for idle, the absence does not punish either — it does nothing at all, no decay and no loss of banked gold ('keeps 100%'). That is an empty return, not an extortion loop.",
+    "defaultRulesBeatEveryEdit": "Untestable as written and therefore left false. I could not write a rule: pkg.pen_open is false, the rule rows carry 'hidden', main.camp carries the state class 'prepen', and the only way to buy a slot ('+1 rule slot, fill rules, 3 tokens or $450') sits in a panel I could not open. What I CAN say is that the shipped default is not optimal: the default stance 'Steady L1' never got past D5 in four runs, while the offered alternative 'Guarded L1' reached D6 on its first run and D8 with a 'CHAMPION SLAIN' inside the next two.",
+    "unfairDeathShareAbove10pct": "Not computable and left false. I read zero deaths in six runs; the save's engine.deaths is an empty object and the Chronicle still says 'No records'. Rows blocked by 'no item' (30) and 'unknown item' (22) hint that some rule firings no vocabulary could satisfy did occur, but I cannot size an unfair-death share without deaths.",
+    "returnWithNothingToDecide": "Not observed. Every return did present a decision: the bottom-bar 'pick' counter and a 'Pick one' sheet with scaled options ('drill / Guarded / +16 runs', 'legacy / Legacy / +9 / DEFAULT', 'marks / Marks / +2 tokens'). What the return did not present is anything to READ about the time away, or any yield — hence the low return award rather than the kill."
+  },
+  "criterion": {
+    "fun_1to7": 4,
+    "playAgainTomorrow_1to7": 3,
+    "recommend_0to10": 6,
+    "checkInTomorrowUnprompted_1to7": 2,
+    "delayedRecall": "same-day: My best run was the fifth — after I swapped the combat style to Guarded L1 the hero walked from D1 to D6 without dropping below 32/38 hp, killed a goblin captain, an ogre that 'WOUND UP', and two archers that kept 'DRAWING', and came home with $134, a new best. What made it turn was that a wall was waiting: 'NEXT WALL / Warlord D8 / counter . ? . meet him' and 'guard Morak the skeleton -> boss focus . Guarded', and the run's REEL closed with 'Banked $134. / Waystone D6 lit.'. The next run pushed to D8 and the log printed 'CHAMPION SLAIN' before the report card said 'D8 DEEPEST NEW BEST' — and the hero was still alive, which is the whole story of my session: the game kept promising a death and never delivered one."
+  },
+  "criterionNotes": {
+    "fun_1to7": "4 — the watching itself is genuinely good and the report is the best screen in the build, but six runs played out the same way, nothing I could change reached the rules, and the three absences behaved identically.",
+    "playAgainTomorrow_1to7": "3 — I want to see D9 and the Warlord, but that is wanting to play, not wanting to check in: nothing accrues while I am gone.",
+    "recommend_0to10": "6 — I would hand it to a friend with the caveat that the pen is locked and closing the tab freezes the world.",
+    "checkInTomorrowUnprompted_1to7": "2 — there is no pull to open it, because opening it after 8 simulated hours returned the same $305 and the same screen as never having left."
+  },
+  "probes": {
+    "clarity": "I always knew what to do at the top level (the DELVE gem pulses, 'Goal / D6 / New record' is on the town, 'FLOOR CHANCE / D6 / 100%' updates as you act), but twice I did not know what had happened: opening 'control' silently froze the run (see note).",
+    "decisions": "Named choice: on the run-4 report I took the offered alternative 'Guarded L1 / Heal early . recover between fights' over 'Steady L1 / Heal when hurt . fight nearest . one heal, two at L5', and the tactics headline jumped from 'floor 6 13%+/-13' to 'floor 6 100%'. I would make it again; it was strictly better.",
+    "mastery": "What I can do now that I could not 40 minutes ago: read the forecast ('RUN OUTCOMES full haul 50% . turn back 50% . death <32% . $50-120/run'), spend tokens, hire a porter, and pick between stances - and I know the bestiary vocabulary the game taught me ('LEARNED: goblin archer . telegraph . ranged', 'monkey . fast . thief', 'pink jelly . splitter').",
+    "tension": "Where I sweated: the second run's tail, which sampled as hp 17 -> 14 -> 10 -> 9 -> 7 -> 6 /36 while the feed printed 'Heading home' and 'RETURNED $68'; later the same breath appeared as the callout 'REST x NOT SAFE' and the forecast line 'death <32%'.",
+    "feel": "What felt good in the hands: nothing I touch, but the thing I watched - the speed control's own pill ('Speed / Normal / 1x', 'quiet . 4x') and the map callouts ('OGRE WINDS UP', 'A loose brick: coins behind it.') land on the beat; what I actually saw was 60 fps of pixel art with no frame loss.",
+    "surprise": "What directly surprised me and changed my configuration: 'NEXT WALL / Warlord D8 / counter . ? . meet him' plus 'guard Morak the skeleton -> boss focus . Guarded' told me a counter-wall was coming, so I swapped to Guarded; the run then met 'Morak' and later printed 'CHAMPION SLAIN'.",
+    "expression": "I could not describe a build to a friend: my configuration was one drop-down (Guarded vs Steady), two order chips, and two worker hires - the 6 rules the hero actually obeys all carry 'origin: stance:guarded' and none of them is mine.",
+    "story": "One run in three sentences: the hero dropped to 6/36 hp on floor 5, chose 'Heading home' over the next room, and still carried out $68 at 'keeps 100%', with the REEL reading 'Met a goblin archer. / goblin archer: telegraph / goblin archer: ranged / Banked $91. / Waystone D5 lit.'",
+    "pacing": "Where play dragged: at 'Normal' the pill I set for a 1x watch kept flapping to 'quiet . 4x' and reprinting itself, so a 1x watch is not a 1x watch; where I wanted one more was every report, which is 2-4 minutes of 'GOLD / $6.1/min . $48' and 'WHO DECIDED / defaults 21% . chores 79%'.",
+    "failure": "Why did I lose? I never did - six runs, no death, 'DEATHS' on the report stayed a blank cell and the Chronicle stayed 'No records'; what I lost instead was depth, and that was legible ('hurt . went home', 'D5 . returned $68 . $68 carried . keeps 100%').",
+    "social": "Nobody and nothing: there is no other player, and the only recurring character is the heir himself, who is not given a voice - the narrator speaks ('A den. Something sleeps.') but never reacts to who he is.",
+    "autonomy": "What I decided that the game did not ask for: I re-read the whole report card and the saves' own rule stats ('blocked: {no item: 30, unknown item: 22}', 'unmet: {hp<30: 2441}') to work out why 'attack nearest' only fired on 12% of turns, and I switched AUTO RESTOCK off just to see the pill change - the game asked for neither.",
+    "progression": "What grew: within a run the kit and the floor ('D5' then 'D6' then 'D8'); between runs LEGACY 6 -> 14, tokens 0 -> 25, stars 1 -> 2, a second hero class level ('Fighter L3'), and a town that gained a Guild reception; and what I no longer need to do is send - 'porter . free / $0' and 'sends him each rest . 2/2 sends'.",
+    "aesthetic": "Describe the place: a night town under a lit cave mouth, a campfire with two figures, fireflies, and a parchment scroll report with a wax-seal palette - I would sit in it doing nothing for a while, and the report scroll is the prettiest thing in the build.",
+    "return": "What I came back to after the overnight load: the same 'GOLD / $305', the same 'FLOOR CHANCE / D6 / 100%', and a bottom-bar 'pick' counter that had grown to four - so what I decided because of it was a reward pick, and no, I would not have rather stayed, because staying and leaving are the same thing here.",
+    "attribution": "Whose decision was that? The report answers for me in its own words - 'WHO DECIDED / defaults 21% . chores 79%' - so the 17% that was mine was the stance swap I made on the report, but I can trace none of the run's turns to a rule I wrote, because I wrote none.",
+    "lapses": "Hand mode freezes the run with only a badge word as the tell; the three absence loads are inert; the rule pen is locked behind a panel I could not open; the 1x watch is really 1x-or-4x."
+  },
+  "axes": [
+    {
+      "id": "clarity",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "time-to-first-rule-edit; misread rate on the trace",
+      "note": "The top level is unmistakable ('Delve', 'Goal / D6 / New record', a pulsing DELVE gem, and a forecast that answers itself: 'FLOOR CHANCE / D6 / 100%'), so I never wondered what to do. One named material lapse, and I lost about four minutes of a live run to it: tapping the 'control / M' tile hands the hero to you, the badge silently changes 'Live' -> 'Hand', and the sim stops dead - __idlever.moveTimer sat frozen at 936 with 'moveDue: true' and hp/gold unchanged for three and a half minutes while the game showed only 'live . the run going on now . watch or not'. The way out ('release / M') exists only once the order panel is expanded, and there is no 'waiting for you' prompt."
+    },
+    {
+      "id": "decisions",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "rule decision gap; dominated-rule rate",
+      "note": "Real configuration choices with foreseeable trade-offs exist and one of them moved a number on screen: the report's 'New choices' offered 'Guarded L1 / Heal early . recover between fights' against the equipped 'Steady L1 / Heal when hurt . fight nearest . one heal, two at L5', and after I equipped Guarded the tactics headline went from 'floor 6 13%+/-13' to 'floor 6 100%'. RUN SETUP adds 'LEGACY SPEND balanced / health / damage / armour / off' and 'AUTO RESTOCK on / off'. What keeps it from strong is that the deeper layer is closed: I could not touch the six rules themselves ('pkg.pen_open: false'), so the choices are a small pick-list rather than a design space - and the first alternative I was offered turned out strictly better, which is the opposite of a defensible tie."
+    },
+    {
+      "id": "mastery",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "depth-per-run vs sessions; rules-per-death trend",
+      "note": "Skill grows visibly over the horizon and the game keeps naming the next thing: my deepest floor went D5, D5, D5, D6, D6, D8 across six runs, the hero went 'Fighter L1' -> 'Fighter L3', the report's LEARNED list grew ('goblin archer . telegraph . ranged', 'monkey . fast . thief', 'pink jelly . splitter'), and the forecast re-priced itself as I learned ('floor 6 13% -> 100%'). The named lapse: the rules-per-death trend the proxy asks for cannot exist, because I could not write a rule and I never saw a death."
+    },
+    {
+      "id": "tension",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "bloody-clear share; bank-or-push margin",
+      "note": "Stakes are chosen and then resolved where you look, and the outcome stayed in doubt: one 1x sample walked my hp down 17, 14, 10, 9, 7, 6 of 36 with the feed printing 'Heading home' and 'RETURNED $68', the report priced the risk for me ('RUN OUTCOMES full haul 50% . turn back 50% . death <32%'), and the map printed both 'REST x NOT SAFE' and 'OGRE WINDS UP' before an ogre swing. What keeps it from strong is that every run I watched ended the same way - 'no heals . collected' - so the doubt never resolved into a loss, and the counter-move I was offered ('guard Morak the skeleton -> boss focus . Guarded') removed the doubt rather than deepening it ('floor 6 100%')."
+    },
+    {
+      "id": "feel",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "frame time; events per minute at 1x",
+      "note": "The render and the feedback density are both real: I measured 60 fps in-page (121 rAF callbacks in 2006 ms) and the watch feed produced 143 new lines in 150 s and 250 in 170 s of sampling at the speed I set. Named lapse: 'Normal', which the pill labels '1x', is not 1x - it flips to 'quiet . 4x' whenever nothing is happening and the pill reprints itself on every flip, so a five-second sample of a '1x' watch reads '4x / 1x / quiet . 4x / 1x' and the feed jumps. Audio is unassessed, not praised or faulted: I can see __audio.log firing ('hit', 'rule' about once a second in a fight, 'telegraph', 'exit_bank' at the run's end) with muted:false and armed:true, but WSLg gives me no ears."
+    },
+    {
+      "id": "surprise",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "death-cause entropy; distinct situations per run",
+      "note": "Directly encountered, materially different situations, several of which changed what I configured: the forecast and NEXT WALL announced 'Warlord D8 / counter . ? . meet him' and 'guard Morak the skeleton -> boss focus . Guarded', and I swapped stance because of it; the run then met 'Morak', printed 'CHAMPION SLAIN' at D8, produced 'OGRE WINDS UP', 'The air stings: bloats ahead', 'The den wakes: hands everywhere', 'GOLD DRAWS THEM', 'A dead delver's pack.', 'A shrine. Pray, at a price.', 'TAME FAILED . NO' and a 'pink jelly . splitter'. It stays at adequate rather than strong because floors 1-5 refilled from the same small pool (rat, monkey, jackal, goblin, goblin archer, spectral blade) and I could predict most of a fresh run from the last one."
+    },
+    {
+      "id": "expression",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "rule-set diversity across clears",
+      "note": "The build is only barely mine. The one thing I authored that the run obeyed was a stance choice, and the rules that fired were not mine: the exported set tags every row 'origin: stance:guarded', my RUN SETUP edits live in a side box (the town pill read 'run setup restock off . legacy damage'), and the report's own accounting agrees - 'WHO DECIDED / defaults 21% . chores 79%', with my share nowhere. Rule-set diversity across clears is 2 stances over 6 runs (Steady 4, Guarded 2) and zero authored rows ('written: 0 of 0 rules')."
+    },
+    {
+      "id": "story",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "chronicle carries setup + turn + end",
+      "note": "The build does retell runs and the retelling has a turn in it: the report's REEL for run 1 reads 'Met a goblin archer. / goblin archer: telegraph / goblin archer: ranged / Banked $91. / Waystone D5 lit.', run 4's reads 'pink jelly: splitter / D3: the Warrens. / A den of thieves. Small, quick hands. / Banked $48.', and the exit sheet keeps the raw chat ('D6 . goblin archer . draws x2', 'D6 . Hale Ash -> Morak . -6 hp'). What keeps it from strong: the Chronicle that would hold an anecdote with a beginning and an end is empty ('No records ... This book records ended heirs'), so with no deaths the story always has the same ending - the hero pockets it and walks home."
+    },
+    {
+      "id": "pacing",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "run length; check-in length; dead time at 1x",
+      "note": "Two of the three loops the idle boundary asks for are fine. In-run: runs ran 7.9-13 minutes and the observed feed density was 143 lines/150 s and 250 lines/170 s at the speed I set, with quiet stretches handled by the speed modes ('skipped ahead'). Check-in: arrive, read the report, decide, leave was 2-5 minutes and ended on a chosen stopping point ('collect & delve' / TOWN). The cadence loop is the failure and it is the one the whole absence protocol exists to test: a 20-minute break, an afternoon and an overnight produced the identical screen and the identical $305, so there is no third loop to pace."
+    },
+    {
+      "id": "failure",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "share of deaths with a matched-rule trace",
+      "note": "The retreat is legible and cheap, but the layer this axis is really about went untested: 'hurt . went home' appears with its cause and margin ('D5 . returned $68 . $68 carried . keeps 100% . +2 tokens'), the exit sheet keeps the last blows, and the report reconciles the run ('GOLD / $6.1/min . $48', 'TIME / fight 11% travel 88% chores 0%', 'RULES / chores 79% . attack nearest 12% . bank at 40% 9%'). What is missing is the death itself: six runs, zero deaths, the report's 'DEATHS' cell left blank, the Chronicle still 'No records', and engine.deaths an empty object - so 'killed by X because rule N fired' is unobserved. Under the idle boundary a death message alone is at most 0.3, and I do not even have one."
+    },
+    {
+      "id": "social",
+      "human": 0,
+      "bot": "na",
+      "proxy": "n/a",
+      "note": "weight 0 for this genre preset (the template itself prints proxy 'n/a'). I could not check the weight table because eval/presets.json is not in my packet, so I am flagging rather than defending it. Awarding 0 as instructed for a weight-0 axis. What I saw: no other players, and no character relationship that develops across encounters - the narrator has lines ('A den. Something sleeps.', 'A den of thieves. Small, quick hands.') but the heir never speaks and never remembers anyone, so the barks belong to aesthetic or story, not here."
+    },
+    {
+      "id": "autonomy",
+      "human": 0.6,
+      "bot": "na",
+      "proxy": "route/goal freedom in rules",
+      "note": "Order, pace and goal are mine at the check-in: I decided when to send ('DELVE / 2/2' waits for me), which stance, which order chips, which of the three scaled return picks ('drill / Guarded / +16 runs', 'legacy / Legacy / +9', 'marks / Marks / +2 tokens'), and which worker to hire, and the game never demanded any of it. What limits it is that the run itself is not steered by me - the route is printed, not chosen ('route D5 burrows'), the goal is issued ('Goal / D6 / New record'), and the one place I could have set a rule of my own is locked, so exploration is limited to what the town puts in front of me."
+    },
+    {
+      "id": "progression",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "unlock cadence; vocabulary growth",
+      "note": "All three layers are declared and all three moved. Within-run: kit and floor ('D5' -> 'D6' -> 'D8 DEEPEST NEW BEST', 'FOUND bow +1'). Between runs: 'LEGACY 6 -> 14', tokens '-> 25', 'REPUTATION +85 . star 1 . 304/400', hero levels ('Fighter L3'), a learned bestiary, and a town that grew from one free house to a Guild reception. Automation: 'porter . free / $0', 'sends him each rest . 2/2 sends', 'AUTO RESTOCK'. Named lapse: the deepest rung is decorative - the rule slot I could buy for '+1 rule slot, fill rules, 3 tokens or $450' with 25 tokens in hand never became reachable, and 'written: 0 of 0 rules' never changed."
+    },
+    {
+      "id": "aesthetic",
+      "human": 0.8,
+      "bot": "na",
+      "proxy": "none",
+      "note": "Visually the build is confident and coherent: a night town with a firefly speckle, a lit cave mouth over a blue shaft of light, a campfire with two figures asleep beside it, a cottage whose window lights when you build it, and a parchment report scroll whose wax-seal palette and engraved plaques carry the run's numbers. Named lapse: the world stops at the game and starts at the forms - Settings, RUN SETUP and the unlock list are plain chip grids with no art at all, and the token glyph is printed as a bare diamond ('+1 rule slot ... 3 tokens or $450') without ever being explained or drawn as anything. Sound is unassessed: I cannot hear it, and I will not score audiovisual appeal on the existence of cues I never heard."
+    },
+    {
+      "id": "return",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "offline yield vs active; decisions pending on return",
+      "note": "The decision side of a check-in exists and is real - the bottom-bar 'pick' counter grew across the absences (1 -> 3 -> 4) and the sheet scales its offers ('drill / Guarded / +16 runs', 'legacy / Legacy / +9 / DEFAULT', 'marks / Marks / +2 tokens') - so there is something to decide. Everything else the axis asks for is missing: no absence produced anything to read, nothing accrued, and the three durations were indistinguishable. Quoted from the returns: GOLD was '$305' before the 4h load and '$305' after the 8h load, with the same 'FLOOR CHANCE / D6 / 100%' and the same town; the save agrees, with lineage.absences frozen at 1 and in_absence stuck true, and __idlever.lastAbsence never leaving null. Offline yield per hour is not 0.25-0.5 of active, it is 0 of anything."
+    },
+    {
+      "id": "attribution",
+      "human": 0.3,
+      "bot": "na",
+      "proxy": "share of deaths attributable to a rule the player wrote",
+      "note": "The build is unusually candid about who decided - the report's own line is 'WHO DECIDED / defaults 21% . chores 79%', and its RULES strip names the mix ('chores 79% . attack nearest 12% . bank at 40% 9%') - and I can point at one thing that was mine: I equipped 'Guarded L1' off the report and the very next run reached D6 with full hp and $134, and I credit that to my choice. But the account it gives me is largely somebody else's: 79% chores, and the rows that did fire all carry 'origin: stance:guarded' rather than my name, because the only place I could have written a rule is locked ('written: 0 of 0 rules'). Share of deaths whose trace ends in a player-authored rule: undefined, since there were no deaths and no authored rules."
+    }
+  ],
+  "unassessed": [
+    "AUDIO - cannot be heard. WSLg reports an audio sink but this agent has no ears; I never listened to a single cue. I inspected window.__audio (muted:false, armed:true) and its log fired 'hit', 'rule' (about once a second during a fight), 'telegraph', 'exit_bank' at a run's end and 'click' on UI taps, but I cannot verify a cue landed at the right moment, so sound is neither praised nor faulted anywhere on this card, including under feel and aesthetic.",
+    "DEATHS - the failure layer proper. I read zero deaths in six runs and about 37 minutes. engine.deaths is {}, the report's DEATHS cell is blank, and the Chronicle reads 'No records ... This book records ended heirs'. Everything the axes ask about death legibility, death-cause entropy and unfair-death share is therefore unobserved, not merely unmeasured.",
+    "RULE AUTHORING - the pen. pkg.pen_open is false, pkg.pen and pkg.custom are empty, the six rule rows carry the 'hidden' attribute, main.camp carries the state class 'prepen', the Tactics panel carries a locked 'pkg-pen-lock' chip, and the forecast reads 'written: 0 of 0 rules' after six runs and 25 tokens. So the brief's 'at least two rule edits of your own' is only partly satisfiable: I made two order edits and one stance swap, and authored no rule.",
+    "THE BOT PROXIES - untestable from inside the client. Offline yield / active yield, default-vs-edited win-rate gap over 30 seeds, death-cause entropy over 100 runs, rule-set diversity across clears, rules-per-death trend, events-per-minute per instrumented watch, and automation cadence have no client-side source I could reach. bot is 'na' on every axis as the brief requires, and every award above is the human anchor only.",
+    "SHIP-QA-LEVEL DEFECTS - I could not chase them to a root cause without reading source, which is out of bounds. Specifically: the three absent= loads were silently ignored; Hand mode stops the clock with no stated prompt; the 1x speed mode is not 1x; and one report row ('delve', the black plaque with the red border) renders with no text at all until you notice it is the re-send button.",
+    "WIDE LAYOUT - the 1280x800 layout is outside my rated viewport (RATING.md allows it for the editor, and I checked it twice for exactly that reason and reverted each time), so I have no feel for it. It showed an 'ALPHA build 2026-10-16' header the phone layout does not print.",
+    "FULL RUN LENGTH / LONG ARC - with a 37-minute horizon the declared D6 goal came and went and I reached D8, so I never saw what the game does at the top of its own ladder, and I never saw a second day, a second bloodline ('New bloodline $250'), pets ('Pets 0/1'), or the 'ascend' order."
+  ],
+  "gaps": {
+    "major": [
+      "The rule pen never opened in the whole horizon. Everything I can find points the same way: the six-row rule list exists in the DOM ('hp < 30% -> drink heal', 'hp < 25% . depth >= 2 -> bank', 'hp < 25% -> return', 'lacks heal . hp < 40% -> bank', 'foes >= 1 -> tame open', 'foes >= 1 -> attack nearest', with a 'Packages 6' fold) but carries hidden; main.camp sits in the state class 'prepen'; the Tactics panel carries a hidden 'pkg-pen-lock' chip; the save says pkg.pen_open:false, pkg.pen:[], pkg.custom:[]; the forecast says 'written: 0 of 0 rules'; and the only purchase that would change any of it ('+1 rule slot, fill rules, 3 tokens or $450', and 'action: throw, 3 tokens') lives in .panel-store, which is display:none with the hidden attribute and which I could not open from any visible control, at the phone viewport or at 1280x800. With 25 tokens banked and six runs played, this is the single biggest gap between what the brief expects a rater to do and what the build lets them do."
+    ],
+    "other": [
+      "The absence mechanism the brief prescribes is inert: three loads of ?dev=1&absent=20m|4h|8h (and one ?dev=1&runs=1&absent=20m in the RATING.md form) changed nothing measurable, so a candidate run could pass a three-absence horizon while testing no absences at all.",
+      "Hand mode ('control / M' on the watch screen) halts the run indefinitely with only the badge word 'Live' -> 'Hand' as the signal; there is no countdown, no 'waiting for your order' prompt and no visible way back that does not require expanding the order panel first. I lost about four minutes of a live run before understanding this.",
+      "The '1x' watch is not a 1x watch: under speed 'Normal' the pill flips to 'quiet . 4x' whenever nothing is happening and reprints itself each flip, so the sampled feed is contaminated by speed pill text and the frame rate you are actually judging is variable.",
+      "The report's run row (the wide black plaque with the red border, labelled only 'delve') renders with no visible label in its resting state; I read it as an empty broken element until I mapped it to the re-send button."
+    ]
+  },
+  "blindness": {
+    "declaration": "I read only my packet. Concretely, from /home/g/p/riddle/scratchpad/fun-eval/e33d50b/packets/blind-c: brief.txt, PACKET.json, RATING.md, FUN_EVAL_IDLE.md, FRAMEWORK.md (sections 1-3) and SCORECARD.template.json. From the repository I read only tools/driver.mjs, and only its usage header and the watch/sheets op bodies, because the brief allows the tooling; tools/drive.sh; and the tools I was told to run (rater-checkpoint.mjs). I did not open PLAN.md, research/, docs/CUT*.md, docs/HANDOFF*.md, docs/INTEGRATION.md, docs/PLATEAU.md, docs/WORK_QUEUE.md, docs/ITERATION_SPEED.md, eval/PACKAGE_EVAL.md, eval/AUDIO.md, eval/QA_*.md, eval/calibration/, eval/cohorts/, any other card, or any game source, and I read no git history or commit message. While playing I read the live page through the driver's own ops (text, state, buttons, js, sheets, watch, screenshots) and read my own save out of localStorage, which the brief's protocol sanctions (it names window.__audio and the rules export); I also read the running page's stylesheets once, to find out whether the rule editor needed a state or a width I had not tried.",
+    "violations": [
+      "I listed the file NAMES in eval/cards/ (one `ls` of eval/cards/ | head -5, to confirm my card did not belong there). No card contents were opened or read, and the names told me nothing about any card.",
+      "I read the live page's CSS rules (document.styleSheets) to look for the display condition of .editor.compact - a page-inspection step beyond the listed ops, taken only to decide whether the rule editor existed at all. It returned layout rules, no game logic."
+    ],
+    "note": "No score, no target, no other rater's award and no design document was seen at any point; nothing above is inferred from one."
+  },
+  "gripes": [
+    "The pen is locked and I could not find the door. In 37 minutes, six runs and 25 banked tokens I could not write a single rule - the six rules the hero obeys all carry 'origin: stance:guarded', the forecast still says 'written: 0 of 0 rules', and the only unlock that would change that lives in a panel that is display:none behind a control I never found, on a phone viewport or at 1280 wide.",
+    "Closing the tab does nothing. Loading '?dev=1&absent=20m', then 4h, then 8h gave me the same screen, the same $305 and the same forecast every time - lineage.absences never left 1 and __idlever.lastAbsence stayed null - so the one thing an idle game has to get right (the return) is the one thing this build did not do for me. I would not open it tomorrow on the way to somewhere else, only to sit down and play.",
+    "The honest half of the game is buried. The best line in the build - 'WHO DECIDED / defaults 21% . chores 79%' - is two taps deep inside the report's details fold, and the same goes for 'RULES / chores 79% . attack nearest 12% . bank at 40% 9%' and the run's whole ledger. On the surface it is just a red gem that says DELVE."
+  ],
+  "tellAFriend": [
+    "The report card is worth the price of admission on its own - it hands you 'GOLD / $7.3/min . $91', 'TIME / fight 12% travel 88% chores 0%', 'DEALT hero 0.24 dps . 112 hp / TAKEN 0.05 dps . 23 hp . 13 hits', and a REEL that retells the run ('pink jelly: splitter / D3: the Warrens. / A den of thieves. Small, quick hands. / Banked $48.').",
+    "It is genuinely pretty: a night town that grows a lit window when you build a house, a firefly-speckled forest, a torch-lit cave mouth, and a hero who walks into it while the map calls out 'OGRE WINDS UP' and 'REST x NOT SAFE'.",
+    "It is honest with you in a way idle games usually are not - 'RUN OUTCOMES full haul 50% . turn back 50% . death <32%' before you commit, 'keeps 100%' when the haul comes home, and 'WHO DECIDED / defaults 21% . chores 79%' after - but do not expect it to keep playing while you are gone, because it does not."
+  ]
+}

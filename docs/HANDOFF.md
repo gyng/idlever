@@ -150,17 +150,21 @@ iteration).** State of the resume order:
    is a misreading of `panel-store` (the closed panels' parking lot — all four real
    panels have visible controls), the thin 20 m/4 h absence report is design plus
    legitimate feel feedback, and the unlabelled painted controls are the UI lane's.
-   The **cohort is now two cards**: `blind-b` filed `eval/cards/e33d50b.blind-b.json`
-   (**70.3, `promising`**; seed 741, 402×681 at 3×, 32 of the brief's 40 active minutes,
-   27 runs, 4 deaths with 3 read — all declared), so the harness reports **mean 68,
-   sd 3.25, α 0.700 — tentative** (`eval/RATING.md` wants α ≥ 0.80 for a decision). Read
-   honestly: a tentative reading of this build, about twelve points below the fun ≥ 80
-   goal, not the decision-grade verdict the requirement asks for. `blind-b` corroborates
-   `blind-a` on the late pen (the editor opened only after the 8 h absence), on the speed
-   tile's legibility and on panels clipping, and names the game's strength (the overnight
-   report, the twelve-replay death screen with its tick and its two priced fixes, the
-   decision share) — `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`. The
-   transcript/API fan-out of `ITERATION_SPEED.md` §1.3/§1.5 remains unbuilt.
+   The **cohort is three cards**: `blind-b` (**70.3**, seed 741, 32 active minutes) and
+   `blind-c` (**54.6, `not yet`**, four gates failing — seed 768, 40 active minutes, 6 runs)
+   beside `blind-a`'s 65.7 give **mean 63.53, sd 8.07, α 0.421 — unreliable**, so (per
+   `eval/RATING.md`, nothing publishes below α 0.67) **the cohort yields no decision** and the
+   fun ≥ 80 question is unanswered rather than answered low. The cards show why the raters
+   disagree: the higher two reached the game's depth (overnight report, the pen, real
+   absences) and the third reached none of it, so they partly rated different slices.
+   `blind-c`'s headline ("the pen never opened") is the **designed gate, now quantified**: the
+   pen group opens on `pen || mother_met(l)` (`systems.rs:124`) with `pen: 0` hours of its own
+   and a `pen_fallback_h: 120` stall (`balance.rs:288`) — five days — which a cold 40-minute
+   session cannot reach; three of three raters named it their top gripe, and the shared
+   presentation finding (the decision share and time split — the report's best lines —
+   buried two taps inside its fold) is the one the cohort agrees on
+   (`docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`). The transcript/API fan-out
+   of `ITERATION_SPEED.md` §1.3/§1.5 remains unbuilt.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is

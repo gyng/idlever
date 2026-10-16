@@ -1,4 +1,4 @@
-# The first harness cohort (`e33d50b`: `blind-a` + `blind-b`), triaged (2026-10-16)
+# The first harness cohort (`e33d50b`: `blind-a`, `blind-b`, `blind-c`), triaged (2026-10-16)
 
 Card: `eval/cards/e33d50b.blind-a.json` (sha256 `562c3e15…`), collected through
 `tools/fun-eval.mjs` from the packet at
@@ -72,3 +72,46 @@ Both raters declared what they could not assess (audio, bot caps, the package la
 desktop view, D14+/crypt/bloodlines) and their real active minutes rather than the brief's —
 and both, knowing the goal from the briefed `docs/FUN_EVAL_IDLE.md`, still scored in the
 sixties and low seventies, which is the honest direction rather than anchoring up.
+
+## The third card, and what it does to the cohort
+
+`blind-c` (seed 768, 402×681 at dpr 3 — measured and reported, 40 active minutes, 6 runs with
+3 watched at 1×, 5 screenshots, 2 own edits + 1 package swap) scored **54.6, `not yet`**, with
+**four gates failing** (expression, failure, return, attribution) and `social` weight-0. The
+cohort is therefore:
+
+| cards | totals | mean | sd | α | reading |
+|---|---|---|---|---|---|
+| `blind-a` + `blind-b` | 65.7, 70.3 | 68.0 | 3.25 | **0.700** | tentative |
+| + `blind-c` | 65.7, 70.3, 54.6 | **63.53** | 8.07 | **0.421** | **unreliable** |
+
+Adding a third rater made the instrument *less* reliable, and the cards say why: the two
+higher raters reached the game's depth (the overnight report, the pen, real absences) and the
+third did not reach any of it, so they are partly rating different slices of the game. That is
+a finding about the cohort's setup as much as about the build — `eval/RATING.md` publishes
+nothing below α 0.67, so **this cohort yields no decision**, and the fun ≥ 80 question is
+still unanswered rather than answered low.
+
+`blind-c`'s headline claim — "the rule pen never opened" — is the **designed gate**, and now
+with its numbers. The pen's whole group opens on `pen || mother_met(l)`
+(`crates/idlever-core/src/systems.rs:124`), i.e. meeting the Bloat Mother; its own age
+requirement is `pen: 0` hours and the stall fallback is `pen_fallback_h: 120`
+(`balance.rs:288-289`) — five days of lineage age. Its save read
+`pkg.pen_open:false / pkg.pen:[] / pkg.custom:[]` after six cold runs, which is exactly right
+for that gate: a 40-minute cold session with six runs cannot reach a mid-depth boss and cannot
+stall five days. The `blind-b` route (the 8 h absence aged the lineage until Mother fell) and
+the `blind-a` route (hours of play) both got there. Two honest readings follow: the design is
+deliberate (AGENTS: "late on open the pen"), and **three of three blind raters named it as
+their top gripe** — the game's own verb is hours away and the game does not say when.
+
+Its second claim — "closing the tab does nothing; gold stayed $305 across 4 h and 8 h" — is
+consistent with the stated design that before the scout is hired an absence finishes at most
+the run in flight (`AGENTS.md`) plus the `?dev=1&absent=` parameter doing its job
+(`app.ts:896-897`); with no run in flight there is nothing to report. `blind-a` saw the same
+cap as "one three-way pick" and `blind-b` got a full night only once its lineage was old
+enough — the difference is the lineage's state, not a broken absence.
+
+Its third point is the sharpest for the owner: the build's best line ("WHO DECIDED /
+defaults 21% · chores 79%", "TIME / fight 12% travel 88% chores 0%") sits two taps inside the
+report's details fold while the surface shows a red gem that says DELVE. That is a
+presentation decision, not a defect — and it is the one the cohort agrees on.

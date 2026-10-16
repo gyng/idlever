@@ -160,11 +160,17 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   triaged it against the code in
   `docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md` — the late pen and the
   parking-lot "orphan shop" are design/misreadings, the unlabelled painted controls are
-  the UI lane's). The **cohort is two cards**: `blind-b` (`eval/cards/e33d50b.blind-b.json`,
-  70.3, seed 741, 32 measured active minutes) lifts the harness's own report to **mean 68,
-  sd 3.25, α 0.700 — tentative**, i.e. a tentative reading about twelve points below the
-  fun ≥ 80 goal and short of the α ≥ 0.80 a decision needs. `fun ≥ 80` remains unverified,
-  with a measured direction of travel rather than a claim.
+  the UI lane's). The **cohort is three cards** (`blind-a` 65.7, `blind-b` 70.3, `blind-c`
+  54.6 `not yet`): **mean 63.53, sd 8.07, α 0.421 — unreliable**, so nothing publishes
+  (`eval/RATING.md` needs α ≥ 0.67) and **the cohort yields no decision**: `fun ≥ 80` is
+  unanswered, not answered low. The cards explain the disagreement — the higher two reached
+  the game's depth (overnight report, the pen, real absences), the third reached none of it.
+  Its headline "the pen never opened" is the **designed gate, now quantified**: the pen group
+  opens on `pen || mother_met(l)` (`systems.rs:124`), `pen: 0` hours of its own with a
+  `pen_fallback_h: 120` stall (`balance.rs:288`) — five days — and three of three raters named
+  it their top gripe, while the buried decision-share/time-split report lines are the point the
+  cohort agrees on. The next honest step is a cohort setup where every rater reaches the same
+  slice, not a different rating.
 
 ## Completion rule
 
