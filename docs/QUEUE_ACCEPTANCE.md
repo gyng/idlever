@@ -189,3 +189,20 @@ batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md
 (`docs/evidence/mechanics/r3-biome-review-2026-10-16.md` + verification note). Art
 work waits on the Codex quota (`docs/CUT236_ART_GAPS.md` §Pending art work). All40/R1–R6
 items keep their recorded next proofs; independent fun≥80 remains unverified.
+
+**Independent evaluation2026-10-16.** A rater given only the rubric and rater
+protocol (no design history, no target, and it refused the files that would carry
+one) authored `eval/package/idlever.51d041d0.rater-PackageRater.json` for this build
+(WASM `51d041d0…`, commit `38d09ab7`) and scored it mechanically:
+**package66.6, band `shippable`(60–67), no gate, no kill, confidence medium,
+desk share0 %**. `fun` is **unassessed** (no blind fun card exists for this build) and
+`audio` is the only null dimension (the harness cannot listen), so this is a package
+craft score by one rater — not a blind fun verdict, not a release decision. Played
+phone402×681@3×headed-on-GPU for ≈15 active minutes (short of the 40-minute rater
+horizon, declared), plus desktop1280×800, two scripted walks (no console/page errors),
+three absences (20m/4h/8h) and the gate table (`qa` 10 seeds PASS, `dayplayer` PASS;
+60 fps median16.7 ms/p95 16.8 ms over299 frames at1×). It also found a **measured UI
+defect at the target viewport**: the Behaviour panel's label column clips
+(`COM/BAT/STYL/E`, `clientWidth38` vs `scrollWidth44` at14.875 px) and one sheet
+header is partly behind its own top edge — UI owner. Observations:
+`docs/evidence/eval-2026-10-16/observations.md`.

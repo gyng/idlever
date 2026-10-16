@@ -1,0 +1,202 @@
+{
+  "game": "Idlever",
+  "build": "51d041d0f88433e9df7ca4b7511589ab3c091df80c7131f5aac702fbdf62e191 (wasm sha256, verified with sha256sum on web/src/engine/pkg/idlever_wasm_bg.wasm) at commit 38d09ab7; served by tools/dev.sh on http://localhost:5219/ (Vite dev client), in-game stamp \"ALPHA · build 2026-10-14\", engine badge \"wasm 0.1.0\"",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "PackageRater (independent package rater; played the build itself, no design history read)",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-16",
+    "basis": "mixed: played a cold lineage head-on in a headed GPU browser at the declared phone viewport (402x681 CSS, 3x): boot -> free house -> first delve at 1x (90 s watch) -> report/pick -> camp panels -> 20m absence return -> a 32x run to the report + a 4h and an 8h absence load on the same save; plus a seed-999 fresh-lineage boot for a clean editor check; plus the scripted walk (tools/playtest.mjs seed 7, absent 8h) at phone and at 1280x800 desktop; plus the gate table (tools/gates.mjs: dayplayer + qa legs) and rAF frame-time samples taken in-page on the headed GPU window. Audio not heard (browser muted by the harness).",
+    "fun": {
+      "score": null,
+      "source": "no blind fun card exists for this build; filing one needs the full blind rater protocol (eval/RATING.md) and reading older cards is outside this rater's allowlist, so fun is left unassessed here",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 68,
+        "mode": "hands-on",
+        "confidence": "high",
+        "evidence": [
+          { "source": "scratchpad/packagerater/play/shots/01-first-house.png", "quote": "observed: one coherent moonlit pixel register at 402x681 - painted cave mouth with lit braziers, dirt path, campfire, thatch cottage, iron cage; carved-brass frame chrome with skull studs; a screenshot sells the style" },
+          { "source": "scratchpad/packagerater/walk-seed7/10-death.png", "quote": "observed: death scene is a torn red banner on the dungeon floor with a wax 'YOU DIED' seal, sword medallion and skull finials - the strongest single asset seen" },
+          { "source": "scratchpad/packagerater/play/shots/watch-02.png", "quote": "observed: in the watch the hero and foes are ~40 px grey/brown sprites on dark stone tiles; the hero reads mainly by the gold rail underline, and the depth rail (D3) covers the right quarter - the named lapse is actor readability at phone size" },
+          { "source": "scratchpad/packagerater/walk-wide/01-camp.png", "quote": "observed: the same register at 1280x800 keeps its identity, but the town map sits in a narrow centred column with large empty margins" }
+        ],
+        "note": "Distinctive, coherent and consistent across camp, watch, report and death (one register, no pixel-art-next-to-vector clash). Above the ~50 anchor (Melvor's licensed RuneScape-style icons on a web UI) because the style is its own and the frame chrome is carved to match; below the ~80 anchor because the cast does not read cleanly against its own ground at 402 px. Named lapse: dark-on-dark actor contrast see in watch-02.png."
+      },
+      {
+        "id": "motion",
+        "score": 55,
+        "mode": "mixed",
+        "confidence": "high",
+        "evidence": [
+          { "source": "observed: page.evaluate rAF sample in the headed GPU window, watch live at 1x, 402x681", "quote": "299 frames: median 16.7 ms (59.9 fps), p95 16.8 ms, max 83.3 ms (one hitch at the start of the sample); camp screen: 199 frames, median 16.7 ms, max 16.8 ms" },
+          { "source": "scratchpad/packagerater/play/shots/watch-01.png", "quote": "observed: tile-step movement with a gold selection rail under the hero, a red dot tracking position on the depth rail, floating '+$1' and '-3 hp · goblin' popups" },
+          { "source": "scratchpad/packagerater/play/shots/watch-02.png", "quote": "observed: centred callout 'tamed jackal Zelog' over the room, loot log lines (D3 · Zelog -> Toren Ash · miss) below the board" },
+          { "source": "artifact://946 (1x watch op, 90 s)", "quote": "observed: distinct beats animate as their own moment - 'D2 · Floor 2', 'A shrine. The idol watches him.', 'TWO STAIRS', 'THIEVES! The den wakes: hands everywhere', 'BLADES!', 'GOLD DRAWS THEM', 'Run ended / Heading home'" }
+        ],
+        "note": "Frame time is measured and clean (60 fps cap on the GPU path, one 83 ms hitch). Animation character is simple: a 2-frame-ish step cycle, short hit FX and popups; a boss/boss-kill or a death gets a scene, but routine fights read alike (attack/miss lines), which is the ~50 anchor ('hits register but read alike'), not the ~80 anchor (distinct impact per action). Ambient life exists on the camp map (drifting motes, flickering braziers)."
+      },
+      {
+        "id": "ui",
+        "score": 58,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "scratchpad/packagerater/play/shots/13-camp.png", "quote": "observed at 402x681: the Behaviour panel's left label column prints 'COM / BAT / STYL / E' - the words wrap to four lines and the last is cut by the panel edge; the sheet's own header ('Recovery pool') is half-hidden behind the panel's top edge" },
+          { "source": "observed: page.evaluate overflow audit on the same screen", "quote": "the label element has clientWidth 38 px and scrollWidth 44 px (6 px horizontal overflow) at font-size 14.875 px with 1.49 px letter-spacing, while its sibling in the compact row (font-size 10 px) fits" },
+          { "source": "scratchpad/packagerater/play/shots/glossary (journal, read via text op)", "quote": "observed: an in-place glossary defines 'condition - when a rule may act', 'floor chance - chance a run gets that deep', 'scout - sends him each rest', 'tactics - fighting, healing and returning rules', 'worker - hand for one chore'" },
+          { "source": "observed: WHY sheet opened from the rule tablet", "quote": "'foes >= 1 -> tame open / fired 4/711 turns · blocked · no leash · 1 run / no leash · needs a leash / edit' - each rule explains what it did and why not, in place" },
+          { "source": "observed: condition picker sheet on the phone", "quote": "the picker is one long scroll of ~90 condition tokens with values on top ('hp < | 10% 20% 25% 30% 40% 50% 60% 75%'), most tokens already marked ⊘ locked plus their gate text" },
+          { "source": "observed: repeated attempts to change a rule threshold, verified against window.__idlever.sets[active].rows and engine.exportRules()", "quote": "six value taps (cond chip -> picker -> '40%'/'20%') each closed the sheet; the app's rule array and the engine's exported rule set were unchanged, no refusal toast and no body.dataset.refused; a capture-phase probe on the tile fired and elementFromPoint returned that same tile, so the taps were delivered. NOT reported as a defect: the camp DOM keeps parked, display:none copies of the rule list, so I cannot show the taps hit the live editor rather than a hidden copy" }
+        ],
+        "note": "Organised by decision (camp -> hero panel -> Delve / Loadouts / Behaviour / run setup / Journal; watch -> speed / control / town), numbers are explained in place (glossary, WHY lines, forecast percentages), and both declared viewports render and are operable (402x681 phone and 1280x800 desktop). Above the ~50 anchor (dense once learned) because of the in-place glossary and per-rule attribution; below the ~80 anchor because of named lapses: a clipped label column measured at the target phone viewport, a header overlapping its sheet edge, and a ~90-token locked-heavy picker in one scroll. One unresolved operating puzzle is recorded honestly above rather than scored as a defect."
+      },
+      {
+        "id": "audio",
+        "score": null,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          { "source": "web/src/ui/settings.ts:36-104", "quote": "a 'sound' row with a persisted mute toggle (aria-pressed) sits in Settings; the build ships cues and a camp drone" },
+          { "source": "tools/browser.mjs:52-58", "quote": "'every launch is muted at the browser (WebAudio still schedules...)' - the harness mutes the GPU window, so an agent cannot hear the mix" }
+        ],
+        "note": "null = unassessed (agents cannot listen). I could not judge fit, event distinction, mix balance or fatigue."
+      },
+      {
+        "id": "onboarding",
+        "score": 72,
+        "mode": "mixed",
+        "confidence": "high",
+        "evidence": [
+          { "source": "observed: cold boot http://localhost:5219/?dev=1&runs=1&seed=1234&fresh=1 at 402x681", "quote": "the camp offers exactly one free action ('Build house Free'); building it names the hero (Toren Ash) and reveals the cave hotspot and the DELVE gem; a 1x watch was running within ~2 minutes of the first paint" },
+          { "source": "observed: Journal sheet on the phone", "quote": "'Next: Hire the Porter - Workers automate chores once their milestones are ready. Hiring costs no Gold.' with tabs Town / Builds / Delving / Glossary" },
+          { "source": "observed: node tools/gates.mjs (dayplayer leg)", "quote": "PASS 'Scout bought <= min 15, <= 5 sends by hand (every seed, every bot) med 4.4 · worst 4.8 min, 2 sends'; PASS 'First-30-min cadence: look gap <= 6 min, <= 1 new decision a look (every PICKED seed) gap med 0.0 · worst 0.0 min · dec 1 · 2/2'" },
+          { "source": "scratchpad/packagerater/play/shots/20-return-20m.png", "quote": "observed: the first absence return is a single screen with one decision - 'While away 20m · 1 RUNS · D5 DEEPEST · +$123 GOLD EARNED' then 'Pick one' (drill +3 runs / legacy +2 / marks +1 / default)" }
+        ],
+        "note": "Core act in the first minutes, first automation (scout, 4.4 min median) in minutes, one new decision at a time (the return screen offers one pick). Above the ~50 anchor (Melvor: clear but slow early combat) and close to the ~80 anchor (Antimatter Dimensions / AdVenture Capitalist: fast early automation) - short of it because the first ten minutes also stack currencies (gold, shards ◆, legacy, marks ★) and the clickable hotspots on the town map are not labelled until found. Evidence is one cold session plus telemetry, not a cohort."
+      },
+      {
+        "id": "pacing",
+        "score": 70,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "observed: node tools/gates.mjs (dayplayer leg, all PASS)", "quote": "'IDLE reaches D8 by the end of day 1 (every seed) 2/2', 'IDLE reaches D13 by day 4 (median day) 0.5', 'IDLE reaches D23 by day 12 (>= 6/8 seeds, median) 2/2 · 4.7', 'IDLE longest best-depth stall before D23 <= 4 d 1', 'Every IDLE check-in grows >= 1 track 84/84', 'Every IDLE check-in offers a return pick 84/84', 'Days with a stage opened: IDLE >= 8/14 (median) 10.0'" },
+          { "source": "scratchpad/packagerater/walk-seed7/09-report.txt", "quote": "'While away 8h | 15 RUNS 2 died | D9 DEEPEST NEW BEST | +$1944 GROSS GOLD | LEGENDARY FOUND Crownsplitter | Free Forge choice ... | Goblin Warlord Boss defeated | 3rd heir' - an absence of a night returns a full screen of new things" },
+          { "source": "scratchpad/packagerater/walk-seed7/07-camp.txt", "quote": "'Goal D6 · New record', 'FLOOR CHANCE D6 <13%', 'COMBAT STYLE Steady L1', 'send · scout 1/2' - the wall ahead is named and priced before it arrives" },
+          { "source": "observed: node tools/gates.mjs (dayplayer leg)", "quote": "'IDLE does not slay the Mirror King within 14 days 0/2' and (info) 'IDLE King margin: least hp left 98% (s1, x1) · seeds that tried him 1/2' - the endgame boss exists and is not reached by the reference bot inside 14 days; for a casual player the ending therefore sits beyond this horizon" }
+        ],
+        "note": "The long arc keeps delivering by telemetry (a stage opened on 10 of 14 median days, no stall longer than 4 days before D23, every check-in offers a pick) and my own two returns each moved money, depth and a worker. Named lapse: the deep end (D23+, the Mirror King) was not played by me, and for a casual player the stated ending arrives after the graded horizon - so this 70 is telemetry-weighted, not played. Ending timing is stated per the rubric: not reached within 14 days by the reference player."
+      },
+      {
+        "id": "depth",
+        "score": 76,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "observed: condition picker sheet (phone, 402x681)", "quote": "~90 condition tokens: hp <, hp >, foes >=, adjacent >=, unknown item, seen >=, depth >=, corridor, stairs seen, ally, on hurt, foe hp <, loot >=, turns >, on see, has: dagger/sword/axe/bow/spear/mace/leather/mail/plate/scale/ironcap/trailboots/crownsplitter/hearthglass/frostmantle/leash, on see nest/shrine/vault/den/stray, in: burrows, party hp <, party: jackal, alert >=, on kill, fact: pack, identify/find/know <effect> for ~20 effects" },
+          { "source": "observed: action picker sheet (phone)", "quote": "return, attack nearest, attack lowest, retreat, to corridor, drink unknown, read unknown, descend, pick up, free captive, shield bash, pray for row, pray for trait, tame nearest, drink heal, (locked) bank, (locked) tame open" },
+          { "source": "observed: camp rule list + WHY sheet", "quote": "six ordered rules with an origin ('stance:steady', 'drill:tame'), an 'edit' affordance, and per-row attribution: 'fired 4/711 turns · blocked · no leash'; metrics line 'rules chores 83% · attack nearest 12% · bank at 25% 4%'" },
+          { "source": "observed: run setup + loadouts sheets", "quote": "'RUN SETUP: AUTO RESTOCK on/off · KENNEL KEEPER breed/best/off · LEGACY SPEND balanced/health/damage/armour/off'; Loadouts compare 'Actual' against 'Next delve' per slot with gear effects, saved kits, pins, attributes, pets, behaviour tabs" },
+          { "source": "observed: node tools/gates.mjs (dayplayer leg)", "quote": "PASS 'TUNED beats PICKED by >= 15 % at D33 (median hours) 1.23'; PASS 'RANDOM slower than PICKED at D13, D23'; PASS 'the top patch applies through set_rules'" }
+        ],
+        "note": "A large and real build space: rule rows with an ordering, a package/card layer, per-hero loadouts and kits, stance/tactics levels, pets and party, and an expert layer (scripting vocabulary with attribution) - the rubric's ~80 anchor shape. Named lapses: at Hero L1 most of the vocabulary is still ⊘ locked, so the space only opens with progression; and my own attempts to change a threshold value never reached the live set (unresolved, see ui), so I could not demonstrate the lever end to end in this session. That is why 76 and medium confidence rather than higher."
+      },
+      {
+        "id": "respect",
+        "score": 74,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "scratchpad/packagerater/walk-seed7/09-report.txt", "quote": "'While away 8h | 15 RUNS 2 died | D9 DEEPEST NEW BEST | +$1944 GROSS GOLD | LEGENDARY FOUND Crownsplitter | Free Forge choice | Goblin Warlord Boss defeated | ▶ watch kill' - a night away is simulated, not capped away" },
+          { "source": "observed: 20m absence return on my own save", "quote": "'While away 20m · 1 RUNS · D5 DEEPEST · +$123 GOLD EARNED · Fighter L2 · ✦ legacy shard · +1 Legacy' then 'collect & delve · ok $90 carried'" },
+          { "source": "observed: bank/collect lines in the 1x watch", "quote": "'D5 · banked $149 · $127 secured + 100% of $22 · ◆+8' - death/return costs the unsecured share of the pack, time, not the town's wealth; gold spends in town and the report reconciles (gate: 'the report's gold terms sum to the purse's move PASS')" },
+          { "source": "observed: node tools/gates.mjs (dayplayer leg, all PASS)", "quote": "'Gold conserved: purse + chest + bank = ledger (every bot x check-in) 0 off'; 'Workers pay the away player (in every 2-3 days): D18 sooner or a deeper mean best'; 'Workers never cost the daily player a floor'; 'Every node whose chore exists lit by 48 h (PICKED, HANDS median unlit) 0'" },
+          { "source": "observed: Settings sheet and Journal copy", "quote": "no store, no purchase flow, no energy or timer; 'Hiring costs no Gold'; the only paid-looking asks are in-game ('+1 rule slot ⊘ fill rules ◆3 or $450', 'New bloodline $250')" }
+        ],
+        "note": "Absence is not punished (full simulation, workers keep paying, no cap line seen), nothing nags (no dailies: the reference player leaves chores unlit and still progresses), automation is earned not sold, and failure costs time rather than wealth. Above the ~50 anchor (IdleOn/AFK Journey: capped AFK, sold auto-loot); held below the ~80 anchor (Melvor: 24 h exact, one purchase) because I did not see a stated offline cap and the deep-absence behaviour is taken from one scripted 8 h walk plus telemetry rather than many returns."
+      },
+      {
+        "id": "juice",
+        "score": 60,
+        "mode": "hands-on",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "scratchpad/packagerater/play/shots/watch-01.png", "quote": "observed: a floating '+$1' over the board, hp ticks in the HUD ('32/36 hp'), popups like '-3 hp · goblin' beside the log" },
+          { "source": "artifact://946 (1x watch op)", "quote": "observed: proportionate layering - small events are small ('D1 · rat · fell' in the log, a gold popup), big ones take the screen centre ('tamed jackal Zelog', 'THIEVES! The den wakes: hands everywhere', 'BLADES!', 'GOLD DRAWS THEM')" },
+          { "source": "scratchpad/packagerater/walk-seed7/10-death.png", "quote": "observed: the death is the biggest moment in the build - torn banner, wax seal, named killer ('spectral blade · summoned by goblin conjurer · D7 · hero at 1/40 hp') and a '+1 Legacy' line" },
+          { "source": "scratchpad/packagerater/walk-seed7/09-report.txt", "quote": "observed: the return report marks the good news loudly ('NEW BEST', 'LEGENDARY FOUND', '▶ watch kill', 'Free Forge choice')" }
+        ],
+        "note": "Rewards, deaths, new bests and unlocks each get feedback at the moment they matter, and the big moments are unmistakably bigger. Named lapse: during routine fighting most feedback lives in the log column rather than on the board (the board itself barely reacts), and the camp side is quiet - purchases/upgrades were a plaque changing text with no celebration seen in my session. The audio part of juice follows the audio rule (unheard, not scored). Holds between the ~50 anchor (Melvor's toasts) and the ~80 anchor (Gnorp/Vampire Survivors)."
+      },
+      {
+        "id": "polish",
+        "score": 64,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "scratchpad/packagerater/walk-seed7/summary.txt", "quote": "'ok: no console errors, no page errors' (phone walk, 10 dumps, 25.2 s); the desktop walk reports the same, with only 'GL Driver Message ... GPU stall due to ReadPixels' warnings" },
+          { "source": "observed: node tools/gates.mjs", "quote": "'qa: all PASS (10 seeds)' including 'the report's gold terms sum to the purse's move PASS' and 'the stake's death keep == checkpoints + death share of carry at risk PASS'; 'dayplayer: all PASS'; 'Stalls <= 1 % of sends, every IDLE/PICKED/TUNED seed 0.00%'" },
+          { "source": "observed: page.evaluate rAF sample, watch live at 1x, headed GPU, 402x681", "quote": "median 16.7 ms / p95 16.8 ms over 299 frames; one 83.3 ms hitch" },
+          { "source": "observed: reloads and absence boots on my own save", "quote": "the save survived a reload, a fresh-lineage boot on another seed, and three absence loads with no lost progress (gold, legacy, best depth and the hired scout all persisted)" },
+          { "source": "observed: in-game stamp and label defects", "quote": "the build labels itself 'ALPHA · build 2026-10-14'; the clipped label column and the header overlapping its sheet edge (see ui) are the visible defects I found" }
+        ],
+        "note": "No crash, no data loss, no console error in ~2.5 h of play across two walks and three absence boots; stable 60 fps on the GPU path; the wire/QA gates pass. Held below the ~80 anchor (Melvor/Antimatter Dimensions: years of stability) because this is a self-declared ALPHA with visible layout defects at the target phone viewport, and because my session was hours, not months."
+      },
+      {
+        "id": "content",
+        "score": 68,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "observed: node tools/gates.mjs (dayplayer leg)", "quote": "'IDLE reaches D23 by day 12 (>= 6/8 seeds, median) 2/2 · 4.7'; 'Content reach: PICKED >= D14 by day 2 (>= 50 %) 2/2'; 'Days with a stage opened: PICKED >= 10/14 (median) 10.5'" },
+          { "source": "scratchpad/packagerater/walk-seed7/09-report.txt", "quote": "'LEGENDARY FOUND Crownsplitter ... Effect · Deal +2 melee damage to stunned or slowed foes. Tradeoff · Slower than a sword. Control must be active.' - found gear carries real effect/tradeoff text" },
+          { "source": "observed: staged unlock panels on the camp (phone, 402x681)", "quote": "'Tasks 5', 'Guild reception', 'Recovery pool', 'Build forge Free', 'New bloodline $250', 'More bloodlines', 'Try another build without paying for each departure', 'Oaths / wall patches', pets and a kennel, package cards ('▾ Packages 6')" },
+          { "source": "observed: node tools/gates.mjs (info bar)", "quote": "'IDLE King margin: least hp left 98% (s1, x1) · seeds that tried him 1/2' - an endgame boss (Mirror King) exists beyond the graded horizon; 'IDLE does not slay the Mirror King within 14 days 0/2'" }
+        ],
+        "note": "Systems I can name from play: camp buildings, bloodlines/heirs, loadouts and kits, stance/tactics, pets with taming and breeding, party companions with fetch orders, scrolls/potions with identify/read effects, routes and waystone forks, packages/cards, oath board, legacy/marks/shard tracks, and an endgame boss. Floors are named (D1..D23+) with per-biome routes. And telemetry shows content still opening on 10 of 14 median days. Held below the ~80 anchor (Melvor/NGU: months) because I played ~2 h of a weeks-long arc, and the deep biomes/boss are telemetry-only for me."
+      },
+      {
+        "id": "hook",
+        "score": 62,
+        "mode": "hands-on",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "scratchpad/packagerater/play/shots/03-watch-16x.png", "quote": "observed: the first screen after the first send already shows the promise - a hero walking a tiled dungeon under a rule list that says 'hp < 30% → drink heal / foes >= 1 → attack nearest', with a log narrating every step" },
+          { "source": "scratchpad/packagerater/play/shots/01-first-house.png", "quote": "observed: the first screenshot is a camp with a lit cave mouth and a giant DELVE gem - 'a town above, a hole below, a hero who plays himself' is legible without text" },
+          { "source": "scratchpad/packagerater/walk-seed7/10-death.png", "quote": "observed: the death screen names the killer and its summoner ('spectral blade · summoned by goblin conjurer · D7 · hero at 1/40 hp') - the 'editable rules meet real dungeon deaths' pitch is visible on screen" },
+          { "source": "scratchpad/packagerater/walk-seed7/09-report.txt", "quote": "observed: the return offers a choice of return picks ('drill · Steady +16 runs / legacy · Legacy +9 / marks · Marks +◆2'), i.e. the idle layer has its own decisions" }
+        ],
+        "note": "The promise (program the hero, watch him delve, edit after he dies) is legible in one screenshot and one sentence, and it is not a clone of the genre's skill-grinders. It beats the ~50 anchor shape ('ARPG loot, idle' with one twist) but falls short of the ~80 anchor (a one-line pitch nobody else owns, visible in the first screenshot): the honest pitch here needs two clauses (idle + rules + real deaths), and the first screenshot alone reads as another idle RPG."
+      },
+      {
+        "id": "access",
+        "score": 55,
+        "mode": "mixed",
+        "confidence": "medium",
+        "evidence": [
+          { "source": "observed: Settings sheet on the phone", "quote": "'SOUND mute · SLOWDOWNS on · EFFECTS full · AUTO CONTINUE on · SAVE export/import · RULES export/import · DEBUG Debug export · ENGINE wasm 0.1.0 · LINEAGE seed 1234 reset' - and I toggled AUTO CONTINUE to off and the setting persisted" },
+          { "source": "web/src/render/quality.ts:1-40", "quote": "'prefers-reduced-motion: reduce keeps the light and the bloom but drops every motion effect: shake, hit-stop, slow-mo'; 'a software GL (SwiftShader / llvmpipe) is low; any real GPU starts high and steps down'; '?fx=low|med|high (or localStorage idlever.fx) pins it'" },
+          { "source": "web/public/manifest.webmanifest", "quote": "{ name: Idlever, display: standalone, orientation: portrait, icons: favicon.svg (any maskable), theme_color: #0b0c0f } - installable as a web app on the target phone" },
+          { "source": "observed: DOM audit of the top bar and watch controls", "quote": "icon-only controls carry hidden accessible names (spans with class 'vh' behind the gold/legacy/best icons; the watch's controls expose labels like 'control M', 'Speed', 'Town menu'); html lang=\"en\" and no i18n bundle, so English only" },
+          { "source": "scratchpad/packagerater/walk-wide/01-camp.png", "quote": "observed: 1280x800 desktop renders the same game in a centred column (walk-wide completed with no errors)" }
+        ],
+        "note": "Two input contexts work (402x681 phone, 1280x800 desktop), the build is installable to a phone (PWA manifest, portrait), it honours the OS reduced-motion request and offers effects full/low/off and slowdowns, it has mute, an explicit save export/import and a rules export/import, and shows its seed. Lapses: English only, no text-scale or contrast controls found, and no localisation. Sits at the ~50 anchor (two platforms or decent settings, English only, no reduced motion setting per se - here reduced motion is the OS query plus an effects tier) and well below the ~80 anchor (cross-platform with cloud save, scalable text, several languages)."
+      }
+    ],
+    "learn": [
+      "The package layer's own evidence rules pointed me at the client's parked DOM: the camp keeps a display:none copy of its rule list, so a DOM query or a scripted .click() can operate a hidden, stale editor while the visible screen is elsewhere. Any rater who clicks by text or selector should assert visibility (getBoundingClientRect + elementFromPoint) before concluding that an interaction worked or failed.",
+      "One rater cannot close the loop on the rule editor from outside: threshold-value taps are the one interaction I could not verify end to end (six attempts, always with engine.exportRules() as the check). A hands-on rater with a visible-only driver, or a QA transcript of the exact tap path, is the right follow-up before this build ships - the rule layer is the game's whole lever.",
+      "Frame time is cheap to measure in the rater's own window (a rAF sample via page.evaluate) and is stronger evidence than a screenshot for motion and polish; the phone walk's screenshots were pixel-bound enough that I did not try to read fps off them."
+    ]
+  }
+}
