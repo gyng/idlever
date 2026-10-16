@@ -26,8 +26,8 @@ web/src/engine/        types.ts (wire), fake.ts (UI dev), wasm.ts (real), pkg/ (
 web/src/ui/            camp, watch, death, report, settings
 web/src/render/        three.js replay viewer (pixel pipeline); render-demo.html
 art/                   ART.md, manifest.json, prompts/, generated/, tiles/, pack.py
-tools/                 verify.sh, gates.mjs, copy-lint.mjs, art-qc.py
-eval/                  idle fun-eval presets, template, calibration, copy budgets
+tools/                 verify.sh, gates.mjs, copy-lint.mjs, art-qc.py, fun-eval.mjs (freeze → brief → collect → score)
+eval/                  idle fun-eval presets, template, calibration, copy budgets (harness: docs/FUN_EVAL_HARNESS.md)
 docs/                  FUN_EVAL_IDLE.md, CUT*.md
 research/              the four research reports behind the plan
 ```

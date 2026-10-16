@@ -1993,6 +1993,11 @@ Transcript mode ≈ 0.1 M tokens per card, minutes; api mode (§2) ≈ 5 M token
 parallel. Use: the distribution over 8 seeds tells a plateau from a seed; the blind cohort of
 two on the GPU stays the decision. Cost: a day once §1.2 and §2 exist.
 
+**Built 2026-10-16, without the fan-out:** `tools/fun-eval.mjs` + `docs/FUN_EVAL_HARNESS.md` do
+freeze → packet → collect → score and calibrate against the cohorts on record; they do not spawn
+sessions (`--n`, `--mode transcript|api`), because a transcript rater is a *leading indicator*
+(§1.3) and the fan-out needs §1.2/§2. The brief of §1.5 is `eval/RATER_PROMPT.md`, unchanged.
+
 ## 2. A tool server for the players (MCP or the driver's HTTP) — do now, with two profiles
 
 *Done (driver ops, 2026-09-22): `state`, `act` (settles on `!busy`, not 600 ms) and `watch`
