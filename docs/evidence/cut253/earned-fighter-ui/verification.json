@@ -1,0 +1,90 @@
+{
+  "status": "PASS_SCOPED_GEOMETRY_INPUT_RETENTION_ARTIFACT_CHECKS",
+  "readable_200_percent_status": "FAIL:descendant names and Learn/Reset action fonts remain fixed while requirement/block text doubles",
+  "input_sha256": "a2943ee1b011a3e25a425bc7047e9963ee85eee4b4675737545bbdcc9fa39fd6",
+  "wasm_sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "cases": 4,
+  "learned_save_field_diffs": [
+    {
+      "path": "attempt-3/learned-402-1x.session.json",
+      "only_changed_lineage_fields": [
+        "class_paths",
+        "sets"
+      ]
+    },
+    {
+      "path": "attempt-3/learned-402-2x.session.json",
+      "only_changed_lineage_fields": [
+        "class_paths",
+        "sets"
+      ]
+    },
+    {
+      "path": "attempt-3/learned-1440-1x.session.json",
+      "only_changed_lineage_fields": [
+        "class_paths",
+        "sets"
+      ]
+    },
+    {
+      "path": "attempt-3/learned-1440-2x.session.json",
+      "only_changed_lineage_fields": [
+        "class_paths",
+        "sets"
+      ]
+    }
+  ],
+  "reset_save_only_changed_lineage_fields": [
+    "class_paths",
+    "sets"
+  ],
+  "served_wasm_responses": 16,
+  "font_measurements": {
+    "currentName": {
+      "normal": 18,
+      "double": 36,
+      "ratio": 2
+    },
+    "mapName": {
+      "normal": 16,
+      "double": 32,
+      "ratio": 2
+    },
+    "mapDescendantName": {
+      "normal": 14,
+      "double": 14,
+      "ratio": 1
+    },
+    "learnAction": {
+      "normal": 16,
+      "double": 16,
+      "ratio": 1
+    },
+    "fullTreeSummary": {
+      "normal": 14,
+      "double": 28,
+      "ratio": 2
+    },
+    "mapRequirement": {
+      "normal": 14,
+      "double": 28,
+      "ratio": 2
+    },
+    "mapBlocked": {
+      "normal": 14,
+      "double": 28,
+      "ratio": 2
+    },
+    "reset": {
+      "normal": 16,
+      "double": 16,
+      "ratio": 1
+    },
+    "currentRulesSummary": {
+      "normal": 14,
+      "double": 28,
+      "ratio": 2
+    }
+  },
+  "scope": "One genuine Fighter journey. Four other classes/multi-resident stale-owner controls, actual GPU visual/accessibility/recognition/fun acceptance not certified. Old failed attempts retained."
+}

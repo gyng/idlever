@@ -1,0 +1,66 @@
+{
+  "name": "routine-full",
+  "command": [
+    "/home/g/.nvm/versions/node/v22.18.0/bin/node",
+    "tools/gates.mjs",
+    "--full"
+  ],
+  "startedUtc": "2026-10-16T00:21:43.696937+00:00",
+  "status": "PASS",
+  "log": "docs/evidence/cut253/gates-current/routine-full.log",
+  "binariesBefore": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+      "bytes": 11990680
+    },
+    "target/fast/examples/qa": {
+      "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+      "bytes": 10894184
+    }
+  },
+  "pid": 780971,
+  "pgid": 745149,
+  "lastLiveCheckpointUtc": "2026-10-16T00:23:43.924974+00:00",
+  "logBytes": 1441,
+  "binariesObserved": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+      "bytes": 11990000
+    },
+    "target/fast/examples/qa": {
+      "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+      "bytes": 10893464
+    }
+  },
+  "finishedUtc": "2026-10-16T00:24:10.958527+00:00",
+  "exit": 0,
+  "signal": null,
+  "logSha256": "60972a14aeabc729fe4af0fbaf65a33c70dfa96b6961573fc5f0a108ce2b836a",
+  "binariesAfter": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+      "bytes": 11990000
+    },
+    "target/fast/examples/qa": {
+      "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+      "bytes": 10893464
+    }
+  },
+  "sourceUnchanged": true,
+  "cachedLines": [
+    "gates: routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in; source d445c9825416e54e; threads metrics=15 qa=12 dayplayer=16; cache hits=none"
+  ],
+  "expectedTerminalMarker": true
+}

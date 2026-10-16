@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-16",
+  "kind": "Automated native verification; not player feedback or fun acceptance",
+  "status": "PASS",
+  "sourceCommitAtLaunch": "7be668d57d275910f0080687ca4b50170f79527b",
+  "nativeSourceKey": "d445c9825416e54e",
+  "sourceGuardFiles": 280,
+  "sourceUnchangedThroughBothTerminals": true,
+  "supplementalCrateManifestsExactToLaunchCommit": true,
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "node": "v22.18.0",
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+  "binaries": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+      "bytes": 11990000
+    },
+    "target/fast/examples/qa": {
+      "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+      "bytes": 10893464
+    }
+  },
+  "pacing": {
+    "command": "node tools/gates.mjs --pacing --fail-fast",
+    "exit": 0,
+    "rows": 24,
+    "configuredSeeds": 16,
+    "configuredLeaveOneOutSeeds": 16,
+    "configuredTunedSeeds": 16,
+    "nativeTableSeconds": 1546,
+    "scope": "Some rows mathematically settle early within the16seed cohort; final raw bounds retained, not claiming all16full trajectories for every early-settled row. Pacing is targeted acceptance, not the routine gate itself.",
+    "receipt": "pacing-terminal.json"
+  },
+  "routineFull": {
+    "command": "node tools/gates.mjs --full",
+    "exit": 0,
+    "metricsRows": 8,
+    "wireSeeds": 10,
+    "currentPlayerFortnightCases": 18,
+    "randomComparisonSeeds": 16,
+    "actualRandomSeedCompletionLines": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "legs": {
+      "metrics": {
+        "exit": 0,
+        "seconds": 115.5
+      },
+      "qa": {
+        "exit": 0,
+        "seconds": 48.0
+      },
+      "dayplayer": {
+        "exit": 0,
+        "seconds": 137.3
+      }
+    },
+    "receipt": "routine-full-terminal.json",
+    "scope": "Normal exact-identity native job caches allowed; no top-level leg hits. Not represented as every-case fresh execution."
+  },
+  "cachePolicy": {
+    "freshFlag": false,
+    "topLevelLegHits": "none reported",
+    "before": "cache-before.json",
+    "after": "cache-after.json",
+    "scope": "Completed matching per-job caches may be reused; leg statuses/keys and original runner output retained. No cache count is called a pass."
+  },
+  "keyMeasuredRows": {
+    "randomVsPicked": "15/16 atD13;16/16 atD23; median+4h/+28h",
+    "pickedVsIdle": "D13ratio1.50;D18ratio2.50;D23ratio3.55 (settled row)",
+    "tunedVsPicked": "D33ratio bound1.23\u20131.42 with4unneeded seeds left when row settled",
+    "outpace": "bound93\u201399%,104/105pairs with1seed left when row settled"
+  },
+  "processesAbsent": "processes-terminal.json",
+  "noTuningOrGateWeakeningOrRetry": true,
+  "wasmRebuiltByThisWork": false,
+  "remaining": [
+    "Separate exhaustive statistical balance/migration audit",
+    "All40handoff requirements and genuine advanced earned-stage/next8h campaigns",
+    "Fun/playtest acceptance and current player feedback",
+    "No GPU/game performance claim from these native verification durations"
+  ],
+  "revalidateWhen": [
+    "Any relevant native/gate/runtime-input/compiler/profile/binary/balance identity changes",
+    "Successor WASM/package: native result does not independently certify new browser parity"
+  ]
+}

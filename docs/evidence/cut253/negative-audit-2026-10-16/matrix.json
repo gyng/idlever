@@ -1,0 +1,2949 @@
+{
+  "date": "2026-10-16",
+  "kind": "Read-only exact coverage audit, not new execution or player feedback",
+  "sourceIdentity": "production-identity-before-tests.json",
+  "contract": "docs/CUT253_ADVANCED_CLASS_PATHS.md numeric acceptance3/5",
+  "executedEvidence": {
+    "focusedLog": "docs/evidence/cut253/native-final-causal.log",
+    "focusedPass": 28,
+    "finalWorkspace": "docs/evidence/cut253/native-workspace-v3.log",
+    "workspacePass": 1013,
+    "ignored": 6,
+    "method": "Pinned module has exactly28 #[test] functions; filter advanced_tests selected28/pass, and finalworkspace includes them. Individual testnames are mapped from exactsource, not fabricated verbose per-name console output.",
+    "scope": "Controlled arenas/direct actualverbs and scheduler; manually authored masks and RNG branch searches are componentfixtures, not earned publiccampaigns."
+  },
+  "testInventory": [
+    {
+      "id": "T01",
+      "name": "rally_is_an_actual_guard_then_one_successful_wind_not_a_miss_or_hazard",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:129"
+    },
+    {
+      "id": "T02",
+      "name": "boss_bash_arms_oathguard_and_siege_followup_kill_obeys_execution_clock",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:170"
+    },
+    {
+      "id": "T03",
+      "name": "opening_cut_requires_two_actual_cleave_hits_and_holdfast_has_two_charges",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:203"
+    },
+    {
+      "id": "T04",
+      "name": "afterimage_and_tell_thief_use_real_ambush_and_observed_windup",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:243"
+    },
+    {
+      "id": "T05",
+      "name": "veiled_route_refunds_actual_debit_and_ghostwalk_only_one_real_backstab",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:274"
+    },
+    {
+      "id": "T06",
+      "name": "patient_ambush_retains_only_preexisting_three_ticks_on_a_real_miss",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:287"
+    },
+    {
+      "id": "T07",
+      "name": "silent_finish_is_low_pre_hit_hp_and_concurrent_returns_never_repeat_same_tick",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:313"
+    },
+    {
+      "id": "T08",
+      "name": "marked_trap_is_consumed_once_and_both_snare_benefits_use_actual_trigger",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:335"
+    },
+    {
+      "id": "T09",
+      "name": "quiver_thread_uses_killed_targets_pre_shot_hp_not_post_hit_hp",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:366"
+    },
+    {
+      "id": "T10",
+      "name": "corridor_volley_reaches_one_extra_tile_and_split_mark_copies_to_only_one_hit",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:393"
+    },
+    {
+      "id": "T11",
+      "name": "moving_line_requires_an_actual_mark_copy_then_a_legal_kite",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:415"
+    },
+    {
+      "id": "T12",
+      "name": "chilling_charge_and_conduct_share_original_slow_but_each_apply_once",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:427"
+    },
+    {
+      "id": "T13",
+      "name": "ice_lock_extends_only_a_fresh_warded_slow_and_refused_repeats_are_exact",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:462"
+    },
+    {
+      "id": "T14",
+      "name": "storm_cell_hits_only_one_extra_on_line_foe_after_real_multi_target_nova",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:474"
+    },
+    {
+      "id": "T15",
+      "name": "shatter_ward_consumes_exact_cast_and_last_wall_requires_four_actual_absorbed",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:491"
+    },
+    {
+      "id": "T16",
+      "name": "rangefinder_recovers_only_an_actually_spent_prepared_boss_round",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:540"
+    },
+    {
+      "id": "T17",
+      "name": "chamber_chain_requires_full_fast_reload_and_shifts_real_next_action_one_tick",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:579"
+    },
+    {
+      "id": "T18",
+      "name": "smoke_walk_returns_original_reload_debit_only_on_owned_completion_inside_window",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:607"
+    },
+    {
+      "id": "T19",
+      "name": "cycling_breach_and_breach_route_need_real_adjacent_burst_kill_and_legal_smoke",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:638"
+    },
+    {
+      "id": "T20",
+      "name": "long_watch_is_reachable_through_real_rangefinder_recovery_without_free_ammo",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:674"
+    },
+    {
+      "id": "T21",
+      "name": "all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1009"
+    },
+    {
+      "id": "T22",
+      "name": "ghostwalk_keeps_charge_through_actual_miss_and_zero_damage_hit",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1030"
+    },
+    {
+      "id": "T23",
+      "name": "moving_line_does_not_refund_kite_shooting_in_place",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1098"
+    },
+    {
+      "id": "T24",
+      "name": "split_mark_cannot_chain_from_a_copy_but_fresh_mark_restores_original_provenance",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1126"
+    },
+    {
+      "id": "T25",
+      "name": "tell_thief_does_not_misname_ambush_as_a_backstab",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1151"
+    },
+    {
+      "id": "T26",
+      "name": "every_actual_charge_preserves_complete_save_across_active_deadline_expired_whole_sliced_reload",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1245"
+    },
+    {
+      "id": "T27",
+      "name": "expired_actual_charges_never_benefit_their_real_legal_followup",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1372"
+    },
+    {
+      "id": "T28",
+      "name": "every_actual_charge_has_public_offline_whole_sliced_reloaded_complete_parity",
+      "source": "crates/idlever-core/src/class_advanced_tests.rs:1439"
+    }
+  ],
+  "sharedProofs": {
+    "positivePair": "T21:30same controlledinputs enabled/disabled own-output comparisons; positive Applied and no disabled matchingreceipt. Not allnegative combinations.",
+    "chargeFixtures": "T26/T27/T28 use14actualarmingprefixes, never directlygrant a charge. Expiry/persistence limited to these14, not all30.",
+    "receiptLimit": "receipt() checks canonicalHERO_ID, skillID, phase/effect and amount in selectedassertions; it ignores dst,expires_t and skill.name. No full30target/expirywire assertion is inferred.",
+    "consumedStateLimit": "Sharedparity starts with activecharges; hold rules/longstunnedfoes normally avoidconsumption untilexpiry. No general consumedcharge save/reload repeat proof."
+  },
+  "rows": [
+    {
+      "id": "fighter_rally",
+      "class": "fighter",
+      "bit": 6,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:834",
+        "crates/idlever-core/src/class_advanced.rs:545"
+      ],
+      "specificExecutedTests": [
+        "T01"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -30,
+          "disabled_metric": -50,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No actual missed incoming melee or zero-prevented melee; title is broader than body.",
+          "proposedControl": "Run a fixed actual melee miss and a landed unmitigated hit; successful Wind must not reduce Bash cooldown."
+        },
+        "refusal": {
+          "status": "covered",
+          "executedTests": [
+            "T01"
+          ],
+          "actualAssertions": "Immediate second Wind is refused; complete Game.save remains exact.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T01"
+          ],
+          "actualAssertions": "Actual landed shoot/bolt while Bulwark active leaves advanced state absent.",
+          "missingCases": "Hazard, pet interception and no guard are not executed.",
+          "proposedControl": "Use real hazard damage and actual pet interception, then legal Wind; compare Bash and receipts to disabled control."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Rally last_block_t10tick window has no actual deadline/11tick Wind case.",
+          "proposedControl": "Fork after real guard; legal Wind at10 versus11ticks, both with real remaining Bash cooldown."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T01"
+          ],
+          "actualAssertions": "Cooldown-refused repeat Wind leaves complete save unchanged.",
+          "missingCases": "No successful new Wind after a distinct guard/cast; no minimum remaining-cooldown saturation.",
+          "proposedControl": "Allow actual cooldown/time or label a controlled reset; new legal Wind must apply only min(actualCD,20), never negative."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No spendable charge; one instantaneous reduction per successful Wind.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "fighter_oathguard",
+      "class": "fighter",
+      "bit": 7,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1808",
+        "crates/idlever-core/src/class_advanced.rs:570"
+      ],
+      "specificExecutedTests": [
+        "T02"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 999,
+          "disabled_metric": 997,
+          "delta": 2,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No armed-charge actual incoming miss or fully blunted hit.",
+          "proposedControl": "Arm through real boss Bash; miss/zero incoming damage must preserve charge and emit no preventedHP receipt."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for fighter_oathguard in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_oathguard, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No nonboss/missed/blocked Bash or pet-intercepted incoming hit.",
+          "proposedControl": "Compare actual nonboss and missed boss Bash; then real pet interception with charge armed."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Only first blocked hit asserted; no third-party/ranged/no-rearm attempt within10ticks.",
+          "proposedControl": "Two real landed melee hits after one Bash: only first prevents\u22642HP; refused repeated Bash must preserve exact charge/expiry."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T02"
+          ],
+          "actualAssertions": "First guarded hit produces a positive preventedHP receipt.",
+          "missingCases": "Remaining count and second-hit no-benefit not asserted.",
+          "proposedControl": "Assert consumed count1, remaining0, then second actual landed hit matches disabled damage."
+        }
+      },
+      "boundedCombo": "Oathguard",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "fighter_opening_cut",
+      "class": "fighter",
+      "bit": 8,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4605"
+      ],
+      "specificExecutedTests": [
+        "T03"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -40,
+          "disabled_metric": -50,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for fighter_opening_cut in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_opening_cut, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for fighter_opening_cut in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_opening_cut, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Test title says requires2hits but only2-hit success is executed.",
+          "proposedControl": "One actual damaged foe, then two targets with only one real Hurt recipient; neither reduces BashCD."
+        },
+        "expiry": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Instantaneous actual Cleave reduction; no retained timer/charge.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Per-Cleave once and minimum remaining-cooldown cap not asserted.",
+          "proposedControl": "Cleave3actual recipients gives one10tick reduction; subsequent distinct legal cast is independent; remainingCD<10 reduces only actual amount."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No retained charge; recipient multiplicity belongs to once-per-Cleave check.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "fighter_siege_rhythm",
+      "class": "fighter",
+      "bit": 9,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1740",
+        "crates/idlever-core/src/ai.rs:1809"
+      ],
+      "specificExecutedTests": [
+        "T02"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -920,
+          "disabled_metric": -922,
+          "delta": 2,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No charged ordinary attack miss/zeroHP-damage case.",
+          "proposedControl": "A legal ordinary attack consumes this next-attack charge even on miss (Cut225 consumed-by-attack); never emits fabricated applied damage."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for fighter_siege_rhythm in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_siege_rhythm, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No nonboss/failed Bash or ranged/bash/other verb followup exclusion.",
+          "proposedControl": "Arm via boss Bash; use another legal verb/ranged action and verify ordinary-melee-only charge/effect rules."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No second ordinary attack comparison or same-window re-arm rejection.",
+          "proposedControl": "Two actual ordinary attacks after one boss Bash: exactly first benefits; repeated trigger within original deadline cannot refresh/refill."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T02",
+            "T21"
+          ],
+          "actualAssertions": "One charged attack improves actual target damage; ExecutionArc can see its qualifying kill.",
+          "missingCases": "No explicit charge remaining0/second ordinary attack assertion.",
+          "proposedControl": "Assert first Consumed=1 then remaining0, actual second attack has no extra2HP."
+        }
+      },
+      "boundedCombo": "SiegeRhythm",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "fighter_holdfast",
+      "class": "fighter",
+      "bit": 10,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:835",
+        "crates/idlever-core/src/class_advanced.rs:570"
+      ],
+      "specificExecutedTests": [
+        "T03"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 799,
+          "disabled_metric": 797,
+          "delta": 2,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No actual missed/zero-damage/ranged/pet-intercepted hit with two charges.",
+          "proposedControl": "Arm through actual threatened Wind; excluded attacks preserve both charges, then real melee consumes only needed count."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for fighter_holdfast in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_holdfast, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No safe Wind without adjacent threat.",
+          "proposedControl": "Successful healing Wind with only distant/no enemy must not arm Holdfast."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T03"
+          ],
+          "actualAssertions": "Three actual incoming hits consume exactly two charges; remaining0 and consumed amounts[1,1].",
+          "missingCases": "No second trigger attempts within20tick window or combined Oathguard+Holdfast low-damage cap.",
+          "proposedControl": "Actual repeated Wind/refusal preserves original expiry/count; combined guards never prevent more than real incoming damage."
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T03"
+          ],
+          "actualAssertions": "Three actual hits consume exactly2charges, leaving0 and only two Consumed receipts.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "boundedCombo": "Holdfast",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "fighter_execution_arc",
+      "class": "fighter",
+      "bit": 11,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1812"
+      ],
+      "specificExecutedTests": [
+        "T02"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -30,
+          "disabled_metric": -50,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No charged melee miss or nonlethal hit proving no Execution benefit.",
+          "proposedControl": "Arm Siege; actual missed and actual nonlethal charged attacks must not reduce BashCD or set a fabricated kill receipt."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for fighter_execution_arc in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for fighter_execution_arc, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No uncharged/ranged/other-verb kill exclusion.",
+          "proposedControl": "Identical real kill without Siege charge and kill from another attack kind must not emit Execution."
+        },
+        "expiry": {
+          "status": "partial",
+          "executedTests": [
+            "T02"
+          ],
+          "actualAssertions": "New real boss Bash+charged kill at t11 receives no second Execution while within40tick lock.",
+          "missingCases": "No exact39/40boundary, no explicit expired-parent kill followup for node11.",
+          "proposedControl": "Create genuine charged kills at39 and40; verify once lock and parent10tick deadline independently."
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T02"
+          ],
+          "actualAssertions": "Second actual boss Bash/kill before40ticks gives no extra20reduction.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No own charge; consumes parent Siege attack opportunity and stores40tick once timestamp.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "rogue_afterimage",
+      "class": "rogue",
+      "bit": 6,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4641",
+        "crates/idlever-core/src/ai.rs:4692"
+      ],
+      "specificExecutedTests": [
+        "T04"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -80,
+          "disabled_metric": -100,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for rogue_afterimage in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_afterimage, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_afterimage in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_afterimage, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No missed Ambush/Backstab-only/no-ambush Step exclusion.",
+          "proposedControl": "Use fixed actual Ambush miss and successful ordinary Backstab; a later legal Step must not reduce VanishCD."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No second Step/no-rearm check within10ticks or cooldown saturation.",
+          "proposedControl": "One actual Ambush\u2192two legal Steps where geometry permits; only first gets\u226420remainingCD and new prefix cannot refresh unexpired window."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T04"
+          ],
+          "actualAssertions": "First actual Step reduces VanishCD100\u219280.",
+          "missingCases": "No remaining0/secondStep assertion.",
+          "proposedControl": "Check actual Consumed1 and remaining0, then second Step has no Afterimage receipt."
+        }
+      },
+      "boundedCombo": "Afterimage",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "rogue_tell_thief",
+      "class": "rogue",
+      "bit": 7,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4644"
+      ],
+      "specificExecutedTests": [
+        "T04",
+        "T25"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -90,
+          "disabled_metric": -100,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for rogue_tell_thief in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_tell_thief, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_tell_thief in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_tell_thief, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T25"
+          ],
+          "actualAssertions": "Actual Ambush against active boss windup leaves VanishCD100, committed pending attack exact and no Tell receipt.",
+          "missingCases": "Unobserved/ordinary foe/no-windup Backstab exclusions absent.",
+          "proposedControl": "Same real Backstab against visible nonboss, visible boss without pending, and source-hidden boss; no Tell benefit."
+        },
+        "expiry": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No independent charge/window; actual observed pending windup is queried on hit.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Minimum remainingVanishCD and repeat actual Backstab policy not tested.",
+          "proposedControl": "Use positiveCD<10/0 and repeated distinct real Backstabs during one pending windup; emit only actual positive reduction per successful action."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No retained charge; committed boss attack is explicitly preserved by T04/T25.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "rogue_veiled_route",
+      "class": "rogue",
+      "bit": 8,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:867",
+        "crates/idlever-core/src/ai.rs:4693"
+      ],
+      "specificExecutedTests": [
+        "T05",
+        "T07"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 50,
+          "disabled_metric": 0,
+          "delta": 50,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Smoke\u2192legal Step has no random hit roll; no-blind/refusal are separate dimensions.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_veiled_route in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_veiled_route, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No no-living-blind-target/no-Smoke Step case.",
+          "proposedControl": "A legal Smoke that does not newly blind a living foe, or Step without qualifying Smoke, must not arm/refund."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T07"
+          ],
+          "actualAssertions": "Combined Veiled+Silent returns total99 on one real scheduled action; one action only.",
+          "missingCases": "No same-window repeat Step/re-arm assertion.",
+          "proposedControl": "After one real Step consume, repeat legal Step and repeat Smoke attempt; no old charge refresh/refund."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T05",
+            "T07"
+          ],
+          "actualAssertions": "Actual scheduled Step refunds50, combined returns\u2264actual debit and energy<100.",
+          "missingCases": "No charge remaining0/refusal-preservation and trait-reduced/zero real debit cases.",
+          "proposedControl": "Compare refused Step byte-exact save; successful Step consumes1 and refund=min(real net debit/2,remainingbudget)."
+        }
+      },
+      "boundedCombo": "VeiledRoute",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "rogue_patient_ambush",
+      "class": "rogue",
+      "bit": 9,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4639"
+      ],
+      "specificExecutedTests": [
+        "T06"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 3,
+          "disabled_metric": 0,
+          "delta": 3,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "covered",
+          "executedTests": [
+            "T06",
+            "T21"
+          ],
+          "actualAssertions": "Actual missed Ambush with preVanish30 retains exactly3ticks; causal disabled control retains0.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_patient_ambush in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_patient_ambush, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Successful Ambush and preVanish0/1/2 not tested for false restoration.",
+          "proposedControl": "Actual hit must clear Vanish; actual miss with pre0/1/2 retains0/1/2, never invents3."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Retained3ticks are not advanced to expiration in a dedicated test.",
+          "proposedControl": "Tick actual retained1/2/3 windows through0; no refresh, new invulnerability or cooldown restoration."
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No repeated missed Ambush proving shrinking retained window rather than reset.",
+          "proposedControl": "Repeated actual misses at successive ticks cannot extend original3tick allowance."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No independent combo charge; existing Vanish is replaced by at-most3remainingticks.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "rogue_ghostwalk",
+      "class": "rogue",
+      "bit": 10,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4695",
+        "crates/idlever-core/src/turn.rs:2183"
+      ],
+      "specificExecutedTests": [
+        "T05",
+        "T22"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -917,
+          "disabled_metric": -919,
+          "delta": 2,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "covered",
+          "executedTests": [
+            "T22"
+          ],
+          "actualAssertions": "Actual Backstab miss and then real hit with zero appliedHPdamage preserve the complete original charge; no Consumed receipt.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_ghostwalk in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_ghostwalk, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T22"
+          ],
+          "actualAssertions": "Miss/fully blocked hit do not consume; later damaging Backstab does.",
+          "missingCases": "No absence-of-Smoke/Step, wrong followup verb or Ambush exclusion case.",
+          "proposedControl": "Smoke without legal Step and other real attacks must not invent/use Ghostwalk damage."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T05"
+          ],
+          "actualAssertions": "Two actual Backstabs after one charge yield AppliedDamage[2] only once.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T22"
+          ],
+          "actualAssertions": "First actual damaging Backstab emits Consumed1/Applied2 after earlier miss/zero-hit preserved exact charge.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "boundedCombo": "Ghostwalk",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "rogue_silent_finish",
+      "class": "rogue",
+      "bit": 11,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:4642",
+        "crates/idlever-core/src/ai.rs:4697"
+      ],
+      "specificExecutedTests": [
+        "T07"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 50,
+          "disabled_metric": 0,
+          "delta": 50,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for rogue_silent_finish in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_silent_finish, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for rogue_silent_finish in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for rogue_silent_finish, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No exact25%/above25%/ordinary Backstab or missed Ambush negative.",
+          "proposedControl": "Actual Ambush at preHP249/250/251 of1000 plus a miss; only<25% qualifying hit arms."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T07"
+          ],
+          "actualAssertions": "Concurrent actual Veiled/Silent refund99 cannot produce another action in same tick.",
+          "missingCases": "No second Step/no-rearm within original10ticks.",
+          "proposedControl": "Consume once, then repeated legal Step/prefix attempts cannot repeat or refresh."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T07"
+          ],
+          "actualAssertions": "One actual scheduled Step shares the debit cap with Veiled Route.",
+          "missingCases": "No isolated remaining0, refused Step exact save, or smaller actual debit cap.",
+          "proposedControl": "Check single-node refund and charge count plus combined real debit<100/0 without adding energy."
+        }
+      },
+      "boundedCombo": "SilentFinish",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "ranger_spotter",
+      "class": "ranger",
+      "bit": 6,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:420",
+        "crates/idlever-core/src/ai.rs:2960"
+      ],
+      "specificExecutedTests": [
+        "T08"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 40,
+          "disabled_metric": 30,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Trap trigger has no random hero hit roll; unmarked/non-triggering movement is the applicable negative.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_spotter in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_spotter, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No unmarked actual trap trigger.",
+          "proposedControl": "Marked and unmarked foes step into actual trap; unmarked gets normal trap outcome but no mark extension/Spotter receipt."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No naturally expired mark before actual trap trigger.",
+          "proposedControl": "Wait real mark to0, then actual trap trigger must not resurrect it."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T08"
+          ],
+          "actualAssertions": "Leaving/re-entering consumed trap yields no second mark/cooldown receipt.",
+          "missingCases": "Mark cap50 and applieddelta<10 are not tested.",
+          "proposedControl": "Real trap with marked49/50 gives actual+1/+0, no negative or false full10 receipt."
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T08"
+          ],
+          "actualAssertions": "Actual trap removed; repeated real traversal cannot trigger a second benefit.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "ranger_quiver_thread",
+      "class": "ranger",
+      "bit": 7,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1816"
+      ],
+      "specificExecutedTests": [
+        "T09"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -20,
+          "disabled_metric": -40,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for ranger_quiver_thread in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_quiver_thread, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_quiver_thread in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_quiver_thread, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T09"
+          ],
+          "actualAssertions": "Actual kill at exact25% preHP250/1000 does not reduce DoubleShotCD; HP1kill does.",
+          "missingCases": "Nonkill/other verb/reflected kill are not asserted.",
+          "proposedControl": "Actual damaging nonkill below25%, miss and non-shot kill leave cooldown unchanged."
+        },
+        "expiry": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Instantaneous actual shot-kill reduction; no retained charge.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No repeat/remainingCD saturation.",
+          "proposedControl": "Distinct actual qualifying kills with remainingCD<20/0 reduce only actual remaining amount; no repeated accounting for one death."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No independent charge; requires actual shot kill and pre-hitHP threshold.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "ranger_corridor_volley",
+      "class": "ranger",
+      "bit": 8,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1139",
+        "crates/idlever-core/src/ai.rs:1739"
+      ],
+      "specificExecutedTests": [
+        "T10"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -964,
+          "disabled_metric": -1000,
+          "delta": 36,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for ranger_corridor_volley in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_corridor_volley, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_corridor_volley in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_corridor_volley, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No Volley with only1actual damaged recipient; no LOS/cover/counter/reflection case.",
+          "proposedControl": "One hit plus miss/reflection cannot arm; charged shot blocked by wall or beyond+1 cannot bypass range/LOS."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T10"
+          ],
+          "actualAssertions": "Second Shoot at extended-range target produces no furtherHP loss.",
+          "missingCases": "No explicit second projectile/movement/charge-state assertion or no-rearm.",
+          "proposedControl": "Assert second action approaches/does not launch at out-of-range target, remaining0 and no refill on unexpired window."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T10"
+          ],
+          "actualAssertions": "First extra-range shot damages real target and emits Range+1; second targetHP unchanged.",
+          "missingCases": "No exact Consumed count/DoubleShot or Volley first-projectile consumption case.",
+          "proposedControl": "Two-projectile action at extra range: only first legal projectile may consume/use single range charge; second obeys ordinary range."
+        }
+      },
+      "boundedCombo": "CorridorVolley",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "ranger_split_mark",
+      "class": "ranger",
+      "bit": 9,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1142"
+      ],
+      "specificExecutedTests": [
+        "T10",
+        "T24"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 20,
+          "disabled_metric": 0,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for ranger_split_mark in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_split_mark, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_split_mark in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_split_mark, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T24"
+          ],
+          "actualAssertions": "A copied recipient cannot seed B\u2192C; fresh actual Mark resets copied provenance and permits copy.",
+          "missingCases": "No original source mark0/expired mark negative and no3eligible-recipient multiplicity case.",
+          "proposedControl": "Use originalAmark plus two eligible unmarkedB/C in one actual Volley; exactly one receives copy. Repeat with no originalmark."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Copied mark20/source<20 boundaries not advanced/checked.",
+          "proposedControl": "Original remaining5copies\u22645, natural0copiesnothing; recipient higher mark never downgraded or falsely counted."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T24"
+          ],
+          "actualAssertions": "Copied mark cannot recursively spread; fresh Mark restores eligibility.",
+          "missingCases": "Existing tests never have two eligible unmarked recipients competing in the same successful Volley.",
+          "proposedControl": "Three actual damaged foes with one original mark: exactly one additional mark/receipt, no cascade."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No spendable combo charge; original mark may qualify another distinct Volley, copied provenance blocks recursion.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "ranger_patient_snare",
+      "class": "ranger",
+      "bit": 10,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:444"
+      ],
+      "specificExecutedTests": [
+        "T08"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -20,
+          "disabled_metric": -40,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Trap movement has no hero hit roll.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_patient_snare in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_patient_snare, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No unmarked actual trigger.",
+          "proposedControl": "Actual trap on unmarked foe must not reduce DoubleShotCD."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No mark expired before trigger.",
+          "proposedControl": "Let markexpire then trigger real trap: no PatientSnare benefit."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T08"
+          ],
+          "actualAssertions": "Same removed trap traversed again produces no second DoubleShotCD receipt.",
+          "missingCases": "RemainingCD<20/0 and another independent real trap not tested.",
+          "proposedControl": "Actual trigger reduces only currentCD; second distinct legal trap is independent, old consumed trap cannot pay twice."
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T08"
+          ],
+          "actualAssertions": "Real consumed trap cannot re-trigger from second traversal.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "ranger_moving_line",
+      "class": "ranger",
+      "bit": 11,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1077",
+        "crates/idlever-core/src/ai.rs:1150"
+      ],
+      "specificExecutedTests": [
+        "T11",
+        "T23"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 50,
+          "disabled_metric": 0,
+          "delta": 50,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Kite movement has no randomhit; in-place shooting is explicitly tested separately.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for ranger_moving_line in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for ranger_moving_line, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "covered",
+          "executedTests": [
+            "T11",
+            "T23"
+          ],
+          "actualAssertions": "No original mark/copy gives no refund; chargedKite shootinginplace preserves pos, charge.remaining1 and emits no EnergyApplied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No second successfulKite/no-rearm within same10ticks.",
+          "proposedControl": "Two actual legalKite steps after one copy: only first refunds, unexpired charge cannot refill."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T11",
+            "T23"
+          ],
+          "actualAssertions": "One actual scheduledmovement refunds50; actual in-placeKite preserves1charge.",
+          "missingCases": "Successfulstep remaining0 and secondstep output not asserted.",
+          "proposedControl": "Verify first eligiblemove consumes1, secondmove no refund, refusedKite exactsave."
+        }
+      },
+      "boundedCombo": "MovingLine",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "caster_chilling_charge",
+      "class": "caster",
+      "bit": 6,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:481",
+        "crates/idlever-core/src/ai.rs:1251"
+      ],
+      "specificExecutedTests": [
+        "T12"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -40,
+          "disabled_metric": -50,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for caster_chilling_charge in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_chilling_charge, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for caster_chilling_charge in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_chilling_charge, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No ordinary foe/unslowed boss/copiedSlow/miss/blockedBolt case.",
+          "proposedControl": "Actual damaging Bolts into nonboss or unslowed/copy-slowed boss and real missed/blocked Bolt give no WardCD reduction."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No original Slow expires before Bolt.",
+          "proposedControl": "Let original Slow hit0 then actual Bolt boss; no old cast benefit."
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T12"
+          ],
+          "actualAssertions": "Two real landed Bolts on same original Slow boss yield WardCooldown[10] only once.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T12"
+          ],
+          "actualAssertions": "Second actual landed Bolt cannot spend same original Slow cast again; once-per-cast effect observed.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "caster_storm_cell",
+      "class": "caster",
+      "bit": 7,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1358",
+        "crates/idlever-core/src/ai.rs:1230"
+      ],
+      "specificExecutedTests": [
+        "T14"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -998,
+          "disabled_metric": -1000,
+          "delta": 2,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for caster_storm_cell in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_storm_cell, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for caster_storm_cell in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_storm_cell, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T14"
+          ],
+          "actualAssertions": "First qualifying Bolt hurts one additional on-line foe; a fourth on-line foe remains untouched.",
+          "missingCases": "One-impact Nova, wall/off-line/hidden targets and primary/secondary reflection branches untested.",
+          "proposedControl": "Actual1impact Nova cannot arm; after valid prefix, wall/offline/hidden target never chains and reflected secondary uses native reflection."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T14"
+          ],
+          "actualAssertions": "Second real landed Bolt creates no second Applied extra-damage receipt.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T14"
+          ],
+          "actualAssertions": "Exactly one Consumed receipt for firstBolt; subsequentBolt has no extra application.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "boundedCombo": "StormCell",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "caster_ice_lock",
+      "class": "caster",
+      "bit": 8,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:451"
+      ],
+      "specificExecutedTests": [
+        "T13"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 40,
+          "disabled_metric": 30,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Slow application has no random hit roll; target/refusal/ward state negatives apply.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "covered",
+          "executedTests": [
+            "T13"
+          ],
+          "actualAssertions": "Immediate repeated Slow is refused and entire savedGame remains exact.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No successful unwarded Slow; active/expiredWard branch not tested.",
+          "proposedControl": "Same legal fresh Slow with Ward0 versus active Ward; only warded adds10."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Ward expiry before Slow not tested.",
+          "proposedControl": "Wait actualWard to0 then fresh Slow; it remains base duration."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T13"
+          ],
+          "actualAssertions": "Cooldown-refused repeat preserves exact save.",
+          "missingCases": "No cap50/partial actual delta or new actual cast identity test.",
+          "proposedControl": "Fresh Slows with inherited duration near50 add only remaining room; no active-status refresh outside normal spell rules."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No retained charge; modifies one fresh successful Slow application.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "caster_shatter_ward",
+      "class": "caster",
+      "bit": 9,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1359"
+      ],
+      "specificExecutedTests": [
+        "T15"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -130,
+          "disabled_metric": -150,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Nova applies deterministic adjacent blast;0actual impacts/immune targets are distinct no-trigger semantics, not a miss roll.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for caster_shatter_ward in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_shatter_ward, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No successful Nova without activeWard/originalWard marker; no refusedNova save check.",
+          "proposedControl": "Use legal unwarded Nova and cooldown/no-adjacent refusal; no Shatter consumption/reduction."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "OriginalWard naturally expires before Nova not tested.",
+          "proposedControl": "Wait realWard to0 then legalNova: no Shatter receipt or20reduction."
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "At-most-once originalWard cast not directly attempted twice; newWard cast identity not exercised.",
+          "proposedControl": "After one consumedWard, next legalNova without newWard gives no reduction; a genuinely newWard cast may qualify once."
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T15"
+          ],
+          "actualAssertions": "Actual wardedNova removes exactly30remainingWard ticks and reduces newNovaCD150\u2192130; receipt consumedamount30.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "caster_conduct",
+      "class": "caster",
+      "bit": 10,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:493"
+      ],
+      "specificExecutedTests": [
+        "T12"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 10,
+          "disabled_metric": 0,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for caster_conduct in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_conduct, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for caster_conduct in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_conduct, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T12"
+          ],
+          "actualAssertions": "Copied recipient has no original SlowCast marker; same originalBoss cannot conduct twice.",
+          "missingCases": "No actual copied-boss B\u2192C attack, invisible/LOS-blocked/nonadjacent/empty candidates.",
+          "proposedControl": "AoriginalSlow\u2192Bcopy then realBolt intoBwithCavailable cannot spread; blocked/hidden candidates receive nothing."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No original/copySlow expiry before actual Bolt.",
+          "proposedControl": "Let either sourceSlow reach0; no resurrection/recursive copy on subsequent real Bolt."
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T12"
+          ],
+          "actualAssertions": "Second actual landed Bolt emits no second Conduct receipt; original marker conduct_used assertedtrue.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T12"
+          ],
+          "actualAssertions": "Once-per-originalSlow flag is asserted; copiedtarget markerNone and second realBolt no benefit.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "caster_last_wall",
+      "class": "caster",
+      "bit": 11,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:545"
+      ],
+      "specificExecutedTests": [
+        "T15"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -30,
+          "disabled_metric": -50,
+          "delta": 20,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No actual incoming miss with Ward active.",
+          "proposedControl": "Missed incoming attack cannot add preventedWardHP or reduce BlinkCD."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for caster_last_wall in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for caster_last_wall, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T15"
+          ],
+          "actualAssertions": "First landed hit below threshold produces no benefit; second reaches trigger.",
+          "missingCases": "No no-Ward/pet-intercept/zeroactualWardprevention/exact3\u21924 threshold with asserted prevention amounts.",
+          "proposedControl": "Fork actual guarded attacks versus noWard and petinterception; only true preventedWardHP reaches4; fully absorbedHPdamage0 can still legitimately qualify."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No expired originalWard/source marker versus fresh cast reset.",
+          "proposedControl": "Let Wardexpire and hit, then newWard and hits: old absorbedcount cannot leak into new cast."
+        },
+        "repeat": {
+          "status": "covered",
+          "executedTests": [
+            "T15"
+          ],
+          "actualAssertions": "Third actual incoming hit after trigger adds no second BlinkCooldown receipt.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "consumption": {
+          "status": "covered",
+          "executedTests": [
+            "T15"
+          ],
+          "actualAssertions": "Threshold trigger occurs once on originalWard; later actual hit emits no extra reduction.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "gunner_rangefinder",
+      "class": "gunner",
+      "bit": 6,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:743"
+      ],
+      "specificExecutedTests": [
+        "T16"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 1,
+          "disabled_metric": 0,
+          "delta": 1,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for gunner_rangefinder in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_rangefinder, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "covered",
+          "executedTests": [
+            "T16"
+          ],
+          "actualAssertions": "Empty actualFire is refused; whole Game.save is identical.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T16"
+          ],
+          "actualAssertions": "Second real unpreparedFire does not recover another chamber.",
+          "missingCases": "No nonboss/unobserved/wrongtarget/mismatchedgun, actualmiss/fullyblocked or unspent/capacity case.",
+          "proposedControl": "Compare prepared real hit on ordinary/unseen/wrongtarget to observedboss; assert exactly one spent chamber may return and capacity never grows."
+        },
+        "expiry": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Aim sequence invalidation by movement/newtarget/newgun not tested.",
+          "proposedControl": "Prepare realAim then legal movement/gun switch/target change before actualfire; stale sequence cannot recover."
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T16"
+          ],
+          "actualAssertions": "Second realFire leaves0rounds and Chamber receipts[1].",
+          "missingCases": "No direct capacity/unspent-round or same-sequence multi-projectile diagnostic.",
+          "proposedControl": "Assert no recovery on unsuccessful/reserved-no-spend path; an independent actualnewAim may recover once again."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T16"
+          ],
+          "actualAssertions": "Actual1chamber spent then restored; followingFire spendsit and no secondrecovery.",
+          "missingCases": "Aim identity recoveredflag/target/gun linkage not directly asserted.",
+          "proposedControl": "Assert canonicalsequence/gun/target and one recovery receipt tied to actual spent round."
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "gunner_chamber_chain",
+      "class": "gunner",
+      "bit": 7,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:614",
+        "crates/idlever-core/src/class_advanced.rs:664",
+        "crates/idlever-core/src/class_advanced.rs:705"
+      ],
+      "specificExecutedTests": [
+        "T17"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 10,
+          "disabled_metric": 0,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Reload and Aim settlement do not roll a hit; partial/invalid actions are relevant negatives.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for gunner_chamber_chain in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_chamber_chain, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "partial",
+          "executedTests": [
+            "T17"
+          ],
+          "actualAssertions": "Before real fast-reload completion, no Armed receipt; finaltick arms.",
+          "missingCases": "Normalreload, canceled/dropped/swapped gun and failedAim not tested.",
+          "proposedControl": "Real ordinaryreload must not arm; physically completed dropped/stolen gun cannot benefit oldowner; refused Aim preservescharge."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No second legal/refusedAim or same-window reload re-arm cap.",
+          "proposedControl": "After successful actualAimconsume, attempted repeat/newAim cannot reuse oldcharge; reloadtrigger cannot refresh unexpired charge."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T17"
+          ],
+          "actualAssertions": "Actual nextAim reduces real next-action eligibility9ticks versus10.",
+          "missingCases": "No remaining0/Consumedcount/zeroortrait-reduceddebit or jointLongWatch cap.",
+          "proposedControl": "Check chargeConsumed1 andremaining0, real action costs/time preserved across fractionalpace/timedSpeed and minimum future1tick."
+        }
+      },
+      "boundedCombo": "ChamberChain",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "gunner_smoke_walk",
+      "class": "gunner",
+      "bit": 8,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1631",
+        "crates/idlever-core/src/class_advanced.rs:643"
+      ],
+      "specificExecutedTests": [
+        "T18"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 440,
+          "disabled_metric": 390,
+          "delta": 50,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Smoke and physicalreload completion have no hit roll.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for gunner_smoke_walk in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_smoke_walk, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "Owned completion appears only in title/productionguard: no swapped/dropped/stolen gun, no newlyblind foe, canceledreload or unrelatedreload.",
+          "proposedControl": "Start actualreload then qualifySmoke; transfer/drop originalgun before actualcompletion and verify normalphysical completion but no oldowner refund."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T18"
+          ],
+          "actualAssertions": "Five extra actualticks after one completion do not repeat receipt.",
+          "missingCases": "No secondcompletion/re-arm or changed source/actiondebit test.",
+          "proposedControl": "Same originalphysical reload pays once; a later actualreload without a newqualifyingSmoke cannot reuse oldcharge."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T18"
+          ],
+          "actualAssertions": "Actual ownedcompletion returns50originaldebit and leaves one physicalround.",
+          "missingCases": "No count0/secondcompletion or sourcegun/debit mismatch assertion.",
+          "proposedControl": "Assert original reloadidentity, consumed1, physicalammo unchanged versus disabledcontrol, no invented immediateaction."
+        }
+      },
+      "boundedCombo": "SmokeWalk",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "gunner_cycling_breach",
+      "class": "gunner",
+      "bit": 9,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:812"
+      ],
+      "specificExecutedTests": [
+        "T19"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": -90,
+          "disabled_metric": -100,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for gunner_cycling_breach in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_cycling_breach, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for gunner_cycling_breach in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_cycling_breach, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No nonlethal/nonadjacent/nonburst/miss/blockedkill qualifier exclusion.",
+          "proposedControl": "Same actualattack sequence varied onecondition at a time: survivingburst, rangedkill and otherverbkill give no FastReady reduction."
+        },
+        "expiry": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "Instant reduction of actual remaining FastReady; no own retained charge.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No saturation when remainingCD<10/0, repeat death/differentkill accounting.",
+          "proposedControl": "Actual qualifyingkill atremainingCD1/0 gives applied1/none; no replay/reload duplicate benefit."
+        },
+        "consumption": {
+          "status": "not_applicable",
+          "executedTests": [],
+          "actualAssertions": "No own charge; one reduction for actual qualifying close-burst kill.",
+          "missingCases": "",
+          "proposedControl": ""
+        }
+      },
+      "persistence": {
+        "status": "unproved",
+        "executedTests": [],
+        "actualAssertions": "",
+        "missingCases": "No node-specific whole/sliced/reloaded identity test for non-Combo cast/mark/aim/timestamp state.",
+        "proposedControl": "For retained originalWard/Slow/Aim/provenance/40tick timestamp, save after actualqualifier/consume and compare actualfollowup across reload; instantaneous effects need no fabricatedcharge."
+      }
+    },
+    {
+      "id": "gunner_long_watch",
+      "class": "gunner",
+      "bit": 10,
+      "hookRefs": [
+        "crates/idlever-core/src/class_advanced.rs:789"
+      ],
+      "specificExecutedTests": [
+        "T20"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 10,
+          "disabled_metric": 0,
+          "delta": 10,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No miss assertion for gunner_long_watch in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_long_watch, create a genuinely applicable miss branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for gunner_long_watch in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_long_watch, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No nonkill/unchargedAim/wrongtarget/notprepared or missedshot negative.",
+          "proposedControl": "A real preparedhit withoutkill and a real ordinaryAimkill not shortened by parent cannot arm LongWatch."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "partial",
+          "executedTests": [
+            "T20"
+          ],
+          "actualAssertions": "Uses actual Rangefinder recoveredround; no duplicated recovery receipt.",
+          "missingCases": "LongWatch repeatedAim/window re-arm not tested.",
+          "proposedControl": "Consume on next actualAim, then repeatAim cannot get secondsettlement; subsequent qualifyingkill obeys original unexpired no-refresh rule."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T20"
+          ],
+          "actualAssertions": "Next actualAim emits AimSettle[1] after genuine charged aimedkill.",
+          "missingCases": "No explicit remaining0/Consumedcount and failedAim preservation.",
+          "proposedControl": "Assert refused duplicateAim whole-save exact and one successfulconsume; no ammo/HP/cooldown grant."
+        }
+      },
+      "boundedCombo": "LongWatch",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    },
+    {
+      "id": "gunner_breach_route",
+      "class": "gunner",
+      "bit": 11,
+      "hookRefs": [
+        "crates/idlever-core/src/ai.rs:1632",
+        "crates/idlever-core/src/class_advanced.rs:835"
+      ],
+      "specificExecutedTests": [
+        "T19"
+      ],
+      "positiveActualPair": {
+        "status": "covered",
+        "test": "T21",
+        "metric": {
+          "status": "PASS controlled actual-action component experiment",
+          "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+          "log": "docs/evidence/cut253/native-paired-v1.log",
+          "enabled_metric": 50,
+          "disabled_metric": 0,
+          "delta": 50,
+          "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+        }
+      },
+      "nodeDisabledControl": {
+        "status": "covered",
+        "executedTests": [
+          "T21"
+        ],
+        "actualAssertions": "Same controlled scenario without tested frozen bit improves less and emits no matching node receipt.",
+        "missingCases": "",
+        "proposedControl": ""
+      },
+      "dimensions": {
+        "miss": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No actual missed close-burst proving no BreachRoute arm.",
+          "proposedControl": "Use a fixed real close-burst miss on identical on/off branches; later legalSmoke cannot receive a BreachRoute refund."
+        },
+        "refusal": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No refusal assertion for gunner_breach_route in the executed28tests.",
+          "proposedControl": "From the existing real-action prefix for gunner_breach_route, create a genuinely applicable refusal branch; fork before action and compare complete save/actual outcome and exact node receipts. Do not grant a charge or infer a refusal from action selection."
+        },
+        "no_trigger": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No failed qualifyingburstkill or no legal clearStep/smoke-cooldown case.",
+          "proposedControl": "Arm through actualadjacentburstkill; blocked/SmokeCD refusal preserves charge and exactsave; nonkill neverarms."
+        },
+        "expiry": {
+          "status": "covered",
+          "executedTests": [
+            "T26",
+            "T27"
+          ],
+          "actualAssertions": "Actual prefix; serialized whole/batched/reloaded state/events exact through active, inclusive deadline and deadline+1; afterexpiry a real legal followup attempt emits no matching Consumed/Applied.",
+          "missingCases": "",
+          "proposedControl": ""
+        },
+        "repeat": {
+          "status": "unproved",
+          "executedTests": [],
+          "actualAssertions": "",
+          "missingCases": "No secondSmoke/re-arm within10tick window.",
+          "proposedControl": "First actualSmoke consumes once; repeatedattempt neither refunds nor refreshes; legal normalSmoke cooldown remains intact."
+        },
+        "consumption": {
+          "status": "partial",
+          "executedTests": [
+            "T19"
+          ],
+          "actualAssertions": "Actual scheduledSmoke returns50 and spentchambers stay0.",
+          "missingCases": "No remaining0/Consumedphase or HP/smokeCD conservation against disabled fork.",
+          "proposedControl": "Assert actualHP,ammo,smokecooldown unchanged except normalSmoke and refund\u2264real netdebit."
+        }
+      },
+      "boundedCombo": "BreachRoute",
+      "expiryLimits": "T26 asserts charge accessor alive exactlyatdeadline, not an actualbenefiting followup at that tick. T27 asserts legalattempt; Ghostwalk qualifyingpositiveHPdamage is not separatelyasserted in this generic expiry loop. No all-state/earned claim.",
+      "persistence": {
+        "status": "partial",
+        "executedTests": [
+          "T26",
+          "T28"
+        ],
+        "actualAssertions": "Whole/sliced/reloaded complete Run/Game/events through active\u2192expired and actual3s publicoffline comparisons after each14prefixes.",
+        "missingCases": "No charge-consumed\u2192save\u2192reload\u2192secondfollowup comparison; activeprefixparity is not consumedstateparity.",
+        "proposedControl": "Fork immediatelyafter actualconsume, publicload, repeatlegal followup; exact state/report/event equality and no renewed benefit."
+      }
+    }
+  ],
+  "semanticClarificationsBeforeTests": [
+    "SiegeRhythm is consumed by the next legalordinaryattack evenifitmisses (Cut225 wording); Ghostwalk explicitly survives miss/zeroHPdamage. Do not impose Ghostwalk semantics on allcharges.",
+    "StormCell is one legalBolt; test miss/reflection with no fabricatedApplied chain, and assert declared Consumed phase separately. CorridorRange may be used by a missed launched projectile; rangebenefit is distinct from damage.",
+    "Successful Ambush/Tell currently use actualAttack.hit, while Basharming checks actualHPdecrease. Fullyblocked-hit qualification should be explicitly agreed before a test calls that policy a defect.",
+    "Wind/Slow/Aim/Smoke/reload/trap do not all have a random hitroll; mark missnotapplicable where legalrefusal/no-trigger is the actual negative.",
+    "Same-window rearm cases may be unreachable under ordinary cooldowns; preserve ordinary refusal proof and label any cooldown-reset componentdiagnostic rather than claim natural play."
+  ],
+  "productionBugEstablished": false,
+  "findings": "Every node has a positive paired output control. No claim that all30have complete applicable negative/refusal/repeat/consumption coverage. Tests with broad names were read atassertion level; actualmissing controls are preserved perrow.",
+  "revalidateWhen": [
+    "Any relevant productionhook/node/charge/refund/defense/source identity changes",
+    "Any test assertions/fixtures change; this describes the prior executed28test phase only"
+  ]
+}

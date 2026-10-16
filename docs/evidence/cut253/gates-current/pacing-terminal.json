@@ -1,0 +1,65 @@
+{
+  "name": "pacing",
+  "command": [
+    "/home/g/.nvm/versions/node/v22.18.0/bin/node",
+    "tools/gates.mjs",
+    "--pacing",
+    "--fail-fast"
+  ],
+  "startedUtc": "2026-10-15T23:55:28.333027+00:00",
+  "status": "PASS",
+  "log": "docs/evidence/cut253/gates-current/pacing.log",
+  "binariesBefore": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "e611cb55c109dc09dbcfcb98a62ba572385877823aa083f9aa374e40c616c664",
+      "bytes": 12683352
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+      "bytes": 11990680
+    },
+    "target/fast/examples/qa": {
+      "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+      "bytes": 10894184
+    }
+  },
+  "pid": 745163,
+  "pgid": 745149,
+  "lastLiveCheckpointUtc": "2026-10-16T00:21:29.993054+00:00",
+  "logBytes": 10914,
+  "binariesObserved": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+      "bytes": 11990680
+    },
+    "target/fast/examples/qa": {
+      "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+      "bytes": 10894184
+    }
+  },
+  "finishedUtc": "2026-10-16T00:21:43.630273+00:00",
+  "exit": 0,
+  "signal": null,
+  "logSha256": "54b35b38c1cd5eef3b3f20d4a5135fd34d8288965d479e6c9ff710487e870079",
+  "binariesAfter": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+      "bytes": 11990680
+    },
+    "target/fast/examples/qa": {
+      "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+      "bytes": 10894184
+    }
+  },
+  "sourceUnchanged": true,
+  "cachedLines": [],
+  "expectedTerminalMarker": true
+}

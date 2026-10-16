@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-16T00:25:53.051691+00:00",
+  "command": "ps -o pid,ppid,stat,args -p 745149,745163,745639,780971,781318,781319",
+  "exit": 1,
+  "stdout": "    PID    PPID STAT COMMAND\n",
+  "stderr": "",
+  "allRecordedProcessesAbsent": true,
+  "scope": "Read-only host process observation after positive wrapper/per-stage terminal receipts; expected ps exit1 means none of the exactPIDs exists."
+}

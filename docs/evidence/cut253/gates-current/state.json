@@ -1,0 +1,165 @@
+{
+  "startedUtc": "2026-10-15T23:55:28.288324+00:00",
+  "wrapperPid": 745149,
+  "wrapperPgid": 745149,
+  "status": "PASS",
+  "sourceCommitAtLaunch": "7be668d57d275910f0080687ca4b50170f79527b",
+  "node": "v22.18.0",
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+  "threads": 16,
+  "balanceOverrides": {
+    "IDLEVER_BALANCE_JSON": null,
+    "IDLEVER_BALANCE_FILE": null
+  },
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "stages": [
+    {
+      "name": "pacing",
+      "command": [
+        "/home/g/.nvm/versions/node/v22.18.0/bin/node",
+        "tools/gates.mjs",
+        "--pacing",
+        "--fail-fast"
+      ],
+      "startedUtc": "2026-10-15T23:55:28.333027+00:00",
+      "status": "PASS",
+      "log": "docs/evidence/cut253/gates-current/pacing.log",
+      "binariesBefore": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "e611cb55c109dc09dbcfcb98a62ba572385877823aa083f9aa374e40c616c664",
+          "bytes": 12683352
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+          "bytes": 11990680
+        },
+        "target/fast/examples/qa": {
+          "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+          "bytes": 10894184
+        }
+      },
+      "pid": 745163,
+      "pgid": 745149,
+      "lastLiveCheckpointUtc": "2026-10-16T00:21:29.993054+00:00",
+      "logBytes": 10914,
+      "binariesObserved": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+          "bytes": 12683160
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+          "bytes": 11990680
+        },
+        "target/fast/examples/qa": {
+          "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+          "bytes": 10894184
+        }
+      },
+      "finishedUtc": "2026-10-16T00:21:43.630273+00:00",
+      "exit": 0,
+      "signal": null,
+      "logSha256": "54b35b38c1cd5eef3b3f20d4a5135fd34d8288965d479e6c9ff710487e870079",
+      "binariesAfter": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+          "bytes": 12683160
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+          "bytes": 11990680
+        },
+        "target/fast/examples/qa": {
+          "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+          "bytes": 10894184
+        }
+      },
+      "sourceUnchanged": true,
+      "cachedLines": [],
+      "expectedTerminalMarker": true
+    },
+    {
+      "name": "routine-full",
+      "command": [
+        "/home/g/.nvm/versions/node/v22.18.0/bin/node",
+        "tools/gates.mjs",
+        "--full"
+      ],
+      "startedUtc": "2026-10-16T00:21:43.696937+00:00",
+      "status": "PASS",
+      "log": "docs/evidence/cut253/gates-current/routine-full.log",
+      "binariesBefore": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+          "bytes": 12683160
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "571d015f179d3202c5c0252d38a7a894cd52545966787bbe33bfbd6f5c53d66e",
+          "bytes": 11990680
+        },
+        "target/fast/examples/qa": {
+          "sha256": "b710e8f8365f64117250fa349df02dc5866078c1b40ca4d3ea8bec138e048f8f",
+          "bytes": 10894184
+        }
+      },
+      "pid": 780971,
+      "pgid": 745149,
+      "lastLiveCheckpointUtc": "2026-10-16T00:23:43.924974+00:00",
+      "logBytes": 1441,
+      "binariesObserved": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+          "bytes": 12683160
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+          "bytes": 11990000
+        },
+        "target/fast/examples/qa": {
+          "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+          "bytes": 10893464
+        }
+      },
+      "finishedUtc": "2026-10-16T00:24:10.958527+00:00",
+      "exit": 0,
+      "signal": null,
+      "logSha256": "60972a14aeabc729fe4af0fbaf65a33c70dfa96b6961573fc5f0a108ce2b836a",
+      "binariesAfter": {
+        "target/fast/examples/dayplayer": {
+          "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+          "bytes": 12683160
+        },
+        "target/fast/examples/metrics": {
+          "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+          "bytes": 11990000
+        },
+        "target/fast/examples/qa": {
+          "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+          "bytes": 10893464
+        }
+      },
+      "sourceUnchanged": true,
+      "cachedLines": [
+        "gates: routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in; source d445c9825416e54e; threads metrics=15 qa=12 dayplayer=16; cache hits=none"
+      ],
+      "expectedTerminalMarker": true
+    }
+  ],
+  "scope": "Pacing pack is targeted16seed acceptance, not routine gate. Routine full is18current-player cases plus16RANDOM row; exhaustive/all40/fun remain separate.",
+  "finishedUtc": "2026-10-16T00:24:11.003982+00:00",
+  "sourceUnchangedAtWrapperEnd": true,
+  "binariesAtWrapperEnd": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+      "bytes": 11990000
+    },
+    "target/fast/examples/qa": {
+      "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+      "bytes": 10893464
+    }
+  }
+}
