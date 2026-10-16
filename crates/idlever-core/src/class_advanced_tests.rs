@@ -2541,3 +2541,553 @@ fn priority2_unwarded_or_naturally_expired_cast_cannot_shatter_or_credit_absorpt
         p2_no_receipt(&g, &[9, 11]);
     }
 }
+
+// Priority3 routing. Direct verb calls are controlled component actions, not
+// evidence of natural scheduler cadence or earned progression.
+fn p3_exact(
+    g: &Game,
+    bit: u32,
+    phase: Phase,
+    effect: Effect,
+    expected: &[(u32, i32, Option<u32>, Option<u32>)],
+) {
+    let node = &crate::class_tree::catalogue(g.run.as_ref().unwrap().hero.class)[bit as usize];
+    let id = format!("path:{}", node.id);
+    let actual = g
+        .events
+        .iter()
+        .filter_map(|e| match e {
+            Ev::ClassInteraction {
+                t,
+                src,
+                dst,
+                skill,
+                phase: p,
+                effect: f,
+                amount,
+                expires_t,
+            } if skill.id == id && *p == phase && *f == effect => {
+                assert_eq!(*src, HERO_ID, "actual canonical actor");
+                assert_eq!(skill.name, node.name, "canonical authored name");
+                Some((*t, *amount, *dst, *expires_t))
+            }
+            _ => None,
+        })
+        .collect::<Vec<_>>();
+    assert_eq!(
+        actual, expected,
+        "{id} exact {phase:?}/{effect:?} time/amount/recipient/absolute expiry"
+    );
+}
+fn p3_arg(g: &mut Game, verb: &str, target: &str) -> bool {
+    let (r, mut cx) = g.ctx();
+    let v = view(r);
+    try_verb(r, &mut cx, &Verb::arg(verb, target), &v)
+}
+fn p3_projectiles(g: &Game) -> Vec<u32> {
+    g.events
+        .iter()
+        .filter_map(|e| match e {
+            Ev::Projectile { src, dst, .. } if *src == HERO_ID => Some(*dst),
+            _ => None,
+        })
+        .collect()
+}
+#[test]
+fn priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry() {
+    for (g, combo) in armed_charge_fixtures() {
+        let r = g.run.as_ref().unwrap();
+        let c = p1_charge(&g, combo);
+        let ticks = if combo == Combo::Holdfast { 20 } else { 10 };
+        let count = if combo == Combo::Holdfast { 2 } else { 1 };
+        let dst = match combo {
+            Combo::Oathguard
+            | Combo::SiegeRhythm
+            | Combo::Afterimage
+            | Combo::SilentFinish
+            | Combo::LongWatch
+            | Combo::BreachRoute => Some(r.monsters[0].id),
+            _ => None,
+        };
+        assert_eq!(
+            c.target, dst,
+            "{combo:?} actual prefix victim, not inferred current target"
+        );
+        assert_eq!(
+            c.expires_t,
+            r.turn + ticks,
+            "{combo:?} absolute contract window"
+        );
+        assert_eq!(c.source >> 32, u64::from(r.turn), "actual arm tick");
+        assert!(
+            (c.source as u32) <= r.actions,
+            "source never names a future action"
+        );
+        assert_eq!(c.remaining, count);
+        let (bit, effect) = p1_meta(combo);
+        p3_exact(
+            &g,
+            bit,
+            Phase::Armed,
+            effect,
+            &[(r.turn, i32::from(count), dst, Some(r.turn + ticks))],
+        );
+    }
+}
+#[test]
+fn priority3_three_actual_volley_recipients_copy_mark_to_exactly_one_real_victim() {
+    let mut g = arena(Class::Ranger, &[9, 11]);
+    foe(&mut g, "goblin", 6, 5);
+    foe(&mut g, "goblin", 7, 5);
+    let third = foe(&mut g, "goblin", 8, 5);
+    assert!(act(&mut g, "mark"));
+    assert!(act(&mut g, "volley"));
+    let r = g.run.as_ref().unwrap();
+    let ids = r.monsters.iter().map(|m| m.id).collect::<Vec<_>>();
+    assert_eq!(
+        p3_projectiles(&g),
+        ids,
+        "three actual projectiles in ray order"
+    );
+    assert!(r.monsters.iter().all(|m| m.hp < 1000));
+    assert_eq!(r.monsters[0].marked, 30);
+    assert_eq!(r.monsters[1].marked, 20);
+    assert_eq!(r.monsters[third].marked, 0);
+    assert_eq!(
+        r.monsters.iter().filter(|m| m.advanced_mark_copy).count(),
+        1
+    );
+    p3_exact(
+        &g,
+        9,
+        Phase::Applied,
+        Effect::Mark,
+        &[(r.turn, 20, Some(ids[1]), None)],
+    );
+    p3_exact(
+        &g,
+        11,
+        Phase::Armed,
+        Effect::Energy,
+        &[(r.turn, 1, None, Some(r.turn + 10))],
+    );
+}
+#[test]
+fn priority3_actual_bolt_on_copied_boss_slow_cannot_chain_b_to_c_but_fresh_cast_can() {
+    let mut g = arena(Class::Caster, &[6, 10]);
+    let a = foe(&mut g, "bloat_mother", 5, 5);
+    let b = foe(&mut g, "bloat_mother", 6, 5);
+    let c = foe(&mut g, "bloat_mother", 7, 5);
+    assert!(act(&mut g, "slow"));
+    hit_verb(&mut g, "bolt");
+    let bid = g.run.as_ref().unwrap().monsters[b].id;
+    let cid = g.run.as_ref().unwrap().monsters[c].id;
+    p3_exact(
+        &g,
+        10,
+        Phase::Applied,
+        Effect::Slow,
+        &[(0, 10, Some(bid), None)],
+    );
+    assert_eq!(g.run.as_ref().unwrap().monsters[b].slow_t, 10);
+    assert!(g.run.as_ref().unwrap().monsters[b].advanced_slow.is_none());
+    // Controlled target routing via actual monster movement, not a new cast
+    // or forged source marker. The copied recipient is itself a boss.
+    {
+        let (r, mut cx) = g.ctx();
+        move_monster(r, &mut cx, a, Pos::new(4, 8));
+    }
+    g.events.clear();
+    let hp = g.run.as_ref().unwrap().monsters[b].hp;
+    hit_verb(&mut g, "bolt");
+    assert!(g
+        .events
+        .iter()
+        .any(|e| matches!(e,Ev::Attack {src,dst,hit:true,..} if *src==HERO_ID&&*dst==bid)));
+    assert!(g.run.as_ref().unwrap().monsters[b].hp < hp);
+    assert_eq!(g.run.as_ref().unwrap().monsters[c].slow_t, 0);
+    p3_exact(&g, 10, Phase::Applied, Effect::Slow, &[]);
+    while g.run.as_ref().unwrap().monsters[b].slow_t > 0 {
+        g.tick();
+    }
+    assert!(act(&mut g, "slow"));
+    assert!(g.run.as_ref().unwrap().monsters[b].advanced_slow.is_some());
+    g.events.clear();
+    hit_verb(&mut g, "bolt");
+    assert_eq!(
+        g.run.as_ref().unwrap().monsters[c].slow_t,
+        10,
+        "fresh actual B cast legitimately permits C copy"
+    );
+    let t = g.run.as_ref().unwrap().turn;
+    p3_exact(
+        &g,
+        10,
+        Phase::Applied,
+        Effect::Slow,
+        &[(t, 10, Some(cid), None)],
+    );
+}
+fn p3_storm() -> Game {
+    let mut g = arena(Class::Caster, &[7]);
+    foe(&mut g, "goblin", 5, 5);
+    foe(&mut g, "goblin", 4, 6);
+    assert!(act(&mut g, "nova"));
+    assert!(crate::class_advanced::charge(g.run.as_ref().unwrap(), Combo::StormCell).is_some());
+    g.events.clear();
+    g
+}
+#[test]
+fn priority3_storm_actual_primary_hit_respects_wall_offline_hidden_and_range() {
+    for condition in ["wall", "off_line", "hidden", "range"] {
+        let mut g = p3_storm();
+        let (x, y) = match condition {
+            "wall" => (7, 5),
+            "off_line" => (6, 6),
+            "range" => (11, 5),
+            _ => (6, 5),
+        };
+        let other = foe(&mut g, "goblin", x, y);
+        {
+            let r = g.run.as_mut().unwrap();
+            if condition == "wall" {
+                r.floor.map.set(Pos::new(6, 5), Tile::Wall);
+                r.floor.map.update_vision(r.hero.pos, 8);
+                assert!(!r.floor.map.los(r.hero.pos, r.monsters[other].pos));
+            }
+            if condition == "hidden" {
+                r.floor.map.update_vision(r.hero.pos, 1);
+                assert!(!r.floor.map.is_visible(r.monsters[other].pos));
+                assert!(r.floor.map.los(r.hero.pos, r.monsters[other].pos));
+            }
+            if condition == "range" {
+                assert!(r.floor.map.is_visible(r.monsters[other].pos));
+                assert!(r.monsters[other].pos.cheb(r.hero.pos) > BOW_RANGE);
+            }
+        }
+        let primary = g.run.as_ref().unwrap().monsters[0].id;
+        hit_verb(&mut g, "bolt");
+        assert!(g.events.iter().any(|e|matches!(e,Ev::Attack {src,dst,hit:true,dmg,..} if *src==HERO_ID&&*dst==primary&&*dmg>=2)),"{condition} actual qualifying primary Bolt damage");
+        assert_eq!(
+            g.run.as_ref().unwrap().monsters[other].hp,
+            1000,
+            "{condition} candidate untouched"
+        );
+        assert_eq!(p3_projectiles(&g), vec![primary]);
+        p3_exact(
+            &g,
+            7,
+            Phase::Consumed,
+            Effect::Damage,
+            &[(0, 1, Some(primary), Some(10))],
+        );
+        p3_exact(&g, 7, Phase::Applied, Effect::Damage, &[]);
+    }
+}
+#[test]
+fn priority3_storm_secondary_reflection_uses_real_reflector_and_never_applies_bypass_damage() {
+    for kind in ["lich", "mirror_king"] {
+        let (mut g, other) = if kind == "lich" {
+            let mut g = p3_storm();
+            let other = foe(&mut g, kind, 6, 5);
+            assert!(g.run.as_ref().unwrap().monsters[other].reflects_ranged());
+            (g, other)
+        } else {
+            let mut g = arena(Class::Caster, &[7]);
+            foe(&mut g, "goblin", 5, 5);
+            let other = foe(&mut g, kind, 6, 5);
+            // Actual scheduled Bolts establish the King's rhythm while the
+            // adjacent Goblin is the genuine primary. Direct component Nova
+            // then arms the charge without claiming natural action cadence.
+            scheduled(&mut g, "bolt");
+            scheduled(&mut g, "bolt");
+            assert_eq!(g.run.as_ref().unwrap().verb_ring, vec!["bolt", "bolt"]);
+            foe(&mut g, "goblin", 4, 6);
+            assert!(act(&mut g, "nova"));
+            assert!(
+                !g.run.as_ref().unwrap().monsters[other].reflects_ranged(),
+                "King exercises repetition branch, not generic reflect-tag branch"
+            );
+            g.events.clear();
+            (g, other)
+        };
+        let t = g.run.as_ref().unwrap().turn;
+        let expiry = p1_charge(&g, Combo::StormCell).expires_t;
+        let primary = g.run.as_ref().unwrap().monsters[0].id;
+        let dst = g.run.as_ref().unwrap().monsters[other].id;
+        hit_verb(&mut g, "bolt");
+        assert_eq!(p3_projectiles(&g), vec![primary, dst]);
+        let reflected = g
+            .events
+            .iter()
+            .filter_map(|e| match e {
+                Ev::Attack {
+                    src,
+                    dst: d,
+                    hit: true,
+                    dmg,
+                    verb: Some(v),
+                    ..
+                } if *src == dst && *d == HERO_ID && v == "reflect" => Some(*dmg),
+                _ => None,
+            })
+            .collect::<Vec<_>>();
+        assert_eq!(reflected.len(), 1);
+        assert!(reflected[0] > 0);
+        assert_eq!(g.run.as_ref().unwrap().hero.hp, 1000 - reflected[0]);
+        assert_eq!(g.run.as_ref().unwrap().monsters[other].hp, 1000);
+        p3_exact(
+            &g,
+            7,
+            Phase::Consumed,
+            Effect::Damage,
+            &[(t, 1, Some(primary), Some(expiry))],
+        );
+        p3_exact(&g, 7, Phase::Applied, Effect::Damage, &[]);
+    }
+}
+#[test]
+fn priority3_storm_primary_mirror_reflection_stops_before_secondary_projectile() {
+    let mut g = arena(Class::Caster, &[7]);
+    let king = foe(&mut g, "mirror_king", 5, 5);
+    scheduled(&mut g, "bolt");
+    scheduled(&mut g, "bolt");
+    assert_eq!(
+        g.run.as_ref().unwrap().verb_ring,
+        vec!["bolt", "bolt"],
+        "actual two scheduled previous casts"
+    );
+    foe(&mut g, "goblin", 4, 6);
+    // Direct component Nova creates the actual charge; unlike a scheduled
+    // Nova this deliberately does not replace the controlled rhythm context.
+    // This is branch coverage, never a claimed natural full-action cadence.
+    assert!(act(&mut g, "nova"));
+    let extra = foe(&mut g, "goblin", 6, 5);
+    let extra_id = g.run.as_ref().unwrap().monsters[extra].id;
+    let t = g.run.as_ref().unwrap().turn;
+    let expires = p1_charge(&g, Combo::StormCell).expires_t;
+    let id = g.run.as_ref().unwrap().monsters[king].id;
+    let before = g.run.as_ref().unwrap().monsters[king].hp;
+    let other = g.run.as_ref().unwrap().monsters[1].hp;
+    let hp = g.run.as_ref().unwrap().hero.hp;
+    let original = g.clone();
+    let mut found = None;
+    for seed in 0..128 {
+        let mut b = g.clone();
+        b.events.clear();
+        b.run.as_mut().unwrap().rng = Rng::new(seed);
+        assert!(p3_arg(&mut b, "bolt", "tag:boss"));
+        if b.events.iter().any(|e|matches!(e,Ev::Attack {src,dst,hit:true,verb:Some(v),..} if *src==id&&*dst==HERO_ID&&v=="mirror")) {found=Some(b);break;}
+    }
+    let g = found.expect("actual primary reflected hit");
+    assert!(g.run.as_ref().unwrap().hero.hp < hp);
+    assert!(
+        g.run.as_ref().unwrap().monsters[king].hp >= before,
+        "ordinary Mirror healing preserved"
+    );
+    assert_eq!(g.run.as_ref().unwrap().monsters[1].hp, other);
+    assert_eq!(g.run.as_ref().unwrap().monsters[extra].hp, 1000);
+    assert_eq!(p3_projectiles(&g), vec![id]);
+    p3_exact(
+        &g,
+        7,
+        Phase::Consumed,
+        Effect::Damage,
+        &[(t, 1, Some(id), Some(expires))],
+    );
+    p3_exact(&g, 7, Phase::Applied, Effect::Damage, &[]);
+    // A real scheduled Hold breaks the rhythm in a separate fork while the
+    // same charge remains active. Its Bolt must reach the eligible extra foe.
+    let mut control = original;
+    scheduled(&mut control, "hold");
+    assert_eq!(
+        control.run.as_ref().unwrap().verb_ring.last().unwrap(),
+        "hold"
+    );
+    let mut positive = None;
+    for seed in 0..128 {
+        let mut b = control.clone();
+        b.events.clear();
+        b.run.as_mut().unwrap().rng = Rng::new(seed);
+        assert!(p3_arg(&mut b, "bolt", "tag:boss"));
+        if b.events.iter().any(|e| matches!(e, Ev::Attack {src,dst,hit:true,dmg,..} if *src==HERO_ID&&*dst==id&&*dmg>=2)) {
+            positive = Some(b);
+            break;
+        }
+    }
+    let control = positive.expect("actual unreflected primary hit");
+    assert_eq!(p3_projectiles(&control), vec![id, extra_id]);
+    let applied = 1000 - control.run.as_ref().unwrap().monsters[extra].hp;
+    assert!(
+        applied > 0,
+        "same eligible secondary is actually reached without reflection"
+    );
+    let now = control.run.as_ref().unwrap().turn;
+    p3_exact(
+        &control,
+        7,
+        Phase::Applied,
+        Effect::Damage,
+        &[(now, applied, Some(extra_id), None)],
+    );
+}
+#[test]
+fn priority3_corridor_one_charge_is_spent_once_across_two_actual_projectiles() {
+    let (mut g, _) = armed_charge_fixtures()
+        .into_iter()
+        .find(|(_, c)| *c == Combo::CorridorVolley)
+        .unwrap();
+    let charge = p1_charge(&g, Combo::CorridorVolley);
+    let id = g.run.as_ref().unwrap().monsters[0].id;
+    g.events.clear();
+    assert!(act(&mut g, "double_shot"));
+    assert_eq!(p3_projectiles(&g), vec![id, id]);
+    assert_eq!(p1_charge(&g, Combo::CorridorVolley).remaining, 0);
+    p3_exact(
+        &g,
+        8,
+        Phase::Consumed,
+        Effect::Range,
+        &[(0, 1, Some(id), Some(charge.expires_t))],
+    );
+    p3_exact(&g, 8, Phase::Applied, Effect::Range, &[]); // Neither normal-range arrow needed extension.
+    for m in &mut g.run.as_mut().unwrap().monsters {
+        m.dormant = true;
+    }
+    let far = foe(&mut g, "goblin", 11, 5);
+    g.events.clear();
+    let pos = g.run.as_ref().unwrap().hero.pos;
+    assert!(act(&mut g, "shoot"));
+    assert_ne!(
+        g.run.as_ref().unwrap().hero.pos,
+        pos,
+        "spent range actually approaches"
+    );
+    assert_eq!(g.run.as_ref().unwrap().monsters[far].hp, 1000);
+    assert!(p3_projectiles(&g).is_empty());
+}
+fn p3_guard(combo: Combo) -> Game {
+    let bit = if combo == Combo::Oathguard { 7 } else { 10 };
+    let mut g = arena(Class::Fighter, &[bit]);
+    foe(&mut g, "bloat_mother", 5, 5);
+    if combo == Combo::Oathguard {
+        assert!(act(&mut g, "shield_bash"));
+    } else {
+        g.run.as_mut().unwrap().hero.hp = 500;
+        assert!(act(&mut g, "second_wind"));
+    }
+    g.events.clear();
+    g
+}
+#[test]
+fn priority3_guard_routes_to_different_real_attacker_and_caps_actual_one_two_five_damage() {
+    for combo in [Combo::Oathguard, Combo::Holdfast] {
+        for raw in [1, 2, 5] {
+            let mut g = p3_guard(combo);
+            let origin = p1_charge(&g, combo);
+            let attacker = foe(&mut g, "goblin", 5, 6);
+            g.run.as_mut().unwrap().monsters[attacker].atk = (raw, raw);
+            let id = g.run.as_ref().unwrap().monsters[attacker].id;
+            assert_ne!(origin.target, Some(id));
+            let hp = g.run.as_ref().unwrap().hero.hp;
+            enemy_hit(&mut g, attacker, "attack");
+            assert!(g.events.iter().any(|e|matches!(e,Ev::Attack {src,dst,hit:true,dmg,..} if *src==id&&*dst==HERO_ID&&*dmg==raw)));
+            let applied = raw.min(2);
+            assert_eq!(g.run.as_ref().unwrap().hero.hp, hp - (raw - applied));
+            assert_eq!(p1_charge(&g, combo).remaining, origin.remaining - 1);
+            let (bit, effect) = p1_meta(combo);
+            p3_exact(
+                &g,
+                bit,
+                Phase::Consumed,
+                effect,
+                &[(0, 1, Some(id), Some(origin.expires_t))],
+            );
+            p3_exact(
+                &g,
+                bit,
+                Phase::Applied,
+                effect,
+                &[(0, applied, Some(id), None)],
+            );
+        }
+    }
+}
+#[test]
+fn priority3_active_guard_ignores_actual_ranged_hit_and_pet_interception() {
+    for combo in [Combo::Oathguard, Combo::Holdfast] {
+        let mut g = p3_guard(combo);
+        let attacker = foe(&mut g, "goblin", 5, 6);
+        g.run.as_mut().unwrap().monsters[attacker].atk = (5, 5);
+        let charge = p1_charge(&g, combo);
+        let hp = g.run.as_ref().unwrap().hero.hp;
+        let mut ranged = g.clone();
+        enemy_hit(&mut ranged, attacker, "shoot");
+        assert_eq!(ranged.run.as_ref().unwrap().hero.hp, hp - 5);
+        assert_eq!(p1_charge(&ranged, combo), charge);
+        p2_no_receipt(&ranged, &[p1_meta(combo).0]);
+        let c = crate::wire::Companion {
+            id: 7000001,
+            kind: "goblin".into(),
+            name: "Guard".into(),
+            level: 1,
+            tags: vec![],
+            gen: 0,
+            rules: crate::rules::RuleSet::default(),
+            max_rows: 2,
+            hp: 100,
+            max_hp: 100,
+            life: Default::default(),
+        };
+        {
+            let r = g.run.as_mut().unwrap();
+            r.pets.on = true;
+            let mut m = crate::engine::companion_monster(500, &c, Pos::new(6, 6));
+            m.hp = 1000;
+            m.max_hp = 1000;
+            r.monsters.push(m);
+            r.companions.push(c);
+        }
+        let pet = g.run.as_ref().unwrap().monsters.len() - 1;
+        let g = p2_enemy(&g, attacker, true, true);
+        assert_eq!(g.run.as_ref().unwrap().hero.hp, hp);
+        assert_eq!(g.run.as_ref().unwrap().monsters[pet].hp, 995);
+        assert_eq!(p1_charge(&g, combo), charge);
+        p2_no_receipt(&g, &[p1_meta(combo).0]);
+    }
+}
+
+#[test]
+fn priority3_actual_reload_arm_source_precedes_same_tick_followup_action() {
+    let mut g = arena(Class::Gunner, &[7]);
+    foe(&mut g, "goblin", 6, 5);
+    empty_gun(&mut g);
+    scheduled(&mut g, "fast_reload");
+    let at = g.run.as_ref().unwrap().gun_reload.unwrap().at;
+    while g.run.as_ref().unwrap().turn + 1 < at {
+        g.tick();
+    }
+    let actions_before = g.run.as_ref().unwrap().actions;
+    g.events.clear();
+    g.tick();
+    let r = g.run.as_ref().unwrap();
+    let c = p1_charge(&g, Combo::ChamberChain);
+    assert_eq!(r.turn, at);
+    assert_eq!(
+        c.source,
+        (u64::from(at) << 32) | u64::from(actions_before),
+        "actual physical completion occurs before this tick's hero followup"
+    );
+    assert_eq!(
+        r.actions,
+        actions_before + 1,
+        "real same-tick scheduled Hold"
+    );
+    p3_exact(
+        &g,
+        7,
+        Phase::Armed,
+        Effect::AimSettle,
+        &[(at, 1, None, Some(at + 10))],
+    );
+}

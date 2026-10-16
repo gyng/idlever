@@ -1,0 +1,69 @@
+{
+  "recordedUtc": "2026-10-16T01:41:18.265211+00:00",
+  "status": "PASS",
+  "parkingBoundary": "Priority3 bounded completion only. No priority4/new phase; all owned jobs positively terminal. Root owns commit/handoff.",
+  "sourcePath": "crates/idlever-core/src/class_advanced_tests.rs",
+  "testSourceSha256": "7baa098c7f2c7fe179b2e5503ed1b8a5985f97a5a5e2129f5e2d0ae5a0986062",
+  "newGroupedTests": 10,
+  "scopeReference": "cases.json",
+  "checks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "session": 24087,
+      "exitCode": 0,
+      "passed": 51,
+      "seconds": 0.17,
+      "log": "advanced-v3.log"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core class_tree -- --nocapture",
+      "session": 63873,
+      "exitCode": 0,
+      "passed": 16,
+      "seconds": 7.45,
+      "log": "tree-stage-v3.log"
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "session": 84136,
+      "exitCode": 0,
+      "seconds": 14.72,
+      "log": "clippy-v3.log"
+    },
+    {
+      "command": "rustfmt --edition 2021 --check crates/idlever-core/src/class_advanced_tests.rs",
+      "exitCode": 0
+    }
+  ],
+  "retainedRedPhases": "phases.json",
+  "productionIdentityComparison": {
+    "productionInputs": true,
+    "productionLibrary": true,
+    "nativeBinaries": true,
+    "wasm": true,
+    "gateSourceKey": true
+  },
+  "productionRustInputs": 59,
+  "runtimeKey": "d445c9825416e54e",
+  "rlibSha256": "beab2f6bbf189575578974b249d9e68f374c6ed73caeb2dc49ed73483c888bbf",
+  "wasmSha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79",
+  "productionDefectEstablished": false,
+  "runtimeChange": false,
+  "ownedJobsLive": false,
+  "positiveTerminalSessions": [
+    51405,
+    73666,
+    24087,
+    63873,
+    84136
+  ],
+  "pacingFullReference": "../gates-current/wrapper-terminal.json",
+  "pacingNotRepeatedReason": "Exact production59Rust/selectedrlib/native binaries/WASM unchanged; cfg(test)-only source changes checked by affected fast tests/default all-targetClippy.",
+  "limits": [
+    "Controlled component masks/geometry/RNG searches, not earned campaign/player feedback.",
+    "Reflection rhythm uses actual scheduled Bolts plus direct actual Nova component action; not claimed natural full scheduler cadence.",
+    "Ordinary primary Bolt MirrorKing reflection differs from generic reflect-tag secondary hook; no new primary-spell policy inferred.",
+    "Exact14Armed metadata and selected routing Consumed/Applied metadata, not all phases of all30nodes.",
+    "Priority4 exact clocks/caps/cast replacement/net debit/refund/fractional cadence remains open."
+  ]
+}

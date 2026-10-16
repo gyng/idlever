@@ -1,0 +1,69 @@
+{
+  "scope": "10new grouped native component tests, exact final source/results pinned separately. No earned/natural scheduling claim.",
+  "sourcePath": "crates/idlever-core/src/class_advanced_tests.rs",
+  "testSourceSha256": "7baa098c7f2c7fe179b2e5503ed1b8a5985f97a5a5e2129f5e2d0ae5a0986062",
+  "groups": [
+    {
+      "test": "priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry",
+      "sourceLine": 2597,
+      "actualScope": "14real prefix states; exact actor/path/name/target/time/count/absolute expiry; bounded historical source tick, not end-action equality"
+    },
+    {
+      "test": "priority3_three_actual_volley_recipients_copy_mark_to_exactly_one_real_victim",
+      "sourceLine": 2638,
+      "actualScope": "3actual projectiles/3damaged recipients; exactly1copied Mark20 to actual B; MovingLine1"
+    },
+    {
+      "test": "priority3_actual_bolt_on_copied_boss_slow_cannot_chain_b_to_c_but_fresh_cast_can",
+      "sourceLine": 2676,
+      "actualScope": "original A\u2192B; actual damaging copied-boss Bolt B cannot reach C; naturally expired B plus fresh actual Slow B permits C"
+    },
+    {
+      "test": "priority3_storm_actual_primary_hit_respects_wall_offline_hidden_and_range",
+      "sourceLine": 2741,
+      "actualScope": "wall; off-line; hidden with clear LOS; visible but out of range. Actual primary hit damage>=2/1projectile/secondary HP unchanged"
+    },
+    {
+      "test": "priority3_storm_secondary_reflection_uses_real_reflector_and_never_applies_bypass_damage",
+      "sourceLine": 2788,
+      "actualScope": "2projectiles; actual generic Lich reflection and actual repeated-rhythm MirrorKing reflection; actual hero HP damage/no extra victim HP damage"
+    },
+    {
+      "test": "priority3_storm_primary_mirror_reflection_stops_before_secondary_projectile",
+      "sourceLine": 2850,
+      "actualScope": "primary actual mirror hit stops on-line eligible secondary; real scheduled Hold positive fork actually damages that same secondary"
+    },
+    {
+      "test": "priority3_corridor_one_charge_is_spent_once_across_two_actual_projectiles",
+      "sourceLine": 2935,
+      "actualScope": "2actual DoubleShot projectiles/1charge consume; subsequent far-target Shoot actually moves without projectile"
+    },
+    {
+      "test": "priority3_guard_routes_to_different_real_attacker_and_caps_actual_one_two_five_damage",
+      "sourceLine": 2983,
+      "actualScope": "2guard types \u00d7actual raw1/2/5 from different attacker; HP prevented1/2/2; exact actual attacker metadata"
+    },
+    {
+      "test": "priority3_active_guard_ignores_actual_ranged_hit_and_pet_interception",
+      "sourceLine": 3017,
+      "actualScope": "2guard types \u00d7actual ranged/pet interceptions; physical HP proof and complete active charge unchanged"
+    },
+    {
+      "test": "priority3_actual_reload_arm_source_precedes_same_tick_followup_action",
+      "sourceLine": 3061,
+      "actualScope": "real completion tick before later actual same-tick Hold; exact original source includes pre-followup action count"
+    }
+  ],
+  "metadataScope": {
+    "Armed": "All14actual prefixes; canonical actor/path/name and real target/count/tick/absolute expiry.",
+    "ConsumedApplied": "Specific Mark/Slow/Storm/Range/guard routing receipts, not every phase of all30nodes.",
+    "OpaqueSource": "All14arm tick bounds; exact full reload source pinned independently at actual completion before same-tick action."
+  },
+  "reflectionSemantics": "Primary normal Bolt MirrorKing repetition; secondary generic reflect tag OR MirrorKing repetition. Do not infer generic primary-spell reflect policy.",
+  "residuals": [
+    "priority4 exact clocks/caps/cast replacement/refund/net debit/fractional cadence",
+    "full all30negative dimension coverage",
+    "remaining per-phase receipt metadata outside these actual routing cases",
+    "earned/browser/fun acceptance"
+  ]
+}

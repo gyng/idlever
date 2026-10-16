@@ -1,0 +1,44 @@
+{
+  "recordedUtc": "2026-10-16T01:36:34.630983+00:00",
+  "phases": [
+    {
+      "phase": "v1",
+      "command": "cargo test -q --profile fast -p idlever-core priority3_ -- --nocapture",
+      "session": 51405,
+      "exitCode": 101,
+      "passed": 7,
+      "failed": 2,
+      "source": "test-module-v1.rs",
+      "sourceSha256": "e6acde2d6cd51dd0e6687a7769aa7927b7d005123777f2e46a41babb6ad2ed2b",
+      "log": "native-v1.log",
+      "observation": "Fixture already marked before real Mark; incorrect source equality compared physical reload arm to end-of-tick action counter. No established production defect."
+    },
+    {
+      "phase": "v2",
+      "command": "cargo test -q --profile fast -p idlever-core priority3_ -- --nocapture",
+      "session": 73666,
+      "status": "terminal",
+      "source": "test-module-v2.rs",
+      "sourceSha256": "1c7d956df41b57db3d766f0c0ea2202f2f1ece2526e18cb03721b1a4dcf3d241",
+      "log": "native-v2.log",
+      "observation": "Breach charge records actual killed-victim target Some4, not None; test oracle fixed to actual victim. Other9groups including reload-order and primary-reflection positive fork passed.",
+      "exitCode": 101,
+      "passed": 9,
+      "failed": 1
+    },
+    {
+      "phase": "v3",
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "session": 24087,
+      "status": "terminal",
+      "source": "test-module-v3.rs",
+      "sourceSha256": "7baa098c7f2c7fe179b2e5503ed1b8a5985f97a5a5e2129f5e2d0ae5a0986062",
+      "log": "advanced-v3.log",
+      "observation": "Correct real Breach victim metadata; covers both actual secondary reflection source branches (Lich tag and MirrorKing rhythm). Final source frozen for checks/parking.",
+      "exitCode": 0,
+      "passed": 51,
+      "failed": 0,
+      "seconds": 0.17
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "paths": [
+    "crates/idlever-core/src/class_advanced_tests.rs",
+    "docs/evidence/cut253/priority3-routing-tests/README.md",
+    "docs/evidence/cut253/priority3-routing-tests/cases.json",
+    "docs/evidence/cut253/priority3-routing-tests/production-identity-before-tests.json",
+    "docs/evidence/cut253/priority3-routing-tests/production-identity-after-tests.json",
+    "docs/evidence/cut253/priority3-routing-tests/results.json",
+    "docs/evidence/cut253/priority3-routing-tests/observations-2026-10-16.json",
+    "docs/evidence/cut253/priority3-routing-tests/phases.json",
+    "docs/evidence/cut253/priority3-routing-tests/native-v1.log",
+    "docs/evidence/cut253/priority3-routing-tests/native-v2.log",
+    "docs/evidence/cut253/priority3-routing-tests/advanced-v3.log",
+    "docs/evidence/cut253/priority3-routing-tests/tree-stage-v3.log",
+    "docs/evidence/cut253/priority3-routing-tests/clippy-v3.log",
+    "docs/evidence/cut253/priority3-routing-tests/test-module-v1.rs",
+    "docs/evidence/cut253/priority3-routing-tests/test-module-v2.rs",
+    "docs/evidence/cut253/priority3-routing-tests/test-module-v3.rs",
+    "docs/evidence/cut253/priority3-routing-tests/checkpoint-paths.json"
+  ],
+  "localOnlyDuplicates": [
+    {
+      "path": "docs/evidence/cut253/priority3-routing-tests/test-module-before.rs",
+      "sha256": "6aca7eb1b04db90cc9a9476450ce0a8966cc74e749a72713e1149aabcb690522",
+      "identicalTo": "docs/evidence/cut253/priority2-arming-tests/test-module-v4.rs"
+    }
+  ],
+  "referencedCommittedIdentityReproducer": "docs/evidence/cut253/priority1-charge-tests/capture-identity.py",
+  "scope": "Root owns staging/commits/handoff; no agent Git mutation."
+}

@@ -1,0 +1,27 @@
+
+running 9 tests
+.priority2 incoming hit=true intercepted=true seed=2
+.
+thread 'ai::advanced_tests::priority3_three_actual_volley_recipients_copy_mark_to_exactly_one_real_victim' (97) panicked at crates/idlever-core/src/class_advanced_tests.rs:2636:5:
+assertion failed: act(&mut g, "mark")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+priority2 incoming hit=true intercepted=true seed=2
+. 3/9
+ai::advanced_tests::priority3_three_actual_volley_recipients_copy_mark_to_exactly_one_real_victim --- FAILED
+...
+thread 'ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry' (91) panicked at crates/idlever-core/src/class_advanced_tests.rs:2620:9:
+assertion `left == right` failed
+  left: 47244640257
+ right: 47244640258
+ 7/9
+ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry --- FAILED
+.
+failures:
+
+failures:
+    ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry
+    ai::advanced_tests::priority3_three_actual_volley_recipients_copy_mark_to_exactly_one_real_victim
+
+test result: FAILED. 7 passed; 2 failed; 0 ignored; 0 measured; 1032 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

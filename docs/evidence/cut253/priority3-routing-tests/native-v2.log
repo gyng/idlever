@@ -1,0 +1,21 @@
+
+running 10 tests
+..priority2 incoming hit=true intercepted=true seed=2
+priority2 incoming hit=true intercepted=true seed=2
+.......
+thread 'ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry' (83) panicked at crates/idlever-core/src/class_advanced_tests.rs:2611:9:
+assertion `left == right` failed: BreachRoute actual prefix victim, not inferred current target
+  left: Some(4)
+ right: None
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ 9/10
+ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry --- FAILED
+
+failures:
+
+failures:
+    ai::advanced_tests::priority3_all_fourteen_real_arms_name_the_actor_original_target_and_absolute_expiry
+
+test result: FAILED. 9 passed; 1 failed; 0 ignored; 0 measured; 1032 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -1,0 +1,130 @@
+{
+  "recordedUtc": "2026-10-16T01:27:38.030381+00:00",
+  "scope": "Read-only production-only identity at an explicit cfg(test)-only boundary; artifact capture does not rebuild native or WASM.",
+  "gateReference": "docs/evidence/cut253/gates-current/wrapper-terminal.json",
+  "gateReferenceSha256": "bac8bc9b0453d3118e0490d69f5f3c5d7f532407311b2e90de1ace47729463d1",
+  "gateSourceKey": "d445c9825416e54e",
+  "exactRuntimeKeyReproduced": true,
+  "runtimeKeyMethod": "Exact tools/runtime-key.mjs hash algorithm; selected this rlib/profile/features only because it reproduces the actual gate source key. No fresh Cargo-artifact invocation is claimed.",
+  "profile": {
+    "opt_level": "3",
+    "debuginfo": 0,
+    "debug_assertions": false,
+    "overflow_checks": false,
+    "test": false
+  },
+  "features": [],
+  "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+  "productionLibrary": {
+    "path": "target/fast/deps/libidlever_core-197689112a1f5567.rlib",
+    "sha256": "beab2f6bbf189575578974b249d9e68f374c6ed73caeb2dc49ed73483c888bbf",
+    "bytes": 51259162
+  },
+  "compilerDependencyFile": {
+    "path": "target/fast/deps/idlever_core-197689112a1f5567.d",
+    "sha256": "f91a829e24633a081485d3446a3f54fe589be20fd13c2c586d9a254018467465",
+    "scope": "Actual selected non-test rlib rustc depfile;59 production Rust inputs, no test module."
+  },
+  "productionInputs": {
+    "Cargo.lock": "4ad425b0c78d73a7349bc2d8138bc556365c8be06f6841bb5c46615d81e86121",
+    "Cargo.toml": "5e7b046d323a57978071cdc6a0190aaa61a36ccb4da490023d42e2be24d5e9e0",
+    "crates/idlever-core/Cargo.toml": "eb21685b7e5d40d82be3fd35da361806fd248100b79adc861b53028871f1894c",
+    "crates/idlever-core/src/ai.rs": "f3d75bd72671bb4fa82a92fbdda57b9accc7c83a85c26a81c475e9dfe43e3f3e",
+    "crates/idlever-core/src/armour_sets.rs": "03f5fc3d04c6fc4fa52be3dd45d8c8dde625b1c8cfb63d9fd6ec9c2883995618",
+    "crates/idlever-core/src/balance.rs": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99",
+    "crates/idlever-core/src/bloodlines.rs": "44874dae444237b37d3dfdf2db66eb8de645562609ef4920cfd4a8600781004e",
+    "crates/idlever-core/src/chronicle.rs": "18356482ec2da983b774075135a68f56d69460aebe08b4dced6c32e0d341f0bd",
+    "crates/idlever-core/src/class_advanced.rs": "f939ca8ace43ade0d4565b55bc9c0b1543970a428eca91f18245d54dc6794db3",
+    "crates/idlever-core/src/class_tree.rs": "ce903da2b906f9f30c85925bcaf4fd58f351e7e5b51c637cdfe0b960d0d83d34",
+    "crates/idlever-core/src/defs.rs": "89853cd749d810620c6373559641d1edd4c7c0f81dfc9174b9c16fcf239e66fa",
+    "crates/idlever-core/src/descent.rs": "e57e0c0e72d24203fa25f7b43a576cf901d2c394382052aba7abcbcb7a34f16b",
+    "crates/idlever-core/src/divergence.rs": "fd3c73c6548d0b4dbfb06ee6b7cf732f0e56cee570d0df3b087050b3a5457eb2",
+    "crates/idlever-core/src/endgame.rs": "a82408a7e6fb65b2b79ec046998bab098b53ca832ee97456e9cb075542eed0b4",
+    "crates/idlever-core/src/engine.rs": "f6cfd7f86aa365c4421461a4fdaca10b3f8bf07fbf7592e9247b3f989e373613",
+    "crates/idlever-core/src/facts.rs": "59a3f70cc1d9ead74a89929982fc376cb89ff097e8f59516bcc1f205d3bf5dd5",
+    "crates/idlever-core/src/feats.rs": "04990cca12bf876c53418f1361f8b684330a9b03b66c0bc3f39d09f0e82df2b8",
+    "crates/idlever-core/src/firearm.rs": "c4342b7eac98cf80c9956dccdf9ecbd942df63b5b51a71a46af74cd2fc7d5310",
+    "crates/idlever-core/src/fold.rs": "215dfa58b4437aee4d1b935f9d4aa36d3c07e17bc6eb8421f10fcc0501fa8fd6",
+    "crates/idlever-core/src/forecast.rs": "dfd39647c0482780568f15cb36a44b989085c7ec6c87aac95117d428666dd6b9",
+    "crates/idlever-core/src/gen.rs": "087fba3a98b74f4a76384d1db1bb50e726cd13ea96de3130f1d1b5709cf88304",
+    "crates/idlever-core/src/geom.rs": "13288dac1b289271f927478195a4a0a1dcd65f7004444d2f1058f2e8a2b2f3c8",
+    "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369",
+    "crates/idlever-core/src/hero_build.rs": "cde2d6c1f0cad8c1ece11cd908bbee9b82f072521bb1b208c706c1b7cc8627bc",
+    "crates/idlever-core/src/item.rs": "d10d765f18cd387e551aa620feb65d21e51e86352a36b0efefaa4f8bab916a75",
+    "crates/idlever-core/src/journal.rs": "fdd7dac4d7d2ac2b58f8d46043b5e0936ba3532a3cc2332560357a01afcc3be5",
+    "crates/idlever-core/src/kit.rs": "49877ec25171d853ca92e61ae91164399c4f13868b558ca27f4f4bc150ed7bca",
+    "crates/idlever-core/src/legacy.rs": "8c9405909c59a4f053b226f1e727a50a7bd2978baec934deea96419b432d44e8",
+    "crates/idlever-core/src/legendary.rs": "2b3066b7a1e2d8f5d49125401eb4d49a7cc066645a5b7bb54ba4477ae43e29b9",
+    "crates/idlever-core/src/lib.rs": "51d9bee2a1302c21c8dcf3aef02571638fb6d7edad39703486b4d0ea317cfe17",
+    "crates/idlever-core/src/meta.rs": "5260a102df17f1cf446977ec4dac31330678efc8be262840b3a5118d7baf6763",
+    "crates/idlever-core/src/meters.rs": "c05146609f8bb1df214a8aa5de4039db4ce5d75c58f7704ded14f0b25b68f5e4",
+    "crates/idlever-core/src/monster.rs": "ec728595c562a0248bb573b24bd97519fa003b61e95fe5b430972e5a5d9019c5",
+    "crates/idlever-core/src/news.rs": "8756bf51aa08db88164c04787622abd23bb078889781e139a26eab46c732fb32",
+    "crates/idlever-core/src/oath.rs": "6756fde5017b5d92e1f70ea022db5c062d399c4ded6026ed255aac165b7e5d9d",
+    "crates/idlever-core/src/offline.rs": "b41251823c8e55ee3e266cf23f7aa72d8c86c5825974375a348500d14f49c0cb",
+    "crates/idlever-core/src/packages.rs": "3a7f212221942816f5ca7c431bcbe96dcf5681c600246fea2b979a2d6dc188f5",
+    "crates/idlever-core/src/persistent.rs": "3ac986a30cba11d71d16d639a7ec5ac90ab2aa9c9fa60c727f795ca301ecc5a6",
+    "crates/idlever-core/src/pets.rs": "943f8eae0759c4a30df3f235d21b9477851e6fd7ed39c623b819a9e10a73cf81",
+    "crates/idlever-core/src/petstats.rs": "489da1114e2bbad95fbe95ef05885a8dcb52d3a7e23977cf9f7da37623bf2bea",
+    "crates/idlever-core/src/probes.rs": "c30bcde709f6b9d7a5a4748b98af289d376d47ea65f4a9c7c862c8e4e3553608",
+    "crates/idlever-core/src/progression.rs": "b7d146c7717f67b89ce1a7aa5f387f947e0a6fde66badb4c7d7a03fe205c8c65",
+    "crates/idlever-core/src/provenance.rs": "f567e9c0ab9b57bed1c4591d2c5d53370567eeb5232fd3f12bcf1d588926ae30",
+    "crates/idlever-core/src/returns.rs": "08203d865abba514ea2ad2bbf69fba09967f83b2646db01174e5fe264956cbba",
+    "crates/idlever-core/src/rng.rs": "177d3208e9ffa962bdcc21f367b33e1f8c2129a8b76eef3a989b1793fc6f09d4",
+    "crates/idlever-core/src/rules.rs": "edda0a1614bbd05255b70c550aef49c9d831fb945c3bf6ed4511da9de7092ae2",
+    "crates/idlever-core/src/save.rs": "8a201c4f325978a42e85c51a1f407ef8408262377ca3e2e970ccb8252fcd5022",
+    "crates/idlever-core/src/shared.rs": "2eafeae644e071d241edeb0af20897c743d6b34dc988997fdb99f879d4d7821f",
+    "crates/idlever-core/src/sifter.rs": "46b474045646535fe72cb9ce1f733cf9528f49f5552d2248161233210c9fbc8b",
+    "crates/idlever-core/src/situations.rs": "2d12714d015cbf5905b5d33ef2de1cdde410cfdb246d4cc087cc58a6b87887b6",
+    "crates/idlever-core/src/specialization.rs": "969fcb04b162460a4a06b89673b46f8b6d296723499dd5486c156e7ffec96f84",
+    "crates/idlever-core/src/systems.rs": "3be5059e19fd70fc4a46c861f6950aca3c0c05f8dacf015ee6ef16f6b3302c2a",
+    "crates/idlever-core/src/tiles.rs": "0cd54df0eaaae151265314d5880aa6a2554d6a21fc9f82dbb30551e76e76cd3f",
+    "crates/idlever-core/src/tokens.rs": "55a93873680ce2d28928e59fc52ad42a95687ffed4a22fda9890b7df13e35ddf",
+    "crates/idlever-core/src/tools.rs": "2fc10af027f3ce86d434ef8ee22be97dd81337a366f2b46c5f56089127b77407",
+    "crates/idlever-core/src/town.rs": "d6325837cd47b4e92e8ba3a037a3209d986cb94ae686ddff352775e454636aa5",
+    "crates/idlever-core/src/trace.rs": "2034c087a4ac022ac6ac25fb820a72b8cf5ca6831a9b653798b6e872ef4aa87f",
+    "crates/idlever-core/src/traits.json": "c0fa1e294bc9f131bc665a37bd7216d286f6f9deb1160886c0ba38505b35b73f",
+    "crates/idlever-core/src/traits.rs": "f248204678e0cc229f912c721c58c2ffbf71b1d2ef5665e9c87fe904174ea74f",
+    "crates/idlever-core/src/tree.rs": "252eeb5f5738f2b4d411a26d81556ace3ac071847dc9b77af299c115e65c8c5c",
+    "crates/idlever-core/src/turn.rs": "4b23660d1e550f9d882ecd3069461af4dc22a72205af975fa38fafd3ad52502c",
+    "crates/idlever-core/src/wall.rs": "aa74b76d24779062722e0542c22685f3a6787a869ceeef7f8f291e87fac32557",
+    "crates/idlever-core/src/wire.rs": "23e38990d6061baaa0a619d01a94e86ad58609ad7d7c2ca93621df0de64ebbc1",
+    "crates/idlever-wasm/Cargo.toml": "c72c21941de1f51c6075bd9645bfb93e1a8c6969665aaba1ce5e5fea5897a365",
+    "crates/idlever-wasm/src/lib.rs": "f3a0f2a176af8cd746857c2ca9aa7b1fb25f07a6ae28bc54959d7d9b157e4406",
+    "tools/runtime-key.mjs": "86d640f80e068f770a4e8902e3a856072ec0ee85b4173c808b8bc8b01946742c"
+  },
+  "testOnlyInputs": {
+    "crates/idlever-core/src/class_advanced_tests.rs": "6aca7eb1b04db90cc9a9476450ce0a8966cc74e749a72713e1149aabcb690522",
+    "crates/idlever-core/src/class_tree_tests.rs": "87cbe87f0a045fc06f571ad6c04a100bee2af8ae542362b4fafbf80f10016a3a"
+  },
+  "nativeBinaries": {
+    "target/fast/examples/dayplayer": {
+      "sha256": "200df19ad2cf4ff1b983f6328d576ab7e39c2a733ca40367fa32caa15a4c6ce2",
+      "bytes": 12683160
+    },
+    "target/fast/examples/metrics": {
+      "sha256": "394e4813f2c677f1373a7833e9bf53ede1a62f4a9cdd9c68ead8bf80f8d9c16c",
+      "bytes": 11990000
+    },
+    "target/fast/examples/qa": {
+      "sha256": "0e7a3edd2b262a9ae808a5cbda4272015575fb8eda71150075b17684842a29f6",
+      "bytes": 10893464
+    },
+    "target/fast/examples/native_dev": {
+      "sha256": "1a56c716f1ab63a0f7168164686e1081085a756b9927b5840e3536d77a213674",
+      "bytes": 11505336
+    }
+  },
+  "wasm": {
+    "path": "web/src/engine/pkg/idlever_wasm_bg.wasm",
+    "sha256": "ef4b58d7fb4ab69056c8101ce8e528087bdbf6fb47fb561b8926645aebb4eb79"
+  },
+  "campaignHarnessOnlySuccessor": {
+    "path": "crates/idlever-core/examples/advanced_campaign.rs",
+    "currentSha256": "11865fc33884927728c86cfa304223899518d91a78e23ab0238f52a1a87afc13",
+    "gateSha256": "5eb967cb887ad24f0776c8e6f72152100782217734155b9649960f018ee8375d",
+    "matchesOriginalGatePhase": false,
+    "scope": "Separate harness-only successor after positive gate terminal; not production core and not retroactively included in gate280file identity."
+  },
+  "laterCheckContract": "After cfg(test)-only edits, compare all productionInputs, selected rlib, native binaries and WASM hashes. Reproduce runtimeKey. If exact, prior pacing/full remains bound; run only new/affected tests, appropriate workspace/Clippy. Any actual production-byte change requires root coordination and refreshed appropriate causal/gate proof."
+}
