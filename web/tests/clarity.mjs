@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut 10 §2–§3 client rows, each one assertion on the fake (`?engine=fake&systems=none&dev=1`), on the GPU harness (tools/browser.mjs)
 // against the dev server (tools/dev.sh, :5219):
 //   §2  the forecast's boss floor reads `D5 0% · goblin warlord · try: attack boss` when the counter fact is known and the row
@@ -537,7 +538,7 @@ try {
         waitUntil: "domcontentloaded",
       });
       await waitFor((s) => s?.booted && s.screen === "camp", "camp");
-      await page.locator("button.gear").click({ timeout: 5000 });
+      await openSettingsFromHeader(page);
       await sleep(250);
       const before = await page.evaluate(() => {
         const b = document.querySelector(".sheet-wrap .btn.slowdowns");

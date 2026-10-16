@@ -83,6 +83,7 @@ import { openOathBoard, paintOathTab } from "./oaths";
 import { anchorPanel, exposeTown, openHero, renderTown, townBuilt } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
 import { openGlossary, openJournal } from "./journal-window";
+import { openHomeMenu } from "./home-menu";
 import { detailHost, glossaryOpener, setGlossaryOpener } from "./tips";
 import { openHeroLife } from "./hero-life";
 import { openChronicle } from "./chronicle";
@@ -268,7 +269,16 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // Cut 17: the frame — the bar (the strip: heir, `$`, `◆`, `★`, best, the stud; the wake's offers under it), the well (the
   // tablets and the depth shaft; the set tabs from the 5th heir; the panels over it), the console (the portrait, the command
   // card as revealed, the gem `send`)
-  const bar = renderBar(app, { live: true });
+  const bar = renderBar(app, {
+    live: true,
+    homeMenu: (anchor) => {
+      closePanel();
+      openHomeMenu(app, () => journal(anchor), anchor, {
+        tasks: taskLayout.matches ? tasks.el : undefined,
+        restoreTasks: mountTasks,
+      });
+    },
+  });
   const strip = bar.el;
   const tabs = h("nav", { class: "tabs" });
   // editing (`app.editing`): the tablets carry the editor (chips, ▲▼, ×, `+`); off, each is one carved tablet
@@ -545,7 +555,20 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     orders: () => openOrders(),
     workers: () => openWorks(app),
   });
-  town.el.append(tasks.el);
+  const taskParking = document.createDocumentFragment();
+  const taskLayout = matchMedia("(max-width: 1023px)");
+  function mountTasks(): void {
+    if (tasks.el.closest(".home-menu-panel")?.isConnected) return;
+    const compact =
+      taskLayout.matches &&
+      !!app.lineage.town &&
+      app.lineage.town.home !== false &&
+      !!app.lineage.journal;
+    (compact ? taskParking : town.el).append(tasks.el);
+  }
+  taskLayout.addEventListener("change", mountTasks);
+  const offTaskMount = app.onChange(mountTasks);
+  mountTasks();
   const feats = campFeats(app);
   const offer = orderOffer(app);
   const earlyJournal = h(
@@ -594,6 +617,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // RUNS_UI (docs/RUNS_UI.md §2): the run lanes take the rest line's place — one row per hero (live · rests · waits), the log at its end
   const lanes = heroRoster(app, {
     externalOpen: true,
+    compactHome: true,
     focus: () => {
       town.el.scrollIntoView({ block: "nearest" });
       town.view.focusHero();
@@ -771,14 +795,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     if (built) {
       cons.setTiles([
         app.lineage.town?.home !== false && heroes,
-        app.lineage.journal &&
-          tile({
-            id: "journal",
-            label: /* copy:button */ "Journal",
-            icon: "chronicle",
-            glyph: "▤",
-            onclick: () => journal(),
-          }),
         // Cut 30 §2/§5: the packages and the quest board (the board by the mouth opens it too)
         packagesShown(app.lineage) &&
           tile({
@@ -2519,6 +2535,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       window.removeEventListener("idlever:focus-hero", focusHome);
       offLive();
       lanes.dispose();
+      offTaskMount();
+      taskLayout.removeEventListener("change", mountTasks);
       town.dispose();
       exposeTown(null);
       wellRo?.disconnect();

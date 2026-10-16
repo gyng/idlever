@@ -49,8 +49,8 @@ try {
       JSON.stringify(styles),
     );
     await p.keyboard.press("Escape");
-    await p.locator(".hero-details:visible").first().click();
-    await p.locator(".hero-appearance").click();
+    await p.locator('.hero-details:visible, .camp [data-building="tent"]:visible').first().click();
+    await p.locator('[data-hub-action="appearance"]').click();
     await p.locator(".game-window .look-sheet").waitFor();
     await p.evaluate(async () => {
       const panel = document.querySelector(".sheet-wrap:not(.under) .sheet");

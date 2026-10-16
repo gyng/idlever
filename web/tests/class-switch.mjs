@@ -63,7 +63,10 @@ try {
       });
     });
     for (const cls of ["fighter", "gunner"]) {
-      await p.locator(".hero-details:visible").first().click();
+      await p
+        .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
+        .first()
+        .click();
       await p.locator('[data-hub-tab="skills"]').click();
       await p
         .locator('[data-hub-panel="skills"] button')
@@ -120,7 +123,13 @@ try {
       }
       await p.locator(".hero-return:visible").click();
       assert.equal(await p.evaluate(() => window.__idlever.editing), false);
-      assert.equal(await p.locator(".hero-details:visible").first().isVisible(), true);
+      assert.equal(
+        await p
+          .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
+          .first()
+          .isVisible(),
+        true,
+      );
       assert.equal(await p.evaluate(() => window.__idlever.engine.save()), inspected);
     }
     const before = await p.evaluate(async () => ({

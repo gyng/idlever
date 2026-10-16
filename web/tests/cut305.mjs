@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut 30.5 client gates — the works tree (docs/CUT30_5.md, docs/AUTOMATION_TREE.md §3–§4), on the fake engine (its 30.5 stand-ins),
 // headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU). The tracks panel's coverage folds in here (`branches`):
 //   day0      a heir-1 camp: the chest drawn (closed, no surface), the mouth, the gem, the pill (the wire's `next`: `send` before the
@@ -869,7 +870,7 @@ try {
     await withState((e) => {
       e.st305.hired = ["quartermaster", "porter", "scout"];
     });
-    await page.locator(".topbar .gear").click();
+    await openSettingsFromHeader(page);
     await until(
       () => document.querySelectorAll(".settings .worker-switch").length > 0,
       "the workers' switches",
@@ -904,7 +905,7 @@ try {
         !s.auto,
       `off: the chest is back by the mouth (${s.tchest}), the porter dimmed (${s.workers.join(",")}); the scout off — sends by hand (gem "${s.gem.trim()}")`,
     );
-    await page.locator(".topbar .gear").click();
+    await openSettingsFromHeader(page);
     await until(
       () => document.querySelectorAll(".settings .worker-switch").length > 0,
       "the switches again",

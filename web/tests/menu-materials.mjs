@@ -1,3 +1,4 @@
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut241 actual modal ownership plus explicit interaction fixtures for generic anchored/modeless behavior.
 import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
@@ -39,7 +40,7 @@ try {
         () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))),
       );
     };
-    await p.locator(".gear").click();
+    await openSettingsFromHeader(p);
     await settle();
     check(
       await active().evaluate((el) => el.contains(document.activeElement)),
@@ -83,6 +84,10 @@ try {
     );
     await p.locator(".gear").focus();
     await p.keyboard.press("Enter");
+    if (await p.locator(".home-menu-panel:visible").count()) {
+      await p.locator(".home-menu-settings").focus();
+      await p.keyboard.press("Enter");
+    }
     await settle();
     check(
       await active().evaluate((el) => el.contains(document.activeElement)),
@@ -158,7 +163,7 @@ try {
     await settle();
 
     // The same public transition used by the actual menu journey must retain both inert owners.
-    await p.locator(".gear").click();
+    await openSettingsFromHeader(p);
     await p.locator(".main-menu-button").click();
     await settle();
     check(

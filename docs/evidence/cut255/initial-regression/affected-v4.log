@@ -1,0 +1,13 @@
+client suite: targeted (8 selected; 165 current full; 208 exhaustive groups)
+ok   screens         47.2s (38.2s)  screens: ok (59 checks · 9 screens linted · 34 buttons clicked · 37.4s)
+ok   ui:frame        73.3s (26.1s)  ui: ok (60 checks · 25.4s)
+ok   post-clear-town 92.0s (18.7s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+ok   ambient-motes   105.5s (13.5s)  1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS
+ok   class-switch    128.1s (22.6s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+FAIL runsui:heroes   154.3s (26.2s)  runsui: 3 FAIL
+     FAIL 320: Details opens the correct bloodline and current named hero ({"bloodline":"Hero L1 · XP 0/60","name":"Bryn Thorn","expectedName":"Bryn Thorn","owner":2})
+     FAIL 400: Details opens the correct bloodline and current named hero ({"bloodline":"Hero L1 · XP 0/60","name":"Bryn Thorn","expectedName":"Bryn Thorn","owner":2})
+     FAIL 1440: Details opens the correct bloodline and current named hero ({"bloodline":"Hero L1 · XP 0/60","name":"Bryn Thorn","expectedName":"Bryn Thorn","owner":2})
+ok   first-plot      162.9s (8.6s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   game-menu       182.2s (19.4s)  81 game menu checks PASS
+FAIL: 7/8 client gates in 182.2s

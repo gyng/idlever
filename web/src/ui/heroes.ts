@@ -17,7 +17,7 @@ import { heroPresence, heroAway, type ObservedPresence } from "./hero-presence";
 export { heroPresence } from "./hero-presence";
 export function heroRoster(
   app: App,
-  hooks: { focus?(): void; rules?(): void; externalOpen?: boolean } = {},
+  hooks: { focus?(): void; rules?(): void; externalOpen?: boolean; compactHome?: boolean } = {},
 ) {
   const el = h("section", { class: "hero-roster", "aria-label": /* copy:label */ "Active heroes" });
   let key = "";
@@ -229,6 +229,9 @@ export function heroRoster(
   };
   const paint = (): void => {
     const L = app.lineage;
+    const folded = !!hooks.compactHome && !!L.town && L.town.home !== false;
+    if (folded) el.dataset.homeFolded = "true";
+    else delete el.dataset.homeFolded;
     const slots = L.hero_slots ?? [];
     const next = JSON.stringify([
       slots.map((s) => [
@@ -270,7 +273,7 @@ export function heroRoster(
       h(
         "div",
         { class: "hero-mobile" },
-        current ? row(current) : "",
+        !folded && current ? row(current) : "",
         hooks.externalOpen
           ? ""
           : h(

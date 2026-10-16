@@ -1,3 +1,4 @@
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
@@ -48,7 +49,7 @@ try {
       await p.locator(".ambient-motes").evaluate((e) => getComputedStyle(e).pointerEvents),
       "none",
     );
-    await p.getByRole("button", { name: "settings", exact: true }).click();
+    await openSettingsFromHeader(p);
     await p.locator(".settings").waitFor();
     await p.keyboard.press("Escape");
     await p.evaluate(() => {

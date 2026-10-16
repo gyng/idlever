@@ -1,6 +1,25 @@
 // Cut 17: the camp's secondary objects (loadout · unlocks · vault · party; the forecast behind the shaft) are panels over the
 // well, each opened by its console tile; a closed panel's content stays in the DOM unrendered (its text reads, its buttons wait).
 // `openPanel(page, name)` opens one (idempotent); `{ all: true }` also opens the unlock panel's whole catalogue (`more`).
+/** Settings stays direct before Journal; mature Home groups it under Menu. */
+export async function openSettingsFromHeader(page) {
+  await page.locator("button.gear:visible").click({ timeout: 5000 });
+  if (await page.locator(".home-menu-panel:visible").count())
+    await page.locator(".home-menu-settings:visible").click({ timeout: 5000 });
+  await page.locator(".settings:visible").waitFor();
+}
+
+/** Home keeps Legacy in the hero Hub; legacy screens retain their shortcut. */
+export async function openHeroLegacy(page) {
+  const shortcut = page.locator("button.stat.legacy:visible");
+  if (await shortcut.count()) await shortcut.click({ timeout: 5000 });
+  else {
+    await page.locator('.camp [data-building="tent"]:visible').click({ timeout: 5000 });
+    await page.locator('[data-hub-tab="attributes"]').click({ timeout: 5000 });
+  }
+  await page.locator(".legacy-panel:visible").waitFor();
+}
+
 export async function openPanel(page, name, { all = false } = {}) {
   // a lineage that has not carved the unlock tile yet (no mark: docs/UI.md §5) still paints its shelf into the closed panel; `all`
   // then sets the viewer's `more` directly (what the stud would remember) and repaints

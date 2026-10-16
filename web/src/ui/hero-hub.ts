@@ -582,17 +582,23 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
     const L = app.lineage,
       hero = L.persistent_hero,
       slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
+    const presence = slot ? heroPresence(slot) : undefined;
+    const training = L.classes?.[L.class.toLowerCase()];
     const nextHeader = JSON.stringify([
       owner,
       hero?.name,
       hero?.state,
       L.class,
       L.look,
-      slot && heroPresence(slot).text,
+      presence,
+      slot && [slot.level, slot.xp, slot.next],
+      training,
       L.hero_slots?.map((s) => [s.id, s.hero_name]),
     ]);
     if (nextHeader !== headerFingerprint) {
       headerFingerprint = nextHeader;
+      const trainingOpen =
+        header.querySelector<HTMLDetailsElement>("[data-hub-training]")?.open ?? false;
       const asked = identity();
       const headerCurrent = (e: Event): boolean =>
         current() && asked === identity() && (e.currentTarget as HTMLElement).isConnected;
@@ -620,12 +626,36 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
           { class: "hero-hub-identity" },
           h("h2", {}, hero?.name ?? slot?.hero_name ?? /* copy:label */ "No hero"),
           h("span", {}, L.class),
+          slot
+            ? h(
+                "small",
+                { "data-hub-hero-progress": "1" },
+                /* copy:label */ `Hero L${slot.level}`,
+                slot.next === 0
+                  ? /* copy:label */ " · MAX"
+                  : /* copy:label */ ` · XP ${slot.xp}/${slot.next ?? "—"}`,
+              )
+            : null,
           h(
             "strong",
-            { "data-hub-life-state": hero?.state ?? "none" },
-            slot ? heroPresence(slot).text : /* copy:label */ "No hero",
+            { "data-hub-life-state": hero?.state ?? "none", title: presence?.detail },
+            presence?.text ?? /* copy:label */ "No hero",
           ),
           h("small", {}, /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`),
+          training
+            ? h(
+                "details",
+                { "data-hub-training": "1", open: trainingOpen },
+                h("summary", {}, /* copy:button */ "Training"),
+                h(
+                  "small",
+                  {},
+                  /* copy:label */ `Class L${training.level}`,
+                  " · ",
+                  /* copy:label */ `Class XP ${training.xp} / ${training.next === 0 ? "MAX" : (training.next ?? "—")}`,
+                ),
+              )
+            : null,
         ),
         h(
           "div",

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut 17 — the frame's gates (docs/CUT17.md, docs/UI.md §5–6), on the fake engine, headless at 400 × 800:
 //   · a fresh lineage's camp shows ≤ 8 interactive elements: the bar ($ only), the tablets (compact), the shaft (D1), the gem SEND
 //   · each step of the reveal ladder carves its tile on its trigger (and not before), glinting once: first death → edit · first gold
@@ -879,7 +880,7 @@ async function qaL() {
   await sleep(100);
   await page.locator(".cmd .tile[data-tile=unlocks]").click({ timeout: 5000 });
   await sleep(200);
-  await page.locator("button.gear").click({ timeout: 5000 });
+  await openSettingsFromHeader(page);
   await sleep(250);
   const sheets = await page.evaluate(() => ({
     n: document.querySelectorAll(".sheet-wrap").length,
@@ -2187,7 +2188,8 @@ try {
       }
       if (name === "cond picker")
         await page.locator(".cmd .tile[data-tile=edit]").click({ timeout: 5000 });
-      await page.locator(sel).first().click({ timeout: 5000 });
+      if (name === "settings") await openSettingsFromHeader(page);
+      else await page.locator(sel).first().click({ timeout: 5000 });
       await sleep(200);
       const s = await page.evaluate(() => {
         const w = [...document.querySelectorAll(".sheet-wrap")].pop();

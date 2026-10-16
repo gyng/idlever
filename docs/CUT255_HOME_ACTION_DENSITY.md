@@ -12,15 +12,18 @@ This contract addresses that existing failure; no engine/progression rule change
    resource, like the other passive stats. Its existing upgrade panel remains
    available through the selected hero's Hub. Other screens keep their current
    header behavior. Avoid presenting a resource as a second Home upgrade button.
-2. Remove the duplicate selected-resident roster card from the Home fold now
+2. On mobile, remove the duplicate selected-resident roster card from Home now
    that Heroes lives in the bottom dock. The selected name stays in the header;
    actual resident and House sprites remain the primary Hub controls. The
    expanded Heroes roster keeps its existing locate/watch and Details actions
-   for every actual owner. Remove only duplicate interface chrome, never a
+   for every actual owner. Desktop retains its compact roster column. Remove only duplicate interface chrome, never a
    resident sprite, and retain the existing expanded-roster semantics.
-3. One Home Menu control groups Journal and Settings. Journal moves from the
+3. One Home Menu control groups Tasks, Journal and Settings. Journal moves from the
    bottom dock into this short labelled menu; Heroes remains in the dock.
-   Existing contextual quest/Journal links still route their actual entries.
+   On mobile, mount the existing complete Tasks tracker inside Menu rather than
+   adding a second scene disclosure. Preserve its exact ladder/worker ETA/quest
+   values and callbacks. Desktop retains its scene overlay. Existing contextual
+   quest/Journal links still route their actual entries.
    The menu uses existing sheet/focus/Escape behavior and accessible names.
    Before Journal exists, the settings control remains directly available.
 
@@ -55,5 +58,18 @@ hide buildings or treat locate as equivalent to Hub just to obtain a pass.
   Record original failures and dated source/viewport/input observations. A local
   Chromium approximation is not real iPhone/Safari or fun acceptance.
 
-Status2026-10-16: design/implementation contract only. No Home source changes
-or passing successor density evidence yet. Existing15>12failure remains open.
+Status2026-10-16: implemented WIP, parked at owner's request. Initial button-only
+accounting reaches12, but the independent disclosure census finds13including
+Tasks. That failure remains; the current successor moves the complete existing
+tracker into mobile Menu without dropping its callbacks/progress. Full primary
+phone acceptance is still unproved: later proof attempts stop on Locate before
+phone cases. Same-owner isolated Locate works; cross-owner selection preserves
+canonical state/Gold but the connected ring is missing. A speculative RAF/event
+fix failed its bounded proof and was reverted exactly; its patch/raw evidence
+remain. Native-earned Heroes route assertions and separate UI recoveries pass
+at their recorded scopes, not a fresh complete11group or full Home contract.
+Desktop200% expanded Hub header crowds the initial content; whole-body scroll
+reaches content but compact-header refinement and exact clipped geometry remain.
+Desktop Tasks summary/head/objective text also stays fixed-size at200%; phone
+Menu/Tasks text scaling is untested. Read current cut255 observations before
+resuming; do not carry a density, typography or full visual pass forward.

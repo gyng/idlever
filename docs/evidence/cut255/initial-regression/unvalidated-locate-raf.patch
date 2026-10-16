@@ -1,0 +1,9 @@
+--- a/web/src/ui/camp.ts
++++ b/web/src/ui/camp.ts
+@@ -621,4 +621,4 @@
+     focus: () => {
+-      town.el.scrollIntoView({ block: "nearest" });
+-      town.view.focusHero();
++      // A bloodline selection remounts camp; locate in its current scene after layout.
++      requestAnimationFrame(() => window.dispatchEvent(new Event("idlever:focus-hero")));
+     },

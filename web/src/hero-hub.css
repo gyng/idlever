@@ -45,6 +45,12 @@
   gap: 0.25rem;
   min-width: 0;
 }
+.hero-hub-identity [data-hub-training] > summary {
+  display: flex;
+  align-items: center;
+  min-block-size: 44px;
+  cursor: pointer;
+}
 .hero-hub-secondary,
 .hero-hub-residents {
   grid-column: 1/-1;

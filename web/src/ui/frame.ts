@@ -116,7 +116,14 @@ function legacyMark(L: App["lineage"], heir?: number): HTMLElement | null {
 }
 export function renderBar(
   app: App,
-  opts: { live?: boolean; heir?: number; trait?: string; watch?: boolean; heroName?: string } = {},
+  opts: {
+    live?: boolean;
+    heir?: number;
+    trait?: string;
+    watch?: boolean;
+    heroName?: string;
+    homeMenu?: (anchor: HTMLElement) => void;
+  } = {},
 ): Bar {
   const offers = h("div", { class: "offers", hidden: true });
   const el = h("header", { class: "strip topbar" });
@@ -137,6 +144,7 @@ export function renderBar(
     const L = app.lineage,
       R = revealed(app),
       past = opts.heir !== undefined && opts.heir !== L.heir;
+    const homeMenu = !!opts.homeMenu && !!L.town && L.town.home !== false && !!L.journal;
     // Explicit historical identities retain their captured ordinal. Only a current
     // foreground run may resolve its matching heir to the persistent actor.
     const presentHero =
@@ -296,12 +304,13 @@ export function renderBar(
             ),
         L.town?.home !== false && L.hero_legacy?.length
           ? h(
-              opts.watch ? "span" : "button",
+              opts.watch || homeMenu ? "span" : "button",
               {
                 class: "num stat legacy",
-                onclick: !opts.watch
-                  ? (e: Event) => openHero(app, e.currentTarget as HTMLElement, "legacy")
-                  : undefined,
+                onclick:
+                  !opts.watch && !homeMenu
+                    ? (e: Event) => openHero(app, e.currentTarget as HTMLElement, "legacy")
+                    : undefined,
                 "aria-label": /* copy:label */ `Hero Legacy ${L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0}`,
               },
               h("span", { class: "legacy-sigil", "aria-hidden": "true" }),
@@ -346,8 +355,15 @@ export function renderBar(
       ),
       h(
         "button",
-        { class: "gear stud", "aria-label": "settings", onclick: () => openSettings(app) },
-        icon("settings", "⚙"),
+        {
+          class: "gear stud",
+          "aria-label": homeMenu ? /* copy:label */ "Menu" : "settings",
+          "data-home-menu": homeMenu ? "" : undefined,
+          title: homeMenu ? /* copy:tooltip */ "Journal · Settings" : undefined,
+          onclick: (e: Event) =>
+            homeMenu ? opts.homeMenu?.(e.currentTarget as HTMLElement) : openSettings(app),
+        },
+        homeMenu ? icon("home_menu", "☰") : icon("settings", "⚙"),
       ),
       offers,
     );

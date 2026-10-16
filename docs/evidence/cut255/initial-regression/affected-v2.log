@@ -1,0 +1,24 @@
+client suite: targeted (11 selected; 165 current full; 208 exhaustive groups)
+ok   screens         49.4s (38.7s)  screens: ok (59 checks · 9 screens linted · 34 buttons clicked · 37.8s)
+ok   ui:frame        79.0s (29.6s)  ui: ok (60 checks · 28.9s)
+FAIL chunky-controls 114.7s (35.7s)  Node.js v22.18.0
+       - waiting for locator('.hero-appearance')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/chunky-controls.mjs:53:41 {
+ok   post-clear-town 130.2s (15.5s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+ok   ambient-motes   142.6s (12.4s)  1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS
+ok   class-switch    163.3s (20.7s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+ok   runsui:heroes   189.9s (26.6s)  runsui: all ok
+FAIL menu-materials  194.2s (4.3s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: Escape restores actual Settings opener
+         at check (file:///home/g/p/riddle/web/tests/menu-materials.mjs:18:10)
+         at file:///home/g/p/riddle/web/tests/menu-materials.mjs:77:5 {
+ok   first-plot      204.1s (9.9s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   game-menu       233.6s (29.5s)  81 game menu checks PASS
+FAIL hero-summary    238.1s (4.5s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')
+         at eval (eval at evaluate (:311:30), <anonymous>:5:59)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/web/tests/hero-summary.mjs:32:28 {
+FAIL: 8/11 client gates in 238.1s

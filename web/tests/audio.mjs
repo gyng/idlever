@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut 10 §4 gate: every cue schedules ≤ 200 ms from at most two oscillators and one gain envelope (the death note is the
 // one exception: a single low note fading over 1 s); nothing schedules while muted; the mute persists; the camp drone is up
 // while the camp is open and gone in a run; cues fire on their events in a watched fake run. Runs on the GPU harness
@@ -242,7 +243,7 @@ try {
     "mute is persisted",
   );
   // the settings sheet's toggle reads the state and flips it back
-  await page.locator("button.gear").click();
+  await openSettingsFromHeader(page);
   await sleep(200);
   const mute = page.locator(".sheet-wrap button.mute");
   check(

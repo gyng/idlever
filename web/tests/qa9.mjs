@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // QA lapses on build 952e306 (scratchpad/qaA, qaB), client side, on the fake engine (`?engine=fake&systems=none&dev=1`) through the GPU
 // harness (tools/browser.mjs) against the dev server (tools/dev.sh, :5219):
 //   1  a screen change closes every open sheet; a kept death (the chronicle's ▸) goes back to the camp on Escape (a fresh death does not)
@@ -189,7 +190,7 @@ try {
   );
   await page.keyboard.press("Escape");
   await sleep(150);
-  await page.locator("button.gear").click({ timeout: 5000 });
+  await openSettingsFromHeader(page);
   await sleep(200);
   s = await sheet();
   check(
@@ -301,7 +302,7 @@ try {
   check((await count()) === "2/4 rules + 1 tactic", `the counter: "${await count()}"`);
 
   // 1: a screen change closes every sheet; Escape on a kept death goes to the camp, on a fresh death it stays
-  await page.locator("button.gear").click({ timeout: 5000 });
+  await openSettingsFromHeader(page);
   await sleep(150);
   await page
     .locator(".cmd .tile[data-tile=forge]")

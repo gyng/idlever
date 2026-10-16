@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Auto-continue gates (docs/UI.md §7), on the fake engine, headless at 400 × 800. The clocks run 4× fast (`?autodismiss=0.25`:
 // the report and the death 3 s, a panel 5 s); without the param automation keeps them off (the older gates' meaning).
 //   report    the report continues to the camp after its time, its gem ringed; nothing bought, nothing equipped
@@ -187,7 +188,7 @@ try {
 
   if (part("toggle")) {
     await boot(4104);
-    await page.locator("button.gear").click();
+    await openSettingsFromHeader(page);
     await until(() => document.querySelector(".settings .auto-continue"), "the settings toggle");
     const was = await page.evaluate(
       () => document.querySelector(".settings .auto-continue").textContent,

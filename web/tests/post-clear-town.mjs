@@ -1,4 +1,5 @@
 import { responsiveWidths } from "./lib/viewport-cases.mjs";
+import { openHeroLegacy } from "./lib/frame.mjs";
 // Real earned first-ascension clear; no granted state or easy stat refund.
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -70,7 +71,7 @@ try {
     await unchanged();
     assert.match(await p.locator(".gem.send").textContent(), /Next descent/);
     assert.equal(await p.locator(".gem.send").isDisabled(), false);
-    await p.locator("button.stat.legacy").click();
+    await openHeroLegacy(p);
     await p.waitForSelector('[data-hub-tab="attributes"][aria-selected="true"]');
     await p.waitForSelector(".legacy-panel");
     await unchanged();
@@ -100,7 +101,7 @@ try {
     await p.waitForSelector(".camp");
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     if (width === 400) {
-      await p.locator("button.stat.legacy").click();
+      await openHeroLegacy(p);
       await p.waitForSelector('[data-hub-tab="attributes"][aria-selected="true"]');
       const old = await p.evaluate(() => ({ ...window.__idlever.lineage.bloodline }));
       const offer = await p.evaluate(() =>
@@ -161,7 +162,7 @@ try {
         await p.locator('.hero-desktop .hero-row[data-slot="2"]').getAttribute("data-state"),
         "live",
       );
-      await p.locator("button.stat.legacy").click();
+      await openHeroLegacy(p);
       await p.waitForSelector(".legacy-panel");
       assert.equal(await p.evaluate(() => window.__idlever.engine.save()), multi);
       assert.equal(await p.evaluate(() => window.__idlever.lineage.ended), true);

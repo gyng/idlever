@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 // Cut 13 §6 — the screen lint: the QA brief's itinerary walked on the fake engine (`?engine=fake&systems=none&dev=1`, headless through
 // tools/browser.mjs against the dev server, tools/dev.sh :5219) and, on EVERY screen and sheet it opens, the checks the four
 // QA players reconciled by hand:
@@ -281,6 +282,11 @@ async function lintButtons(where, expectScreen) {
   );
 }
 const openAndLint = async (sel, label, hasText) => {
+  if (label === "settings") {
+    await openSettingsFromHeader(page);
+    await lintSheet(label);
+    return true;
+  }
   const loc = hasText ? page.locator(sel, { hasText }).first() : page.locator(sel).first();
   if (!(await loc.count())) {
     check(false, `${label}: nothing to open (${sel})`);
@@ -364,7 +370,10 @@ try {
     if (label === "class") {
       if (await page.locator(".hero-return:visible").count())
         await page.locator(".hero-return:visible").click({ timeout: 5000 });
-      await page.locator(".hero-details:visible").first().click({ timeout: 5000 });
+      await page
+        .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
+        .first()
+        .click({ timeout: 5000 });
       await page.locator('[data-hub-tab="skills"]').click({ timeout: 5000 });
     }
     if (["cond picker", "verb picker", "rename"].includes(label)) await editRows(page);

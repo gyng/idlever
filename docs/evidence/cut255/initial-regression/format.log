@@ -1,0 +1,6 @@
+$ pnpm fmt --check
+$ cd .. && web/node_modules/.bin/oxfmt web/src web/tests web/*.ts web/*.json tools .github README.md .oxfmtrc.json .oxlintrc.json --check
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 384ms on 478 files using 32 threads.

@@ -114,7 +114,10 @@ const lanes = () =>
 async function openRunLog() {
   if (!(await page.locator(".runs-sheet:visible").count())) {
     if (!(await page.locator(".hero-sheet:visible").count()))
-      await page.locator(".hero-details:visible").first().click();
+      await page
+        .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
+        .first()
+        .click();
     await page.locator(".hero-runs:visible").click();
   }
   await until(() => !!document.querySelector(".runs-sheet"), "Run log", 5000);
@@ -404,7 +407,10 @@ try {
       run,
     );
     await sleep(1200);
-    await page.locator(".hero-details:visible").first().click();
+    await page
+      .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
+      .first()
+      .click();
     const s2 = await lanes(),
       l2 = await L();
     await shot("live-ended");
@@ -824,12 +830,15 @@ try {
       );
       await camp();
       let s = await lanes();
-      check(s.n === 1 && s.rows.length === 1, `${width}: one active bloodline renders one hero`);
       if (width < 1024)
         await page
           .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
           .click();
       const root = width < 1024 ? ".sheet-wrap:not([hidden]) .heroes-sheet" : ".hero-desktop";
+      check(
+        s.n === 1 && (await page.locator(`${root} .hero-row`).count()) === 1,
+        `${width}: opened roster renders its one actual active bloodline`,
+      );
       for (const expected of [2, 3]) {
         const before = await page.evaluate(() => ({
           gold: window.__idlever.lineage.gold,
@@ -956,16 +965,16 @@ try {
       const selected = await page.evaluate(() =>
         window.__idlever.lineage.hero_slots.find((slot) => slot.id === 3),
       );
-      check(
-        (await lanes()).rows.some(
-          (row) => row.id === 3 && row.state === selected.state && row.text.includes("Ready"),
-        ),
-        `${width}: jump selects bloodline 3 with its actual ${selected.state} state and Ready action`,
-      );
       if (width < 1024)
         await page
           .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
           .click();
+      const selectedRow = page.locator(`${root} [data-slot="3"]`);
+      check(
+        (await selectedRow.getAttribute("data-state")) === selected.state &&
+          (await selectedRow.textContent()).includes("Ready"),
+        `${width}: jump selects bloodline 3 with its actual ${selected.state} state and Ready action`,
+      );
       await page.locator(`${root} [data-slot="2"] .hero-details`).click();
       await until(
         () =>
@@ -979,7 +988,9 @@ try {
         const hub = document.querySelector("[data-hero-hub]");
         const slot = a.lineage.hero_slots.find((s) => s.id === 2);
         return {
-          bloodline: hub.querySelector(".hero-hub-identity small")?.textContent,
+          bloodline: [...hub.querySelectorAll(".hero-hub-identity small")].find((node) =>
+            /^Bloodline \d+$/.test(node.textContent),
+          )?.textContent,
           name: hub.querySelector(".hero-hub-identity h2")?.textContent,
           expectedName: a.lineage.persistent_hero?.name ?? slot?.hero_name,
           owner: a.lineage.selected_bloodline,

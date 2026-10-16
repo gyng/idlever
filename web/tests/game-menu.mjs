@@ -1,3 +1,4 @@
+import { openSettingsFromHeader } from "./lib/frame.mjs";
 import { stateWidths } from "./lib/viewport-cases.mjs";
 // Cold-title, save-safe navigation and direct-load coverage on the real engine.
 import { execFileSync } from "node:child_process";
@@ -75,7 +76,7 @@ try {
     );
     checks += 2;
     // Public settings → main menu; Continue never resets the mounted town.
-    await page.locator("button.gear").click();
+    await openSettingsFromHeader(page);
     await page.locator(".main-menu-button").click();
     assert.equal(await page.evaluate(() => document.getElementById("app").inert), true);
     checks++;
@@ -112,7 +113,7 @@ try {
     );
     checks += 3;
     // Confirmed restart actually removes the built home and hero.
-    await page.locator("button.gear").click();
+    await openSettingsFromHeader(page);
     await page.locator(".main-menu-button").click();
     await page.getByRole("button", { name: "New game", exact: true }).click();
     await page.waitForFunction(() => !window.__idlever.engineBusy);
