@@ -28,7 +28,7 @@ const check = (ok, what) => {
   out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
   if (!ok) failed++;
 };
-const STAMPS = ["collected", "returned", "stalled", "repelled", "died"];
+const STAMPS = ["retreated", "returned", "stalled", "repelled", "died"];
 const MAX_WORDS = 20;
 
 const browser = await launchBrowser();
@@ -124,7 +124,7 @@ try {
       check(
         !!line?.reason &&
           k.rawWhy === line.reason &&
-          k.why === line.reason.replace(/\bbanked\b/g, "collected"),
+          k.why === line.reason.replace(/\bbanked\b/g, "retreated"),
         `the core reason retains current gold wording (${k.why} | ${line?.reason})`,
       );
       check(

@@ -430,7 +430,7 @@ try {
     `the spent section: ${JSON.stringify(rp.spent)}`,
   );
   check(
-    rp.gold === "+$412 collected · +$96 returned · +$45 salvage · −$640 spent",
+    rp.gold === "+$412 retreated · +$96 returned · +$45 salvage · −$640 spent",
     `the gold line reconciles the tiles: "${rp.gold}"`,
   );
   await shot("04-report-ledger");
@@ -1577,7 +1577,7 @@ try {
       if (gc.filter) {
         check(
           gc.chips.length === 2 &&
-            /^(died|returned|collected|stalled|lost thread) D\d+$/.test(gc.chips[0].text) &&
+            /^(died|returned|retreated|stalled|lost thread) D\d+$/.test(gc.chips[0].text) &&
             gc.chips[0].on &&
             gc.chips[1].text === "all" &&
             !gc.chips[1].on,

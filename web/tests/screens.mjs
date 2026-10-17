@@ -646,12 +646,12 @@ try {
       (window.__idlever.view.report?.exits ?? []).some((x) => x.trace?.turns.length),
     );
     const labelled = pairs.filter(
-      (p) => /^D\d+ · (collected|returned|died) · log$/.test(p.chip) || /\bD\d+\b/.test(p.line),
+      (p) => /^D\d+ · (retreated|returned|died) · log$/.test(p.chip) || /\bD\d+\b/.test(p.line),
     ).length;
     if (traced || chips.length)
       check(
         chips.length > 0 &&
-          chips.every((c) => /^(D\d+ · )?(collected|returned|died) · log$/.test(c)) &&
+          chips.every((c) => /^(D\d+ · )?(retreated|returned|died) · log$/.test(c)) &&
           labelled * 2 >= chips.length,
         `the ${chips.length} trace chips carry their exit (${chips.slice(0, 3).join(" · ")}${labelled < chips.length ? ` · ${chips.length - labelled} without a depth` : ""})`,
       );

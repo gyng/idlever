@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // QA on 3d71c33 (qaJ, seed 816) — the client-side lapses, each reproduced on the fake engine (`?engine=fake&systems=none&dev=1`) through the
 // headless harness (tools/browser.mjs) against the dev server (tools/dev.sh; IDLEVER_PORT picks the port):
-//   1  the exit beat (`COLLECTED $N`) shows when the PLAYHEAD reaches the exit, never over an earlier fight the viewer replays behind
+//   1  the exit beat (`RETREAT $N`) shows when the PLAYHEAD reaches the exit, never over an earlier fight the viewer replays behind
 //      the frontier (`fast`, the picture paused while the world runs to the bank)
 //   2  a chain link's clip is on the link's floor and spans its tick (`data-depth` · `data-from` · `data-to` on the sheet), and its
 //      first caption comes from the events in that window (the seek sets no stale row caption)
@@ -82,7 +82,7 @@ const inRun = (s) => s?.screen === "watch";
 
 try {
   if (part("exit")) {
-    // ---- 1: `COLLECTED $N` at the exit, not over an earlier fight replayed behind the frontier (seed 7 fights on D1, banks on D2)
+    // ---- 1: `RETREAT $N` at the exit, not over an earlier fight replayed behind the frontier (seed 7 fights on D1, banks on D2)
     // (a wall-clock reading — the exit's grace lets the beat go when the picture lags on a loaded machine: `measured` retries it once
     // then, the bar unchanged; tests/lib/load.mjs)
     const banked = await measured(async () => {
@@ -107,13 +107,13 @@ try {
           depth: document.querySelector(".watch .depth")?.textContent ?? "",
         }));
         if (s.screen !== "watch") break;
-        if (s.tk.startsWith("COLLECTED")) seen.push(s);
+        if (s.tk.startsWith("RETREAT")) seen.push(s);
         await sleep(40);
       }
       const early = seen.filter((s) => s.tick < exit.t - 2 || s.depth !== `D${exit.depth}`);
       return {
         ok: !!exit && exit.tier === "bank" && seen.length > 0 && early.length === 0,
-        line: `COLLECTED shows at the exit only (exit t${exit?.t} D${exit?.depth}; seen at ${[...new Set(seen.map((s) => `t${s.tick} ${s.depth}`))].slice(0, 4).join(", ") || "never"})`,
+        line: `RETREAT shows at the exit only (exit t${exit?.t} D${exit?.depth}; seen at ${[...new Set(seen.map((s) => `t${s.tick} ${s.depth}`))].slice(0, 4).join(", ") || "never"})`,
       };
     });
     check(banked.ok, banked.line);

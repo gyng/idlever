@@ -3,7 +3,7 @@
 // kill is a witnessed beat. Real wasm, the earned first-clear fixture, a numbered descent re-climbed to a band boss — the Foundry Master
 // (Cut 113's King, 220 hp · 13–19, is a wall a just-cleared kit is meant not to break in one run; the beat is any boss's):
 //   live — the watch is paused at the King's sighting while the world runs the run to its end; the hero tap (`idlever:focus-hero`,
-//          a jump to live) then lands short of the kill, `FOUNDRY MASTER DOWN` holds its beat before `COLLECTED`, and only then the report;
+//          a jump to live) then lands short of the kill, `FOUNDRY MASTER DOWN` holds its beat before `RETREAT`, and only then the report;
 //   away — a boss slain while away offers `watch kill` on the absence's report; it opens that run's replay seeked to the fall, which plays.
 //   node web/tests/boss-kill-beat.mjs
 import { execFileSync } from "node:child_process";
@@ -165,7 +165,7 @@ try {
       (window.__beatLog ?? []).map((b) => ({ text: b.text, ms: b.ms })),
     );
     const down = log.findIndex((b) => /FOUNDRY MASTER DOWN/.test(b.text)),
-      exit = log.findIndex((b) => /^(COLLECTED|RETURNED)/.test(b.text));
+      exit = log.findIndex((b) => /^(RETREAT|RETURNED)/.test(b.text));
     check(down >= 0, `FOUNDRY MASTER DOWN is a beat (${log.map((b) => b.text).join(" | ")})`);
     check(down >= 0 && (exit < 0 || down < exit), "the kill's beat comes before the exit's");
     check(

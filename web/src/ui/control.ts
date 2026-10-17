@@ -427,7 +427,7 @@ export function controlPanel(engine: ControlEngine, kick: () => void): Control {
   const paintToggle = (): void => {
     const t = tile({
       id: "ctl-toggle",
-      label: mine ? /* copy:button */ "release" : /* copy:button */ "control",
+      label: mine ? /* copy:button */ "release" : /* copy:button */ "take over",
       icon: mine ? "ctl_release" : "ctl_hand",
       glyph: "✋",
       cls: "ctl-toggle",

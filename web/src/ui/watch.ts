@@ -47,7 +47,7 @@
 // release, no frame cut, no travel under the card, the ticker's timer stopped; the batches wait (`frozenFeed`) for the thaw. The
 // card names the HUD's floor and the stake's loot (`paintCardText`), never the engine's latest snapshot.
 //
-// Cut 14 §3 — a bank or a return is a beat: the exit event opens the fight frame on the stairs for SCENE_MS with `COLLECTED $N` /
+// Cut 14 §3 — a bank or a return is a beat: the exit event opens the fight frame on the stairs for SCENE_MS with `RETREAT $N` /
 // `RETURNED $N` as its callout (`beatAt`, the exit flow waits `exitBeatUntil`), in `fights` and `fast` alike. §4: a repeated chore
 // callout coalesces on its line (`pick up ×8`, `choreCallout`); the `rest 20m` banner sits low (`.banner.rest`) so it never covers
 // the death frame's callout; the run's row-fire counts go to `app.rowFires` for the death screen's drop sheet (Cut 15 §3).
@@ -1662,7 +1662,7 @@ export function renderWatch(app: App): Mounted {
     keptVal.textContent = past ? `D${record}` : `$${secured}`;
     keptTip = past
       ? /* copy:tooltip */ `secured past D${record} · kept even on death`
-      : /* copy:tooltip */ "secured · kept even on death";
+      : /* copy:tooltip */ "secured · in the purse · kept even on death"; // Cut260 §2: paid as it is secured
     if (securedD > 0) {
       keptEl.classList.remove("gain");
       void keptEl.offsetWidth;
@@ -1752,7 +1752,7 @@ export function renderWatch(app: App): Mounted {
     ms: number = Math.max(CALLOUT_MIN_MS, 1800 / Math.max(1, speed)),
   ): void {
     if (cardUp || folding) return; // Cut 10 §1: nothing under the card is watched (Cut 27 §1: nor under the fold)
-    if (performance.now() < exitBeatUntil || performance.now() < holdLineUntil) return; // Cut 14 §3: `COLLECTED $N` keeps the line (Cut 15 §4: `WARLORD DOWN` too)
+    if (performance.now() < exitBeatUntil || performance.now() < holdLineUntil) return; // Cut 14 §3: `RETREAT $N` keeps the line (Cut 15 §4: `WARLORD DOWN` too)
     if (cls !== "ambient" && cls !== "hurt" && cls !== "beat" && performance.now() < ambientUntil)
       return; // Cut 7 §4: an ambient keeps the ticker for its 1.5 s
     // Cut 13 §4: a second callout on the same tick (one pump pass) waits its turn instead of replacing the first before it was
@@ -1845,7 +1845,7 @@ export function renderWatch(app: App): Mounted {
     } else if (Number.isFinite(fightUntil)) fightUntil = Math.max(fightUntil, t + SCENE_TICKS);
     if (exit) fightUntil = Infinity; // Cut 14 §3: the run is over — the frame holds; the exit flow's own clock (SCENE_MS, real time) lets go
     // an earlier beat the playhead has yet to reach keeps its place; this one takes over at its own tick (QA on 3d71c33: a den's
-    // release showed the later `COLLECTED $13`, which had overwritten it, on D2 ~15 s before the bank)
+    // release showed the later `RETREAT $13`, which had overwritten it, on D2 ~15 s before the bank)
     const b: Beat = {
       from: t,
       until: t + SCENE_TICKS,
@@ -1871,7 +1871,7 @@ export function renderWatch(app: App): Mounted {
   }
   /** The beat's line, once the frame is up and the PLAYHEAD has reached the beat's tick (`reached`: released at the viewer's clock).
    *  A fight cut before it (a kept span the viewer replays behind the frontier) never carries a later beat's line (QA on 3d71c33:
-   *  `COLLECTED $13` over a D2 fight in `fast`, ~15 s before the bank at D5). */
+   *  `RETREAT $13` over a D2 fight in `fast`, ~15 s before the bank at D5). */
   function showBeat(reached = false): void {
     if (!beat || beat.shown || frame !== "fight") return;
     if (!reached && viewerTick() < beat.from - 1) return;
@@ -2495,7 +2495,12 @@ export function renderWatch(app: App): Mounted {
           const lostC = ev.line ? Math.max(0, ev.line.carried - ev.line.kept) : 0;
           const oathW = exitOath ? ` · ${exitOath}` : "";
           exitOath = "";
-          const why = ev.line?.reason;
+          // owner 2026-10-18 ("rename to retreat … alden ash is hurt … wtf does collected even mean"): a bank is a retreat, and its
+          // reason names who turned back (`Alden · hurt`, ≤ 3 words) rather than the exit word again (`hurt · banked`)
+          const why0 = ev.line?.reason,
+            whoBack = tier === "bank" ? app.lineage.persistent_hero?.name.split(" ")[0] : undefined,
+            backM = why0 && whoBack ? /^(.+?) · banked$/.exec(why0) : null;
+          const why = backM ? `${whoBack} · ${backM[1]}` : why0;
           // (a death's reason rides its last frame, no beat: the death screen comes as it did)
           if (tier === "death") {
             if (why) {
@@ -2507,7 +2512,7 @@ export function renderWatch(app: App): Mounted {
             beatAt(
               ev.t,
               (tier === "bank"
-                ? /* copy:callout */ `COLLECTED $${ev.loot_kept}`
+                ? /* copy:callout */ `RETREAT $${ev.loot_kept}`
                 : lead
                   ? /* copy:callout */ `${(lead === "driven" ? /* copy:callout */ "repelled" : lead).toUpperCase()} $${ev.loot_kept}${lostC > 0 && ev.line!.kept <= 0 && !oathW ? ` · −$${lostC}` : ""}`
                   : /* copy:callout */ `RETURNED $${ev.loot_kept}`) + oathW,
@@ -2519,7 +2524,7 @@ export function renderWatch(app: App): Mounted {
         }
         // Cut 28b (owner: "it's not clear what oaths do"): the sworn oath's fate is a beat as it happens — `OATH KEPT`, or `OATH BROKEN · R2 return`
         // (the row that used the tool it forbade); a miss (the run ended short of it) is the exit line's, not a beat
-        // (decided by the run's end — a depth oath kept by a bank — it rides the exit's own beat: `COLLECTED $120 · OATH KEPT`)
+        // (decided by the run's end — a depth oath kept by a bank — it rides the exit's own beat: `RETREAT $120 · OATH KEPT`)
         case "oath":
           if (ev.kept || ev.cause) {
             if (evs.some((x) => x.k === "exit" && x.t === ev.t))
@@ -2714,7 +2719,7 @@ export function renderWatch(app: App): Mounted {
     if (!viewer) return;
     for (let p = takeLoad(); p; p = takeLoad()) loadFloor(p);
   }
-  /** A queued floor into the viewer. QA (qaj under load: `COLLECTED $N` at t816, then the picture at t791): a load resets the clock to
+  /** A queued floor into the viewer. QA (qaj under load: `RETREAT $N` at t816, then the picture at t791): a load resets the clock to
    *  its snapshot's turn — a picture already past it (the walk-out plays on past the frontier) is put back where it was, never rewound. */
   function loadFloor(p: { snap: Snapshot; rest: Ev[]; at?: number }): void {
     if (!viewer) return;
@@ -3347,7 +3352,7 @@ export function renderWatch(app: App): Mounted {
       return;
     } else if (exitTier) {
       if (!(viewerIdle() || performance.now() > exitAt)) return;
-      // Cut 28 (a loaded machine: the 1× walk-out outlasted the grace and `COLLECTED $N` took the line at t791 of an exit at t800): the grace
+      // Cut 28 (a loaded machine: the 1× walk-out outlasted the grace and `RETREAT $N` took the line at t791 of an exit at t800): the grace
       // seeks the picture to the frontier first — the exit's line is released with the picture on the exit, never before it
       if (!viewerIdle() && viewerTick() < engineTick) {
         const to = killStop(engineTick);
@@ -3358,7 +3363,7 @@ export function renderWatch(app: App): Mounted {
       if (beatHeld() && heldBeat && killBeats.includes(heldBeat)) return; // blind 5331f40: the kill's beat holds its wall time before the exit flow
       release(Infinity);
       nextGem(); // QA 92eb880: the walk-out has played — now the gem says what comes next
-      if (performance.now() < exitBeatUntil) return; // Cut 14 §3: `COLLECTED $N` has its SCENE_MS first
+      if (performance.now() < exitBeatUntil) return; // Cut 14 §3: `RETREAT $N` has its SCENE_MS first
       // Cut 2 §1: `rest 12m` for a beat, then the exit flow continues. Cut 14 §4: the banner sits low (`.rest`), under the frame's
       // callout line, and the ticker yields to it (rater S: `rest 20m` over `OGRE WINDS UP` on the death frame)
       // QA 92eb880 (N: "`rest 20m` … after `0/36` reads as the hero resting instead of dying"): after a death the rest is the next heir's (`♟2 · rest 20m`)

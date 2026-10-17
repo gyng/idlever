@@ -163,13 +163,18 @@ try {
       );
       const engineWhy = await page.evaluate(() => window.__actualExits.at(-1)?.reason);
       check(
-        why === engineWhy?.replace(/\bbanked\b/g, "collected"),
+        // owner 2026-10-18: a bank reads as the hero turning back — `hurt · banked` shows `Alden · hurt`
+        why === engineWhy ||
+          (/ · banked$/.test(engineWhy ?? "") &&
+            why.replace(/^\S+ · /, "") === engineWhy.replace(/ · banked$/, "")),
         `run ${k}: displayed reason equals actual Rust exit ("${engineWhy}")`,
       );
       // (Cut 30.5, c305-core 2ec1cb0: a new record is a beat, never an end — runs end hurt, out of heals, at a wall or dead)
       if (k === 1)
         check(
-          /^(hurt · collected|hurt · went home|no heals · collected|slain\b.*|starved)$/.test(why),
+          /^(\S+ · hurt|hurt · went home|\S+ · no heals|no heals · went home|slain\b.*|starved)$/.test(
+            why,
+          ),
           `run 1: a fresh lineage's first end reads as the hero being sensible ("${why}")`,
         );
       const s = await until(
@@ -185,7 +190,11 @@ try {
           "the report's reason",
           8000,
         ).catch(() => null);
-        check(tw === why, `run ${k}: the report's end tile carries the same reason ("${tw}")`);
+        // (the watch names who turned back — `Alden · no heals` — where the tile keeps `no heals · retreated`)
+        check(
+          tw === why || tw?.replace(/ · retreated$/, "") === why.replace(/^\S+ · /, ""),
+          `run ${k}: the report's end tile carries the same reason ("${tw}")`,
+        );
         if (k === 1) await shot("report");
         await page.locator("main.report .gem").first().click();
       } else {

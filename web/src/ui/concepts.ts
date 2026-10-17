@@ -245,7 +245,7 @@ export const ALIASES: Partial<Record<Term, string[]>> = /* copy:none */ {
   pen: ["custom rules", "the pen"],
   lever: ["lever"],
   bank: ["bank"],
-  banked: ["full haul", "banked"],
+  banked: ["full haul", "retreated", "banked"],
   returned: ["returned"],
   death: ["deaths"],
   plateau: ["plateau"],

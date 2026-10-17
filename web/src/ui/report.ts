@@ -911,7 +911,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
       spentG = (r.spent ?? []).reduce((a, x) => a + x.gold, 0);
     const pieces: (string | HTMLElement)[] = [];
     const WORD = /* copy:callout */ {
-      banked: "collected",
+      banked: "retreated",
       returned: "returned",
       secured: "secured",
       salvage: "salvage",

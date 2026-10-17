@@ -34,7 +34,7 @@ try {
       { bloodline_id: 1, t: 30, delta: 447, why: "banked D9" },
     ];
     check(exitDepth(a, x) === 6, "actual wire depth wins over interleaved ledger");
-    check(traceLabel(a, x) === "D6 · collected · log", "rendered caption agrees with run D6");
+    check(traceLabel(a, x) === "D6 · retreated · log", "rendered caption agrees with run D6");
     const legacy = { ...x, reached: undefined };
     check(exitDepth(a, legacy) === 6, "legacy depth belongs to the exiting bloodline");
     check(
@@ -78,7 +78,7 @@ try {
     a.go({ kind: "report", report });
     check(
       document.querySelector(".report .exit-row button.chip")?.textContent ===
-        "D6 · collected · log",
+        "D6 · retreated · log",
       "actual DOM log caption agrees with report depth",
     );
     const saved = await a.engine.save();

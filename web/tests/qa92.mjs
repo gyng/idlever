@@ -808,7 +808,7 @@ try {
     `LEARNED: identities on their own row, a foe's tags after \` · \` (${rep.items.join(" | ")} · ${rep.foes.join(" | ")})`,
   );
   check(
-    /^\+\$100 collected · \+\$30 returned · \+\$5 salvage$/.test(rep.gold ?? "") &&
+    /^\+\$100 retreated · \+\$30 returned · \+\$5 salvage$/.test(rep.gold ?? "") &&
       !/home/.test(rep.gold ?? ""),
     `the gold line says banked / returned, never \`home\` ("${rep.gold}")`,
   );
