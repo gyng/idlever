@@ -222,6 +222,23 @@ function body(t: Term): Node[] {
     ),
   ];
 }
+/** Owner 2026-10-18 ("i'm getting native tooltips in addition to html tooltips in browser"): while the pointer rests on a trigger the
+ *  plate answers, the `title` of that trigger and of every element around it is held aside, so the browser's own popup never doubles
+ *  the plate. It comes back the moment the pointer leaves (or the plate closes), and a plate's body that reads a `title` (the home
+ *  tiles' reasons) sees it while it is built: nothing but the hover itself ever lacks it. */
+const heldTitles = new Map<Element, string>();
+function holdTitles(from: Element | null): void {
+  for (let el = from; el && el !== document.body; el = el.parentElement) {
+    const t = el.getAttribute("title");
+    if (!t) continue;
+    heldTitles.set(el, t);
+    el.removeAttribute("title");
+  }
+}
+function giveTitlesBack(): void {
+  for (const [el, t] of heldTitles) if (!el.hasAttribute("title")) el.setAttribute("title", t);
+  heldTitles.clear();
+}
 /** `how`: a hover's plate lets the pointer through (it never sits over a control a click is aimed at); a tap's, a click's, a
  *  long-press's or a focus's plate takes the pointer (its keywords can be opened). */
 export function openTip(el: HTMLElement, focus = false, how: "hover" | "pin" = "pin"): void {
@@ -235,8 +252,16 @@ export function openTip(el: HTMLElement, focus = false, how: "hover" | "pin" = "
     return;
   }
   closeTip();
+  // (a body built from a held `title` reads it whole; the hover's hold resumes once it is built)
+  const held = [...heldTitles];
+  giveTitlesBack();
   const p = plateEl();
   p.replaceChildren(...(details ? details() : body(t)));
+  for (const [e, title] of held)
+    if (e.getAttribute("title") === title) {
+      e.removeAttribute("title");
+      heldTitles.set(e, title);
+    }
   if (details) delete p.dataset.kw;
   else p.dataset.kw = t;
   p.classList.toggle("detail-tip", !!details);
@@ -361,6 +386,7 @@ function install(): void {
     const t = trigger(e.target);
     if (t && plate?.contains(t)) return;
     if (!t) return;
+    if (e.target instanceof Element) holdTitles(e.target);
     clearTimeout(closeTimer);
     if (t === owner) return;
     clearTimeout(openTimer);
@@ -374,6 +400,7 @@ function install(): void {
     if (!t) return;
     const to = e.relatedTarget as Node | null;
     if (to && (t.contains(to) || plate?.contains(to))) return;
+    giveTitlesBack();
     clearTimeout(openTimer);
     if (t === owner) scheduleClose();
   });

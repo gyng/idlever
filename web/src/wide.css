@@ -13,8 +13,10 @@
 
 @media (min-width: 1024px) {
   :root {
-    --wide-l: clamp(360px, 28vw, 470px);
-    --wide-r: clamp(230px, 17vw, 290px);
+    /* Cut262 (owner: "lots of layout shift on desktop"): one column pair for every screen — camp, watch, report and death had three
+       (camp 288/245, watch 317/202, report 403/245 at 1440 px), so the roster and the well jumped sideways on each screen change */
+    --wide-l: clamp(280px, 20vw, 360px);
+    --wide-r: clamp(220px, 16vw, 270px);
   }
   body.framed {
     font-size: 18px;
@@ -245,9 +247,6 @@
     justify-self: center;
     margin: 4px 14px;
   }
-  main.camp .camp-well > .camp-feats.order-offer {
-    grid-area: offer;
-  }
   main.camp > .well-wrap,
   main.camp .camp-well,
   main.camp .camp-main {
@@ -394,7 +393,7 @@
    rule that just acted glows on its tablet */
 @media (min-width: 1024px) {
   main.frame.watch {
-    grid-template-columns: clamp(270px, 20vw, 330px) minmax(0, 1fr) clamp(190px, 14vw, 240px);
+    grid-template-columns: var(--wide-l) minmax(0, 1fr) var(--wide-r);
   }
   main.frame.watch .rules-col .row.tablet.compact .rtext {
     font-size: 17px;

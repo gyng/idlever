@@ -7,6 +7,7 @@ import "../tasks.css";
 import type { App } from "../app";
 import type { JournalEntry } from "../engine/types";
 import { h, replace } from "./dom";
+import { closeAllSheets } from "./sheet";
 import { questBar } from "./quest";
 import { ladderRungs } from "./ladder";
 import { revealed } from "./reveal";
@@ -49,6 +50,82 @@ const storeOpen = (open: boolean): void => {
 };
 
 const isOpenWork = (e: JournalEntry): boolean => e.state === "active" || e.state === "ready";
+
+// Cut262 (owner: "task lists should highlight when can be completed. clicking it should highlight the building or item that should be
+// clicked"): each open task names the surface that completes it — a town building's hit target (`data-building`) or a camp control —
+// read from the core's own `JournalEntry.action` (kind · target). A task's tap points there (a brief gold ring, scrolled into view);
+// a task with no surface on screen still opens the Journal.
+/** where an `open` action's target lives in the town */
+const OPEN_AT: Record<string, string> = {
+  workers: "guild",
+  orders: "guild",
+  companions: "kennel",
+  forge: "blacksmith",
+  legacy: "tent",
+  class: "tent",
+  loadouts: "tent",
+  hero: "tent",
+  rebirth: "tent",
+  tactics: "tent",
+  watch: "mouth",
+  chronicle: ".hero-roster .hero-history",
+};
+/** a town building's hit id, or a CSS selector (leading `.`), for the surface that completes `e`; null when none is known */
+export function taskSurface(app: App, e: Pick<JournalEntry, "id" | "action">): string | null {
+  if (e.id === "bloodlines") return ".hero-roster .hero-add";
+  const a = e.action;
+  if (!a) return null;
+  if (a.kind === "delve") return "mouth";
+  if (a.kind === "build_town")
+    return app.lineage.town?.next === a.target
+      ? "staked"
+      : a.target === "house"
+        ? "tent"
+        : a.target;
+  if (a.kind === "hire") return "worker";
+  if (a.kind === "open") return OPEN_AT[a.target] ?? null;
+  return null;
+}
+/** the element for a surface id: the town's hit target (`worker` falls back to the Guild reception), else the selector */
+export function surfaceEl(id: string): HTMLElement | null {
+  const visible = (el: HTMLElement | null): HTMLElement | null =>
+    el && !el.hidden && el.getClientRects().length > 0 ? el : null;
+  if (id.startsWith(".")) return visible(document.querySelector<HTMLElement>(`main.camp ${id}`));
+  const hit = (b: string): HTMLElement | null =>
+    visible(document.querySelector<HTMLElement>(`main.camp .town-hit[data-building="${b}"]`));
+  return hit(id) ?? (id === "worker" ? hit("guild") : null);
+}
+/** Whether a task can be completed now: the core marks it `ready` with its action enabled, or (the bloodline founding, an `active`
+ *  entry) its own control stands enabled. */
+export function taskCan(app: App, e: JournalEntry): boolean {
+  if (e.id === "bloodlines") {
+    const L = app.lineage;
+    return (
+      !!app.engine.addBloodline &&
+      L.town?.home !== false &&
+      (L.hero_slots?.length ?? 0) < (L.bloodline_cap ?? 1) &&
+      L.gold >= (L.bloodline_price ?? 250)
+    );
+  }
+  return e.state === "ready" && e.action?.enabled !== false;
+}
+let pointTimer = 0;
+/** The tap's answer: a quiet gold ring on the surface (≈2.4 s), brought into view. False when nothing to point at stands. */
+export function pointAt(id: string | null): boolean {
+  if (!id) return false;
+  // phone: the Menu holds the list over the town — it closes onto the ring
+  if (document.querySelector(".sheet-wrap .task-tracker")) closeAllSheets();
+  const el = surfaceEl(id);
+  if (!el) return false;
+  for (const old of document.querySelectorAll(".task-point")) old.classList.remove("task-point");
+  clearTimeout(pointTimer);
+  // restart the ring's animation on a repeat tap
+  void el.offsetWidth;
+  el.classList.add("task-point");
+  el.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+  pointTimer = window.setTimeout(() => el.classList.remove("task-point"), 2600);
+  return true;
+}
 
 export function taskTracker(
   app: App,
@@ -136,6 +213,10 @@ export function taskTracker(
       lit,
       ctlProg,
       worker,
+      // Cut262: what each entry can do now and where it points (gold, the next plot) repaint its mark
+      chapters.map((c) =>
+        c.open.slice(0, PER_GROUP).map((e) => [taskCan(app, e), taskSurface(app, e)]),
+      ),
     ]);
     if (key !== last) {
       last = key;
@@ -147,7 +228,11 @@ export function taskTracker(
             "data-entry-id": e.id,
             "data-state": e.state,
             "data-recommended": String(e.id === J?.recommended),
-            onclick: (ev: Event) => journal(ev.currentTarget as HTMLElement),
+            "data-can": String(taskCan(app, e)),
+            "data-surface": taskSurface(app, e) ?? "",
+            onclick: (ev: Event) => {
+              if (!pointAt(taskSurface(app, e))) journal(ev.currentTarget as HTMLElement);
+            },
           },
           h("span", { class: "task-pip", "aria-hidden": "true" }),
           h("span", { class: "task-title" }, e.title),
@@ -170,8 +255,12 @@ export function taskTracker(
             class: "task-entry task-worker",
             "data-worker": p.id,
             "data-state": "active",
+            "data-can": String(!!p.done),
+            "data-surface": "worker",
             ...(p.feat ? { "data-feat-done": String(!!p.done) } : {}),
-            onclick: (ev: Event) => openWorks(app, p.id, ev.currentTarget as HTMLElement),
+            onclick: (ev: Event) => {
+              if (!pointAt("worker")) openWorks(app, p.id, ev.currentTarget as HTMLElement);
+            },
           },
           h("span", { class: "task-pip", "aria-hidden": "true" }),
           h("span", { class: "task-title" }, p.name.charAt(0).toUpperCase() + p.name.slice(1)),
@@ -198,7 +287,11 @@ export function taskTracker(
                   class: "task-entry",
                   "data-rung": control.id,
                   "data-state": "later",
-                  onclick: (ev: Event) => journal(ev.currentTarget as HTMLElement),
+                  "data-surface": control.id === "workers" ? "guild" : "",
+                  onclick: (ev: Event) => {
+                    if (control.id !== "workers" || !pointAt("guild"))
+                      journal(ev.currentTarget as HTMLElement);
+                  },
                 },
                 h("span", { class: "task-pip", "aria-hidden": "true" }),
                 h(
@@ -272,7 +365,11 @@ export function taskTracker(
                 "button",
                 {
                   class: "task-entry task-quest",
-                  onclick: (ev: Event) => journal(ev.currentTarget as HTMLElement),
+                  "data-can": String(quest.progress >= 1),
+                  "data-surface": "board",
+                  onclick: (ev: Event) => {
+                    if (!pointAt("board")) journal(ev.currentTarget as HTMLElement);
+                  },
                 },
                 h("span", { class: "task-title" }, quest.goal),
                 questBar(quest),

@@ -1,11 +1,21 @@
 // Cut 120, option B (docs/CUT120_AUTOMATION_FILL.md "Defaults: option C measured, option B taken"): the Legacy and ranks orders
-// default `off` for every lineage, so the camp offers each one once, quietly, the first time it is useful — Legacy when it can first
-// buy an upgrade, ranks when a worker rank is first due. One chip row, never a modal; either chip dismisses it for good (per lineage,
-// browser storage). Nothing waits on it: `collect & send` walks past it, and the orders sheet keeps both orders settable any time.
+// default `off` for every lineage, so the town offers each one once, quietly, the first time it is useful — Legacy when it can first
+// buy an upgrade, ranks when a worker rank is first due. Cut262: the offer is the Guild reception's lantern and a marked row in its
+// works sheet (never a chip row over the camp); seeing it settles it for good (per lineage, browser storage). Nothing waits on it:
+// `collect & send` walks past it, and the orders sheet keeps both orders settable any time.
 import type { App } from "../app";
 import type { Lineage, StandingOrders } from "../engine/types";
-import { h, replace } from "./dom";
-import { manyBloodlines } from "./orders";
+import { h } from "./dom";
+import {
+  LEGACY_ORDERS,
+  LEGACY_TIP,
+  LEGACY_WORD,
+  RANKS_ORDERS,
+  RANKS_WORD,
+  legacyOrderShown,
+  manyBloodlines,
+  ranksOrderShown,
+} from "./orders";
 
 export type OfferKey = "legacy" | "ranks";
 const KEY = (L: Pick<Lineage, "seed">): string => /* copy:none */ `idlever.offers.${L.seed ?? 0}`;
@@ -62,81 +72,105 @@ export function acceptPatch(L: Lineage, k: OfferKey): StandingOrders {
   return { ...o, ...(k === "legacy" ? { legacy: "balanced" } : { ranks: "auto" }), ...share };
 }
 
-/** The camp's offer row: one label, the order's chip, `not now`. Hidden when nothing is offered. */
-export function orderOffer(app: App): { el: HTMLElement; dispose: () => void } {
-  const el = h("div", { class: "camp-feats order-offer", hidden: true });
-  let last = "";
-  const paint = (): void => {
-    const L = app.lineage;
-    const home = !L.live && !L.ended && L.town?.home !== false;
-    const k = home && app.engine.setOrders ? pendingOffer(L) : null;
-    const key = String(k);
-    if (key === last) return;
-    last = key;
-    el.hidden = !k;
-    el.dataset.offer = k ?? "";
-    if (!k) {
-      replace(el);
-      return;
-    }
-    const done = (): void => {
-      markOffer(app.lineage, k);
-      last = "";
-      paint();
-    };
-    const yes = h(
-      "button",
+/** Cut262 (owner: "legacy setting control should not be a toast, it should be in a building that lets you handle automation"): the
+ *  Legacy and ranks orders live at the Guild reception, beside the workers who carry them out (the works sheet). Nothing rides the camp
+ *  well any more (the old chip row pushed the town up as it came and went). An order first useful lights the Guild's lantern
+ *  (`guildOfferPending`) and the row it means wears a quiet gold edge in the sheet; seeing the sheet settles the offer. */
+export const guildOfferPending = (L: Lineage): OfferKey | null => pendingOffer(L);
+/** The Guild's sheet opened: the pending offer, now seen (its lantern goes out); null with none. */
+export function takeGuildOffer(L: Lineage): OfferKey | null {
+  const k = pendingOffer(L);
+  if (k) markOffer(L, k);
+  return k;
+}
+
+/** `offer`: the order the Guild's lantern announced when the sheet opened (its row keeps the mark while the sheet stands). */
+export function guildOrders(
+  app: App,
+  offer: OfferKey | null,
+  more?: (anchor: HTMLElement) => void,
+): HTMLElement | null {
+  const L = app.lineage,
+    o = L.orders;
+  if (!o || !app.engine.setOrders) return null;
+  const legacy = legacyOrderShown(L),
+    ranks = ranksOrderShown(L);
+  if (!legacy && !ranks) return null;
+  const set = (k: OfferKey, value: string): void => {
+    const L0 = app.lineage,
+      cur = L0.orders!;
+    const patch: StandingOrders =
+      offer === k && cur[k] === "off" && value !== "off"
+        ? { ...acceptPatch(L0, k), [k]: value }
+        : { ...cur, [k]: value };
+    markOffer(L0, k);
+    void app.mutate(
+      () => app.engine.setOrders!(patch),
+      k === "legacy" ? /* copy:callout */ "legacy" : /* copy:callout */ "ranks",
+    );
+  };
+  const row = (
+    k: OfferKey,
+    label: string,
+    values: readonly string[],
+    word: Record<string, string>,
+    tip?: Record<string, string>,
+  ): HTMLElement => {
+    const cur = o[k] ?? "off";
+    return h(
+      "div",
       {
-        class: "chip feat-chip order-offer-yes",
-        "data-offer-yes": k,
-        title:
-          k === "legacy"
-            ? /* copy:tooltip */ "health → damage → armour in turn · run setup"
-            : /* copy:tooltip */ "ranks bought when due · run setup",
-        onclick: () => {
-          markOffer(app.lineage, k);
-          void app
-            .mutate(
-              () => app.engine.setOrders!(acceptPatch(app.lineage, k)),
-              /* copy:callout */ k === "legacy" ? "legacy" : "ranks",
-            )
-            .then(done);
-        },
+        class: `order-row guild-order${offer === k ? " offered" : ""}`,
+        "data-order": k,
+        ...(offer === k ? { "data-offer": k } : {}),
       },
-      k === "legacy" ? /* copy:button */ "balanced" : /* copy:button */ "auto",
-    );
-    const no = h(
-      "button",
-      { class: "chip feat-chip order-offer-no", "data-offer-no": k, onclick: done },
-      /* copy:button */ "not now",
-    );
-    replace(
-      el,
+      h("span", { class: "olab" }, label),
+      " ",
       h(
-        "div",
-        { class: "chips feat-chips" },
-        h(
-          "small",
-          { class: "dim" },
-          k === "legacy"
-            ? /* copy:callout */ "Legacy auto-spend"
-            : /* copy:callout */ "rank auto-buy",
+        "span",
+        { class: "chips" },
+        ...values.map((v) =>
+          h(
+            "button",
+            {
+              class: `chip order${cur === v ? " on" : ""}`,
+              "aria-pressed": String(cur === v),
+              [`data-${k}`]: v,
+              title: tip?.[v],
+              onclick: () => {
+                if (cur !== v) set(k, v);
+              },
+            },
+            word[v] ?? v,
+          ),
         ),
-        " ",
-        yes,
-        " ",
-        no,
       ),
     );
   };
-  paint();
-  const off = app.onChange(paint),
-    offL = app.onLive(paint);
-  return {
-    el,
-    dispose: () => {
-      off();
-      offL();
-    },
-  };
+  const link: HTMLButtonElement | null = more
+    ? h(
+        "button",
+        {
+          class: "chip guild-orders-more",
+          "data-orders-more": "",
+          onclick: () => more(link!),
+        },
+        /* copy:button */ "Run setup",
+        h("small", { class: "dim" }, " ▸"),
+      )
+    : null;
+  return h(
+    "section",
+    { class: "orders-sheet guild-orders", "data-guild-orders": "" },
+    h("div", { class: "label row-label" }, /* copy:label */ "Orders"),
+    h(
+      "div",
+      { class: "order-rows" },
+      legacy
+        ? row("legacy", /* copy:label */ "Legacy spend", LEGACY_ORDERS, LEGACY_WORD, LEGACY_TIP)
+        : null,
+      ranks ? row("ranks", /* copy:label */ "worker ranks", RANKS_ORDERS, RANKS_WORD) : null,
+    ),
+    link,
+  );
 }

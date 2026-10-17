@@ -177,11 +177,22 @@ export function controlPanel(engine: ControlEngine, kick: () => void): Control {
     timer = 0,
     acts = 0;
   // the console's own pieces (frame.ts `tile`: the carved tile, its icon, the pressed frame on tap), set in a stone slab
+  // (Cut262: pad, verbs and note start hidden, as the hand starts off — they stood for a frame, then the slab collapsed: a layout shift)
   const toggleSlot = h("div", { class: "cmd ctl-toggle-slot" });
-  const pad = h("div", { class: "cmd ctl-pad", role: "group", "aria-label": "move" });
-  const verbs = h("div", { class: "cmd ctl-verbs", role: "group", "aria-label": "act" });
+  const pad = h("div", { class: "cmd ctl-pad", role: "group", "aria-label": "move", hidden: true });
+  const verbs = h("div", {
+    class: "cmd ctl-verbs",
+    role: "group",
+    "aria-label": "act",
+    hidden: true,
+  });
   // blind b58b431 (A: arrows and `descend` inert in gas — no response at all): the last order's outcome, the core's words
-  const note = h("div", { class: "ctl-note num", role: "status", "aria-live": "polite" });
+  const note = h("div", {
+    class: "ctl-note num",
+    role: "status",
+    "aria-live": "polite",
+    hidden: true,
+  });
   // owner 2026-10-10 (phone ergonomics): the pad leads, the hand toggle between it and the actions
   const el = h("div", { class: "ctl ctl-slab", "data-on": "0" }, pad, toggleSlot, verbs, note);
   const cueWho = h("b", { class: "hand-cue-who" });

@@ -200,6 +200,8 @@ html body .topbar .stat {
    instead of holding a full-width row under the stage; the messages rise above the pad while the hand is on */
 @media (min-width: 1024px) {
   html body main.frame.watch.floating-controls > .ctl.ctl-slab {
+    /* Cut262: the hand toggle's tile lands a frame after the slab; its height is held so the slab does not rise into place */
+    min-height: 106px;
     grid-area: well;
     align-self: end;
     justify-self: start;

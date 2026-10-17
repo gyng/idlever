@@ -347,19 +347,7 @@ html body .camp .town > .next-pill.game-control {
   .works-sheet .works-trunk {
     max-width: 420px;
   }
-  .works-sheet {
-    display: grid;
-    grid-template-columns: minmax(320px, 420px) 1fr;
-    column-gap: 24px;
-    align-items: start;
-  }
-  .works-sheet > .row-label {
-    grid-column: 1 / -1;
-  }
-  .works-branches {
-    margin-top: 0;
-    border-top: 0;
-  }
+  /* Cut262: one column — the beside-sheet is ~560 px, and a second column squeezed the branches to a letter a line */
 }
 
 /* the hire's beat: two words over the well */
@@ -510,4 +498,20 @@ html body .camp .town > .next-pill.game-control {
 .works-acts.works-ledger .work-act {
   max-width: 100%;
   flex-wrap: wrap;
+}
+
+/* Cut262: the Guild reception keeps the standing orders its workers follow (ui/order-offer.ts guildOrders). The order its lantern
+   announced wears a quiet gold edge while the sheet stands; nothing pulses. */
+.guild-orders {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(184, 148, 72, 0.35);
+}
+.guild-orders .guild-order.offered {
+  margin-left: -8px;
+  padding-left: 6px;
+  border-left: 2px solid var(--acc, #dbba7c);
+}
+.guild-orders .guild-orders-more {
+  margin-top: 8px;
 }

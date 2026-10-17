@@ -115,7 +115,6 @@ import {
   TEMPERAMENT_TIP,
   type ShareKey,
 } from "./orders"; // Cut 120: one orders sheet   // Cut 119: the kennel keeper's order
-import { orderOffer } from "./order-offer"; // Cut 120 option B: Legacy and ranks offered once
 import { campFeats, featOrderBits, SINK_ORDERS, SINK_WORD, sinkHandChip } from "./feats"; // Boss targeting, trials and standing orders; paid wishes retired.
 import { announceClassUnlock } from "./class-unlock"; // Cut225: an earned class said once
 import { createClassStageNotice } from "./class-stage-notice";
@@ -570,7 +569,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   const offTaskMount = app.onChange(mountTasks);
   mountTasks();
   const feats = campFeats(app);
-  const offer = orderOffer(app);
   const earlyJournal = h(
     "button",
     {
@@ -590,7 +588,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     pick.el,
     batch.el,
     feats.el,
-    offer.el,
     tabs,
     h(
       "div",
@@ -2533,7 +2530,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       feats.dispose();
       classStageNotice.dispose();
       document.querySelector(".class-unlock")?.remove(); // the plate belongs to the camp: it never rides into the watch
-      offer.dispose();
       window.removeEventListener("idlever:focus-hero", focusHome);
       offLive();
       lanes.dispose();

@@ -13,6 +13,8 @@ import { audio } from "../audio";
 import { heroFace, trackIcon, trackName, TRACK_IDS } from "./tracks";
 import { detailHost, kw, kwHost } from "./tips";
 import { supplyReason } from "./report-supplies";
+import { guildOrders, takeGuildOffer } from "./order-offer";
+import { openCampOrders } from "./camp";
 
 export const hasWorks = (L: Pick<Lineage, "tree"> | undefined): boolean => !!L?.tree;
 export const workerNodes = (W: Works): WorkNode[] => W.nodes.filter((n) => n.kind === "worker");
@@ -276,6 +278,8 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
 export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null): void {
   if (!app.lineage.tree) return;
   closeEverything();
+  // Cut262: the Guild reception keeps the standing orders its workers follow (Legacy spend, worker ranks)
+  const offered = takeGuildOffer(app.lineage);
   openSheet(
     (close) => {
       const body = h("div", { class: "sheet-body works-sheet" });
@@ -460,9 +464,12 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
             rankCard,
             done,
           ),
+          guildOrders(app, offered, (at) => openCampOrders(app, at)),
           branches,
         );
-        const f = focus && body.querySelector<HTMLElement>(`.wnode[data-node="${focus}"]`);
+        const f =
+          (focus && body.querySelector<HTMLElement>(`.wnode[data-node="${focus}"]`)) ||
+          (offered && body.querySelector<HTMLElement>(`.guild-order[data-offer="${offered}"]`));
         if (f) {
           f.classList.add("focus");
           setTimeout(() => f.scrollIntoView?.({ block: "nearest" }), 0);

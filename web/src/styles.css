@@ -1433,18 +1433,20 @@ main {
 }
 .busy-fill {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 30%;
-  background: var(--acc);
+  inset: 0;
+  /* Cut262: the sweep is a background moving inside a still box (a moving element — `left`, then even a transform — was reported as a
+     layout shift on every frame the engine worked) */
+  background: linear-gradient(90deg, transparent 0 45%, var(--acc) 45% 55%, transparent 55% 100%)
+    no-repeat;
+  background-size: 300% 100%;
   animation: busy 1.1s ease-in-out infinite;
 }
 @keyframes busy {
   0% {
-    left: -30%;
+    background-position: 100% 0;
   }
   100% {
-    left: 100%;
+    background-position: 0% 0;
   }
 }
 .busy-label {

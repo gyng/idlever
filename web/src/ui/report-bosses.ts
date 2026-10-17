@@ -8,8 +8,11 @@ export const bossName = (kind: string): string =>
 
 /** First victories are reported deltas, never today's slain walls or selection. */
 /** `watch`: blind 5331f40 — a boss slain while away offers his kill as a replay (`▶ watch kill`); null where no held run reached him. */
+/** Cut262 (owner: "boss portraits in killed is very confusing"): one row per boss, never one per hero — the portrait wears a victory
+ *  mark, the copy says who slew him (`slain by Ash · Thorn`, `×2` for more than one hero) and, apart, what he cost this absence
+ *  (`killed 2 heroes`, the report's own deaths to him), so a boss face can no longer read as the hero's killer. */
 export function reportBosses(
-  r: Pick<ReturnReport, "bests" | "bloodlines">,
+  r: Pick<ReturnReport, "bests" | "bloodlines"> & Partial<Pick<ReturnReport, "deaths">>,
   lineage?: Lineage,
   watch?: (boss: string) => (() => Promise<boolean>) | null,
 ): HTMLElement | null {
@@ -39,44 +42,95 @@ export function reportBosses(
     })),
   );
   if (!victories.length) return null;
+  // one entry per boss, its slayers in slot order
+  const bosses = [...new Set(victories.map((v) => v.boss))].map((boss) => {
+    const by = victories.filter((v) => v.boss === boss);
+    return {
+      boss,
+      by,
+      lost: (r.deaths ?? []).filter((d) => d.cause === boss).reduce((n, d) => n + d.n, 0),
+    };
+  });
+  const selected = lineage?.selected_bloodline ?? 1;
   return h(
     "section",
     { class: "report-bosses" },
-    h("b", { class: "row-label" }, /* copy:label */ "Boss defeated"),
-    ...victories.map((v) => {
+    h(
+      "b",
+      { class: "row-label" },
+      bosses.length > 1 ? /* copy:label */ "Bosses slain" : /* copy:label */ "Boss slain",
+    ),
+    ...bosses.map(({ boss, by, lost }) => {
+      const names = by.map((v) => v.name).filter((n): n is string => !!n);
+      const slayers = names.length
+        ? /* copy:callout */ `slain by ${names.join(" · ")}`
+        : /* copy:callout */ "slain";
       const row = unitLabel(
-        v.boss,
+        boss,
         h(
           "span",
           { class: "report-boss-copy" },
-          h("b", null, bossName(v.boss)),
-          v.name ? h("small", null, v.name) : "",
+          h("b", null, bossName(boss)),
+          h(
+            "small",
+            { class: "report-boss-by" },
+            slayers,
+            by.length > 1 && names.length < by.length
+              ? h("b", { class: "num" }, ` ×${by.length}`)
+              : "",
+          ),
+          lost > 0
+            ? h(
+                "small",
+                { class: "report-boss-lost num down", "data-lost": lost },
+                lost === 1
+                  ? /* copy:callout */ "killed 1 hero"
+                  : /* copy:callout */ `killed ${lost} heroes`,
+              )
+            : "",
         ),
         { px: 44 },
       );
       row.classList.add("report-boss-row");
-      row.dataset.boss = v.boss;
-      if (v.owner !== undefined) row.dataset.bloodline = String(v.owner);
-      row.querySelector(".unit-icon")!.classList.add("report-boss-face");
+      row.dataset.boss = boss;
+      row.dataset.slain = String(by.length);
+      row.setAttribute("aria-label", `${bossName(boss)} · ${slayers}`);
+      const owned = by.filter((v) => v.owner !== undefined);
+      if (owned.length) {
+        row.dataset.bloodline = String(owned[0]!.owner);
+        row.dataset.bloodlines = owned.map((v) => v.owner).join(" ");
+      }
+      const face = row.querySelector<HTMLElement>(".unit-icon")!;
+      face.classList.add("report-boss-face");
+      // the victory mark rides the portrait (a frame of its own: the image keeps its 44 px)
+      const frame = h(
+        "span",
+        { class: "report-boss-portrait" },
+        h("span", {
+          class: "report-boss-mark",
+          "aria-hidden": "true",
+        }),
+      );
+      face.replaceWith(frame);
+      frame.prepend(face);
+      const mine = by.find((v) => v.owner === undefined || v.owner === selected);
+      const known = mine?.knowledge ?? by.find((v) => v.knowledge)?.knowledge;
       const host = enemyHost(
         row,
-        v.boss,
-        v.knowledge
+        boss,
+        known
           ? {
-              facts: v.knowledge.facts,
-              ledger: v.knowledge.ledger ? [v.knowledge.ledger] : [],
-              walls: v.knowledge.wall ? [v.knowledge.wall] : [],
+              facts: known.facts,
+              ledger: known.ledger ? [known.ledger] : [],
+              walls: known.wall ? [known.wall] : [],
               counters: [],
             }
-          : v.owner === undefined || v.owner === (lineage?.selected_bloodline ?? 1)
+          : mine
             ? lineage
             : undefined,
         true,
       );
-      const go =
-        v.owner === undefined || v.owner === (lineage?.selected_bloodline ?? 1)
-          ? watch?.(v.boss)
-          : null;
+      const go = mine ? watch?.(boss) : null;
       if (!go) return host;
       // the kill's replay beside the row (its own tap: the row's tooltip stays the row's)
       // blind 3ab97ea (B: tapped twice, nothing): a kill no held run shows says so on the button, never an inert tap
@@ -84,7 +138,7 @@ export function reportBosses(
         "button",
         {
           class: "chip report-boss-watch game-control",
-          "data-boss": v.boss,
+          "data-boss": boss,
           onclick: (e: Event) => {
             e.stopPropagation();
             btn.disabled = true;

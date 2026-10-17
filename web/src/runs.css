@@ -1023,10 +1023,6 @@ button.re-body {
     grid-area: batch;
     align-self: center;
   }
-  main.camp .camp-well > .camp-feats.order-offer {
-    grid-area: offer;
-    align-self: center;
-  }
   html body main.frame.camp > .console {
     margin-block: 6px;
   }
@@ -1075,7 +1071,7 @@ button.re-body {
     grid-template-columns: minmax(0, 1fr) 124px;
   }
   main.frame.watch {
-    grid-template-columns: clamp(290px, 22vw, 340px) minmax(0, 1fr) clamp(190px, 14vw, 240px);
+    grid-template-columns: var(--wide-l) minmax(0, 1fr) var(--wide-r);
   }
   .hero-row {
     flex-wrap: wrap;
@@ -1938,4 +1934,34 @@ html body .ctl .cmd .tile.ctl-toggle .tl {
   content: "";
   position: absolute;
   inset: -12px -6px;
+}
+
+/* Cut262 (owner: "lots of layout shift on desktop"): the watch's bottom-anchored message stack kept its combat history at 0–3 lines, so
+   every new line lifted the tactic cues and the ticker above it. On desktop the history keeps its three-line box from the first frame
+   (blank until a line lands), and the cues above it stand still. */
+@media (min-width: 1024px) {
+  html body .watch.frame .watch-messages > .combat-log:has(.combat-lines:empty) {
+    display: block;
+    visibility: hidden;
+  }
+  html body .watch.frame .watch-messages .combat-lines {
+    height: 54px;
+  }
+  /* the stack's own box stands still too: a fixed foot-anchored box (a ticker that comes and goes rises inside it, over the map,
+     instead of moving the whole stack's top edge) */
+  html body .watch.frame .watch-messages {
+    height: 140px;
+    justify-content: flex-end;
+  }
+  html body .watch .watch-speed-badge {
+    min-width: 28px;
+    text-align: center;
+  }
+}
+/* Cut262: the docked fold strip comes and goes over a run's first seconds; on desktop the HUD keeps the strip's row reserved instead of
+   stepping down and back up under it (styles.css `.watch[data-strip="1"] .hud.top`) */
+@media (min-width: 1024px) {
+  html body .watch.frame .hud.top {
+    top: 22px;
+  }
 }
