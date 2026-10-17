@@ -40,14 +40,14 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     house.action=action("build_town","house","Build house",home.then(||"Already built".into()));
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
-    let mut scout=entry("scout","Hire the Scout","Until the Scout is hired, each departure needs your tap.","The Scout sends the hero after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
+    let mut scout=entry("scout","Hire the Receptionist","Until the Receptionist is hired, each departure needs your tap.","The Receptionist books the hero's next delve after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
     scout.progress=Some(JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
     if !hired {scout.requirements.push(format!("{} manual delves; {price} Gold",n.need()));if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
-    scout.action=action("hire","scout","Hire Scout",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
+    scout.action=action("hire","scout","Hire Receptionist",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
     if hired {
         scout.action=action("open","workers","Workers",None);
-        scout.effect="When enabled, the Scout sends the hero after each rest. Pausing the worker stops automatic departures.".into();
-        if !tree::on(l,"scout") {scout.state="active".into();scout.requirements.push("Enable the Scout in Workers".into());}
+        scout.effect="When enabled, the Receptionist books the hero's next delve after each rest. Pausing the worker stops automatic departures.".into();
+        if !tree::on(l,"scout") {scout.state="active".into();scout.requirements.push("Enable the Receptionist in Workers".into());}
     }
     let p=tree::def("porter").unwrap();let porter_hired=tree::hired(l,"porter");let porter_ready=home&&tree::lit(l).is_some_and(|n|n.id=="porter");
     let mut porter=entry("porter","Hire the Porter","Workers automate chores once their milestones are ready.","Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
@@ -57,7 +57,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     let mut entries=vec![house,porter,scout];
     for (id,title,reason,effect) in [("blacksmith","Build the Forge","Permanent upgrades change every future starting kit.","Spend Gold once on upgrades. Unlocked gear and supplies are free to reuse."),("kennel","Build the Kennel","Companions can join your builds.","Manage your tamed companions and their party slots."),("bank","Build Savings","Spare Gold can earn interest.","Deposits earn2% per night before worker bonuses; withdrawals return your Gold.")] {
         let built=town::built(l,id);let ready=town::build_ready(l,id);let mut e=entry(id,title,reason,effect,if built {"complete"} else if ready {"ready"} else {"later"});
-        if !built&&!ready {e.requirements.push(match id {"blacksmith"=>"Hire Scout, complete four delves, and earn exit Gold".into(),"kennel"=>"Hire Scout and tame a pet with a Forge leash".into(),_=>format!("Complete a positive-income night; hold its net Gold (currently {})",l.last_night_net)});if !home {e.requirements.push("Build a house".into());}}
+        if !built&&!ready {e.requirements.push(match id {"blacksmith"=>"Hire Receptionist, complete four delves, and earn exit Gold".into(),"kennel"=>"Hire Receptionist and tame a pet with a Forge leash".into(),_=>format!("Complete a positive-income night; hold its net Gold (currently {})",l.last_night_net)});if !home {e.requirements.push("Build a house".into());}}
         e.action=action("build_town",id,title,(!ready).then(||if built {"Already built".into()} else {"Milestone unmet".into()}));entries.push(e);
     }
     let mut bloodline=entry("bloodlines","More bloodlines","Each bloodline keeps its own build and progression.","An additional resident costs250 Gold. The town supports three bloodlines.",if home {"active"} else {"later"});
@@ -86,7 +86,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
         let chosen = l.classes.contains_key(c.name());
         let mut e = entry(&format!("class_{}", c.name()), title, reason, effect, if chosen {"complete"} else if blocked.is_none() {"ready"} else {"later"});
         if let Some(b) = &blocked {e.requirements.push(b.clone());}
-        e.requirements.push(format!("Scout; {delves} completed delves; D{depth}"));
+        e.requirements.push(format!("Receptionist; {delves} completed delves; D{depth}"));
         e.progress = Some(JournalProgress {current:l.persistent.completed.min(delves),required:delves,unit:"completed delves".into()});
         e.action = action("open","class",title,if !home {Some("Build a house".into())} else if away {Some("hero away".into())} else {blocked});
         builds.push(e);
@@ -95,7 +95,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     let mut e=entry("class_tree","Class builds","Class policies add optional branches to your build.","Learn cumulative class policies; changing a build does not erase earned class XP.",if all_owned {"complete"} else if class.nodes.iter().any(|n|n.available) {"ready"} else {"later"});
     if let Some(n)=node {e.requirements=vec![format!("Level{}; historical depth{}; a class point",n.required_level,n.required_depth)];}
     if let Some(pick)=&class.next_pick {
-        if pick.requires_scout {e.requirements.push(format!("Scout; class level{}; personal D{}; {} completed delves",pick.required_level,pick.required_depth,pick.required_completed));}
+        if pick.requires_scout {e.requirements.push(format!("Receptionist; class level{}; personal D{}; {} completed delves",pick.required_level,pick.required_depth,pick.required_completed));}
         else {e.requirements.push(format!("Next pick: class level{}",pick.required_level));}
     }
     if let Some(blocked)=class.blocked {e.requirements.push(blocked);}
@@ -171,7 +171,7 @@ mod tests {
         let price=tree::price(&g.lineage,tree::def("scout").unwrap());let gold=g.lineage.gold;
         g.hire("scout").unwrap();assert_eq!(g.lineage.gold,gold-price);assert_eq!(find(&g.lineage().journal.unwrap(),"scout").state,"complete");
         crate::offline::run_offline_counts(&mut g,8*3600);
-        assert_ne!(g.lineage().journal.unwrap().recommended.as_deref(),Some("porter"),"a later optional Porter must not displace build guidance after actual Scout hire");
+        assert_ne!(g.lineage().journal.unwrap().recommended.as_deref(),Some("porter"),"a later optional Porter must not displace build guidance after actual Receptionist hire");
     }
     #[test]
     fn age_and_milestone_requirements_are_independent_and_discoveries_complete() {

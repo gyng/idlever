@@ -453,7 +453,7 @@ pub fn grew(a: &Snap, b: &Snap) -> Vec<GrewLine> {
 pub fn build_blocked(l:&LineageState,id:&str)->Option<String>{
  if built(l,id)||triggered(l,id){return None;}
  if !l.town.home.unwrap_or(true){return Some("Build a house".into());}
- match id {"blacksmith"=>{if !crate::tree::hired(l,"scout"){Some("Hire Scout".into())}else if l.persistent.completed<4{Some(format!("Complete {} more delves",4-l.persistent.completed))}else if !triggered(l,id){Some("Secure Gold from a delve".into())}else{None}},"kennel"=>{if !crate::tree::hired(l,"scout"){Some("Hire Scout".into())}else if !triggered(l,id){Some("Tame a pet with a leash".into())}else{None}},_=>None}
+ match id {"blacksmith"=>{if !crate::tree::hired(l,"scout"){Some("Hire Receptionist".into())}else if l.persistent.completed<4{Some(format!("Complete {} more delves",4-l.persistent.completed))}else if !triggered(l,id){Some("Secure Gold from a delve".into())}else{None}},"kennel"=>{if !crate::tree::hired(l,"scout"){Some("Hire Receptionist".into())}else if !triggered(l,id){Some("Tame a pet with a leash".into())}else{None}},_=>None}
 }
 pub fn wire(l: &LineageState) -> TownWire {
     let next = if !l.town.home.unwrap_or(true) { Some(("house".into(), String::new())) } else { BUILDINGS.iter().find(|(id, _)| !built(l, id)).map(|(id, tr)| (id.to_string(), build_blocked(l,id).unwrap_or_else(||tr.to_string()))) };

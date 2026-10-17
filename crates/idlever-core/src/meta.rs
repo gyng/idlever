@@ -222,7 +222,7 @@ pub fn class_gate(l: &LineageState, c: crate::hero::Class) -> Option<String> {
     let (delves, depth) = class_requirement(c)?;
     let completed = l.persistent.completed;
     if !crate::tree::hired(l, "scout") {
-        Some("Hire Scout".into())
+        Some("Hire Receptionist".into())
     } else if completed < delves {
         Some(format!("Complete {} more delves", delves - completed))
     } else if crate::legacy::deepest(l) < depth {

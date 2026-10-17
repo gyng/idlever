@@ -20,7 +20,7 @@ pub fn gate(l: &LineageState, n: u32, d: u32, scout: bool) -> Gate {
     let remaining = n.saturating_sub(l.persistent.completed);
     let depth = d.saturating_sub(l.best_depth);
     let blocked = if scout && !crate::tree::hired(l, "scout") {
-        Some("Hire the Scout".into())
+        Some("Hire the Receptionist".into())
     } else if remaining > 0 {
         Some(format!("Complete {remaining} more delves"))
     } else if depth > 0 {

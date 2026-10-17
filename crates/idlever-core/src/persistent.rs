@@ -346,9 +346,9 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
             "guild",
             "Guild reception",
             if crate::tree::auto_send(l) {
-                "The Scout schedules another delve after recovery."
+                "The Receptionist books another delve after recovery."
             } else {
-                "Hire the Scout here to schedule delves while away."
+                "Hire the Receptionist here to book delves while away."
             },
             guild_available,
         ),
@@ -809,7 +809,7 @@ mod tests {
         assert_eq!(whole.active.lineage.gold, sliced.active.lineage.gold);
         assert_eq!(
             whole.active.lineage.next_run_id, next,
-            "no automatic departure before Scout"
+            "no automatic departure before Receptionist"
         );
         assert!(whole.active.run.is_none());
         assert!(whole.try_send().is_ok());

@@ -154,7 +154,7 @@ export function heroRoster(
                   "p",
                   null,
                   app.lineage.tree?.auto_send
-                    ? /* copy:callout */ "Scout sends immediately"
+                    ? /* copy:callout */ "Books immediately"
                     : /* copy:callout */ "Send by hand",
                 ),
                 h(
@@ -169,7 +169,7 @@ export function heroRoster(
                         openSettings(app, confirmFound);
                       },
                     },
-                    /* copy:button */ "Scout settings",
+                    /* copy:button */ "Receptionist settings",
                   ),
                   h(
                     "button",

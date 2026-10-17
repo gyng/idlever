@@ -1803,8 +1803,8 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
             "data-s": r.elapsed_s,
             "data-uncapped": autoSend ? "1" : "0",
             title: autoSend
-              ? /* copy:tooltip */ "uncapped · the scout sent every run there was time for"
-              : /* copy:tooltip */ "time away · one run until the scout",
+              ? /* copy:tooltip */ "uncapped · the receptionist booked every run there was time for"
+              : /* copy:tooltip */ "time away · one run until the receptionist",
           },
           awayText(r.elapsed_s),
         )

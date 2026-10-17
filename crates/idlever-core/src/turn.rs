@@ -2708,7 +2708,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
         let at = crate::tree::wall_name(run.route, run.depth + 1);
         if bank {
             run.wall_held = true;
-            note(run, cx, format!("Banked before {at}: the scout's order."));
+            note(run, cx, format!("Banked before {at}: the receptionist's order."));
             end_run(run, cx, ExitTier::Bank);
             return;
         }
@@ -2717,7 +2717,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
         if carry > 0 {
             run.secure_carry();
             run.wall_carried += carry;
-            note(run, cx, format!("The scout carried ${carry} home before {at}."));
+            note(run, cx, format!("The receptionist carried ${carry} home before {at}."));
         }
     }
     note_saved(run, cx);

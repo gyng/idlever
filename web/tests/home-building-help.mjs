@@ -123,7 +123,7 @@ try {
     }));
     assert.equal(locked.wire.next, "blacksmith");
     assert.equal(locked.wire.next_ready, false);
-    assert.equal(locked.wire.next_trigger, "Hire Scout");
+    assert.equal(locked.wire.next_trigger, "Hire Receptionist");
     assert.equal(locked.scene, undefined);
     assert.equal(locked.hits, 0);
     assert.equal(locked.help, 0);

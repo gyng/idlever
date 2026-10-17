@@ -37,7 +37,7 @@ try {
     const founding = page.locator(".bloodline-founding");
     await founding.waitFor();
     if (
-      !(await founding.innerText()).includes("Scout sends immediately") ||
+      !(await founding.innerText()).includes("Books immediately") ||
       !(await founding.innerText()).includes(`$${before.price}`)
     )
       throw Error("Missing true Scout behavior or actual price");
@@ -63,7 +63,7 @@ try {
     )
       throw Error("Cancel changed exact save");
     await page.locator(`${roster} .hero-add`).click();
-    await founding.getByRole("button", { name: "Scout settings" }).click();
+    await founding.getByRole("button", { name: "Receptionist settings" }).click();
     const scout = page.locator('.settings .worker-switch[data-worker="scout"]');
     await scout.waitFor();
     if ((await scout.getAttribute("aria-checked")) !== "true")
@@ -77,7 +77,7 @@ try {
       throw Error("Reading Scout controls changed save");
     await page.keyboard.press("Escape");
     await founding.waitFor();
-    if (!(await founding.innerText()).includes("Scout sends immediately"))
+    if (!(await founding.innerText()).includes("Books immediately"))
       throw Error("Returning from Settings lost pending founding");
     if (
       !(await page.evaluate(
@@ -89,7 +89,7 @@ try {
     await page.keyboard.press("Escape");
     await openRoster();
     await page.locator(`${roster} .hero-add`).click();
-    await founding.getByRole("button", { name: "Scout settings" }).click();
+    await founding.getByRole("button", { name: "Receptionist settings" }).click();
     await scout.waitFor();
     await scout.click();
     await page.waitForFunction(() => window.__idlever.lineage.tree.auto_send === false);

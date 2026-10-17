@@ -80,7 +80,7 @@ pub fn feat_name(id: &str) -> Option<&'static str> {
 pub const NODES: &[NodeDef] = &[
     node("quartermaster", "quartermaster", "trunk", "", "", "crate", "", "packs heal · drill item"),
     node("porter", "porter", "trunk", "chest", "", "mouth", "AUTO HAUL", "hauls home · while away"),
-    node("scout", "scout", "trunk", "send", "", "fire", "AUTO SEND", "sends him · each rest"),
+    node("scout", "receptionist", "trunk", "send", "", "fire", "AUTO SEND", "books his delves"),
     node("apprentice", "apprentice", "trunk", "forge", "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
     node("clerk", "clerk", "town", "deposit", "bank", "bank", "AUTO BANK", "banks spare gold"),
     node("drillmaster", "drillmaster", "character", "level", "", "tent", "AUTO LEVEL", "levels the stance"),

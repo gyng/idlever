@@ -154,7 +154,7 @@ try {
       const pillEl = document.querySelector(".next-pill");
       check(
         pillEl.querySelector(".pill-prog[data-worker=scout]")?.textContent ===
-          ` · scout ${scout0.progress}` && !!pillEl.querySelector(".pill-bar"),
+          ` · receptionist ${scout0.progress}` && !!pillEl.querySelector(".pill-bar"),
         `send pill carries the scout's wire count: ${pillEl.textContent}`,
       );
       const { choreWord } = await import("/src/ui/works.ts");
@@ -184,7 +184,7 @@ try {
         pill = nextPill(stub, () => {});
       document.body.append(pill.el);
       check(
-        pill.el.querySelector(".pill-prog")?.textContent === ` · scout ${scout1.progress}` &&
+        pill.el.querySelector(".pill-prog")?.textContent === ` · receptionist ${scout1.progress}` &&
           pill.el.querySelector(".pill-bar .fill")?.style.width ===
             `${Math.round((scout1.count / scout1.need) * 100)}%`,
         `pill moves after a send: ${pill.el.textContent} ${pill.el.querySelector(".pill-bar .fill")?.style.width}`,

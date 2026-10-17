@@ -345,7 +345,9 @@ export function renderClassTree(
               ? h(
                   "small",
                   { "data-pick-requirement": "scout", "data-met": String(nextPick.scout) },
-                  nextPick.scout ? /* copy:label */ "Scout hired" : /* copy:label */ "Scout needed",
+                  nextPick.scout
+                    ? /* copy:label */ "Receptionist hired"
+                    : /* copy:label */ "Receptionist needed",
                 )
               : null,
           ),

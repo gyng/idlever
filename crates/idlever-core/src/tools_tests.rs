@@ -501,7 +501,7 @@ fn live_tools_reload_and_replay_exactly() {
 fn earned_gate_reasons_are_rust_owned_and_selection_is_free() {
     let mut g = Game::new_resident(5);
     let before = g.save();
-    assert_eq!(crate::meta::class_gate(&g.lineage, Class::Clown).as_deref(), Some("Hire Scout"));
+    assert_eq!(crate::meta::class_gate(&g.lineage, Class::Clown).as_deref(), Some("Hire Receptionist"));
     assert!(g.set_class("clown").is_err());
     assert_eq!(g.save(), before, "a refused class choice changes nothing");
     let _ = g.lineage();

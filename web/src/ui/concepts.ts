@@ -159,7 +159,7 @@ const WORKS_TIP = /* copy:node_tip */ {
   works: "workers take chores over",
   worker: "hand for one chore",
   chest: "the haul waits here",
-  scout: "sends him each rest",
+  scout: "books his delves",
   next: "the one next goal",
   rank: "worker's grade · from service",
 };
@@ -261,7 +261,7 @@ export const ALIASES: Partial<Record<Term, string[]>> = /* copy:none */ {
   works: ["works"],
   worker: ["workers", "worker"],
   chest: ["chest"],
-  scout: ["scout"],
+  scout: ["receptionist"],
   rank: ["rank"],
   rarity: ["rarity"],
 };
@@ -300,6 +300,7 @@ export const TITLE: Partial<Record<Term, string>> = /* copy:label */ {
   reach: "floor chance",
   pack: "supplies",
   works: "workers",
+  scout: "receptionist",
   kennel: "Pets",
 };
 export const termTitle = (t: Term): string => TITLE[t] ?? t;

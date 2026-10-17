@@ -32,7 +32,7 @@ export const nodeIcon = (id: string, name = id): HTMLElement =>
 const BLURB: Record<string, string> = {
   quartermaster: "packs heal · drill item",
   porter: "hauls home · while away",
-  scout: "sends him · each rest",
+  scout: "books his delves",
   apprentice: "buys forge steps",
   clerk: "banks spare gold",
   drillmaster: "levels the stance",

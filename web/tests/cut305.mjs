@@ -345,7 +345,7 @@ try {
     let s = await S();
     step(
       "0:00",
-      /^send( · scout 0\/\d+)?$/.test(s.pill ?? "") && // Cut231 §5: the scout's count beside the send
+      /^send( · receptionist 0\/\d+)?$/.test(s.pill ?? "") && // Cut231 §5: the scout's count beside the send
         s.gold === 0 &&
         JSON.stringify(s.workers) === JSON.stringify(["quartermaster"]),
       `camp, $${s.gold}, pill \`${s.pill}\`; on the scene only the given quartermaster by the crate (${s.workers.join(",")})`,
@@ -447,7 +447,7 @@ try {
     step(
       "7:50",
       s.lit === "scout" &&
-        (s.pillKind === "buy" ? s.pill.startsWith("scout · $") : s.pill === "send") &&
+        (s.pillKind === "buy" ? s.pill.startsWith("receptionist · $") : s.pill === "send") &&
         s.workers.includes("scout(lit)"),
       `the scout lights after ${sends} sends by hand (≤ 5: ${sends <= 5}), greyed by the fire: pill \`${s.pill}\` (${s.pillKind})`,
     );
