@@ -68,3 +68,33 @@ until one of those decisions lands, `--exhaustive` reports exactly this one fail
 `qa` finished exit 0; the dayplayer leg settled every other row. The *client*
 exhaustive inventory, the earned campaigns, native↔WASM advanced parity and
 independent fun≥80 remain separate and unrun here.
+
+## 4. Re-run 2026-10-17 (with the pets tolerance): three metrics clauses fail, and the dayplayer leg was cut
+
+`node tools/gates.mjs --exhaustive` on source `8927290ca34053e1` (which already carried the
+owner's ±2-point pets tolerance), log
+`docs/evidence/cut257/exhaustive-audit-pets-tolerance-2026-10-17.log`:
+
+- **metrics leg: exit 1 at 1749 s, 3 gates FAIL.** The three, with their code sites:
+  1. `Forge: a step after 8 h, next ≤ 3 nights (44 mostly-home sets)` — **0/44 · worst 0.0 n**.
+     The row prints, for every recorded card, an income ($4000+) above its first step ($352)
+     while `bought 0.0 · next $0` — and `metrics.rs:626` computes `affordable` as
+     `t.bought >= 1`. So the clause is asking whether a *replay of a saved camp* went
+     shopping, which it never does: a confirmed instrument conflation, not (this run) a
+     balance result.
+  2. `Lanes D5: both viable (EDITED's best ≥ 50% band end)` — **93 % · 38 %**
+     (`metrics.rs:2372`), evaluated over the replayed cohort sets. **Not triaged.**
+  3. `Return row: 0 < death share < without it (49 cohort sets)` — **45/49 · worst +2.2 pts**
+     (`metrics.rs:2725`). **Not triaged.**
+- **dayplayer leg: cut short.** It was still playing when the metrics leg failed and the
+  process exited (`completed legs already saved`), so **the pets tolerance is not yet
+  certified by a fresh run** — its interim verification is the cached-leg re-evaluation
+  (4/6 strict → 6/6, `pets-clause-finding-2026-10-16.md`), and the certification belongs to
+  the next exhaustive run on this source.
+- Neither the tolerance nor the pen change caused these three: the metrics leg never touches
+  the each-system row, and its binary was built before the pen's fallback changed.
+
+**So `--exhaustive` does not currently report "one failure".** It reports three metrics
+clauses on the recorded camps plus an unfinished dayplayer leg; the first of the three is an
+evaluator bug to fix before the others can be read, and the pen change means the next run
+must be fresh anyway.

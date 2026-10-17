@@ -170,7 +170,12 @@ verified, not described as a fresh whole-script pass. BroaderR5 remains open.
   `pen_fallback_h: 120` stall (`balance.rs:288`) — five days — and three of three raters named
   it their top gripe, while the buried decision-share/time-split report lines are the point the
   cohort agrees on. The next honest step is a cohort setup where every rater reaches the same
-  slice, not a different rating.
+  slice, not a different rating. **Owner 2026-10-17 answered the gripe at its source:** the
+  pen's stall fallback drops **120 h → 8 h** (`balance.rs:296`, tuning profile mirrored), so
+  the pen's group reveals on the first night with the Mother-met path still instant
+  (`docs/evidence/mechanics/pen-fallback-2026-10-17.md`). That is a balance edit, so the
+  pacing pack and the exhaustive audit must be re-run on the new source; the exhaustive run
+  in flight certifies only the pets tolerance on the pre-change source.
 
 ## Completion rule
 
@@ -213,7 +218,13 @@ tolerance, applied in `dayplayer.rs:2103` with this finding cited; the clause re
 turning on +0.02 points), and the **exhaustive dayplayer leg still needs a fresh run**
 to certify today's source (a measured attempt spent 638 s on a single TUNED seed, so it
 belongs in `verify.sh --exhaustive`, not ad hoc)
-(`docs/evidence/cut257/exhaustive-audit-findings.md`). Perf chores landed (the
+(`docs/evidence/cut257/exhaustive-audit-findings.md`). The re-run that landed with the
+tolerance (source `8927290ca34053e1`) still reports **three metrics clauses** failing on
+the replayed saved camps — Forge affordability **0/44** (an evaluator conflation:
+`metrics.rs:626` measures "affordable" as "bought", and a replay of a saved camp never
+shops), Lanes D5 **93 % · 38 %** and Return row **45/49** — and its dayplayer leg was cut
+when the metrics leg failed, so the tolerance's fresh certification is still owed on the
+post-pen-change source (`exhaustive-audit-findings.md` §4). Perf chores landed (the
 worst-death verdict out of the absence; the foreground catalogue reads held off the
 batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md`
 §3.5. R3 has its source-cited review and pair proposals

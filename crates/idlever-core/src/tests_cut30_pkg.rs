@@ -115,11 +115,13 @@ fn the_pen_writes_nothing_until_it_opens() {
     set.rows.insert(0, Row::new(vec![Cond::n("hp<", 60)], Verb::new("rest")));
     g.set_rules(set).unwrap();
     assert_eq!(*g.lineage.rules(), before, "closed pen: the stance plays");
-    // Cut 110: a day old without the Mother, the pen waits; the Mother met opens it (one reveal, no age); at 5 days without her
-    g.lineage.clock_s = 24 * 3600;
+    // Cut 110 / owner 2026-10-17: the fallback is 8 h (was 120 h). Before it, with no Mother, the pen
+    // waits; the Mother met opens it (one reveal, no age); at the fallback it opens whatever the climb.
+    let fallback = crate::balance::get().unlocks.pen_fallback_h as u64;
+    g.lineage.clock_s = fallback.saturating_sub(1).max(1) * 3600;
     g.lineage.reveal_left = 1;
     crate::systems::update(&mut g.lineage, false);
-    assert!(!g.lineage.pkg.pen_open, "a day old, no Mother: the pen waits");
+    assert!(!g.lineage.pkg.pen_open, "before the fallback with no Mother: the pen waits");
     g.lineage.pkg.meets.insert("bloat_mother".into(), 1);
     // (one reveal a report: the pen waits its turn behind what came before it)
     for _ in 0..crate::systems::SYSTEMS.len() {
@@ -129,12 +131,12 @@ fn the_pen_writes_nothing_until_it_opens() {
     assert!(g.lineage.pkg.pen_open, "the Mother met");
     assert_eq!(g.lineage.rules().rows[0].verb.v, "rest");
     let mut h = Game::new_resident(8);
-    h.lineage.clock_s = crate::balance::get().unlocks.pen_fallback_h as u64 * 3600;
+    h.lineage.clock_s = fallback * 3600;
     for _ in 0..crate::systems::SYSTEMS.len() {
         h.lineage.reveal_left = 1;
         crate::systems::update(&mut h.lineage, false);
     }
-    assert!(h.lineage.pkg.pen_open, "five days: the pen opens whatever the climb");
+    assert!(h.lineage.pkg.pen_open, "the fallback hours: the pen opens whatever the climb");
 }
 
 /// PROGRESSION_V2 §4: one new system a report — the rest wait in the queue, shown as the next stage;
@@ -1458,15 +1460,19 @@ fn mirror_rhythm_earned_save_keeps_whole_sliced_and_reloaded_catchup_exact() {
 fn custom_rule_lock_explanation_matches_core_gate() {
     let mut g = Game::new_resident(7);
     let needs = |g: &Game| g.lineage().packages.pen_needs;
-    assert_eq!(needs(&g), ["Meet Bloat Mother", "or 120h elapsed"]);
+    // Owner 2026-10-17: the fallback is data (`unlocks.pen_fallback_h`), so the copy follows it.
+    let fallback = crate::balance::get().unlocks.pen_fallback_h;
+    let wait = vec!["Meet Bloat Mother".to_string(), format!("or {fallback}h elapsed")];
+    assert_eq!(needs(&g), wait);
+    // still waiting halfway to the fallback
+    g.lineage.clock_s = (u64::from(fallback) / 2).max(1) * 3600;
+    assert_eq!(needs(&g), wait);
     // Cut 110: the Mother met is enough — no age on top of her
     g.lineage.pkg.meets.insert("bloat_mother".into(), 1);
     g.lineage.clock_s = 24 * 3600;
     assert_eq!(needs(&g), ["Upcoming reports"]);
     g.lineage.pkg.meets.clear();
-    g.lineage.clock_s = 80 * 3600;
-    assert_eq!(needs(&g), ["Meet Bloat Mother", "or 120h elapsed"]);
-    g.lineage.clock_s = 120 * 3600;
+    g.lineage.clock_s = u64::from(fallback) * 3600;
     assert_eq!(needs(&g), ["Upcoming reports"]);
     g.lineage.pkg.pen_open = true;
     assert!(needs(&g).is_empty());

@@ -165,6 +165,16 @@ iteration).** State of the resume order:
    buried two taps inside its fold) is the one the cohort agrees on
    (`docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`). The transcript/API fan-out
    of `ITERATION_SPEED.md` §1.3/§1.5 remains unbuilt.
+9. **The pen arrives earlier (owner 2026-10-17).** The cohort's one shared gripe was the
+   closed pen, so `unlocks.pen_fallback_h` goes **120 h → 8 h**
+   (`balance.rs:296`, `tuning/balance.json` mirrored): the pen's group now reveals on the
+   **first night**, level with `bank`'s age and ahead of quests/class/start, with the
+   Mother-met path still instant. The mechanism, what it does not do (a cold 40-minute
+   session still cannot reach it — the remaining lever is the *trigger*, a design call not
+   taken) and the re-run requirements are in
+   `docs/evidence/mechanics/pen-fallback-2026-10-17.md`. **This invalidates the leg caches:
+   the pacing pack and the exhaustive audit must be re-run on this source**, and the run in
+   flight when it landed certifies only the pets tolerance on the pre-change source.
 
 **Handed to the UI owner (Codex/Claude) — presentation only, with evidence:**
 `hero-hub` now passes its density/geometry stage (the Hub's 3 px overflow at 320/200% is

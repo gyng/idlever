@@ -287,7 +287,13 @@ pub const DEFAULT: Balance = Balance {
     unlocks: Unlocks {
         forge_delves: 4, temperament: [6, 5], inherited: [8, 8], family: [12, 13],
         hours: SystemHours { party: 1, kennel: 1, stances: 1, tactics: 4, bank: 8, quests: 12, class: 16, start: 20, tactic2: 56, automations: 96, pen: 0 },
-        pen_fallback_h: 120,
+        // Owner 2026-10-17: the pen's stall fallback was 120 h (five days), and three of three
+        // blind raters bounced off the closed pen - the game's own verb arrived only by meeting
+        // the Bloat Mother or after five idle days - the report's top gripe
+        // (`docs/evidence/eval-2026-10-16/blind-a-triage-2026-10-16.md`). At 8 h it lands on the
+        // first night, level with `bank`'s age and ahead of quests/class/start, keeping the
+        // Mother-met path as the instant one. The tuning profile mirrors this.
+        pen_fallback_h: 8,
     },
     stance: Stance { hunter_home: [20, 15], hunter_dry: 35, hunter_rest: 50, steady_rest_cap: 50, steady_rest_cap_below: 18, bold_bank: [25, 20], bold_rest: 50, level_marks: 1 },
     marks: Marks {
