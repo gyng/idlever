@@ -635,7 +635,7 @@ mod tests {
         s.active.upgrade_hero("health").unwrap();s.active.lineage.classes.get_mut("fighter").unwrap().xp=17;
         let rules=s.active.lineage.rules().clone();s.add_bloodline().unwrap();
         assert_eq!(s.active.lineage.gold,750);s.active.send();let first=s.active.run.clone();
-        s.select_bloodline(2).unwrap();assert_eq!(s.active.lineage.bloodline.as_ref().unwrap().points,0);
+        s.select_bloodline(2).unwrap();assert_eq!(s.active.lineage.bloodline.as_ref().unwrap().points,crate::balance::get().marks.legacy_start,"a fresh bloodline's start (Cut258)");
         assert_eq!(s.active.lineage.classes["fighter"].xp,0);
         s.active.send();let second=s.active.run.clone();s.select_bloodline(1).unwrap();
         assert_eq!(s.active.run,first);assert_eq!(s.active.lineage.rules(),&rules);

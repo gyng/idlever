@@ -239,6 +239,10 @@ pub struct Marks {
     pub gold_per_mark: u32,
     pub legacy_root: [u32; 8],
     pub legacy_effect: [u32; 2],
+    /// Cut258 (G1: a first buy in the opening minutes): the Legacy a fresh lineage's bloodline starts with — the first
+    /// rank is the camp's first choice, before any delve (0: none, as before Cut258).
+    #[serde(default)]
+    pub legacy_start: u32,
 }
 /// Monster depth scaling (`defs.rs`): the content depth's cap, HP bonus = depth / `hp_div`, attack = depth / `atk_div`.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -264,7 +268,7 @@ pub const DEFAULT: Balance = Balance {
     guarded_home: [30,25], guarded_dry: [45,44],
     recovery: [600, 14, 28, 1],
     workers: Workers {
-        quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(2, 4, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
+        quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
     },
     tree: TreeTune {
@@ -298,7 +302,7 @@ pub const DEFAULT: Balance = Balance {
     stance: Stance { hunter_home: [20, 15], hunter_dry: 35, hunter_rest: 50, steady_rest_cap: 50, steady_rest_cap_below: 18, bold_bank: [25, 20], bold_rest: 50, level_marks: 1 },
     marks: Marks {
         rank_base: 100, trophy: 2, xp_early: 60, xp_late: 100, xp_early_to: 3, gold_per_mark: 150,
-        legacy_root: [15, 40, 110, 300, 800, 2000, 5000, 12000], legacy_effect: [700, 1800],
+        legacy_root: [12, 36, 108, 300, 800, 2000, 5000, 12000], legacy_effect: [700, 1800], legacy_start: 20,
     },
     monsters: Monsters { depth_cap: 16, hp_div: 2, atk_div: 6 },
 };
@@ -323,7 +327,8 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
     fn inc<T: PartialOrd>(v: &[T]) -> bool { v.windows(2).all(|x| x[0] < x[1]) }
     let wk = &b.workers;
     if wk.all().iter().any(|n| n.need > 100 || n.price_tenths > 1000 || n.fallback_h > 24 * 365) { return Err("workers"); }
-    if wk.all().iter().skip(1).any(|n| n.need == 0) || *wk.all()[0] != w(0, 0, 0) { return Err("workers: need ≥ 1 (the quartermaster is given)"); }
+    // (Cut258: the Scout alone may need no send — offered from the first look, bought from the first run's gold)
+    if wk.all().iter().skip(1).any(|n| n.need == 0 && !std::ptr::eq(*n, &wk.scout)) || *wk.all()[0] != w(0, 0, 0) { return Err("workers: need ≥ 1 (the quartermaster is given)"); }
     // (Cut235: the porter and the Scout teach the chore itself — their goal stays a count)
     if [wk.porter, wk.scout].iter().any(|n| n.goal != Goal::Count) { return Err("workers: the porter and the scout count"); }
     let t = &b.tree;
@@ -360,7 +365,8 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
     if !(1..=100_000).contains(&m.rank_base) || m.trophy > 100 || !(1..=100_000).contains(&m.xp_early) || !(1..=100_000).contains(&m.xp_late)
         || m.xp_early_to > crate::engine::MAX_LEVEL || !(1..=100_000).contains(&m.gold_per_mark)
         || m.legacy_root[0] == 0 || !inc(&m.legacy_root) || m.legacy_root[7] > 10_000_000
-        || m.legacy_effect[0] == 0 || m.legacy_effect[0] > m.legacy_effect[1] || m.legacy_effect[1] > 10_000_000 { return Err("marks"); }
+        || m.legacy_effect[0] == 0 || m.legacy_effect[0] > m.legacy_effect[1] || m.legacy_effect[1] > 10_000_000
+        || m.legacy_start > m.legacy_root[1] { return Err("marks"); }
     let mo = &b.monsters;
     if !(1..=40).contains(&mo.depth_cap) || !(1..=40).contains(&mo.hp_div) || !(1..=40).contains(&mo.atk_div) { return Err("monsters"); }
     Ok(())

@@ -541,7 +541,7 @@ mod tests {
         let classes = g.lineage.classes.clone();
         let p = preview(&g.lineage, false);
         assert!(p.available);
-        assert_eq!(p.refund, 15);
+        assert_eq!(p.refund, crate::legacy::root_price(0));
         let saved = g.save();
         assert!(rebirth(&mut g, "false").is_err());
         assert_eq!(g.save(), saved);
@@ -640,7 +640,7 @@ mod tests {
         r.over = Some(crate::engine::ExitTier::Death);
         r.death_cause = Some("goblin".into());
         g.finish_run();
-        assert_eq!(first, 9);
+        assert_eq!(first, 9 + crate::balance::get().marks.legacy_start);
         assert_eq!(g.lineage.bloodline.as_ref().unwrap().points, first + 1);
     }
     #[test]

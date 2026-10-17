@@ -83,6 +83,12 @@ pub(crate) fn kennel_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scou
 pub(crate) fn refresh_eligibility(l:&mut LineageState){if l.pkg.literal {l.town.forge_eligible|=forge_qualified(l);l.town.kennel_eligible|=kennel_qualified(l);}}
 /// Cut232 (docs/CUT232_CADENCE.md): the first qualified plot not yet offered, offered now (the forge's, then the
 /// kennel's); its id. A run's report calls it when nothing else is new there.
+/// Cut258: the forge's plot alone, offered now when it qualifies — a quiet report offers it ahead of a worker's hire
+/// (its steps are the purse's first sink; `news::settle`).
+pub(crate) fn open_forge(l:&mut LineageState)->bool{
+    if !l.town.forge_eligible&&forge_qualified(l){l.town.forge_eligible=true;return true;}
+    false
+}
 pub(crate) fn open_plot(l:&mut LineageState)->Option<&'static str>{
     if !l.town.forge_eligible&&forge_qualified(l){l.town.forge_eligible=true;return Some("blacksmith");}
     if !l.town.kennel_eligible&&kennel_qualified(l){l.town.kennel_eligible=true;return Some("kennel");}

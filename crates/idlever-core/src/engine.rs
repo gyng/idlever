@@ -1975,7 +1975,8 @@ impl LineageState {
         }
         let mut l = LineageState {
             persistent: Default::default(),
-            bloodline_id:1, bloodline: Some(Default::default()),
+            // (Cut258: a fresh bloodline starts with `marks.legacy_start` Legacy — the first rank before any delve)
+            bloodline_id:1, bloodline: Some(crate::wire::BloodlineLegacy { points: crate::balance::get().marks.legacy_start, ..Default::default() }),
             hero_legacy: vec![crate::wire::HeroLegacy { heir: 1, class: "fighter".into(), ..Default::default() }].into(),
             seed,
             heir: 1,

@@ -179,6 +179,70 @@ ramp lands in core first, behind a key whose default reproduces today.
   tutorial text.
 - No new screens. An "upgrade ready" marker is the existing PENDING list, not a new widget.
 
+## 4b. Result (2026-10-18)
+
+Landed with the owner's decisions of 2026-10-18 (below). Code: `tree::ready` offers a worker with `need` 0 from the first look (the
+Receptionist); `balance` allows `need` 0 for the Scout alone and adds `marks.legacy_start` (a fresh bloodline's
+starting Legacy, `LineageState::new`); `news::offered` counts the Legacy offer as report news only until the first
+rank is bought; `news::settle` offers the forge's plot (`town::open_forge`) ahead of a worker's hire. Values:
+`workers.scout` need 2→0, price 0.4→0.1 unit ($10 before any delve, $18–25 after the first); `marks.legacy_root`
+`[15,40,110,300,…]`→`[12,36,108,300,800,2000,5000,12000]` (Cut122's 2–3× curve holds; option 1's
+`[8,20,55,382,…]` breaks it, ×6.95); `marks.legacy_start` 20. Tests: `tests_cut258.rs` (4) plus expectation updates
+in 7 older tests. Display: a worker that needs no chore shows no count (the journal's Receptionist entry reads her
+price alone; the works wire drops `count`/`need`/`progress` for her).
+
+Opening probe, 16 seeds, 60 min at 1×:
+
+| Gate | Bar | Baseline (8f3f6d2f) | Candidate | |
+|---|---|---|---|---|
+| G1 first upgrade affordable | ≤ 3, every seed | 16.1 · 25.3 | **0.0 · 0.0** | PASS |
+| G2 longest gap 0–60 | med ≤ 6, every ≤ 10 | 20.7 · 32.0 | 28.9 · 38.2 | FAIL (deviation) |
+| G3 upgrades 0–30 | med ≥ 6 | 1 · 1 | **6 · 5** | PASS |
+| G4 Receptionist affordable | ≤ 10, every seed | 16.1 · 25.3 | 9.8 · 16.2 | FAIL (deviation) |
+| G6 longest forced wait 0–30 | ≤ 5, every seed | 0.0 · 1.0 | 0.0 · 1.0 | PASS |
+
+Forge built in the hour: 4/16 → 13/16 (15/16 with `unlocks.forge_delves` 3, G2 22.6 · 37.5; not applied, owner call).
+
+**Deviation G2 (measured; owner-approved 2026-10-18).** Gold, marks and Legacy arrive only at a run's exit. The longest stretch with no
+payout at all (0 → the first exit, exit → exit, last exit → 60) is 15–25 min, median ~19.5 (forge_delves 3
+profile), because runs lengthen to 15–25 min watched at 1× as the hero gets stronger. No price change can put an
+affordable upgrade inside a run; G2 ≤ 10 needs shorter watched runs or mid-run income (out of this cut).
+Flatter forge steps 2–4 (option 2) changed nothing in hour one (step 2 still ≥ $600 against ~$100 a run).
+
+**Deviation G4 (measured; owner-approved 2026-10-18).** With the Receptionist lit at minute 0 at 0.1 unit she is bought at the first exit
+on every seed; G4 equals the first run's length (4.9–16.2 min; 7/16 seeds > 10). The worst seed (12) first pays out
+at minute 16.
+
+**Temporary deviation: `picked-stages` (pacing pack; owner-approved 2026-10-18, bar unchanged).** Pacing pack on the candidate: 23/24; `picked-stages` 9.0 (bar
+≥ 10; HEAD 10.0, already at the bar). Bisected at 16 seeds (`gates.mjs --full --rows picked-stages`, deterministic):
+reverting the forge-first ordering alone → 9.0 (with the current values) / 10.0 (with the old values); reverting the
+Scout need 0 alone (forge-first kept) → 9.0; reverting both → 10.0 PASS; reverting the Legacy start or the Legacy
+news gate alone → 9.0. The two levers that make the opening's cadence (the Receptionist at the first exit, the forge
+plot inside the hour) move PICKED's stages earlier; days 9–14 then rely on bank-look stages and lose one. With both
+reverted the probe falls back to G3 3 · 3 and G4 20.3 · 29.9 (worse than the baseline). The owner kept the opening's
+levers; the row stays at ≥ 10 and owes a stage on days 9–14 (Next, below).
+
+Other pacing rows on the candidate (16 seeds): picked-idle 1.50 · 2.75 · 3.30 (D13 at the bar, as before),
+tuned-picked 1.17 (bar 1.15), porter 8.4 · 13.6, scout 2.6 · 4.5 min, cadence30 16/16, picked-l-king median 14.0 ·
+earliest day 10 (baseline 14.5 · 6), picked-l-purse 98 %, all idle-* PASS.
+
+Checks (2026-10-18): `cargo test --workspace --profile fast` 1060 pass; clippy clean; `tools/verify.sh --quick`
+green; `tools/wasm.sh`; `repin.mjs --settle --regen` → `docs/evidence/cut258/settlements-inputs-958a.json` (Gold,
+ledger, ExitLine and `expected` unchanged 4/4; the bank-positive after-save regenerated, `lineage.marks`/`marks_due`
+only: the run's marks land at a different report under the new news bits); browser `gold-settlements` 564 checks
+PASS. Client routine `pnpm -s test` 39/41: `worker-first-act` (known) and `hero-hub` (material contrast in the
+gear/skills/attributes tabs; identical failure list on a clean ddabdfd7 build, so pre-existing).
+
+Owner decisions (2026-10-18): keep the opening levers as above; `picked-stages` 9.0 is a temporary deviation;
+G2 and G4 are measured deviations; `unlocks.forge_delves` stays 4.
+
+Next:
+1. **Run length / mid-run banking** (owner-approved follow-up cut): G2 and G4 are bounded by payouts arriving only at
+   a run's end while watched runs last 15–25 min at 1×.
+2. **Refill PICKED days 9–14 with a stage** so `picked-stages` passes ≥ 10 again (today those days rest on bank-look
+   stages alone).
+3. Marks still pile once Steady is L5 (13–18 by 2 h in the probe, as at baseline): a sink remains open.
+
 ## 5. Acceptance
 
 1. The probe passes G1–G7 on 16 seeds; the pacing pack and routine `--full` pass (G8).

@@ -457,3 +457,6 @@ mod tests_cut248;
 
 #[cfg(test)]
 mod tests_cut249;
+
+#[cfg(test)]
+mod tests_cut258;

@@ -527,8 +527,9 @@ pub fn count(l: &LineageState, id: &str) -> u32 {
 }
 
 /// Its trigger is met and its hire offered (Cut232: a tree of `v` ≥ 2 offers a met trigger at a quiet report).
+/// Cut258: a worker that needs no chore by hand (`need` 0: the Scout) is offered from the first look — never report news.
 pub fn ready(l: &LineageState, n: &NodeDef) -> bool {
-    trigger_met(l, n) && (n.chore.is_empty() || l.tree.v < 2 || l.pkg.literal || l.tree.shown.contains(n.id))
+    trigger_met(l, n) && (n.chore.is_empty() || n.need() == 0 || l.tree.v < 2 || l.pkg.literal || l.tree.shown.contains(n.id))
 }
 
 /// Its trigger is met: the count (Cut235: a feat worker's feat), or the fallback age with its chore open.
@@ -1343,7 +1344,8 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
             let has_chore = !n.chore.is_empty();
             // (Cut235: a feat worker's goal is its feat, never a count)
             let feat = n.feat().filter(|_| has_chore);
-            let counts = has_chore && feat.is_none();
+            // (Cut258: a worker that needs no chore by hand shows no count)
+            let counts = has_chore && feat.is_none() && n.need() > 0;
             WorkNodeWire {
                 id: n.id.into(),
                 kind: "worker".into(),
@@ -1463,7 +1465,7 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
 pub fn posts(l: &LineageState) -> Vec<WorkerPost> {
     let mut v: Vec<WorkerPost> = NODES.iter().filter(|n| hired(l, n.id)).map(|n| WorkerPost { id: n.id.into(), post: n.post.into(), paused: l.tree.paused.contains(n.id), rank: rank(l, n.id), ..Default::default() }).collect();
     if let Some(n) = lit(l) {
-        let progress = (!n.chore.is_empty() && n.feat().is_none()).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need()));
+        let progress = (!n.chore.is_empty() && n.feat().is_none() && n.need() > 0).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need()));
         v.push(WorkerPost { id: n.id.into(), post: n.post.into(), lit: true, price: Some(price(l, n)), paused: false, rank: 0, progress, fallback_h: (n.fallback_h() > 0).then_some(n.fallback_h()), eta_h: eta_h(l, n) });
     }
     v

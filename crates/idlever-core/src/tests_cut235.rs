@@ -385,8 +385,10 @@ fn only_a_configured_earned_feat_bypasses_a_residents_chore_gate() {
     assert!(!met(&g, "guide"), "an unearned fallback cannot bypass the resident's closed gate");
     g.lineage.tree.feats.insert("guide".into());
     assert!(met(&g, "guide"), "a valid town outcome remains eligible");
-    g.lineage.tree.feats.insert("scout".into());
-    assert!(!met(&g, "scout"), "the Scout still requires its send count");
+    // (Cut258: the Scout needs no send; the porter is the count worker whose count a latch never bypasses)
+    g.lineage.tree.hired.retain(|(id, _)| id != "porter");
+    g.lineage.tree.feats.insert("porter".into());
+    assert!(!met(&g, "porter"), "the porter still requires its haul count");
 }
 
 /// A manually levelled package must be worn at departure, and that run must clear a floor. Revisiting a cleared floor

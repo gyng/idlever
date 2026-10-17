@@ -9,8 +9,8 @@
 use crate::engine::{Game, LineageState};
 
 /// The decisions the state offers by itself, as bits: each worker ready and unhired, the worn stance's level the
-/// marks pay (`pending` marks a rank still to settle adds), the first chest, a Legacy upgrade the points pay, a
-/// worker's rank on offer, the bank's plot.
+/// marks pay (`pending` marks a rank still to settle adds), the first chest, the first Legacy upgrade the points pay,
+/// a worker's rank on offer, the bank's plot.
 pub fn offered(l: &LineageState, pending: u32) -> u64 {
     let mut bits = 0u64;
     let nodes = crate::tree::NODES;
@@ -27,7 +27,9 @@ pub fn offered(l: &LineageState, pending: u32) -> u64 {
     if l.tree.chest > 0 || crate::tree::count(l, "porter") > 0 {
         bits |= 1 << (b + 1);
     }
-    if crate::legacy::offers(l, false).iter().any(|u| u.affordable) {
+    // (Cut258: the Legacy offer is news until a rank is bought — afterwards the points paying another rank is the
+    // known shop, never a decision that holds the report's worker, marks or plot)
+    if crate::legacy::current(l).is_none_or(|h| h.spent == 0) && crate::legacy::offers(l, false).iter().any(|u| u.affordable) {
         bits |= 1 << (b + 2);
     }
     if crate::tree::lit_rank(l).is_some() {
@@ -67,6 +69,10 @@ pub fn settle(g: &mut Game, before: u64, run_id: u32) -> Option<u32> {
     crate::tree::drill_act(g);
     let now = offered(&g.lineage, pending_marks(g));
     if now & !before != 0 {
+        return Some(0);
+    }
+    // (Cut258: the forge's plot comes before a worker's hire — gold had nothing to buy while it waited)
+    if crate::town::open_forge(&mut g.lineage) {
         return Some(0);
     }
     if crate::tree::offer_next(&mut g.lineage).is_some() {

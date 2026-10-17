@@ -18,7 +18,7 @@
   "workers": {
     "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
     "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
-    "scout": { "need": 2, "price_tenths": 4, "fallback_h": 0, "goal": "count" },
+    "scout": { "need": 0, "price_tenths": 1, "fallback_h": 0, "goal": "count" },
     "apprentice": { "need": 3, "price_tenths": 30, "fallback_h": 30, "goal": "feat" },
     "clerk": { "need": 3, "price_tenths": 40, "fallback_h": 36, "goal": "feat" },
     "drillmaster": { "need": 2, "price_tenths": 4, "fallback_h": 36, "goal": "feat" },
@@ -99,8 +99,9 @@
     "xp_late": 100,
     "xp_early_to": 3,
     "gold_per_mark": 150,
-    "legacy_root": [15, 40, 110, 300, 800, 2000, 5000, 12000],
-    "legacy_effect": [700, 1800]
+    "legacy_root": [12, 36, 108, 300, 800, 2000, 5000, 12000],
+    "legacy_effect": [700, 1800],
+    "legacy_start": 20
   },
   "monsters": { "depth_cap": 16, "hp_div": 2, "atk_div": 6 }
 }

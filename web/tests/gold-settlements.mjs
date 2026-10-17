@@ -11,9 +11,9 @@ const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const manifest = JSON.parse(
   read(
-    // Current package: Cut258 worker names, display only (c6c4); native settlement Gold/ledger/ExitLine and all 4/4 after-saves unchanged. Earlier manifests stay as history: cut258 c6c4, cut258 f70f (Scout displayed as Receptionist plus a9541092 pen fallback 8 h; death-secured-lost and multihero-absence after-saves regenerated, reveal_queue/reveal_owed only), cut257 51d0, cut257 51d0, cut257 3451 (first Cut257 repin), cut253 ef4b, runtime ef4b, final 8879, cut249 8879, cut248 c9fa, followup e62c, cut244 97e8, final 87de, settled 6214, cut235 6214, cut233 d161, cut232 0574, cut230 b0d1, cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48, cut225 5844.
+    // Current package: Cut258 opening economy (958a: the Receptionist from the first look, a starting Legacy rank, the Legacy news gate, the forge plot ahead of a hire); native settlement Gold/ledger/ExitLine and expected unchanged 4/4; bank-positive after-save regenerated (lineage.marks/marks_due only: the run's marks land at a different report). Earlier manifests stay as history: cut258 c6c4 (worker names, display only), cut258 f70f (Scout displayed as Receptionist plus a9541092 pen fallback 8 h; death-secured-lost and multihero-absence after-saves regenerated, reveal_queue/reveal_owed only), cut257 51d0, cut257 51d0, cut257 3451 (first Cut257 repin), cut253 ef4b, runtime ef4b, final 8879, cut249 8879, cut248 c9fa, followup e62c, cut244 97e8, final 87de, settled 6214, cut235 6214, cut233 d161, cut232 0574, cut230 b0d1, cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48, cut225 5844.
     process.env.IDLEVER_GOLD_SETTLEMENT_INPUTS ??
-      "docs/evidence/cut258/settlements-inputs-c6c4.json",
+      "docs/evidence/cut258/settlements-inputs-958a.json",
   ),
 );
 const binary = read("web/src/engine/pkg/idlever_wasm_bg.wasm");

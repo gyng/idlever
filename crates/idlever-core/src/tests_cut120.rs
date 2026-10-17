@@ -14,7 +14,12 @@ fn upgrades(g: &Game) -> Vec<(String, u32)> {
 
 fn give_points(g: &mut Game, n: u32) {
     crate::legacy::ensure(&mut g.lineage);
-    g.lineage.bloodline.as_mut().unwrap().points += n;
+    // (Cut258: the order's spends counted from an empty purse — a fresh bloodline's start Legacy set aside)
+    let b = g.lineage.bloodline.as_mut().unwrap();
+    if b.spent == 0 && b.points == crate::balance::get().marks.legacy_start {
+        b.points = 0;
+    }
+    b.points += n;
 }
 
 /// §1: `balanced` buys health → damage → armour in turn, then waits for the next in turn; a focus takes its upgrade

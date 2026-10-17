@@ -68,7 +68,7 @@ fn hero_legacy_awards_once_archives_on_death_and_is_not_class_xp() {
         assert!(g.finish_run().is_none());
         assert_eq!(g.lineage.hero_legacy, before);
     }
-    assert_eq!(g.lineage.bloodline.as_ref().unwrap().points, 7);
+    assert_eq!(g.lineage.bloodline.as_ref().unwrap().points, 7 + crate::balance::get().marks.legacy_start);
     assert_eq!(g.lineage.hero_legacy[0].runs, 3);
     assert_eq!(g.lineage.hero_legacy[0].best_depth, 4);
     assert_eq!(g.lineage.hero_legacy.last().unwrap().heir, 2);
@@ -76,7 +76,7 @@ fn hero_legacy_awards_once_archives_on_death_and_is_not_class_xp() {
     let saved = g.save();
     assert_eq!(Game::load(&saved).unwrap().lineage.hero_legacy, g.lineage.hero_legacy);
     g.lineage.classes.get_mut("fighter").unwrap().xp += 100;
-    assert_eq!(g.lineage.bloodline.as_ref().unwrap().points, 7);
+    assert_eq!(g.lineage.bloodline.as_ref().unwrap().points, 7 + crate::balance::get().marks.legacy_start);
 }
 
 #[test]
@@ -130,7 +130,8 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     let mut g = Game::new_resident(5);
     g.lineage.town.auto_collect = false; // Legacy manual collection remains supported.
     assert!(tree::hired(&g.lineage, "quartermaster") && !tree::hired(&g.lineage, "porter"));
-    assert_eq!(tree::lit(&g.lineage).map(|n| n.id), None, "nothing lit at 0:00");
+    // (Cut258: the Receptionist needs no send — lit at 0:00, bought from the first run's gold)
+    assert_eq!(tree::lit(&g.lineage).map(|n| n.id), Some("scout"), "the Receptionist lit at 0:00");
     assert_eq!(g.lineage().tree.unwrap().next.unwrap().kind, "send", "the pill says send");
     // two sends by hand (Cut230; was three), the chest never opened: the scout lights (the porter is not ready)
     for _ in 0..2 {
@@ -141,9 +142,9 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     assert!(g.lineage.tree.chest > 0, "the hauls wait in the chest");
     assert_eq!(tree::count(&g.lineage, "scout"), 2);
     assert_eq!(tree::lit(&g.lineage).map(|n| n.id), Some("scout"));
-    // the price is in forge units (Cut230: 0.4, affordable from the two runs)
+    // the price is in forge units (Cut258: 0.1, affordable from the first run)
     let p = tree::price(&g.lineage, tree::def("scout").unwrap());
-    assert_eq!(p, ((crate::kit::unit_of(&g.lineage) * 4 + 5) / 10) as i32);
+    assert_eq!(p, ((crate::kit::unit_of(&g.lineage) + 5) / 10) as i32);
     // opening the chest three times lights the porter ahead of the scout (the tree's order): one lit
     let mut h = g.clone();
     tree::open_chest(&mut h.lineage).unwrap();
@@ -583,6 +584,7 @@ fn legacy_purchases_change_real_stats_persist_and_follow_the_bloodline() {
 #[test]
 fn legacy_refuses_poor_unknown_capped_and_away_purchases_without_mutation() {
     let mut g = Game::new_resident(20);
+    g.lineage.bloodline.as_mut().unwrap().points=0; // (Cut258: a fresh bloodline's start Legacy set aside: a poor purse)
     for id in ["health","unknown"] { let before=g.save(); assert!(g.upgrade_hero(id).is_err());assert_eq!(before,g.save()); }
     // (Cut 121 §1: the ranks on the Legacy curve, each dearer, bought in order to the cap)
     g.lineage.bloodline.as_mut().unwrap().points=(*crate::legacy::root_prices()).iter().sum();

@@ -41,8 +41,9 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
     let mut scout=entry("scout","Hire the Receptionist","Until the Receptionist is hired, each departure needs your tap.",&format!("{}, the Receptionist, books the hero's next delve after each rest. Away progress becomes uncapped.",n.person),if hired {"complete"} else if scout_ready {"ready"} else {"later"});
-    scout.progress=Some(JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
-    if !hired {scout.requirements.push(format!("{} manual delves; {price} Gold",n.need()));if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
+    // (Cut258: a Receptionist who needs no delve shows no count — her price alone)
+    scout.progress=(n.need()>0).then(||JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
+    if !hired {scout.requirements.push(if n.need()>0 {format!("{} manual delves; {price} Gold",n.need())} else {format!("{price} Gold")});if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
     scout.action=action("hire","scout","Hire Receptionist",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
     if hired {
         scout.action=action("open","workers","Workers",None);
@@ -153,7 +154,7 @@ mod tests {
         assert_eq!(before,g.save());
         assert!(g.hire("scout").is_err());assert_eq!(before,g.save());
         g.build_town("house").unwrap();let j=g.lineage().journal.unwrap();assert_eq!(j.recommended.as_deref(),Some("delve"));
-        assert_eq!(find(&j,"scout").progress.as_ref().unwrap().required,2);
+        assert!(find(&j,"scout").progress.is_none(),"Cut258: no delve count when the Receptionist needs none");assert_eq!(find(&j,"scout").requirements[0],format!("{} Gold",tree::price(&g.lineage,tree::def("scout").unwrap())));
         g.send();g.step(1);let j=g.lineage().journal.unwrap();assert_eq!(find(&j,"delve").action.as_ref().unwrap().target,"watch");
     }
     #[test]
