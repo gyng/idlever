@@ -98,3 +98,23 @@ owner's ±2-point pets tolerance), log
 clauses on the recorded camps plus an unfinished dayplayer leg; the first of the three is an
 evaluator bug to fix before the others can be read, and the pen change means the next run
 must be fresh anyway.
+
+### Correction 2026-10-17 (independent review)
+
+Two statements in §4 above are wrong; the text is kept as written.
+
+- **The dayplayer leg was not cut short.** The same log reads
+  `gates: dayplayer finished in 3811.3s (exit 0)` (line 442), and the saved leg
+  `target/gates/dayplayer-f25c1cf770c62f05.txt` (status 0) prints `Each system adds value …
+  pets 61.3/59.3 % deaths … PASS`. That run **did** certify the pets tolerance, on the
+  pre-pen-change source; pets passes there only because of the +2-point margin.
+- **The Forge 0/44 is not an instrument conflation.** `metrics.rs:597-601` does shop: it
+  loops `while price ≤ gold { kit::buy … }` and stops on the first `kit::buy` error. With
+  $4000+ income above a $352 first step and 0 bought, the buy itself is refused, a real
+  harness or progression defect (one candidate: the replayed towns have no built
+  blacksmith, since new towns require manual construction). Untriaged; it bears on the
+  new-player "slow upgrades" feedback.
+- Separately, the pets justification quoted effects of 0.02–1.95 points from six cache keys;
+  §2 above lists 2026-10-09 failures of +2.6, +3.4, +8.1, +4.2 and +6.0 points, which the
+  tolerance would not cover. TUNED's deaths/sends also rose from ~7–33 % (early October) to
+  59–61 %, uninvestigated. The owner confirmed the tolerance on 2026-10-17.

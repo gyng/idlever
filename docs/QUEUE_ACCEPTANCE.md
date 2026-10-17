@@ -224,7 +224,11 @@ the replayed saved camps — Forge affordability **0/44** (an evaluator conflati
 `metrics.rs:626` measures "affordable" as "bought", and a replay of a saved camp never
 shops), Lanes D5 **93 % · 38 %** and Return row **45/49** — and its dayplayer leg was cut
 when the metrics leg failed, so the tolerance's fresh certification is still owed on the
-post-pen-change source (`exhaustive-audit-findings.md` §4). Perf chores landed (the
+post-pen-change source (`exhaustive-audit-findings.md` §4). **Corrected 2026-10-17:** the dayplayer
+leg in fact finished (exit 0) and passed pets with the tolerance on the pre-pen source, and
+the replay does shop: `kit::buy` is refused, a real defect, not a conflation
+(`exhaustive-audit-findings.md` §4 Correction). The post-pen-change source still needs its
+fresh exhaustive run. Perf chores landed (the
 worst-death verdict out of the absence; the foreground catalogue reads held off the
 batch) and the build-phase split is now measured, correcting `ITERATION_SPEED.md`
 §3.5. R3 has its source-cited review and pair proposals

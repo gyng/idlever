@@ -49,5 +49,10 @@ number. That is a design call, deliberately not taken here.
 - Watch the clauses that could move: `tuned-picked` (TUNED ≥ 1.15× PICKED at D33 — an
   earlier pen gives TUNED more pen time, so it should hold or improve), the `pen` leave-one-
   out row (TUNED vs TUNED − pen, sign unchanged), and `nothing-required` / the IDLE rows
-  (IDLE writes no rules, so it should be untouched). `each-system`'s `pets` clause now carries
+  (IDLE writes no rules, so it should be untouched). **Corrected 2026-10-17:** not untouched. Once the pen
+  opens, `packages::lever()` returns `None` (`packages.rs:1393`) for every player, IDLE
+  included, so the death screen's cheapest lever now disappears after about 8 h instead of
+  day 5; `counter_offer` (`packages.rs:916`) and forecast pricing (`forecast.rs:419`) also
+  switch at 8 h. Pacing 24/24 still passes on this source; the new-player death-screen
+  experience is unchecked. `each-system`'s `pets` clause now carries
   the owner's ±2-point tolerance (`pets-clause-finding-2026-10-16.md`).
