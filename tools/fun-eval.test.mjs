@@ -360,10 +360,7 @@ test(
       assert.match(late.stderr, /REFUSING to overwrite an existing card/);
       assert.equal(existsSync(rulesCanonical), true, "the late rule export lands on its own");
       assert.equal(existsSync(join(dir, "cards/smoke.r1.2026-01-05.rules.json")), true);
-      assert.equal(
-        readFileSync(rulesCanonical, "utf8"),
-        readFileSync(packetRules, "utf8"),
-      );
+      assert.equal(readFileSync(rulesCanonical, "utf8"), readFileSync(packetRules, "utf8"));
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
@@ -455,10 +452,7 @@ test("collect reads a card's build as a claim about the build, with or without p
     // The brief asks a rater for the identity it played, and the filed cards record provenance
     // around the commit; both forms must land, and a card naming another build must not.
     for (const [rater, build] of [
-      [
-        "r1",
-        `${commit} (wasm sha256 ${"a".repeat(64)}; dist manifest sha256 ${"b".repeat(64)})`,
-      ],
+      ["r1", `${commit} (wasm sha256 ${"a".repeat(64)}; dist manifest sha256 ${"b".repeat(64)})`],
       ["r2", commit],
       ["r3", "smoke"],
     ]) {
