@@ -214,11 +214,22 @@ export function openSheet(
         `${Math.max(0, console?.height ? innerHeight - console.top : 0)}px`,
       );
     };
+    // blind e33d50b-b (`compare outcomes` cut off at the panel edge, "no scroll affordance"): a window with more below says so
+    const more = (): void => {
+      const m = panel.scrollHeight - panel.scrollTop - panel.clientHeight > 24;
+      if ((panel.dataset.more === "1") !== m) panel.dataset.more = m ? "1" : "0";
+    };
+    const placeAndMore = (): void => {
+      place();
+      more();
+    };
+    panel.addEventListener("scroll", more, { passive: true });
+    requestAnimationFrame(more);
     place();
-    window.addEventListener("resize", place);
-    unplace = () => window.removeEventListener("resize", place);
+    window.addEventListener("resize", placeAndMore);
+    unplace = () => window.removeEventListener("resize", placeAndMore);
     if (typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(place);
+      ro = new ResizeObserver(placeAndMore);
       ro.observe(content instanceof Element ? content : panel);
       // Fonts and changing HUD content can resize the usable area after opening.
       for (const chrome of document.querySelectorAll("main.frame > .topbar, main.frame > .console"))

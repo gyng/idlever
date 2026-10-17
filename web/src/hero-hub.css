@@ -502,3 +502,7 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
     width: min(100%, 140px);
   }
 }
+/* a tapped tab scrolls the tabs to the window's top (hero-hub.ts revealContent): clear of the window's top band */
+.hero-hub .hero-hub-tabs {
+  scroll-margin-top: 16px;
+}

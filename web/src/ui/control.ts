@@ -32,6 +32,9 @@ export type Control = {
   paint(s: Snapshot | null): void;
   on(): boolean;
   dispose(): void;
+  /** blind e33d50b-c (4 minutes frozen in hand, only `Live`→`Hand` said so): the stage's cue while in hand — whose move it is,
+   *  and one tap back to the rules */
+  cue: HTMLElement;
   /** the map's taps and clicks (the watch's canvas): consumed while in hand */
   bindMap(canvas: HTMLElement, view: () => MapView | null): void;
 };
@@ -181,6 +184,21 @@ export function controlPanel(engine: ControlEngine, kick: () => void): Control {
   const note = h("div", { class: "ctl-note num", role: "status", "aria-live": "polite" });
   // owner 2026-10-10 (phone ergonomics): the pad leads, the hand toggle between it and the actions
   const el = h("div", { class: "ctl ctl-slab", "data-on": "0" }, pad, toggleSlot, verbs, note);
+  const cueWho = h("b", { class: "hand-cue-who" });
+  const cue = h(
+    "button",
+    {
+      class: "hand-cue",
+      type: "button",
+      hidden: true,
+      title: /* copy:tooltip */ "hand control · auto hands him back · M",
+      onclick: () => {
+        if (mine) void toggle();
+      },
+    },
+    cueWho,
+    h("span", { class: "hand-cue-back" }, /* copy:button */ "auto ▶"),
+  );
   const refused = (why: string): void => {
     note.textContent = why;
     note.dataset.refused = "1";
@@ -510,6 +528,10 @@ export function controlPanel(engine: ControlEngine, kick: () => void): Control {
     el.dataset.awaiting = s?.awaiting ? "1" : "0";
     pad.hidden = verbs.hidden = !mine;
     note.hidden = !mine;
+    cue.hidden = !live || !mine;
+    cue.dataset.awaiting = s?.awaiting ? "1" : "0";
+    const who = s?.awaiting ? /* copy:callout */ "awaits order" : /* copy:callout */ "acting";
+    if (cueWho.textContent !== who) cueWho.textContent = who;
     if (s?.order !== undefined && s.order !== note.textContent) {
       note.textContent = s.order;
       note.dataset.refused = s.order.startsWith("can't") ? "1" : "0";
@@ -815,6 +837,7 @@ export function controlPanel(engine: ControlEngine, kick: () => void): Control {
   }
   return {
     el,
+    cue,
     paint,
     on: () => mine,
     bindMap,

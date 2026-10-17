@@ -41,6 +41,7 @@ const TILE_TERM: Record<string, Term> = /* copy:none */ {
   bank: "bank",
   edit: "pen",
   town: "live",
+  speed: "speed",
 }; // RUNS_UI: the watch's `town` tile (the run goes on)
 
 // --- the top bar ---

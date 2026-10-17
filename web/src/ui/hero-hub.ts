@@ -506,6 +506,19 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
     else content.append(host);
   }
 
+  /** First-hour pass 2026-10-17 (402×681: a tapped tab's section opened below the window's fold, nothing seemed to happen): after a
+   *  tap, when the section's top is out of view, the tabs scroll to the window's top with the section under them. */
+  function revealContent(): void {
+    const scroller = el.closest<HTMLElement>(".sheet");
+    if (!scroller) return;
+    const view = scroller.getBoundingClientRect(),
+      top = content.getBoundingClientRect().top;
+    if (top < view.bottom - 96) return;
+    tabs.scrollIntoView({
+      block: "start",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  }
   function select(section: HeroHubSection): void {
     if (!current()) return;
     const old = panels.get(selected);
@@ -531,7 +544,10 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         "data-hub-tab": section,
         "aria-label":
           section === "companions" ? /* copy:tooltip */ "Pets and companions" : NAMES[section],
-        onclick: () => select(section),
+        onclick: () => {
+          select(section);
+          revealContent();
+        },
         onkeydown: (event: Event) => {
           const e = event as KeyboardEvent;
           const next =

@@ -148,6 +148,7 @@ export type Term =
   | "log"
   | "replay"
   | "away" // RUNS_UI: the run lanes, the runs log
+  | "speed" // blind e33d50b: the watch's Speed tile
   | "h_fight"
   | "h_run"
   | "g_apply"
@@ -218,6 +219,7 @@ export const TIP: Record<Term, string> = /* copy:tooltip */ {
   log: "every run · by absence · replays",
   replay: "the run again · same rolls",
   away: "runs while the game was shut",
+  speed: "watch pace · slows for fights, speeds through quiet",
   // blind b58b431 (A: `survives 9/12` beside `death 29→90%`; the gem's `risky` / `measuring` / `WRITE` unexplained)
   h_fight: "the fatal moment replayed · 12 tries",
   h_run: "whole runs from the send · every floor",
@@ -374,6 +376,12 @@ export const LIVE: Partial<Record<Term, (app: App) => string | null>> = {
   },
   marks: (a) => `◆${a.lineage.marks}`,
   // RUNS_UI: the run under way, the runs held
+  speed: (a) =>
+    a.watchMode === "one"
+      ? /* copy:tooltip */ "Normal"
+      : a.watchMode === "fast"
+        ? /* copy:tooltip */ "Fast"
+        : /* copy:tooltip */ "Fights only",
   live: (a) => {
     const r = a.lineage.live;
     return r ? /* copy:tooltip */ `D${r.depth} · ${r.hp}/${r.max_hp} hp` : null;

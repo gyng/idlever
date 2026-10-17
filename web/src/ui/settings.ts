@@ -273,6 +273,7 @@ export function openSettings(app: App, onClose?: () => void): void {
             role: "switch",
             "aria-checked": on ? "true" : "false",
             "data-worker": id,
+            title: id === "quartermaster" ? /* copy:tooltip */ "came with the town" : undefined,
             onclick: async () => {
               const now = b.getAttribute("aria-checked") === "true";
               if (await app.mutate(() => app.engine.setWorker!(id, !now))) {
@@ -282,9 +283,6 @@ export function openSettings(app: App, onClose?: () => void): void {
             },
           },
           name,
-          id === "quartermaster"
-            ? h("small", { class: "dim worker-source" }, /* copy:label */ " given")
-            : "",
           h("small", { class: "dim" }, on ? /* copy:label */ " on" : /* copy:label */ " off"),
         );
         return b;

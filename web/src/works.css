@@ -172,6 +172,14 @@ html body .camp .town > .next-pill.game-control {
 .wnode .wn-role {
   white-space: nowrap;
 }
+/* the rank card shares its row with the promote button: its name and role stack, the separator goes (no dangling `LILI ·`) */
+.wnode.rank .wn-name .wn-person,
+.wnode.rank .wn-name .wn-role {
+  display: block;
+}
+.wnode.rank .wn-name .wn-sep {
+  display: none;
+}
 .wnode .wn-name {
   font-size: 15px;
   text-transform: capitalize;

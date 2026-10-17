@@ -67,6 +67,38 @@ html body .sheet-wrap.centered > .game-window[data-material] {
     0 0 0 3px var(--ink),
     0 18px 40px #05060ecc;
 }
+/* package rater 51d041d0 (a section header "half-hidden behind the panel's top edge"): scrolled content passes under a band of the
+   window's own surface with its top rule, instead of sliding over the rule; net zero height, so nothing moves at rest */
+html body .sheet-wrap.centered > .game-window[data-material]::before {
+  content: "";
+  display: block;
+  position: sticky;
+  z-index: 3;
+  top: calc(-1 * var(--window-pad, var(--ui-space-4)));
+  height: var(--window-pad, var(--ui-space-4));
+  margin: calc(-1 * var(--window-pad, var(--ui-space-4)))
+    calc(-1 * var(--window-pad, var(--ui-space-4))) 0;
+  background: linear-gradient(var(--ui-surface) 55%, transparent);
+  box-shadow: inset 0 2px var(--mist);
+  pointer-events: none;
+}
+/* blind e33d50b-b (`compare outcomes` cut at the panel edge with no scroll affordance): while more waits below, the window's foot
+   fades into its surface over a quiet caret (sheet.ts sets data-more); net zero height, gone at the end of the scroll */
+html body .sheet-wrap.centered > .game-window[data-more="1"]::after {
+  content: "▾";
+  display: block;
+  position: sticky;
+  z-index: 3;
+  bottom: calc(-1 * var(--window-pad, var(--ui-space-4)));
+  height: 40px;
+  margin: -40px calc(-1 * var(--window-pad, var(--ui-space-4))) 0;
+  padding-top: 16px;
+  background: linear-gradient(transparent 20%, var(--ui-surface, #0d0c14));
+  color: var(--ui-muted, var(--mist));
+  font: 600 16px/22px var(--sans);
+  text-align: center;
+  pointer-events: none;
+}
 html body .game-window[data-material] .sheet-body,
 .ui-material {
   color: var(--ui-text);
@@ -379,7 +411,8 @@ html body .game-window[data-material="journal"] .quest-reward {
 }
 /* Text scaling must not spend the narrow viewport on doubled frame padding/icons. */
 html body .sheet-wrap.centered > .game-window[data-material] {
-  padding: clamp(8px, 3vw, 16px);
+  --window-pad: clamp(8px, 3vw, 16px);
+  padding: var(--window-pad);
 }
 html body .game-window[data-material] :is(.close-stud, .sheet-back, .sheet-x) {
   width: 44px;

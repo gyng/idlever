@@ -632,6 +632,16 @@ export function renderWatch(app: App): Mounted {
       onclick: () => setMode("one"),
     }), // docs/COPY.md pass 5: `1` over `1×` read "no idea"
   };
+  // blind e33d50b (A, B, C: "Normal 4×", "no 1×"): each mode says what it does, under its name in the speed sheet
+  const MODE_CAP: Record<Mode, string> = /* copy:callout */ {
+    one: "steady",
+    fights: "skips travel",
+    fast: "all quick",
+  };
+  for (const m of Object.keys(modeBtn) as Mode[])
+    modeBtn[m]
+      .querySelector(".tl")!
+      .append(h("small", { class: "mode-cap", "aria-hidden": "true" }, MODE_CAP[m]));
   const skip = tile({
     id: "skip",
     cls: "hud-btn game-control",
@@ -739,13 +749,23 @@ export function renderWatch(app: App): Mounted {
   // blind c4705f9 (A, B: `fights only` 16× persisted across runs and both believed they watched at 1×): the tile carries the clock the
   // picture plays at now (`16×`, `2×` in a fight, `1×`), lit whenever it is not normal speed
   const speedRate = h("b", { class: "watch-speed-rate num", "aria-hidden": "true" });
+  // blind e33d50b-a (`Speed | Normal | 4×` read as one phrase): the clock is the picture's now, set apart from the chosen mode
+  const speedBadge = h(
+    "span",
+    { class: "watch-speed-badge", "aria-hidden": "true" },
+    h("small", { class: "watch-speed-now" }, /* copy:label */ "now"),
+    speedRate,
+  );
   // Cut 121 §3: the speed's reason, on the stage while an automatic rate holds (`fight · 2×`)
-  const speedWhy = h("span", {
+  // blind e33d50b-b ("the Speed chip is display-only"): the reason chip opens the same speed choices as the tile
+  const speedWhy = h("button", {
     class: "speed-why num",
+    type: "button",
     hidden: true,
-    title: /* copy:tooltip */ "auto speed · Speed tile sets it",
+    title: /* copy:tooltip */ "auto speed · opens the speed choices",
+    onclick: () => speedBtn.click(),
   });
-  speedBtn.append(speedRate);
+  speedBtn.append(speedBadge);
   speedBtn.dataset.mode = mode0;
   const cons = renderConsole({
     portrait: face.el,
@@ -1061,6 +1081,7 @@ export function renderWatch(app: App): Mounted {
       card,
       foldLine,
       speedWhy,
+      ctl.cue,
       h(
         "div",
         { class: "hud top" },
@@ -3188,6 +3209,7 @@ export function renderWatch(app: App): Mounted {
     for (const x of [banner, ticker, whyLine, whyTip])
       if (x.classList.contains("show")) els.push(x);
     if (!speedWhy.hidden) els.push(speedWhy); // Cut 121 §3
+    if (!ctl.cue.hidden) els.push(ctl.cue); // the hand cue: the picture keeps out of it
     const rects: { x: number; y: number; w: number; h: number }[] = [];
     for (const x of els) {
       if ((x as HTMLElement).hidden) continue;
@@ -4096,8 +4118,15 @@ export function renderWatch(app: App): Mounted {
     whyEnd = 0;
   function paintWhy(): void {
     const now = performance.now();
+    // (in hand the world waits on his orders: no automatic rate to explain — the hand cue holds that corner)
     const frozenNow =
-      paused || hidden || done || !!exitTier || el.dataset.fold === "1" || speed <= 0;
+      paused ||
+      hidden ||
+      done ||
+      !!exitTier ||
+      el.dataset.fold === "1" ||
+      speed <= 0 ||
+      !!snap?.manual;
     const auto = !frozenNow && rateWhy !== "" && !(mode === "one" && speed <= 1);
     const key = auto ? rateWhy : "";
     if (key !== whyKey) {

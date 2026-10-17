@@ -236,7 +236,7 @@
 }
 .pkg-strip .pkg-tab {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto;
   align-items: center;
   column-gap: 10px;
@@ -249,6 +249,20 @@
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  /* package rater 51d041d0 (`COM/BAT/STYL/E` at 402px, where the game window lifts .dim to its detail size): a label breaks
+     between its words, never inside one */
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+  max-width: 8.5em;
+}
+/* the compact tablet's 38px icon column (`.row.tablet.compact`) must not hold the label */
+.pkg-strip .row.tablet.compact.pkg-tab {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+.pkg-strip .pkg-tab .pkg-kind .kw {
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 .pkg-strip .pkg-tab .pkg-name {
   color: var(--acc);
@@ -828,4 +842,25 @@ body:has(> .sheet-wrap:not(.modeless)) .cmd .tile .repeat-badge {
   line-height: 1.1;
   color: #c98b84;
   white-space: nowrap;
+}
+
+/* blind e33d50b: the report's surface glance — who decided, where the time went — one quiet row each, above the fold */
+.report-glance {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 4px;
+}
+.report-glance-row {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.report-glance-row > .label {
+  margin: 0;
+  white-space: nowrap;
+}
+.report-glance .report-build {
+  margin: 0;
 }

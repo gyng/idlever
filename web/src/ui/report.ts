@@ -676,6 +676,48 @@ export function buildHead(
   );
 }
 
+/** The time split in words (`fight 11% · travel 88%`), the shares over zero. */
+export function timeLine(m: Pick<MeterWire, "time_s"> | undefined): string {
+  const T = m?.time_s;
+  if (!T) return "";
+  const tot = T.fight + T.travel + T.chores + T.rest;
+  if (tot <= 0) return "";
+  return (["fight", "travel", "chores", "rest"] as const)
+    .map((k) => [k, Math.round((T[k] / tot) * 100)] as const)
+    .filter(([, n]) => n > 0)
+    .map(([k, n]) => `${k} ${n}%`)
+    .join(" · ");
+}
+/** The report's surface glance: who decided (the build and the credit bars) and the time split. Null without either. */
+function reportGlance(
+  L: Lineage,
+  deepest: number,
+  clean: boolean,
+  m: MeterWire | undefined,
+): HTMLElement | null {
+  const head = buildHead(L, deepest, clean, m),
+    time = timeLine(m);
+  if (!head && !time) return null;
+  const row = (label: string, body: Node | string, cls: string): HTMLElement =>
+    h("div", { class: `report-glance-row ${cls}` }, h("span", { class: "label" }, label), body);
+  return h(
+    "section",
+    { class: "report-glance" },
+    head ? row(/* copy:label */ "Who decided", head, "glance-credit") : null,
+    time
+      ? row(
+          /* copy:label */ "Time",
+          h(
+            "span",
+            { class: "report-time num dim", title: /* copy:tooltip */ "share of his run time" },
+            time,
+          ),
+          "glance-time",
+        )
+      : null,
+  );
+}
+
 export function renderReport(app: App, r: ReturnReport, absence = false): Mounted {
   setRefRows(() => app.rules.rows);
   const reading = readingPosition(app, r);
@@ -1938,6 +1980,9 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     p,
     slot: document.createComment("decision"),
   }));
+  // blind e33d50b (A, B, C: "the best line in the build is two taps deep"): who decided and where the time went sit on the surface,
+  // one line each, above the fold
+  const glance = reportGlance(L, deepestN, deathsN === 0, meterOf);
   const sheet = h(
     "div",
     { class: "parchment report-sheet" },
@@ -1966,6 +2011,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     (r.restock_capped || r.supply_budget) && reportIncome(r) === 0
       ? supplyLimit(app, r, true)
       : null,
+    glance,
     detailsBtn,
     details,
   );
@@ -2060,9 +2106,6 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
         kingLine(L, "report-king"),
         goal ? progressGoalRow(goal, "report-progress-goal") : null,
         feats.rest.way,
-      ]),
-      group("credit", /* copy:label */ "Who decided", [
-        buildHead(L, deepestN, deathsN === 0, meterOf),
       ]),
       group("runs", /* copy:label */ "Runs", [
         bloodlineSec,

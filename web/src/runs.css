@@ -1210,10 +1210,25 @@ button.re-body {
   text-shadow: 0 1px 3px #000;
 }
 /* blind c4705f9: the clock the picture plays at, always on the speed tile; lit when it is not 1× */
-.watch .tile[data-tile="speed"] .watch-speed-rate {
+.watch .tile[data-tile="speed"] .watch-speed-badge {
   position: absolute;
   top: 3px;
   right: 5px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  pointer-events: none;
+}
+.watch .tile[data-tile="speed"] > .ico {
+  translate: -18px 0;
+}
+.watch .tile[data-tile="speed"] .watch-speed-now {
+  font: 600 10px/17px var(--sans);
+  color: var(--bone);
+  opacity: 0.8;
+  text-shadow: 0 1px 2px #000;
+}
+.watch .tile[data-tile="speed"] .watch-speed-rate {
   padding: 0 4px;
   border-radius: 7px;
   font: 700 13px/17px var(--num);
@@ -1229,6 +1244,15 @@ button.re-body {
 }
 .watch .tile[data-tile="speed"].sped .watch-speed-mode {
   color: #f3d192;
+}
+/* the mode is a choice: a quiet caret says the tile opens its options */
+.watch .watch-speed-mode::after {
+  content: " ▾";
+  opacity: 0.7;
+}
+.watch button.speed-why {
+  border: 0;
+  cursor: pointer;
 }
 .watch .combat-lines {
   overflow-anchor: none;
@@ -1683,6 +1707,44 @@ html body .ctl .cmd .tile.ctl-toggle .tl {
 .watch .speed-why[hidden] {
   display: none;
 }
+/* blind e33d50b-c (Hand froze the run 4 minutes; the way back sat in the order panel): whose move it is, and one tap back to auto */
+.watch .hand-cue {
+  position: absolute;
+  left: 50%;
+  top: 52px;
+  translate: -50% 0;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 6px 0 12px;
+  border: 0;
+  border-radius: 22px;
+  font: 600 13px/16px var(--sans);
+  color: var(--bone);
+  background: rgba(13, 12, 20, 0.82);
+  box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.45);
+  text-shadow: 0 1px 2px #000;
+  cursor: pointer;
+}
+.watch .hand-cue[hidden] {
+  display: none;
+}
+.watch .hand-cue[data-awaiting="1"] .hand-cue-who {
+  color: #f3d192;
+}
+.watch .hand-cue-back {
+  padding: 5px 10px;
+  border-radius: 16px;
+  color: #1a1208;
+  background: #f3d192;
+  text-shadow: none;
+}
+.watch .hand-cue:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 2px;
+}
 .watch .speed-why[data-why="fight"],
 .watch .speed-why[data-why="scene"],
 .watch .speed-why[data-why="near"] {
@@ -1854,4 +1916,21 @@ html body .ctl .cmd .tile.ctl-toggle .tl {
   z-index: 6;
   min-width: 80px;
   min-height: 44px;
+}
+
+/* blind e33d50b: the speed sheet's modes each carry what they do (`steady`, `skips travel`, `all quick`) */
+.sheet-body.watch-options .tile .tl .mode-cap {
+  display: block;
+  margin-top: 2px;
+  font: 500 11px/13px var(--sans);
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+/* the reason chip is a control: its hit area reaches 44px without growing the chip */
+.watch button.speed-why::before {
+  content: "";
+  position: absolute;
+  inset: -12px -6px;
 }

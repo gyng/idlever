@@ -122,7 +122,7 @@ export function collectSend(app: App): { el: HTMLElement; dispose: () => void } 
         ? h(
             "details",
             { class: "collect-fold" },
-            h("summary", { class: "dim" }, /* copy:button */ "carried"),
+            h("summary", { class: "dim" }, /* copy:button */ "includes"),
             h("ul", { class: "lines collect-lines" }, ...lines),
           )
         : "",

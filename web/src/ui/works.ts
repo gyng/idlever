@@ -359,14 +359,19 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
                     class: `wd${n.paused ? " off" : ""}`,
                     "data-node": n.id,
                     "data-rank": n.rank ?? 1,
-                    title: blurb(n.id) ? `${workerTitle(n)} · ${blurb(n.id)}` : workerTitle(n),
+                    // first-hour pass 2026-10-17 (`Aletta given` read as a sentence fragment): the town's first worker came with it —
+                    // her hover says so, the row names her only
+                    title: [
+                      workerTitle(n),
+                      blurb(n.id),
+                      n.id === "quartermaster" ? /* copy:tooltip */ "came with the town" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" · "),
                   },
                   nodeIcon(n.id, n.name),
                   // Cut258: a hired worker by her own name (the role on hover)
                   h("small", null, n.person || n.name),
-                  n.id === "quartermaster"
-                    ? h("small", { class: "worker-source dim" }, /* copy:label */ " given")
-                    : "",
                   rankNum(n.rank) ? h("b", { class: "wd-rank num" }, ` ${rankNum(n.rank)}`) : "",
                 ),
               ),
@@ -544,7 +549,8 @@ const nameEl = (n: Pick<WorkNode, "name" | "person">, suffix = ""): HTMLElement 
     ? h(
         "b",
         { class: "wn-name" },
-        h("span", { class: "wn-person" }, `${n.person} ·`),
+        // (the separator its own span: a stacked card — the rank card beside its button — drops it rather than leaving `LILI ·`)
+        h("span", { class: "wn-person" }, n.person, h("span", { class: "wn-sep" }, " ·")),
         " ",
         h("span", { class: "wn-role" }, `${n.name}${suffix}`),
       )

@@ -2330,7 +2330,8 @@ try {
     );
     check(
       cmd.length === 2 &&
-        /^Speed (Normal|Fast|Fights only)\d+×$/.test(cmd[0]) &&
+        // first-hour pass 2026-10-17: the live clock reads `now 8×`, apart from the mode
+        /^Speed (Normal|Fast|Fights only)now\d+(\.\d+)?×$/.test(cmd[0]) &&
         cmd[1] === "Town menu",
       `watch: Speed groups controls and Town menu stays visible (${cmd.join(" · ")})`,
     );
