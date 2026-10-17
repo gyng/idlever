@@ -342,6 +342,17 @@ function nested(n: HTMLElement): void {
 
 // ---- input ----
 let tabbed = false;
+/** Owner 2026-10-18 ("i'm getting native tooltips in addition to html tooltips"): where the plate answers a hover, the browser's own
+ *  `title` popup on the trigger or any element around it is silenced — its text moves to `aria-description` (the accessible name is
+ *  untouched), and a repaint that sets `title` again is silenced on the next hover. */
+function quietNative(from: Element | null): void {
+  for (let el = from; el && el !== document.body; el = el.parentElement) {
+    const t = el.getAttribute("title");
+    if (t === null) continue;
+    el.removeAttribute("title");
+    if (t && !el.hasAttribute("aria-description")) el.setAttribute("aria-description", t);
+  }
+}
 let installed = false,
   pressTimer = 0,
   pressAt: { x: number; y: number } | null = null,
@@ -361,6 +372,7 @@ function install(): void {
     const t = trigger(e.target);
     if (t && plate?.contains(t)) return;
     if (!t) return;
+    quietNative(e.target as Element);
     clearTimeout(closeTimer);
     if (t === owner) return;
     clearTimeout(openTimer);

@@ -40,7 +40,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     house.action=action("build_town","house","Build house",home.then(||"Already built".into()));
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
-    let mut scout=entry("scout","Hire the Receptionist","Until the Receptionist is hired, each departure needs your tap.",&format!("{}, the Receptionist, books the hero's next delve after each rest. Away progress becomes uncapped.",n.person),if hired {"complete"} else if scout_ready {"ready"} else {"later"});
+    let mut scout=entry("scout","Hire the Receptionist · auto runs","Until the Receptionist is hired, each departure needs your tap.",&format!("{}, the Receptionist, books the hero's next delve after each rest. Away progress becomes uncapped.",n.person),if hired {"complete"} else if scout_ready {"ready"} else {"later"});
     // (Cut258: a Receptionist who needs no delve shows no count — her price alone)
     scout.progress=(n.need()>0).then(||JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
     if !hired {scout.requirements.push(if n.need()>0 {format!("{} manual delves; {price} Gold",n.need())} else {format!("{price} Gold")});if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
@@ -51,7 +51,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
         if !tree::on(l,"scout") {scout.state="active".into();scout.requirements.push("Enable the Receptionist in Workers".into());}
     }
     let p=tree::def("porter").unwrap();let porter_hired=tree::hired(l,"porter");let porter_ready=home&&tree::lit(l).is_some_and(|n|n.id=="porter");
-    let mut porter=entry("porter","Hire the Porter","Workers automate chores once their milestones are ready.",&format!("Hiring costs no Gold. {}, the Porter, collects the actual haul; new towns already receive returned Gold automatically.",p.person),if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
+    let mut porter=entry("porter","Hire the Porter · empties chest",&format!("{} carries each haul from the chest to your purse.",tree::def("porter").unwrap().person),&format!("Hiring costs no Gold. {}, the Porter, collects the actual haul; new towns already receive returned Gold automatically.",p.person),if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
     porter.progress=Some(JournalProgress {current:tree::count(l,"porter").min(p.need()),required:p.need(),unit:"hauls".into()});
     if !porter_hired {porter.requirements.push(format!("{} hauls;0 Gold",p.need()));}
     porter.action=action("hire","porter","Hire Porter",(!porter_ready||porter_hired).then(||"Requirements unmet".into()));
@@ -74,7 +74,10 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
       ("temperament","Choose temperament","loadouts",crate::progression::gate(l,6,5,true),l.pkg.temperament.is_some(),"A free reusable build choice. Changes while away apply to the next delve."),
       ("inherited_trait","Choose lasting trait","hero",crate::progression::gate(l,8,8,false),l.heirs.blood.is_some(),"Commit one optional lasting gift and cost. Confirm a reclone to replace it."),
       ("family_context","Choose family context","hero",crate::progression::family_gate(l),l.heirs.bloodline.is_some(),"Commit a compatible context for the lasting trait, preserving its gift and cost.")
-    ] {let mut e=entry(id,title,"Completed delves unlock optional hero choices.",effect,if chosen {"complete"}else if g.available {"ready"}else{"later"});if let Some(blocked)=g.blocked{e.requirements.push(blocked);}e.progress=Some(JournalProgress{current:g.completed.min(g.required_completed),required:g.required_completed,unit:"completed delves".into()});e.action=action("open",target,title,(!home).then(||"Build a house".into()));builds.push(e);}
+    ] {let mut e=entry(id,title,"Completed delves unlock optional hero choices.",effect,if chosen {"complete"}else if g.available {"ready"}else{"later"});let needs_scout=g.blocked.as_deref()==Some(crate::progression::NEEDS_SCOUT);if let Some(blocked)=g.blocked{e.requirements.push(blocked);}
+      // owner 2026-10-18 ("temperament quest doesn't make sense -> it should say hire the receptionist - start automatic runs"): while the
+      // Receptionist is the blocker the task line names her, not a delve count that may already be met
+      if !needs_scout {e.progress=Some(JournalProgress{current:g.completed.min(g.required_completed),required:g.required_completed,unit:"completed delves".into()});}e.action=action("open",target,title,(!home).then(||"Build a house".into()));builds.push(e);}
     builds.push(more_classes);
     // Cut225: one milestone per earned class; a pure read of personal records.
     for c in crate::hero::Class::EARNED {

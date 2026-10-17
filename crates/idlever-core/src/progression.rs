@@ -16,11 +16,13 @@ pub struct Gate {
     pub required_depth: u32,
     pub depth_remaining: u32,
 }
+/// A gate's blocker while the Receptionist is unhired: what to do, and what it starts.
+pub const NEEDS_SCOUT: &str = "Hire the Receptionist · auto runs";
 pub fn gate(l: &LineageState, n: u32, d: u32, scout: bool) -> Gate {
     let remaining = n.saturating_sub(l.persistent.completed);
     let depth = d.saturating_sub(l.best_depth);
     let blocked = if scout && !crate::tree::hired(l, "scout") {
-        Some("Hire the Receptionist".into())
+        Some(NEEDS_SCOUT.into())
     } else if remaining > 0 {
         Some(format!("Complete {remaining} more delves"))
     } else if depth > 0 {
