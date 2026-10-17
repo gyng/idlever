@@ -21,6 +21,10 @@ nothing to buy" among what players punish).
 2. **Pen unchanged.** The 8 h fallback (a9541092) stands; no first-session rule taste.
 3. **Cadence: an upgrade every ~5 min** of active play in the opening.
 4. **The Scout is displayed as the Receptionist** (Guild reception); id `scout` unchanged.
+5. **Workers get personal names**, displayed "Name · role"; ids and saves unchanged.
+   Quiet anime references, never surnames or catchphrases: receptionist **Arina**, porter
+   **Lili**, quartermaster **Aletta**, apprentice **Namari**, clerk **Kraft**, drillmaster
+   **Thors**, herald **Luna**, guide **Habo**, kennel hand **Nora**, kennel keeper **Ginko**.
 
 ## 1. Gates (opening probe, 16 seeds, active new player)
 
