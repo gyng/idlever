@@ -1212,18 +1212,23 @@ button.re-body {
 /* blind c4705f9: the clock the picture plays at, always on the speed tile; lit when it is not 1× */
 .watch .tile[data-tile="speed"] .watch-speed-badge {
   position: absolute;
-  top: 3px;
+  top: 5px;
   right: 5px;
   display: inline-flex;
-  align-items: baseline;
-  gap: 2px;
+  /* stacked: an inline "now" ran into the icon once the rate was wider than 8× (1.5×, 36×) */
+  flex-direction: column;
+  align-items: flex-end;
   pointer-events: none;
+}
+/* the badge carries the clock: the old Cut 15 corner mark (styles.css `.cmd .tile[data-rate]::after`) drew it twice */
+.watch .tile[data-tile="speed"][data-rate]::after {
+  content: none;
 }
 .watch .tile[data-tile="speed"] > .ico {
   translate: -18px 0;
 }
 .watch .tile[data-tile="speed"] .watch-speed-now {
-  font: 600 10px/17px var(--sans);
+  font: 600 10px/10px var(--sans);
   color: var(--bone);
   opacity: 0.8;
   text-shadow: 0 1px 2px #000;
