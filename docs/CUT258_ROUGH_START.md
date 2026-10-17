@@ -71,6 +71,70 @@ Full notes: `scratchpad/economy/findings.md`; profiles in `target/econ-probe/out
 - Legacy ("Upgrade hero") is the slowest track: about one rank a day after hour one.
 - Marks overflow (28 after session 1, 50–60 by morning): a currency with nothing to buy.
 
+## 2c. Baseline (opening probe, 2026-10-17)
+
+`crates/idlever-core/examples/opening.rs`, 16 seeds, 60 min at 1× (a minute is 600 ticks), the current game
+(`tuning/balance.json`). Deterministic; ~3 s on 16 threads. It plays the fresh-town opening described in §2
+(house, a hand send whenever the hero is home and able, every run watched, the cheapest affordable upgrade bought
+at once). Hires and plots come only as the engine offers them (`tree::lit`, `town::build_ready`, Cut232 news).
+With the Receptionist hired, a death recovery is counted down by `step` and he sends at its end. Before him, the
+camp clock moves by ≤ 60 s absence slices.
+"Upgrade" follows §1: a hire that costs gold, a worker rank with an edge, a Legacy rank, a worn package's level
+(marks) or a forge step. The free porter/quartermaster hires, plots and the return pick are logged but not counted.
+G2 counts the stretch from minute 0 to the first upgrade and from the last one to minute 60. A bar without
+"median" is read on every seed.
+
+```sh
+cargo run -q --profile fast -p idlever-core --example opening -- [--seeds 16] [--threads N] [--minutes 60] \
+    [--absent 8h] [--timeline SEED] [--rows ?|opening-gap,…] [--kit-check]
+node tools/gates.mjs --rows opening [--balance P.json]      # targeted opening-* rows; never the gate
+tools/tune.sh opening                                         # the same, through the tuning wrapper
+node tools/sweep.mjs --example opening --rows opening-gap,opening-first --objective opening-gap:min --grid G.json
+IDLEVER_BALANCE_JSON="$(cat target/econ-probe/out/Af.json)" \
+    cargo run -q --profile fast -p idlever-core --features dev-balance --example opening
+```
+
+| Gate | Bar | Baseline (median · worst) | | Option 1 `Af.json` (median · worst) | |
+|---|---|---|---|---|---|
+| G1 first upgrade affordable | ≤ 3 min, every seed | 16.1 · 25.3 min | FAIL | 16.1 · 25.3 min | FAIL |
+| G2 longest gap 0–60 | median ≤ 6, every seed ≤ 10 | 20.7 · 32.0 min | FAIL | 22.9 · 31.6 min | FAIL |
+| G3 upgrades 0–30 | median ≥ 6 | 1 · 1 (min) | FAIL | 2 · 1 (min) | FAIL |
+| G4 Receptionist affordable | ≤ 10 min, every seed | 16.1 · 25.3 min | FAIL | 16.1 · **49.7** min | FAIL |
+| G6 longest forced wait 0–30 | ≤ 5 min, every seed | 0.0 · 1.0 min | PASS | 0.0 · 1.0 min | PASS |
+
+G5 is client copy and G8 the pacing pack. G7 needs the rest ramp: the probe prints rest and recovery each minute,
+so run it with `--minutes 120` once the ramp lands.
+
+What the baseline shows:
+
+- **The Receptionist is the first upgrade on all 16 seeds** (median 16.1 min, range 12.4–25.3; $60–100). Before
+  him nothing else is for sale: stance levels need him (`packages::level_open`) and Legacy rank 1 costs 15 against
+  5–6 points after the first run. The ~12 min in §1's "Today" column is the fastest seed.
+- Next come stance levels L2–L4 with marks (28–53 min, often three at once) and the drillmaster ($60–100, 39–57
+  min). No Legacy rank falls inside the hour: the first comes at 67–110 min (median 87). The forge plot is
+  offered within 60 min on **4/16** seeds (53.6–55.8 min), and its first step ($150–225) is bought at once.
+- G6 passes because a death in hour one is shallow. `recovery_ticks` gives `balance.recovery[0]` = 600 ticks
+  (1 min) up to D14, so the 20 min recovery never binds in the opening. The real wait is **watching runs with
+  nothing to buy**: runs take 5–13 min, and gold arrives only at an exit.
+- With greedy buying, money is not the binding constraint. After 60 min the purse holds $50–500 with nothing to
+  spend it on. On 12/16 seeds the forge is not yet offered (Cut232 holds the plot for a quiet report), and once the
+  drillmaster is hired nothing else is on offer.
+
+Option 1 (`marks.legacy_root [8,20,55,…]`) moves the first Legacy rank from 67–110 min to 18–43 min, inside the
+hour on every seed. G3 rises to a median of 2. It also **delays the Receptionist to 36–50 min on 4/16 seeds** (4, 8, 10, 12): the cheaper rank is
+affordable at the first reports. Cut232 counts that rank as a decision that came by itself, so it holds the
+Receptionist's offer. On seed 4 a free porter hire then holds it again, until minute 48. The forge plot is offered
+on 0/16 seeds by minute 60. On its own, option 1 therefore makes G4 and G2 worse. It needs the
+Receptionist (and the forge plot) exempted from, or ordered ahead of, Cut232's one-decision hold.
+
+**`kit::buy` on a fresh town (the metrics Forge 0/44).** Before the blacksmith is built, `kit::buy` returns
+`Err("Build the Forge")` (`kit.rs:560`). This holds for a fresh town (`Game::new`, house, $4000) and for the
+metrics harness's lineage (`Game::new_literal` + `systems::open_all`, $4000; the town is manual, the blacksmith
+is not built and the plot is not ready). In the probe's own play, every affordable step was bought once the
+plot was offered and built: 0 refusals at baseline (16 seeds, 60 min) and at 120 min + 8 h (16 seeds, forge built on 16/16, 101 steps).
+So the 0/44 is the harness, not the shop. `cohort_forge` (`metrics.rs:587`) never builds the blacksmith on its
+manual-town lineage, and the loop stops at the first error.
+
 ## 3. Levers (values set from the diagnosis, swept with `tools/sweep.mjs`)
 
 Measured candidates first:

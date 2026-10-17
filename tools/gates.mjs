@@ -60,6 +60,15 @@ if (pacing && rowsAt >= 0) {
   process.exit(2);
 }
 let rows = rowsAt >= 0 ? process.argv[rowsAt + 1] : pacing ? "(pacing)" : null;
+// Cut258 §2: `opening-*` rows are the opening probe's (examples/opening.rs, the first hour of a fresh town), not
+// the dayplayer's; `--rows opening` runs it alone (16 seeds unless `--seeds N`), beside any dayplayer rows named.
+const openingRows =
+  rowsAt >= 0 && rows ? rows.split(",").filter((r) => r.startsWith("opening")) : [];
+if (openingRows.length)
+  rows = rows
+    .split(",")
+    .filter((r) => !r.startsWith("opening"))
+    .join(",");
 const failFast = process.argv.includes("--fail-fast");
 const extra = process.argv
   .slice(2)
@@ -73,7 +82,7 @@ const extra = process.argv
       a !== "--pacing" &&
       !(rowsAt >= 0 && (i + 2 === rowsAt || i + 2 === rowsAt + 1)),
   );
-if (rowsAt >= 0 && !rows) {
+if (rowsAt >= 0 && !rows && !openingRows.length) {
   console.error(
     "gates --rows: name the rows (ids or substrings; `target/fast/examples/dayplayer --rows ?` lists them)",
   );
@@ -82,7 +91,7 @@ if (rowsAt >= 0 && !rows) {
 const balanceAt = extra.indexOf("--balance");
 let balance = null;
 if (balanceAt >= 0) {
-  if (!rows || !extra[balanceAt + 1])
+  if ((!rows && !openingRows.length) || !extra[balanceAt + 1])
     throw new Error("--balance FILE is a targeted tuning check only (--rows required)");
   balance = readFileSync(extra[balanceAt + 1], "utf8");
   extra.splice(balanceAt, 2);
@@ -100,7 +109,8 @@ const b = spawnSync(
     "-p",
     "idlever-core",
     ...(balance ? ["--features", "dev-balance"] : []),
-    ...(rows ? [] : ["--example", "metrics", "--example", "qa"]),
+    ...(rows || openingRows.length ? [] : ["--example", "metrics", "--example", "qa"]),
+    ...(openingRows.length ? ["--example", "opening"] : []),
     "--example",
     "dayplayer",
   ],
@@ -176,6 +186,30 @@ if (pacing) {
     `gates: PACING pack, ${picked.length} rows at 16 seeds: ${rows}${missing.length ? ` (not in this dayplayer: ${missing.join(", ")})` : ""}`,
   );
 }
+let openingOk = true;
+if (openingRows.length) {
+  const o = spawnSync(
+    "target/fast/examples/opening",
+    [
+      ...extra,
+      "--seeds",
+      "16",
+      "--rows",
+      openingRows.join(","),
+      "--threads",
+      String(Math.min(16, Number(process.env.GATES_THREADS ?? os.availableParallelism()))),
+    ],
+    { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] },
+  );
+  const out = o.stdout ?? "";
+  const from = out.lastIndexOf("\nbar (targeted");
+  process.stdout.write(from >= 0 ? out.slice(from + 1) : out);
+  openingOk = o.status === 0 && /targeted rows PASS/.test(out);
+  console.log(
+    `gates: TARGETED — opening rows \`${openingRows.join(",")}\` ${openingOk ? "PASS" : "FAIL"}; not a gate pass`,
+  );
+  if (!rows) process.exit(openingOk ? 0 : 1);
+}
 if (rows) {
   const tier = full
     ? ["--seeds", "16", "--loo-seeds", "16", "--tuned-seeds", "16"]
@@ -215,7 +249,7 @@ if (rows) {
       ? out.lastIndexOf("\nfail-fast:")
       : out.lastIndexOf("\nbar (targeted");
   process.stdout.write(from >= 0 ? out.slice(from + 1) : out);
-  const ok = res.status === 0 && /targeted rows PASS/.test(out);
+  const ok = res.status === 0 && /targeted rows PASS/.test(out) && openingOk;
   console.log(
     `gates: TARGETED — dayplayer rows \`${rows}\`${failFast ? " (fail-fast)" : ""} ${ok ? "PASS" : "FAIL"}; not a gate pass (the gate is \`node tools/gates.mjs [--full]\`)${hitRows ? ` (cached: ${leg}; --fresh to rerun)` : ""}`,
   );

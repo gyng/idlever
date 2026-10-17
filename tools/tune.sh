@@ -6,9 +6,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 if [ "${1:-}" = "--list" ]; then
-  cargo build -q --profile fast -p idlever-core --example dayplayer
+  cargo build -q --profile fast -p idlever-core --example dayplayer --example opening
   # The harness uses usage status 2 for its row listing.
   target/fast/examples/dayplayer --rows '?' || [ "$?" -eq 2 ]
+  # Cut258: the opening probe's rows (the first hour of a fresh town; `tools/tune.sh opening`)
+  target/fast/examples/opening --rows '?' || [ "$?" -eq 2 ]
   exit 0
 fi
 if [ -z "${1:-}" ] || [[ "$1" == -* ]]; then

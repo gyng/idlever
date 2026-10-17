@@ -3,7 +3,7 @@
 //
 //   node tools/sweep.mjs --name ramp --grid '{"grid":{"recovery.1":[12,14,16],"recovery.2":[26,28]}}' \
 //        --rows tuned-picked,picked-idle [--seeds 16] [--objective tuned-picked[@0][:min]] [--threads 32] [--jobs K]
-//        [--base tuning/balance.json] [--no-fail-fast] [--fresh] [--fresh-jobs] [--list]
+//        [--base tuning/balance.json] [--no-fail-fast] [--fresh] [--fresh-jobs] [--list] [--example opening]
 //
 // --grid is a JSON file or inline JSON: {"grid": {path: [values…]}} (the Cartesian product) and/or
 //   {"candidates": [{"name"?: "…", "set": {path: value}}]}. A path is `key`, `key.1` or `key[1]` into the base
@@ -249,6 +249,9 @@ async function main(argv) {
     return;
   }
   // build + snapshot (or a given binary: tests)
+  // --example opening: the Cut258 opening probe (its `opening-*` rows) instead of the dayplayer
+  const example = opt("--example") ?? spec.example ?? "dayplayer";
+  if (!/^[a-z_]+$/.test(example)) throw new Error(`sweep: --example ${example}`);
   let bin = opt("--bin");
   let srcKey;
   if (!bin) {
@@ -265,7 +268,7 @@ async function main(argv) {
         "--features",
         "dev-balance",
         "--example",
-        "dayplayer",
+        example,
       ],
       { cwd: root, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
     );
@@ -284,8 +287,8 @@ async function main(argv) {
     }
     const rustc = spawnSync("rustc", ["-vV"], { encoding: "utf8" }).stdout;
     srcKey = runtimeKey(core, root, rustc);
-    const built = join(root, "target/fast/examples/dayplayer");
-    bin = join(out, `dayplayer-${sha(readFileSync(built)).slice(0, 12)}`);
+    const built = join(root, `target/fast/examples/${example}`);
+    bin = join(out, `${example}-${sha(readFileSync(built)).slice(0, 12)}`);
     if (!existsSync(bin)) {
       copyFileSync(built, `${bin}.tmp`);
       spawnSync("chmod", ["+x", `${bin}.tmp`]);
