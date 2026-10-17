@@ -20,7 +20,7 @@
 //! the dayplayer reads it, so `tools/sweep.mjs --example opening` can drive it. Diagnostic, never the gate.
 //!
 //!   cargo run -q --profile fast -p idlever-core --example opening -- [--seeds 16] [--threads N] [--minutes 60]
-//!       [--absent 8h] [--timeline SEED] [--rows ?|opening-gap,…] [--kit-check]
+//!       [--absent 8h] [--timeline SEED] [--rows ?|opening-gap,…] [--kit-check] [--watch-x 4]
 //!   IDLEVER_BALANCE_JSON="$(cat P.json)" cargo run -q --profile fast -p idlever-core --features dev-balance --example opening
 use idlever_core::{kit, legacy, offline, packages, persistent, town, tree, Ev, Game};
 use std::collections::BTreeMap;
@@ -28,6 +28,14 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use std::sync::Mutex;
 
 const MIN: u64 = 600;
+
+/// Cut260 (diagnostic, never the gate): `--watch-x X` — a watched run's game ticks cost 1/X of their wall time (the
+/// dayplayer's first-session model reads the shipped `fights` mode as an effective 4×, `WATCH_X`). The bars are read
+/// at the default 1×; any other speed is a sensitivity reading.
+static WATCH_X: std::sync::OnceLock<u64> = std::sync::OnceLock::new();
+fn watch_x() -> u64 {
+    *WATCH_X.get().unwrap_or(&1)
+}
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 enum Cur {
@@ -360,11 +368,11 @@ impl P {
                 return;
             }
             let to_min = MIN - self.t % MIN;
-            let n = to_min.min(256) as u32;
+            let n = (to_min * watch_x()).min(256) as u32;
             let t0 = self.g.lineage.total_turns;
             let r = self.g.step(n);
             let dt = self.g.lineage.total_turns - t0;
-            self.t += dt;
+            self.t += dt.div_ceil(watch_x());
             for e in &r.events {
                 if let Ev::Exit { tier, .. } = e {
                     let tier = format!("{tier:?}");
@@ -689,6 +697,8 @@ fn main() {
         )
         .max(1);
     let absent = arg(&a, "--absent").map(parse_secs);
+    let wx: u64 = arg(&a, "--watch-x").map_or(1, |s| s.parse().expect("--watch-x N"));
+    WATCH_X.set(wx.max(1)).expect("watch speed set once");
     let show: Option<u64> = arg(&a, "--timeline").map(|s| s.parse().expect("--timeline SEED"));
     if a.iter().any(|x| x == "--kit-check") {
         kit_check(1);
@@ -741,9 +751,10 @@ fn main() {
     let w30 = minutes.min(30) * MIN;
     let fmt = |t: Option<u64>| t.map_or("never".into(), |t| format!("{:.1}", mins(t)));
     println!(
-        "\nopening probe ({} seeds, {} min at 1×{}): per seed",
+        "\nopening probe ({} seeds, {} min at {}×{}): per seed",
         outs.len(),
         minutes,
+        watch_x(),
         absent.map_or(String::new(), |s| format!(
             ", then {:.1} h away",
             s as f64 / 3600.0

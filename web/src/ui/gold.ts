@@ -50,7 +50,7 @@ export function runRange(ledger: GoldLine[], x: ExitLine, skip = 0): [number, nu
       (x.bloodline_id || 1) !== (g.bloodline_id || 1) ||
       !isExit(g) ||
       !word.test(g.why) ||
-      g.delta !== x.kept
+      g.delta !== x.kept - (x.credited ?? 0) // Cut260 §2: the checkpoints paid `credited` before the exit
     )
       continue;
     if (seen++ < skip) continue;

@@ -213,7 +213,7 @@ Flatter forge steps 2–4 (option 2) changed nothing in hour one (step 2 still �
 on every seed; G4 equals the first run's length (4.9–16.2 min; 7/16 seeds > 10). The worst seed (12) first pays out
 at minute 16.
 
-**Temporary deviation: `picked-stages` (pacing pack; owner-approved 2026-10-18, bar unchanged).** Pacing pack on the candidate: 23/24; `picked-stages` 9.0 (bar
+**Temporary deviation: `picked-stages` (pacing pack; owner-approved 2026-10-18, bar unchanged) — resolved by Cut260 (`docs/CUT260_OPENING_FOLLOWUP.md` §1: `tree.rank_days` [2,4,8], 10.0 PASS, pacing 24/24).** Pacing pack on the candidate: 23/24; `picked-stages` 9.0 (bar
 ≥ 10; HEAD 10.0, already at the bar). Bisected at 16 seeds (`gates.mjs --full --rows picked-stages`, deterministic):
 reverting the forge-first ordering alone → 9.0 (with the current values) / 10.0 (with the old values); reverting the
 Scout need 0 alone (forge-first kept) → 9.0; reverting both → 10.0 PASS; reverting the Legacy start or the Legacy
@@ -237,9 +237,9 @@ Owner decisions (2026-10-18): keep the opening levers as above; `picked-stages` 
 G2 and G4 are measured deviations; `unlocks.forge_delves` stays 4.
 
 Next:
-1. **Run length / mid-run banking** (owner-approved follow-up cut): G2 and G4 are bounded by payouts arriving only at
+1. **Run length / mid-run banking** (done in Cut260 §2: checkpoint gold paid as it is secured; G4 2.6 · 4.9 PASS, G2 unchanged and re-diagnosed as an offer gap) (owner-approved follow-up cut): G2 and G4 are bounded by payouts arriving only at
    a run's end while watched runs last 15–25 min at 1×.
-2. **Refill PICKED days 9–14 with a stage** so `picked-stages` passes ≥ 10 again (today those days rest on bank-look
+2. **Refill PICKED days 9–14 with a stage** (done in Cut260 §1) so `picked-stages` passes ≥ 10 again (today those days rest on bank-look
    stages alone).
 3. Marks still pile once Steady is L5 (13–18 by 2 h in the probe, as at baseline): a sink remains open.
 

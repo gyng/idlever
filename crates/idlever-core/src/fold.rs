@@ -63,6 +63,7 @@ impl Game {
             }
             let loot_before = self.run.as_ref().map_or(0, |r| r.carried());
             self.tick();
+            let _ = self.credit_secured();
             n += 1;
             let evs = std::mem::take(&mut self.events);
             all.extend(evs.iter().cloned());

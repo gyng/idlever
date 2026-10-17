@@ -274,6 +274,10 @@ pub struct ExitLine {
     /// (kept whole at any exit, a death's included); `keep_pct` is the share of the rest.
     #[serde(default, skip_serializing_if = "is_zero_i32")]
     pub secured: i32,
+    /// Cut260 §2: of `secured`, the gold already paid into the purse at the checkpoints (an open-app or watched run);
+    /// the exit's ledger line pays `kept − credited`.
+    #[serde(default, skip_serializing_if = "is_zero_i32")]
+    pub credited: i32,
     pub carried: i32,
     pub keep_pct: i32,
     pub kept: i32,
@@ -2326,6 +2330,10 @@ pub struct Advance {
     pub ended: Vec<u32>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub live: Option<LiveRun>,
+    /// Cut260 §2: checkpoint gold the run under way paid into the purse during this advance (the client reads the
+    /// purse again when it is not 0).
+    #[serde(default, skip_serializing_if = "is_zero_i32")]
+    pub credited: i32,
 }
 
 /// RUNS_UI: a past run re-simulated from its send (`Game::replay`): each floor's first snapshot

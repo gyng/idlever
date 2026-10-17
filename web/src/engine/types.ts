@@ -273,6 +273,7 @@ export type ExitLine = {
   spent_on: string[];
   text: string;
   secured?: number; // Cut 30.5 (core; the owner: a new record is a checkpoint, never an exit): of `carried`, the gold the run's checkpoints secured — kept whole at any exit (a death keeps it alone); `keep_pct` is the share of the rest (`banked $120 · $80 secured + 100% of $40`)
+  credited?: number; // Cut260 §2 (core): of `secured`, the gold already paid into the purse at the checkpoints — the exit's ledger line is `kept − credited`
   trace?: Trace; // Cut 9 §5: the exit's last-5 trace (every tier)
   salvaged?: { kind: string; n: number; gold: number }[]; // retained legacy salvage rows; current found-item conversion creates no exit salvage payment; `kind` is a display name — an unidentified kind reads as its flavour (`brittle scroll?`, QA 1a2a4a9)
   run_id?: number; // the run, so a report's trace links can open its replay (QA on e0f87e7: the return sheet's had `watch`, the report's did not)
@@ -1125,7 +1126,8 @@ export type LiveRun = {
 };
 /** RUNS_UI (core) — `advance(ms)`: the open app's clock run on the lineage (rest, then the next run, unwatched; a run in flight stays in
  *  flight at the budget's end). `ended` the runs it finished (refresh the lineage then), `live` the run under way after it. */
-export type Advance = { ended: number[]; live?: LiveRun };
+/** Cut260 §2 (core): `credited` — checkpoint gold the run under way paid into the purse during this advance (absent = none). */
+export type Advance = { ended: number[]; live?: LiveRun; credited?: number };
 /** RUNS_UI (core) — a past run re-simulated from its send (`replay(id)`): each floor's first snapshot (later entities, items and seen tiles
  *  folded in, as the watch's run log does) and its events; `hash` the FNV-1a of its events (an exit's line and trace left out), `ticks` its
  *  length. Identical to the run as it was played (same seed, state and inputs). */

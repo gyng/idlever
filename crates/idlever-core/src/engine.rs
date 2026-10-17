@@ -815,6 +815,11 @@ pub struct Run {
     /// whatever the exit, a death's included), the record the run left with, and its deepest checkpoint.
     #[serde(default)]
     pub secured: i32,
+    /// Cut260 §2 (the owner, 2026-10-18: gold arrives mid-run): of `secured`, the gold a watched run has already
+    /// paid into the purse at its checkpoints (`Game::credit_secured`); the exit pays `kept − credited`, so a coin is
+    /// never paid twice. An absence pays the whole at the exit, as before.
+    #[serde(default, skip_serializing_if = "is_zero_i32")]
+    pub credited: i32,
     #[serde(default)]
     pub record0: u32,
     #[serde(default)]
@@ -2188,7 +2193,7 @@ impl LineageState {
     /// `gold_move` for `n` supplies bought or refunded at once — the line counts them
     /// (`GoldLine.n`; QA on 778fa1b: `repeat heal ×1 · −$104` for four heals).
     pub fn gold_move_n(&mut self, delta: i32, why: &str, n: u32) {
-        if delta>0&&is_exit_why(why){self.persistent.exit_gold_credit=true;}
+        if delta>0&&(is_exit_why(why)||why.starts_with("secured ")){self.persistent.exit_gold_credit=true;}
         crate::town::refresh_eligibility(self);
         self.gold += delta;
         // Cut 117 §1: the absence ledger's term
@@ -4374,6 +4379,7 @@ impl Game {
             ended: false,
             max_depth: start,
             secured: 0,
+            credited: 0,
             record0: self.lineage.best_depth,
             record_mark: self.lineage.best_depth,
             best_at_send: Some(self.lineage.best_depth),
@@ -4732,6 +4738,7 @@ impl Game {
         let mut calm: Vec<(u32, bool)> = Vec::new();
         for _ in 0..turns {
             self.tick();
+            let _ = self.credit_secured();
             if let Some(r) = self.run.as_ref() {
                 calm.push((r.turn, crate::fold::calm_tick(r, &self.lineage.found_kinds, &self.events)));
             }
@@ -4748,6 +4755,26 @@ impl Game {
         let mut out = self.step_result(events, run_over);
         out.calm = crate::fold::calm_spans(&calm);
         out
+    }
+
+    /// Cut260 §2 (the owner, 2026-10-18: "money only arrives at run end"): a watched run's checkpoint gold goes into
+    /// the purse the tick it is secured (`Run.secured` is safe whatever the exit, a death's included, so paying it now
+    /// moves no outcome). The exit pays the rest (`finish_run`: `kept − credited`). Not in a sim or an absence: those
+    /// settle whole at the exit, unchanged.
+    /// The gold it paid (0 when nothing was due).
+    pub fn credit_secured(&mut self) -> i32 {
+        if self.sim || self.lineage.in_absence {
+            return 0;
+        }
+        let Some(run) = self.run.as_mut() else { return 0 };
+        let due = run.secured - run.credited;
+        if due <= 0 || run.over.is_some() {
+            return 0;
+        }
+        run.credited += due;
+        let why = format!("secured D{}", run.record_mark);
+        self.lineage.gold_move(due, &why);
+        due
     }
 
     /// The end of a `step` (and of a `fold`): the snapshot, and when the run ended the settled
@@ -5781,7 +5808,8 @@ impl Game {
             ExitTier::Return => format!("returned D{}", run.max_depth),
             ExitTier::Death => format!("died D{}", run.depth),
         };
-        self.lineage.gold_move(loot_kept, &exit_why);
+        // Cut260 §2: the checkpoint gold a watched run already paid into the purse is not paid again
+        self.lineage.gold_move(loot_kept - run.credited.min(loot_kept), &exit_why);
         if self.lineage.town.auto_collect && loot_kept > 0 && !crate::tree::hired(&self.lineage, "porter") {
             crate::tree::did_on_report(&mut self.lineage, "chest");
         }
@@ -6020,6 +6048,7 @@ impl Game {
         // Cut 30.5: what the checkpoints secured leads the arithmetic (`banked $120 · $80 secured + 100% of $40`)
         if run.secured > 0 {
             line.secured = run.secured;
+            line.credited = run.credited.min(loot_kept);
             line.text = secured_text(&line.text, loot_kept, run.secured, run.loot.max(0), run.financial_pct(tier));
         }
         // QA on 0c6e126 (qaZ: `1 supply back` never named which — read beside `sold … invisibility $1` as the bought potion sold): the
@@ -6937,7 +6966,7 @@ pub fn exit_line_of(carried: i32, keep_pct: i32, kept: i32, spent: i32, spent_on
     if unused > 0 && tier != ExitTier::Death {
         text.push_str(&format!(" · {unused} {} back", if unused == 1 { "supply" } else { "supplies" }));
     }
-    ExitLine { discoveries:Vec::new(),tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
+    ExitLine { discoveries:Vec::new(),tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, credited: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
 }
 
 /// Cut 30.5: an exit line's head re-worded with the secured gold — `banked $120 · $80 secured + 100% of $40`, `died

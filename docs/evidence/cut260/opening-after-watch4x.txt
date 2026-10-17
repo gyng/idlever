@@ -1,0 +1,28 @@
+
+opening probe (16 seeds, 60 min at 4×): per seed
+seed     G1     G2    G3     G4     G6  forge  runs  dead   gold  first upgrades
+   1    0.0   14.5     9    0.6    0.0   12.6    11     1    806  0′ legacy armour 1 L12 · 1′ hire scout $10 · 3′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+   2    0.0   10.4     9    0.7    1.0   13.2    10     1    490  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 4′ level steady L2 ◆2 · 4′ level steady L3 ◆3 · 13′ forge armour #1 $200
+   3    0.0   16.8    12    0.5    1.0   19.1     9     3     46  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 7′ level steady L2 ◆2 · 7′ level steady L3 ◆3 · 7′ level steady L4 ◆4
+   4    0.0   23.2    10    0.4    0.0   14.6    10     1    722  0′ legacy armour 1 L12 · 0′ hire scout $10 · 2′ legacy damage 1 L12 · 6′ level steady L2 ◆2 · 6′ level steady L3 ◆3 · 6′ level steady L4 ◆4
+   5    0.0   17.5    10    1.2    1.0   15.2     9     2    466  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+   6    0.0   15.9    12    1.1    1.0   15.8    11     1    517  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 4′ level steady L2 ◆2 · 4′ level steady L3 ◆3 · 4′ level steady L4 ◆4
+   7    0.0   28.9    10    1.0    0.0   13.1    10     1    641  0′ legacy armour 1 L12 · 1′ hire scout $10 · 3′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+   8    0.0   19.9    11    1.0    0.0   15.2    11     0    619  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 6′ level steady L2 ◆2 · 6′ level steady L3 ◆3 · 6′ level steady L4 ◆4
+   9    0.0   15.5    10    1.0    1.0   14.0    10     2    440  0′ legacy armour 1 L12 · 1′ hire scout $10 · 2′ legacy damage 1 L12 · 4′ level steady L2 ◆2 · 4′ level steady L3 ◆3 · 4′ level steady L4 ◆4
+  10    0.0   18.0    11    0.5    0.0    9.9    11     0    323  0′ legacy armour 1 L12 · 1′ hire scout $10 · 1′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+  11    0.0   20.9    11    0.3    0.0   14.5    11     0    877  0′ legacy armour 1 L12 · 0′ hire scout $10 · 3′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+  12    0.0   14.3     8    1.2    0.0   14.6    10     0    795  0′ legacy armour 1 L12 · 1′ hire scout $10 · 4′ legacy damage 1 L12 · 7′ level steady L2 ◆2 · 7′ level steady L3 ◆3 · 7′ level steady L4 ◆4
+  13    0.0   26.9    11    0.5    1.0   11.5    12     2     60  0′ legacy armour 1 L12 · 1′ hire scout $10 · 3′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+  14    0.0   12.4     9    0.3    0.0    9.1    10     1    517  0′ legacy armour 1 L12 · 0′ hire scout $10 · 2′ legacy damage 1 L12 · 5′ level steady L2 ◆2 · 5′ level steady L3 ◆3 · 5′ level steady L4 ◆4
+  15    0.0   20.3    12    0.7    0.0   14.1    10     1    104  0′ legacy armour 1 L12 · 1′ hire scout $10 · 3′ legacy damage 1 L12 · 6′ level steady L2 ◆2 · 6′ level steady L3 ◆3 · 6′ level steady L4 ◆4
+  16    0.0   14.2    10    0.5    1.0   12.3    11     2    821  0′ legacy armour 1 L12 · 1′ hire scout $10 · 4′ legacy damage 1 L12 · 6′ level steady L2 ◆2 · 6′ level steady L3 ◆3 · 6′ level steady L4 ◆4
+kit::buy: forge built on 16/16 seeds by minute 60; 58 forge steps bought; 0 refusals of an affordable step
+
+bar (targeted)                                                                               value  result
+G1 first upgrade affordable, min (every seed ≤ 3)                              med 0.0 · worst 0.0  PASS
+G2 longest gap between upgrades 0–60, min (median ≤ 6, every seed ≤ 10)      med 17.1 · worst 28.9  FAIL
+G3 upgrades in 0–30 (median ≥ 6)                                              med 10.0 · worst 8.0  PASS
+G4 Receptionist affordable, min (every seed ≤ 10)                              med 0.7 · worst 1.2  PASS
+G6 longest forced wait 0–30, min (every seed ≤ 5)                              med 0.0 · worst 1.0  PASS
+opening (targeted: opening-first,opening-gap,opening-buys30,opening-receptionist,opening-wait30, 16 seeds, 24s): FAIL — not a gate pass

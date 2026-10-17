@@ -251,7 +251,8 @@ export class App {
       const r = await this.engine.advance(dt);
       this.runnerAt = now;
       const was = L.live?.run_id;
-      if (r.ended.length || !!r.live !== live || (r.live && r.live.run_id !== was)) {
+      // Cut260 §2: a checkpoint's gold lands in the purse mid-run (`credited`): the purse is read again
+      if (r.ended.length || r.credited || !!r.live !== live || (r.live && r.live.run_id !== was)) {
         this.lineage = await this.engine.lineage(); // a run ended or began: the town, the purse, the log
         this.queueGoldFeedback();
         this.emitChange();

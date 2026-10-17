@@ -925,6 +925,11 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
             let ticks = game.tick_batch((budget - consumed).min(u64::from(u32::MAX)) as u32, &mut settled);
             game.events.clear();
             consumed += u64::from(ticks);
+            // Cut260 §2: the open app's run pays its checkpoint gold into the purse as it is secured (a multi-slot
+            // absence also steps through here — `offline_absence` — and settles at the exit, as every absence does)
+            if game.offline_absence.is_none() {
+                out.credited += game.credit_secured();
+            }
         }
         if game.run.as_ref().is_some_and(|r| r.over.is_some()) {
             game.lineage.town.today = ((clock0 + consumed / TICKS_PER_SECOND) / crate::engine::DAY_S) as u32;

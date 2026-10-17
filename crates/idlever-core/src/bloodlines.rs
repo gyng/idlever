@@ -255,7 +255,7 @@ impl Session {
                 remaining.min(day_ticks*100)
             }else{100};
             for id in &ids {
-                if *id==self.selected {let r=self.active.advance(quantum);out.ended.extend(r.ended);}
+                if *id==self.selected {let r=self.active.advance(quantum);out.ended.extend(r.ended);out.credited+=r.credited;}
                 else {let g=self.others.get_mut(id).expect("slot");town_from(&self.active.lineage,&mut g.lineage);g.advance(quantum);town_from(&g.lineage,&mut self.active.lineage);}
             }
             remaining-=quantum;

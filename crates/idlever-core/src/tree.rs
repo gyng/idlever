@@ -394,7 +394,7 @@ pub fn purse(l: &LineageState) -> i32 {
 
 /// A ledger reason that is a haul (an exit's pay, salvage, passage coins).
 pub fn is_haul(why: &str) -> bool {
-    crate::engine::is_exit_why(why) || why.starts_with("salvage") || why.starts_with("passage")
+    crate::engine::is_exit_why(why) || why.starts_with("salvage") || why.starts_with("passage") || why.starts_with("secured ")
 }
 
 /// Week 2 (the owner, 2026-10-02: ranks give small real bonuses): a worker at work's rank above I (0 off or at I).
