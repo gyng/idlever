@@ -101,6 +101,22 @@ fn automatic_haul_collection_conserves_gold_and_readies_the_porter() {
 }
 
 #[test]
+fn every_worker_has_its_own_name() {
+    // Cut258 (owner call 5): each worker carries a person name, one word, unique; the wire shows it beside the role
+    let mut seen = std::collections::BTreeSet::new();
+    for n in NODES {
+        assert!(!n.person.trim().is_empty() && n.person.split_whitespace().count() == 1, "{}", n.id);
+        assert!(seen.insert(n.person), "{} repeats {}", n.id, n.person);
+    }
+    assert_eq!(tree::def("scout").unwrap().person, "Arina");
+    let w = Game::new_resident(5).lineage().tree.unwrap();
+    for n in w.nodes.iter().filter(|n| n.kind == "worker") {
+        assert_eq!(n.person, tree::def(&n.id).unwrap().person, "{}", n.id);
+    }
+    assert!(w.nodes.iter().filter(|n| n.kind == "stage").all(|n| n.person.is_empty()));
+}
+
+#[test]
 fn the_node_table_lights_one_at_a_time_in_order() {
     // the order: the trunk (the quartermaster given, the porter free, the scout) then the branches; every chore names one node
     let ids: Vec<&str> = NODES.iter().map(|n| n.id).collect();

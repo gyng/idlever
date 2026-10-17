@@ -130,7 +130,10 @@ function featCry(f: FeatNews): Cry | null {
 }
 
 /** The notable acts of a report in the hero's voice, most notable first, each once: `short` ≤ 3 words for the chrome, `long` the diary's. */
-export function cries(r: ReturnReport, L: Pick<Lineage, "walls">): Cry[] {
+export function cries(
+  r: ReturnReport,
+  L: Pick<Lineage, "walls"> & Partial<Pick<Lineage, "tree">>,
+): Cry[] {
   const out: Cry[] = [];
   const bests = [...(r.bests ?? []), ...(r.bloodlines ?? []).flatMap((b) => b.bests ?? [])];
   const title = (id: string): string => L.walls?.find((w) => w.boss === id)?.title ?? bossName(id);
@@ -231,11 +234,15 @@ export function cries(r: ReturnReport, L: Pick<Lineage, "walls">): Cry[] {
     (a) => a.first && !isOrderLine(a.id) && (a.n > 0 || a.what),
   )) {
     // (Cut 120: an order line is cried as its order's news)
-    const who = w.id.replace(/_/g, " ");
+    // (Cut258: by her own name — `Arina helps now`; the role beside it in the diary)
+    const n = L.tree?.nodes.find((x) => x.id === w.id);
+    const role = n?.name ?? w.id.replace(/_/g, " ");
     out.push({
       k: "worker",
-      short: /* copy:callout */ `${who} helps now`,
-      long: /* copy:diary_line */ `The ${who} works for me now · ${w.what}`,
+      short: /* copy:callout */ `${n?.person ?? role} helps now`,
+      long: n?.person
+        ? /* copy:diary_line */ `${n.person} the ${role} works for me now · ${w.what}`
+        : /* copy:diary_line */ `The ${role} works for me now · ${w.what}`,
     });
   }
   if (r.bounty?.taken)

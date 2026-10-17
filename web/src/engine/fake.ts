@@ -6713,6 +6713,19 @@ const FEATS235: Record<string, string> = {
   guide: "deep start record",
   kennel_keeper: "bred pup fielded",
 };
+// Cut258 (core `NodeDef.person`): each worker's own name, shown "Name · role"
+const PERSON305: Record<string, string> = {
+  quartermaster: "Aletta",
+  porter: "Lili",
+  scout: "Arina",
+  apprentice: "Namari",
+  clerk: "Kraft",
+  drillmaster: "Thors",
+  kennel_hand: "Nora",
+  herald: "Luna",
+  guide: "Habo",
+  kennel_keeper: "Ginko",
+};
 // (id, name, branch, chore, need, price in tenths of a forge unit, fallback age h, post, beat, tip, the chore's system)
 const NODES305: [
   string,
@@ -6886,6 +6899,7 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       kind: "worker",
       branch,
       name,
+      ...(PERSON305[id] ? { person: PERSON305[id] } : {}),
       state,
       ...(rank ? { rank, ...rankNext, ...bonusNow } : {}),
       ...(chore ? (feat ? { chore } : { chore, count, need }) : {}),

@@ -7,7 +7,7 @@ import { openSettingsFromHeader } from "./lib/frame.mjs";
 //   chest     a haul waits in the chest (`!`, its sum); a tap opens it: the purse takes it all, the porter's count moves (`1/3`), the chest
 //             never caps (a second haul adds up)
 //   porter    3 chests opened → the porter lit and free (the pill gold, his greyed figure in the town) → hired from the pill's works sheet
-//             (`PORTER HIRED`, ≤ 2 words; he stands at his post) → he opens chests: the next haul lands in the purse, no chest
+//             (`LILI HIRED`, ≤ 2 words: her own name; she stands at her post) → he opens chests: the next haul lands in the purse, no chest
 //   scout     the manual sends fill the gem's counter toward the scout (`1/2` …); before him an absence yields ≤ 1 run (the run in
 //             flight); hired, the gem reads `auto` and an absence sends again and again
 //   sheet     the works sheet: the done nodes dimmed, the lit node with its hire and price, two silhouettes, never more; ≤ 1 hire; copy
@@ -434,7 +434,7 @@ try {
     s = await S();
     step(
       "7:47",
-      beat === "PORTER HIRED" &&
+      beat === "LILI HIRED" &&
         s.porter.state === "done" &&
         s.workers.includes("porter") &&
         !s.tchest,
@@ -801,7 +801,7 @@ try {
     });
     check(
       card.node === "porter" &&
-        card.name === "porter II" &&
+        card.name === "Lili · porter II" &&
         card.btn === `promote · $${offer.price}` &&
         card.buys === 1 &&
         card.focus === "porter",

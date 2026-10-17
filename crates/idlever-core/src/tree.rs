@@ -11,8 +11,10 @@ use std::collections::{BTreeMap, BTreeSet};
 /// A node of the tree (a worker).
 pub struct NodeDef {
     pub id: &'static str,
-    /// ≤ 2 words.
+    /// ≤ 2 words: the role.
     pub name: &'static str,
+    /// Cut258 (owner call 5): the worker's own name, shown "Name · role"; display only (ids, saves, balance keys keep `id`).
+    pub person: &'static str,
     /// trunk · character · items · scale · town.
     pub branch: &'static str,
     /// The act by hand that counts toward it (`""`: given).
@@ -27,8 +29,8 @@ pub struct NodeDef {
 }
 
 #[allow(clippy::too_many_arguments)]
-const fn node(id: &'static str, name: &'static str, branch: &'static str, chore: &'static str, gate: &'static str, post: &'static str, beat: &'static str, tip: &'static str) -> NodeDef {
-    NodeDef { id, name, branch, chore, gate, post, beat, tip }
+const fn node(id: &'static str, name: &'static str, person: &'static str, branch: &'static str, chore: &'static str, gate: &'static str, post: &'static str, beat: &'static str, tip: &'static str) -> NodeDef {
+    NodeDef { id, name, person, branch, chore, gate, post, beat, tip }
 }
 
 impl NodeDef {
@@ -78,18 +80,18 @@ pub fn feat_name(id: &str) -> Option<&'static str> {
 
 /// The tree in its order (the trunk, then the branches): one node lit at a time, the first ready one.
 pub const NODES: &[NodeDef] = &[
-    node("quartermaster", "quartermaster", "trunk", "", "", "crate", "", "packs heal · drill item"),
-    node("porter", "porter", "trunk", "chest", "", "mouth", "AUTO HAUL", "hauls home · while away"),
-    node("scout", "receptionist", "trunk", "send", "", "fire", "AUTO SEND", "books his delves"),
-    node("apprentice", "apprentice", "trunk", "forge", "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
-    node("clerk", "clerk", "town", "deposit", "bank", "bank", "AUTO BANK", "banks spare gold"),
-    node("drillmaster", "drillmaster", "character", "level", "", "tent", "AUTO LEVEL", "levels the stance"),
-    node("kennel_hand", "kennel-hand", "town", "field", "kennel", "kennel", "AUTO PETS", "fields best pets"),
-    node("herald", "herald", "town", "swap", "quests", "board", "AUTO QUEST", "swaps stale quests"),
-    node("guide", "guide", "scale", "start", "start", "mouth", "AUTO START", "starts deeper"),
+    node("quartermaster", "quartermaster", "Aletta", "trunk", "", "", "crate", "", "packs heal · drill item"),
+    node("porter", "porter", "Lili", "trunk", "chest", "", "mouth", "AUTO HAUL", "hauls home · while away"),
+    node("scout", "receptionist", "Arina", "trunk", "send", "", "fire", "AUTO SEND", "books his delves"),
+    node("apprentice", "apprentice", "Namari", "trunk", "forge", "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
+    node("clerk", "clerk", "Kraft", "town", "deposit", "bank", "bank", "AUTO BANK", "banks spare gold"),
+    node("drillmaster", "drillmaster", "Thors", "character", "level", "", "tent", "AUTO LEVEL", "levels the stance"),
+    node("kennel_hand", "kennel-hand", "Nora", "town", "field", "kennel", "kennel", "AUTO PETS", "fields best pets"),
+    node("herald", "herald", "Luna", "town", "swap", "quests", "board", "AUTO QUEST", "swaps stale quests"),
+    node("guide", "guide", "Habo", "scale", "start", "start", "mouth", "AUTO START", "starts deeper"),
     // Cut 120 §5: the kennel keeper carries the Cut 119 breeding order (`StandingSwitches.kennel`); before his hire the
     // breeding is by hand (`Game::breed`), the order waits
-    node("kennel_keeper", "kennel keeper", "town", "breed", "kennel", "kennel", "AUTO BREED", "breeds pets · by order"),
+    node("kennel_keeper", "kennel keeper", "Ginko", "town", "breed", "kennel", "kennel", "AUTO BREED", "breeds pets · by order"),
 ];
 
 /// The apprentice and the clerk keep this many forge units in the purse (the shelf's money; `balance` `tree.reserve_units`).
@@ -1168,6 +1170,9 @@ pub struct WorkNodeWire {
     pub kind: String,
     pub branch: String,
     pub name: String,
+    /// Cut258: a worker's own name (`Arina`), shown "Name · role"; absent on a stage.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub person: String,
     pub state: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub chore: Option<String>,
@@ -1344,6 +1349,7 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 kind: "worker".into(),
                 branch: n.branch.into(),
                 name: n.name.into(),
+                person: n.person.into(),
                 state: state.into(),
                 chore: has_chore.then(|| if n.id == "porter" && l.town.auto_collect { "hauls".into() } else { n.chore.into() }),
                 count: counts.then(|| count(l, n.id)),

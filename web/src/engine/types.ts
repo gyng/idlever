@@ -1015,6 +1015,7 @@ export type WorkNode = {
   kind: "worker" | "stage";
   branch: string; // branch: trunk · character · items · scale · town
   name: string; // ≤ 2 words (`porter`, `kennel-hand`, `second stance`)
+  person?: string; // Cut258: a worker's own name (`Arina`), shown "Name · role" (`Arina · receptionist`); display only, absent on a stage
   state: string;
   chore?: string; // worker: the act by hand — chest · send · forge · deposit · level · field · swap · start (none: the quartermaster, given)
   count?: number;

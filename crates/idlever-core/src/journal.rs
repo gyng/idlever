@@ -40,17 +40,17 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     house.action=action("build_town","house","Build house",home.then(||"Already built".into()));
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
-    let mut scout=entry("scout","Hire the Receptionist","Until the Receptionist is hired, each departure needs your tap.","The Receptionist books the hero's next delve after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
+    let mut scout=entry("scout","Hire the Receptionist","Until the Receptionist is hired, each departure needs your tap.",&format!("{}, the Receptionist, books the hero's next delve after each rest. Away progress becomes uncapped.",n.person),if hired {"complete"} else if scout_ready {"ready"} else {"later"});
     scout.progress=Some(JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
     if !hired {scout.requirements.push(format!("{} manual delves; {price} Gold",n.need()));if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
     scout.action=action("hire","scout","Hire Receptionist",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
     if hired {
         scout.action=action("open","workers","Workers",None);
-        scout.effect="When enabled, the Receptionist books the hero's next delve after each rest. Pausing the worker stops automatic departures.".into();
+        scout.effect=format!("When enabled, {} books the hero's next delve after each rest. Pausing the worker stops automatic departures.",n.person);
         if !tree::on(l,"scout") {scout.state="active".into();scout.requirements.push("Enable the Receptionist in Workers".into());}
     }
     let p=tree::def("porter").unwrap();let porter_hired=tree::hired(l,"porter");let porter_ready=home&&tree::lit(l).is_some_and(|n|n.id=="porter");
-    let mut porter=entry("porter","Hire the Porter","Workers automate chores once their milestones are ready.","Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
+    let mut porter=entry("porter","Hire the Porter","Workers automate chores once their milestones are ready.",&format!("Hiring costs no Gold. {}, the Porter, collects the actual haul; new towns already receive returned Gold automatically.",p.person),if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
     porter.progress=Some(JournalProgress {current:tree::count(l,"porter").min(p.need()),required:p.need(),unit:"hauls".into()});
     if !porter_hired {porter.requirements.push(format!("{} hauls;0 Gold",p.need()));}
     porter.action=action("hire","porter","Hire Porter",(!porter_ready||porter_hired).then(||"Requirements unmet".into()));

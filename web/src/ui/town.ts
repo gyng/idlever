@@ -25,7 +25,7 @@ import { openWindow as openSheet, closeAllSheets } from "./sheet";
 import { tile, paintFace } from "./frame";
 import { audio } from "../audio";
 import { questShown } from "./quest";
-import { featText, nextPill, nodeIcon, openWorks } from "./works";
+import { featText, nextPill, nodeIcon, openWorks, workerTitle } from "./works";
 import { townGraveyard } from "./feats"; // Cut 118 (owner amendment §4): the graveyard's stones
 import { townCrier } from "./crier"; // Cut 118 §8: the town crier   // Cut 30.5: the `next` pill, the works sheet
 import { openHeroLife } from "./hero-life";
@@ -604,7 +604,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       if (lit) {
         const worker = app.lineage.tree?.nodes.find((node) => node.id === lit.id);
         const role = buildingId(lit.post);
-        const hiring = /* copy:tooltip */ `Hire ${worker?.name ?? lit.id} · ${role ? buildingName(role) : lit.post} · ${lit.price ? `$${lit.price}` : "free"}`;
+        const hiring = /* copy:tooltip */ `Hire ${worker ? workerTitle(worker) : lit.id} · ${role ? buildingName(role) : lit.post} · ${lit.price ? `$${lit.price}` : "free"}`;
         b.setAttribute("aria-label", hiring);
         b.title = hiring;
         b.querySelector(".vh")!.textContent = hiring;

@@ -318,7 +318,7 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
               h(
                 "div",
                 { class: "wn-head" },
-                h("b", { class: "wn-name" }, n.name),
+                nameEl(n),
                 h(
                   "span",
                   { class: "wn-state num" },
@@ -359,10 +359,11 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
                     class: `wd${n.paused ? " off" : ""}`,
                     "data-node": n.id,
                     "data-rank": n.rank ?? 1,
-                    title: blurb(n.id) || n.name,
+                    title: blurb(n.id) ? `${workerTitle(n)} · ${blurb(n.id)}` : workerTitle(n),
                   },
                   nodeIcon(n.id, n.name),
-                  h("small", null, n.name),
+                  // Cut258: a hired worker by her own name (the role on hover)
+                  h("small", null, n.person || n.name),
                   n.id === "quartermaster"
                     ? h("small", { class: "worker-source dim" }, /* copy:label */ " given")
                     : "",
@@ -389,7 +390,7 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
                   h(
                     "div",
                     { class: "wn-head" },
-                    h("b", { class: "wn-name" }, `${rk.name} ${to}`),
+                    nameEl(rk, ` ${to}`),
                     rankAdds(rk) ? h("span", { class: "wn-state num" }, rankAdds(rk)) : "",
                   ),
                   h(
@@ -473,14 +474,14 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
   );
 }
 
-/** The hire: the core's (`hire(id)`), then the beat — `PORTER HIRED` — while the worker walks to his post (the town's). */
+/** The hire: the core's (`hire(id)`), then the beat — `LILI HIRED` — while the worker walks to his post (the town's). */
 export async function hireNode(app: App, n: WorkNode, close?: () => void): Promise<boolean> {
   if (!app.engine.hire) return false;
   const ok = await app.mutate(() => app.engine.hire!(n.id));
   if (!ok) return false;
   audio.cue("unlock");
   close?.();
-  hireBeat(n.name);
+  hireBeat(n.person || n.name);
   return true;
 }
 /** week 2: the promotion — the core's (`promote(id)`), then the beat `PORTER II`. */
@@ -494,7 +495,7 @@ export async function promoteNode(app: App, n: WorkNode, close?: () => void): Pr
   beat(`${n.name.toUpperCase()} ${rankNum(r)}`);
   return true;
 }
-/** The hire's beat over the well: the worker's name and `HIRED` (2 words), ~1.8 s. */
+/** The hire's beat over the well: the worker's own name and `HIRED` (2 words: `LILI HIRED`), ~1.8 s. */
 export const hireBeat = (name: string): void =>
   beat(`${name.toUpperCase()} `, /* copy:callout */ "HIRED");
 function beat(...text: string[]): void {
@@ -531,9 +532,29 @@ export function sendMark(L: Lineage): HTMLElement | "" {
 
 // --- the report ---
 
-/** the worker's name (the node's; the id's words when the tree is not at hand) */
+/** the worker's role (the node's; the id's words when the tree is not at hand) */
 const nameOf = (L: Lineage, id: string): string =>
   L.tree?.nodes.find((n) => n.id === id)?.name ?? id.replace(/_/g, "-");
+/** Cut258 (owner call 5): a worker as a character — `Arina · receptionist`; the role alone without a name */
+export const workerTitle = (n: Pick<WorkNode, "name" | "person">): string =>
+  n.person ? `${n.person} · ${n.name}` : n.name;
+/** a card's title, `Arina · receptionist`: the name and the role each kept whole, the line breaking only between them */
+const nameEl = (n: Pick<WorkNode, "name" | "person">, suffix = ""): HTMLElement =>
+  n.person
+    ? h(
+        "b",
+        { class: "wn-name" },
+        h("span", { class: "wn-person" }, `${n.person} ·`),
+        " ",
+        h("span", { class: "wn-role" }, `${n.name}${suffix}`),
+      )
+    : h("b", { class: "wn-name" }, `${n.name}${suffix}`);
+/** Cut258: a report line's worker — met (`first`): `Lili · porter`; after: her name (`Lili`), the role on hover */
+const actName = (L: Lineage, id: string, first: boolean): { text: string; full: string } => {
+  const n = L.tree?.nodes.find((x) => x.id === id);
+  const full = n ? workerTitle(n) : nameOf(L, id);
+  return { text: first || !n?.person ? full : n.person, full };
+};
 /** An absence's worker lines, compact (`apprentice · +2 steps`), and the haul left in the chest (`chest +$120`); null when none. */
 export function workersBlock(
   L: Lineage,
@@ -550,9 +571,13 @@ export function workersBlock(
     ...acts.slice(0, limit).map((a) =>
       h(
         "span",
-        { class: `chip work-act${a.first ? " first" : ""}`, "data-worker": a.id },
+        {
+          class: `chip work-act${a.first ? " first" : ""}`,
+          "data-worker": a.id,
+          title: actName(L, a.id, a.first).full,
+        },
         h("span", { class: "wa-ico" }, nodeIcon(a.id, nameOf(L, a.id))),
-        h("b", null, nameOf(L, a.id)),
+        h("b", null, actName(L, a.id, a.first).text),
         h("span", { class: "num" }, ` · ${a.what}`),
         boughtText(a) ? h("span", { class: "num work-bought" }, boughtText(a)) : "",
         // Cut 117 §4: why the absence's supplies were limited (`WorkerAct.reason`), its gloss on hover

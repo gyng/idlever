@@ -163,8 +163,14 @@ html body .camp .town > .next-pill.game-control {
 }
 .wnode .wn-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px;
+  column-gap: 8px;
+}
+/* Cut258: `Arina · receptionist` — the name and the role each whole; the state drops under them when the card is narrow */
+.wnode .wn-person,
+.wnode .wn-role {
+  white-space: nowrap;
 }
 .wnode .wn-name {
   font-size: 15px;

@@ -301,6 +301,8 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
         available: home && available,
         body: body.into(),
     };
+    // Cut258: the receptionist by her name at the guild's desk
+    let receptionist = || crate::tree::def("scout").map_or("The Receptionist", |n| n.person);
     Hero {
         progression:crate::progression::wire(l),
         id: format!("{}:{}", l.seed, l.bloodline_id),
@@ -345,10 +347,10 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
         guild: service(
             "guild",
             "Guild reception",
-            if crate::tree::auto_send(l) {
-                "The Receptionist books another delve after recovery."
+            &if crate::tree::auto_send(l) {
+                format!("{}, the Receptionist, books another delve after recovery.", receptionist())
             } else {
-                "Hire the Receptionist here to book delves while away."
+                format!("Hire {}, the Receptionist, here to book delves while away.", receptionist())
             },
             guild_available,
         ),

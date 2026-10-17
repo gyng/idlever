@@ -352,13 +352,13 @@ export const LIVE: Partial<Record<Term, (app: App) => string | null>> = {
   works: (a) => {
     const W = a.lineage.tree;
     const l = W?.nodes.find((x) => x.id === W.lit);
-    return l ? /* copy:tooltip */ `lit: ${l.name}` : null;
+    return l ? /* copy:tooltip */ `lit: ${l.person ? `${l.person} · ${l.name}` : l.name}` : null;
   },
   rank: (a) => {
     const W = a.lineage.tree,
       n = W?.nodes.find((x) => x.id === W.lit_rank);
     return n
-      ? /* copy:tooltip */ `on offer: ${n.name} ${["", "I", "II", "III", "IV"][(n.rank ?? 1) + 1] ?? ""}`
+      ? /* copy:tooltip */ `on offer: ${n.person ? `${n.person} · ${n.name}` : n.name} ${["", "I", "II", "III", "IV"][(n.rank ?? 1) + 1] ?? ""}`
       : null;
   },
   scout: (a) => {
