@@ -19,6 +19,7 @@ named palette (+ the place's tint, read from the file name). Hard fails: contras
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -62,7 +63,20 @@ def main() -> int:
     if missing_sources:
         failures.append(f"missing generated sources: {', '.join(missing_sources)}")
     selected_generated_ids = {src.stem for src in selected_sources if src.parent == GENERATED}
-    orphans = sorted(generated_ids - manifest_ids - selected_generated_ids)
+    # Cut267: the class-skill, advanced-skill and equipment exporters keep their own registries of art/generated masters
+    # (UI exports, not atlas frames); a master one of them names is registered
+    registry_ids: set[str] = set()
+    for reg in ("class-skills.json", "advanced-skills.json", "equipment.json"):
+        if (ROOT / reg).is_file():
+            registry_ids |= set(re.findall(r"generated/([A-Za-z0-9_]+)\.png", (ROOT / reg).read_text()))
+    orphans = sorted(generated_ids - manifest_ids - selected_generated_ids - registry_ids)
+    # a superseded or unselected version (`<family>_v<n>`) of a registered versioned master stays beside it: dated evidence
+    # (docs/evidence/cut220, cut253, cut254) cites those exact paths, so it is a warning, not drift
+    families = {re.sub(r"_v\d+$", "", i) for i in registry_ids | selected_generated_ids if re.search(r"_v\d+$", i)}
+    retained = [o for o in orphans if re.search(r"_v\d+$", o) and re.sub(r"_v\d+$", "", o) in families]
+    if retained:
+        warnings.append(f"retained unselected versions in art/generated: {len(retained)} ({', '.join(retained)})")
+    orphans = [o for o in orphans if o not in retained]
     if orphans:
         failures.append(f"unregistered generated sources: {', '.join(orphans)}")
     if not tile_ids:

@@ -1,0 +1,85 @@
+You are painting TOWN WALK alternate-look sprites for the game "Idlever" (a gothic dark-fantasy roguelike on a phone).
+FIRST look at these approved STYLE TARGETS (you may open these images and the reference images named below, nothing else): /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/boss.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_caster.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_cat.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_cat.png.
+Use your built-in image_gen tool, one call per asset below (an edit of the named reference image where the job says EDIT). Do NOT write code beyond a PIL resample / alpha fix / crop; do NOT touch anything outside /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/. Create that directory if needed. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+For each asset: generate it and save the final PNG (sRGB) to the exact path at the exact size. Self-check each output (background as the job states, subject not cropped, no text or letters); regenerate that asset once if it fails.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+--- 1. id: walk_caster_cat
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_caster_cat.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_caster.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_caster.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_caster_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 2. id: walk_gunner_female
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_gunner_female.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_gunner.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_gunner_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 3. id: walk_gunner_cat
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_gunner_cat.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_gunner.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_gunner_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 4. id: walk_clown_female
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_clown_female.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_female.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_clown.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_clown_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 5. id: walk_clown_cat
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_clown_cat.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_cat.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_clown.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_clown_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 6. id: walk_engineer_female
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_engineer_female.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_female.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_engineer.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_engineer_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text.
+
+--- 7. id: walk_engineer_cat
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_engineer_cat.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_cat.png (the LOOK)
+Shown in game at about 40 px tall in the town; judge readability at that size.
+Brief: EDIT the walk sprite walk_engineer.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_engineer_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text.

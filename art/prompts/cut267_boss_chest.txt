@@ -1,0 +1,73 @@
+You are painting BOSS CHEST frames and chest-opening EFFECT sprites for the game "Idlever" (a gothic dark-fantasy roguelike on a phone).
+FIRST look at these approved STYLE TARGETS (you may open these images and the reference images named below, nothing else): /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/boss.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/icons/gold.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/icons/alert.png.
+Use your built-in image_gen tool, one call per asset below (an edit of the named reference image where the job says EDIT). Do NOT write code beyond a PIL resample / alpha fix / crop; do NOT touch anything outside /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/. Create that directory if needed. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+For each asset: generate it and save the final PNG (sRGB) to the exact path at the exact size. Self-check each output (background as the job states, subject not cropped, no text or letters); regenerate that asset once if it fails.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+--- 1. id: chest_boss_closed
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Shown in game at about 40 px tall in the dungeon and 160 px tall in a full-screen reveal; judge readability at that size.
+Brief: A BOSS REWARD CHEST revealed in the dungeon after a boss kill, seen from the game's high three-quarter top-down camera (the lid top and the front face both visible, front facing the viewer and slightly lower-left). A heavy squat iron-bound chest of near-black UMBRA/DUSK oak planks, thick riveted iron straps with MIST moonlit rims on the top edges, worn GILT corner caps and a GILT hasp; the BOSS MARK: a small BLOOD-red crown-shaped seal/gem set in the lock plate (the only BLOOD). Chunky proportions, one bold readable mass, a thick closed INK contour, painted washes on a coarse visible pixel grid. NO floor, NO shadow pool, NO scenery, NO text. SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. FRAME 1, CLOSED: the lid shut and latched, the crown seal intact, no light, a faint MIST rim only.
+
+--- 2. id: chest_boss_cracked
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_cracked.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png
+Shown in game at about 40 px tall in the dungeon and 160 px tall in a full-screen reveal; judge readability at that size.
+Brief: EDIT chest_boss_closed.png (generate it first, then edit it): the SAME chest, body identical in shape, size and position. FRAME 2, LID CRACKING: the hasp burst open, the lid lifted a few finger-widths on its hinge, and a bright warm-white BONE and pale GILT light LEAKS from the glowing seam as a handful of short hard-edged light blades fanning upward (stepped pixel shards, not a blur), the crown seal glowing. The light stays close to the chest (within ~200 px of the seam). SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. 
+
+--- 3. id: chest_boss_open
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_open.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png
+Shown in game at about 40 px tall in the dungeon and 160 px tall in a full-screen reveal; judge readability at that size.
+Brief: EDIT chest_boss_closed.png: the SAME chest, body identical in shape, size and position. FRAME 3, OPEN: the lid thrown fully back on its hinge (standing up behind the body, its INK-lined underside visible), the inside heaped with GILT gold coins and a few BONE gleams, a column of warm BONE/pale-GILT light rising from the open mouth in stepped pixel shafts and fading upward inside the canvas (no blur haze beyond the shafts). SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. 
+
+--- 4. id: chest_fx_rays
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_rays.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Background: ONE flat uniform pure BLACK #000000 edge to edge, opaque (the pipeline turns brightness into alpha: black = fully transparent, so everything you paint must be LIGHT on the black; nothing dark is visible).
+Shown in game at 160-320 px wide behind the chest, rotating slowly, additive; judge readability at that size.
+Brief: A LIGHT-BURST / god-ray SUNBURST effect only (no chest, no object): 12 to 16 tapered light RAYS radiating from the exact canvas centre, alternating long and short, each ray a crisp stepped-pixel wedge filled with a pale BONE-to-MIST wash with a little granulation, brightest (near white) at the centre and fading to black before the canvas edge (nothing touches the edges); a small bright round core at the centre. Neutral pale colour (it is tinted in code). Radially symmetric so it can rotate.
+
+--- 5. id: chest_fx_sparks
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_sparks.png
+Size: exactly 1024x512 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Shown in game at each cell about 12-24 px, burst out of the chest as particles; judge readability at that size.
+Brief: A PARTICLE SPRITE SHEET: a 4 x 2 grid of 256x256 cells, ONE small object centred in each cell, nothing crossing a cell border, the same scale in every cell. TOP ROW: one GILT gold COIN spinning, four frames: (1) face-on round coin with a stamped crown, (2) turned three-quarter (an oval), (3) edge-on (a thin bar), (4) three-quarter the other way; each coin with a thick INK contour, BONE glint top-left, chunky stepped pixels (match the gold icon reference). BOTTOM ROW: four SPARKLE frames, a hard-edged four-pointed pixel STAR glint growing then shrinking: (5) a small dot cross, (6) a medium four-point star, (7) a large four-point star with short diagonal secondary points, (8) a medium star fading; sparkles in BONE white with a pale GILT core, thin INK edge so they read on a light background.
+
+--- 6. id: chest_fx_ring
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_ring.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Background: ONE flat uniform pure BLACK #000000 edge to edge, opaque (the pipeline turns brightness into alpha: black = fully transparent, so everything you paint must be LIGHT on the black; nothing dark is visible).
+Shown in game at 160-320 px wide under/behind the chest, scaled up as a shockwave, tinted by item rarity in code; judge readability at that size.
+Brief: A GLOW RING effect only: one clean circular luminous RING centred on the canvas, outer diameter about 820 px, ring band about 70 px thick, the band's centre line near white and falling off softly on both sides, a few small stepped pixel motes along it and a faint inner glow; pale neutral BONE/MIST white (it is tinted to the item's rarity colour in code). A perfect circle (viewed face on), nothing outside the ring touches the canvas edges.

@@ -1,0 +1,525 @@
+{
+ "tool": "codex exec + built-in image_gen",
+ "date": "2026-10-18",
+ "batches": {
+  "boss_chest": {
+   "prompt": "art/prompts/cut267_boss_chest.txt",
+   "out": "art/staging/cut267/boss_chest",
+   "jobs": [
+    {
+     "id": "chest_boss_closed",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png",
+     "size": "1024x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "about 40 px tall in the dungeon and 160 px tall in a full-screen reveal",
+     "brief": "A BOSS REWARD CHEST revealed in the dungeon after a boss kill, seen from the game's high three-quarter top-down camera (the lid top and the front face both visible, front facing the viewer and slightly lower-left). A heavy squat iron-bound chest of near-black UMBRA/DUSK oak planks, thick riveted iron straps with MIST moonlit rims on the top edges, worn GILT corner caps and a GILT hasp; the BOSS MARK: a small BLOOD-red crown-shaped seal/gem set in the lock plate (the only BLOOD). Chunky proportions, one bold readable mass, a thick closed INK contour, painted washes on a coarse visible pixel grid. NO floor, NO shadow pool, NO scenery, NO text. SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. FRAME 1, CLOSED: the lid shut and latched, the crown seal intact, no light, a faint MIST rim only."
+    },
+    {
+     "id": "chest_boss_cracked",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_cracked.png",
+     "size": "1024x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png",
+     "shown": "about 40 px tall in the dungeon and 160 px tall in a full-screen reveal",
+     "brief": "EDIT chest_boss_closed.png (generate it first, then edit it): the SAME chest, body identical in shape, size and position. FRAME 2, LID CRACKING: the hasp burst open, the lid lifted a few finger-widths on its hinge, and a bright warm-white BONE and pale GILT light LEAKS from the glowing seam as a handful of short hard-edged light blades fanning upward (stepped pixel shards, not a blur), the crown seal glowing. The light stays close to the chest (within ~200 px of the seam). SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. "
+    },
+    {
+     "id": "chest_boss_open",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_open.png",
+     "size": "1024x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_boss_closed.png",
+     "shown": "about 40 px tall in the dungeon and 160 px tall in a full-screen reveal",
+     "brief": "EDIT chest_boss_closed.png: the SAME chest, body identical in shape, size and position. FRAME 3, OPEN: the lid thrown fully back on its hinge (standing up behind the body, its INK-lined underside visible), the inside heaped with GILT gold coins and a few BONE gleams, a column of warm BONE/pale-GILT light rising from the open mouth in stepped pixel shafts and fading upward inside the canvas (no blur haze beyond the shafts). SAME FRAMING in all three chest frames: the chest BODY (the box below the lid) is centred horizontally, about 600 px wide, its bottom edge at y = 880 px and the lid's hinge line at about y = 600 px; leave the upper ~45 % of the canvas EMPTY for the open lid and its light. "
+    },
+    {
+     "id": "chest_fx_rays",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_rays.png",
+     "size": "1024x1024",
+     "bg": "ONE flat uniform pure BLACK #000000 edge to edge, opaque (the pipeline turns brightness into alpha: black = fully transparent, so everything you paint must be LIGHT on the black; nothing dark is visible).",
+     "shown": "160-320 px wide behind the chest, rotating slowly, additive",
+     "brief": "A LIGHT-BURST / god-ray SUNBURST effect only (no chest, no object): 12 to 16 tapered light RAYS radiating from the exact canvas centre, alternating long and short, each ray a crisp stepped-pixel wedge filled with a pale BONE-to-MIST wash with a little granulation, brightest (near white) at the centre and fading to black before the canvas edge (nothing touches the edges); a small bright round core at the centre. Neutral pale colour (it is tinted in code). Radially symmetric so it can rotate."
+    },
+    {
+     "id": "chest_fx_sparks",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_sparks.png",
+     "size": "1024x512",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "each cell about 12-24 px, burst out of the chest as particles",
+     "brief": "A PARTICLE SPRITE SHEET: a 4 x 2 grid of 256x256 cells, ONE small object centred in each cell, nothing crossing a cell border, the same scale in every cell. TOP ROW: one GILT gold COIN spinning, four frames: (1) face-on round coin with a stamped crown, (2) turned three-quarter (an oval), (3) edge-on (a thin bar), (4) three-quarter the other way; each coin with a thick INK contour, BONE glint top-left, chunky stepped pixels (match the gold icon reference). BOTTOM ROW: four SPARKLE frames, a hard-edged four-pointed pixel STAR glint growing then shrinking: (5) a small dot cross, (6) a medium four-point star, (7) a large four-point star with short diagonal secondary points, (8) a medium star fading; sparkles in BONE white with a pale GILT core, thin INK edge so they read on a light background."
+    },
+    {
+     "id": "chest_fx_ring",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/boss_chest/chest_fx_ring.png",
+     "size": "1024x1024",
+     "bg": "ONE flat uniform pure BLACK #000000 edge to edge, opaque (the pipeline turns brightness into alpha: black = fully transparent, so everything you paint must be LIGHT on the black; nothing dark is visible).",
+     "shown": "160-320 px wide under/behind the chest, scaled up as a shockwave, tinted by item rarity in code",
+     "brief": "A GLOW RING effect only: one clean circular luminous RING centred on the canvas, outer diameter about 820 px, ring band about 70 px thick, the band's centre line near white and falling off softly on both sides, a few small stepped pixel motes along it and a faint inner glow; pale neutral BONE/MIST white (it is tinted to the item's rarity colour in code). A perfect circle (viewed face on), nothing outside the ring touches the canvas edges."
+    }
+   ]
+  },
+  "clone_vat": {
+   "prompt": "art/prompts/cut267_clone_vat.txt",
+   "out": "art/staging/cut267/clone_vat",
+   "jobs": [
+    {
+     "id": "town_service_device_grow_0",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/clone_vat/town_service_device_grow_0.png",
+     "size": "1536x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/town_service_device.png",
+     "shown": "about 36 px tall in the town",
+     "brief": "EDIT the reference image. Preserve the EXACT canvas size (1536x1024), object footprint, outer silhouette and every exterior part in the same pixel position: domed riveted cap, iron bands, glass columns, octagonal stone platform, hoses, small boxes, grates and the valve wheel; transparent background. Change ONLY what is inside the glass cylinder as stated. No exterior glow, no ground, no new props, no text. GROWTH STAGE 1 of 3 (just started): the fluid a dim cold MOON/DUSK teal lit faintly from below by MIST, a SMALL pale BONE curled seed-like form (a fist-sized curled shape, no anatomy, nothing gory) floating low in the tank, two thin pale tubes from the cap reaching it, a few tiny bubbles."
+    },
+    {
+     "id": "town_service_device_grow_1",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/clone_vat/town_service_device_grow_1.png",
+     "size": "1536x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/town_service_device.png",
+     "shown": "about 36 px tall in the town",
+     "brief": "EDIT the reference image. Preserve the EXACT canvas size (1536x1024), object footprint, outer silhouette and every exterior part in the same pixel position: domed riveted cap, iron bands, glass columns, octagonal stone platform, hoses, small boxes, grates and the valve wheel; transparent background. Change ONLY what is inside the glass cylinder as stated. No exterior glow, no ground, no new props, no text. GROWTH STAGE 2 of 3 (half grown): the fluid brighter MIST-lit, a pale BONE curled human silhouette about HALF the tank's height floating mid-tank (knees drawn up, no face detail, no anatomy, nothing gory), one thin BLOOD-red vein of light beside it (a sliver), several rising bubbles."
+    },
+    {
+     "id": "town_service_device_grow_2",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/clone_vat/town_service_device_grow_2.png",
+     "size": "1536x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/town_service_device.png",
+     "shown": "about 36 px tall in the town",
+     "brief": "EDIT the reference image. Preserve the EXACT canvas size (1536x1024), object footprint, outer silhouette and every exterior part in the same pixel position: domed riveted cap, iron bands, glass columns, octagonal stone platform, hoses, small boxes, grates and the valve wheel; transparent background. Change ONLY what is inside the glass cylinder as stated. No exterior glow, no ground, no new props, no text. GROWTH STAGE 3 of 3 (nearly done): the fluid bright cold MIST glow, a full-height pale BONE upright human silhouette filling the tank (arms at the sides, head slightly bowed, no face detail, no anatomy), the thin BLOOD vein of light running up its centre, many bubbles; this should read like the existing active frames but a touch brighter."
+    },
+    {
+     "id": "town_service_device_ready",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/clone_vat/town_service_device_ready.png",
+     "size": "1536x1024",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/town_service_device.png",
+     "shown": "about 36 px tall in the town",
+     "brief": "EDIT the reference image. Preserve the EXACT canvas size (1536x1024), object footprint, outer silhouette and every exterior part in the same pixel position: domed riveted cap, iron bands, glass columns, octagonal stone platform, hoses, small boxes, grates and the valve wheel; transparent background. Change ONLY what is inside the glass cylinder as stated. No exterior glow, no ground, no new props, no text. READY / DRAINED: the tank is EMPTY of fluid and EMPTY of any figure (the clone has stepped out). The glass is drained and clear: you see the dark UMBRA interior and the back of the tank through it, wet streaks and a few droplets running down the inside, a thin shallow puddle line of pale MIST fluid at the very bottom. The FRONT GLASS PANEL is a curved HATCH swung OPEN (hinged on its left edge, turned toward the viewer so it stays INSIDE the existing outline of the cap and platform, never beyond the outer silhouette), a dark open gap where it was. A faint MIST light on the wet glass; no BLOOD."
+    }
+   ]
+  },
+  "badges": {
+   "prompt": "art/prompts/cut267_badges.txt",
+   "out": "art/staging/cut267/badges",
+   "jobs": [
+    {
+     "id": "badge_frame_bronze",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_frame_bronze.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. BRONZE tier: a rim of dark weathered bronze (warm brown-orange metal with VERDIGRIS #4e8763 green-teal patina in the recesses), modest, a plain bevelled ring with 8 rivets. The medallion's centre is an EMPTY sunken round WELL about 120 px across, flat dark INK/UMBRA, with nothing in it (the game places the achievement's own small glyph there). "
+    },
+    {
+     "id": "badge_frame_silver",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_frame_silver.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. SILVER tier: a rim of cold pale silver steel (MIST #a4bcd6 and BONE highlights, MOON shadows), a finer ring with a beaded edge and 8 rivets. The medallion's centre is an EMPTY sunken round WELL about 120 px across, flat dark INK/UMBRA, with nothing in it (the game places the achievement's own small glyph there). "
+    },
+    {
+     "id": "badge_frame_gold",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_frame_gold.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. GOLD tier: a rim of worn GILT #b89448 gold (BONE glints, deep GILT-brown shadows) with a scalloped/sunburst edge of 16 short points and 8 rivets, clearly the richest of the three. The medallion's centre is an EMPTY sunken round WELL about 120 px across, flat dark INK/UMBRA, with nothing in it (the game places the achievement's own small glyph there). "
+    },
+    {
+     "id": "badge_bronze",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_bronze.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. BRONZE tier: a rim of dark weathered bronze (warm brown-orange metal with VERDIGRIS #4e8763 green-teal patina in the recesses), modest, a plain bevelled ring with 8 rivets. The centre carries a raised emblem: a five-pointed STAR inside a small laurel wreath, in the same metal, readable at 24 px. "
+    },
+    {
+     "id": "badge_silver",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_silver.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. SILVER tier: a rim of cold pale silver steel (MIST #a4bcd6 and BONE highlights, MOON shadows), a finer ring with a beaded edge and 8 rivets. The centre carries a raised emblem: a five-pointed STAR inside a small laurel wreath, in the same metal, readable at 24 px. "
+    },
+    {
+     "id": "badge_gold",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_gold.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. GOLD tier: a rim of worn GILT #b89448 gold (BONE glints, deep GILT-brown shadows) with a scalloped/sunburst edge of 16 short points and 8 rivets, clearly the richest of the three. The centre carries a raised emblem: a five-pointed STAR inside a small laurel wreath, in the same metal, readable at 24 px. "
+    },
+    {
+     "id": "badge_secret",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_secret.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. SECRET / HIDDEN tier: a rim of dark INK iron with an AMETHYST #8762a6 violet sheen (lit #bf9ad6 on the top edge), the centre a dark well holding a single half-closed watching EYE sigil in pale AMETHYST/BONE (no question mark, no letters); mysterious, clearly different from the three metal tiers."
+    },
+    {
+     "id": "badge_locked",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/badges/badge_locked.png",
+     "size": "256x256",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "shown": "24-48 CSS px",
+     "brief": "An ACHIEVEMENT BADGE UI icon, 256x256, matching the reference UI icons (alert.png: a round carved medallion with a thick INK outline, chunky stepped pixel clusters with a painted wash inside, cold MIST moonlight on the top edge). ONE round medallion, viewed face-on, centred, outer diameter about 220 px (the SAME size and outline in every badge so they swap in place), no ribbon, no plaque, no tile behind it, no text, letters or numerals. LOCKED: the same medallion as a flat dim SILHOUETTE: one dark UMBRA/DUSK fill with only a faint MOON rim and a subtle stepped-pixel texture, no metal colour, and a small simple PADLOCK shape in dull MOON grey in the centre. Low contrast on purpose (an unearned slot), but the outer INK contour still crisp."
+    }
+   ]
+  },
+  "weapons_a": {
+   "prompt": "art/prompts/cut267_weapons_a.txt",
+   "out": "art/staging/cut267/weapons",
+   "jobs": [
+    {
+     "id": "hero_ranger_male_sword",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_ranger_male_sword.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_ranger_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The RANGER hero (male look) now wields a straight ARMING SWORD held forward-and-low in the right hand, blade angled down toward the lower right, a plain cross guard and leather grip, a bright MIST edge; the left hand free and clenched. The quiver on the back may stay. Clearly a SWORD, not a bow."
+    },
+    {
+     "id": "hero_ranger_female_sword",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_ranger_female_sword.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_ranger_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The RANGER hero (female look) now wields a straight ARMING SWORD held forward-and-low in the right hand, blade angled down toward the lower right, a plain cross guard and leather grip, a bright MIST edge; the left hand free and clenched. The quiver on the back may stay. Clearly a SWORD, not a bow."
+    },
+    {
+     "id": "hero_ranger_cat_sword",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_ranger_cat_sword.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_ranger_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The RANGER hero (cat look) now wields a straight ARMING SWORD held forward-and-low in the right hand, blade angled down toward the lower right, a plain cross guard and leather grip, a bright MIST edge; the left hand free and clenched. The quiver on the back may stay. Clearly a SWORD, not a bow."
+    },
+    {
+     "id": "hero_caster_male_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_male_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (male look) now wields a short broad DAGGER held reversed (point down) in the right hand close to the hip, a small cross guard, MIST edge; the left hand open with a faint MIST glimmer of magic in the palm. NO staff anywhere. Clearly a robed caster with a DAGGER."
+    },
+    {
+     "id": "hero_caster_female_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_female_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (female look) now wields a short broad DAGGER held reversed (point down) in the right hand close to the hip, a small cross guard, MIST edge; the left hand open with a faint MIST glimmer of magic in the palm. NO staff anywhere. Clearly a robed caster with a DAGGER."
+    },
+    {
+     "id": "hero_caster_cat_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_cat_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (cat look) now wields a short broad DAGGER held reversed (point down) in the right hand close to the hip, a small cross guard, MIST edge; the left hand open with a faint MIST glimmer of magic in the palm. NO staff anywhere. Clearly a robed caster with a DAGGER."
+    }
+   ]
+  },
+  "weapons_b": {
+   "prompt": "art/prompts/cut267_weapons_b.txt",
+   "out": "art/staging/cut267/weapons",
+   "jobs": [
+    {
+     "id": "hero_caster_male_bow",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_male_bow.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (male look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW."
+    },
+    {
+     "id": "hero_caster_female_bow",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_female_bow.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (female look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW."
+    },
+    {
+     "id": "hero_caster_cat_bow",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_cat_bow.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (cat look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW."
+    },
+    {
+     "id": "hero_gunner_male_short_gun",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_male_short_gun.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (male look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun."
+    },
+    {
+     "id": "hero_gunner_female_short_gun",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_female_short_gun.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (female look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun."
+    },
+    {
+     "id": "hero_gunner_cat_short_gun",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_cat_short_gun.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (cat look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun."
+    }
+   ]
+  },
+  "weapons_c": {
+   "prompt": "art/prompts/cut267_weapons_c.txt",
+   "out": "art/staging/cut267/weapons",
+   "jobs": [
+    {
+     "id": "hero_fighter_male_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_fighter_male_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_fighter_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The FIGHTER hero (male look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    },
+    {
+     "id": "hero_fighter_female_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_fighter_female_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_fighter_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The FIGHTER hero (female look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    },
+    {
+     "id": "hero_fighter_cat_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_fighter_cat_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_fighter_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The FIGHTER hero (cat look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    },
+    {
+     "id": "hero_rogue_male_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_rogue_male_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_rogue_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The ROGUE hero (male look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    },
+    {
+     "id": "hero_rogue_female_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_rogue_female_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_rogue_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The ROGUE hero (female look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    },
+    {
+     "id": "hero_rogue_cat_crownsplitter",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_rogue_cat_crownsplitter.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_rogue_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The ROGUE hero (cat look) now wields CROWNSPLITTER, a LEGENDARY two-handed great AXE held diagonally across the body in BOTH hands, the haft long and dark with GILT bands, the head a huge broad crescent blade shaped like a CROWN split in two (a jagged notched crown silhouette with two pointed tines along the top of the blade), worn GILT-LEAF gold (#a3752a, lit #e3b862) with a single BLOOD gem; far broader and heavier than any sword, the widest shape on the figure. No shield."
+    }
+   ]
+  },
+  "weapons_dagger_v2": {
+   "prompt": "art/prompts/cut267_weapons_dagger_v2.txt",
+   "out": "art/staging/cut267/weapons_v2",
+   "jobs": [
+    {
+     "id": "hero_caster_male_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_male_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (male look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure."
+    },
+    {
+     "id": "hero_caster_female_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_female_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (female look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure."
+    },
+    {
+     "id": "hero_caster_cat_dagger",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_cat_dagger.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png",
+     "shown": "48 px tall in the dungeon",
+     "brief": "EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (cat look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure."
+    }
+   ]
+  },
+  "walk_a": {
+   "prompt": "art/prompts/cut267_walk_a.txt",
+   "out": "art/staging/cut267/walk_alts",
+   "jobs": [
+    {
+     "id": "walk_fighter_female",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_fighter_female.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_fighter.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_fighter_female.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_fighter.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_fighter_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_fighter_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_fighter_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_fighter.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_fighter_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_fighter.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_fighter_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_rogue_male",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_rogue_male.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_rogue.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_rogue_male.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_rogue.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_rogue_male.png: copy that hero's face, hair, a young man with SHORT dark hair and a broad square frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_rogue_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_rogue_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_rogue.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_rogue_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_rogue.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_rogue_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_ranger_male",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_ranger_male.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_ranger.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_ranger_male.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_ranger.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_ranger_male.png: copy that hero's face, hair, a young man with SHORT dark hair and a broad square frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_ranger_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_ranger_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_ranger.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_ranger_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_ranger.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_ranger_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_caster_female",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_caster_female.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_caster.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_caster.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_caster_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    }
+   ]
+  },
+  "walk_b": {
+   "prompt": "art/prompts/cut267_walk_b.txt",
+   "out": "art/staging/cut267/walk_alts",
+   "jobs": [
+    {
+     "id": "walk_caster_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_caster_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_caster.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_caster.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_caster_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_gunner_female",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_gunner_female.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_gunner.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_gunner_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_gunner_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_gunner_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_gunner.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_gunner.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_gunner_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_clown_female",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_clown_female.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_female.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_clown.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_clown_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_clown_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_clown_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_clown.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_clown_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_clown.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_clown_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_engineer_female",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_engineer_female.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_female.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_engineer.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_engineer_female.png: copy that hero's face, hair, a young woman with long dark hair (a braid or long locks) and a slimmer frame, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    },
+    {
+     "id": "walk_engineer_cat",
+     "path": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/walk_alts/walk_engineer_cat.png",
+     "size": "1024x1536",
+     "bg": "a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) \u2014 never paper, floor or gradient.",
+     "ref": "/home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/walk_engineer.png (the POSE) and /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_engineer_cat.png (the LOOK)",
+     "shown": "about 40 px tall in the town",
+     "brief": "EDIT the walk sprite walk_engineer.png into the SAME walking pose (walking right mid-stride, the same stride, leg and arm positions, class weapon carried at rest, BLOOD cloak trailing, same canvas 1024x1536, same scale and placement) but worn by the character in hero_engineer_cat.png: copy that hero's face, hair, CAT-EARED: two tall pointed black cat ears on top of the head and a long black cat tail curling behind, and that hero's outfit details. Transparent background; no floor, shadow or text."
+    }
+   ]
+  }
+ }
+}
