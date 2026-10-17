@@ -81,6 +81,9 @@ versioned GitHub release deploys its exact tagged build to
 https://gyng.github.io/idlever/. Prereleases deploy through the same workflow.
 A push alone does not deploy. The github-pages environment permits `v*` tags;
 production deployments serialize. See docs/CUT187_ALPHA_RELEASE.md.
+A separate dev site, https://dev.idlever.awoo.party/ (Cloudflare Worker
+`idlever-dev`), deploys by hand: `tools/deploy-cf.sh [REF]` builds a clean
+committed ref at base `/`. See docs/DEPLOY_CLOUDFLARE.md.
 
 Current brand: Idlever; repository `gyng/idlever`, Pages base `/idlever/`.
 `IDLEVER_BASE` selects the build base. Active crates, generated WASM names,

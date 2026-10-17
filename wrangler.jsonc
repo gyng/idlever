@@ -1,0 +1,15 @@
+// Dev deploy of the built site to https://dev.idlever.awoo.party, mirroring
+// /home/g/p/armee: a Cloudflare Worker with static assets only (no worker code),
+// attached to the awoo.party zone as a custom domain. Build and deploy with
+// tools/deploy-cf.sh, which builds a clean committed ref with IDLEVER_BASE=/ and
+// passes the built web/dist as --assets. GitHub Pages releases are separate.
+// See docs/DEPLOY_CLOUDFLARE.md.
+{
+  "name": "idlever-dev",
+  "compatibility_date": "2026-10-12",
+  // "none": /index.html is served as is (the service worker precaches it), not 307 to /.
+  "assets": { "directory": "./web/dist", "html_handling": "none" },
+  "routes": [{ "pattern": "dev.idlever.awoo.party", "custom_domain": true }],
+  "workers_dev": true,
+  "preview_urls": false,
+}
