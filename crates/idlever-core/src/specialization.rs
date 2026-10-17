@@ -39,7 +39,7 @@ fn home_block(l:&LineageState,away:bool)->Option<String> {
 }
 fn blocked(l:&LineageState,away:bool,style:Style)->Option<String> {
     home_block(l,away).or_else(||if style.parent()!=l.class {Some(format!("choose {}",style.parent().name()))}
-        else if l.class_level()<REQUIRED_LEVEL {Some(format!("reach class level{REQUIRED_LEVEL}"))}
+        else if l.class_level()<REQUIRED_LEVEL {Some(format!("reach class level {REQUIRED_LEVEL}"))}
         else if crate::legacy::deepest(l)<REQUIRED_DEPTH {Some(format!("reach D{REQUIRED_DEPTH}"))}else{None})
 }
 fn default_row(style:Style)->Row {

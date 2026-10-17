@@ -62,7 +62,7 @@ try {
       return a.engine.save();
     });
     assert.ok(await page.locator(".class-style-choose").isDisabled());
-    assert.match(await page.locator(".class-style-panel").textContent(), /reach class level10/);
+    assert.match(await page.locator(".class-style-panel").textContent(), /reach class level 10/);
     await page.keyboard.press("Tab");
     await page.locator(".class-style-title").focus();
     await page.locator("#kw-tip:not([hidden])").waitFor();

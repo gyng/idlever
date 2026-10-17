@@ -96,8 +96,8 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     let mut e=entry("class_tree","Class builds","Class policies add optional branches to your build.","Learn cumulative class policies; changing a build does not erase earned class XP.",if all_owned {"complete"} else if class.nodes.iter().any(|n|n.available) {"ready"} else {"later"});
     if let Some(n)=node {e.requirements=vec![format!("Level{}; historical depth{}; a class point",n.required_level,n.required_depth)];}
     if let Some(pick)=&class.next_pick {
-        if pick.requires_scout {e.requirements.push(format!("Receptionist; class level{}; personal D{}; {} completed delves",pick.required_level,pick.required_depth,pick.required_completed));}
-        else {e.requirements.push(format!("Next pick: class level{}",pick.required_level));}
+        if pick.requires_scout {e.requirements.push(format!("Receptionist; class level {}; personal D{}; {} completed delves",pick.required_level,pick.required_depth,pick.required_completed));}
+        else {e.requirements.push(format!("Next pick: class level {}",pick.required_level));}
     }
     if let Some(blocked)=class.blocked {e.requirements.push(blocked);}
     let eventual=if matches!(l.class,crate::hero::Class::Clown|crate::hero::Class::Engineer){6}else{10};

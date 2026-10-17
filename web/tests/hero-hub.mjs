@@ -431,8 +431,15 @@ try {
     const hub = active().locator("[data-hero-hub]");
     // Cost control: the town canvas behind the opaque folio is hidden for this pass and
     // the viewport grows (to 4000px) so lower content needs few scroll steps.
+    // Cut266: the window's two sticky scroll-edge overlays are hidden too: the top band (a surface fade
+    // with the mist rule that scrolled content passes under) and the Cut259 "more below" foot (a fade
+    // over a ▾). Both have net zero height and pointer-events none, so they cover whatever line sits at
+    // the window's edge at each scroll step without failing the hit test; those lines are measured
+    // clear at the neighbouring step (steps overlap by 10% of a ≥1000px viewport). On a clean build
+    // they read as false low-contrast samples (text colour against the mist rule or the ▾).
     const quiet = await page.addStyleTag({
-      content: "body canvas:not(.sheet-wrap canvas){display:none!important}",
+      content:
+        "body canvas:not(.sheet-wrap canvas){display:none!important}.sheet-wrap:not(.under) > .game-window::before,.sheet-wrap:not(.under) > .game-window::after{visibility:hidden!important}",
     });
     const scrollerHeight = async () =>
       hub.evaluate((root) => {
