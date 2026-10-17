@@ -17,9 +17,13 @@ fn main(){
    // (Cut232 `news`: a report brings one new decision — a package arrival may wait for a quieter report, so the
    // exit's `packages` beats are re-pinned; every other field, the Gold and the ledger stay exact)
    let mut actual=serde_json::to_value(line).unwrap();
-   let strip=|v:&mut Value|{v.as_object_mut().unwrap().remove("packages");};
+   // (Cut261: each run-clear find also names, presentation only, the coins its pickup added (`worth`) and a death's
+   // `fate: bones`; the finds themselves, the Gold and the ledger stay exact)
+   let strip=|v:&mut Value|{let o=v.as_object_mut().unwrap();o.remove("packages");
+    if let Some(Value::Array(fs))=o.get_mut("finds"){for f in fs{if let Some(f)=f.as_object_mut(){f.remove("worth");f.remove("fate");}}}};
    let mut want=expected["exitLine"].clone();strip(&mut want);let mut got=actual.clone();strip(&mut got);
    assert_eq!(got,want);
+   if actual.get("finds")!=expected["exitLine"].get("finds") { println!("NOTE {id}: exit finds gain Cut261 worth/fate"); }
    if actual.get("packages")!=expected["exitLine"].get("packages") { println!("NOTE {id}: exit packages {:?} → {:?}",expected["exitLine"].get("packages"),actual.get("packages")); }
    expected["exitLine"]=std::mem::take(&mut actual);
   }else{

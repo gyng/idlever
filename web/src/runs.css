@@ -1939,3 +1939,49 @@ html body .ctl .cmd .tile.ctl-toggle .tl {
   position: absolute;
   inset: -12px -6px;
 }
+
+/* Owner 2026-10-18: the carried tip's pack list — quiet rows, label left, $ right (the plate lives on <body>) */
+.pack-worth {
+  --gf-gold: #f3d192;
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  font-size: 13px;
+}
+.pack-worth li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 20px;
+}
+.pack-worth .pw-k {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.pack-worth .pw-v {
+  flex: none;
+  color: var(--dim);
+}
+.pack-worth li.gold-find {
+  display: flex;
+}
+.pack-worth li.gold-find .gf-gold {
+  color: #f3d192;
+}
+.pack-worth .pw-dim .pw-k {
+  color: var(--dim);
+}
+.pack-worth .pw-total {
+  margin-top: 3px;
+  padding-top: 3px;
+  border-top: 1px solid var(--dusk);
+}
+.pack-worth .pw-total .pw-v {
+  color: var(--bone);
+}

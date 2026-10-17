@@ -13,7 +13,8 @@ import type { App } from "../app";
 import type { ExitLine, Lineage, ReturnReport } from "../engine/types";
 import { h } from "./dom";
 import { icon } from "./skin";
-import { itemName, itemRow, bestRarity, rarityRank } from "./items";
+import { goldFind, itemName, itemRow, bestRarity, rarityRank } from "./items";
+import { kwHost } from "./tips";
 import { AUTO, autoDismiss } from "./autodismiss";
 import { tile as cmdTile } from "./frame";
 import { audio } from "../audio";
@@ -157,13 +158,32 @@ export function clearCard(app: App, x: ExitLine, o: { onTap?: () => void } = {})
           secured,
         );
   // finds: icons in their rims, the rarest named (one name: the eye goes to the best)
-  const row = itemRow(finds, { size: "l", pop: true, max: 6 });
+  // Cut261 (owner 2026-10-18: "players thought items were persistent"): finds the run sold for gold pop in, then fade back as their
+  // `+$N` comes up — the card reads as coins, the items small behind them (none of them goes home; no find named, ≤ 20 words)
+  const sold = kind !== "died" && finds.some((f) => (f.worth ?? 0) > 0 && !f.fate);
+  const row = sold
+    ? kwHost(
+        h(
+          "div",
+          { class: "item-row pop rc-sold" },
+          ...finds.slice(0, 6).map((f, i) => {
+            const el = goldFind(f, { size: "m", name: false, delay: 900 + 160 * i });
+            el.querySelector<HTMLElement>(".item-ico")?.style.setProperty(
+              "--pop-delay",
+              `${380 + 160 * i}ms`,
+            );
+            return el;
+          }),
+        ),
+        "rarity",
+      )
+    : itemRow(finds, { size: "l", pop: true, max: 6 });
   const findsEl = row
     ? h(
         "div",
         { class: "rc-finds", "data-best-rarity": bestRarity(finds) },
         row,
-        best && rarityRank(best.rarity) >= 1
+        !sold && best && rarityRank(best.rarity) >= 1
           ? h("div", { class: "rc-find-name" }, itemName(best))
           : null,
       )

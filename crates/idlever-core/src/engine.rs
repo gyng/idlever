@@ -1161,6 +1161,17 @@ impl Run {
             it.value()
         } else { 0 }
     }
+    /// Cut261 (presentation only): the live pack's line with what the item added to the carry
+    /// at pickup (`claim_item_value`'s raw value, in coins), or why it added none. Reads only.
+    pub fn pack_worth(&self, it: &Item, mut w: InvItem) -> InvItem {
+        if crate::kit::is_kit_id(it.id) { w.fate = Some("kit".into()); return w; }
+        if self.supplies.contains(&it.id) { w.fate = Some("supply".into()); return w; }
+        if self.brought.contains(&it.id) { w.fate = Some("brought".into()); return w; }
+        let units = self.converted_units.iter().filter(|(id, k)| *id == it.id && *k == it.kind).count() as i32;
+        if units == 0 { return w; }
+        w.worth = claimed_coins(it, units);
+        w
+    }
     /// Secure whole coins, retaining only the unprotected fractional remainder.
     pub fn secure_carry(&mut self) -> i32 {
         let coins = self.loot.max(0);
@@ -5024,7 +5035,7 @@ impl Game {
                 remembered: false,
                 modifiers: None,
             },
-            inv: h.inv.iter().map(|i| to_inv(i, &l.facts, &l.flavours)).collect(),
+            inv: h.inv.iter().map(|i| run.pack_worth(i, to_inv(i, &l.facts, &l.flavours))).collect(),
             weapon: h.weapon.as_ref().map(|w| w.kind.clone()),
             armour: h.armour.as_ref().map(|a| a.kind.clone()),
             helm: h.helm.as_ref().map(|a| a.kind.clone()),
@@ -6652,6 +6663,17 @@ impl Game {
     }
 }
 
+/// Cut261 (presentation only): the whole coins an item's pickup put on the carry
+/// (`Run::claim_item_value`'s raw value before any later enchant scroll; `units` of a stack).
+pub fn claimed_coins(it: &Item, units: i32) -> i32 {
+    let raw = match it.cat() {
+        Cat::Gold => it.amount,
+        Cat::Misc => it.def().value * units.max(1),
+        _ => it.def().value + (it.enchant - it.enchanted) * 10,
+    };
+    raw.max(0) / gold_divisor().max(1)
+}
+
 /// Run-clear finds: converted pickups and physical bones, rarest first then dearest,
 /// bounded by `wire::FINDS_SHOWN`. Physical recovery never pays converted value again.
 pub fn exit_finds(found: &[Item], fate: &BTreeMap<(u32, String), &'static str>, facts: &BTreeSet<String>, flavours: &Flavours) -> Vec<InvItem> {
@@ -6659,7 +6681,10 @@ pub fn exit_finds(found: &[Item], fate: &BTreeMap<(u32, String), &'static str>, 
         .iter()
         .filter(|i| matches!(fate.get(&(i.id, i.kind.clone())).copied(), Some("converted" | "bones")))
         .map(|i| {
-            let w = to_inv(i, facts, flavours);
+            let mut w = to_inv(i, facts, flavours);
+            // Cut261: what it became — its coins on the carry, or left in the bones
+            w.worth = claimed_coins(i, i.amount);
+            if fate.get(&(i.id, i.kind.clone())).copied() == Some("bones") { w.fate = Some("bones".into()); }
             (w.rarity, i.value(), w)
         })
         .collect();

@@ -255,6 +255,14 @@ pub struct InvItem {
     /// Run-clear: the item's rarity (`rarity`); absent = common.
     #[serde(default, skip_serializing_if = "Rarity::is_common")]
     pub rarity: Rarity,
+    /// Cut261 (presentation only; the live pack and run-clear finds): the whole coins this item
+    /// added to the carry when it was picked up; absent when it added none.
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub worth: i32,
+    /// Cut261: what it is beside loot — live pack `kit` · `supply` · `brought` (added nothing);
+    /// a death's finds `bones` (left in the pile). Absent: a find converted to gold.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fate: Option<String>,
 }
 
 /// Wire: item on the floor.
@@ -306,7 +314,7 @@ pub fn describe(item: &Item, facts: &BTreeSet<String>, flavours: &Flavours) -> (
 pub fn to_inv(item: &Item, facts: &BTreeSet<String>, flavours: &Flavours) -> InvItem {
     let (known, kind, label) = describe(item, facts, flavours);
     let rarity = rarity(item, known);
-    InvItem { id: item.id, kind, known, label, hint: if known { None } else { item.hint }, free: item.free, found: item.found, enchanted: item.enchanted, rarity }
+    InvItem { id: item.id, kind, known, label, hint: if known { None } else { item.hint }, free: item.free, found: item.found, enchanted: item.enchanted, rarity, worth: 0, fate: None }
 }
 
 #[cfg(test)]

@@ -379,6 +379,8 @@ export type InvItem = {
   found?: boolean; // Retained legacy found-supply provenance on accepted prepared items; current dungeon finds convert to Gold
   enchanted?: number; // The `+N` enchant scrolls added to this physical item
   rarity?: Rarity;
+  worth?: number; // Cut261 (live pack only): the coins it added to the carry at pickup; absent = none
+  fate?: "kit" | "supply" | "brought" | "bones"; // Cut261: live pack — why it added none; a death's finds — left in the bones
 }; // run-clear (core `item::rarity`): read off its kind's depth band and its +N; absent = common
 /** Run-clear (core `item::Rarity`): an item's rarity, rising — common · uncommon · rare · epic · masterwork · legendary. */
 export type Rarity = "common" | "uncommon" | "rare" | "epic" | "masterwork" | "legendary";

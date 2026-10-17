@@ -7,6 +7,7 @@ import type { InvItem, Rarity } from "../engine/types";
 import { h } from "./dom";
 import { hasIcon } from "./skin";
 import { kwHost } from "./tips";
+import { effectsLevel } from "../render/fxpref";
 
 export const RARITIES: Rarity[] = ["common", "uncommon", "rare", "epic", "masterwork", "legendary"];
 export const rarityRank = (r?: Rarity): number => RARITIES.indexOf(r ?? "common");
@@ -137,6 +138,38 @@ export const itemName = (it: ItemLike, text = it.label): HTMLElement =>
     { class: `item-name r-${it.rarity ?? "common"}`, "data-rarity": it.rarity ?? "common" },
     text,
   );
+
+/** Cut261 (owner 2026-10-18: "players thought items were persistent … converted into gold be like a fade/transition between item and
+ *  gold amount"): a find that became gold — `+$N` comes up as its icon (and name) fade back, once; at rest it reads as gold with the
+ *  item small. `html[data-juice="on"]` and no reduced motion play it; otherwise it is at rest at once (items.css). */
+/** The transition's class (`gf-still` when effects are off) for a row that draws its own item and coins (`.gf-item`, `.gf-gold`). */
+export const goldFindClass = (): string =>
+  `gold-find${effectsLevel() === "off" ? " gf-still" : ""}`;
+export function goldFind(
+  it: ItemLike & { worth?: number },
+  o: { size?: "xs" | "s" | "m" | "l"; delay?: number; name?: boolean; n?: number } = {},
+): HTMLElement {
+  const worth = it.worth ?? 0;
+  const label = it.label.replace(/_/g, " ");
+  const el = h(
+    "span",
+    {
+      class: `${goldFindClass()} r-${it.rarity ?? "common"}`,
+      "data-worth": String(worth),
+      title: /* copy:tooltip */ `${label} → $${worth}`,
+    },
+    h("span", { class: "gf-gold num" }, `+$${worth}`),
+    h(
+      "span",
+      { class: "gf-item" },
+      itemIcon(it, { size: o.size ?? "xs" }),
+      o.name === false ? null : itemName(it, label),
+      o.n && o.n > 1 ? h("small", { class: "num" }, ` ×${o.n}`) : null,
+    ),
+  );
+  if (o.delay !== undefined) el.style.setProperty("--gf-delay", `${o.delay}ms`);
+  return el;
+}
 
 /** An item as one chip: icon and tinted name. */
 export const itemChip = (it: ItemLike, text = it.label, cls = ""): HTMLElement =>
