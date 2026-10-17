@@ -53,7 +53,43 @@ values per seed. It is deterministic and native, and joins `gates.mjs --rows` as
 probe also reproduces the metrics Forge 0/44 refusal (`kit::buy` erroring on replayed
 camps, `exhaustive-audit-findings.md` §4 Correction) or rules it out for fresh towns.
 
+## 2b. Diagnosis (2026-10-17, probe on the real engine, 8 seeds)
+
+Full notes: `scratchpad/economy/findings.md`; profiles in `target/econ-probe/out/`.
+
+- A watched (hand) send clears the rest (`engine.rs:4089`), so the 20 min rest binds only auto
+  sends; for an active player the forced wait is **death recovery** (20 min, Cut227) plus
+  stretches with nothing to buy.
+- Median first buys at 1× watch (2× in brackets): Receptionist 0.27 h (0.14), porter 0.43,
+  stance L2–4 0.52, drillmaster 0.78, first Legacy rank 1.18 (0.60), sword/armour +1 1.24,
+  pack +1 1.83, weapon #2 2.39, then Legacy roots 2–3 at **10.1 h** and the first Legacy
+  rank 2 at **20.7 h**. Gaps are 10–35 min in hour one and hours after it, against a 5 min target.
+- Income is flat with depth ($510–810/h); forge steps are quadratic (unit ≈ $200 × mult), so
+  every step past #3 costs a whole absence.
+- Session-1 dead zone 0.3–1.2 h: the forge plot waits for a report with nothing else new (Cut232
+  one decision per report) while the purse holds $150–270 and only the $80 drillmaster sells.
+- Legacy ("Upgrade hero") is the slowest track: about one rank a day after hour one.
+- Marks overflow (28 after session 1, 50–60 by morning): a currency with nothing to buy.
+
 ## 3. Levers (values set from the diagnosis, swept with `tools/sweep.mjs`)
+
+Measured candidates first:
+
+- **Legacy front-load (option 1).** `marks.legacy_root` `[15,40,110,300,…]` →
+  `[8,20,55,382,800,2000,5000,12000]` (ranks 1–4 still total 465 per root). First rank
+  0.39 h, root 2 rank 1 1.53 h, first rank 2 10.25 h. `picked-l-king` median 14.0 (base
+  14.5), earliest day 7 (base 6); `picked-l-purse` 98 %. A steeper A2 brought the King to
+  day 9 and is rejected. Still owed: `tuned-picked`, `each-system`, full `--pacing`.
+- **Forge plot ordering (code).** Let the forge plot outrank stance/drillmaster news when its
+  delves are met, closing the 0.3–1.2 h dead zone.
+- **Flatter forge steps 2–4, same totals (option 2).** `kit.weapon_mult [1,3,6,12,25,44]`,
+  `armour_mult [1,3,6,11,20,35,50]`, `pack_mult [2,4,8,19]`. Modest; untested on dayplayer.
+- **Marks sink.** Marks overflow; give them a cheap repeatable use in the opening, or price
+  early stance levels so they pace with the 5 min cadence.
+- **Rest/recovery ramp.** Applies to auto sends and to death recovery in the first hours.
+- Rejected: `gold.divisor` 4 → 3 (raises IDLE income, buys barely sooner than option 2).
+
+Original candidate list:
 
 - **Rest ramp (core).** `rest.min_ticks` becomes a ladder keyed on completed runs or lineage
   age. New key `rest.early_min_ticks` (e.g. `[1200, 2400, 3600, 6000, 9000]` per run), then
