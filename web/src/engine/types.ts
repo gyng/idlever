@@ -1575,6 +1575,20 @@ export type PersistentHero = {
 };
 export type DepthLandmark = { depth: number; kind: "boss"; id: string; label: string };
 
+/** Cut263 (core `honours::Row`): one honour. An unearned secret's `name` and `goal` are empty. */
+export type HonourRow = {
+  id: string;
+  name: string;
+  goal: string;
+  group: string;
+  secret?: boolean;
+  day?: number; // the lineage day it was earned
+  n?: number; // a counted honour's progress (unearned only)
+  of?: number;
+  new?: boolean; // earned since the camp last showed it
+};
+/** Cut263 (core `honours::Wire`). */
+export type HonoursWire = { earned: number; total: number; rows: HonourRow[] };
 export type Lineage = {
   persistent_hero?: PersistentHero;
   depth_landmarks?: DepthLandmark[];
@@ -1653,6 +1667,7 @@ export type Lineage = {
   town?: Town; // Cut 30 §3 (core): the buildings, the next plot, the bank, the quest board
   tracks?: Track[]; // Cut 30 §4 (core): character · items · scale · town — stage, next stage and trigger. Cut 30.5: superseded by `tree` (its stage nodes); kept until the client moves, then dropped
   tree?: Works; // Cut 30.5 (core): the works tree — workers, the four tracks as branches, the chest, the `next` pill. NB `gold` is the purse (collected); the chest is `tree.chest`
+  honours?: HonoursWire; // Cut263 (core): the honours gallery — every honour in list order, the union over the session's heroes
   systems?: SystemInfo[]; // Cut 29 §2 (core): the curriculum — every system in order, `open` or not, its `trigger` (≤ 3 words), `new` since the camp last looked (`seenSystems()` clears); gate the editor's vocabulary and the camp's tiles by `open`
   tier?: number; // Cut 29 §1 (core): the catalogue's tier now (0–6: T1 the first bank, T2 the Warlord met … T6 the Lurker Queen met)
   oath_slots?: number;
@@ -2122,6 +2137,7 @@ export interface Engine {
   drawOath?(): Lineage; // Cut 29 §1: ◆2 — a fresh standing oath (`Lineage.oath_draw`)
   forswearOathId?(id: string): Lineage; // Cut 29 §1: forswear the sworn oath `id` (either slot; half back)
   commission?(): Lineage; // Cut 29 §5: the next work, for gold (`Lineage.commission`)
+  seenHonours?(): Lineage; // Cut263: the camp showed the new honours (clears `honours.rows[].new`)
   seenSystems?(): Lineage; // Cut 29 §2: the camp showed the newly opened systems (clears `systems[].new`)
   /** Cut 29 §1 (core; E1): at a best depth held 2 days, the one-row edit that passes it — offer it as a patch (`rules` is the whole set with it);
    *  null off a wall or when no edit passes. Was `ReturnReport.wall`: the search is seconds natively, up to minutes in wasm, so it left the

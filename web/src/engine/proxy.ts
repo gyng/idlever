@@ -78,6 +78,7 @@ const METHODS: (keyof Engine)[] = [
   "forswearOathId",
   "commission", // Cut 29 §1/§5: optional likewise (no draw / second-slot forswear / commission without them)
   "seenSystems", // Cut 29 §2: optional likewise (the glint then repeats until an absence)
+  "seenHonours", // Cut263: optional likewise (the honours toast then repeats)
   "setOrders", // Cut 29 §4: optional likewise (the standing-orders panel falls back to each order's own call)
   "equipPackage",
   "unequipPackage",

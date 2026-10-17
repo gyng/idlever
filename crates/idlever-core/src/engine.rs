@@ -1845,6 +1845,9 @@ pub struct LineageState {
     /// Cut 118: boss tokens, trials, finds, sinks, swift floors, feats, the hero's wish (`feats::Feats`).
     #[serde(default, skip_serializing_if = "crate::feats::Feats::is_empty")]
     pub feats: crate::feats::Feats,
+    /// Cut263: honours (`honours::Honours`) — an observer's record; nothing a run, sim or bot reads.
+    #[serde(default, skip_serializing_if = "crate::honours::Honours::is_default")]
+    pub honours: crate::honours::Honours,
 }
 
 /// Cut 29 §1: a day of the lineage's clock.
@@ -2126,6 +2129,7 @@ impl LineageState {
             absences: 0,
             in_absence: false,
             feats: Default::default(),
+            honours: crate::honours::Honours::current(),
         };
         // Cut 8B §3: `tame` is owned from the start and the kennel's leash is on the shelf (its
         // fact with it), so the first stray is a companion in the first hour.
@@ -2383,7 +2387,7 @@ impl LineageState {
         self.rules().rows.iter().map(|r| self.row_stats.iter().find(|(x, _)| x.conds == r.conds && x.verb == r.verb).map(|(_, t)| crate::turn::row_stat(r, t))).collect()
     }
     pub fn to_wire(&self) -> Lineage {
-        Lineage { persistent_hero:Some(crate::persistent::wire(self,false)), depth_landmarks:Vec::new(), class_tree: Some(crate::class_tree::offers(self,false)), feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None,  hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::persistent::name(self); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
+        Lineage { honours: Some(crate::honours::wire([self])), persistent_hero:Some(crate::persistent::wire(self,false)), depth_landmarks:Vec::new(), class_tree: Some(crate::class_tree::offers(self,false)), feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None,  hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::persistent::name(self); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
             journal: Some(crate::journal::wire(self,false)),
             seed: self.seed,
             heir: self.heir,
@@ -3751,6 +3755,7 @@ impl Game {
         if !self.sim && !self.lineage.pkg.literal {
             crate::packages::absorb(&mut self.lineage, &set, true);
             crate::packages::recompile(&mut self.lineage);
+            crate::honours::sweep(&mut self.lineage, 0);
             return Ok(());
         }
         self.lineage.sets[i] = set;
@@ -3811,6 +3816,9 @@ impl Game {
             return Err("unknown look".into());
         }
         self.lineage.look = Some(look.into());
+        if !self.sim {
+            crate::honours::on_act(&mut self.lineage, "look");
+        }
         Ok(())
     }
 
@@ -6233,6 +6241,8 @@ impl Game {
             let opened = if self.offline { crate::systems::update_news(&mut self.lineage, false, &mut news) } else { crate::systems::update_report_end(&mut self.lineage, false, &mut news) };
             self.news_left = news;
             self.batch.systems_opened.extend(opened);
+            // Cut263: honours read the settled run last (an observer: nothing above reads them)
+            crate::honours::on_run_end(self, &run, tier);
         }
         Some(outcome)
     }

@@ -360,7 +360,7 @@ export function renderBar(
           class: "gear stud",
           "aria-label": homeMenu ? /* copy:label */ "Menu" : "settings",
           "data-home-menu": homeMenu ? "" : undefined,
-          title: homeMenu ? /* copy:tooltip */ "Journal · Settings" : undefined,
+          title: homeMenu ? /* copy:tooltip */ "Journal · Honours · Settings" : undefined,
           onclick: (e: Event) =>
             homeMenu ? opts.homeMenu?.(e.currentTarget as HTMLElement) : openSettings(app),
         },

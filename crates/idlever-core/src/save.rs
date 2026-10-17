@@ -63,5 +63,8 @@ pub fn load(text: &str) -> Result<Game, String> {
     if g.run.is_none() && g.offline_absence.is_none() {
         crate::packages::recompile(&mut g.lineage);
     }
+    // Cut263: an old save earns its state-derived honours silently; a later list's retired ids drop
+    crate::honours::tidy(&mut g.lineage.honours);
+    crate::honours::migrate(&mut g.lineage);
     Ok(g)
 }

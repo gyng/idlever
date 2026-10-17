@@ -104,6 +104,7 @@
 // ticks after the last of those stops holding. Entry and exit are released at the viewer's clock (the engine runs ahead),
 // so the cut lands when the foes are on screen. The fight frame runs at 1× whatever the mode; the map frame keeps the
 // cadence above. `data-frame="map|fight"` on the element for tooling.
+import { settleHonours } from "./honours";
 import { namedCounters } from "./counter-name";
 import { enemyHost } from "./enemy-tips";
 import { unitLabel } from "./unit-icon";
@@ -5075,6 +5076,7 @@ export function renderWatch(app: App): Mounted {
         /* the glint repeats */
       }
     } // Cut 29 §2
+    await settleHonours(app); // Cut263
     try {
       s = await app.engine.send();
     } catch (e) {

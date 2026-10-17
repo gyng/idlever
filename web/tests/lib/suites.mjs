@@ -53,7 +53,7 @@ export const PARTS = Object.freeze({
   clarity: ["core,watch", "hold", "card", "paint", "deep"].map((part) => `clarity:${part}`),
 });
 export const SMOKE_AREAS = Object.freeze({
-  "boot, menu and saves": ["game-menu", "debug-export", "glossary", "menu-materials"],
+  "boot, menu and saves": ["game-menu", "debug-export", "glossary", "menu-materials", "honours"],
   "town and automation": ["first-plot", "town-save", "worker-purchases", "worker-first-act"],
   "multiple heroes": ["bloodline-founding", "bloodline-training"],
   "packages, pen and forecasts": [

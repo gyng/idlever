@@ -1,0 +1,82 @@
+/* Cut263: the honours gallery (Menu → Honours) and its toast. Quiet: lit rows, dimmed rows, one count. */
+.honours-panel {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  max-inline-size: 560px;
+}
+.honours-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+.honours-count {
+  font: 600 1rem/1 var(--num, var(--sans));
+  color: var(--dim);
+}
+.honours-group h3 {
+  margin: 0 0 4px;
+  font: 600 0.875rem/1.2 var(--sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.honours-group ul {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.honour {
+  display: grid;
+  grid-template-columns: 1.25em minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+.honour.earned {
+  opacity: 1;
+}
+.honour-mark {
+  text-align: center;
+  color: var(--dim);
+}
+.honour.earned .honour-mark {
+  color: var(--ink-gold, #5e4510);
+}
+.honour-text {
+  display: grid;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.honour-name {
+  font-weight: 600;
+}
+.honour-goal {
+  font-size: 0.875rem;
+  color: var(--dim);
+}
+.honour-n {
+  font: 0.875rem/1.2 var(--num, var(--sans));
+  color: var(--dim);
+  white-space: nowrap;
+}
+.honour.fresh {
+  background: rgba(184, 148, 72, 0.18);
+}
+.honour.fresh .honour-name::after {
+  content: " •";
+  color: var(--ink-gold, #5e4510);
+}
+.home-menu-count {
+  font: 0.875rem/1 var(--num, var(--sans));
+  opacity: 0.75;
+}
+.toast.honour-toast {
+  border-color: var(--gilt, #b89448);
+}
