@@ -124,6 +124,11 @@ pub struct RunMarks {
     /// `packages::build_mask` of the send's set.
     #[serde(default)]
     pub builds: u8,
+    /// The tactics worn, and whether a temperament was.
+    #[serde(default)]
+    pub tactics: u32,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub temper: bool,
     /// Companions that walked down with the heir.
     #[serde(default)]
     pub party: u32,
@@ -153,6 +158,8 @@ pub fn at_send(run: &mut Run, l: &LineageState) {
         custom: !l.pkg.literal && l.pkg.stance == crate::packages::CUSTOM,
         exit_rows: rules.rows.iter().any(|r| matches!(r.verb.v.as_str(), "bank" | "return")),
         builds: crate::packages::build_mask(rules),
+        tactics: if l.pkg.literal { 0 } else { l.pkg.tactics.len() as u32 },
+        temper: !l.pkg.literal && l.pkg.temperament.is_some(),
         party,
         met: l.pkg.meets.keys().cloned().collect(),
         kills: Vec::new(),
@@ -221,7 +228,7 @@ const BAND: [&str; 6] = ["goblin_warlord", "bloat_mother", "lich", "foundry_mast
 /// The ids Cut269 added (G1: ≥ 25 new).
 pub const NEW_IN_V2: [&str; 30] = [
     "m_fighter", "m_rogue", "m_ranger", "m_caster", "m_gunner", "m_clown", "m_engineer", "m_every",
-    "c_dry", "c_empty", "c_lone", "c_bare", "c_walk", "c_noexit", "c_first", "c_flawless", "c_three", "c_desc3", "c_vows",
+    "c_dry", "c_empty", "c_lone", "c_bare", "c_one", "c_noexit", "c_first", "c_flawless", "c_three", "c_desc3", "c_vows",
     "b_seven", "b_kennel", "b_stance", "b_route",
     "x_thread", "x_wind", "x_dog", "x_fire",
     "o_gas", "o_turncoat", "o_pratfall",
@@ -344,7 +351,7 @@ pub const DEFS: &[Def] = &[
     entry!("c_empty", "Empty Pockets", "slay the Lich, nothing packed", "challenges", |s| kill_of(s, BAND[2], |r, _| sent(r) && packed_nothing(r))),
     entry!("c_lone", "Lone Wolf", "Foundry Master, no companion", "challenges", |s| kill_of(s, BAND[3], |r, k| sent(r) && r.honours.party == 0 && r.tamed.is_empty() && k.allies == 0)),
     entry!("c_bare", "Bare Steel", "Foundry Master, forge unbought", "challenges", |s| forge_unbought(s.l) && kill_of(s, BAND[3], |_, _| true)),
-    entry!("c_walk", "Long Walk", "D1 to D28, one run", "challenges", |s| run_of(s).is_some_and(|r| r.start <= 1 && r.max_depth >= 28)),
+    entry!("c_one", "One Trick", "Lich with one tactic only", "challenges", |s| kill_of(s, BAND[2], |r, _| sent(r) && r.honours.tactics == 1 && !r.honours.temper)),
     entry!("c_noexit", "No Way Back", "new record, no exit rows", "challenges", |s| run_of(s).is_some_and(|r| sent(r) && !r.honours.exit_rows && r.max_depth >= 18 && new_record(r))),
     entry!("c_first", "First Sight", "slay the Queen, first meeting", "challenges", |s| kill_of(s, BAND[4], |r, _| sent(r) && !r.honours.met.iter().any(|m| m == BAND[4]))),
     entry!("c_flawless", "Flawless", "Queen or King, untouched", "challenges", |s| kill(s, |_, k| BAND[4..].contains(&k.kind.as_str()) && k.untouched)),

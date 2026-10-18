@@ -7730,7 +7730,7 @@ const HONOURS263: [string, string, string, string, boolean?][] = [
   ["c_empty", "Empty Pockets", "slay the Lich, nothing packed", "challenges"],
   ["c_lone", "Lone Wolf", "Foundry Master, no companion", "challenges"],
   ["c_bare", "Bare Steel", "Foundry Master, forge unbought", "challenges"],
-  ["c_walk", "Long Walk", "D1 to D28, one run", "challenges"],
+  ["c_one", "One Trick", "Lich with one tactic only", "challenges"],
   ["c_noexit", "No Way Back", "new record, no exit rows", "challenges"],
   ["c_first", "First Sight", "slay the Queen, first meeting", "challenges"],
   ["c_flawless", "Flawless", "Queen or King, untouched", "challenges"],

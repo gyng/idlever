@@ -282,9 +282,10 @@ fn every_new_check_has_a_case() {
         l.kit.clear();
         r.honours.kills.push(boss("foundry_master", "hero"));
     });
-    case("c_walk", &|r, _| {
-        r.start = 1;
-        r.max_depth = 28;
+    case("c_one", &|r, _| {
+        r.honours.tactics = 1;
+        r.honours.temper = false;
+        r.honours.kills.push(boss("lich", "hero"));
     });
     case("c_noexit", &|r, _| {
         r.honours.exit_rows = false;
@@ -370,9 +371,14 @@ fn near_misses_earn_nothing() {
         r.honours.kills.push(boss("lich", "hero"));
     }, "c_first");
     none(&|r, _| {
-        r.start = 1;
-        r.max_depth = 27;
-    }, "c_walk");
+        r.honours.tactics = 1;
+        r.honours.temper = true;
+        r.honours.kills.push(boss("lich", "hero"));
+    }, "c_one");
+    none(&|r, _| {
+        r.honours.tactics = 2;
+        r.honours.kills.push(boss("lich", "hero"));
+    }, "c_one");
     none(&|r, _| {
         r.hero.class = Class::Ranger;
         r.honours.kills.push(boss("lich", "ranged"));
@@ -386,10 +392,6 @@ fn near_misses_earn_nothing() {
         r.best_at_send = Some(20);
         r.max_depth = 20;
     }, "c_noexit");
-    none(&|r, _| {
-        r.start = 9;
-        r.max_depth = 30;
-    }, "c_walk");
     none(&|r, _| {
         r.honours.party = 0;
         r.tamed.clear();
@@ -416,7 +418,8 @@ fn achievements_pay_nothing() {
     run.honours.custom = true;
     run.honours.exit_rows = false;
     run.honours.met.clear();
-    run.start = 1;
+    run.honours.tactics = 1;
+    run.honours.temper = false;
     run.max_depth = 30;
     run.best_at_send = Some(20);
     for by in ["sentry", "pet", "fire", "gas", "ally", "counter"] {

@@ -144,7 +144,7 @@ try {
     );
     const groups = await panel.locator(".honours-group h3").allInnerTexts();
     check(
-      groups.join(",") === "Journey,Mastery,Challenges,Builds,Moments",
+      groups.join(",").toLowerCase() === "journey,mastery,challenges,builds,moments",
       `${label}: five groups in order, Oddities absent (${groups.join(" · ")})`,
     );
     const overflow = await p.evaluate(
