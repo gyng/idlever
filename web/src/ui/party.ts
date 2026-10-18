@@ -192,6 +192,7 @@ export function renderParty(
         {
           class: "grip game-control",
           "aria-label": `${c.name} rules`,
+          title: /* copy:tooltip */ "Rules",
           onclick: () => openRules(app, c, scope.current),
         },
         "≡",
@@ -199,7 +200,12 @@ export function renderParty(
       inParty && !breeding
         ? h(
             "button",
-            { class: "x drop-pet game-control", "aria-label": "×", onclick: dismiss },
+            {
+              class: "x drop-pet game-control",
+              "aria-label": /* copy:tooltip */ `${c.name} leaves party`,
+              title: /* copy:tooltip */ "Leave party",
+              onclick: dismiss,
+            },
             "×",
           )
         : "",

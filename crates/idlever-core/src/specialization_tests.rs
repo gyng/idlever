@@ -229,7 +229,7 @@ fn wire_choices_match_refusals_parent_xp_history_and_actual_default_rows() {
     }
     assert_eq!(g.save(),base);
     g.lineage.classes.get_mut("fighter").unwrap().level=9;
-    let o=offers(&g.lineage,false).offers.remove(0);assert_eq!(o.required_level,10);assert_eq!(o.blocked.as_deref(),Some("reach class level10"));
+    let o=offers(&g.lineage,false).offers.remove(0);assert_eq!(o.required_level,10);assert_eq!(o.blocked.as_deref(),Some("reach class level 10"));
     g.lineage.classes.get_mut("fighter").unwrap().level=10;g.lineage.hero_legacy.last_mut().unwrap().best_depth=22;
     let o=offers(&g.lineage,false).offers.remove(0);assert_eq!(o.required_depth,23);assert_eq!(o.blocked.as_deref(),Some("reach D23"));
     g.lineage.hero_legacy.last_mut().unwrap().best_depth=23;g.set_specialization("sentinel").unwrap();g.send();g.step(1);

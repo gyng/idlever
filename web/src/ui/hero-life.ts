@@ -24,7 +24,7 @@ const actorKey = (hero: PersistentHero): string => JSON.stringify([hero.id, hero
 export function heroLifePanel(
   app: App,
   mode: HeroLifeMode = "hero",
-  options: { onCancel?: () => void } = {},
+  options: { onCancel?: () => void; embedded?: boolean } = {},
 ) {
   const engine = app.engine;
   const nameId = `hero-name-${++lifePanels}`;
@@ -250,76 +250,87 @@ export function heroLifePanel(
         ),
       );
       const points = L.bloodline?.points ?? 0;
-      children.push(
-        h(
-          "section",
-          { class: "hero-life-section" },
-          h("h3", {}, /* copy:label */ "Lasting attributes"),
-          h("b", { class: "num", "data-life-wallet": points }, /* copy:label */ `Legacy ${points}`),
+      // Cut266: inside the Hero Hub the Legacy tree below already offers these ranks, and the tabs are the routes.
+      if (!options.embedded)
+        children.push(
           h(
-            "div",
-            { class: "hero-life-attributes" },
-            ...hero.attributes.map((attribute) => {
-              const offer = L.legacy_upgrades?.find((upgrade) => upgrade.id === attribute.id);
-              const nextRun = !!offer?.next_run && !!engine.upgradeHeroNext;
-              const can = !!offer?.affordable && !!engine.upgradeHero;
-              return h(
-                "article",
-                { class: "hero-life-section", "data-life-attribute": attribute.id },
-                h("h3", {}, attribute.name),
-                h("span", { class: "num" }, /* copy:label */ `Rank ${attribute.rank}`),
-                h(
-                  "span",
-                  { class: "num" },
-                  `${BONUS[attribute.id] ?? attribute.name} +${attribute.value}`,
-                ),
-                attribute.next_price === null
-                  ? h("small", {}, /* copy:label */ "Complete")
-                  : h("span", { class: "num" }, `${attribute.next_price} Legacy`),
-                h(
-                  "button",
-                  {
-                    class: "btn",
-                    disabled: (!can && !nextRun) || busy,
-                    "data-life-focus": `attribute:${attribute.id}`,
-                    onclick: () => {
-                      if (!same(key)) return;
-                      const actual = app.lineage.legacy_upgrades?.find(
-                        (upgrade) => upgrade.id === attribute.id,
-                      );
-                      if (!actual || actual.price !== offer?.price || actual.rank !== offer?.rank) {
-                        feedback.textContent = /* copy:callout */ "Offer changed";
-                        refresh(true);
-                        return;
-                      }
-                      if (actual.next_run && engine.upgradeHeroNext)
-                        void mutate(
-                          key,
-                          () => engine.upgradeHeroNext!(attribute.id),
-                          /* copy:callout */ "Next delve",
-                          `attribute:${attribute.id}`,
+            "section",
+            { class: "hero-life-section" },
+            h("h3", {}, /* copy:label */ "Lasting attributes"),
+            h(
+              "b",
+              { class: "num", "data-life-wallet": points },
+              /* copy:label */ `Legacy ${points}`,
+            ),
+            h(
+              "div",
+              { class: "hero-life-attributes" },
+              ...hero.attributes.map((attribute) => {
+                const offer = L.legacy_upgrades?.find((upgrade) => upgrade.id === attribute.id);
+                const nextRun = !!offer?.next_run && !!engine.upgradeHeroNext;
+                const can = !!offer?.affordable && !!engine.upgradeHero;
+                return h(
+                  "article",
+                  { class: "hero-life-section", "data-life-attribute": attribute.id },
+                  h("h3", {}, attribute.name),
+                  h("span", { class: "num" }, /* copy:label */ `Rank ${attribute.rank}`),
+                  h(
+                    "span",
+                    { class: "num" },
+                    `${BONUS[attribute.id] ?? attribute.name} +${attribute.value}`,
+                  ),
+                  attribute.next_price === null
+                    ? h("small", {}, /* copy:label */ "Complete")
+                    : h("span", { class: "num" }, `${attribute.next_price} Legacy`),
+                  h(
+                    "button",
+                    {
+                      class: "btn",
+                      disabled: (!can && !nextRun) || busy,
+                      "data-life-focus": `attribute:${attribute.id}`,
+                      onclick: () => {
+                        if (!same(key)) return;
+                        const actual = app.lineage.legacy_upgrades?.find(
+                          (upgrade) => upgrade.id === attribute.id,
                         );
-                      else if (actual.affordable && engine.upgradeHero)
-                        void mutate(
-                          key,
-                          () => engine.upgradeHero!(attribute.id),
-                          /* copy:callout */ "Attribute trained",
-                          `attribute:${attribute.id}`,
-                        );
-                      else {
-                        feedback.textContent = actual.blocked ?? /* copy:callout */ "Offer refused";
-                        refresh(true);
-                      }
+                        if (
+                          !actual ||
+                          actual.price !== offer?.price ||
+                          actual.rank !== offer?.rank
+                        ) {
+                          feedback.textContent = /* copy:callout */ "Offer changed";
+                          refresh(true);
+                          return;
+                        }
+                        if (actual.next_run && engine.upgradeHeroNext)
+                          void mutate(
+                            key,
+                            () => engine.upgradeHeroNext!(attribute.id),
+                            /* copy:callout */ "Next delve",
+                            `attribute:${attribute.id}`,
+                          );
+                        else if (actual.affordable && engine.upgradeHero)
+                          void mutate(
+                            key,
+                            () => engine.upgradeHero!(attribute.id),
+                            /* copy:callout */ "Attribute trained",
+                            `attribute:${attribute.id}`,
+                          );
+                        else {
+                          feedback.textContent =
+                            actual.blocked ?? /* copy:callout */ "Offer refused";
+                          refresh(true);
+                        }
+                      },
                     },
-                  },
-                  nextRun ? /* copy:button */ "Next delve" : /* copy:button */ "Train",
-                ),
-                offer?.blocked ? h("small", {}, offer.blocked) : null,
-              );
-            }),
+                    nextRun ? /* copy:button */ "Next delve" : /* copy:button */ "Train",
+                  ),
+                  offer?.blocked ? h("small", {}, offer.blocked) : null,
+                );
+              }),
+            ),
           ),
-        ),
-      );
+        );
       if (hero.progression)
         children.push(
           lastingChoices(hero.progression, {
@@ -359,27 +370,28 @@ export function heroLifePanel(
               : undefined,
           }),
         );
-      children.push(
-        h(
-          "div",
-          { class: "hero-life-actions" },
-          ...(["loadouts", "class", "legacy"] as const).map((tab) =>
-            h(
-              "button",
-              {
-                class: "btn",
-                "data-life-focus": `route:${tab}`,
-                onclick: () => void route(tab, key),
-              },
-              tab === "loadouts"
-                ? /* copy:button */ "Loadouts"
-                : tab === "class"
-                  ? /* copy:button */ "Class"
-                  : /* copy:button */ "Legacy",
+      if (!options.embedded)
+        children.push(
+          h(
+            "div",
+            { class: "hero-life-actions" },
+            ...(["loadouts", "class", "legacy"] as const).map((tab) =>
+              h(
+                "button",
+                {
+                  class: "btn",
+                  "data-life-focus": `route:${tab}`,
+                  onclick: () => void route(tab, key),
+                },
+                tab === "loadouts"
+                  ? /* copy:button */ "Loadouts"
+                  : tab === "class"
+                    ? /* copy:button */ "Class"
+                    : /* copy:button */ "Legacy",
+              ),
             ),
           ),
-        ),
-      );
+        );
     }
     const preview = reviewed?.owner === key ? reviewed.preview : null;
     const unchanged = !!preview && preview.token === hero.rebirth.token;

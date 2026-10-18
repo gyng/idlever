@@ -422,7 +422,9 @@ html.skin-button
   .class-tree-panel
   button.chip:is(.class-path-choose, .class-path-remove),
 html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style-choose {
-  padding-block: 8px;
+  /* Cut266: 12px, not 8px — at 200% text the first and last line boxes touched the frame's inner gilt
+     band (contrast 1.2–3.3 against it at 320 CSS px) */
+  padding-block: 12px;
 }
 @container hero-folio (max-width:280px) {
   .hero-hub-doll {
@@ -502,7 +504,88 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
     width: min(100%, 140px);
   }
 }
-/* a tapped tab scrolls the tabs to the window's top (hero-hub.ts revealContent): clear of the window's top band */
+
+/* Cut266 review (2026-10-18, 402×681: the hub ran in a 282px column beside a 72px empty strip under the
+   close stud). The hub is a grid, so it sat beside the floated stud for its whole height; the stud's
+   margin box now has no height, the hub takes the window's full width, and only the name line keeps
+   clear of the stud. */
+html body .game-window[data-material] > .close-stud:has(+ .hero-hub),
+html body .game-window[data-material]:has(> .hero-hub) > .close-stud {
+  margin-bottom: -40px;
+}
+.hero-hub-identity > h2 {
+  padding-inline-end: 44px;
+}
+/* a tapped tab scrolls the tabs up: far enough below the window top that the sticky stud stays clear of them */
 .hero-hub .hero-hub-tabs {
-  scroll-margin-top: 16px;
+  scroll-margin-top: 56px;
+}
+/* One window size for every section: the Attributes tree no longer widens the window (and the others
+   no longer shrink it back), and a short section no longer re-centres the window under the tabs. */
+html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
+  height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - 32px);
+}
+@media (min-width: 900px) {
+  html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
+    width: min(940px, 100%);
+    max-width: 940px;
+  }
+}
+/* Cut266 review: the Hub's folds are flex rows, which drops the browser's disclosure marker, so `Gear
+   effects`, `Current gear` and the slot folds read as headings. The game's quiet caret marks them. */
+.hero-hub details > summary {
+  cursor: pointer;
+}
+.hero-hub details > summary::-webkit-details-marker {
+  display: none;
+}
+.hero-hub details > summary::before {
+  content: "▸";
+  margin-inline-end: 6px;
+  color: var(--acc, #dbba7c);
+}
+.hero-hub details[open] > summary::before {
+  content: "▾";
+}
+/* the prepare chips' `Free` / requirement sat flush against the item name (`leashFree`) */
+.hero-hub .bloodline-prepare small {
+  margin-inline-start: 0.35em;
+}
+/* the header's class word matches the Skills title (the wire word is lower case) */
+.hero-hub-identity > span {
+  text-transform: capitalize;
+}
+/* the Legacy wallet over the Attributes tree: count, the next rank it works toward, its share filled */
+.hero-hub-wallet {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+.hero-hub-wallet small {
+  color: var(--ui-muted, #a4bcd6);
+}
+.hero-hub-wallet .legacy-bar {
+  flex: 1 0 100%;
+}
+/* the Actual pets card: one pet per tight block (default h4 margins left a blank line around each name) */
+.hero-hub-actual-build h4 {
+  margin: 0;
+}
+.hero-hub-actual-build article + article {
+  padding-top: 0.5rem;
+  border-top: 1px solid #b8944833;
+}
+/* the kit name field matches the hero name field (the browser's grey box read as disabled) */
+.hero-hub input[type="text"] {
+  box-sizing: border-box;
+  padding: var(--ui-space-2, 0.5rem);
+  color: var(--ui-text, #eadfc5);
+  background: var(--ui-inset, #171720);
+  border: 2px solid var(--ui-edge, #b89448);
+  font: inherit;
+}
+.hero-hub input::placeholder {
+  color: var(--ui-muted, #a4bcd6);
+  opacity: 1;
 }

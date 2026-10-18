@@ -5,7 +5,7 @@ import { renderBloodlineLoadouts } from "./bloodline-loadouts";
 import { renderClassTree, renderClassTreeMilestone } from "./class-tree";
 import { renderClassStyles, classStyleName } from "./class-styles";
 import { heroLifePanel } from "./hero-life";
-import { renderLegacy } from "./legacy";
+import { renderLegacy, legacyBar, legacyNext, legacyNextText } from "./legacy";
 import { renderParty } from "./party";
 import { packagesStrip, openPackages } from "./packages";
 import { temperamentPanel } from "./hero-progression";
@@ -357,6 +357,13 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
           {
             class: "btn",
             disabled: !hooks.changeClass || L.town?.home === false,
+            // Cut266: a disabled control says why (the Attributes name field's words)
+            title:
+              L.town?.home === false
+                ? L.persistent_hero?.state === "away"
+                  ? /* copy:tooltip */ "Hero away"
+                  : /* copy:tooltip */ "Build a house"
+                : undefined,
             onclick: (e: Event) => {
               if (host.isConnected && current())
                 hooks.changeClass?.(e.currentTarget as HTMLElement);
@@ -446,7 +453,12 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
               { "data-hub-actual-pet": pet.id },
               h("h4", {}, pet.name),
               h("p", {}, `${pet.kind} L${pet.level}`),
-              h("small", { "data-hub-pet-hp": "1" }, `${pet.hp} / ${pet.max_hp}`),
+              h(
+                "small",
+                { class: "num" },
+                /* copy:label */ "HP ",
+                h("span", { "data-hub-pet-hp": "1" }, `${pet.hp} / ${pet.max_hp}`),
+              ),
               pet.tags.length ? h("p", {}, pet.tags.join(" · ")) : null,
               ...pet.rules.rows.map((row, index) =>
                 h("p", { "data-hub-pet-rule": index }, rowLabel(row)),
@@ -465,7 +477,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       if (progression && !progression.leash_available)
         host.append(h("p", { "data-hub-leash-lock": "1" }, progression.leash_blocked));
     } else {
-      const life = heroLifePanel(context);
+      const life = heroLifePanel(context, "hero", { embedded: true });
       const legacy = h("div", { class: "hero-hub-legacy" });
       let legacyFingerprint = "";
       refresh = () => {
@@ -478,7 +490,22 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         ]);
         if (next !== legacyFingerprint) {
           legacyFingerprint = next;
-          replace(legacy, renderLegacy(context, refreshHub));
+          // Cut266: the wallet heads the tree it spends on, with the next rank it works toward.
+          const points = app.lineage.bloodline?.points ?? 0,
+            upcoming =
+              legacyNext(app.lineage) ??
+              cheapestRank(app.lineage.legacy_upgrades ?? [], points, app.lineage);
+          replace(
+            legacy,
+            h(
+              "p",
+              { class: "hero-hub-wallet num", "data-hub-legacy-wallet": points },
+              h("b", {}, /* copy:label */ `Legacy ${points}`),
+              upcoming ? h("small", {}, legacyNextText(upcoming)) : null,
+              upcoming ? legacyBar(upcoming) : null,
+            ),
+            renderLegacy(context, refreshHub),
+          );
         }
       };
       dispose = life.dispose;
@@ -807,4 +834,22 @@ export function openHeroHub(
       },
     },
   );
+}
+
+/** Cut266: the wallet's goal while every rank is still out of reach (legacyNext skips blocked offers): the cheapest open root rank. */
+function cheapestRank(
+  upgrades: NonNullable<App["lineage"]["legacy_upgrades"]>,
+  points: number,
+  L: App["lineage"],
+): { points: number; price: number; label: string; fill: number } | null {
+  const open = upgrades.filter((u) => !u.parent && u.rank < u.cap && u.price > 0);
+  if (!open.length) return null;
+  const u = open.reduce((a, b) => (b.price < a.price ? b : a));
+  const name = L.persistent_hero?.attributes.find((a) => a.id === u.id)?.name ?? u.name ?? u.id;
+  return {
+    points,
+    price: u.price,
+    label: `${name} ${u.rank + 1}`,
+    fill: Math.min(1, points / u.price),
+  };
 }
