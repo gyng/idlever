@@ -190,3 +190,46 @@ option; G8 compares the oracle's chosen fork with the default's.
 ## 9. Not in scope
 
 Active abilities, cooldown taps, a scrub/DVR, chest choices, shrine prayers by hand, and any offline decision.
+
+## 10. Result (2026-10-18, branch `cut270-live`)
+
+Implementation: `crates/idlever-core/src/decide.rs` (moments, caps, `Game::decide` / `set_live_decisions` /
+`pick_cache`, the chest), `Game::step` (hold, detect, chests), `turn::vault_take` (`Run.vault_want`), `Input::Pick`;
+the client in `web/src/ui/decide.ts` + `web/src/decide.css` and `watch.ts`. Evidence: `docs/evidence/cut270/`.
+
+Revisions to the text above, made during the build:
+
+- "The lineage's first two sends" is read from the run id (`run.id > MIN_SENDS`). `LineageState.expeditions` is never
+  incremented.
+- The desktop milestone log sits open in the left column (heroes and rules), where there is room. In the right column
+  it squeezed the run's meters.
+- A held decision does not stop the dead-stretch and walk-home jumps. They land the picture short of the decision's beat
+  and step nothing.
+
+| # | Result |
+|---|---|
+| G1 | **PASS.** `gates.mjs --pacing` 24/24. Every row's value is identical to the cut268 integration's `pacing.txt` (`diff` empty; `docs/evidence/cut270/pacing.txt`). |
+| G2 | **PASS.** 16 seeds × 6 runs: events, lineage and save are identical with decisions on and all auto, against decisions off. 87 decisions were met. |
+| G3 | **PASS.** The replay tests are unchanged and pass. 8 seeds × 5 runs with choices made replay to their tapped hash. |
+| G4 | **PASS.** Repin 879b: Gold, ledger and ExitLine unchanged 4/4; expected values and after-saves unchanged, none regenerated. |
+| G5 | **PASS.** `advance(1 h)`, `run_offline(1 h)` and `bail` with a decision open each equal the auto-resolved save. A held step ticks nothing. |
+| G6 | **PASS.** ≤ 3 a run, one a floor, none before tick 300 or on run ids 1–2 (tests). Oracle sample: 92 % of mid-game watched runs met at least one decision; mean 2.1 a run. |
+| G7 | **PASS.** Best option non-default: cache 55 %, boss 37 % (hurt 2 of 4, too rare to judge). Top option's share: cache 45 %, boss 63 %. |
+| G8 | **PASS.** Oracle against the default over a 2 h horizon: +0.04 best-depth floors and +0.3 % purse a decision. This is an upper bound; forks diverge chaotically. |
+| G9 | **PASS (headed GPU) / deviation (headless).** Headed: auto after 5020, 5002, 4989 and 5005 ms. Headless SwiftShader: 5.3–5.9 s, from main-thread overshoot; the test allows 4.6–5.8 s. Frozen under ⏸: 0 ms drift over 3 s. Keys 1/2 work; taps are 175×44 px at 402×681; labels ≤ 3 words. |
+| G10 | **PASS.** Closed → cracked → open, gone 1.8 s after open (inside the 4 s kill beat). Still under reduced motion. Primitive with no art ids. The reward is Rust's (Crownsplitter +2 · +$11 on a real first Warlord kill). |
+| G11 | **PASS.** Burst: ≤ 6 a minute, ≥ 2.5 s apart except a boss cutting in. Flags ≤ 3 words. |
+| G12 | **PASS.** One entry per descend and the exit entry match the engine's events. At 402×681 the stage and console do not move as the log fills. |
+| G13 | **PASS, with two failures that predate this cut.** `cargo test` (1077 passed, 6 ignored); clippy is clean; `verify.sh --quick` passes but for two `fun-eval.test.mjs` cases that read the sibling worktree `../eval-fun`. Client groups pass: live-decisions, boss-kill-beat, take-control, watch-speed-rate, watch-console, watch-log, depth-rail, ctxloss, fights:break. `fights` and `watch-live-edge`'s "fights" standoff timing also fail with `main`'s `watch.ts` on this machine (load average 60–130). |
+
+Open questions for the owner:
+
+1. **No-drop chests.** A repeat boss kill drops a pattern 1 time in 8 (`legendary::boss_drop`), so most chests open on
+   `no drop`. Options: keep the honest `no drop`; show the chest only when the kill gave something; or give boss kills a
+   real chest reward (a new economy lever, which the gates would need to absorb).
+2. **Mid-bosses.** The engine has no mid-boss tier. Wandering champions (`guest`) drop nothing, so the chest follows
+   band bosses (`def().boss`) only.
+3. **The paused cap.** A paused prompt waits at most 120 s and then auto-picks. The owner asked "player can pause"; the
+   cap keeps a forgotten paused tab from holding the delve. Should it be longer, or none?
+4. **Frequency.** Nearly every mid-game run meets a cache, so most watched runs see 2–3 prompts. If that reads as busy,
+   one lever is a cache prompt only when the preference's pick is not clearly best.

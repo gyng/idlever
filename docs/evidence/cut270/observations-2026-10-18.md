@@ -74,3 +74,16 @@ visible viewport. Files are in `shots/`.
   run and one boss, without a human eye.
 - Many repeat boss kills drop nothing (`boss_drop`'s 1-in-8 repeat). Those chests open on `no drop`, which may read as
   a let-down; see the open question in the contract.
+
+## 4. Routine client subset and gates (load average 40–130 on 32 cores, shared machine)
+
+- `node tools/gates.mjs --pacing`: 24/24 PASS. Each row's value is identical to `docs/evidence/cut268/pacing.txt`
+  (`pacing.txt` here; a `diff` of the tables is empty).
+- `pnpm -s test` (routine, 43 groups, against the worktree's HMR dev server :5461) passed 37/43.
+  - Passed when rerun alone: hero-hub (10640 checks). package-selection and forge-requests passed under the suite's own
+    no-HMR server; the HMR server's stale module state caused their failures.
+  - Known failures that predate this cut (cut268 integration note): worker-first-act, clarity:paint (timing).
+  - watch-live-edge: the "fights" standoff timing (12.4–21.7 s against ≤ 12 s) fails with `main`'s `watch.ts` too
+    (17.8 s). An earlier build made Normal's dead-stretch jump stop while a decision held the engine. That is fixed: a
+    jump lands short of the decision and steps nothing. Normal now passes.
+- `fights` (exhaustive-only) also fails with `main`'s `watch.ts` here ("timeout waiting for fast mode").
