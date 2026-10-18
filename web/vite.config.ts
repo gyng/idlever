@@ -31,7 +31,8 @@ function swPrecache(): Plugin {
       base = c.base;
     },
     generateBundle(_o, bundle) {
-      for (const f of Object.keys(bundle)) if (!f.endsWith(".map")) files.push(`${base}${f}`);
+      for (const f of Object.keys(bundle))
+        if (!f.endsWith(".map") && f !== "meta.json") files.push(`${base}${f}`);
     },
     closeBundle() {
       if (!files.some((f) => f.endsWith(".wasm")))

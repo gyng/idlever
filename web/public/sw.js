@@ -6,6 +6,7 @@ const PRECACHE = __PRECACHE__;
 const CACHE_PREFIX = `idlever-${self.registration.scope}-`;
 const CACHE = `${CACHE_PREFIX}${VERSION}`;
 const INDEX = new URL("index.html", self.registration.scope).href;
+const METADATA = new URL("meta.json", self.registration.scope).pathname;
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
@@ -16,6 +17,8 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET" || !req.url.startsWith(self.registration.scope)) return;
+  // Deployment identity always comes from the network, even if an old cache contains it.
+  if (new URL(req.url).pathname === METADATA) return;
   if (req.mode === "navigate") {
     // network first for the shell so a new deploy is picked up; cached index as offline fallback
     e.respondWith(fetch(req).then((r) => { const copy = r.clone(); caches.open(CACHE).then((c) => c.put(INDEX, copy)); return r; }).catch(() => caches.match(INDEX)));

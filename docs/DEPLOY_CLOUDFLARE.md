@@ -56,3 +56,35 @@ shows the build date.
 First deploy, 2026-10-18 (Worker version `31f9d1a2-d302-4c92-9c99-1cc8ad567d57`):
 commit `ddabdfd7cfbe`, wasm
 `idlever_wasm_bg-bEVCT9Zp.wasm` (sha256 `c6eaee4dcd80d358…`, 5,362,245 bytes).
+
+## Public build metadata
+
+Future deploys publish `https://dev.idlever.awoo.party/meta.json` for the game
+index. `tools/deployment-meta.mjs` stamps the finished artifact once, after the
+build checks and before upload, with `schemaVersion: 1`, an exact UTC deployment
+preparation timestamp (`YYYY-MM-DDTHH:mm:ssZ`), and the full restored/build SHA.
+It never uses a request time, source commit date, or puzzle rotation. Cloudflare
+omits optional `version`; release builds on Pages use their checked release tag.
+A newly prepared rollback gets a fresh timestamp with the restored SHA.
+
+The metadata route has `Content-Type: application/json`,
+`Access-Control-Allow-Origin: *`, and `Cache-Control: no-cache`; existing asset
+and SW headers stay intact. See Cloudflare's
+[static-asset header contract](https://developers.cloudflare.com/workers/static-assets/headers/).
+The file is stamped after the precache list is built. The Vite manifest also
+explicitly excludes it, and the source SW bypasses metadata requests. Artifact
+preparation adds a first fetch listener that bypasses older workers too, so an
+older ref built by the current deploy helper cannot return cached metadata.
+
+The Pages workflow publishes the same JSON at
+`https://gyng.github.io/idlever/meta.json`, using the full checked-out tag SHA
+and the release tag as `version`. A normal local Vite build does not stamp a
+deployment date. Pages owns its HTTP response headers: this workflow does not
+configure a Pages `Cache-Control` override, and Cloudflare's `_headers` rules
+only apply on Cloudflare. A future live release must verify JSON, public CORS,
+and actual Pages cache behavior; Pages `no-cache` is not certified by this cut.
+
+Run `node --test tools/deployment-meta.test.mjs` for artifact identity, headers,
+rollback-worker bypass, base-path, and pipeline checks. These checks also run in
+`tools/verify.sh --quick` and the Pages workflow. No deployment was performed as
+part of implementing metadata; the older live build above predates this file.

@@ -41,6 +41,8 @@ jobs:
         run: |
           pnpm --dir web fmt:check
           pnpm --dir web lint
+      - name: Test deployment metadata
+        run: node --test tools/deployment-meta.test.mjs
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
@@ -62,6 +64,10 @@ jobs:
         run: pnpm --dir web build
         env:
           IDLEVER_BASE: /idlever/
+      - name: Stamp deployment metadata
+        run: node tools/deployment-meta.mjs web/dist "$(git rev-parse HEAD)" /idlever/ "$RELEASE_VERSION"
+        env:
+          RELEASE_VERSION: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: web/dist

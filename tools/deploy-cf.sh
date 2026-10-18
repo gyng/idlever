@@ -35,6 +35,7 @@ grep -q '__VERSION__\|__PRECACHE__' "$dist/sw.js" && { echo "deploy-cf: sw.js pr
 printf '/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/sw.js\n  Cache-Control: no-cache\n' > "$dist/_headers"
 # html_handling "none" (wrangler.jsonc) serves /index.html as is; "/" is rewritten to it (status 200, no redirect).
 printf '/ /index.html 200\n' > "$dist/_redirects"
+node "$repo/tools/deployment-meta.mjs" "$dist" "$sha"
 echo "deploy-cf: built $short, wasm $(sha256sum "$wasm" | cut -c1-16) ($(stat -c %s "$wasm") bytes)"
 if [ "$dry" = 1 ]; then echo "deploy-cf: dry run, dist at $dist (remove: git worktree remove --force $wt)"; exit 0; fi
 cd "$repo"
