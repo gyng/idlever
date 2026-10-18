@@ -3,7 +3,8 @@
 // chest at t50, a cache pick at t80, each run). The prompt opens on its tick with ≤ 3-word options and the default marked; 5 s of
 // wall time auto-picks it; ⏸ freezes the countdown with the prompt open; keys 1–3 and ≥ 44 px taps choose; turning back ends the run
 // as a return. Each decision, the chest and the run's floors and exit land in the milestone log; flags are rate-limited.
-//   node web/tests/live-decisions.mjs [--part=desk,phone,chest,flags]
+// Cut 277: a kill that dropped nothing (`&nodrop=1`) shows no chest and logs none.
+//   node web/tests/live-decisions.mjs [--part=desk,phone,chest,nodrop,flags]
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 
@@ -11,7 +12,9 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
   cwd: new URL("../../", import.meta.url),
   encoding: "utf8",
 }).trim();
-const part = (process.argv.find((a) => a.startsWith("--part=")) ?? "--part=desk,phone,chest,flags")
+const part = (
+  process.argv.find((a) => a.startsWith("--part=")) ?? "--part=desk,phone,chest,nodrop,flags"
+)
   .slice(7)
   .split(",");
 const out = [];
@@ -23,12 +26,12 @@ const check = (ok, what) => {
 const words = (s) => s.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length;
 const b = await launchBrowser();
 
-async function open(viewport, mode = "one", media) {
+async function open(viewport, mode = "one", media, extra = "") {
   const p = await b.newPage({ viewport, hasTouch: viewport.width < 600 });
   const errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   if (media) await p.emulateMedia(media);
-  await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3330&decide=1`);
+  await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3330&decide=1${extra}`);
   await p.waitForFunction(() => window.__idlever?.booted);
   await p.evaluate((m) => {
     const a = window.__idlever;
@@ -280,6 +283,32 @@ try {
       `reduced motion: a still, open chest and its reward (${JSON.stringify(still)})`,
     );
     await r.p.close();
+  }
+  if (part.includes("nodrop")) {
+    // Cut 277 (owner): a boss kill that dropped nothing shows no chest; the run goes on to the next moment
+    const { p, errors } = await open({ width: 1440, height: 900 }, "one", undefined, "&nodrop=1");
+    await p.evaluate(() => {
+      window.__chestSeen = 0;
+      new MutationObserver(() => {
+        if (document.querySelector(".chest-reveal")) window.__chestSeen++;
+      }).observe(document.body, { childList: true, subtree: true });
+    });
+    // the cache prompt (t80) comes after the empty kill's record (t50)
+    await promptOf(p, "cache");
+    await p.waitForTimeout(1500);
+    const r = await p.evaluate(() => ({
+      seen: window.__chestSeen,
+      log: (window.__chestLog ?? []).length,
+      ms: window.__msLog.filter((m) => m.kind === "chest").length,
+      tick: +document.querySelector(".watch").dataset.tick,
+      boss: document.querySelector(".watch").dataset.chest ?? null,
+    }));
+    check(
+      r.seen === 0 && r.log === 0 && r.ms === 0 && r.boss === null && r.tick >= 50,
+      `no drop, no chest (${JSON.stringify(r)})`,
+    );
+    check(!errors.length, `no page errors (${errors.join(" | ")})`);
+    await p.close();
   }
   if (part.includes("flags")) {
     const p = await b.newPage({ viewport: { width: 800, height: 600 } });

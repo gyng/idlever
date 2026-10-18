@@ -233,3 +233,14 @@ Open questions for the owner:
    cap keeps a forgotten paused tab from holding the delve. Should it be longer, or none?
 4. **Frequency.** Nearly every mid-game run meets a cache, so most watched runs see 2–3 prompts. If that reads as busy,
    one lever is a cache prompt only when the preference's pick is not clearly best.
+
+## 11. Owner decisions (2026-10-18, "do your recs"; applied in Cut 277)
+
+1. **No-drop chests: show the chest only when the kill dropped something.** A pattern or set piece, or gold, is a
+   drop (`chestHasDrop` in `web/src/ui/decide.ts`). Rust still reports every band boss kill in `StepResult.chests`.
+   The client skips an empty record: no reveal, no `chest` flag, no milestone entry, no cue. The kill beat plays as
+   it always did, and the milestone log keeps the boss slain. The `no drop` reward line is gone. The fake engine's
+   `?decide=1&nodrop=1` reports an empty kill; `live-decisions` part `nodrop` checks that no chest shows.
+2. **Mid-bosses: none for now.** The chest follows band bosses (`def().boss`) only.
+3. **The paused cap stays at 120 s** (`DECIDE_PAUSE_MAX_MS`).
+4. **Frequency stays as built:** at most 3 a run and 1 a floor, with a cache prompt whenever a cache is met.

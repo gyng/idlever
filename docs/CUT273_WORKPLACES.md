@@ -300,3 +300,25 @@ Evidence is in `docs/evidence/cut273/`: `neutrality/`, `pacing-pack.txt`, `settl
 
 **Deviation from §6.** The check-in routine keeps its internal kind `hire`, with the label now naming the workplace.
 Renaming it would touch saved-UI tests for no player-visible change.
+
+## 12. Owner decisions (2026-10-18, "do your recs")
+
+The owner accepted the recommended defaults:
+
+- **Kennel.** The Kennel hand arrives at Kennel L2 and the Keeper at Kennel L3.
+- **Bank.** The Clerk arrives at Bank L2.
+- **Quest board.** L1 stays automatic (the first quest). The Herald arrives at Quest board L2.
+- **Supply crate.** It comes with the House, and Aletta arrives at the House build.
+- **Cut265 kennel effects.** They stay dropped. There is no L4.
+- **W2 upgrade effects (§2b).** They are approved and will follow Cut264. Another agent builds W2.
+
+Two layout questions from the W1 review were settled in Cut 277 (branch `cut277-polish`, evidence
+`docs/evidence/cut277/`):
+
+- **The Drill tent's spot.** The tent stood against the Guildhouse's east wall, on the guild's spur, among the
+  walkers. It now has its own yard west of the Guildhouse: `DRILL_AT` (338, 396), the dummy beside it at (315, 399),
+  and the drillmaster before it at (337, 424), below the tent's foot. The forest keeps the yard clear. At 402×681 the
+  lit plot's 44×44 target sits 4 px left of the Guildhouse's target and does not overlap it or the Pool's.
+- **Guildhouse L2.** The `town_service_guild_2` art is kept. L2 also draws the workers' rank badge, a gilt pip, at
+  4 texels (a worker's pip is 2), capping the hall's gable finial. The guild's tip head reads `Guild reception II`. There is no
+  new text on the map.

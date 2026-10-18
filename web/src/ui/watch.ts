@@ -165,6 +165,7 @@ import { detailHost } from "./tips"; // RUNS_UI: the live badge's tip; the carri
 import { createDepthMap, knownDepthMarks, type DepthMark } from "./depth-map";
 import { deathWhy, goldWords } from "./gold-words";
 import {
+  chestHasDrop,
   chestReveal,
   chestTimes,
   decisionPrompt,
@@ -2308,12 +2309,13 @@ export function renderWatch(app: App): Mounted {
     }
   }
   function noteChests(r: StepResult): void {
-    for (const c of r.chests ?? []) at(c.t, () => showChest(c));
+    // Cut 277: only a kill that dropped something shows a chest; an empty kill keeps its plain beat
+    for (const c of r.chests ?? []) if (chestHasDrop(c)) at(c.t, () => showChest(c));
   }
   /** The boss chest inside the kill's beat: it cracks and opens by itself (the reward is Rust's); never past the beat. */
   function showChest(c: Chest): void {
     const top = c.items[0];
-    const reward = top ? top.label : c.gold > 0 ? `$${c.gold}` : /* copy:callout */ "no drop";
+    const reward = top ? top.label : `$${c.gold}`;
     milestone({
       t: c.t,
       kind: "chest",

@@ -174,6 +174,9 @@ const BIOME_BOSS: Record<string, string> = {
 /** Cut 270: `?decide=1` — the fake opens live decisions and a chest (for the watch's prompt and chest groups). */
 const FAKE_DECIDE =
   typeof location !== "undefined" && new URLSearchParams(location.search).get("decide") === "1";
+/** Cut 277: `?decide=1&nodrop=1` — the fake's boss kill drops nothing (an empty chest record: no chest is shown). */
+const FAKE_NODROP =
+  typeof location !== "undefined" && new URLSearchParams(location.search).get("nodrop") === "1";
 const DEV_FORK =
   typeof location !== "undefined" &&
   ["1", "2"].includes(new URLSearchParams(location.search).get("fake_fork") ?? "");
@@ -4324,9 +4327,13 @@ export class FakeEngine implements Engine {
             t: at,
             boss: "goblin_warlord",
             title: "Goblin Warlord",
-            rarity: "legendary",
-            items: [{ kind: "crownsplitter", label: "Crownsplitter", rarity: "legendary" }],
-            gold: 40,
+            ...(FAKE_NODROP
+              ? { rarity: "common", items: [], gold: 0 }
+              : {
+                  rarity: "legendary",
+                  items: [{ kind: "crownsplitter", label: "Crownsplitter", rarity: "legendary" }],
+                  gold: 40,
+                }),
           });
         }
         const open = (d: Decision): void => {

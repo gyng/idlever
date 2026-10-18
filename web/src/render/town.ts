@@ -184,10 +184,14 @@ export type WorkerSpot = {
 };
 /** the chest's foot, beside the path under the mouth */
 export const CHEST_AT: Pt & { h: number } = { ...T(CX + 1.6, 8.3), h: 12 };
-/** Cut273: the Drill tent (the drillmaster's workplace) by the fire's south side, and its straw dummy */
-export const DRILL_AT: Pt & { h: number } = { ...T(CX - 1.7, 19.4), h: 24 };
-const DUMMY_AT: Pt & { h: number } = { ...T(CX - 0.95, 18.1), h: 12 };
+/** Cut273: the Drill tent (the drillmaster's workplace) and its straw dummy. Cut 277: moved off the south path into its own
+ *  yard west of the Guildhouse (it stood against the hall's east wall, on the guild's spur, among the walkers); the forest
+ *  keeps the yard clear and the dummy stands beside the tent, clear of the pool's resting trail (x 306). */
+export const DRILL_AT: Pt & { h: number } = { x: 338, y: 396, h: 24 };
+const DUMMY_AT: Pt & { h: number } = { x: 315, y: 399, h: 12 };
 /** Cut273: a workplace's spot (its plot before it is built) */
+/** Cut 277: the Guildhouse's level pip (texels; the workers' rank pip is 2) */
+const GUILD_PIP = 4;
 export const placeAt = (id: string): (Pt & { h: number }) | null =>
   id === "haul_chest"
     ? CHEST_AT
@@ -202,7 +206,7 @@ const WORKER_AT: Record<string, Pt> = {
   scout: { x: SERVICE_PLOTS.guild.x + 13, y: SERVICE_PLOTS.guild.y + 7 },
   apprentice: T(CX - 1.9, 11.6),
   clerk: T(CX + 2.8, 11.7),
-  drillmaster: T(CX - 0.85, 19.75),
+  drillmaster: { x: 337, y: 424 }, // Cut 277: before his tent, below its foot (the sprite never covers the tent)
   kennel_hand: T(CX + 2.4, 19.7),
   herald: T(CX - 3.6, 7.9),
   guide: T(CX + 1.65, 7.35),
@@ -2137,6 +2141,13 @@ export function createTownView(host: HTMLElement): TownView {
           return false;
       }
       if (Object.values(FOLK_AT).some((q) => dist(p, q) < 1.6 * TILE)) return false;
+      // Cut 277: the Drill tent's yard (its plot from day 0, the tent and dummy once built)
+      if (
+        Math.abs(p.x - (DRILL_AT.x - 6)) < 2.1 * TILE &&
+        p.y > DRILL_AT.y - DRILL_AT.h * 0.7 &&
+        p.y < DRILL_AT.y + 2.9 * TILE
+      )
+        return false;
       for (const [id, pl] of Object.entries(PLOTS)) {
         if ((id === "guild" || id === "pool" || id === "device") && !state?.services?.includes(id))
           continue;
@@ -2486,6 +2497,13 @@ export function createTownView(host: HTMLElement): TownView {
         { ground: true },
       );
       tagGlow(id, n0);
+      // Cut 277: Guildhouse II reads at game size — the workers' rank badge (a gilt pip per level past the first), drawn
+      // larger, capping the hall's gable finial; the art's signpost alone was lost at 402 px
+      const gl = id === "guild" ? (s.places?.guild ?? 0) : 0;
+      for (let r = 0; r < gl - 1; r++)
+        sprite("fx_dot_d8b45a", GUILD_PIP, p.x - 7 - (gl - 2) * 3 + r * 6, p.y - p.h + 1, {
+          z: zOf(p.y) + 0.0003,
+        });
       if (id === "pool") {
         for (const spot of homeSpots)
           sprite("town_bench", 8, spot.pool.x, spot.pool.y + 2, { ground: true });
