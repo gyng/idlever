@@ -50,7 +50,7 @@ export function openHomeMenu(
                   openHonours(app, anchor);
                 },
               },
-              /* copy:button */ "Honours",
+              /* copy:button */ "Achievements",
               h(
                 "span",
                 { class: "home-menu-count" },

@@ -67,7 +67,6 @@ pub use wire::*;
 impl Game {
     pub fn rename_hero(&mut self, name: &str) -> Result<(), String> {
         persistent::rename(self,name)?;
-        if !self.sim { honours::on_act(&mut self.lineage, "rename"); }
         Ok(())
     }
     pub fn rebirth_hero(&mut self, token: &str) -> Result<(), String> { persistent::rebirth(self,token) }
