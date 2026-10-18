@@ -11,9 +11,10 @@
 //   ledger — the While away Workers fold: one line per worker (none cut), the order lines (`ranks`, `legacy`), the purse each moved.
 //   posts  — the town: the next worker's post shows `forge 2/3 · or 30h` (Works.next_worker's progress · eta_h), ≤ 3 markers.
 //   news   — `k: "order"` news reaches the crier and the diary.
-//   offer  — option B (Legacy and ranks default off): the camp offers each order once, when it first becomes useful (Legacy can buy,
-//            a rank is due); its chip sets the order (shared across the bloodlines), `not now` hides it for good (per lineage, browser
-//            storage); a routine return with an offer pending stays ≤ 2 taps report → watch.
+//   offer  — option B (Legacy and ranks default off): the town offers each order once, when it first becomes useful (Legacy can buy,
+//            a rank is due) — Cut262: the Guild reception's lantern, its sheet's marked row; a chip there sets the order (shared across
+//            the bloodlines), seeing the sheet settles it for good (per lineage, browser storage); a routine return with an offer
+//            pending stays ≤ 2 taps report → watch.
 //   node web/tests/cut120.mjs [--part=sheet,audit,ledger,posts,news,offer] [--shot=path.png]
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -566,17 +567,17 @@ try {
         const a = window.__idlever,
           L = a.lineage,
           { pendingOffer, legacyUseful, rankDue } = await import("/src/ui/order-offer.ts");
-        const el = document.querySelector(".camp .order-offer");
+        // Cut262: the offer is the Guild reception's lantern (`data-offer` on its hit), never a camp chip row
+        const el = document.querySelector('.camp .town-hit[data-building="guild"]');
         return {
+          row: !!document.querySelector(".camp .order-offer"),
           pending: pendingOffer(L),
           legacyUseful: legacyUseful(L),
           rankDue: rankDue(L),
           legacy: L.orders?.legacy,
           ranks: L.orders?.ranks,
-          shown: [...document.querySelectorAll(".camp .order-offer:not([hidden])")].map(
-            (x) => x.dataset.offer,
-          ),
-          text: el && !el.hidden ? el.textContent.replace(/\s+/g, " ").trim() : "",
+          shown: el?.dataset.offer ? [el.dataset.offer] : [],
+          text: el?.getAttribute("aria-label") ?? "",
           stored: (() => {
             try {
               return localStorage.getItem(`idlever.offers.${L.seed ?? 0}`);
@@ -628,11 +629,20 @@ try {
       `the offer appears, one at a time, once useful (${s.shown.join(",") || "none"} · "${s.text}" · Legacy can buy ${s.legacyUseful} · rank due ${s.rankDue})`,
     );
     check(
-      (await page.locator(".modal:visible, .sheet-wrap").count()) === 0,
-      "the offer is a camp chip row, never a modal or a sheet",
+      !s.row && (await page.locator(".modal:visible, .sheet-wrap").count()) === 0,
+      "the offer is the Guild's lantern, never a camp row, a modal or a sheet",
     );
-    // accept: the order set, shared to the three bloodlines; dismissed for good
-    await page.locator(`.order-offer [data-offer-yes="${first}"]`).click();
+    // accept at the Guild: its sheet marks the order's row; one chip sets it, shared to the three bloodlines; dismissed for good
+    await page.locator('.camp .town-hit[data-building="guild"]').click({ force: true });
+    await page.waitForSelector(`.guild-orders [data-offer="${first}"]`, {
+      state: "attached",
+      timeout: 20_000,
+    });
+    await page
+      .locator(
+        `.guild-orders [data-offer="${first}"] [data-${first}="${first === "legacy" ? "balanced" : "auto"}"]`,
+      )
+      .click();
     await page
       .waitForFunction((k) => window.__idlever.lineage.orders?.[k] !== "off", first, {
         timeout: 5000,
@@ -648,16 +658,24 @@ try {
         .map((x) => x[first])
         .join(",")})`,
     );
+    await closeSheets(page);
     await recamp();
     s = await st();
     check(
       !s.shown.includes(first) && JSON.parse(s.stored ?? "{}")[first] === true,
       `the taken offer never returns (${s.shown.join(",") || "none"} · ${s.stored})`,
     );
-    // the other order: offered when useful, `not now` hides it for good and leaves the order off
+    // the other order: offered when useful; seeing the Guild's sheet settles it for good and leaves the order off
     const second = first === "legacy" ? "ranks" : "legacy";
     if (s.shown[0] === second) {
-      await page.locator(`.order-offer [data-offer-no="${second}"]`).click();
+      // seeing the Guild's sheet settles the offer and leaves the order as it stands
+      await page.locator('.camp .town-hit[data-building="guild"]').click({ force: true });
+      await page.waitForSelector(`.guild-orders [data-offer="${second}"]`, {
+        state: "attached",
+        timeout: 20_000,
+      });
+      await closeSheets(page);
+      await recamp();
       await page.waitForTimeout(300);
       const after = await st();
       await recamp();
@@ -667,7 +685,7 @@ try {
           later.shown.length === 0 &&
           later[second] === "off" &&
           JSON.parse(later.stored ?? "{}")[second] === true,
-        `\`not now\` hides the ${second} offer for good, the order left off (${later[second]} · ${later.stored})`,
+        `seeing the Guild settles the ${second} offer for good, the order left off (${later[second]} · ${later.stored})`,
       );
     } else {
       check(false, `the ${second} offer follows the first (${s.shown.join(",") || "none"})`);

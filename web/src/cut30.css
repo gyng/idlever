@@ -608,11 +608,44 @@ body:has(> .sheet-wrap:not(.modeless)) .cmd .tile .repeat-badge {
   margin-top: 6px;
 }
 .report-boss-row > img,
-.report-boss-row > .ico {
+.report-boss-row > .ico,
+.report-boss-portrait > img {
   width: 44px;
   height: 44px;
   flex: 0 0 44px;
   object-fit: contain;
+}
+/* Cut262: the slain boss's portrait wears a small gold victory mark (crossed blades) at its foot, so his face never reads as the
+   hero's killer */
+.report-boss-portrait {
+  position: relative;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+}
+.report-boss-portrait > .unit-icon {
+  filter: saturate(0.55) brightness(0.85);
+}
+.report-boss-mark {
+  position: absolute;
+  right: -5px;
+  bottom: -4px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #6b5122;
+  border-radius: 50%;
+  background: #1a1520;
+  color: var(--acc, #dbba7c);
+  font-size: 11px;
+  line-height: 1;
+}
+.report-boss-mark::before {
+  content: "\2694";
+}
+.report-boss-lost {
+  color: var(--down, #c8505a);
 }
 .report-boss-line {
   display: flex;

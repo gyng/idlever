@@ -80,8 +80,15 @@ try {
       show(win);
       check(rows().length === 1, "duplicate explicit first kill shown once");
       check(
-        text().includes("Boss defeated") && text().includes("Bloat Mother"),
+        text().includes("Boss slain") && text().includes("Bloat Mother"),
         "plain boss victory and readable name",
+      );
+      // Cut262 (owner: "boss portraits in killed is very confusing"): the face wears a victory mark; the deaths stay the boss's own line
+      check(
+        !!rows()[0].querySelector(".report-boss-portrait .report-boss-mark") &&
+          rows()[0].textContent.includes("slain") &&
+          !rows()[0].querySelector(".report-boss-lost"),
+        "victory mark on the portrait; no deaths line when he killed none",
       );
       check(!rows()[0].closest(".report-details"), "victory outside details");
       check(document.querySelector(".report-details").hidden, "details remain folded");
@@ -161,7 +168,25 @@ try {
           slot(2, "Thorn", ["boss: bloat_mother"]),
         ],
       });
-      check(rows().length === 2, "two owners may each earn the same first kill");
+      // Cut262: one row per boss — both slayers named on it, never the same face twice
+      check(
+        rows().length === 1 &&
+          rows()[0].dataset.bloodlines === "1 2" &&
+          rows()[0].dataset.slain === "2" &&
+          rows()[0].textContent.includes("slain by Ash · Thorn"),
+        "two owners' same first kill is one row naming both",
+      );
+      show({
+        ...win,
+        deaths: [
+          { cause: "bloat_mother", n: 3 },
+          { cause: "gas", n: 2 },
+        ],
+      });
+      check(
+        rows()[0].querySelector(".report-boss-lost")?.textContent === "killed 3 heroes",
+        "the boss's own kills this absence read on his row",
+      );
       check(document.documentElement.scrollWidth <= innerWidth, "multihero victories fit viewport");
       show({ ...win, bloodlines: [slot(1, "Ash", []), slot(2, "Thorn", [])] });
       check(rows().length === 0, "known empty summaries suppress top-level fallback");

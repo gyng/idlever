@@ -97,6 +97,8 @@ html body .task-tracker.game-control:active {
 }
 .task-entry {
   all: unset;
+  /* Cut262: `all: unset` inherited the tracker's pointer-events: none, so on desktop the town canvas took every task tap */
+  pointer-events: auto;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 12px minmax(0, 1fr);
@@ -149,6 +151,7 @@ html body .task-tracker.game-control:active {
 }
 .task-door {
   all: unset;
+  pointer-events: auto;
   cursor: pointer;
   min-height: 24px;
   color: var(--acc);
@@ -228,5 +231,44 @@ html body .task-tracker.game-control:active {
   }
   .task-entry {
     min-height: 44px;
+  }
+}
+
+/* Cut262: a task that can be completed now — its pip fills and its title brightens, with a faint gold band behind it (quiet: no
+   motion). Its tap rings the building or control that completes it (`.task-point`, below). */
+.task-entry[data-can="true"] .task-pip {
+  background: var(--acc);
+  border-color: var(--acc);
+  box-shadow: 0 0 5px var(--gilt);
+}
+.task-entry[data-can="true"] {
+  background: linear-gradient(90deg, rgba(219, 186, 124, 0.16), transparent 85%);
+  border-radius: 3px;
+}
+.task-entry[data-can="true"] .task-title {
+  color: #f2d27a;
+}
+/* the surface a task's tap points at: a gold ring, two soft pulses, then gone (ui/tasks.ts pointAt) */
+.task-point,
+.town-hit.task-point {
+  outline: 2px solid var(--acc, #dbba7c);
+  outline-offset: 2px;
+  box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
+  animation: task-point 1.2s ease-in-out 2;
+}
+@keyframes task-point {
+  0%,
+  100% {
+    outline-color: var(--acc, #dbba7c);
+    box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
+  }
+  50% {
+    outline-color: rgba(219, 186, 124, 0.35);
+    box-shadow: 0 0 4px rgba(184, 148, 72, 0.25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .task-point {
+    animation: none;
   }
 }

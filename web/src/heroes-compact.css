@@ -4,7 +4,7 @@
 @media (min-width: 1024px) {
   /* the compact frames need less column: the camp's left column narrows and the town takes the width */
   :root {
-    --camp-l: clamp(280px, 20vw, 360px);
+    --camp-l: var(--wide-l);
   }
   html body .hero-roster .hero-list {
     gap: 6px;

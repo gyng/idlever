@@ -64,11 +64,13 @@ try {
     assert.equal(await tip.isVisible(), true);
     await row.dispatchEvent("pointerup", { pointerType: "touch" });
     await p.keyboard.press("Escape");
+    // Cut262: both owners' first kill is one row (`slain by One · Bloodline Two`); keyboard focus opens its tip, the selected owner's
+    assert.equal(await p.locator(".report-boss-row").count(), 1);
     await row.focus();
+    await p.keyboard.press("Shift+Tab");
     await p.keyboard.press("Tab");
     await tip.waitFor({ state: "visible" });
-    assert.match(await tip.textContent(), /Defeated.*Traits Unavailable.*Counter Unavailable/s);
-    assert.doesNotMatch(await tip.textContent(), /throw fire|Traits Gas/);
+    assert.match(await tip.textContent(), /Defeated.*Traits Gas.*Counter throw fire/s);
     await p.keyboard.press("Escape");
     await p.evaluate(async () => {
       const { reportBosses } = await import("/src/ui/report-bosses.ts");
@@ -124,21 +126,31 @@ try {
         merged.bloodlines[1].boss_knowledge[0].facts[0] !== "foe:bloat_mother:telegraph"
       )
         throw Error("owner snapshot merge failed");
-      document.querySelector(".report-bosses").replaceWith(
-        reportBosses(merged, {
-          ...window.__idlever.lineage,
-          facts: ["foe:bloat_mother:wrong"],
-          ledger: [],
-          walls: [],
-          selected_bloodline: 1,
-        }),
-      );
+      // Cut262: one row per boss (its slayers named); its tip reads the selected owner's own knowledge
+      window.__bossOwners = (selected) =>
+        document.querySelector(".report-bosses").replaceWith(
+          reportBosses(merged, {
+            ...window.__idlever.lineage,
+            facts: ["foe:bloat_mother:wrong"],
+            ledger: [],
+            walls: [],
+            selected_bloodline: selected,
+          }),
+        );
+      window.__bossOwners(2);
     });
-    await p.locator(".report-boss-row").nth(1).locator("small").hover();
+    assert.equal(await p.locator(".report-boss-row").count(), 1);
+    assert.match(
+      await p.locator(".report-boss-row").first().textContent(),
+      /slain by One · Bloodline Two/,
+    );
+    await p.locator(".report-boss-row").first().locator("small").first().hover();
     await tip.waitFor({ state: "visible" });
     assert.match(await tip.textContent(), /Traits Telegraph.*Counter hold guard/s);
     assert.doesNotMatch(await tip.textContent(), /Unavailable|Traits Gas|Wrong|throw fire/);
     await p.keyboard.press("Escape");
+    await p.mouse.move(0, 0);
+    await p.evaluate(() => window.__bossOwners(1));
     await p.locator(".report-boss-row").first().hover();
     await tip.waitFor({ state: "visible" });
     assert.match(await tip.textContent(), /Traits Gas.*Counter throw fire/s);

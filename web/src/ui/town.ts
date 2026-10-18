@@ -18,7 +18,8 @@ import {
   type TownState,
   type TownView,
 } from "../render/town";
-import { h, replace } from "./dom";
+import { h, replace, toast } from "./dom";
+import { guildOfferPending } from "./order-offer";
 import { decorationSrc, icon } from "./skin";
 import { kitAffordable } from "./forge";
 import { openWindow as openSheet, closeAllSheets } from "./sheet";
@@ -151,6 +152,9 @@ export function markOpened(L: Lineage, id: string): void {
     save(L, s);
   }
 }
+
+/** Cut262: the orders the Guild's lantern has announced this session (one ≤ 3-word toast each, never a control) */
+const announced = new Set<string>();
 
 export type TownUi = {
   el: HTMLElement;
@@ -570,6 +574,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           {
             class: `town-hit hit-${w.id}`,
             "data-building": w.id,
+            // Cut262: hidden until layout() places it over its sprite (it appeared at the scene's corner, then jumped)
+            hidden: true,
             "aria-label": label,
             onclick: () => tap(w.id),
           },
@@ -593,6 +599,25 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       b.querySelector(".vh")!.textContent = label;
       // markers ride their building's target (one surface, the same panel)
       const mk = s.markers.filter((m) => m.at === w.id);
+      // Cut262: an order first useful (Legacy spend, worker ranks) lights the Guild reception's lantern — its row waits in the sheet
+      const offer = w.id === "guild" ? guildOfferPending(app.lineage) : null;
+      if (offer) {
+        mk.unshift({
+          at: "guild",
+          kind: "rune",
+          label:
+            offer === "legacy" ? /* copy:label */ "Legacy order" : /* copy:label */ "Rank order",
+        });
+        if (!announced.has(offer)) {
+          announced.add(offer);
+          toast(
+            offer === "legacy"
+              ? /* copy:callout */ "Legacy · Guild"
+              : /* copy:callout */ "Ranks · Guild",
+          );
+        }
+      }
+      b.dataset.offer = offer ?? "";
       // the lit worker carries his price (`$40` · `free`), the chest the porter's count (`2/3`)
       const lit = w.id === "worker" ? s.workers.find((x) => x.lit) : undefined;
       if (lit)
@@ -737,7 +762,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
               ? `worker:${wk?.id ?? ""}`
               : (id as PlotId),
       );
-      if (!r) {
+      // (Cut262: never shown before the scene stands in the page — a detached mount's rect put it at the corner for a frame)
+      if (!r || !el.isConnected || !el.clientWidth) {
         b.hidden = true;
         continue;
       }
