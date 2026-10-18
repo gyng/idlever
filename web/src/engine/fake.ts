@@ -6902,7 +6902,7 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       kind: "worker",
       branch,
       name,
-      ...(PERSON305[id] ? { person: PERSON305[id] } : {}),
+      ...(PERSON305[id] && done ? { person: PERSON305[id] } : {}), // the name once hired
       state,
       ...(rank ? { rank, ...rankNext, ...bonusNow } : {}),
       ...(chore ? (feat ? { chore } : { chore, count, need }) : {}),

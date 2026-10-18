@@ -1351,7 +1351,8 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 kind: "worker".into(),
                 branch: n.branch.into(),
                 name: n.name.into(),
-                person: n.person.into(),
+                // owner 2026-10-18 ("townspeople names only show up after hiring"): the role until hired, then the name
+                person: if hired(l, n.id) { n.person.into() } else { String::new() },
                 state: state.into(),
                 chore: has_chore.then(|| if n.id == "porter" && l.town.auto_collect { "hauls".into() } else { n.chore.into() }),
                 count: counts.then(|| count(l, n.id)),

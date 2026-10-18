@@ -109,9 +109,12 @@ fn every_worker_has_its_own_name() {
         assert!(seen.insert(n.person), "{} repeats {}", n.id, n.person);
     }
     assert_eq!(tree::def("scout").unwrap().person, "Arina");
-    let w = Game::new_resident(5).lineage().tree.unwrap();
+    // owner 2026-10-18 ("townspeople names only show up after hiring"): the wire names a worker once hired, the role before
+    let g = Game::new_resident(5);
+    let w = g.lineage().tree.unwrap();
     for n in w.nodes.iter().filter(|n| n.kind == "worker") {
-        assert_eq!(n.person, tree::def(&n.id).unwrap().person, "{}", n.id);
+        let want = if tree::hired(&g.lineage, &n.id) { tree::def(&n.id).unwrap().person } else { "" };
+        assert_eq!(n.person, want, "{}", n.id);
     }
     assert!(w.nodes.iter().filter(|n| n.kind == "stage").all(|n| n.person.is_empty()));
 }

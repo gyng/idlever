@@ -493,7 +493,9 @@ export async function hireNode(app: App, n: WorkNode, close?: () => void): Promi
   if (!ok) return false;
   audio.cue("unlock");
   close?.();
-  hireBeat(n.person || n.name);
+  // (the name arrives with the hire: the node shown before it carries the role alone)
+  const hired = app.lineage.tree?.nodes.find((x) => x.id === n.id);
+  hireBeat(hired?.person || n.person || n.name);
   return true;
 }
 /** week 2: the promotion — the core's (`promote(id)`), then the beat `PORTER II`. */

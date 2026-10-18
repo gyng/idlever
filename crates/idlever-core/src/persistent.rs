@@ -350,7 +350,7 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
             &if crate::tree::auto_send(l) {
                 format!("{}, the Receptionist, books another delve after recovery.", receptionist())
             } else {
-                format!("Hire {}, the Receptionist, here to book delves while away.", receptionist())
+                "Hire the Receptionist here to book delves while away.".to_string()
             },
             guild_available,
         ),
