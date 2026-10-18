@@ -1,8 +1,8 @@
 # Cut273 — Workplaces: every worker comes from building or upgrading their workplace
 
-Status: CONTRACT (2026-10-18). This cut absorbs Cut265: its levels become workplace levels, and its effect levels sit
-on top of the staff levels (§2b). Base: main 4adcb94a (Cut268 integration). Implementation waits for the Cut272
-town-glow merge, which edits `render/town.ts` and `ui/town.ts`.
+Status: **W1 landed** on branch `cut273-workplaces`, based on main 7c4c9ef1 after the Cut272 town-glow merge. See §11
+for results. W2 (Cut265 effect levels) is still a plan. This cut absorbs Cut265: its levels become workplace levels,
+and its effect levels sit on top of the staff levels (§2b).
 
 Owner (2026-10-18, verbatim): "guildhouse is a bit odd should maybe be build guildhouse -> recep arrives. porter is
 hired by building the ingame gem/chest apprentice hired by building forge?"
@@ -260,3 +260,43 @@ The new `workplaces` client group has three tests:
 2. The Herald's workplace: Quest board L2 (default). The alternative is a new "Herald's post" plot (one sprite).
 3. Kennel effects from Cut265: dropped (default). The alternative is an L4.
 4. Worker ranks: they stay (default). The alternative is to move them to building levels in a later cut.
+
+## 11. Results (W1, 2026-10-18)
+
+Evidence is in `docs/evidence/cut273/`: `neutrality/`, `pacing-pack.txt`, `settlements-inputs-71df.json`,
+`screens/` and `observations-2026-10-18.md`.
+
+| Gate | Result |
+|---|---|
+| Neutrality identity | **identical**. `dayplayer --bots idle,picked,tuned --seeds 16 --days 14` with `DP_NODES=1` was run on base 4adcb94a and on this branch. The output differs only in its wall-clock line. Every per-seed milestone hour and every worker's open/ready/hired hour match (`neutrality/README.md`). |
+| `gates.mjs --pacing` | **24/24 PASS**. `tuned-picked` 1.17, PICKED/IDLE 1.50 · 2.75 · 3.30, scout med 2.6 · worst 4.5 min, porter 8.4 · 13.6 min. |
+| Opening probe | **identical to base**: G1 0.0 · 0.0, G2 28.9 · 38.2 (owner-approved deviation), G3 6 · 5, G4 2.6 · 4.9, G6 0.0 · 1.0. |
+| Repin | `settlements-inputs-71df.json`. Gold, ledger and ExitLine unchanged 4/4. `expected` and after-saves unchanged 4/4, with 0 regenerated. Browser `gold-settlements` 564/564 PASS. |
+| Core | `cargo test --workspace --profile fast`: 1079 passed, 0 failed (`tests_cut273.rs` adds 4). Clippy `-D warnings` is clean. |
+| Client | `workplaces` (new), `town-ux`, `home-services`, `worker-purchases`, `worker-pause` and `gold-settlements` pass. `cut305` fails 9 checks and `worker-first-act` fails 1. Both fail identically on main 7c4c9ef1, so these failures are pre-existing (the auto-collect chest and the Cut258 scout `need` 0). |
+| `verify.sh --quick` | Format, lint, tsc and copy-lint pass, and the Rust tests pass. `fun-eval.test` fails 2 in any worktree, because the sibling `../eval-fun` checkout is missing; main fails the same way. |
+
+**What landed.**
+
+- **Core.**
+  - `town::WORKPLACES`, `workplace_level` (derived), `workplaces_wire` and `repair_workplaces` (load).
+  - `Game::build_workplace`; the `WorkNodeWire` fields `workplace`, `workplace_name` and `level`; `TownWire.workplaces`.
+  - The Guild reception is available once built.
+  - The journal and pills name the workplace: `Build the Guildhouse · auto runs`, `Forge II · forged new best`.
+  - The Guide's post is the guild.
+- **Bridge.** `buildWorkplace`, plus the native codegen.
+- **Bots.** `camp_taps` and the opening probe call `build_workplace`.
+- **Client.**
+  - The lit worker's workplace is the target. A plot draws `town_plot` at its spot; a level shimmers on its building.
+    A tap builds it when affordable.
+  - The arrive beat reads `LILI ARRIVES`.
+  - Labels read `Build $N` / `Upgrade $N`. The tooltip reads `Guildhouse · receptionist arrives · $N`.
+  - The works button reads `build · $N` / `upgrade · $N`.
+  - Ledger words read `build guildhouse` / `rank scout`; the ledger itself keeps `hire <id>`.
+  - Drawing: the Haul chest stands once built, the Drill tent and dummy stand once built, and Guildhouse II and
+    Quest board II use their L2 art.
+- **Art (Codex).** `town_service_guild_2`, `town_board_2` and `town_drill_dummy` are packed. Art QC passes. Each has a
+  primitive fallback.
+
+**Deviation from §6.** The check-in routine keeps its internal kind `hire`, with the label now naming the workplace.
+Renaming it would touch saved-UI tests for no player-visible change.
