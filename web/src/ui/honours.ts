@@ -79,7 +79,10 @@ function row(r: HonourRow): HTMLElement {
     h(
       "span",
       { class: "honour-mark", "aria-hidden": "true" },
-      icon(earned ? "badge_gold" : hidden ? "badge_secret" : "badge_locked", earned ? GLYPH : hidden ? "?" : "·"),
+      icon(
+        earned ? "badge_gold" : hidden ? "badge_secret" : "badge_locked",
+        earned ? GLYPH : hidden ? "?" : "·",
+      ),
     ),
     h(
       "span",
