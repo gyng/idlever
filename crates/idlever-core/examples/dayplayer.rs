@@ -643,9 +643,20 @@ fn camp_taps(g: &mut Game, ask: &Ask, arm: u8, out: &mut SeedOut, h: f64) {
                     let up_interest=upgraded.lineage.town.interest;
                     let mut paid=None;
                     let mut extra=0;
-                    for nights in 1..=30 {
-                        idlever_core::offline::run_offline_counts(&mut baseline,idlever_core::engine::NIGHT_RUNS);
-                        idlever_core::offline::run_offline_counts(&mut upgraded,idlever_core::engine::NIGHT_RUNS);
+                    let runs0=baseline.lineage.persistent.completed;
+                    let nights0=runs0/idlever_core::engine::NIGHT_RUNS;
+                    'nights: for nights in 1..=30 {
+                        // Stop each world at the same count of bank payments; minute slices retain
+                        // real automatic recovery and avoid treating elapsed seconds as run counts.
+                        let target=(nights0+nights)*idlever_core::engine::NIGHT_RUNS;
+                        for world in [&mut baseline,&mut upgraded] {
+                            let mut slices=0;
+                            while world.lineage.persistent.completed<target && !world.lineage.ended && slices<14400 {
+                                idlever_core::offline::run_offline_counts(world,60);
+                                slices+=1;
+                            }
+                            if world.lineage.persistent.completed<target {break 'nights;}
+                        }
                         extra=(upgraded.lineage.town.interest-up_interest)-(baseline.lineage.town.interest-base_interest);
                         if extra>=next.price {paid=Some(nights);break;}
                     }
