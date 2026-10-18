@@ -8,7 +8,7 @@
   bottom: calc(var(--watch-dock-h, 0px) + 12px);
   transform: translateX(-50%);
   z-index: 14;
-  width: min(420px, calc(100% - 24px));
+  width: min(500px, calc(100% - 24px));
   pointer-events: none;
 }
 .decide {
@@ -530,15 +530,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.watch .side-col .milestone-log {
+.watch .rules-col .milestone-log {
   flex: none;
   margin: 0;
   background: rgba(13, 12, 20, 0.62);
 }
-.watch .side-col .milestones {
-  height: 120px;
-}
-/* the run's meters keep their room above it (the column scrolls before they clip) */
-.watch .side-col:has(.milestone-log) > .meters-slot {
-  flex-shrink: 0;
+.watch .rules-col .milestones {
+  height: 220px;
 }

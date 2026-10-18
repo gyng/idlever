@@ -1189,9 +1189,11 @@ export function renderWatch(app: App): Mounted {
     ...wide.els,
   );
 
-  // Cut 270: on a desktop the milestone log sits in the run's right column (under its meters), open; a phone keeps it a fold
-  if (wide.slot) {
-    wide.slot.after(ms.el);
+  // Cut 270: on a desktop the milestone log sits open in the left column (under the heroes and rules), beside the run; a phone
+  // keeps it a closed fold under the map
+  const leftCol = wide.els.find((x) => x.classList.contains("rules-col"));
+  if (leftCol) {
+    leftCol.append(ms.el);
     ms.el.open = true;
   }
   const stage = el.querySelector<HTMLElement>(".stage")!;
@@ -3774,7 +3776,7 @@ export function renderWatch(app: App): Mounted {
       void finish(exitTier);
       return;
     }
-    if (inflight || held || exitTier || engineHeld) return; // Cut 270: a decision holds the world (the engine steps nothing)
+    if (inflight || held || exitTier) return;
     // Cut 10 §1: travel under the card — the engine steps flat out (chained calls) until it finds the next fight or the exit
     if (travelling()) {
       inflight = true;
@@ -3827,6 +3829,9 @@ export function renderWatch(app: App): Mounted {
       void deadJump();
       return;
     }
+    // Cut 270: a decision holds the world — the engine steps nothing until it is answered (a jump above still lands the picture
+    // short of it)
+    if (engineHeld) return;
     // Cut 14 §6: the engine's target — the world clock, or the playing viewer's lead, whichever is further; a world far behind its
     // clock (a paused or hidden picture) is caught up in CATCHUP_MAX-tick steps
     // Cut 18 §1: the ramp's lead (0.2 s of picture); `fast` keeps LEAD_PROBE ahead so a fight is costed before the picture meets it
@@ -3914,6 +3919,7 @@ export function renderWatch(app: App): Mounted {
         !frozen() &&
         !held &&
         !exitTier &&
+        !engineHeld &&
         ahead() === Infinity &&
         performance.now() - t0 < DEAD_JUMP_WALL_MS
       ) {
@@ -4000,6 +4006,7 @@ export function renderWatch(app: App): Mounted {
         !done &&
         !held &&
         !exitTier &&
+        !engineHeld &&
         ahead() === Infinity &&
         performance.now() - t0 < DEAD_JUMP_WALL_MS
       ) {

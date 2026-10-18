@@ -156,7 +156,7 @@ export function chestTimes(fast: boolean): {
  *  chest and the reward, nothing moves. A missing art id draws the code primitive (a box and lid, a ring), as the shield does. */
 export function chestReveal(
   c: Chest,
-  o: { fast: boolean; still: boolean; ids?: ReadonlySet<string> },
+  o: { fast: boolean; still: boolean; ids?: ReadonlySet<string>; posed?: boolean },
 ): HTMLElement {
   const t = chestTimes(o.fast);
   const fxUrl = fxUrlIn(o.ids ?? SKIN_FX);
@@ -231,11 +231,24 @@ export function chestReveal(
     ),
     h("span", { class: "chest-reward" }, reward),
   );
-  if (!o.still) {
+  if (!o.still && !o.posed) {
     window.setTimeout(() => (el.dataset.state = "cracked"), t.crack);
     window.setTimeout(() => (el.dataset.state = "open"), t.open);
   }
   return el;
+}
+
+/** A `posed` reveal (in the document) held at `ms` of its sequence: its frame and every animation paused there (evidence
+ *  frame sequences; the watch never poses). */
+export function chestPose(el: HTMLElement, ms: number, fast = false): void {
+  const t = chestTimes(fast);
+  el.dataset.state = ms < t.crack ? "closed" : ms < t.open ? "cracked" : "open";
+  const since = ms < t.crack ? ms : ms < t.open ? ms - t.crack : ms - t.open;
+  for (const a of el.getAnimations({ subtree: true })) {
+    a.pause();
+    const name = (a as CSSAnimation).animationName ?? "";
+    a.currentTime = name === "chest-fade" || name === "chest-reward" ? ms : since;
+  }
 }
 
 // ---- flagged moments
