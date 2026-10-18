@@ -1,0 +1,27 @@
+IDLE     s1 (save d15c2): total 6 visible 6/38 · day1 1 · non-journey by d3 [] · non-journey [('c_walk', 6), ('x_thread', 5)]
+IDLE     s2 (save d15c2): total 7 visible 7/38 · day1 2 · non-journey by d3 [] · non-journey [('c_walk', 6), ('x_dog', 8), ('x_fire', 6)]
+IDLE     s3 (save d15c2): total 7 visible 7/38 · day1 1 · non-journey by d3 [] · non-journey [('c_walk', 7), ('x_dog', 7)]
+IDLE30   s1 (save d15c2): total 7 visible 7/38 · day1 1 · non-journey by d3 [] · non-journey [('c_walk', 6), ('x_dog', 12)]
+IDLE30   s2 (save d15c2): total 6 visible 6/38 · day1 2 · non-journey by d3 [] · non-journey [('c_walk', 6), ('x_dog', 14)]
+IDLE30   s3 (save d15c2): total 6 visible 6/38 · day1 1 · non-journey by d3 [] · non-journey [('c_walk', 6), ('x_fire', 7)]
+PICKED   s1 (save d15c2): total 6 visible 6/38 · day1 2 · non-journey by d3 ['x_fire'] · non-journey [('x_fire', 2)]
+PICKED   s2 (save d15c2): total 7 visible 7/38 · day1 2 · non-journey by d3 ['c_dry'] · non-journey [('c_dry', 2), ('c_flawless', 6)]
+PICKED   s3 (save d15c2): total 6 visible 6/38 · day1 1 · non-journey by d3 ['c_dry'] · non-journey [('c_dry', 3)]
+TUNED    s1 (save d15c2): total 8 visible 8/38 · day1 3 · non-journey by d3 ['c_dry', 'x_fire'] · non-journey [('c_dry', 2), ('x_fire', 2)]
+TUNED    s2 (save d15c2): total 8 visible 8/38 · day1 5 · non-journey by d3 ['x_fire', 'x_thread'] · non-journey [('x_fire', 1), ('x_thread', 2)]
+TUNED    s3 (save d15c2): total 10 visible 9/38 · day1 2 · non-journey by d3 [] · non-journey [('c_dry', 5), ('c_flawless', 8), ('o_turncoat', 8), ('x_dog', 8)]
+
+first-earn day per entry (bot:seed=day)
+  boss_lich      IDLE:1=3 IDLE:2=1 IDLE:3=3 IDLE30:1=3 IDLE30:2=1 IDLE30:3=3 PICKED:1=1 PICKED:2=1 PICKED:3=2 TUNED:1=1 TUNED:2=1 TUNED:3=2
+  boss_queen     IDLE:1=12 IDLE:2=13 IDLE:3=12 IDLE30:1=14 IDLE30:2=15 IDLE30:3=13 PICKED:1=2 PICKED:2=2 PICKED:3=3 TUNED:1=2 TUNED:2=2 TUNED:3=2
+  boss_warlord   IDLE:1=1 IDLE:2=1 IDLE:3=1 IDLE30:1=1 IDLE30:2=1 IDLE30:3=1 PICKED:1=1 PICKED:2=1 PICKED:3=1 TUNED:1=1 TUNED:2=1 TUNED:3=1
+  c_dry          PICKED:2=2 PICKED:3=3 TUNED:1=2 TUNED:3=5
+  c_flawless     PICKED:2=6 TUNED:3=8
+  c_walk         IDLE:1=6 IDLE:2=6 IDLE:3=7 IDLE30:1=6 IDLE30:2=6 IDLE30:3=6
+  legend_all     IDLE:1=6 IDLE:2=6 IDLE:3=7 IDLE30:1=7 IDLE30:2=6 IDLE30:3=7 PICKED:1=2 PICKED:2=2 PICKED:3=2 TUNED:1=2 TUNED:2=1 TUNED:3=2
+  o_turncoat     TUNED:3=8
+  pen_row        TUNED:1=1 TUNED:2=1 TUNED:3=1
+  waystones      IDLE:3=14 IDLE30:1=14 PICKED:1=2 PICKED:2=2 PICKED:3=3 TUNED:1=2 TUNED:2=2 TUNED:3=2
+  x_dog          IDLE:2=8 IDLE:3=7 IDLE30:1=12 IDLE30:2=14 TUNED:3=8
+  x_fire         IDLE:2=6 IDLE30:3=7 PICKED:1=2 TUNED:1=2 TUNED:2=1
+  x_thread       IDLE:1=5 TUNED:2=2
