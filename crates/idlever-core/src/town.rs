@@ -455,11 +455,139 @@ pub fn grew(a: &Snap, b: &Snap) -> Vec<GrewLine> {
     out
 }
 
+// ---------------------------------------------------------------- Cut273: workplaces
+
+/// Cut273 (docs/CUT273_WORKPLACES.md): how a workplace's level 1 comes to stand.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Base {
+    /// It comes with the House (the Supply crate).
+    House,
+    /// A plot whose level 1 is its first worker's arrival (the Haul chest, the Guildhouse, the Drill tent).
+    Plot,
+    /// A town building (`BUILDINGS`): level 1 its free construction, the staff from level 2.
+    Building,
+    /// The Quest board: level 1 stands with the quests, the staff from level 2.
+    Board,
+}
+
+/// A workplace: its id, its name (≤ 2 words), how its level 1 stands, its staff in level order.
+pub struct Workplace {
+    pub id: &'static str,
+    pub name: &'static str,
+    pub base: Base,
+    pub staff: &'static [&'static str],
+}
+
+/// Cut273 §1: every worker's workplace — building it brings the first, each level the next. One build is offered at a
+/// time: the lit worker's (`tree::lit`), at his hire's own trigger and price (pacing-neutral by construction).
+pub const WORKPLACES: [Workplace; 8] = [
+    Workplace { id: "crate", name: "Supply crate", base: Base::House, staff: &["quartermaster"] },
+    Workplace { id: "haul_chest", name: "Haul chest", base: Base::Plot, staff: &["porter"] },
+    Workplace { id: "guild", name: "Guildhouse", base: Base::Plot, staff: &["scout", "guide"] },
+    Workplace { id: "blacksmith", name: "Forge", base: Base::Building, staff: &["apprentice"] },
+    Workplace { id: "bank", name: "Bank", base: Base::Building, staff: &["clerk"] },
+    Workplace { id: "drill_tent", name: "Drill tent", base: Base::Plot, staff: &["drillmaster"] },
+    Workplace { id: "kennel", name: "Kennel", base: Base::Building, staff: &["kennel_hand", "kennel_keeper"] },
+    Workplace { id: "board", name: "Quest board", base: Base::Board, staff: &["herald"] },
+];
+
+pub fn workplace(id: &str) -> Option<&'static Workplace> {
+    WORKPLACES.iter().find(|w| w.id == id)
+}
+
+/// The workplace a worker comes from.
+pub fn workplace_of(worker: &str) -> Option<&'static Workplace> {
+    WORKPLACES.iter().find(|w| w.staff.contains(&worker))
+}
+
+impl Workplace {
+    /// The levels before the staff's (a building's or the board's free level 1).
+    fn offset(&self) -> u32 {
+        matches!(self.base, Base::Building | Base::Board) as u32
+    }
+    pub fn max_level(&self) -> u32 {
+        self.offset() + self.staff.len() as u32
+    }
+    /// The level a worker's arrival makes.
+    pub fn level_of(&self, worker: &str) -> Option<u32> {
+        self.staff.iter().position(|w| *w == worker).map(|i| self.offset() + i as u32 + 1)
+    }
+}
+
+/// Its level 1 stands without a worker (the House, a building built, the board's quests open).
+fn base_stands(l: &LineageState, w: &Workplace) -> bool {
+    match w.base {
+        Base::House => l.town.home.unwrap_or(true),
+        Base::Plot => false,
+        Base::Building => built(l, w.id),
+        Base::Board => quests_open(l),
+    }
+}
+
+/// A workplace's level (0: not standing), derived from the staff hired there — no state of its own, so a save with
+/// hired workers has their workplaces standing at the matching level (Cut273 §4).
+pub fn workplace_level(l: &LineageState, id: &str) -> u32 {
+    let Some(w) = workplace(id) else { return 0 };
+    let staff = w.staff.iter().rposition(|s| crate::tree::hired(l, s)).map_or(0, |i| i as u32 + 1);
+    match w.base {
+        // (the crate stands with the House, its quartermaster given at the founding)
+        Base::House => base_stands(l, w) as u32,
+        Base::Plot => staff,
+        Base::Building | Base::Board if staff > 0 => w.offset() + staff,
+        Base::Building | Base::Board => base_stands(l, w) as u32,
+    }
+}
+
+/// Cut273 §4: a hired worker whose workplace's level 1 is a town building not built has it built on his hire day
+/// (an odd legacy or multi-resident save; nothing charged). The buildings raised.
+pub fn repair_workplaces(l: &mut LineageState) -> Vec<String> {
+    let mut out = Vec::new();
+    if l.pkg.literal {
+        return out;
+    }
+    for w in WORKPLACES.iter().filter(|w| w.base == Base::Building) {
+        if built(l, w.id) {
+            continue;
+        }
+        if let Some(day) = l.tree.hired.iter().filter(|(h, _)| w.staff.contains(&h.as_str())).map(|(_, d)| *d).min() {
+            l.town.built.push((w.id.to_string(), day));
+            out.push(w.id.to_string());
+        }
+    }
+    out
+}
+
+/// The workplaces on the wire: each standing one or the lit one's plot.
+pub fn workplaces_wire(l: &LineageState) -> Vec<crate::wire::WorkplaceWire> {
+    if l.pkg.literal {
+        return Vec::new();
+    }
+    let lit = crate::tree::lit(l);
+    WORKPLACES
+        .iter()
+        .filter_map(|w| {
+            let level = workplace_level(l, w.id);
+            let next = lit.filter(|n| w.staff.contains(&n.id));
+            (level > 0 || next.is_some()).then(|| crate::wire::WorkplaceWire {
+                id: w.id.into(),
+                name: w.name.into(),
+                level,
+                max: w.max_level(),
+                staff: w.staff.iter().filter(|s| crate::tree::hired(l, s)).map(|s| s.to_string()).collect(),
+                next: next.map(|n| {
+                    let price = crate::tree::price(l, n);
+                    crate::wire::WorkplaceNext { worker: n.id.into(), level: w.level_of(n.id).unwrap_or(1), price, affordable: l.gold >= price }
+                }),
+            })
+        })
+        .collect()
+}
+
 /// The town on the wire.
 pub fn build_blocked(l:&LineageState,id:&str)->Option<String>{
  if built(l,id)||triggered(l,id){return None;}
  if !l.town.home.unwrap_or(true){return Some("Build a house".into());}
- match id {"blacksmith"=>{if !crate::tree::hired(l,"scout"){Some("Hire Receptionist".into())}else if l.persistent.completed<4{Some(format!("Complete {} more delves",4-l.persistent.completed))}else if !triggered(l,id){Some("Secure Gold from a delve".into())}else{None}},"kennel"=>{if !crate::tree::hired(l,"scout"){Some("Hire Receptionist".into())}else if !triggered(l,id){Some("Tame a pet with a leash".into())}else{None}},_=>None}
+ match id {"blacksmith"=>{if !crate::tree::hired(l,"scout"){Some("Build Guildhouse".into())}else if l.persistent.completed<4{Some(format!("Complete {} more delves",4-l.persistent.completed))}else if !triggered(l,id){Some("Secure Gold from a delve".into())}else{None}},"kennel"=>{if !crate::tree::hired(l,"scout"){Some("Build Guildhouse".into())}else if !triggered(l,id){Some("Tame a pet with a leash".into())}else{None}},_=>None}
 }
 pub fn wire(l: &LineageState) -> TownWire {
     let next = if !l.town.home.unwrap_or(true) { Some(("house".into(), String::new())) } else { BUILDINGS.iter().find(|(id, _)| !built(l, id)).map(|(id, tr)| (id.to_string(), build_blocked(l,id).unwrap_or_else(||tr.to_string()))) };
@@ -476,6 +604,7 @@ pub fn wire(l: &LineageState) -> TownWire {
         quest: l.town.quest.as_ref().map(|q| quest_wire(l, q)),
         quests_done: l.town.quests_done,
         workers: if l.pkg.literal { Vec::new() } else { crate::tree::posts(l) },
+        workplaces: workplaces_wire(l),
         forge_work: None,
     }
 }

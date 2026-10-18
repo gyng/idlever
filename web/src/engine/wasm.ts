@@ -395,6 +395,9 @@ export class WasmEngine implements Engine {
     return this.call("swapQuest");
   }
   // Cut 30.5: throw `wasm: <name>` on a build without them
+  buildWorkplace(id: string): Lineage {
+    return this.call("buildWorkplace", id);
+  }
   hire(id: string): Lineage {
     return this.call("hire", id);
   }

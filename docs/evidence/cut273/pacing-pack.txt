@@ -1,0 +1,29 @@
+gates: PACING pack, 24 rows at 16 seeds: picked-idle,scout,porter,tuned-picked,random-picked,outpace,reach,idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,idle-delta,picked-stages,cadence30,stalls-idle,stalls-picked,stalls-tuned,nothing-required,hands-idle,automation-pays,workers-daily
+dayplayer: targeted rows idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,nothing-required,porter,scout,cadence30,hands-idle,automation-pays,workers-daily,idle-delta — configurations IDLE,PICKED,TUNED,RANDOM,HANDS,IDLE30,DAILY,AWAY,DAILY-nodes,AWAY-nodes,TUNED-packages,TUNED-pen,TUNED-forge,TUNED-pets,TUNED-bank,TUNED-quests
+bar (targeted)                                                                value  result
+IDLE reaches D8 by the end of day 1 (every seed)                              16/16  PASS
+IDLE reaches D13 by day 4 (median day)                                          0.5  PASS
+IDLE reaches D23 by day 12 (≥ 6/8 seeds, median)                        16/16 · 4.0  PASS
+IDLE longest best-depth stall before D23 ≤ 4 d                                    2  PASS
+IDLE net gold > 0 every day (14/14, every seed)                                  14  PASS
+IDLE does not slay the Mirror King within 14 days                              0/16  PASS
+Days with a stage opened: IDLE ≥ 8/14 (median)                                 10.0  PASS
+PICKED ≥ 1.5× IDLE at D13, D18, D23                              1.50 · 2.75 · 3.30  PASS
+IDLE never out-paces PICKED (≥ 90 % of seed × milestone)                       100%  PASS
+Days with a stage opened: PICKED ≥ 10/14 (median)                              10.0  PASS
+Content reach: PICKED ≥ D14 by day 2 (≥ 50 %)                                 16/16  PASS
+Stalls ≤ 1 % of sends, every IDLE seed                                        0.00%  PASS
+Stalls ≤ 1 % of sends, every PICKED seed                                      0.28%  PASS
+Stalls ≤ 1 % of sends, every TUNED seed                                       0.28%  PASS
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.17  PASS
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 16/16 · 16/16 · median +4 · +40 h  PASS
+Nothing required: TUNED − S ≤ IDLE on the median seed (± a check-in), no seed > 48 h behind from day 5                 ok  PASS
+Porter bought ≤ min 12 (PICKED median), every seed ≤ min 15        8.4 · worst 13.6  PASS
+Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot) med 2.6 · worst 4.5 min, 1 sends  PASS
+First-30-min cadence: look gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed) gap med 0.0 · worst 0.0 min · dec 1 · 16/16 (run ≤ 8.4)  PASS
+HANDS never slower than IDLE at D13, D18, D23 (median lag ± a check-in)      +0 · -8 · -52  PASS
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 48 h · mean best 30.04 vs 29.45  PASS
+Workers never cost the daily player a floor: mean best ≥ by hand − 1     31.21 vs 31.02  PASS
+IDLE within a bounded delta of Cut 30's: median h→D13 moves ≤ a check-in               +0 h  PASS
+dayplayer (targeted: idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,nothing-required,porter,scout,cadence30,hands-idle,automation-pays,workers-daily,idle-delta, 5667s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `picked-idle,scout,porter,tuned-picked,random-picked,outpace,reach,idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,idle-delta,picked-stages,cadence30,stalls-idle,stalls-picked,stalls-tuned,nothing-required,hands-idle,automation-pays,workers-daily` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

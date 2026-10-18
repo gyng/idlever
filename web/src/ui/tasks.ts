@@ -82,7 +82,7 @@ export function taskSurface(app: App, e: Pick<JournalEntry, "id" | "action">): s
       : a.target === "house"
         ? "tent"
         : a.target;
-  if (a.kind === "hire") return "worker";
+  if (a.kind === "hire" || a.kind === "build_workplace") return "worker";
   if (a.kind === "open") return OPEN_AT[a.target] ?? null;
   return null;
 }

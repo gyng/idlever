@@ -40,25 +40,25 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     house.action=action("build_town","house","Build house",home.then(||"Already built".into()));
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
-    let mut scout=entry("scout","Hire the Receptionist · auto runs","Until the Receptionist is hired, each departure needs your tap.","The Receptionist books the hero's next delve after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
+    let mut scout=entry("scout","Build the Guildhouse · auto runs","Until the Guildhouse is built, each departure needs your tap.","Building it brings the Receptionist, who books the hero's next delve after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
     // (Cut258: a Receptionist who needs no delve shows no count — her price alone)
     scout.progress=(n.need()>0).then(||JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
-    if !hired {scout.requirements.push(if n.need()>0 {format!("{} manual delves; {price} Gold",n.need())} else {format!("{price} Gold")});if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
-    scout.action=action("hire","scout","Hire Receptionist",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
+    if !hired {scout.requirements.push(if n.need()>0 {format!("{} manual delves; {price} Gold",n.need())} else {format!("{price} Gold")});if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Build the earlier ready workplace first".into()});}}
+    scout.action=action("build_workplace","guild","Build Guildhouse",(!scout_ready||hired).then(||if hired {"Already built".into()} else {"Requirements unmet".into()}));
     if hired {
         scout.action=action("open","workers","Workers",None);
         scout.effect=format!("When enabled, {} books the hero's next delve after each rest. Pausing the worker stops automatic departures.",n.person);
         if !tree::on(l,"scout") {scout.state="active".into();scout.requirements.push("Enable the Receptionist in Workers".into());}
     }
     let p=tree::def("porter").unwrap();let porter_hired=tree::hired(l,"porter");let porter_ready=home&&tree::lit(l).is_some_and(|n|n.id=="porter");
-    let mut porter=entry("porter","Hire the Porter · empties chest","The Porter carries each haul from the chest to your purse.","Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
+    let mut porter=entry("porter","Build the Haul chest · auto haul","The Porter carries each haul from the chest to your purse.","Building it costs no Gold and brings the Porter, who collects the actual haul; new towns already receive returned Gold automatically.",if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
     porter.progress=Some(JournalProgress {current:tree::count(l,"porter").min(p.need()),required:p.need(),unit:"hauls".into()});
     if !porter_hired {porter.requirements.push(format!("{} hauls;0 Gold",p.need()));}
-    porter.action=action("hire","porter","Hire Porter",(!porter_ready||porter_hired).then(||"Requirements unmet".into()));
+    porter.action=action("build_workplace","haul_chest","Build chest",(!porter_ready||porter_hired).then(||"Requirements unmet".into()));
     let mut entries=vec![house,porter,scout];
     for (id,title,reason,effect) in [("blacksmith","Build the Forge","Permanent upgrades change every future starting kit.","Spend Gold once on upgrades. Unlocked gear and supplies are free to reuse."),("kennel","Build the Kennel","Companions can join your builds.","Manage your tamed companions and their party slots."),("bank","Build Savings","Spare Gold can earn interest.","Deposits earn2% per night before worker bonuses; withdrawals return your Gold.")] {
         let built=town::built(l,id);let ready=town::build_ready(l,id);let mut e=entry(id,title,reason,effect,if built {"complete"} else if ready {"ready"} else {"later"});
-        if !built&&!ready {e.requirements.push(match id {"blacksmith"=>"Hire Receptionist, complete four delves, and earn exit Gold".into(),"kennel"=>"Hire Receptionist and tame a pet with a Forge leash".into(),_=>format!("Complete a positive-income night; hold its net Gold (currently {})",l.last_night_net)});if !home {e.requirements.push("Build a house".into());}}
+        if !built&&!ready {e.requirements.push(match id {"blacksmith"=>"Build the Guildhouse, complete four delves, and earn exit Gold".into(),"kennel"=>"Build the Guildhouse and tame a pet with a Forge leash".into(),_=>format!("Complete a positive-income night; hold its net Gold (currently {})",l.last_night_net)});if !home {e.requirements.push("Build a house".into());}}
         e.action=action("build_town",id,title,(!ready).then(||if built {"Already built".into()} else {"Milestone unmet".into()}));entries.push(e);
     }
     let mut bloodline=entry("bloodlines","More bloodlines","Each bloodline keeps its own build and progression.","An additional resident costs250 Gold. The town supports three bloodlines.",if home {"active"} else {"later"});

@@ -51,6 +51,8 @@ pub fn load(text: &str) -> Result<Game, String> {
     crate::traits::upgrade(&mut g.lineage);
     // Cut 30.5: a save from before the works tree: its workers up to the scout hired (no player regresses)
     crate::tree::upgrade(&mut g.lineage);
+    // Cut273 §4: a hired worker's workplace stands (its level is derived from the staff; a building's level 1 repaired)
+    crate::town::repair_workplaces(&mut g.lineage);
     if g.lineage.town.gold_v == 0 {
         // The chest is part of total gold already: release it without another ledger credit.
         g.lineage.town.auto_collect = true;

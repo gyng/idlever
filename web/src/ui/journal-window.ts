@@ -54,6 +54,10 @@ export function openJournal(
             return false;
           if (action.kind === "build_town")
             return owner.buildTown ? app.mutate(() => owner.buildTown!(action.target)) : false;
+          if (action.kind === "build_workplace")
+            return owner.buildWorkplace
+              ? app.mutate(() => owner.buildWorkplace!(action.target))
+              : false;
           if (action.kind === "hire")
             return owner.hire ? app.mutate(() => owner.hire!(action.target)) : false;
           return route(action.kind === "delve" ? "delve" : action.target);

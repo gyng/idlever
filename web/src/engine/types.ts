@@ -919,6 +919,16 @@ export type Town = {
   quests_done?: number;
   workers?: WorkerPost[];
   forge_work?: ForgeWork;
+  workplaces?: Workplace[]; // Cut273: the workplaces standing and the lit one's plot
+};
+/** Cut273 (core `town::workplaces_wire`): a workplace — level 0 an unbuilt plot; `next` the build on offer (the lit worker). */
+export type Workplace = {
+  id: string;
+  name: string;
+  level: number;
+  max: number;
+  staff?: string[];
+  next?: { worker: string; level: number; price: number; affordable: boolean };
 }; // Cut 30.5 (core): the workers at their posts (hired; the lit node's greyed with its price)
 /** Cut 228 (core, read model): the Forge's present work — a step it actually forged (`sword +3`) for hero `hero` within the
  *  last `FORGE_WORK_TICKS` of that hero's live clock; `left_s` until it ends. Absent when nothing was forged lately, or when
@@ -1044,6 +1054,9 @@ export type WorkNode = {
   kind: "worker" | "stage";
   branch: string; // branch: trunk · character · items · scale · town
   name: string; // ≤ 2 words (`porter`, `kennel-hand`, `second stance`)
+  workplace?: string; // Cut273: the worker's workplace id (`guild`, `kennel`) and name (`Guildhouse`, ≤ 2 words)
+  workplace_name?: string;
+  level?: number; // Cut273: the workplace level his arrival makes (1: built)
   person?: string; // Cut258: a worker's own name (`Arina`), shown "Name · role" (`Arina · receptionist`); display only, absent on a stage
   state: string;
   chore?: string; // worker: the act by hand — chest · send · forge · deposit · level · field · swap · start (none: the quartermaster, given)
@@ -1379,7 +1392,7 @@ export type ReturnReport = {
   fallen?: Fallen[]; // Cut 29 §6 (core; AX: Greth gone with only `party −1 ogre`): each companion that fell, named — `Greth · ogre L5 · fell D12 to lurker`
 };
 export type JournalAction = {
-  kind: "build_town" | "hire" | "delve" | "open";
+  kind: "build_town" | "build_workplace" | "hire" | "delve" | "open";
   target: string;
   label: string;
   enabled: boolean;
@@ -2137,6 +2150,7 @@ export interface Engine {
   learnClassSkill?(id: string): Lineage;
   resetClassSkills?(): Lineage;
   buildTown?(id: string): Lineage;
+  buildWorkplace?(id: string): Lineage; // Cut273: build a workplace or raise its level — its lit worker arrives (exactly the hire)
   hire?(id: string): Lineage; // hire the lit node's worker (`Works.lit`; its price from the purse, then the chest)
   openChest?(): Lineage; // the haul chest into the purse (`Works.chest` → `gold`); the porter's chore
   setWorker?(id: string, on: boolean): Lineage; // switch a hired worker off (its chore by hand again) or back on

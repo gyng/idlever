@@ -383,6 +383,14 @@ impl Game {
         let r = town::construct(&mut self.lineage, id);
         self.honours_sweep(r)
     }
+    /// Cut273 (docs/CUT273_WORKPLACES.md): build a workplace, or raise its level — its lit worker arrives (exactly the
+    /// hire: its trigger, its price, the one offer at a time). The worker who arrived.
+    pub fn build_workplace(&mut self, place: &str) -> Result<&'static str, String> {
+        let w = town::workplace(place).ok_or("unknown workplace")?;
+        let n = tree::lit(&self.lineage).filter(|n| w.staff.contains(&n.id)).ok_or("not ready")?;
+        self.hire(n.id)?;
+        Ok(n.id)
+    }
     pub fn hire(&mut self, id: &str) -> Result<(), String> {
         let before=class_tree::earned_stage(&self.lineage);
         tree::hire(&mut self.lineage,id)?;
@@ -449,6 +457,8 @@ mod tests_cut119;
 mod tests_cut120;
 #[cfg(test)]
 mod tests_cut235;
+#[cfg(test)]
+mod tests_cut273;
 #[cfg(test)]
 mod tests_cut121;
 #[cfg(test)]

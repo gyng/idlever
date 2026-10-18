@@ -175,12 +175,25 @@ export type WorkerSpot = {
   id: string;
   post: string;
   lit: boolean;
+  /** Cut273: the lit worker's workplace (`guild`, `kennel`) and whether it is a plot not yet built (its build brings him) */
+  place?: string;
+  plot?: boolean;
   price?: number;
   paused: boolean;
   rank: number;
 };
 /** the chest's foot, beside the path under the mouth */
 export const CHEST_AT: Pt & { h: number } = { ...T(CX + 1.6, 8.3), h: 12 };
+/** Cut273: the Drill tent (the drillmaster's workplace) by the fire's south side, and its straw dummy */
+export const DRILL_AT: Pt & { h: number } = { ...T(CX - 1.7, 19.4), h: 24 };
+const DUMMY_AT: Pt & { h: number } = { ...T(CX - 0.95, 18.1), h: 12 };
+/** Cut273: a workplace's spot (its plot before it is built) */
+export const placeAt = (id: string): (Pt & { h: number }) | null =>
+  id === "haul_chest"
+    ? CHEST_AT
+    : id === "drill_tent"
+      ? DRILL_AT
+      : ((PLOTS as Record<string, (Pt & { h: number }) | undefined>)[id] ?? null);
 /** a worker's spot (texels, its foot): by id, else by its post's plot — art/town-ids.md's posts (the sheet's units × ~0.6 onto the map's
  *  tiles), the herald and the scout moved to the map's own board (left of the mouth) */
 const WORKER_AT: Record<string, Pt> = {
@@ -189,7 +202,7 @@ const WORKER_AT: Record<string, Pt> = {
   scout: { x: SERVICE_PLOTS.guild.x + 13, y: SERVICE_PLOTS.guild.y + 7 },
   apprentice: T(CX - 1.9, 11.6),
   clerk: T(CX + 2.8, 11.7),
-  drillmaster: T(CX + 1.4, 16.3),
+  drillmaster: T(CX - 0.85, 19.75),
   kennel_hand: T(CX + 2.4, 19.7),
   herald: T(CX - 3.6, 7.9),
   guide: T(CX + 1.65, 7.35),
@@ -251,6 +264,8 @@ export type TownState = {
   depth: number; // the best depth (the mouth's plaque)
   chest?: ChestState; // Cut 30.5: the haul chest (none once the porter carries the hauls)
   workers: WorkerSpot[]; // Cut 30.5: hired workers at their posts; the lit node's greyed
+  /** Cut273: each workplace's level (absent: an old wire — every workplace drawn as before) */
+  places?: Record<string, number>;
   /** Cut 228: the Forge's present work (Rust `Town.forge_work`): the step, the hero it was forged for, seconds left */
   forge?: { step: string; hero: number; left: number };
 };
@@ -411,10 +426,17 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
       : undefined;
   if (chest?.state === "full")
     markers.push({ at: "chest", kind: "chest", label: `$${chest.gold}` });
+  // Cut273: the workplaces (their level; the lit one's plot)
+  const placeList = town?.workplaces;
+  const places = placeList ? Object.fromEntries(placeList.map((p) => [p.id, p.level])) : undefined;
+  const litPlace = placeList?.find((p) => p.next);
   const workers: WorkerSpot[] = (town?.workers ?? []).map((w) => ({
     id: w.id,
     post: w.post,
     lit: !!w.lit,
+    ...(w.lit && litPlace?.next?.worker === w.id
+      ? { place: litPlace.id, plot: litPlace.level === 0 }
+      : {}),
     price: w.price,
     paused: !!w.paused,
     rank: w.rank ?? 1,
@@ -442,7 +464,12 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     services:
       town?.home === false
         ? []
-        : (["guild", "pool", "device"] as const).filter((id) => L.persistent_hero?.[id].available),
+        : (["guild", "pool", "device"] as const).filter(
+            (id) =>
+              L.persistent_hero?.[id].available &&
+              // Cut273: the Guildhouse stands once built (before, its plot is the lit worker's target)
+              (id !== "guild" || !places || (places.guild ?? 0) > 0),
+          ),
     residents:
       L.hero_slots
         ?.filter((h) => (h.life_state !== undefined ? h.life_state !== "away" : h.state !== "live"))
@@ -469,6 +496,7 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     board: !!o.board,
     chest: town?.home === false || town?.auto_collect ? undefined : chest,
     workers: town?.home === false ? [] : workers,
+    ...(places ? { places } : {}),
     forge:
       town?.home !== false && has("blacksmith") && town?.forge_work
         ? {
@@ -860,6 +888,13 @@ function drawPrimitive(
       g.arc(x + w * 0.5, y + h * 0.3, Math.max(2, h * 0.08), 0, Math.PI * 2);
       g.fill();
     }
+  } else if (id.startsWith("town_drill_dummy")) {
+    // Cut273: the straw dummy on its post (a cross), a rag
+    R("#4a321f", w * 0.3, h * 0.2, 2, h * 0.8);
+    R("#4a321f", w * 0.05, h * 0.35, w * 0.55, 2);
+    R("#c9b48a", w * 0.2, h * 0.1, w * 0.22, h * 0.45);
+    R("#c01530", w * 0.2, h * 0.14, w * 0.22, 1);
+    R("#8a8a92", w * 0.75, h * 0.25, 1, h * 0.75);
   } else if (id.startsWith("town_tent")) {
     tri("#c9b48a", w / 2, 0, 0, w, h);
     tri("#2a2218", w / 2, h * 0.45, w * 0.36, w * 0.64, h);
@@ -2442,7 +2477,14 @@ export function createTownView(host: HTMLElement): TownView {
           ? `town_service_device_active_${animate ? Math.floor(t * 2) & 1 : 0}`
           : `town_service_${id}`;
       n0 = F.n;
-      sprite(spriteId, p.h, p.x, p.y, { ground: true });
+      // Cut273: the Guildhouse's second level (the Guide's signpost) when its art is packed, else the hall
+      sprite(
+        id === "guild" && (s.places?.guild ?? 0) >= 2 ? [`${spriteId}_2`, spriteId] : spriteId,
+        p.h,
+        p.x,
+        p.y,
+        { ground: true },
+      );
       tagGlow(id, n0);
       if (id === "pool") {
         for (const spot of homeSpots)
@@ -2472,8 +2514,22 @@ export function createTownView(host: HTMLElement): TownView {
     }
     folk(s, night);
     n0 = F.n;
-    if (s.board) sprite("town_board", PLOTS.board.h, PLOTS.board.x, PLOTS.board.y);
+    if (s.board)
+      sprite(
+        (s.places?.board ?? 0) >= 2 ? ["town_board_2", "town_board"] : "town_board",
+        PLOTS.board.h,
+        PLOTS.board.x,
+        PLOTS.board.y,
+      );
     tagGlow("board", n0);
+    // Cut273: the Drill tent and its dummy, once the drillmaster's workplace is built
+    if (s.home && (s.places?.drill_tent ?? 0) > 0) {
+      sprite("town_drill_dummy", DUMMY_AT.h, DUMMY_AT.x, DUMMY_AT.y);
+      sprite("town_tent", DRILL_AT.h, DRILL_AT.x, DRILL_AT.y);
+    }
+    // Cut273: the Haul chest stands by the mouth once built (the porter's errand draws it full until he takes the haul up)
+    if (s.home && !s.chest && (s.places?.haul_chest ?? 0) > 0 && !(errand && t < errand.pick))
+      sprite("town_haul_chest", CHEST_AT.h, CHEST_AT.x, CHEST_AT.y);
     // the buildings: scaffold → built (dust, a glint)
     for (const b of s.buildings) {
       const p = PLOTS[b.id];
@@ -2544,7 +2600,25 @@ export function createTownView(host: HTMLElement): TownView {
       const step = moving && (Math.floor(t * 6.5) & 1) === 1;
       const frameN = still || moving ? 0 : Math.floor((t + phase) / beat) & 1;
       n0 = F.n;
-      if (w.lit) {
+      if (w.lit && w.place) {
+        // Cut273: nobody stands at an unbuilt workplace — its plot (a level: the building itself) is the target and shimmers
+        const at = placeAt(w.place);
+        if (w.plot && at) sprite("town_plot", 16, at.x, at.y);
+        if (F.n > n0) tagGlow(`worker:${w.id}`, n0);
+        else {
+          const q = glowAt.get(
+            w.place === "blacksmith" ||
+              w.place === "bank" ||
+              w.place === "kennel" ||
+              w.place === "board" ||
+              w.place === "guild"
+              ? w.place
+              : "",
+          );
+          if (q !== undefined) glowAt.set(`worker:${w.id}`, q);
+        }
+        continue;
+      } else if (w.lit) {
         const g = atlas.grey(workerIds(w.id), 24);
         if (inView(x, y, g.w, g.h)) {
           grounding(x, y, g.w, g.h);
@@ -3166,12 +3240,17 @@ export function createTownView(host: HTMLElement): TownView {
       if (id === "chest" || id.startsWith("worker:")) {
         // (the chest and the workers stand off the plots)
         const wk = id === "chest" ? null : state.workers.find((w) => `worker:${w.id}` === id);
-        const p = id === "chest" ? (state.chest ? CHEST_AT : null) : wk ? workerAt(wk) : null;
+        // (Cut273: the lit worker's unbuilt workplace — its plot is his target)
+        const plot = wk?.lit && wk.plot && wk.place ? placeAt(wk.place) : null;
+        const p =
+          id === "chest" ? (state.chest ? CHEST_AT : null) : plot ? plot : wk ? workerAt(wk) : null;
         if (!p) return null;
         const s =
           id === "chest"
             ? atlas.get(["town_haul_chest"], CHEST_AT.h)
-            : atlas.get(workerIds(wk!.id), 24);
+            : plot
+              ? atlas.get("town_plot", 16)
+              : atlas.get(workerIds(wk!.id), 24);
         const a = css(p.x - s.w / 2, p.y - s.h),
           b = css(p.x + s.w / 2, p.y);
         return { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y };

@@ -1,7 +1,7 @@
 // Cut 30.5 — the works tree, client half (docs/CUT30_5.md, docs/AUTOMATION_TREE.md §3): the `next` pill on the home screen (one goal:
 // an icon, ≤ 3 words, a number, a thin bar; a tap opens the works on its node), the works sheet (the tracks panel's successor: the
 // nodes done, dimmed; the lit or counting node full with its hire; the next two as silhouettes; never the whole tree; the four branches
-// once the trunk is done), the hire's beat (`PORTER HIRED`, ≤ 2 words) and the report's worker lines (`apprentice · +2 steps`).
+// once the trunk is done), the arrival's beat (`LILI ARRIVES`, ≤ 2 words) and the report's worker lines (`apprentice · +2 steps`).
 // All truth is the core's (`Lineage.tree`): the client draws the nodes, their states and the pill as the wire sends them.
 import "../works.css";
 import type { App } from "../app";
@@ -299,12 +299,14 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
                 {
                   class: `btn primary hire-btn${n.affordable === false ? " short" : ""}`,
                   "data-node": n.id,
-                  disabled: n.affordable === false || !app.engine.hire,
-                  onclick: () => void hireNode(app, n, close),
+                  disabled:
+                    n.affordable === false || !(app.engine.buildWorkplace ?? app.engine.hire),
+                  onclick: () => void buildNode(app, n, close),
+                  title: /* copy:tooltip */ `${buildLabel(n)} · ${price(n)}`,
                 },
                 n.affordable === false
                   ? `$${app.lineage.gold + W.chest}/$${n.price}`
-                  : /* copy:button */ `hire · ${price(n)}`,
+                  : /* copy:button */ `${buildVerb(n)} · ${price(n)}`,
               )
             : "";
           return h(
@@ -486,10 +488,24 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
   );
 }
 
-/** The hire: the core's (`hire(id)`), then the beat — `LILI HIRED` — while the worker walks to his post (the town's). */
-export async function hireNode(app: App, n: WorkNode, close?: () => void): Promise<boolean> {
-  if (!app.engine.hire) return false;
-  const ok = await app.mutate(() => app.engine.hire!(n.id));
+/** Cut273: what building a worker's workplace reads as — `build` a new plot, `upgrade` a level above I. */
+export const buildVerb = (n: Pick<WorkNode, "level">): string =>
+  (n.level ?? 1) > 1 ? /* copy:button */ "upgrade" : /* copy:button */ "build";
+/** Cut273: the workplace a build makes, ≤ 2 words plus its level (`Guildhouse`, `Forge II`); the role when it has none. */
+export const buildLabel = (n: Pick<WorkNode, "workplace_name" | "level" | "name">): string =>
+  n.workplace_name
+    ? (n.level ?? 1) > 1
+      ? `${n.workplace_name} ${rankNum(n.level!)}`
+      : n.workplace_name
+    : n.name;
+/** Cut273: the build — the core's (`buildWorkplace(place)`; exactly the hire), then the beat `LILI ARRIVES` while the worker walks
+ *  to her post (the town's). The name comes from the wire after the build (empty until she arrives). */
+export async function buildNode(app: App, n: WorkNode, close?: () => void): Promise<boolean> {
+  const engine = app.engine;
+  if (!engine.buildWorkplace && !engine.hire) return false;
+  const ok = await app.mutate(() =>
+    engine.buildWorkplace && n.workplace ? engine.buildWorkplace(n.workplace) : engine.hire!(n.id),
+  );
   if (!ok) return false;
   audio.cue("unlock");
   close?.();
@@ -509,9 +525,9 @@ export async function promoteNode(app: App, n: WorkNode, close?: () => void): Pr
   beat(`${n.name.toUpperCase()} ${rankNum(r)}`);
   return true;
 }
-/** The hire's beat over the well: the worker's own name and `HIRED` (2 words: `LILI HIRED`), ~1.8 s. */
+/** The arrival's beat over the well: the worker's own name and `ARRIVES` (2 words: `LILI ARRIVES`), ~1.8 s. */
 export const hireBeat = (name: string): void =>
-  beat(`${name.toUpperCase()} `, /* copy:callout */ "HIRED");
+  beat(`${name.toUpperCase()} `, /* copy:callout */ "ARRIVES");
 function beat(...text: string[]): void {
   const host = document.querySelector<HTMLElement>(".camp .well-wrap") ?? document.body;
   for (const old of host.querySelectorAll(".works-beat")) old.remove();

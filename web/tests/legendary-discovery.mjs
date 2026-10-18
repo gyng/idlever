@@ -157,6 +157,7 @@ try {
         "buy",
         "buyKit",
         "hire",
+        "buildWorkplace",
         "buySupply",
         "construct",
         "buildTown",
