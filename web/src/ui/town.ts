@@ -11,6 +11,7 @@ import type { App } from "../app";
 import type { HeroService, HeroSlot, Lineage, ReturnReport } from "../engine/types";
 import {
   createTownView,
+  inspectTownGlowTiming,
   townState,
   BUILDINGS,
   type BuildingId,
@@ -25,6 +26,8 @@ import { kitAffordable } from "./forge";
 import { openWindow as openSheet, closeAllSheets } from "./sheet";
 import { tile, paintFace } from "./frame";
 import { audio } from "../audio";
+import { effectsLevel } from "../render/fxpref";
+import { createGoldTransferFx, goldTransfers, visibleGoldPoint } from "./gold-transfers";
 import { questShown } from "./quest";
 import { featText, nextPill, nodeIcon, openWorks, workerTitle } from "./works";
 import { townGraveyard } from "./feats"; // Cut 118 (owner amendment §4): the graveyard's stones
@@ -155,6 +158,9 @@ export function markOpened(L: Lineage, id: string): void {
 
 /** Cut262: the orders the Guild's lantern has announced this session (one ≤ 3-word toast each, never a control) */
 const announced = new Set<string>();
+/** Cut272: an exit's or a fetch's gold line — a haul the porter carries home */
+const HAUL_WHY =
+  /^(banked|returned|driven|stalled|lost thread|died|slain|wake pay|porter bonus|fetched by|salvage|passage|secured )/;
 
 export type TownUi = {
   el: HTMLElement;
@@ -277,7 +283,21 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       }),
     );
   // Cut 30.5: the `next` pill rides the scene's top-left (the home screen's one goal); a tap opens the works on its node
-  const pill = nextPill(app, (node, at) => openWorks(app, node, at));
+  // Cut272 (owner: collection is diegetic): `open chest` points at the chest in the scene (its tap collects), never a console collect
+  const pill = nextPill(app, (node, at) => {
+    const chest = btns.get("chest");
+    if (app.lineage.tree?.next?.kind === "chest" && chest && !chest.hidden) {
+      chest.focus({ preventScroll: true });
+      if (!view.pulse("chest")) {
+        chest.classList.remove("task-point");
+        void chest.offsetWidth;
+        chest.classList.add("task-point");
+        setTimeout(() => chest.classList.remove("task-point"), 2600);
+      }
+      return;
+    }
+    openWorks(app, node, at);
+  });
   kwHost(pill.el, "next"); // docs/TOOLTIPS.md: its tip on long-press / hover
   // c30-legible (the owner, a new player: "I didn't understand why there were new buildings"): a building's arrival names what raised
   // it (`first gold home → blacksmith`, the core's trigger), once, over the town while it stands up; its target glows the while
@@ -291,6 +311,15 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const view = createTownView(el);
   let chestOpenUntil = 0,
     chestTimer = 0;
+  const coins = createGoldTransferFx();
+  // Cut272: the ledger this scene has seen (a haul landing after it: the porter's errand); taken at mount, never replayed
+  let ledgerSeen: Pick<Lineage, "gold" | "gold_ledger"> = {
+    gold: app.lineage.gold,
+    gold_ledger: app.lineage.gold_ledger?.map((line) => ({ ...line })),
+  };
+  // the hit target's id as the view knows it (the lit worker by his own id)
+  const rid = (id: string): string =>
+    id === "worker" ? `worker:${btns.get("worker")?.dataset.worker ?? ""}` : id;
   // the store: what this viewer has seen built (a building first seen goes up: scaffold → built) and opened (its rune goes)
   let store = load(app.lineage);
   // (an old save's first camp shows its town standing: no scaffold on everything)
@@ -329,6 +358,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       chestOpen: performance.now() < chestOpenUntil,
     });
     view.setState(state);
+    porterHaul(L);
     if (previousHome === false && state.home) hooks.resident?.(0);
     // seen now (a re-mount does not raise it again)
     const built = state.buildings.map((b) => b.id);
@@ -344,6 +374,36 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       const constructed = fresh.filter((id) => !previousState.buildings.some((b) => b.id === id));
       if (constructed.length) arrive(constructed);
     }
+  }
+  /** Cut272: a haul landed with the porter hired (Rust moved the gold already) — he fetches it from the chest and carries it home;
+   *  several at once, a catch-up, reduced motion or effects off: no walk, the `+$N` alone */
+  function porterHaul(L: Lineage): void {
+    const before = ledgerSeen;
+    ledgerSeen = { gold: L.gold, gold_ledger: L.gold_ledger?.map((line) => ({ ...line })) };
+    const porter = L.tree?.nodes.find((n) => n.id === "porter");
+    if (!state?.home || !porter || porter.state !== "done" || porter.paused) return;
+    const moves = goldTransfers(before, L);
+    const haul = moves.filter((m) => m.delta > 0 && HAUL_WHY.test(m.why ?? ""));
+    if (!haul.length) return;
+    const gold = haul.reduce((sum, m) => sum + m.delta, 0);
+    const to = moves.some((m) => (m.why ?? "").startsWith("bank deposit")) ? "bank" : "house";
+    const quick = haul.length > 1 || app.catchingUp || !el.isConnected;
+    el.dataset.haul = String(gold);
+    if (quick) {
+      floatGold(gold, to);
+      return;
+    }
+    void view.haul(to).then((walked) => {
+      if (el.isConnected) floatGold(gold, to);
+      el.dataset.hauled = walked ? "walked" : "skipped";
+    });
+  }
+  function floatGold(gold: number, to: "house" | "bank"): void {
+    const p = view.haulAt(to);
+    const f = h("span", { class: "town-haul-float num gold", "aria-hidden": "true" }, `+$${gold}`);
+    Object.assign(f.style, { left: `${Math.round(p.x)}px`, top: `${Math.round(p.y)}px` });
+    el.appendChild(f);
+    setTimeout(() => f.remove(), 1700);
   }
   function paintActors(): void {
     const slots = app.lineage.hero_slots ?? [];
@@ -543,6 +603,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       want.push({ id: "staked", plot: "staked" });
     for (const [id, b] of btns)
       if (!want.some((w) => w.id === id)) {
+        view.highlight(rid(id), "hover", false);
+        view.highlight(rid(id), "focus", false);
         b.remove();
         btns.delete(id);
       }
@@ -581,6 +643,20 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           },
           h("span", { class: "vh" }, label),
         );
+        // Cut272: hover and keyboard focus light the sprite's own silhouette (the view draws it; the box is only the fallback)
+        const id = w.id,
+          hb = b;
+        b.addEventListener("pointerenter", () => view.highlight(rid(id), "hover", true));
+        b.addEventListener("pointerleave", () => view.highlight(rid(id), "hover", false));
+        b.addEventListener("focus", () => {
+          if (hb.matches(":focus-visible")) view.highlight(rid(id), "focus", true);
+        });
+        b.addEventListener("blur", () => view.highlight(rid(id), "focus", false));
+        // a task's tap (ui/tasks.ts pointAt): its two pulses on the sprite, the DOM ring only where none can be drawn
+        b.addEventListener("idlever:point", () => {
+          if (view.pulse(rid(id))) hb.classList.add("glow-pulse");
+          setTimeout(() => hb.classList.remove("glow-pulse"), 2600);
+        });
         // Rich details keep keyword encounter metadata after toolbar labels disappear.
         if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         if (service(w.id)) detailHost(b, () => serviceDetails(w.id));
@@ -705,6 +781,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       b.dataset.markers = [...mk.map((m) => m.kind), ...(nw && nwAt === w.id ? ["next"] : [])].join(
         " ",
       );
+      b.dataset.ready = mk.length ? "true" : "false";
       const cnt = w.id === "chest" && s.chest?.need ? `${s.chest.count ?? 0}/${s.chest.need}` : "";
       const ce = b.querySelector(".town-count");
       if (cnt) {
@@ -743,6 +820,10 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       tag.dataset.next = s.staked.id;
     } else tag.hidden = true;
     tag.classList.toggle("build-marker", s.staked?.ready === true);
+    // Cut272: what can act now shimmers on its own sprite (the eave lantern stays the second cue)
+    view.setReady(
+      [...btns.entries()].filter(([, b]) => b.dataset.ready === "true").map(([id]) => rid(id)),
+    );
     if (s.staked?.ready && app.engine.buildTown) {
       tag.setAttribute("role", "button");
       tag.tabIndex = 0;
@@ -772,6 +853,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         continue;
       }
       b.hidden = false;
+      b.classList.toggle("glow-sprite", view.glowsSprite(rid(id)));
+      b.dataset.fx = effectsLevel();
       // ≥ 44 px each way, centred on the sprite (a building's box trimmed to its body: the roof's sky is not the building)
       const readyPlot = id === "staked" && s.staked?.ready === true;
       const cx = r.x + r.w / 2,
@@ -798,6 +881,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     }
     if (!tag.hidden) placeTag();
     foundation.hidden = state?.staked?.ready !== true;
+    foundation.dataset.fx = effectsLevel();
   }
   view.onLayout(() => {
     layout();
@@ -951,6 +1035,18 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
    *  count moves (the core's `openChest`; the porter's chore). */
   async function openChest(): Promise<void> {
     if (!app.engine.openChest || (app.lineage.tree?.chest ?? 0) <= 0) return;
+    // Cut272: where the coins start — the chest's own target, read before the paint retires it (a mark holds its place)
+    const gold = app.lineage.tree?.chest ?? 0,
+      at = btns.get("chest")?.getBoundingClientRect();
+    const from = at?.width ? h("i", { class: "town-coin-from", "aria-hidden": "true" }) : null;
+    if (from && at) {
+      Object.assign(from.style, {
+        left: `${at.left + at.width / 2 - 3}px`,
+        top: `${at.top + at.height / 2 - 3}px`,
+      });
+      document.body.appendChild(from);
+      setTimeout(() => from.remove(), 1200);
+    }
     chestOpenUntil = performance.now() + 1500;
     paint();
     clearTimeout(chestTimer);
@@ -959,6 +1055,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     }, 1550);
     audio.cue("exit_bank");
     await app.mutate(() => app.engine.openChest!()); // (no forecast move to name: the purse is the sims' either way)
+    // Cut272: the haul's coins fly from the chest to the purse (decoration; the purse's figure is Rust's)
+    const purse = [...document.querySelectorAll<HTMLElement>(".gold")].find(
+      (g) => !el.contains(g) && visibleGoldPoint(g),
+    );
+    if (purse && from) coins.play([{ delta: gold, why: "chest" }], purse, () => from);
   }
   function send(after: () => void): void {
     if (sending) return;
@@ -987,6 +1088,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       clearTimeout(tagTimer);
       clearTimeout(chestTimer);
       clearTimeout(arrivalTimer);
+      coins.dispose();
       view.dispose();
     },
   };
@@ -1224,6 +1326,13 @@ export function exposeTown(ui: TownUi | null): void {
     stats: () => ui.view.stats(),
     stress: (n: number) => ui.view.stress(n),
     setHour: (x: number | null) => ui.view.setHour(x),
+    // Cut272: drive the silhouette glow directly (QA captures, the tests)
+    highlight: (id: string, on = true) => ui.view.highlight(id, "hover", on),
+    ready: (ids: string[]) => ui.view.setReady(ids),
+    pulse: (id: string) => ui.view.pulse(id),
+    haul: (to: "house" | "bank" = "house") => ui.view.haul(to),
+    poke: () => ui.view.poke(),
+    glowTiming: (n?: number) => inspectTownGlowTiming(n),
     actors: () =>
       [...ui.el.querySelectorAll<HTMLElement>("[data-home-hero]")].map((b) => ({
         id: Number(b.dataset.homeHero),

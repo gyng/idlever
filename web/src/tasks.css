@@ -256,6 +256,12 @@ html body .task-tracker.game-control:active {
   box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
   animation: task-point 1.2s ease-in-out 2;
 }
+/* Cut272: a town target whose sprite carries the two pulses itself (render/town-glow.ts) wears no box ring */
+.town-hit.task-point.glow-pulse {
+  outline: none;
+  box-shadow: none;
+  animation: none;
+}
 @keyframes task-point {
   0%,
   100% {

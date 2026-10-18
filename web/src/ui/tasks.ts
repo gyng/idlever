@@ -122,6 +122,8 @@ export function pointAt(id: string | null): boolean {
   // restart the ring's animation on a repeat tap
   void el.offsetWidth;
   el.classList.add("task-point");
+  // Cut272: a town target answers with its sprite's own two pulses (ui/town.ts), the ring then only its fallback
+  el.dispatchEvent(new CustomEvent("idlever:point"));
   el.scrollIntoView?.({ block: "nearest", inline: "nearest" });
   pointTimer = window.setTimeout(() => el.classList.remove("task-point"), 2600);
   return true;

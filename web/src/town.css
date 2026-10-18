@@ -47,12 +47,14 @@
   border-radius: 6px;
   -webkit-tap-highlight-color: transparent;
 }
+/* Cut272: the sprite's own outline is the hover and focus indicator (render/town-glow.ts); this outline (never a filled box) is the
+   fallback where the view cannot draw it — the 2D view after a lost context, or no sprite standing there */
 .town-hit:focus-visible {
   outline: 2px solid #e3c183;
   outline-offset: 1px;
 }
-.town-hit:active {
-  background: rgba(227, 193, 131, 0.12);
+.town-hit.glow-sprite:focus-visible {
+  outline: none;
 }
 .town-hit .vh,
 .vh {
@@ -126,10 +128,78 @@
 .town-marker-painted::after {
   content: none;
 }
-.town-hit:hover,
-.town-hit:focus-visible {
-  background: rgba(227, 193, 131, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(227, 193, 131, 0.32);
+.town-hit:not(.glow-sprite):hover {
+  outline: 1px solid rgba(227, 193, 131, 0.6);
+  outline-offset: 1px;
+}
+/* fallback ready cue: a quiet gold outline breathing (full effects), steady (low); none at off */
+.town-hit:not(.glow-sprite)[data-ready="true"]:not([data-fx="off"]) {
+  outline: 1px solid rgba(227, 193, 131, 0.5);
+  outline-offset: 2px;
+}
+.town-hit:not(.glow-sprite)[data-ready="true"][data-fx="full"] {
+  animation: town-ready-outline 2.6s ease-in-out infinite;
+}
+@keyframes town-ready-outline {
+  0%,
+  100% {
+    outline-color: rgba(227, 193, 131, 0.25);
+  }
+  50% {
+    outline-color: rgba(243, 209, 146, 0.75);
+  }
+}
+/* the buildable plot has no scene sprite (the painted foundation is the UI's): its glow follows the image's alpha */
+.town-foundation:not([data-fx="off"]) img,
+.town-foundation:not([data-fx="off"]):not(.painted) svg {
+  filter: drop-shadow(0 0 1px #f3d192) drop-shadow(0 0 4px rgba(233, 176, 84, 0.55));
+}
+.town-foundation[data-fx="full"] img,
+.town-foundation[data-fx="full"]:not(.painted) svg {
+  animation: town-foundation-glow 2.8s ease-in-out infinite;
+}
+@keyframes town-foundation-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1px #f3d192) drop-shadow(0 0 3px rgba(233, 176, 84, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 1px #fff0c8) drop-shadow(0 0 7px rgba(243, 196, 104, 0.8));
+  }
+}
+/* Cut272: the porter's haul home — `+$N` rising over the house (or the bank) */
+.town-haul-float {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 15px;
+  color: #f3d192;
+  text-shadow:
+    0 1px 0 #0d0c14,
+    0 0 6px rgba(13, 12, 20, 0.9);
+  animation: town-haul-float 1.6s ease-out forwards;
+}
+@keyframes town-haul-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -240%);
+  }
+}
+/* (a 6 px mark at the chest's place while its coins leave; never seen) */
+.town-coin-from {
+  position: fixed;
+  z-index: 2000;
+  width: 6px;
+  height: 6px;
 }
 @keyframes town-bob {
   0%,
@@ -156,8 +226,23 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .town-marker {
-    animation: none;
+  .town-marker,
+  .town-hit[data-ready="true"],
+  .town-foundation img,
+  .town-foundation svg {
+    animation: none !important;
+  }
+  .town-haul-float {
+    animation: town-haul-fade 1.6s linear forwards;
+  }
+}
+@keyframes town-haul-fade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 .town-tag {
@@ -345,12 +430,7 @@
   display: block;
 }
 @media (hover: hover) {
-  .town-hit:hover {
-    background: rgba(227, 193, 131, 0.1);
-    box-shadow:
-      inset 0 0 0 1px #e3c18366,
-      0 0 12px #e3c18333;
-  }
+  /* (Cut272: a hovered building lights its own silhouette, render/town-glow.ts; no box over it) */
   .town-tag[role="button"]:hover {
     background: #342b24;
     box-shadow: 0 0 0 2px #e3c183;

@@ -203,6 +203,10 @@ export class App {
     this.watchRead = read;
     return read.promise;
   }
+  /** Cut272: an absence's batch is running (or left unfinished): the scene skips its errands */
+  get catchingUp(): boolean {
+    return this.offlineRunning || this.offlineIncomplete;
+  }
   get runnerOn(): boolean {
     const q = new URLSearchParams(location.search).get("runs");
     if (q === "0") return false;
