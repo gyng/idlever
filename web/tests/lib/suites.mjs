@@ -72,6 +72,7 @@ export const SMOKE_AREAS = Object.freeze({
     "depth-rail",
     "watch-log",
     "ctxloss",
+    "live-decisions",
   ],
   "gold, supplies and gear": [
     "checkpoint-gold",

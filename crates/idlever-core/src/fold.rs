@@ -40,7 +40,7 @@ impl Game {
         let clear_of = |d: u32| plan.as_ref().and_then(|p| p.1.iter().find(|(x, _)| *x == d).map(|(_, c)| *c)).unwrap_or(1.0);
         if live.is_none() || to < from {
             let snapshot = self.last_snapshot.clone().unwrap_or_else(|| self.snapshot());
-            return FoldLine { hp: 0, max_hp: 0, low: false, from, to: from.saturating_sub(1), clear: 1.0, gold: 0, beats: Vec::new(), chips: Vec::new(), floors: Vec::new(), step: StepResult { calm: Vec::new(), events: Vec::new(), snapshot, run_over: false } };
+            return FoldLine { hp: 0, max_hp: 0, low: false, from, to: from.saturating_sub(1), clear: 1.0, gold: 0, beats: Vec::new(), chips: Vec::new(), floors: Vec::new(), step: StepResult { calm: Vec::new(), events: Vec::new(), snapshot, run_over: false, decision: None, chests: Vec::new() } };
         }
         let mut all: Vec<Ev> = Vec::new();
         let first = std::mem::take(&mut self.events);

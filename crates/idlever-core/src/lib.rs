@@ -3,6 +3,7 @@
 pub mod ai;
 pub mod balance;
 pub mod chronicle;
+pub mod decide;
 pub mod defs;
 pub mod descent;
 pub mod engine;
@@ -453,6 +454,8 @@ mod tests_cut235;
 mod tests_cut121;
 #[cfg(test)]
 mod tests_cut122;
+#[cfg(test)]
+mod tests_cut270;
 #[cfg(test)]
 mod tests_cut156;
 // Cut244: manual Keep receipts retired; byte-exact Cut157 source is archived

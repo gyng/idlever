@@ -2877,6 +2877,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     run.verb_ring.clear();
     run.blind_seen.clear();
     run.vault_cage.clear();
+    run.vault_want = None;
     run.dens.clear();
     run.tempted = false;
     populate_floor(run, cx.grudges, cx.forge, cx.hunter);
@@ -3132,7 +3133,9 @@ pub fn vault_pick(items: &[crate::item::Item], pref: &str) -> usize {
 /// Take one item from the opened vault (`id`, or the preference's pick); the rest vanish.
 pub fn vault_take(run: &mut Run, cx: &mut Ctx, id: Option<u32>) {
     let Some((_, items)) = run.vault_choice.take() else { return };
-    let pick = id.and_then(|id| items.iter().position(|i| i.id == id)).unwrap_or_else(|| vault_pick(&items, cx.vault_pref));
+    // Cut 270: a watched player's pick made before the cache opened (`decide`), else the preference's, as before
+    let want = run.vault_want.take();
+    let pick = id.or(want).and_then(|id| items.iter().position(|i| i.id == id)).unwrap_or_else(|| vault_pick(&items, cx.vault_pref));
     let Some(mut it) = items.into_iter().nth(pick) else { return };
     if crate::legendary::definition(&it.kind).is_some() {
         crate::legendary::collect_pattern(run,cx,it,"Dungeon cache");return;

@@ -196,6 +196,12 @@ export class WasmEngine implements Engine {
   choose(itemId: number): Snapshot {
     return this.call("choose", itemId);
   }
+  setLiveDecisions(on: boolean): void {
+    this.game.setLiveDecisions(on);
+  }
+  decide(option: number): Snapshot {
+    return this.call("decide", option);
+  }
   setVaultPref(pref: string): Lineage {
     return this.call("setVaultPref", pref);
   }

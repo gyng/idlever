@@ -39,6 +39,7 @@ pub struct Absence {
 }
 
 pub(crate) fn begin_absence(game: &mut Game) -> Absence {
+    game.live_default(); // Cut 270: an absence never waits on a decision
     game.settle_renown(0);
     game.lineage.reveal_left = 1;
     game.batch = Batch::default();
@@ -878,6 +879,7 @@ pub(crate) fn boss_attack_conds(game: &Game, rules: &RuleSet, depth: u32, kind: 
 /// watched one does (`offline` stays false: the log's `town`), no reveal is reset and no rest is
 /// capped. Cheap when nothing ends: no report, no forecast (the passage is priced at a send only).
 pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
+    game.live_default(); // Cut 270: the open app's clock never waits on a decision
     let ms = game.advance_rem.0 + elapsed_ms;
     game.advance_rem.0 = ms % 100;
     let budget = ms / 100;

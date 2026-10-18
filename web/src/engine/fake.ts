@@ -1,6 +1,8 @@
 // Fake Engine: a tiny deterministic mini-sim with canned-shaped output so the UI can be built and
 // exercised before the Rust core lands. Not game truth. Selected with ?engine=fake or when pkg/ is absent.
 import type {
+  Chest,
+  Decision,
   BonesPile,
   CageOption,
   Divergence,
@@ -168,6 +170,9 @@ const BIOME_BOSS: Record<string, string> = {
   fens: "bloat_mother",
   crypt: "lich",
 };
+/** Cut 270: `?decide=1` — the fake opens live decisions and a chest (for the watch's prompt and chest groups). */
+const FAKE_DECIDE =
+  typeof location !== "undefined" && new URLSearchParams(location.search).get("decide") === "1";
 const DEV_FORK =
   typeof location !== "undefined" &&
   ["1", "2"].includes(new URLSearchParams(location.search).get("fake_fork") ?? "");
@@ -4280,6 +4285,13 @@ export class FakeEngine implements Engine {
     if (!this.live) this.live = this.startRun();
     const ctx = this.ctx();
     const events: Ev[] = [];
+    // Cut 270: an open decision holds the world (nothing ticks until `decide`)
+    if (this.pendingDecision && !this.live.over) {
+      const held = snapshot(this.live, ctx.rules);
+      held.turn *= 10;
+      held.decision = this.pendingDecision;
+      return { events, snapshot: held, run_over: false, decision: this.pendingDecision };
+    }
     this.tickAcc += ticks;
     const turns = Math.floor(this.tickAcc / 10);
     this.tickAcc -= turns * 10;
@@ -4296,9 +4308,74 @@ export class FakeEngine implements Engine {
       });
       endRun(this.live, "return", events);
     }
+    const chests: Chest[] = [];
     for (let i = 0; i < turns && !this.live.over; i++) {
       events.push(...simTurn(this.live, ctx));
       this.s.totalTurns += 10;
+      // Cut 270 (`?decide=1` only): a boss decision at turn 3, a chest at 5, a cache pick at 8 — once each a run
+      if (FAKE_DECIDE && this.liveOn && !this.live.over) {
+        const r = this.live,
+          seen = (this.decidedIn[r.id] ??= []);
+        const at = r.turn * 10;
+        if (r.turn >= 5 && !seen.includes("chest")) {
+          seen.push("chest");
+          chests.push({
+            t: at,
+            boss: "goblin_warlord",
+            title: "Goblin Warlord",
+            rarity: "legendary",
+            items: [{ kind: "crownsplitter", label: "Crownsplitter", rarity: "legendary" }],
+            gold: 40,
+          });
+        }
+        const open = (d: Decision): void => {
+          seen.push(d.kind);
+          this.pendingDecision = d;
+        };
+        if (r.turn >= 3 && !seen.includes("boss"))
+          open({
+            id: `${at}-boss`,
+            kind: "boss",
+            t: at,
+            depth: r.depth,
+            title: "Boss ahead",
+            options: [
+              { id: "goblin_warlord", label: "Fight", tone: "go" },
+              { id: "back", label: "Turn back", tone: "safe" },
+            ],
+            default: 0,
+          });
+        else if (r.turn >= 8 && !seen.includes("cache"))
+          open({
+            id: `${at}-cache`,
+            kind: "cache",
+            t: at,
+            depth: r.depth,
+            title: "Take one",
+            options: [
+              {
+                id: "901",
+                label: "sword +1",
+                tone: "item",
+                item: { id: 901, kind: "sword", label: "sword +1" } as InvItem,
+              },
+              {
+                id: "902",
+                label: "mail +1",
+                tone: "item",
+                item: { id: 902, kind: "mail", label: "mail +1" } as InvItem,
+              },
+              {
+                id: "903",
+                label: "heal",
+                tone: "item",
+                item: { id: 903, kind: "heal", label: "heal" } as InvItem,
+              },
+            ],
+            default: 0,
+          });
+        if (this.pendingDecision) break;
+      }
     }
     if (this.live.over && !this.settled.has(this.live.id)) {
       const r = this.settle(this.live, true);
@@ -4310,7 +4387,33 @@ export class FakeEngine implements Engine {
     for (const e of events) e.t *= 10;
     const snap = snapshot(this.live, ctx.rules);
     snap.turn *= 10;
-    return { events, snapshot: snap, run_over: this.live.over };
+    const decision = this.pendingDecision ?? undefined;
+    if (decision) snap.decision = decision;
+    return {
+      events,
+      snapshot: snap,
+      run_over: this.live.over,
+      ...(decision ? { decision } : {}),
+      ...(chests.length ? { chests } : {}),
+    };
+  }
+  // Cut 270: the fake's live decisions (`?decide=1`), as the core's: held between turns, the auto-pick sends nothing
+  private liveOn = false;
+  private pendingDecision: Decision | null = null;
+  private decidedIn: Record<number, string[]> = {};
+  setLiveDecisions(on: boolean): void {
+    this.liveOn = on;
+    if (!on) this.pendingDecision = null;
+  }
+  decide(option: number): Snapshot {
+    const d = this.pendingDecision;
+    if (!d) throw new Error("no decision");
+    this.pendingDecision = null;
+    if (option >= 0 && option !== d.default && d.options[option]?.id === "back") this.bailed = true;
+    if (!this.live) this.live = this.startRun();
+    const snap = snapshot(this.live, this.s.rules);
+    snap.turn *= 10;
+    return snap;
   }
   // apply a finished run to the lineage; returns [newFacts, newBests, marks]
   private settle(
@@ -4615,6 +4718,7 @@ export class FakeEngine implements Engine {
   // Cut 5 stand-ins: the fake places no vaults, so `choose` only answers with the live snapshot; `bail` ends the run on the next step
   private bailed = false;
   bail(): void {
+    this.pendingDecision = null;
     if (this.live && !this.live.over) this.bailed = true;
   }
   choose(_itemId: number): Snapshot {

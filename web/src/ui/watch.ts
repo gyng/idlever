@@ -127,6 +127,8 @@ import type {
   SnapMeters,
   StepResult,
   Trace,
+  Chest,
+  Decision,
 } from "../engine/types";
 import { h, clear, items, replace, spanOf } from "./dom";
 import {
@@ -162,6 +164,18 @@ import { controlPanel } from "./control"; // take control (a secondary mode): th
 import { detailHost } from "./tips"; // RUNS_UI: the live badge's tip; the carried / secured icons' tips
 import { createDepthMap, knownDepthMarks, type DepthMark } from "./depth-map";
 import { deathWhy, goldWords } from "./gold-words";
+import {
+  chestReveal,
+  chestTimes,
+  decisionPrompt,
+  flagGate,
+  FLAG_LOOK,
+  milestoneLog,
+  type FlagKind,
+  type Milestone,
+  type Prompt,
+} from "./decide"; // Cut 270: live decisions, the boss chest, flags, the milestone log
+import { reducedMotion } from "../render/quality";
 // RUNS_UI: the town tile's first-watches caption
 
 type Tier = "bank" | "return" | "death";
@@ -1128,6 +1142,11 @@ export function renderWatch(app: App): Mounted {
   const ctl = controlPanel(app.engine as unknown as Parameters<typeof controlPanel>[0], () => {
     manualKick = true;
   });
+  // Cut 270: the decision prompt's strip, the chest's stage, the flag lane and the milestone log (beside the combat log)
+  const decideHost = h("div", { class: "decide-host" });
+  const chestHost = h("div", { class: "chest-host", "aria-live": "polite" });
+  const flagEl = h("div", { class: "watch-flag num", "aria-live": "polite", hidden: true });
+  const ms = milestoneLog();
   const depthMap = createDepthMap(() => mapKeepOut());
   let mapLineage = app.lineage;
   const releasedBossMarks = new Map<string, DepthMark>();
@@ -1159,13 +1178,22 @@ export function renderWatch(app: App): Mounted {
       ),
       meterBox,
       banner,
+      flagEl,
+      chestHost,
       h("div", { class: "watch-messages" }, whyTip, ticker, whyLine, tactics.el, combatLog),
+      decideHost,
     ),
+    ms.el,
     ctl.el,
     cons.el,
     ...wide.els,
   );
 
+  // Cut 270: on a desktop the milestone log sits in the run's right column (under its meters), open; a phone keeps it a fold
+  if (wide.slot) {
+    wide.slot.after(ms.el);
+    ms.el.open = true;
+  }
   const stage = el.querySelector<HTMLElement>(".stage")!;
   const dockMedia = matchMedia("(min-width: 1024px)");
   const placeDock = (): void => {
@@ -1405,6 +1433,14 @@ export function renderWatch(app: App): Mounted {
   };
   // HUD updates released at the viewer's clock
   const hud = { hp: 0, maxHp: 1, depth: 1 };
+  // Cut 270: the open prompt, the engine's hold, the flag limiter, the low-hp flag and the secured gold the log has named
+  let prompt: Prompt | null = null;
+  let engineHeld = false; // the engine waits between ticks on a decision (`StepResult.decision`)
+  const decisionsSeen = new Set<string>();
+  const flagged = flagGate();
+  let flagTimer = 0,
+    lowFlag = false,
+    msSecured = -1;
   /** blind c4705f9 (B: `hp 7/25 · max -26` "from hunger I never understood"): the max a drain took this run, by its word (`starving −26`) */
   const maxLoss = new Map<string, number>();
   // the snapshot the stake line was last painted from (the card's loot is the stake's), and each floor's rooms / situation as the
@@ -1478,6 +1514,21 @@ export function renderWatch(app: App): Mounted {
   }
   function paintHud(): void {
     const p = hud.maxHp ? Math.min(1, hud.hp / hud.maxHp) : 0;
+    // Cut 270: under a quarter of his hp is flagged once; climbing back over half after it is a close call survived
+    if (hud.hp > 0 && hud.maxHp > 1) {
+      if (!lowFlag && p < 0.25) {
+        lowFlag = true;
+        flag("low", /* copy:callout */ "low hp");
+      } else if (lowFlag && p > 0.5) {
+        lowFlag = false;
+        flag("close", /* copy:callout */ "close call");
+        milestone({
+          t: Math.round(viewerTick()),
+          kind: "close",
+          text: /* copy:callout */ "close call",
+        });
+      }
+    }
     face.set(p);
     stake.classList.toggle("warn", p < 0.4);
     const lost = [...maxLoss].filter(([, n]) => n > 0);
@@ -1789,7 +1840,15 @@ export function renderWatch(app: App): Mounted {
       const known = (): boolean => app.lineage.facts.some(isFact) || learned.some(isFact);
       // Cut 6 §5: the counter named as a row (`boss · counter: attack boss`). The fact lands on the sighting step itself (the
       // core learns it on the boss's first telegraph), so the lineage is re-read as the banner is released at the viewer's clock.
+      const bossWord = oneWord(e.kind);
       at(s.turn, () => {
+        flag("boss", /* copy:callout */ `${bossWord} ahead`); // Cut 270
+        milestone({
+          t: s.turn,
+          kind: "boss",
+          text: /* copy:callout */ `${bossWord} ahead`,
+          tone: "danger",
+        });
         const show = (): void => {
           const named = counters.find((c) => c.boss === e.kind)?.text;
           showCounter(
@@ -2102,6 +2161,196 @@ export function renderWatch(app: App): Mounted {
   const victims = new Map<number, string>(); // id → label, remembered across batches so a kill inside a batch still has a name
   const logActors = new Map<number, string>(); // includes companions; captured per batch for delayed display
   let exitOath = ""; // Cut 28b: an oath decided at the run's end, for the exit's beat
+  // ---- Cut 270 (docs/CUT270_LIVE_DECISIONS.md): live decisions, the boss chest, flagged moments, the milestone log
+  const dev = <T>(key: string, v: T): void => {
+    if ("__idlever" in window) ((window as unknown as Record<string, T[]>)[key] ??= []).push(v);
+  };
+  const liveOn = (on: boolean): void => {
+    Promise.resolve()
+      .then(() => app.engine.setLiveDecisions?.(on))
+      .catch(() => {
+        /* an engine without live decisions: the hero auto-picks, as he always did */
+      });
+  };
+  /** A flagged moment: the kind's icon and ≤ 3 words in its tint, at most one per FLAG_GAP_MS (a higher kind replaces a lower);
+   *  `lane` false reserves the limiter for a moment drawn elsewhere (the record's stamp, the chest, the prompt). No taps. */
+  function flag(kind: FlagKind, text: string, lane = true): void {
+    if (folding || (cardUp && kind !== "chest") || !flagged(kind)) return;
+    dev("__flagLog", { kind, text, ms: Math.round(performance.now()), lane });
+    if (!lane) return;
+    const look = FLAG_LOOK[kind];
+    replace(flagEl, icon(look.icon, look.glyph), h("span", { class: "flag-text" }, text));
+    flagEl.dataset.tone = look.tone;
+    flagEl.dataset.kind = kind;
+    flagEl.hidden = false;
+    flagEl.classList.remove("show");
+    void flagEl.offsetWidth;
+    flagEl.classList.add("show");
+    clearTimeout(flagTimer);
+    flagTimer = window.setTimeout(() => {
+      flagEl.classList.remove("show");
+      flagEl.hidden = true;
+    }, 1800);
+  }
+  function milestone(m: Omit<Milestone, "depth"> & { depth?: number }): void {
+    const e: Milestone = { depth: m.depth ?? hud.depth, ...m };
+    ms.add(e);
+    dev("__msLog", e);
+  }
+  const fxOff = (): boolean => {
+    try {
+      return (
+        new URLSearchParams(location.search).get("fx") === "low" ||
+        localStorage.getItem("idlever.fx") === "low"
+      );
+    } catch {
+      return false;
+    }
+  };
+  /** A step's decision: the world waits there; the moment is a beat (the frame cuts in, a jump stops short of it) and the prompt
+   *  opens when the picture reaches its tick. No decision: the engine is free (a take-over or a send resolved it). */
+  function noteDecision(r: StepResult): void {
+    const d = r.run_over ? undefined : r.decision;
+    if (!d) {
+      engineHeld = false;
+      if (prompt) closePrompt(null, false, false);
+      return;
+    }
+    engineHeld = true;
+    if (decisionsSeen.has(d.id)) return;
+    decisionsSeen.add(d.id);
+    beatAt(d.t, d.title);
+    at(d.t, () => openPrompt(d));
+  }
+  function openPrompt(d: Decision): void {
+    if (prompt || disposed || done || !engineHeld || snap?.decision?.id !== d.id) return;
+    if (folding || skipping || hidden || exitTier || held) {
+      autoDecide();
+      return;
+    }
+    const p = decisionPrompt(d, (i, byHand) => closePrompt(i, byHand, true));
+    prompt = p;
+    (p as Prompt & { d?: Decision }).d = d;
+    if (frozen()) p.freeze(true);
+    decideHost.replaceChildren(p.el);
+    el.dataset.deciding = d.kind;
+    flag("decision", d.title, false);
+    cue("chime");
+    applySpeed();
+    paintKeepOut(true);
+    dev("__decideLog", { id: d.id, kind: d.kind, t: d.t, open: Math.round(performance.now()) });
+  }
+  /** The prompt's end: the option (`i`, else the default at the deadline) goes to the engine (`send`); the log names it. */
+  function closePrompt(i: number | null, byHand: boolean, send: boolean): void {
+    const p = prompt as (Prompt & { d?: Decision }) | null;
+    const d = p?.d;
+    prompt = null;
+    delete el.dataset.deciding;
+    if (!p || !d) return;
+    if (!send) p.dispose();
+    else window.setTimeout(() => p.el.remove(), 700);
+    const o = d.options[i ?? d.default] ?? d.options[d.default];
+    milestone({
+      t: d.t,
+      depth: d.depth,
+      kind: "decision",
+      text: byHand ? o.label : /* copy:callout */ `auto · ${o.label}`,
+      tip: `${d.title} · ${o.label}`,
+    });
+    dev("__decideLog", {
+      id: d.id,
+      pick: i ?? d.default,
+      byHand,
+      ms: Math.round(performance.now()),
+    });
+    if (!send) return;
+    if (byHand && i !== null && i !== d.default && o.id === "back") {
+      // turning back is the bail's walk home (the engine's own `bail`), drawn as the bail button draws it
+      overridden = true;
+      bail.classList.add("on");
+      bail.disabled = true;
+      if (snap) paintStake(snap);
+      callout(/* copy:callout */ "turning back", "", 1800);
+    }
+    Promise.resolve()
+      .then(() => (app.engine.decide ? app.engine.decide(byHand && i !== null ? i : -1) : null))
+      .catch(() => {
+        /* already resolved (a fold, a send): the default stood */
+      })
+      .finally(() => {
+        engineHeld = false;
+        applySpeed();
+      });
+  }
+  /** Not watched now (hidden, a skip, a fold, the watch gone): the default at once. */
+  function autoDecide(): void {
+    if (prompt) {
+      const p = prompt as Prompt & { d?: Decision };
+      closePrompt(null, false, true);
+      void p;
+    } else if (engineHeld) {
+      const d = snap?.decision;
+      if (d)
+        milestone({
+          t: d.t,
+          depth: d.depth,
+          kind: "decision",
+          text: /* copy:callout */ `auto · ${d.options[d.default]?.label ?? ""}`,
+        });
+      engineHeld = false;
+      void Promise.resolve()
+        .then(() => app.engine.decide?.(-1))
+        .catch(() => {
+          /* nothing open */
+        });
+    }
+  }
+  function noteChests(r: StepResult): void {
+    for (const c of r.chests ?? []) at(c.t, () => showChest(c));
+  }
+  /** The boss chest inside the kill's beat: it cracks and opens by itself (the reward is Rust's); never past the beat. */
+  function showChest(c: Chest): void {
+    const top = c.items[0];
+    const reward = top ? top.label : c.gold > 0 ? `$${c.gold}` : /* copy:callout */ "no drop";
+    milestone({
+      t: c.t,
+      kind: "chest",
+      text: /* copy:callout */ `chest · ${reward}`,
+      tone: c.rarity,
+    });
+    if (folding || skipping || hidden) return;
+    const fast = mode === "fast",
+      still = reducedMotion() || fxOff();
+    const node = chestReveal(c, { fast, still });
+    chestHost.replaceChildren(node);
+    el.dataset.chest = c.boss;
+    flag("chest", reward, false);
+    const times = chestTimes(fast);
+    cue("unlock");
+    if (!still) window.setTimeout(() => !disposed && cue("coin"), times.open);
+    window.setTimeout(() => node.remove(), times.end);
+    dev("__chestLog", {
+      chest: c,
+      boss: c.boss,
+      rarity: c.rarity,
+      reward,
+      still,
+      fast,
+      ms: Math.round(performance.now()),
+    });
+  }
+  const onDecideKey = (e: KeyboardEvent): void => {
+    if (!prompt || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+    const t = e.target;
+    if (
+      t instanceof HTMLInputElement ||
+      t instanceof HTMLTextAreaElement ||
+      (t as HTMLElement | null)?.isContentEditable
+    )
+      return;
+    if (/^[1-9]$/.test(e.key) && prompt.key(e.key)) e.preventDefault();
+  };
+  window.addEventListener("keydown", onDecideKey);
   function absorb(evs: Ev[], s: Snapshot): Tier | null {
     let exit: Tier | null = null;
     const heroId = s.hero.id;
@@ -2182,7 +2431,15 @@ export function renderWatch(app: App): Mounted {
                 recordBeat = true;
                 const d = Number(m[1]);
                 at(ev.t, () => {
+                  milestone({
+                    t: ev.t,
+                    depth: d,
+                    kind: "best",
+                    text: /* copy:callout */ "new best",
+                    tone: "gold",
+                  }); // Cut 270
                   if (folding) return;
+                  flag("record", `D${d}`, false); // the stamp is the record's flag
                   showBanner(/* copy:callout */ `NEW BEST D${d}`, RECORD_MS, "record-beat");
                   cue("level");
                 });
@@ -2375,6 +2632,17 @@ export function renderWatch(app: App): Mounted {
               if (!folding) killBeats.push(kb);
             }
             at(ev.t, () => cue("boss_down"));
+            {
+              const word = oneWord(kinds.get(ev.id) ?? victims.get(ev.id) ?? "boss");
+              at(ev.t, () =>
+                milestone({
+                  t: ev.t,
+                  kind: "slain",
+                  text: /* copy:callout */ `${word} slain`,
+                  tone: "gold",
+                }),
+              );
+            }
             break;
           }
           const v = victims.get(ev.id),
@@ -2451,6 +2719,12 @@ export function renderWatch(app: App): Mounted {
           at(ev.t, () => {
             hideBeat();
             hud.depth = ev.depth;
+            milestone({
+              t: ev.t,
+              depth: ev.depth,
+              kind: "floor",
+              text: /* copy:callout */ "arrived",
+            }); // Cut 270
             paintHud();
             if (hudSnap) paintStake(hudSnap);
             // Cut 122 §7: floors with no blow in sight run together as one line (`quiet · 3 floors · D9`), not a floor's line each
@@ -2531,8 +2805,42 @@ export function renderWatch(app: App): Mounted {
             at(ev.t, () => petLine(line));
           } // QA e75ec29: `Skog joins.` · `Skog: level 3.`
           break;
+        case "discovery": {
+          // Cut 270: a rare find is a flagged moment and a milestone (the log's link stays the detail)
+          if (ev.find.first) {
+            const f = ev.find;
+            at(ev.t, () => {
+              flag(
+                "rare",
+                f.rarity === "legendary"
+                  ? /* copy:callout */ "legendary found"
+                  : /* copy:callout */ "pattern found",
+              );
+              milestone({
+                t: ev.t,
+                kind: "rare",
+                text: f.label,
+                tip: `${f.rarity} · ${f.label}`,
+                tone: f.rarity,
+              });
+            });
+          }
+          break;
+        }
         case "exit": {
           at(ev.t, () => tactics.end());
+          {
+            const kept = ev.loot_kept,
+              word = ev.tier === "bank" ? "retreat" : ev.tier === "return" ? "returned" : "died";
+            at(ev.t, () =>
+              milestone({
+                t: ev.t,
+                kind: "exit",
+                text: ev.tier === "death" ? word : /* copy:callout */ `${word} $${kept}`,
+                tone: ev.tier === "death" ? "danger" : "gold",
+              }),
+            ); // Cut 270
+          }
           exit = ev.tier;
           exitLine = ev.line ?? exitLine;
           exitTrace = ev.trace ?? ev.line?.trace ?? exitTrace;
@@ -3138,7 +3446,9 @@ export function renderWatch(app: App): Mounted {
       at(s.turn, () => ambient(/* copy:callout */ `alert ${n}/${ALERT_TOP}`));
     } // Cut 7 §4
     lastAlert = s.alert;
+    noteChests(r); // Cut 270
     const exit = absorb(r.events, s);
+    noteDecision(r); // Cut 270 (after `absorb`: the beat's frame opens over this batch)
     if (folding) folding.tally.absorb(r.events, s); // Cut 27 §1: the stretch's state changes, chips on its line
     noteProgress(r.events, s); // (after `absorb`: the batch's bosses are known)
     noteCalm(r.calm);
@@ -3149,6 +3459,18 @@ export function renderWatch(app: App): Mounted {
       hud.hp = Math.min(hud.hp, hud.maxHp);
       paintHud();
       paintStake(s);
+      // Cut 270: a checkpoint's secured gold (the stake's death keep rising) is a milestone
+      {
+        const sec = s.stake?.death_keep ?? 0;
+        if (msSecured >= 0 && sec > msSecured)
+          milestone({
+            t: s.turn,
+            kind: "secured",
+            text: /* copy:callout */ `secured $${sec - msSecured}`,
+            tone: "gold",
+          });
+        msSecured = Math.max(msSecured, sec);
+      }
       bossFrom(s);
     });
     bossSighted(s);
@@ -3371,6 +3693,7 @@ export function renderWatch(app: App): Mounted {
     // Cut 15 §4: …and the world's clock is the frontier the travel reached (a stale clock behind it left a picture frozen on the card
     // with the world standing until the clock walked back up to the frontier — the shorter card made that common)
     if (mode === "fights" && !paused && !hidden) worldT = engineTick;
+    else if (engineHeld) worldT = engineTick; // Cut 270: the world waits on a decision — no catch-up is owed after it
     else worldT += (dtMs / 1000) * 10 * worldRate();
     worldT = Math.max(worldT, now);
     paintScrub(now);
@@ -3451,7 +3774,7 @@ export function renderWatch(app: App): Mounted {
       void finish(exitTier);
       return;
     }
-    if (inflight || held || exitTier) return;
+    if (inflight || held || exitTier || engineHeld) return; // Cut 270: a decision holds the world (the engine steps nothing)
     // Cut 10 §1: travel under the card — the engine steps flat out (chained calls) until it finds the next fight or the exit
     if (travelling()) {
       inflight = true;
@@ -3551,6 +3874,7 @@ export function renderWatch(app: App): Mounted {
             !r.run_over &&
             !held &&
             !exitTier &&
+            !engineHeld &&
             engineTick < target &&
             !!snap;
           if (go && fightOn && el.dataset.dead === "1" && mode === "fights") {
@@ -3752,6 +4076,7 @@ export function renderWatch(app: App): Mounted {
     return (
       mode === "fights" &&
       cardUp &&
+      !engineHeld &&
       !cardWait &&
       !mapHeld() &&
       !frozen() &&
@@ -4018,6 +4343,11 @@ export function renderWatch(app: App): Mounted {
   function rate(): number {
     const was = deadSince;
     deadSince = -1;
+    // Cut 270: the picture stands on a decision while its prompt is open (the world waits there too)
+    if (prompt) {
+      rateWhy = "decide";
+      return 0;
+    }
     let r = baseRate(was);
     // Cut 18 §1: a held beat's picture eases to its stop (the span's end, or short of the stairs) over the hold's wall time — never
     // faster than the mode would play it, never past the stop; the exit's beat plays the walk-out as before
@@ -4315,6 +4645,7 @@ export function renderWatch(app: App): Mounted {
       if (ticker.classList.contains("show") || tickerQueue.length) scheduleTicker();
       for (const x of frozenFeed.splice(0)) feed(x.evs, x.s);
     }
+    prompt?.freeze(frozen()); // Cut 270: ⏸ stops the decision's countdown too (the prompt stays open)
     paintWatchStatus();
   }
   function paintPause(): void {
@@ -4439,6 +4770,8 @@ export function renderWatch(app: App): Mounted {
   /** Step the folded stretch flat out under its line; the watch lands on the first floor below the bar (or the run's ending). */
   async function foldRun(): Promise<void> {
     if (folding || !viewer || !snap) return;
+    autoDecide(); // Cut 270: a folded stretch is not watched — no decision opens under its line
+    liveOn(false);
     const from = loads.length ? loads[0].snap.depth : snap.depth,
       to = planTo(from);
     const tally = new FoldTally(from, stretchShare(app.forecastOfRules(), from, to, foldStartOf()));
@@ -4487,6 +4820,7 @@ export function renderWatch(app: App): Mounted {
     if (core) {
       if (core.to < core.from) {
         folding = null;
+        if (!document.hidden) liveOn(true); // Cut 270: nothing folded
         el.dataset.fold = "0";
         foldLine.hidden = true;
         foldSet.clear();
@@ -4550,6 +4884,7 @@ export function renderWatch(app: App): Mounted {
     const f = folding;
     if (!f) return;
     folding = null;
+    if (!disposed && !document.hidden) liveOn(true); // Cut 270
     el.dataset.fold = "0";
     lastFold = { from: f.from, to: f.to, core: f.core };
     for (let d = f.from; d <= Math.max(f.to, snap?.depth ?? f.to); d++)
@@ -4640,9 +4975,12 @@ export function renderWatch(app: App): Mounted {
     pressAny = 0; // QA 778fa1b (qaV): presses in a row on one floor
   async function skipToEvent(): Promise<void> {
     skipping = true;
+    autoDecide(); // Cut 270: ▶▶| is not watching — the default at once, none opens inside the skip
+    liveOn(false);
     try {
       await skipToEvent0();
     } finally {
+      if (!disposed && !document.hidden) liveOn(true);
       skipping = false;
       lastPressAt = performance.now();
     }
@@ -5158,6 +5496,7 @@ export function renderWatch(app: App): Mounted {
       return;
     }
     if (disposed) return;
+    if (!document.hidden) liveOn(true); // Cut 270: live decisions while the watch is up and visible
     await app.syncWatchLineage();
     if (disposed) return;
     mapLineage = app.lineage;
@@ -5233,6 +5572,9 @@ export function renderWatch(app: App): Mounted {
   window.addEventListener("resize", onResize);
   // Cut 14 §6: a hidden tab freezes the picture; back, the world (whose clock ran on wall time) is caught up and the viewer goes live
   const onVisibility = (): void => {
+    // Cut 270: a hidden watch never holds the hero — the default at once, no decision opens until it is back
+    if (document.hidden) autoDecide();
+    liveOn(!document.hidden);
     freeze(paused, document.hidden);
     if (!hidden) goLiveOwed = true;
     applySpeed();
@@ -5258,6 +5600,10 @@ export function renderWatch(app: App): Mounted {
       if (el.dataset.over === "1") setBusyHost(null);
       window.removeEventListener("resize", onResize);
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("keydown", onDecideKey);
+      autoDecide();
+      liveOn(false);
+      clearTimeout(flagTimer);
       clearInterval(pumpTimer);
       clearTimeout(tickerTimer);
       clearTimeout(bannerTimer);

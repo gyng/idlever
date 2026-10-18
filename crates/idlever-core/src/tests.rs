@@ -33,7 +33,7 @@ fn assert_storage_retired(g: &Game) {
 /// `f` for each seed on its own thread, the results in seed order: the long seed loops are
 /// the suite's critical path (docs/ITERATION_SPEED.md §3.4); every seed is its own game, so
 /// what each asserts is unchanged. A panicking seed fails the test with its own message.
-fn par_seeds<T: Send>(seeds: impl IntoIterator<Item = u64>, f: impl Fn(u64) -> T + Sync) -> Vec<T> {
+pub(crate) fn par_seeds<T: Send>(seeds: impl IntoIterator<Item = u64>, f: impl Fn(u64) -> T + Sync) -> Vec<T> {
     let seeds: Vec<u64> = seeds.into_iter().collect();
     let f = &f;
     std::thread::scope(|sc| {
