@@ -1,0 +1,522 @@
+test result: ok. 1092 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 103.39s
+$ pnpm fmt --check
+$ cd .. && web/node_modules/.bin/oxfmt web/src web/tests web/*.ts web/*.json tools .github README.md .oxfmtrc.json .oxlintrc.json --check
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 1124ms on 495 files using 32 threads.
+$ cd .. && web/node_modules/.bin/oxlint web/src web/tests web/*.ts tools --deny-warnings
+copy-lint: 116 files, 2939 tagged literals, 0 violations
+TAP version 13
+# Subtest: saved-camp checks reject incomplete or ambiguous requests
+ok 1 - saved-camp checks reject incomplete or ambiguous requests
+  ---
+  duration_ms: 1.953332
+  type: 'test'
+  ...
+# Subtest: references bind exact inputs and workloads and require uncorrupted full bytes
+ok 2 - references bind exact inputs and workloads and require uncorrupted full bytes
+  ---
+  duration_ms: 2.248626
+  type: 'test'
+  ...
+# Subtest: plan: failed refuses without earlier state; resume runs everything
+ok 3 - plan: failed refuses without earlier state; resume runs everything
+  ---
+  duration_ms: 3.343241
+  type: 'test'
+  ...
+# Subtest: --failed and --resume rerun only what needs it, and identity changes invalidate
+ok 4 - --failed and --resume rerun only what needs it, and identity changes invalidate
+  ---
+  duration_ms: 994.561537
+  type: 'test'
+  ...
+# Subtest: a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+ok 5 - a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+  ---
+  duration_ms: 300.963963
+  type: 'test'
+  ...
+# Subtest: artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+ok 6 - artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+  ---
+  duration_ms: 27.59087
+  type: 'test'
+  ...
+# Subtest: rejects missing, short or decorated identities, invalid versions, and invalid base paths
+ok 7 - rejects missing, short or decorated identities, invalid versions, and invalid base paths
+  ---
+  duration_ms: 6.499776
+  type: 'test'
+  ...
+# Subtest: headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+ok 8 - headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+  ---
+  duration_ms: 22.37806
+  type: 'test'
+  ...
+# Subtest: source worker bypasses metadata, including navigations and queries, while assets retain caching
+ok 9 - source worker bypasses metadata, including navigations and queries, while assets retain caching
+  ---
+  duration_ms: 3.089098
+  type: 'test'
+  ...
+# Subtest: artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+ok 10 - artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+  ---
+  duration_ms: 18.902543
+  type: 'test'
+  ...
+# Subtest: CLI stamps the artifact with the provided full source SHA and release version
+ok 11 - CLI stamps the artifact with the provided full source SHA and release version
+  ---
+  duration_ms: 71.566761
+  type: 'test'
+  ...
+# Subtest: pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+ok 12 - pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+  ---
+  duration_ms: 7.258692
+  type: 'test'
+  ...
+# Subtest: save comparison detects adjacent integers that Number rounds together
+ok 13 - save comparison detects adjacent integers that Number rounds together
+  ---
+  duration_ms: 2.109927
+  type: 'test'
+  ...
+# Subtest: comparison preserves safe counters, floats, arrays and quoted seed-like text
+ok 14 - comparison preserves safe counters, floats, arrays and quoted seed-like text
+  ---
+  duration_ms: 0.416717
+  type: 'test'
+  ...
+# Subtest: the manifest is the recorded sha256sum format and follows the bytes
+ok 15 - the manifest is the recorded sha256sum format and follows the bytes
+  ---
+  duration_ms: 22.262965
+  type: 'test'
+  ...
+# Subtest: freeze is byte-deterministic, refuses a package other than the frozen one, and heals from the source
+ok 16 - freeze is byte-deterministic, refuses a package other than the frozen one, and heals from the source
+  ---
+  duration_ms: 1143.065247
+  type: 'test'
+  ...
+# Subtest: the packet is the frozen brief plus the four briefed documents, and check catches anything else
+ok 17 - the packet is the frozen brief plus the four briefed documents, and check catches anything else
+  ---
+  duration_ms: 466.243841
+  type: 'test'
+  ...
+# Subtest: collect keys the card by candidate, rater and date and never overwrites one
+ok 18 - collect keys the card by candidate, rater and date and never overwrites one
+  ---
+  duration_ms: 650.584476
+  type: 'test'
+  ...
+# Subtest: the score comes from the cards alone and repeats to the byte
+ok 19 - the score comes from the cards alone and repeats to the byte
+  ---
+  duration_ms: 1016.857044
+  type: 'test'
+  ...
+# Subtest: collect reads a card's build as a claim about the build, with or without provenance
+ok 20 - collect reads a card's build as a claim about the build, with or without provenance
+  ---
+  duration_ms: 1462.124253
+  type: 'test'
+  ...
+# Subtest: shared wallet matches equal-valued exits by bloodline and retains intervening movements
+ok 21 - shared wallet matches equal-valued exits by bloodline and retains intervening movements
+  ---
+  duration_ms: 3.128686
+  type: 'test'
+  ...
+# Subtest: pet-fetched Gold remains with its death after later shared-wallet exits
+ok 22 - pet-fetched Gold remains with its death after later shared-wallet exits
+  ---
+  duration_ms: 0.498914
+  type: 'test'
+  ...
+# Subtest: native bridge covers every client method and rejects unsupported bindings
+ok 23 - native bridge covers every client method and rejects unsupported bindings
+  ---
+  duration_ms: 18.061851
+  type: 'test'
+  ...
+# Subtest: checkpoint memento accounts for every serde-skipped engine field
+ok 24 - checkpoint memento accounts for every serde-skipped engine field
+  ---
+  duration_ms: 5.332842
+  type: 'test'
+  ...
+# Subtest: native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+ok 25 - native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+  ---
+  duration_ms: 176.222471
+  type: 'test'
+  ...
+# Subtest: native transport rejects remote connections and cross-origin requests
+ok 26 - native transport rejects remote connections and cross-origin requests
+  ---
+  duration_ms: 328.168199
+  type: 'test'
+  ...
+# Subtest: native edits coalesce, serialize and rebuild edits that arrive during a build
+ok 27 - native edits coalesce, serialize and rebuild edits that arrive during a build
+  ---
+  duration_ms: 85.529446
+  type: 'test'
+  ...
+# Subtest: failed builds surface errors, recover on an edit and stop after close
+ok 28 - failed builds surface errors, recover on an edit and stop after close
+  ---
+  duration_ms: 67.999264
+  type: 'test'
+  ...
+# Subtest: only compilation inputs trigger builds, not generated outputs or browser assets
+ok 29 - only compilation inputs trigger builds, not generated outputs or browser assets
+  ---
+  duration_ms: 1.34806
+  type: 'test'
+  ...
+# Subtest: test-only edits skip rebuilds only with current cfg declaration and compiler proof
+ok 30 - test-only edits skip rebuilds only with current cfg declaration and compiler proof
+  ---
+  duration_ms: 48.421122
+  type: 'test'
+  ...
+# Subtest: real compiler separates unit tests from runtime and included inputs
+ok 31 - real compiler separates unit tests from runtime and included inputs
+  ---
+  duration_ms: 7179.404649
+  type: 'test'
+  ...
+# sweep.test: all PASS
+# Subtest: ../tools/sweep.test.mjs
+ok 11 - ../tools/sweep.test.mjs
+  ---
+  duration_ms: 2047.723944
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7341.908728
+PASS: completed legs reused; corrupt/legacy-null caches rerun; SIGSEGV reported and not cached; numeric failure preserved. No game simulations were tested.
+[INFO]: 🎯  Checking for the Wasm target...
+[INFO]: 🌀  Compiling to Wasm...
+    Finished `release` profile [optimized] target(s) in 0.05s
+[INFO]: ⬇️  Installing wasm-bindgen...
+[INFO]: Optimizing wasm binaries with `wasm-opt`...
+[INFO]: Optional fields missing from Cargo.toml: 'description', 'repository', and 'license'. These are not necessary, but recommended
+[INFO]: ✨   Done in 4m 32s
+[INFO]: 📦   Your wasm pkg is ready to publish at web/src/engine/pkg.
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/runs.ts is dynamically imported by src/ui/chronicle.ts but also statically imported by src/ui/hero-hub.ts, src/ui/report.ts, dynamic import will not move module into another chunk.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 900 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/town.ts is dynamically imported by src/ui/chronicle.ts, src/ui/hero-life.ts, src/ui/legendary-gear.ts but also statically imported by src/ui/camp.ts, src/ui/frame.ts, src/ui/heroes.ts, src/ui/preparation.ts, dynamic import will not move module into another chunk.
+
+gates: routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in; source 51715cb7c676ecbc; threads metrics=31 qa=24 dayplayer=32; cache hits=none
+gates: still running metrics 30s, dayplayer 30s, qa 30s; completed legs already saved
+gates: still running metrics 60s, dayplayer 60s, qa 60s; completed legs already saved
+gates: still running metrics 90s, dayplayer 90s, qa 90s; completed legs already saved
+gates: still running metrics 120s, dayplayer 120s, qa 120s; completed legs already saved
+gates: still running metrics 150s, dayplayer 150s, qa 150s; completed legs already saved
+gates: still running metrics 180s, dayplayer 180s, qa 180s; completed legs already saved
+gates: qa finished in 190.1s (exit 0)
+gates: still running metrics 210s, dayplayer 210s; completed legs already saved
+gates: still running metrics 240s, dayplayer 240s; completed legs already saved
+gates: still running metrics 270s, dayplayer 270s; completed legs already saved
+gates: still running metrics 300s, dayplayer 300s; completed legs already saved
+gates: still running metrics 330s, dayplayer 330s; completed legs already saved
+gates: still running metrics 360s, dayplayer 360s; completed legs already saved
+dayplayer: HANDS s1 done in 386s 
+gates: still running metrics 390s, dayplayer 390s; completed legs already saved
+dayplayer: HANDS s2 done in 392s 
+gates: still running metrics 420s, dayplayer 420s; completed legs already saved
+dayplayer: IDLE s2 done in 439s 
+gates: still running metrics 450s, dayplayer 450s; completed legs already saved
+gates: still running metrics 481s, dayplayer 481s; completed legs already saved
+gates: still running metrics 511s, dayplayer 511s; completed legs already saved
+gates: still running metrics 541s, dayplayer 541s; completed legs already saved
+stances D8 stone: bold 0.349 hunter 0.276 guarded 0.000
+stances D8 D1: hunter 0.406 bold 0.398 guarded -0.032
+stances D13 stone: guarded 0.037 hunter 0.013 bold 0.008
+stances D13 D1: guarded -0.023 hunter -0.057 bold -0.196
+stances D18 stone: guarded 0.263 bold 0.182 hunter 0.130
+stances D18 D1: hunter -0.004 guarded -0.021 bold -0.080
+stances D23 stone: hunter 0.283 bold 0.118 guarded 0.112
+stances D23 D1: guarded -0.015 hunter -0.046 bold -0.236
+stances D28 stone: bold 0.001 guarded 0.000 hunter 0.000
+stances D28 D1: guarded -0.013 hunter -0.055 bold -0.250
+gates: still running metrics 571s, dayplayer 571s; completed legs already saved
+dayplayer: RANDOM s2 done in 577s 
+gates: metrics finished in 591.9s (exit 0)
+gates: still running dayplayer 601s; completed legs already saved
+dayplayer: RANDOM s1 done in 606s 
+gates: still running dayplayer 631s; completed legs already saved
+dayplayer: RANDOM s3 done in 648s 
+gates: still running dayplayer 661s; completed legs already saved
+gates: still running dayplayer 691s; completed legs already saved
+dayplayer: AWAY-nodes s1 done in 715s 
+gates: still running dayplayer 721s; completed legs already saved
+dayplayer: AWAY s1 done in 735s 
+gates: still running dayplayer 751s; completed legs already saved
+gates: still running dayplayer 781s; completed legs already saved
+gates: still running dayplayer 811s; completed legs already saved
+gates: still running dayplayer 841s; completed legs already saved
+dayplayer: AWAY-nodes s2 done in 844s 
+dayplayer: RANDOM s6 done in 431s 
+gates: still running dayplayer 871s; completed legs already saved
+dayplayer: RANDOM s5 done in 482s 
+dayplayer: AWAY s2 done in 875s 
+gates: still running dayplayer 901s; completed legs already saved
+dayplayer: RANDOM s4 done in 543s 
+gates: still running dayplayer 931s; completed legs already saved
+gates: still running dayplayer 961s; completed legs already saved
+gates: still running dayplayer 991s; completed legs already saved
+gates: still running dayplayer 1021s; completed legs already saved
+gates: still running dayplayer 1051s; completed legs already saved
+gates: still running dayplayer 1081s; completed legs already saved
+dayplayer: RANDOM s9 done in 439s 
+dayplayer: RANDOM s7 done in 511s 
+gates: still running dayplayer 1111s; completed legs already saved
+dayplayer: RANDOM s8 done in 521s 
+dayplayer: RANDOM s11 done in 400s 
+gates: still running dayplayer 1141s; completed legs already saved
+dayplayer: RANDOM s10 done in 436s 
+gates: still running dayplayer 1171s; completed legs already saved
+dayplayer: RANDOM s13 done in 304s 
+dayplayer: DAILY s1 done in 1182s 
+gates: still running dayplayer 1201s; completed legs already saved
+dayplayer: RANDOM s16 done in 274s 
+dayplayer: RANDOM s15 done in 328s 
+dayplayer: DAILY-nodes s1 done in 1204s 
+dayplayer: PICKED s11 done in 1208s 
+dayplayer: RANDOM s12 done in 365s 
+dayplayer: PICKED s1 done in 1226s 
+dayplayer: RANDOM s14 done in 353s 
+gates: still running dayplayer 1231s; completed legs already saved
+gates: still running dayplayer 1261s; completed legs already saved
+dayplayer: PICKED s16 done in 1264s 
+gates: still running dayplayer 1291s; completed legs already saved
+dayplayer: PICKED s10 done in 1318s 
+dayplayer: PICKED s12 done in 1321s 
+gates: still running dayplayer 1321s; completed legs already saved
+dayplayer: PICKED s5 done in 1351s 
+gates: still running dayplayer 1351s; completed legs already saved
+dayplayer: PICKED s9 done in 1358s 
+gates: still running dayplayer 1381s; completed legs already saved
+dayplayer: PICKED s8 done in 1398s 
+gates: still running dayplayer 1411s; completed legs already saved
+dayplayer: DAILY s2 done in 1437s 
+gates: still running dayplayer 1442s; completed legs already saved
+dayplayer: PICKED s6 done in 1454s 
+dayplayer: DAILY-nodes s2 done in 1454s 
+gates: still running dayplayer 1472s; completed legs already saved
+dayplayer: PICKED s14 done in 1473s 
+dayplayer: PICKED s3 done in 1482s 
+gates: still running dayplayer 1502s; completed legs already saved
+dayplayer: PICKED s7 done in 1531s 
+gates: still running dayplayer 1532s; completed legs already saved
+gates: still running dayplayer 1562s; completed legs already saved
+dayplayer: PICKED s4 done in 1586s 
+gates: still running dayplayer 1592s; completed legs already saved
+dayplayer: PICKED s15 done in 1598s 
+dayplayer: PICKED s13 done in 1601s 
+dayplayer: TUNED s1 done in 1618s 
+gates: still running dayplayer 1622s; completed legs already saved
+dayplayer: PICKED s2 done in 1627s 
+gates: still running dayplayer 1652s; completed legs already saved
+gates: still running dayplayer 1682s; completed legs already saved
+dayplayer: TUNED s2 done in 1685s 
+routine coverage: current player modes and paired daily/away workers; historical migration and TUNED system-removal balance comparisons require --exhaustive
+2 bar(s) FAIL
+gates: dayplayer finished in 1686.4s (exit 1)
+Expeditions per 8 h, IDLE (fresh · D13) in 6–24             15.4 · 13.0  PASS
+A fresh lineage's first 20-min absence after the scout's hire returns ≥ 1 run ≥ 95%       100% (30/30)  PASS
+A 20-min absence returns ≥ 1 run ≥ 95% (fresh 30 + D13 5)               100%  PASS
+Lanes D5 (IDLE): both reach D8, weaker ≥ ½ the stronger (n=2) near 0.46 · far 0.34  PASS
+A drill-needed item is in the pack at its wall ≥ 90% (n=96)               100%  PASS
+Steady is the safest default: fewest deaths a send from D1 steady 6% guarded 7% bold 95% hunter 26%  PASS
+Guarded, Bold, Hunter each best at ≥ 1 wall by ≥ 0.02, none at all (7 won) bold 1 guarded 5 hunter 1  PASS
+Quests keepable ≥ 20%/night by a package set, pen closed (n=68) worst 95% bank D19  PASS
+gates: all PASS (current game, 8 rows, 591.6s; legacy cohorts are --exhaustive)
+forecast bank ≈ real sends (good set, Σ seeds): forecast 0.612 (1200 sims) · sends 0.586 (1080) · ±0.040
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds): forecast 0.873 (1200 sims) · sends 0.871 (1080) · ±0.027
+stall leg: 7 records · forecast stall share Σ 1.26 → 0.20 with the top patch
+invariant                                                    checks  result
+PENDING's unlocks are the short list's available cards           10  PASS
+`Nothing lost to the den` never beside a theft still out         18  PASS
+`nothing_beats_base` ⇔ a dice death no patch beats               36  PASS
+a DICE death has no recent own row whose cut survives more        1  PASS
+a `saved him` note names the row that fired at the low point        8  PASS
+a bought leash comes home from a run that tamed nothing          23  PASS
+a cold cache reads the same two passes                            3  PASS
+a costly exit never leads beside an alternative                  36  PASS
+a death has a verdict and a trace                                10  PASS
+a death trace ends at 0 hp (the killing blow)                    29  PASS
+a death trace's blows step the hp down to the killing blow        7  PASS
+a death's blow is the run's last hurt to the hero                10  PASS
+a death's chain link is its row's newest reason (never one the row outlived)       23  PASS
+a death's last hp falls to 0 in blow rows                        43  PASS
+a death's note names the killer or the killing harm              29  PASS
+a death's notes never say `saved him`                            36  PASS
+a died / stalled / lost-thread line kept nothing but its secured gold      120  PASS
+a drive-off with its counter in the set says `order` (the held row), else `no counter`        8  PASS
+a drive-off's line leads `driven`                               120  PASS
+a drive-off's line names the boss once                            8  PASS
+a drive-off's or a stall's reel never says `Returned with`        8  PASS
+a dropped supply's refund == its price                           10  PASS
+a floor's `pick up` chores with nothing taken ≤ 50               60  PASS
+a forecast move's parts (incl. package) sum to the whole          3  PASS
+a forecast move's parts sum to the whole                         30  PASS
+a gap or row verdict has a baseline under 100 %                  36  PASS
+a gate's `needs` never names a held fact                        688  PASS
+a headline find is on FOUND                                       1  PASS
+a margin's unknown count never contradicts a row's `no unknown`       36  PASS
+a move with no edit has no rows part                              3  PASS
+a package move is the `package` part                              3  PASS
+a patch's `exits` ⇔ its row returns or banks                     85  PASS
+a patch's conds and verb are in the vocabulary                   80  PASS
+a patch's reach == the camp forecast's move once applied (± its bar)        3  PASS
+a patch's reach from→to agrees with its move                      2  PASS
+a patch's whole-run move is the camp's `vs sent` once applied (its floor, move, ± and death)        3  PASS
+a reel `died` line names the run's death cause                   29  PASS
+a reel drive-off names the boss who drove him off                 1  PASS
+a reel line is a story line                                      29  PASS
+a report's outcome tiles sum to its runs (stalled + driven ≤ returned)       10  PASS
+a route verdict names its fork (and only it)                     36  PASS
+a row reason is from the table                                 1629  PASS
+a row with a locked cond is marked on the wire (and only it)       30  PASS
+a row's share of the actions ≤ 1                                 20  PASS
+a row's why-not count names its unit (`acts`)                    20  PASS
+a shadowed row changes no sim                                     3  PASS
+a shadowed row never fires                                       10  PASS
+a shadowed row reads the same forecast                            3  PASS
+a shadowed row's pending line names its shadow                   10  PASS
+a stall's top patch forecasts fewer stalls (Σ records)            1  PASS
+a stamp never contradicts its replay counts (a gap most replays survive leans `dice`)       36  PASS
+a trace's hp never falls without a blow row                     540  PASS
+a waystone start pays no toll (rich purse)                       10  PASS
+a waystone start pays no toll and is never short (empty purse)       10  PASS
+actual exit finds never label ? when known                      292  PASS
+after the refine a forecast read is the refined panel             3  PASS
+an absence of deaths rested one wake per run                      3  PASS
+an exit line leads with one tier word and names no other        120  PASS
+an exit's `bones: N items` == the pile it lists                 120  PASS
+an unknown kind for sale is learned by buying it, and its gate says `buy`      748  PASS
+an unmeasured card never auto-inserts                            10  PASS
+camp supplies == the run's packed kinds                          10  PASS
+death()'s patches are camp_pending until death_deltas            10  PASS
+death_deltas returns death()'s patches, measured                  3  PASS
+every reported find has a current physical or converted fate       70  PASS
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds)            1  PASS
+forecast bank ≈ real sends (good set, Σ seeds)                    1  PASS
+forecast bank ≤ reach at the bank row's depth                    18  PASS
+forecast death 0 ⇒ causes empty                                  20  PASS
+forecast ends sum to 1 ± 1e-9                                    20  PASS
+forecast → every sheet's reads → forecast: identical             10  PASS
+found at an exit has one named fate including converted, used, left, stolen or bones      120  PASS
+gold header == ledger sum                                        36  PASS
+meter time split == its ticks                                    20  PASS
+meter totals == the event stream's sums (dealt · taken · healed · fires · supplies · gold)       20  PASS
+new sends carry no retired vault instances                       10  PASS
+night gold: earned + salvage + wake pay + recovered + fetched − spent == delta       10  PASS
+no `foes not ≥N` beside a foes column of N+                    1629  PASS
+no converted finds require home storage                          70  PASS
+no death screen carries a patch under its baseline (unless below_bar)       85  PASS
+no dice death's margin names an unused item                       2  PASS
+no patch already in the set                                      21  PASS
+no patch survives 0 % beside one that survives                   85  PASS
+no trace turn is a trait's (row −1)                               9  PASS
+no wire label names a flavour whose kind is identified          613  PASS
+no wire label names an unidentified kind                       1305  PASS
+report SALVAGED rows sum to the header's salvage                 10  PASS
+report gold == the gold sheet (Σ kept == home; purse top-ups == wake == the lines')       80  PASS
+report lines == the gold sheet's exit lines (word and amount)       80  PASS
+report runs == deaths + banked + returned                        10  PASS
+report spent == the batch's                                      10  PASS
+report stolen == thefts − got back                               10  PASS
+report tiles == its lines (banked · returned · stalled · driven · died)       80  PASS
+save → load → forecast: identical                                10  PASS
+save → load → forecast: identical (refined)                       3  PASS
+save/load round-trips the lineage                                10  PASS
+the exit line's swapped ≥ the stake's last                       10  PASS
+the gem on every screen is the first shown, never harms, and is the best whole-run patch        8  PASS
+the gem's default patch never harms whole runs (death > ±, reach < −±)        3  PASS
+the heir purse: a top-up per death below the line                10  PASS
+the morgue names the killer by its title                         29  PASS
+the qaM shadow is found (R1 return over a later return)          10  PASS
+the report lists its drive-offs (by run)                         10  PASS
+the report's bones == the finds the chronicle names               8  PASS
+the report's bounty is the camp's before the absence             10  PASS
+the report's gold terms sum to the purse's move                  80  PASS
+the report's stalled lines ≤ its stalled tile ≤ its returned       10  PASS
+the rows that ran all night count the same sends                 10  PASS
+the rows' part is the edit's paired move                          3  PASS
+the stake's death keep == checkpoints + death share of carry at risk     1028  PASS
+the stake's swapped never falls within a run                   1028  PASS
+the top patch applies through set_rules                          10  PASS
+the top patch survives within 10 pts of the best shown           36  PASS
+the top patch, applied, acts in one of the next 6 sends that reach its floor       10  PASS
+the unlock short list is stable across reads                     10  PASS
+the verdict names `package · row` when a package row acted        9  PASS
+the vocabulary offers every drink / read a set holds             10  PASS
+worst death carries a verdict and a trace                         9  PASS
+qa: all PASS (10 seeds, 190.0s)
+bar                                                                           value  result
+IDLE reaches D8 by the end of day 1 (every seed)                                2/2  PASS
+IDLE reaches D13 by day 4 (median day)                                          0.5  PASS
+IDLE reaches D23 by day 12 (≥ 6/8 seeds, median)                          2/2 · 5.2  PASS
+IDLE longest best-depth stall before D23 ≤ 4 d                                    2  PASS
+IDLE net gold > 0 every day (14/14, every seed)                                  14  PASS
+IDLE does not slay the Mirror King within 14 days                               0/2  PASS
+Stance L3 by day 2, L5 by day 7 (IDLE median)                                 1 · 6  PASS
+Every IDLE check-in grows ≥ 1 track                                           84/84  PASS
+Every IDLE check-in offers a return pick                                      84/84  PASS
+Days with a stage opened: IDLE ≥ 8/14 (median)                                  9.5  PASS
+PICKED ≥ 1.5× IDLE at D13, D18, D23                              1.50 · 2.50 · 6.25  PASS
+IDLE never out-paces PICKED (≥ 90 % of seed × milestone)                       100%  PASS
+Days with a stage opened: PICKED ≥ 10/14 (median)                              10.0  PASS
+Content reach: PICKED ≥ D14 by day 2 (≥ 50 %)                                   2/2  PASS
+Stalls ≤ 1 % of sends, every IDLE seed                                        0.00%  PASS
+Stalls ≤ 1 % of sends, every PICKED seed                                      0.28%  PASS
+Stalls ≤ 1 % of sends, every TUNED seed                                       0.29%  PASS
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.10  FAIL
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 16/16 · 16/16 · median +4 · +36 h  PASS
+Porter bought ≤ min 12 (PICKED median), every seed ≤ min 15         7.6 · worst 8.2  PASS
+Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot) med 2.5 · worst 2.6 min, 1 sends  PASS
+First-30-min cadence: look gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed) gap med 0.0 · worst 0.0 min · dec 1 · 2/2 (run ≤ 7.5)  PASS
+Every node whose chore exists lit by 48 h (PICKED, HANDS median unlit)              0 · 0  PASS
+Every node whose chore exists bought by 72 h (PICKED median unbought) 0 (9 hired by day 14)  PASS
+Gold conserved: purse + chest + bank = ledger (every bot × check-in) 0 off · chest ≤ $0  PASS
+HANDS never slower than IDLE at D13, D18, D23 (median lag ± a check-in)      +0 · -4 · -80  PASS
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.93 vs 30.32  FAIL
+Workers never cost the daily player a floor: mean best ≥ by hand − 1     30.82 vs 31.39  PASS
+IDLE King margin: least hp left (seed, tries) · seeds that tried him 98% (s1, ×1) · 2/2  info
+Cut 118: PICKED wealth no longer monotone by day 14 (seeds; median falling days)            2/2 · 7  info
+TUNED vs PICKED at D29 (median hours)                                          1.00  info
+IDLE first-session cadence (its own session): gap med · worst min · most decisions      0.0 · 0.0 · 1  info
+IDLE: porter · scout minute (median), sends to the scout              NaN · 2.5 · 1  info
+HANDS: porter · scout minute (median), sends to the scout             NaN · 2.5 · 1  info
+PICKED: porter · scout minute (median), sends to the scout            7.6 · 2.5 · 1  info
+TUNED: porter · scout minute (median), sends to the scout             7.6 · 2.5 · 1  info
+RANDOM never beats PICKED at D13, D23 (every seed)                    16/16 · 16/16  retired
+RANDOM never faster than IDLE to D13, slower to D23 (≥ 80 % each)          100% · 0%  retired
+dayplayer: FAIL
+dayplayer bars: FAIL
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.10  FAIL
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.93 vs 30.32  FAIL

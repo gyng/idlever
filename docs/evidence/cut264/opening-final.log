@@ -1,0 +1,8 @@
+bar (targeted)                                                                               value  result
+G1 first upgrade affordable, min (every seed ≤ 3)                              med 0.0 · worst 0.0  PASS
+G2 longest gap between upgrades 0–60, min (median ≤ 6, every seed ≤ 10)      med 28.9 · worst 38.2  FAIL
+G3 upgrades in 0–30 (median ≥ 6)                                               med 6.0 · worst 5.0  PASS
+G4 Receptionist affordable, min (every seed ≤ 10)                              med 2.6 · worst 4.9  PASS
+G6 longest forced wait 0–30, min (every seed ≤ 5)                              med 0.0 · worst 0.2  PASS
+opening (targeted: opening-first,opening-gap,opening-buys30,opening-receptionist,opening-wait30, 16 seeds, 7s): FAIL — not a gate pass
+gates: TARGETED — opening rows `opening` FAIL; not a gate pass

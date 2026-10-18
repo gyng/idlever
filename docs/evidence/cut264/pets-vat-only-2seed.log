@@ -1,0 +1,87 @@
+fortnights 621s
+panels 276 in 684s
+pets_eval — 2 seeds × 14 days, IDLE + PICKED (dayplayer, 3 check-ins), sims 24 (kinds 12); score = builds.rs camp score (DW 0.2)
+walls reached: IDLE D8 1 D13 2 D18 0 D23 2 D28 2 · PICKED D8 0 D13 2 D18 1 D23 1 D28 2
+
+## pet value: party worn − removed (paired), mean over snapshots; Δscore ± seed SD; (n with a party / n)
+IDLE    | D8 past +0.0 bank -4.2 death -8.3 score +9.2±0.0 (1/1) | D13 past +0.0 bank -18.7 death +2.1 score -3.1±0.9 (2/2) | D18 — | D23 past +0.0 bank +8.3 death -6.2 score +8.3±5.3 (2/2) | D28 past +0.0 bank +0.0 death -6.3 score +9.0±6.8 (2/2)
+PICKED  | D8 — | D13 past +10.4 bank -4.2 death -4.2 score +14.2±11.2 (2/2) | D18 past -16.7 bank -29.2 death +20.8 score -25.8±0.0 (1/1) | D23 past +4.2 bank -8.3 death +0.0 score +0.0±0.0 (1/1) | D28 past +0.0 bank -6.2 death +0.0 score +5.6±2.7 (2/2)
+
+## pet share (worn panels, snapshots with a party): damage dealt · blows drawn · acts per run per pet (row acts)
+IDLE    | D8 dmg 3.0% · blows 6.1% · acts 5.3 (5.3) | D13 dmg 2.8% · blows 3.2% · acts 118.8 (23.0) | D18 dmg 0.0% · blows 0.0% · acts 0.0 (0.0) | D23 dmg 7.3% · blows 11.6% · acts 96.1 (53.8) | D28 dmg 16.1% · blows 7.9% · acts 115.6 (65.6) | all dmg 9.8% · blows 7.5% · acts 99.1 (48.1)
+PICKED  | D8 dmg 0.0% · blows 0.0% · acts 0.0 (0.0) | D13 dmg 1.0% · blows 1.9% · acts 157.2 (9.5) | D18 dmg 0.8% · blows 1.4% · acts 285.3 (14.9) | D23 dmg 0.6% · blows 2.2% · acts 12.3 (12.3) | D28 dmg 0.7% · blows 2.2% · acts 138.0 (15.8) | all dmg 0.8% · blows 1.9% · acts 148.0 (13.0)
+
+## pet deaths and recovery (live fortnight runs)
+IDLE    runs 812 · tamed 210 · pets fell 4 = 0.05 per 10 runs · named cause 100% · loss-eggs hatched 0 · strays re-tamed 0 · recovered by day 14 100% · median days to recovery 0.0 (check-in grain)
+PICKED  runs 1269 · tamed 132 · pets fell 2 = 0.02 per 10 runs · named cause 100% · loss-eggs hatched 0 · strays re-tamed 0 · recovered by day 14 100% · median days to recovery 0.3 (check-in grain)
+
+## level curve (day end; seeds with a pet): median of every owned pet's level · the longest-serving pet's level (median over seeds) · seeds with a pet
+IDLE    | day 3: L1.0 · longest L2.0 · 2/2 | day 7: L1.5 · longest L4.0 · 2/2 | day 14: L3.5 · longest L6.0 · 2/2
+PICKED  | day 3: L2.0 · longest L4.0 · 2/2 | day 7: L3.5 · longest L6.5 · 2/2 | day 14: L7.0 · longest L7.0 · 2/2
+
+## tenure (heirs a pet served in the party; first to last heir seen at a check-in) · old hound (≥ 3 heirs) by day 14
+IDLE    pets fielded 9 · median heirs served 56.0 · longest per seed median 91.5 · old hound on 2/2 seeds
+PICKED  pets fielded 8 · median heirs served 369.0 · longest per seed median 507.0 · old hound on 2/2 seeds
+
+## pet count and kinds over the fortnight
+IDLE    | day 1: owned 4.0 party 1.0 | day 3: owned 5.0 party 2.0 | day 7: owned 6.0 party 3.0 | day 14: owned 7.0 party 4.0 (mean over seeds)
+        kinds ever owned (seeds): bell_sentinel 1 · bloat 2 · goblin 2 · goblin_archer 2 · goblin_captain 1 · goblin_conjurer 1 · jackal 2 · mirror_shade 1 · monkey 1 · ogre 1 · pink_jelly 2 · smith 1 · wraith 1
+        party slots by kind (pick rate, 224 slot·check-ins): jackal 29% · goblin 25% · goblin_archer 16% · wraith 11% · bell_sentinel 10% · bloat 5% · ogre 4%
+PICKED  | day 1: owned 4.0 party 1.0 | day 3: owned 5.0 party 2.0 | day 7: owned 6.0 party 3.0 | day 14: owned 7.0 party 4.0 (mean over seeds)
+        kinds ever owned (seeds): acolyte 1 · bloat 1 · echo 1 · goblin 1 · goblin_conjurer 1 · lurker 1 · monkey 1 · ogre 1 · pink_jelly 1 · sentinel 1 · skeleton 1 · smith 1
+        party slots by kind (pick rate, 228 slot·check-ins): goblin_conjurer 18% · monkey 18% · ogre 16% · pink_jelly 16% · bloat 11% · lurker 9% · goblin 7% · smith 5%
+
+## D1–D4 pickup walk: sends from D1 at the D8 snapshot, per send: ticks walking to loot (steps) / ticks on D1–D4
+IDLE    | party worn: 795 ticks (79.0 steps) of 924 = 86.0% · fetches 0.0 | party removed: 783 ticks (77.9 steps) of 924 = 84.8% · fetches 0.0 | party a fetcher: 606 ticks (60.1 steps) of 1057 = 57.3% · fetches 15.6
+PICKED  | party worn: 0 ticks (0.0 steps) of 0 = 0.0% · fetches 0.0 | party removed: 0 ticks (0.0 steps) of 0 = 0.0% · fetches 0.0 | party a fetcher: 0 ticks (0.0 steps) of 0 = 0.0% · fetches 0.0
+
+## carry fetched on deaths (live fortnights): fetched / carry lost on deaths with a party pet standing · / all carry lost on deaths · deaths fetched on
+IDLE    fetched $2411 · 20.1% of carry lost with a pet standing ($12008) · 2.5% of all carry lost ($96725) · 40 deaths fetched on
+PICKED  fetched $23457 · 20.4% of carry lost with a pet standing ($115191) · 3.6% of all carry lost ($651983) · 166 deaths fetched on
+
+## Cut 119 rows (live fortnights)
+IDLE    a pet in the party by day 3: 2/2 · role slots fetcher 29% · guard 29% · mender 5% · scout 37% · bred 0 / wild 224 slot·check-ins (0% bred) · synergies formed (seeds) none · old hound (pets.old_hounds) 2/2 · check-ins with a pet line 100% · acts: fetches 11704 guards 321 mends 484 scout looks 7276 revives 0 · eggs bred 0
+PICKED  a pet in the party by day 3: 2/2 · role slots fetcher 18% · guard 23% · mender 32% · scout 27% · bred 0 / wild 228 slot·check-ins (0% bred) · synergies formed (seeds) falconer 2 · shieldmate 1 · old hound (pets.old_hounds) 2/2 · check-ins with a pet line 100% · acts: fetches 11352 guards 809 mends 99 scout looks 3626 revives 0 · eggs bred 53
+
+## best kind per wall (each kind alone in the party at the lineage's best pet level, 12 sims; both bots' snapshots): best (tags) score Δ vs none · margin over the 2nd in seed SDs of the paired difference
+D8 (1 snaps): best goblin_archer (ranged,telegraph) +24.2 vs none · margin NaN SD | goblin_archer +24.2 jackal +15.0 wraith +15.0 echo +14.2 pink_jelly +13.3 smith +11.7 mirror_shade +10.8 sentinel +10.8 monkey +8.3 goblin_captain +6.7 acolyte +5.8 ogre +5.8 skeleton +5.8 goblin +5.0 lurker +5.0 bell_sentinel +2.5 goblin_conjurer +1.7 rat +1.7 bloat -6.7
+D13 (4 snaps): best goblin_archer (ranged,telegraph) +14.2 vs none · margin 0.16 SD | goblin_archer +14.2 rat +12.7 pink_jelly +10.6 lurker +9.6 monkey +9.2 wraith +8.5 goblin_conjurer +7.7 skeleton +7.1 bell_sentinel +6.9 mirror_shade +5.4 smith +5.0 jackal +3.5 acolyte +2.5 echo +2.3 bloat +1.7 sentinel -0.4 ogre -1.2 goblin_captain -1.5 goblin -2.3
+D18 (1 snaps): best ogre (heavy,telegraph) +3.8 vs none · margin NaN SD | ogre +3.8 lurker +1.2 pink_jelly -5.4 echo -14.6 rat -15.4 monkey -21.2 skeleton -23.8 bloat -25.4 goblin_captain -25.4 goblin_archer -26.2 bell_sentinel -27.1 goblin_conjurer -27.1 smith -27.9 sentinel -28.7 jackal -29.6 mirror_shade -29.6 acolyte -36.2 wraith -39.6 goblin -44.6
+D23 (3 snaps): best rat () +13.1 vs none · margin 0.50 SD | rat +13.1 monkey +9.4 jackal +6.9 goblin_archer +6.7 goblin_captain +5.8 smith +5.8 bloat +4.7 skeleton +2.5 acolyte -0.3 mirror_shade -0.3 sentinel -0.6 ogre -2.5 pink_jelly -2.8 goblin -5.0 lurker -5.8 goblin_conjurer -6.9 echo -7.2 wraith -8.9 bell_sentinel -13.1
+D28 (4 snaps): best monkey (thief,fast) +10.2 vs none · margin 0.33 SD | monkey +10.2 jackal +7.1 sentinel +6.7 pink_jelly +6.5 lurker +5.8 wraith +4.6 ogre +4.4 bell_sentinel +3.5 goblin_conjurer +2.9 rat +2.7 goblin_archer +2.5 echo +1.5 acolyte +1.5 mirror_shade +1.2 bloat +0.6 goblin_captain +0.4 smith -0.6 skeleton -1.0 goblin -1.2
+
+## best role per wall (a role's score = the mean of its kinds' panels on each snapshot): best Δ vs none · margin over the 2nd in seed SDs
+D8 (1 snaps): best scout +9.7 vs none · margin NaN SD | scout +9.7 fetcher +8.3 mender +8.2 guard +6.8
+D13 (4 snaps): best scout +9.4 vs none · margin 0.18 SD | scout +9.4 fetcher +8.5 mender +4.6 guard +0.3
+D18 (1 snaps): best fetcher -22.1 vs none · margin NaN SD | fetcher -22.1 mender -23.2 guard -23.7 scout -23.8
+D23 (3 snaps): best fetcher +9.8 vs none · margin 1.95 SD | fetcher +9.8 guard +0.1 mender +0.0 scout -5.6
+D28 (4 snaps): best fetcher +6.7 vs none · margin 0.34 SD | fetcher +6.7 scout +3.9 guard +1.8 mender +1.8
+roles best at a wall: fetcher 3 · scout 2
+
+## a role given (the kind panels, all walls, by role): pet share of damage dealt · of blows drawn · acts per run per pet (row acts)
+fetcher  dmg 1.9% · blows 2.9% · acts 364.4 (43.5) · guarded 0 · mended 0 · fetches 13190 · scout looks 0 (per pet-run: 0.00 · 0.00 · 28.18 · 0.00)
+guard    dmg 3.2% · blows 5.9% · acts 21.2 (21.2) · guarded 971 · mended 0 · fetches 0 · scout looks 0 (per pet-run: 1.24 · 0.00 · 0.00 · 0.00)
+scout    dmg 4.3% · blows 4.1% · acts 55.5 (55.5) · guarded 0 · mended 0 · fetches 0 · scout looks 8311 (per pet-run: 0.00 · 0.00 · 0.00 · 10.66)
+mender   dmg 1.8% · blows 3.4% · acts 20.0 (14.7) · guarded 0 · mended 5010 · fetches 0 · scout looks 0 (per pet-run: 0.00 · 5.35 · 0.00 · 0.00)
+
+## a pet given (the kind panels above, by wall): pet share of damage dealt · of blows drawn · acts per run per pet (row acts)
+acolyte        | D8 dmg 4.8% · blows 10.1% · acts 20.3 (10.5) | D13 dmg 1.7% · blows 3.6% · acts 21.2 (12.0) | D18 dmg 0.9% · blows 2.2% · acts 14.6 (14.2) | D23 dmg 1.7% · blows 5.2% · acts 23.7 (19.9) | D28 dmg 1.9% · blows 4.2% · acts 24.2 (20.6) | all dmg 1.8% · blows 4.1% · acts 22.1 (16.5)
+bell_sentinel  | D8 dmg 3.4% · blows 7.2% · acts 8.9 (8.9) | D13 dmg 1.2% · blows 3.5% · acts 11.7 (11.7) | D18 dmg 1.0% · blows 2.9% · acts 19.7 (19.7) | D23 dmg 1.5% · blows 5.2% · acts 20.6 (20.6) | D28 dmg 1.5% · blows 4.5% · acts 20.4 (20.4) | all dmg 1.4% · blows 4.2% · acts 16.8 (16.8)
+bloat          | D8 dmg 0.0% · blows 7.8% · acts 9.2 (3.8) | D13 dmg 0.0% · blows 2.4% · acts 10.8 (6.8) | D18 dmg 0.0% · blows 1.2% · acts 5.2 (5.2) | D23 dmg 0.1% · blows 3.7% · acts 10.0 (8.5) | D28 dmg 0.2% · blows 3.3% · acts 12.4 (11.0) | all dmg 0.1% · blows 3.0% · acts 10.6 (8.1)
+echo           | D8 dmg 7.1% · blows 8.0% · acts 27.1 (10.1) | D13 dmg 3.9% · blows 3.8% · acts 30.4 (17.3) | D18 dmg 1.8% · blows 2.4% · acts 18.2 (17.7) | D23 dmg 3.5% · blows 5.2% · acts 27.1 (22.1) | D28 dmg 3.2% · blows 4.7% · acts 27.5 (23.6) | all dmg 3.3% · blows 4.3% · acts 27.6 (19.8)
+goblin         | D8 dmg 3.7% · blows 7.5% · acts 7.2 (7.2) | D13 dmg 1.2% · blows 2.7% · acts 8.1 (8.1) | D18 dmg 0.7% · blows 1.8% · acts 10.6 (10.6) | D23 dmg 1.5% · blows 4.7% · acts 17.0 (17.0) | D28 dmg 1.4% · blows 3.7% · acts 15.5 (15.5) | all dmg 1.3% · blows 3.4% · acts 12.6 (12.6)
+goblin_archer  | D8 dmg 20.2% · blows 6.3% · acts 83.2 (83.2) | D13 dmg 13.3% · blows 2.3% · acts 195.8 (195.8) | D18 dmg 5.5% · blows 1.5% · acts 150.7 (150.7) | D23 dmg 10.7% · blows 3.1% · acts 188.4 (188.4) | D28 dmg 13.3% · blows 3.1% · acts 232.8 (232.8) | all dmg 12.0% · blows 2.7% · acts 193.3 (193.3)
+goblin_captain | D8 dmg 5.5% · blows 7.6% · acts 7.9 (7.9) | D13 dmg 2.5% · blows 3.5% · acts 12.2 (12.2) | D18 dmg 1.3% · blows 2.1% · acts 13.9 (13.9) | D23 dmg 2.6% · blows 5.0% · acts 20.6 (20.6) | D28 dmg 2.1% · blows 4.0% · acts 18.3 (18.3) | all dmg 2.3% · blows 3.9% · acts 15.8 (15.8)
+goblin_conjurer | D8 dmg 3.0% · blows 6.2% · acts 7.8 (7.8) | D13 dmg 1.1% · blows 3.0% · acts 10.1 (10.1) | D18 dmg 0.9% · blows 2.6% · acts 17.5 (17.5) | D23 dmg 1.3% · blows 4.7% · acts 18.3 (18.3) | D28 dmg 1.4% · blows 4.2% · acts 18.4 (18.4) | all dmg 1.3% · blows 3.8% · acts 14.9 (14.9)
+jackal         | D8 dmg 8.1% · blows 8.8% · acts 423.5 (97.9) | D13 dmg 2.0% · blows 1.7% · acts 331.3 (55.8) | D18 dmg 1.0% · blows 1.3% · acts 354.1 (72.3) | D23 dmg 3.1% · blows 3.7% · acts 366.5 (118.5) | D28 dmg 3.8% · blows 3.5% · acts 425.1 (123.2) | all dmg 3.0% · blows 2.9% · acts 377.1 (95.5)
+lurker         | D8 dmg 5.9% · blows 4.3% · acts 7.8 (7.8) | D13 dmg 3.4% · blows 2.9% · acts 15.9 (15.9) | D18 dmg 2.4% · blows 2.3% · acts 27.2 (27.2) | D23 dmg 3.0% · blows 3.9% · acts 21.3 (21.3) | D28 dmg 3.1% · blows 3.5% · acts 22.3 (22.3) | all dmg 3.1% · blows 3.3% · acts 19.4 (19.4)
+mirror_shade   | D8 dmg 6.0% · blows 8.5% · acts 23.8 (9.2) | D13 dmg 2.8% · blows 3.5% · acts 25.2 (14.0) | D18 dmg 1.5% · blows 2.2% · acts 15.6 (15.2) | D23 dmg 2.7% · blows 5.1% · acts 26.2 (21.6) | D28 dmg 2.7% · blows 4.7% · acts 25.2 (21.5) | all dmg 2.6% · blows 4.2% · acts 24.6 (17.8)
+monkey         | D8 dmg 3.7% · blows 6.7% · acts 398.9 (11.9) | D13 dmg 1.4% · blows 2.0% · acts 403.9 (14.4) | D18 dmg 0.8% · blows 1.6% · acts 441.0 (18.8) | D23 dmg 2.2% · blows 3.9% · acts 365.3 (30.5) | D28 dmg 2.1% · blows 3.4% · acts 430.3 (29.1) | all dmg 1.8% · blows 3.0% · acts 405.6 (22.8)
+ogre           | D8 dmg 7.4% · blows 12.9% · acts 11.4 (11.4) | D13 dmg 3.6% · blows 7.4% · acts 17.4 (17.4) | D18 dmg 1.6% · blows 4.1% · acts 16.9 (16.9) | D23 dmg 2.8% · blows 8.3% · acts 20.3 (20.3) | D28 dmg 2.5% · blows 6.8% · acts 22.0 (22.0) | all dmg 2.8% · blows 7.1% · acts 19.0 (19.0)
+pink_jelly     | D8 dmg 1.2% · blows 2.0% · acts 21.8 (9.3) | D13 dmg 0.3% · blows 0.7% · acts 11.5 (8.1) | D18 dmg 0.2% · blows 0.5% · acts 8.9 (8.8) | D23 dmg 0.5% · blows 1.6% · acts 14.4 (11.9) | D28 dmg 0.4% · blows 0.8% · acts 11.1 (9.8) | all dmg 0.4% · blows 0.9% · acts 12.6 (9.7)
+rat            | D8 dmg 2.6% · blows 8.1% · acts 323.0 (6.2) | D13 dmg 0.7% · blows 1.8% · acts 325.1 (7.4) | D18 dmg 0.6% · blows 1.3% · acts 282.3 (13.1) | D23 dmg 0.9% · blows 3.2% · acts 236.7 (13.0) | D28 dmg 1.3% · blows 3.6% · acts 354.8 (17.4) | all dmg 1.0% · blows 2.8% · acts 310.4 (12.1)
+sentinel       | D8 dmg 9.7% · blows 10.1% · acts 11.5 (11.5) | D13 dmg 5.0% · blows 6.0% · acts 18.0 (18.0) | D18 dmg 3.2% · blows 4.5% · acts 25.7 (25.7) | D23 dmg 4.8% · blows 6.8% · acts 26.4 (26.4) | D28 dmg 4.1% · blows 6.5% · acts 25.9 (25.9) | all dmg 4.5% · blows 6.3% · acts 22.5 (22.5)
+skeleton       | D8 dmg 7.4% · blows 10.0% · acts 11.2 (11.2) | D13 dmg 4.2% · blows 5.9% · acts 22.5 (22.5) | D18 dmg 4.3% · blows 7.7% · acts 44.5 (44.5) | D23 dmg 5.0% · blows 10.3% · acts 45.2 (45.2) | D28 dmg 5.2% · blows 10.6% · acts 47.9 (47.9) | all dmg 4.9% · blows 8.8% · acts 36.4 (36.4)
+smith          | D8 dmg 5.6% · blows 7.9% · acts 22.5 (8.5) | D13 dmg 2.5% · blows 3.3% · acts 23.4 (12.7) | D18 dmg 1.3% · blows 2.0% · acts 14.1 (13.8) | D23 dmg 2.5% · blows 4.7% · acts 24.4 (20.0) | D28 dmg 2.5% · blows 4.3% · acts 23.3 (19.7) | all dmg 2.4% · blows 3.9% · acts 22.8 (16.3)
+wraith         | D8 dmg 5.4% · blows 9.9% · acts 13.1 (13.1) | D13 dmg 3.2% · blows 5.1% · acts 25.0 (25.0) | D18 dmg 2.6% · blows 5.3% · acts 39.1 (39.1) | D23 dmg 3.3% · blows 8.3% · acts 38.3 (38.3) | D28 dmg 3.4% · blows 7.0% · acts 40.4 (40.4) | all dmg 3.3% · blows 6.6% · acts 33.0 (33.0)
+total 684s

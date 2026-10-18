@@ -1,0 +1,15 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: callout: 
+    at ok (file:///home/g/p/riddle/web/tests/vat.mjs:45:10)
+    at file:///home/g/p/riddle/web/tests/vat.mjs:94:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.18.0

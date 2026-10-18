@@ -1,0 +1,59 @@
+error: could not compile `idlever-core` (example "dayplayer") due to 5 previous errors
+error[E0425]: cannot find function `upgrade_offers` in module `idlever_core::town`
+   --> crates/idlever-core/examples/dayplayer.rs:636:54
+    |
+636 | ...   let Some(next) = idlever_core::town::upgrade_offers(&g.lineage).into_iter().find(|o|o.id==id).and_then(|o|o.next) else {break};
+    |                                            ^^^^^^^^^^^^^^ not found in `idlever_core::town`
+
+error[E0599]: no method named `upgrade_building` found for mutable reference `&mut Game` in the current scope
+   --> crates/idlever-core/examples/dayplayer.rs:639:22
+    |
+639 |                 if g.upgrade_building(id,next.price).is_err() {break;}
+    |                      ^^^^^^^^^^^^^^^^ method not found in `&mut Game`
+
+error[E0308]: mismatched types
+   --> crates/idlever-core/examples/dayplayer.rs:647:81
+    |
+647 |                         idlever_core::offline::run_offline_counts(&mut baseline,idlever_core::engine::NIGHT_RUNS);
+    |                         -----------------------------------------               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `u64`, found `u32`
+    |                         |
+    |                         arguments to this function are incorrect
+    |
+note: function defined here
+   --> crates/idlever-core/src/offline.rs:111:8
+    |
+111 | pub fn run_offline_counts(game: &mut Game, elapsed_s: u64) -> ReturnReport {
+    |        ^^^^^^^^^^^^^^^^^^
+help: you can convert a `u32` to a `u64`
+    |
+647 |                         idlever_core::offline::run_offline_counts(&mut baseline,idlever_core::engine::NIGHT_RUNS.into());
+    |                                                                                                                 +++++++
+
+error[E0308]: mismatched types
+   --> crates/idlever-core/examples/dayplayer.rs:648:81
+    |
+648 |                         idlever_core::offline::run_offline_counts(&mut upgraded,idlever_core::engine::NIGHT_RUNS);
+    |                         -----------------------------------------               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `u64`, found `u32`
+    |                         |
+    |                         arguments to this function are incorrect
+    |
+note: function defined here
+   --> crates/idlever-core/src/offline.rs:111:8
+    |
+111 | pub fn run_offline_counts(game: &mut Game, elapsed_s: u64) -> ReturnReport {
+    |        ^^^^^^^^^^^^^^^^^^
+help: you can convert a `u32` to a `u64`
+    |
+648 |                         idlever_core::offline::run_offline_counts(&mut upgraded,idlever_core::engine::NIGHT_RUNS.into());
+    |                                                                                                                 +++++++
+
+error[E0609]: no field `buildings` on type `&'static Balance`
+   --> crates/idlever-core/examples/dayplayer.rs:657:63
+    |
+657 | ...   let extra = (idlever_core::balance::get().buildings.bank_nights[0]-idlever_core::town::bank_nights()) * net * rate / 1000;
+    |                                                 ^^^^^^^^^ unknown field
+    |
+    = note: available fields are: `level_runs`, `scar_pct`, `scar_cap`, `drill_meeting`, `drill_days` ... and 21 others
+
+Some errors have detailed explanations: E0308, E0425, E0599, E0609.
+For more information about an error, try `rustc --explain E0308`.
