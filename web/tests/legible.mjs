@@ -165,7 +165,7 @@ try {
       check(
         // owner 2026-10-18: a bank reads as the hero turning back — `hurt · banked` shows `Alden · hurt`
         why === engineWhy ||
-          (/ · banked$/.test(engineWhy ?? "") &&
+          ((engineWhy ?? "").endsWith(" · banked") &&
             why.replace(/^\S+ · /, "") === engineWhy.replace(/ · banked$/, "")),
         `run ${k}: displayed reason equals actual Rust exit ("${engineWhy}")`,
       );
