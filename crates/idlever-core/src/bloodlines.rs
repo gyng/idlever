@@ -203,25 +203,8 @@ impl Session {
         self.others.insert(self.selected,prev); self.selected=id;
         Ok(())
     }
-    /// Workplace effects belong to the town: any resident's earned record/service opens them.
-    /// Payment and the home requirement still belong to the selected hero.
-    fn building_context(&self)->(u32,bool) {
-        let games=std::iter::once(&self.active).chain(self.others.values());
-        games.fold((0,false),|(best,device),g| (best.max(g.lineage.best_depth),device||crate::persistent::service_availability(&g.lineage,false)[2]))
-    }
-    pub fn upgrade_building(&mut self,id:&str,max_price:i32)->Result<(),String> {
-        if crate::persistent::away(&self.active) {return Err("hero away".into());}
-        let (best,device)=self.building_context();
-        let r=crate::town::upgrade_for(&mut self.active.lineage,id,max_price,best,device);
-        self.active.honours_sweep(r)?;
-        for g in self.others.values_mut() {town_from(&self.active.lineage,&mut g.lineage);}
-        Ok(())
-    }
     pub fn lineage(&self)->Lineage {
         let mut l=self.active.lineage();
-        let (best,device)=self.building_context();
-        l.town.upgrades=crate::town::upgrade_offers_for(&self.active.lineage,best,device);
-        if crate::persistent::away(&self.active) {for offer in &mut l.town.upgrades {if let Some(next)=&mut offer.next {next.ready=false;}}}
         if let Some(hero) = l.persistent_hero.as_mut() {
             for g in self.others.values() {
                 let [guild, pool, device] = crate::persistent::service_availability(&g.lineage, crate::persistent::away(g));
@@ -381,37 +364,6 @@ impl Session {
 mod tests {
     use super::*;
     fn resident()->Session { let mut s=Session::new(1);s.active.build_town("house").unwrap();s.active.lineage.gold_move(1000,"test income");s }
-    #[test]
-    fn device_upgrades_follow_earned_town_progress_across_residents() {
-        let mut s=Session::new(1);
-        s.build_town("house").unwrap();
-        // Earn the Scout and older resident's service/depth/income through real sends.
-        for _ in 0..40 {
-            if crate::tree::hired(&s.active.lineage,"scout") {break;}
-            if crate::tree::lit(&s.active.lineage).is_some_and(|n|n.id=="scout"&&s.active.lineage.gold>=crate::tree::price(&s.active.lineage,n)) {s.build_workplace("guild").unwrap();break;}
-            s.active.send();crate::offline::run_offline_counts(&mut s.active,1);
-        }
-        assert!(crate::tree::hired(&s.active.lineage,"scout"));
-        for _ in 0..14 {
-            if s.active.lineage.best_depth>=13 && s.active.lineage.gold>=3650 && s.active.lineage.persistent.defeats>0 {break;}
-            crate::offline::run_offline_counts(&mut s.active,86400);
-        }
-        assert!(s.active.lineage.best_depth>=13 && s.active.lineage.gold>=3650 && s.active.lineage.persistent.defeats>0);
-        // Select a genuinely fresh paid resident with no depth, deaths, or service of her own.
-        s.add_bloodline().unwrap();s.select_bloodline(2).unwrap();
-        assert_eq!((s.active.lineage.best_depth,s.active.lineage.persistent.defeats),(0,0));
-        assert!(s.lineage().persistent_hero.unwrap().device.available);
-        let offer=s.lineage().town.upgrades.into_iter().find(|o|o.id=="device").unwrap().next.unwrap();
-        assert!(offer.ready&&offer.affordable);assert_eq!(offer.price,3400);
-        let before=s.save();assert!(s.upgrade_building("device",3399).is_err());assert_eq!(s.save(),before);
-        s.upgrade_building("device",3400).unwrap();
-        assert_eq!(crate::town::effect_level(&s.active.lineage,"device"),2);
-        s.select_bloodline(1).unwrap();assert_eq!(crate::town::effect_level(&s.active.lineage,"device"),2);
-        s.select_bloodline(2).unwrap();let saved=s.save();let loaded=Session::load(&saved).unwrap();
-        assert_eq!(crate::town::effect_level(&loaded.active.lineage,"device"),2);
-        assert_eq!(crate::town::effect_level(&loaded.others[&1].lineage,"device"),2);
-        assert_eq!(loaded.active.lineage.gold,s.active.lineage.gold);
-    }
     #[test]
     fn earned_services_remain_town_wide_when_selecting_a_new_resident() {
         let mut s=resident();

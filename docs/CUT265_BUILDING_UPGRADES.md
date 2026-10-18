@@ -1,6 +1,6 @@
 # Cut265 — Building upgrades
 
-Status: IMPLEMENTED; acceptance in progress (2026-10-18). Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
+Status: HELD FOR REDESIGN by owner decision (2026-10-18). Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".
 
 ## 1. Today
@@ -116,3 +116,19 @@ included in the workspace suite. Initial real-WASM purchases pass 26 checks acro
 related client groups pass6/7 initially (Hero Hub's obsolete Hire tooltip expectation was updated to the actual
 workplace/arriving-worker/price contract and is being rechecked). Final pacing, settlement and shipping results
 remain pending; the interrupted pre-purse-guard pacing log is not a passing gate.
+
+## Owner hold — 2026-10-18
+
+Owner chose “Hold upgrades for redesign; finish the vat” after reviewing the
+failed price-only trials and actual Bank payback. Eight price profiles, all
+on seed1, spent0% during days3–14. Cheaper profiles bought byday2; near-cap
+profiles bought nothing. These are diagnostics, not a16-seed median verdict.
+Bank price3400 generated only131 extra interest in30 nights in its actual
+pre-purchase-world counterfactual. The original gates remain unchanged.
+
+Implementation is preserved in branch `hold/cut265-building-upgrades`,
+commit `445a1f3f`; exact price profiles, logs, caches and identity are in
+`docs/evidence/cut265/price-only-search/`. Combined-source pacing and Hero Hub
+runs were stopped after the owner hold; partial outputs are not acceptance
+for the vat-only build. Later redesign must validate actual funding, useful
+effects and payback rather than tune only the purchase price.

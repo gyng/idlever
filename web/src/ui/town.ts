@@ -1,4 +1,3 @@
-import { buildingUpgradeRow } from "./building-upgrades";
 import { classIcon } from "./class-icons";
 import type { BloodlineTab } from "./bloodline-tabs";
 import { openHeroHub, heroHubOwner, type HeroHubSection } from "./hero-hub";
@@ -1299,7 +1298,6 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
               /* copy:button */ `withdraw $${T.bank}`,
             ),
           ),
-          buildingUpgradeRow(app, "bank", paint),
         );
       };
       const act = async (fn: () => Promise<Lineage>): Promise<void> => {

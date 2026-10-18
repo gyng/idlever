@@ -62,7 +62,7 @@ const purseSeen = new WeakMap<App, PurseSeen>();
 export function spendWord(why: string): string {
   const w = goldWords(why).split(/\s+/)[0] ?? "";
   if (
-    /^(forge|build|upgrade|hurry|rank|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(
+    /^(forge|build|hurry|rank|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(
       w,
     )
   )

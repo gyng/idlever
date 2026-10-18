@@ -489,17 +489,6 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
   for (const b of buildings)
     if (markers.length < budget && !opened.has(b.id) && !markers.some((m) => m.at === b.id))
       markers.push({ at: b.id, kind: "rune" });
-  // Bought workplace levels share the existing marker budget and leave stronger readiness signals visible.
-  if (town?.home !== false && L.persistent_hero?.state !== "away")
-    for (const upgrade of town?.upgrades ?? [])
-      if (
-        (upgrade.id === "bank" || upgrade.id === "device") &&
-        markers.length < budget &&
-        upgrade.next?.ready &&
-        upgrade.next.affordable &&
-        !markers.some((m) => m.at === upgrade.id)
-      )
-        markers.push({ at: upgrade.id, kind: "rune", label: /* copy:callout */ "Upgrade" });
   return {
     home: town?.home !== false,
     seed,

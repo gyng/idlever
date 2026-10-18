@@ -379,11 +379,6 @@ impl Game {
     /// Blind b58b431: a Legacy purchase while the hero is away, for the next run (`legacy::buy_next`).
     pub fn upgrade_hero_next(&mut self, id: &str) -> Result<(), String> { let r = legacy::buy_next(self, id); self.honours_sweep(r) }
     pub fn respec_legacy(&mut self) -> Result<(), String> { legacy::respec(self) }
-    pub fn upgrade_building(&mut self,id:&str,max_price:i32)->Result<(),String> {
-        if persistent::away(self) {return Err("hero away".into());}
-        let r = town::upgrade(&mut self.lineage,id,max_price);
-        self.honours_sweep(r)
-    }
     pub fn build_town(&mut self, id: &str) -> Result<(), String> {
         let r = town::construct(&mut self.lineage, id);
         self.honours_sweep(r)

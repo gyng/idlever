@@ -214,7 +214,7 @@ pub fn recovery_total(l: &LineageState) -> u64 {
 /// Cut264 §3 (docs/CUT264_CLONE_VAT.md): the gold that skips the whole recovery left now — offered only while the
 /// hero is home and cloning with at least `vat.hurry_min_s` left. Priced live by the record's unit
 /// (`kit::unit(best)`), so it falls as the clone grows: `max(floor, roundup(round, ⌈remaining_s × unit × permille /
-/// 60000⌉))`, less the vat's bought discount (Cut265, `town::vat_hurry_off_pct`).
+/// 60000⌉))`.
 pub fn hurry_price(l: &LineageState, away: bool) -> Option<i32> {
     if away || !l.town.home.unwrap_or(true) {
         return None;
@@ -227,8 +227,6 @@ pub fn hurry_price(l: &LineageState, away: bool) -> Option<i32> {
     }
     let unit = u64::from(crate::kit::unit(l.best_depth));
     let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
-    let off = u64::from(crate::town::vat_hurry_off_pct(l));
-    let raw = raw * (100 - off.min(100)) / 100;
     let round = u64::from(v.hurry_round.max(1));
     let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
     Some(p.min(i32::MAX as u64) as i32)

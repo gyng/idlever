@@ -1,4 +1,3 @@
-import { buildingUpgradeRow } from "./building-upgrades";
 import type { App } from "../app";
 import type { HeroRebirth, PersistentHero, Lineage } from "../engine/types";
 import { h, replace, spanOf } from "./dom";
@@ -120,7 +119,6 @@ export function heroLifePanel(
       L.bloodline,
       L.legacy_upgrades,
       L.town?.home,
-      L.town?.upgrades,
       L.gold,
       mode,
       reviewed?.preview.token,
@@ -580,9 +578,7 @@ export function heroLifePanel(
             ),
       ),
     );
-    const upgrade =
-      mode === "rebirth" ? buildingUpgradeRow(app, "device", () => refresh(true)) : null;
-    replace(el, ...children, upgrade, feedback);
+    replace(el, ...children, feedback);
     scroller.scrollTop = scroll;
     if (focused) {
       focus(focused);

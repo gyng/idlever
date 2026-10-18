@@ -86,7 +86,6 @@ export const SMOKE_AREAS = Object.freeze({
     "exit-keep-close",
     "report-supply-limit",
     "forge-requests",
-    "building-upgrades",
   ],
   "death and advice": ["death-actions", "death-fix-discovery", "king-advice-scope"],
   "reports and accounting": ["report-reading", "report-class-xp", "numbers-agree"],

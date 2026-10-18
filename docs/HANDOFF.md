@@ -1,12 +1,14 @@
-# Resume checkpoint — 2026-10-18 (in progress)
+# Resume checkpoint — 2026-10-18 (vat-only delivery in progress)
 
 Owner resumed Claude’s interrupted work: finish Cut264 clone vat, then Cut265/
 Cut273 W2 Bank/Vat upgrades, recheck and redeploy the dev site. Cut277 polish
 was already integrated before this resume. No new GitHub release is requested.
 The older parked checkpoint below is historical, not the current work state.
 
-Working tree is based on `37d8b63f`; both cuts are integrated but have not been
-accepted or deployed. Do not stage the thousands of unrelated old untracked
+Owner chose **hold upgrades for redesign; finish the vat**. The combined
+implementation is preserved on `hold/cut265-building-upgrades` at `445a1f3f`.
+Main is being reduced to Cut264 only; vat-only acceptance is restarting.
+Deployment metadata is separately committed as `61712e5b`. Nothing deployed. Do not stage the thousands of unrelated old untracked
 art/evidence files. Source was recovered from `.claude/worktrees/cut264`; W2
 was integrated from `.claude/worktrees/cut265-finish` (920fde8f/7c0d17f3).
 
@@ -23,14 +25,16 @@ was integrated from `.claude/worktrees/cut265-finish` (920fde8f/7c0d17f3).
 - Hero Hub previous full run reached final source guard but failed because WASM
   was replaced during the audit. Rerun on immutable shipping package is active
   (`client-hero-hub-shipping.log`). Do not rebuild WASM during that run.
-- Final16-seed pacing pack is active (`pacing-final.log`); no final gate claim.
+- Combined16-seed pacing was stopped for the owner hold (`pacing-final.log`);
+  no final gate claim. Vat-only pacing must use its new source identity.
   Interrupted pre-purse-guard and transient concurrent-build failures are kept.
 - **W2 pricing is not accepted.** Default seed1 spends6800 on initial upgrades
   before day3, then0% of days3–14 income on upgrades (required median≥10%).
   Later levels are not affordable under the bot reserve/wealth limits.
   Actual Bank payback diagnostic:3400 price,131 incremental interest after30
   nights, no payback. These are seed1 diagnostics, not a16-seed median verdict.
-  Price-only sweep is running in the isolated cut265-finish worktree; do not
+  Eight price-only trials all yielded0% late spending on seed1; exact evidence
+  is in `docs/evidence/cut265/price-only-search/`. Owner held W2. Do not
   weaken the gate or substitute a funded-capacity estimate for real payback.
 
 Owner also requested a subagent implement the games-index `meta.json` spec.
@@ -39,7 +43,7 @@ changes/tests there preserve concurrent edits from another session. Idlever
 publisher is implemented as Cut278 (metadata generated at deployment, full SHA,
 exact UTC timestamp, CF JSON/CORS/no-cache, SW bypass). Seven tests pass on
 Node22; both real Vite base builds pass. GitHub Pages no-cache remains a hosting
-limitation. See `CUT278_DEPLOYMENT_METADATA.md`. No commit/deploy yet.
+limitation. See `CUT278_DEPLOYMENT_METADATA.md`. Committed61712e5b; no deploy yet.
 
 # Idlever handoff — parked 2026-10-16
 

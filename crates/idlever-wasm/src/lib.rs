@@ -675,11 +675,6 @@ impl Game {
         self.inner.rebirth_hero(token).map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
-    #[wasm_bindgen(js_name = upgradeBuilding)]
-    pub fn upgrade_building(&mut self, id: &str, max_price: i32) -> Result<String, JsError> {
-        self.inner.upgrade_building(id, max_price).map_err(err)?;
-        Ok(js(&self.inner.lineage()))
-    }
     #[wasm_bindgen(js_name = buildTown)]
     pub fn build_town(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.build_town(id).map_err(err)?;

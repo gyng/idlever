@@ -126,3 +126,32 @@ refusal assertion). Final-source checks and their identities are recorded in `do
 browser proof: 42 checks pass, including real-WASM hurry and controlled three-resident readiness; 402×681 and
 1440×900 day/night captures are in `docs/evidence/cut264/screens/`. These are controlled fixtures, not earned
 campaigns or performance measurements. Harness failures and their fixes remain in separate logs.
+
+## Vat-only delivery and paid-hurry diagnostic — 2026-10-18
+
+Owner held Cut265 effects for redesign after eight failed price-only trials.
+Vat-only delivery removes upgrade commands, balances, persisted levels, offers,
+UI rows and bot purchases. The held implementation/evidence is preserved on
+`hold/cut265-building-upgrades` (source445a1f3f; evidence6c16bd41). Clone hurry
+uses its original undiscounted price. Staff/workplace levels from Cut273 remain.
+
+The missing PICKED+H diagnostic is now implemented separately:
+
+```sh
+cargo run -q --profile fast -p idlever-core --example picked_hurry -- \
+  --seeds 16 --threads 8 --out docs/evidence/cut264/hurry
+```
+
+It runs actual PICKED choices, then presses one affordable hurry at each of the
+42 normal check-ins (three per day for14 days). No extra funding, first-session
+hurry, between-check-in hurry or away hurry is added. Ordinary dayplayer policy
+and its pre-main cache salt are unchanged. Per-seed results resume only for the
+same executable and balance identity. `hurry-king` requires **every** slain King
+on day7 or later; its median is informational. `hurry-share` reports spending /
+earned+fetched+recovered income on days3–14; no numeric share bar was specified
+in this contract. This diagnostic covers this check-in policy, not every possible
+sequence of deliberate paid hurries. Results remain pending.
+
+The16-seed opening probe retained Cut260’s documented G2 deviation unchanged:
+longest upgrade gap median28.9min, worst38.2min. G1/G3/G4/G6 pass. This is
+not an all-opening-gates pass and no bar was changed.
