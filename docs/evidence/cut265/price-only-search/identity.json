@@ -1,0 +1,9 @@
+{
+  "kind": "diagnostic price-only search, not acceptance",
+  "worktree": "cut265-finish at7c0d17f3",
+  "binary_sha256": "6571b093b5fcf45194daf08d7603ff8487f3f3c48724fc96ca50a4181b7d3a40",
+  "profile_base": "scratchpad/cut265-price-search/base.json",
+  "profile_note": "main balance profile, recovery[0]=150; vat object omitted because old worktree parser does not support it and bots never hurry",
+  "differences": "worktree predates Session shared eligibility helpers and explicit collected-purse guard; camp_taps already requires collected purse+reserve; no bot policy or accounting edits",
+  "main_source_edited": false
+}

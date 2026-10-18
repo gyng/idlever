@@ -1,0 +1,29 @@
+{
+  "name": "p40-20",
+  "dir": "p40-20",
+  "set": {
+    "buildings.price_units": [
+      40,
+      20
+    ]
+  },
+  "profileSha": "fb5e93acb558f4a8c848a23583c04a9791a15969da4092a2913bc2b9aeee4614",
+  "argsKey": "e35b674a0f9db81a",
+  "exact": false,
+  "verdict": "FAIL",
+  "exit": 1,
+  "rows": {
+    "upgrades-sink": {
+      "value": "0.00%",
+      "result": "FAIL",
+      "nums": [
+        0
+      ],
+      "approx": false
+    }
+  },
+  "failedRow": "upgrades-sink",
+  "wall": 520.218,
+  "cpu": 378.64000000000004,
+  "longestGame": 520
+}

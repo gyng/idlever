@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "name": "cut265-prices-diagnostic",
+    "base": "scratchpad/cut265-price-search/base.json",
+    "rows": [
+      "upgrades-sink"
+    ],
+    "seeds": 1,
+    "failFast": false,
+    "refine": 0,
+    "binKey": "fake6571b093b5fc",
+    "cap": 8,
+    "jobs": 4,
+    "threadsPer": 2,
+    "bin": "/home/g/p/riddle/.claude/worktrees/cut265-finish/target/fast/examples/dayplayer",
+    "timing": {
+      "wall": 971.484,
+      "ran": 8,
+      "skipped": 0,
+      "sumWall": 3663.949,
+      "sumCpu": 3067.37,
+      "sequential": 3662
+    }
+  },
+  "objective": {
+    "row": "upgrades-sink",
+    "index": 0,
+    "dir": "max"
+  },
+  "ranked": [
+    {
+      "name": "p16-40",
+      "dir": "p16-40",
+      "set": {
+        "buildings.price_units": [
+          16,
+          40
+        ]
+      },
+      "profileSha": "6a3e39348a5c98105e4ab230a82f31a55a28895dff626093d9ad51d8897fa27e",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 398.911,
+      "cpu": 380.55,
+      "longestGame": 399
+    },
+    {
+      "name": "p24-40",
+      "dir": "p24-40",
+      "set": {
+        "buildings.price_units": [
+          24,
+          40
+        ]
+      },
+      "profileSha": "9d3a7ae7adf7f975a2674f504aabcf69ea47836b794d80ed5f9d45663593e314",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 406.813,
+      "cpu": 368.27000000000004,
+      "longestGame": 407
+    },
+    {
+      "name": "p32-20",
+      "dir": "p32-20",
+      "set": {
+        "buildings.price_units": [
+          32,
+          20
+        ]
+      },
+      "profileSha": "0d7df4ffc2dad05edf18dc119c21367401e80bce905e5e5c347d376aea6508c0",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 397.14,
+      "cpu": 382.65,
+      "longestGame": 397
+    },
+    {
+      "name": "p36-22",
+      "dir": "p36-22",
+      "set": {
+        "buildings.price_units": [
+          36,
+          22
+        ]
+      },
+      "profileSha": "47f9a38c63b05c75d2cd5830362d8b6f65c8b7953f5baf26ddcd33931000c055",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 469.086,
+      "cpu": 373.53,
+      "longestGame": 469
+    },
+    {
+      "name": "p37-23",
+      "dir": "p37-23",
+      "set": {
+        "buildings.price_units": [
+          37,
+          23
+        ]
+      },
+      "profileSha": "61276443db24fc1d334dc791be180f44b34563af11a25b8bffd5c7283fedae2a",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 500.3,
+      "cpu": 375.20000000000005,
+      "longestGame": 500
+    },
+    {
+      "name": "p40-20",
+      "dir": "p40-20",
+      "set": {
+        "buildings.price_units": [
+          40,
+          20
+        ]
+      },
+      "profileSha": "fb5e93acb558f4a8c848a23583c04a9791a15969da4092a2913bc2b9aeee4614",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 520.218,
+      "cpu": 378.64000000000004,
+      "longestGame": 520
+    },
+    {
+      "name": "p48-24",
+      "dir": "p48-24",
+      "set": {
+        "buildings.price_units": [
+          48,
+          24
+        ]
+      },
+      "profileSha": "53e9c8498be7e92e1e41606f07a1c4d0af1a1f4facd9eb84b7f0b74fc931cd10",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 524.833,
+      "cpu": 384.47999999999996,
+      "longestGame": 524
+    },
+    {
+      "name": "p8-20",
+      "dir": "p8-20",
+      "set": {
+        "buildings.price_units": [
+          8,
+          20
+        ]
+      },
+      "profileSha": "3cf214d9d0b99197d1b4738a1b06740824343cc19cef49243d91d5bd8cc3e607",
+      "argsKey": "e35b674a0f9db81a",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "upgrades-sink": {
+          "value": "0.00%",
+          "result": "FAIL",
+          "nums": [
+            0
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "upgrades-sink",
+      "wall": 446.648,
+      "cpu": 424.04999999999995,
+      "longestGame": 446
+    }
+  ]
+}
