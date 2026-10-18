@@ -2273,9 +2273,10 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
       : "benevolent";
   // Physical re-picks and prepared supplies never create the same value twice.
   if (!run.brought.includes(it.id) && !run.picked.some((p) => p.id === it.id)) {
+    inv.worth = pickupValueOf(it.kind) || undefined;
     run.loot += pickupValueOf(it.kind);
     run.picked.push({ ...inv });
-  }
+  } else if (run.brought.includes(it.id)) inv.fate = "brought";
   if (WEAPONS[it.kind] || ARMOUR[it.kind] !== undefined) run.gear.push({ ...inv });
   if (WEAPONS[it.kind]) {
     if (!run.hero.weapon || WEAPONS[it.kind][1] > run.hero.atk[1]) {
@@ -4481,6 +4482,8 @@ export class FakeEngine implements Engine {
       run.line.finds = run.picked
         .filter((it) => it.kind !== "gold")
         .map(withRarity)
+        // Cut261: a death's finds lie in the bones; the others were sold for their `worth` at pickup
+        .map((it): InvItem => (run.exit === "death" ? { ...it, fate: "bones" } : it))
         .map((it) =>
           !it.known
             ? {

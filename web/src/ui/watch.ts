@@ -117,6 +117,7 @@ import type {
   EncounterModifiers,
   GunSnap,
   Ev,
+  InvItem,
   ExitLine,
   FoldLine,
   Highlight,
@@ -145,7 +146,7 @@ import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
 import { verbsAt } from "../engine/classes";
 import { openWindow } from "./sheet";
-import { itemIcon } from "./items"; // run-clear
+import { goldFindClass, itemIcon, itemName } from "./items"; // run-clear
 import { setBusyHost } from "./progress";
 import { glossOf, noteText, setRefRows, verbLabel } from "./tokens";
 import { drivenDeath } from "./death";
@@ -585,10 +586,76 @@ export function renderWatch(app: App): Mounted {
   const carryVal = h("span", { class: "purse-v" }),
     keptVal = h("span", { class: "purse-v" });
   let carryTip = "",
-    keptTip = "";
+    keptTip = "",
+    packInv: InvItem[] = [];
+  // Owner 2026-10-18 ("live view: show inventory list with $ value as well in details"): the carried tip lists the pack, each
+  // find at the coins it added on pickup (`InvItem.worth`), kit/supplies untagged by $, the rest (coins, used finds, thefts) one line
+  const packList = (): HTMLElement | null => {
+    const carried = +(carryEl.dataset.v ?? 0);
+    const rows = [...packInv].sort((a, b) => (b.worth ?? 0) - (a.worth ?? 0));
+    const shown = rows.slice(0, 8);
+    const hid = rows.slice(8);
+    const sum = rows.reduce((n, it) => n + (it.worth ?? 0), 0);
+    const rest = carried - sum;
+    const line = (left: (Node | string)[], right: string, title?: string, cls = ""): HTMLElement =>
+      h(
+        "li",
+        { class: cls || undefined, title },
+        h("span", { class: "pw-k" }, ...left),
+        h("span", { class: "pw-v num" }, right),
+      );
+    // Cut261: a find's row is the report's item → gold transition (items.ts `goldFind`): the item fades back as its `+$N` comes up
+    const lines = shown.map((it, i) => {
+      const tag = it.worth ? `+$${it.worth}` : (it.fate ?? "—");
+      const label = it.label.replace(/_/g, " ");
+      const li = line(
+        [itemIcon(it, { size: "xs" }), itemName(it, label)],
+        tag,
+        /* copy:tooltip */ it.worth
+          ? `${label} · +$${it.worth} at pickup`
+          : it.fate
+            ? `${label} · ${it.fate}, not loot`
+            : label,
+      );
+      if (it.worth) {
+        li.className = goldFindClass();
+        li.style.setProperty("--gf-delay", `${120 + 90 * i}ms`);
+        li.firstElementChild!.classList.add("gf-item");
+        li.lastElementChild!.classList.add("gf-gold");
+      }
+      return li;
+    });
+    if (hid.length) {
+      const more = hid.reduce((n, it) => n + (it.worth ?? 0), 0);
+      lines.push(
+        line([/* copy:label */ `+${hid.length} more`], more ? `$${more}` : "", undefined, "pw-dim"),
+      );
+    }
+    if (rest > 0)
+      lines.push(
+        line(
+          [/* copy:label */ "coins & used"],
+          `$${rest}`,
+          /* copy:tooltip */ "gold piles · finds used up",
+          "pw-dim",
+        ),
+      );
+    else if (rest < 0)
+      lines.push(
+        line(
+          [/* copy:label */ "taken"],
+          `−$${-rest}`,
+          /* copy:tooltip */ "stolen or swapped",
+          "pw-dim",
+        ),
+      );
+    if (!lines.length) return null;
+    lines.push(line([/* copy:label */ "carried"], `$${carried}`, undefined, "pw-total"));
+    return h("ul", { class: "pack-worth", "data-sum": String(carried) }, ...lines);
+  };
   const carryEl = detailHost(
     h("span", { class: "purse carried" }, icon("gold", "$"), carryVal),
-    () => [h("p", null, carryTip)],
+    () => [h("p", null, carryTip), packList()].filter((n): n is HTMLElement => !!n),
   );
   const keptEl = detailHost(h("span", { class: "purse kept" }, icon("vault", "▣"), keptVal), () => [
     h("p", null, keptTip),
@@ -1647,6 +1714,7 @@ export function renderWatch(app: App): Mounted {
     carryVal.textContent = `$${carried}`;
     carryEl.dataset.v = String(carried);
     carryTip = /* copy:tooltip */ "carried · lost on death, banked on return";
+    packInv = s.hero.inv;
     const drop =
       performance.now() < lootDropUntil && lootDrop > 0
         ? `−$${lootDrop}${lootWhy ? ` ${lootWhy}` : ""}${lootItem ? `${lootWhy === "left" ? " " : " → "}${lootItem.replace(/_/g, " ")}` : ""}`

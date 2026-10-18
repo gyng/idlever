@@ -68,7 +68,7 @@ import { progressGoal, progressGoalRow } from "./progress-goal";
 import { kwHost, kwText, detailHost } from "./tips";
 import { openRuns, killRuns, watchKill } from "./runs"; // RUNS_UI: the runs tile opens the log
 import { mountClear } from "./runclear"; // run-clear: the run's card before the town
-import { itemIcon, itemName, itemChip } from "./items";
+import { goldFind, itemIcon, itemName, itemChip } from "./items";
 import { enemyTraitName } from "./enemy-tips";
 import { labelOf as unlockLabel } from "./unlocks";
 import { returnPick } from "./return-pick"; // Cut 113 §3: each return carries a decision
@@ -1554,6 +1554,48 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
       ),
     );
   };
+  // Cut261 (owner 2026-10-18: "convert to gold report confusing, players thought items were persistent"): the exits' finds split by
+  // what the core says became of them — sold for gold (`worth`, no `fate`: each fades into its `+$N`, once) or left in a death's bones
+  // (`fate: bones`); what is really kept (a shape's pattern) is its own section above. Same label: one row, ×n, the coins summed.
+  const exitFinds = (r.exits ?? []).flatMap((x) => x.finds ?? []);
+  const soldFinds = (): HTMLElement | null => {
+    const by = new Map<string, InvItem & { n: number }>();
+    for (const it of exitFinds.filter((f) => !f.fate)) {
+      const had = by.get(it.label);
+      if (had) {
+        had.n += 1;
+        had.worth = (had.worth ?? 0) + (it.worth ?? 0);
+      } else by.set(it.label, { ...it, n: 1 });
+    }
+    if (!by.size) return null;
+    const rows = [...by.values()];
+    const shown = rows.slice(0, 8);
+    const rest = rows.slice(8).reduce((n, it) => n + (it.worth ?? 0), 0);
+    return h(
+      "div",
+      { class: "gold-finds", "data-sold": String(rows.length) },
+      ...shown.map((it, i) => goldFind(it, { n: it.n, delay: 250 + 140 * i })),
+      rows.length > 8 ? h("small", { class: "dim num" }, `+${rows.length - 8} · $${rest}`) : null,
+    );
+  };
+  const bonesFinds = (): HTMLElement | null => {
+    const left = exitFinds.filter((f) => f.fate === "bones");
+    if (!left.length) return null;
+    const seen = new Map<string, number>();
+    for (const it of left) seen.set(it.label, (seen.get(it.label) ?? 0) + 1);
+    return h(
+      "div",
+      { class: "chips" },
+      ...[...seen].map(([label, n]) =>
+        h(
+          "span",
+          { class: "chip" },
+          ...withRim(label, named(label).replace(/_/g, " ")),
+          n > 1 ? h("b", { class: "num" }, ` ×${n}`) : "",
+        ),
+      ),
+    );
+  };
   const learnedFacts = r.learned.filter((f) => !/^bones:\d+$/.test(f));
   const counterFacts = learnedFacts.filter(
     (f) => /^boss:[^:]+:counter/.test(f) || f.startsWith("counter_hint:"),
@@ -2166,14 +2208,11 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
               ),
             )
           : null,
-        // First finds are current discovery names; converted pickups create no home storage section.
-        section(
-          /* copy:label */ "found",
-          r.new_finds ? chips(r.new_finds.map(named)) : foundChips(),
-        ),
+        // Cut261: what is kept (a shape's pattern) first, apart from what was sold for gold and what lies in bones; an older line with
+        // no exit finds keeps the first-finds names
         r.discoveries?.some((find) => find.first && find.rarity !== "legendary")
           ? section(
-              /* copy:label */ "Patterns found",
+              /* copy:label */ "Kept patterns",
               h(
                 "div",
                 { class: "report-discoveries" },
@@ -2183,6 +2222,13 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
               ),
             )
           : null,
+        exitFinds.length
+          ? section(/* copy:label */ "Became gold", soldFinds())
+          : section(
+              /* copy:label */ "found",
+              r.new_finds ? chips(r.new_finds.map(named)) : foundChips(),
+            ),
+        section(/* copy:label */ "In bones", bonesFinds()),
         // QA e75ec29 (R: six thefts in one run, "the report and gold sheet say nothing"): what thieves took and no run got back
         // QA a946e04 (S: `leash ×4` beside `leash (2)`, `black potion?` after LEARNED said confusion): one chip per name, identified kinds by
         // their name; T (`−$36 stolen` on the strip, only items here): the carry the thefts took leads (`$36`)

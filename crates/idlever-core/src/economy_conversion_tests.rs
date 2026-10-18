@@ -4,6 +4,32 @@ use crate::{
     item::Item,
 };
 
+#[test]
+fn live_pack_wire_names_each_finds_pickup_worth_and_never_moves_gold() {
+    let mut g = arena();
+    let id = g.run.as_mut().unwrap().new_item_id();
+    pickup(&mut g, Item::new(id, "heal"));
+    let (loot, raw) = { let r = g.run.as_ref().unwrap(); (r.loot, r.loot_raw) };
+    let supply = g.run.as_mut().unwrap().new_item_id();
+    {
+        let r = g.run.as_mut().unwrap();
+        r.supplies.push(supply);
+        let mut s = Item::new(supply, "heal");
+        s.known = true;
+        r.claim_item_value(&mut s);
+        r.hero.inv.push(s);
+    }
+    let snap = g.snapshot();
+    let found = snap.hero.inv.iter().find(|i| i.id == id).expect("the find is in the pack");
+    let d = gold_divisor();
+    assert_eq!(found.worth, raw / d, "worth is the coins the pickup added");
+    assert!(found.worth > 0 && found.fate.is_none());
+    let sup = snap.hero.inv.iter().find(|i| i.id == supply).unwrap();
+    assert_eq!((sup.worth, sup.fate.as_deref()), (0, Some("supply")));
+    let r = g.run.as_ref().unwrap();
+    assert_eq!((r.loot, r.loot_raw), (loot, raw), "the wire reads only");
+}
+
 fn arena() -> Game {
     let mut g = crate::tests::arena();
     g.lineage.gold = 500; // Keep the separately named wake grant out of these receipts.

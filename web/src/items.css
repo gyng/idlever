@@ -216,3 +216,58 @@
 .supplies .chips.shop > .chip.buy {
   height: 84px;
 }
+
+/* Cut261: a find that became gold — at rest the coins lead and the item sits small behind them (no motion needed to read it) */
+.gold-find {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.gold-find .gf-gold {
+  color: var(--gf-gold, var(--ink-gold, #5e4510));
+  font-weight: 700;
+}
+.gold-find .gf-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  opacity: 0.72;
+  font-size: 0.86em;
+}
+.gold-find .gf-item .item-ico {
+  margin-right: 0;
+}
+.item-row.rc-sold {
+  gap: 4px 14px;
+}
+.gold-finds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+/* the transition plays once as the row appears: the item full, then fading back as its `+$N` rises (effects off: `.gf-still`) */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-juice="on"] .gold-find:not(.gf-still) .gf-item {
+    animation: gf-item-out 0.9s ease-out backwards;
+    animation-delay: var(--gf-delay, 250ms);
+  }
+  html[data-juice="on"] .gold-find:not(.gf-still) .gf-gold {
+    animation: gf-gold-in 0.7s ease-out backwards;
+    animation-delay: calc(var(--gf-delay, 250ms) + 0.35s);
+  }
+  @keyframes gf-item-out {
+    from {
+      opacity: 1;
+      font-size: 1em;
+      filter: brightness(1.3);
+    }
+  }
+  @keyframes gf-gold-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.8);
+    }
+  }
+}
