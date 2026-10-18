@@ -1,0 +1,53 @@
+You are painting R4 WEAPON-IDENTITY hero sprites, dagger retry for the game "Idlever" (a gothic dark-fantasy roguelike on a phone).
+FIRST look at these approved STYLE TARGETS (you may open these images and the reference images named below, nothing else): /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/boss.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png.
+Use your built-in image_gen tool, one call per asset below (an edit of the named reference image where the job says EDIT). Do NOT write code beyond a PIL resample / alpha fix / crop; do NOT touch anything outside /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/. Create that directory if needed. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+For each asset: generate it and save the final PNG (sRGB) to the exact path at the exact size. Self-check each output (background as the job states, subject not cropped, no text or letters); regenerate that asset once if it fails.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+--- 1. id: hero_caster_male_dagger
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_male_dagger.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (male look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure.
+
+--- 2. id: hero_caster_female_dagger
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_female_dagger.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (female look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure.
+
+--- 3. id: hero_caster_cat_dagger
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons_v2/hero_caster_cat_dagger.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (cat look) now wields a LONG broad-bladed ritual DAGGER (blade about the length of the forearm, wide leaf-shaped MIST-rimmed steel, small GILT cross guard) held in the RIGHT hand with the arm EXTENDED forward and up to the right AWAY from the body, the blade pointing up and forward so the whole dagger sits against empty background, never in front of the robe; the left hand low with a faint MIST glimmer. NO staff anywhere. At 48 px the bright blade must be a clear separate spike beside the figure.

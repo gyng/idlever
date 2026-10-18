@@ -1,0 +1,77 @@
+You are painting R4 WEAPON-IDENTITY hero sprites (the same heroes holding the weapon actually sent) for the game "Idlever" (a gothic dark-fantasy roguelike on a phone).
+FIRST look at these approved STYLE TARGETS (you may open these images and the reference images named below, nothing else): /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/boss.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_male.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png, /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png.
+Use your built-in image_gen tool, one call per asset below (an edit of the named reference image where the job says EDIT). Do NOT write code beyond a PIL resample / alpha fix / crop; do NOT touch anything outside /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/. Create that directory if needed. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+For each asset: generate it and save the final PNG (sRGB) to the exact path at the exact size. Self-check each output (background as the job states, subject not cropped, no text or letters); regenerate that asset once if it fails.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+--- 1. id: hero_caster_male_bow
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_male_bow.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_male.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (male look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW.
+
+--- 2. id: hero_caster_female_bow
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_female_bow.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_female.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (female look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW.
+
+--- 3. id: hero_caster_cat_bow
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_caster_cat_bow.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_caster_cat.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The CASTER hero (cat look) now wields a dark recurve LONGBOW held vertically in the left hand at full draw, the right hand drawing the string back to the cheek with a nocked arrow (MIST arrowhead); NO staff anywhere. Clearly a robed caster with a BOW.
+
+--- 4. id: hero_gunner_male_short_gun
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_male_short_gun.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_male.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (male look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun.
+
+--- 5. id: hero_gunner_female_short_gun
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_female_short_gun.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_female.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (female look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun.
+
+--- 6. id: hero_gunner_cat_short_gun
+Output path: /home/g/p/riddle/.claude/worktrees/cut267-art/art/staging/cut267/weapons/hero_gunner_cat_short_gun.png
+Size: exactly 1024x1536 px (width x height), PNG.
+Background: a genuinely TRANSPARENT background (PNG alpha, all four corners alpha 0); if the tool returns an opaque image, ONE flat uniform pure MAGENTA #FF00FF edge to edge (the pipeline keys it) — never paper, floor or gradient.
+Reference to EDIT: /home/g/p/riddle/.claude/worktrees/cut267-art/art/generated/hero_gunner_cat.png
+Shown in game at 48 px tall in the dungeon; judge readability at that size.
+Brief: EDIT the reference hero sprite. Keep the SAME character: canvas 1024x1536, the same face, hair, look (man / woman / cat-eared), outfit, armour, the long BLOOD cloak, colours, ink weight, scale and the figure's position and height in the canvas; keep the background transparent; no floor, shadow, scenery or text. Change ONLY the held weapon and the arms/hands holding it, as stated. The new weapon must read in SILHOUETTE alone at 48 px tall and must NOT resemble the weapon it replaces; draw it LARGE with a thick INK contour and a MIST moonlit rim on its edge. Remove every trace of the old weapon (no leftover bow limb, staff shaft, string or long barrel anywhere). The GUNNER hero (cat look) now wields a SHORT flintlock PISTOL (a short gun, barrel no longer than a forearm) held in the right hand, arm extended forward at shoulder height, aiming right, the stock a curved wooden grip with GILT fittings; the left hand at the belt. NO long rifle and NO gun at the shoulder: the pistol is a compact one-handed shape, clearly shorter than the long shoulder gun.

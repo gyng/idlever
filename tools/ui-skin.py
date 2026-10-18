@@ -113,7 +113,10 @@ def main() -> None:
         fx.append(p.stem)
         # gfx round 21 (raters: "the painted shield clashes with the pixel sprites"): the same art cut to the sprites' pixel register — a box
         # downscale (the shield 28 px, a shard 12 px), <= 16 colours, a hard alpha and a 1-px dark outline; drawn `pixelated` 3x in the view
-        px = 32 if p.stem == "shield" else 14
+        if p.stem.startswith(("chest_fx_rays", "chest_fx_ring")):
+            continue   # Cut267: soft additive glows; a hard-alpha pixel cut would flatten them to a white stencil
+        # Cut267: the boss chest's frames and sparks keep one canvas per family, so every frame's cut is the same size
+        px = 32 if p.stem == "shield" else 64 if p.stem == "chest_fx_sparks" else 48 if p.stem.startswith("chest_") else 14
         s2 = px / max(im.size)
         small = im.resize((max(1, round(im.width * s2)), max(1, round(im.height * s2))), Image.BOX)
         a = small.getchannel("A").point(lambda v: 255 if v >= 110 else 0)

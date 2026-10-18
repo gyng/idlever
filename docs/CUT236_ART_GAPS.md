@@ -73,10 +73,14 @@ selection and layout — no placeholder or absent file is outstanding. (`art-qc`
 |---|---|---|
 | Gunner ability V2 selection | `art/generated/skill_gunner_chamber_chain_v2.png`, `skill_gunner_long_watch_v2.png` + exact prompts are saved but unselected. Engineering review: both are far brighter at 24/32px than V1; chamber chain's brass cylinder may read as a gear/ring rather than a reload. Adopting needs `art/export_advanced_skills.py --library` and the 72-icon matrix — no generation. | `docs/evidence/cut254/gunner-v2/observations-2026-10-16.md`, `saved-candidates.json`, `preview-states.png` |
 | Skill polish (remaining classes) | Rogue Veiled route; Caster Storm cell, Conduct, Last wall (muted); Gunner Rangefinder/smoke walk/cycling breach/breach route; repeated Engineer compositions; Fighter Rally/Oathguard/Execution arc repeated gauntlet close-ups and busy Siege rhythm; Ranger Split mark/Moving line excess scenery. | `docs/evidence/cut254/independent-review/observations-2026-10-16.md`, `art/ADVANCED_SKILLS.md` |
-| Dungeon weapon identity (R4) | Actual hero sprites still paint Ranger sword as Bow, Caster dagger/bow as Staff, short gun as the long shoulder gun; Crownsplitter is not distinct. Snapshot.weapon carries canonical gear, so these are sprite paintings. | HANDOFF §Cut246 dated visual review, `docs/evidence/cut246/` |
+| Dungeon weapon identity (R4) | **Paintings closed 2026-10-18 (Cut267):** `hero_ranger_<look>_sword`, `hero_caster_<look>_{dagger,bow}`, `hero_gunner_<look>_short_gun`, `hero_{fighter,rogue}_<look>_crownsplitter` (18) are packed. Still open: renderer selection from `Snapshot.weapon` and the actual Watch revalidation; R4 is not closed. | `docs/CUT267_ART.md` §4, HANDOFF §Cut246 |
 | Paper doll mounts | Rejected V1/V2 mounts; a V3 approval decision remains. Owner permits the more abstract composition; knowledge already generated (3 neutral looks + 7 wearable masters). | `docs/evidence/cut220/painted-8879/`, `art/EQUIPMENT.md` |
-| Town walk alternates | 14 optional alternate-look walk paintings; the existing idle-pose fallback covers them. | this file, §Delivered |
+| Town walk alternates | **Closed 2026-10-18 (Cut267):** all 14 `walk_<class>_<look>` are packed; `townWalkIds()` already requests them first. | `docs/CUT267_ART.md` §5 |
 | Landmark layout (R6) | Canvas Crypt centrepiece is partly clipped at its upper viewport edge in the real nearby-gas view — layout, not new painting. | HANDOFF §R6, `docs/evidence/cut245/` |
+
+**Update 2026-10-18 (Cut267):** Codex quota is back. The R4 paintings and the 14 walk alternates are delivered (rows above).
+New art outside this table: the boss chest frames and effects, four clone-vat state frames (Cut264 §5) and achievement
+badges. See `docs/CUT267_ART.md`.
 
 Revalidate every row after a painting, export, display-size, frame or context
 change; these are dated engineering observations, not owner or recognition
