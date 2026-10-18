@@ -38,6 +38,8 @@ const METHODS: (keyof Engine)[] = [
   "beginDescent",
   "bail",
   "choose",
+  "setLiveDecisions", // Cut 270: optional (no prompt without it)
+  "decide",
   "setVaultPref",
   "forecastRefine", // Cut 6: optional on the engine; the proxy rejects when the engine lacks it (the client treats that as "no refine")
   "dropSupply", // Cut 12 §6: optional likewise (the client falls back to clear + rebuy)

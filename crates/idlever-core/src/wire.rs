@@ -124,6 +124,9 @@ pub struct Snapshot {
     /// Retained structural field; automatic caches never emit a choice.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub vault_choice: Option<VaultChoice>,
+    /// Cut 270: the live decision open now (the world waits between ticks; `StepResult.decision`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub decision: Option<crate::decide::Decision>,
     /// Take control: the player has the watched run (`manual`), and the world waits for his action (`awaiting`).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub manual: bool,
@@ -705,6 +708,12 @@ pub struct StepResult {
     /// them at the travel rate in every mode. Empty when the step had none.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub calm: Vec<[u32; 2]>,
+    /// Cut 270: the live decision the world waits on (the watch's prompt; `decide`), when one is open.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub decision: Option<crate::decide::Decision>,
+    /// Cut 270: the boss chests of the step's ticks (a side channel: never an event, the events hash unchanged).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub chests: Vec<crate::decide::Chest>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]

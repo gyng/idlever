@@ -147,7 +147,8 @@ export type Snapshot = {
   }; // Cut 27 §1 (core): the passage paid at a waystone start (`+$84 passage`, coins, into the purse at the send — ledger `passage D9`; a `passage +$84` callout opens the run); absent from D1 / when the set does not clear the floors above ≥ 95 %   // start: QA a946e04 (core, optional) — the floor the run started on (a toll the purse could not pay starts it on D1)
   stake?: Stake; // Cut 2 §7: what is on the line right now
   vision?: number; // Cut 3: the hero's sight radius on this floor (Deep 4, else 7; +2 lantern)
-  vault_choice?: VaultChoice; // Cut 5 §4: an opened vault waiting for `choose(itemId)` (50-tick grace, then `vault_pref` picks)
+  vault_choice?: VaultChoice;
+  decision?: Decision; // Cut 270: the live decision open now (the world waits between ticks) // Cut 5 §4: an opened vault waiting for `choose(itemId)` (50-tick grace, then `vault_pref` picks)
   room?: { id: number; hostiles: number }; // Cut 7 §4: the room the hero is in (0 = corridor); awake hostiles in it (optional)
   rooms?: number; // Cut 7 §4: rooms on this floor, for `D3 · 4 rooms` (optional)
   tools?: ToolsView; // Cut225: Clown/Engineer abilities, decoy and construct (absent for other classes)
@@ -194,6 +195,27 @@ export type ForkOption = {
   pm: number;
   refined?: boolean;
   low?: number;
+};
+/** Cut 270 (docs/CUT270_LIVE_DECISIONS.md) — a live decision: `kind` cache | boss | hurt, opened after tick `t`; `default` is the
+ *  option the hero takes when nobody chooses (today's behaviour). Labels ≤ 3 words. */
+export type DecisionOption = { id: string; label: string; tone: string; item?: InvItem };
+export type Decision = {
+  id: string;
+  kind: string;
+  t: number;
+  depth: number;
+  title: string;
+  options: DecisionOption[];
+  default: number;
+};
+/** Cut 270 — a band boss's kill tick: the patterns / pieces it gave (`rarity` the best's) and the carry they added. */
+export type Chest = {
+  t: number;
+  boss: string;
+  title: string;
+  rarity: string;
+  items: { kind: string; label: string; rarity: string }[];
+  gold: number;
 };
 /** Cut 5 §4 — the three items of an opened vault; `choose(id)` takes one, the rest vanish. */
 export type VaultChoice = {
@@ -515,6 +537,10 @@ export type StepResult = {
    *  telegraph, a theft, a death, a callout, a level, a tame, a new find). Play them at the travel rate in every mode, 1× included
    *  (1× keeps fights and beats at 1×). Absent when the step had none. */
   calm?: [number, number][];
+  /** Cut 270 (core): the live decision the world waits on (`decide`); absent when none is open. */
+  decision?: Decision;
+  /** Cut 270 (core): the step's boss chests (a band boss's kill tick: what it gave). */
+  chests?: Chest[];
 }; // Cut 29 §4 (core): the settled exit's one line (`kept leather +1`); absent when it keeps nothing new                     // Addendum D; `worth`: each item's salvage at this exit, in coins
 
 /** Cut 20 §5: `bounty` — tonight's bounty floor (the lineage best + 2: gold ×2 and a guaranteed item), the shaft's `D12 ×2`. */
@@ -2199,6 +2225,8 @@ export interface Engine {
   ascend(variant: string): Lineage; // Cut 3: after the ending, a new lineage under a variant (keeps classes, kennel, vault, facts, rules)
   // Cut 5
   bail(): void; // §5: a `return` fires on the hero's next action as a chore; the rules are untouched
+  setLiveDecisions?(on: boolean): void; // Cut 270: the watch's live decisions on while it is up and visible
+  decide?(option: number): Snapshot; // Cut 270: the open decision's option, -1 the auto-pick
   choose(itemId: number): Snapshot; // §4: take one item of the opened vault (`Snapshot.vault_choice.items[].id`)
   setVaultPref(pref: string): Lineage; // §4: `weapon | armour | potion | scroll` — what an unanswered vault choice takes
   // Cut 6

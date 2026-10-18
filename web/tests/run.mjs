@@ -195,6 +195,7 @@ const CURRENT_OWN = {
   "boss-beat-quiet": 20,
   "boss-counters": 17,
   "boss-kill-beat": 96,
+  "live-decisions": 75,
   "captive-fact-copy": 6,
   "checkpoint-gold": 15,
   chrome: 48,

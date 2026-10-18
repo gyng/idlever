@@ -276,6 +276,19 @@ impl Game {
         Ok(js(&self.inner.snapshot()))
     }
 
+    /// Cut 270: the watch's live decisions on (while it is up and visible) or off (a pending one takes its default).
+    #[wasm_bindgen(js_name = setLiveDecisions)]
+    pub fn set_live_decisions(&mut self, on: bool) {
+        self.inner.set_live_decisions(on);
+    }
+
+    /// Cut 270: resolve the open decision — `option` the index chosen, -1 the auto-pick (the default, no order sent);
+    /// returns the Snapshot.
+    pub fn decide(&mut self, option: i32) -> Result<String, JsError> {
+        self.inner.decide(u32::try_from(option).ok()).map_err(err)?;
+        Ok(js(&self.inner.snapshot()))
+    }
+
     /// §4: what an unwatched vault choice takes (`weapon | armour | potion | scroll`).
     #[wasm_bindgen(js_name = setVaultPref)]
     pub fn set_vault_pref(&mut self, pref: &str) -> Result<String, JsError> {

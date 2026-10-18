@@ -54,6 +54,8 @@ pub fn set_capsules(on: bool) {
 #[serde(tag = "k", content = "v", rename_all = "snake_case")]
 pub enum Input {
     Choose(u32),
+    /// Cut 270: the cache's pick before it opens (a live decision).
+    Pick(u32),
     Bail,
     /// Take control: on or off.
     Control(bool),
@@ -927,6 +929,9 @@ pub struct Run {
     pub vault_cage: Vec<Item>,
     #[serde(default)]
     pub vault_choice: Option<(u32, Vec<Item>)>,
+    /// Cut 270: the cache item a watched player picked before the cache opened (`decide`; `turn::vault_take`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub vault_want: Option<u32>,
     /// §4: the shrine was used this run; the row it lent (`pray row`).
     #[serde(default)]
     pub prayed: bool,
@@ -3403,6 +3408,9 @@ pub struct Game {
     /// else at the return's end (`offline`), once everything the return brings is on the lineage.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub news_due: Option<(u64, u32)>,
+    /// Cut 270: the watch's live decisions (transient: never saved, never compared; `decide.rs`).
+    #[serde(skip)]
+    pub live: crate::decide::Live,
 }
 
 fn advance_remainder_empty(value: &(u64,u64)) -> bool { *value == (0,0) }
@@ -3473,6 +3481,7 @@ impl Game {
             advance_rem: (0, 0),
             news_left: None,
             news_due: None,
+            live: Default::default(),
         };
         // Cut 28 §1: the oath board is drawn with the lineage.
         crate::oath::refresh(&mut g.lineage);
@@ -3537,6 +3546,7 @@ impl Game {
             advance_rem: (0, 0),
             news_left: None,
             news_due: None,
+            live: Default::default(),
         }
     }
 
@@ -3632,6 +3642,9 @@ impl Game {
                     match inp {
                         Input::Choose(id) => {
                             let _ = g.choose(*id);
+                        }
+                        Input::Pick(id) => {
+                            let _ = g.pick_cache(*id);
                         }
                         Input::Control(on) => { let _ = g.take_control(*on); }
                         Input::Act(a) => { let _ = g.act(a.clone()); }
@@ -3922,6 +3935,7 @@ impl Game {
 
     /// Cut 5 §5: bail — a `return` fires on the hero's next action, the rules untouched.
     pub fn bail(&mut self) {
+        self.live_default();
         if let Some(run) = self.run.as_mut() {
             if run.over.is_none() {
                 run.bail = true;
@@ -3933,6 +3947,7 @@ impl Game {
 
     /// Take control (a secondary mode): the player chooses the watched run's hero actions until released.
     pub fn take_control(&mut self, on: bool) -> Result<(), String> {
+        self.live_default();
         let run = self.run.as_mut().filter(|r| r.over.is_none()).ok_or("no run")?;
         run.manual = on;
         run.manual_note = None;
@@ -3948,6 +3963,7 @@ impl Game {
 
     /// Take control: the hero's next action (the world waits for it at his turn).
     pub fn act(&mut self, a: Manual) -> Result<(), String> {
+        self.live_default();
         let run = self.run.as_mut().filter(|r| r.over.is_none() && r.manual).ok_or("not in control")?;
         if let Manual::Step { dx, dy } = a {
             if dx.abs() > 1 || dy.abs() > 1 || (dx == 0 && dy == 0) {
@@ -3967,7 +3983,7 @@ impl Game {
     }
 
     /// RUNS_UI: an input the live run took, on its capsule (replayed at its tick).
-    fn input(&mut self, id: u32, t: u32, inp: Input) {
+    pub(crate) fn input(&mut self, id: u32, t: u32, inp: Input) {
         if let Some(c) = self.capsules.0.iter_mut().rev().find(|c| c.id == id) {
             c.inputs.push((t, inp));
         }
@@ -4096,6 +4112,7 @@ impl Game {
     }
 
     pub fn send(&mut self) -> Snapshot {
+        self.live_default();
         assert!(self.lineage.town.home.unwrap_or(true) || self.sim, "build a house first");
         if crate::persistent::remaining(&self.lineage)>0 {
             self.lineage.rest_left=self.lineage.rest_left.max(crate::persistent::remaining(&self.lineage) as u32);
@@ -4499,6 +4516,7 @@ impl Game {
             situations: Vec::new().into(),
             vault_cage: Vec::new(),
             vault_choice: None,
+            vault_want: None,
             prayed: false,
             lent_row: None,
             stray_placed: false,
@@ -4734,7 +4752,7 @@ impl Game {
                 None => self.ensure_run(),
             };
 
-            return StepResult { calm: Vec::new(), events, snapshot, run_over: true };
+            return StepResult { calm: Vec::new(), events, snapshot, run_over: true, decision: None, chests: Vec::new() };
         }
         // Camp rest runs on the same clock online (Cut 2 §1); `send` skips it.
         if self.lineage.rest_left > 0 && self.run.as_ref().is_none_or(|r| r.turn == 0) {
@@ -4742,7 +4760,7 @@ impl Game {
             if self.lineage.rest_left > 0 || used == turns {
                 let snapshot = self.ensure_run();
 
-                return StepResult { calm: Vec::new(), events, snapshot, run_over: false };
+                return StepResult { calm: Vec::new(), events, snapshot, run_over: false, decision: None, chests: Vec::new() };
             }
         }
         if self.run.is_none() {
@@ -4756,17 +4774,24 @@ impl Game {
                 }
             };
 
-            return StepResult { calm: Vec::new(), events, snapshot, run_over: true };
+            return StepResult { calm: Vec::new(), events, snapshot, run_over: true, decision: None, chests: Vec::new() };
         }
         // Cut 28 §3: each tick's calm (no decision, no threat) — the step's calm stretches.
         let mut calm: Vec<(u32, bool)> = Vec::new();
-        for _ in 0..turns {
+        let mut chests: Vec<crate::decide::Chest> = Vec::new();
+        // Cut 270: a pending decision holds the world between ticks (as take-over's `awaiting` does): nothing ticks
+        let held = self.live.pending.is_some() && self.run.as_ref().is_some_and(|r| r.over.is_none());
+        for _ in 0..if held { 0 } else { turns } {
+            let before = crate::decide::chest_before(self);
             self.tick();
             let _ = self.credit_secured();
             if let Some(r) = self.run.as_ref() {
                 calm.push((r.turn, crate::fold::calm_tick(r, &self.lineage.found_kinds, &self.events)));
             }
             events.append(&mut self.events);
+            if let Some(c) = crate::decide::chest(self, before) {
+                chests.push(c);
+            }
             if self.run.as_ref().is_none_or(|r| r.over.is_some()) {
                 run_over = true;
                 break;
@@ -4775,9 +4800,18 @@ impl Game {
             if self.run.as_ref().is_some_and(|r| r.awaiting) {
                 break;
             }
+            // Cut 270: a moment opens between this tick and the next; the world waits for the choice (or the default)
+            if self.live.on {
+                if let Some(d) = crate::decide::detect(self) {
+                    self.live.pending = Some(d);
+                    break;
+                }
+            }
         }
         let mut out = self.step_result(events, run_over);
         out.calm = crate::fold::calm_spans(&calm);
+        out.chests = chests;
+        out.decision = self.live.pending.clone().filter(|_| !run_over);
         out
     }
 
@@ -4819,7 +4853,7 @@ impl Game {
         }
         self.last_snapshot = Some(snapshot.clone());
 
-        StepResult { events, snapshot, run_over, calm: Vec::new() }
+        StepResult { events, snapshot, run_over, calm: Vec::new(), decision: None, chests: Vec::new() }
     }
 
 
@@ -4838,6 +4872,10 @@ impl Game {
     }
 
     fn tick_inner(&mut self) {
+        // Cut 270: whatever ticks the world (an absence, `advance`, a fold, a sim) takes a pending decision's default
+        if self.live.pending.is_some() {
+            self.live_default();
+        }
         if self.run.as_ref().is_none_or(|r| r.over.is_some()) {
             return;
         }
@@ -5138,6 +5176,7 @@ impl Game {
             awaiting: run.awaiting,
             order: run.manual_note.clone().filter(|_| run.manual),
             vault_choice: None,
+            decision: self.live.pending.clone(),
             room: Some(run.room_ref()),
             rooms: Some(run.floor.rooms.len() as u32),
             meters: (!run.meters.is_empty()).then(|| crate::wire::SnapMeters { run: crate::meters::wire(&run.meters.run), fight: (run.meters.fight.ticks > 0).then(|| crate::meters::wire(&run.meters.fight)), fighting: run.meters.quiet < crate::meters::FIGHT_GAP && run.meters.run.fights > 0 }),
