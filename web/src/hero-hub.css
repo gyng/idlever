@@ -114,20 +114,19 @@
 }
 .hero-hub-doll {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1.15fr);
-  align-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 0.75rem;
   padding: 0.75rem;
   border: 2px solid var(--ui-edge, #b89448);
-  background: radial-gradient(ellipse at 50% 45%, #302b39, #171720 72%);
+  background: radial-gradient(ellipse at 50% 30%, #302b39, #171720 72%);
 }
+/* Cut271: the equipment diagram spans the section; the slot cards (Actual · Next delve) sit under it. */
 .hero-hub-figure {
-  grid-column: 2;
-  grid-row: 2;
-  min-height: 220px;
+  grid-column: 1/-1;
   min-width: 0;
   display: grid;
-  place-items: center;
+  justify-items: center;
 }
 .hero-hub-sprite {
   display: block;
@@ -143,30 +142,9 @@
 }
 .hero-hub-gear-anchor {
   display: grid;
-  align-content: center;
-  align-self: center;
+  align-content: start;
   gap: 0.4rem;
   text-align: start;
-}
-.hero-hub-gear-anchor[data-hub-slot="helm"] {
-  grid-column: 1/-1;
-  grid-row: 1;
-  justify-self: center;
-  inline-size: min(100%, 17rem);
-}
-.hero-hub-gear-anchor[data-hub-slot="weapon"] {
-  grid-column: 1;
-  grid-row: 2;
-}
-.hero-hub-gear-anchor[data-hub-slot="armour"] {
-  grid-column: 3;
-  grid-row: 2;
-}
-.hero-hub-gear-anchor[data-hub-slot="boots"] {
-  grid-column: 1/-1;
-  grid-row: 3;
-  justify-self: center;
-  inline-size: min(100%, 17rem);
 }
 .hero-hub .hero-life-panel {
   padding: 0;
@@ -299,17 +277,12 @@
   }
   .hero-hub-figure {
     grid-column: 1;
-    grid-row: 1;
-    min-height: 0;
   }
   .hero-hub-sprite {
     max-width: min(100%, 132px);
   }
   .hero-hub-gear-anchor[data-hub-slot] {
     grid-column: 1;
-    grid-row: auto;
-    inline-size: auto;
-    justify-self: stretch;
   }
 }
 @container hero-folio (max-width:280px) {
@@ -472,7 +445,9 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
   text-transform: capitalize;
 }
 
-/* R7 functional doll: one neutral body with native slot layers, never a second weapon over class art. */
+/* Cut271 (owner 2026-10-18, "More abstract"): framed slot tiles around a plain silhouette, joined by
+   leader lines. The body is 8 × 16 diagram units (viewBox 100×200); each slot's --doll-y is its tile
+   centre in units, the height its leader line leaves the body's edge (REGIONS in hero-equipment-figure.ts). */
 .hero-equipment-figure {
   align-content: start;
   gap: 0.5rem;
@@ -489,19 +464,167 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
   box-shadow: inset 0 -3px var(--gilt, #b89448);
   color: var(--bone, #eadfc5);
 }
-.hero-equipment-painting {
-  width: min(100%, 172px);
-  justify-self: center;
+.hero-equipment-stage {
+  --doll-u: 1rem;
+  --doll-tile: max(2.75rem, 3.5 * var(--doll-u));
+  position: relative;
+  inline-size: min(100%, 34rem);
+  block-size: calc(18 * var(--doll-u));
 }
 .hero-equipment-body {
-  width: 100%;
-  height: auto;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: calc(50% - 4 * var(--doll-u));
+  inline-size: calc(8 * var(--doll-u));
+  block-size: calc(16 * var(--doll-u));
   display: block;
-  filter: drop-shadow(0 4px 2px #0008);
+  overflow: visible;
 }
+.hero-equipment-leader {
+  stroke: #b8944870;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.hero-equipment-joint {
+  fill: #b8944899;
+}
+.hero-equipment-slot {
+  position: absolute;
+  inset-block-start: calc(var(--doll-y) * var(--doll-u) - var(--doll-tile) / 2);
+  inline-size: calc(50% - 4 * var(--doll-u));
+  display: flex;
+  align-items: flex-start;
+}
+.hero-equipment-slot[data-doll-slot="helm"] {
+  --doll-y: 3.5;
+}
+.hero-equipment-slot[data-doll-slot="weapon"] {
+  --doll-y: 11;
+}
+.hero-equipment-slot[data-doll-slot="armour"] {
+  --doll-y: 5;
+}
+.hero-equipment-slot[data-doll-slot="boots"] {
+  --doll-y: 12.5;
+}
+.hero-equipment-slot[data-doll-side="start"] {
+  inset-inline-start: 0;
+}
+.hero-equipment-slot[data-doll-side="end"] {
+  inset-inline-end: 0;
+  flex-direction: row-reverse;
+}
+.hero-equipment-card {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  flex: 0 1 auto;
+  min-inline-size: var(--doll-tile);
+  max-inline-size: min(7rem, 100% - 0.5rem);
+}
+.hero-equipment-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: var(--doll-tile);
+  block-size: var(--doll-tile);
+  box-sizing: border-box;
+  border: 1px solid #b8944899;
+  background: #1c2132;
+  box-shadow: inset 0 0 0 2px #0e111a;
+}
+.hero-equipment-tile > :is(svg, img) {
+  grid-area: 1/1;
+  inline-size: 82%;
+  block-size: 82%;
+  object-fit: contain;
+}
+.hero-equipment-slot[data-doll-art="empty"] .hero-equipment-tile {
+  border-style: dashed;
+  border-color: #b8944866;
+  background: #171a26;
+}
+.hero-equipment-name {
+  max-inline-size: 100%;
+  font-size: var(--ui-detail, 0.875rem);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--ui-text, #eadfc5);
+  overflow-wrap: break-word;
+}
+.hero-equipment-name::first-letter {
+  text-transform: uppercase;
+}
+.hero-equipment-name.is-empty::first-letter {
+  text-transform: none;
+}
+.hero-equipment-name.is-empty {
+  color: #b9b2a3;
+  font-style: italic;
+}
+.hero-equipment-lead {
+  flex: 1 1 0;
+  min-inline-size: 0.5rem;
+  margin-block-start: calc(var(--doll-tile) / 2);
+  border-block-start: 1px solid #b8944870;
+}
+/* A slot that changes between Actual and Next delve: a brighter frame, lead and joint, in both views. */
+.hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile {
+  border: 2px solid #dbba7c;
+}
+.hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile::after {
+  content: "";
+  position: absolute;
+  inset-block-start: -5px;
+  inset-inline-end: -5px;
+  inline-size: 8px;
+  block-size: 8px;
+  background: #dbba7c;
+  transform: rotate(45deg);
+}
+.hero-equipment-slot[data-doll-change="1"] .hero-equipment-lead {
+  border-block-start-color: #dbba7c;
+}
+.hero-equipment-leader[data-doll-change="1"] {
+  stroke: #dbba7c;
+}
+.hero-equipment-joint[data-doll-change="1"] {
+  fill: #dbba7c;
+}
+.hero-equipment-tile:focus-visible {
+  outline: 2px solid #ffdfa4;
+  outline-offset: 3px;
+}
+/* A phone folio draws the diagram at three quarters; tiles keep a 44px target. */
 @container hero-folio (max-width:30rem) {
-  .hero-equipment-painting {
-    width: min(100%, 140px);
+  .hero-equipment-stage {
+    --doll-u: 0.75rem;
+  }
+}
+/* Too narrow for tiles beside the body (large text on a phone): the slots line up in two columns. */
+@container hero-folio (max-width:17rem) {
+  .hero-equipment-stage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 0.5rem;
+    block-size: auto;
+  }
+  .hero-equipment-body,
+  .hero-equipment-lead {
+    display: none;
+  }
+  .hero-equipment-slot {
+    position: static;
+    inline-size: auto;
+    justify-content: center;
+  }
+  .hero-equipment-card {
+    max-inline-size: 100%;
+  }
+}
+@container hero-folio (max-width:11rem) {
+  .hero-equipment-stage {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

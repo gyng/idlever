@@ -27,16 +27,19 @@ the alpha channel or the actual composed Hub before diagnosing a background
 halo. Do not regenerate or colour-key a valid transparent master based only on
 that preview appearance.
 
-Generated wearables vary in scale and position despite registration prompts.
-`web/src/ui/hero-equipment-figure.ts` therefore mounts each with an explicit
-uniform scale and translation. Inspect their fit on all three looks at actual
-Hub size: each piece reads at its intended slot, the face remains visible,
-and no second baked weapon appears. Owner refinement2026-10-16 explicitly
-permits a more abstract paper doll to simplify implementation. Stylized
-placement is sufficient; anatomically precise grips, tailored garment fit and
-additional identity-specific armour variants are not required. Keep the
-existing painted assets, while treating the composition as an equipment diagram.
-Null slots paint no equipment. Missing/failed images retain primitive fallbacks.
+Owner decision2026-10-18 ("More abstract", Cut271) replaced the painted mounted
+figure. `web/src/ui/hero-equipment-figure.ts` now draws an equipment diagram: a
+plain code-drawn neutral silhouette (look only changes its outline: hair, cat ears
+and tail) with four framed slot tiles around it, each joined to its body region by
+a leader line. Weapon/body kinds with an item icon show `ui/icons/it_<kind>.png`;
+the seven painted wearables show their own visible area, a square view box around
+the alpha bounds recorded here, inside the tile. There are no per-piece mount
+transforms and no painted base on the runtime path. The neutral bases and every
+master/export remain in place (the registry's `mounting` note is historical), so a
+painted figure can return without regeneration. Slots that wear different gear in
+Next delve than Actual are highlighted; tiles carry the gear's name (≤3 words) and
+a detail tooltip. Evidence: `docs/evidence/cut271/paperdoll/`.
+Null slots show a quiet dashed "empty" tile. Missing/failed images retain primitive fallbacks.
 The UI reads equipment kinds and Actual/Next from Rust; the art registry must
 never decide eligibility, ownership, effects, spending or phase boundaries.
 
