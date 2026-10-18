@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { runInNewContext } from "node:vm";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { writeDeploymentMetadata } from "./deployment-meta.mjs";
+import { writeDeploymentMetadata, writeDeploymentPreview } from "./deployment-meta.mjs";
 
 const commit = "0123456789abcdef0123456789abcdef01234567";
 const restored = "a".repeat(40);
@@ -151,6 +151,13 @@ test("CLI stamps the artifact with the provided full source SHA and release vers
   const metadata = JSON.parse(await readFile(join(directory, "meta.json"), "utf8"));
   assert.equal(metadata.commit, commit);
   assert.equal(metadata.version, "v0.3.0");
+  assert.equal(metadata.schemaVersion, 1);
+  assert.equal(metadata.changelogUrl, "https://github.com/gyng/idlever/releases");
+  assert.match(metadata.previewImage.url, /^preview-[a-f0-9]{16}\.webp$/);
+  assert.ok(metadata.previewImage.alt.includes("fighter"));
+  const image = await readFile(join(directory, metadata.previewImage.url));
+  assert.equal(image.subarray(0, 4).toString(), "RIFF");
+  assert.equal(image.subarray(8, 12).toString(), "WEBP");
   assert.match(metadata.updatedAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/);
 });
 
@@ -173,4 +180,64 @@ test("pipelines stamp checked-out identities after build and before upload; prec
   );
   const vite = await readFile(new URL("../web/vite.config.ts", import.meta.url), "utf8");
   assert.match(vite, /f !== "meta\.json"/);
+});
+
+test("optional changelog and preview fields retain schema 1 and resolve under either public base", async (t) => {
+  for (const base of ["/", "/idlever/"]) {
+    const directory = await artifact(t);
+    const previewImage = await writeDeploymentPreview(directory);
+    // A preview must already exist when its reference is stamped into metadata.
+    const previewBytes = await readFile(join(directory, previewImage.url));
+    assert.ok(previewBytes.length > 0);
+    const metadata = await writeDeploymentMetadata({
+      directory,
+      commit,
+      base,
+      changelogUrl: "changelog.html",
+      previewImage,
+    });
+    assert.equal(metadata.schemaVersion, 1);
+    assert.equal(metadata.changelogUrl, "changelog.html");
+    assert.deepEqual(metadata.previewImage, previewImage);
+    const endpoint = `https://game.example${base}meta.json`;
+    assert.equal(
+      new URL(metadata.previewImage.url, endpoint).pathname,
+      `${base}${previewImage.url}`,
+    );
+    assert.equal(new URL(metadata.changelogUrl, endpoint).pathname, `${base}changelog.html`);
+    const source = await readFile(new URL("./assets/idlever-preview.webp", import.meta.url));
+    assert.deepEqual(previewBytes, source);
+    assert.deepEqual(await writeDeploymentPreview(directory), previewImage);
+  }
+});
+
+test("optional public links and images reject unsafe URLs, missing descriptions and markup before stamping", async (t) => {
+  const directory = await artifact(t);
+  for (const value of [
+    null,
+    1,
+    "",
+    " ",
+    "http://example.com/file",
+    "data:text/plain,notes",
+    "blob:https://example.com/file",
+    "javascript:alert(1)",
+    "https://user:password@example.com/file",
+    "https://[",
+  ]) {
+    await assert.rejects(writeDeploymentMetadata({ directory, commit, changelogUrl: value }));
+    await assert.rejects(
+      writeDeploymentMetadata({ directory, commit, previewImage: { url: value, alt: "Gameplay" } }),
+    );
+  }
+  for (const previewImage of [
+    null,
+    {},
+    { url: "preview.webp" },
+    { url: "preview.webp", alt: " " },
+    { url: "preview.webp", alt: "<b>Gameplay</b>" },
+  ]) {
+    await assert.rejects(writeDeploymentMetadata({ directory, commit, previewImage }));
+  }
+  await assert.rejects(readFile(join(directory, "meta.json")), { code: "ENOENT" });
 });

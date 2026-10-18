@@ -28,19 +28,39 @@ cases (402×681/320×681/1440×900 ×normal/200%). Evidence and observations:
 `docs/evidence/cut264/hero-hub-contrast-fix/`. These older package results
 are not final600-package acceptance.
 
-Current single detached shipping verification: PID3858282, launcher
-`docs/evidence/cut279/run-verify.sh`; output `verify-full.log`, completion
-`verify-full.exit.json`. It runs native/helper tests, lint/type/copy, Clippy,
-shipping WASM, build and bounded routine full gates. The first launch was
-stopped to update recovery-dependent test fixtures; its partial log is kept.
-No parallel Rust/WASM build should write root package during this run.
+Current final shipping WASM is5478440 bytes, SHA256
+`97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf`.
+Do not rebuild root package while audits run. Detached full verification
+PID3868045 (`docs/evidence/cut279/run-verify.sh`, `verify-full.log`, eventual
+`verify-full.exit.json`) passed1092 native tests/6 ignored,32 helper tests,
+format/lint/type/copy, Clippy, shipping build, metrics8 and wire10. Routine
+18-case/16-seed comparison dayplayer leg remains running.
 
-After it packages (log reaches routine gates), hold root WASM stable, repin
-with `--no-build --settle --regen`, run vat42, full compact Hero Hub,
-settlement564 and related groups on the final package. Run PICKED+H16 on
-the retained curve (`picked_hurry`, three normal check-ins/day); record
-every slain King≥day7 and spending share. Old150 hurry16 pass/1.6882%
-share is historical. Read dated visual notes before reusing their conclusions.
+The first launch was stopped to update recovery-dependent fixtures. A later
+native link failed with undefined hidden LLVM symbols; affected generated core
+cache was cleaned. This final retry uses `CARGO_INCREMENTAL=0`; use that same
+environment for native diagnostics/repin. Failed/partial logs are preserved.
+
+Final-package evidence in `docs/evidence/cut279/`:
+
+- PICKED+H16 completed42 normal check-ins per seed. No King in14 days;
+  earliest slain day≥7 passes; median days3–14 hurry share1.54049% (diagnostic).
+- Vat42 and six related UI groups pass. GPU visible-viewport captures and dated
+  observations are saved; metadata preview now uses a fresh800×500 watch capture.
+- Native settlement Gold/ledger/ExitLine unchanged4/4; expected unchanged4/4.
+  Three after-saves regenerate only recovery/turn fields after retained600.
+  Default manifest `settlements-inputs-97af.json`. Browser564 audit remains
+  running via PID4050227, `gold-settlements.log`, `settlements.exit.json`.
+- Primary402×681 normal/200% Hero Hub close/scroll/focus proof passes. Full
+  compact audit failed an early worker-hover check: old graveyard tooltip was
+  read instead of Apprentice details. Agent is diagnosing stale tooltip timing
+  versus genuine overlap; `hero-hub/` preserves failure. No threshold relaxed.
+- Metadata schema remains1 with additive changelog/preview fields. Publisher9,
+  consumer14 and both-base integration pass. Agent prepared fresh owned WebP;
+  no publication yet. See Cut278.
+
+Fresh Node22 Vite5522 belongs to vat_review; root-owned5521 also exists. Leave
+shared5219 alone. Old150 results below are historical, not final acceptance.
 
 Then commit curated source/evidence only, deploy a clean committed ref with
 `tools/deploy-cf.sh`, verify live real-WASM/metadata SHA+JSON/CORS/no-cache,

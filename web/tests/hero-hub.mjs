@@ -971,6 +971,14 @@ try {
       assert.ok((await target.getAttribute("aria-label")).includes(name));
       const beforeHover = await page.evaluate(() => window.__idlever.engine.save());
       await target.hover();
+      // Tooltips hand over after the 350ms hover delay; an already-visible graveyard plate belongs to its old trigger.
+      await page.waitForFunction(
+        (id) =>
+          document
+            .querySelector(`[data-building="worker"][data-worker="${id}"]`)
+            ?.getAttribute("aria-describedby") === "kw-tip",
+        lit.id,
+      );
       const details = page.locator("#kw-tip:not([hidden])");
       await details.waitFor();
       const text = await details.innerText();

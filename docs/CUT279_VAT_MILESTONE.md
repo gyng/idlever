@@ -26,7 +26,9 @@ focus return, tab controls, scroll affordance and primary phone geometry.
 The4.5:1 ordinary-text contrast threshold remains unchanged.
 
 Include Cut278 deployment metadata. Cloudflare supplies JSON/public CORS/
-no-cache and SW bypass; Pages cache-header limitations remain documented.
+no-cache and SW bypass; include the additive schema1 changelog link and a
+fresh content-hashed gameplay preview. Pages cache-header limitations remain
+documented.
 
 ## Acceptance
 

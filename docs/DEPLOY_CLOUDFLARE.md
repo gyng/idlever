@@ -67,6 +67,17 @@ It never uses a request time, source commit date, or puzzle rotation. Cloudflare
 omits optional `version`; release builds on Pages use their checked release tag.
 A newly prepared rollback gets a fresh timestamp with the restored SHA.
 
+The additive preview/changelog contract still uses schema version 1. The deploy
+CLI includes the public `https://github.com/gyng/idlever/releases` changelog and
+`previewImage: { url, alt }`. Its owned image source is
+`tools/assets/idlever-preview.webp`; the helper copies it into the final artifact
+as `preview-<content-hash>.webp` before writing metadata. This relative filename
+resolves from the metadata URL, so both root and `/idlever/` builds work.
+The description is plain text. Update the source screenshot and helper description
+together when gameplay appearance changes; a new image receives a new URL.
+The latest capture/review status is recorded in Cut278. The helper also supports
+omitting optional fields and rejects unsafe public URLs or empty descriptions.
+
 The metadata route has `Content-Type: application/json`,
 `Access-Control-Allow-Origin: *`, and `Cache-Control: no-cache`; existing asset
 and SW headers stay intact. See Cloudflare's
@@ -84,7 +95,7 @@ configure a Pages `Cache-Control` override, and Cloudflare's `_headers` rules
 only apply on Cloudflare. A future live release must verify JSON, public CORS,
 and actual Pages cache behavior; Pages `no-cache` is not certified by this cut.
 
-Run `node --test tools/deployment-meta.test.mjs` for artifact identity, headers,
-rollback-worker bypass, base-path, and pipeline checks. These checks also run in
+Run `node --test tools/deployment-meta.test.mjs` for artifact identity, optional-field validation,
+preview publication, headers, rollback-worker bypass, base-path, and pipeline checks. These checks also run in
 `tools/verify.sh --quick` and the Pages workflow. No deployment was performed as
 part of implementing metadata; the older live build above predates this file.
