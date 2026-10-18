@@ -1579,20 +1579,21 @@ export type PersistentHero = {
 };
 export type DepthLandmark = { depth: number; kind: "boss"; id: string; label: string };
 
-/** Cut263 (core `honours::Row`): one honour. An unearned secret's `name` and `goal` are empty. */
+/** Cut263/Cut269 (core `honours::Row`): one achievement. An unearned secret is never a row. */
 export type HonourRow = {
   id: string;
   name: string;
   goal: string;
   group: string;
-  secret?: boolean;
+  tier?: "bronze" | "silver" | "gold"; // the badge (core `honours::tier`)
+  secret?: boolean; // an earned secret (an unearned one is not sent)
   day?: number; // the lineage day it was earned
   n?: number; // a counted honour's progress (unearned only)
   of?: number;
   new?: boolean; // earned since the camp last showed it
 };
-/** Cut263 (core `honours::Wire`). */
-export type HonoursWire = { earned: number; total: number; rows: HonourRow[] };
+/** Cut263/Cut269 (core `honours::Wire`): `earned`/`total` count the visible list; `secrets` the secrets earned. */
+export type HonoursWire = { earned: number; total: number; secrets?: number; rows: HonourRow[] };
 export type Lineage = {
   persistent_hero?: PersistentHero;
   depth_landmarks?: DepthLandmark[];

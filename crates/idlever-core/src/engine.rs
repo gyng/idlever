@@ -569,6 +569,9 @@ pub struct Run {
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub guests_slain: Vec<String>,
     pub hurt_since_boss: bool,
+    /// Cut269: the achievements' observation marks (a real run only; read by nothing but `honours`).
+    #[serde(default, skip_serializing_if = "crate::honours::RunMarks::is_default")]
+    pub honours: crate::honours::RunMarks,
     pub row_fired: Vec<u32>,
     pub renderable_events: u32,
     pub ended: bool,
@@ -3832,9 +3835,6 @@ impl Game {
             return Err("unknown look".into());
         }
         self.lineage.look = Some(look.into());
-        if !self.sim {
-            crate::honours::on_act(&mut self.lineage, "look");
-        }
         Ok(())
     }
 
@@ -4385,6 +4385,7 @@ impl Game {
             max_steps: Vec::new().into(),
             drank_heal: false,
             melee_used: false,
+            honours: Default::default(),
             boss_seen_t: None,
             bosses_met: Vec::new().into(),
             scars: crate::descent::BOSS_DEPTHS.iter().map(|(k, _)| (k.to_string(), self.lineage.pkg.scar(k, &self.lineage.kills))).filter(|(_, p)| *p > 0).collect(),
@@ -4595,6 +4596,10 @@ impl Game {
         // would have come home with the send nineteen times in twenty.
         let paid = self.passage.filter(|(at, n)| *at == run.depth && run.depth > 1 && *n > 0).map(|p| p.1);
         run.passage = paid.unwrap_or(0);
+        // Cut269: the achievements' send marks (an observer: nothing reads them back)
+        if !self.sim {
+            crate::honours::at_send(&mut run, &self.lineage);
+        }
         self.run = Some(run);
         if let Some(coins) = paid {
             let d = self.run.as_ref().map_or(1, |r| r.depth);

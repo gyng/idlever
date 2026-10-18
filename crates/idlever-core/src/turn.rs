@@ -2315,6 +2315,9 @@ pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dm
                 o.reserve = false;
             }
             run.boss_kills.push((run.turn, kind.clone()));
+            if !cx.sim {
+                crate::honours::on_boss_kill(run, &kind, src);
+            }
             if let Some(shape)=crate::legendary::boss_drop(run,&kind,cx.owned_shapes) {
                 let item=Item::new(run.new_item_id(),shape);
                 crate::legendary::collect_pattern(run,cx,item,&m.title());

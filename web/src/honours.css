@@ -1,4 +1,4 @@
-/* Cut263: the honours gallery (Menu → Honours) and its toast. Quiet: lit rows, dimmed rows, one count. */
+/* Cut263/Cut269: the achievements gallery (Menu → Achievements) and its toast. Quiet: lit rows, dimmed rows, one count. */
 .honours-panel {
   display: grid;
   gap: 12px;
@@ -89,4 +89,17 @@
 .honour-mark .ico.glyph::before {
   font-size: 1em;
   line-height: 1.25em;
+}
+/* Cut269: the group's tier rim beside its heading; the earned-secret count */
+.honours-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.honours-frame .ico {
+  inline-size: 1.1em;
+  block-size: 1.1em;
+}
+.honours-secrets {
+  font-size: 0.875rem;
 }

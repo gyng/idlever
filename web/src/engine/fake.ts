@@ -7704,42 +7704,59 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
   };
 }
 
-// Cut263: the honours gallery in miniature (the core's `honours::DEFS`; earned off the fake lineage's record depth and
-// nothing else, or set by a dev/test through `__honour(id)`). The core is the authority; this is UI development.
+// Cut263/Cut269: the achievements gallery in miniature (the core's `honours::DEFS`; the journey's boss entries earned
+// off the fake lineage's record depth and nothing else, or set by a dev/test through `__honour(id)`). The core is the
+// authority; this is UI development. An unearned secret is never sent.
 const HONOURS263: [string, string, string, string, boolean?][] = [
-  ["depth_20", "Twenty Deep", "reach D20", "depth"],
-  ["depth_30", "Thirty Deep", "reach D30", "depth"],
-  ["waystones", "Every Waystone", "light all six waystones", "depth"],
-  ["boss_warlord", "Warlord Felled", "slay the Warlord", "bosses"],
-  ["boss_mother", "Mother Burst", "slay the Bloat Mother", "bosses"],
-  ["boss_lich", "Lich Undone", "slay the Lich", "bosses"],
-  ["boss_master", "Forge Quenched", "slay the Foundry Master", "bosses"],
-  ["boss_queen", "Queen Unseated", "slay the Lurker Queen", "bosses"],
-  ["boss_king", "Mirror Broken", "slay the Mirror King", "bosses"],
-  ["seek", "Sought Out", "spend a boss token", "bosses"],
-  ["descent", "Deeper Still", "clear a numbered descent", "bosses"],
-  ["town_full", "Full Town", "build all three buildings", "town"],
-  ["kit", "Full Kit", "complete the forge kit", "town"],
-  ["second_hero", "Second Hearth", "house a second hero", "town"],
-  ["legend_all", "Legend Armory", "find all five patterns", "town"],
-  ["scout", "Hands Free", "hire the receptionist", "workers"],
-  ["staff", "Full Staff", "hire every worker", "workers"],
-  ["promoted", "Promoted", "promote a worker", "workers"],
-  ["loadout", "Full Loadout", "wear all three package kinds", "packages"],
-  ["variant", "Second Thoughts", "pick a tactic variant", "packages"],
-  ["pen_row", "First Row", "write a pen row", "pen"],
-  ["fix", "Lesson Taken", "take a death's fix", "pen"],
-  ["own_words", "Own Words", "slay a boss, pen written", "pen"],
-  ["causes", "Many Teachers", "die to five causes", "deaths"],
-  ["legacy", "Legacy Spent", "buy a Legacy upgrade", "heroes"],
-  ["new_trade", "New Trade", "train a second class", "heroes"],
-  ["bred", "New Litter", "breed a pup", "companions"],
-  ["oath", "Oathkeeper", "keep a sworn oath", "lore"],
-  ["trial", "Trial Cleared", "clear a weekly trial", "lore"],
-  ["old_enemy", "Old Enemy", "tame a grudge", "lore", true],
-  ["named", "Name Given", "rename the hero", "lore", true],
-  ["new_look", "New Look", "change the hero's look", "lore", true],
+  ["boss_warlord", "Warlord Felled", "slay the Warlord", "journey"],
+  ["boss_lich", "Lich Undone", "slay the Lich", "journey"],
+  ["boss_queen", "Queen Unseated", "slay the Lurker Queen", "journey"],
+  ["boss_king", "Mirror Broken", "slay the Mirror King", "journey"],
+  ["waystones", "Every Waystone", "light all six waystones", "journey"],
+  ["legend_all", "Legend Armory", "find all five patterns", "journey"],
+  ["seek", "Sought Out", "spend a boss token", "journey"],
+  ["descent", "Deeper Still", "clear a numbered descent", "journey"],
+  ["second_hero", "Second Hearth", "house a second hero", "journey"],
+  ["pen_row", "First Row", "write a pen row", "journey"],
+  ["m_fighter", "Riposte", "slay a boss as Sentinel", "mastery"],
+  ["m_rogue", "Knife Work", "slay the Lich as Rogue", "mastery"],
+  ["m_ranger", "Arm's Length", "Ranger boss, never in melee", "mastery"],
+  ["m_caster", "Hexed Down", "slay a boss as Hexbinder", "mastery"],
+  ["m_gunner", "Last Round", "slay the Lich as Gunner", "mastery"],
+  ["m_clown", "Send In Clown", "slay the Lich as Clown", "mastery"],
+  ["m_engineer", "Built To Kill", "sentry kills a boss", "mastery"],
+  ["m_every", "Every Trade", "band boss with each class", "mastery"],
+  ["c_dry", "Teetotal", "slay the Queen, no drink", "challenges"],
+  ["c_empty", "Empty Pockets", "slay the Lich, nothing packed", "challenges"],
+  ["c_lone", "Lone Wolf", "Foundry Master, no companion", "challenges"],
+  ["c_bare", "Bare Steel", "Foundry Master, forge unbought", "challenges"],
+  ["c_walk", "Long Walk", "D1 to D28, one run", "challenges"],
+  ["c_noexit", "No Way Back", "new record, no exit rows", "challenges"],
+  ["c_first", "First Sight", "slay the Queen, first meeting", "challenges"],
+  ["c_flawless", "Flawless", "Queen or King, untouched", "challenges"],
+  ["c_three", "Three Lines", "slay a boss, three rows", "challenges"],
+  ["c_desc3", "Third Descent", "clear descent three", "challenges"],
+  ["c_vows", "Many Vows", "keep three oath kinds", "challenges"],
+  ["trial", "Trial Cleared", "clear a weekly trial", "challenges"],
+  ["b_seven", "Seven Builds", "boss with each build", "builds"],
+  ["b_kennel", "Kennel Builds", "boss with each pet build", "builds"],
+  ["b_stance", "Own Stance", "slay the Lich, own stance", "builds"],
+  ["b_route", "Off The Map", "slay a boss off-route", "builds"],
+  ["x_thread", "By A Thread", "Lich or deeper at 5%", "moments"],
+  ["x_wind", "Second Wind", "revived, then a boss", "moments"],
+  ["x_dog", "Good Dog", "pet fells Lich or deeper", "moments"],
+  ["x_fire", "Pyromaniac", "fire fells Lich or deeper", "moments"],
+  ["o_gas", "Bad Air", "gas kills a boss", "oddities", true],
+  ["o_turncoat", "Turncoat", "captive fells Lich or deeper", "oddities", true],
+  ["o_pratfall", "Pratfall", "counter kills a boss", "oddities", true],
+  ["old_enemy", "Old Enemy", "tame a grudge", "oddities", true],
 ];
+const TIER269: Record<string, "bronze" | "silver" | "gold"> = {
+  mastery: "gold",
+  challenges: "silver",
+  builds: "silver",
+  oddities: "silver",
+};
 type Fk263 = {
   s: { honours263?: { earned: Record<string, number>; seen: string[] } };
   lineage(): Lineage;
@@ -7747,7 +7764,13 @@ type Fk263 = {
 {
   const P = FakeEngine.prototype as unknown as Record<string, (...a: unknown[]) => unknown>;
   const st = (e: Fk263) => (e.s.honours263 ??= { earned: {}, seen: [] });
-  const depthOf: Record<string, number> = { depth_20: 20, depth_30: 30 };
+  // (a boss's floor passed: the fake has no kill record)
+  const depthOf: Record<string, number> = {
+    boss_warlord: 9,
+    boss_lich: 19,
+    boss_queen: 29,
+    boss_king: 34,
+  };
   const lin = P.lineage;
   P.lineage = function (this: Fk263): Lineage {
     const L = lin.call(this) as Lineage;
@@ -7758,24 +7781,25 @@ type Fk263 = {
       const deep = depthOf[id] !== undefined && (L.best_depth ?? 0) >= depthOf[id];
       if (deep) h.earned[id] = day;
     }
-    const rows = HONOURS263.map(([id, name, goal, group, secret]) => {
+    const rows = HONOURS263.filter(
+      ([id, , , , secret]) => !secret || h.earned[id] !== undefined,
+    ).map(([id, name, goal, group, secret]) => {
       const at = h.earned[id];
-      const hidden = !!secret && at === undefined;
-      const goalN = depthOf[id];
       return {
         id,
-        name: hidden ? "" : name,
-        goal: hidden ? "" : goal,
+        name,
+        goal,
         group,
+        tier: TIER269[group] ?? ("bronze" as const),
         ...(secret ? { secret: true } : {}),
         ...(at !== undefined ? { day: at } : {}),
-        ...(at === undefined && goalN ? { n: Math.min(L.best_depth ?? 0, goalN), of: goalN } : {}),
         ...(at !== undefined && !h.seen.includes(id) ? { new: true } : {}),
       };
     });
     L.honours = {
-      earned: rows.filter((r) => r.day !== undefined).length,
-      total: rows.length,
+      earned: rows.filter((r) => !r.secret && r.day !== undefined).length,
+      total: HONOURS263.filter(([, , , , secret]) => !secret).length,
+      secrets: rows.filter((r) => r.secret).length,
       rows,
     };
     return L;
