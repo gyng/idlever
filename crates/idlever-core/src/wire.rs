@@ -1785,6 +1785,8 @@ pub struct BuildingWire {
 /// Cut 30 §3: the town — its buildings, the next plot and its trigger, the bank.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
 pub struct TownWire {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub upgrades: Vec<BuildingUpgrade>,
     #[serde(default = "crate::town::home_default")]
     pub home: bool,
     #[serde(default)]
@@ -3613,3 +3615,8 @@ pub struct AscensionWire {
     pub atk_pct: u32,
     pub modifiers: Vec<crate::endgame::ModifierInfo>,
 }
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct BuildingUpgrade { pub id:String, pub level:u32, pub max:u32, #[serde(default,skip_serializing_if="Option::is_none")] pub next:Option<BuildingUpgradeNext> }
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct BuildingUpgradeNext { pub level:u32, pub price:i32, pub gate_depth:u32, pub affordable:bool, pub ready:bool, pub effect:String }

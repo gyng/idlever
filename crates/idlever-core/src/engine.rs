@@ -2235,7 +2235,7 @@ impl LineageState {
         // QA on 912e135 (qaW: `sword +1 · $300 · 7 nights` after a night of deaths — the purse held at $40 by the heir purse): the
         // heir purse's top-up refills to a floor and is no income; a night of deaths nets nothing toward a step.
         // (Cut 28 §1: an oath's price and a forswearing's refund are the player's purchase too)
-        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish"].iter().any(|p| why.starts_with(p)) {
+        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "upgrade ", "tithe", "works ", "supply wish"].iter().any(|p| why.starts_with(p)) {
             self.night_net += delta;
             self.day_net += delta;
         }
@@ -3553,6 +3553,7 @@ impl Game {
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
         l.town.forge_work = crate::town::forge_work([self]);
+        if crate::persistent::away(self) { for offer in &mut l.town.upgrades { if let Some(next)=&mut offer.next { next.ready=false; } } }
         let build = crate::hero_build::equipment(self);
         l.starting_kits.actual_weapon = build.actual.slots[0].kind.clone().unwrap_or_default();
         l.starting_kits.actual_armour = build.actual.slots[2].kind.clone();
@@ -6999,6 +7000,8 @@ pub fn gold_term(why: &str) -> &'static str {
     } else if why.starts_with("tithe") || why == "supply ration" {
         // (Cut 120 §6: the apprentice's ration is a sink, as Cut 118 §4 names it — the ledger's apprentice line reconciles)
         "sinks"
+    } else if why.starts_with("upgrade ") {
+        "town"
     } else if why.starts_with("hire ") {
         "hires"
     } else if why.starts_with("bank ") {

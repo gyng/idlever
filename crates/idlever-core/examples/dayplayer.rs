@@ -21,7 +21,7 @@ const PICKED_L_KING: &str = "PICKED+L King no sooner than day 7 (median), never 
 const PICKED_L_PURSE: &str = "PICKED+L purse at day 3 spent ≥ 50 % of income since Kit complete";
 /// Milestones (Cut 30 §6: time-to-milestone = simulated hours to reach each).
 const MILESTONES: [u32; 7] = [8, 13, 18, 23, 28, 29, 33];
-const SYSTEMS: [&str; 6] = ["packages", "pen", "forge", "pets", "bank", "quests"];
+const SYSTEMS: [&str; 7] = ["packages", "pen", "forge", "pets", "bank", "quests", "buildings"];
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 enum Bot {
@@ -85,6 +85,14 @@ struct SeedOut {
     best_day: Vec<u32>,
     /// Purse + bank change per day (the day's net).
     gold_day: Vec<i64>,
+    #[serde(default)]
+    upgrade_spend: Vec<i64>,
+    #[serde(default)]
+    upgrade_income: Vec<i64>,
+    #[serde(default)]
+    bank_payback: Option<f64>,
+    #[serde(default)]
+    bank_interest: i32,
     /// Longest run of days with no new best before D23 was reached.
     stall: usize,
     /// The day the Mirror King fell (1-based), if he did.
@@ -618,6 +626,38 @@ fn camp_taps(g: &mut Game, ask: &Ask, arm: u8, out: &mut SeedOut, h: f64) {
         let Some(n) = tree::lit_rank(&g.lineage) else { break };
         if arm != 2 || g.lineage.gold < tree::rank_price(&g.lineage, n) || g.promote(n.id).is_err() {
             break;
+        }
+    }
+    if arm == 2 && ask.has("buildings") {
+        let reserve = 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32;
+        for id in ["bank", "device"] {
+            if id == "bank" && !ask.has("bank") {continue;}
+            for _ in 0..2 {
+                let Some(next) = idlever_core::town::upgrade_offers(&g.lineage).into_iter().find(|o|o.id==id).and_then(|o|o.next) else {break};
+                if !next.ready || tree::purse(&g.lineage) < next.price + reserve {break;}
+                let payback_before = (id == "bank" && next.level == 3 && std::env::var_os("DP_BANK_PAYBACK").is_some()).then(|| g.clone());
+                if g.upgrade_building(id,next.price).is_err() {break;}
+                if let Some(mut baseline) = payback_before {
+                    let mut upgraded=g.clone();
+                    let base_interest=baseline.lineage.town.interest;
+                    let up_interest=upgraded.lineage.town.interest;
+                    let mut paid=None;
+                    let mut extra=0;
+                    for nights in 1..=30 {
+                        idlever_core::offline::run_offline_counts(&mut baseline,idlever_core::engine::NIGHT_RUNS);
+                        idlever_core::offline::run_offline_counts(&mut upgraded,idlever_core::engine::NIGHT_RUNS);
+                        extra=(upgraded.lineage.town.interest-up_interest)-(baseline.lineage.town.interest-base_interest);
+                        if extra>=next.price {paid=Some(nights);break;}
+                    }
+                    eprintln!("bank-payback seed={} price={} actual_extra_interest={} paid_nights={:?} cap=30 counterfactual=automatic-away",g.lineage.seed,next.price,extra,paid);
+                }
+                if id == "bank" && next.level == 3 {
+                    let net = g.lineage.last_night_net.max(g.lineage.last_day_net/4);
+                    let rate = idlever_core::town::bank_pct()*10 + idlever_core::balance::get().tree.clerk_bonus_permille * tree::bonus_rank(&g.lineage,"clerk") as i32;
+                    let extra = (idlever_core::balance::get().buildings.bank_nights[0]-idlever_core::town::bank_nights()) * net * rate / 1000;
+                    out.bank_payback=Some(if extra>0 {next.price as f64/extra as f64} else {f64::MAX});
+                }
+            }
         }
     }
     let l = &g.lineage;
@@ -1473,7 +1513,10 @@ impl Play {
         out.best_day.push(best);
         out.depth_area += best;
         out.quests = g.lineage.town.quests_done;
+        out.bank_interest = g.lineage.town.interest;
         out.gold_day.push(g.lineage.gold as i64 + g.lineage.town.bank as i64 - self.wealth0);
+        out.upgrade_spend.push(-g.lineage.gold_tally.get("town").copied().unwrap_or(0));
+        out.upgrade_income.push(income(g));
         if day == 2 {
             if let Some((i0, w0)) = out.kit_at {
                 let earned = income(g) - i0;
@@ -2024,6 +2067,17 @@ fn main() {
         let worst = v.iter().map(|o| o.stalled as f64 / o.sends.max(1) as f64).fold(0.0f64, f64::max);
         bars.push((format!("Stalls ≤ 1 % of sends, every {label} seed"), format!("{:.2}%", 100.0 * worst), worst <= 0.01));
     }
+    if !picked.is_empty() {
+        let shares:Vec<f64> = picked.iter().map(|o| {
+            let spent=o.upgrade_spend.last().copied().unwrap_or(0)-o.upgrade_spend.get(1).copied().unwrap_or(0);
+            let earned=o.upgrade_income.last().copied().unwrap_or(0)-o.upgrade_income.get(1).copied().unwrap_or(0);
+            if earned>0 {100.0*spent as f64/earned as f64} else {0.0}
+        }).collect();
+        let m=median(shares);
+        bars.push(("PICKED upgrades spend ≥ 10 % of income days 3–14 (median)".into(),format!("{m:.2}%"),m>=10.0));
+        let pays:Vec<f64>=picked.iter().filter_map(|o|o.bank_payback).collect();
+        if !pays.is_empty() { infos.push(("Bank first effect payback, fully funded extra capacity (diagnostic ≤ 30 nights)".into(),format!("{:.2}",median(pays)))); }
+    }
     if !tuned.is_empty() && !picked.is_empty() {
         // (the owner, 2026-10-01: the pen is an optional late fine-tuning layer — it beats the packages at
         // the deepest walls by ≥ 15 %, and nothing needs it; was `TUNED ≥ 1.5× PICKED at D18, D23, D28`;
@@ -2096,6 +2150,11 @@ fn main() {
             let mean = |xs: &[SeedOut], f: &dyn Fn(&SeedOut) -> f64| xs.iter().map(f).sum::<f64>() / xs.len().max(1) as f64;
             // each system by its own output (the owner, 2026-10-01: systems are not measured on depth)
             let (with, without, unit, ok) = match s {
+                "buildings" => {
+                    let g = |o: &SeedOut| o.bank_interest as f64;
+                    let (a,b)=(mean(t,&g),mean(w,&g));
+                    (a,b,"interest paid",a>b)
+                }
                 "bank" => {
                     let g = |o: &SeedOut| o.gold_day.iter().sum::<i64>() as f64 / o.gold_day.len().max(1) as f64;
                     let (a, b) = (mean(t, &g), mean(w, &g));

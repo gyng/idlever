@@ -905,7 +905,21 @@ export type Quest = {
 };
 /** Cut 30 §3 (core) — the town: its buildings (built in order), the next plot staked and its trigger, the bank (`bankDeposit` /
  *  `bankWithdraw`; ~2 % a night, capped at `bank_cap`), the interest it paid in all, the quest board (from the Warlord slain). */
+export type BuildingUpgrade = {
+  id: string;
+  level: number;
+  max: number;
+  next?: {
+    level: number;
+    price: number;
+    gate_depth: number;
+    affordable: boolean;
+    ready: boolean;
+    effect: string;
+  };
+};
 export type Town = {
+  upgrades?: BuildingUpgrade[];
   home?: boolean;
   auto_collect?: boolean;
   buildings: Building[];
@@ -2149,6 +2163,7 @@ export interface Engine {
   setSpecialization?(id: string): Lineage;
   learnClassSkill?(id: string): Lineage;
   resetClassSkills?(): Lineage;
+  upgradeBuilding?(id: string, max_price: number): Lineage;
   buildTown?(id: string): Lineage;
   buildWorkplace?(id: string): Lineage; // Cut273: build a workplace or raise its level — its lit worker arrives (exactly the hire)
   hire?(id: string): Lineage; // hire the lit node's worker (`Works.lit`; its price from the purse, then the chest)

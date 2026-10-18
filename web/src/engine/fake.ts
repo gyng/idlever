@@ -7978,3 +7978,66 @@ type Fk263 = {
     return this.lineage();
   };
 }
+
+// Cut265: persisted demo upgrades use the same offer and stale-price contract as Rust.
+{
+  const P = FakeEngine.prototype as unknown as Record<string, (...args: unknown[]) => unknown>;
+  const lineage = P.lineage;
+  type UpgradeFake = Fk305 & { s: Fk305["s"] & { buildingLevels?: Record<string, number> } };
+  P.lineage = function (this: UpgradeFake): Lineage {
+    const L = lineage.call(this) as Lineage;
+    if (!L.town) return L;
+    const levels = this.s.buildingLevels ?? {};
+    const staff = st305(this).hired;
+    L.town.upgrades = (["bank", "device"] as const)
+      .filter((id) =>
+        id === "bank"
+          ? L.town!.buildings.some((b) => b.id === id) && staff.includes("clerk")
+          : Boolean(L.persistent_hero?.device?.available),
+      )
+      .map((id) => {
+        const base = id === "bank" ? 2 : 1;
+        const level = levels[id] ?? base;
+        const i = level - base;
+        return {
+          id,
+          level,
+          max: base + 2,
+          ...(i < 2
+            ? {
+                next: {
+                  level: level + 1,
+                  price: [3400, 13500][i],
+                  gate_depth: [13, 23][i],
+                  affordable: L.gold >= [3400, 13500][i],
+                  ready: L.best_depth >= [13, 23][i],
+                  effect:
+                    id === "bank" ? ["5 nights", "8 nights"][i] : ["25% hurry", "50% hurry"][i],
+                },
+              }
+            : {}),
+        };
+      });
+    for (const w of L.town.workplaces ?? [])
+      if (w.id === "bank") {
+        w.level = Math.max(w.level, levels.bank ?? 0);
+        w.max = 4;
+      }
+    return L;
+  };
+  P.upgradeBuilding = function (this: UpgradeFake, id: unknown, maxPrice: unknown): Lineage {
+    const L = this.lineage();
+    const next = L.town?.upgrades?.find((o) => o.id === id)?.next;
+    if (
+      !next ||
+      !next.ready ||
+      !next.affordable ||
+      typeof maxPrice !== "number" ||
+      next.price > maxPrice
+    )
+      throw new Error("upgrade unavailable");
+    this.s.lineage.gold -= next.price;
+    (this.s.buildingLevels ??= {})[String(id)] = next.level;
+    return this.lineage();
+  };
+}
