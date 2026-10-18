@@ -1,6 +1,6 @@
 # Cut264 — Clone vat: short early clones, gold hurry, vat lighting and indicators
 
-Status: IMPLEMENTED; combined-source acceptance in progress (2026-10-18). Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
+Status: PARTIAL DELIVERY via [Cut279](CUT279_VAT_MILESTONE.md), 2026-10-19. Vat UI/hurry retained; 15-second curve HELD after failed progression gates. Established `[600, 14, 28, 1]` curve restored for the owner-requested deploy-and-pause milestone. Original proposal/results below are historical. Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
 (`remaining_min × unit(best) × 0.25`). Q3 (callout once) takes the default. Cut260 is integrated.
 
 ## Owner requests (2026-10-18, verbatim)
@@ -143,14 +143,17 @@ cargo run -q --profile fast -p idlever-core --example picked_hurry -- \
 ```
 
 It runs actual PICKED choices, then presses one affordable hurry at each of the
-42 normal check-ins (three per day for14 days). No extra funding, first-session
+42 normal check-ins (three per day for 14 days). No extra funding, first-session
 hurry, between-check-in hurry or away hurry is added. Ordinary dayplayer policy
 and its pre-main cache salt are unchanged. Per-seed results resume only for the
 same executable and balance identity. `hurry-king` requires **every** slain King
-on day7 or later; its median is informational. `hurry-share` reports spending /
+on day 7 or later; its median is informational. `hurry-share` reports spending /
 earned+fetched+recovered income on days3–14; no numeric share bar was specified
 in this contract. This diagnostic covers this check-in policy, not every possible
-sequence of deliberate paid hurries. Results remain pending.
+sequence of deliberate paid hurries. All 16 campaigns completed42 check-ins;
+no King was slain in the fortnight, so the earliest day ≥ 7 check passes.
+Median hurry spending was1.6882% of days3–14 income. Per-seed results and
+exact executable/balance identities are in `docs/evidence/cut264/hurry/`.
 
 The16-seed opening probe retained Cut260’s documented G2 deviation unchanged:
 longest upgrade gap median28.9min, worst38.2min. G1/G3/G4/G6 pass. This is

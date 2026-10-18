@@ -1,0 +1,192 @@
+{
+  "contrastFailures": [],
+  "records": [
+    {
+      "entry": "earned-ready",
+      "state": "ready",
+      "width": 320,
+      "scale": 1,
+      "contrastSection": "gear",
+      "thresholds": {
+        "ordinary": 4.5,
+        "inactive": 3
+      },
+      "scrollSteps": 2,
+      "viewportHeight": 4000,
+      "surface": "rgb(13, 12, 20)",
+      "townCanvasHidden": true,
+      "diagnosticMs": {
+        "total": 16292,
+        "collect": 472,
+        "shot": 3474,
+        "measure": 11044
+      },
+      "samples": 258,
+      "ordinary": {
+        "samples": 257,
+        "weakest": [
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              33,
+              41,
+              63
+            ],
+            "minimum": 7.39,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          }
+        ]
+      },
+      "inactive": {
+        "samples": 1,
+        "weakest": [
+          {
+            "text": "Find piece",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              27,
+              26,
+              41
+            ],
+            "minimum": 8.76,
+            "control": "chip",
+            "scrollTop": 3012
+          }
+        ]
+      },
+      "material": {
+        "enabled": {
+          "background": "rgb(43, 51, 80)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(234, 223, 197)"
+        },
+        "disabled": {
+          "background": "rgb(28, 27, 43)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(164, 188, 214)"
+        },
+        "text": "Find piece"
+      }
+    },
+    {
+      "entry": "earned-recovering-rebirth",
+      "state": "recovering",
+      "width": 320,
+      "scale": 2,
+      "contrastSection": "gear",
+      "thresholds": {
+        "ordinary": 4.5,
+        "inactive": 3
+      },
+      "scrollSteps": 6,
+      "viewportHeight": 4000,
+      "surface": "rgb(13, 12, 20)",
+      "townCanvasHidden": true,
+      "diagnosticMs": {
+        "total": 35376,
+        "collect": 1025,
+        "shot": 10544,
+        "measure": 21314
+      },
+      "samples": 404,
+      "ordinary": {
+        "samples": 403,
+        "weakest": [
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              63
+            ],
+            "minimum": 7.3,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          }
+        ]
+      },
+      "inactive": {
+        "samples": 1,
+        "weakest": [
+          {
+            "text": "Find piece",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              28,
+              27,
+              43
+            ],
+            "minimum": 8.66,
+            "control": "chip",
+            "scrollTop": 9771
+          }
+        ]
+      },
+      "material": {
+        "enabled": {
+          "background": "rgb(43, 51, 80)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(234, 223, 197)"
+        },
+        "disabled": {
+          "background": "rgb(28, 27, 43)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(164, 188, 214)"
+        },
+        "text": "Find piece"
+      }
+    }
+  ],
+  "errors": []
+}

@@ -628,20 +628,63 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
   }
 }
 
-/* Cut266 review (2026-10-18, 402×681: the hub ran in a 282px column beside a 72px empty strip under the
-   close stud). The hub is a grid, so it sat beside the floated stud for its whole height; the stud's
-   margin box now has no height, the hub takes the window's full width, and only the name line keeps
-   clear of the stud. */
-html body .game-window[data-material] > .close-stud:has(+ .hero-hub),
+/* Cut264 contrast review: the sticky close stud covered the ends of lower gear lines while the
+   window scrolled. Keep navigation outside the folio's scroll area so no text passes beneath it. */
+html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 44px minmax(0, 1fr) 16px;
+  row-gap: 4px;
+  overflow: hidden;
+}
+html body .game-window[data-material]:has(> .hero-hub) > :is(.close-stud, .sheet-back) {
+  position: static;
+  grid-row: 1;
+  grid-column: 1;
+  float: none;
+  margin: 0;
+  align-self: center;
+}
 html body .game-window[data-material]:has(> .hero-hub) > .close-stud {
-  margin-bottom: -40px;
+  justify-self: end;
 }
-.hero-hub-identity > h2 {
-  padding-inline-end: 44px;
+html body .game-window[data-material]:has(> .hero-hub) > .sheet-back {
+  justify-self: start;
 }
-/* a tapped tab scrolls the tabs up: far enough below the window top that the sticky stud stays clear of them */
+html body .game-window[data-material] > .hero-hub {
+  grid-row: 2;
+  grid-column: 1;
+  min-height: 0;
+  overflow: auto;
+  align-content: start;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ui-edge) var(--ui-surface);
+}
+html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::before {
+  content: none;
+}
+html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::after {
+  content: "▾";
+  position: static;
+  grid-row: 3;
+  grid-column: 1;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: var(--ui-muted);
+  font: 600 16px/16px var(--sans);
+  text-align: center;
+  visibility: hidden;
+}
+html
+  body
+  .sheet-wrap.centered
+  > .game-window[data-material][data-more="1"]:has(> .hero-hub)::after {
+  visibility: visible;
+}
 .hero-hub .hero-hub-tabs {
-  scroll-margin-top: 56px;
+  scroll-margin-top: 4px;
 }
 /* One window size for every section: the Attributes tree no longer widens the window (and the others
    no longer shrink it back), and a short section no longer re-centres the window under the tabs. */

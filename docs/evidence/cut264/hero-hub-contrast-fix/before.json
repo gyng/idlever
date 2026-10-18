@@ -1,0 +1,247 @@
+{
+  "contrastFailures": [
+    {
+      "entry": "earned-ready",
+      "width": 320,
+      "scale": 1,
+      "id": "gear",
+      "threshold": 4.5,
+      "row": {
+        "text": "Hearthglass family: three equipped pieces turn e",
+        "color": "rgb(234, 223, 197)",
+        "opacity": 1,
+        "rect": {
+          "x": 33.59375,
+          "y": 99.92708587646484,
+          "w": 232.375,
+          "h": 18.666664123535156
+        },
+        "inactive": false,
+        "control": null,
+        "minimum": 1.1084155385602654,
+        "weakest": [
+          206,
+          214,
+          223
+        ],
+        "scrollTop": 2797
+      }
+    },
+    {
+      "entry": "earned-recovering-rebirth",
+      "width": 320,
+      "scale": 2,
+      "id": "gear",
+      "threshold": 4.5,
+      "row": {
+        "text": "Hearthglass Boots",
+        "color": "rgb(234, 223, 197)",
+        "opacity": 1,
+        "rect": {
+          "x": 81.59375,
+          "y": 104.90625,
+          "w": 173.92709350585938,
+          "h": 38.66667175292969
+        },
+        "inactive": false,
+        "control": null,
+        "minimum": 2.6568873829568385,
+        "weakest": [
+          134,
+          136,
+          149
+        ],
+        "scrollTop": 13340
+      }
+    }
+  ],
+  "records": [
+    {
+      "entry": "earned-ready",
+      "state": "ready",
+      "width": 320,
+      "scale": 1,
+      "contrastSection": "gear",
+      "thresholds": {
+        "ordinary": 4.5,
+        "inactive": 3
+      },
+      "scrollSteps": 2,
+      "viewportHeight": 4000,
+      "surface": "rgb(13, 12, 20)",
+      "townCanvasHidden": true,
+      "diagnosticMs": {
+        "total": 24951,
+        "collect": 533,
+        "shot": 7108,
+        "measure": 15615
+      },
+      "samples": 266,
+      "ordinary": {
+        "samples": 265,
+        "weakest": [
+          {
+            "text": "Hearthglass family: three equipped pieces turn e",
+            "color": "rgb(234, 223, 197)",
+            "weakest": [
+              206,
+              214,
+              223
+            ],
+            "minimum": 1.11,
+            "control": null,
+            "scrollTop": 2797
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              41,
+              63
+            ],
+            "minimum": 7.37,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          }
+        ]
+      },
+      "inactive": {
+        "samples": 1,
+        "weakest": [
+          {
+            "text": "Find piece",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              28,
+              27,
+              42
+            ],
+            "minimum": 8.67,
+            "control": "chip",
+            "scrollTop": 2797
+          }
+        ]
+      },
+      "material": {
+        "enabled": {
+          "background": "rgb(43, 51, 80)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(234, 223, 197)"
+        },
+        "disabled": {
+          "background": "rgb(28, 27, 43)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(164, 188, 214)"
+        },
+        "text": "Find piece"
+      }
+    },
+    {
+      "entry": "earned-recovering-rebirth",
+      "state": "recovering",
+      "width": 320,
+      "scale": 2,
+      "contrastSection": "gear",
+      "thresholds": {
+        "ordinary": 4.5,
+        "inactive": 3
+      },
+      "scrollSteps": 6,
+      "viewportHeight": 4000,
+      "surface": "rgb(13, 12, 20)",
+      "townCanvasHidden": true,
+      "diagnosticMs": {
+        "total": 45608,
+        "collect": 1617,
+        "shot": 17596,
+        "measure": 23851
+      },
+      "samples": 418,
+      "ordinary": {
+        "samples": 417,
+        "weakest": [
+          {
+            "text": "Hearthglass Boots",
+            "color": "rgb(234, 223, 197)",
+            "weakest": [
+              134,
+              136,
+              149
+            ],
+            "minimum": 2.66,
+            "control": null,
+            "scrollTop": 13340
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          },
+          {
+            "text": "Actual · next delve",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              34,
+              42,
+              64
+            ],
+            "minimum": 7.29,
+            "control": "btn hero-hub-gear-anchor",
+            "scrollTop": 0
+          }
+        ]
+      },
+      "inactive": {
+        "samples": 1,
+        "weakest": [
+          {
+            "text": "Find piece",
+            "color": "rgb(164, 188, 214)",
+            "weakest": [
+              28,
+              27,
+              43
+            ],
+            "minimum": 8.66,
+            "control": "chip",
+            "scrollTop": 10005
+          }
+        ]
+      },
+      "material": {
+        "enabled": {
+          "background": "rgb(43, 51, 80)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(234, 223, 197)"
+        },
+        "disabled": {
+          "background": "rgb(28, 27, 43)",
+          "border": "rgba(0, 0, 0, 0)",
+          "color": "rgb(164, 188, 214)"
+        },
+        "text": "Find piece"
+      }
+    }
+  ],
+  "errors": []
+}

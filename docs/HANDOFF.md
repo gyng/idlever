@@ -1,4 +1,57 @@
-# Resume checkpoint — 2026-10-18 (vat-only delivery in progress)
+# Cut279 milestone — 2026-10-19 (acceptance and deployment in progress)
+
+Owner: **“pause at next good major milestone and update handoff doc and deploy.”**
+Finish only the deployable milestone below, verify dev, update this checkpoint
+and pause. Do not continue tuning, audits or the broader queue after that.
+No GitHub push/release is requested.
+
+Contract: [CUT279_VAT_MILESTONE.md](CUT279_VAT_MILESTONE.md). Deliver clone
+vat timer/progress, whole-recovery cloning, callout/ready indicators/night
+light, explicit collected-purse hurry; keep existing recovery600 through D14
+and12000 at D28. Add the fixed Hero Hub close row and Cut278 deployment
+metadata. Ordinary bot progression policy remains unchanged.
+
+Held work is preserved:
+
+- `hold/cut264-short-recovery` at `c5d59355`:15-second curve fails full routine
+  TUNED lead1.10<1.15 and worker benefit. Targeted16-seed TUNED check settled
+  FAIL with upper bound1.10 and two seeds remaining. Do not silently restore.
+- `hold/cut265-building-upgrades` at `6c16bd41`:eight price profiles failed
+  seed1 late spending; actual Bank payback only131/3400 after30 nights.
+  Owner held effects/funding for redesign.
+
+The old150 package `fbf5…` has1092 native tests,32 helpers, Clippy, vat42,
+settlement564 and six related client groups passing. Its full Hero Hub audit
+found a real floating Close overlap on scrolled gear text. Scoped CSS/sheet
+fix passes the unchanged4.5 contrast sampler at7.29 and six geometry/input
+cases (402×681/320×681/1440×900 ×normal/200%). Evidence and observations:
+`docs/evidence/cut264/hero-hub-contrast-fix/`. These older package results
+are not final600-package acceptance.
+
+Current single detached shipping verification: PID3858282, launcher
+`docs/evidence/cut279/run-verify.sh`; output `verify-full.log`, completion
+`verify-full.exit.json`. It runs native/helper tests, lint/type/copy, Clippy,
+shipping WASM, build and bounded routine full gates. The first launch was
+stopped to update recovery-dependent test fixtures; its partial log is kept.
+No parallel Rust/WASM build should write root package during this run.
+
+After it packages (log reaches routine gates), hold root WASM stable, repin
+with `--no-build --settle --regen`, run vat42, full compact Hero Hub,
+settlement564 and related groups on the final package. Run PICKED+H16 on
+the retained curve (`picked_hurry`, three normal check-ins/day); record
+every slain King≥day7 and spending share. Old150 hurry16 pass/1.6882%
+share is historical. Read dated visual notes before reusing their conclusions.
+
+Then commit curated source/evidence only, deploy a clean committed ref with
+`tools/deploy-cf.sh`, verify live real-WASM/metadata SHA+JSON/CORS/no-cache,
+write final dated handoff and pause. Do not stage unrelated old untracked
+art/evidence. Root-owned warm Vite server is5521 (leave shared5219 alone).
+
+The retained curve’s full16-seed pacing pack and exhaustive272-case audit
+are not certified by this bounded milestone; neither is independent fun≥80.
+The recovery-changing candidate is excluded. See contract for exact scope.
+
+# Earlier resume checkpoint — 2026-10-18 (superseded)
 
 Owner resumed Claude’s interrupted work: finish Cut264 clone vat, then Cut265/
 Cut273 W2 Bank/Vat upgrades, recheck and redeploy the dev site. Cut277 polish
@@ -8,7 +61,40 @@ The older parked checkpoint below is historical, not the current work state.
 Owner chose **hold upgrades for redesign; finish the vat**. The combined
 implementation is preserved on `hold/cut265-building-upgrades` at `445a1f3f`.
 Main is being reduced to Cut264 only; vat-only acceptance is restarting.
-Deployment metadata is separately committed as `61712e5b`. Nothing deployed. Do not stage the thousands of unrelated old untracked
+Deployment metadata is separately committed as `61712e5b`. Nothing deployed.
+Vat-only source is committed as `68905730`; held branch also preserves its
+completed evidence at `6c16bd41`. Native runtime key is `51715cb7c676ecbc`.
+Vat-only shipping package SHA256 is
+`fbf5c36b5703b8071ccc0e8a4301d158304d75727851dd201cb7a29d2422ddda`
+(5478440 bytes). Repin4/4 Gold/ledger/ExitLine and after-saves unchanged.
+Full vat-only run passed 1092 tests/6 ignored and 32 helper tests; separate
+final Clippy passes. Full game gates are active. Separate16-seed pacing exited143 without a
+verdict; resumed in detached checkpointed job3831172 via
+`docs/evidence/cut264/run-pacing-resume.sh`. New output is
+`pacing-vat-only-resume.log`; exit status is written to its `.exit.json`.
+Completed full-length seed caches were preserved; no numeric gate claim. PICKED+H completed 16 seeds
+with 42 check-ins each: no King slain, earliest day ≥ 7 passes; median hurry
+share 1.6882%. Vat GPU 42 and shipping settlement564 checks pass. Hero Hub completed its
+functional matrix but failed material contrast on two320px stress-case text
+fragments near the scroll edge. Focused GPU diagnostics are investigating
+real background/occlusion versus stale raster; no threshold/filter changes.
+Related groups 4/6 initially passed; worker purchases 7 checks passed on warm
+server rerun. Guildhouse arrival timed out initially; its unchanged warm-server private-GPU
+rerun passed. All six related groups now have passing vat-only runs.
+Do not rebuild root WASM during browser acceptance. Use the new vat-only
+logs in `docs/evidence/cut264/`; combined evidence below is historical.
+
+The first vat-only quick run passed 1092 native tests but its doctest failed
+on a deleted rlib during overlapping recompilation; it is superseded by the
+full run. An overlapping packaging invocation failed with `invalid type: sequence,
+expected a string`; the exact parsing input was not established. Full-run
+shipping packaging succeeded, both invocations ended, and
+`wasm-cache.mjs check` plus repin verified the stable final package.
+
+PICKED+H is implemented in the new `picked_hurry` example; it reuses PICKED
+policy and presses an affordable hurry only at 42 normal check-ins. This
+explicit diagnostic leaves ordinary policies unchanged. Every slain King
+must be on day 7 or later; spending share is measured without an invented bar. Do not stage the thousands of unrelated old untracked
 art/evidence files. Source was recovered from `.claude/worktrees/cut264`; W2
 was integrated from `.claude/worktrees/cut265-finish` (920fde8f/7c0d17f3).
 
