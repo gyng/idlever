@@ -1,0 +1,169 @@
+{
+  "recorded_at": "2026-10-18T16:52:13.208544+00:00",
+  "source": {
+    "recorded_at": "2026-10-18T16:51:49.796009+00:00",
+    "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+    "tracked_runtime_and_harness_source_sha256": "9d653cff16033db34541ceb60895b313ab7cefc460f4cd22dae65b461a0cd02b",
+    "wasm_sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf",
+    "wasm_bytes": 5478440,
+    "served_wasm_sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf",
+    "served_wasm_bytes": 5478440,
+    "url": "http://localhost:5522/",
+    "node": "/home/g/.nvm/versions/node/v22.18.0/bin/node"
+  },
+  "runtime_and_harness_unchanged": true,
+  "groups": 6,
+  "passed": 6,
+  "headless_exit": {
+    "exit_code": 0
+  },
+  "workplaces_gpu_exit": {
+    "exit_code": 0
+  },
+  "runners": [
+    {
+      "format": "idlever-client-run",
+      "suite": "targeted",
+      "mode": "all",
+      "identity": {
+        "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+        "dirty": true,
+        "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      },
+      "startedAt": "2026-10-18T16:48:14.652Z",
+      "finished": true,
+      "selected": [
+        "hero-life-camp",
+        "home-resident-phases",
+        "worker-purchases",
+        "home-services",
+        "hero-presence"
+      ],
+      "results": {
+        "hero-life-camp": {
+          "name": "hero-life-camp",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 20.139,
+          "endedAtSeconds": 153.977,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:50:48.629Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        },
+        "home-resident-phases": {
+          "name": "home-resident-phases",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 22.463,
+          "endedAtSeconds": 156.331,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:50:50.983Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        },
+        "worker-purchases": {
+          "name": "worker-purchases",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 27.877,
+          "endedAtSeconds": 181.879,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:51:16.531Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        },
+        "home-services": {
+          "name": "home-services",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 51.403,
+          "endedAtSeconds": 185.297,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:51:19.949Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        },
+        "hero-presence": {
+          "name": "hero-presence",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 49.102,
+          "endedAtSeconds": 205.434,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:51:40.086Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "caab273ea7d97dc22f88fc47ce5713c42fedb229effc1a38185032997f333c10",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        }
+      },
+      "updatedAt": "2026-10-18T16:51:40.095Z"
+    },
+    {
+      "format": "idlever-client-run",
+      "suite": "targeted",
+      "mode": "all",
+      "identity": {
+        "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+        "dirty": true,
+        "dirtyHash": "65046862b04bf717ee6c15df49273091b84688cd59ff2bc8506dd31bb2d775aa",
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      },
+      "startedAt": "2026-10-18T16:48:17.240Z",
+      "finished": true,
+      "selected": [
+        "workplaces"
+      ],
+      "results": {
+        "workplaces": {
+          "name": "workplaces",
+          "ok": true,
+          "status": "pass",
+          "code": 0,
+          "ownSeconds": 52.413,
+          "endedAtSeconds": 183.664,
+          "firstFailure": null,
+          "finishedAt": "2026-10-18T16:51:20.905Z",
+          "identity": {
+            "head": "cc5a43b0cfc34926c8b185210fce3cbc90c6c7b2",
+            "dirty": true,
+            "dirtyHash": "65046862b04bf717ee6c15df49273091b84688cd59ff2bc8506dd31bb2d775aa",
+            "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+          }
+        }
+      },
+      "updatedAt": "2026-10-18T16:51:20.911Z"
+    }
+  ],
+  "initial_sandbox_attempt": {
+    "headless_exit": 1,
+    "workplaces_exit": 1,
+    "kind": "launch/environment failure; Chromium/private Xvfb/socket and bash spawn denied; no product assertion failure",
+    "retained": "related-*-sandbox-launch.log and state directories"
+  }
+}

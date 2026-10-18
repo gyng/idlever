@@ -1,0 +1,14 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"name":"apprentice","text":"Yara\nfell to lurker, summoned by the Queen, D28\nMotherbane · Masterbane · Warlordbane · Lichbane\nfallen heirs · their walls remember"}
+    at file:///home/g/p/riddle/web/tests/hero-hub.mjs:978:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.18.0

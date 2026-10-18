@@ -1,0 +1,7 @@
+client suite: targeted (5 selected; 174 current full; 217 exhaustive groups)
+ok   hero-life-camp  154.0s (20.1s)  28 actual camp recovery checks PASS (shallow 1m, older-save 20m); cleared-world flag controlled, no earned win claim
+ok   home-resident-phases 156.3s (22.5s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+ok   worker-purchases 181.9s (27.9s)  1440 7 worker purchase checks PASS
+ok   home-services   185.3s (51.4s)  home-services: 38 checks PASS (real WASM; earned + labelled recovery fixtures)
+ok   hero-presence   205.4s (49.1s)  1440 22 presence/epoch/freshness/compatibility/identity checks PASS
+ok: 5/5 client gates in 205.4s

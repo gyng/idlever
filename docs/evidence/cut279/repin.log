@@ -1,0 +1,12 @@
+repin: native gold_settlement_repin (cargo --profile fast) …
+repin:
+  wasm 5478440 bytes sha256 97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf
+  default manifest docs/evidence/cut264/settlements-inputs-fbf5.json pins fbf5c36b5703… → CHANGED
+  new manifest docs/evidence/cut279/settlements-inputs-97af.json (repinnedFrom docs/evidence/cut264/settlements-inputs-fbf5.json; note_cut279); default switched (edit its "Current package:" comment by hand)
+  settle: Gold, ledger, ExitLine unchanged on 4/4 entries (36.5s)
+    bank-positive: expected unchanged; after-save unchanged
+    death-secured-lost: expected unchanged; after-save DIFFERS in 3 path kinds: $.lineage.persistent.recovery_until_tick, $.lineage.persistent.recovery_ticks, $.lineage.rest_left → regenerated
+    death-fetched-lost: expected unchanged; after-save DIFFERS in 3 path kinds: $.lineage.persistent.recovery_until_tick, $.lineage.persistent.recovery_ticks, $.lineage.rest_left → regenerated
+    multihero-absence: expected unchanged; after-save DIFFERS in 3 path kinds: $.others[].lineage.persistent.recovery_until_tick, $.others[].lineage.persistent.recovery_ticks, $.others[].lineage.total_turns → regenerated
+    3 entries regenerated into docs/evidence/cut279/settlements-inputs-97af.json
+next: cd web && node tests/run.mjs gold-settlements   # browser proof against docs/evidence/cut279/settlements-inputs-97af.json

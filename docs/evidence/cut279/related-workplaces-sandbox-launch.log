@@ -1,0 +1,9 @@
+client suite: targeted (1 selected; 174 current full; 217 exhaustive groups)
+FAIL workplaces      2.7s (2.3s)  Node.js v22.18.0
+             fail(new Error(`Private browser display exited (${code}): ${diagnostics}`)),
+     Error: Private browser display exited (1): 
+         at ChildProcess.<anonymous> (file:///home/g/p/riddle/tools/browser.mjs:102:14)
+         at Object.onceWrapper (node:events:633:26)
+         at ChildProcess.emit (node:events:518:28)
+         at ChildProcess._handle.onexit (node:internal/child_process:293:12)
+FAIL: 0/1 client gates in 2.7s

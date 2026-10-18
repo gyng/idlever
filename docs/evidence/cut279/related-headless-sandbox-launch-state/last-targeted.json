@@ -1,0 +1,103 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "unknown",
+    "dirty": false,
+    "dirtyHash": null,
+    "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+  },
+  "startedAt": "2026-10-18T16:47:17.192Z",
+  "finished": true,
+  "selected": [
+    "hero-life-camp",
+    "home-resident-phases",
+    "worker-purchases",
+    "home-services",
+    "hero-presence"
+  ],
+  "results": {
+    "home-services": {
+      "name": "home-services",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 1.523,
+      "endedAtSeconds": 2.74,
+      "firstFailure": "at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)",
+      "finishedAt": "2026-10-18T16:47:19.933Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    },
+    "hero-life-camp": {
+      "name": "hero-life-camp",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 1.591,
+      "endedAtSeconds": 2.757,
+      "firstFailure": "at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)",
+      "finishedAt": "2026-10-18T16:47:19.949Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    },
+    "home-resident-phases": {
+      "name": "home-resident-phases",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 1.684,
+      "endedAtSeconds": 2.855,
+      "firstFailure": "at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)",
+      "finishedAt": "2026-10-18T16:47:20.047Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    },
+    "worker-purchases": {
+      "name": "worker-purchases",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 24.201,
+      "endedAtSeconds": 26.948,
+      "firstFailure": "result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);",
+      "finishedAt": "2026-10-18T16:47:44.140Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    },
+    "hero-presence": {
+      "name": "hero-presence",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 24.184,
+      "endedAtSeconds": 26.951,
+      "firstFailure": "result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);",
+      "finishedAt": "2026-10-18T16:47:44.143Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    }
+  },
+  "updatedAt": "2026-10-18T16:47:44.144Z"
+}

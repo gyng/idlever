@@ -1,0 +1,35 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "unknown",
+    "dirty": false,
+    "dirtyHash": null,
+    "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+  },
+  "startedAt": "2026-10-18T16:47:18.491Z",
+  "finished": true,
+  "selected": [
+    "workplaces"
+  ],
+  "results": {
+    "workplaces": {
+      "name": "workplaces",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 2.272,
+      "endedAtSeconds": 2.658,
+      "firstFailure": "fail(new Error(`Private browser display exited (${code}): ${diagnostics}`)),",
+      "finishedAt": "2026-10-18T16:47:21.150Z",
+      "identity": {
+        "head": "unknown",
+        "dirty": false,
+        "dirtyHash": null,
+        "wasmSha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+      }
+    }
+  },
+  "updatedAt": "2026-10-18T16:47:21.151Z"
+}

@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {gunzipSync} from 'node:zlib';
+import {launchGpu} from '../../../tools/browser.mjs';
+const base=new URL('../../../',import.meta.url),out=new URL('./',import.meta.url);
+const b=await launchGpu();
+try {
+ const p=await b.newPage({viewport:{width:1440,height:1000}});
+ await p.goto('http://localhost:5522/?fresh=1&seed=1&runs=0');
+ await p.waitForFunction(()=>window.__idlever?.booted);
+ await p.evaluate(async raw=>{const a=window.__idlever;a.runnerOn=false;a.lineage=await a.engine.load(raw);await a.refresh();a.go({kind:'camp'});document.documentElement.style.fontSize='32px';},gunzipSync(readFileSync(new URL('docs/evidence/cut220/core/fixtures/earned-hybrid-saved-kit.game.json.gz',base))).toString());
+ const before=await p.evaluate(()=>window.__idlever.engine.save());
+ const lit=await p.evaluate(()=>window.__idlever.lineage.town.workers.find(w=>w.lit));
+ const target=p.locator(`[data-building="worker"][data-worker="${lit.id}"]`);
+ await p.locator('.town-graveyard').hover();
+ await p.waitForFunction(()=>document.querySelector('.town-graveyard')?.getAttribute('aria-describedby')==='kw-tip');
+ const read=()=>p.evaluate(()=>({text:document.querySelector('#kw-tip')?.textContent,owner:document.querySelector('[aria-describedby="kw-tip"]')?.outerHTML.slice(0,500),over:document.querySelector('[data-building="worker"]:hover')?.dataset.worker,phase:window.__idlever.lineage.persistent_hero.state,run:window.__idlever.lineage.live}));
+ const yard=await read();
+ await target.hover();
+ const immediate=await read();
+ await p.waitForFunction(id=>document.querySelector(`[data-building="worker"][data-worker="${id}"]`)?.getAttribute('aria-describedby')==='kw-tip',lit.id);
+ const settled=await read();
+ await p.screenshot({path:new URL('worker-tooltip-settled.png',out).pathname});
+ const after=await p.evaluate(()=>window.__idlever.engine.save());
+ assert.equal(after,before);
+ assert.ok(settled.text.includes('arrives'));
+ assert.equal(settled.over,lit.id);
+ writeFileSync(new URL('tooltip-owner.json',out),JSON.stringify({lit,yard,immediate,settled,saveEqual:true},null,2));
+ console.log(JSON.stringify({lit,yard,immediate,settled,saveEqual:true}));
+} finally{await b.close();}

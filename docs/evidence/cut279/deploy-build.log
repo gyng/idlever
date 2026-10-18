@@ -1,0 +1,20 @@
+[INFO]: 🎯  Checking for the Wasm target...
+[INFO]: 🌀  Compiling to Wasm...
+    Finished `release` profile [optimized] target(s) in 0.14s
+[INFO]: ⬇️  Installing wasm-bindgen...
+[INFO]: Optimizing wasm binaries with `wasm-opt`...
+[INFO]: Optional fields missing from Cargo.toml: 'description', 'repository', and 'license'. These are not necessary, but recommended
+[INFO]: ✨   Done in 2m 48s
+[INFO]: 📦   Your wasm pkg is ready to publish at web/src/engine/pkg.
+$ tsc && vite build
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/runs.ts is dynamically imported by src/ui/chronicle.ts but also statically imported by src/ui/hero-hub.ts, src/ui/report.ts, dynamic import will not move module into another chunk.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 900 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/town.ts is dynamically imported by src/ui/chronicle.ts, src/ui/hero-life.ts, src/ui/legendary-gear.ts but also statically imported by src/ui/camp.ts, src/ui/frame.ts, src/ui/heroes.ts, src/ui/preparation.ts, dynamic import will not move module into another chunk.
+
+deploy-cf: built 423fe45ae9e5, wasm 97afc855272bd390 (5478440 bytes)
+deploy-cf: dry run, dist at /tmp/idlever-cf-59dDe2/web/dist (remove: git worktree remove --force /tmp/idlever-cf-59dDe2)

@@ -51,3 +51,18 @@ not certified by this bounded milestone. The pacing-changing15-second curve
 is excluded; automatic progression retains its established curve and policy.
 The broader audits and independent fun≥80 remain open. Old failures and
 interrupted runs stay in evidence; they are not relabelled as passes.
+
+## Recorded dev-delivery deviation — 2026-10-19
+
+The routine-full green criterion above is **NOT MET**: final retained600 source
+fails TUNED/PICKED D33 at1.10 against≥1.15 and worker away benefit at D18
+48 vs24h, mean best29.93 vs30.14. An isolated exact pre-vat baseline37d8b63f
+reproduces both row failures with identical values. No numeric bar is changed.
+See `evidence/cut279/baseline-comparison.md` and the bounded source comparison.
+
+Agent delivery decision under AGENTS.md's recorded-deviation rule: publish the
+bounded dev milestone because its Vat/Hub/settlement/metadata checks pass,
+ordinary progression matches the inherited source, and the owner requested
+deploy-and-pause rather than reopening broad balance redesign. Preserve the
+whole routine FAIL and these two inherited issues for follow-up. This is a dev
+delivery with a documented limitation, not whole-game mechanical acceptance.

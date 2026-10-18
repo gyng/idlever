@@ -1,0 +1,27 @@
+client suite: targeted (5 selected; 174 current full; 217 exhaustive groups)
+FAIL home-services   2.7s (1.5s)  Node.js v22.18.0
+         at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)
+         at /home/g/p/riddle/web/tests/home-services.mjs:15:17 {
+FAIL hero-life-camp  2.8s (1.6s)  Node.js v22.18.0
+         at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)
+         at /home/g/p/riddle/web/tests/hero-life-camp.mjs:26:23 {
+FAIL home-resident-phases 2.9s (1.7s)  Node.js v22.18.0
+         at launchBrowser (/home/g/p/riddle/tools/browser.mjs:157:19)
+         at /home/g/p/riddle/web/tests/home-resident-phases.mjs:25:23 {
+FAIL worker-purchases 26.9s (24.2s)  Node.js v22.18.0
+         result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+     <ref *1> Error: spawnSync bash EPERM
+       error: [Circular *1],
+         at Object.spawnSync (node:internal/child_process:1120:20)
+         at spawnSync (node:child_process:901:24)
+         at execFileSync (node:child_process:944:15)
+         at file:///home/g/p/riddle/web/tests/worker-purchases.mjs:6:13 {
+FAIL hero-presence   27.0s (24.2s)  Node.js v22.18.0
+         result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+     <ref *1> Error: spawnSync bash EPERM
+       error: [Circular *1],
+         at Object.spawnSync (node:internal/child_process:1120:20)
+         at spawnSync (node:child_process:901:24)
+         at execFileSync (node:child_process:944:15)
+         at file:///home/g/p/riddle/web/tests/hero-presence.mjs:4:13 {
+FAIL: 0/5 client gates in 27.0s

@@ -1,0 +1,1313 @@
+{
+  "checks": 25,
+  "fixtureSha256": "b8e50c59706e3a971bfa3ffce904ad0b67c1cf5390dd1d4b20fa2fa6ae21bcfa",
+  "expectedPackage": {
+    "bytes": 5478440,
+    "sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+  },
+  "packages": [
+    {
+      "bytes": 5478440,
+      "sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+    },
+    {
+      "bytes": 5478440,
+      "sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+    },
+    {
+      "bytes": 5478440,
+      "sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+    },
+    {
+      "bytes": 5478440,
+      "sha256": "97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf"
+    }
+  ],
+  "rows": [
+    {
+      "phase": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "seated": [
+        true,
+        true,
+        true
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Restore 1 HP per hero action while active",
+              "cost_effect": "Healing potions restore 67% of their normal amount",
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Damage reduction +1 per hit while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Speed +3 while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "hurt",
+              "label": "Below 50% HP",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "At least 2 adjacent foes",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "crowded",
+              "label": "Two nearby foes",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "boss",
+              "label": "Boss in sight",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "No foes in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "quiet",
+              "label": "No foes visible",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "D9 or deeper",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "deep",
+              "label": "D9 or deeper",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "first",
+              "label": "First 20 turns",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "reincarnating",
+        "recovery_s": 60,
+        "recovery_total_s": 60,
+        "hurry_price": 95,
+        "rest_s": 60,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Build the Guildhouse to book delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Clone vat",
+          "available": true,
+          "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "2923f2e5acc41ea9",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current clone's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "seated": [
+        true,
+        true,
+        true
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Restore 1 HP per hero action while active",
+              "cost_effect": "Healing potions restore 67% of their normal amount",
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Damage reduction +1 per hit while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Speed +3 while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "hurt",
+              "label": "Below 50% HP",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "At least 2 adjacent foes",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "crowded",
+              "label": "Two nearby foes",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "boss",
+              "label": "Boss in sight",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "No foes in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "quiet",
+              "label": "No foes visible",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "D9 or deeper",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "deep",
+              "label": "D9 or deeper",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "first",
+              "label": "First 20 turns",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "reincarnating",
+        "recovery_s": 58,
+        "recovery_total_s": 60,
+        "hurry_price": 95,
+        "rest_s": 58,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Build the Guildhouse to book delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Clone vat",
+          "available": true,
+          "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "2923f2e5acc41ea9",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current clone's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Restore 1 HP per hero action while active",
+              "cost_effect": "Healing potions restore 67% of their normal amount",
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Damage reduction +1 per hit while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Speed +3 while active",
+              "cost_effect": "Max HP −10% (at least 1 HP)",
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "hurt",
+              "label": "Below 50% HP",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "At least 2 adjacent foes",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "crowded",
+              "label": "Two nearby foes",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "boss",
+              "label": "Boss in sight",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "No foes in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "quiet",
+              "label": "No foes visible",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "D9 or deeper",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "deep",
+              "label": "D9 or deeper",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "first",
+              "label": "First 20 turns",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "recovery_total_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Build the Guildhouse to book delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Clone vat",
+          "available": true,
+          "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "No attribute commitments",
+          "token": "2923f2e5acc41ea9",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current clone's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": false,
+            "label": "6 delves · D5",
+            "blocked": "Complete 4 more delves",
+            "required_completed": 6,
+            "completed": 2,
+            "completed_remaining": 4,
+            "required_depth": 5,
+            "depth_remaining": 1
+          },
+          "inherited": {
+            "available": false,
+            "label": "8 delves · D8",
+            "blocked": "Complete 6 more delves",
+            "required_completed": 8,
+            "completed": 2,
+            "completed_remaining": 6,
+            "required_depth": 8,
+            "depth_remaining": 4
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Complete 10 more delves",
+            "required_completed": 12,
+            "completed": 2,
+            "completed_remaining": 10,
+            "required_depth": 13,
+            "depth_remaining": 9
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [],
+          "inherited_offer": [],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "hurt",
+              "label": "Below 50% HP",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "At least 2 adjacent foes",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "crowded",
+              "label": "Two nearby foes",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "boss",
+              "label": "Boss in sight",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "No foes in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "quiet",
+              "label": "No foes visible",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "D9 or deeper",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "deep",
+              "label": "D9 or deeper",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "first",
+              "label": "First 20 turns",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": false
+        },
+        "id": "4354685564936845355:2",
+        "name": "Galen Thorn",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "recovery_total_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Build the Guildhouse to book delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Clone vat",
+          "available": true,
+          "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Reach D8",
+          "token": "e80d7c2236928f1a",
+          "refund": 0,
+          "points_after": 6,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current clone's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "away",
+        "ready"
+      ],
+      "ids": [
+        1,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": false,
+            "label": "6 delves · D5",
+            "blocked": "Complete 4 more delves",
+            "required_completed": 6,
+            "completed": 2,
+            "completed_remaining": 4,
+            "required_depth": 5,
+            "depth_remaining": 1
+          },
+          "inherited": {
+            "available": false,
+            "label": "8 delves · D8",
+            "blocked": "Complete 6 more delves",
+            "required_completed": 8,
+            "completed": 2,
+            "completed_remaining": 6,
+            "required_depth": 8,
+            "depth_remaining": 4
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Complete 10 more delves",
+            "required_completed": 12,
+            "completed": 2,
+            "completed_remaining": 10,
+            "required_depth": 13,
+            "depth_remaining": 9
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [],
+          "inherited_offer": [],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "condition_effect": "Below 50% HP",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "hurt",
+              "label": "Below 50% HP",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "At least 2 adjacent foes",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "crowded",
+              "label": "Two nearby foes",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "Boss in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "boss",
+              "label": "Boss in sight",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "No foes in sight",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "quiet",
+              "label": "No foes visible",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "D9 or deeper",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "deep",
+              "label": "D9 or deeper",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "condition_effect": "First 20 turns of each floor",
+              "gift_effect": "Choose a lasting trait first",
+              "cost_effect": "Choose a lasting trait first",
+              "learned": false,
+              "id": "first",
+              "label": "First 20 turns",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": false
+        },
+        "id": "4354685564936845355:2",
+        "name": "Galen Thorn",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "away",
+        "recovery_s": 0,
+        "recovery_total_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 12
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Build the Guildhouse to book delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Clone vat",
+          "available": true,
+          "body": "Defeat regrows the same hero as a clone. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Hero away",
+          "token": "f38e0d5a978ef00f",
+          "refund": 0,
+          "points_after": 6,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current clone's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

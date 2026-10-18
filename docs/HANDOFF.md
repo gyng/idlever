@@ -1,75 +1,94 @@
-# Cut279 milestone — 2026-10-19 (acceptance and deployment in progress)
+# Paused after Cut279 dev milestone — 2026-10-19
 
 Owner: **“pause at next good major milestone and update handoff doc and deploy.”**
-Finish only the deployable milestone below, verify dev, update this checkpoint
-and pause. Do not continue tuning, audits or the broader queue after that.
-No GitHub push/release is requested.
+The bounded Vat/Hub/metadata milestone is deployed and verified. Work is paused;
+do not resume tuning or the broader queue without owner direction.
+No GitHub push/release was made.
 
-Contract: [CUT279_VAT_MILESTONE.md](CUT279_VAT_MILESTONE.md). Deliver clone
-vat timer/progress, whole-recovery cloning, callout/ready indicators/night
-light, explicit collected-purse hurry; keep existing recovery600 through D14
-and12000 at D28. Add the fixed Hero Hub close row and Cut278 deployment
-metadata. Ordinary bot progression policy remains unchanged.
+Live: https://dev.idlever.awoo.party/ — clean source
+`423fe45ae9e5747f311904d97ffc058807419c63`.
+Cloudflare Worker `idlever-dev`, version `0e5e9b02-01b2-4370-8655-faac8994dd44`.
+Artifact metadata prepared2026-10-18T17:06:43Z, deployed around17:13UTC
+(2026-10-19 Singapore). Later commits contain evidence/comments/handoff only.
+Contract: [CUT279_VAT_MILESTONE.md](CUT279_VAT_MILESTONE.md).
 
-Held work is preserved:
+Delivered: whole-recovery cloning, timer/ring, callout/ready markers/night light,
+explicit collected-purse Hurry; established recovery600 ticks through D14,
+ramping to12000 at D28. No bot/worker/offline hurry. Hero Hub has a separate
+44px Close row above its scrollable folio. Deployment metadata schema remains1
+with public changelog and fresh content-hashed800×500 gameplay preview.
 
-- `hold/cut264-short-recovery` at `c5d59355`:15-second curve fails full routine
-  TUNED lead1.10<1.15 and worker benefit. Targeted16-seed TUNED check settled
-  FAIL with upper bound1.10 and two seeds remaining. Do not silently restore.
-- `hold/cut265-building-upgrades` at `6c16bd41`:eight price profiles failed
-  seed1 late spending; actual Bank payback only131/3400 after30 nights.
-  Owner held effects/funding for redesign.
+## Validation and a recorded limitation
 
-The old150 package `fbf5…` has1092 native tests,32 helpers, Clippy, vat42,
-settlement564 and six related client groups passing. Its full Hero Hub audit
-found a real floating Close overlap on scrolled gear text. Scoped CSS/sheet
-fix passes the unchanged4.5 contrast sampler at7.29 and six geometry/input
-cases (402×681/320×681/1440×900 ×normal/200%). Evidence and observations:
-`docs/evidence/cut264/hero-hub-contrast-fix/`. These older package results
-are not final600-package acceptance.
-
-Current final shipping WASM is5478440 bytes, SHA256
+Final shipping WASM5478440 bytes, SHA256
 `97afc855272bd3900fad9e937dad265ea40d661602d6f9886ec5a1e8ea880ccf`.
-Do not rebuild root package while audits run. Detached full verification
-PID3868045 (`docs/evidence/cut279/run-verify.sh`, `verify-full.log`, eventual
-`verify-full.exit.json`) passed1092 native tests/6 ignored,32 helper tests,
-format/lint/type/copy, Clippy, shipping build, metrics8 and wire10. Routine
-18-case/16-seed comparison dayplayer leg remains running.
+Clean deployment rebuilt the identical bytes; live responses match.
+Evidence: `docs/evidence/cut279/`.
 
-The first launch was stopped to update recovery-dependent fixtures. A later
-native link failed with undefined hidden LLVM symbols; affected generated core
-cache was cleaned. This final retry uses `CARGO_INCREMENTAL=0`; use that same
-environment for native diagnostics/repin. Failed/partial logs are preserved.
+- 1092 native tests pass/6 ignored;32 helper tests, formatting/lint/type/copy,
+ Clippy, shipping build, metrics8 and wire10 pass. Final metadata tests9 pass;
+ current games-index consumer14 and both-base integration pass.
+- Vat42, six related UI groups, native settlement4/4 and real-WASM
+ settlement564 checks across24 cases pass. Gold/ledger/ExitLine and expected
+ unchanged; three recovery/turn after-saves regenerated under retained600.
+ Default manifest `docs/evidence/cut279/settlements-inputs-97af.json`.
+- Full compact Hero Hub10628 checks/30 views/8 cases passes. Ordinary contrast
+ min5.76≥4.5, inactive6.17≥3; four actual package deliveries match. Primary
+402×681 normal/200% close/scroll/focus proof also passes. No real Safari or
+ exhaustive geometry acceptance is claimed; omitted views remain explicit.
+- PICKED+H16 seeds complete42 normal check-ins/seed over14 days. No King slain;
+ earliest-King day7 bar passes. Median days3–14 hurry spend1.54049% of income
+ (diagnostic, no invented share threshold).
+- Live HTTP verifies exact commit/WASM, stable artifact timestamp, JSON/CORS*/
+ no-cache, preview content hash and SW bypass. Fresh live402×681 normal-text
+ browser built the house and entered rendered watch, no page errors/overflow.
+ Dated observations distinguish automation, agent visuals and player feedback.
 
-Final-package evidence in `docs/evidence/cut279/`:
+**Whole routine full is FAIL, exit1.** TUNED/PICKED D33 is1.10 against≥1.15;
+worker away benefit is D18 48 vs24h, mean best29.93 vs30.14. An isolated exact
+pre-vat baseline37d8b63f reproduces both failures with identical values. Source
+comparison finds ordinary policy, existing balance, offline/worker/forecast/row
+logic unchanged. `baseline-comparison.md`, `bounded-source-equivalence.md`,
+`baseline-rows.log` and `verify-full.log` retain the proof and failed verdicts.
 
-- PICKED+H16 completed42 normal check-ins per seed. No King in14 days;
-  earliest slain day≥7 passes; median days3–14 hurry share1.54049% (diagnostic).
-- Vat42 and six related UI groups pass. GPU visible-viewport captures and dated
-  observations are saved; metadata preview now uses a fresh800×500 watch capture.
-- Native settlement Gold/ledger/ExitLine unchanged4/4; expected unchanged4/4.
-  Three after-saves regenerate only recovery/turn fields after retained600.
-  Default manifest `settlements-inputs-97af.json`. Browser564 audit remains
-  running via PID4050227, `gold-settlements.log`, `settlements.exit.json`.
-- Primary402×681 normal/200% Hero Hub close/scroll/focus proof passes. Full
-  compact audit failed an early worker-hover check: old graveyard tooltip was
-  read instead of Apprentice details. Agent is diagnosing stale tooltip timing
-  versus genuine overlap; `hero-hub/` preserves failure. No threshold relaxed.
-- Metadata schema remains1 with additive changelog/preview fields. Publisher9,
-  consumer14 and both-base integration pass. Agent prepared fresh owned WebP;
-  no publication yet. See Cut278.
+Agent recorded a dev-delivery deviation under AGENTS.md's rule to record a
+reason: ship the bounded feature milestone at the owner's deploy-and-pause
+request, preserve inherited balance failures for separate work. Neither gate
+was weakened or relabelled. Whole-game mechanical acceptance, fresh16-seed
+pacing, exhaustive272-case audits and independent fun≥80 remain open.
 
-Fresh Node22 Vite5522 belongs to vat_review; root-owned5521 also exists. Leave
-shared5219 alone. Old150 results below are historical, not final acceptance.
+Initial/failed runs remain preserved: interrupted fixture-update and LLVM link
+cache failures, sandbox browser/test-worker launch failures, first full Hub's
+stale graveyard tooltip and a premature baseline launcher. The tooltip probe
+proves the350ms ownership handover with unchanged save bytes; the audit now
+waits for actual worker ARIA ownership before identical content assertions.
+No production tooltip behavior, material filter or contrast threshold changed.
+First live screenshot preceded the world frame; `live-before-frame-*` is
+labelled separately. Final live capture waits for the rendered hero.
 
-Then commit curated source/evidence only, deploy a clean committed ref with
-`tools/deploy-cf.sh`, verify live real-WASM/metadata SHA+JSON/CORS/no-cache,
-write final dated handoff and pause. Do not stage unrelated old untracked
-art/evidence. Root-owned warm Vite server is5521 (leave shared5219 alone).
+## Held work and resume direction
 
-The retained curve’s full16-seed pacing pack and exhaustive272-case audit
-are not certified by this bounded milestone; neither is independent fun≥80.
-The recovery-changing candidate is excluded. See contract for exact scope.
+- `hold/cut264-short-recovery` at `c5d59355`:15-second proposal remains held.
+ Its routine and targeted16-seed TUNED failures are preserved; restored600
+ also fails the two inherited routine rows. Do not call restoration a full pass.
+ The100/200/300 recovery search remains a follow-up, not active work.
+- `hold/cut265-building-upgrades` at `6c16bd41`: owner held upgrades for redesign.
+ Eight price profiles fail seed1 late spending; actual Bank payback131/3400
+ after30 nights. Bank/Vat W2 effects are absent from deployed source.
+- Broader Cut273 staff progression, the queue, audits and independent fun remain.
+- Owner now prefers statistical tuning/acceptance by default when sufficient,
+ with full campaigns exceptional. Next design: paired baseline/candidate seeds,
+ progressive sampling and valid sequential uncertainty, held-out final seeds,
+ explicit median/worst-seed/rare-event semantics and multiple-search controls.
+ Extend existing targeted rows/sweep/checkpoints; do not silently change fixed
+ numeric contracts or treat repeated check-ins as independent samples.
+ No statistical harness or new tuning batch was started before this pause.
+
+Current-source native dayplayer was rebuilt after baseline comparison (exit0).
+Use `CARGO_INCREMENTAL=0` for these native artifacts; the earlier LLVM cache
+failure was resolved by cleaning only generated core artifacts. All owned
+browser/audit/tuning jobs are finished. Temporary milestone servers5521/5522
+and baseline/deploy worktrees were cleaned; shared5219 was left alone.
 
 # Earlier resume checkpoint — 2026-10-18 (superseded)
 

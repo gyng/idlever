@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+ok 1 - artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+  ---
+  duration_ms: 17.435051
+  type: 'test'
+  ...
+# Subtest: rejects missing, short or decorated identities, invalid versions, and invalid base paths
+ok 2 - rejects missing, short or decorated identities, invalid versions, and invalid base paths
+  ---
+  duration_ms: 5.051318
+  type: 'test'
+  ...
+# Subtest: headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+ok 3 - headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+  ---
+  duration_ms: 15.621886
+  type: 'test'
+  ...
+# Subtest: source worker bypasses metadata, including navigations and queries, while assets retain caching
+ok 4 - source worker bypasses metadata, including navigations and queries, while assets retain caching
+  ---
+  duration_ms: 2.61101
+  type: 'test'
+  ...
+# Subtest: artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+ok 5 - artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+  ---
+  duration_ms: 9.876132
+  type: 'test'
+  ...
+# Subtest: CLI stamps the artifact with the provided full source SHA and release version
+ok 6 - CLI stamps the artifact with the provided full source SHA and release version
+  ---
+  duration_ms: 57.208237
+  type: 'test'
+  ...
+# Subtest: pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+ok 7 - pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+  ---
+  duration_ms: 2.477969
+  type: 'test'
+  ...
+# Subtest: optional changelog and preview fields retain schema 1 and resolve under either public base
+ok 8 - optional changelog and preview fields retain schema 1 and resolve under either public base
+  ---
+  duration_ms: 23.865885
+  type: 'test'
+  ...
+# Subtest: optional public links and images reject unsafe URLs, missing descriptions and markup before stamping
+ok 9 - optional public links and images reject unsafe URLs, missing descriptions and markup before stamping
+  ---
+  duration_ms: 5.586728
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 218.498265
