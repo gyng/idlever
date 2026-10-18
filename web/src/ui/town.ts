@@ -610,11 +610,15 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         });
         if (!announced.has(offer)) {
           announced.add(offer);
-          toast(
-            offer === "legacy"
-              ? /* copy:callout */ "Legacy · Guild"
-              : /* copy:callout */ "Ranks · Guild",
-          );
+          const say = () =>
+            toast(
+              offer === "legacy"
+                ? /* copy:callout */ "Legacy · Guild"
+                : /* copy:callout */ "Ranks · Guild",
+            );
+          // Cut268 (integration): an honour toast up at the same camp paint (honours.ts) speaks first; the order's waits for it
+          if (document.querySelector(".toast.honour-toast")) setTimeout(say, 2700);
+          else say();
         }
       }
       b.dataset.offer = offer ?? "";

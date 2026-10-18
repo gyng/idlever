@@ -1,0 +1,4691 @@
+{
+  "entries": [
+    {
+      "activeBloodline": 1,
+      "afterHome": "docs/evidence/cut268/settlements/bank-positive.after.session.json.gz",
+      "afterRawSha256": "14211bb9a1726a6ef7fd4345b117c0ffdf0ae0bccfb60f7fe8d65ae04084d990",
+      "expected": {
+        "exitLine": {
+          "carried": 1,
+          "end": "bank",
+          "keep_pct": 100,
+          "kept": 1,
+          "legacy_earned": 1,
+          "meters": {
+            "actions": 5,
+            "credit": [
+              {
+                "credit": "written",
+                "fires": 3,
+                "share": 0.6
+              },
+              {
+                "credit": "chores",
+                "fires": 2,
+                "share": 0.4
+              }
+            ],
+            "dealt": {
+              "foes": 0,
+              "hero": 0,
+              "pets": 0
+            },
+            "dps_dealt": {
+              "foes": 0,
+              "hero": 0,
+              "pets": 0
+            },
+            "dps_taken": {
+              "foes": 0,
+              "hero": 0,
+              "pets": 0
+            },
+            "fights": 0,
+            "gold": 1,
+            "gold_per_min": 10.714,
+            "healed": [],
+            "hits_hero": 0,
+            "hits_pets": 0,
+            "hps": 0,
+            "rows": [
+              {
+                "fires": 2,
+                "row": -2,
+                "share": 0.4
+              },
+              {
+                "fires": 3,
+                "row": 0,
+                "share": 0.6
+              }
+            ],
+            "seconds": 5.6,
+            "supplies": {},
+            "taken": {
+              "foes": 0,
+              "hero": 0,
+              "pets": 0
+            },
+            "time": {
+              "chores": 1,
+              "fight": 0,
+              "rest": 0,
+              "travel": 55
+            },
+            "time_s": {
+              "chores": 0.1,
+              "fight": 0,
+              "rest": 0,
+              "travel": 5.5
+            }
+          },
+          "news": [
+            {
+              "day": 4,
+              "k": "differ",
+              "text": "shallower: D1, last D27"
+            }
+          ],
+          "reached": 1,
+          "reason": "bank rule",
+          "run_id": 133,
+          "spent": 0,
+          "spent_on": [],
+          "start": 1,
+          "text": "banked $1 · $1 carried · keeps 100% · 2 supplies back · ◆+1",
+          "tier": "bank",
+          "xp": 4
+        },
+        "fetched": 0,
+        "goldAfter": 12022,
+        "goldBefore": 12021,
+        "grossLostBeforeFetch": 0,
+        "ledgerAfter": [
+          {
+            "delta": 187,
+            "t": 1270101,
+            "why": "returned D7"
+          },
+          {
+            "delta": 161,
+            "t": 1292222,
+            "why": "returned D8"
+          },
+          {
+            "delta": 438,
+            "t": 1328217,
+            "why": "banked D13"
+          },
+          {
+            "delta": 174,
+            "t": 1354001,
+            "why": "returned D9"
+          },
+          {
+            "delta": 350,
+            "t": 1378467,
+            "why": "banked D12"
+          },
+          {
+            "delta": 153,
+            "t": 1400882,
+            "why": "returned D6"
+          },
+          {
+            "delta": 393,
+            "t": 1433203,
+            "why": "returned D13"
+          },
+          {
+            "delta": 202,
+            "t": 1460021,
+            "why": "returned D10"
+          },
+          {
+            "delta": -2000,
+            "t": 1468314,
+            "why": "forge pack 6"
+          },
+          {
+            "delta": 193,
+            "t": 1482720,
+            "why": "banked D7"
+          },
+          {
+            "delta": 163,
+            "t": 1508147,
+            "why": "banked D11"
+          },
+          {
+            "delta": 411,
+            "t": 1534869,
+            "why": "returned D13"
+          },
+          {
+            "delta": 342,
+            "t": 1569547,
+            "why": "returned D13"
+          },
+          {
+            "delta": 391,
+            "t": 1604382,
+            "why": "returned D13"
+          },
+          {
+            "delta": 0,
+            "lost": 297,
+            "t": 1635072,
+            "why": "died D13"
+          },
+          {
+            "delta": 244,
+            "t": 1655109,
+            "why": "returned D11"
+          },
+          {
+            "delta": 160,
+            "t": 1678566,
+            "why": "returned D7"
+          },
+          {
+            "delta": 300,
+            "t": 1705574,
+            "why": "returned D13"
+          },
+          {
+            "delta": 297,
+            "t": 1705574,
+            "why": "recovered Toren's pack"
+          },
+          {
+            "delta": 211,
+            "t": 1737117,
+            "why": "returned D13"
+          },
+          {
+            "delta": 178,
+            "t": 1759883,
+            "why": "banked D7"
+          },
+          {
+            "delta": -2800,
+            "t": 1759883,
+            "why": "forge mail +1"
+          },
+          {
+            "delta": 310,
+            "t": 1787925,
+            "why": "returned D13"
+          },
+          {
+            "delta": 267,
+            "t": 1817162,
+            "why": "returned D11"
+          },
+          {
+            "delta": 146,
+            "t": 1840759,
+            "why": "banked D8"
+          },
+          {
+            "delta": 323,
+            "t": 1872450,
+            "why": "returned D13"
+          },
+          {
+            "delta": 371,
+            "t": 1899394,
+            "why": "returned D13"
+          },
+          {
+            "delta": 296,
+            "t": 1923290,
+            "why": "banked D10"
+          },
+          {
+            "delta": 138,
+            "t": 1941506,
+            "why": "returned D6"
+          },
+          {
+            "delta": 312,
+            "t": 1969808,
+            "why": "banked D11"
+          },
+          {
+            "delta": 0,
+            "lost": 386,
+            "t": 2001158,
+            "why": "died D13"
+          },
+          {
+            "delta": 384,
+            "t": 2019068,
+            "why": "returned D13"
+          },
+          {
+            "delta": 386,
+            "t": 2019068,
+            "why": "recovered Una's pack"
+          },
+          {
+            "delta": 545,
+            "t": 2049159,
+            "why": "returned D13"
+          },
+          {
+            "delta": -3200,
+            "t": 2049159,
+            "why": "forge sword +4"
+          },
+          {
+            "delta": 296,
+            "t": 2074446,
+            "why": "returned D13"
+          },
+          {
+            "delta": 471,
+            "t": 2106740,
+            "why": "banked D16"
+          },
+          {
+            "delta": 548,
+            "lost": 27,
+            "t": 2145778,
+            "why": "died D18"
+          },
+          {
+            "delta": 312,
+            "t": 2167692,
+            "why": "returned D13"
+          },
+          {
+            "delta": 320,
+            "t": 2199787,
+            "why": "returned D13"
+          },
+          {
+            "delta": 303,
+            "t": 2228950,
+            "why": "returned D13"
+          },
+          {
+            "delta": 611,
+            "t": 2266872,
+            "why": "banked D20"
+          },
+          {
+            "delta": 27,
+            "t": 2266872,
+            "why": "recovered Vale's pack"
+          },
+          {
+            "delta": 788,
+            "t": 2312274,
+            "why": "banked D18"
+          },
+          {
+            "delta": 1093,
+            "t": 2361828,
+            "why": "returned D18"
+          },
+          {
+            "delta": -3200,
+            "t": 2361828,
+            "why": "forge pack 7"
+          },
+          {
+            "delta": -4400,
+            "t": 2361828,
+            "why": "forge mail +2"
+          },
+          {
+            "delta": 568,
+            "t": 2381664,
+            "why": "returned D18"
+          },
+          {
+            "delta": 846,
+            "t": 2405227,
+            "why": "returned D20"
+          },
+          {
+            "delta": 595,
+            "t": 2425654,
+            "why": "returned D18"
+          },
+          {
+            "delta": 457,
+            "t": 2448851,
+            "why": "banked D19"
+          },
+          {
+            "delta": 663,
+            "t": 2490448,
+            "why": "returned D18"
+          },
+          {
+            "delta": 1044,
+            "t": 2540175,
+            "why": "banked D23"
+          },
+          {
+            "delta": 1075,
+            "t": 2587798,
+            "why": "returned D18"
+          },
+          {
+            "delta": 550,
+            "t": 2635755,
+            "why": "returned D18"
+          },
+          {
+            "delta": -5000,
+            "t": 2649828,
+            "why": "forge sword +5"
+          },
+          {
+            "delta": 709,
+            "t": 2657870,
+            "why": "returned D23"
+          },
+          {
+            "delta": 104,
+            "t": 2670810,
+            "why": "banked D19"
+          },
+          {
+            "delta": 777,
+            "t": 2690517,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 999,
+            "t": 2735180,
+            "why": "died D23"
+          },
+          {
+            "delta": 991,
+            "t": 2770635,
+            "why": "returned D23"
+          },
+          {
+            "delta": 999,
+            "t": 2770635,
+            "why": "recovered Wren's pack"
+          },
+          {
+            "delta": 953,
+            "t": 2825131,
+            "why": "returned D23"
+          },
+          {
+            "delta": 839,
+            "t": 2871740,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1431,
+            "t": 2921848,
+            "why": "banked D28"
+          },
+          {
+            "delta": -6400,
+            "t": 2937828,
+            "why": "forge plate"
+          },
+          {
+            "delta": 408,
+            "t": 2948145,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1612,
+            "t": 2974415,
+            "why": "returned D28"
+          },
+          {
+            "delta": 368,
+            "t": 2990678,
+            "why": "returned D23"
+          },
+          {
+            "delta": 510,
+            "t": 3005978,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 1630,
+            "t": 3031170,
+            "why": "died D28"
+          },
+          {
+            "delta": 54,
+            "t": 3032450,
+            "why": "banked D19"
+          },
+          {
+            "delta": 299,
+            "t": 3048392,
+            "why": "banked D22"
+          },
+          {
+            "delta": 494,
+            "t": 3065047,
+            "why": "banked D23"
+          },
+          {
+            "delta": 729,
+            "t": 3107305,
+            "why": "banked D23"
+          },
+          {
+            "delta": 862,
+            "t": 3153418,
+            "why": "returned D23"
+          },
+          {
+            "delta": 2400,
+            "t": 3202388,
+            "why": "returned D28"
+          },
+          {
+            "delta": 1630,
+            "t": 3202388,
+            "why": "recovered Yara's pack"
+          },
+          {
+            "delta": 1327,
+            "t": 3261778,
+            "why": "returned D27"
+          },
+          {
+            "delta": 1,
+            "t": 3267834,
+            "why": "banked D1"
+          }
+        ],
+        "lostAfterFetch": 0,
+        "newLedger": [
+          {
+            "delta": 1,
+            "t": 3267834,
+            "why": "banked D1"
+          }
+        ],
+        "pre": {
+          "carried": 1,
+          "depth": 1,
+          "hp": 56,
+          "livingPets": [
+            {
+              "gen": 0,
+              "hp": 13,
+              "id": 1000900,
+              "kind": "rat",
+              "level": 3,
+              "life": {
+                "announced": [
+                  3
+                ],
+                "heirs": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "role": "fetcher",
+                "runs": 124,
+                "xp": 1500
+              },
+              "max_hp": 13,
+              "max_rows": 4,
+              "name": "Greth",
+              "rules": {
+                "rows": [
+                  {
+                    "conds": [
+                      {
+                        "k": "adj>=",
+                        "n": 1
+                      }
+                    ],
+                    "verb": {
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "conds": [
+                      {
+                        "k": "self_hp<",
+                        "n": 25
+                      }
+                    ],
+                    "verb": {
+                      "v": "follow"
+                    }
+                  }
+                ]
+              },
+              "tags": []
+            },
+            {
+              "gen": 0,
+              "hp": 13,
+              "id": 1009000,
+              "kind": "goblin",
+              "level": 2,
+              "life": {
+                "heirs": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "role": "guard",
+                "runs": 43,
+                "xp": 835
+              },
+              "max_hp": 13,
+              "max_rows": 3,
+              "name": "Zelul",
+              "rules": {
+                "rows": [
+                  {
+                    "conds": [
+                      {
+                        "k": "adj>=",
+                        "n": 1
+                      }
+                    ],
+                    "verb": {
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "conds": [
+                      {
+                        "k": "self_hp<",
+                        "n": 25
+                      }
+                    ],
+                    "verb": {
+                      "v": "follow"
+                    }
+                  }
+                ]
+              },
+              "tags": []
+            }
+          ],
+          "manual": false,
+          "manualActionQueued": false,
+          "remainingCarry": 1,
+          "runId": 133,
+          "secured": 0,
+          "turn": 55
+        }
+      },
+      "expectedPath": "docs/evidence/cut222/core/settlements-repinned/bank-positive.expected.json",
+      "home": "docs/evidence/cut223/core/fixtures-final/bank-positive.session.json.gz",
+      "homeRawSha256": "4a5df878097cb91eca4ea62b885145708e7b908adfefc51e8333857132e55254",
+      "homeSha256": "de6a7d9ebd38ff54612c9b9f4aab35c11c18271ba69ae60ebd0a44812dd7b45b",
+      "id": "bank-positive",
+      "naturalProgressionProof": false,
+      "operations": [
+        {
+          "args": [
+            1
+          ],
+          "method": "step"
+        }
+      ],
+      "provenance": {
+        "actions": [
+          "pause hired Scout",
+          "setStart(1)",
+          "send",
+          "step(1) until genuine carry>0",
+          "setRules one bank row through already-open pen"
+        ],
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-family-committed-home.game.json.gz",
+        "inputRawSha256": "0033b501da097364bd563729ef9e9fe321d75cd87fa8568afca9057ff7b35d71",
+        "inputSha256": "7e037a1e0ef1882f07c00874fbef257fae0e5f1353609d48da9e2f75ae1f445f",
+        "noGrants": true
+      },
+      "rawSha256": "4a5df878097cb91eca4ea62b885145708e7b908adfefc51e8333857132e55254",
+      "repinProvenance": {
+        "assertions": "original exact ledger, Gold, ExitLine and owner receipts preserved; regenerated full after save/report without normalization",
+        "operations": "same exact original public operation",
+        "setup": "unchanged original Cut223 immutable public-action pre-exit fixture",
+        "sourcePhase": "Cut222 retired wishes +canonical committed day closure"
+      },
+      "sha256": "de6a7d9ebd38ff54612c9b9f4aab35c11c18271ba69ae60ebd0a44812dd7b45b",
+      "transactionDiagnostic": true,
+      "afterHomeSha256": "552f29d6512f05351c66fe16d79c4be0a16540047ff7cb26bf79af7db970487e"
+    },
+    {
+      "activeBloodline": 2,
+      "afterHome": "docs/evidence/cut268/settlements/death-secured-lost.after.session.json.gz",
+      "afterRawSha256": "11c3a948feab5714f8855fbca3c380a7417286c3c7149f640c8c4b08b5b58282",
+      "expected": {
+        "exitLine": {
+          "bloodline_id": 2,
+          "bones": [
+            {
+              "kind": "amber potion?",
+              "n": 1
+            },
+            {
+              "kind": "ashen scroll?",
+              "n": 1
+            },
+            {
+              "kind": "torn scroll?",
+              "n": 2
+            },
+            {
+              "kind": "leash",
+              "n": 1
+            },
+            {
+              "kind": "clear potion?",
+              "n": 1
+            },
+            {
+              "kind": "green potion?",
+              "n": 1
+            },
+            {
+              "kind": "red potion?",
+              "n": 2
+            },
+            {
+              "kind": "bow",
+              "n": 1
+            },
+            {
+              "kind": "sword",
+              "n": 1
+            }
+          ],
+          "carried": 98,
+          "cause": "a jackal",
+          "end": "death",
+          "finds": [
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 24,
+              "kind": "sword",
+              "known": true,
+              "label": "sword +1",
+              "rarity": "uncommon",
+              "worth": 8
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 63,
+              "kind": "bow",
+              "known": true,
+              "label": "bow",
+              "rarity": "uncommon",
+              "worth": 6
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 15,
+              "kind": "scroll",
+              "known": false,
+              "label": "ashen scroll?",
+              "worth": 5
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 44,
+              "kind": "potion",
+              "known": false,
+              "label": "green potion?",
+              "worth": 5
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "hint": "malevolent",
+              "id": 11,
+              "kind": "potion",
+              "known": false,
+              "label": "amber potion?",
+              "worth": 3
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 34,
+              "kind": "leash",
+              "known": true,
+              "label": "leash (2)",
+              "worth": 3
+            }
+          ],
+          "found": [
+            {
+              "fate": "stolen",
+              "kind": "gilded scroll?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "amber potion?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "sword",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "ashen scroll?",
+              "n": 1
+            },
+            {
+              "fate": "left",
+              "kind": "sealed scroll?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "torn scroll?",
+              "n": 2
+            },
+            {
+              "fate": "bones",
+              "kind": "leash",
+              "n": 2
+            },
+            {
+              "fate": "used",
+              "kind": "leash",
+              "n": 1
+            },
+            {
+              "fate": "left",
+              "kind": "sword",
+              "n": 2
+            },
+            {
+              "fate": "bones",
+              "kind": "clear potion?",
+              "n": 1
+            },
+            {
+              "fate": "left",
+              "kind": "dagger",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "green potion?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "red potion?",
+              "n": 2
+            },
+            {
+              "fate": "bones",
+              "kind": "bow",
+              "n": 1
+            }
+          ],
+          "found_n": 18,
+          "keep_pct": 0,
+          "kept": 75,
+          "legacy_earned": 5,
+          "meters": {
+            "actions": 435,
+            "credit": [
+              {
+                "credit": "default",
+                "fires": 49,
+                "share": 0.113
+              },
+              {
+                "credit": "chores",
+                "fires": 386,
+                "share": 0.887
+              }
+            ],
+            "dealt": {
+              "foes": 36,
+              "hero": 100,
+              "pets": 0
+            },
+            "dps_dealt": {
+              "foes": 0.083,
+              "hero": 0.23,
+              "pets": 0
+            },
+            "dps_taken": {
+              "foes": 0.23,
+              "hero": 0.083,
+              "pets": 0
+            },
+            "fights": 11,
+            "gold": 75,
+            "gold_per_min": 10.345,
+            "healed": [],
+            "hits_hero": 22,
+            "hits_pets": 0,
+            "hps": 0,
+            "rows": [
+              {
+                "fires": 386,
+                "row": -2,
+                "share": 0.887
+              },
+              {
+                "fires": 1,
+                "row": 1,
+                "share": 0.002
+              },
+              {
+                "fires": 1,
+                "row": 4,
+                "share": 0.002
+              },
+              {
+                "fires": 47,
+                "row": 5,
+                "share": 0.108
+              }
+            ],
+            "seconds": 435,
+            "supplies": {},
+            "taken": {
+              "foes": 100,
+              "hero": 36,
+              "pets": 0
+            },
+            "time": {
+              "chores": 23,
+              "fight": 510,
+              "rest": 0,
+              "travel": 3817
+            },
+            "time_s": {
+              "chores": 2.3,
+              "fight": 51,
+              "rest": 0,
+              "travel": 381.7
+            }
+          },
+          "new_best": true,
+          "news": [
+            {
+              "day": 4,
+              "k": "named",
+              "text": "grudge: Skak the jackal"
+            },
+            {
+              "day": 4,
+              "k": "find",
+              "text": "new find: gilded scroll?"
+            },
+            {
+              "day": 4,
+              "k": "find",
+              "text": "new find: amber potion?"
+            }
+          ],
+          "reached": 4,
+          "reason": "slain · jackal",
+          "run_id": 1,
+          "secured": 75,
+          "spent": 0,
+          "spent_on": [],
+          "start": 1,
+          "stolen": [
+            "gilded scroll?"
+          ],
+          "text": "died $75 · $23 lost · bones: 11 items on D4 · ◆+4",
+          "tier": "death"
+        },
+        "fetched": 0,
+        "goldAfter": 11596,
+        "goldBefore": 11521,
+        "grossLostBeforeFetch": 23,
+        "ledgerAfter": [
+          {
+            "delta": 438,
+            "t": 1328217,
+            "why": "banked D13"
+          },
+          {
+            "delta": 174,
+            "t": 1354001,
+            "why": "returned D9"
+          },
+          {
+            "delta": 350,
+            "t": 1378467,
+            "why": "banked D12"
+          },
+          {
+            "delta": 153,
+            "t": 1400882,
+            "why": "returned D6"
+          },
+          {
+            "delta": 393,
+            "t": 1433203,
+            "why": "returned D13"
+          },
+          {
+            "delta": 202,
+            "t": 1460021,
+            "why": "returned D10"
+          },
+          {
+            "delta": -2000,
+            "t": 1468314,
+            "why": "forge pack 6"
+          },
+          {
+            "delta": 193,
+            "t": 1482720,
+            "why": "banked D7"
+          },
+          {
+            "delta": 163,
+            "t": 1508147,
+            "why": "banked D11"
+          },
+          {
+            "delta": 411,
+            "t": 1534869,
+            "why": "returned D13"
+          },
+          {
+            "delta": 342,
+            "t": 1569547,
+            "why": "returned D13"
+          },
+          {
+            "delta": 391,
+            "t": 1604382,
+            "why": "returned D13"
+          },
+          {
+            "delta": 0,
+            "lost": 297,
+            "t": 1635072,
+            "why": "died D13"
+          },
+          {
+            "delta": 244,
+            "t": 1655109,
+            "why": "returned D11"
+          },
+          {
+            "delta": 160,
+            "t": 1678566,
+            "why": "returned D7"
+          },
+          {
+            "delta": 300,
+            "t": 1705574,
+            "why": "returned D13"
+          },
+          {
+            "delta": 297,
+            "t": 1705574,
+            "why": "recovered Toren's pack"
+          },
+          {
+            "delta": 211,
+            "t": 1737117,
+            "why": "returned D13"
+          },
+          {
+            "delta": 178,
+            "t": 1759883,
+            "why": "banked D7"
+          },
+          {
+            "delta": -2800,
+            "t": 1759883,
+            "why": "forge mail +1"
+          },
+          {
+            "delta": 310,
+            "t": 1787925,
+            "why": "returned D13"
+          },
+          {
+            "delta": 267,
+            "t": 1817162,
+            "why": "returned D11"
+          },
+          {
+            "delta": 146,
+            "t": 1840759,
+            "why": "banked D8"
+          },
+          {
+            "delta": 323,
+            "t": 1872450,
+            "why": "returned D13"
+          },
+          {
+            "delta": 371,
+            "t": 1899394,
+            "why": "returned D13"
+          },
+          {
+            "delta": 296,
+            "t": 1923290,
+            "why": "banked D10"
+          },
+          {
+            "delta": 138,
+            "t": 1941506,
+            "why": "returned D6"
+          },
+          {
+            "delta": 312,
+            "t": 1969808,
+            "why": "banked D11"
+          },
+          {
+            "delta": 0,
+            "lost": 386,
+            "t": 2001158,
+            "why": "died D13"
+          },
+          {
+            "delta": 384,
+            "t": 2019068,
+            "why": "returned D13"
+          },
+          {
+            "delta": 386,
+            "t": 2019068,
+            "why": "recovered Una's pack"
+          },
+          {
+            "delta": 545,
+            "t": 2049159,
+            "why": "returned D13"
+          },
+          {
+            "delta": -3200,
+            "t": 2049159,
+            "why": "forge sword +4"
+          },
+          {
+            "delta": 296,
+            "t": 2074446,
+            "why": "returned D13"
+          },
+          {
+            "delta": 471,
+            "t": 2106740,
+            "why": "banked D16"
+          },
+          {
+            "delta": 548,
+            "lost": 27,
+            "t": 2145778,
+            "why": "died D18"
+          },
+          {
+            "delta": 312,
+            "t": 2167692,
+            "why": "returned D13"
+          },
+          {
+            "delta": 320,
+            "t": 2199787,
+            "why": "returned D13"
+          },
+          {
+            "delta": 303,
+            "t": 2228950,
+            "why": "returned D13"
+          },
+          {
+            "delta": 611,
+            "t": 2266872,
+            "why": "banked D20"
+          },
+          {
+            "delta": 27,
+            "t": 2266872,
+            "why": "recovered Vale's pack"
+          },
+          {
+            "delta": 788,
+            "t": 2312274,
+            "why": "banked D18"
+          },
+          {
+            "delta": 1093,
+            "t": 2361828,
+            "why": "returned D18"
+          },
+          {
+            "delta": -3200,
+            "t": 2361828,
+            "why": "forge pack 7"
+          },
+          {
+            "delta": -4400,
+            "t": 2361828,
+            "why": "forge mail +2"
+          },
+          {
+            "delta": 568,
+            "t": 2381664,
+            "why": "returned D18"
+          },
+          {
+            "delta": 846,
+            "t": 2405227,
+            "why": "returned D20"
+          },
+          {
+            "delta": 595,
+            "t": 2425654,
+            "why": "returned D18"
+          },
+          {
+            "delta": 457,
+            "t": 2448851,
+            "why": "banked D19"
+          },
+          {
+            "delta": 663,
+            "t": 2490448,
+            "why": "returned D18"
+          },
+          {
+            "delta": 1044,
+            "t": 2540175,
+            "why": "banked D23"
+          },
+          {
+            "delta": 1075,
+            "t": 2587798,
+            "why": "returned D18"
+          },
+          {
+            "delta": 550,
+            "t": 2635755,
+            "why": "returned D18"
+          },
+          {
+            "delta": -5000,
+            "t": 2649828,
+            "why": "forge sword +5"
+          },
+          {
+            "delta": 709,
+            "t": 2657870,
+            "why": "returned D23"
+          },
+          {
+            "delta": 104,
+            "t": 2670810,
+            "why": "banked D19"
+          },
+          {
+            "delta": 777,
+            "t": 2690517,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 999,
+            "t": 2735180,
+            "why": "died D23"
+          },
+          {
+            "delta": 991,
+            "t": 2770635,
+            "why": "returned D23"
+          },
+          {
+            "delta": 999,
+            "t": 2770635,
+            "why": "recovered Wren's pack"
+          },
+          {
+            "delta": 953,
+            "t": 2825131,
+            "why": "returned D23"
+          },
+          {
+            "delta": 839,
+            "t": 2871740,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1431,
+            "t": 2921848,
+            "why": "banked D28"
+          },
+          {
+            "delta": -6400,
+            "t": 2937828,
+            "why": "forge plate"
+          },
+          {
+            "delta": 408,
+            "t": 2948145,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1612,
+            "t": 2974415,
+            "why": "returned D28"
+          },
+          {
+            "delta": 368,
+            "t": 2990678,
+            "why": "returned D23"
+          },
+          {
+            "delta": 510,
+            "t": 3005978,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 1630,
+            "t": 3031170,
+            "why": "died D28"
+          },
+          {
+            "delta": 54,
+            "t": 3032450,
+            "why": "banked D19"
+          },
+          {
+            "delta": 299,
+            "t": 3048392,
+            "why": "banked D22"
+          },
+          {
+            "delta": 494,
+            "t": 3065047,
+            "why": "banked D23"
+          },
+          {
+            "delta": 729,
+            "t": 3107305,
+            "why": "banked D23"
+          },
+          {
+            "delta": 862,
+            "t": 3153418,
+            "why": "returned D23"
+          },
+          {
+            "delta": 2400,
+            "t": 3202388,
+            "why": "returned D28"
+          },
+          {
+            "delta": 1630,
+            "t": 3202388,
+            "why": "recovered Yara's pack"
+          },
+          {
+            "delta": 1327,
+            "t": 3261778,
+            "why": "returned D27"
+          },
+          {
+            "delta": -250,
+            "t": 3267778,
+            "why": "bloodline 2"
+          },
+          {
+            "delta": -250,
+            "t": 3267778,
+            "why": "bloodline 3"
+          },
+          {
+            "bloodline_id": 2,
+            "delta": 75,
+            "lost": 23,
+            "t": 4350,
+            "why": "died D4"
+          }
+        ],
+        "lostAfterFetch": 23,
+        "newLedger": [
+          {
+            "bloodline_id": 2,
+            "delta": 75,
+            "lost": 23,
+            "t": 4350,
+            "why": "died D4"
+          }
+        ],
+        "pre": {
+          "carried": 98,
+          "depth": 4,
+          "hp": 4,
+          "livingPets": [],
+          "manual": false,
+          "manualActionQueued": false,
+          "remainingCarry": 23,
+          "runId": 1,
+          "secured": 75,
+          "turn": 4349
+        }
+      },
+      "expectedPath": "docs/evidence/cut222/core/settlements-repinned/death-secured-lost.expected.json",
+      "home": "docs/evidence/cut223/core/fixtures-final/death-secured-lost.session.json.gz",
+      "homeRawSha256": "b3f3c2fb71dab2611a84b02e064e530a9f435cb95fab7dd3ee8aff41c11f0108",
+      "homeSha256": "a5bb596a5d95d5b0068a78d8a2e531b23c4874959ede396fe47f4dec1b1a8f59",
+      "id": "death-secured-lost",
+      "naturalProgressionProof": false,
+      "operations": [
+        {
+          "args": [
+            1
+          ],
+          "method": "step"
+        }
+      ],
+      "provenance": {
+        "actions": [
+          "selectBloodline(2)",
+          "pause hired Scout",
+          "free pins helm/body/boots empty",
+          "setStart(1)",
+          "actual ordinary departure1"
+        ],
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz",
+        "inputRawSha256": "6959540bead8b2a6298313d9037d7e39266c347fb17d2b410fc599bdc271dc71",
+        "inputSha256": "c0e02be29790d3d8b57e7675a1f63ddee70b1888e174bc47b435a2fd6545adbf",
+        "noGrants": true
+      },
+      "rawSha256": "b3f3c2fb71dab2611a84b02e064e530a9f435cb95fab7dd3ee8aff41c11f0108",
+      "repinProvenance": {
+        "assertions": "original exact ledger, Gold, ExitLine and owner receipts preserved; regenerated full after save/report without normalization",
+        "operations": "same exact original public operation",
+        "setup": "unchanged original Cut223 immutable public-action pre-exit fixture",
+        "sourcePhase": "Cut222 retired wishes +canonical committed day closure"
+      },
+      "sha256": "a5bb596a5d95d5b0068a78d8a2e531b23c4874959ede396fe47f4dec1b1a8f59",
+      "transactionDiagnostic": true,
+      "afterHomeSha256": "52974524ec589a0402c006a9246d550cffeea972863167edce78729d5b69afef"
+    },
+    {
+      "activeBloodline": 1,
+      "afterHome": "docs/evidence/cut268/settlements/death-fetched-lost.after.session.json.gz",
+      "afterRawSha256": "29b69242c721f183d1a9ce59d8c79f8cad040344cef07bd1f04f21099af3c4a4",
+      "expected": {
+        "exitLine": {
+          "bones": [
+            {
+              "kind": "fire",
+              "n": 1
+            },
+            {
+              "kind": "heal",
+              "n": 2
+            },
+            {
+              "kind": "dagger",
+              "n": 1
+            },
+            {
+              "kind": "gilded scroll?",
+              "n": 1
+            }
+          ],
+          "carried": 40,
+          "cause": "a rat",
+          "end": "death",
+          "finds": [
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 17,
+              "kind": "dagger",
+              "known": true,
+              "label": "dagger +2",
+              "rarity": "uncommon",
+              "worth": 7
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "hint": "benevolent",
+              "id": 19,
+              "kind": "scroll",
+              "known": false,
+              "label": "gilded scroll?",
+              "worth": 8
+            },
+            {
+              "fate": "bones",
+              "free": false,
+              "id": 16,
+              "kind": "heal",
+              "known": true,
+              "label": "heal potion",
+              "worth": 8
+            }
+          ],
+          "found": [
+            {
+              "fate": "stolen",
+              "kind": "waxen scroll?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "dagger",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "gilded scroll?",
+              "n": 1
+            },
+            {
+              "fate": "bones",
+              "kind": "heal",
+              "n": 1
+            }
+          ],
+          "found_n": 4,
+          "keep_pct": 0,
+          "kept": 0,
+          "legacy_earned": 1,
+          "meters": {
+            "actions": 146,
+            "credit": [
+              {
+                "credit": "written",
+                "fires": 68,
+                "share": 0.466
+              },
+              {
+                "credit": "chores",
+                "fires": 78,
+                "share": 0.534
+              }
+            ],
+            "dealt": {
+              "foes": 50,
+              "hero": 0,
+              "pets": 0
+            },
+            "dps_dealt": {
+              "foes": 0.342,
+              "hero": 0,
+              "pets": 0
+            },
+            "dps_taken": {
+              "foes": 0,
+              "hero": 0.342,
+              "pets": 0
+            },
+            "fights": 2,
+            "gold": 0,
+            "gold_per_min": 0,
+            "healed": [],
+            "hits_hero": 34,
+            "hits_pets": 0,
+            "hps": 0,
+            "rows": [
+              {
+                "fires": 78,
+                "row": -2,
+                "share": 0.534
+              },
+              {
+                "fires": 68,
+                "row": 0,
+                "share": 0.466
+              }
+            ],
+            "seconds": 146,
+            "supplies": {},
+            "taken": {
+              "foes": 0,
+              "hero": 50,
+              "pets": 0
+            },
+            "time": {
+              "chores": 6,
+              "fight": 401,
+              "rest": 0,
+              "travel": 1053
+            },
+            "time_s": {
+              "chores": 0.6,
+              "fight": 40.1,
+              "rest": 0,
+              "travel": 105.3
+            }
+          },
+          "news": [
+            {
+              "day": 4,
+              "k": "named",
+              "text": "grudge: Vrusk the rat"
+            },
+            {
+              "day": 4,
+              "k": "differ",
+              "text": "shallower: D1, last D27"
+            }
+          ],
+          "reached": 1,
+          "reason": "slain · rat",
+          "run_id": 133,
+          "spent": 0,
+          "spent_on": [
+            "fire",
+            "heal"
+          ],
+          "start": 1,
+          "stolen": [
+            "waxen scroll?"
+          ],
+          "text": "died $0 · $40 lost · bones: 5 items on D1",
+          "tier": "death"
+        },
+        "fetched": 9,
+        "goldAfter": 12030,
+        "goldBefore": 12021,
+        "grossLostBeforeFetch": 40,
+        "ledgerAfter": [
+          {
+            "delta": 161,
+            "t": 1292222,
+            "why": "returned D8"
+          },
+          {
+            "delta": 438,
+            "t": 1328217,
+            "why": "banked D13"
+          },
+          {
+            "delta": 174,
+            "t": 1354001,
+            "why": "returned D9"
+          },
+          {
+            "delta": 350,
+            "t": 1378467,
+            "why": "banked D12"
+          },
+          {
+            "delta": 153,
+            "t": 1400882,
+            "why": "returned D6"
+          },
+          {
+            "delta": 393,
+            "t": 1433203,
+            "why": "returned D13"
+          },
+          {
+            "delta": 202,
+            "t": 1460021,
+            "why": "returned D10"
+          },
+          {
+            "delta": -2000,
+            "t": 1468314,
+            "why": "forge pack 6"
+          },
+          {
+            "delta": 193,
+            "t": 1482720,
+            "why": "banked D7"
+          },
+          {
+            "delta": 163,
+            "t": 1508147,
+            "why": "banked D11"
+          },
+          {
+            "delta": 411,
+            "t": 1534869,
+            "why": "returned D13"
+          },
+          {
+            "delta": 342,
+            "t": 1569547,
+            "why": "returned D13"
+          },
+          {
+            "delta": 391,
+            "t": 1604382,
+            "why": "returned D13"
+          },
+          {
+            "delta": 0,
+            "lost": 297,
+            "t": 1635072,
+            "why": "died D13"
+          },
+          {
+            "delta": 244,
+            "t": 1655109,
+            "why": "returned D11"
+          },
+          {
+            "delta": 160,
+            "t": 1678566,
+            "why": "returned D7"
+          },
+          {
+            "delta": 300,
+            "t": 1705574,
+            "why": "returned D13"
+          },
+          {
+            "delta": 297,
+            "t": 1705574,
+            "why": "recovered Toren's pack"
+          },
+          {
+            "delta": 211,
+            "t": 1737117,
+            "why": "returned D13"
+          },
+          {
+            "delta": 178,
+            "t": 1759883,
+            "why": "banked D7"
+          },
+          {
+            "delta": -2800,
+            "t": 1759883,
+            "why": "forge mail +1"
+          },
+          {
+            "delta": 310,
+            "t": 1787925,
+            "why": "returned D13"
+          },
+          {
+            "delta": 267,
+            "t": 1817162,
+            "why": "returned D11"
+          },
+          {
+            "delta": 146,
+            "t": 1840759,
+            "why": "banked D8"
+          },
+          {
+            "delta": 323,
+            "t": 1872450,
+            "why": "returned D13"
+          },
+          {
+            "delta": 371,
+            "t": 1899394,
+            "why": "returned D13"
+          },
+          {
+            "delta": 296,
+            "t": 1923290,
+            "why": "banked D10"
+          },
+          {
+            "delta": 138,
+            "t": 1941506,
+            "why": "returned D6"
+          },
+          {
+            "delta": 312,
+            "t": 1969808,
+            "why": "banked D11"
+          },
+          {
+            "delta": 0,
+            "lost": 386,
+            "t": 2001158,
+            "why": "died D13"
+          },
+          {
+            "delta": 384,
+            "t": 2019068,
+            "why": "returned D13"
+          },
+          {
+            "delta": 386,
+            "t": 2019068,
+            "why": "recovered Una's pack"
+          },
+          {
+            "delta": 545,
+            "t": 2049159,
+            "why": "returned D13"
+          },
+          {
+            "delta": -3200,
+            "t": 2049159,
+            "why": "forge sword +4"
+          },
+          {
+            "delta": 296,
+            "t": 2074446,
+            "why": "returned D13"
+          },
+          {
+            "delta": 471,
+            "t": 2106740,
+            "why": "banked D16"
+          },
+          {
+            "delta": 548,
+            "lost": 27,
+            "t": 2145778,
+            "why": "died D18"
+          },
+          {
+            "delta": 312,
+            "t": 2167692,
+            "why": "returned D13"
+          },
+          {
+            "delta": 320,
+            "t": 2199787,
+            "why": "returned D13"
+          },
+          {
+            "delta": 303,
+            "t": 2228950,
+            "why": "returned D13"
+          },
+          {
+            "delta": 611,
+            "t": 2266872,
+            "why": "banked D20"
+          },
+          {
+            "delta": 27,
+            "t": 2266872,
+            "why": "recovered Vale's pack"
+          },
+          {
+            "delta": 788,
+            "t": 2312274,
+            "why": "banked D18"
+          },
+          {
+            "delta": 1093,
+            "t": 2361828,
+            "why": "returned D18"
+          },
+          {
+            "delta": -3200,
+            "t": 2361828,
+            "why": "forge pack 7"
+          },
+          {
+            "delta": -4400,
+            "t": 2361828,
+            "why": "forge mail +2"
+          },
+          {
+            "delta": 568,
+            "t": 2381664,
+            "why": "returned D18"
+          },
+          {
+            "delta": 846,
+            "t": 2405227,
+            "why": "returned D20"
+          },
+          {
+            "delta": 595,
+            "t": 2425654,
+            "why": "returned D18"
+          },
+          {
+            "delta": 457,
+            "t": 2448851,
+            "why": "banked D19"
+          },
+          {
+            "delta": 663,
+            "t": 2490448,
+            "why": "returned D18"
+          },
+          {
+            "delta": 1044,
+            "t": 2540175,
+            "why": "banked D23"
+          },
+          {
+            "delta": 1075,
+            "t": 2587798,
+            "why": "returned D18"
+          },
+          {
+            "delta": 550,
+            "t": 2635755,
+            "why": "returned D18"
+          },
+          {
+            "delta": -5000,
+            "t": 2649828,
+            "why": "forge sword +5"
+          },
+          {
+            "delta": 709,
+            "t": 2657870,
+            "why": "returned D23"
+          },
+          {
+            "delta": 104,
+            "t": 2670810,
+            "why": "banked D19"
+          },
+          {
+            "delta": 777,
+            "t": 2690517,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 999,
+            "t": 2735180,
+            "why": "died D23"
+          },
+          {
+            "delta": 991,
+            "t": 2770635,
+            "why": "returned D23"
+          },
+          {
+            "delta": 999,
+            "t": 2770635,
+            "why": "recovered Wren's pack"
+          },
+          {
+            "delta": 953,
+            "t": 2825131,
+            "why": "returned D23"
+          },
+          {
+            "delta": 839,
+            "t": 2871740,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1431,
+            "t": 2921848,
+            "why": "banked D28"
+          },
+          {
+            "delta": -6400,
+            "t": 2937828,
+            "why": "forge plate"
+          },
+          {
+            "delta": 408,
+            "t": 2948145,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1612,
+            "t": 2974415,
+            "why": "returned D28"
+          },
+          {
+            "delta": 368,
+            "t": 2990678,
+            "why": "returned D23"
+          },
+          {
+            "delta": 510,
+            "t": 3005978,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 1630,
+            "t": 3031170,
+            "why": "died D28"
+          },
+          {
+            "delta": 54,
+            "t": 3032450,
+            "why": "banked D19"
+          },
+          {
+            "delta": 299,
+            "t": 3048392,
+            "why": "banked D22"
+          },
+          {
+            "delta": 494,
+            "t": 3065047,
+            "why": "banked D23"
+          },
+          {
+            "delta": 729,
+            "t": 3107305,
+            "why": "banked D23"
+          },
+          {
+            "delta": 862,
+            "t": 3153418,
+            "why": "returned D23"
+          },
+          {
+            "delta": 2400,
+            "t": 3202388,
+            "why": "returned D28"
+          },
+          {
+            "delta": 1630,
+            "t": 3202388,
+            "why": "recovered Yara's pack"
+          },
+          {
+            "delta": 1327,
+            "t": 3261778,
+            "why": "returned D27"
+          },
+          {
+            "delta": 0,
+            "lost": 40,
+            "t": 3269838,
+            "why": "died D1"
+          },
+          {
+            "delta": 9,
+            "t": 3269838,
+            "why": "fetched by Greth"
+          }
+        ],
+        "lostAfterFetch": 31,
+        "newLedger": [
+          {
+            "delta": 0,
+            "lost": 40,
+            "t": 3269838,
+            "why": "died D1"
+          },
+          {
+            "delta": 9,
+            "t": 3269838,
+            "why": "fetched by Greth"
+          }
+        ],
+        "pre": {
+          "carried": 40,
+          "depth": 1,
+          "hp": 1,
+          "livingPets": [
+            {
+              "gen": 0,
+              "hp": 13,
+              "id": 1000900,
+              "kind": "rat",
+              "level": 3,
+              "life": {
+                "announced": [
+                  3
+                ],
+                "heirs": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "role": "fetcher",
+                "runs": 124,
+                "xp": 1500
+              },
+              "max_hp": 13,
+              "max_rows": 4,
+              "name": "Greth",
+              "rules": {
+                "rows": [
+                  {
+                    "conds": [
+                      {
+                        "k": "foes>=",
+                        "n": 1
+                      }
+                    ],
+                    "origin": "player",
+                    "verb": {
+                      "v": "retreat"
+                    }
+                  },
+                  {
+                    "conds": [],
+                    "origin": "player",
+                    "verb": {
+                      "v": "follow"
+                    }
+                  }
+                ]
+              },
+              "tags": []
+            }
+          ],
+          "manual": false,
+          "manualActionQueued": false,
+          "remainingCarry": 40,
+          "runId": 133,
+          "secured": 0,
+          "turn": 1459
+        }
+      },
+      "expectedPath": "docs/evidence/cut222/core/settlements-repinned/death-fetched-lost.expected.json",
+      "home": "docs/evidence/cut223/core/fixtures-final/death-fetched-lost.session.json.gz",
+      "homeRawSha256": "2650aa5df3dcd1af9bc8077af82fe4f4eb269a4049ede81e50883238e5538d06",
+      "homeSha256": "05f5e5c1fb6681d7768d9eef84cdf1bb52bd543af220e2a1ad3bc6006d92551a",
+      "id": "death-fetched-lost",
+      "naturalProgressionProof": false,
+      "operations": [
+        {
+          "args": [
+            1
+          ],
+          "method": "step"
+        }
+      ],
+      "provenance": {
+        "actions": [
+          "pause hired Scout",
+          "confirmed Rebirth",
+          "lawful60s recovery",
+          "clear temperament",
+          "free empty armour pins",
+          "select actual earned Greth",
+          "public pet retreat/follow rules",
+          "send",
+          "real carry>=5 and adjacent threat",
+          "setRules hold through earned open pen"
+        ],
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-family-committed-home.game.json.gz",
+        "inputRawSha256": "0033b501da097364bd563729ef9e9fe321d75cd87fa8568afca9057ff7b35d71",
+        "inputSha256": "7e037a1e0ef1882f07c00874fbef257fae0e5f1353609d48da9e2f75ae1f445f",
+        "noGrants": true
+      },
+      "rawSha256": "2650aa5df3dcd1af9bc8077af82fe4f4eb269a4049ede81e50883238e5538d06",
+      "repinProvenance": {
+        "assertions": "original exact ledger, Gold, ExitLine and owner receipts preserved; regenerated full after save/report without normalization",
+        "operations": "same exact original public operation",
+        "setup": "unchanged original Cut223 immutable public-action pre-exit fixture",
+        "sourcePhase": "Cut222 retired wishes +canonical committed day closure"
+      },
+      "sha256": "05f5e5c1fb6681d7768d9eef84cdf1bb52bd543af220e2a1ad3bc6006d92551a",
+      "transactionDiagnostic": true,
+      "afterHomeSha256": "476f4d5d2615199270483f6f0a0d942fe75393579413e3dc4f96a365b53d0ccb"
+    },
+    {
+      "activeBloodline": 1,
+      "afterHome": "docs/evidence/cut268/settlements/multihero-absence.after.session.json.gz",
+      "afterRawSha256": "447c8c4c734694ad930d5b3c7bed52924d56091965515646b855a61ed3e7be0a",
+      "expected": {
+        "exitLine": null,
+        "fetched": 0,
+        "goldAfter": 11621,
+        "goldBefore": 11521,
+        "grossLostBeforeFetch": 0,
+        "ledgerAfter": [
+          {
+            "delta": 350,
+            "t": 1378467,
+            "why": "banked D12"
+          },
+          {
+            "delta": 153,
+            "t": 1400882,
+            "why": "returned D6"
+          },
+          {
+            "delta": 393,
+            "t": 1433203,
+            "why": "returned D13"
+          },
+          {
+            "delta": 202,
+            "t": 1460021,
+            "why": "returned D10"
+          },
+          {
+            "delta": -2000,
+            "t": 1468314,
+            "why": "forge pack 6"
+          },
+          {
+            "delta": 193,
+            "t": 1482720,
+            "why": "banked D7"
+          },
+          {
+            "delta": 163,
+            "t": 1508147,
+            "why": "banked D11"
+          },
+          {
+            "delta": 411,
+            "t": 1534869,
+            "why": "returned D13"
+          },
+          {
+            "delta": 342,
+            "t": 1569547,
+            "why": "returned D13"
+          },
+          {
+            "delta": 391,
+            "t": 1604382,
+            "why": "returned D13"
+          },
+          {
+            "delta": 0,
+            "lost": 297,
+            "t": 1635072,
+            "why": "died D13"
+          },
+          {
+            "delta": 244,
+            "t": 1655109,
+            "why": "returned D11"
+          },
+          {
+            "delta": 160,
+            "t": 1678566,
+            "why": "returned D7"
+          },
+          {
+            "delta": 300,
+            "t": 1705574,
+            "why": "returned D13"
+          },
+          {
+            "delta": 297,
+            "t": 1705574,
+            "why": "recovered Toren's pack"
+          },
+          {
+            "delta": 211,
+            "t": 1737117,
+            "why": "returned D13"
+          },
+          {
+            "delta": 178,
+            "t": 1759883,
+            "why": "banked D7"
+          },
+          {
+            "delta": -2800,
+            "t": 1759883,
+            "why": "forge mail +1"
+          },
+          {
+            "delta": 310,
+            "t": 1787925,
+            "why": "returned D13"
+          },
+          {
+            "delta": 267,
+            "t": 1817162,
+            "why": "returned D11"
+          },
+          {
+            "delta": 146,
+            "t": 1840759,
+            "why": "banked D8"
+          },
+          {
+            "delta": 323,
+            "t": 1872450,
+            "why": "returned D13"
+          },
+          {
+            "delta": 371,
+            "t": 1899394,
+            "why": "returned D13"
+          },
+          {
+            "delta": 296,
+            "t": 1923290,
+            "why": "banked D10"
+          },
+          {
+            "delta": 138,
+            "t": 1941506,
+            "why": "returned D6"
+          },
+          {
+            "delta": 312,
+            "t": 1969808,
+            "why": "banked D11"
+          },
+          {
+            "delta": 0,
+            "lost": 386,
+            "t": 2001158,
+            "why": "died D13"
+          },
+          {
+            "delta": 384,
+            "t": 2019068,
+            "why": "returned D13"
+          },
+          {
+            "delta": 386,
+            "t": 2019068,
+            "why": "recovered Una's pack"
+          },
+          {
+            "delta": 545,
+            "t": 2049159,
+            "why": "returned D13"
+          },
+          {
+            "delta": -3200,
+            "t": 2049159,
+            "why": "forge sword +4"
+          },
+          {
+            "delta": 296,
+            "t": 2074446,
+            "why": "returned D13"
+          },
+          {
+            "delta": 471,
+            "t": 2106740,
+            "why": "banked D16"
+          },
+          {
+            "delta": 548,
+            "lost": 27,
+            "t": 2145778,
+            "why": "died D18"
+          },
+          {
+            "delta": 312,
+            "t": 2167692,
+            "why": "returned D13"
+          },
+          {
+            "delta": 320,
+            "t": 2199787,
+            "why": "returned D13"
+          },
+          {
+            "delta": 303,
+            "t": 2228950,
+            "why": "returned D13"
+          },
+          {
+            "delta": 611,
+            "t": 2266872,
+            "why": "banked D20"
+          },
+          {
+            "delta": 27,
+            "t": 2266872,
+            "why": "recovered Vale's pack"
+          },
+          {
+            "delta": 788,
+            "t": 2312274,
+            "why": "banked D18"
+          },
+          {
+            "delta": 1093,
+            "t": 2361828,
+            "why": "returned D18"
+          },
+          {
+            "delta": -3200,
+            "t": 2361828,
+            "why": "forge pack 7"
+          },
+          {
+            "delta": -4400,
+            "t": 2361828,
+            "why": "forge mail +2"
+          },
+          {
+            "delta": 568,
+            "t": 2381664,
+            "why": "returned D18"
+          },
+          {
+            "delta": 846,
+            "t": 2405227,
+            "why": "returned D20"
+          },
+          {
+            "delta": 595,
+            "t": 2425654,
+            "why": "returned D18"
+          },
+          {
+            "delta": 457,
+            "t": 2448851,
+            "why": "banked D19"
+          },
+          {
+            "delta": 663,
+            "t": 2490448,
+            "why": "returned D18"
+          },
+          {
+            "delta": 1044,
+            "t": 2540175,
+            "why": "banked D23"
+          },
+          {
+            "delta": 1075,
+            "t": 2587798,
+            "why": "returned D18"
+          },
+          {
+            "delta": 550,
+            "t": 2635755,
+            "why": "returned D18"
+          },
+          {
+            "delta": -5000,
+            "t": 2649828,
+            "why": "forge sword +5"
+          },
+          {
+            "delta": 709,
+            "t": 2657870,
+            "why": "returned D23"
+          },
+          {
+            "delta": 104,
+            "t": 2670810,
+            "why": "banked D19"
+          },
+          {
+            "delta": 777,
+            "t": 2690517,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 999,
+            "t": 2735180,
+            "why": "died D23"
+          },
+          {
+            "delta": 991,
+            "t": 2770635,
+            "why": "returned D23"
+          },
+          {
+            "delta": 999,
+            "t": 2770635,
+            "why": "recovered Wren's pack"
+          },
+          {
+            "delta": 953,
+            "t": 2825131,
+            "why": "returned D23"
+          },
+          {
+            "delta": 839,
+            "t": 2871740,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1431,
+            "t": 2921848,
+            "why": "banked D28"
+          },
+          {
+            "delta": -6400,
+            "t": 2937828,
+            "why": "forge plate"
+          },
+          {
+            "delta": 408,
+            "t": 2948145,
+            "why": "returned D23"
+          },
+          {
+            "delta": 1612,
+            "t": 2974415,
+            "why": "returned D28"
+          },
+          {
+            "delta": 368,
+            "t": 2990678,
+            "why": "returned D23"
+          },
+          {
+            "delta": 510,
+            "t": 3005978,
+            "why": "returned D23"
+          },
+          {
+            "delta": 0,
+            "lost": 1630,
+            "t": 3031170,
+            "why": "died D28"
+          },
+          {
+            "delta": 54,
+            "t": 3032450,
+            "why": "banked D19"
+          },
+          {
+            "delta": 299,
+            "t": 3048392,
+            "why": "banked D22"
+          },
+          {
+            "delta": 494,
+            "t": 3065047,
+            "why": "banked D23"
+          },
+          {
+            "delta": 729,
+            "t": 3107305,
+            "why": "banked D23"
+          },
+          {
+            "delta": 862,
+            "t": 3153418,
+            "why": "returned D23"
+          },
+          {
+            "delta": 2400,
+            "t": 3202388,
+            "why": "returned D28"
+          },
+          {
+            "delta": 1630,
+            "t": 3202388,
+            "why": "recovered Yara's pack"
+          },
+          {
+            "delta": 1327,
+            "t": 3261778,
+            "why": "returned D27"
+          },
+          {
+            "delta": -250,
+            "t": 3267778,
+            "why": "bloodline 2"
+          },
+          {
+            "delta": -250,
+            "t": 3267778,
+            "why": "bloodline 3"
+          },
+          {
+            "bloodline_id": 3,
+            "delta": 25,
+            "t": 2770,
+            "why": "banked D3"
+          },
+          {
+            "bloodline_id": 2,
+            "delta": 75,
+            "lost": 23,
+            "t": 4350,
+            "why": "died D4"
+          },
+          {
+            "delta": 0,
+            "lost": 1206,
+            "t": 3316777,
+            "why": "died D28"
+          }
+        ],
+        "lostAfterFetch": 0,
+        "newLedger": [
+          {
+            "bloodline_id": 3,
+            "delta": 25,
+            "t": 2770,
+            "why": "banked D3"
+          },
+          {
+            "bloodline_id": 2,
+            "delta": 75,
+            "lost": 23,
+            "t": 4350,
+            "why": "died D4"
+          },
+          {
+            "delta": 0,
+            "lost": 1206,
+            "t": 3316777,
+            "why": "died D28"
+          }
+        ],
+        "participants": {
+          "1": {
+            "carry": 0,
+            "runId": 133,
+            "secured": 0,
+            "turn": 0
+          },
+          "2": {
+            "carry": 0,
+            "runId": 1,
+            "secured": 0,
+            "turn": 0
+          },
+          "3": {
+            "carry": 0,
+            "runId": 1,
+            "secured": 0,
+            "turn": 0
+          }
+        },
+        "pre": {
+          "carried": 0,
+          "depth": 1,
+          "hp": 56,
+          "livingPets": [
+            {
+              "gen": 0,
+              "hp": 13,
+              "id": 1000900,
+              "kind": "rat",
+              "level": 3,
+              "life": {
+                "announced": [
+                  3
+                ],
+                "heirs": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "role": "fetcher",
+                "runs": 124,
+                "xp": 1500
+              },
+              "max_hp": 13,
+              "max_rows": 4,
+              "name": "Greth",
+              "rules": {
+                "rows": [
+                  {
+                    "conds": [
+                      {
+                        "k": "adj>=",
+                        "n": 1
+                      }
+                    ],
+                    "verb": {
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "conds": [
+                      {
+                        "k": "self_hp<",
+                        "n": 25
+                      }
+                    ],
+                    "verb": {
+                      "v": "follow"
+                    }
+                  }
+                ]
+              },
+              "tags": []
+            },
+            {
+              "gen": 0,
+              "hp": 13,
+              "id": 1009000,
+              "kind": "goblin",
+              "level": 2,
+              "life": {
+                "heirs": [
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ],
+                "role": "guard",
+                "runs": 43,
+                "xp": 835
+              },
+              "max_hp": 13,
+              "max_rows": 3,
+              "name": "Zelul",
+              "rules": {
+                "rows": [
+                  {
+                    "conds": [
+                      {
+                        "k": "adj>=",
+                        "n": 1
+                      }
+                    ],
+                    "verb": {
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "conds": [
+                      {
+                        "k": "self_hp<",
+                        "n": 25
+                      }
+                    ],
+                    "verb": {
+                      "v": "follow"
+                    }
+                  }
+                ]
+              },
+              "tags": []
+            }
+          ],
+          "manual": false,
+          "manualActionQueued": false,
+          "remainingCarry": 0,
+          "runId": 133,
+          "secured": 0,
+          "turn": 0
+        },
+        "receiptsByOwner": {
+          "1": [
+            {
+              "delta": 0,
+              "lost": 1206,
+              "t": 3316777,
+              "why": "died D28"
+            }
+          ],
+          "2": [
+            {
+              "bloodline_id": 2,
+              "delta": 75,
+              "lost": 23,
+              "t": 4350,
+              "why": "died D4"
+            }
+          ],
+          "3": [
+            {
+              "bloodline_id": 3,
+              "delta": 25,
+              "t": 2770,
+              "why": "banked D3"
+            }
+          ]
+        },
+        "report": {
+          "banked": 1,
+          "bests": [],
+          "bloodlines": [
+            {
+              "bests": [],
+              "deepest": 28,
+              "gold": 0,
+              "id": 1,
+              "legacy_earned": 3,
+              "name": "Bloodline 1",
+              "packages": [
+                "+unbowed",
+                "+light hands",
+                "+iron gut"
+              ],
+              "runs": 1,
+              "xp": [
+                {
+                  "class": "fighter",
+                  "gained": 0,
+                  "level_ups": 0
+                }
+              ]
+            },
+            {
+              "bests": [
+                "D4",
+                "first kill: monkey",
+                "first kill: rat",
+                "first kill: goblin",
+                "first kill: goblin_archer",
+                "first kill: jackal"
+              ],
+              "deepest": 4,
+              "gold": 75,
+              "id": 2,
+              "legacy_earned": 5,
+              "name": "Bloodline 2",
+              "packages": [
+                "TAMES STRAYS"
+              ],
+              "runs": 1,
+              "xp": [
+                {
+                  "class": "fighter",
+                  "gained": 0,
+                  "level_ups": 0
+                }
+              ]
+            },
+            {
+              "bests": [
+                "D3",
+                "home:D3",
+                "first kill: goblin",
+                "first kill: rat",
+                "first kill: jackal"
+              ],
+              "deepest": 3,
+              "gold": 25,
+              "id": 3,
+              "legacy_earned": 4,
+              "name": "Bloodline 3",
+              "packages": [
+                "TAMES STRAYS"
+              ],
+              "runs": 1,
+              "xp": [
+                {
+                  "class": "fighter",
+                  "gained": 17,
+                  "level_ups": 0
+                }
+              ]
+            }
+          ],
+          "bones_found": [],
+          "bounty": {
+            "depth": 28,
+            "gold": 0,
+            "taken": false
+          },
+          "deaths": [
+            {
+              "cause": "lurker",
+              "n": 1
+            },
+            {
+              "cause": "jackal",
+              "n": 1
+            }
+          ],
+          "deepest": 28,
+          "elapsed_s": 28800,
+          "exits": [
+            {
+              "bones": [
+                {
+                  "kind": "fire",
+                  "n": 3
+                },
+                {
+                  "kind": "inked scroll?",
+                  "n": 2
+                },
+                {
+                  "kind": "silence",
+                  "n": 2
+                },
+                {
+                  "kind": "axe",
+                  "n": 1
+                }
+              ],
+              "carried": 1206,
+              "cause": "a lurker",
+              "end": "death",
+              "finds": [
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "id": 496,
+                  "kind": "axe",
+                  "known": true,
+                  "label": "axe +2",
+                  "rarity": "rare",
+                  "worth": 12
+                },
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "id": 143,
+                  "kind": "fire",
+                  "known": true,
+                  "label": "fire potion",
+                  "rarity": "uncommon",
+                  "worth": 8
+                },
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "id": 405,
+                  "kind": "fire",
+                  "known": true,
+                  "label": "fire potion",
+                  "rarity": "uncommon",
+                  "worth": 8
+                },
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "id": 445,
+                  "kind": "silence",
+                  "known": true,
+                  "label": "silence scroll",
+                  "rarity": "uncommon",
+                  "worth": 4
+                },
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "id": 455,
+                  "kind": "silence",
+                  "known": true,
+                  "label": "silence scroll",
+                  "rarity": "uncommon",
+                  "worth": 4
+                },
+                {
+                  "fate": "bones",
+                  "free": false,
+                  "hint": "benevolent",
+                  "id": 15,
+                  "kind": "scroll",
+                  "known": false,
+                  "label": "inked scroll?",
+                  "worth": 10
+                }
+              ],
+              "found": [
+                {
+                  "fate": "left",
+                  "kind": "waxen scroll?",
+                  "n": 2
+                },
+                {
+                  "fate": "left",
+                  "kind": "dagger",
+                  "n": 1
+                },
+                {
+                  "fate": "left",
+                  "kind": "gilded scroll?",
+                  "n": 2
+                },
+                {
+                  "fate": "used",
+                  "kind": "heal",
+                  "n": 3
+                },
+                {
+                  "fate": "bones",
+                  "kind": "inked scroll?",
+                  "n": 2
+                },
+                {
+                  "fate": "left",
+                  "kind": "brittle scroll?",
+                  "n": 1
+                },
+                {
+                  "fate": "stolen",
+                  "kind": "brittle scroll?",
+                  "n": 1
+                },
+                {
+                  "fate": "left",
+                  "kind": "pearly potion?",
+                  "n": 1
+                },
+                {
+                  "fate": "left",
+                  "kind": "clear potion?",
+                  "n": 1
+                },
+                {
+                  "fate": "bones",
+                  "kind": "fire",
+                  "n": 2
+                },
+                {
+                  "fate": "left",
+                  "kind": "sword",
+                  "n": 3
+                },
+                {
+                  "fate": "lost",
+                  "kind": "scale",
+                  "n": 1
+                },
+                {
+                  "fate": "bones",
+                  "kind": "silence",
+                  "n": 2
+                },
+                {
+                  "fate": "bones",
+                  "kind": "axe",
+                  "n": 1
+                }
+              ],
+              "found_n": 23,
+              "keep_pct": 0,
+              "kept": 0,
+              "legacy_earned": 1,
+              "meters": {
+                "actions": 4430,
+                "credit": [
+                  {
+                    "credit": "picked",
+                    "fires": 2,
+                    "share": 0
+                  },
+                  {
+                    "credit": "taught",
+                    "fires": 51,
+                    "share": 0.012
+                  },
+                  {
+                    "credit": "default",
+                    "fires": 1175,
+                    "share": 0.266
+                  },
+                  {
+                    "credit": "chores",
+                    "fires": 3195,
+                    "share": 0.722
+                  }
+                ],
+                "dealt": {
+                  "foes": 640,
+                  "hero": 6630,
+                  "pets": 27
+                },
+                "dps_dealt": {
+                  "foes": 0.131,
+                  "hero": 1.353,
+                  "pets": 0.006
+                },
+                "dps_taken": {
+                  "foes": 1.333,
+                  "hero": 0.211,
+                  "pets": 0.007
+                },
+                "fights": 193,
+                "gold": 0,
+                "gold_per_min": 0,
+                "healed": [
+                  {
+                    "per_s": 0.074,
+                    "src": "hearthglass",
+                    "total": 362
+                  },
+                  {
+                    "per_s": 0.084,
+                    "src": "hearthglass_embers",
+                    "total": 413
+                  },
+                  {
+                    "per_s": 0.002,
+                    "src": "pet",
+                    "total": 9
+                  },
+                  {
+                    "per_s": 0.193,
+                    "src": "regen",
+                    "total": 945
+                  },
+                  {
+                    "per_s": 0.012,
+                    "src": "rest",
+                    "total": 60
+                  }
+                ],
+                "hits_hero": 479,
+                "hits_pets": 19,
+                "hps": 0.365,
+                "rows": [
+                  {
+                    "fires": 3195,
+                    "row": -2,
+                    "share": 0.722
+                  },
+                  {
+                    "fires": 51,
+                    "row": 1,
+                    "share": 0.012
+                  },
+                  {
+                    "fires": 4,
+                    "row": 2,
+                    "share": 0.001
+                  },
+                  {
+                    "fires": 2,
+                    "row": 6,
+                    "share": 0
+                  },
+                  {
+                    "fires": 1157,
+                    "row": 8,
+                    "share": 0.262
+                  },
+                  {
+                    "fires": 14,
+                    "row": 9,
+                    "share": 0.003
+                  }
+                ],
+                "seconds": 4899.9,
+                "supplies": {
+                  "Glassward": 145,
+                  "heal potion": 4
+                },
+                "taken": {
+                  "foes": 6533,
+                  "hero": 1033,
+                  "pets": 33
+                },
+                "time": {
+                  "chores": 61,
+                  "fight": 12202,
+                  "rest": 0,
+                  "travel": 36736
+                },
+                "time_s": {
+                  "chores": 6.1,
+                  "fight": 1220.2,
+                  "rest": 0,
+                  "travel": 3673.6
+                }
+              },
+              "news": [
+                {
+                  "day": 4,
+                  "k": "named",
+                  "text": "slew Skar"
+                },
+                {
+                  "day": 4,
+                  "k": "named",
+                  "text": "slew Krim"
+                }
+              ],
+              "reached": 28,
+              "reason": "slain · lurker",
+              "run_id": 133,
+              "spent": 0,
+              "spent_on": [
+                "fire",
+                "heal"
+              ],
+              "start": 1,
+              "stolen": [
+                "brittle scroll?"
+              ],
+              "text": "died $0 · $1206 lost · bones: 8 items on D28",
+              "tier": "death",
+              "trace": {
+                "blow": {
+                  "by": "lurker",
+                  "dmg": 2,
+                  "hp": 0,
+                  "t": 48999
+                },
+                "blows": [
+                  {
+                    "by": "lurker",
+                    "dmg": 2,
+                    "hp": 1,
+                    "t": 48994
+                  },
+                  {
+                    "by": "lurker",
+                    "dmg": 2,
+                    "hp": 0,
+                    "t": 48999
+                  }
+                ],
+                "hp_healed": 91,
+                "hp_lost": [
+                  {
+                    "by": "lurker",
+                    "dmg": 106
+                  },
+                  {
+                    "by": "lurker_queen",
+                    "dmg": 16
+                  },
+                  {
+                    "by": "mirror_shade",
+                    "dmg": 14
+                  },
+                  {
+                    "by": "deep_eel",
+                    "dmg": 11
+                  }
+                ],
+                "max_steps": [
+                  {
+                    "cause": "recovery",
+                    "delta": 0,
+                    "max": 56,
+                    "t": 44594
+                  }
+                ],
+                "provenance": [
+                  {
+                    "depth": 1,
+                    "t": 180,
+                    "text": "found dagger +2 on D1"
+                  },
+                  {
+                    "depth": 2,
+                    "t": 1070,
+                    "text": "found brittle scroll? on D2"
+                  },
+                  {
+                    "depth": 2,
+                    "t": 2603,
+                    "text": "monkey took the brittle scroll?, D2"
+                  },
+                  {
+                    "depth": 3,
+                    "t": 3208,
+                    "text": "rat last seen D3"
+                  },
+                  {
+                    "depth": 3,
+                    "t": 3212,
+                    "text": "found pearly potion? on D3"
+                  },
+                  {
+                    "depth": 3,
+                    "t": 3390,
+                    "text": "found clear potion? on D3"
+                  },
+                  {
+                    "depth": 3,
+                    "t": 3700,
+                    "text": "swapped for the heal"
+                  },
+                  {
+                    "depth": 4,
+                    "t": 4790,
+                    "text": "swapped for the teleport"
+                  },
+                  {
+                    "depth": 4,
+                    "t": 4790,
+                    "text": "found waxen scroll? on D4"
+                  },
+                  {
+                    "depth": 5,
+                    "t": 6970,
+                    "text": "swapped for the heal"
+                  },
+                  {
+                    "depth": 5,
+                    "t": 6970,
+                    "text": "found heal on D5"
+                  },
+                  {
+                    "depth": 7,
+                    "t": 11434,
+                    "text": "swapped for the summon ally"
+                  },
+                  {
+                    "depth": 7,
+                    "t": 11434,
+                    "text": "found gilded scroll? on D7"
+                  },
+                  {
+                    "depth": 8,
+                    "t": 12300,
+                    "text": "goblin warlord last seen D8"
+                  },
+                  {
+                    "depth": 9,
+                    "t": 13234,
+                    "text": "swapped for the fire"
+                  },
+                  {
+                    "depth": 11,
+                    "t": 15134,
+                    "text": "eel last seen D11"
+                  },
+                  {
+                    "depth": 11,
+                    "t": 15137,
+                    "text": "goblin last seen D11"
+                  },
+                  {
+                    "depth": 13,
+                    "t": 19056,
+                    "text": "bloat last seen D13"
+                  },
+                  {
+                    "depth": 13,
+                    "t": 20761,
+                    "text": "goblin archer last seen D13"
+                  },
+                  {
+                    "depth": 14,
+                    "t": 22478,
+                    "text": "swapped for the enchant"
+                  },
+                  {
+                    "depth": 14,
+                    "t": 22478,
+                    "text": "found inked scroll? on D14"
+                  },
+                  {
+                    "depth": 14,
+                    "t": 23678,
+                    "text": "monkey last seen D14"
+                  },
+                  {
+                    "depth": 16,
+                    "t": 27423,
+                    "text": "goblin conjurer last seen D16"
+                  },
+                  {
+                    "depth": 18,
+                    "t": 31800,
+                    "text": "ghoul last seen D18"
+                  },
+                  {
+                    "depth": 21,
+                    "t": 35384,
+                    "text": "R3 drank heal at 19/56 hp"
+                  },
+                  {
+                    "depth": 22,
+                    "t": 35603,
+                    "text": "found fire on D22"
+                  },
+                  {
+                    "depth": 22,
+                    "t": 36551,
+                    "text": "skeleton last seen D22"
+                  },
+                  {
+                    "depth": 22,
+                    "t": 37553,
+                    "text": "slag crawler last seen D22"
+                  },
+                  {
+                    "depth": 22,
+                    "t": 37881,
+                    "text": "bell sentinel last seen D22"
+                  },
+                  {
+                    "depth": 23,
+                    "t": 38435,
+                    "text": "smith last seen D23"
+                  },
+                  {
+                    "depth": 23,
+                    "t": 38879,
+                    "text": "forge imp last seen D23"
+                  },
+                  {
+                    "depth": 23,
+                    "t": 39292,
+                    "text": "found scale +1 on D23"
+                  },
+                  {
+                    "depth": 23,
+                    "t": 39913,
+                    "text": "foundry master last seen D23"
+                  },
+                  {
+                    "depth": 24,
+                    "t": 41264,
+                    "text": "swapped for the silence"
+                  },
+                  {
+                    "depth": 24,
+                    "t": 43208,
+                    "text": "swapped for the silence"
+                  },
+                  {
+                    "depth": 24,
+                    "t": 43208,
+                    "text": "found silence on D24"
+                  },
+                  {
+                    "depth": 25,
+                    "t": 43397,
+                    "text": "found sword +1 on D25"
+                  },
+                  {
+                    "depth": 26,
+                    "t": 44825,
+                    "text": "R3 drank heal at 17/56 hp"
+                  },
+                  {
+                    "depth": 26,
+                    "t": 44967,
+                    "text": "found axe +2 on D26"
+                  },
+                  {
+                    "depth": 27,
+                    "t": 48286,
+                    "text": "jackal last seen D27"
+                  },
+                  {
+                    "depth": 28,
+                    "t": 48914,
+                    "text": "R3 drank heal at 13/56 hp"
+                  },
+                  {
+                    "depth": 28,
+                    "t": 48930,
+                    "text": "R3 drank heal at 16/56 hp"
+                  },
+                  {
+                    "depth": 28,
+                    "t": 48958,
+                    "text": "lurker last seen D28"
+                  },
+                  {
+                    "depth": 28,
+                    "t": 48975,
+                    "text": "foes on every side"
+                  },
+                  {
+                    "depth": 28,
+                    "t": 48975,
+                    "text": "foes on every side"
+                  }
+                ],
+                "turns": [
+                  {
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 18,
+                        "t": 48906
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 16,
+                        "t": 48906
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 14,
+                        "t": 48907
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 12,
+                        "t": 48911
+                      }
+                    ],
+                    "foes": 12,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 13,
+                    "max_hp": 56,
+                    "row": 2,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48914,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "heal",
+                      "v": "drink"
+                    }
+                  },
+                  {
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 39,
+                        "t": 48914
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 37,
+                        "t": 48914
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 35,
+                        "t": 48916
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 3,
+                        "hp": 32,
+                        "t": 48916
+                      },
+                      {
+                        "by": "lurker_queen",
+                        "dmg": 4,
+                        "hp": 28,
+                        "t": 48917
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 26,
+                        "t": 48919
+                      }
+                    ],
+                    "foes": 12,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 27,
+                    "max_hp": 56,
+                    "row": 1,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48922,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "tag:boss",
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 25,
+                        "t": 48922
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 23,
+                        "t": 48922
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 21,
+                        "t": 48924
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 19,
+                        "t": 48924
+                      },
+                      {
+                        "by": "lurker_queen",
+                        "dmg": 2,
+                        "hp": 17,
+                        "t": 48927
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 15,
+                        "t": 48927
+                      }
+                    ],
+                    "foes": 12,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 16,
+                    "max_hp": 56,
+                    "row": 2,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48930,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "heal",
+                      "v": "drink"
+                    }
+                  },
+                  {
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 42,
+                        "t": 48931
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 40,
+                        "t": 48931
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 38,
+                        "t": 48932
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 36,
+                        "t": 48936
+                      },
+                      {
+                        "by": "lurker_queen",
+                        "dmg": 2,
+                        "hp": 34,
+                        "t": 48937
+                      }
+                    ],
+                    "foes": 12,
+                    "hp": 34,
+                    "max_hp": 56,
+                    "row": 1,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48939,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "tag:boss",
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 32,
+                        "t": 48939
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 30,
+                        "t": 48941
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 28,
+                        "t": 48941
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 26,
+                        "t": 48944
+                      },
+                      {
+                        "by": "lurker_queen",
+                        "dmg": 2,
+                        "hp": 24,
+                        "t": 48947
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 22,
+                        "t": 48947
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 20,
+                        "t": 48947
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 18,
+                        "t": 48949
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 16,
+                        "t": 48949
+                      }
+                    ],
+                    "foes": 12,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 17,
+                    "max_hp": 56,
+                    "row": 6,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "hp not <25%"
+                      },
+                      {
+                        "row": 4,
+                        "why": "hp not <25%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48950,
+                          "text": "lurker holds the way"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48950,
+                    "telegraphs": [],
+                    "verb": {
+                      "v": "retreat"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 15,
+                        "t": 48956
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 13,
+                        "t": 48957
+                      }
+                    ],
+                    "foes": 12,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 14,
+                    "max_hp": 56,
+                    "row": 6,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "hp not <25%"
+                      },
+                      {
+                        "row": 4,
+                        "why": "hp not <25%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48950,
+                          "text": "lurker holds the way"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      }
+                    ],
+                    "rule_foes": 12,
+                    "t": 48958,
+                    "telegraphs": [],
+                    "verb": {
+                      "v": "retreat"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 3,
+                        "hp": 11,
+                        "t": 48966
+                      }
+                    ],
+                    "foes": 10,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 12,
+                    "max_hp": 56,
+                    "row": 8,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "depth not ≥29"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48950,
+                          "text": "lurker holds the way"
+                        },
+                        "row": 4,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48950,
+                          "text": "lurker holds the way"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48967,
+                          "text": "foes hold the way"
+                        },
+                        "row": 6,
+                        "why": "no path"
+                      },
+                      {
+                        "row": 7,
+                        "why": "no leash"
+                      }
+                    ],
+                    "rule_foes": 10,
+                    "t": 48967,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "nearest",
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 10,
+                        "t": 48969
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 8,
+                        "t": 48974
+                      }
+                    ],
+                    "foes": 10,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 9,
+                    "max_hp": 56,
+                    "row": 8,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "depth not ≥29"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 4,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 6,
+                        "why": "no path"
+                      },
+                      {
+                        "row": 7,
+                        "why": "no leash"
+                      }
+                    ],
+                    "rule_foes": 10,
+                    "t": 48975,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "nearest",
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 7,
+                        "t": 48977
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 5,
+                        "t": 48982
+                      }
+                    ],
+                    "foes": 10,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 6,
+                    "max_hp": 56,
+                    "row": 8,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "depth not ≥29"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 4,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 6,
+                        "why": "no path"
+                      },
+                      {
+                        "row": 7,
+                        "why": "no leash"
+                      }
+                    ],
+                    "rule_foes": 10,
+                    "t": 48983,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "nearest",
+                      "v": "attack"
+                    }
+                  },
+                  {
+                    "blocked": "R3 drink heal ✗ no item",
+                    "blows": [
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 4,
+                        "t": 48986
+                      },
+                      {
+                        "by": "lurker",
+                        "dmg": 2,
+                        "hp": 2,
+                        "t": 48991
+                      }
+                    ],
+                    "foes": 10,
+                    "gift": "mend +1 · quick +3",
+                    "hp": 3,
+                    "max_hp": 56,
+                    "row": 8,
+                    "rows": [
+                      {
+                        "because": {
+                          "depth": 20,
+                          "t": 34693,
+                          "text": "bloat slain D20"
+                        },
+                        "row": 0,
+                        "why": "not in view"
+                      },
+                      {
+                        "row": 1,
+                        "why": "hp not >35%"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48930,
+                          "text": "R3 drank heal at 16/56 hp"
+                        },
+                        "row": 2,
+                        "why": "no item"
+                      },
+                      {
+                        "row": 3,
+                        "why": "depth not ≥29"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 4,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 5,
+                        "why": "no way"
+                      },
+                      {
+                        "because": {
+                          "depth": 28,
+                          "t": 48975,
+                          "text": "foes on every side"
+                        },
+                        "row": 6,
+                        "why": "no path"
+                      },
+                      {
+                        "row": 7,
+                        "why": "no leash"
+                      }
+                    ],
+                    "rule_foes": 10,
+                    "t": 48992,
+                    "telegraphs": [],
+                    "verb": {
+                      "a": "nearest",
+                      "v": "attack"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "feats": [
+            {
+              "day": 4,
+              "k": "recovery",
+              "text": "Rook Ash · skittish · slow · answers the lurker"
+            },
+            {
+              "day": 4,
+              "k": "siege",
+              "text": "Queen · try 2 · +4%"
+            },
+            {
+              "day": 5,
+              "k": "pet",
+              "text": "Greth · fetcher L3"
+            }
+          ],
+          "finds": {
+            "best": {
+              "id": "moth",
+              "kind": "cosmetic",
+              "name": "moth lantern",
+              "rank": 1,
+              "table": 1
+            },
+            "finds": [
+              {
+                "id": "moth",
+                "kind": "cosmetic",
+                "name": "moth lantern",
+                "rank": 1,
+                "table": 1
+              }
+            ],
+            "legacy": 1,
+            "sealed": 1
+          },
+          "gold": {
+            "earned": 1306,
+            "home": 100,
+            "ledger": {
+              "earned": 1306,
+              "net": 100,
+              "spent": 1206,
+              "terms": [
+                {
+                  "amount": 1306,
+                  "label": "carried"
+                },
+                {
+                  "amount": -1206,
+                  "label": "lost"
+                }
+              ]
+            },
+            "lost": 1229,
+            "net": 100,
+            "salvage": 0,
+            "spent": 0,
+            "spent_by_workers": 0,
+            "unkept": 23,
+            "wake": 0,
+            "wake_cap": 40,
+            "wake_n": 0
+          },
+          "grew": [
+            {
+              "track": "character",
+              "what": "+iron gut"
+            },
+            {
+              "track": "character",
+              "what": "+light hands"
+            },
+            {
+              "track": "character",
+              "what": "+unbowed"
+            },
+            {
+              "track": "items",
+              "what": "+$100"
+            }
+          ],
+          "hatched": [],
+          "heirs": [
+            8,
+            8
+          ],
+          "lanes": [
+            "D5–8 · the Burrows",
+            "D9–13 · the Fens",
+            "D14–18 · the Crypt",
+            "D19–23 · the Foundry",
+            "D24–28 · the Deep"
+          ],
+          "lead": [
+            {
+              "k": "death",
+              "text": "1 death · lurker"
+            },
+            {
+              "k": "bounty",
+              "text": "bounty D28 · missed · reach"
+            },
+            {
+              "k": "pending",
+              "text": "unlock supply_cap_5 (0)"
+            }
+          ],
+          "learned": [
+            "trait:tough-blooded"
+          ],
+          "legacy_earned": 12,
+          "lost": [],
+          "marks_earned": 0,
+          "meters": {
+            "actions": 4430,
+            "credit": [
+              {
+                "credit": "picked",
+                "fires": 2,
+                "share": 0
+              },
+              {
+                "credit": "taught",
+                "fires": 51,
+                "share": 0.012
+              },
+              {
+                "credit": "default",
+                "fires": 1175,
+                "share": 0.266
+              },
+              {
+                "credit": "chores",
+                "fires": 3195,
+                "share": 0.722
+              }
+            ],
+            "dealt": {
+              "foes": 640,
+              "hero": 6630,
+              "pets": 27
+            },
+            "dps_dealt": {
+              "foes": 0.131,
+              "hero": 1.353,
+              "pets": 0.006
+            },
+            "dps_taken": {
+              "foes": 1.333,
+              "hero": 0.211,
+              "pets": 0.007
+            },
+            "fights": 193,
+            "gold": 0,
+            "gold_per_min": 0,
+            "healed": [
+              {
+                "per_s": 0.074,
+                "src": "hearthglass",
+                "total": 362
+              },
+              {
+                "per_s": 0.084,
+                "src": "hearthglass_embers",
+                "total": 413
+              },
+              {
+                "per_s": 0.002,
+                "src": "pet",
+                "total": 9
+              },
+              {
+                "per_s": 0.193,
+                "src": "regen",
+                "total": 945
+              },
+              {
+                "per_s": 0.012,
+                "src": "rest",
+                "total": 60
+              }
+            ],
+            "hits_hero": 479,
+            "hits_pets": 19,
+            "hps": 0.365,
+            "rows": [
+              {
+                "fires": 3195,
+                "row": -2,
+                "share": 0.722
+              },
+              {
+                "fires": 51,
+                "row": 1,
+                "share": 0.012
+              },
+              {
+                "fires": 4,
+                "row": 2,
+                "share": 0.001
+              },
+              {
+                "fires": 2,
+                "row": 6,
+                "share": 0
+              },
+              {
+                "fires": 1157,
+                "row": 8,
+                "share": 0.262
+              },
+              {
+                "fires": 14,
+                "row": 9,
+                "share": 0.003
+              }
+            ],
+            "seconds": 4899.9,
+            "supplies": {
+              "Glassward": 145,
+              "heal potion": 4
+            },
+            "taken": {
+              "foes": 6533,
+              "hero": 1033,
+              "pets": 33
+            },
+            "time": {
+              "chores": 61,
+              "fight": 12202,
+              "rest": 0,
+              "travel": 36736
+            },
+            "time_s": {
+              "chores": 6.1,
+              "fight": 1220.2,
+              "rest": 0,
+              "travel": 3673.6
+            }
+          },
+          "packages": [
+            "+unbowed",
+            "+light hands",
+            "+iron gut"
+          ],
+          "pending": [
+            "unlock supply_cap_5 (0)",
+            "unlock bone_sense (0)",
+            "forge sword +6 · $7200",
+            "forge plate +1 · $9000",
+            "R1 fired 0 of 1 runs: gas · HP>35% → throw fire",
+            "R2 fired 1 of 1 runs: boss · HP>35% → hit boss",
+            "R3 fired 1 of 1 runs: HP<35% → drink heal",
+            "R4 fired 0 of 1 runs: HP<25% · D29+ → bank",
+            "R5 fired 0 of 1 runs: HP<25% → return",
+            "R6 fired 0 of 1 runs: no heal · HP<35% → bank",
+            "R7 fired 1 of 1 runs: HP<35% · adj 2+ → retreat",
+            "R8 fired 0 of 1 runs: foes 1+ → tame",
+            "R9 fired 1 of 1 runs: foes 1+ → attack",
+            "R10 fired 1 of 1 runs: HP<60% → rest",
+            "bones on D28"
+          ],
+          "pick": {
+            "default": "legacy",
+            "minutes": 5820,
+            "offers": [
+              {
+                "available": true,
+                "id": "drill",
+                "line": "+24 runs",
+                "target": "skittish",
+                "title": "skittish"
+              },
+              {
+                "available": true,
+                "id": "legacy",
+                "line": "+12",
+                "title": "Legacy"
+              },
+              {
+                "available": true,
+                "id": "forge",
+                "line": "−50%",
+                "price": 4500,
+                "target": "armour",
+                "title": "plate +1"
+              }
+            ],
+            "size": 5
+          },
+          "picked": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            18,
+            19,
+            23
+          ],
+          "reel": [
+            {
+              "arc": {
+                "low_hp": 12,
+                "resolution": "lived",
+                "row": 2,
+                "threat": "lurker_queen"
+              },
+              "pattern": "episode",
+              "run_id": 133,
+              "score": 4,
+              "t": 48999,
+              "text": "The Queen cornered him to 12 HP; R3 drank; lived."
+            },
+            {
+              "arc": {
+                "low_hp": 15,
+                "resolution": "reached D28",
+                "row": 8,
+                "threat": "ghoul"
+              },
+              "pattern": "episode",
+              "run_id": 133,
+              "score": 6,
+              "t": 23678,
+              "text": "Two ghouls cornered him to 15 HP; R9 attacked; reached D28."
+            },
+            {
+              "arc": {
+                "low_hp": 27,
+                "resolution": "reached D28",
+                "row": 8,
+                "threat": "cave_troll"
+              },
+              "pattern": "episode",
+              "run_id": 133,
+              "score": 6,
+              "t": 43275,
+              "text": "A cave troll cornered him to 27 HP; R9 attacked; reached D28."
+            },
+            {
+              "arc": {
+                "low_hp": 56,
+                "resolution": "boss slain",
+                "row": 8,
+                "threat": "goblin_warlord"
+              },
+              "pattern": "episode",
+              "run_id": 133,
+              "score": 4,
+              "t": 12445,
+              "text": "Untouched by the Warlord; R9 attacked; boss slain."
+            }
+          ],
+          "renown": {
+            "gained": 0,
+            "rank": 8,
+            "ranks_up": 0
+          },
+          "rested_s": 0,
+          "returned": 0,
+          "runs": 3,
+          "salvaged": [],
+          "sampled": false,
+          "stalled": 0,
+          "stolen": [
+            {
+              "label": "brittle scroll?",
+              "n": 1
+            }
+          ],
+          "tamed": [],
+          "workers": [
+            {
+              "first": false,
+              "gold": 100,
+              "id": "porter",
+              "n": 100,
+              "what": "hauled $100"
+            }
+          ],
+          "worst_death_id": 133,
+          "xp": {
+            "class": "fighter",
+            "gained": 0,
+            "level_ups": 0
+          }
+        }
+      },
+      "expectedPath": "docs/evidence/cut222/core/settlements-repinned/multihero-absence.expected.json",
+      "home": "docs/evidence/cut223/core/fixtures-final/multihero-absence.session.json.gz",
+      "homeRawSha256": "8cf530744a6d048aab874846912f7000dfe9ccf85e8ae22c262002d09ee5d463",
+      "homeSha256": "05a452c0499bb06b7954415044f0a302b0efb26a61970ff7978e6ae50becb3a9",
+      "id": "multihero-absence",
+      "naturalProgressionProof": false,
+      "operations": [
+        {
+          "args": [
+            28800
+          ],
+          "method": "runOfflineQuick"
+        }
+      ],
+      "provenance": {
+        "actions": [
+          "pause hired Scout",
+          "select1/setStart1/send",
+          "select2/setStart1/send",
+          "select3/setStart1/send",
+          "select1",
+          "actual8h absence with all3live"
+        ],
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz",
+        "inputRawSha256": "6959540bead8b2a6298313d9037d7e39266c347fb17d2b410fc599bdc271dc71",
+        "inputSha256": "c0e02be29790d3d8b57e7675a1f63ddee70b1888e174bc47b435a2fd6545adbf",
+        "noGrants": true
+      },
+      "rawSha256": "8cf530744a6d048aab874846912f7000dfe9ccf85e8ae22c262002d09ee5d463",
+      "repinProvenance": {
+        "assertions": "original exact ledger, Gold, ExitLine and owner receipts preserved; regenerated full after save/report without normalization",
+        "operations": "same exact original public operation",
+        "setup": "unchanged original Cut223 immutable public-action pre-exit fixture",
+        "sourcePhase": "Cut222 retired wishes +canonical committed day closure"
+      },
+      "sha256": "05a452c0499bb06b7954415044f0a302b0efb26a61970ff7978e6ae50becb3a9",
+      "transactionDiagnostic": true,
+      "afterHomeSha256": "e16090c0c03d68c9460cdb1a5e11a8363a66dad81f274ae5d52688bdea88e283"
+    }
+  ],
+  "exporter": {
+    "path": "crates/idlever-core/examples/gold_settlement_repin.rs",
+    "sha256": "20d439fd9a00e10ad4912603e060dc650766b5998d49bbbf1ace594c0e778024",
+    "operations": "unchanged original immutable pre-exit saves, step1 or runOfflineQuick28800; no new search/setup",
+    "shippingWords": "use_shipping_words() matches WASM 32-bit chronicle word choice; earlier repin omitted it (superseded copy: core/settlements-repinned-native-words-superseded)"
+  },
+  "native": {
+    "mode": "current canonical222 source cargo run --profile fast --example gold_settlement_repin",
+    "sourceRuntime": "src21b17017614e3c25",
+    "log": "docs/evidence/cut222/core/settlements-repin-shipping-words.log"
+  },
+  "repinnedFrom": "docs/evidence/cut260/settlements-inputs-a47a.json",
+  "source": "docs/evidence/cut222/core/source-final.json",
+  "sourceManifestSha256": "94025a1a0806001e72481889e9b39d9df302dbadbcdd513e8aa89bacbd0d67dd",
+  "transactionDiagnostics": true,
+  "wasm": {
+    "bytes": 7395063,
+    "sha256": "ce9d5d427bebbf77608299bf22e8ae87a46105b12d7757dac7834bf7ab8bc4ff"
+  },
+  "note_cut226": "Cut226 cloning copy + Cut225 Clown/Engineer merged: same native goldens (existing classes bit-identical per Cut225 invariance proof); WASM rebuilt.",
+  "note_cut227": "Cut227 owner amendment 2026-10-14: death recovery 600 -> 12000 ticks, the carried-rest recovery fix and package L5 at 200 runs. gold_settlement_repin on current source: Gold, ledger, ExitLine and expected unchanged; after-saves differ only in recovery_until_tick / rest_left / total_turns (settlements/repin.log). WASM rebuilt (fast).",
+  "note_cut228": "Cut227 recovery (13e8) + Cut228 forge_work read model merged on main: forge_work is a read-model lineage field only (IDLE/PICKED byte-identical, Cut228 proof); saves and settlements unchanged; WASM rebuilt and repinned.",
+  "note_cut225_owner_tuning": "Cut225 owner tuning 2026-10-14 on main 8bee3697: Clown/Engineer content numbers only (tools.rs constants, Engineer melee -2, three counter charges); no existing-class path changes (IDLE/PICKED 32/32 per-seed results byte-identical, docs/evidence/cut225/clown-tuning). Settlements and saves unchanged; WASM rebuilt (fast) and repinned.",
+  "note_cut230": "Cut230 early pacing: Scout after 2 sends at 0.4 forge unit; death recovery by the run deepest floor (balance.recovery [600,14,28,1]: 60 s to D14, linear to the full 12000 ticks at D28; stored per death as persistent.recovery_ticks). gold_settlement_repin on current source: Gold, ledger, ExitLine and expected unchanged (docs/evidence/cut230/settlements/repin.log); after-saves regenerated where they differ. WASM rebuilt (fast).",
+  "note_cut232": "Cut232 one new decision a report (news): workers/marks/plots/arrivals/reveals wait for a quiet run report (held reveals owed); stance levels with the Scout; drillmaster 0.4u; Gold and ledgers exact, exit packages re-pinned where an arrival waits",
+  "note_cut233": "Cut233: balance refactor (content tunables into balance.json; shipping defaults unchanged)",
+  "note_cut235": "Cut235 chore outcomes, shared worker feats and 2/4/6-day rank cadence",
+  "note_settled": "Regenerate shared feat migration latches only; Gold/ledger/exit preserved on all four inputs",
+  "note_final": "Cut249 typed saved-state boundary: only3 ordered Run.last_visible arrays added in multihero after-save; all4 complete expected packets and every existing saved value/provenance unchanged. Original strict no-regen proof retained.",
+  "note_cut244": "Cut244: retire inactive home storage APIs and save/wire fields; preserve all real Gold, physical provenance and current preparation. No tuning or progression policy change.",
+  "note_followup": "Cut244 follow-up: retire inactive automation descriptors and found-supply shelf reporting; preserve actual Gold/preparation/progression. No tuning or policy change.",
+  "note_cut248": "Cut247/248: restore single-tick Hearthglass regeneration and fractional pace/action eligibility in quiet batches; authored values and progression policy unchanged.",
+  "note_cut249": "Cut249 persists previous visibility IDs so real sight-loss provenance survives reload; no authored values or policies changed.",
+  "note_runtime": "Cut253 staged class paths and actual interaction receipts; controlled native checks pass; earned/pacing pending",
+  "note_cut257": "Cut257: advanced-skill payoff fixes; second repin after moving the chilling_charge ward row ahead of its bolt row so the branch actually wards",
+  "note_cut258": "Cut258 opening economy",
+  "note_cut260": "Cut260 opening follow-up",
+  "note_cut268": "Integration 2026-10-18: art, hero hub, town UX, live inventory, honours"
+}
