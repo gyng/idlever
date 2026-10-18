@@ -317,6 +317,9 @@ export class WasmEngine implements Engine {
   seenSystems(): Lineage {
     return this.call("seenSystems");
   }
+  seenHonours(): Lineage {
+    return this.call("seenHonours");
+  }
   wallEdit(): WallEdit | null {
     return this.call("wallEdit");
   }

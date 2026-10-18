@@ -3,6 +3,7 @@ import type { App } from "../app";
 import { h } from "./dom";
 import { closeAllSheets, openWindow } from "./sheet";
 import { openSettings } from "./settings";
+import { openHonours } from "./honours";
 
 /** Home's non-town utilities share one doorway; their existing panels own all actions. */
 export function openHomeMenu(
@@ -38,6 +39,25 @@ export function openHomeMenu(
           },
           /* copy:button */ "Journal",
         ),
+        app.lineage.honours
+          ? h(
+              "button",
+              {
+                class: "chip home-menu-honours",
+                onclick: () => {
+                  close();
+                  focusHome();
+                  openHonours(app, anchor);
+                },
+              },
+              /* copy:button */ "Honours",
+              h(
+                "span",
+                { class: "home-menu-count" },
+                ` ${app.lineage.honours.earned}/${app.lineage.honours.total}`,
+              ),
+            )
+          : null,
         h(
           "button",
           {

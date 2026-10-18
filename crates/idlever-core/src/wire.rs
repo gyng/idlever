@@ -2358,6 +2358,9 @@ pub struct DepthLandmark {pub depth:u32, pub kind:String, pub id:String, pub lab
 pub struct Lineage {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub persistent_hero: Option<crate::persistent::Hero>,
+    /// Cut263: the honours gallery (`honours::wire`; the union over a session's heroes).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub honours: Option<crate::honours::Wire>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub depth_landmarks: Vec<DepthLandmark>,
     #[serde(default, skip_serializing_if = "Option::is_none")]

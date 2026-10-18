@@ -7703,3 +7703,93 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
     return L;
   };
 }
+
+// Cut263: the honours gallery in miniature (the core's `honours::DEFS`; earned off the fake lineage's record depth and
+// nothing else, or set by a dev/test through `__honour(id)`). The core is the authority; this is UI development.
+const HONOURS263: [string, string, string, string, boolean?][] = [
+  ["depth_20", "Twenty Deep", "reach D20", "depth"],
+  ["depth_30", "Thirty Deep", "reach D30", "depth"],
+  ["waystones", "Every Waystone", "light all six waystones", "depth"],
+  ["boss_warlord", "Warlord Felled", "slay the Warlord", "bosses"],
+  ["boss_mother", "Mother Burst", "slay the Bloat Mother", "bosses"],
+  ["boss_lich", "Lich Undone", "slay the Lich", "bosses"],
+  ["boss_master", "Forge Quenched", "slay the Foundry Master", "bosses"],
+  ["boss_queen", "Queen Unseated", "slay the Lurker Queen", "bosses"],
+  ["boss_king", "Mirror Broken", "slay the Mirror King", "bosses"],
+  ["seek", "Sought Out", "spend a boss token", "bosses"],
+  ["descent", "Deeper Still", "clear a numbered descent", "bosses"],
+  ["town_full", "Full Town", "build all three buildings", "town"],
+  ["kit", "Full Kit", "complete the forge kit", "town"],
+  ["second_hero", "Second Hearth", "house a second hero", "town"],
+  ["legend_all", "Legend Armory", "find all five patterns", "town"],
+  ["scout", "Hands Free", "hire the receptionist", "workers"],
+  ["staff", "Full Staff", "hire every worker", "workers"],
+  ["promoted", "Promoted", "promote a worker", "workers"],
+  ["loadout", "Full Loadout", "wear all three package kinds", "packages"],
+  ["variant", "Second Thoughts", "pick a tactic variant", "packages"],
+  ["pen_row", "First Row", "write a pen row", "pen"],
+  ["fix", "Lesson Taken", "take a death's fix", "pen"],
+  ["own_words", "Own Words", "slay a boss, pen written", "pen"],
+  ["causes", "Many Teachers", "die to five causes", "deaths"],
+  ["legacy", "Legacy Spent", "buy a Legacy upgrade", "heroes"],
+  ["new_trade", "New Trade", "train a second class", "heroes"],
+  ["bred", "New Litter", "breed a pup", "companions"],
+  ["oath", "Oathkeeper", "keep a sworn oath", "lore"],
+  ["trial", "Trial Cleared", "clear a weekly trial", "lore"],
+  ["old_enemy", "Old Enemy", "tame a grudge", "lore", true],
+  ["named", "Name Given", "rename the hero", "lore", true],
+  ["new_look", "New Look", "change the hero's look", "lore", true],
+];
+type Fk263 = {
+  s: { honours263?: { earned: Record<string, number>; seen: string[] } };
+  lineage(): Lineage;
+};
+{
+  const P = FakeEngine.prototype as unknown as Record<string, (...a: unknown[]) => unknown>;
+  const st = (e: Fk263) => (e.s.honours263 ??= { earned: {}, seen: [] });
+  const depthOf: Record<string, number> = { depth_20: 20, depth_30: 30 };
+  const lin = P.lineage;
+  P.lineage = function (this: Fk263): Lineage {
+    const L = lin.call(this) as Lineage;
+    const h = st(this);
+    const day = day118(L);
+    for (const [id] of HONOURS263) {
+      if (h.earned[id] !== undefined) continue;
+      const deep = depthOf[id] !== undefined && (L.best_depth ?? 0) >= depthOf[id];
+      if (deep) h.earned[id] = day;
+    }
+    const rows = HONOURS263.map(([id, name, goal, group, secret]) => {
+      const at = h.earned[id];
+      const hidden = !!secret && at === undefined;
+      const goalN = depthOf[id];
+      return {
+        id,
+        name: hidden ? "" : name,
+        goal: hidden ? "" : goal,
+        group,
+        ...(secret ? { secret: true } : {}),
+        ...(at !== undefined ? { day: at } : {}),
+        ...(at === undefined && goalN ? { n: Math.min(L.best_depth ?? 0, goalN), of: goalN } : {}),
+        ...(at !== undefined && !h.seen.includes(id) ? { new: true } : {}),
+      };
+    });
+    L.honours = {
+      earned: rows.filter((r) => r.day !== undefined).length,
+      total: rows.length,
+      rows,
+    };
+    return L;
+  };
+  P.seenHonours = function (this: Fk263): Lineage {
+    const h = st(this);
+    h.seen = Object.keys(h.earned);
+    return this.lineage();
+  };
+  /** Dev/test hook: earn `id` now (the fake has no run record to read). */
+  P.__honour = function (this: Fk263, id: unknown): Lineage {
+    const h = st(this);
+    if (typeof id === "string" && HONOURS263.some(([x]) => x === id))
+      h.earned[id] ??= day118(this.lineage());
+    return this.lineage();
+  };
+}

@@ -13,6 +13,7 @@ pub mod fold;
 pub mod divergence;
 pub mod forecast;
 pub mod gen;
+pub mod honours;
 pub mod firearm;
 pub mod geom;
 pub mod hero;
@@ -64,7 +65,11 @@ pub use rules::{Cond, Row, RuleSet, Verb, Vocabulary};
 pub use wire::*;
 
 impl Game {
-    pub fn rename_hero(&mut self, name: &str) -> Result<(), String> { persistent::rename(self,name) }
+    pub fn rename_hero(&mut self, name: &str) -> Result<(), String> {
+        persistent::rename(self,name)?;
+        if !self.sim { honours::on_act(&mut self.lineage, "rename"); }
+        Ok(())
+    }
     pub fn rebirth_hero(&mut self, token: &str) -> Result<(), String> { persistent::rebirth(self,token) }
     pub fn learn_class_skill(&mut self,id:&str)->Result<(),String> {class_tree::learn(self,id)}
     pub fn reset_class_skills(&mut self)->Result<(),String> {class_tree::reset(self)}
@@ -177,6 +182,18 @@ impl Game {
     pub fn seen_systems(&mut self) {
         self.lineage.systems_new.clear();
     }
+    /// Cut263: a command's state change may earn an honour (an observer: nothing reads it back).
+    fn honours_sweep<T>(&mut self, r: Result<T, String>) -> Result<T, String> {
+        if r.is_ok() && !self.sim {
+            honours::sweep(&mut self.lineage, 0);
+        }
+        r
+    }
+    /// Cut263: the camp showed the honours earned since it last looked (the toast is spent).
+    pub fn seen_honours(&mut self) {
+        let ids = self.lineage.honours.earned.keys().cloned().collect();
+        honours::mark_seen(&mut self.lineage, &ids);
+    }
     /// Apply current standing orders through their own validation and preparation setters.
     pub fn set_orders(&mut self, o: &crate::wire::StandingOrders) -> Result<(), String> {
         self.set_vault_pref(&o.cage)?;
@@ -257,8 +274,8 @@ impl Game {
     }
     /// Cut 30 §2: equip a package (a stance, a tactic in `slot`, a temperament) — free, instant.
     pub fn equip_package(&mut self, id: &str, slot: usize) -> Result<(), String> {
-        if packages::def(id).is_some_and(|p|p.kind==packages::Kind::Temperament){return progression::set_temperament(self,Some(id));}
-        packages::equip(&mut self.lineage, id, slot)
+        let r = if packages::def(id).is_some_and(|p|p.kind==packages::Kind::Temperament){progression::set_temperament(self,Some(id))} else {packages::equip(&mut self.lineage, id, slot)};
+        self.honours_sweep(r)
     }
     /// Cut 30 §2: empty a tactic or temperament slot.
     pub fn unequip_package(&mut self, id: &str) -> Result<(), String> {
@@ -269,7 +286,8 @@ impl Game {
     pub fn set_inherited_trait(&mut self,name:&str)->Result<(),String>{progression::set_inherited(self,name)}
     pub fn set_family_lean(&mut self,when:&str)->Result<(),String>{progression::set_family(self,when)}
     pub fn pick_temperament(&mut self, id: &str) -> Result<(), String> {
-        progression::set_temperament(self,Some(id))
+        let r = progression::set_temperament(self,Some(id));
+        self.honours_sweep(r)
     }
     /// Cut 30 §2: spend marks on a package's next level; the level reached.
     pub fn spend_level(&mut self, id: &str) -> Result<u32, String> {
@@ -286,7 +304,8 @@ impl Game {
     }
     /// Cut 118 §1: the next send seeks `boss` (a token spent at the send); `""` sends in order (the default).
     pub fn seek_boss(&mut self, boss: &str) -> Result<(), String> {
-        feats::set_seek(&mut self.lineage, boss)
+        let r = feats::set_seek(&mut self.lineage, boss);
+        self.honours_sweep(r)
     }
     /// Cut 118 §1: each boss a token is banked for, priced from his stone (one camp panel each).
     pub fn seek_forecast(&self) -> Vec<feats::SeekOption> {
@@ -310,11 +329,13 @@ impl Game {
     }
     /// Cut 111: pick a tactic's L3 row (0 the first variant, 1 the second).
     pub fn set_tactic_variant(&mut self, id: &str, variant: u32) -> Result<(), String> {
-        packages::set_variant(&mut self.lineage, id, variant.min(255) as u8)
+        let r = packages::set_variant(&mut self.lineage, id, variant.min(255) as u8);
+        self.honours_sweep(r)
     }
     /// Cut 115 §4: take a death's tactic fix (worn in its variant, credited `taught`).
     pub fn take_fix(&mut self, id: &str, variant: u32) -> Result<(), String> {
-        packages::take_fix(&mut self.lineage, id, variant.min(255) as u8)
+        let r = packages::take_fix(&mut self.lineage, id, variant.min(255) as u8);
+        self.honours_sweep(r)
     }
     /// Cut 30 §1: revoke a drill (or restore it) — one tap, it stays.
     pub fn revoke_drill(&mut self, boss: &str, revoked: bool) -> Result<(), String> {
@@ -354,23 +375,25 @@ impl Game {
         Ok(())
     }
     /// Cut 30.5: hire the lit node's worker (its price from the purse, then the chest).
-    pub fn upgrade_hero(&mut self, id: &str) -> Result<(), String> { legacy::buy(self, id) }
+    pub fn upgrade_hero(&mut self, id: &str) -> Result<(), String> { let r = legacy::buy(self, id); self.honours_sweep(r) }
     /// Blind b58b431: a Legacy purchase while the hero is away, for the next run (`legacy::buy_next`).
-    pub fn upgrade_hero_next(&mut self, id: &str) -> Result<(), String> { legacy::buy_next(self, id) }
+    pub fn upgrade_hero_next(&mut self, id: &str) -> Result<(), String> { let r = legacy::buy_next(self, id); self.honours_sweep(r) }
     pub fn respec_legacy(&mut self) -> Result<(), String> { legacy::respec(self) }
     pub fn build_town(&mut self, id: &str) -> Result<(), String> {
-        town::construct(&mut self.lineage, id)
+        let r = town::construct(&mut self.lineage, id);
+        self.honours_sweep(r)
     }
     pub fn hire(&mut self, id: &str) -> Result<(), String> {
         let before=class_tree::earned_stage(&self.lineage);
         tree::hire(&mut self.lineage,id)?;
         let t=self.run.as_ref().map_or(0,|r|r.turn);
         class_tree::announce_stage(self,before,t);
-        Ok(())
+        self.honours_sweep(Ok(()))
     }
     /// Cut 30.5, week 2: promote the worker whose rank is on offer (`tree.lit_rank`); its new rank.
     pub fn promote(&mut self, id: &str) -> Result<u32, String> {
-        tree::promote(&mut self.lineage, id)
+        let r = tree::promote(&mut self.lineage, id);
+        self.honours_sweep(r)
     }
     /// Cut 30.5: the haul chest into the purse (the porter's chore); the gold it held.
     pub fn open_chest(&mut self) -> Result<i32, String> {

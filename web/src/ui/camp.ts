@@ -84,6 +84,7 @@ import { anchorPanel, exposeTown, openHero, renderTown, townBuilt } from "./town
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
 import { openGlossary, openJournal } from "./journal-window";
 import { openHomeMenu } from "./home-menu";
+import { toastHonours } from "./honours";
 import { detailHost, glossaryOpener, setGlossaryOpener } from "./tips";
 import { openHeroLife } from "./hero-life";
 import { openChronicle } from "./chronicle";
@@ -2494,6 +2495,13 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       if (el.isConnected) doSend();
     });
   // Cut 12 §6: `+1 row ⊘ fill rows` is the engine's read of its own set — refetched once an edit crossed `max_rows`
+  // Cut263: honours the core marks new toast once at the camp (never in the watch); a later change that earns one toasts too
+  const offHonours = app.onChange(() => {
+    if (el.isConnected) toastHonours(app);
+  });
+  requestAnimationFrame(() => {
+    if (el.isConnected) toastHonours(app);
+  });
   const off = app.onChange(paintAll),
     offRules = app.onRules(paintSend),
     offShelf = app.onShelf(paintUnlocks);
@@ -2532,6 +2540,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       document.querySelector(".class-unlock")?.remove(); // the plate belongs to the camp: it never rides into the watch
       window.removeEventListener("idlever:focus-hero", focusHome);
       offLive();
+      offHonours();
       lanes.dispose();
       offTaskMount();
       taskLayout.removeEventListener("change", mountTasks);

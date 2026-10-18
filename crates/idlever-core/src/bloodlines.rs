@@ -144,6 +144,12 @@ impl Session {
         // feat metadata here; the selected wallet and each hero's run/start/record provenance stay authoritative.
         for g in s.others.values() { worker_feats_from(&g.lineage, &mut s.active.lineage); }
         for g in s.others.values_mut() { worker_feats_from(&s.active.lineage, &mut g.lineage); }
+        // Cut263: a save from before honours earns the session's own honour (bloodlines housed) silently; a later save's
+        // load is no event (save → load → save is identical)
+        if v.get("lineage").and_then(|l|l.get("honours")).is_none() {
+            let n=s.others.len() as u32+1;
+            for id in crate::honours::sweep(&mut s.active.lineage,n) { s.active.lineage.honours.seen.insert(id.into()); }
+        }
         Ok(s)
     }
     pub fn save(&self)->String { serde_json::to_string(self).unwrap_or_default() }
@@ -164,7 +170,15 @@ impl Session {
         // (Cut 120 §3: a new bloodline takes the orders set `same for all`; the rest stay a new lineage's `off`)
         shared_from(&self.active.lineage.orders,&mut g.lineage.orders);
         self.others.insert(id,g); self.next_id+=1;
+        // Cut263: a second hero housed is the session's honour (the selected lineage records it)
+        let n=self.others.len() as u32+1;
+        crate::honours::sweep(&mut self.active.lineage,n);
         Ok(())
+    }
+    /// Cut263: the camp showed the honours earned on any hero (the union's toast is spent).
+    pub fn seen_honours(&mut self) {
+        let ids:std::collections::BTreeSet<String>=std::iter::once(&self.active).chain(self.others.values()).flat_map(|g|g.lineage.honours.earned.keys().cloned()).collect();
+        crate::honours::mark_seen(&mut self.active.lineage,&ids);
     }
     /// Cut 120 §3: the standing orders on the shown bloodline (`Game::set_orders`), then each order set `same for
     /// all` copied to every other bloodline — so a later change to a shared order follows everywhere.
@@ -217,6 +231,8 @@ impl Session {
         l.hero_slots=self.others.iter().map(|(id,g)|slot(*id,g)).chain(std::iter::once(slot(self.selected,&self.active))).collect();
         l.hero_slots.sort_by_key(|s|s.id); if self.active.lineage.town.home==Some(false) { l.hero_slots.clear(); } l.selected_bloodline=self.selected;
         l.bloodline_price=SLOT_PRICE; l.bloodline_cap=SLOT_CAP as u32;
+        // Cut263: honours are the player's: the union over every hero (the selected one's progress)
+        l.honours=Some(crate::honours::wire(std::iter::once(&self.active.lineage).chain(self.others.values().map(|g|&g.lineage))));
         l
     }
     fn background(&mut self,ms:u64) {

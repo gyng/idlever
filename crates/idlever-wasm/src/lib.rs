@@ -434,6 +434,14 @@ impl Game {
         js(&self.inner.lineage())
     }
 
+    /// Cut263: the camp showed the honours earned since it last looked (clears `Lineage.honours.rows[].new`); returns
+    /// the Lineage.
+    #[wasm_bindgen(js_name = seenHonours)]
+    pub fn seen_honours(&mut self) -> String {
+        self.inner.seen_honours();
+        js(&self.inner.lineage())
+    }
+
     /// Cut 29 §4: set the standing orders (a `StandingOrders` JSON); returns the Lineage.
     #[wasm_bindgen(js_name = setOrders)]
     pub fn set_orders(&mut self, orders_json: &str) -> Result<String, JsError> {
