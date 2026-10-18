@@ -14,6 +14,7 @@ import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
 import { paintTownTerrain, terrainMaterialVersion, townGrassRoots } from "./town-terrain";
 import { effectsLevel } from "./fxpref";
+import { GlowLayer, type Glow } from "./town-glow";
 import { paintHomeService, isHomeServiceArt } from "./home-service-art";
 import {
   volumeKind,
@@ -1058,6 +1059,8 @@ export type TownFrame = {
   amb: [number, number, number];
   night: number;
   live: number;
+  /** Cut272: the sprites lit by their own silhouette this frame (hover/focus, ready, a task tap) */
+  glows: Glow[];
 };
 
 /** hour (0..24) → night 0..1: day 7–17, dusk 17–21, night 21–5, dawn 5–7 */
@@ -1225,6 +1228,11 @@ export type TownStats = {
   } | null;
   workers: string[];
   ranks: Record<string, number>;
+  /** Cut272: porter errands begun on this mount, and the one walking */
+  hauls: number;
+  hauling: "fetch" | "carry" | "return" | null;
+  /** Cut272: `hover:id`, `ready:id~` (~ the sweep), `pulse:id`; a trailing `-` when no glow is drawn (outline only) */
+  glows: string[];
 };
 export type TownView = {
   readonly el: HTMLElement;
@@ -1247,6 +1255,21 @@ export type TownView = {
   onActors(fn: () => void): void;
   /** input seen (the idle cap lifts) */
   poke(): void;
+  /** Cut272: light a hit target's sprite (its rectOf id) by its own silhouette: pointer hover or keyboard focus, on or off */
+  highlight(id: string, mode: "hover" | "focus", on: boolean): void;
+  /** Cut272: the ids that can act now (a hire, a build, a lit order, a waiting haul): the ready shimmer. Replaces the set. */
+  setReady(ids: readonly string[]): void;
+  /** Cut272: a task tap's two pulses on the sprite; false when the view cannot draw it (no GL, no sprite): the DOM ring stands */
+  pulse(id: string): boolean;
+  /** Cut272: the porter carries a landed haul from the chest to the house (or the bank); resolves true at the drop (the UI floats
+   *  `+$N` there), false at once when nobody can walk it (no porter at his post, reduced motion, effects off) */
+  haul(to: "house" | "bank"): Promise<boolean>;
+  /** Cut272: the errand's leg (`fetch` · `carry` · `return`), null when none walks */
+  hauling(): "fetch" | "carry" | "return" | null;
+  /** Cut272: where the haul's `+$N` floats (local CSS px) */
+  haulAt(to: "house" | "bank"): Pt;
+  /** Cut272: whether this id's highlight is drawn on its sprite (GL live, the sprite standing); false: a CSS outline stands in */
+  glowsSprite(id: string): boolean;
   dispose(): void;
 };
 const IDLE_MS = 10_000,
@@ -1264,6 +1287,12 @@ export type TownLightingPose = {
 let lightingInspector: ((pose?: TownLightingPose, withImages?: boolean) => unknown) | null = null;
 let artPoseInspector: ((pose: TownLightingPose, withImage: boolean) => unknown) | null = null;
 let lightingPairInspector: ((firstOn: boolean, baseDepthOnly: boolean) => unknown) | null = null;
+let glowTimingInspector: ((n: number) => unknown) | null = null;
+/** Dev-only (Cut272): the same frame rendered with and without its silhouette glows, alternating, each to completion (a 1 px
+ *  readback); medians in ms. No engine or clock mutation. */
+export function inspectTownGlowTiming(n = 60): unknown {
+  return import.meta.env.DEV ? glowTimingInspector?.(n) : null;
+}
 let lightingPreviewOverride: boolean | undefined;
 /** Dev-only matched-workload shader toggle. Does not rebuild actors or alter game time. */
 export function setTownLightingPreview(enabled: boolean | null): void {
@@ -1369,6 +1398,16 @@ export function createTownView(host: HTMLElement): TownView {
   let walkingIn: { t0: number; t1: number; done: () => void } | null = null;
   let stressN = 0;
   const arrive = new Map<string, Leg[]>(); // Cut 30.5: a worker hired on this mount walks out of the tent to his post
+  // Cut272: the porter's errand — a haul landed: he walks to the chest by the mouth, takes it up, carries it to the house (or the bank,
+  // the clerk depositing) and walks back to his post. Presentation only: the gold moved in Rust before it starts.
+  let errand: {
+    at: number;
+    pick: number;
+    drop: number;
+    back: number;
+    done: (ok: boolean) => void;
+  } | null = null;
+  let hauls = 0;
   const F: TownFrame = {
     x0: 0,
     y0: 0,
@@ -1385,6 +1424,7 @@ export function createTownView(host: HTMLElement): TownView {
     amb: [1, 1, 1],
     night: 0,
     live: 0,
+    glows: [],
   };
   let volumeFrame = false;
   function controlledArtFrame(pose: TownLightingPose) {
@@ -1483,6 +1523,7 @@ export function createTownView(host: HTMLElement): TownView {
       };
     };
   }
+  if (import.meta.env.DEV) glowTimingInspector = (n) => (gl && !glLost ? gl.timeGlow(F, n) : null);
   if (import.meta.env.DEV)
     lightingPairInspector = (firstOn, baseDepthOnly) => {
       if (!gl || glLost) return null;
@@ -1763,6 +1804,73 @@ export function createTownView(host: HTMLElement): TownView {
     }
   }
 
+  // -- Cut272: the silhouette glow (hover/focus, ready, the task tap's two pulses) --
+  const hovered = new Set<string>(),
+    focused = new Set<string>();
+  let readyIds = new Set<string>();
+  const pulses = new Map<string, number>(); // id → performance.now() at the tap
+  const PULSE_MS = 2400;
+  const glowPool: Glow[] = [];
+  function glows(): void {
+    F.glows.length = 0;
+    const lvl = effectsLevel(),
+      still = motionPreference.matches,
+      now = performance.now();
+    const ids = new Set([...readyIds, ...hovered, ...focused, ...pulses.keys()]);
+    for (const id of ids) {
+      const p0 = pulses.get(id);
+      if (p0 !== undefined && now - p0 >= PULSE_MS) pulses.delete(id);
+      const i = glowAt.get(id);
+      if (i === undefined) continue;
+      let outline = 0,
+        glow = 0,
+        sweep = 0,
+        breathe = 0,
+        hover = 0;
+      if (hovered.has(id) || focused.has(id)) {
+        outline = 1;
+        glow = lvl === "off" ? 0 : 0.55;
+        hover = 1;
+      } else if (readyIds.has(id) && lvl !== "off") {
+        outline = 0.85;
+        if (lvl === "full") {
+          glow = 0.45;
+          if (!still) sweep = breathe = 1;
+        }
+      }
+      if (pulses.has(id)) {
+        // two pulses (1.2 s each, as the DOM ring did); reduced motion holds it steady for the same time
+        const e = (now - p0!) / 1200;
+        const env = still ? 1 : 0.5 - 0.5 * Math.cos(e * Math.PI * 2);
+        outline = Math.max(outline, 0.4 + 0.6 * env);
+        glow = Math.max(glow, lvl === "off" ? 0 : 0.25 + 0.65 * env);
+        hover = 1;
+      }
+      if (!outline) continue;
+      const q = F.quads[i]!;
+      const g = (glowPool[F.glows.length] ??= {} as Glow);
+      Object.assign(g, {
+        id,
+        x: q.x,
+        y: q.y,
+        w: q.w,
+        h: q.h,
+        u0: q.s.u0,
+        v0: q.s.v0,
+        u1: q.s.u1,
+        v1: q.s.v1,
+        flip: q.flip,
+        outline,
+        glow,
+        sweep,
+        breathe,
+        hover,
+        phase: (hashN(id.length, id.charCodeAt(0), id.charCodeAt(id.length - 1)) % 100) / 100,
+      });
+      F.glows.push(g);
+    }
+  }
+
   // -- the frame --
   const push = (
     s: Slot,
@@ -1794,6 +1902,11 @@ export function createTownView(host: HTMLElement): TownView {
       q.actorId = undefined;
     }
     F.n++;
+  };
+  // Cut272: the quad each hit target's sprite took this frame (by its rectOf id), for the silhouette glow
+  const glowAt = new Map<string, number>();
+  const tagGlow = (id: string, before: number): void => {
+    if (F.n > before) glowAt.set(id, F.n - 1);
   };
   const zOf = (footY: number): number => 1 + footY / 2000;
   const inView = (x: number, y: number, w: number, h: number): boolean =>
@@ -2219,8 +2332,11 @@ export function createTownView(host: HTMLElement): TownView {
       at = builtAt.get(id);
     const age = at === undefined ? BUILD_FX_S : t - at;
     const art = (n: number): string[] => [`town_${id}_${n}`, `town_${id}_1`];
-    if (at === undefined || age >= BUILD_ASSEMBLY_S) sprite(art(look), p.h, p.x, p.y);
-    else {
+    if (at === undefined || age >= BUILD_ASSEMBLY_S) {
+      const n0 = F.n;
+      sprite(art(look), p.h, p.x, p.y);
+      tagGlow(id === "house" ? "tent" : id, n0);
+    } else {
       const oldLook = upgradeFrom.get(id);
       if (oldLook !== undefined) sprite(art(oldLook), p.h, p.x, p.y);
       else sprite("town_plot", 16, p.x, p.y);
@@ -2249,6 +2365,7 @@ export function createTownView(host: HTMLElement): TownView {
           dusted.delete(id);
         }
     F.n = 0;
+    glowAt.clear();
     F.lights.length = 0;
     characterLights.length = 0;
     const hour = hourOverride ?? localHour();
@@ -2266,7 +2383,9 @@ export function createTownView(host: HTMLElement): TownView {
     }
     // the mouth, its torches, the depth plaque's light
     const m = PLOTS.mouth;
+    let n0 = F.n;
     sprite(["town_mouth_cave"], m.h, m.x, m.y);
+    tagGlow("mouth", n0);
     const fl = Math.floor(t * 6) & 1;
     void fl;
     emitters("town_mouth_cave", m, night, 30, 0.5, 0.7); // the torches a step under the windows and the fire (at 1.5 the mouth read ablaze)
@@ -2295,7 +2414,9 @@ export function createTownView(host: HTMLElement): TownView {
     }
     if (s.home && night > 0.3)
       F.lights.push({ x: PLOTS.tent.x, y: PLOTS.tent.y - 6, r: 14, c: [0.9, 0.55, 0.25] });
+    n0 = F.n;
     if (s.home) sprite("town_crate", PLOTS.crate.h, PLOTS.crate.x, PLOTS.crate.y);
+    tagGlow("crate", n0);
     // Cut 109: the dressing the stage has earned, the lamps lit at dusk
     for (const q of PROPS) {
       if (q.stage > s.stage || (!s.home && q.stage === 0)) continue;
@@ -2320,7 +2441,9 @@ export function createTownView(host: HTMLElement): TownView {
         id === "device" && reincarnating
           ? `town_service_device_active_${animate ? Math.floor(t * 2) & 1 : 0}`
           : `town_service_${id}`;
+      n0 = F.n;
       sprite(spriteId, p.h, p.x, p.y, { ground: true });
+      tagGlow(id, n0);
       if (id === "pool") {
         for (const spot of homeSpots)
           sprite("town_bench", 8, spot.pool.x, spot.pool.y + 2, { ground: true });
@@ -2348,7 +2471,9 @@ export function createTownView(host: HTMLElement): TownView {
       }
     }
     folk(s, night);
+    n0 = F.n;
     if (s.board) sprite("town_board", PLOTS.board.h, PLOTS.board.x, PLOTS.board.y);
+    tagGlow("board", n0);
     // the buildings: scaffold → built (dust, a glint)
     for (const b of s.buildings) {
       const p = PLOTS[b.id];
@@ -2373,12 +2498,14 @@ export function createTownView(host: HTMLElement): TownView {
         st = s.chest.state,
         full = st === "full";
       const hop = full ? -Math.round(Math.max(0, Math.sin(t * 4)) * 2) : 0;
+      n0 = F.n;
       sprite(
         [`town_haul_chest${st === "closed" ? "" : `_${st}`}`, "town_haul_chest"],
         c.h,
         c.x,
         c.y + hop,
       );
+      tagGlow("chest", n0);
       if (full) {
         const g = (t * 0.7) % 1;
         sprite("fx_glint", 7, c.x + 5, c.y - c.h + 1 + hop, {
@@ -2403,7 +2530,7 @@ export function createTownView(host: HTMLElement): TownView {
       if (still) arrive.delete(w.id);
       const legs = arrive.get(w.id);
       if (legs?.length) {
-        const at = walkerAt({ legs, from: legs[0]!.t0, to: Infinity } as Walker, t);
+        const at = walkerAt({ legs, from: -Infinity, to: Infinity } as Walker, t);
         if (at && t < legs[legs.length - 1]!.t1) {
           x = at.x;
           y = at.y;
@@ -2416,6 +2543,7 @@ export function createTownView(host: HTMLElement): TownView {
         phase = (k % 97) / 31;
       const step = moving && (Math.floor(t * 6.5) & 1) === 1;
       const frameN = still || moving ? 0 : Math.floor((t + phase) / beat) & 1;
+      n0 = F.n;
       if (w.lit) {
         const g = atlas.grey(workerIds(w.id), 24);
         if (inView(x, y, g.w, g.h)) {
@@ -2427,6 +2555,29 @@ export function createTownView(host: HTMLElement): TownView {
           flip,
           dim: w.paused ? 0.7 : 1,
         });
+      tagGlow(`worker:${w.id}`, n0);
+      if (w.id === "porter" && errand && !w.lit) {
+        if (t < errand.pick)
+          sprite(["town_haul_chest_full", "town_haul_chest"], CHEST_AT.h, CHEST_AT.x, CHEST_AT.y);
+        else if (t < errand.drop) {
+          const back = (flip ? -1 : 1) * 6;
+          sprite("town_chest_glow", 8, x + back, y - 8 + 8 - (step ? 1 : 0), {
+            z: zOf(y) + 0.0002,
+            flip,
+          });
+          if (F.lights.length < MAX_LIGHTS)
+            F.lights.push({ x: x + back, y: y - 8, r: 16, c: [1.0, 0.85, 0.4] });
+        }
+        if (t >= errand.drop) {
+          const e = errand;
+          if (t >= e.back) errand = null;
+          if (e.drop > -1) {
+            e.drop = -1; // (fired once: the UI floats the `+$N`)
+            e.pick = -1;
+            e.done(true);
+          }
+        }
+      }
       // week 2: his rank, quiet — a gilt pip over his head per rank past the first (II ·, III ··)
       if (!w.lit && w.rank > 1)
         for (let r = 0; r < w.rank - 1; r++)
@@ -2799,6 +2950,7 @@ export function createTownView(host: HTMLElement): TownView {
       const c0 = performance.now();
       fit();
       frame();
+      glows();
       if (gl && !glLost) {
         gl.render(F, effectsLevel() === "off" ? false : lightingPreviewOverride);
         if (c2d) c2d.style.display = "none";
@@ -3142,6 +3294,18 @@ export function createTownView(host: HTMLElement): TownView {
             }
           : null,
         workers: s?.workers.map((w) => `${w.id}${w.lit ? "(lit)" : w.paused ? "(off)" : ""}`) ?? [],
+        hauls,
+        hauling: errand
+          ? t < errand.pick
+            ? "fetch"
+            : errand.drop > -1
+              ? "carry"
+              : "return"
+          : null,
+        glows: F.glows.map(
+          (g) =>
+            `${hovered.has(g.id) || focused.has(g.id) ? "hover" : pulses.has(g.id) ? "pulse" : "ready"}:${g.id}${g.sweep ? "~" : ""}${g.glow ? "" : "-"}`,
+        ),
         ranks: Object.fromEntries(
           (s?.workers ?? []).filter((w) => !w.lit && w.rank > 1).map((w) => [w.id, w.rank]),
         ),
@@ -3155,8 +3319,72 @@ export function createTownView(host: HTMLElement): TownView {
       hourOverride = h;
     },
     poke,
+    highlight(id, mode, on) {
+      const set = mode === "hover" ? hovered : focused;
+      if (on) set.add(id);
+      else set.delete(id);
+      poke();
+    },
+    setReady(ids) {
+      readyIds = new Set(ids);
+    },
+    haul(to) {
+      const w = state?.workers.find((x) => x.id === "porter" && !x.lit && !x.paused);
+      const post = w && workerAt(w);
+      if (
+        !state?.home ||
+        !post ||
+        motionPreference.matches ||
+        effectsLevel() === "off" ||
+        document.documentElement.dataset.juice === "off" ||
+        document.hidden
+      )
+        return Promise.resolve(false);
+      errand?.done(false);
+      const sp = SPEED * 1.5,
+        legs: Leg[] = [];
+      const chest = { x: CHEST_AT.x - 7, y: CHEST_AT.y + 1 };
+      let tt = legsAlong([post, chest], t + 0.15, sp, legs);
+      const pick = tt + 0.35;
+      legs.push({ t0: tt, t1: pick, a: chest, b: chest });
+      const dest =
+        to === "bank" && PLOTS.bank && state.buildings.some((b) => b.id === "bank")
+          ? "bank"
+          : "tent";
+      tt = legsAlong([chest, ...route("mouth", dest)], pick, sp, legs);
+      const drop = tt + 0.3;
+      const at = NODES[dest]!;
+      legs.push({ t0: tt, t1: drop, a: at, b: at });
+      const back = legsAlong([...route(dest, nearestNode(post)), post], drop, sp, legs);
+      arrive.set("porter", legs);
+      hauls++;
+      poke();
+      start();
+      return new Promise((res) => {
+        errand = { at: t, pick, drop, back, done: res };
+      });
+    },
+    hauling() {
+      return errand ? (t < errand.pick ? "fetch" : errand.drop > -1 ? "carry" : "return") : null;
+    },
+    haulAt(to) {
+      const p = NODES[to === "bank" ? "bank" : "tent"]!;
+      return css(p.x, p.y - 30);
+    },
+    pulse(id) {
+      if (!this.glowsSprite(id)) return false;
+      pulses.set(id, performance.now());
+      poke();
+      return true;
+    },
+    glowsSprite(id) {
+      if (!gl || glLost || !state || id === "staked") return false;
+      return this.rectOf(id as Parameters<TownView["rectOf"]>[0]) !== null;
+    },
     dispose() {
       disposed = true;
+      errand?.done(false);
+      errand = null;
       if (raf) cancelAnimationFrame(raf);
       raf = 0;
       document.removeEventListener("visibilitychange", onVis);
@@ -3301,6 +3529,7 @@ class GLTown {
   private groundL: QuadLayer;
   private objL: QuadLayer;
   private shadowL: QuadLayer;
+  private glowL: GlowLayer;
   private blitScene = new THREE.Scene();
   private blitCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private mat: THREE.ShaderMaterial;
@@ -3352,6 +3581,7 @@ class GLTown {
     this.groundL = new QuadLayer(this.terrainTex, 1, 1, 0);
     this.objL = new QuadLayer(this.tex, 1600, 1, 1);
     this.shadowL = new QuadLayer(this.tex, 800, 1, 1);
+    this.glowL = new GlowLayer(this.tex, ATLAS);
     const objectMat = this.objL.mesh.material as THREE.ShaderMaterial;
     objectMat.vertexShader = objectMat.vertexShader
       .replace("varying vec2 vUv;", "varying vec2 vUv; varying vec2 vLocal; varying vec2 vWorld;")
@@ -3562,6 +3792,33 @@ class GLTown {
     this.render(F, lightingPreviewOverride);
     return values;
   }
+  timeGlow(F: TownFrame, n: number): { offMs: number; onMs: number; glows: number; n: number } {
+    const context = this.renderer.getContext(),
+      px = new Uint8Array(4);
+    const kept = F.glows.slice(),
+      off: number[] = [],
+      on: number[] = [];
+    const once = (glows: Glow[]): number => {
+      F.glows = glows;
+      const t0 = performance.now();
+      this.render(F);
+      context.readPixels(0, 0, 1, 1, context.RGBA, context.UNSIGNED_BYTE, px);
+      return performance.now() - t0;
+    };
+    once(kept);
+    for (let i = 0; i < n; i++) {
+      if (i & 1) {
+        on.push(once(kept));
+        off.push(once([]));
+      } else {
+        off.push(once([]));
+        on.push(once(kept));
+      }
+    }
+    F.glows = kept;
+    const med = (a: number[]): number => a.sort((x, y) => x - y)[a.length >> 1]!;
+    return { offMs: med(off), onMs: med(on), glows: kept.length, n };
+  }
   render(F: TownFrame, reliefOverride?: boolean, timeOverride?: number): void {
     const r = this.renderer;
     if (this.canvas.width !== F.W || this.canvas.height !== F.H) r.setSize(F.W, F.H, false);
@@ -3655,6 +3912,13 @@ class GLTown {
     u.uTime!.value = timeOverride ?? performance.now() / 1000;
     r.setRenderTarget(null);
     r.render(this.blitScene, this.blitCam);
+    // Cut272: the lit silhouettes go over the lit screen (emitted gold, never dimmed by the night's grade); none, no draw
+    if (this.glowL.set(F.glows, F, timeOverride ?? performance.now() / 1000)) {
+      const auto = r.autoClear;
+      r.autoClear = false;
+      r.render(this.glowL.scene, this.glowL.camera);
+      r.autoClear = auto;
+    }
   }
   // (the context is let go, not left for the browser to reap: a camp mounted a dozen times held a dozen contexts, and Chrome's cap
   // then forced the oldest live one — the watch's — lost)
@@ -3662,6 +3926,7 @@ class GLTown {
     this.groundL.dispose();
     this.objL.dispose();
     this.shadowL.dispose();
+    this.glowL.dispose();
     this.mat.dispose();
     this.rt.dispose();
     this.tex.dispose();
