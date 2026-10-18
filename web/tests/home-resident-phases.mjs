@@ -113,10 +113,11 @@ try {
     await a.refresh();
   });
   s = await state();
-  eq(s.phase, ["recovering", "recovering", "recovering"]);
+  // Cut264: the hero stays in the vat (reincarnating) for the whole recovery
+  eq(s.phase, ["reincarnating", "reincarnating", "reincarnating"]);
   eq(s.ids, [1, 2, 3]);
   eq(s.render, s.phase);
-  eq(s.seated, [true, true, true], "actual recovery residents remain resting");
+  eq(s.seated, [true, true, true], "actual recovery residents remain at their stations");
   await p.evaluate(async () => {
     const a = window.__idlever;
     await a.engine.advance(60000); // Cut230: a first-floor death's recovery, 600 ticks

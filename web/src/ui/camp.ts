@@ -2432,7 +2432,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     replace(
       send,
       recovering
-        ? /* copy:callout */ `Recovering ${spanOf(recovery)}`
+        ? /* copy:callout */ `Cloning ${spanOf(recovery)}` // (Cut264: the hero is in the vat the whole recovery)
         : cleared
           ? h("span", { class: "send-l" }, /* copy:button */ "Next descent")
           : arriving

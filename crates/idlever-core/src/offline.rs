@@ -376,6 +376,7 @@ pub(crate) fn set_terms(r: &mut ReturnReport, l: &crate::engine::LineageState, b
         ("hires", d("hires")),
         ("bank", d("bank")),
         ("sinks", d("sinks")),
+        ("town", d("town")),
         ("recovered", d("recovered")),
         ("fetched", d("fetched")),
         ("other", d("other")),

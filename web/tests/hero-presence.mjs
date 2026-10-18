@@ -112,7 +112,8 @@ try {
       s.life_state = "recovering";
       s.recovery_s = 58;
       r.paint();
-      check(text(1) === "Recovering 58s", "recovery timer replaces departure timer");
+      // (Cut264: an old save's `recovering` reads as the clone it is)
+      check(text(1) === "Cloning 58s", "recovery timer replaces departure timer");
       s.life_state = "ready";
       s.recovery_s = 0;
       s.live = { ...live, run_id: 9, turn: 0 };
@@ -127,7 +128,7 @@ try {
       s.life_state = "recovering";
       s.recovery_s = 40;
       r.paint();
-      check(text(1) === "Recovering 40s", "recovery still supersedes last active observation");
+      check(text(1) === "Cloning 40s", "recovery still supersedes last active observation");
       r.dispose();
       return checks;
     });

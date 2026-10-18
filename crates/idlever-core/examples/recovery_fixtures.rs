@@ -73,7 +73,7 @@ fn main() {
     fs::write(out.join("three-controlled-reincarnating.game.json"), s.save()).unwrap();
     fs::write(out.join("three-controlled-reincarnating.lineage.json"), serde_json::to_vec_pretty(&l).unwrap()).unwrap();
     s.advance(2_000);
-    assert!(s.lineage().hero_slots.iter().all(|h| h.life_state == "recovering"));
+    assert!(s.lineage().hero_slots.iter().all(|h| h.life_state == "reincarnating")); // (Cut264: the whole recovery reads reincarnating)
     fs::write(out.join("three-controlled-recovering.game.json"), s.save()).unwrap();
     s.advance(secs * 1000);
     assert!(s.lineage().hero_slots.iter().all(|h| h.life_state == "ready"));

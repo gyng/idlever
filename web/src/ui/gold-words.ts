@@ -3,6 +3,7 @@ export const goldWords = (text: string): string =>
   text
     .replace(/\bbanked\b/gi, (word) => (word === word.toUpperCase() ? "RETREATED" : "retreated"))
     .replace(/\bbank (deposit|withdraw)\b/g, "savings $1")
+    .replace(/\bupgrade device\b/g, "upgrade clone vat")
     // Cut273: a worker comes from building his workplace (the ledger keeps the hire's own reason); a rank stays a rank
     .replace(/\bhire ([a-z_]+) rank\b/g, "rank $1")
     .replace(

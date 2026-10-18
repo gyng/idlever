@@ -379,6 +379,11 @@ impl Game {
     /// Blind b58b431: a Legacy purchase while the hero is away, for the next run (`legacy::buy_next`).
     pub fn upgrade_hero_next(&mut self, id: &str) -> Result<(), String> { let r = legacy::buy_next(self, id); self.honours_sweep(r) }
     pub fn respec_legacy(&mut self) -> Result<(), String> { legacy::respec(self) }
+    pub fn upgrade_building(&mut self,id:&str,max_price:i32)->Result<(),String> {
+        if persistent::away(self) {return Err("hero away".into());}
+        let r = town::upgrade(&mut self.lineage,id,max_price);
+        self.honours_sweep(r)
+    }
     pub fn build_town(&mut self, id: &str) -> Result<(), String> {
         let r = town::construct(&mut self.lineage, id);
         self.honours_sweep(r)
@@ -397,6 +402,12 @@ impl Game {
         let t=self.run.as_ref().map_or(0,|r|r.turn);
         class_tree::announce_stage(self,before,t);
         self.honours_sweep(Ok(()))
+    }
+    /// Cut264 §3 (docs/CUT264_CLONE_VAT.md): skip the clone's whole recovery for gold — the live price, refused with
+    /// `price changed` above `max_price`. An explicit camp command: no bot, worker or absence ever calls it. The price paid.
+    pub fn hurry_clone(&mut self, max_price: i32) -> Result<i32, String> {
+        let away = persistent::away(self);
+        persistent::hurry(&mut self.lineage, away, max_price)
     }
     /// Cut 30.5, week 2: promote the worker whose rank is on offer (`tree.lit_rank`); its new rank.
     pub fn promote(&mut self, id: &str) -> Result<u32, String> {
@@ -459,6 +470,8 @@ mod tests_cut120;
 mod tests_cut235;
 #[cfg(test)]
 mod tests_cut273;
+#[cfg(test)]
+mod tests_cut264;
 #[cfg(test)]
 mod tests_cut121;
 #[cfg(test)]

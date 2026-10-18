@@ -28,6 +28,8 @@ pub fn home_default() -> bool { true }
 pub struct Town {
     #[serde(default)]
     pub forge_eligible:bool,
+    #[serde(default, skip_serializing_if="std::collections::BTreeMap::is_empty")]
+    pub levels: std::collections::BTreeMap<String,u32>,
     #[serde(default)]
     pub kennel_eligible:bool,
     /// Actual legendary finds unlock their equipment shape for every resident.
@@ -143,21 +145,63 @@ pub fn construct(l: &mut LineageState, id: &str) -> Result<(), String> {
     Ok(())
 }
 
+/// Bought effect levels are shared town state; staff levels remain derived.
+pub fn effect_level(l: &LineageState, id: &str) -> u32 {
+    l.town.levels.get(id).copied().unwrap_or(if id == "bank" { 2 } else { 1 })
+}
+pub fn vat_hurry_off_pct(l: &LineageState) -> u32 {
+    match effect_level(l, "device") { 2 => crate::balance::get().buildings.vat_hurry_off_pct[0], 3.. => crate::balance::get().buildings.vat_hurry_off_pct[1], _ => 0 }
+}
+pub fn upgrade_offers(l: &LineageState) -> Vec<crate::wire::BuildingUpgrade> {
+    upgrade_offers_for(l,l.best_depth,crate::persistent::service_availability(l,false)[2])
+}
+/// A Session supplies the town's deepest resident record and union of earned service availability.
+pub(crate) fn upgrade_offers_for(l: &LineageState,best_depth:u32,device_available:bool) -> Vec<crate::wire::BuildingUpgrade> {
+    ["bank", "device"].into_iter().filter_map(|id| {
+        let base = if id == "bank" { 2 } else { 1 };
+        let stands = if id == "bank" { built(l,id) && crate::tree::hired(l,"clerk") } else { device_available };
+        if !stands { return None; }
+        let level = effect_level(l,id).clamp(base,base+2);
+        let next = (level < base+2).then(|| {
+            let i = (level-base) as usize;
+            let b = &crate::balance::get().buildings;
+            let price = (b.price_units[i] * crate::kit::unit(b.gate_depth[i])) as i32;
+            crate::wire::BuildingUpgradeNext { level: level+1, price, gate_depth: b.gate_depth[i], affordable: crate::tree::purse(l) >= price, ready: best_depth >= b.gate_depth[i], effect: if id == "bank" {format!("{} nights",b.bank_nights[i])} else {format!("{}% hurry",b.vat_hurry_off_pct[i])} }
+        });
+        Some(crate::wire::BuildingUpgrade { id:id.into(),level,max:base+2,next })
+    }).collect()
+}
+pub fn upgrade(l: &mut LineageState,id:&str,max_price:i32)->Result<(),String> {
+    let best_depth=l.best_depth;
+    let device=crate::persistent::service_availability(l,false)[2];
+    upgrade_for(l,id,max_price,best_depth,device)
+}
+pub(crate) fn upgrade_for(l: &mut LineageState,id:&str,max_price:i32,best_depth:u32,device_available:bool)->Result<(),String> {
+    let offer = upgrade_offers_for(l,best_depth,device_available).into_iter().find(|o|o.id==id).and_then(|o|o.next).ok_or("no upgrade")?;
+    if !offer.ready {return Err(format!("D{} needed",offer.gate_depth));}
+    if offer.price > max_price {return Err("price changed".into());}
+    if !offer.affordable {return Err("not enough gold".into());}
+    l.gold_move(-offer.price,&format!("upgrade {id} {}",offer.level));
+    l.town.levels.insert(id.into(),offer.level);
+    Ok(())
+}
+
 /// A building's look (1–3): the blacksmith by its forge steps, the bank by its balance.
 pub fn level(l: &LineageState, id: &str) -> u32 {
-    match id {
+    let derived = match id {
         "blacksmith" => {
             let steps: u32 = crate::kit::KIT_SLOTS.iter().map(|s| crate::kit::owned(l, s)).sum();
             1 + (steps >= 3) as u32 + (steps >= 7) as u32
         }
         "bank" => 1 + (l.town.bank >= bank_cap(l) / 2 && l.town.bank > 0) as u32 + (l.town.bank >= bank_cap(l) && l.town.bank > 0) as u32,
         _ => 1,
-    }
+    };
+    derived.max(l.town.levels.get(id).copied().unwrap_or(1))
 }
 
 /// The bank holds at most `BANK_NIGHTS` nights of net income (never under 100).
 pub fn bank_cap(l: &LineageState) -> i32 {
-    (bank_nights() * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
+    (match effect_level(l,"bank") { 3 => crate::balance::get().buildings.bank_nights[0], 4.. => crate::balance::get().buildings.bank_nights[1], _ => bank_nights() } * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
 }
 
 /// Deposit gold (refused before the bank is built; capped).
@@ -571,8 +615,8 @@ pub fn workplaces_wire(l: &LineageState) -> Vec<crate::wire::WorkplaceWire> {
             (level > 0 || next.is_some()).then(|| crate::wire::WorkplaceWire {
                 id: w.id.into(),
                 name: w.name.into(),
-                level,
-                max: w.max_level(),
+                level: level.max(l.town.levels.get(w.id).copied().unwrap_or(0)),
+                max: if w.id == "bank" {4} else {w.max_level()},
                 staff: w.staff.iter().filter(|s| crate::tree::hired(l, s)).map(|s| s.to_string()).collect(),
                 next: next.map(|n| {
                     let price = crate::tree::price(l, n);
@@ -606,6 +650,7 @@ pub fn wire(l: &LineageState) -> TownWire {
         workers: if l.pkg.literal { Vec::new() } else { crate::tree::posts(l) },
         workplaces: workplaces_wire(l),
         forge_work: None,
+        upgrades: upgrade_offers(l),
     }
 }
 
@@ -903,5 +948,66 @@ fn grant(l: &mut LineageState, reward: &str, text: &str) {
             l.titles.push(text.to_string());
             l.marks += 2;
         }
+    }
+}
+
+#[cfg(test)]
+mod upgrade_tests {
+    use super::*;
+    use crate::Game;
+    fn bank() -> Game {
+        let mut g=Game::new(265);
+        g.build_town("house").unwrap();
+        g.lineage.town.built.push(("bank".into(),0));
+        g.lineage.tree.hired.push(("clerk".into(),0));
+        g.lineage.best_depth=23;
+        g.lineage.last_night_net=1000;
+        g.lineage.gold_move(100_000,"test income");
+        // Normalize derived unlock/oath state after diagnostic staging, before exercising persistence.
+        Game::load(&g.save()).unwrap()
+    }
+    #[test]
+    fn upgrades_have_fixed_prices_keep_staff_separate_and_preserve_net() {
+        let mut g=bank();
+        let offer=upgrade_offers(&g.lineage).into_iter().find(|o|o.id=="bank").unwrap();
+        assert_eq!(offer.level,2);
+        assert_eq!(offer.next.unwrap().price,3400);
+        let before=(g.lineage.night_net,g.lineage.day_net);
+        assert_eq!(bank_cap(&g.lineage),3000);
+        g.upgrade_building("bank",3400).unwrap();
+        assert_eq!(bank_cap(&g.lineage),5000);
+        assert_eq!(before,(g.lineage.night_net,g.lineage.day_net));
+        assert_eq!(g.lineage.gold_tally.get("town"),Some(&-3400));
+        assert_eq!(workplaces_wire(&g.lineage).into_iter().find(|w|w.id=="bank").unwrap().level,3);
+        g.upgrade_building("bank",13500).unwrap();
+        assert_eq!(bank_cap(&g.lineage),8000);
+        let saved=g.save();
+        assert!(g.upgrade_building("bank",i32::MAX).is_err());
+        assert_eq!(g.save(),saved);
+        assert_eq!(Game::load(&saved).unwrap().save(),saved);
+    }
+    #[test]
+    fn rejected_upgrades_are_atomic_and_clerk_is_required() {
+        let mut g=bank();
+        for (id,limit) in [("bank",3399),("kennel",i32::MAX),("unknown",i32::MAX)] {
+            let saved=g.save();assert!(g.upgrade_building(id,limit).is_err());assert_eq!(saved,g.save());
+        }
+        g.lineage.best_depth=12;
+        let saved=g.save();assert!(g.upgrade_building("bank",3400).is_err());assert_eq!(saved,g.save());
+        g.lineage.best_depth=23;g.lineage.tree.hired.retain(|(id,_)|id!="clerk");
+        assert!(g.upgrade_building("bank",3400).is_err());
+        assert_eq!(bank_cap(&g.lineage),3000);
+    }
+    #[test]
+    fn vat_discount_requires_service_and_is_persisted() {
+        let mut g=bank();
+        assert!(g.upgrade_building("device",3400).is_err());
+        g.lineage.persistent.defeats=1;
+        assert_eq!(vat_hurry_off_pct(&g.lineage),0);
+        g.upgrade_building("device",3400).unwrap();
+        assert_eq!(vat_hurry_off_pct(&g.lineage),25);
+        g.upgrade_building("device",13500).unwrap();
+        assert_eq!(vat_hurry_off_pct(&g.lineage),50);
+        assert_eq!(vat_hurry_off_pct(&Game::load(&g.save()).unwrap().lineage),50);
     }
 }

@@ -7978,3 +7978,164 @@ type Fk263 = {
     return this.lineage();
   };
 }
+
+// Cut264 (docs/CUT264_CLONE_VAT.md §3): the clone vat's gold hurry. The fake keeps no death recovery of its own; the dev/test hook
+// `__clone(total_s, left_s?)` starts one, and the lineage then carries a cloning hero with the core's price rule.
+type Fk264 = {
+  s: {
+    clone264?: { total: number; left: number };
+    lineage: { gold: number };
+    buildingLevels?: Record<string, number>;
+  };
+  lineage(): Lineage;
+};
+{
+  const P = FakeEngine.prototype as unknown as Record<string, (...a: unknown[]) => unknown>;
+  /** the core's rule: max(floor, roundup(5, ⌈left_s × unit(best) × 250 / 60000⌉)); offered from 30 s left */
+  const price264 = (left: number, best: number, off = 0): number | undefined =>
+    left < 30
+      ? undefined
+      : Math.max(
+          10,
+          Math.ceil(
+            Math.floor((Math.ceil((left * (100 + 25 * best) * 250) / 60000) * (100 - off)) / 100) /
+              5,
+          ) * 5,
+        );
+  const service = (id: string, name: string) => ({ id, name, available: true, body: "" });
+  const lin = P.lineage;
+  P.lineage = function (this: Fk264): Lineage {
+    const L = lin.call(this) as Lineage;
+    const c = this.s.clone264;
+    if (!c) return L;
+    const left = Math.max(0, c.left);
+    const price =
+      left > 0
+        ? price264(left, L.best_depth ?? 0, [0, 0, 25, 50][this.s.buildingLevels?.device ?? 1] ?? 0)
+        : undefined;
+    const state = left > 0 ? ("reincarnating" as const) : ("ready" as const);
+    L.persistent_hero ??= {
+      id: `${L.seed ?? 0}:1`,
+      name: "Fenn Ash",
+      incarnation: 2,
+      rebirths: 0,
+      state,
+      recovery_s: 0,
+      rest_s: 0,
+      need: "none",
+      attributes: [],
+      guild: service("guild", "Guild"),
+      pool: service("pool", "Pool"),
+      device: service("device", "Clone vat"),
+      rebirth: {
+        available: false,
+        blocked: null,
+        token: "",
+        refund: 0,
+        points_after: null,
+        required_depth: 0,
+        delves_remaining: 0,
+        seconds_remaining: 0,
+        resets: [],
+        retains: [],
+      },
+    };
+    const hero = L.persistent_hero!;
+    hero.state = state;
+    hero.recovery_s = left;
+    hero.recovery_total_s = left > 0 ? c.total : 0;
+    hero.need = left > 0 ? "recovery" : "none";
+    if (price === undefined) delete hero.hurry_price;
+    else hero.hurry_price = price;
+    return L;
+  };
+  P.hurryClone = function (this: Fk264, max: unknown): Lineage {
+    const c = this.s.clone264;
+    const L = this.lineage();
+    const price =
+      c && c.left > 0
+        ? price264(
+            c.left,
+            L.best_depth ?? 0,
+            [0, 0, 25, 50][this.s.buildingLevels?.device ?? 1] ?? 0,
+          )
+        : undefined;
+    if (price === undefined) throw new Error("not cloning");
+    if (price > Number(max)) throw new Error("price changed");
+    if (this.s.lineage.gold < price) throw new Error("not enough gold");
+    this.s.lineage.gold -= price;
+    c!.left = 0;
+    return this.lineage();
+  };
+  /** Dev/test hook: a clone growing for `total` s with `left` s to go (`left` 0: ready). */
+  P.__clone = function (this: Fk264, total: unknown, left?: unknown): Lineage {
+    const t = Math.max(0, Number(total) || 0);
+    this.s.clone264 = { total: t, left: left === undefined ? t : Math.max(0, Number(left) || 0) };
+    return this.lineage();
+  };
+}
+
+// Cut265: persisted demo upgrades use the same offer and stale-price contract as Rust.
+{
+  const P = FakeEngine.prototype as unknown as Record<string, (...args: unknown[]) => unknown>;
+  const lineage = P.lineage;
+  type UpgradeFake = Fk305 & { s: Fk305["s"] & { buildingLevels?: Record<string, number> } };
+  P.lineage = function (this: UpgradeFake): Lineage {
+    const L = lineage.call(this) as Lineage;
+    if (!L.town) return L;
+    const levels = this.s.buildingLevels ?? {};
+    const staff = st305(this).hired;
+    L.town.upgrades = (["bank", "device"] as const)
+      .filter((id) =>
+        id === "bank"
+          ? L.town!.buildings.some((b) => b.id === id) && staff.includes("clerk")
+          : Boolean(L.persistent_hero?.device?.available),
+      )
+      .map((id) => {
+        const base = id === "bank" ? 2 : 1;
+        const level = levels[id] ?? base;
+        const i = level - base;
+        return {
+          id,
+          level,
+          max: base + 2,
+          ...(i < 2
+            ? {
+                next: {
+                  level: level + 1,
+                  price: [3400, 13500][i],
+                  gate_depth: [13, 23][i],
+                  affordable: L.gold >= [3400, 13500][i],
+                  ready: L.best_depth >= [13, 23][i] && L.persistent_hero?.state !== "away",
+                  effect:
+                    id === "bank" ? ["5 nights", "8 nights"][i] : ["25% hurry", "50% hurry"][i],
+                },
+              }
+            : {}),
+        };
+      });
+    if (levels.bank && levels.bank >= 3)
+      L.town.bank_cap = Math.floor((L.town.bank_cap * (levels.bank >= 4 ? 8 : 5)) / 3);
+    for (const w of L.town.workplaces ?? [])
+      if (w.id === "bank") {
+        w.level = Math.max(w.level, levels.bank ?? 0);
+        w.max = 4;
+      }
+    return L;
+  };
+  P.upgradeBuilding = function (this: UpgradeFake, id: unknown, maxPrice: unknown): Lineage {
+    const L = this.lineage();
+    const next = L.town?.upgrades?.find((o) => o.id === id)?.next;
+    if (
+      !next ||
+      !next.ready ||
+      !next.affordable ||
+      typeof maxPrice !== "number" ||
+      next.price > maxPrice
+    )
+      throw new Error("upgrade unavailable");
+    this.s.lineage.gold -= next.price;
+    (this.s.buildingLevels ??= {})[String(id)] = next.level;
+    return this.lineage();
+  };
+}

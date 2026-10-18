@@ -161,7 +161,7 @@ const nearestNode = (p: Pt): string => {
 
 export type Marker = {
   at: PlotId | "chest";
-  kind: "coin" | "rune" | "sword" | "chest";
+  kind: "coin" | "rune" | "sword" | "chest" | "clone";
   label?: string;
 };
 /** Cut 30.5 (docs/AUTOMATION_TREE.md §3C): the haul chest by the mouth (before the porter) and the workers at their posts */
@@ -272,6 +272,8 @@ export type TownState = {
   places?: Record<string, number>;
   /** Cut 228: the Forge's present work (Rust `Town.forge_work`): the step, the hero it was forged for, seconds left */
   forge?: { step: string; hero: number; left: number };
+  /** Cut264: the vat's clone — growing (its progress 0..1, seconds left); ready independently tracks the `Clone ready` lantern. */
+  clone?: { progress: number; left: number; ready: boolean };
 };
 export type HomeResidentSpot = { id: number; pool: Pt; device: Pt };
 /** Stable grounds allocated to actual roster IDs, unaffected by selected/away state. */
@@ -315,6 +317,8 @@ export type TownOpts = {
   now?: Date;
   absenceNew?: boolean;
   chestOpen?: boolean;
+  /** Cut264: the clone that finished under this view's eyes (its lantern until he departs or the vat is tapped) */
+  cloneReady?: boolean;
 };
 
 const hashN = (...xs: number[]): number => {
@@ -338,6 +342,28 @@ const PARTIES_MAX = 6;
 /** Cut 109: the hero's house grows with the town (cottage · lean-to · two storeys at2 and all remaining facilities standing) — a look, no rule */
 export const houseLook = (s: { stage: number }): number =>
   s.stage >= BUILDINGS.length ? 3 : s.stage >= 2 ? 2 : 1;
+/** Cut264: the clone in the vat — the selected hero's, else any resident's; `ready` the one this view saw finish. */
+export function cloneOf(
+  L: Lineage,
+  ready = false,
+): { progress: number; left: number; ready: boolean } | undefined {
+  const cloning = (state?: string): boolean => state === "reincarnating" || state === "recovering";
+  const slots = (L.hero_slots ?? []).filter(
+    (h) => cloning(h.life_state) && (h.recovery_s ?? 0) > 0,
+  );
+  const slot = slots.find((h) => h.id === L.selected_bloodline) ?? slots[0];
+  const hero = L.persistent_hero;
+  const [left, total] = slot
+    ? [slot.recovery_s ?? 0, slot.recovery_total_s ?? 0]
+    : hero && cloning(hero.state) && hero.recovery_s > 0
+      ? [hero.recovery_s, hero.recovery_total_s ?? 0]
+      : [0, 0];
+  if (left > 0) {
+    const t = Math.max(total, left);
+    return { progress: t > 0 ? Math.min(1, Math.max(0, (t - left) / t)) : 0, left, ready };
+  }
+  return ready ? { progress: 1, left: 0, ready: true } : undefined;
+}
 /** The core's town (`Lineage.town`) and the absence's report → the scene. Pure (walkers are seeded, never read back). */
 export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts = {}): TownState {
   const town = L.town;
@@ -454,9 +480,26 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
   if (has("bank") && (town?.bank ?? 0) > 0 && o.absenceNew)
     markers.push({ at: "bank", kind: "coin" });
   const opened = new Set(o.opened ?? []);
+  // Cut264: the vat's clone has priority in the budget — growing, its badge takes a marker's place; ready, its lantern leads
+  const clone = cloneOf(L, !!o.cloneReady);
+  const deviceUp = town?.home !== false && !!L.persistent_hero?.device.available;
+  if (deviceUp && clone?.ready)
+    markers.unshift({ at: "device", kind: "clone", label: /* copy:callout */ "Clone ready" });
+  const budget = deviceUp && clone && clone.left > 0 ? 2 : 3;
   for (const b of buildings)
-    if (markers.length < 3 && !opened.has(b.id) && !markers.some((m) => m.at === b.id))
+    if (markers.length < budget && !opened.has(b.id) && !markers.some((m) => m.at === b.id))
       markers.push({ at: b.id, kind: "rune" });
+  // Bought workplace levels share the existing marker budget and leave stronger readiness signals visible.
+  if (town?.home !== false && L.persistent_hero?.state !== "away")
+    for (const upgrade of town?.upgrades ?? [])
+      if (
+        (upgrade.id === "bank" || upgrade.id === "device") &&
+        markers.length < budget &&
+        upgrade.next?.ready &&
+        upgrade.next.affordable &&
+        !markers.some((m) => m.at === upgrade.id)
+      )
+        markers.push({ at: upgrade.id, kind: "rune", label: /* copy:callout */ "Upgrade" });
   return {
     home: town?.home !== false,
     seed,
@@ -495,7 +538,8 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     pets: (L.party ?? []).slice(0, 2).map((c) => c.kind),
     penned: has("kennel") ? (L.kennel ?? []).slice(0, 2).map((c) => c.kind) : [],
     parties,
-    markers: markers.slice(0, 3),
+    markers: markers.slice(0, budget),
+    ...(deviceUp && clone ? { clone } : {}),
     depth: L.best_depth ?? 0,
     board: !!o.board,
     chest: town?.home === false || town?.auto_collect ? undefined : chest,
@@ -1241,6 +1285,15 @@ export type TownStats = {
   windTufts: number;
   windSignature: number;
   services?: ServiceId[];
+  /** Cut264: the vat as drawn — its sprite (`""`: none), the clone's state, its mist light's strength and colour */
+  vat?: {
+    art: string;
+    clone: "growing" | "ready" | null;
+    light: number;
+    color: string;
+    /** heroes seen stepping out of the vat on this mount */
+    emerged: number;
+  };
   residentStates?: {
     id: number;
     resting: boolean;
@@ -1707,7 +1760,10 @@ export function createTownView(host: HTMLElement): TownView {
           wander: actor.extend!,
           smithStop: stops.indexOf("smith"),
         };
-      if (resident.phase === "reincarnating" && s.services?.includes("device")) {
+      if (
+        (resident.phase === "reincarnating" || resident.phase === "recovering") &&
+        s.services?.includes("device")
+      ) {
         actor.homeOffset = { x: 0, y: 0 };
         actor.reincarnating = true;
         const p = homeSpots.find((p) => p.id === resident.id)!.device;
@@ -2195,6 +2251,11 @@ export function createTownView(host: HTMLElement): TownView {
   forest();
 
   let flickNow = 1;
+  // Cut264: what the vat drew this frame (its sprite, its mist light's strength) and when its clone was first drawn ready
+  let deviceArt = "",
+    vatLight = 0,
+    emerged = 0,
+    cloneReadyAt: number | undefined;
   /** the warm emitters painted into a sprite (art/town_lights.json: [dx, dy, strength] from its foot), at `base` strength by day */
   function emitters(
     id: string,
@@ -2481,21 +2542,30 @@ export function createTownView(host: HTMLElement): TownView {
     for (const id of s.services ?? []) {
       const p = SERVICE_PLOTS[id];
       const reincarnating =
-        id === "device" && s.residents?.some((r) => r.phase === "reincarnating");
+        id === "device" &&
+        s.residents?.some((r) => r.phase === "reincarnating" || r.phase === "recovering");
       const animate = !motionPreference.matches && effectsLevel() !== "off";
-      const spriteId =
-        id === "device" && reincarnating
-          ? `town_service_device_active_${animate ? Math.floor(t * 2) & 1 : 0}`
-          : `town_service_${id}`;
+      const active = `town_service_device_active_${animate ? Math.floor(t * 2) & 1 : 0}`;
+      // Cut264: the clone's growth stage by thirds while it grows, the opened vat while it stands ready; the older frames (and the
+      // primitive under them) the fallback
+      const clone = id === "device" ? s.clone : undefined;
+      const ids: string[] =
+        clone && clone.left > 0
+          ? [`town_service_device_grow_${Math.min(2, Math.floor(clone.progress * 3))}`, active]
+          : clone?.ready
+            ? ["town_service_device_ready", "town_service_device"]
+            : id === "device" && reincarnating
+              ? [active]
+              : id === "guild" && (s.places?.guild ?? 0) >= 2
+                ? // Cut273: the Guildhouse's second level (the Guide's signpost) when its art is packed, else the hall
+                  ["town_service_guild_2", "town_service_guild"]
+                : [`town_service_${id}`];
       n0 = F.n;
-      // Cut273: the Guildhouse's second level (the Guide's signpost) when its art is packed, else the hall
-      sprite(
-        id === "guild" && (s.places?.guild ?? 0) >= 2 ? [`${spriteId}_2`, spriteId] : spriteId,
-        p.h,
-        p.x,
-        p.y,
-        { ground: true },
-      );
+      sprite(ids, p.h, p.x, p.y, { ground: true });
+      // (the resolved art key is recorded in dev builds only; production reports the stage asked for)
+      if (id === "device")
+        deviceArt =
+          F.n > n0 ? ((import.meta.env.DEV ? F.quads[n0]?.asset : undefined) ?? ids[0]!) : "";
       tagGlow(id, n0);
       // Cut 277: Guildhouse II reads at game size — the workers' rank badge (a gilt pip per level past the first), drawn
       // larger, capping the hall's gable finial; the art's signpost alone was lost at 402 px
@@ -2522,9 +2592,29 @@ export function createTownView(host: HTMLElement): TownView {
       if (id === "device")
         for (const spot of homeSpots)
           sprite("town_service_station", 6, spot.device.x, spot.device.y + 2, { ground: true });
-      if (night > 0.15 && F.lights.length < MAX_LIGHTS) {
-        const lx = id === "guild" ? p.x + 17 : id === "device" ? p.x + 16 : p.x - 25;
-        const ly = id === "guild" ? p.y - 20 : id === "device" ? p.y - 9 : p.y - 6;
+      // Cut264 §5: the vat's own cool mist light at its glass cylinder (never the generic warm lamp)
+      if (id === "device") {
+        const growing = !!clone && clone.left > 0;
+        if (clone?.ready) cloneReadyAt ??= t;
+        else cloneReadyAt = undefined;
+        const flash =
+          animate && cloneReadyAt !== undefined ? Math.max(0, 1 - (t - cloneReadyAt) / 1.5) : 0;
+        const pulse = growing && animate ? 1 + 0.15 * Math.sin(t * Math.PI * 4) : 1;
+        const a = Math.max(
+          growing ? (0.2 + night * 0.6) * pulse : night * 0.25,
+          flash * (0.6 + night * 0.4),
+        );
+        vatLight = a;
+        if (a >= 0.04 && F.lights.length < MAX_LIGHTS)
+          F.lights.push({
+            x: p.x,
+            y: p.y - 21,
+            r: 16 + 8 * a,
+            c: [VAT_MIST[0] * a, VAT_MIST[1] * a, VAT_MIST[2] * a],
+          });
+      } else if (night > 0.15 && F.lights.length < MAX_LIGHTS) {
+        const lx = id === "guild" ? p.x + 17 : p.x - 25;
+        const ly = id === "guild" ? p.y - 20 : p.y - 6;
         if (id === "pool") sprite("town_lantern", 8, lx, ly, { ground: true });
         const a = night * 0.42;
         F.lights.push({ x: lx, y: ly, r: id === "pool" ? 12 : 17, c: [a, 0.64 * a, 0.3 * a] });
@@ -3186,6 +3276,24 @@ export function createTownView(host: HTMLElement): TownView {
             ])
           : "";
       if (!prev || key(prev) !== key(s)) build(prev?.home === false && s.home);
+      // Cut264 §4: a clone finished under this view — its hero steps out of the vat (the `emerge` fade), then goes about the camp
+      if (prev && s.services?.includes("device"))
+        for (const r of s.residents ?? []) {
+          const was = prev.residents?.find((x) => x.id === r.id)?.phase;
+          if ((was !== "reincarnating" && was !== "recovering") || r.phase !== "ready") continue;
+          const w = walkers.find((x) => x.id === `resident:${r.id}`);
+          const at = homeSpots.find((x) => x.id === r.id)?.device;
+          if (!w || !at || !w.extend) continue;
+          if (motionPreference.matches || effectsLevel() === "off") {
+            w.emerge = false;
+            continue;
+          }
+          w.emerge = true;
+          w.from = t;
+          w.legs = [{ t0: t, t1: t + 1.2, a: at, b: at }];
+          w.extend(w);
+          emerged += 1;
+        }
       if (
         prev?.home === false &&
         s.home &&
@@ -3340,6 +3448,15 @@ export function createTownView(host: HTMLElement): TownView {
         glLost,
         k: F.k,
         night: F.night,
+        vat: s?.services?.includes("device")
+          ? {
+              art: deviceArt,
+              clone: s.clone ? (s.clone.left > 0 ? "growing" : "ready") : null,
+              light: Math.round(vatLight * 1000) / 1000,
+              emerged,
+              color: "#a4bcd6",
+            }
+          : undefined,
         characterLights: characterLights.length,
         dimensionalLight:
           gl &&
@@ -3511,6 +3628,8 @@ function segDist(p: Pt, a: Pt, b: Pt): number {
 // ---- the GL view: one target of town texels, the light pass upscaling it ---------------------------------------------------------
 
 const MAX_LIGHTS = 32;
+/** Cut264 §5: the clone vat's cool mist (#a4bcd6) */
+const VAT_MIST: [number, number, number] = [0xa4 / 255, 0xbc / 255, 0xd6 / 255];
 function townBaseDepth(): boolean {
   return !import.meta.env.DEV || new URLSearchParams(location.search).get("townDepth") !== "off";
 }

@@ -1,3 +1,4 @@
+import { buildingUpgradeRow } from "./building-upgrades";
 import type { App } from "../app";
 import type { HeroRebirth, PersistentHero, Lineage } from "../engine/types";
 import { h, replace, spanOf } from "./dom";
@@ -10,7 +11,8 @@ const STATE: Record<PersistentHero["state"], string> = {
   ready: /* copy:label */ "Ready",
   away: /* copy:label */ "Delving",
   reincarnating: /* copy:label */ "Cloning",
-  recovering: /* copy:label */ "Recovering",
+  // (Cut264: an old save's `recovering` is the same clone)
+  recovering: /* copy:label */ "Cloning",
 };
 const BONUS: Record<string, string> = {
   health: /* copy:label */ "HP bonus",
@@ -118,6 +120,8 @@ export function heroLifePanel(
       L.bloodline,
       L.legacy_upgrades,
       L.town?.home,
+      L.town?.upgrades,
+      L.gold,
       mode,
       reviewed?.preview.token,
     ]);
@@ -167,6 +171,60 @@ export function heroLifePanel(
         h("small", { class: "num" }, /* copy:label */ `Reclones ${hero.rebirths}`),
       ),
     ];
+    // Cut264 §4: the vat's clone — its state, its timer and the gold hurry (Reclone stays below)
+    const cloning = hero.state === "reincarnating" || hero.state === "recovering";
+    if (cloning && hero.recovery_s > 0) {
+      const price = hero.hurry_price;
+      const total = Math.max(hero.recovery_total_s ?? 0, hero.recovery_s);
+      const done = total > 0 ? Math.round((100 * (total - hero.recovery_s)) / total) : 0;
+      children.push(
+        h(
+          "section",
+          { class: "hero-life-section hero-clone", "data-clone": "growing" },
+          h("h3", {}, /* copy:label */ "Clone"),
+          h(
+            "span",
+            {
+              class: "num hero-clone-timer",
+              "data-clone-seconds": hero.recovery_s,
+              "data-clone-total": total,
+            },
+            /* copy:label */ `Cloning ${spanOf(hero.recovery_s)}`,
+          ),
+          h(
+            "span",
+            { class: "hero-clone-bar", "aria-hidden": "true" },
+            h("i", { style: `width:${done}%` }),
+          ),
+          price !== undefined
+            ? h(
+                "button",
+                {
+                  class: "btn hero-clone-hurry num",
+                  "data-life-focus": "hurry",
+                  "data-hurry-price": price,
+                  disabled: !atHome || !engine.hurryClone || busy || L.gold < price,
+                  onclick: () => {
+                    if (!same(key) || !engine.hurryClone) return;
+                    const live = current()?.hurry_price;
+                    if (live === undefined) {
+                      refresh(true);
+                      return;
+                    }
+                    void mutate(
+                      key,
+                      () => engine.hurryClone!(price),
+                      /* copy:callout */ "Clone ready",
+                      "hurry",
+                    );
+                  },
+                },
+                /* copy:button */ `Hurry $${price}`,
+              )
+            : null,
+        ),
+      );
+    }
     if (mode !== "rebirth") {
       const input = h("input", {
         id: nameId,
@@ -522,7 +580,9 @@ export function heroLifePanel(
             ),
       ),
     );
-    replace(el, ...children, feedback);
+    const upgrade =
+      mode === "rebirth" ? buildingUpgradeRow(app, "device", () => refresh(true)) : null;
+    replace(el, ...children, upgrade, feedback);
     scroller.scrollTop = scroll;
     if (focused) {
       focus(focused);

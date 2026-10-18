@@ -61,7 +61,11 @@ const purseSeen = new WeakMap<App, PurseSeen>();
 /** The ledger's word for a spend (`forge sword +3` → `forge`, `repeat heal` → `restock`, a supply kind → `supplies`). */
 export function spendWord(why: string): string {
   const w = goldWords(why).split(/\s+/)[0] ?? "";
-  if (/^(forge|build|rank|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(w))
+  if (
+    /^(forge|build|upgrade|hurry|rank|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(
+      w,
+    )
+  )
     return w;
   return w === "repeat" ? /* copy:label */ "restock" : /* copy:label */ "supplies";
 }

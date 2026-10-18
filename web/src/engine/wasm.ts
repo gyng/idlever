@@ -431,6 +431,9 @@ export class WasmEngine implements Engine {
   rebirthHero(token: string): Lineage {
     return this.call("rebirthHero", token);
   }
+  upgradeBuilding(id: string, max_price: number): Lineage {
+    return this.call("upgradeBuilding", id, max_price);
+  }
   buildTown(id: string): Lineage {
     return this.call("buildTown", id);
   }
@@ -442,6 +445,9 @@ export class WasmEngine implements Engine {
   }
   promote(id: string): Lineage {
     return this.call("promote", id);
+  }
+  hurryClone(maxPrice: number): Lineage {
+    return this.call("hurryClone", maxPrice);
   }
   setPerk(worker: string, perk: string): Lineage {
     return this.call("setPerk", worker, perk);

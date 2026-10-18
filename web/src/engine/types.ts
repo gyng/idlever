@@ -905,7 +905,21 @@ export type Quest = {
 };
 /** Cut 30 §3 (core) — the town: its buildings (built in order), the next plot staked and its trigger, the bank (`bankDeposit` /
  *  `bankWithdraw`; ~2 % a night, capped at `bank_cap`), the interest it paid in all, the quest board (from the Warlord slain). */
+export type BuildingUpgrade = {
+  id: string;
+  level: number;
+  max: number;
+  next?: {
+    level: number;
+    price: number;
+    gate_depth: number;
+    affordable: boolean;
+    ready: boolean;
+    effect: string;
+  };
+};
 export type Town = {
+  upgrades?: BuildingUpgrade[];
   home?: boolean;
   auto_collect?: boolean;
   buildings: Building[];
@@ -1267,6 +1281,9 @@ export type ClassStyles = {
 export type HeroSlot = {
   life_state?: "away" | "reincarnating" | "recovering" | "ready";
   recovery_s?: number;
+  /** Cut264: the whole recovery's length (s; 0 when none) and the live hurry price (absent: not offered) */
+  recovery_total_s?: number;
+  hurry_price?: number;
   specialization?: ClassStyleId;
   look?: string;
   hero_name?: string;
@@ -1600,8 +1617,13 @@ export type PersistentHero = {
   name: string;
   incarnation: number;
   rebirths: number;
+  /** Cut264: `reincarnating` the whole recovery; `recovering` only on an old save (read as cloning) */
   state: "away" | "reincarnating" | "recovering" | "ready";
   recovery_s: number;
+  /** Cut264: the whole recovery's length (s; 0 when none) — the vat's progress ring */
+  recovery_total_s?: number;
+  /** Cut264: the live price of skipping the clone's recovery (absent: not offered) */
+  hurry_price?: number;
   rest_s: number;
   need: "recovery" | "rest" | "none";
   attributes: {
@@ -2149,12 +2171,14 @@ export interface Engine {
   setSpecialization?(id: string): Lineage;
   learnClassSkill?(id: string): Lineage;
   resetClassSkills?(): Lineage;
+  upgradeBuilding?(id: string, max_price: number): Lineage;
   buildTown?(id: string): Lineage;
   buildWorkplace?(id: string): Lineage; // Cut273: build a workplace or raise its level — its lit worker arrives (exactly the hire)
   hire?(id: string): Lineage; // hire the lit node's worker (`Works.lit`; its price from the purse, then the chest)
   openChest?(): Lineage; // the haul chest into the purse (`Works.chest` → `gold`); the porter's chore
   setWorker?(id: string, on: boolean): Lineage; // switch a hired worker off (its chore by hand again) or back on
   promote?(id: string): Lineage;
+  hurryClone?(maxPrice: number): Lineage; // Cut264: skip the clone's recovery for gold (refused `price changed` above maxPrice)
   setPerk?(worker: string, perk: string): Lineage; // Cut 120 §2: a hired worker's rank-II perk chip (`WorkNode.perks`)                        // week 2: the worker rank on offer (`Works.lit_rank`; II 5 days after the hire, III 9; a forge unit × the rank less one)
   // RUNS_UI (core; docs/RUNS_UI.md): runs go on while the app is open, and any held run replays
   advance?(elapsedMs: number): Advance; // the open app's clock: rest, then runs, unwatched; a run in flight stays in flight

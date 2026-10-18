@@ -111,12 +111,14 @@ const METHODS: (keyof Engine)[] = [
   "setSpecialization",
   "learnClassSkill",
   "resetClassSkills",
+  "upgradeBuilding",
   "buildTown",
   "buildWorkplace",
   "hire",
   "openChest",
   "setWorker",
   "promote",
+  "hurryClone",
   "setPerk", // Cut 30.5: optional likewise (no works tree without them)
   "advance",
   "replay", // RUNS_UI: optional likewise (no runs while open / no replays without them)

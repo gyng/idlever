@@ -33,6 +33,8 @@ pub struct Balance {
     pub rest: Rest,
     #[serde(default = "default_gold")]
     pub gold: Gold,
+    #[serde(default = "default_buildings")]
+    pub buildings: Buildings,
     #[serde(default = "default_kit")]
     pub kit: Kit,
     #[serde(default = "default_unlocks")]
@@ -43,7 +45,19 @@ pub struct Balance {
     pub marks: Marks,
     #[serde(default = "default_monsters")]
     pub monsters: Monsters,
+    /// Cut264 (docs/CUT264_CLONE_VAT.md §3): the clone vat's gold hurry.
+    #[serde(default = "default_vat")]
+    pub vat: Vat,
 }
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Buildings {
+    pub gate_depth: [u32; 2],
+    pub price_units: [u32; 2],
+    pub bank_nights: [i32; 2],
+    pub vat_hurry_off_pct: [u32; 2],
+}
+fn default_buildings() -> Buildings { DEFAULT.buildings }
 fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
 fn default_workers() -> Workers { DEFAULT.workers }
 fn default_tree() -> TreeTune { DEFAULT.tree }
@@ -54,6 +68,7 @@ fn default_unlocks() -> Unlocks { DEFAULT.unlocks }
 fn default_stance() -> Stance { DEFAULT.stance }
 fn default_marks() -> Marks { DEFAULT.marks }
 fn default_monsters() -> Monsters { DEFAULT.monsters }
+fn default_vat() -> Vat { DEFAULT.vat }
 
 /// A worker's hire trigger and price (`tree::NODES`): chores by hand that light it, its price in tenths of a forge
 /// unit (0: free), the lineage age (h) that lights it without the count once its chore exists (0: none).
@@ -253,6 +268,18 @@ pub struct Monsters {
     pub atk_div: i32,
 }
 
+/// Cut264 §3: a hurry skips the whole recovery left for
+/// `max(hurry_floor, roundup(hurry_round, ceil(remaining_s × unit(best) × hurry_permille / 60000)))` gold, offered only
+/// with `remaining_s ≥ hurry_min_s`.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Vat {
+    pub hurry_permille: u32,
+    pub hurry_min_s: u32,
+    pub hurry_round: u32,
+    pub hurry_floor: u32,
+}
+
 const fn w(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
     Worker { need, price_tenths, fallback_h, goal: Goal::Count }
 }
@@ -266,7 +293,8 @@ pub const DEFAULT: Balance = Balance {
     steady_heal: [30,35], hunter_heal: [30,35], guarded_heal: [40,45], bold_heal: 25,
     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
     guarded_home: [30,25], guarded_dry: [45,44],
-    recovery: [600, 14, 28, 1],
+    recovery: [150, 14, 28, 1],
+    buildings: Buildings { gate_depth: [13, 23], price_units: [8, 20], bank_nights: [5, 8], vat_hurry_off_pct: [25, 50] },
     workers: Workers {
         quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
@@ -305,6 +333,7 @@ pub const DEFAULT: Balance = Balance {
         legacy_root: [12, 36, 108, 300, 800, 2000, 5000, 12000], legacy_effect: [700, 1800], legacy_start: 20,
     },
     monsters: Monsters { depth_cap: 16, hp_div: 2, atk_div: 6 },
+    vat: Vat { hurry_permille: 250, hurry_min_s: 30, hurry_round: 5, hurry_floor: 10 },
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -325,6 +354,8 @@ pub fn parse(text: &str) -> Result<Balance, String> {
 /// Cut233: the new sections' bounds (a profile the game cannot play is refused, never clamped).
 fn check_sections(b: &Balance) -> Result<(), &'static str> {
     fn inc<T: PartialOrd>(v: &[T]) -> bool { v.windows(2).all(|x| x[0] < x[1]) }
+    let u = &b.buildings;
+    if !inc(&u.gate_depth) || u.gate_depth[0] == 0 || u.gate_depth[1] > 40 || u.price_units.iter().any(|n| *n == 0 || *n > 1000) || !inc(&u.bank_nights) || u.bank_nights[0] < b.gold.bank_nights || u.bank_nights[1] > 100 || !inc(&u.vat_hurry_off_pct) || u.vat_hurry_off_pct[1] > 100 { return Err("buildings"); }
     let wk = &b.workers;
     if wk.all().iter().any(|n| n.need > 100 || n.price_tenths > 1000 || n.fallback_h > 24 * 365) { return Err("workers"); }
     // (Cut258: the Scout alone may need no send — offered from the first look, bought from the first run's gold)
@@ -369,6 +400,8 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
         || m.legacy_start > m.legacy_root[1] { return Err("marks"); }
     let mo = &b.monsters;
     if !(1..=40).contains(&mo.depth_cap) || !(1..=40).contains(&mo.hp_div) || !(1..=40).contains(&mo.atk_div) { return Err("monsters"); }
+    let v = &b.vat;
+    if !(1..=10_000).contains(&v.hurry_permille) || v.hurry_min_s > 3600 || !(1..=1000).contains(&v.hurry_round) || v.hurry_floor > 100_000 { return Err("vat"); }
     Ok(())
 }
 #[cfg(feature = "dev-balance")]
@@ -404,7 +437,7 @@ mod tests {
         assert!(parse(&text.replace("\"turns_div\": 2", "\"turns_div\": 0")).is_err());
         assert!(parse(&text.replace("\"freshness\": [1000,", "\"freshness\": [900,")).is_err());
         let mut v: serde_json::Value = serde_json::from_str(text).unwrap();
-        v.as_object_mut().unwrap().retain(|k, _| !["workers", "tree", "rest", "gold", "kit", "unlocks", "stance", "marks", "monsters"].contains(&k.as_str()));
+        v.as_object_mut().unwrap().retain(|k, _| !["workers", "tree", "rest", "gold", "kit", "unlocks", "stance", "marks", "monsters", "vat", "buildings"].contains(&k.as_str()));
         assert_eq!(parse(&serde_json::to_string(&v).unwrap()).unwrap(), DEFAULT, "a profile from before Cut233 still parses, at shipping values");
         let mut d = DEFAULT;
         d.workers.drillmaster.price_tenths = 6;

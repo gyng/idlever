@@ -77,6 +77,12 @@ pub struct Hero {
     pub rebirths: u32,
     pub state: String,
     pub recovery_s: u64,
+    /// Cut264: the whole recovery's length (s; 0 when none is under way) — the vat's progress ring.
+    #[serde(default)]
+    pub recovery_total_s: u64,
+    /// Cut264 §3: the live price of skipping it (`None`: not offered).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub hurry_price: Option<i32>,
     pub rest_s: u64,
     pub need: String,
     pub attributes: Vec<Attribute>,
@@ -196,9 +202,52 @@ pub fn remaining(l: &LineageState) -> u64 {
         .recovery_until_tick
         .saturating_sub(l.total_turns)
 }
+/// Cut264 §4: the hero is `reincarnating` (in the vat) for the whole recovery, then `ready`. (`recovering` is no longer
+/// emitted; the pool keeps a living exit's rest, which never blocks a send.) Rust never reads the string.
 pub fn life_state(l:&LineageState,away:bool)->&'static str {
-    let total=if l.persistent.recovery_ticks==0 {RECOVERY_TICKS} else {l.persistent.recovery_ticks};
-    if away {"away"}else if remaining(l)>total.saturating_sub(10) {"reincarnating"}else if remaining(l)>0 {"recovering"}else{"ready"}
+    if away {"away"}else if remaining(l)>0 {"reincarnating"}else{"ready"}
+}
+/// The length of the recovery under way (ticks; an older save's is the full one).
+pub fn recovery_total(l: &LineageState) -> u64 {
+    if l.persistent.recovery_ticks == 0 { RECOVERY_TICKS } else { l.persistent.recovery_ticks }
+}
+/// Cut264 §3 (docs/CUT264_CLONE_VAT.md): the gold that skips the whole recovery left now — offered only while the
+/// hero is home and cloning with at least `vat.hurry_min_s` left. Priced live by the record's unit
+/// (`kit::unit(best)`), so it falls as the clone grows: `max(floor, roundup(round, ⌈remaining_s × unit × permille /
+/// 60000⌉))`, less the vat's bought discount (Cut265, `town::vat_hurry_off_pct`).
+pub fn hurry_price(l: &LineageState, away: bool) -> Option<i32> {
+    if away || !l.town.home.unwrap_or(true) {
+        return None;
+    }
+    let left = remaining(l);
+    let v = crate::balance::get().vat;
+    let left_s = left.div_ceil(crate::offline::TICKS_PER_SECOND);
+    if left == 0 || left_s < u64::from(v.hurry_min_s) {
+        return None;
+    }
+    let unit = u64::from(crate::kit::unit(l.best_depth));
+    let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
+    let off = u64::from(crate::town::vat_hurry_off_pct(l));
+    let raw = raw * (100 - off.min(100)) / 100;
+    let round = u64::from(v.hurry_round.max(1));
+    let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
+    Some(p.min(i32::MAX as u64) as i32)
+}
+/// Cut264 §3: skip the whole recovery for gold — an explicit camp command (never offline, never a bot or a worker).
+/// Refused with `price changed` when the live price is above `max_price` (the button showed an older one).
+pub fn hurry(l: &mut LineageState, away: bool, max_price: i32) -> Result<i32, String> {
+    let p = hurry_price(l, away).ok_or("not cloning")?;
+    if p > max_price {
+        return Err("price changed".into());
+    }
+    if crate::tree::purse(l) < p {
+        return Err("not enough gold".into());
+    }
+    let left = remaining(l);
+    l.persistent.recovery_until_tick = l.total_turns;
+    l.rest_left = l.rest_left.saturating_sub(left.min(u64::from(u32::MAX)) as u32);
+    l.gold_move(-p, "hurry clone");
+    Ok(p)
 }
 /// The full recovery (a confirmed reclone).
 pub fn recover(l: &mut LineageState) {
@@ -312,6 +361,8 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
         rebirths: l.persistent.rebirths,
         state:life_state(l,away).into(),
         recovery_s,
+        recovery_total_s: if recovery_s > 0 { recovery_total(l).div_ceil(crate::offline::TICKS_PER_SECOND) } else { 0 },
+        hurry_price: hurry_price(l, away),
         rest_s: u64::from(l.rest_left).div_ceil(crate::offline::TICKS_PER_SECOND),
         need: if recovery_s > 0 {
             "recovery"
@@ -490,7 +541,7 @@ mod tests {
         let ramp: Vec<u64> = (1..=40).map(recovery_ticks).collect();
         assert!(ramp.windows(2).all(|w| w[0] <= w[1]), "never shorter deeper: {ramp:?}");
         assert!(recovery_ticks(lo + 1) > u64::from(shallow) && recovery_ticks(hi - 1) < RECOVERY_TICKS);
-        // a deep death owes the full recovery, read as reincarnating, then recovering
+        // a deep death owes the full recovery, read as reincarnating the whole time (Cut264 §4)
         let mut g = home();
         g.start_run(None);
         let r = g.run.as_mut().unwrap();
@@ -503,7 +554,7 @@ mod tests {
         assert_eq!(g.lineage.rest_left as u64, RECOVERY_TICKS);
         assert_eq!(life_state(&g.lineage, false), "reincarnating");
         g.rest_tick(10);
-        assert_eq!(life_state(&g.lineage, false), "recovering");
+        assert_eq!(life_state(&g.lineage, false), "reincarnating");
         // a shallow death's short recovery reads the same phases on its own length
         let mut g = home();
         g.start_run(None);
@@ -514,10 +565,12 @@ mod tests {
         assert_eq!(remaining(&g.lineage), u64::from(shallow));
         assert_eq!(life_state(&g.lineage, false), "reincarnating");
         g.rest_tick(10);
-        assert_eq!(life_state(&g.lineage, false), "recovering");
-        // an older save (no recorded length) keeps the full recovery's phases
+        assert_eq!(life_state(&g.lineage, false), "reincarnating");
+        g.rest_tick(shallow);
+        assert_eq!(life_state(&g.lineage, false), "ready");
+        // an older save (no recorded length) reads the full recovery's length
         g.lineage.persistent.recovery_ticks = 0;
-        assert_eq!(life_state(&g.lineage, false), "recovering");
+        assert_eq!(recovery_total(&g.lineage), RECOVERY_TICKS);
         // a reclone's recovery stays the full one
         let mut g = home();
         g.lineage.best_depth = 8;

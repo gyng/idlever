@@ -26,7 +26,7 @@ export function canSend(app: App): boolean {
   const L = app.lineage;
   if (L.ended || L.town?.home === false) return false;
   if (L.live && L.live.turn > 0) return true;
-  // The gem refuses a recovering hero (`Recovering Ns`, a327b8dd); the report must not offer a delve that lands on camp.
+  // The gem refuses a recovering hero (`Cloning Ns`; was `Recovering Ns`, a327b8dd); the report must not offer a delve that lands on camp.
   if ((L.persistent_hero?.recovery_s ?? 0) > 0) return false;
   return !app.overBudget && app.rules.rows.length > 0;
 }

@@ -515,3 +515,22 @@ html body .camp .town > .next-pill.game-control {
 .guild-orders .guild-orders-more {
   margin-top: 8px;
 }
+/* Cut264: the growing clone's progress ring on the vat, under its time-left badge */
+.town-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(rgba(164, 188, 214, 0.85) var(--p, 0deg), rgba(13, 12, 20, 0.35) 0);
+  -webkit-mask: radial-gradient(circle, transparent 11px, #000 12px);
+  mask: radial-gradient(circle, transparent 11px, #000 12px);
+  opacity: 0.85;
+}
+.town-hit[data-clone="growing"] .town-count {
+  color: #d9e6f2;
+  box-shadow: 0 0 0 1px rgba(164, 188, 214, 0.7);
+}

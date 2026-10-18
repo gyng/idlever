@@ -1,3 +1,4 @@
+import { buildingUpgradeRow } from "./building-upgrades";
 import { classIcon } from "./class-icons";
 import type { BloodlineTab } from "./bloodline-tabs";
 import { openHeroHub, heroHubOwner, type HeroHubSection } from "./hero-hub";
@@ -19,7 +20,7 @@ import {
   type TownState,
   type TownView,
 } from "../render/town";
-import { h, replace, toast } from "./dom";
+import { h, replace, spanOf, toast } from "./dom";
 import { guildOfferPending } from "./order-offer";
 import { decorationSrc, icon } from "./skin";
 import { kitAffordable } from "./forge";
@@ -319,11 +320,29 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   // c30-legible (the owner, a new player: "I didn't understand why there were new buildings"): a building's arrival names what raised
   // it (`first gold home → blacksmith`, the core's trigger), once, over the town while it stands up; its target glows the while
   const arrival = h("div", { class: "town-arrival num", "aria-live": "polite" });
+  // Cut264 §4: the first clone's callout, over the vat (placed by layout())
+  const cloneCallout = h("div", {
+    class: "town-arrival town-clone-callout num",
+    "aria-live": "polite",
+    "data-callout": "clone",
+  });
+
   // Cut 118 §8: the crier, top right (the pill's opposite), crying the last absence's notable acts
   const crier = townCrier(app);
   // Cut 118 (owner amendment §4): the graveyard at the scene's foot, left — a stone per fallen heir (the newest few), epitaphs on hover
   const yard = townGraveyard(app);
-  el.append(hits, actorHits, delveFaces, foundation, tag, arrival, pill.el, crier.el, yard.el);
+  el.append(
+    hits,
+    actorHits,
+    delveFaces,
+    foundation,
+    tag,
+    arrival,
+    cloneCallout,
+    pill.el,
+    crier.el,
+    yard.el,
+  );
   let arrivalTimer = 0;
   const view = createTownView(el);
   let chestOpenUntil = 0,
@@ -350,6 +369,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const absence: ReturnReport | null = ab?.report ?? null;
   let state: TownState | null = null;
   const btns = new Map<string, HTMLButtonElement>();
+  // Cut264: the residents this view saw cloning, and those whose clones finished under its eyes (`Clone ready` until he departs
+  // or the vat is tapped)
+  let cloningSeen = new Set<number>();
+  const cloneReadyIds = new Set<number>();
+  let calloutTimer = 0;
   let sending = false;
   let tagTimer = 0;
 
@@ -361,12 +385,43 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       .sort((a, b) => a - b)[0];
     return { n, price };
   }
+  /** Cut264: the residents cloning now (by id; an old wire without slots reads the selected hero) */
+  function cloningIds(L: Lineage): Set<number> {
+    const cloning = (x?: string): boolean => x === "reincarnating" || x === "recovering";
+    const slots = L.hero_slots;
+    if (slots) return new Set(slots.filter((x) => cloning(x.life_state)).map((x) => x.id));
+    const hero = L.persistent_hero;
+    return new Set(hero && cloning(hero.state) ? [L.selected_bloodline ?? 1] : []);
+  }
+  function trackClone(L: Lineage): void {
+    const now = cloningIds(L);
+    for (const id of cloningSeen) if (!now.has(id)) cloneReadyIds.add(id);
+    for (const id of cloneReadyIds) {
+      const slot = L.hero_slots?.find((x) => x.id === id);
+      const gone = slot ? heroAway(slot) : L.persistent_hero?.state === "away";
+      if (gone || now.has(id) || (L.hero_slots && !slot)) cloneReadyIds.delete(id);
+    }
+    cloningSeen = now;
+  }
+  /** Cut264 §4: the first clone this viewer sees growing — `Clone growing` over the vat, once (the `seen` store); later only the badge */
+  function cloneOnce(L: Lineage, s0: Store): void {
+    if (!state?.clone || state.clone.left <= 0 || !state.services?.includes("device")) return;
+    if (s0.seen.includes("clone")) return;
+    save(L, { ...s0, seen: [...new Set([...s0.seen, "clone"])] });
+    replace(cloneCallout, h("b", null, /* copy:callout */ "Clone growing"));
+    cloneCallout.classList.add("show");
+    cloneCallout.dataset.shown = "true";
+    clearTimeout(calloutTimer);
+    calloutTimer = window.setTimeout(() => cloneCallout.classList.remove("show"), 4600);
+  }
   function paint(): void {
     const L = app.lineage;
     const s0 = load(L) ?? store!;
     const previousState = state;
     const previousHome = state?.home;
+    trackClone(L);
     state = townState(L, absence, {
+      cloneReady: cloneReadyIds.size > 0,
       seen: s0.seen,
       opened: s0.opened,
       kit: kitInfo(),
@@ -381,6 +436,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const built = state.buildings.map((b) => b.id);
     const fresh = built.filter((b) => !s0.seen.includes(b));
     if (fresh.length) save(L, { ...s0, seen: [...new Set([...s0.seen, ...built])] });
+    cloneOnce(L, load(L) ?? s0);
     targets();
     paintActors();
     pill.paint();
@@ -803,12 +859,32 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         " ",
       );
       b.dataset.ready = mk.length ? "true" : "false";
-      const cnt = w.id === "chest" && s.chest?.need ? `${s.chest.count ?? 0}/${s.chest.need}` : "";
+      // Cut264 §4: the growing clone's time left on the vat (`.town-count`) and its progress ring
+      const growing = w.id === "device" && s.clone && s.clone.left > 0 ? s.clone : undefined;
+      const cnt =
+        w.id === "chest" && s.chest?.need
+          ? `${s.chest.count ?? 0}/${s.chest.need}`
+          : growing
+            ? spanOf(growing.left)
+            : "";
       const ce = b.querySelector(".town-count");
       if (cnt) {
         if (ce) ce.textContent = cnt;
         else b.appendChild(h("span", { class: "town-count num" }, cnt));
       } else ce?.remove();
+      const ring = b.querySelector<HTMLElement>(".town-ring");
+      if (growing) {
+        const r = ring ?? b.appendChild(h("span", { class: "town-ring", "aria-hidden": "true" }));
+        r.style.setProperty("--p", `${Math.round(growing.progress * 360)}deg`);
+        r.dataset.progress = growing.progress.toFixed(3);
+      } else ring?.remove();
+      b.dataset.clone =
+        w.id === "device" && s.clone ? (s.clone.left > 0 ? "growing" : "ready") : "";
+      if (growing) {
+        const say = `${label} · ${/* copy:label */ `Cloning ${spanOf(growing.left)}`}`;
+        b.setAttribute("aria-label", say);
+        b.title = say;
+      }
     }
     // c30-legible: the staked plot always wears its tag — what it becomes and what raises it (`kennel · first tame`), not only on tap
     if (s.staked && (s.home || s.stage >= 1 || s.staked.ready)) {
@@ -901,6 +977,16 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       });
     }
     if (!tag.hidden) placeTag();
+    // Cut264: the clone's callout rides above the vat (the scene's top when the vat is out of view)
+    const vat = view.rectOf("device");
+    if (vat && el.clientWidth) {
+      const half = cloneCallout.offsetWidth / 2;
+      const cx = Math.max(half + 6, Math.min(el.clientWidth - half - 6, vat.x + vat.w / 2));
+      Object.assign(cloneCallout.style, {
+        left: `${Math.round(cx)}px`,
+        top: `${Math.max(6, Math.round(vat.y - cloneCallout.offsetHeight - 10))}px`,
+      });
+    }
     foundation.hidden = state?.staked?.ready !== true;
     foundation.dataset.fx = effectsLevel();
   }
@@ -1001,6 +1087,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const facility = service(id);
     if (facility) {
       if (!facility.available) return;
+      // Cut264: a tap on the vat reads its `Clone ready` (the lantern goes)
+      if (id === "device" && cloneReadyIds.size > 0) {
+        cloneReadyIds.clear();
+        paint();
+      }
       closeAllSheets();
       if (id === "guild") openWorks(app, L.tree?.next_worker ?? undefined, b);
       else openHeroLife(app, b, id === "pool" ? "recovery" : "rebirth");
@@ -1115,6 +1206,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       clearTimeout(tagTimer);
       clearTimeout(chestTimer);
       clearTimeout(arrivalTimer);
+      clearTimeout(calloutTimer);
       coins.dispose();
       view.dispose();
     },
@@ -1207,6 +1299,7 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
               /* copy:button */ `withdraw $${T.bank}`,
             ),
           ),
+          buildingUpgradeRow(app, "bank", paint),
         );
       };
       const act = async (fn: () => Promise<Lineage>): Promise<void> => {

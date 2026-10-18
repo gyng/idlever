@@ -14,7 +14,7 @@
   "steady_rest": [40, 60],
   "guarded_home": [30, 25],
   "guarded_dry": [45, 44],
-  "recovery": [600, 14, 28, 1],
+  "recovery": [150, 14, 28, 1],
   "workers": {
     "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
     "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
@@ -103,5 +103,7 @@
     "legacy_effect": [700, 1800],
     "legacy_start": 20
   },
-  "monsters": { "depth_cap": 16, "hp_div": 2, "atk_div": 6 }
+  "monsters": { "depth_cap": 16, "hp_div": 2, "atk_div": 6 },
+  "vat": { "hurry_permille": 250, "hurry_min_s": 30, "hurry_round": 5, "hurry_floor": 10 },
+  "buildings": { "gate_depth": [13, 23], "price_units": [8, 20], "bank_nights": [5, 8], "vat_hurry_off_pct": [25, 50] }
 }

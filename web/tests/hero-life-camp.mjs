@@ -6,7 +6,7 @@ import { launchBrowser } from "../../tools/browser.mjs";
 const url = process.env.IDLEVER_TEST_URL;
 if (!url) throw Error("fresh no-HMR server required");
 // Cut230: a first-floor death owes the depth ramp's shallow recovery (60 s); the Cut227 save (recorded before the
-// ramp, no stored length) still owes its full 20 minutes and keeps showing them.
+// ramp, no stored length) still owes its full 20 minutes and keeps showing them. (Cut264: the gem reads `Cloning`.)
 const fixture = (path) =>
   JSON.parse(
     gunzipSync(readFileSync(new URL(`../../docs/evidence/${path}`, import.meta.url))).toString(),
@@ -15,12 +15,12 @@ const cases = [
   {
     raw: fixture("cut230/fixtures/controlled-reincarnating-600.game.json.gz"),
     seconds: 60,
-    copy: /Recovering 1m/,
+    copy: /Cloning 1m/,
   },
   {
     raw: fixture("cut227/recovery/fixtures/controlled-reincarnating-12000.game.json.gz"),
     seconds: 1200,
-    copy: /Recovering 20m/,
+    copy: /Cloning 20m/,
   },
 ];
 const browser = await launchBrowser();

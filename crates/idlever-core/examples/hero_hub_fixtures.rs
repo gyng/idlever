@@ -79,7 +79,7 @@ fn main() {
     );
     export(out, "earned-reincarnating-rebirth", &home);
     idlever_core::offline::run_offline_counts(&mut home, 1);
-    assert_eq!(home.lineage().persistent_hero.unwrap().state, "recovering");
+    assert_eq!(home.lineage().persistent_hero.unwrap().state, "reincarnating"); // (Cut264: the whole recovery)
     export(out, "earned-recovering-rebirth", &home);
     let mut s =
         Session::load(&fs::read_to_string(input.join("earned-three-residents.game.json")).unwrap())

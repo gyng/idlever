@@ -36,10 +36,9 @@ export function heroPresence(s: HeroSlot, observed?: ObservedPresence) {
     ended: /* copy:label */ "Run ended",
     unknown: /* copy:label */ "Delving",
   };
+  // (Cut264: the hero is in the vat the whole recovery; an old save's `recovering` reads the same)
   const text = recovering
-    ? s.life_state === "reincarnating"
-      ? /* copy:label */ `Cloning ${spanOf(s.recovery_s ?? 0)}`
-      : /* copy:label */ `Recovering ${spanOf(s.recovery_s ?? 0)}`
+    ? /* copy:label */ `Cloning ${spanOf(s.recovery_s ?? 0)}`
     : away
       ? live
         ? `D${live.depth} · ${names[activity] ?? names.unknown}`

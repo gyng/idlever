@@ -114,3 +114,26 @@ html body .topbar:has(.hero-name) > .stats {
   min-inline-size: 0;
   flex-wrap: wrap;
 }
+/* Cut264: the vat's clone — its timer, a quiet progress bar, the gold hurry */
+.hero-clone {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.hero-clone h3,
+.hero-clone .hero-clone-bar {
+  grid-column: 1 / -1;
+}
+.hero-clone-bar {
+  display: block;
+  height: 4px;
+  background: var(--ui-edge);
+  overflow: hidden;
+}
+.hero-clone-bar i {
+  display: block;
+  height: 100%;
+  background: #a4bcd6;
+}
+.hero-clone-hurry {
+  justify-self: end;
+}

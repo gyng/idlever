@@ -1,6 +1,6 @@
 # Cut265 — Building upgrades
 
-Status: PLAN (2026-10-18). Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
+Status: IMPLEMENTED; acceptance in progress (2026-10-18). Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".
 
 ## 1. Today
@@ -90,3 +90,29 @@ Cut264 (the vat hurry that the vat levels discount). Cut260 must land first; it 
 1. Which buildings: Bank, Vat and Kennel (default); Forge only in B3 if wanted.
 2. Price basis: fixed at the gate depth, L2 ≈ 8 units, L3 ≈ 20 (default) / rises with the record.
 3. Do the engaged bots buy upgrades: yes, PICKED and TUNED; IDLE never (default) / no bot buys.
+
+## Owner-approved scope and integration — 2026-10-18
+
+The later Cut273 §12 decision supersedes the Kennel proposal above: Kennel effects are dropped, no L4. Staff
+levels remain as W1 implemented. Bank effect levels are **L3/L4**, after the Clerk's L2, holding 5/8 nights;
+Vat L2/L3 discounts hurry by 25/50%. Prices remain 8×unit(D13) = $3400 and 20×unit(D23) = $13500. Forge effects
+remain outside this cut. `Town.levels` is persisted, shared across residents and empty on old saves.
+
+`upgradeBuilding(id,max_price)` refuses stale price, insufficient collected purse, locked depth, max level or an
+away selected hero. Native single-hero games use their own record; a Session uses the deepest resident record
+and the union of earned service availability, matching its existing shared service unlocks. Payment never copies
+another resident's progression. Bank/Vat panels display current level, next effect and the priced action. The
+existing three-marker budget covers affordable upgrades after stronger signals. Ledger/purse labels distinguish
+upgrades and clone hurry from supplies.
+
+PICKED/TUNED buy effect levels after staff/ranks while preserving three live-depth units. IDLE never buys. The
+`buildings` leave-one-out skips these buys; `each-system` compares actual bank interest. `upgrades-sink` measures
+median upgrade spending / earned+fetched+recovered gold during days 3–14, with the original ≥10% bar. The bank
+payback line is explicitly a fully-funded incremental-capacity estimate, not actual payback acceptance; opt-in
+`DP_BANK_PAYBACK=1` forks the exact pre-purchase world to measure real additional interest for up to30 bank nights.
+
+Evidence is in `docs/evidence/cut265/`. Three focused core tests pass; an earned multi-resident regression is
+included in the workspace suite. Initial real-WASM purchases pass 26 checks across 402×681 and1440×900;
+related client groups pass6/7 initially (Hero Hub's obsolete Hire tooltip expectation was updated to the actual
+workplace/arriving-worker/price contract and is being rechecked). Final pacing, settlement and shipping results
+remain pending; the interrupted pre-purse-guard pacing log is not a passing gate.

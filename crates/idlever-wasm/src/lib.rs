@@ -675,6 +675,11 @@ impl Game {
         self.inner.rebirth_hero(token).map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
+    #[wasm_bindgen(js_name = upgradeBuilding)]
+    pub fn upgrade_building(&mut self, id: &str, max_price: i32) -> Result<String, JsError> {
+        self.inner.upgrade_building(id, max_price).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
     #[wasm_bindgen(js_name = buildTown)]
     pub fn build_town(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.build_town(id).map_err(err)?;
@@ -688,6 +693,13 @@ impl Game {
     }
     pub fn hire(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.hire(id).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+
+    /// Cut264: skip the clone's recovery for gold (refused with `price changed` above `max_price`); returns the Lineage.
+    #[wasm_bindgen(js_name = hurryClone)]
+    pub fn hurry_clone(&mut self, max_price: i32) -> Result<String, JsError> {
+        self.inner.hurry_clone(max_price).map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
 

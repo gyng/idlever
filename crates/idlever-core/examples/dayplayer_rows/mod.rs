@@ -60,6 +60,7 @@ pub struct RowDef {
 /// whose bar is renamed matches nothing (the run says so); a bar whose rule changes without its settle rule
 /// prints a mismatch at the end of every targeted run.
 pub const ROWS: &[RowDef] = &[
+    RowDef { id: "upgrades-sink", key: "PICKED upgrades spend", bots: &["PICKED"], present: &[], days: Some(14), until: Until::Never, settle: |_| Verdict::Open },
     RowDef { id: "idle-d8", key: "IDLE reaches D8 by the end of day 1", bots: &["IDLE"], present: &[], days: Some(1), until: Until::Depth(8), settle: |c| c.every(&["IDLE"], |o| if o[0].hours[0].is_some_and(|h| h <= 24.0) { Ok(()) } else { Err(format!("D8 at {:?} h", o[0].hours[0])) }) },
     RowDef { id: "idle-d13", key: "IDLE reaches D13 by day 4", bots: &["IDLE"], present: &[], days: None, until: Until::Depth(13), settle: |c| c.median(&["IDLE"], "median day", false, |o, c| Some(hours_or(o[0], 1, c.cap) / 24.0), |m| m <= 4.0) },
     RowDef {

@@ -1,7 +1,7 @@
 # Cut264 — Clone vat: short early clones, gold hurry, vat lighting and indicators
 
-Status: PLAN (2026-10-18). Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
-(`remaining_min × unit(best) × 0.25`). Q3 (callout once) takes the default. Implementation waits for Cut260.
+Status: IMPLEMENTED; combined-source acceptance in progress (2026-10-18). Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
+(`remaining_min × unit(best) × 0.25`). Q3 (callout once) takes the default. Cut260 is integrated.
 
 ## Owner requests (2026-10-18, verbatim)
 
@@ -108,3 +108,21 @@ recovery is the **maximum** of the depth term and the level term.
 1. Scaler: depth `[150, 14, 28, 1]` (default) / class level combined with depth through the maximum.
 2. Hurry price: `remaining_min × unit(best) × 0.25`, full skip (default) / `× class level` / step skips.
 3. Callout: once at the first death, then only the badge (default) / on every death.
+
+## Resume implementation — 2026-10-18
+
+Claude's interrupted implementation was recovered from `.claude/worktrees/cut264` and integrated with Cut277's
+Drill yard/Guildhouse changes. Core recovery is 150 ticks through D14, linear to 12000 at D28; the whole interval
+reads `reincarnating`. `hurryClone(max_price)` spends collected purse gold only, preserves night-net income and
+records `hurry clone` under sinks. It never runs in an absence or bot.
+
+The vat displays growth-stage art, time left and a progress ring. A first-viewed clone announces `Clone growing`
+once per viewer's town store. Finished resident IDs are tracked independently: a ready lantern can coexist with
+another resident's growing badge, and a departing resident cannot erase another's unread readiness. A tap clears
+readiness. New emerge/flash/pulse effects respect reduced motion and effects off; every art path retains fallback.
+
+Initial native validation: 1092 tests passed, six ignored (before W2 integration and the final collected-purse
+refusal assertion). Final-source checks and their identities are recorded in `docs/evidence/cut265/`. Initial
+browser proof: 42 checks pass, including real-WASM hurry and controlled three-resident readiness; 402×681 and
+1440×900 day/night captures are in `docs/evidence/cut264/screens/`. These are controlled fixtures, not earned
+campaigns or performance measurements. Harness failures and their fixes remain in separate logs.

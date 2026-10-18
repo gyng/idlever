@@ -111,8 +111,8 @@ try {
       const current = await state();
       assert.equal(
         current.persistent_hero.state,
-        "recovering",
-        "legacy600/12000 recovery is past its first10 ticks",
+        "reincarnating",
+        "Cut264: a legacy recovery is in the vat for its whole length",
       );
       assert.equal(
         current.persistent_hero.recovery_s,
@@ -957,7 +957,12 @@ try {
   for (const entry of entries) {
     await load(entry);
     const l = await state();
-    if (entry.state) assert.equal(l.persistent_hero.state, entry.state);
+    // Fixture manifests retain their historical phase names; Cut264 keeps the whole recovery in the vat.
+    if (entry.state)
+      assert.equal(
+        l.persistent_hero.state,
+        entry.state === "recovering" ? "reincarnating" : entry.state,
+      );
     checks++;
     const lit = l.town?.home !== false ? l.town?.workers?.find((worker) => worker.lit) : null;
     if (lit) {
@@ -969,7 +974,9 @@ try {
       const details = page.locator("#kw-tip:not([hidden])");
       await details.waitFor();
       const text = await details.innerText();
-      assert.ok(text.includes(name) && text.includes("Hire"));
+      const workplace = l.tree?.nodes.find((node) => node.id === lit.id)?.workplace_name;
+      assert.ok(text.includes(name) && text.includes("arrives"), JSON.stringify({ name, text }));
+      if (workplace) assert.ok(text.includes(workplace));
       assert.ok(text.includes(lit.price ? `$${lit.price}` : "free"));
       await page.keyboard.press("Escape");
       assert.equal(await page.evaluate(() => window.__idlever.engine.save()), beforeHover);
