@@ -220,7 +220,16 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const actual = service(id);
     if (!actual) return [];
     return [
-      h("div", { class: "kw-tip-head" }, h("b", {}, actual.name)),
+      // Cut 277: the level in the tip's head, as the works name it (`Guildhouse II`)
+      h(
+        "div",
+        { class: "kw-tip-head" },
+        h("b", {}, actual.name),
+        id === "guild" &&
+          (app.lineage.town?.workplaces?.find((w) => w.id === "guild")?.level ?? 0) >= 2
+          ? h("span", { class: "num town-level" }, /* copy:callout */ " II")
+          : null,
+      ),
       h("div", { class: "kw-tip-gloss" }, actual.body),
     ];
   };

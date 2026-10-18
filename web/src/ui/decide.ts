@@ -126,6 +126,13 @@ export function decisionPrompt(
 
 // ---- the boss chest
 
+/** Cut 277 (owner, 2026-10-18): a chest only when the kill dropped something (a pattern or set piece, or gold). A repeat
+ *  kill drops a pattern 1 time in 8, so an empty chest was the usual case; no drop now means no chest, and the kill's
+ *  beat plays as it always did. */
+export function chestHasDrop(c: Chest): boolean {
+  return c.items.length > 0 || c.gold > 0;
+}
+
 const SKIN_FX = new Set<string>((skin as { fx?: string[] }).fx ?? []);
 /** A packed fx id's file (the `_px` pixel cut when packed, as the shield's), else null: the code primitive draws it. */
 const fxUrlIn =
@@ -185,14 +192,12 @@ export function chestReveal(
         c.items.length > 1 ? h("small", { class: "num" }, `+${c.items.length - 1}`) : null,
         c.gold > 0 ? h("small", { class: "num chest-gold" }, `+$${c.gold}`) : null,
       )
-    : c.gold > 0
-      ? h(
-          "span",
-          { class: "chest-reward-line" },
-          icon("gold", "$"),
-          h("span", { class: "num chest-gold" }, `+$${c.gold}`),
-        )
-      : h("span", { class: "chest-reward-line dim" }, /* copy:callout */ "no drop");
+    : h(
+        "span",
+        { class: "chest-reward-line" },
+        icon("gold", "$"),
+        h("span", { class: "num chest-gold" }, `+$${c.gold}`),
+      );
   const el = h(
     "div",
     {
