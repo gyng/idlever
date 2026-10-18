@@ -68,6 +68,7 @@ import type {
   Works,
   NextPill,
   WorkerPost,
+  Workplace,
   WorkerAct,
   Rarity,
   BossToken,
@@ -6823,8 +6824,21 @@ const NODES305: [
     "swaps stale quests",
     "quests",
   ],
-  ["guide", "guide", "scale", "start", 3, 40, 44, "mouth", "AUTO START", "starts deeper", "start"],
+  ["guide", "guide", "scale", "start", 3, 40, 44, "guild", "AUTO START", "starts deeper", "start"],
 ];
+/** Cut273 (core `town::WORKPLACES`): each worker's workplace and the level his arrival makes there. */
+const WORKPLACE273: Record<string, [string, string, number]> = {
+  quartermaster: ["crate", "Supply crate", 1],
+  porter: ["haul_chest", "Haul chest", 1],
+  scout: ["guild", "Guildhouse", 1],
+  guide: ["guild", "Guildhouse", 2],
+  apprentice: ["blacksmith", "Forge", 2],
+  clerk: ["bank", "Bank", 2],
+  drillmaster: ["drill_tent", "Drill tent", 1],
+  kennel_hand: ["kennel", "Kennel", 2],
+  kennel_keeper: ["kennel", "Kennel", 3],
+  herald: ["board", "Quest board", 2],
+};
 type St305 = {
   hired: string[];
   counts: Record<string, number>;
@@ -6903,6 +6917,13 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       branch,
       name,
       ...(PERSON305[id] && done ? { person: PERSON305[id] } : {}), // the name once hired
+      ...(WORKPLACE273[id]
+        ? {
+            workplace: WORKPLACE273[id][0],
+            workplace_name: WORKPLACE273[id][1],
+            level: WORKPLACE273[id][2],
+          }
+        : {}),
       state,
       ...(rank ? { rank, ...rankNext, ...bonusNow } : {}),
       ...(chore ? (feat ? { chore } : { chore, count, need }) : {}),
@@ -7012,7 +7033,30 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
     );
     const litN = L.tree.nodes.find((n) => n.id === L.tree!.lit);
     if (litN) posts.push({ id: litN.id, post: litN.post ?? "mouth", lit: true, price: litN.price });
-    if (L.town) L.town.workers = posts;
+    if (L.town) {
+      L.town.workers = posts;
+      // Cut273: the workplaces standing (their level from the staff hired) and the lit one's plot
+      const places = new Map<string, Workplace>();
+      for (const [id, [place, name, level]] of Object.entries(WORKPLACE273)) {
+        const w = places.get(place) ?? { id: place, name, level: 0, max: 0 };
+        w.max = Math.max(w.max, level);
+        if (st.hired.includes(id)) {
+          w.level = Math.max(w.level, level);
+          w.staff = [...(w.staff ?? []), id];
+        }
+        if (litN?.id === id)
+          w.next = {
+            worker: id,
+            level,
+            price: litN.price ?? 0,
+            affordable: litN.affordable !== false,
+          };
+        places.set(place, w);
+      }
+      for (const w of places.values())
+        if (w.level === 0 && w.max > 1 && L.town.buildings.some((b) => b.id === w.id)) w.level = 1;
+      L.town.workplaces = [...places.values()].filter((w) => w.level > 0 || w.next);
+    }
     return L;
   };
   const off = P.runOffline;
@@ -7068,6 +7112,12 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
     count(this, "porter");
     st.chest = 0;
     return this.lineage();
+  };
+  // Cut273: build a workplace — its lit worker's hire, exactly
+  P.buildWorkplace = function (this: Fk305, place: unknown): Lineage {
+    const lit = this.lineage().tree?.lit;
+    if (!lit || WORKPLACE273[lit]?.[0] !== place) throw new Error("not ready");
+    return (P.hire as (this: Fk305, id: unknown) => Lineage).call(this, lit);
   };
   P.hire = function (this: Fk305, id: unknown): Lineage {
     const st = st305(this);

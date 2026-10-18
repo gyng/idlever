@@ -1143,7 +1143,7 @@ pub fn spend_level(l: &mut LineageState, id: &str) -> Result<u32, String> {
         return Err("not yet".into());
     }
     if !level_open(l) {
-        return Err("Hire the Receptionist".into());
+        return Err("Build the Guildhouse".into());
     }
     let price = level_price(l, id).ok_or("top level")?;
     if l.marks < price {

@@ -315,7 +315,7 @@ impl P {
                 break;
             };
             let r = match &o.act {
-                Act::Hire(id) => self.g.hire(id),
+                Act::Hire(id) => self.g.build_workplace(town::workplace_of(id).map_or("", |w| w.id)).map(|_| ()),
                 Act::Rank(id) => self.g.promote(id).map(|_| ()),
                 Act::Legacy(id) => legacy::buy_next(&mut self.g, id),
                 Act::Level(id) => self.g.spend_level(id).map(|_| ()),

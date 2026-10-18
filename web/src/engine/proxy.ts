@@ -110,6 +110,7 @@ const METHODS: (keyof Engine)[] = [
   "learnClassSkill",
   "resetClassSkills",
   "buildTown",
+  "buildWorkplace",
   "hire",
   "openChest",
   "setWorker",

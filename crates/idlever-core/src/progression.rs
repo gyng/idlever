@@ -17,7 +17,7 @@ pub struct Gate {
     pub depth_remaining: u32,
 }
 /// A gate's blocker while the Receptionist is unhired: what to do, and what it starts.
-pub const NEEDS_SCOUT: &str = "Hire the Receptionist · auto runs";
+pub const NEEDS_SCOUT: &str = "Build the Guildhouse · auto runs";
 pub fn gate(l: &LineageState, n: u32, d: u32, scout: bool) -> Gate {
     let remaining = n.saturating_sub(l.persistent.completed);
     let depth = d.saturating_sub(l.best_depth);

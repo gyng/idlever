@@ -434,7 +434,7 @@ try {
     s = await S();
     step(
       "7:47",
-      beat === "LILI HIRED" &&
+      beat === "LILI ARRIVES" &&
         s.porter.state === "done" &&
         s.workers.includes("porter") &&
         !s.tchest,
@@ -562,19 +562,9 @@ try {
     const price = await page.evaluate(
       () => document.querySelector('.town-hit[data-building="worker"] .town-marker')?.textContent,
     );
-    check(price === "free", `his marker reads his price (${price})`);
+    check((price ?? "").endsWith("free"), `his marker reads his price (${price})`);
+    // Cut273: the lit figure stands for his workplace — a tap builds it (the Haul chest, free) and the porter arrives
     await page.locator('.town-hit[data-building="worker"]').click();
-    await until(
-      () => !!document.querySelector(".works-sheet .wnode.lit"),
-      "the works from the figure",
-      5000,
-    );
-    const w = await sheetRead();
-    check(
-      w.focus === "porter" && w.lit[0] === "porter",
-      `the greyed figure opens the works on him (${w.focus})`,
-    );
-    await page.locator(".works-sheet .hire-btn").click();
     await until(
       () => window.__idlever.lineage.tree?.nodes.find((n) => n.id === "porter")?.state === "done",
       "the porter hired",

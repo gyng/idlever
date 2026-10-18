@@ -600,7 +600,8 @@ fn camp_taps(g: &mut Game, ask: &Ask, arm: u8, out: &mut SeedOut, h: f64) {
             "herald" => Some("quests"),
             _ => None,
         };
-        if g.hire(n.id).is_err() {
+        // (Cut273: the workplace built — exactly the hire: its trigger, its price, one at a time)
+        if g.build_workplace(idlever_core::town::workplace_of(n.id).map_or("", |w| w.id)).is_err() {
             break;
         }
         if off.is_some_and(|sys| !ask.has(sys)) {

@@ -1800,6 +1800,31 @@ pub struct TownWire {
     /// Cut 228 (read model): the Forge's present work (`town::forge_work`); absent when idle.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub forge_work: Option<ForgeWork>,
+    /// Cut273: the workplaces standing and the lit one's plot (`town::workplaces_wire`).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub workplaces: Vec<WorkplaceWire>,
+}
+
+/// Cut273: a workplace — its level (0: an unbuilt plot), its top level, its staff hired, the build on offer.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct WorkplaceWire {
+    pub id: String,
+    pub name: String,
+    pub level: u32,
+    pub max: u32,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub staff: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub next: Option<WorkplaceNext>,
+}
+
+/// Cut273: the build or level on offer — the worker it brings, the level it makes, its price.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct WorkplaceNext {
+    pub worker: String,
+    pub level: u32,
+    pub price: i32,
+    pub affordable: bool,
 }
 
 /// Cut 228: a step the Forge actually forged (`sword +3`, a ledger `forge …` debit) for hero `hero` within the last

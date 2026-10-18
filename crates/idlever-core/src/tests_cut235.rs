@@ -65,7 +65,7 @@ fn the_forged_new_best_lights_the_apprentice_and_the_count_does_not() {
     }
     assert!(!met(&g, "apprentice"), "the count alone never lights him");
     let next = tree::next_pill(&g.lineage, false);
-    assert_eq!((next.kind.as_str(), next.text.as_str(), next.have, next.need), ("feat", "apprentice · forged new best", None, None));
+    assert_eq!((next.kind.as_str(), next.text.as_str(), next.have, next.need), ("feat", "Forge II · forged new best", None, None));
     g.start_run(None);
     finish_at(&mut g, 6);
     assert!(!met(&g, "apprentice"), "forged kit without a record is no feat");

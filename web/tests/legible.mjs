@@ -220,7 +220,7 @@ try {
     const order = ["blacksmith", "kennel", "bank"];
     const triggers = ["four delves", "tame a pet", "a night's purse"];
     // These historical diagnostic milestones do not hire Scout. Current wire explains that prerequisite.
-    const blockedTriggers = ["Hire Receptionist", "Hire Receptionist", "a night's purse"];
+    const blockedTriggers = ["Build Guildhouse", "Build Guildhouse", "a night's purse"];
     for (let n = 0; n < order.length; n++) {
       const id = order[n];
       const beforeInspection = await page.evaluate(() => window.__idlever.engine.save());

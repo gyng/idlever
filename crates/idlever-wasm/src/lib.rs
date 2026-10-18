@@ -667,6 +667,12 @@ impl Game {
         self.inner.build_town(id).map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
+    /// Cut273: build a workplace or raise its level — its lit worker arrives; returns the Lineage.
+    #[wasm_bindgen(js_name = buildWorkplace)]
+    pub fn build_workplace(&mut self, id: &str) -> Result<String, JsError> {
+        self.inner.build_workplace(id).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
     pub fn hire(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.hire(id).map_err(err)?;
         Ok(js(&self.inner.lineage()))

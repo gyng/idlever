@@ -17,9 +17,22 @@ export function routineItems(L: Pick<Lineage, "kit" | "tree" | "gold" | "live">)
     .map((k) => ({ kind: "kit", id: k.slot, price: k.next!.price, label: k.next!.label }));
   const hires: Routine[] = (L.tree?.nodes ?? [])
     .filter((n) => n.kind === "worker" && n.state === "lit" && n.affordable !== false)
-    .map((n) => ({ kind: "hire", id: n.id, price: n.price ?? 0, label: n.name }));
+    .map((n) => ({
+      kind: "hire",
+      id: n.id,
+      price: n.price ?? 0,
+      label: n.workplace_name ?? n.name,
+    }));
   // (what the purse covers after the kit: the chest pays a hire's rest, the core refuses what it cannot pay)
   return [...kit, ...hires];
+}
+
+/** Cut273: a routine hire is its workplace's build (exactly the hire). */
+async function buildRoutine(app: App, id: string): Promise<boolean> {
+  const place = app.lineage.tree?.nodes.find((n) => n.id === id)?.workplace;
+  if (app.engine.buildWorkplace && place)
+    return app.mutate(() => app.engine.buildWorkplace!(place));
+  return !!app.engine.hire && (await app.mutate(() => app.engine.hire!(id)));
 }
 
 /** Takes the routine buys in order (each re-read: an earlier buy may have spent what the next needed); how many landed. Cut 118 §6: the
@@ -32,7 +45,7 @@ export async function takeRoutine(app: App): Promise<number> {
     const ok =
       it.kind === "kit"
         ? !!app.engine.buyKit && (await app.mutate(() => app.engine.buyKit!(it.id), undefined))
-        : !!app.engine.hire && (await app.mutate(() => app.engine.hire!(it.id)));
+        : await buildRoutine(app, it.id);
     if (ok) n++;
   }
   return n;

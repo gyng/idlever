@@ -29,7 +29,15 @@ import { audio } from "../audio";
 import { effectsLevel } from "../render/fxpref";
 import { createGoldTransferFx, goldTransfers, visibleGoldPoint } from "./gold-transfers";
 import { questShown } from "./quest";
-import { featText, nextPill, nodeIcon, openWorks, workerTitle } from "./works";
+import {
+  buildLabel,
+  buildNode,
+  featText,
+  nextPill,
+  nodeIcon,
+  openWorks,
+  workerTitle,
+} from "./works";
 import { townGraveyard } from "./feats"; // Cut 118 (owner amendment §4): the graveyard's stones
 import { townCrier } from "./crier"; // Cut 118 §8: the town crier   // Cut 30.5: the `next` pill, the works sheet
 import { openHeroLife } from "./hero-life";
@@ -38,7 +46,7 @@ import { classList, classUnlockReason } from "./unlocks";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
 import { kwHost, detailHost, closeTip } from "./tips";
-import { HOME_BUILDINGS, buildingDetails, buildingName, type HomeBuilding } from "./building-help";
+import { HOME_BUILDINGS, buildingDetails, type HomeBuilding } from "./building-help";
 import type { Term } from "./concepts";
 /** docs/TOOLTIPS.md: a building's tip (long-press / hover; its tap stays its panel) */
 const HIT_TERM: Record<string, Term> = /* copy:none */ {
@@ -591,7 +599,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         : []),
       ...s.buildings.map((b) => ({ id: b.id, plot: b.id as PlotId })),
       ...(["guild", "pool", "device"] as const)
-        .filter((id) => service(id)?.available)
+        // (Cut273: the Guildhouse once built — before, its plot is the lit worker's target)
+        .filter((id) => service(id)?.available && (s.services ?? []).includes(id))
         .map((id) => ({ id, plot: id as PlotId })),
       ...(s.board ? [{ id: "board", plot: "board" as PlotId }] : []),
     ];
@@ -700,16 +709,19 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       b.dataset.offer = offer ?? "";
       // the lit worker carries his price (`$40` · `free`), the chest the porter's count (`2/3`)
       const lit = w.id === "worker" ? s.workers.find((x) => x.lit) : undefined;
+      // Cut273: the lit worker's workplace is built (or raised a level) — the build brings him; no hire of its own
+      const litNode = lit ? app.lineage.tree?.nodes.find((node) => node.id === lit.id) : undefined;
+      const verb =
+        (litNode?.level ?? 1) > 1 ? /* copy:label */ "Upgrade" : /* copy:label */ "Build";
       if (lit)
         mk.push({
           at: "chest",
           kind: "coin",
-          label: lit.price ? /* copy:label */ `Hire $${lit.price}` : /* copy:label */ "Hire free",
+          label: lit.price ? `${verb} $${lit.price}` : /* copy:label */ `${verb} free`,
         });
       if (lit) {
-        const worker = app.lineage.tree?.nodes.find((node) => node.id === lit.id);
-        const role = buildingId(lit.post);
-        const hiring = /* copy:tooltip */ `Hire ${worker ? workerTitle(worker) : lit.id} · ${role ? buildingName(role) : lit.post} · ${lit.price ? `$${lit.price}` : "free"}`;
+        const worker = litNode;
+        const hiring = /* copy:tooltip */ `${worker ? buildLabel(worker) : lit.id} · ${worker ? workerTitle(worker) : lit.id} arrives · ${lit.price ? `$${lit.price}` : "free"}`;
         b.setAttribute("aria-label", hiring);
         b.title = hiring;
         b.querySelector(".vh")!.textContent = hiring;
@@ -994,6 +1006,12 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       return;
     }
     if (id === "worker") {
+      // Cut273: the lit worker's workplace — a tap builds it (or raises its level) when the purse pays; else the works on him
+      const node = app.lineage.tree?.nodes.find((n) => n.id === b.dataset.worker);
+      if (node && node.state === "lit" && node.affordable !== false) {
+        void buildNode(app, node);
+        return;
+      }
       openWorks(app, b.dataset.worker || undefined, b);
       return;
     }

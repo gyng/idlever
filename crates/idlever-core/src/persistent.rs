@@ -281,9 +281,8 @@ pub fn service_availability(l: &LineageState, away: bool) -> [bool; 3] {
         return [false; 3];
     }
     [
-        crate::tree::lit(l).is_some()
-            || crate::tree::hired(l, "porter")
-            || crate::tree::hired(l, "scout"),
+        // Cut273: the Guild reception stands once the Guildhouse is built (the Receptionist's arrival); before, its plot
+        crate::tree::hired(l, "scout"),
         l.persistent.completed > 0 || remaining(l) > 0 || l.rest_left > 0,
         l.persistent.defeats > 0
             || l.heir > 1
@@ -350,7 +349,7 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
             &if crate::tree::auto_send(l) {
                 format!("{}, the Receptionist, books another delve after recovery.", receptionist())
             } else {
-                "Hire the Receptionist here to book delves while away.".to_string()
+                "Build the Guildhouse to book delves while away.".to_string()
             },
             guild_available,
         ),

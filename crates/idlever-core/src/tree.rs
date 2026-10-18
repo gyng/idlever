@@ -88,7 +88,7 @@ pub const NODES: &[NodeDef] = &[
     node("drillmaster", "drillmaster", "Thors", "character", "level", "", "tent", "AUTO LEVEL", "levels the stance"),
     node("kennel_hand", "kennel-hand", "Nora", "town", "field", "kennel", "kennel", "AUTO PETS", "fields best pets"),
     node("herald", "herald", "Luna", "town", "swap", "quests", "board", "AUTO QUEST", "swaps stale quests"),
-    node("guide", "guide", "Habo", "scale", "start", "start", "mouth", "AUTO START", "starts deeper"),
+    node("guide", "guide", "Habo", "scale", "start", "start", "guild", "AUTO START", "starts deeper"),
     // Cut 120 §5: the kennel keeper carries the Cut 119 breeding order (`StandingSwitches.kennel`); before his hire the
     // breeding is by hand (`Game::breed`), the order waits
     node("kennel_keeper", "kennel keeper", "Ginko", "town", "breed", "kennel", "kennel", "AUTO BREED", "breeds pets · by order"),
@@ -1171,6 +1171,13 @@ pub struct WorkNodeWire {
     pub kind: String,
     pub branch: String,
     pub name: String,
+    /// Cut273: a worker's workplace (id, name ≤ 2 words) and the level his arrival makes there.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub workplace: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub workplace_name: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub level: Option<u32>,
     /// Cut258: a worker's own name (`Arina`), shown "Name · role"; absent on a stage.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub person: String,
@@ -1351,6 +1358,9 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 kind: "worker".into(),
                 branch: n.branch.into(),
                 name: n.name.into(),
+                workplace: crate::town::workplace_of(n.id).map(|w| w.id.to_string()),
+                workplace_name: crate::town::workplace_of(n.id).map(|w| w.name.to_string()),
+                level: crate::town::workplace_of(n.id).and_then(|w| w.level_of(n.id)),
                 // owner 2026-10-18 ("townspeople names only show up after hiring"): the role until hired, then the name
                 person: if hired(l, n.id) { n.person.into() } else { String::new() },
                 state: state.into(),
@@ -1424,13 +1434,25 @@ pub fn rank_bonus_for(l: &LineageState, id: &str, r: u32) -> Option<String> {
     }
 }
 
+/// Cut273: what building a worker's workplace reads as (`Guildhouse`, `Forge II`): the workplace, its level's numeral
+/// above I. A worker with no workplace reads as its role.
+pub fn build_label(n: &NodeDef) -> String {
+    match crate::town::workplace_of(n.id) {
+        Some(w) => match w.level_of(n.id).unwrap_or(1) {
+            1 => w.name.to_string(),
+            k => format!("{} {}", w.name, numeral(k)),
+        },
+        None => n.name.to_string(),
+    }
+}
+
 /// The single next goal (docs/CUT30_5.md §3).
 pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
     let pill = |kind: &str, node: Option<&str>, text: String, have: Option<i64>, need: Option<i64>| NextPill { kind: kind.into(), node: node.map(String::from), text, have, need };
     if let Some(n) = lit(l) {
         let p = price(l, n);
         if l.gold >= p {
-            return pill("buy", Some(n.id), format!("{} · {}", n.name, if p == 0 { "free".into() } else { format!("${p}") }), None, None);
+            return pill("buy", Some(n.id), format!("{} · {}", build_label(n), if p == 0 { "free".into() } else { format!("${p}") }), None, None);
         }
     }
     if l.tree.chest > 0 && !porter(l) {
@@ -1441,7 +1463,7 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
     }
     if let Some(n) = lit(l) {
         let p = price(l, n);
-        return pill("gold", Some(n.id), format!("{} · ${}/${p}", n.name, l.gold.max(0)), Some(l.gold.max(0) as i64), Some(p as i64));
+        return pill("gold", Some(n.id), format!("{} · ${}/${p}", build_label(n), l.gold.max(0)), Some(l.gold.max(0) as i64), Some(p as i64));
     }
     if let Some(n) = lit_rank(l) {
         let (p, r) = (rank_price(l, n), numeral(rank(l, n.id) + 1));
@@ -1450,10 +1472,10 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
     if let Some(n) = NODES.iter().find(|n| !hired(l, n.id) && !n.chore.is_empty() && chore_open(l, n)) {
         // (Cut235: a feat worker's goal names its feat — no count, no bar)
         if let Some(f) = n.feat() {
-            return pill("feat", Some(n.id), format!("{} · {f}", n.name), None, None);
+            return pill("feat", Some(n.id), format!("{} · {f}", build_label(n)), None, None);
         }
         let c = count(l, n.id).min(n.need());
-        return pill("count", Some(n.id), format!("{} · {c}/{}", n.name, n.need()), Some(c as i64), Some(n.need() as i64));
+        return pill("count", Some(n.id), format!("{} · {c}/{}", build_label(n), n.need()), Some(c as i64), Some(n.need() as i64));
     }
     if let Some(r) = crate::systems::next(l) {
         let text = if r.wait_h > 0 { format!("{} · in {}h", r.id, r.wait_h) } else { format!("{} · {}", r.id, r.trigger) };
