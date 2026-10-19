@@ -1,3 +1,19 @@
+# Metadata endpoint follow-up — 2026-10-19
+
+Owner reported HTTP404 from GitHub Pages. Confirmed the index still used
+`https://gyng.github.io/idlever/meta.json`, while the deployed metadata was on
+Cloudflare dev. The earlier successful HTTP check covered the dev endpoint,
+not the URL actually configured in the index.
+
+Fixed `/home/g/p/games-index` in commit `8c28e2d`: Idlever's card metadata URL,
+primary play URL and host label now consistently use `dev.idlever.awoo.party`.
+All18 index tests pass. Deployed `games-index` directly to Cloudflare, version
+`ab76b522-8554-4af4-82e8-2b0401ceac7b`; no GitHub push/release was made.
+Live402×681 browser verifies the date, fresh preview and Changelog link all
+load, with no page errors. Evidence: `docs/evidence/metadata-index-fix-2026-10-19/`.
+The Idlever build remains423fe45a; Pages has no new release and its metadata
+endpoint remains unavailable. Broader game/tuning work remains paused below.
+
 # Paused after Cut279 dev milestone — 2026-10-19
 
 Owner: **“pause at next good major milestone and update handoff doc and deploy.”**
