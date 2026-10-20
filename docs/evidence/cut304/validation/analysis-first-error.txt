@@ -1,0 +1,1 @@
+Initial analyzer exited1 with KeyError: hunger_lost. engine::Run serializes zero hunger_lost with skip_serializing_if=is_zero and default=0. The corrected analyzer uses that declared zero default; raw native JSON and every game observation are unchanged. Initial analyzer source preserved. No native jobs rerun.

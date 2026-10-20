@@ -1,4 +1,4 @@
-# Active backlog — Cut303 client identity speed/correctness verified, 2026-10-21
+# Active backlog — Cut304 worker/exit diagnosis verified, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
 Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
@@ -9,6 +9,43 @@ Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. Cut300 checkpoint13558b1c pushed; no new release/deployment. Live dev game is still423fe45a.
+
+## Cut304 current worker/exit diagnosis — regression reproduced; no adoption
+
+Contract [CUT304_WORKER_EXIT_DIAGNOSIS.md](CUT304_WORKER_EXIT_DIAGNOSIS.md),
+evidence [cut304/README.md](evidence/cut304/README.md). Current shipping ordinary
+AWAY/AWAY-nodes seeds1/2,four days: four trajectories/16camps, EVERY camp byte-
+identical to Cut282. D18 workers48/48h versus hand24/24h; four-day mean best
+24.125vs25.5, not a fortnight acceptance. Shipping executable/core/probe hashes
+revalidated; no full campaign or parameter sweep.
+
+Six fixed24h public Session continuations from those current automated first
+camps (unchanged/pause Apprentice/repeat),297actual completed runs,645raw JSONs.
+Native reconstruction asserts exact actual public replay for every run. Whole
+preparation only paused flag; Session adds only normal wrapper metadata to the
+original Game fields. All ledgers/repeats and old Game-probe scalar/death-cause
+outcomes reconcile. Finish-run tails retained. Every send starts2heals; ZERO
+Scout wall-held exits. No-heals banks/hurt returns dominate. Apprentice spend
+here is forge-only8000/6400; no later sink spending. This does not establish
+that2heals suffice, or that pausing a worker is generally a forge-only treatment.
+
+First divergent actual sends18/22 follow5/9equal replay prefixes. Initial Run
+objects differ ONLY hero.weapon rung2versus1; rules/floor/monsters/RNG match.
+First differing attack is upgraded hit versus baseline miss. Later endpoints
+vary; other lineage funds/worker state remain the public intervention. Do not
+infer upgrades are generally harmful or silently delay/halt them.
+
+Next: freeze a small controlled paired FUTURE-RNG replay of these fixed actual
+first-divergence contexts, preserving map/foes/HP/supplies/rules and recording
+all outcomes. Explicit controlled simulation, not actual earned/town-population
+acceptance. Estimate conditional encounter effects before another broad worker
+parameter/campaign study. No fresh Guide/price grid or default adoption yet.
+Cut302's Lich discovery failed; Cut300 remains inconclusive with held-out data
+separate. Scoped build/Clippy/rustfmt and independent archive verifier pass.
+All owned diagnostic jobs terminal; omitted-zero hunger schema repair and a
+verifier syntax correction retained in notes, no native reruns. Fast WASM
+refresh/pin status retained; no deployment. Held Bank/Vat W2/recovery/Guide gap4,
+R3/R4/recognition/calibration/fun/broad-audit backlog unchanged.
 
 ## Cut303 client identity — full content,90% faster warm startup
 

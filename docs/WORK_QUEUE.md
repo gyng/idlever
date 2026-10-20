@@ -54,6 +54,15 @@ pass; legacy3controls/1expected regression failure preserved. Cache metadata
 assumptions/fallbacks and directory-link semantics explicit. Checks added to
 verify.sh/Pages CI; global format/lint pass. Next: current worker-away causal
 revalidation, not another Lich study after the failed pilot. See Cut303/HANDOFF.
+Cut304 current worker reproduction verifies all16camps byte-identical to Cut282,
+D18workers48/48h versus hand24/24h. Six public24h continuations/297actual runs
+capture named exits: all sends2heals, no Scout wall-held exits, mostly no-heals
+banks/hurt returns. First divergent initial Run states differ only weapon rung
+2versus1 with equal rules/map/foes/RNG, and first changed attack is upgraded hit
+versus miss. No population upgrade-harm or policy conclusion. Next: small
+explicit controlled future-RNG replay of those actual encounter contexts, not
+another Guide/price grid or Lich confirmation.645raw JSONs/independent verifier,
+ledgers/repeats/old scalar outcomes pass. Broader acceptance remains open.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

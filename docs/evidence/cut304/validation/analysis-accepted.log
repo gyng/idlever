@@ -1,0 +1,183 @@
+{
+  "arrivals": [
+    {
+      "bot": "AWAY",
+      "seed": "1",
+      "d18_hours": 48.0,
+      "best_day": [
+        13,
+        24,
+        28,
+        28
+      ]
+    },
+    {
+      "bot": "AWAY",
+      "seed": "2",
+      "d18_hours": 48.0,
+      "best_day": [
+        16,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "bot": "AWAY-nodes",
+      "seed": "1",
+      "d18_hours": 24.0,
+      "best_day": [
+        18,
+        28,
+        28,
+        28
+      ]
+    },
+    {
+      "bot": "AWAY-nodes",
+      "seed": "2",
+      "d18_hours": 24.0,
+      "best_day": [
+        18,
+        28,
+        28,
+        28
+      ]
+    }
+  ],
+  "four_day_mean_best": {
+    "AWAY": "193/8",
+    "AWAY-nodes": "51/2"
+  },
+  "actual_completed_runs": 297,
+  "cases": [
+    {
+      "parent": "AWAY-s1-d1-c0",
+      "variant": "pause-apprentice",
+      "best": 13,
+      "runs": 60,
+      "banked": 28,
+      "returned": 25,
+      "net_wealth": 15398,
+      "end_reasons": {
+        "hurt \u00b7 went home": 25,
+        "no heals \u00b7 banked": 28,
+        "slain \u00b7 wraith": 2,
+        "slain \u00b7 pink jelly": 2,
+        "slain \u00b7 eel": 1,
+        "slain \u00b7 goblin archer": 1,
+        "slain \u00b7 jackal": 1
+      },
+      "send_heal_histogram": {
+        "2": 60
+      },
+      "wall_held_runs": 0
+    },
+    {
+      "parent": "AWAY-s1-d1-c0",
+      "variant": "unchanged",
+      "best": 13,
+      "runs": 55,
+      "banked": 32,
+      "returned": 18,
+      "net_wealth": 8348,
+      "end_reasons": {
+        "hurt \u00b7 went home": 18,
+        "no heals \u00b7 banked": 32,
+        "slain \u00b7 goblin archer": 1,
+        "slain \u00b7 eel": 2,
+        "slain \u00b7 gas": 2
+      },
+      "send_heal_histogram": {
+        "2": 55
+      },
+      "wall_held_runs": 0
+    },
+    {
+      "parent": "AWAY-s1-d1-c0",
+      "variant": "unchanged-repeat",
+      "best": 13,
+      "runs": 55,
+      "banked": 32,
+      "returned": 18,
+      "net_wealth": 8348,
+      "end_reasons": {
+        "hurt \u00b7 went home": 18,
+        "no heals \u00b7 banked": 32,
+        "slain \u00b7 goblin archer": 1,
+        "slain \u00b7 eel": 2,
+        "slain \u00b7 gas": 2
+      },
+      "send_heal_histogram": {
+        "2": 55
+      },
+      "wall_held_runs": 0
+    },
+    {
+      "parent": "AWAY-s2-d1-c0",
+      "variant": "pause-apprentice",
+      "best": 19,
+      "runs": 43,
+      "banked": 19,
+      "returned": 14,
+      "net_wealth": 19194,
+      "end_reasons": {
+        "slain \u00b7 Warlord": 2,
+        "slain \u00b7 goblin": 1,
+        "no heals \u00b7 banked": 17,
+        "slain \u00b7 gas": 4,
+        "slain \u00b7 pink jelly": 1,
+        "hurt \u00b7 went home": 14,
+        "slain \u00b7 wraith": 1,
+        "slain \u00b7 ogre": 1,
+        "hurt \u00b7 banked": 2
+      },
+      "send_heal_histogram": {
+        "2": 43
+      },
+      "wall_held_runs": 0
+    },
+    {
+      "parent": "AWAY-s2-d1-c0",
+      "variant": "unchanged",
+      "best": 16,
+      "runs": 42,
+      "banked": 17,
+      "returned": 15,
+      "net_wealth": 11808,
+      "end_reasons": {
+        "slain \u00b7 Warlord": 1,
+        "slain \u00b7 goblin": 3,
+        "no heals \u00b7 banked": 17,
+        "slain \u00b7 gas": 5,
+        "slain \u00b7 pink jelly": 1,
+        "hurt \u00b7 went home": 15
+      },
+      "send_heal_histogram": {
+        "2": 42
+      },
+      "wall_held_runs": 0
+    },
+    {
+      "parent": "AWAY-s2-d1-c0",
+      "variant": "unchanged-repeat",
+      "best": 16,
+      "runs": 42,
+      "banked": 17,
+      "returned": 15,
+      "net_wealth": 11808,
+      "end_reasons": {
+        "slain \u00b7 Warlord": 1,
+        "slain \u00b7 goblin": 3,
+        "no heals \u00b7 banked": 17,
+        "slain \u00b7 gas": 5,
+        "slain \u00b7 pink jelly": 1,
+        "hurt \u00b7 went home": 15
+      },
+      "send_heal_histogram": {
+        "2": 42
+      },
+      "wall_held_runs": 0
+    }
+  ]
+}
