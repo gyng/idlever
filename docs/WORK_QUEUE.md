@@ -8,8 +8,13 @@ workspace1102pass/6ignored and native settlements4/4 unchanged). Cut291 correcte
 missing-Throw refusal with historical564/564 browser settlement checks. Prior
 production fix is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
-Next audit existing Cut253/257 evidence against R4's actual class/loadout
-requirements before choosing new paired builds.
+Cut293 completes14 current native earned class/loadout sends (ten original +
+four authored Fighter/Caster),14 exact observer/repeated8h pairs and Gold ledgers.
+Authored verbs fire; tradeoffs remain: Fighter sword banksD22/$828 baseline but
+diesD28/$0 authored; both authored Caster weapons have identical bolt/ward combat,
+returnD8/$145, so weapon value remains unproved. Gunner wrong-API refusals retained,
+same guns corrected through public choice0extra cost. Current Watch identity
+review remains open; native action evidence does not close R4 visual requirements.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/
@@ -65,8 +70,11 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    misleading throw permission block reasons with unchanged execution, red/green
    tests, four exact native/WASM prefixes and564/564 browser settlement checks. Cut292 now displays the missing ability
    beside wade-in with free selection preserved and real public purchases checked.
-   Next examine R4 authored class builds; no six-superiority or population claim. R4's preserved builds authored no class
-   verbs; it needs current earned build comparisons, not an assumed dispatch fix.
+   Cut293 now adds four actual authored Fighter/Caster branches and replays all
+   ten original loadouts natively. Four authored branches fire their class verbs,
+   with losses/tradeoffs retained; both authored Caster weapons use identical
+   spell combat. Current Watch identity review remains open. No six-superiority,
+   population or completed R4 visual claim.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence
    before using it to justify a change.

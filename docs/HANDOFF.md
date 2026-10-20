@@ -1,9 +1,43 @@
-# Active backlog — Cut292 variant dependency hint, 2026-10-20
+# Active backlog — Cut293 authored class builds measured, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest work shows missing Throw before variant selection and retains the six-scene
-catalogue; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
+Latest diagnostic measures14 current earned class/loadout sends; latest product
+fix shows missing Throw before variant selection (Cut292). Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut293 authored class/loadout comparisons — verified native evidence
+
+Contract [CUT293_AUTHORED_CLASS_BUILDS.md](CUT293_AUTHORED_CLASS_BUILDS.md).
+Exactly14 completed new departures from five lawful Cut246 common parents:
+ten original weapon baselines plus Fighter/Caster authored on both weapons.
+One original earned camp, levels8/1/1/1/1, not five progression cohorts.
+Fighter spends3 actual class points (6→3),0 Gold/marks/time, and fires cleave/
+bash/second_wind. Caster's actual open pen accepts ward+bolt; public set_rules
+also clears historical stall tally and earns pen_row, preserved as side effects.
+No other state grants. Both authored Caster streams match each other completely:
+213bolt/10ward rows,206bolt attacks,returnD8/$145/84hurt/11798ticks; neither uses
+its weapon. Baselines both dieD13/$0. This proves spell policy, not weapon value.
+Fighter sword baseline bankD22/$828 versus authored deathD28/$0; Crownsplitter
+both deathD28, authored47059ticks/972hurt versus baseline52108/917. No superiority
+claim. All14 results, losses, exact costs, quotes and clocks retained.
+
+Gunner general kit API refused before both sends; original receipts retained.
+Same two declared guns succeed using correct public firearm choice,0 extra cost;
+other12 captures unchanged. Two helper identities pinned. Original source was
+reconstructed from recorded edits after capture, explicitly labelled, not falsely
+called pre-pinned. Corrected helper build/example warnings-denied Clippy/scoped
+rustfmt/diff pass. Initial compile/type failures retained. No core/WASM change.
+Independent364-receipt/hash verifier passes: seven identical initial world pairs,
+14 complete fine/coarse event+save pairs,14 complete8h report/save repeats and
+14 reconciled Gold ledgers,28800s/one actual run each. Public replay ticks and all
+pre-exit events exact14/14; exit payload/settlement omissions mean whole replay
+streams differ. No full-replay equality claimed. Archive1518902bytes/173418963raw.
+Evidence docs/evidence/cut293; all validation jobs terminal. No fresh broad tests,
+Watch GL/Canvas, balance/full/exhaustive/fun, held W2/recovery/Guide or deploy change.
+Next: current Watch class/weapon identity review of actual captured moments;
+R4 remains open. Preserve explicit policy-versus-weapon limits. R3 and inherited
+balance failures also remain open; advanced Caster conduct earned payoff remains
+an existing policy/content gap (Cut257), not a proven class dispatch defect.
 
 ## Cut292 variant dependency hint — verified
 

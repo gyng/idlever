@@ -1,0 +1,8 @@
+error[E0425]: cannot find function `enabled` in module `idlever_core::tree`
+  --> crates/idlever-core/examples/class_builds.rs:40:32
+   |
+40 |         || idlever_core::tree::enabled(&s.lineage, "scout")
+   |                                ^^^^^^^ not found in `idlever_core::tree`
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `idlever-core` (example "class_builds") due to 1 previous error

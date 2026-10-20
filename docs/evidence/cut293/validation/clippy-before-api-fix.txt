@@ -1,0 +1,8 @@
+error[E0425]: cannot find function `wire` in module `kit`
+   --> crates/idlever-core/examples/class_builds.rs:101:48
+    |
+101 |     write(dir, "kit-offers-before.json", &kit::wire(&s.lineage))?;
+    |                                                ^^^^ not found in `kit`
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `idlever-core` (example "class_builds") due to 1 previous error

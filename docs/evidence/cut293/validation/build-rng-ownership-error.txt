@@ -1,0 +1,35 @@
+error[E0507]: cannot move out of dereference of `Session`
+  --> crates/idlever-core/examples/class_builds.rs:55:9
+   |
+55 |         s.lineage.rng,
+   |         ^^^^^^^^^^^^^ move occurs because value has type `Rng`, which does not implement the `Copy` trait
+   |
+help: consider cloning the value if the performance cost is acceptable
+   |
+55 |         s.lineage.rng.clone(),
+   |                      ++++++++
+
+error[E0507]: cannot move out of dereference of `Session`
+  --> crates/idlever-core/examples/class_builds.rs:91:13
+   |
+91 |             s.lineage.rng
+   |             ^^^^^^^^^^^^^ move occurs because value has type `Rng`, which does not implement the `Copy` trait
+   |
+help: consider cloning the value if the performance cost is acceptable
+   |
+91 |             s.lineage.rng.clone()
+   |                          ++++++++
+
+error[E0507]: cannot move out of dereference of `Session`
+   --> crates/idlever-core/examples/class_builds.rs:114:13
+    |
+114 |             s.lineage.rng
+    |             ^^^^^^^^^^^^^ move occurs because value has type `Rng`, which does not implement the `Copy` trait
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+114 |             s.lineage.rng.clone()
+    |                          ++++++++
+
+For more information about this error, try `rustc --explain E0507`.
+error: could not compile `idlever-core` (example "class_builds") due to 3 previous errors

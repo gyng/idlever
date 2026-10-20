@@ -1,0 +1,336 @@
+[
+  {
+    "case": "fighter-sword-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 12,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 938,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "fighter-crownsplitter-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 15,
+      "dst": 2,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 958,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "fighter-sword-authored",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 12,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 938,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "fighter-sword-authored",
+    "verb": "cleave",
+    "actual_event": {
+      "dmg": 0,
+      "dst": 33,
+      "hit": false,
+      "k": "attack",
+      "src": 1,
+      "t": 5075,
+      "verb": "cleave"
+    }
+  },
+  {
+    "case": "fighter-sword-authored",
+    "verb": "second_wind",
+    "actual_event": {
+      "k": "rule",
+      "row": 7,
+      "skill": {
+        "id": "fighter_recovery",
+        "name": "Recovery"
+      },
+      "t": 31025,
+      "text": "HP 50% \u2192 second_wind",
+      "verb": {
+        "v": "second_wind"
+      }
+    }
+  },
+  {
+    "case": "fighter-sword-authored",
+    "verb": "shield_bash",
+    "actual_event": {
+      "dmg": 12,
+      "dst": 146,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 18688,
+      "verb": "shield_bash"
+    }
+  },
+  {
+    "case": "fighter-crownsplitter-authored",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 15,
+      "dst": 2,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 958,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "fighter-crownsplitter-authored",
+    "verb": "cleave",
+    "actual_event": {
+      "dmg": 16,
+      "dst": 29,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 4929,
+      "verb": "cleave"
+    }
+  },
+  {
+    "case": "fighter-crownsplitter-authored",
+    "verb": "second_wind",
+    "actual_event": {
+      "k": "rule",
+      "row": 7,
+      "skill": {
+        "id": "fighter_recovery",
+        "name": "Recovery"
+      },
+      "t": 31172,
+      "text": "HP 51% \u2192 second_wind",
+      "verb": {
+        "v": "second_wind"
+      }
+    }
+  },
+  {
+    "case": "fighter-crownsplitter-authored",
+    "verb": "shield_bash",
+    "actual_event": {
+      "dmg": 11,
+      "dst": 144,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 17558,
+      "verb": "shield_bash"
+    }
+  },
+  {
+    "case": "rogue-dagger-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 8,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 938,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "rogue-crownsplitter-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 13,
+      "dst": 2,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 958,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "rogue-crownsplitter-baseline",
+    "verb": "throw",
+    "actual_event": {
+      "k": "rule",
+      "row": 0,
+      "t": 20810,
+      "text": "throw fire bloat",
+      "verb": {
+        "a": "fire,tag:boss",
+        "v": "throw"
+      }
+    }
+  },
+  {
+    "case": "ranger-bow-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 11,
+      "dst": 43,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 6463,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "ranger-bow-baseline",
+    "verb": "shoot",
+    "actual_event": {
+      "dmg": 11,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 913,
+      "verb": "shoot"
+    }
+  },
+  {
+    "case": "ranger-sword-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 10,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 938,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "caster-dagger-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 8,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 938,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "caster-bow-baseline",
+    "verb": "attack",
+    "actual_event": {
+      "dmg": 11,
+      "dst": 43,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 6463,
+      "verb": "attack"
+    }
+  },
+  {
+    "case": "caster-bow-baseline",
+    "verb": "shoot",
+    "actual_event": {
+      "dmg": 11,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 913,
+      "verb": "shoot"
+    }
+  },
+  {
+    "case": "caster-dagger-authored",
+    "verb": "bolt",
+    "actual_event": {
+      "dmg": 6,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 913,
+      "verb": "bolt"
+    }
+  },
+  {
+    "case": "caster-dagger-authored",
+    "verb": "ward",
+    "actual_event": {
+      "k": "rule",
+      "row": 0,
+      "t": 10763,
+      "text": "HP 66% \u2192 ward",
+      "verb": {
+        "v": "ward"
+      }
+    }
+  },
+  {
+    "case": "caster-bow-authored",
+    "verb": "bolt",
+    "actual_event": {
+      "dmg": 6,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 913,
+      "verb": "bolt"
+    }
+  },
+  {
+    "case": "caster-bow-authored",
+    "verb": "ward",
+    "actual_event": {
+      "k": "rule",
+      "row": 0,
+      "t": 10763,
+      "text": "HP 66% \u2192 ward",
+      "verb": {
+        "v": "ward"
+      }
+    }
+  },
+  {
+    "case": "gunner-long_gun-baseline",
+    "verb": "fire",
+    "actual_event": {
+      "dmg": 15,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 913,
+      "verb": "fire"
+    }
+  },
+  {
+    "case": "gunner-short_gun-baseline",
+    "verb": "fire",
+    "actual_event": {
+      "dmg": 12,
+      "dst": 9,
+      "hit": true,
+      "k": "attack",
+      "src": 1,
+      "t": 925,
+      "verb": "fire"
+    }
+  }
+]

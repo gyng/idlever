@@ -1,0 +1,2011 @@
+{
+  "files": [
+    {
+      "path": "analysis-final.txt",
+      "bytes": 1447,
+      "sha256": "936f6c967401977d019af09e71e926f3e0a3a04eaea816b9da0d09d3635eaa41"
+    },
+    {
+      "path": "analysis-final2.txt",
+      "bytes": 1442,
+      "sha256": "83c5092b5ebbf39d0a1fc13d7c284f3be92d58cee6354690565f9c55f7531901"
+    },
+    {
+      "path": "analysis-fixed.txt",
+      "bytes": 1276,
+      "sha256": "c3fd8878f66e1279a13076339ad5ceb32d3f45264e9c087e0124d258a827686e"
+    },
+    {
+      "path": "analysis-optional-zero-error.txt",
+      "bytes": 1179,
+      "sha256": "dbe6edfabc49d6cf132f4acc29576052d58f2301e4239ad8bd4449089712f9c9"
+    },
+    {
+      "path": "analysis.txt",
+      "bytes": 1179,
+      "sha256": "dbe6edfabc49d6cf132f4acc29576052d58f2301e4239ad8bd4449089712f9c9",
+      "same_bytes_as": "analysis-optional-zero-error.txt"
+    },
+    {
+      "path": "build-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build-fixed.txt",
+      "bytes": 1430,
+      "sha256": "eeb7bd95b12c9c2d50cdaae703ac3a8a546d02137e4a37e38c5a8204ca9abbab"
+    },
+    {
+      "path": "build-gunner-api.txt",
+      "bytes": 431,
+      "sha256": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316"
+    },
+    {
+      "path": "build-gunner-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "build-initial.txt",
+      "bytes": 439,
+      "sha256": "d5cbeea519df9d50cb932e471b4ce46e8817b38e058cf5feda22f050243334c1"
+    },
+    {
+      "path": "build-kit-wire-error.txt",
+      "bytes": 431,
+      "sha256": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316",
+      "same_bytes_as": "build-gunner-api.txt"
+    },
+    {
+      "path": "build-rng-ownership-error.txt",
+      "bytes": 1430,
+      "sha256": "eeb7bd95b12c9c2d50cdaae703ac3a8a546d02137e4a37e38c5a8204ca9abbab",
+      "same_bytes_as": "build-fixed.txt"
+    },
+    {
+      "path": "build.txt",
+      "bytes": 439,
+      "sha256": "d5cbeea519df9d50cb932e471b4ce46e8817b38e058cf5feda22f050243334c1",
+      "same_bytes_as": "build-initial.txt"
+    },
+    {
+      "path": "capture.txt",
+      "bytes": 3237,
+      "sha256": "27f7ad2dcd66fd5f0c076f8b1c1234177111170dc67fbc2bc8a660ac0cd75a6f"
+    },
+    {
+      "path": "caster-bow-authored/absence-after.json",
+      "bytes": 1083429,
+      "sha256": "cafd97230ebef605ce70380cf3d7be6f0463410cd1b5d4ed8b363212dd88f9f1"
+    },
+    {
+      "path": "caster-bow-authored/absence-repeat-after.json",
+      "bytes": 1083429,
+      "sha256": "cafd97230ebef605ce70380cf3d7be6f0463410cd1b5d4ed8b363212dd88f9f1",
+      "same_bytes_as": "caster-bow-authored/absence-after.json"
+    },
+    {
+      "path": "caster-bow-authored/absence-repeat-report.json",
+      "bytes": 9805,
+      "sha256": "24813cdbd745b193b4427f12220c70edd7faa6673bd551bad40e29ccd3bd116d"
+    },
+    {
+      "path": "caster-bow-authored/absence-report.json",
+      "bytes": 9805,
+      "sha256": "24813cdbd745b193b4427f12220c70edd7faa6673bd551bad40e29ccd3bd116d",
+      "same_bytes_as": "caster-bow-authored/absence-repeat-report.json"
+    },
+    {
+      "path": "caster-bow-authored/after-coarse.json",
+      "bytes": 1079901,
+      "sha256": "e3654e06e099f73cf3aa930f52e4dcd7059d9347833cfb72405f1ae2b301b5af"
+    },
+    {
+      "path": "caster-bow-authored/after-fine.json",
+      "bytes": 1079901,
+      "sha256": "e3654e06e099f73cf3aa930f52e4dcd7059d9347833cfb72405f1ae2b301b5af",
+      "same_bytes_as": "caster-bow-authored/after-coarse.json"
+    },
+    {
+      "path": "caster-bow-authored/class-offers-before.json",
+      "bytes": 5486,
+      "sha256": "9828f75817c165b0b0332fa2f83e945de9501178be45e39001f2dc38bba75322"
+    },
+    {
+      "path": "caster-bow-authored/compiled-rules.json",
+      "bytes": 1144,
+      "sha256": "1527a6e1623a5d96b6d6a5d37f664243ed9913258ad85d105cb0511f7d5971bb"
+    },
+    {
+      "path": "caster-bow-authored/events-coarse.json",
+      "bytes": 244679,
+      "sha256": "c331d6e843c3ae7b069d1ee1e9790611ea8006b063cc9c8de06d69890269615b"
+    },
+    {
+      "path": "caster-bow-authored/events.json",
+      "bytes": 244679,
+      "sha256": "c331d6e843c3ae7b069d1ee1e9790611ea8006b063cc9c8de06d69890269615b",
+      "same_bytes_as": "caster-bow-authored/events-coarse.json"
+    },
+    {
+      "path": "caster-bow-authored/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef"
+    },
+    {
+      "path": "caster-bow-authored/initial-run.json",
+      "bytes": 39177,
+      "sha256": "621bfe2474fec03444f4a127c97fb6170c3ba2f8adfa609738b27e2fd52555bd"
+    },
+    {
+      "path": "caster-bow-authored/loadout-action.json",
+      "bytes": 163,
+      "sha256": "dcf2cd9c1c3146a9e5b805ebb859aed577085e1fbbc21afee4e45b4af1180456"
+    },
+    {
+      "path": "caster-bow-authored/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d"
+    },
+    {
+      "path": "caster-bow-authored/policy-actions.json",
+      "bytes": 205,
+      "sha256": "42708f464f774a99c8c33acb6b62031fcc69a6122adbc0d71d76bafd29175e75"
+    },
+    {
+      "path": "caster-bow-authored/policy-parent.json",
+      "bytes": 1112084,
+      "sha256": "1515af77acd1f24f39107970a47e4974d3d6e3b04ce1734552904dbbb578b944"
+    },
+    {
+      "path": "caster-bow-authored/ready-save.json",
+      "bytes": 1112085,
+      "sha256": "2d28f0d08c3bdf3b619366024c653ba887d82212e178f786a24ad3bcd4af41a8"
+    },
+    {
+      "path": "caster-bow-authored/ready.json",
+      "bytes": 143939,
+      "sha256": "664603f308b806a2deb2be05f369040c05447daeadd368aee3fba434126f27b1"
+    },
+    {
+      "path": "caster-bow-authored/replay.json",
+      "bytes": 425925,
+      "sha256": "dd9c0ec6920d4cf593a8a73c7171c352011bf0063f20b3683d02dfcbda2eb3f3"
+    },
+    {
+      "path": "caster-bow-authored/sent.json",
+      "bytes": 1265462,
+      "sha256": "9a6c397065162b5b03a232e15b6fade9e4ccd09984a75bab74080f4b6c079609"
+    },
+    {
+      "path": "caster-bow-authored/summary.json",
+      "bytes": 391,
+      "sha256": "512fefbdcf844c6d17076a60750eb736ebef96e78e2cfaa1731e12c15c54f231"
+    },
+    {
+      "path": "caster-bow-authored/vocabulary-before.json",
+      "bytes": 8623,
+      "sha256": "37a901d0be1275936a6782cc291353d69cef5307ee7f0e7ad5baa0e85f74fc19"
+    },
+    {
+      "path": "caster-bow-authored.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "caster-bow-baseline/absence-after.json",
+      "bytes": 1180404,
+      "sha256": "c6e3d013ebf61c40513c27eb595b8e61a5aa16b797c0c9ce4196a90dd5003666"
+    },
+    {
+      "path": "caster-bow-baseline/absence-repeat-after.json",
+      "bytes": 1180404,
+      "sha256": "c6e3d013ebf61c40513c27eb595b8e61a5aa16b797c0c9ce4196a90dd5003666",
+      "same_bytes_as": "caster-bow-baseline/absence-after.json"
+    },
+    {
+      "path": "caster-bow-baseline/absence-repeat-report.json",
+      "bytes": 11212,
+      "sha256": "b66ae2572a9b6bbf287b7ac0619077bf56c275a79a78b6b35a5921a4f0bd8c03"
+    },
+    {
+      "path": "caster-bow-baseline/absence-report.json",
+      "bytes": 11212,
+      "sha256": "b66ae2572a9b6bbf287b7ac0619077bf56c275a79a78b6b35a5921a4f0bd8c03",
+      "same_bytes_as": "caster-bow-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "caster-bow-baseline/after-coarse.json",
+      "bytes": 1176381,
+      "sha256": "319679e09292204a7bf99bf2f98c48315bf6c6bbced617469e0a6c3210f653ac"
+    },
+    {
+      "path": "caster-bow-baseline/after-fine.json",
+      "bytes": 1176381,
+      "sha256": "319679e09292204a7bf99bf2f98c48315bf6c6bbced617469e0a6c3210f653ac",
+      "same_bytes_as": "caster-bow-baseline/after-coarse.json"
+    },
+    {
+      "path": "caster-bow-baseline/class-offers-before.json",
+      "bytes": 5486,
+      "sha256": "9828f75817c165b0b0332fa2f83e945de9501178be45e39001f2dc38bba75322",
+      "same_bytes_as": "caster-bow-authored/class-offers-before.json"
+    },
+    {
+      "path": "caster-bow-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb"
+    },
+    {
+      "path": "caster-bow-baseline/events-coarse.json",
+      "bytes": 341771,
+      "sha256": "80ff909c41daa07a105402aeffb013276226740b277cf571418b69a2a3a49883"
+    },
+    {
+      "path": "caster-bow-baseline/events.json",
+      "bytes": 341771,
+      "sha256": "80ff909c41daa07a105402aeffb013276226740b277cf571418b69a2a3a49883",
+      "same_bytes_as": "caster-bow-baseline/events-coarse.json"
+    },
+    {
+      "path": "caster-bow-baseline/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef",
+      "same_bytes_as": "caster-bow-authored/gear-offers-before.json"
+    },
+    {
+      "path": "caster-bow-baseline/initial-run.json",
+      "bytes": 39177,
+      "sha256": "1944b2bd0e031950a6e57b6bf594ab0b1f100a7e9e001c94d51fa36120a8ec26"
+    },
+    {
+      "path": "caster-bow-baseline/loadout-action.json",
+      "bytes": 163,
+      "sha256": "dcf2cd9c1c3146a9e5b805ebb859aed577085e1fbbc21afee4e45b4af1180456",
+      "same_bytes_as": "caster-bow-authored/loadout-action.json"
+    },
+    {
+      "path": "caster-bow-baseline/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d",
+      "same_bytes_as": "caster-bow-authored/normalized-input.json"
+    },
+    {
+      "path": "caster-bow-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "path": "caster-bow-baseline/policy-parent.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d",
+      "same_bytes_as": "caster-bow-authored/normalized-input.json"
+    },
+    {
+      "path": "caster-bow-baseline/ready-save.json",
+      "bytes": 1126309,
+      "sha256": "74b01238646df01aa7736e71f00dbfbd588680d495b0ea8c0b93ed7d1cea184d"
+    },
+    {
+      "path": "caster-bow-baseline/ready.json",
+      "bytes": 143710,
+      "sha256": "c82b0376c75d7c6a806aa197a2dd48b01e1412bd6d64fc3c3fb644fe2a79d120"
+    },
+    {
+      "path": "caster-bow-baseline/replay.json",
+      "bytes": 638924,
+      "sha256": "24467e95f01c00121fb09e1170cbaddece2c29537a913c4a4037a0835ce98c2d"
+    },
+    {
+      "path": "caster-bow-baseline/sent.json",
+      "bytes": 1278574,
+      "sha256": "9ed471f0411f87a6de37e28c6a9a3dfc9ed8a612980252c3396738088a6a239f"
+    },
+    {
+      "path": "caster-bow-baseline/summary.json",
+      "bytes": 421,
+      "sha256": "704222995ee865515ab72db7c04d3e53b1c2e08281989efd1f015bca88bcd13d"
+    },
+    {
+      "path": "caster-bow-baseline/vocabulary-before.json",
+      "bytes": 8623,
+      "sha256": "37a901d0be1275936a6782cc291353d69cef5307ee7f0e7ad5baa0e85f74fc19",
+      "same_bytes_as": "caster-bow-authored/vocabulary-before.json"
+    },
+    {
+      "path": "caster-bow-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "caster-dagger-authored/absence-after.json",
+      "bytes": 1083441,
+      "sha256": "78e321e1accbcf6b81dfcf0f8e8041c796e1a7cf863f5e94f1714451f93ba529"
+    },
+    {
+      "path": "caster-dagger-authored/absence-repeat-after.json",
+      "bytes": 1083441,
+      "sha256": "78e321e1accbcf6b81dfcf0f8e8041c796e1a7cf863f5e94f1714451f93ba529",
+      "same_bytes_as": "caster-dagger-authored/absence-after.json"
+    },
+    {
+      "path": "caster-dagger-authored/absence-repeat-report.json",
+      "bytes": 9805,
+      "sha256": "24813cdbd745b193b4427f12220c70edd7faa6673bd551bad40e29ccd3bd116d",
+      "same_bytes_as": "caster-bow-authored/absence-repeat-report.json"
+    },
+    {
+      "path": "caster-dagger-authored/absence-report.json",
+      "bytes": 9805,
+      "sha256": "24813cdbd745b193b4427f12220c70edd7faa6673bd551bad40e29ccd3bd116d",
+      "same_bytes_as": "caster-bow-authored/absence-repeat-report.json"
+    },
+    {
+      "path": "caster-dagger-authored/after-coarse.json",
+      "bytes": 1079913,
+      "sha256": "e3174710baa16700e0576b27b42cd31606528474cb56b95673920c7781a50056"
+    },
+    {
+      "path": "caster-dagger-authored/after-fine.json",
+      "bytes": 1079913,
+      "sha256": "e3174710baa16700e0576b27b42cd31606528474cb56b95673920c7781a50056",
+      "same_bytes_as": "caster-dagger-authored/after-coarse.json"
+    },
+    {
+      "path": "caster-dagger-authored/class-offers-before.json",
+      "bytes": 5486,
+      "sha256": "9828f75817c165b0b0332fa2f83e945de9501178be45e39001f2dc38bba75322",
+      "same_bytes_as": "caster-bow-authored/class-offers-before.json"
+    },
+    {
+      "path": "caster-dagger-authored/compiled-rules.json",
+      "bytes": 1144,
+      "sha256": "1527a6e1623a5d96b6d6a5d37f664243ed9913258ad85d105cb0511f7d5971bb",
+      "same_bytes_as": "caster-bow-authored/compiled-rules.json"
+    },
+    {
+      "path": "caster-dagger-authored/events-coarse.json",
+      "bytes": 244679,
+      "sha256": "c331d6e843c3ae7b069d1ee1e9790611ea8006b063cc9c8de06d69890269615b",
+      "same_bytes_as": "caster-bow-authored/events-coarse.json"
+    },
+    {
+      "path": "caster-dagger-authored/events.json",
+      "bytes": 244679,
+      "sha256": "c331d6e843c3ae7b069d1ee1e9790611ea8006b063cc9c8de06d69890269615b",
+      "same_bytes_as": "caster-bow-authored/events-coarse.json"
+    },
+    {
+      "path": "caster-dagger-authored/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef",
+      "same_bytes_as": "caster-bow-authored/gear-offers-before.json"
+    },
+    {
+      "path": "caster-dagger-authored/initial-run.json",
+      "bytes": 39180,
+      "sha256": "1e2d82d3fe821108f57f2f8c061bb3f9544a5c0aa1a41c4b356fb1a8fd4e620f"
+    },
+    {
+      "path": "caster-dagger-authored/loadout-action.json",
+      "bytes": 166,
+      "sha256": "2ef38a3748656c09b9209165c7b3256878585a942b69cdcecb141d381163a292"
+    },
+    {
+      "path": "caster-dagger-authored/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d",
+      "same_bytes_as": "caster-bow-authored/normalized-input.json"
+    },
+    {
+      "path": "caster-dagger-authored/policy-actions.json",
+      "bytes": 205,
+      "sha256": "42708f464f774a99c8c33acb6b62031fcc69a6122adbc0d71d76bafd29175e75",
+      "same_bytes_as": "caster-bow-authored/policy-actions.json"
+    },
+    {
+      "path": "caster-dagger-authored/policy-parent.json",
+      "bytes": 1112084,
+      "sha256": "1515af77acd1f24f39107970a47e4974d3d6e3b04ce1734552904dbbb578b944",
+      "same_bytes_as": "caster-bow-authored/policy-parent.json"
+    },
+    {
+      "path": "caster-dagger-authored/ready-save.json",
+      "bytes": 1112088,
+      "sha256": "49c6bf5b12b1d27d23b5bd872bc4899474821ca6496c327af19e873358c7fc2d"
+    },
+    {
+      "path": "caster-dagger-authored/ready.json",
+      "bytes": 143957,
+      "sha256": "13f68525d2f57af4624878fb1461ea89ad33def55fea6027a6e5938c131de680"
+    },
+    {
+      "path": "caster-dagger-authored/replay.json",
+      "bytes": 425949,
+      "sha256": "8e434649f0635180025945fcffe090f8a342720a006512b76babe2f3406a9031"
+    },
+    {
+      "path": "caster-dagger-authored/sent.json",
+      "bytes": 1265480,
+      "sha256": "d322d00882d7993bf487651bc980aa72bd89b8c79f8323209fc283a74efe8cb9"
+    },
+    {
+      "path": "caster-dagger-authored/summary.json",
+      "bytes": 394,
+      "sha256": "5d76fc067eaedfee3c27a4ef3a6733647288bb56f1775304acb1eced32e7de20"
+    },
+    {
+      "path": "caster-dagger-authored/vocabulary-before.json",
+      "bytes": 8623,
+      "sha256": "37a901d0be1275936a6782cc291353d69cef5307ee7f0e7ad5baa0e85f74fc19",
+      "same_bytes_as": "caster-bow-authored/vocabulary-before.json"
+    },
+    {
+      "path": "caster-dagger-authored.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "caster-dagger-baseline/absence-after.json",
+      "bytes": 1201572,
+      "sha256": "03794936a831e5fa2c150938fc731c24f8ff8ff311463f4ba7d7c5266405b648"
+    },
+    {
+      "path": "caster-dagger-baseline/absence-repeat-after.json",
+      "bytes": 1201572,
+      "sha256": "03794936a831e5fa2c150938fc731c24f8ff8ff311463f4ba7d7c5266405b648",
+      "same_bytes_as": "caster-dagger-baseline/absence-after.json"
+    },
+    {
+      "path": "caster-dagger-baseline/absence-repeat-report.json",
+      "bytes": 13388,
+      "sha256": "0493305e04f813c2d423b6ae4f3ee425ff1d33b40230aadb83c103ecc4eb0266"
+    },
+    {
+      "path": "caster-dagger-baseline/absence-report.json",
+      "bytes": 13388,
+      "sha256": "0493305e04f813c2d423b6ae4f3ee425ff1d33b40230aadb83c103ecc4eb0266",
+      "same_bytes_as": "caster-dagger-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "caster-dagger-baseline/after-coarse.json",
+      "bytes": 1196823,
+      "sha256": "70df214485cd3af42200288d8cc3acabc3d690a66a3106f1a41d7391a6d62b8a"
+    },
+    {
+      "path": "caster-dagger-baseline/after-fine.json",
+      "bytes": 1196823,
+      "sha256": "70df214485cd3af42200288d8cc3acabc3d690a66a3106f1a41d7391a6d62b8a",
+      "same_bytes_as": "caster-dagger-baseline/after-coarse.json"
+    },
+    {
+      "path": "caster-dagger-baseline/class-offers-before.json",
+      "bytes": 5486,
+      "sha256": "9828f75817c165b0b0332fa2f83e945de9501178be45e39001f2dc38bba75322",
+      "same_bytes_as": "caster-bow-authored/class-offers-before.json"
+    },
+    {
+      "path": "caster-dagger-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "caster-dagger-baseline/events-coarse.json",
+      "bytes": 380518,
+      "sha256": "99e675596becebbf9545126e0e5baa61f9719a76a6dddbad0278f6ac9d92d4f2"
+    },
+    {
+      "path": "caster-dagger-baseline/events.json",
+      "bytes": 380518,
+      "sha256": "99e675596becebbf9545126e0e5baa61f9719a76a6dddbad0278f6ac9d92d4f2",
+      "same_bytes_as": "caster-dagger-baseline/events-coarse.json"
+    },
+    {
+      "path": "caster-dagger-baseline/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef",
+      "same_bytes_as": "caster-bow-authored/gear-offers-before.json"
+    },
+    {
+      "path": "caster-dagger-baseline/initial-run.json",
+      "bytes": 39180,
+      "sha256": "b34f7e2ae88e8fc656425f12fb62b6f640d2c6f05a2f33b2b7fec40b6cbe60dc"
+    },
+    {
+      "path": "caster-dagger-baseline/loadout-action.json",
+      "bytes": 166,
+      "sha256": "2ef38a3748656c09b9209165c7b3256878585a942b69cdcecb141d381163a292",
+      "same_bytes_as": "caster-dagger-authored/loadout-action.json"
+    },
+    {
+      "path": "caster-dagger-baseline/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d",
+      "same_bytes_as": "caster-bow-authored/normalized-input.json"
+    },
+    {
+      "path": "caster-dagger-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "caster-dagger-baseline/policy-parent.json",
+      "bytes": 1126308,
+      "sha256": "d0468e25e905a3ed65ea70ee51edf32482b167725c805aae5466fde16b5db40d",
+      "same_bytes_as": "caster-bow-authored/normalized-input.json"
+    },
+    {
+      "path": "caster-dagger-baseline/ready-save.json",
+      "bytes": 1126312,
+      "sha256": "7222a2df886d46d9a8c1e8d110bc8454abe5a3ad27b619c9d087b7b171109463"
+    },
+    {
+      "path": "caster-dagger-baseline/ready.json",
+      "bytes": 143728,
+      "sha256": "6ed523a1c7e1917f2a1ccffeadb6bbd1fad8170737957167ec1ea279ca1d5343"
+    },
+    {
+      "path": "caster-dagger-baseline/replay.json",
+      "bytes": 677351,
+      "sha256": "ad9e71a81f415dd43b331ba272d25fc8f2ef347f6309fed73c45ea7b6cda744d"
+    },
+    {
+      "path": "caster-dagger-baseline/sent.json",
+      "bytes": 1278592,
+      "sha256": "088782e76a0017bf6e68bb508708217c47e381aed0815bf47a251cf857e29c41"
+    },
+    {
+      "path": "caster-dagger-baseline/summary.json",
+      "bytes": 419,
+      "sha256": "67a6f0e32647da6812a974c68b30bec8e6a6463c628cb8392c93f2239bd3bb4a"
+    },
+    {
+      "path": "caster-dagger-baseline/vocabulary-before.json",
+      "bytes": 8623,
+      "sha256": "37a901d0be1275936a6782cc291353d69cef5307ee7f0e7ad5baa0e85f74fc19",
+      "same_bytes_as": "caster-bow-authored/vocabulary-before.json"
+    },
+    {
+      "path": "caster-dagger-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "caster-input.json",
+      "bytes": 1126184,
+      "sha256": "5609daa90e735beef7007009613fe29ad1d2f5c1d0a752fe5ad17609ea7023fe"
+    },
+    {
+      "path": "clippy-before-api-fix.txt",
+      "bytes": 431,
+      "sha256": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316",
+      "same_bytes_as": "build-gunner-api.txt"
+    },
+    {
+      "path": "clippy-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "clippy.txt",
+      "bytes": 431,
+      "sha256": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316",
+      "same_bytes_as": "build-gunner-api.txt"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/absence-after.json",
+      "bytes": 1260875,
+      "sha256": "68ad528a50474dd92cd667aeb0947d040bdf2df52630278638bc181effc25087"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/absence-repeat-after.json",
+      "bytes": 1260875,
+      "sha256": "68ad528a50474dd92cd667aeb0947d040bdf2df52630278638bc181effc25087",
+      "same_bytes_as": "fighter-crownsplitter-authored/absence-after.json"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/absence-repeat-report.json",
+      "bytes": 18534,
+      "sha256": "1aca4b4a6217540a65a54641bb9d9edc6df25329fe300abdc19df8a26c708d8f"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/absence-report.json",
+      "bytes": 18534,
+      "sha256": "1aca4b4a6217540a65a54641bb9d9edc6df25329fe300abdc19df8a26c708d8f",
+      "same_bytes_as": "fighter-crownsplitter-authored/absence-repeat-report.json"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/after-coarse.json",
+      "bytes": 1252387,
+      "sha256": "f12b1b01eb375e5e13d9290d2089b46375d928ef80f24502bcac1ea396af25a1"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/after-fine.json",
+      "bytes": 1252387,
+      "sha256": "f12b1b01eb375e5e13d9290d2089b46375d928ef80f24502bcac1ea396af25a1",
+      "same_bytes_as": "fighter-crownsplitter-authored/after-coarse.json"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/class-offers-before.json",
+      "bytes": 5157,
+      "sha256": "b58c60a48e710e5af7369f27d7c76367e8b6600c7cbb2a7794e3ec2d9befdff8"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/compiled-rules.json",
+      "bytes": 1329,
+      "sha256": "6a7268963cf842e43f832b991887d8eef0dd7141f7941692b1f8810c62de9911"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/events-coarse.json",
+      "bytes": 916780,
+      "sha256": "efde10f9898013cace7c0354b098a62347929e6e3f7f7f2896c7d1e8c6ae4169"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/events.json",
+      "bytes": 916780,
+      "sha256": "efde10f9898013cace7c0354b098a62347929e6e3f7f7f2896c7d1e8c6ae4169",
+      "same_bytes_as": "fighter-crownsplitter-authored/events-coarse.json"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/gear-offers-before.json",
+      "bytes": 5925,
+      "sha256": "4cbd0694ec18041e1149e3ec8dc3440a7863ebb030359d8c49914786e28e78be"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/initial-run.json",
+      "bytes": 39206,
+      "sha256": "42e97cf65bea02b15c3498f653b51a4f171a926f062087fa96dffff273c10c6a"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/loadout-action.json",
+      "bytes": 173,
+      "sha256": "55f19ecc8b9a046548c92d2c6d428259b9af3e98498aa3e33c5cf5a6c409f333"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/normalized-input.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/policy-actions.json",
+      "bytes": 30994,
+      "sha256": "b8d2b331e0c6c295ce8710187453ec573a449299ee01c33e6ae4928ab1cbebbc"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/policy-parent.json",
+      "bytes": 1126705,
+      "sha256": "431b003a7e710cbd736d792157344976d1240fe593a7b9e0d06aa47fd4076e21"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/ready-save.json",
+      "bytes": 1126716,
+      "sha256": "4a3168c3e4c61b17890d4a79e31c55a34ca07d2db4e6df2c06ffaea276b906ec"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/ready.json",
+      "bytes": 143976,
+      "sha256": "c4d8e986a24b94bd5acf4b2444182f4ed26650556c536de1ac9cab423fb8de54"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/replay.json",
+      "bytes": 1586894,
+      "sha256": "e52a7c1cb2b0069895cd72b54988c1fca57cbdc5723ea7f80049c2224a73b0f0"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/sent.json",
+      "bytes": 1280769,
+      "sha256": "7d0fa8c7290b80a3a48b3fb3ea5ea478148ab49dd06a5582f082b5d1ff9e43f6"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/summary.json",
+      "bytes": 488,
+      "sha256": "43d7c85f01bc7b3dc06e6f6d71e96b932aef7bab3aa7a8a8a0b86b21c91d15e1"
+    },
+    {
+      "path": "fighter-crownsplitter-authored/vocabulary-before.json",
+      "bytes": 7879,
+      "sha256": "368824ec644b2c88b6e68010cc3637a5e977386d1e13e1861c2f477f978167e4"
+    },
+    {
+      "path": "fighter-crownsplitter-authored.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/absence-after.json",
+      "bytes": 1255091,
+      "sha256": "b1c6c0a82f869a3715870208fa82db6d2e68d5fb5b043a483dfb1d3d8814b6e8"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/absence-repeat-after.json",
+      "bytes": 1255091,
+      "sha256": "b1c6c0a82f869a3715870208fa82db6d2e68d5fb5b043a483dfb1d3d8814b6e8",
+      "same_bytes_as": "fighter-crownsplitter-baseline/absence-after.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/absence-repeat-report.json",
+      "bytes": 17476,
+      "sha256": "9a5c6c475bb77e7181ee443b97bf91a82b1103061d530a87761969576ab2e759"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/absence-report.json",
+      "bytes": 17476,
+      "sha256": "9a5c6c475bb77e7181ee443b97bf91a82b1103061d530a87761969576ab2e759",
+      "same_bytes_as": "fighter-crownsplitter-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/after-coarse.json",
+      "bytes": 1246707,
+      "sha256": "77a1ca9b6f8c790df8fbd2392413e6d74efe4046824e0e3d163e2e2d56b32b64"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/after-fine.json",
+      "bytes": 1246707,
+      "sha256": "77a1ca9b6f8c790df8fbd2392413e6d74efe4046824e0e3d163e2e2d56b32b64",
+      "same_bytes_as": "fighter-crownsplitter-baseline/after-coarse.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/class-offers-before.json",
+      "bytes": 5157,
+      "sha256": "b58c60a48e710e5af7369f27d7c76367e8b6600c7cbb2a7794e3ec2d9befdff8",
+      "same_bytes_as": "fighter-crownsplitter-authored/class-offers-before.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/events-coarse.json",
+      "bytes": 970044,
+      "sha256": "e6af52bb7af8ce40ad64947e894479c999403c4da2d54142d6d3799fbe26f433"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/events.json",
+      "bytes": 970044,
+      "sha256": "e6af52bb7af8ce40ad64947e894479c999403c4da2d54142d6d3799fbe26f433",
+      "same_bytes_as": "fighter-crownsplitter-baseline/events-coarse.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/gear-offers-before.json",
+      "bytes": 5925,
+      "sha256": "4cbd0694ec18041e1149e3ec8dc3440a7863ebb030359d8c49914786e28e78be",
+      "same_bytes_as": "fighter-crownsplitter-authored/gear-offers-before.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/initial-run.json",
+      "bytes": 39188,
+      "sha256": "1cb7ca5e5ccefdfcd574adebe527ae50f20d023da74284eaed9fada7a2e6eb74"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/loadout-action.json",
+      "bytes": 173,
+      "sha256": "55f19ecc8b9a046548c92d2c6d428259b9af3e98498aa3e33c5cf5a6c409f333",
+      "same_bytes_as": "fighter-crownsplitter-authored/loadout-action.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/normalized-input.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067",
+      "same_bytes_as": "fighter-crownsplitter-authored/normalized-input.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/policy-parent.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067",
+      "same_bytes_as": "fighter-crownsplitter-authored/normalized-input.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/ready-save.json",
+      "bytes": 1126311,
+      "sha256": "3c49ab97c37ddf9d571b2645cf65c4a2e8c4dc233d4a98c17892129e1faf919d"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/ready.json",
+      "bytes": 143568,
+      "sha256": "40162f00bf5873173ba894f8108451d8452626ace13d28c3225a3501aeafbd73"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/replay.json",
+      "bytes": 1637795,
+      "sha256": "cacaca2d2855e822ef72f08aff38d06cd44701dac7ac07efb1bcc1e259e17c1e"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/sent.json",
+      "bytes": 1278614,
+      "sha256": "d0ee92ac26d7b8e2610d190ee9d596edebd59561c10e595d6cad8304fecadc51"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/summary.json",
+      "bytes": 507,
+      "sha256": "4e751b45a1632c626a5879a30cf54fa685193c0056d4457de2524c7df21c9aa6"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline/vocabulary-before.json",
+      "bytes": 7879,
+      "sha256": "368824ec644b2c88b6e68010cc3637a5e977386d1e13e1861c2f477f978167e4",
+      "same_bytes_as": "fighter-crownsplitter-authored/vocabulary-before.json"
+    },
+    {
+      "path": "fighter-crownsplitter-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "fighter-input.json",
+      "bytes": 1126176,
+      "sha256": "225ac76926d1309ff4880fe585d0db0855df8e175191924b0a9118e38961e29a"
+    },
+    {
+      "path": "fighter-sword-authored/absence-after.json",
+      "bytes": 1274967,
+      "sha256": "8396d958289c0d5ae38f0a49dfe1233adef2c9a494f76b90f7d68e08be870a1b"
+    },
+    {
+      "path": "fighter-sword-authored/absence-repeat-after.json",
+      "bytes": 1274967,
+      "sha256": "8396d958289c0d5ae38f0a49dfe1233adef2c9a494f76b90f7d68e08be870a1b",
+      "same_bytes_as": "fighter-sword-authored/absence-after.json"
+    },
+    {
+      "path": "fighter-sword-authored/absence-repeat-report.json",
+      "bytes": 18717,
+      "sha256": "a22e71a9405dc5a2d00ed9cecb84b11a16e07088d9702d9ec8221bc6aa79e664"
+    },
+    {
+      "path": "fighter-sword-authored/absence-report.json",
+      "bytes": 18717,
+      "sha256": "a22e71a9405dc5a2d00ed9cecb84b11a16e07088d9702d9ec8221bc6aa79e664",
+      "same_bytes_as": "fighter-sword-authored/absence-repeat-report.json"
+    },
+    {
+      "path": "fighter-sword-authored/after-coarse.json",
+      "bytes": 1266307,
+      "sha256": "ef749f674d01389a7a485eb87dd97a0bdde3a14c512005babc5c884b7b7a6f92"
+    },
+    {
+      "path": "fighter-sword-authored/after-fine.json",
+      "bytes": 1266307,
+      "sha256": "ef749f674d01389a7a485eb87dd97a0bdde3a14c512005babc5c884b7b7a6f92",
+      "same_bytes_as": "fighter-sword-authored/after-coarse.json"
+    },
+    {
+      "path": "fighter-sword-authored/class-offers-before.json",
+      "bytes": 5157,
+      "sha256": "b58c60a48e710e5af7369f27d7c76367e8b6600c7cbb2a7794e3ec2d9befdff8",
+      "same_bytes_as": "fighter-crownsplitter-authored/class-offers-before.json"
+    },
+    {
+      "path": "fighter-sword-authored/compiled-rules.json",
+      "bytes": 1329,
+      "sha256": "6a7268963cf842e43f832b991887d8eef0dd7141f7941692b1f8810c62de9911",
+      "same_bytes_as": "fighter-crownsplitter-authored/compiled-rules.json"
+    },
+    {
+      "path": "fighter-sword-authored/events-coarse.json",
+      "bytes": 847894,
+      "sha256": "8fa5047039fd3c5e2211732780fe7282cfb1559bbbb625615938e36cec94075b"
+    },
+    {
+      "path": "fighter-sword-authored/events.json",
+      "bytes": 847894,
+      "sha256": "8fa5047039fd3c5e2211732780fe7282cfb1559bbbb625615938e36cec94075b",
+      "same_bytes_as": "fighter-sword-authored/events-coarse.json"
+    },
+    {
+      "path": "fighter-sword-authored/gear-offers-before.json",
+      "bytes": 5925,
+      "sha256": "4cbd0694ec18041e1149e3ec8dc3440a7863ebb030359d8c49914786e28e78be",
+      "same_bytes_as": "fighter-crownsplitter-authored/gear-offers-before.json"
+    },
+    {
+      "path": "fighter-sword-authored/initial-run.json",
+      "bytes": 39198,
+      "sha256": "f0032f0ed46b607e8b0a5d8e4c9ad79a53761e96ad2c538b223fda8af8476008"
+    },
+    {
+      "path": "fighter-sword-authored/loadout-action.json",
+      "bytes": 165,
+      "sha256": "21d679b383dbac90a51c3dcd2aaf85d92216119719d4d88be0a57dba09936b64"
+    },
+    {
+      "path": "fighter-sword-authored/normalized-input.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067",
+      "same_bytes_as": "fighter-crownsplitter-authored/normalized-input.json"
+    },
+    {
+      "path": "fighter-sword-authored/policy-actions.json",
+      "bytes": 30994,
+      "sha256": "b8d2b331e0c6c295ce8710187453ec573a449299ee01c33e6ae4928ab1cbebbc",
+      "same_bytes_as": "fighter-crownsplitter-authored/policy-actions.json"
+    },
+    {
+      "path": "fighter-sword-authored/policy-parent.json",
+      "bytes": 1126705,
+      "sha256": "431b003a7e710cbd736d792157344976d1240fe593a7b9e0d06aa47fd4076e21",
+      "same_bytes_as": "fighter-crownsplitter-authored/policy-parent.json"
+    },
+    {
+      "path": "fighter-sword-authored/ready-save.json",
+      "bytes": 1126708,
+      "sha256": "62c5454755664989a63e931ff2eab29c42ebb210067913062b8312ffe1cfd698"
+    },
+    {
+      "path": "fighter-sword-authored/ready.json",
+      "bytes": 143754,
+      "sha256": "1f5b53b47d514786d2a89cfcfc83cf535f5b032a1db1d981b077eda61bee1f3b"
+    },
+    {
+      "path": "fighter-sword-authored/replay.json",
+      "bytes": 1514848,
+      "sha256": "580989e26500d1efdf20253bdaa2805425c4b135875876d5a599dc18b6ad145b"
+    },
+    {
+      "path": "fighter-sword-authored/sent.json",
+      "bytes": 1280721,
+      "sha256": "bd72499b77ddc56370f3378b2cb16446c9f03b15ade53d3f3addefba02a58a60"
+    },
+    {
+      "path": "fighter-sword-authored/summary.json",
+      "bytes": 485,
+      "sha256": "e49c231a861c4bc5783c3a55adebd632184494662bca764c5f905fd2e26d4c2c"
+    },
+    {
+      "path": "fighter-sword-authored/vocabulary-before.json",
+      "bytes": 7879,
+      "sha256": "368824ec644b2c88b6e68010cc3637a5e977386d1e13e1861c2f477f978167e4",
+      "same_bytes_as": "fighter-crownsplitter-authored/vocabulary-before.json"
+    },
+    {
+      "path": "fighter-sword-authored.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "fighter-sword-baseline/absence-after.json",
+      "bytes": 1138474,
+      "sha256": "3bb1cd1f413267c53ebb177670d9a949c50bf9902e24cb5ed673b4f4714001ac"
+    },
+    {
+      "path": "fighter-sword-baseline/absence-repeat-after.json",
+      "bytes": 1138474,
+      "sha256": "3bb1cd1f413267c53ebb177670d9a949c50bf9902e24cb5ed673b4f4714001ac",
+      "same_bytes_as": "fighter-sword-baseline/absence-after.json"
+    },
+    {
+      "path": "fighter-sword-baseline/absence-repeat-report.json",
+      "bytes": 22865,
+      "sha256": "ce841f4b1626eeb929e8694060ce9b923547c479f9a9d7c6ee6ad721aec5ccc5"
+    },
+    {
+      "path": "fighter-sword-baseline/absence-report.json",
+      "bytes": 22865,
+      "sha256": "ce841f4b1626eeb929e8694060ce9b923547c479f9a9d7c6ee6ad721aec5ccc5",
+      "same_bytes_as": "fighter-sword-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "fighter-sword-baseline/after-coarse.json",
+      "bytes": 1130483,
+      "sha256": "d26ef8f65acd4e4263199b0429b6359e292517048e93ea23d1362822cdc4cc25"
+    },
+    {
+      "path": "fighter-sword-baseline/after-fine.json",
+      "bytes": 1130483,
+      "sha256": "d26ef8f65acd4e4263199b0429b6359e292517048e93ea23d1362822cdc4cc25",
+      "same_bytes_as": "fighter-sword-baseline/after-coarse.json"
+    },
+    {
+      "path": "fighter-sword-baseline/class-offers-before.json",
+      "bytes": 5157,
+      "sha256": "b58c60a48e710e5af7369f27d7c76367e8b6600c7cbb2a7794e3ec2d9befdff8",
+      "same_bytes_as": "fighter-crownsplitter-authored/class-offers-before.json"
+    },
+    {
+      "path": "fighter-sword-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "fighter-sword-baseline/events-coarse.json",
+      "bytes": 621966,
+      "sha256": "971fcb02cff64e1b60d04af4dd04463d430fb7b03a4487750a85fe5b3277d515"
+    },
+    {
+      "path": "fighter-sword-baseline/events.json",
+      "bytes": 621966,
+      "sha256": "971fcb02cff64e1b60d04af4dd04463d430fb7b03a4487750a85fe5b3277d515",
+      "same_bytes_as": "fighter-sword-baseline/events-coarse.json"
+    },
+    {
+      "path": "fighter-sword-baseline/gear-offers-before.json",
+      "bytes": 5925,
+      "sha256": "4cbd0694ec18041e1149e3ec8dc3440a7863ebb030359d8c49914786e28e78be",
+      "same_bytes_as": "fighter-crownsplitter-authored/gear-offers-before.json"
+    },
+    {
+      "path": "fighter-sword-baseline/initial-run.json",
+      "bytes": 39180,
+      "sha256": "cf4e143381968c3b261080ed303deade0c97ad9ba08da92a43dc42daa97700dc"
+    },
+    {
+      "path": "fighter-sword-baseline/loadout-action.json",
+      "bytes": 165,
+      "sha256": "21d679b383dbac90a51c3dcd2aaf85d92216119719d4d88be0a57dba09936b64",
+      "same_bytes_as": "fighter-sword-authored/loadout-action.json"
+    },
+    {
+      "path": "fighter-sword-baseline/normalized-input.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067",
+      "same_bytes_as": "fighter-crownsplitter-authored/normalized-input.json"
+    },
+    {
+      "path": "fighter-sword-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "fighter-sword-baseline/policy-parent.json",
+      "bytes": 1126300,
+      "sha256": "d719ef29f344d30218ed85b58e0bb1a828968a04f2b28ed0b3a5ef2ab391e067",
+      "same_bytes_as": "fighter-crownsplitter-authored/normalized-input.json"
+    },
+    {
+      "path": "fighter-sword-baseline/ready-save.json",
+      "bytes": 1126303,
+      "sha256": "dc37680832745b2d6fc16c10a42872697c67a08203c30f45385f1b95bb3d53d4"
+    },
+    {
+      "path": "fighter-sword-baseline/ready.json",
+      "bytes": 143346,
+      "sha256": "e2e1de29a99f1476beeab85f2fad034388b846e5cbebb65018d38e7f09a1a924"
+    },
+    {
+      "path": "fighter-sword-baseline/replay.json",
+      "bytes": 1136577,
+      "sha256": "d1391ea1caae0bbb98ebc97fb44b31b0bee8ca4a880a66ea24a36a487f199610"
+    },
+    {
+      "path": "fighter-sword-baseline/sent.json",
+      "bytes": 1278566,
+      "sha256": "6cf687661f4a780a76c27f11b8a4ab22c24c5a253a9c1b9aaf64d6f633c7690e"
+    },
+    {
+      "path": "fighter-sword-baseline/summary.json",
+      "bytes": 444,
+      "sha256": "721d276e15237c5b4c62f3d68fb4c891195c79c5f9e51f3d7684b60a5102130d"
+    },
+    {
+      "path": "fighter-sword-baseline/vocabulary-before.json",
+      "bytes": 7879,
+      "sha256": "368824ec644b2c88b6e68010cc3637a5e977386d1e13e1861c2f477f978167e4",
+      "same_bytes_as": "fighter-crownsplitter-authored/vocabulary-before.json"
+    },
+    {
+      "path": "fighter-sword-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "gunner-input.json",
+      "bytes": 1126338,
+      "sha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84"
+    },
+    {
+      "path": "gunner-long_gun-baseline/class-offers-before.json",
+      "bytes": 5552,
+      "sha256": "0221ff5103d3613645bcc1a7350a0ca3d08f80b3c8f9ab7ff6346d7c2370e74b"
+    },
+    {
+      "path": "gunner-long_gun-baseline/failure.json",
+      "bytes": 29,
+      "sha256": "27b9adbee7f6765515186b05cc1e6dd1d0d02b5e36217687d664ae378f8c5f22"
+    },
+    {
+      "path": "gunner-long_gun-baseline/gear-offers-before.json",
+      "bytes": 6041,
+      "sha256": "95fffb65737b331cda29f508c0a64f54444cd97bdb99c32c0cf7069bc15380a3"
+    },
+    {
+      "path": "gunner-long_gun-baseline/normalized-input.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58"
+    },
+    {
+      "path": "gunner-long_gun-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline/policy-parent.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline/vocabulary-before.json",
+      "bytes": 7838,
+      "sha256": "14d9287c1fea89fb59c49b974342f5a7d8ccfffa3550f386bba25bda64016879"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/absence-after.json",
+      "bytes": 1206220,
+      "sha256": "5a12cc96cb38a26aaecb8af5cce089279ef4ee2955f1cb27842771371154c501"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/absence-repeat-after.json",
+      "bytes": 1206220,
+      "sha256": "5a12cc96cb38a26aaecb8af5cce089279ef4ee2955f1cb27842771371154c501",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/absence-after.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/absence-repeat-report.json",
+      "bytes": 13477,
+      "sha256": "bddb3dc06f9bfdbf60bad1640f39ed1d9506b765990528391d020b324b29610c"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/absence-report.json",
+      "bytes": 13477,
+      "sha256": "bddb3dc06f9bfdbf60bad1640f39ed1d9506b765990528391d020b324b29610c",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/absence-repeat-report.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/after-coarse.json",
+      "bytes": 1199471,
+      "sha256": "693659543dc5b4300f1c4b1407d1c46af84a7fbce619eed8523f268e2b841ecd"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/after-fine.json",
+      "bytes": 1199471,
+      "sha256": "693659543dc5b4300f1c4b1407d1c46af84a7fbce619eed8523f268e2b841ecd",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/after-coarse.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/class-offers-before.json",
+      "bytes": 5552,
+      "sha256": "0221ff5103d3613645bcc1a7350a0ca3d08f80b3c8f9ab7ff6346d7c2370e74b",
+      "same_bytes_as": "gunner-long_gun-baseline/class-offers-before.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/compiled-rules.json",
+      "bytes": 1071,
+      "sha256": "897f7f904256ebe4c0e4072da78eef03964a93f0f0344df7a49411819b80e429"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/events-coarse.json",
+      "bytes": 698913,
+      "sha256": "f4872f82474713d4b4bd6b6484834bfd0be2009e52bf72fe12edf748003eb522"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/events.json",
+      "bytes": 698913,
+      "sha256": "f4872f82474713d4b4bd6b6484834bfd0be2009e52bf72fe12edf748003eb522",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/events-coarse.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/gear-offers-before.json",
+      "bytes": 6041,
+      "sha256": "95fffb65737b331cda29f508c0a64f54444cd97bdb99c32c0cf7069bc15380a3",
+      "same_bytes_as": "gunner-long_gun-baseline/gear-offers-before.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/initial-run.json",
+      "bytes": 39268,
+      "sha256": "e34b1d015f850201eefc5849cb8250f6eecdac88c0488e3f01538ca24169161a"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/kit-offers-before.json",
+      "bytes": 2101,
+      "sha256": "965352e68badaf90721a2b3e74f108b22e8d423d1fa978ea9146d2798c28323b"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/loadout-action.json",
+      "bytes": 184,
+      "sha256": "75a796d6fbdcc4b7d07cdee26c1546c8257c5ca0d1c388849182977a1e2ace63"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/normalized-input.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/policy-parent.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/ready-save.json",
+      "bytes": 1126447,
+      "sha256": "371acd1ea9328ae7c615ff27023b3378c2168602ad5150d61cc897caba7f1dc6"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/ready.json",
+      "bytes": 144672,
+      "sha256": "8229f7bf5071432421b7ed938b66911263b2e8f635cfd9bf52a1d034f041e835"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/replay.json",
+      "bytes": 1116539,
+      "sha256": "01d44ce88dd41c5888f91cf526a2c384c5c514ca2c2a602828853f181a58506a"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/sent.json",
+      "bytes": 1279697,
+      "sha256": "97a15cfd11d82ed563e3b0847d16579f590206081c013b6943b924201c26ae31"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/summary.json",
+      "bytes": 433,
+      "sha256": "b534312857a93abf3897d7cec1864137f85cb01615fc7de5b7c6cd949aea3009"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api/vocabulary-before.json",
+      "bytes": 7838,
+      "sha256": "14d9287c1fea89fb59c49b974342f5a7d8ccfffa3550f386bba25bda64016879",
+      "same_bytes_as": "gunner-long_gun-baseline/vocabulary-before.json"
+    },
+    {
+      "path": "gunner-long_gun-baseline-correct-api.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "gunner-long_gun-baseline.txt",
+      "bytes": 27,
+      "sha256": "00f79e1df9345c4c5e38c5f9823cda2c8b722066108618f037d3ea314afdcb14"
+    },
+    {
+      "path": "gunner-retry.txt",
+      "bytes": 542,
+      "sha256": "4a9e76bb40695b6e3a230efa18a4144c1a1dce9b2cb6bc67e8cd7166f44b3802"
+    },
+    {
+      "path": "gunner-short_gun-baseline/class-offers-before.json",
+      "bytes": 5552,
+      "sha256": "0221ff5103d3613645bcc1a7350a0ca3d08f80b3c8f9ab7ff6346d7c2370e74b",
+      "same_bytes_as": "gunner-long_gun-baseline/class-offers-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/failure.json",
+      "bytes": 29,
+      "sha256": "27b9adbee7f6765515186b05cc1e6dd1d0d02b5e36217687d664ae378f8c5f22",
+      "same_bytes_as": "gunner-long_gun-baseline/failure.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/gear-offers-before.json",
+      "bytes": 6041,
+      "sha256": "95fffb65737b331cda29f508c0a64f54444cd97bdb99c32c0cf7069bc15380a3",
+      "same_bytes_as": "gunner-long_gun-baseline/gear-offers-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/normalized-input.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/policy-parent.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline/vocabulary-before.json",
+      "bytes": 7838,
+      "sha256": "14d9287c1fea89fb59c49b974342f5a7d8ccfffa3550f386bba25bda64016879",
+      "same_bytes_as": "gunner-long_gun-baseline/vocabulary-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/absence-after.json",
+      "bytes": 1206733,
+      "sha256": "c09fdc0981b9d4fe168e5e035e1b62997b3700dfa0270e54e1d6a169bdfb81f2"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/absence-repeat-after.json",
+      "bytes": 1206733,
+      "sha256": "c09fdc0981b9d4fe168e5e035e1b62997b3700dfa0270e54e1d6a169bdfb81f2",
+      "same_bytes_as": "gunner-short_gun-baseline-correct-api/absence-after.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/absence-repeat-report.json",
+      "bytes": 13330,
+      "sha256": "03ddb19032d3a81fcc206600bb5b82d8afe939da62eca3c189c26d2312b81faf"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/absence-report.json",
+      "bytes": 13330,
+      "sha256": "03ddb19032d3a81fcc206600bb5b82d8afe939da62eca3c189c26d2312b81faf",
+      "same_bytes_as": "gunner-short_gun-baseline-correct-api/absence-repeat-report.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/after-coarse.json",
+      "bytes": 1199439,
+      "sha256": "8019f4aa15c747d6d09d246b3ff6e767a4709026690ae1c47643d286617ea390"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/after-fine.json",
+      "bytes": 1199439,
+      "sha256": "8019f4aa15c747d6d09d246b3ff6e767a4709026690ae1c47643d286617ea390",
+      "same_bytes_as": "gunner-short_gun-baseline-correct-api/after-coarse.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/class-offers-before.json",
+      "bytes": 5552,
+      "sha256": "0221ff5103d3613645bcc1a7350a0ca3d08f80b3c8f9ab7ff6346d7c2370e74b",
+      "same_bytes_as": "gunner-long_gun-baseline/class-offers-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/compiled-rules.json",
+      "bytes": 1071,
+      "sha256": "897f7f904256ebe4c0e4072da78eef03964a93f0f0344df7a49411819b80e429",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/compiled-rules.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/events-coarse.json",
+      "bytes": 546866,
+      "sha256": "15312ad3886c2ca0ad71d0479ecbec813ee916733d665ea81062aa7fbcfd12a9"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/events.json",
+      "bytes": 546866,
+      "sha256": "15312ad3886c2ca0ad71d0479ecbec813ee916733d665ea81062aa7fbcfd12a9",
+      "same_bytes_as": "gunner-short_gun-baseline-correct-api/events-coarse.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/gear-offers-before.json",
+      "bytes": 6041,
+      "sha256": "95fffb65737b331cda29f508c0a64f54444cd97bdb99c32c0cf7069bc15380a3",
+      "same_bytes_as": "gunner-long_gun-baseline/gear-offers-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/initial-run.json",
+      "bytes": 39269,
+      "sha256": "799d78a7cbc47fdc3c2003cf2ea3e51475acf91c879795b831fd1a85a4602c00"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/kit-offers-before.json",
+      "bytes": 2101,
+      "sha256": "965352e68badaf90721a2b3e74f108b22e8d423d1fa978ea9146d2798c28323b",
+      "same_bytes_as": "gunner-long_gun-baseline-correct-api/kit-offers-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/loadout-action.json",
+      "bytes": 185,
+      "sha256": "5ec846ff8e482e42db16cd8026280c7d4794e130ce8e0036bd375b4fe36d755d"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/normalized-input.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/policy-parent.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/ready-save.json",
+      "bytes": 1126462,
+      "sha256": "097f6c4198e8cf554a986e16782ffa8ef3c23dbe95e967d70a40f930444c9c58",
+      "same_bytes_as": "gunner-long_gun-baseline/normalized-input.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/ready.json",
+      "bytes": 144696,
+      "sha256": "e8b5e9468b7559232150ec096e5a1b057be4cc61ec43ad718a8b7a7567f63be9"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/replay.json",
+      "bytes": 964558,
+      "sha256": "f2bca654db6d6ebc51d1facc821af445daef8778a91a89c29f7627b7c2dbbc05"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/sent.json",
+      "bytes": 1279746,
+      "sha256": "47f1c777b238e56197b830410aeb32b20b7e2cfda44321f9949fb482ef8c19fc"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/summary.json",
+      "bytes": 419,
+      "sha256": "53f1d1fdac47fd1b5c2fcc036a29fd70c8b62ede864064095d25425fe9afdb99"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api/vocabulary-before.json",
+      "bytes": 7838,
+      "sha256": "14d9287c1fea89fb59c49b974342f5a7d8ccfffa3550f386bba25bda64016879",
+      "same_bytes_as": "gunner-long_gun-baseline/vocabulary-before.json"
+    },
+    {
+      "path": "gunner-short_gun-baseline-correct-api.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "gunner-short_gun-baseline.txt",
+      "bytes": 27,
+      "sha256": "00f79e1df9345c4c5e38c5f9823cda2c8b722066108618f037d3ea314afdcb14",
+      "same_bytes_as": "gunner-long_gun-baseline.txt"
+    },
+    {
+      "path": "harness-gunner-before-fix.rs",
+      "bytes": 6810,
+      "sha256": "a7b611f05d8ac0c3a07db7eddf20c252127cd8eb08b003112461415f340c4668"
+    },
+    {
+      "path": "ranger-bow-baseline/absence-after.json",
+      "bytes": 1116510,
+      "sha256": "1d6e0b129e7065d808910625aab587cf588d1d5130047dde1a0057683da535cf"
+    },
+    {
+      "path": "ranger-bow-baseline/absence-repeat-after.json",
+      "bytes": 1116510,
+      "sha256": "1d6e0b129e7065d808910625aab587cf588d1d5130047dde1a0057683da535cf",
+      "same_bytes_as": "ranger-bow-baseline/absence-after.json"
+    },
+    {
+      "path": "ranger-bow-baseline/absence-repeat-report.json",
+      "bytes": 19111,
+      "sha256": "4ba44288ae30fc898bdc953b49185502e33262c28aa11f7e4a80affab58a2858"
+    },
+    {
+      "path": "ranger-bow-baseline/absence-report.json",
+      "bytes": 19111,
+      "sha256": "4ba44288ae30fc898bdc953b49185502e33262c28aa11f7e4a80affab58a2858",
+      "same_bytes_as": "ranger-bow-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "ranger-bow-baseline/after-coarse.json",
+      "bytes": 1110103,
+      "sha256": "32ec0f76e13fc467a82b5ede927a97129aa7362d707fefe943a515ef2bd6912c"
+    },
+    {
+      "path": "ranger-bow-baseline/after-fine.json",
+      "bytes": 1110103,
+      "sha256": "32ec0f76e13fc467a82b5ede927a97129aa7362d707fefe943a515ef2bd6912c",
+      "same_bytes_as": "ranger-bow-baseline/after-coarse.json"
+    },
+    {
+      "path": "ranger-bow-baseline/class-offers-before.json",
+      "bytes": 5376,
+      "sha256": "bea943718021f27fe6ddb001cfdfc85422f908f96a79bb3bb386d35a7f45ad30"
+    },
+    {
+      "path": "ranger-bow-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "ranger-bow-baseline/events-coarse.json",
+      "bytes": 349545,
+      "sha256": "39835c440f66f424a91e07dbf376c1ac5abb8dd9a0ff2e1af52a4fd8443dca19"
+    },
+    {
+      "path": "ranger-bow-baseline/events.json",
+      "bytes": 349545,
+      "sha256": "39835c440f66f424a91e07dbf376c1ac5abb8dd9a0ff2e1af52a4fd8443dca19",
+      "same_bytes_as": "ranger-bow-baseline/events-coarse.json"
+    },
+    {
+      "path": "ranger-bow-baseline/gear-offers-before.json",
+      "bytes": 5923,
+      "sha256": "5e3fefa4283fb9cbf7b69fd5bb2184a76781fdd09e9a18511225bc8c827d2511"
+    },
+    {
+      "path": "ranger-bow-baseline/initial-run.json",
+      "bytes": 39177,
+      "sha256": "1fbfac7dd1ee39b22bf90f248f28277b0d29c4008ca10ac90d2c9ecee5032ce9"
+    },
+    {
+      "path": "ranger-bow-baseline/loadout-action.json",
+      "bytes": 163,
+      "sha256": "dcf2cd9c1c3146a9e5b805ebb859aed577085e1fbbc21afee4e45b4af1180456",
+      "same_bytes_as": "caster-bow-authored/loadout-action.json"
+    },
+    {
+      "path": "ranger-bow-baseline/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "3e5aa58b8a1c74b9a68bf0e7b1e16c56ff7816e60ba17c68d41388a403528089"
+    },
+    {
+      "path": "ranger-bow-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "ranger-bow-baseline/policy-parent.json",
+      "bytes": 1126308,
+      "sha256": "3e5aa58b8a1c74b9a68bf0e7b1e16c56ff7816e60ba17c68d41388a403528089",
+      "same_bytes_as": "ranger-bow-baseline/normalized-input.json"
+    },
+    {
+      "path": "ranger-bow-baseline/ready-save.json",
+      "bytes": 1126309,
+      "sha256": "c3bede0ca6109de179fdbb278c88ebec049331b14638421935d1b1d2cbfe9cfb"
+    },
+    {
+      "path": "ranger-bow-baseline/ready.json",
+      "bytes": 143552,
+      "sha256": "4e25580f113c061bd53c325d99b49d977f3a59cf00ba084cc2d029a5ab90ac09"
+    },
+    {
+      "path": "ranger-bow-baseline/replay.json",
+      "bytes": 645068,
+      "sha256": "f84a234509dd85bb901aef29952b3a0d61f13372de2cf03802d454ab923d20f3"
+    },
+    {
+      "path": "ranger-bow-baseline/sent.json",
+      "bytes": 1278574,
+      "sha256": "9298f9cb8ee1bdf4caa8b0e3ba8ca292fe1814d5611728745047a76194208516"
+    },
+    {
+      "path": "ranger-bow-baseline/summary.json",
+      "bytes": 423,
+      "sha256": "852ee855a6fbae845ab9a1f741e78a09b2189ba045584275333c489eb52ebf88"
+    },
+    {
+      "path": "ranger-bow-baseline/vocabulary-before.json",
+      "bytes": 8650,
+      "sha256": "41a781e7f3ef35cecd5ab487e536be3e5638c0323e1913c655a5650184c34a79"
+    },
+    {
+      "path": "ranger-bow-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "ranger-input.json",
+      "bytes": 1126184,
+      "sha256": "5e49497aecdb3a5c9555d0ed90d60e0bb729cd8ba473753bf5be8f6eec3eebb7"
+    },
+    {
+      "path": "ranger-sword-baseline/absence-after.json",
+      "bytes": 1143509,
+      "sha256": "75794dab4c87f52cdb213168c16725ecc0bf3519766e869cc6c618ab08871701"
+    },
+    {
+      "path": "ranger-sword-baseline/absence-repeat-after.json",
+      "bytes": 1143509,
+      "sha256": "75794dab4c87f52cdb213168c16725ecc0bf3519766e869cc6c618ab08871701",
+      "same_bytes_as": "ranger-sword-baseline/absence-after.json"
+    },
+    {
+      "path": "ranger-sword-baseline/absence-repeat-report.json",
+      "bytes": 23556,
+      "sha256": "c8b7a4814b6659e2354bd246d8e9680a14bdcb79dbc4257ede8f3973aae94d29"
+    },
+    {
+      "path": "ranger-sword-baseline/absence-report.json",
+      "bytes": 23556,
+      "sha256": "c8b7a4814b6659e2354bd246d8e9680a14bdcb79dbc4257ede8f3973aae94d29",
+      "same_bytes_as": "ranger-sword-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "ranger-sword-baseline/after-coarse.json",
+      "bytes": 1134773,
+      "sha256": "c1d0cc991a41a16bdc65245e9438b7957e24bd09548c480b95c16a5dec6d5ec5"
+    },
+    {
+      "path": "ranger-sword-baseline/after-fine.json",
+      "bytes": 1134773,
+      "sha256": "c1d0cc991a41a16bdc65245e9438b7957e24bd09548c480b95c16a5dec6d5ec5",
+      "same_bytes_as": "ranger-sword-baseline/after-coarse.json"
+    },
+    {
+      "path": "ranger-sword-baseline/class-offers-before.json",
+      "bytes": 5376,
+      "sha256": "bea943718021f27fe6ddb001cfdfc85422f908f96a79bb3bb386d35a7f45ad30",
+      "same_bytes_as": "ranger-bow-baseline/class-offers-before.json"
+    },
+    {
+      "path": "ranger-sword-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "ranger-sword-baseline/events-coarse.json",
+      "bytes": 810018,
+      "sha256": "b85d706d7f3cfb1ec4229fbaf40c6203ee48279c085817c62bf0a84c56b82f1a"
+    },
+    {
+      "path": "ranger-sword-baseline/events.json",
+      "bytes": 810018,
+      "sha256": "b85d706d7f3cfb1ec4229fbaf40c6203ee48279c085817c62bf0a84c56b82f1a",
+      "same_bytes_as": "ranger-sword-baseline/events-coarse.json"
+    },
+    {
+      "path": "ranger-sword-baseline/gear-offers-before.json",
+      "bytes": 5923,
+      "sha256": "5e3fefa4283fb9cbf7b69fd5bb2184a76781fdd09e9a18511225bc8c827d2511",
+      "same_bytes_as": "ranger-bow-baseline/gear-offers-before.json"
+    },
+    {
+      "path": "ranger-sword-baseline/initial-run.json",
+      "bytes": 39179,
+      "sha256": "846c777dc3167a2f844c6960fa550375a9eea22bb41ac2686aba1971eb7defd7"
+    },
+    {
+      "path": "ranger-sword-baseline/loadout-action.json",
+      "bytes": 165,
+      "sha256": "21d679b383dbac90a51c3dcd2aaf85d92216119719d4d88be0a57dba09936b64",
+      "same_bytes_as": "fighter-sword-authored/loadout-action.json"
+    },
+    {
+      "path": "ranger-sword-baseline/normalized-input.json",
+      "bytes": 1126308,
+      "sha256": "3e5aa58b8a1c74b9a68bf0e7b1e16c56ff7816e60ba17c68d41388a403528089",
+      "same_bytes_as": "ranger-bow-baseline/normalized-input.json"
+    },
+    {
+      "path": "ranger-sword-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "ranger-sword-baseline/policy-parent.json",
+      "bytes": 1126308,
+      "sha256": "3e5aa58b8a1c74b9a68bf0e7b1e16c56ff7816e60ba17c68d41388a403528089",
+      "same_bytes_as": "ranger-bow-baseline/normalized-input.json"
+    },
+    {
+      "path": "ranger-sword-baseline/ready-save.json",
+      "bytes": 1126311,
+      "sha256": "cfbe4fd6c788de1ea7333f332089034543554096ee91f745dcfcce9d6b27c936"
+    },
+    {
+      "path": "ranger-sword-baseline/ready.json",
+      "bytes": 143566,
+      "sha256": "7d3427cdd4fccd051df6fe6b797c1112d634d88718573c4980fe770158477102"
+    },
+    {
+      "path": "ranger-sword-baseline/replay.json",
+      "bytes": 1352521,
+      "sha256": "011d2ddcbfae5178c9a62b3d24131756e5474881866258b9d7d0492396275ee7"
+    },
+    {
+      "path": "ranger-sword-baseline/sent.json",
+      "bytes": 1278586,
+      "sha256": "c408da1a83db799f0e775031e45cf69be5d5d617ee759f86cbc6bdd60c390d31"
+    },
+    {
+      "path": "ranger-sword-baseline/summary.json",
+      "bytes": 435,
+      "sha256": "7ecf8b1eb3a66175293c0e5286cdbfe763bc6bc9ae7acb73e8b9707fd5d2b85a"
+    },
+    {
+      "path": "ranger-sword-baseline/vocabulary-before.json",
+      "bytes": 8650,
+      "sha256": "41a781e7f3ef35cecd5ab487e536be3e5638c0323e1913c655a5650184c34a79",
+      "same_bytes_as": "ranger-bow-baseline/vocabulary-before.json"
+    },
+    {
+      "path": "ranger-sword-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/absence-after.json",
+      "bytes": 1183604,
+      "sha256": "00c6e55bac377a761bd35975ae3dfe3841136f91970b4b215ce76e4b16a0431a"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/absence-repeat-after.json",
+      "bytes": 1183604,
+      "sha256": "00c6e55bac377a761bd35975ae3dfe3841136f91970b4b215ce76e4b16a0431a",
+      "same_bytes_as": "rogue-crownsplitter-baseline/absence-after.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/absence-repeat-report.json",
+      "bytes": 11837,
+      "sha256": "05153ab674eaf5aae07ceb4b6cc3c348807acb7d155d2a1d28a2327d8c569008"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/absence-report.json",
+      "bytes": 11837,
+      "sha256": "05153ab674eaf5aae07ceb4b6cc3c348807acb7d155d2a1d28a2327d8c569008",
+      "same_bytes_as": "rogue-crownsplitter-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/after-coarse.json",
+      "bytes": 1178752,
+      "sha256": "3ce5f7dfd336af0f3ddb01b62a9a59487371f135ff81d0316cad96886477a7c0"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/after-fine.json",
+      "bytes": 1178752,
+      "sha256": "3ce5f7dfd336af0f3ddb01b62a9a59487371f135ff81d0316cad96886477a7c0",
+      "same_bytes_as": "rogue-crownsplitter-baseline/after-coarse.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/class-offers-before.json",
+      "bytes": 5491,
+      "sha256": "99ce9decce7fd5536e9e2f14b86815598cce0a093727f05f85a6146110475709"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/events-coarse.json",
+      "bytes": 369654,
+      "sha256": "55046a95a5eb22d404f746d08710af51c5ddf315df1582a9d0574a205afb52cc"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/events.json",
+      "bytes": 369654,
+      "sha256": "55046a95a5eb22d404f746d08710af51c5ddf315df1582a9d0574a205afb52cc",
+      "same_bytes_as": "rogue-crownsplitter-baseline/events-coarse.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef",
+      "same_bytes_as": "caster-bow-authored/gear-offers-before.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/initial-run.json",
+      "bytes": 39186,
+      "sha256": "f94a2443802d9e52748f24caa203b4e9276d8317240a41a71a74d373d0d78312"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/loadout-action.json",
+      "bytes": 173,
+      "sha256": "55f19ecc8b9a046548c92d2c6d428259b9af3e98498aa3e33c5cf5a6c409f333",
+      "same_bytes_as": "fighter-crownsplitter-authored/loadout-action.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/normalized-input.json",
+      "bytes": 1126298,
+      "sha256": "f6affdf2d927fbb8f12b18f7962cda91b53a0793f7434105494c1409c43c3c69"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/policy-parent.json",
+      "bytes": 1126298,
+      "sha256": "f6affdf2d927fbb8f12b18f7962cda91b53a0793f7434105494c1409c43c3c69",
+      "same_bytes_as": "rogue-crownsplitter-baseline/normalized-input.json"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/ready-save.json",
+      "bytes": 1126309,
+      "sha256": "56a6b50a06b2d2a0206cebd60e2add678ee1fc796f71e810e63c6ff658b66107"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/ready.json",
+      "bytes": 143812,
+      "sha256": "48040410abd0223a1792ae0280b4ae383545bed1a9094352174b7ca7ddd1497e"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/replay.json",
+      "bytes": 666364,
+      "sha256": "28ee75efe4a93d5d41fccfa709e48e86035e866139695cfcd7465ea1a8bd2a86"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/sent.json",
+      "bytes": 1278600,
+      "sha256": "67024197132c4344f6acb7f411d41bdae410d0865976d1ae4810b7a034fdd042"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/summary.json",
+      "bytes": 427,
+      "sha256": "439a0a0356e2ae4c94b787698dc4f6aa75ad5c133b86cc2bd1e11ff9481f33a1"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline/vocabulary-before.json",
+      "bytes": 7928,
+      "sha256": "1c6d0f82b7c5ea4257f98adac5d38d282403124e2d47a5a772f376cbbe687ceb"
+    },
+    {
+      "path": "rogue-crownsplitter-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "rogue-dagger-baseline/absence-after.json",
+      "bytes": 1201892,
+      "sha256": "d31fe35fff91f669f9f090fb0a34bf383db9a42c9880f52fb26a47f2727f43b9"
+    },
+    {
+      "path": "rogue-dagger-baseline/absence-repeat-after.json",
+      "bytes": 1201892,
+      "sha256": "d31fe35fff91f669f9f090fb0a34bf383db9a42c9880f52fb26a47f2727f43b9",
+      "same_bytes_as": "rogue-dagger-baseline/absence-after.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/absence-repeat-report.json",
+      "bytes": 14643,
+      "sha256": "7a6b3845fdecb0f3375f67494c4d0448c7f6be8f59c0a5850f76ed4a7f0aae68"
+    },
+    {
+      "path": "rogue-dagger-baseline/absence-report.json",
+      "bytes": 14643,
+      "sha256": "7a6b3845fdecb0f3375f67494c4d0448c7f6be8f59c0a5850f76ed4a7f0aae68",
+      "same_bytes_as": "rogue-dagger-baseline/absence-repeat-report.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/after-coarse.json",
+      "bytes": 1194669,
+      "sha256": "3e282162f0e1e57ab173a12a218f7d385bd34795734713e281b7baa53c1786ee"
+    },
+    {
+      "path": "rogue-dagger-baseline/after-fine.json",
+      "bytes": 1194669,
+      "sha256": "3e282162f0e1e57ab173a12a218f7d385bd34795734713e281b7baa53c1786ee",
+      "same_bytes_as": "rogue-dagger-baseline/after-coarse.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/class-offers-before.json",
+      "bytes": 5491,
+      "sha256": "99ce9decce7fd5536e9e2f14b86815598cce0a093727f05f85a6146110475709",
+      "same_bytes_as": "rogue-crownsplitter-baseline/class-offers-before.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/compiled-rules.json",
+      "bytes": 1005,
+      "sha256": "20b293317ce99a6f2e96e92c72b8cce3116b292849760bcfac2678811b0e24eb",
+      "same_bytes_as": "caster-bow-baseline/compiled-rules.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/events-coarse.json",
+      "bytes": 330447,
+      "sha256": "7a643f8296b9b16a15349b0df2d87d88180eabddfb1e211f6764d3df7e6fb068"
+    },
+    {
+      "path": "rogue-dagger-baseline/events.json",
+      "bytes": 330447,
+      "sha256": "7a643f8296b9b16a15349b0df2d87d88180eabddfb1e211f6764d3df7e6fb068",
+      "same_bytes_as": "rogue-dagger-baseline/events-coarse.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/gear-offers-before.json",
+      "bytes": 5926,
+      "sha256": "e2b1654c96dc9faf115a78c9e88b6b5cc9af2ec89147cbc4645bd9bbbfd117ef",
+      "same_bytes_as": "caster-bow-authored/gear-offers-before.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/initial-run.json",
+      "bytes": 39179,
+      "sha256": "75ac3e09cb251dc6aa429407409493877672bad7a37efd385d969253c3a073bc"
+    },
+    {
+      "path": "rogue-dagger-baseline/loadout-action.json",
+      "bytes": 166,
+      "sha256": "2ef38a3748656c09b9209165c7b3256878585a942b69cdcecb141d381163a292",
+      "same_bytes_as": "caster-dagger-authored/loadout-action.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/normalized-input.json",
+      "bytes": 1126298,
+      "sha256": "f6affdf2d927fbb8f12b18f7962cda91b53a0793f7434105494c1409c43c3c69",
+      "same_bytes_as": "rogue-crownsplitter-baseline/normalized-input.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/policy-actions.json",
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "same_bytes_as": "caster-bow-baseline/policy-actions.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/policy-parent.json",
+      "bytes": 1126298,
+      "sha256": "f6affdf2d927fbb8f12b18f7962cda91b53a0793f7434105494c1409c43c3c69",
+      "same_bytes_as": "rogue-crownsplitter-baseline/normalized-input.json"
+    },
+    {
+      "path": "rogue-dagger-baseline/ready-save.json",
+      "bytes": 1126302,
+      "sha256": "c9c88ea25c6165ec3d030ca6d9e4933dfd2a7f766bed637de2c1bd0813e9172b"
+    },
+    {
+      "path": "rogue-dagger-baseline/ready.json",
+      "bytes": 143594,
+      "sha256": "d41cbaea76ce0693215065ceabb8828fcc63d013169ca013059e690136b53322"
+    },
+    {
+      "path": "rogue-dagger-baseline/replay.json",
+      "bytes": 625184,
+      "sha256": "c03761fb88666c15889b33f1af6f8b971c4e5e547cfdfe28926f2be74ba66013"
+    },
+    {
+      "path": "rogue-dagger-baseline/sent.json",
+      "bytes": 1278558,
+      "sha256": "726d78811c9c53d58a0e1c8417346b687405c303ebe133cbe39e5798911277ad"
+    },
+    {
+      "path": "rogue-dagger-baseline/summary.json",
+      "bytes": 429,
+      "sha256": "7b6f5939cf19589962d84ba7fd9295099b700ae5296c79a93336d20437fe6045"
+    },
+    {
+      "path": "rogue-dagger-baseline/vocabulary-before.json",
+      "bytes": 7928,
+      "sha256": "1c6d0f82b7c5ea4257f98adac5d38d282403124e2d47a5a772f376cbbe687ceb",
+      "same_bytes_as": "rogue-crownsplitter-baseline/vocabulary-before.json"
+    },
+    {
+      "path": "rogue-dagger-baseline.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "same_bytes_as": "build-final.txt"
+    },
+    {
+      "path": "rogue-input.json",
+      "bytes": 1126174,
+      "sha256": "48f171e91434c8af8bee7e25325e1e6af6a917e8c4e01d130a2cb654d1d9adf5"
+    }
+  ],
+  "raw_bytes": 173418963,
+  "unique_raw_bytes": 102748643,
+  "archive_bytes": 1518902,
+  "archive_sha256": "a1a29f28aa20a2476c57296242533634462ed9676d039dcc720a43e7faa4c1bf",
+  "compression_argv": [
+    "zstd",
+    "-q",
+    "-T4",
+    "-10",
+    "--long=27",
+    "-c"
+  ],
+  "archive_wall_seconds": 0.5018356190121267
+}

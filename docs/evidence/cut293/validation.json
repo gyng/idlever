@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "original_build_errors": {
+    "unknown_worker_function": 101,
+    "rng_move": 101,
+    "unknown_kit_wire_function": 101
+  },
+  "final_helper_build_exit": 0,
+  "final_example_clippy_exit": 0,
+  "original_capture_exit": 1,
+  "initial_completed_cases": 12,
+  "retained_gunner_prep_refusals": 2,
+  "corrected_gunner_capture_exit": 0,
+  "completed_declared_cases": 14,
+  "independent_verifier_exit": 0,
+  "scoped_rustfmt_exit": 0,
+  "full_workspace_tests": "NOT_RUN: no core change; Cut292 is historical",
+  "wasm_repack": "NOT_RUN: no core change",
+  "visual_review": "NOT_RUN",
+  "logs": {
+    "build-initial.txt": "d5cbeea519df9d50cb932e471b4ce46e8817b38e058cf5feda22f050243334c1",
+    "clippy-before-api-fix.txt": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316",
+    "rustfmt.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "analysis-optional-zero-error.txt": "dbe6edfabc49d6cf132f4acc29576052d58f2301e4239ad8bd4449089712f9c9",
+    "build-rng-ownership-error.txt": "eeb7bd95b12c9c2d50cdaae703ac3a8a546d02137e4a37e38c5a8204ca9abbab",
+    "build-final.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "capture.txt": "27f7ad2dcd66fd5f0c076f8b1c1234177111170dc67fbc2bc8a660ac0cd75a6f",
+    "clippy-final.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-gunner-final.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify-fixed.txt": "df408fbed927edc5cfceea6397b90c7d57a978859c4c2a948ab9fe9cdd1ff362",
+    "build-kit-wire-error.txt": "23a2b2cecd0af1264793d86eed25e2cb0f0f0436a6b9c9af6e081a5f4f442316",
+    "verify.txt": "44dfb4739045859c005186aebc4f23e0e2b56969e8a5b8f3fd6a58c78de1ae57",
+    "gunner-retry.txt": "4a9e76bb40695b6e3a230efa18a4144c1a1dce9b2cb6bc67e8cd7166f44b3802",
+    "verify-final.txt": "df408fbed927edc5cfceea6397b90c7d57a978859c4c2a948ab9fe9cdd1ff362"
+  }
+}

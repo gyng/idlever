@@ -1,0 +1,102 @@
+{
+  "parents": {
+    "fighter": {
+      "path": "docs/evidence/cut246/prepared/fighter-common.session.json.gz",
+      "gzip_sha256": "11f357173ba5a448ddbdd61c7604ef025a2b97467c39de87e836e1c8b5d5fbac",
+      "raw_sha256": "225ac76926d1309ff4880fe585d0db0855df8e175191924b0a9118e38961e29a"
+    },
+    "rogue": {
+      "path": "docs/evidence/cut246/prepared/rogue-common.session.json.gz",
+      "gzip_sha256": "c9f9bba33c134e6ca87bd66caa9db419c34990a0e2d0459c52b5e71a05f77a4e",
+      "raw_sha256": "48f171e91434c8af8bee7e25325e1e6af6a917e8c4e01d130a2cb654d1d9adf5"
+    },
+    "ranger": {
+      "path": "docs/evidence/cut246/prepared/ranger-common.session.json.gz",
+      "gzip_sha256": "0d969f053fafe77757f0ea310ebef13754b89707a3a30cc16be9451eae922fe8",
+      "raw_sha256": "5e49497aecdb3a5c9555d0ed90d60e0bb729cd8ba473753bf5be8f6eec3eebb7"
+    },
+    "caster": {
+      "path": "docs/evidence/cut246/prepared/caster-common.session.json.gz",
+      "gzip_sha256": "f1d3a95ab309dc83cc972e2b46d2f547281d41f288ff19d6d2fc542469a43d17",
+      "raw_sha256": "5609daa90e735beef7007009613fe29ad1d2f5c1d0a752fe5ad17609ea7023fe"
+    },
+    "gunner": {
+      "path": "docs/evidence/cut246/prepared/gunner-common.session.json.gz",
+      "gzip_sha256": "95924ab408cd4e3dab10ddbeac80cc381c286340f64c315f8a82c70f04a81db6",
+      "raw_sha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84"
+    }
+  },
+  "cases": [
+    [
+      "fighter",
+      "sword",
+      "baseline"
+    ],
+    [
+      "fighter",
+      "crownsplitter",
+      "baseline"
+    ],
+    [
+      "fighter",
+      "sword",
+      "authored"
+    ],
+    [
+      "fighter",
+      "crownsplitter",
+      "authored"
+    ],
+    [
+      "rogue",
+      "dagger",
+      "baseline"
+    ],
+    [
+      "rogue",
+      "crownsplitter",
+      "baseline"
+    ],
+    [
+      "ranger",
+      "bow",
+      "baseline"
+    ],
+    [
+      "ranger",
+      "sword",
+      "baseline"
+    ],
+    [
+      "caster",
+      "dagger",
+      "baseline"
+    ],
+    [
+      "caster",
+      "bow",
+      "baseline"
+    ],
+    [
+      "caster",
+      "dagger",
+      "authored"
+    ],
+    [
+      "caster",
+      "bow",
+      "authored"
+    ],
+    [
+      "gunner",
+      "long_gun",
+      "baseline"
+    ],
+    [
+      "gunner",
+      "short_gun",
+      "baseline"
+    ]
+  ],
+  "threads": 4
+}

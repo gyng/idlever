@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/g/p/riddle/docs/evidence/cut293/analyze.py", line 18, in <module>
+    row={'case':label,'dir':dirname,'class_level':load('initial-run')['hero']['level'],'class_rows_fired':actual,'hero_attack_verbs':dict(attack),'class_attack_verbs':aq,'exit':last['tier'],'cause':last.get('cause'),'depth':last['depth'],'ticks':last['turns'],'hurt':sum(e['dmg'] for e in ev if e['k']=='hurt' and e.get('id')==1),'away_deepest':report['deepest'],'net_gold':gold['net'],'gold_lost':gold['lost'],'gold_spent_by_workers':gold['spent_by_workers'],'actual_runs':report['runs'],'class_activity_proved':bool(actual or aq),'replay_ticks':replay['ticks'],'public_replay_events_match_watched':ev==replay_events,'events':len(ev)}
+                                                                                                                                                                                                                                                                                                                                                                                                              ~~~~^^^^^^^^
+KeyError: 'lost'
