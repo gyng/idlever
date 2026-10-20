@@ -2,9 +2,11 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest verified production change is Cut292 (engine-derived variant ability
+Owner: continue working on the backlog. Latest verified product change is Cut294:
+actual Watch weapon paintings and dungeon atlas-load fix (56current frames,
+341focused checks). Previous Cut292 delivered engine-derived variant ability
 hints; four earned native/WASM read pairs, phone/desktop public purchases,
-workspace1102pass/6ignored and native settlements4/4 unchanged). Cut291 corrected
+workspace1102pass/6ignored and native settlements4/4 unchanged. Cut291 corrected
 missing-Throw refusal with historical564/564 browser settlement checks. Prior
 production fix is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
@@ -15,6 +17,11 @@ diesD28/$0 authored; both authored Caster weapons have identical bolt/ward comba
 returnD8/$145, so weapon value remains unproved. Gunner wrong-API refusals retained,
 same guns corrected through public choice0extra cost. Current Watch identity
 review remains open; native action evidence does not close R4 visual requirements.
+Cut294 implements actual Snapshot.weapon painted variants (18existing frames),
+with56current earned GL/Canvas moment captures and341fallback/seek/context checks.
+It also fixes dungeon atlas overflow by excluding117town-only frames (town has
+its own loader). Standalone captures leave full Watch DOM/player recognition
+open; phone Canvas weapon detail remains small. Next real Watch replay/UI flow.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/

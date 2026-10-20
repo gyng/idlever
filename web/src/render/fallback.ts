@@ -70,7 +70,10 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
     stats.fade = st.fade;
     stats.ents = st.ents.size;
     const h = st.hero;
-    if (h) stats.hero = [h.px, h.py];
+    if (h) {
+      stats.hero = [h.px, h.py];
+      stats.heroKind = h.kind;
+    }
     stats.caption = st.caption?.text ?? null;
     stats.device = [canvas.width, canvas.height];
   }

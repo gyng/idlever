@@ -13,7 +13,7 @@
 // texels per env texel: a tile is still an 8×8 world quad). They are optional: `envTile`/`hue` return undefined without
 // them and the viewer draws the 8×8 register as before. `wallTop(biome, mask)` derives an edge-rimmed wall top per
 // 4-neighbour mask (N 1, E 2, S 4, W 8 = the side that meets open floor) on first request.
-import { heroBase } from "./look";
+import { heroFallbacks } from "./look";
 import { paintLandmarkPrimitive, type LandmarkRole } from "./landmarks";
 /** gfx round 1: a kind drawn with another's sprite (the fake engine's summoned `blade` is the core's `spectral_blade`; its fallback read
  *  as a magenta placeholder jug) */
@@ -286,8 +286,12 @@ export class Atlas {
   }
   entity(kind: string): Slot {
     kind = KIND_ALIAS[kind] ?? kind;
-    const base = heroBase(kind);
-    return (base && this.sprite.get(`ent:${kind}`)) || this.spriteSlot(`ent:${base ?? kind}`);
+    const ids = heroFallbacks(kind);
+    for (const id of ids) {
+      const slot = this.sprite.get(`ent:${id}`);
+      if (slot) return slot;
+    }
+    return this.spriteSlot(`ent:${ids.at(-1)!}`);
   }
 
   private envSlot(id: string): Slot {
@@ -458,9 +462,11 @@ export class Atlas {
       const base = url.slice(0, url.lastIndexOf("/") + 1);
       const img = await loadImage(base + (json.image ?? "atlas.png"));
       if (json.meta?.palettes) setPalettes(json.meta.palettes);
-      for (const [id, r] of Object.entries(json.frames))
-        this.override(id, img, r, json.meta?.sprites?.[id]?.texel_h);
-      this.loadedIds = new Set(Object.keys(json.frames));
+      // Town has its own atlas loader. Its large paintings do not belong in the
+      // dungeon entity sheet and can exhaust it before load/aliases finish.
+      const frames = Object.entries(json.frames).filter(([id]) => !id.startsWith("town_"));
+      for (const [id, r] of frames) this.override(id, img, r, json.meta?.sprites?.[id]?.texel_h);
+      this.loadedIds = new Set(frames.map(([id]) => id));
       this.aliasTiles();
       this.waterTiles();
       return true;

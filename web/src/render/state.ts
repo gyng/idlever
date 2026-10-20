@@ -239,7 +239,7 @@ export class ReplayState {
     this.clock = s.turn;
     this.wholeTick = Math.floor(s.turn);
     this.lastT = -Infinity;
-    this.addEntity(s.hero, true);
+    this.addEntity(s.hero, true, s.hero.weapon);
     for (const e of s.entities) this.addEntity(e, false);
     this.tools.clear();
     this.loadTools(s.tools, s.turn);
@@ -326,10 +326,10 @@ export class ReplayState {
         tool.ended = { t0: t, how: ev.state };
     }
   }
-  private addEntity(e: Entity, hero: boolean): EntState {
+  private addEntity(e: Entity, hero: boolean, weapon?: string): EntState {
     const st: EntState = {
       id: e.id,
-      kind: hero ? heroKind(e.kind) : e.kind,
+      kind: hero ? heroKind(e.kind, undefined, weapon) : e.kind,
       ally: !!e.ally,
       hero,
       cid: e.cid ?? null,

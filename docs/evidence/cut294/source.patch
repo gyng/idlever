@@ -1,0 +1,181 @@
+diff --git a/web/src/render/atlas.ts b/web/src/render/atlas.ts
+index 98a6a515..964e6a75 100644
+--- a/web/src/render/atlas.ts
++++ b/web/src/render/atlas.ts
+@@ -13,7 +13,7 @@
+ // texels per env texel: a tile is still an 8×8 world quad). They are optional: `envTile`/`hue` return undefined without
+ // them and the viewer draws the 8×8 register as before. `wallTop(biome, mask)` derives an edge-rimmed wall top per
+ // 4-neighbour mask (N 1, E 2, S 4, W 8 = the side that meets open floor) on first request.
+-import { heroBase } from "./look";
++import { heroFallbacks } from "./look";
+ import { paintLandmarkPrimitive, type LandmarkRole } from "./landmarks";
+ /** gfx round 1: a kind drawn with another's sprite (the fake engine's summoned `blade` is the core's `spectral_blade`; its fallback read
+  *  as a magenta placeholder jug) */
+@@ -286,8 +286,12 @@ export class Atlas {
+   }
+   entity(kind: string): Slot {
+     kind = KIND_ALIAS[kind] ?? kind;
+-    const base = heroBase(kind);
+-    return (base && this.sprite.get(`ent:${kind}`)) || this.spriteSlot(`ent:${base ?? kind}`);
++    const ids = heroFallbacks(kind);
++    for (const id of ids) {
++      const slot = this.sprite.get(`ent:${id}`);
++      if (slot) return slot;
++    }
++    return this.spriteSlot(`ent:${ids.at(-1)!}`);
+   }
+ 
+   private envSlot(id: string): Slot {
+@@ -458,9 +462,11 @@ export class Atlas {
+       const base = url.slice(0, url.lastIndexOf("/") + 1);
+       const img = await loadImage(base + (json.image ?? "atlas.png"));
+       if (json.meta?.palettes) setPalettes(json.meta.palettes);
+-      for (const [id, r] of Object.entries(json.frames))
+-        this.override(id, img, r, json.meta?.sprites?.[id]?.texel_h);
+-      this.loadedIds = new Set(Object.keys(json.frames));
++      // Town has its own atlas loader. Its large paintings do not belong in the
++      // dungeon entity sheet and can exhaust it before load/aliases finish.
++      const frames = Object.entries(json.frames).filter(([id]) => !id.startsWith("town_"));
++      for (const [id, r] of frames) this.override(id, img, r, json.meta?.sprites?.[id]?.texel_h);
++      this.loadedIds = new Set(frames.map(([id]) => id));
+       this.aliasTiles();
+       this.waterTiles();
+       return true;
+diff --git a/web/src/render/fallback.ts b/web/src/render/fallback.ts
+index 11666ac5..c31d1a44 100644
+--- a/web/src/render/fallback.ts
++++ b/web/src/render/fallback.ts
+@@ -70,7 +70,10 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
+     stats.fade = st.fade;
+     stats.ents = st.ents.size;
+     const h = st.hero;
+-    if (h) stats.hero = [h.px, h.py];
++    if (h) {
++      stats.hero = [h.px, h.py];
++      stats.heroKind = h.kind;
++    }
+     stats.caption = st.caption?.text ?? null;
+     stats.device = [canvas.width, canvas.height];
+   }
+diff --git a/web/src/render/index.ts b/web/src/render/index.ts
+index 75446336..c7c6b61c 100644
+--- a/web/src/render/index.ts
++++ b/web/src/render/index.ts
+@@ -147,6 +147,7 @@ export type DebugRect = {
+ export type DebugLabel = { text: string; x: number; y: number; id: number; w?: number; h?: number }; // CSS px: the label's centre x and its cell's bottom y; w · h its box (Cut 15 §4)
+ 
+ export type ViewerStats = {
++  heroKind?: string; // resolved render identity from the loaded run snapshot
+   movementTrail?: { steps: number; quads: number };
+   combatCues?: { active: number; quads: number; events: number };
+   tools?: { live: string[]; cues: number }; // Cut225: the decoy / sentry drawn (`sentry@4,7`) and their cue pixels this frame
+@@ -2345,7 +2346,10 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}):
+     stats.fade = u.uFade!.value as number;
+     stats.tick = st.tickNow();
+     stats.clock = st.clock;
+-    if (hero) stats.hero = [hero.px, hero.py];
++    if (hero) {
++      stats.hero = [hero.px, hero.py];
++      stats.heroKind = hero.kind;
++    }
+     stats.camera = [cam.tx, cam.ty];
+     stats.projectiles = st.projectilePositions().length;
+     stats.shake = [shx, shy];
+diff --git a/web/src/render/look.ts b/web/src/render/look.ts
+index 8a3c9ac5..6b6e6f83 100644
+--- a/web/src/render/look.ts
++++ b/web/src/render/look.ts
+@@ -10,12 +10,34 @@ export function setHeroLook(look: string | undefined): void {
+ export function heroLook(): string {
+   return current;
+ }
+-/** `hero_<class>` → `hero_<class>_<look>` under the current look; any other kind unchanged. */
+-export function heroKind(kind: string, look = current): string {
++// Cut267's existing paintings. Other weapon choices retain the class/look art.
++const WEAPON_LOOKS = new Set([
++  "fighter:crownsplitter",
++  "rogue:crownsplitter",
++  "ranger:sword",
++  "caster:dagger",
++  "caster:bow",
++  "gunner:short_gun",
++]);
++/** A run's actual weapon selects an existing painted variant; old snapshots keep their look. */
++export function heroKind(kind: string, look = current, weapon?: string): string {
++  const cls = /^hero_([a-z]+)$/.exec(kind)?.[1];
++  if (cls && weapon && WEAPON_LOOKS.has(`${cls}:${weapon}`))
++    return `${kind}_${look || "male"}_${weapon}`;
+   return look && /^hero_[a-z]+$/.test(kind) ? `${kind}_${look}` : kind;
+ }
+-/** `hero_<class>_<look>` → `hero_<class>` (the look's fallback); null for any other kind. */
++/** A painted hero's class silhouette, including weapon variants. */
+ export function heroBase(kind: string): string | null {
+-  const m = /^(hero_[a-z]+)_(male|female|cat)$/.exec(kind);
++  const m =
++    /^(hero_[a-z]+)_(male|female|cat)(?:_(?:sword|dagger|bow|short_gun|crownsplitter))?$/.exec(
++      kind,
++    );
+   return m ? m[1]! : null;
+ }
++/** The same fallback order for GL and Canvas: weapon, class/look, class silhouette. */
++export function heroFallbacks(kind: string): string[] {
++  const base = heroBase(kind);
++  if (!base) return [kind];
++  const look = /^(hero_[a-z]+_(?:male|female|cat))/.exec(kind)![1]!;
++  return [...new Set([kind, look, base])];
++}
+diff --git a/web/src/render/state.ts b/web/src/render/state.ts
+index 0dc8dc09..1bbce44f 100644
+--- a/web/src/render/state.ts
++++ b/web/src/render/state.ts
+@@ -239,7 +239,7 @@ export class ReplayState {
+     this.clock = s.turn;
+     this.wholeTick = Math.floor(s.turn);
+     this.lastT = -Infinity;
+-    this.addEntity(s.hero, true);
++    this.addEntity(s.hero, true, s.hero.weapon);
+     for (const e of s.entities) this.addEntity(e, false);
+     this.tools.clear();
+     this.loadTools(s.tools, s.turn);
+@@ -326,10 +326,10 @@ export class ReplayState {
+         tool.ended = { t0: t, how: ev.state };
+     }
+   }
+-  private addEntity(e: Entity, hero: boolean): EntState {
++  private addEntity(e: Entity, hero: boolean, weapon?: string): EntState {
+     const st: EntState = {
+       id: e.id,
+-      kind: hero ? heroKind(e.kind) : e.kind,
++      kind: hero ? heroKind(e.kind, undefined, weapon) : e.kind,
+       ally: !!e.ally,
+       hero,
+       cid: e.cid ?? null,
+diff --git a/web/src/render/view2d.ts b/web/src/render/view2d.ts
+index 274de74c..a7f1f455 100644
+--- a/web/src/render/view2d.ts
++++ b/web/src/render/view2d.ts
+@@ -4,7 +4,7 @@
+ // drawImage, nearest-neighbour: the same tiles and sprites as the GL view, without its lighting and effects. Never game truth.
+ import type { ReplayState, EntState } from "./state";
+ import { paletteFor, css, spriteScale } from "./palette";
+-import { heroBase } from "./look";
++import { heroFallbacks } from "./look";
+ import type { CombatCues, CueBody } from "./combat-cues";
+ import { reducedMotion } from "./quality";
+ import { effectsLevel } from "./fxpref";
+@@ -369,12 +369,9 @@ export class View2D {
+     blit: (id: string, dx: number, dy: number, dw: number, dh: number, flip?: boolean) => boolean,
+     marked = false,
+   ): void {
+-    const ids = [
+-      e.kind,
+-      `boss_${e.kind}`,
+-      heroBase(e.kind) ?? "",
+-      e.hero ? "hero_fighter" : "",
+-    ].filter(Boolean);
++    const ids = [...heroFallbacks(e.kind), `boss_${e.kind}`, e.hero ? "hero_fighter" : ""].filter(
++      Boolean,
++    );
+     const f = ids.map((id) => this.frame(id)).find(Boolean);
+     const fx = ox + (e.px + 0.5) * T,
+       fy = oy + (e.py + 1) * T;

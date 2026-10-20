@@ -4,7 +4,7 @@
 // drawImage, nearest-neighbour: the same tiles and sprites as the GL view, without its lighting and effects. Never game truth.
 import type { ReplayState, EntState } from "./state";
 import { paletteFor, css, spriteScale } from "./palette";
-import { heroBase } from "./look";
+import { heroFallbacks } from "./look";
 import type { CombatCues, CueBody } from "./combat-cues";
 import { reducedMotion } from "./quality";
 import { effectsLevel } from "./fxpref";
@@ -369,12 +369,9 @@ export class View2D {
     blit: (id: string, dx: number, dy: number, dw: number, dh: number, flip?: boolean) => boolean,
     marked = false,
   ): void {
-    const ids = [
-      e.kind,
-      `boss_${e.kind}`,
-      heroBase(e.kind) ?? "",
-      e.hero ? "hero_fighter" : "",
-    ].filter(Boolean);
+    const ids = [...heroFallbacks(e.kind), `boss_${e.kind}`, e.hero ? "hero_fighter" : ""].filter(
+      Boolean,
+    );
     const f = ids.map((id) => this.frame(id)).find(Boolean);
     const fx = ox + (e.px + 0.5) * T,
       fy = oy + (e.py + 1) * T;

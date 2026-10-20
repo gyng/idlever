@@ -149,3 +149,12 @@ Revalidate these after any wiring, display-size, tint or atlas change. They are 
   and it is the next candidate now that quota is available.
 - Crownsplitter for Ranger, Caster, Clown and Engineer, and weapon variants beyond the four Cut246 misses (axe, spear
   and mace for every class), were not in the R4 evidence.
+
+## Follow-up 2026-10-20 — Cut294 renderer wiring
+
+The eighteen unchanged paintings are now selected from actual Snapshot.hero.weapon
+in both GL and Canvas. Cut294 preserves56current earned production-viewer
+captures and341variant/fallback/seek/context checks; it also fixes dungeon atlas
+overflow from loading town-only frames. Full Watch DOM/player-recognition proof
+remains open, especially at small phone Canvas scale. See docs/evidence/cut294;
+this addendum does not change the historical Cut267 painting acceptance.

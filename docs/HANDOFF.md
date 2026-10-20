@@ -1,9 +1,40 @@
-# Active backlog — Cut293 authored class builds measured, 2026-10-20
+# Active backlog — Cut294 actual weapon paintings in Watch, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest diagnostic measures14 current earned class/loadout sends; latest product
-fix shows missing Throw before variant selection (Cut292). Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
+Latest product fix selects actual weapon paintings in Watch (Cut294), following
+14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut294 Watch weapon selection and atlas load — verified scoped presentation fix
+
+Contract [CUT294_WATCH_WEAPONS.md](CUT294_WATCH_WEAPONS.md). ReplayState reads actual
+Snapshot.hero.weapon for Cut267's six supported variants/18looks; shared GL/Canvas
+fallback weapon→class/look→class primitive. Legacy/no-weapon/unsupported behavior
+retained. No art pixels, rules, saves or WASM change. Focused controls exposed
+existing Atlas.load overflow at ent:town_storehouse_1: dungeon was packing117
+large town-only frames into its512entity sheet. Town has separate loader; skip
+those frames in dungeon, letting full load/aliases/water finish, no swallowed-
+failure pass. Initial logs and all56selector-only frames remain superseded.
+
+Before12/12 mismatches. Final56/56 actual Cut293 earned-moment captures at
+402×681/1440×900 GL/Canvas match chosen kinds, GL drawn rectangles and immutable
+inputs,0page errors; private Xvfb/D3D12 NVIDIA RTX3080. All18 real atlas slots,
+controlled variant-missing/class-look and no-art primitive, legacy/seek plus
+headless production GL context restoration pass341checks. Combat identity54,
+hero-slot looks54, types/lint/format/copy/web build pass. Existing build chunk/
+dynamic-import warnings remain. Independent verifier passes364native-source
+receipts,14exact unedited moments and all124historical/current PNG/hash/matrix
+receipts. Initial verifier select.py shadow renamed, failed log preserved.
+All validation jobs terminal; evidence docs/evidence/cut294.
+
+Visual observations inspect six before/after hero crops and final phone/desktop
+class/action frames. New weapon poses appear; shared red capes, torch glare and
+crowds limit detail. Canvas uses existing smaller map framing, so phone pistol/
+dagger recognition is less certain than GL close framing. Agent review only,
+no player feedback. Standalone production viewers are not full Watch DOM proof;
+no completed R4, unique identity, superiority, full/exhaustive/fun or deploy claim.
+Next: real Watch replay flow/UI revalidation, then retained mechanical gaps such
+as earned Caster conduct payoff. Held W2/recovery/Guide and balance stay open.
 
 ## Cut293 authored class/loadout comparisons — verified native evidence
 

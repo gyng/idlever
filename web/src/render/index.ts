@@ -147,6 +147,7 @@ export type DebugRect = {
 export type DebugLabel = { text: string; x: number; y: number; id: number; w?: number; h?: number }; // CSS px: the label's centre x and its cell's bottom y; w · h its box (Cut 15 §4)
 
 export type ViewerStats = {
+  heroKind?: string; // resolved render identity from the loaded run snapshot
   movementTrail?: { steps: number; quads: number };
   combatCues?: { active: number; quads: number; events: number };
   tools?: { live: string[]; cues: number }; // Cut225: the decoy / sentry drawn (`sentry@4,7`) and their cue pixels this frame
@@ -2345,7 +2346,10 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     stats.fade = u.uFade!.value as number;
     stats.tick = st.tickNow();
     stats.clock = st.clock;
-    if (hero) stats.hero = [hero.px, hero.py];
+    if (hero) {
+      stats.hero = [hero.px, hero.py];
+      stats.heroKind = hero.kind;
+    }
     stats.camera = [cam.tx, cam.ty];
     stats.projectiles = st.projectilePositions().length;
     stats.shake = [shx, shy];

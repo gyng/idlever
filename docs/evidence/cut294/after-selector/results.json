@@ -1,0 +1,2989 @@
+{
+  "phase": "after",
+  "recordedAt": "2026-10-20T15:30:44.955Z",
+  "source": {
+    "web/src/render/look.ts": "93fe7a6b39c32f800ba37a4a112695f195d2f2a1511ed224e18f0513b804628a",
+    "web/src/render/state.ts": "79ac438ec07622671e6a658184e24202a7a36c412f40f7ccca3f46ec897f2602",
+    "web/src/render/atlas.ts": "2f6d265aac0fe336d05c460e2ab4e9b731d8d9a9afc3c802d6a9ca6a5d8a77f8",
+    "web/src/render/view2d.ts": "12cfc95b7e8a336c8e3edda34ba730cfd76552eebac1253b6c86d92f05ae1590",
+    "web/src/render/index.ts": "cae5e50d5c519b6172d611fd6d503e1df33553a436692a1a01304cef307b208c",
+    "web/src/render/fallback.ts": "0eac8ff8d8f192125cb5fb58ce74c531661cb58299ccd445c4e3250e5f15f845",
+    "web/public/art/atlas.json": "445aae7bfb9887e6cd657d418fb4b2f8b5e8b959e5fa461e22f5916fc740c37a",
+    "web/public/art/atlas.png": "c34c95bdaf08dc3adf42d0889e5207b94eb2af89453370d1f1c5af802df02132"
+  },
+  "scriptSha256": "c7a180360a4859aa4af6fcc0910e6e7b35d366e63be41eac50b7b2fc13d4f534",
+  "momentsSha256": "d3c92f2378e4286b0bc25bb861a2c66291f1127420d0e8522aeeb1025c0c89d5",
+  "rows": [
+    {
+      "id": "fighter-sword-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "d1391ea1caae0bbb98ebc97fb44b31b0bee8ca4a880a66ea24a36a487f199610",
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9240,
+        "heroKind": "hero_fighter",
+        "hero": [
+          23,
+          26
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter",
+          "hero": true,
+          "x": 216,
+          "y": 274.6666666666667,
+          "w": 42.666666666666664,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 216,
+            "y": 274.6666666666667,
+            "w": 42.666666666666664,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-baseline-gl-402.png",
+      "frameSha256": "e522927bfa29e460f7310543dcf854bfc67b1067342d8e626ccfc1fb8a31a2d7"
+    },
+    {
+      "id": "fighter-crownsplitter-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "cacaca2d2855e822ef72f08aff38d06cd44701dac7ac07efb1bcc1e259e17c1e",
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6388,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          5,
+          12
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter_male_crownsplitter",
+          "hero": true,
+          "x": 172,
+          "y": 360,
+          "w": 56,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 172,
+            "y": 360,
+            "w": 56,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-baseline-gl-402.png",
+      "frameSha256": "585819b00d04989c99bf78b65f6ddb17be10b9cebf4f4037394c8d02c64e8b76"
+    },
+    {
+      "id": "fighter-sword-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "580989e26500d1efdf20253bdaa2805425c4b135875876d5a599dc18b6ad145b",
+      "target": 18140,
+      "event": {
+        "k": "attack",
+        "t": 18138,
+        "src": 1,
+        "dst": 137,
+        "dmg": 15,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 18140,
+        "heroKind": "hero_fighter",
+        "hero": [
+          16,
+          27
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter",
+          "hero": true,
+          "x": 205.33333333333334,
+          "y": 338.6666666666667,
+          "w": 42.666666666666664,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 205.33333333333334,
+            "y": 338.6666666666667,
+            "w": 42.666666666666664,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-authored-gl-402.png",
+      "frameSha256": "57380709e29bd96dc6787ac17184a928e542d7557f68f8a3e7a30e4065ddec0c"
+    },
+    {
+      "id": "fighter-crownsplitter-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "e52a7c1cb2b0069895cd72b54988c1fca57cbdc5723ea7f80049c2224a73b0f0",
+      "target": 16302,
+      "event": {
+        "k": "attack",
+        "t": 16300,
+        "src": 1,
+        "dst": 129,
+        "dmg": 12,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 16302,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          18,
+          26
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter_male_crownsplitter",
+          "hero": true,
+          "x": 86.66666666666667,
+          "y": 424,
+          "w": 56,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 86.66666666666667,
+            "y": 424,
+            "w": 56,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-authored-gl-402.png",
+      "frameSha256": "f4b6536a2cd9ffaf7400e22d42ba18851ddfc6fd192d11489b0772b939c7ab53"
+    },
+    {
+      "id": "rogue-dagger-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "c03761fb88666c15889b33f1af6f8b971c4e5e547cfdfe28926f2be74ba66013",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_rogue",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_rogue",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_rogue",
+          "hero": true,
+          "x": 154.66666666666666,
+          "y": 242.66666666666666,
+          "w": 48,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 154.66666666666666,
+            "y": 242.66666666666666,
+            "w": 48,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_rogue",
+      "matches": true,
+      "file": "rogue-dagger-baseline-gl-402.png",
+      "frameSha256": "de54569927818c9ddc9ef28a46440ed04f2bafa58152b83788871ae963e51365"
+    },
+    {
+      "id": "rogue-crownsplitter-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "28ee75efe4a93d5d41fccfa709e48e86035e866139695cfcd7465ea1a8bd2a86",
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_rogue_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5831,
+        "heroKind": "hero_rogue_male_crownsplitter",
+        "hero": [
+          18,
+          18
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_rogue_male_crownsplitter",
+          "hero": true,
+          "x": 74.66666666666667,
+          "y": 317.3333333333333,
+          "w": 48,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 74.66666666666667,
+            "y": 317.3333333333333,
+            "w": 48,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_rogue_male_crownsplitter",
+      "matches": true,
+      "file": "rogue-crownsplitter-baseline-gl-402.png",
+      "frameSha256": "b5be21d8dcf7cb57278983e079db9712ac2cf465f7477fd57f1f9a681bba6d73"
+    },
+    {
+      "id": "ranger-bow-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f84a234509dd85bb901aef29952b3a0d61f13372de2cf03802d454ab923d20f3",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_ranger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_ranger",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_ranger",
+          "hero": true,
+          "x": 177.33333333333334,
+          "y": 317.3333333333333,
+          "w": 45.333333333333336,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 177.33333333333334,
+            "y": 317.3333333333333,
+            "w": 45.333333333333336,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_ranger",
+      "matches": true,
+      "file": "ranger-bow-baseline-gl-402.png",
+      "frameSha256": "d3c0b617ad26a0e60b4e7fe5ea19effa4e0c2bb244c25d0313e5c7b304b9b2f0"
+    },
+    {
+      "id": "ranger-sword-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "011d2ddcbfae5178c9a62b3d24131756e5474881866258b9d7d0492396275ee7",
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_ranger_male_sword",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5090,
+        "heroKind": "hero_ranger_male_sword",
+        "hero": [
+          4,
+          17
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_ranger_male_sword",
+          "hero": true,
+          "x": 74.66666666666667,
+          "y": 445.3333333333333,
+          "w": 48,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 74.66666666666667,
+            "y": 445.3333333333333,
+            "w": 48,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_ranger_male_sword",
+      "matches": true,
+      "file": "ranger-sword-baseline-gl-402.png",
+      "frameSha256": "8c84ed7b408b4735377739600fcfb3d1127f761b40fb624665822d0ecab96055"
+    },
+    {
+      "id": "caster-dagger-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "ad9e71a81f415dd43b331ba272d25fc8f2ef347f6309fed73c45ea7b6cda744d",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_dagger",
+          "hero": true,
+          "x": 152,
+          "y": 242.66666666666666,
+          "w": 53.333333333333336,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 152,
+            "y": 242.66666666666666,
+            "w": 53.333333333333336,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-baseline-gl-402.png",
+      "frameSha256": "e55f3b6105c949ae4cca0a26ddaa9067afc88a92a6cea4864c1b4b109844ca99"
+    },
+    {
+      "id": "caster-bow-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "24467e95f01c00121fb09e1170cbaddece2c29537a913c4a4037a0835ce98c2d",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_bow",
+          "hero": true,
+          "x": 176,
+          "y": 317.3333333333333,
+          "w": 48,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 176,
+            "y": 317.3333333333333,
+            "w": 48,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-baseline-gl-402.png",
+      "frameSha256": "64952837260ad4ddc162246f8701b874aa6e9541cc49222037fc21b935f02727"
+    },
+    {
+      "id": "caster-dagger-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "8e434649f0635180025945fcffe090f8a342720a006512b76babe2f3406a9031",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_dagger",
+          "hero": true,
+          "x": 253.33333333333334,
+          "y": 216,
+          "w": 53.333333333333336,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 253.33333333333334,
+            "y": 216,
+            "w": 53.333333333333336,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-authored-gl-402.png",
+      "frameSha256": "e9e5a085bf6fb2fc826f2c78dfc5be95ebe71eadefaa14e547afc838fec9c6ec"
+    },
+    {
+      "id": "caster-bow-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "dd9c0ec6920d4cf593a8a73c7171c352011bf0063f20b3683d02dfcbda2eb3f3",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_bow",
+          "hero": true,
+          "x": 256,
+          "y": 216,
+          "w": 48,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 256,
+            "y": 216,
+            "w": 48,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-authored-gl-402.png",
+      "frameSha256": "1a64e327d0fcd4b842f1a4b0bdee63bf709068ea36b7a5134908faa9fc605200"
+    },
+    {
+      "id": "gunner-long_gun-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "01d44ce88dd41c5888f91cf526a2c384c5c514ca2c2a602828853f181a58506a",
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "long_gun",
+      "model": {
+        "kind": "hero_gunner",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9940,
+        "heroKind": "hero_gunner",
+        "hero": [
+          20,
+          4
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_gunner",
+          "hero": true,
+          "x": 174.66666666666666,
+          "y": 317.3333333333333,
+          "w": 50.666666666666664,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 174.66666666666666,
+            "y": 317.3333333333333,
+            "w": 50.666666666666664,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_gunner",
+      "matches": true,
+      "file": "gunner-long_gun-baseline-gl-402.png",
+      "frameSha256": "c4f2b62a2fd78e5e9c5f0d4ac2fed83a0aaf667df717ec527138d9c381254068"
+    },
+    {
+      "id": "gunner-short_gun-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f2bca654db6d6ebc51d1facc821af445daef8778a91a89c29f7627b7c2dbbc05",
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "short_gun",
+      "model": {
+        "kind": "hero_gunner_male_short_gun",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6402,
+        "heroKind": "hero_gunner_male_short_gun",
+        "hero": [
+          26,
+          12
+        ],
+        "device": [
+          603,
+          1022
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_gunner_male_short_gun",
+          "hero": true,
+          "x": 177.33333333333334,
+          "y": 317.3333333333333,
+          "w": 45.333333333333336,
+          "h": 64,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 177.33333333333334,
+            "y": 317.3333333333333,
+            "w": 45.333333333333336,
+            "h": 64
+          }
+        }
+      },
+      "expected": "hero_gunner_male_short_gun",
+      "matches": true,
+      "file": "gunner-short_gun-baseline-gl-402.png",
+      "frameSha256": "d229e2238a11affd425a462bc7eca88821bff060401b00eeeb304662064a0264"
+    },
+    {
+      "id": "fighter-sword-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "d1391ea1caae0bbb98ebc97fb44b31b0bee8ca4a880a66ea24a36a487f199610",
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9240,
+        "heroKind": "hero_fighter",
+        "hero": [
+          23,
+          26
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-baseline-canvas-402.png",
+      "frameSha256": "f607a6163c4c598ad7f3b0893c059dbd532fd9bf0f4dd5dacae3fafaeebc1cb2"
+    },
+    {
+      "id": "fighter-crownsplitter-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "cacaca2d2855e822ef72f08aff38d06cd44701dac7ac07efb1bcc1e259e17c1e",
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6388,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          5,
+          12
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-baseline-canvas-402.png",
+      "frameSha256": "993a65381a688e5bb7639cd1eb344027faf7e566f30c174ff85b5f9e1e3f1e46"
+    },
+    {
+      "id": "fighter-sword-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "580989e26500d1efdf20253bdaa2805425c4b135875876d5a599dc18b6ad145b",
+      "target": 18140,
+      "event": {
+        "k": "attack",
+        "t": 18138,
+        "src": 1,
+        "dst": 137,
+        "dmg": 15,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 18140,
+        "heroKind": "hero_fighter",
+        "hero": [
+          16,
+          27
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-authored-canvas-402.png",
+      "frameSha256": "5fbe427378668b8366602166ab0fef88b809940f1d018ed282261870498feb1a"
+    },
+    {
+      "id": "fighter-crownsplitter-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "e52a7c1cb2b0069895cd72b54988c1fca57cbdc5723ea7f80049c2224a73b0f0",
+      "target": 16302,
+      "event": {
+        "k": "attack",
+        "t": 16300,
+        "src": 1,
+        "dst": 129,
+        "dmg": 12,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 16302,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          18,
+          26
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-authored-canvas-402.png",
+      "frameSha256": "b7e8bbf3c891e15638f7ae1e15ef24edab39a45478fd6a8f1b2f74baf0e44af2"
+    },
+    {
+      "id": "rogue-dagger-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "c03761fb88666c15889b33f1af6f8b971c4e5e547cfdfe28926f2be74ba66013",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_rogue",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_rogue",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_rogue",
+      "matches": true,
+      "file": "rogue-dagger-baseline-canvas-402.png",
+      "frameSha256": "a4409177503f1f4b2f7dedd2d0aad899f7399891f3320fa0fd0ec939997178f1"
+    },
+    {
+      "id": "rogue-crownsplitter-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "28ee75efe4a93d5d41fccfa709e48e86035e866139695cfcd7465ea1a8bd2a86",
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_rogue_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5831,
+        "heroKind": "hero_rogue_male_crownsplitter",
+        "hero": [
+          18,
+          18
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_rogue_male_crownsplitter",
+      "matches": true,
+      "file": "rogue-crownsplitter-baseline-canvas-402.png",
+      "frameSha256": "a12b8d9168f50ec00adc4c8319edb98f7dace418fd4fea52caae5077d02093ac"
+    },
+    {
+      "id": "ranger-bow-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f84a234509dd85bb901aef29952b3a0d61f13372de2cf03802d454ab923d20f3",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_ranger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_ranger",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_ranger",
+      "matches": true,
+      "file": "ranger-bow-baseline-canvas-402.png",
+      "frameSha256": "28bdea2a0c44da71bc484a70f47575cf5c46ee685976e43548c294fb9e434b4a"
+    },
+    {
+      "id": "ranger-sword-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "011d2ddcbfae5178c9a62b3d24131756e5474881866258b9d7d0492396275ee7",
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_ranger_male_sword",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5090,
+        "heroKind": "hero_ranger_male_sword",
+        "hero": [
+          4,
+          17
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_ranger_male_sword",
+      "matches": true,
+      "file": "ranger-sword-baseline-canvas-402.png",
+      "frameSha256": "cd00af46e9863e942ce3680b203fd4419d500ef5c7fb21dc5bbf5b354caf6462"
+    },
+    {
+      "id": "caster-dagger-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "ad9e71a81f415dd43b331ba272d25fc8f2ef347f6309fed73c45ea7b6cda744d",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-baseline-canvas-402.png",
+      "frameSha256": "727272ba51899a3ef3c634a420cf39a26170c6f7f7661d993ef5898ce5f4c6aa"
+    },
+    {
+      "id": "caster-bow-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "24467e95f01c00121fb09e1170cbaddece2c29537a913c4a4037a0835ce98c2d",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-baseline-canvas-402.png",
+      "frameSha256": "7021974375014430bfbd73b1eb8aa63204bcbcc881bc495acc2ebe83959e07fe"
+    },
+    {
+      "id": "caster-dagger-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "8e434649f0635180025945fcffe090f8a342720a006512b76babe2f3406a9031",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-authored-canvas-402.png",
+      "frameSha256": "338396282086b6c12924aaaf0af384ac926315fbc77173bd809901cf7d3c9794"
+    },
+    {
+      "id": "caster-bow-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "dd9c0ec6920d4cf593a8a73c7171c352011bf0063f20b3683d02dfcbda2eb3f3",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-authored-canvas-402.png",
+      "frameSha256": "8b4ee85d280c3b34d130ce21d3c5eea9e71019d40ce5f7fb2c51cff11829a242"
+    },
+    {
+      "id": "gunner-long_gun-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "01d44ce88dd41c5888f91cf526a2c384c5c514ca2c2a602828853f181a58506a",
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "long_gun",
+      "model": {
+        "kind": "hero_gunner",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9940,
+        "heroKind": "hero_gunner",
+        "hero": [
+          20,
+          4
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_gunner",
+      "matches": true,
+      "file": "gunner-long_gun-baseline-canvas-402.png",
+      "frameSha256": "21d2c17e1987a2e884c62d1b0d00d58746c8598681c00691ebb62573b6ec9ff4"
+    },
+    {
+      "id": "gunner-short_gun-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f2bca654db6d6ebc51d1facc821af445daef8778a91a89c29f7627b7c2dbbc05",
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "short_gun",
+      "model": {
+        "kind": "hero_gunner_male_short_gun",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6402,
+        "heroKind": "hero_gunner_male_short_gun",
+        "hero": [
+          26,
+          12
+        ],
+        "device": [
+          603,
+          1021
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_gunner_male_short_gun",
+      "matches": true,
+      "file": "gunner-short_gun-baseline-canvas-402.png",
+      "frameSha256": "09dcd2c8fedf8291754fdec318289199c923ba554671d5f611df5a7c31958b67"
+    },
+    {
+      "id": "fighter-sword-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "d1391ea1caae0bbb98ebc97fb44b31b0bee8ca4a880a66ea24a36a487f199610",
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9240,
+        "heroKind": "hero_fighter",
+        "hero": [
+          23,
+          26
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter",
+          "hero": true,
+          "x": 752,
+          "y": 320,
+          "w": 85.33333333333333,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 752,
+            "y": 320,
+            "w": 85.33333333333333,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-baseline-gl-1440.png",
+      "frameSha256": "52169c89192440342b81a5129c88f81416e210f2ac83007947b654d691b31bfe"
+    },
+    {
+      "id": "fighter-crownsplitter-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "cacaca2d2855e822ef72f08aff38d06cd44701dac7ac07efb1bcc1e259e17c1e",
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6388,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          5,
+          12
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter_male_crownsplitter",
+          "hero": true,
+          "x": 664,
+          "y": 490.6666666666667,
+          "w": 112,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 664,
+            "y": 490.6666666666667,
+            "w": 112,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-baseline-gl-1440.png",
+      "frameSha256": "bb8df649bfb7949b6efc6c924dac833882283b1b58f75e12eccd90c7c40facc4"
+    },
+    {
+      "id": "fighter-sword-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "580989e26500d1efdf20253bdaa2805425c4b135875876d5a599dc18b6ad145b",
+      "target": 18140,
+      "event": {
+        "k": "attack",
+        "t": 18138,
+        "src": 1,
+        "dst": 137,
+        "dmg": 15,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 18140,
+        "heroKind": "hero_fighter",
+        "hero": [
+          16,
+          27
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter",
+          "hero": true,
+          "x": 730.6666666666666,
+          "y": 448,
+          "w": 85.33333333333333,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 730.6666666666666,
+            "y": 448,
+            "w": 85.33333333333333,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-authored-gl-1440.png",
+      "frameSha256": "82aeec37b2c2468e536e882e087f6c8e875c54adc749d2efe41cc93cdd08a534"
+    },
+    {
+      "id": "fighter-crownsplitter-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "e52a7c1cb2b0069895cd72b54988c1fca57cbdc5723ea7f80049c2224a73b0f0",
+      "target": 16302,
+      "event": {
+        "k": "attack",
+        "t": 16300,
+        "src": 1,
+        "dst": 129,
+        "dmg": 12,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 16302,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          18,
+          26
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_fighter_male_crownsplitter",
+          "hero": true,
+          "x": 493.3333333333333,
+          "y": 618.6666666666666,
+          "w": 112,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 493.3333333333333,
+            "y": 618.6666666666666,
+            "w": 112,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-authored-gl-1440.png",
+      "frameSha256": "cff9acc8e1d9d8e89ad7731e591191fce115b88dfb6c792cba3392a42beabc40"
+    },
+    {
+      "id": "rogue-dagger-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "c03761fb88666c15889b33f1af6f8b971c4e5e547cfdfe28926f2be74ba66013",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_rogue",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_rogue",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_rogue",
+          "hero": true,
+          "x": 629.3333333333334,
+          "y": 256,
+          "w": 96,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 629.3333333333334,
+            "y": 256,
+            "w": 96,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_rogue",
+      "matches": true,
+      "file": "rogue-dagger-baseline-gl-1440.png",
+      "frameSha256": "ceab2480a3053a591e91435699a935d2eb75d5e94330234ac9b3c1ffc63d7c0d"
+    },
+    {
+      "id": "rogue-crownsplitter-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "28ee75efe4a93d5d41fccfa709e48e86035e866139695cfcd7465ea1a8bd2a86",
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_rogue_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5831,
+        "heroKind": "hero_rogue_male_crownsplitter",
+        "hero": [
+          18,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_rogue_male_crownsplitter",
+          "hero": true,
+          "x": 373.3333333333333,
+          "y": 405.3333333333333,
+          "w": 96,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 373.3333333333333,
+            "y": 405.3333333333333,
+            "w": 96,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_rogue_male_crownsplitter",
+      "matches": true,
+      "file": "rogue-crownsplitter-baseline-gl-1440.png",
+      "frameSha256": "5c127e42c21f76b9c17828cbcf88a9518c361009d829a65c60bfecb5e8794806"
+    },
+    {
+      "id": "ranger-bow-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f84a234509dd85bb901aef29952b3a0d61f13372de2cf03802d454ab923d20f3",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_ranger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_ranger",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_ranger",
+          "hero": true,
+          "x": 674.6666666666666,
+          "y": 405.3333333333333,
+          "w": 90.66666666666667,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 674.6666666666666,
+            "y": 405.3333333333333,
+            "w": 90.66666666666667,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_ranger",
+      "matches": true,
+      "file": "ranger-bow-baseline-gl-1440.png",
+      "frameSha256": "c6e600efbf71754cfd9c351722b2b9d191fd764d3669485eeb57eef15212d8a7"
+    },
+    {
+      "id": "ranger-sword-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "011d2ddcbfae5178c9a62b3d24131756e5474881866258b9d7d0492396275ee7",
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_ranger_male_sword",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5090,
+        "heroKind": "hero_ranger_male_sword",
+        "hero": [
+          4,
+          17
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_ranger_male_sword",
+          "hero": true,
+          "x": 309.3333333333333,
+          "y": 629.3333333333334,
+          "w": 96,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 309.3333333333333,
+            "y": 629.3333333333334,
+            "w": 96,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_ranger_male_sword",
+      "matches": true,
+      "file": "ranger-sword-baseline-gl-1440.png",
+      "frameSha256": "f3d943bb83f0ecabfba71958d369db55794aef5caa309395d4a43331f4d6f90d"
+    },
+    {
+      "id": "caster-dagger-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "ad9e71a81f415dd43b331ba272d25fc8f2ef347f6309fed73c45ea7b6cda744d",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_dagger",
+          "hero": true,
+          "x": 624,
+          "y": 256,
+          "w": 106.66666666666667,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 624,
+            "y": 256,
+            "w": 106.66666666666667,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-baseline-gl-1440.png",
+      "frameSha256": "bec2de54e654a8d6fb5290855d4717259a1eb0edf8a35459c613cd9e635cd03d"
+    },
+    {
+      "id": "caster-bow-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "24467e95f01c00121fb09e1170cbaddece2c29537a913c4a4037a0835ce98c2d",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_bow",
+          "hero": true,
+          "x": 672,
+          "y": 405.3333333333333,
+          "w": 96,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 672,
+            "y": 405.3333333333333,
+            "w": 96,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-baseline-gl-1440.png",
+      "frameSha256": "cdcf6a882312145839f4ab10d78ff9b8d57365d8ed617adaea2ff1b3b5132a53"
+    },
+    {
+      "id": "caster-dagger-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "8e434649f0635180025945fcffe090f8a342720a006512b76babe2f3406a9031",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_dagger",
+          "hero": true,
+          "x": 826.6666666666666,
+          "y": 202.66666666666666,
+          "w": 106.66666666666667,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 826.6666666666666,
+            "y": 202.66666666666666,
+            "w": 106.66666666666667,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-authored-gl-1440.png",
+      "frameSha256": "ebf3231167789132e39fb88b8eab3caea42acc5a7453014b783ab2675d516ab0"
+    },
+    {
+      "id": "caster-bow-authored",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "dd9c0ec6920d4cf593a8a73c7171c352011bf0063f20b3683d02dfcbda2eb3f3",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_caster_male_bow",
+          "hero": true,
+          "x": 832,
+          "y": 202.66666666666666,
+          "w": 96,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 832,
+            "y": 202.66666666666666,
+            "w": 96,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-authored-gl-1440.png",
+      "frameSha256": "3e5f88525b8f8fe7cddaf7b83104907865d8b013750572324981158ccd2c83a3"
+    },
+    {
+      "id": "gunner-long_gun-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "01d44ce88dd41c5888f91cf526a2c384c5c514ca2c2a602828853f181a58506a",
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "long_gun",
+      "model": {
+        "kind": "hero_gunner",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9940,
+        "heroKind": "hero_gunner",
+        "hero": [
+          20,
+          4
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_gunner",
+          "hero": true,
+          "x": 669.3333333333334,
+          "y": 405.3333333333333,
+          "w": 101.33333333333333,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 669.3333333333334,
+            "y": 405.3333333333333,
+            "w": 101.33333333333333,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_gunner",
+      "matches": true,
+      "file": "gunner-long_gun-baseline-gl-1440.png",
+      "frameSha256": "e0fc82a3d8379942d83c10e9265eeecaabac8d7c7c449aa6f66af253c361c291"
+    },
+    {
+      "id": "gunner-short_gun-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f2bca654db6d6ebc51d1facc821af445daef8778a91a89c29f7627b7c2dbbc05",
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "short_gun",
+      "model": {
+        "kind": "hero_gunner_male_short_gun",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6402,
+        "heroKind": "hero_gunner_male_short_gun",
+        "hero": [
+          26,
+          12
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": false,
+        "heroRect": {
+          "id": 1,
+          "kind": "hero_gunner_male_short_gun",
+          "hero": true,
+          "x": 674.6666666666666,
+          "y": 405.3333333333333,
+          "w": 90.66666666666667,
+          "h": 128,
+          "stack": 1,
+          "z": 3.2,
+          "drawn": {
+            "x": 674.6666666666666,
+            "y": 405.3333333333333,
+            "w": 90.66666666666667,
+            "h": 128
+          }
+        }
+      },
+      "expected": "hero_gunner_male_short_gun",
+      "matches": true,
+      "file": "gunner-short_gun-baseline-gl-1440.png",
+      "frameSha256": "95fe701f39b2a5f6e5036c95aedd3accf66cda71ef11246c9c626eed5bdb9233"
+    },
+    {
+      "id": "fighter-sword-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "d1391ea1caae0bbb98ebc97fb44b31b0bee8ca4a880a66ea24a36a487f199610",
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9240,
+        "heroKind": "hero_fighter",
+        "hero": [
+          23,
+          26
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-baseline-canvas-1440.png",
+      "frameSha256": "98cfe566ddb10c8d65496d0fef720af337a7e39626770d39e23c8836918a4abd"
+    },
+    {
+      "id": "fighter-crownsplitter-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "cacaca2d2855e822ef72f08aff38d06cd44701dac7ac07efb1bcc1e259e17c1e",
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6388,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          5,
+          12
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-baseline-canvas-1440.png",
+      "frameSha256": "9e645531f6030d59fb7c32dacc200b1e2ab24a2bfd496dee6d7981121bff3757"
+    },
+    {
+      "id": "fighter-sword-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "580989e26500d1efdf20253bdaa2805425c4b135875876d5a599dc18b6ad145b",
+      "target": 18140,
+      "event": {
+        "k": "attack",
+        "t": 18138,
+        "src": 1,
+        "dst": 137,
+        "dmg": 15,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_fighter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 18140,
+        "heroKind": "hero_fighter",
+        "hero": [
+          16,
+          27
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter",
+      "matches": true,
+      "file": "fighter-sword-authored-canvas-1440.png",
+      "frameSha256": "00366351725edb76908d8afb0a68eac7dd8a3f79e1ba8586a9c959f033e909ba"
+    },
+    {
+      "id": "fighter-crownsplitter-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "e52a7c1cb2b0069895cd72b54988c1fca57cbdc5723ea7f80049c2224a73b0f0",
+      "target": 16302,
+      "event": {
+        "k": "attack",
+        "t": 16300,
+        "src": 1,
+        "dst": 129,
+        "dmg": 12,
+        "hit": true,
+        "verb": "cleave"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_fighter_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 16302,
+        "heroKind": "hero_fighter_male_crownsplitter",
+        "hero": [
+          18,
+          26
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_fighter_male_crownsplitter",
+      "matches": true,
+      "file": "fighter-crownsplitter-authored-canvas-1440.png",
+      "frameSha256": "a4384c7157c64ebd00316b96f20e0f729ddd586974ad86458ab2117e5dff3b39"
+    },
+    {
+      "id": "rogue-dagger-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "c03761fb88666c15889b33f1af6f8b971c4e5e547cfdfe28926f2be74ba66013",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_rogue",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_rogue",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_rogue",
+      "matches": true,
+      "file": "rogue-dagger-baseline-canvas-1440.png",
+      "frameSha256": "e078908e1b930fe84e518f2545886d6fb5237c0c52e04e9620c592c9b7fdb423"
+    },
+    {
+      "id": "rogue-crownsplitter-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "28ee75efe4a93d5d41fccfa709e48e86035e866139695cfcd7465ea1a8bd2a86",
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "crownsplitter",
+      "model": {
+        "kind": "hero_rogue_male_crownsplitter",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5831,
+        "heroKind": "hero_rogue_male_crownsplitter",
+        "hero": [
+          18,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_rogue_male_crownsplitter",
+      "matches": true,
+      "file": "rogue-crownsplitter-baseline-canvas-1440.png",
+      "frameSha256": "13804d4de6b6672a644800d139d109b116decd18b5aa4213373d37f0de63422f"
+    },
+    {
+      "id": "ranger-bow-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f84a234509dd85bb901aef29952b3a0d61f13372de2cf03802d454ab923d20f3",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_ranger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_ranger",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_ranger",
+      "matches": true,
+      "file": "ranger-bow-baseline-canvas-1440.png",
+      "frameSha256": "ef2932490520f1978b1dccb6828d747c78b4636fd06f516a28cea1b57894325a"
+    },
+    {
+      "id": "ranger-sword-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "011d2ddcbfae5178c9a62b3d24131756e5474881866258b9d7d0492396275ee7",
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "sword",
+      "model": {
+        "kind": "hero_ranger_male_sword",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5090,
+        "heroKind": "hero_ranger_male_sword",
+        "hero": [
+          4,
+          17
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_ranger_male_sword",
+      "matches": true,
+      "file": "ranger-sword-baseline-canvas-1440.png",
+      "frameSha256": "2f701195b32c1476c4ef1496a30522e16634d9b087971b643b1377af2b9dcb15"
+    },
+    {
+      "id": "caster-dagger-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "ad9e71a81f415dd43b331ba272d25fc8f2ef347f6309fed73c45ea7b6cda744d",
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2815,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          5,
+          11
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-baseline-canvas-1440.png",
+      "frameSha256": "72b2f58a9a70f9f05374f1b572251864ab69d160d300ac9f8d8bf922767209f5"
+    },
+    {
+      "id": "caster-bow-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "24467e95f01c00121fb09e1170cbaddece2c29537a913c4a4037a0835ce98c2d",
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 5052,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          20,
+          6
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-baseline-canvas-1440.png",
+      "frameSha256": "2e9afdb928b48adbe4ddf6eab34c1af9783f898fe1a73a0edcda401b26b176e4"
+    },
+    {
+      "id": "caster-dagger-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "8e434649f0635180025945fcffe090f8a342720a006512b76babe2f3406a9031",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "dagger",
+      "model": {
+        "kind": "hero_caster_male_dagger",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_dagger",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_dagger",
+      "matches": true,
+      "file": "caster-dagger-authored-canvas-1440.png",
+      "frameSha256": "adc2f39f3b19fbba2af42a58ace24fcfd2cad8fbba9fe7bb1958489c9b7cb33d"
+    },
+    {
+      "id": "caster-bow-authored",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "dd9c0ec6920d4cf593a8a73c7171c352011bf0063f20b3683d02dfcbda2eb3f3",
+      "target": 2690,
+      "event": {
+        "k": "attack",
+        "t": 2688,
+        "src": 1,
+        "dst": 14,
+        "dmg": 4,
+        "hit": true,
+        "verb": "bolt"
+      },
+      "actualWeapon": "bow",
+      "model": {
+        "kind": "hero_caster_male_bow",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 2690,
+        "heroKind": "hero_caster_male_bow",
+        "hero": [
+          16,
+          18
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_caster_male_bow",
+      "matches": true,
+      "file": "caster-bow-authored-canvas-1440.png",
+      "frameSha256": "caac45af9e3d4c975294af6aa7c5701cfc67072570338c83fe84ab040c5b3cbe"
+    },
+    {
+      "id": "gunner-long_gun-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "01d44ce88dd41c5888f91cf526a2c384c5c514ca2c2a602828853f181a58506a",
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "long_gun",
+      "model": {
+        "kind": "hero_gunner",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 9940,
+        "heroKind": "hero_gunner",
+        "hero": [
+          20,
+          4
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_gunner",
+      "matches": true,
+      "file": "gunner-long_gun-baseline-canvas-1440.png",
+      "frameSha256": "687e133bdec9fff7a80ecde7f2bfbfced1b7d56457e774511074148c211997be"
+    },
+    {
+      "id": "gunner-short_gun-baseline",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "captureKind": "visible viewport, standalone production viewer",
+      "sourceReplaySha256": "f2bca654db6d6ebc51d1facc821af445daef8778a91a89c29f7627b7c2dbbc05",
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "actualWeapon": "short_gun",
+      "model": {
+        "kind": "hero_gunner_male_short_gun",
+        "immutableInput": true
+      },
+      "actual": {
+        "tick": 6402,
+        "heroKind": "hero_gunner_male_short_gun",
+        "hero": [
+          26,
+          12
+        ],
+        "device": [
+          2160,
+          1350
+        ],
+        "fade": 0,
+        "glLost": true,
+        "heroRect": null
+      },
+      "expected": "hero_gunner_male_short_gun",
+      "matches": true,
+      "file": "gunner-short_gun-baseline-canvas-1440.png",
+      "frameSha256": "48bd6dd6a748c179bfd2c258c985a310524c12f2893ca46ee917c6645b42ee57"
+    }
+  ],
+  "errors": [],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "PASS"
+}

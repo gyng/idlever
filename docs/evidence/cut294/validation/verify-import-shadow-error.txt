@@ -1,0 +1,12 @@
+[('fighter-sword-baseline', 'sword', 'attack', 9238), ('fighter-crownsplitter-baseline', 'crownsplitter', 'attack', 6386), ('fighter-sword-authored', 'sword', 'cleave', 18138), ('fighter-crownsplitter-authored', 'crownsplitter', 'cleave', 16300), ('rogue-dagger-baseline', 'dagger', 'attack', 2813), ('rogue-crownsplitter-baseline', 'crownsplitter', 'attack', 5829), ('ranger-bow-baseline', 'bow', 'shoot', 5050), ('ranger-sword-baseline', 'sword', 'attack', 5088), ('caster-dagger-baseline', 'dagger', 'attack', 2813), ('caster-bow-baseline', 'bow', 'shoot', 5050), ('caster-dagger-authored', 'dagger', 'bolt', 2688), ('caster-bow-authored', 'bow', 'bolt', 2688), ('gunner-long_gun-baseline', 'long_gun', 'fire', 9938), ('gunner-short_gun-baseline', 'short_gun', 'fire', 6400)]
+Traceback (most recent call last):
+  File "/home/g/p/riddle/docs/evidence/cut294/verify.py", line 3, in <module>
+    import json,hashlib,subprocess,tarfile,tempfile
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/subprocess.py", line 119, in <module>
+    import selectors
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/selectors.py", line 290, in <module>
+    class SelectSelector(_BaseSelectorImpl):
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/selectors.py", line 317, in SelectSelector
+    _select = select.select
+              ^^^^^^^^^^^^^
+AttributeError: module 'select' has no attribute 'select'
