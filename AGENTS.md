@@ -220,6 +220,12 @@ New towns and unbuilt legacy plots require manual construction.
 ## Gotchas
 
 - `/home/g` is itself a git repo. Never stage from the home toplevel.
+- Baseline worktrees need separate `CARGO_TARGET_DIR` directories. Reusing this
+  checkout's target from another worktree can leave a stale core library that
+  Cargo considers fresh after source paths/timestamps change. Cut282 reproduced
+  this as missing Hurry APIs present in current source; an isolated build is the
+  reliable recovery. Do not treat a reused artifact's build timestamp as proof
+  of current-source identity.
 - Codex writes asynchronously; poll `art/generated/` mtimes to quiescence; run batches
   detached (`setsid nohup`).
 - `web/src/engine/pkg` must be a real directory: Vite glob imports skip a symlink and can

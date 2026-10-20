@@ -1,0 +1,28 @@
+{
+  "parent_diagnostic": "a5896564a78bd1feb9b0274d85c7081e9d141de4ff9cba7f1f493dff76f8e4d5",
+  "binary_sha256": "3b92d950c3a04555096a8294073b9cc12d94666f94cfc31e22b977b3f5d148cc",
+  "example_sha256": "161ee7810adb86951107070e206d3e96ced97e7cdf3fd362d1f83addf0c7912e",
+  "contract_sha256": "94e3b60bf5e7e1e568415236113b8ed634ef29ae0fc3bfe03702cd41f1ece192",
+  "inputs": {
+    "target/cut282/camps/AWAY-s1-d1-c0.json": "7bf1b65feeaf70af212d80b969a3b006b06cce965572e87cf76e1d79f374a039",
+    "target/cut282/camps/AWAY-s2-d1-c0.json": "e4a09cfa7e72cfac7dfc1be0037277461bbabbff4928066f198adda1823453bc"
+  },
+  "command": [
+    "target/cut282-native/fast/examples/worker_absence",
+    "target/cut282/worker-comparison.json",
+    "target/cut282/camps/AWAY-s1-d1-c0.json",
+    "target/cut282/camps/AWAY-s2-d1-c0.json"
+  ],
+  "hours": 24,
+  "variants": [
+    "unchanged",
+    "pause-apprentice",
+    "pause-drillmaster",
+    "pause-both",
+    "start1",
+    "start5",
+    "forge-all",
+    "unchanged-repeat"
+  ],
+  "policy": "single legal intervention per case, no extra camp taps, grants or seed changes"
+}

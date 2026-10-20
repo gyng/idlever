@@ -1,0 +1,15 @@
+error[E0425]: cannot find function `hurry_price` in module `idlever_core::persistent`
+  --> crates/idlever-core/examples/dayplayer_hurry/mod.rs:43:45
+   |
+43 |         let price=idlever_core::persistent::hurry_price(&p.g.lineage,idlever_core::persistent::away(&p.g));
+   |                                             ^^^^^^^^^^^ not found in `idlever_core::persistent`
+
+error[E0599]: no method named `hurry_clone` found for struct `Game` in the current scope
+  --> crates/idlever-core/examples/dayplayer_hurry/mod.rs:45:73
+   |
+45 |         let paid=price.filter(|price|purse>=*price).map_or(0,|price|p.g.hurry_clone(price).expect("live affordable hurry"));
+   |                                                                         ^^^^^^^^^^^ method not found in `Game`
+
+Some errors have detailed explanations: E0425, E0599.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `idlever-core` (example "dayplayer") due to 2 previous errors

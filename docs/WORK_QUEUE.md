@@ -1,5 +1,40 @@
 # Content and refinement queue — 2026-10-13
 
+## Active backlog resume — 2026-10-20
+
+Owner: continue working on the backlog. Latest completed checkpoint is Cut280
+statistical tuning, source418eda2f; the deployed game remains Cut279 source423fe45a.
+Older queue/status text below is historical where superseded by HANDOFF.md.
+
+1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/
+   independent-reference verdicts agree, but all reference median intervals are
+   zero. This does not show empirical95% accuracy or power to reject a material
+   regression; D33/means/tails/search-quality calibration remains open. See
+   [CUT281_STATISTICAL_CALIBRATION.md](CUT281_STATISTICAL_CALIBRATION.md).
+2. **Active: inherited balance failures / Cut282.** TUNED/PICKED D33 advantage1.10 versus1.15;
+   workers-away D18 48vs24h and fortnight mean best29.93vs30.14. These are
+   reproduced two-seed routine failures, not a fresh population estimate.
+   Diagnose causes, use suitable statistical claims for routine tuning, and
+   retain explicit catalog checks where the existing contract requires them.
+   Four-day worker reproduction and16 same-camp interventions are complete.
+   Starts and Apprentice policy have nonuniform effects; no default adopted.
+   A fixed guide-gap4/6/8 two-seed targeted row screen is running. See
+   [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
+3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
+   W2 effects are held, not unfinished authorized implementation. R3 still needs
+   six fresh paired scene measurements. R4's preserved builds authored no class
+   verbs; it needs current earned build comparisons, not an assumed dispatch fix.
+   The pets tolerance decision was already applied (dayplayer's2-point margin);
+   fresh exhaustive acceptance remains separate. Revalidate dated evidence
+   before using it to justify a change.
+4. **Independent fun evaluation**, remaining content/UI/art/audio refinement,
+   and explicitly requested exhaustive acceptance.
+
+**Held by owner:** Bank/Vat upgrade redesign and short-recovery proposal. Do not
+restore those branches as part of calibration or inherited-failure diagnosis.
+Statistical tooling is complete, not an outstanding implementation item.
+No automatic deployment is included in this backlog resume.
+
 ## Owner pivot — 2026-10-16 (UI handoff; mechanics + chores here)
 
 Owner: UI work moves to Codex/Claude from here; this agent's focus becomes

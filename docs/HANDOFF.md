@@ -1,3 +1,77 @@
+# Active backlog — Cut281 complete; Cut282 targeted screen running, 2026-10-20
+
+Owner: continue working on the backlog. The broad goal remains active.
+No game default, held branch, shipping WASM, push/release or deployment changed.
+Frozen gameplay source418eda2f; live dev game remains423fe45a.
+
+## Cut281 calibration complete
+
+Contract: [CUT281_STATISTICAL_CALIBRATION.md](CUT281_STATISTICAL_CALIBRATION.md).
+Frozen native SHA2563f742aa6… (the actual manifest identity; the earlier active
+note incorrectly repeated Cut280's1c16cb8e validation artifact).
+384 observations:128 distinct64-bit seeds ×3 profiles,32 pilot/96 independent
+reference, ordinary PICKED D18/D23 stopping atD23 or7 days.48 native calls,
+1488.67s with other host workloads. No censoring. All six first-conclusive pilot
+verdicts match the reference; three settle at16 seeds and three at32.
+Independent exact-rational verification reproduces all24 intervals; all384
+scalars match48 raw packet digests and frozen native/profile/analysis identities.
+
+**Limited sensitivity:** every reference median/interval is0h. Weaker scars
+still delay10/96 D23 seeds by8h. These median claims do not constrain the tail;
+6/6 correlated agreements are not an empirical95% accuracy estimate or evidence
+of power to reject a meaningful regression. No profile adopted. D33, means,
+tails, search quality and the inherited canonical failures remain open.
+
+Evidence: `docs/evidence/cut281/`, including `frozen-contract.md` (exact original
+preregistration), manifest, all scalar observations/report, native-integrity and
+independent verifier. Raw chunks/snapshot remain in `target/cut281/`.
+Collector exec3776/PID635180 and all children finished. The live cut now appends
+results, so frozen collector resume intentionally refuses that changed identity;
+revalidate with `node docs/evidence/cut281/verify.mjs`, not a new collection.
+
+## Cut282 diagnostics complete; targeted catalog exploration active
+
+Contract: [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
+Fresh isolated default-feature build avoids stale shared-target core artifacts;
+missing Hurry APIs in the first shared-target compile were present in source.
+Failure preserved and separate-target gotcha added to AGENTS.md. Isolated build
+and scoped worker_absence Clippy/rustfmt pass. No core game rule is changed.
+
+Ordinary AWAY/AWAY-nodes seeds1/2, four days:134.42s, D18 48vs24h and mean best
+24.12vs25.50 **FAIL**. Diagnostic process exit0 is execution success, not a row
+pass.16 exact exported camps reconcile funds/ledger and native/source identity.
+The two first-session parents differ before later hires;16 legal same-camp24h
+continuations isolate workers/start/forge order,64.17s. Both repeated controls
+match exact final saves/counts; independent prepared-state diffs permit only
+requested fields. Source loaders/parents and all ledgers are unchanged/valid.
+
+Results: starting shallower helps both saves in at least one variant; Forge All
+helps seed1 (+9 floors) but hurts seed2 (−1); pausing Drillmaster changes neither.
+Read `docs/evidence/cut282/findings-2026-10-20.md`; all losing cases retained.
+No general default follows from two saved worlds. Original14-day failures remain.
+Native diagnostic helper is `examples/worker_absence.rs`; no WASM rebuild is
+needed for example-only code. All diagnostic/Clippy processes finished.
+
+**Live job:** exec session1142, `target/cut282-guide-sweep.log`,
+`target/sweep/cut282-guide-gap/`. It built/snapshotted feature-enabled dayplayer
+fde424a5b59a; fixed profiles guide gap4(control),6,8, two existing regression
+seeds, rows `tuned-picked,automation-pays`,8 threads/2 candidates at once,
+`--no-fail-fast --fresh-jobs`. Poll this exact session before rerunning. This is
+explicit targeted-catalog exploration, not population acceptance or a whole gate.
+Control must reproduce inherited values before interpreting candidates; retain
+all results and freeze any winner before fresh held-out statistical confirmation
+and explicit catalog acceptance. Do not adopt a profile from this screen alone.
+
+Calibration and completed diagnostics are committed together with this handoff.
+No broad staging (many unrelated untracked files). Cut281 inputs stayed immutable
+through collection; its original frozen contract is archived beside the results.
+
+Queue reconciliation: Cut273 W1 workplaces/staff are already implemented; pets'
+2-point tolerance was already applied. Remaining audits are not new work or
+pending owner decisions. R3 needs fresh paired scenes; R4's old builds authored
+no class verbs. Held Bank/Vat W2 upgrades and short recovery stay held. Broad
+backlog, independent fun and exhaustive acceptance remain active/open.
+
 # Cut280 statistical tuning — complete 2026-10-20
 
 Owner resumed: “Resume and finish statistical tuning to improve iteration
