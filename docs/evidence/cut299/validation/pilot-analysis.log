@@ -1,0 +1,38 @@
+{
+  "scope": "Discovery on two reused regression seeds, isolated content runtime; no independent population or canonical16seed acceptance.",
+  "trajectories": [
+    {
+      "bot": "PICKED",
+      "seed": "1",
+      "before_d33_h": 40.0,
+      "after_d33_h": 40.0,
+      "whole_observation_equal_except_elapsed": true
+    },
+    {
+      "bot": "PICKED",
+      "seed": "2",
+      "before_d33_h": 48.0,
+      "after_d33_h": 48.0,
+      "whole_observation_equal_except_elapsed": true
+    },
+    {
+      "bot": "TUNED",
+      "seed": "1",
+      "before_d33_h": 40.0,
+      "after_d33_h": 40.0,
+      "whole_observation_equal_except_elapsed": true
+    },
+    {
+      "bot": "TUNED",
+      "seed": "2",
+      "before_d33_h": 40.0,
+      "after_d33_h": 32.0,
+      "whole_observation_equal_except_elapsed": false
+    }
+  ],
+  "before_median_paired_ratio": "11/10",
+  "after_median_paired_ratio": "5/4",
+  "picked_delayed": false,
+  "seed2_queen_pen_first_h": 24,
+  "default_adoption": false
+}

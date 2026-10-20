@@ -1,0 +1,18 @@
+--- a/crates/idlever-core/src/packages.rs
++++ b/crates/idlever-core/src/packages.rs
+@@ -570,6 +570,15 @@
+ /// A boss's counter targets its known distinguishing tag, leaving unrelated bosses to their drill.
+ /// Stored counter facts keep their original fingerprint; only generated/copy templates are scoped.
+ fn scope_drill_row(boss: &str, mut row: Row) -> Row {
++    // Cut299 experimental content: the Lich counter should not hunt spectral blades
++    // merely because a different summoner is visible. Preserve sustain and targeting.
++    if boss == "lich" && row.verb == Verb::arg("attack", "tag:summoned")
++        && row.conds.iter().all(|c| c.k == "hp>" || c.k == "foe_tag" && c.t.as_deref() == Some("summoned")) {
++        for cond in &mut row.conds {
++            if cond.k == "foe_tag" { cond.t = Some("undead".into()); }
++        }
++        return row;
++    }
+     if boss == "lurker_queen" {
+         // Only the generated silence template changes scope. Legacy saved drills used
+         // `blind`, which spent the Queen's scrolls on ordinary lurkers before D28.

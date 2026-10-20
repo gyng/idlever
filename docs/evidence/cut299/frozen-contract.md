@@ -1,0 +1,29 @@
+# Cut299 — measure the early Lich fallback's progression cost
+
+2026-10-21. Cut298's current ordinary seed2 histories first differ at16h in
+sets/pkg/honours (two authored Lich fallback rows). At24h TUNED isD23 versus
+PICKEDD28. That is a causal hypothesis, not sufficient proof from histories.
+
+Frozen diagnostic: use the exact current TUNED-s2-d1-c2 camp from Cut298's
+fresh archive (hash verified). Public set_rules only. Five equal28800s public
+sliced absences: unchanged, remove both exact Lich copies, remove only the
+summoned-target row, remove only the undead/boss-target row, unchanged repeat.
+No new parent, purchase, worker/package/start change, later check-in taps or
+state/RNG/floor grants. Validate all preparation shapes and preserve funds,
+clock, kit, facts and other rules. Preserve API side effects and ordinary finish-
+started-run tails. Repeated baseline must match whole saves/reports/receipts.
+
+Inspect actual per-floor rule fires/hero targets, Lich HP/minions/hero actions,
+all outcome/Gold ledgers and counter packing. Reconstructed diagnostic events
+must equal actual public replay events for every actual completed run. Determine
+whether an early copy helps at the Lich but applies harmfully elsewhere, rather
+than assume either an inert counter or a missing generic summoner response.
+The current Lich summon condition is global; its scope is a specific hypothesis.
+
+No default/bot/content/balance change is adopted from this saved-world diagnostic.
+Any implementation needs a source-backed amendment, numeric regression bars,
+meaningful mechanic tests and relevant current-runtime/WASM validation. No gate
+weakening or delaying PICKED to improve a ratio. Preserve all losing branches.
+Scoped warnings-denied producer Clippy/rustfmt, archive/source/input hashes and
+independent receipt verification. No deployment, recovery, Guide gap4 or held
+Bank/Vat W2 changes. Population/16seed/full/exhaustive/fun acceptance stays open.

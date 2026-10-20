@@ -1,13 +1,54 @@
-# Active backlog — Cut298 late Queen timing bound diagnosed, 2026-10-21
+# Active backlog — Cut299 early Lich scope candidate discovered, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest diagnosisCut298 finds a conditional late-Queen tuning ceiling on the
-current two-seed D33 regression pair; no candidate/default adopted.
+Latest Cut299 discovers a narrower early Lich counter candidate: isolated
+two-seed D33 ratio1.10→1.25, no comparator delay. Independent confirmation and
+implementation checks precede adoption; main game remains unchanged.
 Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut299 early Lich scope — causal saved-world evidence and isolated pilot
+
+Contract [CUT299_EARLY_LICH_COUNTER.md](CUT299_EARLY_LICH_COUNTER.md).
+Current earned seed2 TUNED16h parent, six public-rule-choice8h continuations,
+76actual runs, all native reconstructed events equal actual public replay;
+full repeated control byte-exact. Removal of summoned-target Lich copy (alone
+or both copies) advancesD23→D28; removing only boss-target copy staysD23.
+The summoned copy fires73public rule events on floors14–17, not only at Lich;
+target tallies include101spectral blades. Legal scope rewrite requires undead,
+keeping hp>45 and attack tag:summoned: D28,267skeleton target tallies retained,
+off-floor rule events73→20 and spectral targets101→33. Not exact-boss/kind
+filter; another visible undead can enable other summons. Rule/tally counts are
+not interchangeable with damaging attacks. Wealth/depth tradeoffs and original
+finish-started-run tails are preserved. All186raw JSONs and verifier retained.
+
+An isolated /tmp checkout of8750f913 changes ONLY generated Lich template scope
+in packages.rs. No main-worktree core/default/WASM change. Current ordinary
+PICKED/TUNED on reused regression seeds1/2 (3looks/day, D33-or14d): PICKED40/48h
+unchanged; TUNED40/32h versus40/40h. Median paired ratio11/10→5/4; three whole
+observations unchanged except elapsed_seconds. Seed2 writes Queen counter24h
+rather than32h. Four pilot trajectories/20camps preserved, with both source/
+runtime identities, patch/full candidate file and shipping control raw output.
+This is discovery/candidate selection, not independent confirmation, population
+or canonical16seed acceptance. No main-game adoption yet.
+
+Next: freeze protected paired confirmation on disjoint uniform full-u64 seeds.
+Both immutable executable digests must enter job identity; the current tuner
+has ONE runtime and cannot silently treat two code versions as equal profiles.
+Use existing bounds/exact-u64 transport, fixed looks/alpha/censoring and absolute
+PICKED D23/D33 + TUNED D33 non-regression beside pen ratio≥1.15. Then declared
+canonical checks, generated-scope/HP/persistence mechanic tests and current
+native/WASM validation before adoption. Do not reselect on confirmation data.
+No need for another blind guide-gap/late-Queen screen. Worker-away failure,
+R3/R4/independent fun and broad audits remain open.
+
+Scoped diagnostic Clippy/rustfmt/diff and independent archive verification pass.
+All owned jobs terminal. Evidence docs/evidence/cut299. Main WASM/default pin
+unchangedCut296 d5dd4c18…; live dev423fe45a, no deployment. Held Bank/Vat W2,
+recovery and Guide gap4 unchanged. Broad backlog goal remains active.
 
 ## Cut298 D33 diagnosis — useful Queen counter, late-edit ceiling; no adoption
 
