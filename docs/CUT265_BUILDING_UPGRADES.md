@@ -9,6 +9,10 @@ Current redesign evidence: [Cut306](CUT306_VAULT_VAT_REDESIGN.md) implements an
 isolated Bank yield/capacity and passive Vat recovery prototype. Its fixed paid
 utility checks pass; final pricing, saving priorities, earliest purchases,
 shared-resident API/UI and broader progression acceptance remain open.
+Cut307 now verifies compile-free profiles, earliest paid utility and a candidate
+town-first plan funded through actual owned Gold/Savings bydays4–5. The ordinary
+fortnight spending/progression rows and shared API/UI adoption remain open;
+see [Cut307](CUT307_COMPILE_FREE_UPGRADES.md).
 
 History: held for redesign2026-10-18. Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".

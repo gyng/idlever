@@ -1,4 +1,4 @@
-# Active backlog — Cut306 Bank/Vat utility prototype measured, 2026-10-21
+# Active backlog — Cut307 profiles and funded upgrade plan verified, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -7,8 +7,9 @@ authorized research/refinement/redesign of the vault/Vat as needed. Bank/vault/
 Vat upgrade redesign and recovery timing are ACTIVE, superseding all earlier
 hold instructions below. Preserve old branches/evidence; this does not approve
 their failed implementations or change numeric acceptance requirements.
-Cut305 controlled worker study and Cut306 isolated utility prototype are now
-complete at their bounded scopes; next pursue late pricing/saving policy,
+Cut305 controlled worker study, Cut306 isolated utility prototype and Cut307
+compile-free/earliest/funding studies are complete at their bounded scopes;
+next pursue an ordinary targeted fortnight of the candidate purchase policy,
 shared-resident API/UI integration and recovery alternatives with
 the worker/pen progression requirements. See WORK_QUEUE items3–4. Current game
 defaults remain unchanged until validated adoption; no automatic deployment.
@@ -24,6 +25,62 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut307 — immutable profiles and a paid town-first plan, no adoption
+
+Contract [CUT307_COMPILE_FREE_UPGRADES.md](CUT307_COMPILE_FREE_UPGRADES.md),
+evidence [cut307/README.md](evidence/cut307/README.md). Main shipping code/defaults
+unchanged. Isolated source `/tmp/idlever-cut307-core-vmp2_iz9`; runtimes
+`target/cut307/runtime-{profile,utility,saving}`, hashes and full source archive
+retained. Strict complete schema1 profiles configure separate prices/gates,
+Bank yield/capacity, Vat recovery/hurry once before game/forecast; no settings
+in saves, no reconfiguration or invalid partial publication. Six native tests,
+six invalid/two valid process checks, new Rust format and strict Clippy on
+library/all selected drivers pass. All source/profile/input identities frozen.
+
+SAME executable reads both42-camp scans and paid-first/next-tier quotes in5.42s,
+reference13500vsbudget43200next price while paid-first preparations byte-match.
+Reference one-context/four-role/all28original files match Cut306 EXACTLY.
+Budget's four fees total93200 (reference33800); baseline maximum saved surplus
+23914 cannot pay even one43200tier, even ignoring earlier buys. This static
+bound is not sequential affordability or candidate income acceptance.
+
+Native earliest selection from42current earned camps: Bank s1/s2clock141154/
+141010s, Gold6863/15821, Savings0, reserves2775/2700; Vat83554/83410s, Gold5609/
+6200, Savings0, reserves2175/2400. Four untouched contexts×unchanged/repeat/one
+matching buy:3612actual runs. Four narrow utility PASS: Bank extra-interest
+payback12/10payments, Vat all future recovery timers exactly ceil(80%base).
+Bank endpoint wallet+3890/−3946, available Legacy0/+1; Vat−1045/−396,+83/+28.
+Vat s1D33 is6230s LATER, s2is13170s EARLIER; Bank arrivals unchanged. No
+population or absolute-arrival acceptance; conditional RNG/tradeoffs preserved.
+
+Prespecified saving pilot uses EACH seed's earliest Bank camp and budget8/64
+units (3400/43200 per building). Public existing sink order`ration` keeps ration
+buys while saving; BankL3→VatL2→VatL3→BankL4 through owned Savings/Gold,3live-
+depth-unit reserve, original`both` restored after all four. Initial camp+21eight-
+hour returns, no future package picks/other new camp choices; not an ordinary
+new-town campaign. Two seeds×unchanged/plan/repeat,2333actual runs. Both paid
+93200total/86400from actual town day3onward, last buysday5/4. Whole repeats
+exact; no gifts or silent worker changes. Compared controls: +78/+151runs,
++170/+306available Legacy, wallet−2232/+5697, rations+32/+123,tithes−6/−9.
+All bestsD33, no King. Combined strategy does NOT isolate each second-tier value.
+
+Native jobs reference123.91s/earliest103.82s/saving165.87s overlapped.431rawfiles/
+1.708GBraw,16.9MiBcapture; full archive/source/input/selection/legal whole-payment/
+order/ledger/timer/repeat/reference/target audit passes. Separate hash-checked
+summary audit covers actual milestone/wallet/Legacy/King/profile tradeoffs.
+Full corpus audit is milestone verification, not an inner tuning loop. No
+candidate reruns/numeric bar changes. All owned jobs terminal; no shipping
+WASM/client/Session/full-gate/deployment claim. Both redesign/recovery items ACTIVE.
+
+Next concrete work: isolated ordinary new-town fortnight DISCOVERY pilot using
+this explicit saving/buying policy for PICKED/TUNED, same reused seeds1/2 first;
+actual canonical days3–14 gross/spend, absolute arrivals, pen≥1.15, worker/King
+bars and cash/Legacy tradeoffs. These paid saved-world results do NOT establish
+the≥10%fortnight median. If viable, freeze suitable independent confirmation
+before shared-resident core/API/UI adoption; retain no-level parity and all
+original gates. Pricing remains candidate. Do not meet the spend target by
+pointless buys/funding grants. Base shorter recovery remains coordinated work.
 
 ## Cut306 — isolated useful Bank/Vat benefits; pricing/integration still open
 

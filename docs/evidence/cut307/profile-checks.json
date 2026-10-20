@@ -1,0 +1,116 @@
+[
+  {
+    "case": "unknown",
+    "status": 1,
+    "stderr": "Error: \"unknown field `typo`, expected one of `schema`, `gate_depth`, `bank_price_units`, `vat_price_units`, `bank_nights`, `bank_bonus_permille`, `vat_recovery_off_pct`, `vat_hurry_off_pct` at line 1 column 222\"\n",
+    "no_output": true
+  },
+  {
+    "case": "schema",
+    "status": 1,
+    "stderr": "Error: \"unsupported upgrade profile schema\"\n",
+    "no_output": true
+  },
+  {
+    "case": "range",
+    "status": 1,
+    "stderr": "Error: \"upgrade profile range/order invalid\"\n",
+    "no_output": true
+  },
+  {
+    "case": "missing",
+    "status": 1,
+    "stderr": "Error: \"missing field `bank_price_units` at line 1 column 186\"\n",
+    "no_output": true
+  },
+  {
+    "case": "order",
+    "status": 1,
+    "stderr": "Error: \"upgrade profile range/order invalid\"\n",
+    "no_output": true
+  },
+  {
+    "case": "duplicate",
+    "status": 1,
+    "stderr": "Error: \"duplicate field `schema` at line 1 column 20\"\n",
+    "no_output": true
+  },
+  {
+    "case": "reference",
+    "status": 0,
+    "receipt": {
+      "failed_parse_untouched": true,
+      "profile": {
+        "bank_bonus_permille": [
+          20,
+          40
+        ],
+        "bank_nights": [
+          5,
+          8
+        ],
+        "bank_price_units": [
+          8,
+          20
+        ],
+        "gate_depth": [
+          13,
+          23
+        ],
+        "schema": 1,
+        "vat_hurry_off_pct": [
+          25,
+          50
+        ],
+        "vat_price_units": [
+          8,
+          20
+        ],
+        "vat_recovery_off_pct": [
+          20,
+          35
+        ]
+      },
+      "reconfiguration_rejected": true
+    }
+  },
+  {
+    "case": "budget",
+    "status": 0,
+    "receipt": {
+      "failed_parse_untouched": true,
+      "profile": {
+        "bank_bonus_permille": [
+          20,
+          40
+        ],
+        "bank_nights": [
+          5,
+          8
+        ],
+        "bank_price_units": [
+          8,
+          64
+        ],
+        "gate_depth": [
+          13,
+          23
+        ],
+        "schema": 1,
+        "vat_hurry_off_pct": [
+          25,
+          50
+        ],
+        "vat_price_units": [
+          8,
+          64
+        ],
+        "vat_recovery_off_pct": [
+          20,
+          35
+        ]
+      },
+      "reconfiguration_rejected": true
+    }
+  }
+]

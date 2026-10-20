@@ -1,0 +1,53 @@
+{
+  "scope": "isolated prototype; no shipping/client/Session/population/full-gate adoption",
+  "native_mechanics_tests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "invalid_profile_process_checks": 6,
+  "valid_immutable_profile_process_checks": 2,
+  "clippy_library_and_all_selected_examples_warnings_denied": 0,
+  "new_rust_format": 0,
+  "read_only_scan_and_quote": {
+    "status": 0,
+    "seconds": 5.418505141016794
+  },
+  "reference": {
+    "status": 0,
+    "seconds": 123.90867061799509,
+    "command": [
+      "target/cut307/runtime-utility",
+      "docs/evidence/cut307/reference.json",
+      "docs/evidence/cut307/reference-spec.json",
+      "target/cut307/reference",
+      "prototype"
+    ]
+  },
+  "earliest": {
+    "status": 0,
+    "seconds": 103.81636249899748,
+    "command": [
+      "target/cut307/runtime-utility",
+      "docs/evidence/cut307/reference.json",
+      "docs/evidence/cut307/earliest-spec.json",
+      "target/cut307/earliest",
+      "prototype"
+    ]
+  },
+  "saving": {
+    "status": 0,
+    "seconds": 165.8744895220152,
+    "command": [
+      "target/cut307/runtime-saving",
+      "docs/evidence/cut307/budget.json",
+      "docs/evidence/cut307/saving-spec.json",
+      "target/cut307/saving"
+    ]
+  },
+  "full_independent_archive_audit": 0,
+  "hash_checked_summary_audit": 0,
+  "candidate_gameplay_reruns": 0,
+  "numeric_bars_changed": false,
+  "shipping_changed": false,
+  "deployed": false
+}

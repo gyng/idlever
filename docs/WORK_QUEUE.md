@@ -93,6 +93,18 @@ both levels together and earliest purchases; then shared API/UI and independent
 progression evidence. Old33800total is mathematically insufficient for10%of the
 historical598545late income. See Cut306/HANDOFF, including preserved capture/
 fixture/check-scope corrections. Both redesign/recovery items remain active.
+Cut307 now adds strict immutable compile-free profiles, native whole-state
+reference parity, earliest paid utility and an explicit funding plan. Six tests,
+invalid-profile checks, strict Clippy/format and independent archive/mutation/
+ledger/timer/summary audits pass. Bank first eligible extra-interest payback12/10
+payments; Vat future timers exact, but D33arrival+6230/−13170s remains a tradeoff.
+Town-first keeps rations/pauses tithes via the existing public order, buys four
+actual upgrades byday5/4,93200total/86400late, restores original order. Two saved
+worlds gain78/151runs and170/306available Legacy; wallets−2232/+5697, bestsD33,
+no King. No ordinary fortnight/population/UI/Session/default adoption. Next:
+targeted ordinary PICKED/TUNED new-town fortnight discovery1/2 with actual
+canonical days3–14spend/gross and progression, then independent confirmation
+and shared API/UI. Profiles permit subsequent prices/effects without recompiling.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
@@ -151,8 +163,10 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
 3. **Bank/vault and Vat redesign — returned to active work by owner.** Research
    and refine the underlying benefits, progression and prices as needed. Preserve
    existing delivered Vat/workplace behavior while developing a replacement;
-   Cut306's isolated benefit prototype passes its bounded paid-utility screen;
-   pricing, saving choices, earliest purchases and shared API/UI remain open.
+   Cut306/307 isolated benefit/earliest-paid/funding prototypes pass their bounded
+   screens. A candidate saving policy and prices are now fundable in two actual
+   saved worlds; ordinary fortnight pricing/progression and shared API/UI remain
+   open. No population/default adoption.
    The eight failed price screens and Bank's131/3400 actual30-night payback are
    historical diagnostics to address, not acceptance. Revalidate actual utility,
    earned affordability and the original days3–14 spending requirement using
