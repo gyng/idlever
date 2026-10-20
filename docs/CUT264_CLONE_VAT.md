@@ -1,6 +1,11 @@
 # Cut264 — Clone vat: short early clones, gold hurry, vat lighting and indicators
 
-Status: PARTIAL DELIVERY via [Cut279](CUT279_VAT_MILESTONE.md), 2026-10-19. Vat UI/hurry retained; 15-second curve HELD after failed progression gates. Established `[600, 14, 28, 1]` curve restored for the owner-requested deploy-and-pause milestone. Original proposal/results below are historical. Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
+Status update2026-10-21: recovery timing and vault/Vat redesign returned to the
+active queue by the owner, with research/refinement/redesign authorized. The
+failed15-second candidate is evidence, not an adopted replacement. See current
+[WORK_QUEUE.md](WORK_QUEUE.md) items3–4.
+
+Delivery history: PARTIAL DELIVERY via [Cut279](CUT279_VAT_MILESTONE.md), 2026-10-19. Vat UI/hurry retained; 15-second curve was held after failed progression gates. Established `[600, 14, 28, 1]` curve restored for the owner-requested deploy-and-pause milestone. Original proposal/results below are historical. Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
 (`remaining_min × unit(best) × 0.25`). Q3 (callout once) takes the default. Cut260 is integrated.
 
 ## Owner requests (2026-10-18, verbatim)

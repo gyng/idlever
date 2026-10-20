@@ -4,8 +4,8 @@
 
 Owner update, 2026-10-21: bring both previously held items back into the work
 queue. Bank/vault and Vat may be researched, refined and redesigned as needed;
-this is broader than repricing the failed W2 implementation. After the current
-Cut305 fixed encounter study, work on the upgrade redesign and recovery timing
+this is broader than repricing the failed W2 implementation. Cut305 fixed
+encounter study is complete; next work on the upgrade redesign and recovery timing
 alongside the inherited worker/pen balance requirements. Preserve failed trials
 and unchanged acceptance bars; returning to scope does not adopt either branch.
 
@@ -70,6 +70,15 @@ versus miss. No population upgrade-harm or policy conclusion. Next: small
 explicit controlled future-RNG replay of those actual encounter contexts, not
 another Guide/price grid or Lich confirmation.645raw JSONs/independent verifier,
 ledgers/repeats/old scalar outcomes pass. Broader acceptance remains open.
+Cut305 fixed conditional RNG study completes256controlled expeditions/64paired
+states per context, four exact original controls and four exact repeats, no
+censoring. Conditional median depth differences0[0,0]and0[0,1] establish
+non-regression in these two fixed encounter contexts, not positive median gain
+or town-population worker benefit. Independent exact-rational/whole-preparation/
+receipt verification passes.10.25s native execution; no new default adopted.
+Next: newly authorized Bank/vault/Vat benefit/payback/affordability redesign,
+coordinated with recovery and inherited worker/pen requirements. Full details in
+Cut305/HANDOFF; all original outcomes preserved and no sample extension.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

@@ -1,6 +1,11 @@
 # Cut265 — Building upgrades
 
-Status: HELD FOR REDESIGN by owner decision (2026-10-18). Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
+Status: ACTIVE REDESIGN by owner decision2026-10-21. Owner returned held items
+to the queue and authorized research/refinement/redesign of vault/Vat as needed.
+See current [WORK_QUEUE.md](WORK_QUEUE.md) item3; do not restore the failed
+candidate unchanged. The proposal and results below remain historical inputs.
+
+History: held for redesign2026-10-18. Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".
 
 ## 1. Today

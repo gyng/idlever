@@ -1,4 +1,4 @@
-# Active backlog — Cut304 worker/exit diagnosis verified, 2026-10-21
+# Active backlog — Cut305 conditional worker study verified, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -7,7 +7,7 @@ authorized research/refinement/redesign of the vault/Vat as needed. Bank/vault/
 Vat upgrade redesign and recovery timing are ACTIVE, superseding all earlier
 hold instructions below. Preserve old branches/evidence; this does not approve
 their failed implementations or change numeric acceptance requirements.
-Finish the already frozen Cut305 controlled worker study, then pursue useful
+Cut305 controlled worker study is now complete; next pursue useful
 upgrade effects/payback/earned affordability and recovery alternatives with
 the worker/pen progression requirements. See WORK_QUEUE items3–4. Current game
 defaults remain unchanged until validated adoption; no automatic deployment.
@@ -22,6 +22,38 @@ following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and Bank/Vat W2 defaults stay as
 before while their redesign returns to scope. Cut304 checkpoint2a294524 pushed;
 no new release/deployment. Live dev game is still423fe45a.
+
+## Cut305 — fixed conditional worker RNG study complete; no adoption
+
+Contract [CUT305_WORKER_CONDITIONAL_RNG.md](CUT305_WORKER_CONDITIONAL_RNG.md),
+evidence [cut305/README.md](evidence/cut305/README.md). Two actual Cut304 first-
+divergence encounter contexts,64fresh frozen internal RNG states shared across
+both roles/contexts:256controlled expeditions. Four ORIGINAL controls assert
+exact full public events/hash/terminal Run before any new outcome; four full
+first-state repeats exact. Zero censoring. Whole preparations change only RNG
+and declared event-buffer reset; all original inputs preserved. This is explicitly
+controlled future RNG, not actual earned runs or town-population acceptance.
+
+Paired(worker-on minus paused) MAX_DEPTH medians0[0,0] and0[0,1], both conditional
+non-regression PASS, neither positive improvement established. Two-sided rank23
+of64 bounds, familyalpha0.05 minus2^-40 coupling reserve split2claims. Descriptive
+win/tie/loss15/38/11 and25/25/14; mean differences+0.015625/+0.484375. Deaths
+13vs11/16vs22 and all exit/carry/turn tradeoffs retained, no separate inference.
+Results do not justify disabling upgrades or establish fortnight worker benefit.
+
+264total native executions10.25s after4m13s build.538original JSON receipts,
+71.1MBraw/4.6MiBcompressed. Independent receipt/preparation/repeat/source and
+exact-rational rank/interval/summary verification pass. Scoped rustfmt/build/
+Clippy pass; fast WASM rebuilt unchangedd5dd4c18/7111856bytes, repin check passes.
+No new settlement/broad/full gate or deployment claim. All owned jobs terminal;
+no failed native run or sample extension. Frozen contract still mentions held
+items historically; latest owner direction above supersedes their hold, without
+changing this study's sample/spec. Original source/analyzer/spec identities and
+runtime preserved before outcomes. Next: review Bank/vault/Vat actual utility
+and redesign options, then recovery timing with inherited worker/pen constraints.
+Verifier weapon-item/schema correction retained with initial error/source:
+compare weapon.enchant2vs1, all other item/Run fields equal. No native rerun or
+sample/result change; accepted independent check must pass before checkpoint.
 
 ## Cut304 current worker/exit diagnosis — regression reproduced; no adoption
 
