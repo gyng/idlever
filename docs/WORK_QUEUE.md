@@ -150,6 +150,17 @@ in every job identity, absolute-arrival/PICKED parity safeguards, exact-u64
 transport, declared sample/alpha/rank bounds and no extension. Cut300 held-out
 seeds are unavailable as new independent evidence. Worker/recovery/shared
 upgrade API/UI remain active; no population conclusion from this pilot.
+Cut312 protected confirmation is RUNNING: exact Cut311 policy,32fresh uniform-u64
+pairs, one fixed look, five family-protected claims plus PICKED/early TUNED/
+conservation/observed-King hard checks. Mode is part of every job identity.
+Live tool handle18166 must be polled before any resume; use HANDOFF instructions.
+Only completion counts are allowed until all32pairs finish; no current verdict.
+No extension/resampling/adoption/deploy. Both study code and source/runtime are
+immutable; synthetic analyzer/collector/resume/rational checks pass.
+Cut313 fixes the reproduced optional-cap metadata regression in the general
+tuner: omitted cap may match ONLY exact numeric12000, explicit/other values stay
+strict. Focused2/full46synthetic checks, format/lint pass. No game/default/cache
+identity/inference change, and all Cut312 frozen hashes remain exact.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

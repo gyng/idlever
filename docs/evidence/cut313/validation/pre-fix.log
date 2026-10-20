@@ -1,0 +1,33 @@
+✖ legacy recovery cap metadata accepts only the materialized historical default (271.184568ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 482.572125
+
+✖ failing tests:
+
+test at tools/stat-tune.test.mjs:109:1
+✖ legacy recovery cap metadata accepts only the materialized historical default (271.184568ms)
+  AssertionError [ERR_ASSERTION]: stat-tune: discovery BASELINE: 4 new paired seeds
+  stat-tune: native balance or milestone identity mismatch
+  
+  
+  2 !== 0
+  
+      at status (file:///home/g/p/riddle/tools/stat-tune.test.mjs:92:10)
+      at TestContext.<anonymous> (file:///home/g/p/riddle/tools/stat-tune.test.mjs:112:3)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

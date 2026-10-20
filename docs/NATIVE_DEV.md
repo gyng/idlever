@@ -141,3 +141,8 @@ The shipping template remains `[600,14,28,1]` with full12000. Shorter curves
 are diagnostic candidates, not adopted defaults. A native dev-balance process
 loads its profile once before game construction; change profiles by restarting
 the process, with no Rust rebuild.
+
+The statistical tuner also accepts otherwise-complete older profiles that omit
+`recovery_full_ticks` when Rust materializes its numeric12000 default. Explicit
+values and every other profile field still must match exactly; raw profiles and
+job identities are preserved. See `docs/CUT313_LEGACY_CAP_METADATA.md`.

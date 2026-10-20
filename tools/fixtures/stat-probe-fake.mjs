@@ -78,6 +78,22 @@ const result = {
   records,
 };
 switch (process.env.STAT_PROBE_FAULT) {
+  case "recovery-default":
+    result.balance = { ...profile, recovery_full_ticks: profile.recovery_full_ticks ?? 12000 };
+    break;
+  case "recovery-wrong-default":
+    result.balance = { ...profile, recovery_full_ticks: 3000 };
+    break;
+  case "recovery-string-default":
+    result.balance = { ...profile, recovery_full_ticks: "12000" };
+    break;
+  case "recovery-omitted":
+    result.balance = { ...profile };
+    delete result.balance.recovery_full_ticks;
+    break;
+  case "recovery-default-wrong-profile":
+    result.balance = { ...profile, recovery_full_ticks: 12000, x: x + 100 };
+    break;
   case "missing":
     records.pop();
     break;

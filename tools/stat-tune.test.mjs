@@ -106,6 +106,38 @@ function artifacts(c) {
   };
 }
 
+test("legacy recovery cap metadata accepts only the materialized historical default", (t) => {
+  const c = setup(t);
+  const r = run(c, { STAT_PROBE_FAULT: "recovery-default" });
+  status(r, 0);
+  assert.equal(artifacts(c).report.status, "STATISTICALLY_ACCEPTED");
+  assert(calls(c).length > 0);
+});
+
+test("explicit recovery cap metadata stays exact and incompatible omissions are refused", (t) => {
+  const explicit = setup(t);
+  writeFileSync(
+    explicit.base,
+    JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: 3000 }),
+  );
+  status(run(explicit, { STAT_PROBE_FAULT: "recovery-default" }), 0);
+  for (const fault of [
+    "recovery-wrong-default",
+    "recovery-string-default",
+    "recovery-default-wrong-profile",
+    "recovery-omitted",
+    "explicit-null",
+  ]) {
+    const c = setup(t);
+    if (fault === "recovery-omitted")
+      writeFileSync(c.base, JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: 12000 }));
+    if (fault === "explicit-null")
+      writeFileSync(c.base, JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: null }));
+    status(run(c, { STAT_PROBE_FAULT: fault === "explicit-null" ? "recovery-default" : fault }), 2);
+    assert(calls(c).length > 0);
+  }
+});
+
 test("prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls", (t) => {
   const c = setup(t);
   status(run(c), 0);

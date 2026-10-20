@@ -1,0 +1,91 @@
+diff --git a/tools/fixtures/stat-probe-fake.mjs b/tools/fixtures/stat-probe-fake.mjs
+index 20e3c0ef..aec9a01e 100755
+--- a/tools/fixtures/stat-probe-fake.mjs
++++ b/tools/fixtures/stat-probe-fake.mjs
+@@ -78,6 +78,22 @@ const result = {
+   records,
+ };
+ switch (process.env.STAT_PROBE_FAULT) {
++  case "recovery-default":
++    result.balance = { ...profile, recovery_full_ticks: profile.recovery_full_ticks ?? 12000 };
++    break;
++  case "recovery-wrong-default":
++    result.balance = { ...profile, recovery_full_ticks: 3000 };
++    break;
++  case "recovery-string-default":
++    result.balance = { ...profile, recovery_full_ticks: "12000" };
++    break;
++  case "recovery-omitted":
++    result.balance = { ...profile };
++    delete result.balance.recovery_full_ticks;
++    break;
++  case "recovery-default-wrong-profile":
++    result.balance = { ...profile, recovery_full_ticks: 12000, x: x + 100 };
++    break;
+   case "missing":
+     records.pop();
+     break;
+diff --git a/tools/stat-tune.mjs b/tools/stat-tune.mjs
+index 992d2dac..22441de1 100644
+--- a/tools/stat-tune.mjs
++++ b/tools/stat-tune.mjs
+@@ -373,8 +373,15 @@ function validatePacket(packet, seeds, profile, probe) {
+       (request.until_depth ?? null) === (probe.untilDepth ?? null),
+     "native request/horizon identity mismatch",
+   );
++  // Cut309 profiles may omit this optional field; Rust then emits its historical default.
++  // Every explicit value and every other field still has to match exactly.
++  const expectedProfile =
++    Object.hasOwn(packet.balance ?? {}, "recovery_full_ticks") &&
++    !Object.hasOwn(profile, "recovery_full_ticks")
++      ? { ...profile, recovery_full_ticks: 12000 }
++      : profile;
+   requireThat(
+-    same(packet.balance, profile) && same(packet.milestones, MILESTONES),
++    same(packet.balance, expectedProfile) && same(packet.milestones, MILESTONES),
+     "native balance or milestone identity mismatch",
+   );
+   requireThat(
+diff --git a/tools/stat-tune.test.mjs b/tools/stat-tune.test.mjs
+index 99e62a06..bee2a2b1 100644
+--- a/tools/stat-tune.test.mjs
++++ b/tools/stat-tune.test.mjs
+@@ -106,6 +106,38 @@ function artifacts(c) {
+   };
+ }
+ 
++test("legacy recovery cap metadata accepts only the materialized historical default", (t) => {
++  const c = setup(t);
++  const r = run(c, { STAT_PROBE_FAULT: "recovery-default" });
++  status(r, 0);
++  assert.equal(artifacts(c).report.status, "STATISTICALLY_ACCEPTED");
++  assert(calls(c).length > 0);
++});
++
++test("explicit recovery cap metadata stays exact and incompatible omissions are refused", (t) => {
++  const explicit = setup(t);
++  writeFileSync(
++    explicit.base,
++    JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: 3000 }),
++  );
++  status(run(explicit, { STAT_PROBE_FAULT: "recovery-default" }), 0);
++  for (const fault of [
++    "recovery-wrong-default",
++    "recovery-string-default",
++    "recovery-default-wrong-profile",
++    "recovery-omitted",
++    "explicit-null",
++  ]) {
++    const c = setup(t);
++    if (fault === "recovery-omitted")
++      writeFileSync(c.base, JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: 12000 }));
++    if (fault === "explicit-null")
++      writeFileSync(c.base, JSON.stringify({ x: 0, mode: "constant", recovery_full_ticks: null }));
++    status(run(c, { STAT_PROBE_FAULT: fault === "explicit-null" ? "recovery-default" : fault }), 2);
++    assert(calls(c).length > 0);
++  }
++});
++
+ test("prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls", (t) => {
+   const c = setup(t);
+   status(run(c), 0);

@@ -1,4 +1,4 @@
-# Active backlog — Cut311 TUNED boss-only discovery passes, 2026-10-21
+# Active backlog — Cut312 confirmation RUNNING; Cut313 compatibility repaired, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -25,6 +25,62 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut312 — protected independent confirmation RUNNING; poll before work
+
+Contract [CUT312_BOSS_ONLY_CONFIRMATION.md](CUT312_BOSS_ONLY_CONFIRMATION.md),
+evidence [cut312/README.md](evidence/cut312/README.md). Native collector is a
+LIVE owned job at this checkpoint: tool exec session **18166**, last verified by
+poll this turn; last observed operational count28/64 trajectories in EACH mode.
+This line is a locator, not future proof of liveness. Poll that exact handle
+first. Do NOT relaunch because a wait expires or a state file says collecting.
+If the handle is missing, audit actual process/OS-lock/receipts before resume.
+Unreceipted packets are fail-closed, never blindly overwritten/replayed.
+
+Current command: python3 docs/evidence/cut312/collect.py target/cut312/study
+ docs/evidence/cut312/spec.json. Collector log: cut312/validation/collector.log;
+only completion counts may be read until all32pairs finish. No outcome look has
+been taken by the agent. Collector automatically performs the ONE planned32pair
+look only after both64-trajectory packets complete. When terminal, inspect its
+actual exit/report; independently run python3 docs/evidence/cut312/verify.py
+ target/cut312/study, then preserve/archive every original packet/receipt/log.
+Do not change frozen code/spec/source/runtime or extend/resample this study.
+
+Fresh crypto-u64 IDs exclude0..10000 and Cut300's32schedule (only schedule read).
+Same Cut311 executable target/cut312/runtime, immutable modesoriginal and
+lich-boss-only; mode is in every job key/receipt/packet. Source240files checked
+unchanged.8threads/mode,16total. Five capped median claims: PICKEDD23/D33,
+TUNEDD23/D33 non-regression and candidate pen≥1.15. Familyalpha0.05−2^-38,
+one look32, rank9bounds9/24. Exact budget/rank frozen before outcomes. Censoring
+prevents adoption; PICKED whole original-record parity, TUNEDD13/D18 equality,
+conservation and observed-prefix King are hard safeguards. No current result.
+Six synthetic analyzer checks and collector/zero-work-resume/mode-corruption/
+flag-clearing/exact-rational verification tests pass. Copies of math/JSON
+modules are frozen locally; unrelated Cut313 repair does not change this study.
+
+Positive confirmation only permits original canonical16seed/relevant regression
+validation, not automatic policy adoption or deployment. Rejected/inconclusive
+means no extension/default change; choose a different hypothesis. Cut300 stays
+INCONCLUSIVE and is not pooled/reused as new confirmation. Broad goal ACTIVE.
+
+## Cut313 — legacy optional recovery-cap metadata compatibility repaired
+
+Contract [CUT313_LEGACY_CAP_METADATA.md](CUT313_LEGACY_CAP_METADATA.md), evidence
+[cut313/README.md](evidence/cut313/README.md). Actual pre-fix synthetic regression
+reproduces identity mismatch: old otherwise-complete profile omits the optional
+cap, Rust emits numeric12000, strict raw-object comparison rejected it. Validator
+now adds historical12000 only to the EXPECTED comparison view when the request
+omits cap but producer emits it. Raw profiles/packets/job identities, explicit
+values and every other field stay exact; unknown defaults are not normalized.
+Wrong3000/string12000/explicitnull/omitted explicit cap/other field changes
+refuse. Old peer/profile both omitting cap keep their original strict path.
+
+Focused2/2 and full synthetic tuner46/46 pass; format and warnings-denied lint
+pass. Full tests75.95s under concurrent native work, not a speed benchmark.
+Original failure/accepted logs and before/accepted source archive/patch retained.
+No game campaigns, sampling/alpha/claim/cache-identity/schema/WASM/client/default
+or deployment change. All Cut312 frozen-file hashes checked unchanged after the
+repair; its collection remains sealed and active. No additional native job.
 
 ## Cut311 — TUNED-only boss fallback passes two-seed discovery; no adoption
 

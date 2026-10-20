@@ -373,8 +373,15 @@ function validatePacket(packet, seeds, profile, probe) {
       (request.until_depth ?? null) === (probe.untilDepth ?? null),
     "native request/horizon identity mismatch",
   );
+  // Cut309 profiles may omit this optional field; Rust then emits its historical default.
+  // Every explicit value and every other field still has to match exactly.
+  const expectedProfile =
+    Object.hasOwn(packet.balance ?? {}, "recovery_full_ticks") &&
+    !Object.hasOwn(profile, "recovery_full_ticks")
+      ? { ...profile, recovery_full_ticks: 12000 }
+      : profile;
   requireThat(
-    same(packet.balance, profile) && same(packet.milestones, MILESTONES),
+    same(packet.balance, expectedProfile) && same(packet.milestones, MILESTONES),
     "native balance or milestone identity mismatch",
   );
   requireThat(
