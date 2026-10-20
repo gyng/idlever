@@ -45,6 +45,7 @@ struct Observation {
 }
 #[derive(Serialize)]
 struct Export {
+    pen_policy: &'static str,
     schema: u32,
     kind: &'static str,
     milestones: [u32; 7],
@@ -337,6 +338,7 @@ pub(super) fn run() -> Result<(), String> {
     idlever_core::forecast::set_parallel_sims(false);
     let records = observations(&options.request, options.threads);
     let export = Export {
+        pen_policy: super::pen_policy_name(),
         schema: 1,
         kind: "dayplayer-stat-probe",
         milestones: MILESTONES,

@@ -138,6 +138,18 @@ Next inspect the existing savedD28 summoned-row removal and test an explicit
 TUNED-only boss-target fallback policy under a new fixed ordinary contract,
 leaving PICKED/automatic drills unchanged. Full pen/worker bars remain. See
 Cut310/HANDOFF; shared upgrade API/UI and recovery coordination remain open.
+Cut311 TUNED-only boss-target fallback discovery passes on fixed reused1/2:
+PICKED40/48h unchanged, TUNED40/40→40/32h, paired median1.25≥1.15. All earlier
+arrivals unchanged; three whole original records unchanged except elapsed time.
+All four default records exact to Cut309. Two policy checks/strict Clippy,
+invalid-mode process and independent source/rational/parity summary audit pass.
+Only diagnostic examples expose the immutable mode; canonical bot/library/
+automatic drills/templates/balance/WASM unchanged. No default adoption/deploy.
+Next freeze NEW protected paired confirmation for this exact policy, with mode
+in every job identity, absolute-arrival/PICKED parity safeguards, exact-u64
+transport, declared sample/alpha/rank bounds and no extension. Cut300 held-out
+seeds are unavailable as new independent evidence. Worker/recovery/shared
+upgrade API/UI remain active; no population conclusion from this pilot.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

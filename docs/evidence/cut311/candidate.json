@@ -1,0 +1,3247 @@
+{
+  "pen_policy": "lich-boss-only",
+  "schema": 1,
+  "kind": "dayplayer-stat-probe",
+  "milestones": [
+    8,
+    13,
+    18,
+    23,
+    28,
+    29,
+    33
+  ],
+  "request": {
+    "seeds": [
+      "1",
+      "2"
+    ],
+    "bots": [
+      "PICKED",
+      "TUNED"
+    ],
+    "days": 14,
+    "until_depth": 33,
+    "checkins_per_day": 3
+  },
+  "balance": {
+    "level_runs": [
+      10,
+      40,
+      120,
+      200
+    ],
+    "scar_pct": 5,
+    "scar_cap": 30,
+    "drill_meeting": 2,
+    "drill_days": 3,
+    "deep_drill_days": 6,
+    "steady_heal": [
+      30,
+      35
+    ],
+    "hunter_heal": [
+      30,
+      35
+    ],
+    "guarded_heal": [
+      40,
+      45
+    ],
+    "bold_heal": 25,
+    "steady_home": 25,
+    "steady_dry": [
+      40,
+      35
+    ],
+    "steady_rest": [
+      40,
+      60
+    ],
+    "guarded_home": [
+      30,
+      25
+    ],
+    "guarded_dry": [
+      45,
+      44
+    ],
+    "recovery": [
+      600,
+      14,
+      28,
+      1
+    ],
+    "recovery_full_ticks": 12000,
+    "workers": {
+      "quartermaster": {
+        "need": 0,
+        "price_tenths": 0,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "porter": {
+        "need": 3,
+        "price_tenths": 0,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "scout": {
+        "need": 0,
+        "price_tenths": 1,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "apprentice": {
+        "need": 3,
+        "price_tenths": 30,
+        "fallback_h": 30,
+        "goal": "feat"
+      },
+      "clerk": {
+        "need": 3,
+        "price_tenths": 40,
+        "fallback_h": 36,
+        "goal": "feat"
+      },
+      "drillmaster": {
+        "need": 2,
+        "price_tenths": 4,
+        "fallback_h": 36,
+        "goal": "feat"
+      },
+      "kennel_hand": {
+        "need": 2,
+        "price_tenths": 30,
+        "fallback_h": 40,
+        "goal": "feat"
+      },
+      "herald": {
+        "need": 2,
+        "price_tenths": 20,
+        "fallback_h": 40,
+        "goal": "feat"
+      },
+      "guide": {
+        "need": 3,
+        "price_tenths": 40,
+        "fallback_h": 44,
+        "goal": "feat"
+      },
+      "kennel_keeper": {
+        "need": 2,
+        "price_tenths": 30,
+        "fallback_h": 48,
+        "goal": "feat"
+      }
+    },
+    "tree": {
+      "reserve_units": 3,
+      "guide_gap": 4,
+      "rank_days": [
+        2,
+        4,
+        8
+      ],
+      "rank_price_units": 1,
+      "porter_bonus_pct": 2,
+      "apprentice_off_pct": 5,
+      "clerk_bonus_permille": 25,
+      "scout_rest_off_pct": 5,
+      "safer_start_pct": 5,
+      "drill_rank_off": 1,
+      "wall_deaths": 2,
+      "wall_near": 2,
+      "wall_retry": 3,
+      "stone_memory": 12
+    },
+    "rest": {
+      "min_ticks": 12000,
+      "cap_ticks": 18000,
+      "turns_div": 2
+    },
+    "gold": {
+      "exit_pct": [
+        100,
+        60,
+        0
+      ],
+      "divisor": 4,
+      "coin_piles": 6,
+      "coin_draw": [
+        3,
+        7
+      ],
+      "nest": [
+        12,
+        4,
+        12
+      ],
+      "picked_cap": 7,
+      "freshness": [
+        1000,
+        800,
+        640,
+        512,
+        410,
+        328,
+        262,
+        250
+      ],
+      "picked_shown": 3,
+      "wake_pay": 40,
+      "bounty_below": 2,
+      "bounty_gold_mult": 2,
+      "bank_pct": 2,
+      "bank_nights": 3,
+      "bank_floor": 100
+    },
+    "kit": {
+      "unit_base": 100,
+      "unit_per_depth": 25,
+      "weapon_mult": [
+        1,
+        4,
+        9,
+        16,
+        25,
+        36
+      ],
+      "armour_mult": [
+        1,
+        4,
+        8,
+        14,
+        22,
+        32,
+        45
+      ],
+      "pack_mult": [
+        2,
+        5,
+        10,
+        16
+      ],
+      "row_mult": [
+        2,
+        5,
+        10,
+        16,
+        22,
+        30
+      ],
+      "pace_tenths": [
+        8,
+        7,
+        6,
+        5,
+        5,
+        4,
+        4
+      ],
+      "supply_cap_max": 8,
+      "commission_units": 10,
+      "commission_floor": 5,
+      "supply_price_cap": 26,
+      "forge_ladder": [
+        5,
+        15,
+        40
+      ]
+    },
+    "unlocks": {
+      "forge_delves": 4,
+      "temperament": [
+        6,
+        5
+      ],
+      "inherited": [
+        8,
+        8
+      ],
+      "family": [
+        12,
+        13
+      ],
+      "hours": {
+        "party": 1,
+        "kennel": 1,
+        "stances": 1,
+        "tactics": 4,
+        "bank": 8,
+        "quests": 12,
+        "class": 16,
+        "start": 20,
+        "tactic2": 56,
+        "automations": 96,
+        "pen": 0
+      },
+      "pen_fallback_h": 8
+    },
+    "stance": {
+      "hunter_home": [
+        20,
+        15
+      ],
+      "hunter_dry": 35,
+      "hunter_rest": 50,
+      "steady_rest_cap": 50,
+      "steady_rest_cap_below": 18,
+      "bold_bank": [
+        25,
+        20
+      ],
+      "bold_rest": 50,
+      "level_marks": 1
+    },
+    "marks": {
+      "rank_base": 100,
+      "trophy": 2,
+      "xp_early": 60,
+      "xp_late": 100,
+      "xp_early_to": 3,
+      "gold_per_mark": 150,
+      "legacy_root": [
+        12,
+        36,
+        108,
+        300,
+        800,
+        2000,
+        5000,
+        12000
+      ],
+      "legacy_effect": [
+        700,
+        1800
+      ],
+      "legacy_start": 20
+    },
+    "monsters": {
+      "depth_cap": 16,
+      "hp_div": 2,
+      "atk_div": 6
+    },
+    "vat": {
+      "hurry_permille": 250,
+      "hurry_min_s": 30,
+      "hurry_round": 5,
+      "hurry_floor": 10
+    }
+  },
+  "records": [
+    {
+      "seed": "1",
+      "bot": "PICKED",
+      "stop_reason": "depth",
+      "completed_days": 1,
+      "campaign_complete": false,
+      "effective_checkins_per_day": 3,
+      "observed_hours": 40.0,
+      "best_depth": 33,
+      "depth_reached_hours": 40.0,
+      "elapsed_seconds": 54.161468798,
+      "seed_out": {
+        "seed": 1,
+        "hours": [
+          8.0,
+          8.0,
+          16.0,
+          16.0,
+          32.0,
+          40.0,
+          40.0
+        ],
+        "best_day": [
+          25
+        ],
+        "gold_day": [
+          5609
+        ],
+        "stall": 0,
+        "king_day": null,
+        "king_left": [
+          99,
+          1
+        ],
+        "stance_level_day": [
+          5
+        ],
+        "checkins": 5,
+        "grew": 5,
+        "picks": 5,
+        "stage_days": 1,
+        "sends": 88,
+        "stalled": 2,
+        "deaths": 28,
+        "quests": 1,
+        "depth_area": 25,
+        "day1_systems": 24,
+        "max_systems": 3,
+        "max_beats": 4,
+        "new_days": 1,
+        "new_gap": 0,
+        "rules": "",
+        "porter_min": 8.234583333333333,
+        "scout_min": 2.3762499999999998,
+        "scout_sends": 1,
+        "node_open_h": [
+          [
+            "porter",
+            0.0
+          ],
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.0
+          ],
+          [
+            "apprentice",
+            0.26008333333333333
+          ],
+          [
+            "kennel_hand",
+            0.3382986111111111
+          ],
+          [
+            "kennel_keeper",
+            0.3382986111111111
+          ],
+          [
+            "clerk",
+            16.0
+          ],
+          [
+            "herald",
+            16.0
+          ],
+          [
+            "guide",
+            32.0
+          ]
+        ],
+        "node_ready_h": [
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.06828472222222222
+          ],
+          [
+            "porter",
+            0.13585416666666666
+          ],
+          [
+            "apprentice",
+            0.7144236111111111
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ]
+        ],
+        "node_hired_h": [
+          [
+            "scout",
+            0.03821527777777777
+          ],
+          [
+            "drillmaster",
+            0.06828472222222222
+          ],
+          [
+            "porter",
+            0.13585416666666666
+          ],
+          [
+            "apprentice",
+            0.7144236111111111
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ]
+        ],
+        "unconserved": 0,
+        "chest_max": 0,
+        "kit_h": null,
+        "kit_at": null,
+        "kit_spent_d3": null,
+        "legacy_buys": 0,
+        "timeline": [
+          {
+            "m": -1.0,
+            "k": "hire:quartermaster"
+          },
+          {
+            "m": -1.0,
+            "k": "lit:scout",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "built:house"
+          },
+          {
+            "m": -1.0,
+            "k": "pkg:steady",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:headline",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:send",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "legacy:offer",
+            "d": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "chest:first",
+            "d": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D1",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D2",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D3",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D4",
+            "minor": true
+          },
+          {
+            "m": 2.4595833333333332,
+            "k": "hire:scout"
+          },
+          {
+            "m": 2.4595833333333332,
+            "k": "level:steady:2"
+          },
+          {
+            "m": 4.097083333333333,
+            "k": "lit:drillmaster",
+            "d": true
+          },
+          {
+            "m": 4.180416666666667,
+            "k": "hire:drillmaster"
+          },
+          {
+            "m": 8.15125,
+            "k": "lit:porter",
+            "d": true
+          },
+          {
+            "m": 8.15125,
+            "k": "level:steady:3"
+          },
+          {
+            "m": 8.15125,
+            "k": "level:steady:4"
+          },
+          {
+            "m": 8.15125,
+            "k": "depth:D5",
+            "minor": true
+          },
+          {
+            "m": 8.15125,
+            "k": "class:2",
+            "minor": true
+          },
+          {
+            "m": 8.234583333333333,
+            "k": "hire:porter"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "plot:blacksmith",
+            "d": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "level:steady:5"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "record:D8"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D6",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D7",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D8",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "bloodline2:affordable",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "built:blacksmith"
+          },
+          {
+            "m": 20.297916666666666,
+            "k": "plot:kennel",
+            "d": true
+          },
+          {
+            "m": 20.297916666666666,
+            "k": "built:kennel"
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:boss_focus",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:guarded",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:iron_gut",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:kite_archers",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:light_hands",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:skittish",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:unbowed",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "boss:goblin_warlord"
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "depth:D9",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "system:six delves",
+            "d": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "depth:D10",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "depth:D11",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "class:3",
+            "minor": true
+          },
+          {
+            "m": 32.591249999999995,
+            "k": "system:first gold home",
+            "d": true
+          },
+          {
+            "m": 35.973749999999995,
+            "k": "system:first death",
+            "d": true
+          },
+          {
+            "m": 35.973749999999995,
+            "k": "death:first"
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "lit:apprentice",
+            "d": true
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "record:D13"
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "depth:D12",
+            "minor": true
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "depth:D13",
+            "minor": true
+          },
+          {
+            "m": 43.032083333333325,
+            "k": "hire:apprentice"
+          },
+          {
+            "m": 44.34041666666666,
+            "k": "system:four delves",
+            "d": true
+          },
+          {
+            "m": 47.55166666666666,
+            "k": "system:first stray",
+            "d": true
+          },
+          {
+            "m": 47.55166666666666,
+            "k": "class:4",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first tame",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:meet Captain",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:slay Warlord",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "levelable:guarded:2",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "plot:bank",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "pkg:corridor_fighting",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "pkg:reflect_read",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:2"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:3"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:4"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:5"
+          },
+          {
+            "m": 960.0,
+            "k": "system:meet Mother",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "boss:bloat_mother"
+          },
+          {
+            "m": 960.0,
+            "k": "boss:lich"
+          },
+          {
+            "m": 960.0,
+            "k": "record:D18"
+          },
+          {
+            "m": 960.0,
+            "k": "record:D23"
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D14",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D15",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D16",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D17",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D18",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D19",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D20",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D21",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D22",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D23",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "class:5",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "built:bank"
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:deep_march",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:noise_discipline",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:thief_guard",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "system:a night's purse",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:foundry_master"
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D24",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D25",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "class:6",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "record:D28"
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D26",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D27",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D28",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:clerk",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:kennel_hand",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:herald",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:guide",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:bold",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:cadence",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:gas_step",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:pack_break",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "boss:lurker_queen"
+          },
+          {
+            "m": 2400.0,
+            "k": "record:D29"
+          },
+          {
+            "m": 2400.0,
+            "k": "record:D33"
+          },
+          {
+            "m": 2400.0,
+            "k": "king:try"
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D29",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D30",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D31",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D32",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D33",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "class:7",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:clerk"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:kennel_hand"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:herald"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:guide"
+          }
+        ],
+        "session_m": 47.635,
+        "looks": [
+          0.0,
+          2.2929166666666663,
+          4.097083333333333,
+          8.15125,
+          15.604999999999999,
+          20.297916666666666,
+          25.697916666666668,
+          30.757916666666667,
+          32.591249999999995,
+          35.973749999999995,
+          42.86541666666666,
+          44.34041666666666,
+          47.55166666666666
+        ]
+      }
+    },
+    {
+      "seed": "2",
+      "bot": "PICKED",
+      "stop_reason": "depth",
+      "completed_days": 2,
+      "campaign_complete": false,
+      "effective_checkins_per_day": 3,
+      "observed_hours": 48.0,
+      "best_depth": 33,
+      "depth_reached_hours": 48.0,
+      "elapsed_seconds": 62.131275065,
+      "seed_out": {
+        "seed": 2,
+        "hours": [
+          8.0,
+          8.0,
+          16.0,
+          24.0,
+          24.0,
+          40.0,
+          48.0
+        ],
+        "best_day": [
+          28,
+          33
+        ],
+        "gold_day": [
+          6200,
+          13201
+        ],
+        "stall": 0,
+        "king_day": null,
+        "king_left": [
+          95,
+          13
+        ],
+        "stance_level_day": [
+          5,
+          5
+        ],
+        "checkins": 6,
+        "grew": 6,
+        "picks": 6,
+        "stage_days": 2,
+        "sends": 96,
+        "stalled": 0,
+        "deaths": 50,
+        "quests": 2,
+        "depth_area": 61,
+        "day1_systems": 24,
+        "max_systems": 4,
+        "max_beats": 6,
+        "new_days": 2,
+        "new_gap": 0,
+        "rules": "",
+        "porter_min": 6.875,
+        "scout_min": 2.6083333333333334,
+        "scout_sends": 1,
+        "node_open_h": [
+          [
+            "porter",
+            0.0
+          ],
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.0
+          ],
+          [
+            "apprentice",
+            0.14763888888888888
+          ],
+          [
+            "kennel_hand",
+            0.3054861111111111
+          ],
+          [
+            "kennel_keeper",
+            0.3054861111111111
+          ],
+          [
+            "clerk",
+            8.0
+          ],
+          [
+            "herald",
+            24.0
+          ],
+          [
+            "guide",
+            32.0
+          ]
+        ],
+        "node_ready_h": [
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "porter",
+            0.11319444444444444
+          ],
+          [
+            "drillmaster",
+            0.23520833333333332
+          ],
+          [
+            "apprentice",
+            0.8313263888888889
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ],
+          [
+            "kennel_keeper",
+            48.0
+          ]
+        ],
+        "node_hired_h": [
+          [
+            "scout",
+            0.042083333333333334
+          ],
+          [
+            "porter",
+            0.11319444444444444
+          ],
+          [
+            "drillmaster",
+            0.23520833333333332
+          ],
+          [
+            "apprentice",
+            0.8313263888888889
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ],
+          [
+            "kennel_keeper",
+            48.0
+          ]
+        ],
+        "unconserved": 0,
+        "chest_max": 0,
+        "kit_h": 48.0,
+        "kit_at": [
+          87239,
+          20001
+        ],
+        "kit_spent_d3": null,
+        "legacy_buys": 0,
+        "timeline": [
+          {
+            "m": -1.0,
+            "k": "hire:quartermaster"
+          },
+          {
+            "m": -1.0,
+            "k": "lit:scout",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "built:house"
+          },
+          {
+            "m": -1.0,
+            "k": "pkg:steady",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:headline",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:send",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "legacy:offer",
+            "d": true
+          },
+          {
+            "m": 2.525,
+            "k": "chest:first",
+            "d": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D1",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D2",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D3",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D4",
+            "minor": true
+          },
+          {
+            "m": 2.6083333333333334,
+            "k": "hire:scout"
+          },
+          {
+            "m": 4.816666666666666,
+            "k": "levelable:steady:2",
+            "d": true
+          },
+          {
+            "m": 4.816666666666666,
+            "k": "depth:D5",
+            "minor": true
+          },
+          {
+            "m": 4.9,
+            "k": "level:steady:2"
+          },
+          {
+            "m": 6.791666666666667,
+            "k": "lit:porter",
+            "d": true
+          },
+          {
+            "m": 6.791666666666667,
+            "k": "class:2",
+            "minor": true
+          },
+          {
+            "m": 6.875,
+            "k": "hire:porter"
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "plot:blacksmith",
+            "d": true
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "bloodline2:affordable",
+            "minor": true
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "built:blacksmith"
+          },
+          {
+            "m": 14.1125,
+            "k": "lit:drillmaster",
+            "d": true
+          },
+          {
+            "m": 14.1125,
+            "k": "depth:D6",
+            "minor": true
+          },
+          {
+            "m": 14.1125,
+            "k": "depth:D7",
+            "minor": true
+          },
+          {
+            "m": 14.195833333333333,
+            "k": "hire:drillmaster"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "plot:kennel",
+            "d": true
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:3"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:4"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:5"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "record:D8"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "depth:D8",
+            "minor": true
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "built:kennel"
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:guarded",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:iron_gut",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:light_hands",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:skittish",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:unbowed",
+            "d": true
+          },
+          {
+            "m": 26.5625,
+            "k": "system:six delves",
+            "d": true
+          },
+          {
+            "m": 31.039583333333333,
+            "k": "system:first gold home",
+            "d": true
+          },
+          {
+            "m": 31.039583333333333,
+            "k": "class:3",
+            "minor": true
+          },
+          {
+            "m": 35.94666666666667,
+            "k": "system:first death",
+            "d": true
+          },
+          {
+            "m": 35.94666666666667,
+            "k": "death:first"
+          },
+          {
+            "m": 41.279583333333335,
+            "k": "system:four delves",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "lit:apprentice",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "system:meet Mother",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "boss:goblin_warlord"
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "record:D13"
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D9",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D10",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D11",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D12",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D13",
+            "minor": true
+          },
+          {
+            "m": 50.04625,
+            "k": "hire:apprentice"
+          },
+          {
+            "m": 480.0,
+            "k": "plot:bank",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:boss_focus",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:kite_archers",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first tame",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first stray",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:meet Captain",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:slay Warlord",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "boss:bloat_mother"
+          },
+          {
+            "m": 480.0,
+            "k": "class:4",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "built:bank"
+          },
+          {
+            "m": 480.0,
+            "k": "levelable:guarded:2",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:2"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:3"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:4"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:5"
+          },
+          {
+            "m": 960.0,
+            "k": "system:a night's purse",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "record:D18"
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D14",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D15",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D16",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D17",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D18",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "class:5",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:corridor_fighting",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:deep_march",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:noise_discipline",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:reflect_read",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:thief_guard",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:foundry_master"
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:lich"
+          },
+          {
+            "m": 1440.0,
+            "k": "record:D23"
+          },
+          {
+            "m": 1440.0,
+            "k": "record:D28"
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D19",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D20",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D21",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D22",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D23",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D24",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D25",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D26",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D27",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D28",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "class:6",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:clerk",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:kennel_hand",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:herald",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:guide",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:bold",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:gas_step",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:pack_break",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "boss:lurker_queen"
+          },
+          {
+            "m": 2400.0,
+            "k": "record:D29"
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D29",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D30",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D31",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D32",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:clerk"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:kennel_hand"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:herald"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:guide"
+          },
+          {
+            "m": 2880.0,
+            "k": "lit:kennel_keeper",
+            "d": true
+          },
+          {
+            "m": 2880.0,
+            "k": "pkg:cadence",
+            "d": true
+          },
+          {
+            "m": 2880.0,
+            "k": "record:D33"
+          },
+          {
+            "m": 2880.0,
+            "k": "king:try"
+          },
+          {
+            "m": 2880.0,
+            "k": "depth:D33",
+            "minor": true
+          },
+          {
+            "m": 2880.0,
+            "k": "hire:kennel_keeper"
+          }
+        ],
+        "session_m": 50.04625,
+        "looks": [
+          0.0,
+          2.525,
+          4.816666666666666,
+          6.791666666666667,
+          8.858333333333333,
+          14.1125,
+          18.329166666666666,
+          22.125,
+          26.5625,
+          31.039583333333333,
+          35.94666666666667,
+          41.279583333333335,
+          49.879583333333336
+        ]
+      }
+    },
+    {
+      "seed": "1",
+      "bot": "TUNED",
+      "stop_reason": "depth",
+      "completed_days": 1,
+      "campaign_complete": false,
+      "effective_checkins_per_day": 3,
+      "observed_hours": 40.0,
+      "best_depth": 33,
+      "depth_reached_hours": 40.0,
+      "elapsed_seconds": 57.550144553,
+      "seed_out": {
+        "seed": 1,
+        "hours": [
+          8.0,
+          8.0,
+          16.0,
+          16.0,
+          32.0,
+          40.0,
+          40.0
+        ],
+        "best_day": [
+          25
+        ],
+        "gold_day": [
+          5609
+        ],
+        "stall": 0,
+        "king_day": null,
+        "king_left": [
+          95,
+          2
+        ],
+        "stance_level_day": [
+          5
+        ],
+        "checkins": 5,
+        "grew": 5,
+        "picks": 5,
+        "stage_days": 1,
+        "sends": 86,
+        "stalled": 2,
+        "deaths": 25,
+        "quests": 1,
+        "depth_area": 25,
+        "day1_systems": 24,
+        "max_systems": 3,
+        "max_beats": 4,
+        "new_days": 1,
+        "new_gap": 0,
+        "rules": "",
+        "porter_min": 8.234583333333333,
+        "scout_min": 2.3762499999999998,
+        "scout_sends": 1,
+        "node_open_h": [
+          [
+            "porter",
+            0.0
+          ],
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.0
+          ],
+          [
+            "apprentice",
+            0.26008333333333333
+          ],
+          [
+            "kennel_hand",
+            0.3382986111111111
+          ],
+          [
+            "kennel_keeper",
+            0.3382986111111111
+          ],
+          [
+            "clerk",
+            16.0
+          ],
+          [
+            "herald",
+            16.0
+          ],
+          [
+            "guide",
+            32.0
+          ]
+        ],
+        "node_ready_h": [
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.06828472222222222
+          ],
+          [
+            "porter",
+            0.13585416666666666
+          ],
+          [
+            "apprentice",
+            0.7144236111111111
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ]
+        ],
+        "node_hired_h": [
+          [
+            "scout",
+            0.03821527777777777
+          ],
+          [
+            "drillmaster",
+            0.06828472222222222
+          ],
+          [
+            "porter",
+            0.13585416666666666
+          ],
+          [
+            "apprentice",
+            0.7144236111111111
+          ],
+          [
+            "clerk",
+            40.0
+          ],
+          [
+            "kennel_hand",
+            40.0
+          ],
+          [
+            "herald",
+            40.0
+          ],
+          [
+            "guide",
+            40.0
+          ]
+        ],
+        "unconserved": 0,
+        "chest_max": 0,
+        "kit_h": null,
+        "kit_at": null,
+        "kit_spent_d3": null,
+        "legacy_buys": 0,
+        "timeline": [
+          {
+            "m": -1.0,
+            "k": "hire:quartermaster"
+          },
+          {
+            "m": -1.0,
+            "k": "lit:scout",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "built:house"
+          },
+          {
+            "m": -1.0,
+            "k": "pkg:steady",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:headline",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:send",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "legacy:offer",
+            "d": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "chest:first",
+            "d": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D1",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D2",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D3",
+            "minor": true
+          },
+          {
+            "m": 2.2929166666666663,
+            "k": "depth:D4",
+            "minor": true
+          },
+          {
+            "m": 2.4595833333333332,
+            "k": "hire:scout"
+          },
+          {
+            "m": 2.4595833333333332,
+            "k": "level:steady:2"
+          },
+          {
+            "m": 4.097083333333333,
+            "k": "lit:drillmaster",
+            "d": true
+          },
+          {
+            "m": 4.180416666666667,
+            "k": "hire:drillmaster"
+          },
+          {
+            "m": 8.15125,
+            "k": "lit:porter",
+            "d": true
+          },
+          {
+            "m": 8.15125,
+            "k": "level:steady:3"
+          },
+          {
+            "m": 8.15125,
+            "k": "level:steady:4"
+          },
+          {
+            "m": 8.15125,
+            "k": "depth:D5",
+            "minor": true
+          },
+          {
+            "m": 8.15125,
+            "k": "class:2",
+            "minor": true
+          },
+          {
+            "m": 8.234583333333333,
+            "k": "hire:porter"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "plot:blacksmith",
+            "d": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "level:steady:5"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "record:D8"
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D6",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D7",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "depth:D8",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "bloodline2:affordable",
+            "minor": true
+          },
+          {
+            "m": 15.604999999999999,
+            "k": "built:blacksmith"
+          },
+          {
+            "m": 20.297916666666666,
+            "k": "plot:kennel",
+            "d": true
+          },
+          {
+            "m": 20.297916666666666,
+            "k": "built:kennel"
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:boss_focus",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:guarded",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:iron_gut",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:kite_archers",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:light_hands",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:skittish",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "pkg:unbowed",
+            "d": true
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "boss:goblin_warlord"
+          },
+          {
+            "m": 25.697916666666668,
+            "k": "depth:D9",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "system:six delves",
+            "d": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "depth:D10",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "depth:D11",
+            "minor": true
+          },
+          {
+            "m": 30.757916666666667,
+            "k": "class:3",
+            "minor": true
+          },
+          {
+            "m": 32.591249999999995,
+            "k": "system:first gold home",
+            "d": true
+          },
+          {
+            "m": 35.973749999999995,
+            "k": "system:first death",
+            "d": true
+          },
+          {
+            "m": 35.973749999999995,
+            "k": "death:first"
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "lit:apprentice",
+            "d": true
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "record:D13"
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "depth:D12",
+            "minor": true
+          },
+          {
+            "m": 42.86541666666666,
+            "k": "depth:D13",
+            "minor": true
+          },
+          {
+            "m": 43.032083333333325,
+            "k": "hire:apprentice"
+          },
+          {
+            "m": 44.34041666666666,
+            "k": "system:four delves",
+            "d": true
+          },
+          {
+            "m": 47.55166666666666,
+            "k": "system:first stray",
+            "d": true
+          },
+          {
+            "m": 47.55166666666666,
+            "k": "class:4",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first tame",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:meet Captain",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:slay Warlord",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "levelable:guarded:2",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "plot:bank",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "pkg:corridor_fighting",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "pkg:reflect_read",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:2"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:3"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:4"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:5"
+          },
+          {
+            "m": 960.0,
+            "k": "system:meet Mother",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "boss:bloat_mother"
+          },
+          {
+            "m": 960.0,
+            "k": "boss:lich"
+          },
+          {
+            "m": 960.0,
+            "k": "record:D18"
+          },
+          {
+            "m": 960.0,
+            "k": "record:D23"
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D14",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D15",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D16",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D17",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D18",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D19",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D20",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D21",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D22",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D23",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "class:5",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "built:bank"
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:deep_march",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:noise_discipline",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:thief_guard",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "system:a night's purse",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:foundry_master"
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D24",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D25",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "class:6",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "record:D28"
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D26",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D27",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D28",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:clerk",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:kennel_hand",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:herald",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "lit:guide",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:bold",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:cadence",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:gas_step",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "pkg:pack_break",
+            "d": true
+          },
+          {
+            "m": 2400.0,
+            "k": "boss:lurker_queen"
+          },
+          {
+            "m": 2400.0,
+            "k": "record:D29"
+          },
+          {
+            "m": 2400.0,
+            "k": "record:D33"
+          },
+          {
+            "m": 2400.0,
+            "k": "king:try"
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D29",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D30",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D31",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D32",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "depth:D33",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "class:7",
+            "minor": true
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:clerk"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:kennel_hand"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:herald"
+          },
+          {
+            "m": 2400.0,
+            "k": "hire:guide"
+          }
+        ],
+        "session_m": 47.635,
+        "looks": [
+          0.0,
+          2.2929166666666663,
+          4.097083333333333,
+          8.15125,
+          15.604999999999999,
+          20.297916666666666,
+          25.697916666666668,
+          30.757916666666667,
+          32.591249999999995,
+          35.973749999999995,
+          42.86541666666666,
+          44.34041666666666,
+          47.55166666666666
+        ]
+      }
+    },
+    {
+      "seed": "2",
+      "bot": "TUNED",
+      "stop_reason": "depth",
+      "completed_days": 1,
+      "campaign_complete": false,
+      "effective_checkins_per_day": 3,
+      "observed_hours": 32.0,
+      "best_depth": 33,
+      "depth_reached_hours": 32.0,
+      "elapsed_seconds": 50.341443603,
+      "seed_out": {
+        "seed": 2,
+        "hours": [
+          8.0,
+          8.0,
+          16.0,
+          24.0,
+          24.0,
+          32.0,
+          32.0
+        ],
+        "best_day": [
+          28
+        ],
+        "gold_day": [
+          6200
+        ],
+        "stall": 0,
+        "king_day": null,
+        "king_left": [
+          100,
+          1
+        ],
+        "stance_level_day": [
+          5
+        ],
+        "checkins": 4,
+        "grew": 4,
+        "picks": 4,
+        "stage_days": 1,
+        "sends": 66,
+        "stalled": 0,
+        "deaths": 25,
+        "quests": 1,
+        "depth_area": 28,
+        "day1_systems": 24,
+        "max_systems": 4,
+        "max_beats": 6,
+        "new_days": 1,
+        "new_gap": 0,
+        "rules": "",
+        "porter_min": 6.875,
+        "scout_min": 2.6083333333333334,
+        "scout_sends": 1,
+        "node_open_h": [
+          [
+            "porter",
+            0.0
+          ],
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.0
+          ],
+          [
+            "apprentice",
+            0.14763888888888888
+          ],
+          [
+            "kennel_hand",
+            0.3054861111111111
+          ],
+          [
+            "kennel_keeper",
+            0.3054861111111111
+          ],
+          [
+            "clerk",
+            8.0
+          ],
+          [
+            "herald",
+            24.0
+          ],
+          [
+            "guide",
+            32.0
+          ]
+        ],
+        "node_ready_h": [
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "porter",
+            0.11319444444444444
+          ],
+          [
+            "drillmaster",
+            0.23520833333333332
+          ],
+          [
+            "apprentice",
+            0.8313263888888889
+          ]
+        ],
+        "node_hired_h": [
+          [
+            "scout",
+            0.042083333333333334
+          ],
+          [
+            "porter",
+            0.11319444444444444
+          ],
+          [
+            "drillmaster",
+            0.23520833333333332
+          ],
+          [
+            "apprentice",
+            0.8313263888888889
+          ]
+        ],
+        "unconserved": 0,
+        "chest_max": 0,
+        "kit_h": null,
+        "kit_at": null,
+        "kit_spent_d3": null,
+        "legacy_buys": 0,
+        "timeline": [
+          {
+            "m": -1.0,
+            "k": "hire:quartermaster"
+          },
+          {
+            "m": -1.0,
+            "k": "lit:scout",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "built:house"
+          },
+          {
+            "m": -1.0,
+            "k": "pkg:steady",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:headline",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:send",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "legacy:offer",
+            "d": true
+          },
+          {
+            "m": 2.525,
+            "k": "chest:first",
+            "d": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D1",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D2",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D3",
+            "minor": true
+          },
+          {
+            "m": 2.525,
+            "k": "depth:D4",
+            "minor": true
+          },
+          {
+            "m": 2.6083333333333334,
+            "k": "hire:scout"
+          },
+          {
+            "m": 4.816666666666666,
+            "k": "levelable:steady:2",
+            "d": true
+          },
+          {
+            "m": 4.816666666666666,
+            "k": "depth:D5",
+            "minor": true
+          },
+          {
+            "m": 4.9,
+            "k": "level:steady:2"
+          },
+          {
+            "m": 6.791666666666667,
+            "k": "lit:porter",
+            "d": true
+          },
+          {
+            "m": 6.791666666666667,
+            "k": "class:2",
+            "minor": true
+          },
+          {
+            "m": 6.875,
+            "k": "hire:porter"
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "plot:blacksmith",
+            "d": true
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "bloodline2:affordable",
+            "minor": true
+          },
+          {
+            "m": 8.858333333333333,
+            "k": "built:blacksmith"
+          },
+          {
+            "m": 14.1125,
+            "k": "lit:drillmaster",
+            "d": true
+          },
+          {
+            "m": 14.1125,
+            "k": "depth:D6",
+            "minor": true
+          },
+          {
+            "m": 14.1125,
+            "k": "depth:D7",
+            "minor": true
+          },
+          {
+            "m": 14.195833333333333,
+            "k": "hire:drillmaster"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "plot:kennel",
+            "d": true
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:3"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:4"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "level:steady:5"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "record:D8"
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "depth:D8",
+            "minor": true
+          },
+          {
+            "m": 18.329166666666666,
+            "k": "built:kennel"
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:guarded",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:iron_gut",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:light_hands",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:skittish",
+            "d": true
+          },
+          {
+            "m": 22.125,
+            "k": "pkg:unbowed",
+            "d": true
+          },
+          {
+            "m": 26.5625,
+            "k": "system:six delves",
+            "d": true
+          },
+          {
+            "m": 31.039583333333333,
+            "k": "system:first gold home",
+            "d": true
+          },
+          {
+            "m": 31.039583333333333,
+            "k": "class:3",
+            "minor": true
+          },
+          {
+            "m": 35.94666666666667,
+            "k": "system:first death",
+            "d": true
+          },
+          {
+            "m": 35.94666666666667,
+            "k": "death:first"
+          },
+          {
+            "m": 41.279583333333335,
+            "k": "system:four delves",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "lit:apprentice",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "system:meet Mother",
+            "d": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "boss:goblin_warlord"
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "record:D13"
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D9",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D10",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D11",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D12",
+            "minor": true
+          },
+          {
+            "m": 49.879583333333336,
+            "k": "depth:D13",
+            "minor": true
+          },
+          {
+            "m": 50.04625,
+            "k": "hire:apprentice"
+          },
+          {
+            "m": 480.0,
+            "k": "plot:bank",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:boss_focus",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:kite_archers",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first tame",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first stray",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:meet Captain",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:slay Warlord",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "boss:bloat_mother"
+          },
+          {
+            "m": 480.0,
+            "k": "class:4",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "built:bank"
+          },
+          {
+            "m": 480.0,
+            "k": "levelable:guarded:2",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:2"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:3"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:4"
+          },
+          {
+            "m": 960.0,
+            "k": "level:guarded:5"
+          },
+          {
+            "m": 960.0,
+            "k": "system:a night's purse",
+            "d": true
+          },
+          {
+            "m": 960.0,
+            "k": "record:D18"
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D14",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D15",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D16",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D17",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "depth:D18",
+            "minor": true
+          },
+          {
+            "m": 960.0,
+            "k": "class:5",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:corridor_fighting",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:deep_march",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:noise_discipline",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:reflect_read",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "pkg:thief_guard",
+            "d": true
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:foundry_master"
+          },
+          {
+            "m": 1440.0,
+            "k": "boss:lich"
+          },
+          {
+            "m": 1440.0,
+            "k": "record:D23"
+          },
+          {
+            "m": 1440.0,
+            "k": "record:D28"
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D19",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D20",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D21",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D22",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D23",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D24",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D25",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D26",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D27",
+            "minor": true
+          },
+          {
+            "m": 1440.0,
+            "k": "depth:D28",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "pkg:cadence",
+            "d": true
+          },
+          {
+            "m": 1920.0,
+            "k": "pkg:gas_step",
+            "d": true
+          },
+          {
+            "m": 1920.0,
+            "k": "boss:lurker_queen"
+          },
+          {
+            "m": 1920.0,
+            "k": "record:D29"
+          },
+          {
+            "m": 1920.0,
+            "k": "record:D33"
+          },
+          {
+            "m": 1920.0,
+            "k": "king:try"
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D29",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D30",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D31",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D32",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "depth:D33",
+            "minor": true
+          },
+          {
+            "m": 1920.0,
+            "k": "class:6",
+            "minor": true
+          }
+        ],
+        "session_m": 50.04625,
+        "looks": [
+          0.0,
+          2.525,
+          4.816666666666666,
+          6.791666666666667,
+          8.858333333333333,
+          14.1125,
+          18.329166666666666,
+          22.125,
+          26.5625,
+          31.039583333333333,
+          35.94666666666667,
+          41.279583333333335,
+          49.879583333333336
+        ]
+      }
+    }
+  ]
+}

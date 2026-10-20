@@ -1,0 +1,3 @@
+Initial post-result receipt check assumed record ordering; native records are keyed by bot/seed.
+AssertionError: [['PICKED', '1'], ['PICKED', '2'], ['TUNED', '1']]
+Corrected to compare the keyed set, with no native rerun or outcome change.

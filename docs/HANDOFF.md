@@ -1,4 +1,4 @@
-# Active backlog — Cut310 combined Lich screen rejected, 2026-10-21
+# Active backlog — Cut311 TUNED boss-only discovery passes, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -25,6 +25,50 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut311 — TUNED-only boss fallback passes two-seed discovery; no adoption
+
+Contract [CUT311_TUNED_BOSS_ONLY.md](CUT311_TUNED_BOSS_ONLY.md), evidence
+[cut311/README.md](evidence/cut311/README.md). Experimental policy copies ONLY
+the existing Lich boss-target companion, omitting the summoned-target row.
+Generated templates, automatic learned drills, other bosses/HP guards, game
+library, balance, canonical bot defaults and WASM unchanged. Explicit immutable
+configuration is called only by stat_probe; canonical dayplayer ignores the
+IDLEVER_PEN_POLICY environment flag. Statistical tuner already clears all
+IDLEVER_* environment flags before child jobs. No canonical-cache alias/deploy.
+
+Eight ordinary reused-seed trajectories1/2, fixed3check-ins/day, D33-or14days.
+Default mode reproduces ALL four Cut309 original records except elapsed time;
+new root policy metadata separate. PICKED40/48h unchanged, TUNED40/40→40/32h.
+Paired ratios1/1.5, median1.25 PASS≥1.15. All D13/D18/D23 arrivals unchanged;
+TUNED D33 median improves. PICKED both complete original records and TUNED1
+match exactly except elapsed time. All conserved, no observed King/censoring.
+No resampling/native campaign reruns or independent/population acceptance.
+
+TUNED2 stops32vs40h; sends66vs81, deaths25vs36 and day1wealth6200vs2180 are
+not equal-time efficiency/final-wallet claims. Both prefixes lack kit complete.
+Full observations/summary retain every role/seed/arrival/clock/kit/Gold tradeoff.
+Original wall72.81s/candidate62.17s are execution metadata, not a benchmark.
+Two policy/configuration checks and strict stat_probe/dayplayer Clippy pass;
+invalid-mode process refuses before simulation. Independent source/profile/
+reference/parity/exact-rational summary audit passes. Source240files/full archive,
+before/after modules/patch/contract/runtime/verifier frozen before outcomes.
+Initial post-result receipt check assumed record order; error retained, fixed
+using bot/seed keys, no source/outcome/native rerun change. All jobs terminal.
+
+Current runtime target/cut311/runtime supports IDLEVER_PEN_POLICY=original or
+lich-boss-only, immutable once per process. Use this pinned executable/source
+for the next study, not a freshly changed policy. Main WASM7152841bytes/53b98bb4
+and default gold pin remain unchanged; no library/client/full-gate claim.
+
+Next concrete work: freeze a NEW independent paired confirmation on fresh
+uniform-u64 seeds for this exact policy, absolute-arrival safeguards, PICKED
+parity and pen≥1.15. Bind mode as well as executable/profile/request in every
+job identity; no canonical cache use. Use protected planned sample/alpha/rank
+bounds and no extension/reselection after outcomes. Do not reuse Cut300 held-out
+seeds as new evidence; that earlier presence-only result stays INCONCLUSIVE.
+No policy default adoption before suitable evidence. Worker/recovery/shared
+upgrade API/UI and broad backlog remain ACTIVE. No deploy or remote recheck.
 
 ## Cut310 — combined Lich scope/target fails the saved-world bar
 

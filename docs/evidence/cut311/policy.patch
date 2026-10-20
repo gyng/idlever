@@ -1,0 +1,114 @@
+diff --git a/crates/idlever-core/examples/dayplayer.rs b/crates/idlever-core/examples/dayplayer.rs
+index 69949fcf..1b011699 100644
+--- a/crates/idlever-core/examples/dayplayer.rs
++++ b/crates/idlever-core/examples/dayplayer.rs
+@@ -268,6 +268,55 @@ fn take_patch(g: &mut Game, patch: &idlever_core::Patch) -> bool {
+ #[derive(Clone, Default, serde::Serialize, serde::Deserialize)]
+ struct CounterCopy { boss: String, rows: Vec<Row> }
+ 
++// Only stat_probe configures this experiment; canonical dayplayer ignores env flags.
++static PEN_POLICY: std::sync::OnceLock<&'static str> = std::sync::OnceLock::new();
++pub fn configure_pen_policy(name: &str) -> Result<(), String> {
++    install_pen_policy(&PEN_POLICY, name)
++}
++fn install_pen_policy(cell: &std::sync::OnceLock<&'static str>, name: &str) -> Result<(), String> {
++    let name = match name {
++        "original" => "original",
++        "lich-boss-only" => "lich-boss-only",
++        _ => return Err("invalid experimental pen policy".into()),
++    };
++    cell.set(name).map_err(|_| "pen policy already installed".into())
++}
++fn pen_policy_name() -> &'static str {
++    PEN_POLICY.get_or_init(|| "original")
++}
++fn selected_counter_rows(boss: &str, heal: i32, boss_only: bool) -> Vec<Row> {
++    idlever_core::packages::drill_rows(boss, heal).into_iter()
++        .filter(|row| !(boss_only && boss == "lich"
++            && row.verb == idlever_core::rules::Verb::arg("attack", "tag:summoned")))
++        .collect()
++}
++
++#[cfg(test)]
++mod cut311_tests {
++    use super::*;
++    #[test]
++    fn cut311_boss_only_preserves_the_exact_companion_and_other_bosses() {
++        for heal in [25, 35, 45] {
++            let original = idlever_core::packages::drill_rows("lich", heal);
++            assert_eq!(original.len(), 2);
++            assert_eq!(selected_counter_rows("lich", heal, false), original);
++            assert_eq!(selected_counter_rows("lich", heal, true), vec![original[1].clone()]);
++            for boss in ["bloat_mother", "foundry_master", "lurker_queen", "mirror_king"] {
++                assert_eq!(selected_counter_rows(boss, heal, true), idlever_core::packages::drill_rows(boss, heal));
++            }
++        }
++    }
++    #[test]
++    fn cut311_policy_configuration_rejects_unknown_and_second_installation() {
++        let cell = std::sync::OnceLock::new();
++        assert!(install_pen_policy(&cell, "typo").is_err());
++        assert!(cell.get().is_none());
++        assert!(install_pen_policy(&cell, "original").is_ok());
++        assert!(install_pen_policy(&cell, "lich-boss-only").is_err());
++        assert_eq!(cell.get(), Some(&"original"));
++    }
++}
++
+ fn same_owned_row(a: &Row, b: &Row) -> bool {
+     a == b && a.origin == b.origin
+ }
+@@ -278,7 +327,7 @@ fn maintain_counter_copies(g: &mut Game, copies: &mut Vec<CounterCopy>) {
+     let mut set = g.lineage.rules().clone();
+     let mut next = Vec::new();
+     for copy in copies.iter() {
+-        let wanted: Vec<Row> = idlever_core::packages::drill_rows(&copy.boss, heal)
++        let wanted: Vec<Row> = selected_counter_rows(&copy.boss, heal, pen_policy_name() == "lich-boss-only")
+             .into_iter().map(|r| r.from("player")).collect();
+         let shape = |r: &Row| {
+             let mut r = r.clone();
+@@ -310,7 +359,7 @@ fn maintain_counter_copies(g: &mut Game, copies: &mut Vec<CounterCopy>) {
+ 
+ /// Copy the fallback counter in canonical priority order at the pen's top.
+ fn write_counter_rows(g: &mut Game, b: &str, heal: i32, copies: &mut Vec<CounterCopy>) {
+-    for row in idlever_core::packages::drill_rows(b, heal).into_iter().rev() {
++    for row in selected_counter_rows(b, heal, pen_policy_name() == "lich-boss-only").into_iter().rev() {
+         // (the card or the verb it needs, bought with marks or gold when the purse has it)
+         let need = match (row.verb.v.as_str(), row.card()) {
+             (_, Some(c)) => Some(c.to_string()),
+diff --git a/crates/idlever-core/examples/dayplayer_stat/mod.rs b/crates/idlever-core/examples/dayplayer_stat/mod.rs
+index 61eb2d04..8b46da04 100644
+--- a/crates/idlever-core/examples/dayplayer_stat/mod.rs
++++ b/crates/idlever-core/examples/dayplayer_stat/mod.rs
+@@ -45,6 +45,7 @@ struct Observation {
+ }
+ #[derive(Serialize)]
+ struct Export {
++    pen_policy: &'static str,
+     schema: u32,
+     kind: &'static str,
+     milestones: [u32; 7],
+@@ -337,6 +338,7 @@ pub(super) fn run() -> Result<(), String> {
+     idlever_core::forecast::set_parallel_sims(false);
+     let records = observations(&options.request, options.threads);
+     let export = Export {
++        pen_policy: super::pen_policy_name(),
+         schema: 1,
+         kind: "dayplayer-stat-probe",
+         milestones: MILESTONES,
+diff --git a/crates/idlever-core/examples/stat_probe.rs b/crates/idlever-core/examples/stat_probe.rs
+index f6ac4c27..6da8468f 100644
+--- a/crates/idlever-core/examples/stat_probe.rs
++++ b/crates/idlever-core/examples/stat_probe.rs
+@@ -5,6 +5,11 @@
+ #[path = "dayplayer.rs"]
+ mod dayplayer;
+ fn main() {
++    let policy = std::env::var("IDLEVER_PEN_POLICY").unwrap_or_else(|_| "original".into());
++    if let Err(error) = dayplayer::configure_pen_policy(&policy) {
++        eprintln!("stat_probe: {error}");
++        std::process::exit(2);
++    }
+     if let Err(error) = dayplayer::statistical_probe() {
+         eprintln!("stat_probe: {error}");
+         std::process::exit(2);

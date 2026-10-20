@@ -1,0 +1,22 @@
+{
+  "status": 0,
+  "seconds": 72.8056509050075,
+  "policy": "original",
+  "command": [
+    "target/cut311/runtime",
+    "--seeds",
+    "1,2",
+    "--bots",
+    "PICKED,TUNED",
+    "--days",
+    "14",
+    "--checkins",
+    "3",
+    "--until-depth",
+    "33",
+    "--threads",
+    "8",
+    "--out",
+    "docs/evidence/cut311/control.json"
+  ]
+}

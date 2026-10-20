@@ -5,6 +5,11 @@
 #[path = "dayplayer.rs"]
 mod dayplayer;
 fn main() {
+    let policy = std::env::var("IDLEVER_PEN_POLICY").unwrap_or_else(|_| "original".into());
+    if let Err(error) = dayplayer::configure_pen_policy(&policy) {
+        eprintln!("stat_probe: {error}");
+        std::process::exit(2);
+    }
     if let Err(error) = dayplayer::statistical_probe() {
         eprintln!("stat_probe: {error}");
         std::process::exit(2);
