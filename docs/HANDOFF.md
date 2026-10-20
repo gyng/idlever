@@ -1,4 +1,4 @@
-# Active backlog — Cut284 fix complete; Cut283 old-runtime study live, 2026-10-20
+# Active backlog — Cut284 fix complete; Cut283 study archived inconclusive, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
 This checkpoint commits the route-aware drilled counter packing fix and its
@@ -42,34 +42,33 @@ claimed. The inherited base-route balance failures remain open; this route fix
 is not a claim to fix them. The latest measured values on the old runtime are
 TUNED/PICKED1.10 and worker D18 48vs24h / mean29.93vs30.14.
 
-## Cut283 protected statistical study — old immutable runtime, live
+## Cut283 protected statistical study — complete, independently checked
 
-Contract: [CUT283_GUIDE_VALIDATION.md](CUT283_GUIDE_VALIDATION.md), spec
-`tuning/studies/guide-protected.json`. **Exec34941/PID666428**, log
-`target/cut283-guide-protected.log`, output
-`target/stat-tune/cut283-guide-protected/`. Poll this existing session; never
-restart solely on an observation timeout. Manifest identity5dfe37c1…,
-frozen native3f742aa6…/core9a45a001d0dbc6ea; this is pre-Cut284 gameplay.
+Contract: [CUT283_GUIDE_VALIDATION.md](CUT283_GUIDE_VALIDATION.md). Collector
+exec34941 ended exit3, state complete/INCONCLUSIVE; no worker remains. Do not
+restart or extend its budget. Manifest5dfe37c1…, immutable native3f742aa6… /
+core9a45a001d0dbc6ea is pre-Cut284. Its result cannot authorize current defaults.
 
-Discovery4 paired random seeds froze **gap8**, dropped gap6. Held-out looks8
-and16 were inconclusive for all four claims. Final planned32-seed look is in
-flight (16 new baseline/winner pairs); budgets/claims/winner remain immutable.
-PICKED/TUNED stop atD33 or14 days;344h censor cap. Four median claims require
-absolute PICKED D23/D33 and TUNED D33 non-regression and within-candidate paired
-PICKED/TUNED ratio≥1.15. Family alpha0.05 across four claims/three looks; no
-runner-up retry or extra samples after this final budget.
+Discovery4 paired random seeds froze gap8 and dropped gap6. All four claims
+remained inconclusive at8/16/32 held-out seeds. Final32: PICKED D23 difference
+0h[-8,8], PICKED D33 +8h[0,24], TUNED D33 +8h[0,16], paired within-gap8
+PICKED/TUNED D33 median ratio1.1833[1,1.3333]. No confirmation censoring.
+Neither required non-regression nor pen advantage is established; no default
+adoption, runner-up retry, added samples or catalog adoption check follows.
 
-Execution amendment: finish the independent bug fix on current code while this
-immutable old-runtime study finishes. Its analysis/profile/seed schedule has
-not changed. **Its report cannot authorize profile adoption on this new core**;
-fresh current-runtime evidence is required. Original contracts/preregistration
-and frozen winner are in `docs/evidence/cut283/`. No profile adopted.
+Archived original76 receipt objects, terminal reports/state/log and preexisting
+preregistration/winner: `docs/evidence/cut283/`. Independent `verify.mjs` checks
+all payload/runtime/profile/seed keys, discovery ranking/frozen winner and all
+12 confirmation intervals using exact rational binomial tails; censor counts
+also pass. No production inference imports. `verification.txt` is the receipt.
+Study3297.489s, preparation0.578s,9 calls/76 observations versus88 matched
+unpruned (13.6% fewer). Host contention and no matched wall-time comparator mean
+this is not proof of a campaign speedup.
 
-Next: finish/archive/independently check the completed old-runtime report,
-including censor counts and inconclusive/rejected claims, without treating it
-as current acceptance. Do not repeat expensive studies until a concrete tuning
-hypothesis and useful metric/sensitivity are established. Core changes and
-current WASM are already validated separately above.
+Next: inspect/measure native late-game probe throughput before another expensive
+study; establish a concrete tuning hypothesis and useful metric sensitivity.
+Current core/WASM validation remains Cut284 above. R3/R4 earned comparisons,
+remaining balance failures and independent fun acceptance remain open.
 
 ## Prior completed diagnosis and remaining queue
 

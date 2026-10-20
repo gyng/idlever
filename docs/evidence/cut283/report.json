@@ -1,0 +1,408 @@
+{
+  "format": "idlever-stat-study-v1",
+  "name": "cut283-guide-protected",
+  "identity": "5dfe37c1c9bb971eb029940f2e710c564dfe0e23ea5e96485dd71a79f56a0d3f",
+  "status": "INCONCLUSIVE",
+  "winner": "gap8",
+  "canonicalGateStatus": "NOT_RUN",
+  "estimandScope": "Declared finite-horizon population metrics only; no universal/rare-event/canonical-catalog certification",
+  "missingPolicy": "Unreached arrival is imputed as horizon (14 days × 24 hours) plus one effective check-in (24 / effective_checkins_per_day hours for each bot). Ratios and paired differences use these finite imputed values; they do not estimate uncensored arrival times or reproduce canonical ratio missing-value rules.",
+  "familyAlpha": 0.05,
+  "inferenceAlpha": 0.04999999999981811,
+  "collisionReserve": 3.637978807091713e-12,
+  "alphaPerClaim": 0.004166666666651509,
+  "discovery": [
+    {
+      "stage": 0,
+      "n": 4,
+      "ranked": [
+        {
+          "name": "gap8",
+          "score": -1,
+          "claims": [
+            {
+              "id": "picked-d23-no-regression",
+              "estimate": 4,
+              "margin": -0.5
+            },
+            {
+              "id": "picked-d33-no-regression",
+              "estimate": 8,
+              "margin": -1
+            },
+            {
+              "id": "tuned-d33-no-regression",
+              "estimate": 4,
+              "margin": -0.5
+            },
+            {
+              "id": "pen-advantage",
+              "estimate": 1.1833333333333333,
+              "margin": 0.22222222222222293
+            }
+          ]
+        },
+        {
+          "name": "gap6",
+          "score": -1.5,
+          "claims": [
+            {
+              "id": "picked-d23-no-regression",
+              "estimate": 0,
+              "margin": 0
+            },
+            {
+              "id": "picked-d33-no-regression",
+              "estimate": 12,
+              "margin": -1.5
+            },
+            {
+              "id": "tuned-d33-no-regression",
+              "estimate": 4,
+              "margin": -0.5
+            },
+            {
+              "id": "pen-advantage",
+              "estimate": 1.1833333333333333,
+              "margin": 0.22222222222222293
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "gap8"
+      ],
+      "dropped": [
+        "gap6"
+      ]
+    }
+  ],
+  "confirmation": [
+    {
+      "n": 8,
+      "alphaPerClaim": 0.004166666666651509,
+      "claims": [
+        {
+          "id": "picked-d23-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 23
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 8,
+          "estimate": 0,
+          "lower": "-Infinity",
+          "upper": "+Infinity",
+          "alpha": 0.004166666666651509,
+          "rank": 0,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "picked-d33-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 8,
+          "estimate": 8,
+          "lower": "-Infinity",
+          "upper": "+Infinity",
+          "alpha": 0.004166666666651509,
+          "rank": 0,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "tuned-d33-no-regression",
+          "metric": {
+            "bot": "TUNED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 8,
+          "estimate": 8,
+          "lower": "-Infinity",
+          "upper": "+Infinity",
+          "alpha": 0.004166666666651509,
+          "rank": 0,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "pen-advantage",
+          "metric": {
+            "ratio": [
+              {
+                "bot": "PICKED",
+                "field": "arrival_hours",
+                "depth": 33
+              },
+              {
+                "bot": "TUNED",
+                "field": "arrival_hours",
+                "depth": 33
+              }
+            ]
+          },
+          "units": "(hours) / (hours)",
+          "comparison": "absolute",
+          "estimand": "median",
+          "direction": "at-least",
+          "threshold": 1.15,
+          "status": "INCONCLUSIVE",
+          "n": 8,
+          "estimate": 1.1547619047619047,
+          "lower": "-Infinity",
+          "upper": "+Infinity",
+          "alpha": 0.004166666666651509,
+          "rank": 0,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "alphaPerClaim": 0.004166666666651509,
+      "claims": [
+        {
+          "id": "picked-d23-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 23
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 16,
+          "estimate": 0,
+          "lower": -8,
+          "upper": 8,
+          "alpha": 0.004166666666651509,
+          "rank": 2,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "picked-d33-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 16,
+          "estimate": 0,
+          "lower": -8,
+          "upper": 24,
+          "alpha": 0.004166666666651509,
+          "rank": 2,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "tuned-d33-no-regression",
+          "metric": {
+            "bot": "TUNED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 16,
+          "estimate": 8,
+          "lower": 0,
+          "upper": 24,
+          "alpha": 0.004166666666651509,
+          "rank": 2,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "pen-advantage",
+          "metric": {
+            "ratio": [
+              {
+                "bot": "PICKED",
+                "field": "arrival_hours",
+                "depth": 33
+              },
+              {
+                "bot": "TUNED",
+                "field": "arrival_hours",
+                "depth": 33
+              }
+            ]
+          },
+          "units": "(hours) / (hours)",
+          "comparison": "absolute",
+          "estimand": "median",
+          "direction": "at-least",
+          "threshold": 1.15,
+          "status": "INCONCLUSIVE",
+          "n": 16,
+          "estimate": 1.1833333333333333,
+          "lower": 0.8571428571428571,
+          "upper": 1.6,
+          "alpha": 0.004166666666651509,
+          "rank": 2,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "alphaPerClaim": 0.004166666666651509,
+      "claims": [
+        {
+          "id": "picked-d23-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 23
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 32,
+          "estimate": 0,
+          "lower": -8,
+          "upper": 8,
+          "alpha": 0.004166666666651509,
+          "rank": 8,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "picked-d33-no-regression",
+          "metric": {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 32,
+          "estimate": 8,
+          "lower": 0,
+          "upper": 24,
+          "alpha": 0.004166666666651509,
+          "rank": 8,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "tuned-d33-no-regression",
+          "metric": {
+            "bot": "TUNED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "INCONCLUSIVE",
+          "n": 32,
+          "estimate": 8,
+          "lower": 0,
+          "upper": 16,
+          "alpha": 0.004166666666651509,
+          "rank": 8,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "pen-advantage",
+          "metric": {
+            "ratio": [
+              {
+                "bot": "PICKED",
+                "field": "arrival_hours",
+                "depth": 33
+              },
+              {
+                "bot": "TUNED",
+                "field": "arrival_hours",
+                "depth": 33
+              }
+            ]
+          },
+          "units": "(hours) / (hours)",
+          "comparison": "absolute",
+          "estimand": "median",
+          "direction": "at-least",
+          "threshold": 1.15,
+          "status": "INCONCLUSIVE",
+          "n": 32,
+          "estimate": 1.1833333333333333,
+          "lower": 1,
+          "upper": 1.3333333333333333,
+          "alpha": 0.004166666666651509,
+          "rank": 8,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    }
+  ],
+  "work": {
+    "probeCalls": 9,
+    "newSeedProfiles": 76,
+    "cacheHits": 0,
+    "invalidated": 0,
+    "uniqueSeedProfiles": 76,
+    "discoverySeedProfiles": 12,
+    "confirmationSeedProfiles": 64,
+    "exhaustiveDiscoverySeedProfiles": 24,
+    "exhaustiveSeedProfiles": 88,
+    "savedPct": 13.636363636363635
+  },
+  "wallSeconds": 3296.911,
+  "timing": {
+    "totalSeconds": 3297.489,
+    "preparationSeconds": 0.578
+  }
+}

@@ -2,8 +2,8 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest completed checkpoint is Cut280
-statistical tuning, source418eda2f; the deployed game remains Cut279 source423fe45a.
+Owner: continue working on the backlog. Latest production checkpoint is Cut284
+route-aware counter packing, sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/
@@ -20,13 +20,15 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    Starts and Apprentice policy have nonuniform effects; no default adopted.
    Guide-gap4/6/8 screen is complete: gap6 passes relative rows while slowing
    PICKED; gap8 passes workers only. No default adopted. Cut283's protected
-   statistical study froze gap8 before held-out confirmation (live); absolute
+   statistical study froze gap8 before held-out confirmation; absolute
    non-regression and the pen advantage are required. See
    [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
    **Cut284 fixed/validated** the moved-route counter-packing defect:0/198 errors,
    workspace1095 pass/6 ignored, real-WASM sends/parity and564 settlement checks.
-   Cut283's old immutable study continues independently and cannot authorize
-   a default on the new runtime. Guide gap remains4. The route fix does not
+   Cut283 finished INCONCLUSIVE at32 seeds, with no censoring. All76 receipts
+   and12 intervals independently check; no profile adopted. Its old immutable
+   runtime cannot authorize a default on the new runtime. Next inspect native
+   probe throughput before another expensive late-game study. Guide gap remains4. The route fix does not
    explain or close the base-route balance failures.
 3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
    W2 effects are held, not unfinished authorized implementation. R3 still needs

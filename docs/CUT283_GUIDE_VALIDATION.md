@@ -51,3 +51,14 @@ that old runtime only. It cannot authorize profile adoption on the new runtime;
 fresh current-runtime evidence is required. The original preregistration is
 archived in `evidence/cut283/frozen-contract.md`; no confirmation budget or
 winner changes and no runner-up reuse are permitted.
+
+## Final result — 2026-10-20
+
+Complete **INCONCLUSIVE** at the final32-seed look; all four claims remained
+inconclusive throughout. No censoring, no adoption, no runner-up retry. Final
+PICKED D23 difference0h[-8,8], PICKED D33 +8h[0,24], TUNED D33 +8h[0,16],
+and pen ratio1.1833[1,1.3333]. Exact archived receipt and independent rational-tail
+verification: [evidence/cut283/README.md](evidence/cut283/README.md).
+76 observations,3297.489s total;13.6% fewer observations than the matched unpruned
+search, without a measured campaign wall-time comparison. This closes this
+bounded study, not the balance failures or late-game tuning performance work.
