@@ -1,9 +1,31 @@
-# Active backlog — Cut290 existing gas preparations measured and verified, 2026-10-20
+# Active backlog — Cut291 Throw feedback fix, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest work measures earned loadouts/ability permissions and retains the six-scene
+Latest work fixes missing-Throw refusal feedback and retains the six-scene
 catalogue; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut291 accurate Throw refusal — verified
+
+Contract: [CUT291_THROW_REFUSAL.md](CUT291_THROW_REFUSAL.md). Missing Rogue/general
+Throw permission now reports `not learned`, gloss `learn Throw first`, rather
+than `no line`. Shared readonly predicate preserves execution permission exactly.
+Five focused regressions red2pass/3fail before, green5pass after. Four earned
+50-tick gas/pack locked/purchased prefixes preserve complete events/saves after
+only reason/gloss replacement; purchased controls byte-exact. Four real public-
+WASM prefixes match complete native save bytes and events. Independent87-receipt
+archive verifier passes, including source/input/runtime hashes and fixture diff.
+Workspace1100pass/6ignored, warnings-denied workspace/all-target Clippy and client
+format/lint/types/copy checks pass. Native settlements preserve Gold/ledger/
+ExitLine/expected4/4; one after-save changes only diagnostic blocked reasons:
+363 no line →273 no line +90 not learned. Exact inspected amendment retains all
+other fields, and replaces only that fixture. WASM fb23bbaa…,7142362 bytes; default
+manifest now cut291. Headless real-WASM settlement564/564 across24 cases passes;
+served package identity matches fb23. All owned jobs terminal.
+Evidence `docs/evidence/cut291/`; raw archive578024 bytes. No balance/full/
+exhaustive/fun acceptance or deployment implied. Next mechanics: package/ability
+dependency presentation, then R4 earned class builds. Balance failures and six
+counter-superiority gates remain open. Held W2/recovery and Guide gap4 unchanged.
 
 ## Cut290 earned loadouts — verified; existing prep works, permission dependency found
 

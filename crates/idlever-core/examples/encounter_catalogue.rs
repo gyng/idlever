@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
     if args.len() < 5 {
         return Err(
-            "earn|prepare|trace|absence|loadout|purchase SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
+            "earn|prepare|trace|absence|loadout|purchase|reasons SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
         );
     }
     idlever_core::chronicle::use_shipping_words();
@@ -118,6 +118,32 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             fs::write(dir.join("choice-parent.json"), s.save())?;
             let report = s.run_offline_mode(hours * 3600, false, true);
             write(dir, "report.json", &report);
+        }
+        "reasons" => {
+            let ticks: u32 = args[4].parse()?;
+            if ticks != 50 || s.run.is_some() {
+                return Err("reason probe requires home and exactly50 ticks".into());
+            }
+            if let Some(choice) = args.get(5) {
+                choose(&mut s, choice)?;
+            }
+            fs::write(dir.join("choice-parent.json"), s.save())?;
+            s.try_send()?;
+            fs::write(dir.join("send.json"), s.save())?;
+            let mut events = Vec::new();
+            for _ in 0..ticks {
+                let step = s.step(1);
+                events.extend(step.events);
+                if step.run_over {
+                    return Err("reason prefix ended before50 ticks".into());
+                }
+            }
+            write(dir, "events.json", &events);
+            write(
+                dir,
+                "trace.json",
+                &s.run.as_ref().ok_or("missing live run")?.trace,
+            );
         }
         "purchase" => {
             if s.run.is_some() {

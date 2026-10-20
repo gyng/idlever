@@ -875,7 +875,7 @@ fn choose_and_act(run: &mut Run, cx: &mut Ctx, v: &View) -> (i32, Verb) {
 /// sense`, `paralysed`, `confused`, `bail`.
 pub const ROW_REASONS: &[&str] = &[
     "reloading", "empty gun", "gun full",
-    "aim held", "long gun only", "rifle only", "class locked", "foe too healthy",
+    "aim held", "long gun only", "rifle only", "class locked", "not learned", "foe too healthy",
     "hp not <", "hp not >", "foes not ≥", "foes fleeing", "foes appeared after", "adj not ≥", "not in view", "no weak foe", "none held", "no unknown", "seen not ≥",
     "depth not ≥", "alert not ≥", "not corridor", "no path", "no ally", "loot not ≥", "turns not >", "not hurt", "no kill",
     "nothing new", "no ", "party hp ok", "locked cond", "no target", "no line", "no bow", "cooldown", "no item", "no use",
@@ -1026,6 +1026,7 @@ pub const WHY_GLOSS: &[(&str, &str)] = &[
     ("no path", "way blocked"),
     ("no target", "no foe reachable"),
     ("no line", "shot blocked"),
+    ("not learned", "learn ability first"),
     ("no bow", "needs a bow"),
     ("cooldown", "skill recharging"),
     ("no item", "none in pack"),
@@ -1069,6 +1070,7 @@ pub fn why_gloss(verb: &str, why: &str) -> Option<&'static str> {
         ("read", "no use") => return Some("nothing to learn"),
         ("drink", "no use") => return Some("not needed now"),
         ("throw", "no line") => return Some("no clear throw"),
+        ("throw", "not learned") => return Some("learn Throw first"),
         _ => {}
     }
     WHY_GLOSS.iter().filter(|(k, _)| why.starts_with(k)).max_by_key(|(k, _)| k.len()).map(|(_, g)| *g)

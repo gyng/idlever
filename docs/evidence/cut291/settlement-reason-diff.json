@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bank-positive",
+    "complete_save_unchanged": true
+  },
+  {
+    "id": "death-secured-lost",
+    "complete_save_unchanged": true
+  },
+  {
+    "id": "death-fetched-lost",
+    "complete_save_unchanged": true
+  },
+  {
+    "id": "multihero-absence",
+    "path": "$.lineage.row_stats[8][1].blocked",
+    "before": {
+      "no line": 363
+    },
+    "after": {
+      "no line": 273,
+      "not learned": 90
+    },
+    "all_other_fields_exact": true
+  }
+]

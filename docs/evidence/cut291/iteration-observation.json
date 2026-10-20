@@ -1,0 +1,15 @@
+{
+  "kind": "automated host process/source observation, not benchmark",
+  "date": "2026-10-20",
+  "runner": "web/tests/run.mjs gold-settlements",
+  "identity_source": "web/tests/lib/run-state.mjs identity()",
+  "untracked_file_count_at_observation": 19244,
+  "untracked_bytes_below_32MiB_at_observation": 11417802829,
+  "runner_process": 1044114,
+  "observed_runner_cpu_time_seconds": 103,
+  "observed_runner_elapsed_seconds": 133,
+  "vite_child_elapsed_seconds": 27,
+  "test_child_elapsed_seconds": 26,
+  "interpretation": "Identity hashes all untracked small files before starting the server. This is a concrete startup-cost candidate, but CPU attribution and a controlled speed comparison are not established.",
+  "scope": "One dirty worktree/run only; not a universal startup estimate. Preserve identity and resume correctness in any later optimization."
+}

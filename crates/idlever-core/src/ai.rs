@@ -437,6 +437,11 @@ fn class_cooldown(run: &Run, verb: &Verb) -> bool {
     }
 }
 
+// Permission only: item and target checks remain in the verb itself.
+fn throw_unlocked(run: &Run, cx: &Ctx) -> bool {
+    class_has_verb(run.hero.class, run.hero.level, "throw") || cx.unlocks.contains("throw")
+}
+
 /// Cut 4: why a row whose conditions held could not act (≤ 2 words).
 pub fn block_reason(run: &Run, cx: &Ctx, verb: &Verb, v: &View) -> &'static str {
     let holds = |kind: &str| run.hero.inv.iter().any(|i| i.kind == kind);
@@ -479,7 +484,9 @@ pub fn block_reason(run: &Run, cx: &Ctx, verb: &Verb, v: &View) -> &'static str 
         }
         "throw" => {
             let k = verb.a.as_deref().unwrap_or("").split(',').next().unwrap_or("");
-            if !k.is_empty() && k != "unknown" && !holds(k) {
+            if !throw_unlocked(run, cx) {
+                "not learned"
+            } else if !k.is_empty() && k != "unknown" && !holds(k) {
                 "no item"
             } else if v.foes.is_empty() {
                 "no target"
@@ -823,7 +830,7 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         }
         "drink" => verb_drink(run, cx, &a),
         "read" => verb_read(run, cx, &a, v),
-        "throw" => (class_has_verb(run.hero.class, run.hero.level, "throw") || cx.unlocks.contains("throw")) && verb_throw(run, cx, &a, v),
+        "throw" => throw_unlocked(run, cx) && verb_throw(run, cx, &a, v),
         "cleave" => class_has_verb(run.hero.class, run.hero.level, "cleave") && verb_cleave(run, cx, v),
         "taunt" => class_has_verb(run.hero.class, run.hero.level, "taunt") && verb_taunt(run, cx, v),
         "second_wind" => {

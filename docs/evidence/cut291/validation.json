@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "workspace": {
+    "exit": 0,
+    "passed": 1100,
+    "ignored": 6
+  },
+  "clippy": {
+    "exit": 0,
+    "scope": "workspace all-targets -D warnings"
+  },
+  "focused": {
+    "red_exit": 101,
+    "red_passed": 2,
+    "red_failed": 3,
+    "green_exit": 0,
+    "green_passed": 5
+  },
+  "native_settlements": {
+    "exit": 0,
+    "cases": 4,
+    "expected_unchanged": 4,
+    "complete_save_unchanged": 3,
+    "reason_only_amendment": 1
+  },
+  "browser_settlements": {
+    "exit": 0,
+    "checks": 564,
+    "cases": 24
+  },
+  "public_wasm_prefixes": {
+    "exit": 0,
+    "complete_native_save_bytes_and_events_equal": 4
+  },
+  "logs": {
+    "clippy.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-format.txt": "28648d40c5ba4a7ac26c870c679f91f94ff1c7d7dd74d77aac76033fb82d6686",
+    "repin-check.txt": "33bcc1e13ab62768e7b2797f43718bad340da8bb3b5a70b74e60508583784667",
+    "repin.txt": "db2406515ce9169ea4381d7f4a41cedc311cbe61375bd70a9af842d4df53c1fd",
+    "workspace-tests.txt": "1907408df3838d329f1e0afede5e9f77474253f275e0d52db7b38175b1fedc88",
+    "browser-settlements-corrected.txt": "ea2dabaec415bde269cc6123b05597345b73e814d1f1eb5f7d6dccf4b528aded",
+    "wasm-build.txt": "d8928f719535458621982f6094385fc28bab5eed778df40830f4478819132e09",
+    "copy-lint.txt": "1fd9a38cfa6d1113bda6ad3da8a8503b6f46a9c01b958d9f1509384466c7ebb6",
+    "browser-settlements-host.txt": "295883d858e2fb7b0c7bdda4f108fafab505d94a0bef36e75b339041353a6945",
+    "wasm-check.txt": "bc3579dca9e6216f42a99124514a8264e359c9f00af3e2c0a7f4d1d0f58af1b6",
+    "web-types.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "browser-settlements.txt": "63e891a7cec9db823951c850d27110ba7ec92f639f89f35be79e7741900a1d5c",
+    "web-format.txt": "c727238c6e72c0ced29a446809fa1369b40f4e2d6e2298231de4633f67fdcd5c",
+    "web-lint.txt": "f893ef8b57c70b2fb04ed74db52a896b013f2c870fa785613509912cd00fb1d2",
+    "settlements-retained.txt": "163d4c29acef9fb0f954c36f8a2a03783e2bf87328c2cd1981f12170cccce62d"
+  }
+}

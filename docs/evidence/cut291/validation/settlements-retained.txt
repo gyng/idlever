@@ -1,0 +1,8 @@
+NOTE bank-positive: exit packages Some(Array [String("+unbowed"), String("+light hands"), String("+iron gut")]) → None
+PASS bank-positive: exact original Gold/ledger/exit, current full-state exported
+NOTE death-secured-lost: exit finds gain Cut261 worth/fate
+PASS death-secured-lost: exact original Gold/ledger/exit, current full-state exported
+NOTE death-fetched-lost: exit finds gain Cut261 worth/fate
+NOTE death-fetched-lost: exit packages Some(Array [String("+unbowed"), String("+light hands"), String("+iron gut")]) → None
+PASS death-fetched-lost: exact original Gold/ledger/exit, current full-state exported
+PASS multihero-absence: exact original Gold/ledger/exit, current full-state exported

@@ -2,8 +2,9 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut290
-(existing gas loadouts and actual Throw permission measured); production is Cut284 route-aware counter packing,
+Owner: continue working on the backlog. Latest verified production change is Cut291 (accurate missing-Throw refusal;
+core/native/WASM parity and564/564 browser settlement checks pass). Prior
+production fix is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
@@ -56,8 +57,9 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    Cut290 tests24 actual loadout/variant cases plus four paid-Throw cases: owned
    bow meets damage targets, and a legal3-mark Throw purchase lets existing
    wade-in use three fire doses (gas6/3, pack7/0 hurt/gas), with no AI change.
-   All28 observer pairs/eight8h ledgers independently verify. Next reproduce/fix
-   misleading throw class/permission block reasons, then examine dependency copy
+   All28 observer pairs/eight8h ledgers independently verify. Cut291 now fixes
+   misleading throw permission block reasons with unchanged execution, red/green
+   tests, four exact native/WASM prefixes and564/564 browser settlement checks. Next examine dependency copy
    and R4 authored class builds; no six-superiority or population claim. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
@@ -69,6 +71,9 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
 **Held by owner:** Bank/Vat upgrade redesign and short-recovery proposal. Do not
 restore those branches as part of calibration or inherited-failure diagnosis.
 Statistical tooling is complete, not an outstanding implementation item.
+Iteration follow-up: Cut291 observed the client identity routine hashing about
+11.4 GB across19,244 untracked files before its suite starts; audit startup cost
+without weakening source identity/resume correctness (observation, not benchmark).
 No automatic deployment is included in this backlog resume.
 
 ## Owner pivot — 2026-10-16 (UI handoff; mechanics + chores here)

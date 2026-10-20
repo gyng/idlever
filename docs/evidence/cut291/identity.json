@@ -1,0 +1,69 @@
+{
+  "head": "5c3a0cf69b74afcb10a180aae0d57b64600ff72d",
+  "before_core_tree": "89126385e7617538808f0541962e231ef8829e7b",
+  "before_native_sha256": "9691f2af98be19768750e9bf66ff8e1aed9cfee62668c64ce75db4251b911a37",
+  "harness_sha256": "29d2975754bc6084a137d7499de0a84f4deea412fa6e62c1028b8f4b828f2ee4",
+  "contract_sha256": "150ea358ae30e3966447cc1e6c140c8d5398c36a238fe2d061be3586a78fb7e7",
+  "sources": {
+    "source-before/ai.rs": "7d127b35de4aa38e154e4c11b32765eabacf229acaaddd2ba43ed2d7a6ea46dc",
+    "source-before/tests-red.rs": "457d76c6f604e7edd213a843fa67ddaa736d0efdad5b314ed10c4338f0d624b6",
+    "source-before/turn.rs": "9f2ae429ea6c23bcd5445f9b64f0a9f4f9abda017ac2a87c293b97e74475fba0",
+    "source-after/ai.rs": "2e3f5da3b7a603a61134c250c11f5ca16eb7b621b9e0f92772e75159a6ce74a6",
+    "source-after/tests-green.rs": "5778f7bca958baeb4243de268e52664a435e4dd13aea30baac190af6c7454f65",
+    "source-after/turn.rs": "70a2033bdbb12a6ba188ec343bb41f6a625634ae8caa6298e166c8a1511aa63f"
+  },
+  "parents": {
+    "gas-locked": {
+      "path": "target/cut290/loadout-gas-sword-fire3/after.json",
+      "sha256": "eea6c74013f1a99fbe90cbd5a7d191f42264f380a2111ac2843e5adbf88a0729"
+    },
+    "gas-learned": {
+      "path": "target/cut290/purchase-gas-throw/after.json",
+      "sha256": "e80228e1fdbc00b660b9ba66877af8f04dce07750b54cc9423a9d269ed41ff4b"
+    },
+    "pack-locked": {
+      "path": "target/cut290/loadout-pack-sword-fire3/after.json",
+      "sha256": "9f091edfb3a155fbb70eb57c9c3004773ff63dad7345fa4a47211fbcc433c511"
+    },
+    "pack-learned": {
+      "path": "target/cut290/purchase-pack-throw/after.json",
+      "sha256": "7d75f8e71db3492f59f90ccff0133a3b6f5950560b22073563a0875a16e241ca"
+    }
+  },
+  "after_native_sha256": "6f3e64e6228e250ab944fdfe96d79dc9ac524b333250208f6bd0a000ee5608f5",
+  "wasm": {
+    "wasmSha256": "fb23bbaa6fe611bff3d2147a95965c28de49bbbdddb04439dff0659922792176",
+    "wasmBytes": 7142362,
+    "cases": [
+      {
+        "scene": "gas",
+        "permission": "locked",
+        "inputSha256": "eea6c74013f1a99fbe90cbd5a7d191f42264f380a2111ac2843e5adbf88a0729",
+        "afterSha256": "d1f4cb26d8fdca6da8b47f984c5c8aff72611d8567d1ac778b9aca3b646837bb",
+        "learningReasons": 5
+      },
+      {
+        "scene": "gas",
+        "permission": "learned",
+        "inputSha256": "e80228e1fdbc00b660b9ba66877af8f04dce07750b54cc9423a9d269ed41ff4b",
+        "afterSha256": "d48b0f0a9613089ed1f9661bc4e3840a1b933a69ca1fe4932f0ae54d398127d2",
+        "learningReasons": 0
+      },
+      {
+        "scene": "pack",
+        "permission": "locked",
+        "inputSha256": "9f091edfb3a155fbb70eb57c9c3004773ff63dad7345fa4a47211fbcc433c511",
+        "afterSha256": "9bc9e77bf875bd8ab3ad6a1a94c693c6ae41efb147f0d4a65a67f070e4c5b51f",
+        "learningReasons": 0
+      },
+      {
+        "scene": "pack",
+        "permission": "learned",
+        "inputSha256": "7d75f8e71db3492f59f90ccff0133a3b6f5950560b22073563a0875a16e241ca",
+        "afterSha256": "f26a45f04166b106faa5b203223d74590229eb1ee3e575f480cf96d6c0186db3",
+        "learningReasons": 0
+      }
+    ],
+    "status": "PASS"
+  }
+}
