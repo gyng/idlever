@@ -113,12 +113,12 @@ const lanes = () =>
   });
 async function openRunLog() {
   if (!(await page.locator(".runs-sheet:visible").count())) {
-    if (!(await page.locator(".hero-sheet:visible").count()))
-      await page
-        .locator('.hero-details:visible, .camp [data-building="tent"]:visible')
-        .first()
-        .click();
-    await page.locator(".hero-runs:visible").click();
+    if (!(await page.locator(".hero-hub:visible").count())) {
+      if (!(await page.locator(".hero-details:visible").count()))
+        await page.locator(".home-heroes-command:visible").click();
+      await page.locator(".hero-details:visible").first().click();
+    }
+    await page.locator('[data-hub-action="runs"]:visible').click();
   }
   await until(() => !!document.querySelector(".runs-sheet"), "Run log", 5000);
 }
@@ -278,8 +278,10 @@ try {
       "the first resident",
       15000,
     );
+    await page.locator(".home-heroes-command:visible").click();
+    await page.locator(".heroes-sheet .hero-row").waitFor();
     const s = await page.evaluate(() => {
-      const root = document.querySelector(".hero-mobile"),
+      const root = document.querySelector(".heroes-sheet"),
         row = root.querySelector(".hero-row");
       return {
         state: row?.dataset.state,
@@ -292,6 +294,7 @@ try {
         log: !!document.querySelector(".hero-runs"),
       };
     });
+    await page.keyboard.press("Escape");
     const l = await L();
     await shot("manual-day0");
     check(
@@ -302,7 +305,7 @@ try {
       !l.auto && l.waits,
       `before the scout sending remains manual (auto ${l.auto}, waits ${l.waits})`,
     );
-    check(s.pulse && /send/i.test(s.gem), `the first Send is lit (${s.gem})`);
+    check(s.pulse && /^Delve$/i.test(s.gem), `the first Delve is lit (${s.gem})`);
     check(!s.log && l.runs.length === 0, "an unplayed hero has no Run log");
     const surf = await fold(":is(.well-wrap, .console)"),
       all = await fold();

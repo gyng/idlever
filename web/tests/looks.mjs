@@ -63,8 +63,10 @@ const look = () => page.evaluate(async () => (await window.__idlever.engine.line
 const wellArt = (sel = "main .portrait .face") =>
   page.evaluate((sel) => document.querySelector(sel)?.dataset.art ?? "", sel);
 const openAppearance = async () => {
-  await page.locator(".hero-mobile .hero-details").click();
-  await page.locator(".hero-sheet .hero-appearance").click();
+  if (!(await page.locator(".hero-details:visible").count()))
+    await page.locator(".home-heroes-command:visible").click();
+  await page.locator(".hero-details:visible").first().click();
+  await page.locator('[data-hub-action="appearance"]:visible').click();
 };
 const miniArt = () =>
   page.evaluate(() => document.querySelector(".mini-portrait .face")?.dataset.art ?? "");

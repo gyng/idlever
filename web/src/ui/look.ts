@@ -6,6 +6,7 @@ import { LOOKS, setHeroLook } from "../render/look";
 import { h } from "./dom";
 import { paintFace } from "./frame";
 import { openWindow as openSheet } from "./sheet";
+import { heroHubOwner } from "./hero-hub";
 
 /** The renderer's hero follows the lineage's look (called before a viewer loads, and on every portrait paint). */
 export function syncLook(app: App): void {
@@ -39,7 +40,19 @@ export function lookStud(app: App): HTMLElement {
 
 /** The look sheet: the current class's three headshots; one tap swaps and closes. */
 export function openLooks(app: App): void {
+  const root = heroHubOwner(app);
+  if (!root) return;
+  app = root;
+  const engine = app.engine;
+  const identity = (): string =>
+    JSON.stringify([
+      app.lineage.selected_bloodline,
+      app.lineage.persistent_hero?.id,
+      app.lineage.persistent_hero?.incarnation,
+    ]);
+  const asked = identity();
   openSheet((close) => {
+    const active = (): boolean => app.engine === engine && identity() === asked && body.isConnected;
     const cls = app.lineage.class;
     const row = h(
       "div",
@@ -55,8 +68,9 @@ export function openLooks(app: App): void {
             "data-look": look,
             "aria-pressed": on ? "true" : "false",
             onclick: async () => {
-              if (!on && (await app.setLook(look))) syncLook(app);
-              close();
+              if (!active()) return;
+              if (!on && (await app.setLook(look)) && active()) syncLook(app);
+              if (active()) close();
             },
           },
           h("span", { class: "look-well" }, face),
@@ -64,11 +78,12 @@ export function openLooks(app: App): void {
         );
       }),
     );
-    return h(
+    const body = h(
       "div",
       { class: "sheet-body look-sheet" },
       h("div", { class: "label row-label" }, /* copy:label */ "Appearance"),
       row,
     );
+    return body;
   });
 }

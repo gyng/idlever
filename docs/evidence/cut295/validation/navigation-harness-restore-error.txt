@@ -1,0 +1,13 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: Cannot read properties of undefined (reading 'bind')
+    at eval (eval at evaluate (:311:30), <anonymous>:3:38)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /home/g/p/riddle/web/tests/hero-hub-navigation.mjs:108:16 {
+  log: []
+}
+
+Node.js v22.18.0

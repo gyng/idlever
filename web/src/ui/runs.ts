@@ -15,6 +15,19 @@ import { keptDeath, chronicleEmpty } from "./chronicle";
 import { clearCard } from "./runclear"; // run-clear: an entry's card
 import { bestRarity } from "./items";
 import { bossDown } from "./watch";
+import { heroHubOwner } from "./hero-hub";
+
+function runOwner(app: App): () => boolean {
+  const engine = app.engine;
+  const identity = (): string =>
+    JSON.stringify([
+      app.lineage.selected_bloodline,
+      app.lineage.persistent_hero?.id,
+      app.lineage.persistent_hero?.incarnation,
+    ]);
+  const asked = identity();
+  return () => app.engine === engine && identity() === asked;
+}
 
 /** one fold: an absence's runs, or the runs played while the app was open between two absences */
 export type RunGroup = {
@@ -71,6 +84,10 @@ const TIER_GLYPH: Record<string, string> = { bank: "⌂", return: "↩", death: 
 /** The log sheet: `runs` (the folds) and `heirs` (the chronicle: one line an heir, a kept death's line opens its verdict) — the history's
  *  one place (the chronicle's console tile folded in here). `focus` opens the fold holding that run. */
 export function openRuns(app: App, opts: { focus?: number; tab?: "runs" | "heirs" } = {}): void {
+  const root = heroHubOwner(app);
+  if (!root) return;
+  app = root;
+  const owner = runOwner(app);
   closeAllSheets();
   openSheet((close) => {
     const L = app.lineage;
@@ -118,7 +135,7 @@ export function openRuns(app: App, opts: { focus?: number; tab?: "runs" | "heirs
       tabHeirs.setAttribute("aria-pressed", String(tab === "heirs"));
       body.dataset.tab = tab;
       if (tab === "heirs") {
-        replace(list, ...heirLines(app, close));
+        replace(list, ...heirLines(app, close, active));
         return;
       }
       replace(count, `${(L.runs ?? []).filter((r) => r.id > 0).length}`);
@@ -170,7 +187,7 @@ export function openRuns(app: App, opts: { focus?: number; tab?: "runs" | "heirs
           if (!on) return [head];
           return [
             head,
-            ...g.recs.map((r) => entry(app, r, held.has(r.id), r.id > seen, close)),
+            ...g.recs.map((r) => entry(app, r, held.has(r.id), r.id > seen, close, active, owner)),
             g.sampled
               ? h(
                   "div",
@@ -188,13 +205,14 @@ export function openRuns(app: App, opts: { focus?: number; tab?: "runs" | "heirs
       h("div", { class: "label row-label log-head" }, kwHost(tabRuns, "log"), tabHeirs),
       list,
     );
+    const active = (): boolean => owner() && body.isConnected;
     paint();
     return body;
   });
 }
 
 /** the chronicle's lines, newest first (Cut 5 §2; Cut 9 §7: a line whose heir keeps a death opens its verdict) */
-function heirLines(app: App, close: () => void): HTMLElement[] {
+function heirLines(app: App, close: () => void, active: () => boolean): HTMLElement[] {
   const L = app.lineage;
   const lines = [...(L.chronicle ?? [])].reverse();
   return [
@@ -210,9 +228,11 @@ function heirLines(app: App, close: () => void): HTMLElement[] {
           {
             class: "cline kept game-inset",
             onclick: () => {
+              if (!active()) return;
               void app
                 .busy(/* copy:label */ "verdict", () => app.engine.death(id))
                 .then((death) => {
+                  if (!active()) return;
                   close();
                   closeAllSheets();
                   app.go({ kind: "death", death, kept: true });
@@ -235,6 +255,8 @@ function entry(
   replay: boolean,
   fresh: boolean,
   close: () => void,
+  active: () => boolean,
+  owner: () => boolean,
 ): HTMLElement {
   const L = app.lineage;
   const why = r.reason
@@ -294,9 +316,11 @@ function entry(
           class: "re-body",
           "data-verdict": r.death_id,
           onclick: () => {
+            if (!active()) return;
             void app
               .busy(/* copy:label */ "verdict", () => app.engine.death(r.death_id!))
               .then((death) => {
+                if (!active()) return;
                 close();
                 closeAllSheets();
                 app.go({ kind: "death", death, kept: true });
@@ -309,7 +333,13 @@ function entry(
       )
     : h(
         "button",
-        { class: "re-body", "data-card": r.id, onclick: () => openRunCard(app, r) },
+        {
+          class: "re-body",
+          "data-card": r.id,
+          onclick: () => {
+            if (active()) openRunCard(app, r, owner);
+          },
+        },
         top,
         sub,
       ); // run-clear: the run's card
@@ -321,7 +351,9 @@ function entry(
             class: "re-play game-control",
             "data-run": r.id,
             "aria-label": /* copy:label */ "replay",
-            onclick: () => void openRunReplay(app, r),
+            onclick: () => {
+              if (active()) void openRunReplay(app, r, { valid: active });
+            },
           },
           "▶",
         ),
@@ -343,7 +375,7 @@ function entry(
 
 /** run-clear × RUNS_UI: a past run's card (the end's seal, its reason, the floor and a new best, the gold home, the finds by rarity) — the
  *  watched run's clear screen, as the log keeps it; its ▶ under it when the core holds the run. */
-function openRunCard(app: App, r: RunRec): void {
+function openRunCard(app: App, r: RunRec, owner: () => boolean): void {
   const x: ExitLine = {
     carried: r.gold,
     keep_pct: 100,
@@ -360,8 +392,8 @@ function openRunCard(app: App, r: RunRec): void {
     run_id: r.id,
   };
   const held = (app.lineage.replays ?? []).includes(r.id);
-  openSheet(() =>
-    h(
+  openSheet(() => {
+    const body = h(
       "div",
       { class: "sheet-body run-card-sheet", "data-run": r.id },
       h(
@@ -378,14 +410,18 @@ function openRunCard(app: App, r: RunRec): void {
             {
               class: "btn wide re-play-wide",
               "data-run": r.id,
-              onclick: () => void openRunReplay(app, r),
+              onclick: () => {
+                if (owner() && body.isConnected)
+                  void openRunReplay(app, r, { valid: () => owner() && body.isConnected });
+              },
             },
             "▶ ",
             /* copy:button */ "replay",
           )
         : "",
-    ),
-  );
+    );
+    return body;
+  });
 }
 
 /** RUNS_UI §3: a past run played again — the core re-simulates it from its send (`replay(id)`); the floors one after another in the map
@@ -453,8 +489,10 @@ export function killRuns(
 export async function openRunReplay(
   app: App,
   r: RunRec,
-  opt: { kill?: string; rep?: Replay } = {},
+  opt: { kill?: string; rep?: Replay; valid?: () => boolean } = {},
 ): Promise<void> {
+  const owner = runOwner(app);
+  if (!owner() || opt.valid?.() === false) return;
   if (!app.engine.replay) return;
   let rep: Replay | null = opt.rep ?? null;
   if (!rep)
@@ -463,7 +501,7 @@ export async function openRunReplay(
     } catch (e) {
       console.warn("replay", e);
     }
-  if (!rep || !rep.floors.length) return;
+  if (!owner() || opt.valid?.() === false || !rep || !rep.floors.length) return;
   const R = rep;
   const kill = opt.kill ? killIn(R, opt.kill) : undefined;
   const dev = window as unknown as {
@@ -487,7 +525,7 @@ export async function openRunReplay(
     ...(kill ? { kill: { ...kill, seen: false } } : {}),
   };
   openSheet(
-    () => {
+    (close) => {
       const canvas = h("canvas", { class: "replay-view run-replay-view" });
       const at = h("span", { class: "num dim rr-at" });
       const chips = h("div", { class: "chips rr-floors" });
@@ -558,7 +596,7 @@ export async function openRunReplay(
       requestAnimationFrame(() => {
         if (!document.contains(canvas)) return;
         void makeViewer(canvas).then(({ viewer: v }) => {
-          if (!document.contains(canvas)) {
+          if (!document.contains(canvas) || !owner()) {
             v.dispose();
             return;
           }
@@ -567,6 +605,11 @@ export async function openRunReplay(
           if (kill) show(kill.floor, kill.t - KILL_PRE);
           else show(0);
           timer = window.setInterval(() => {
+            if (!owner()) {
+              stop();
+              close();
+              return;
+            }
             if (!document.contains(canvas)) {
               stop();
               return;

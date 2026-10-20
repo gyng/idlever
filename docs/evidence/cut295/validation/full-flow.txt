@@ -1,0 +1,36 @@
+clicked replay fighter-sword-baseline
+1 fighter-sword-baseline gl 402
+clicked replay fighter-crownsplitter-baseline
+2 fighter-crownsplitter-baseline gl 402
+clicked replay fighter-sword-authored
+3 fighter-sword-authored gl 402
+clicked replay fighter-crownsplitter-authored
+4 fighter-crownsplitter-authored gl 402
+clicked replay rogue-dagger-baseline
+5 rogue-dagger-baseline gl 402
+clicked replay rogue-crownsplitter-baseline
+6 rogue-crownsplitter-baseline gl 402
+clicked replay ranger-bow-baseline
+7 ranger-bow-baseline gl 402
+clicked replay ranger-sword-baseline
+8 ranger-sword-baseline gl 402
+clicked replay caster-dagger-baseline
+9 caster-dagger-baseline gl 402
+clicked replay caster-bow-baseline
+10 caster-bow-baseline gl 402
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.runs-sheet .re-play[data-run="133"]') to be visible[22m
+
+    at /home/g/p/riddle/docs/evidence/cut295/capture.mjs:186:28 {
+  log: [
+    `  - waiting for locator('.runs-sheet .re-play[data-run="133"]') to be visible`
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.18.0

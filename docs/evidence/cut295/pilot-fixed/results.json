@@ -1,0 +1,69 @@
+{
+  "startedAt": "2026-10-20T15:57:45.442Z",
+  "mode": "pilot",
+  "wasmSha256": "fdd96f989ee720759496a9611fab74baf8b803ae812c1ae4b3b36f165a22f494",
+  "scriptSha256": "195376d0adf8ab8304678b58ee253ce3bce0e8914fd49a679ded3c0250d99391",
+  "selectionSha256": "a51a8d9cb7850091b96c59f5bb2d70a628aaefbc571fb9c12116276c6cf597da",
+  "rows": [
+    {
+      "id": "fighter-sword-baseline",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "textScale": 1,
+      "inputSha256": "3bb1cd1f413267c53ebb177670d9a949c50bf9902e24cb5ed673b4f4714001ac",
+      "nextWeapon": "crownsplitter",
+      "recordedWeapon": "sword",
+      "cost": {
+        "gold": 12849,
+        "marks": 118,
+        "clock": 352800
+      },
+      "afterCost": {
+        "gold": 12849,
+        "marks": 118,
+        "clock": 352800
+      },
+      "afterChoiceSha256": "7c044f1e811d647581b9cbb0951b67ee89ddb470b32808e440802acd5b1254af",
+      "afterViewSha256": "7c044f1e811d647581b9cbb0951b67ee89ddb470b32808e440802acd5b1254af",
+      "nativeReplayHash": "c4091b07a8c73f71",
+      "loadedSnapshotSha256": "7adf89b49bde3b8f35eb71df137b7007f6379a7eb911a2c2b67cfaa4ccad931d",
+      "appliedEventsSha256": "c2830bbb8e7882059b99946c6d8e06196a75b2239ab9ec987ca16e631419937f",
+      "replayCalls": [
+        [
+          133
+        ]
+      ],
+      "kind": "hero_fighter_male",
+      "ui": {
+        "overflow": false,
+        "panel": "replay\n#133\nD8\ncrypt\nfens\n◆ warlord\nD1\nD2\nD3\nD4\nD5\nD6\nD7\nD8\nD9\nD10\nD11\nD12\nD13\nD14\nD15\nD16\nD17\nD18\nD19\nD20\nD21\nD22",
+        "canvas": {
+          "x": 428,
+          "y": 209.875,
+          "w": 584,
+          "h": 360
+        },
+        "backend": "gl",
+        "stateKind": "hero_fighter_male",
+        "tick": 9240
+      },
+      "diagnosticSeek": true,
+      "target": 9240,
+      "saveFile": "fighter-sword-baseline-after-choice.json.gz",
+      "replayFile": "fighter-sword-baseline-wasm-replay.json.gz",
+      "file": "fighter-sword-baseline-gl-1440.png",
+      "frameSha256": "f801f8caee2b83e2005fe3a1ad017afa4acf9c1aa83fd483105cd7989c97a97f"
+    }
+  ],
+  "errors": [],
+  "served": [
+    "fdd96f989ee720759496a9611fab74baf8b803ae812c1ae4b3b36f165a22f494",
+    "fdd96f989ee720759496a9611fab74baf8b803ae812c1ae4b3b36f165a22f494",
+    "fdd96f989ee720759496a9611fab74baf8b803ae812c1ae4b3b36f165a22f494"
+  ],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "PASS"
+}

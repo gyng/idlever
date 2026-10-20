@@ -1,0 +1,15 @@
+ok   day 0 starts empty, requires construction, and cannot send: {"home":false,"heroes":0,"send":true,"build":true}
+ok   empty town retains ≤5 main surfaces and ≤12 above-fold controls (3/5)
+ok   the first resident is Ready with XP and Details ({"state":"waits","action":"Ready","xp":"L1 · XP 0/60","details":true,"tip":"bloodline","gem":"Delve","pulse":true,"log":false})
+ok   before the scout sending remains manual (auto false, waits true)
+ok   the first Delve is lit (Delve)
+ok   an unplayed hero has no Run log
+ok   day 0: ≤ 5 surfaces in the well and console (4: send | hero-details:1 | works | tile:heroes)
+ok   day 0: ≤ 12 elements above the fold (6: Gold$0 | Menu | send | hero-details:1 | works | tile:heroes)
+ok   Fast is selected through the visible Speed menu
+ok   the watched run finishes through the normal exit flow before replay inspection
+ok   the watched run (720 events) replays identically: eef3165b3da03d5b = eef3165b3da03d5b (core's 45ed9038719e1575, 3 floors)
+ok   the log's entry for run 1 carries ▶
+ok   the replay sheet plays run 1 (hash 45ed9038719e1575)
+ok   the replay plays its 3 floors to the end
+runsui: all ok

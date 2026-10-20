@@ -1,8 +1,13 @@
 # Content and refinement queue — 2026-10-13
 
-## Active backlog resume — 2026-10-20
+## Active backlog resume — 2026-10-21
 
-Owner: continue working on the backlog. Latest verified product change is Cut294:
+Owner: continue working on the backlog. Latest product change is Cut295:
+Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
+and56real UI viewing flows pass with an explicit input amendment (48restored
+absence +8same original in-flight Caster completions). The original blanket
+saved-source availability claim is false; two Caster Replay omissions are truthful.
+No retention policy change. Previous verified product change was Cut294:
 actual Watch weapon paintings and dungeon atlas-load fix (56current frames,
 341focused checks). Previous Cut292 delivered engine-derived variant ability
 hints; four earned native/WASM read pairs, phone/desktop public purchases,
@@ -15,13 +20,16 @@ four authored Fighter/Caster),14 exact observer/repeated8h pairs and Gold ledger
 Authored verbs fire; tradeoffs remain: Fighter sword banksD22/$828 baseline but
 diesD28/$0 authored; both authored Caster weapons have identical bolt/ward combat,
 returnD8/$145, so weapon value remains unproved. Gunner wrong-API refusals retained,
-same guns corrected through public choice0extra cost. Current Watch identity
-review remains open; native action evidence does not close R4 visual requirements.
+same guns corrected through public choice0extra cost. Cut295 adds actual replay UI flow checks; player recognition
+remains open and native action evidence alone does not close R4 visual requirements.
 Cut294 implements actual Snapshot.weapon painted variants (18existing frames),
 with56current earned GL/Canvas moment captures and341fallback/seek/context checks.
 It also fixes dungeon atlas overflow by excluding117town-only frames (town has
 its own loader). Standalone captures leave full Watch DOM/player recognition
-open; phone Canvas weapon detail remains small. Next real Watch replay/UI flow.
+open; phone Canvas weapon detail remains small. Cut295 now verifies the actual
+replay UI route using current native/WASM data; no normal user pause/scrub or
+ordinary completed-save retention is implied. Next mechanism: current earned
+Caster conduct payoff gap from Cut257, with a bounded source-backed contract.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/

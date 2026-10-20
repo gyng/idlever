@@ -1,9 +1,48 @@
-# Active backlog — Cut294 actual weapon paintings in Watch, 2026-10-20
+# Active backlog — Cut295 child navigation fixed and replay UI validated, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest product fix selects actual weapon paintings in Watch (Cut294), following
+Latest product fix restores Hero Details child Replay/Appearance navigation (Cut295),
+following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut295 replay/Appearance child navigation — verified with declared input amendment
+
+Contract [CUT295_WATCH_REPLAY_FLOW.md](CUT295_WATCH_REPLAY_FLOW.md). Real UI pilots
+found Hub disposal invalidated its child App scope: Run log opened but Replay
+never called engine; Appearance shared the scope. runs/look resolve owner before
+parent disposal, then child DOM/engine/resident/incarnation guards protect reads/
+mutations and late responses. Normal child survives log disposal. Real navigation
+and controlled race15checks pass; looks16 and runsui replay14original criteria
+pass, including exact watched event hash and replay-to-end. Stale test selectors/
+Send text updated to current Heroes/Details/Delve; no numeric bars loosened.
+
+Actual UI56viewing flows at402×681/1440×900 GL/Canvas pass: next legal weapon
+selected at0Gold/marks/time while recorded kind/actual unedited floor/events remain
+correct; WASM replay equals native and whole canonical post-choice save remains
+byte-exact. Private Xvfb/D3D12 NVIDIA RTX3080;0page errors/root overflow. Position
+uses declared diagnostic renderer seek/pause, not a normal player pause control.
+First ten same-product/input passes explicitly resumed, other46fresh. Original
+producer reconstruction matches recorded SHA. Independent364-native-receipt/
+56-image/save/replay matrix verifier passes. Types/lint/format/copy/build pass;
+existing build warnings retained. All validation jobs terminal.
+
+Original blanket56saved-source availability claim is CONTRADICTED: short authored
+Caster ordinary completed capsules weren't serialized. Two actual saved-source
+UI checks show no Replay truthfully. Watched-end recovery prep also cannot restore
+an unserialized capsule; failure retained. ONLY their8viewing flows instead load
+original in-flight sent states and publicly complete the SAME #133 run (28800s,
+no new send); reports/replays match native. Other48flows use original recovered
+absence saves. No capsule injection, retention/rules/WASM/default/deploy change.
+Input/amendment history, failed pilots, controls and all images/objects are in
+`docs/evidence/cut295/`. Recognition/small Canvas and scrolled phone heading limits
+remain; no independent player feedback, complete R4 or fun claim. No ordinary
+completed-save retention or player pause/scrub feature is implied.
+
+Next concrete mechanic: earned Caster conduct payoff gap retained in Cut257;
+inspect current source/earned parents before a bounded policy/content contract.
+R3, inherited balance, independent fun and broad audits remain open. Held W2/
+recovery/Guide gap4 unchanged; live dev remains423fe45a, no deployment.
 
 ## Cut294 Watch weapon selection and atlas load — verified scoped presentation fix
 
