@@ -1,4 +1,4 @@
-# Active backlog — Cut300 confirmation INCONCLUSIVE, 2026-10-21
+# Active backlog — Cut301 target diagnosis complete, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
 Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
@@ -8,7 +8,34 @@ Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
-before. No push/release/deployment yet. Live dev game is still423fe45a.
+before. Cut300 checkpoint13558b1c pushed; no new release/deployment. Live dev game is still423fe45a.
+
+## Cut301 target-choice diagnosis — three diagnostic bars pass, no adoption
+
+Contract [CUT301_LICH_TARGET_DIAGNOSIS.md](CUT301_LICH_TARGET_DIAGNOSIS.md),
+evidence [cut301/README.md](evidence/cut301/README.md). Same original earned seed2
+16h camp; unchanged / attack tag:undead / unchanged-repeat, three public8h
+absences,38actual completed runs. Only the authored Lich summoned row's selector
+changes; summoned-presence and hp>45 retained. Baseline/repeat match EVERY
+capture byte and Cut299's archived baseline. Native reconstructed events equal
+actual public replay events for every completed run.94raw JSONs archived with
+source/input/hash, whole-state/ledger/target/rule/repeat independent verification.
+
+Candidate D28 versusD23, spectral-blade target tallies101→0, skeleton270→228.
+It also selects Lich129/wraith20/ghoul31; not skeleton-only. Gold+6745 versus+8508
+(loss1763), off-Lich14–17 rule events73→59. Target/rule tallies are not hits;
+normal finish-run tails retained. Zero blades/positive skeletons/D28 bars pass,
+justifying further discovery, not adoption. Scoped build/rustfmt/Clippy pass;
+all diagnostic jobs terminal. No full/core/browser/canonical/population/fun
+acceptance, main core/WASM/default or deployment change.
+
+Next: explicitly freeze isolated generated-template target-choice ordinary pilot,
+reused discovery1/2 PICKED/TUNED3looks/day toD33-or14d, both runtime hashes and
+all losses. Keep HP/legacy/player-row semantics and class/target tradeoffs.
+Promising discovery still needs separately designed NEW independent evidence and
+canonical/mechanic/native-WASM checks before adoption. Never pool/reselect on
+Cut300's32held-out results or extend its budget. Held Bank/Vat W2/recovery/
+Guide gap4 unchanged; worker-away/R3/R4/recognition/calibration/fun remain open.
 
 ## Cut300 protected paired confirmation — terminal INCONCLUSIVE
 

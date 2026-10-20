@@ -31,6 +31,14 @@ are preserved, with zero native reruns. Controlled candidate6pass; shipping
 4pass/2intended scope failures. Next: a DIFFERENT tighter target-choice hypothesis
 on original earned discovery camps; do not reselect on or reuse the32held-out
 outcomes as new independent confirmation. Defaults remain unchanged.
+Cut301 now completes that different target-choice diagnostic on the SAME original
+earned camp:38actual runs/three branches, baseline/repeat byte-exact to Cut299.
+Attack tag:undead keeps summoned-presence/hp>45, reachesD28 versusD23 and removes
+spectral targets101→0 with228skeleton target tallies retained. Lich/wraith/ghoul
+selection and1763less Gold remain visible. Three diagnostic bars pass; no default
+adopted. Next: frozen isolated generated-template ordinary discovery pilot on
+reused1/2 with absolute arrivals, runtime identities and target/class tradeoffs;
+new independent evidence needed before adoption. Cut300 remains INCONCLUSIVE.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
