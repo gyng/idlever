@@ -1,0 +1,25 @@
+{
+  "initial_diagnostic_failures": [
+    {
+      "stage": "untracked listing before first baseline",
+      "error": "Node default execFileSync maxBuffer ENOBUFS",
+      "accepted_measurement": false
+    },
+    {
+      "stage": "sandboxed Node Git listing with larger maxBuffer",
+      "error": "EPERM despite Git status0",
+      "accepted_measurement": false
+    },
+    {
+      "stage": "later sandboxed special-file inventory",
+      "error": "EPERM; replaced by shell Git plus Python reading the saved list",
+      "accepted_measurement": false
+    }
+  ],
+  "first_baseline": "Preserved original module loaded before implementation; source edits after first call make this a cost observation only",
+  "first_matched_attempt": "Three legacy calls then new routine rejects directory symlink before producing any optimized result; preserved stderr and empty JSON",
+  "accepted_matched_attempt": "Fixed checkout; production module unchanged afterward; deterministic race test added after timing",
+  "format_lint": "Accepted global checks rerun after final race test",
+  "approval_rejections": 0,
+  "all_owned_jobs_terminal": true
+}

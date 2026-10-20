@@ -1,4 +1,4 @@
-# Active backlog — Cut302 ordinary pilot fails discovery bar, 2026-10-21
+# Active backlog — Cut303 client identity speed/correctness verified, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
 Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
@@ -9,6 +9,39 @@ Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. Cut300 checkpoint13558b1c pushed; no new release/deployment. Live dev game is still423fe45a.
+
+## Cut303 client identity — full content,90% faster warm startup
+
+Contract [CUT303_CLIENT_IDENTITY_CACHE.md](CUT303_CLIENT_IDENTITY_CACHE.md),
+evidence [cut303/README.md](evidence/cut303/README.md). run-state.mjs streams
+FULL untracked content at all sizes; old≥32MiB size-only reuse defect fixed.
+Optional local digest cache keyed by device/inode/mode/size/mtimeNs/ctimeNs,
+checksum/root binding and atomic publication. Missing/corrupt/unwritable cache
+falls back to full reads. All Git-listed paths/tracked diff/HEAD/fresh WASM stay
+covered; Git/source-read errors refuse identity. New format invalidates legacy
+passes. File symlinks follow content; directory links hash link text (old reader
+swallowed EISDIR), without traversing trees Git did not list. Cache assumes normal
+filesystem change times; not an adversarial security boundary.
+
+Matched Node22/5950X/WSL checkout19,204paths: three-call legacy median12.005s,
+cold full fill16.884s, three-call warm median1.175s (90.21%reduction). Warm0
+untracked content bytes,19,204metadata/cache checks, fresh7,111,856WASM bytes.
+Full archived paths/digests/tracked diff reconstruct the measured dirtyHash;
+independent count/median/source/red-green verifier passes. Thirteen behavioral
+checks pass, including actual runner large edits/resume/forced labels/hard kill,
+source edit during hashing and concurrent cache publication. Legacy3controls
+pass/1new large-file test fails. Quick sidecar and Pages CI include checks.
+Global format/lint and verify.sh syntax pass; no browser/core/full game claim.
+Initial baseline changed during editing, first matched attempt failed on a
+directory link, and sandbox Node Git attempts failed; all retained/explained.
+All owned jobs terminal. Production code unchanged after accepted timing.
+
+Next: revalidate inherited worker-away cause evidence on current runtime before
+selecting another balance candidate. Cut302's target-choice pilot failed1.15
+bar; no new Lich confirmation from it. Keep Cut300's32held-out outcomes and
+inconclusive verdict separate. Main core/WASM/defaults unchanged, live dev
+423fe45a; no deployment. Held Bank/Vat W2/recovery/Guide gap4 and R3/R4/
+recognition/calibration/fun/broad-audit backlog remain open.
 
 ## Cut302 isolated target-choice pilot — FAIL at discovery scope; no adoption
 

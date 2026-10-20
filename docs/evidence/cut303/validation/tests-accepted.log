@@ -1,0 +1,90 @@
+TAP version 13
+# fatal: not a git repository (or any parent up to mount point /)
+# Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+# Subtest: unchanged cold/warm identity is equal; warm reads no untracked content
+ok 1 - unchanged cold/warm identity is equal; warm reads no untracked content
+  ---
+  duration_ms: 164.105495
+  type: 'test'
+  ...
+# Subtest: same-size small and large edits with restored mtime invalidate cached identity
+ok 2 - same-size small and large edits with restored mtime invalidate cached identity
+  ---
+  duration_ms: 636.376063
+  type: 'test'
+  ...
+# Subtest: rename/add/delete, tracked edits, HEAD and WASM changes invalidate
+ok 3 - rename/add/delete, tracked edits, HEAD and WASM changes invalidate
+  ---
+  duration_ms: 408.123598
+  type: 'test'
+  ...
+# Subtest: symlink target content is followed and ignored content stays outside identity
+ok 4 - symlink target content is followed and ignored content stays outside identity
+  ---
+  duration_ms: 244.539382
+  type: 'test'
+  ...
+# Subtest: directory symlinks hash link text without traversing dependency trees
+ok 5 - directory symlinks hash link text without traversing dependency trees
+  ---
+  duration_ms: 239.643812
+  type: 'test'
+  ...
+# Subtest: missing/corrupt/checksum-tampered/unwritable cache falls back to full content
+ok 6 - missing/corrupt/checksum-tampered/unwritable cache falls back to full content
+  ---
+  duration_ms: 388.240462
+  type: 'test'
+  ...
+# Subtest: Git failure and unreadable source fail closed
+ok 7 - Git failure and unreadable source fail closed
+  ---
+  duration_ms: 145.540887
+  type: 'test'
+  ...
+# Subtest: a source changed during hashing refuses identity and publishes no cache
+ok 8 - a source changed during hashing refuses identity and publishes no cache
+  ---
+  duration_ms: 100.147663
+  type: 'test'
+  ...
+# Subtest: concurrent independent writers publish a usable complete cache
+ok 9 - concurrent independent writers publish a usable complete cache
+  ---
+  duration_ms: 303.935481
+  type: 'test'
+  ...
+# Subtest: plan: failed refuses without earlier state; resume runs everything
+ok 10 - plan: failed refuses without earlier state; resume runs everything
+  ---
+  duration_ms: 10.179594
+  type: 'test'
+  ...
+# Subtest: --failed and --resume rerun only what needs it, and identity changes invalidate
+ok 11 - --failed and --resume rerun only what needs it, and identity changes invalidate
+  ---
+  duration_ms: 1702.549852
+  type: 'test'
+  ...
+# Subtest: same-size large untracked edit refuses earlier runner passes
+ok 12 - same-size large untracked edit refuses earlier runner passes
+  ---
+  duration_ms: 852.403184
+  type: 'test'
+  ...
+# Subtest: a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+ok 13 - a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+  ---
+  duration_ms: 662.817775
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3469.021923

@@ -30,9 +30,15 @@ for (const file of [
   "lib/ui-parts.mjs",
   "lib/run-state.mjs",
 ])
-  copyFileSync(new URL(`../web/tests/${file}`, import.meta.url), join(WEB, "tests", file));
+  copyFileSync(
+    file === "lib/run-state.mjs" && process.env.IDLEVER_RUN_STATE_TEST_SOURCE
+      ? process.env.IDLEVER_RUN_STATE_TEST_SOURCE
+      : new URL(`../web/tests/${file}`, import.meta.url),
+    join(WEB, "tests", file),
+  );
 const source = join(repo, "source.txt");
 writeFileSync(source, "source v1");
+writeFileSync(join(repo, ".gitignore"), "/target/\n");
 const fixtureGit = (...args) => {
   const r = spawnSync("git", args, { cwd: repo, encoding: "utf8" });
   assert.equal(r.status, 0, r.stderr);
@@ -161,6 +167,23 @@ test("--failed and --resume rerun only what needs it, and identity changes inval
   assert.deepEqual(r.ran, ["beta"]);
   assert.match(r.out, /1 earlier passes were under another identity: not reused, not evidence/);
   assert.equal(state().results.alpha, undefined);
+});
+
+test("same-size large untracked edit refuses earlier runner passes", () => {
+  rmSync(failFlag, { force: true });
+  const large = join(repo, "large-source.bin");
+  const bytes = Buffer.alloc(33 << 20, 1);
+  writeFileSync(large, bytes);
+  let r = run("alpha", "beta");
+  assert.equal(r.code, 0, r.out);
+  assert.deepEqual(r.ran, ["alpha", "beta"]);
+  bytes[bytes.length - 1] = 2;
+  writeFileSync(large, bytes);
+  r = run("alpha", "beta", "--failed");
+  assert.equal(r.code, 2, "changed full content must refuse reuse: " + r.out);
+  assert.deepEqual(r.ran, []);
+  assert.match(r.out, /REFUSED: identity changed/);
+  rmSync(large);
 });
 
 test("a hard kill mid-run leaves a valid state; --failed runs only the unfinished", async () => {

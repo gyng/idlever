@@ -46,6 +46,14 @@ new confirmation/adoption. Next concrete chore: client identity startup-cost/
 correctness audit; current>32MiB untracked files hash size only, so same-size
 edits can be missed. Reduce repeat reads without narrowing content coverage or
 weakening resume invalidation. Full details/evidence in HANDOFF/Cut302.
+Cut303 completes the client identity chore: full content at all sizes fixes
+same-size≥32MiB edit reuse; metadata-keyed local digests reduce warm median
+12.005s→1.175s(90.21%) on19,204paths, with fresh WASM and no source exclusions.
+Cold fill16.884s. Thirteen behavioral checks and archived digest reconstruction
+pass; legacy3controls/1expected regression failure preserved. Cache metadata
+assumptions/fallbacks and directory-link semantics explicit. Checks added to
+verify.sh/Pages CI; global format/lint pass. Next: current worker-away causal
+revalidation, not another Lich study after the failed pilot. See Cut303/HANDOFF.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

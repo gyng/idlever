@@ -1,0 +1,111 @@
+{
+  "node": "v22.18.0",
+  "baseline_source_sha256": "ab2bd9d22e2f764d054819b0580dd1dd0cddb732808bf97610e5bc1ea91760b1",
+  "coverage": {
+    "untracked_files": 19204,
+    "total_bytes": 11446866922,
+    "legacy_bytes": 11411833446
+  },
+  "legacy": [
+    {
+      "ms": 22390.864395,
+      "identity": {
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "e682685845b4db8ebd020ae296afda8566f1ea90244550ddf8de68808005c4a8",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      }
+    },
+    {
+      "ms": 10481.585471000002,
+      "identity": {
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "e682685845b4db8ebd020ae296afda8566f1ea90244550ddf8de68808005c4a8",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      }
+    },
+    {
+      "ms": 12005.117945000005,
+      "identity": {
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "e682685845b4db8ebd020ae296afda8566f1ea90244550ddf8de68808005c4a8",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      }
+    }
+  ],
+  "cold": {
+    "ms": 16883.885661,
+    "identity": {
+      "format": "idlever-client-identity-v2",
+      "head": "3e766b60f0067b50601899452572285d96cc22d6",
+      "dirty": true,
+      "dirtyHash": "c66b26e03c89e6a6bc8b06e63183044f1310de495135397352aaf8a6aca069b4",
+      "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+    },
+    "stats": {
+      "cacheHits": 0,
+      "filesRead": 19204,
+      "contentBytesRead": 11446753074,
+      "untrackedFiles": 19204,
+      "wasmBytesRead": 7111856
+    }
+  },
+  "warm": [
+    {
+      "ms": 1174.7624170000054,
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "c66b26e03c89e6a6bc8b06e63183044f1310de495135397352aaf8a6aca069b4",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      },
+      "stats": {
+        "cacheHits": 19204,
+        "filesRead": 0,
+        "contentBytesRead": 0,
+        "untrackedFiles": 19204,
+        "wasmBytesRead": 7111856
+      }
+    },
+    {
+      "ms": 1165.983723999998,
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "c66b26e03c89e6a6bc8b06e63183044f1310de495135397352aaf8a6aca069b4",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      },
+      "stats": {
+        "cacheHits": 19204,
+        "filesRead": 0,
+        "contentBytesRead": 0,
+        "untrackedFiles": 19204,
+        "wasmBytesRead": 7111856
+      }
+    },
+    {
+      "ms": 1215.4865929999942,
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "3e766b60f0067b50601899452572285d96cc22d6",
+        "dirty": true,
+        "dirtyHash": "c66b26e03c89e6a6bc8b06e63183044f1310de495135397352aaf8a6aca069b4",
+        "wasmSha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+      },
+      "stats": {
+        "cacheHits": 19204,
+        "filesRead": 0,
+        "contentBytesRead": 0,
+        "untrackedFiles": 19204,
+        "wasmBytesRead": 7111856
+      }
+    }
+  ],
+  "reduction": 0.9021448666825235,
+  "median_legacy_ms": 12005.117945000005,
+  "median_warm_ms": 1174.7624170000054
+}

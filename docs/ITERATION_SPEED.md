@@ -2267,3 +2267,20 @@ headed browsers report private displays:99/:100 via CDP, block attempted desktop
 overrides and render real new-town pages. Closing both and refusing a missing
 browser executable leaves no owned Xvfb servers. Thus GPU QA can continue
 without moving focus on the active desktop; this is not a simulation speedup.
+
+## Cut303 — cached client source identity,2026-10-21
+
+Client runner identity now hashes full untracked content at every size, with
+local per-file digests keyed by device/inode/mode/size/mtimeNs/ctimeNs. Default
+ignored cache is target/client-tests/identity-cache-v1.json; missing/corrupt/
+unwritable cache triggers full reads. New format invalidates old resume evidence.
+All Git-listed paths, tracked diff/HEAD and fresh WASM remain covered; Git/read
+errors refuse identity. Directory links hash link text without traversing trees
+Git did not enumerate. Metadata cache assumes normal filesystem change times.
+
+One fixed Node22/5950X/WSL checkout,19,204paths: legacy median12.005s, cold full
+fill16.884s, warm median1.175s across three calls(90.21%reduction). Warm calls
+read0untracked content bytes and freshly hash7,111,856WASM bytes. Cold cost and
+filesystem variability remain; this is not a cross-machine benchmark. Thirteen
+runner/cache checks pass; archived paths/digests/diff reconstruct identity.
+See [Cut303](CUT303_CLIENT_IDENTITY_CACHE.md) and [evidence](evidence/cut303/README.md).

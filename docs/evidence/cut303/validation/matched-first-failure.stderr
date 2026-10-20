@@ -1,0 +1,14 @@
+legacy 0 29786.154466
+legacy 1 24694.840636000004
+legacy 2 22630.376972
+file:///home/g/p/riddle/web/tests/lib/run-state.mjs:60
+    throw Error(`Cannot determine client identity: not a regular file: ${path}`);
+          ^
+
+Error: Cannot determine client identity: not a regular file: /home/g/p/riddle/scratchpad/cut245-cost-candidate-symmetric-isolated/baseline/web/node_modules
+    at contentDigest (file:///home/g/p/riddle/web/tests/lib/run-state.mjs:60:11)
+    at identity (file:///home/g/p/riddle/web/tests/lib/run-state.mjs:160:16)
+    at measure (file:///home/g/p/riddle/target/cut303/benchmark.mjs:17:74)
+    at file:///home/g/p/riddle/target/cut303/benchmark.mjs:18:12
+
+Node.js v22.18.0
