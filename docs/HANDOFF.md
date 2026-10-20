@@ -1,14 +1,57 @@
-# Active backlog — Cut299 early Lich scope candidate discovered, 2026-10-21
+# Active backlog — Cut300 confirmation INCONCLUSIVE, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest Cut299 discovers a narrower early Lich counter candidate: isolated
-two-seed D33 ratio1.10→1.25, no comparator delay. Independent confirmation and
-implementation checks precede adoption; main game remains unchanged.
+Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
+confirmation is terminal INCONCLUSIVE at32fresh seeds. No adoption or extension;
+main game remains unchanged. Next hypothesis must differ.
 Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut300 protected paired confirmation — terminal INCONCLUSIVE
+
+Contract [CUT300_LICH_SCOPE_CONFIRMATION.md](CUT300_LICH_SCOPE_CONFIRMATION.md);
+evidence [cut300/README.md](evidence/cut300/README.md). Frozen shipping/candidate
+runtimes,32fresh uniform distinct full-u64 IDs excluding discovery1/2,128ordinary
+PICKED/TUNED trajectories (32paired seed units), D33-or14d,3check-ins/day.
+Planned looks16/32 only. Family alpha0.05 minus additive2^-38 coupling reserve,
+split4claims×2looks. Three population-median arrival non-regression claims pass
+with0[0,0] at BOTH looks. Candidate pen median1.20[1.00,1.50] at16 and
+1.1833[1.00,1.25] at32 does not establish≥1.15. Zero D33 censoring. Stop at32,
+retain defaults; neither rejection nor acceptance of the pen advantage is proved.
+Independent exact-rational reconstruction agrees with both complete looks.
+
+Original collector59184 TERMINAL exit1: request-order validation expected caller
+seed order but native sorts numeric IDs. Failure preceded inference. Original
+frozen programs/spec/packets preserved; separately named repaired programs only
+normalize expected order using BigInt. Numerical analyze() body, sampling,
+claims/budget/stop rules and runtime hashes unchanged. No native reruns. Second
+manifest preserves repair provenance. Repaired collector6120 TERMINAL exit0;
+completed-study resume88417 TERMINAL exit0 adds no observations. Seven original/
+eight repaired analyzer tests and six synthetic collector checks per version
+pass; synthetic values are not gameplay evidence. Raw native packets, receipts,
+original/repaired manifests, all looks/state and failed logs archived in cut300.
+
+Separate temporary-source controlled tests: corrected candidate87514 TERMINAL
+exit0,6pass; shipping35331 TERMINAL exit101,4pass/2fail, precisely blade-only
+exclusion and generated legacy scope. Tests also retain actual skeleton attack,
+HP-heal priority, player/stored-row preservation and presence-gate limitation.
+Initial missing includes, geometry/known-fact errors, a stale-binary copy2 attempt
+and aborted source restore are explicitly retained/excluded. Temporary source
+restored to candidate bytes; last compiled test binary is shipping red. No
+main-core tests/default changes are implied. Frozen study binaries unaffected.
+
+Next: a DIFFERENT target-choice hypothesis on the original earned discovery
+camps. Undead presence still permits another summoned target (Cut299 retained
+33spectral-blade target tallies). Inspect existing-selector alternatives with
+same-parent actual replay/outcomes, heal guard and class/target tradeoffs. Do not
+reselect on the32held-out outcomes or pool them into a new independent study.
+No canonical16seed/full/exhaustive/fun acceptance, main WASM rebuild or deploy.
+Held Bank/Vat W2/recovery/Guide gap4 unchanged; live dev423fe45a. Worker-away,
+R3/R4/player recognition, calibration and independent fun remain open.
+All owned Cut300 jobs terminal; broad backlog remains active.
 
 ## Cut299 early Lich scope — causal saved-world evidence and isolated pilot
 

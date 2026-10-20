@@ -1,0 +1,38 @@
+{
+  "fixtures": "controlled, not confirmation/earned progress",
+  "attempts": [
+    {
+      "log": "mechanic-tests.log",
+      "status": "compile failed missing external include fixtures"
+    },
+    {
+      "log": "mechanic-tests-with-fixtures.log",
+      "status": "4pass/2fail: target not adjacent and heal unknown"
+    },
+    {
+      "log": "mechanic-tests-correct-fixtures.log",
+      "status": "candidate6pass, before explicit summoned-fact correction"
+    },
+    {
+      "log": "mechanic-tests-shipping-red.log",
+      "status": "excluded: copy2 preserved older mtime, Cargo reused candidate executable (hash unchanged)"
+    },
+    {
+      "log": "mechanic-tests-shipping-red-fresh.log",
+      "status": "shipping3pass/3fail; inspection found summoned facts absent in controlled fixture, so old summon condition could not activate"
+    },
+    {
+      "log": "mechanic-tests-restored-green.log",
+      "status": "excluded: preparation assertion aborted before restore; shell continued and reran the shipping binary"
+    },
+    {
+      "log": "mechanic-tests-known-facts-green.log",
+      "status": "candidate final corrected fixtures6pass/0fail, exit0"
+    },
+    {
+      "log": "mechanic-tests-known-facts-red.log",
+      "status": "shipping same corrected fixtures4pass/2fail, exit101; intended scope assertions only"
+    }
+  ],
+  "correction": "Known tags now explicitly supplied from each spawned controlled monster; keep all behavioral assertions and candidate body unchanged. Use write_bytes for source timestamps; verify each role hash."
+}

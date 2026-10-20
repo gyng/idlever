@@ -1,0 +1,29 @@
+
+running 6 tests
+.... 4/6
+tests_cut300::lich_scope_keeps_low_health_heal_priority --- FAILED
+tests_cut300::lich_scope_still_attacks_summoned_skeleton --- FAILED
+
+failures:
+
+---- tests_cut300::lich_scope_keeps_low_health_heal_priority stdout ----
+
+thread 'tests_cut300::lich_scope_keeps_low_health_heal_priority' (192) panicked at crates/idlever-core/src/tests_cut300.rs:72:5:
+assertion failed: ev.iter().any(|e|
+        matches!(e,Ev::Rule{verb,..}if *verb==Verb::arg("drink","heal")))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests_cut300::lich_scope_still_attacks_summoned_skeleton stdout ----
+
+thread 'tests_cut300::lich_scope_still_attacks_summoned_skeleton' (193) panicked at crates/idlever-core/src/tests_cut300.rs:59:5:
+assertion failed: ev.iter().any(|e|
+        matches!(e,Ev::Attack{src,dst,..}if *src==HERO_ID&&*dst==id))
+
+
+failures:
+    tests_cut300::lich_scope_keeps_low_health_heal_priority
+    tests_cut300::lich_scope_still_attacks_summoned_skeleton
+
+test result: FAILED. 4 passed; 2 failed; 0 ignored; 0 measured; 1108 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

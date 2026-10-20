@@ -1,0 +1,27 @@
+
+running 6 tests
+tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows --- FAILED
+. 2/6
+tests_cut300::lich_scope_ignores_blade_only_room --- FAILED
+...
+failures:
+
+---- tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows stdout ----
+
+thread 'tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows' (180) panicked at crates/idlever-core/src/tests_cut300.rs:111:5:
+assertion failed: generated.conds.contains(&Cond::t("foe_tag", "undead"))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests_cut300::lich_scope_ignores_blade_only_room stdout ----
+
+thread 'tests_cut300::lich_scope_ignores_blade_only_room' (182) panicked at crates/idlever-core/src/tests_cut300.rs:51:5:
+a blade alone must not activate the Lich template
+
+
+failures:
+    tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows
+    tests_cut300::lich_scope_ignores_blade_only_room
+
+test result: FAILED. 4 passed; 2 failed; 0 ignored; 0 measured; 1108 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

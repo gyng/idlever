@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: lossless validation of real prior native packet; not confirmation data
+ok 1 - lossless validation of real prior native packet; not confirmation data
+  ---
+  duration_ms: 57.054854
+  type: 'test'
+  ...
+# Subtest: full-u64 seed identity survives decoding and detects rounded duplication
+ok 2 - full-u64 seed identity survives decoding and detects rounded duplication
+  ---
+  duration_ms: 14.809726
+  type: 'test'
+  ...
+# Subtest: runtime hash and exact seed strings distinguish otherwise equal-profile jobs
+ok 3 - runtime hash and exact seed strings distinguish otherwise equal-profile jobs
+  ---
+  duration_ms: 2.176022
+  type: 'test'
+  ...
+# Subtest: declared fixed look accepts four synthetic claims only after all pairs exist
+ok 4 - declared fixed look accepts four synthetic claims only after all pairs exist
+  ---
+  duration_ms: 45.629655
+  type: 'test'
+  ...
+# Subtest: censored case is capped and blocks adoption even when median claims pass
+ok 5 - censored case is capped and blocks adoption even when median claims pass
+  ---
+  duration_ms: 6.432512
+  type: 'test'
+  ...
+# Subtest: modified probe request or shipping balance is refused
+ok 6 - modified probe request or shipping balance is refused
+  ---
+  duration_ms: 5.08232
+  type: 'test'
+  ...
+# Subtest: cached packet cannot cross runtime identities
+ok 7 - cached packet cannot cross runtime identities
+  ---
+  duration_ms: 4.645491
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 164.223661

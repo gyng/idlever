@@ -22,9 +22,15 @@ PICKEDD28. Cut299 completes that legal causal test: summoned-row removal/scoping
 advancesD23→D28; narrower undead scope retains the HP guard and actual Lich
 counter use. Isolated generated-template pilot improves the two-seed D33 ratio
 1.10→1.25 with PICKED unchanged. All76saved-world runs/four ordinary pilot
-trajectories retained; no main-game adoption. Next: disjoint protected paired
-statistical confirmation with both executable digests, then declared canonical,
-mechanic and native/WASM checks before adoption.
+trajectories retained; no main-game adoption. Cut300 independent confirmation
+is now terminal INCONCLUSIVE at32fresh paired seeds/128ordinary trajectories:
+three median arrival differences0[0,0]PASS; pen1.1833[1.00,1.25] cannot establish
+≥1.15. No censoring, extension or adoption. Independent rational verification
+agrees; separately named seed-order validation repair and original failed logs
+are preserved, with zero native reruns. Controlled candidate6pass; shipping
+4pass/2intended scope failures. Next: a DIFFERENT tighter target-choice hypothesis
+on original earned discovery camps; do not reselect on or reuse the32held-out
+outcomes as new independent confirmation. Defaults remain unchanged.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

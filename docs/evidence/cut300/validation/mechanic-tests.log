@@ -1,0 +1,31 @@
+error: couldn't read `crates/idlever-core/src/../../../tuning/balance.json`: No such file or directory (os error 2)
+   --> crates/idlever-core/src/balance.rs:416:20
+    |
+416 |         let text = include_str!("../../../tuning/balance.json");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut247/earned-fighter-sword.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut247.rs:4:22
+  |
+4 | const EARNED: &str = include_str!("../../../docs/evidence/cut247/earned-fighter-sword.sent.session.json");
+  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut247/earned-three.prepared.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut247.rs:5:21
+  |
+5 | const THREE: &str = include_str!("../../../docs/evidence/cut247/earned-three.prepared.session.json");
+  |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut248/earned-paid-pace.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut248.rs:3:22
+  |
+3 | const EARNED: &str = include_str!("../../../docs/evidence/cut248/earned-paid-pace.sent.session.json");
+  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut248/earned-paid-pace.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut249.rs:4:20
+  |
+4 | const PAID: &str = include_str!("../../../docs/evidence/cut248/earned-paid-pace.sent.session.json");
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `idlever-core` (lib test) due to 5 previous errors

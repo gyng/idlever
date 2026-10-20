@@ -1,0 +1,35 @@
+
+running 6 tests
+tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows --- FAILED
+.. 3/6
+tests_cut300::lich_scope_is_an_undead_presence_gate_not_a_skeleton_only_selector --- FAILED
+. 5/6
+tests_cut300::lich_scope_still_attacks_summoned_skeleton --- FAILED
+
+failures:
+
+---- tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows stdout ----
+
+thread 'tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows' (180) panicked at crates/idlever-core/src/tests_cut300.rs:107:5:
+assertion failed: generated.conds.contains(&Cond::t("foe_tag", "undead"))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests_cut300::lich_scope_is_an_undead_presence_gate_not_a_skeleton_only_selector stdout ----
+
+thread 'tests_cut300::lich_scope_is_an_undead_presence_gate_not_a_skeleton_only_selector' (183) panicked at crates/idlever-core/src/tests_cut300.rs:158:5:
+another visible undead permits other summoned targets; keep the limitation explicit
+
+---- tests_cut300::lich_scope_still_attacks_summoned_skeleton stdout ----
+
+thread 'tests_cut300::lich_scope_still_attacks_summoned_skeleton' (185) panicked at crates/idlever-core/src/tests_cut300.rs:61:5:
+assertion failed: ev.iter().any(|e| matches!(e, Ev::Rule { row: 0, .. }))
+
+
+failures:
+    tests_cut300::lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows
+    tests_cut300::lich_scope_is_an_undead_presence_gate_not_a_skeleton_only_selector
+    tests_cut300::lich_scope_still_attacks_summoned_skeleton
+
+test result: FAILED. 3 passed; 3 failed; 0 ignored; 0 measured; 1108 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: lossless validation of real prior native packet; not confirmation data
+ok 1 - lossless validation of real prior native packet; not confirmation data
+  ---
+  duration_ms: 14.929134
+  type: 'test'
+  ...
+# Subtest: full-u64 seed identity survives decoding and detects rounded duplication
+ok 2 - full-u64 seed identity survives decoding and detects rounded duplication
+  ---
+  duration_ms: 4.86083
+  type: 'test'
+  ...
+# Subtest: runtime hash and exact seed strings distinguish otherwise equal-profile jobs
+ok 3 - runtime hash and exact seed strings distinguish otherwise equal-profile jobs
+  ---
+  duration_ms: 0.68705
+  type: 'test'
+  ...
+# Subtest: declared fixed look accepts four synthetic claims only after all pairs exist
+ok 4 - declared fixed look accepts four synthetic claims only after all pairs exist
+  ---
+  duration_ms: 11.571622
+  type: 'test'
+  ...
+# Subtest: censored case is capped and blocks adoption even when median claims pass
+ok 5 - censored case is capped and blocks adoption even when median claims pass
+  ---
+  duration_ms: 3.585013
+  type: 'test'
+  ...
+# Subtest: modified probe request or shipping balance is refused
+ok 6 - modified probe request or shipping balance is refused
+  ---
+  duration_ms: 1.91911
+  type: 'test'
+  ...
+# Subtest: cached packet cannot cross runtime identities
+ok 7 - cached packet cannot cross runtime identities
+  ---
+  duration_ms: 2.416291
+  type: 'test'
+  ...
+# Subtest: unsorted caller high-u64 IDs match native numeric canonical order without dropping a seed
+ok 8 - unsorted caller high-u64 IDs match native numeric canonical order without dropping a seed
+  ---
+  duration_ms: 1.74825
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54.194632

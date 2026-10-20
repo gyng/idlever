@@ -1,0 +1,33 @@
+{
+  "scope": "Controlled tests in separate candidate copy; not confirmation data or main adoption",
+  "command": "cargo test -q --profile fast -p idlever-core --lib tests_cut300 -- --test-threads=1",
+  "candidate_package_sha256": "1cdd59935ab1cf1738eb42438c8fb94915607a225014565560e1a31ce8284466",
+  "test_source_sha256": "7b93f3f2c94738c99d800c27283c14cf6e2a8e039f6140f970bcbe2986aecf39",
+  "candidate_test_executable_sha256": "44bc44a5b1e5b1bdd4770571a92106ad021d604a826ed31ab63daf64a9af0da9",
+  "candidate_result": {
+    "passed": 6,
+    "failed": 0
+  },
+  "root": "/tmp/idlever-cut300-tests-3voq4h57",
+  "corrected_candidate": {
+    "passed": 6,
+    "failed": 0,
+    "test_source_sha256": "8cba10c12aeb5c8cec40e871f5b598bb1d8762c72ec49cf4fc6617dd5b1a8b51",
+    "package_sha256": "1cdd59935ab1cf1738eb42438c8fb94915607a225014565560e1a31ce8284466",
+    "executable_sha256": "f396f0e1ae8e252dd102bcfc535af01340dd788fe82dfd6b2662b8c0d8a1e66f"
+  },
+  "corrected_shipping": {
+    "passed": 4,
+    "failed": 2,
+    "exit": 101,
+    "package_sha256": "d0aeeab68eb4cdee0266ad393885b13ebbfba3059836d3084c9ec215fa49a560",
+    "test_source_sha256": "8cba10c12aeb5c8cec40e871f5b598bb1d8762c72ec49cf4fc6617dd5b1a8b51",
+    "executable_sha256": "63b06549a9040349562f2934752955a5d879964eba27f07b404fc18b9ca0f368",
+    "failed_tests": [
+      "lich_scope_compiles_legacy_drill_without_rewriting_stored_or_player_rows",
+      "lich_scope_ignores_blade_only_room"
+    ]
+  },
+  "temporary_source_restored_to_candidate": true,
+  "last_compiled_test_executable_role": "shipping red; candidate green preserved by earlier identity/log; no new green claim"
+}
