@@ -1,9 +1,49 @@
-# Active backlog — Cut288 six-scene catalogue and counter attribution, 2026-10-20
+# Active backlog — Cut289 candidate rejected, original AI restored, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
 Latest work measures six bounded starting-floor encounter scenes and isolates learned counters; the route-aware
 counter packing production fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut289 gas-step fire candidate — rejected; source/runtime restored and checked
+
+Contract: [CUT289_GAS_STEP_THROW.md](CUT289_GAS_STEP_THROW.md). Tested exactly two
+fixed earned Fens parents, no new seed search. Candidate adds17 AI lines: a known
+packed fire throw at a dry visible gas foe at safe2..6 range before a melee pop.
+It compiles, actually throws at t20 and kills first bloat at t30 in the gas scene,
+but two remaining melee pops at t150/t250 give3 gas damage each. Gas scene
+hurt12/gas6 violates fixed≤9/≤3 bars (old gas_step15/6; ordinary baseline9/6).
+Pack scene13/6 passes its old16/9 bars. Reject; do not weaken the failed gate.
+
+Both actual full-run event/save observer pairs at1/100 ticks pass. Independent
+31-receipt/hash/numeric verifier passes and returns REJECTED. Source ai.rs is
+byte-identical to pre-candidate snapshot; no core change is retained. Proposal
+unit-test scaffold stays unexecuted in evidence, not in crate. Remaining16
+catalogue controls,8h/workspace/Clippy/targeted-gate/WASM acceptance are NOT_RUN.
+No balance/default, held proposal, recovery, new formation or deployment change.
+
+Evidence `docs/evidence/cut289/`: complete candidate traces, frozen contract,
+before/candidate AI snapshots, source/native/input hashes and verification.json;
+archive1008228 compressed /74228753 raw bytes. Candidate binary is explicitly
+`target/cut289/probe-candidate`; never call it an accepted runtime.
+Native rebuild after restoring source ended0 (exec61366); check-restored.py
+ended0 (exec20398). BOTH rebuilt complete event streams and complete after-saves
+match original frozen Cut287 hashes. Normal native example is now restored;
+receipt restored-runtime-check.json, binary SHA97e1f488…. All owned jobs terminal.
+
+Source readiness: both camps already have a craftable bow and pack steps3,
+with only heal/heal/fire prepared. Public loadout selection is NOT_RUN; validate
+existing bow/extra-fire preparation before assuming ranged resources unavailable.
+Also audit incremental-cache practice separately: Cargo.toml fast explicitly sets
+incremental=true, while these commands used CARGO_INCREMENTAL=0. Isolated targets
+may permit retaining incremental safely; this is not a measured speedup yet.
+
+Next: inspect no-ranged-resource/positioning choices and the waits that leave
+other foes fighting the party, plus real bow/variant/loadout availability. Any
+revised candidate keeps fixed scene bars, no resource grants or endless retreat.
+Do not run broad acceptance/WASM packaging for the rejected implementation.
+R3 tactical superiority/new formations, R4, balance failures, fun and audits stay
+open; the bounded six-scene catalogue remains valid on restored original core.
 
 ## Cut288 learned-counter attribution — verified; sixth ordinary scene measured
 

@@ -1,0 +1,48 @@
+{
+  "binary_sha256": "97e1f48853f825882279df388937ec228be58f180e22ceba96f6303d3f666a0a",
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "gas",
+      "argv": [
+        "target/cut282-native/fast/examples/encounter_catalogue",
+        "trace",
+        "target/cut287/trace-s1-d9-a2-baseline/normalized-input.json",
+        "target/cut289/restored-gas",
+        "9",
+        "gas_step"
+      ],
+      "checks": {
+        "events.json": {
+          "sha256": "28a661a9e25fc414ca80bdfb08036fa4150196ece68638e88c0cd4bfddbeac6a",
+          "equals_original_cut287": true
+        },
+        "after.json": {
+          "sha256": "b680e7fca725c8389baa660bf12c29b0416855c5164176bd952071531dc47348",
+          "equals_original_cut287": true
+        }
+      }
+    },
+    {
+      "case": "pack",
+      "argv": [
+        "target/cut282-native/fast/examples/encounter_catalogue",
+        "trace",
+        "target/cut287/trace-s2-d9-a2-baseline/normalized-input.json",
+        "target/cut289/restored-pack",
+        "9",
+        "gas_step"
+      ],
+      "checks": {
+        "events.json": {
+          "sha256": "e8a42b29da6e595f742d529e2542a0f3815a70bb12a8789f754c5055c9c786ae",
+          "equals_original_cut287": true
+        },
+        "after.json": {
+          "sha256": "457ef8c8472f312ee8e386e1b24ec9e58cdcc34cc5694ccebc98867b543380ec",
+          "equals_original_cut287": true
+        }
+      }
+    }
+  ]
+}

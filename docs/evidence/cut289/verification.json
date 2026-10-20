@@ -1,0 +1,36 @@
+{
+  "archive_integrity": "PASS",
+  "raw_files": 31,
+  "observer_event_save_parity_cases": 2,
+  "candidate_verdict": "REJECTED",
+  "cases": [
+    {
+      "case": "gas",
+      "hurt": 12,
+      "gas_hurt": 6,
+      "last_initial_floor_event_tick": 1720,
+      "bars": {
+        "hurt": false,
+        "gas_hurt": false,
+        "tick": true
+      },
+      "pass": false
+    },
+    {
+      "case": "pack",
+      "hurt": 13,
+      "gas_hurt": 6,
+      "last_initial_floor_event_tick": 1020,
+      "bars": {
+        "hurt": true,
+        "gas_hurt": true
+      },
+      "pass": true
+    }
+  ],
+  "core_source_restored_byte_exact": true,
+  "rebuilt_runtime_matches_original_full_event_and_save_pairs": 2,
+  "unit_test_plan": "NOT_RUN",
+  "remaining_catalogue_and_8h_checks": "NOT_RUN",
+  "wasm_or_deployment_change": "NONE"
+}

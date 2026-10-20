@@ -2,8 +2,8 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut288
-(six bounded encounter scenes and corrected learned-counter attribution); production is Cut284 route-aware counter packing,
+Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut289
+(gas-step candidate rejected, original AI restored); production is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
@@ -48,7 +48,11 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    stays26. Sixth ordinary enabled-drill scene supplements Cut287: six bounded
    scenes /18 matched sends /18 separate8h outcomes. Six distinct counter
    superiorities remain unestablished. Next inspect measured gas-step behavior and
-   contract numeric changes; do not fix a supposed missing summoner response. R4's preserved builds authored no class
+   contract numeric changes; do not fix a supposed missing summoner response.
+   Cut289's safe-fire candidate fails fixed gas hurt/gas bars (12/6 versus≤9/≤3),
+   so it is rejected and source restored; no game default is changed. First fire
+   kills safely, but two remaining melee pops still hurt. Inspect finite ranged
+   resources/positioning before another candidate; keep the bars unchanged. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence
