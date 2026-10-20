@@ -2,8 +2,8 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut287
-(five matched encounter scenes); production is Cut284 route-aware counter packing,
+Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut288
+(six bounded encounter scenes and corrected learned-counter attribution); production is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
@@ -40,9 +40,15 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    inventory differences prevent treating them as six controlled contrasts.
    Cut287 now measures five eligible scenes with15 exact matched-inventory sends,
    28 total departures and15 separate reconciled8h branches. Reflection remains
-   missing; gas/summoner counters show gaps, so six counter superiorities are not
-   established. Investigate learned counters and those actual behavior gaps before
-   contracting formations or changing tactics. R4's preserved builds authored no class
+   missing; gas_step did not improve its selected scene, and the summoner baseline
+   already has a learned Lich row. Cut288 corrects the previously inferred generic
+   summoner-response gap: L3 boss_focus also has a summoned-selector extra row.
+   Cut288 now isolates learned Lich/Master contributions through explicitly public
+   revocation: reflection0→7→0 with enabled/revoked/revoked+mirror, while total hurt
+   stays26. Sixth ordinary enabled-drill scene supplements Cut287: six bounded
+   scenes /18 matched sends /18 separate8h outcomes. Six distinct counter
+   superiorities remain unestablished. Next inspect measured gas-step behavior and
+   contract numeric changes; do not fix a supposed missing summoner response. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence

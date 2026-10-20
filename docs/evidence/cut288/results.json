@@ -1,0 +1,958 @@
+[
+  {
+    "scene": "summoner",
+    "arm": "enabled-baseline",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "gas": 12,
+        "ogre": 3,
+        "skeleton": 3,
+        "ghoul": 4,
+        "spectral_blade": 2,
+        "burst": 9
+      },
+      "total_hurt_damage": 33,
+      "last_event_tick": 1170,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": 3,
+      "non_rule_event_sha256": "07f0a43919475311c6c04ace0dc1f100f3b4351279f54f0f7f0f7827f160b27b",
+      "combat_event_sha256": "2c5e55263b2a4d52e90d31c1beea7fd4294acf99cc20d2c5b52fd400c5a22104",
+      "send_purse_gold": 97501,
+      "rule_counts": {
+        "chore \u2192 explore": 37,
+        "chore \u2192 pick_up": 13,
+        "attack bloat": 8,
+        "hazard \u2192 step out": 4,
+        "HP 94% \u2192 rest": 1,
+        "attack ogre": 10,
+        "attack skeleton": 9,
+        "HP 90% \u2192 rest": 1,
+        "HP 98% \u2192 rest": 2,
+        "attack ghoul": 17,
+        "hit summoned spectral": 2,
+        "attack goblin conjurer": 5,
+        "HP 53% \u2192 rest": 1,
+        "HP 61% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "HP 76% \u2192 rest": 1,
+        "HP 84% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "chore \u2192 descend": 2
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 860,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 870,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 23,
+      "kept": 461,
+      "kills": 113,
+      "tier": "return",
+      "turns": 16159,
+      "twists": [
+        "lock",
+        "hunger",
+        "lock",
+        "nest",
+        "lock",
+        "vault",
+        "lock",
+        "nest"
+      ]
+    }
+  },
+  {
+    "scene": "summoner",
+    "arm": "revoked-baseline",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "gas": 12,
+        "ogre": 3,
+        "skeleton": 3,
+        "ghoul": 4,
+        "spectral_blade": 2,
+        "burst": 9
+      },
+      "total_hurt_damage": 33,
+      "last_event_tick": 1170,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": 3,
+      "non_rule_event_sha256": "fcf9320f2b34cc7ee823544e898020d99dc03844cef939243ee59ea3348caf0d",
+      "combat_event_sha256": "2c5e55263b2a4d52e90d31c1beea7fd4294acf99cc20d2c5b52fd400c5a22104",
+      "send_purse_gold": 97502,
+      "rule_counts": {
+        "chore \u2192 explore": 37,
+        "chore \u2192 pick_up": 13,
+        "attack bloat": 8,
+        "hazard \u2192 step out": 4,
+        "HP 94% \u2192 rest": 1,
+        "attack ogre": 10,
+        "attack skeleton": 9,
+        "HP 90% \u2192 rest": 1,
+        "HP 98% \u2192 rest": 2,
+        "attack ghoul": 17,
+        "attack spectral blade": 2,
+        "attack goblin conjurer": 5,
+        "HP 53% \u2192 rest": 1,
+        "HP 61% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "HP 76% \u2192 rest": 1,
+        "HP 84% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "chore \u2192 descend": 2
+      },
+      "quotes": []
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 26,
+      "kept": 658,
+      "kills": 131,
+      "tier": "bank",
+      "turns": 20952,
+      "twists": [
+        "lock",
+        "hunger",
+        "lock",
+        "nest",
+        "den",
+        "captive",
+        "den"
+      ]
+    }
+  },
+  {
+    "scene": "summoner",
+    "arm": "revoked-boss_focus",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "gas": 12,
+        "ogre": 3,
+        "skeleton": 3,
+        "ghoul": 4,
+        "spectral_blade": 2,
+        "burst": 9
+      },
+      "total_hurt_damage": 33,
+      "last_event_tick": 1170,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": 3,
+      "non_rule_event_sha256": "e964ff50aaf8083cffa289ec8cd56e2297eb2c7a4df0283e080388e0dc9535c0",
+      "combat_event_sha256": "2c5e55263b2a4d52e90d31c1beea7fd4294acf99cc20d2c5b52fd400c5a22104",
+      "send_purse_gold": 97504,
+      "rule_counts": {
+        "chore \u2192 explore": 37,
+        "chore \u2192 pick_up": 13,
+        "attack bloat": 8,
+        "hazard \u2192 step out": 4,
+        "HP 94% \u2192 rest": 1,
+        "attack ogre": 10,
+        "attack skeleton": 9,
+        "HP 90% \u2192 rest": 1,
+        "HP 98% \u2192 rest": 2,
+        "attack ghoul": 17,
+        "hit summoned spectral": 2,
+        "attack goblin conjurer": 5,
+        "HP 53% \u2192 rest": 1,
+        "HP 61% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "HP 76% \u2192 rest": 1,
+        "HP 84% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "chore \u2192 descend": 2
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 9,
+          "t": 860,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 9,
+          "t": 870,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 23,
+      "kept": 303,
+      "kills": 101,
+      "tier": "bank",
+      "turns": 15539,
+      "twists": [
+        "lock",
+        "hunger",
+        "lock",
+        "nest",
+        "den",
+        "captive",
+        "lock"
+      ]
+    }
+  },
+  {
+    "scene": "summoner",
+    "arm": "revoked-corridor_fighting",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "gas": 18,
+        "ogre": 8,
+        "burst": 6
+      },
+      "total_hurt_damage": 32,
+      "last_event_tick": 1110,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": 2,
+      "non_rule_event_sha256": "cae2b84e7506504bd3fa987b4b92ae96bc1539804286a96ab67e7b565544b368",
+      "combat_event_sha256": "590e2e19f4d24edf64b88c729dccae481f455db6ad92b21fa145f3bb48599905",
+      "send_purse_gold": 97496,
+      "rule_counts": {
+        "chore \u2192 explore": 42,
+        "chore \u2192 pick_up": 11,
+        "always \u2192 corridor fighting": 17,
+        "corridor fighting bloat": 7,
+        "corridor fighting ogre": 7,
+        "HP 61% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "HP 76% \u2192 rest": 1,
+        "HP 84% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "corridor fighting skeleton": 3,
+        "corridor fighting wraith": 2,
+        "hazard \u2192 step out": 2,
+        "HP 88% \u2192 rest": 2,
+        "HP 96% \u2192 rest": 2,
+        "corridor fighting spectral": 1,
+        "corridor fighting goblin": 3,
+        "chore \u2192 descend": 7
+      },
+      "quotes": []
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 18,
+      "kept": 186,
+      "kills": 52,
+      "tier": "bank",
+      "turns": 5400,
+      "twists": [
+        "lock",
+        "nest",
+        "captive",
+        "nest",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "enabled-baseline",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "bell_sentinel": 1,
+        "slag_crawler": 20,
+        "iron_golem": 4,
+        "skeleton": 1
+      },
+      "total_hurt_damage": 26,
+      "last_event_tick": 2420,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "12c815ac2800eef6331a9d6942abd74aee79c461cbad8ffccda8ec6d784b9168",
+      "combat_event_sha256": "2cb8280c2296936ed66b5cd1ec76fb751d35d8d6e3481689bfd38364ca3ecef5",
+      "send_purse_gold": 98618,
+      "rule_counts": {
+        "chore \u2192 pick_up": 28,
+        "chore \u2192 explore": 115,
+        "attack bell sentinel": 1,
+        "reflect_melee \u2192 reflect read": 37,
+        "HP 98% \u2192 rest": 2,
+        "attack slag crawler": 28,
+        "HP 88% \u2192 rest": 2,
+        "HP 96% \u2192 rest": 2,
+        "HP 73% \u2192 rest": 1,
+        "HP 80% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "attack forge imp": 9,
+        "hunt slag crawler": 1,
+        "attack skeleton": 7,
+        "chore \u2192 descend": 7
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 110,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 120,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": "lurker",
+      "depth": 28,
+      "kept": 0,
+      "kills": 119,
+      "tier": "death",
+      "turns": 23733,
+      "twists": [
+        "lock",
+        "captive",
+        "vault",
+        "captive"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "revoked-baseline",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "iron_golem": 22,
+        "bell_sentinel": 2,
+        "slag_crawler": 1,
+        "skeleton": 1
+      },
+      "total_hurt_damage": 26,
+      "last_event_tick": 2240,
+      "reflection_hits_at_hero": 7,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "90a6b40e635d898e703b6d2225ebe336e7707902b2c181f879b5d2b756546a75",
+      "combat_event_sha256": "db59b4454b8017851a727fbaeee37420d9e6d9affa960042c841ebe33ca74681",
+      "send_purse_gold": 98618,
+      "rule_counts": {
+        "chore \u2192 pick_up": 26,
+        "chore \u2192 explore": 131,
+        "attack bell sentinel": 9,
+        "attack iron golem": 15,
+        "HP 53% \u2192 rest": 1,
+        "HP 61% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "HP 76% \u2192 rest": 1,
+        "HP 84% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "attack slag crawler": 17,
+        "HP 98% \u2192 rest": 2,
+        "attack skeleton": 6,
+        "attack smith": 5,
+        "chore \u2192 descend": 6,
+        "hunt skeleton": 1
+      },
+      "quotes": [
+        {
+          "dmg": 2,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 120,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 130,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 140,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 150,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 2,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 160,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 170,
+          "verb": "reflect"
+        }
+      ]
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 23,
+      "kept": 252,
+      "kills": 53,
+      "tier": "bank",
+      "turns": 8540,
+      "twists": [
+        "den",
+        "lock",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "revoked-reflect_read",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "bell_sentinel": 1,
+        "slag_crawler": 20,
+        "iron_golem": 4,
+        "skeleton": 1
+      },
+      "total_hurt_damage": 26,
+      "last_event_tick": 2420,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "f0ae9ee2ade7c03b5562676ba5c4317b3aa7933571d53fd03328580d79f595cd",
+      "combat_event_sha256": "2cb8280c2296936ed66b5cd1ec76fb751d35d8d6e3481689bfd38364ca3ecef5",
+      "send_purse_gold": 98618,
+      "rule_counts": {
+        "chore \u2192 pick_up": 28,
+        "chore \u2192 explore": 115,
+        "attack bell sentinel": 1,
+        "reflect_melee \u2192 reflect read": 37,
+        "HP 98% \u2192 rest": 2,
+        "attack slag crawler": 28,
+        "HP 88% \u2192 rest": 2,
+        "HP 96% \u2192 rest": 2,
+        "HP 73% \u2192 rest": 1,
+        "HP 80% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "attack forge imp": 9,
+        "hunt slag crawler": 1,
+        "attack skeleton": 7,
+        "chore \u2192 descend": 7
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 110,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 10,
+          "t": 120,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 23,
+      "kept": 264,
+      "kills": 58,
+      "tier": "return",
+      "turns": 9948,
+      "twists": [
+        "lock",
+        "captive",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "revoked-corridor_fighting",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "iron_golem": 65,
+        "slag_crawler": 49,
+        "forge_imp": 3,
+        "skeleton": 3
+      },
+      "total_hurt_damage": 120,
+      "last_event_tick": 2230,
+      "reflection_hits_at_hero": 22,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "0024d5a938a60ffdd61338cfe853622d9510645ceb745e2141c69c313a64d281",
+      "combat_event_sha256": "c21d1afaeb4b4355ac5a8de030a1931accc46cc0b3e5720b4cb9bdddb6451d6f",
+      "send_purse_gold": 98786,
+      "rule_counts": {
+        "chore \u2192 pick_up": 17,
+        "chore \u2192 explore": 36,
+        "corridor fighting bell": 9,
+        "corridor fighting iron": 32,
+        "always \u2192 corridor fighting": 21,
+        "HP 63% \u2192 rest": 1,
+        "HP 71% \u2192 rest": 2,
+        "HP 78% \u2192 rest": 2,
+        "HP 86% \u2192 rest": 1,
+        "HP 94% \u2192 rest": 1,
+        "corridor fighting slag": 49,
+        "HP 75% \u2192 rest": 1,
+        "HP 82% \u2192 rest": 1,
+        "HP 90% \u2192 rest": 3,
+        "telegraph \u2192 drink heal": 1,
+        "HP 76% \u2192 rest": 2,
+        "HP 84% \u2192 rest": 3,
+        "HP 92% \u2192 rest": 3,
+        "corridor fighting forge": 8,
+        "HP 98% \u2192 rest": 3,
+        "corridor fighting skeleton": 13,
+        "HP 51% \u2192 rest": 1,
+        "HP 59% \u2192 rest": 1,
+        "HP 67% \u2192 rest": 1,
+        "HP 69% \u2192 rest": 1,
+        "chore \u2192 descend": 10
+      },
+      "quotes": [
+        {
+          "dmg": 2,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 120,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 130,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 140,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 150,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 2,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 160,
+          "verb": "reflect"
+        },
+        {
+          "dmg": 3,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 10,
+          "t": 170,
+          "verb": "reflect"
+        }
+      ]
+    },
+    "total_run": {
+      "cause": null,
+      "depth": 23,
+      "kept": 386,
+      "kills": 56,
+      "tier": "bank",
+      "turns": 11055,
+      "twists": [
+        "nest",
+        "nest",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "enabled-reflect_read",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "bell_sentinel": 1,
+        "slag_crawler": 20,
+        "iron_golem": 4,
+        "skeleton": 1
+      },
+      "total_hurt_damage": 26,
+      "last_event_tick": 2420,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "12c815ac2800eef6331a9d6942abd74aee79c461cbad8ffccda8ec6d784b9168",
+      "combat_event_sha256": "2cb8280c2296936ed66b5cd1ec76fb751d35d8d6e3481689bfd38364ca3ecef5",
+      "send_purse_gold": 98618,
+      "rule_counts": {
+        "chore \u2192 pick_up": 28,
+        "chore \u2192 explore": 115,
+        "attack bell sentinel": 1,
+        "reflect_melee \u2192 reflect read": 37,
+        "HP 98% \u2192 rest": 2,
+        "attack slag crawler": 28,
+        "HP 88% \u2192 rest": 2,
+        "HP 96% \u2192 rest": 2,
+        "HP 73% \u2192 rest": 1,
+        "HP 80% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "attack forge imp": 9,
+        "hunt slag crawler": 1,
+        "attack skeleton": 7,
+        "chore \u2192 descend": 7
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 110,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 120,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": "lurker",
+      "depth": 28,
+      "kept": 0,
+      "kills": 119,
+      "tier": "death",
+      "turns": 23733,
+      "twists": [
+        "lock",
+        "captive",
+        "vault",
+        "captive"
+      ]
+    }
+  },
+  {
+    "scene": "reflection",
+    "arm": "enabled-corridor_fighting",
+    "same_initial_scene_and_hero": true,
+    "first_floor": {
+      "hurt_damage": {
+        "bell_sentinel": 1,
+        "slag_crawler": 22,
+        "iron_golem": 4,
+        "skeleton": 3,
+        "forge_imp": 1
+      },
+      "total_hurt_damage": 31,
+      "last_event_tick": 3120,
+      "reflection_hits_at_hero": 0,
+      "summoned_attacks": null,
+      "non_rule_event_sha256": "927708560d86885d900dff326af179625af7295c95ac7762a55df9b7db6dde48",
+      "combat_event_sha256": "1a65ad4894cf991709cabfe9a0bdffa215b549ee83fd980e283412efb745d06b",
+      "send_purse_gold": 98786,
+      "rule_counts": {
+        "chore \u2192 pick_up": 42,
+        "chore \u2192 explore": 133,
+        "corridor fighting bell": 1,
+        "reflect_melee \u2192 reflect read": 55,
+        "HP 98% \u2192 rest": 3,
+        "corridor fighting slag": 27,
+        "HP 88% \u2192 rest": 2,
+        "HP 96% \u2192 rest": 4,
+        "HP 73% \u2192 rest": 1,
+        "HP 80% \u2192 rest": 1,
+        "HP 92% \u2192 rest": 1,
+        "always \u2192 corridor fighting": 18,
+        "corridor fighting forge": 7,
+        "corridor fighting skeleton": 7,
+        "chore \u2192 descend": 10
+      },
+      "quotes": [
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 110,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "k": "rule",
+          "row": 0,
+          "t": 120,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        }
+      ]
+    },
+    "total_run": {
+      "cause": "lurker",
+      "depth": 28,
+      "kept": 0,
+      "kills": 101,
+      "tier": "death",
+      "turns": 21476,
+      "twists": [
+        "captive",
+        "captive",
+        "vault"
+      ]
+    }
+  }
+]

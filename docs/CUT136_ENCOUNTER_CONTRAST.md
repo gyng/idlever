@@ -1,6 +1,14 @@
 # Cut 136 — encounter contrast, preparation contract
 
-Status: prepared, not implemented or played. The owner requested more content and refinement work. This cut makes the first item in `WORK_QUEUE.md` executable after the frozen `d34605e` independent cohort finishes. Fresh blind findings take priority and may change which biome starts first. Do not change product, tests or assets, run simulations, or open another browser during that cohort.
+Status2026-10-20: the bounded first catalogue is measured in Cuts287/288: six
+ordinary earned starting-floor scenes,18 legal matched send cases and18 separate
+next8h outcomes. Two original seed identities, not18 independent seeds. Learned
+counters already answer some threats; six distinct counter superiorities are NOT
+established and no new formation is implemented. See the dated results below.
+The original frozen d34605e cohort restriction is historical; that cohort has
+finished and is not an active ban on the owner-resumed backlog. Implementation
+still requires the numeric selection/tactical gates and verification below.
+
 
 The problem to investigate is whether existing fights produce recognisably different preparation choices. More enemy names or room shapes alone do not establish that. Existing room variation, band situations, route changes, champions and boss affixes are already delivered.
 
@@ -41,4 +49,33 @@ Before implementation, add the formation-selection rate and tactical success thr
 - Visual evidence: matched400px phone and1440px desktop real-replay screenshots for both formations, with readable characters, hazards and telegraphs. Post them in the conversation. Preserve primitive fallbacks and the approved ink/wash direction.
 - Iteration: targeted tuning rows first, then quick verification and the required current-game native/client gates after rebuilding the real WASM. Never weaken an invariant or a gate for more content. Existing routine native outpace failure and the separate targeted16-seed result remain distinct until a genuine rerun resolves them. No exhaustive-audit claim from the routine suite.
 
-No tests, simulations, screenshots or new content are claimed delivered by this preparation document. Commit/push completed checkpoints under standing authorization; do not deploy.
+The original preparation checkpoint supplied no tests, simulations, screenshots
+or content. Subsequent bounded measurements are recorded below; they do not
+claim new formations or implementation acceptance. Commit/push completed
+checkpoints under standing authorization; do not deploy.
+
+## Bounded catalogue delivered — Cuts287/288,2026-10-20
+
+See [evidence/cut288/catalogue-six-scenes.json](evidence/cut288/catalogue-six-scenes.json)
+and the two evidence READMEs. Five scenes were selected solely from18 fixed
+baseline sends; a sixth uses an existing earned golem parent whose current
+baseline already has the Master counter. Its explicitly public revocation
+comparison demonstrates0→7→0 hero reflection attacks (enabled / revoked /
+revoked+mirror), but total hurt stays26: no overall superiority is inferred.
+All18 ordinary comparisons keep actual initial hero/inventory/floor/monster/RNG
+matched; separate18 actual8h reports reconcile Gold. No later procedural floor
+is passed off as an identical scene. Tick-boundary positions do not certify
+exact intermediate attack coordinates. No grants or historical retro-equipping.
+
+Gas step failed to improve the selected gas scene. The selected pack/drain
+positioning choices reduce some local damage; later8h outcomes need not follow.
+The summoner's old supposed response gap was an attribution error: an already
+learned Lich row fires in baseline, and L3 boss_focus has a generic extra row;
+ordinary targeting also produces the same combat events in this one ablation.
+All losing/tied cases and both old interpretations/corrections remain traceable.
+
+This completes bounded measurement inputs for a content decision, not R3's
+six distinct tactical success claims, population balance, a new formation,
+implementation-stage gates, actual per-action spatial proof, visuals or blind
+fun acceptance. Select any product change from these actual findings and pin its
+numeric scope before editing core/content. Existing held proposals stay held.

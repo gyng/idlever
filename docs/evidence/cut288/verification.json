@@ -1,0 +1,295 @@
+{
+  "integrity": "PASS",
+  "raw_files": 183,
+  "exact_observer_pairs": 10,
+  "exact_initial_scene_inventory_pairs": 10,
+  "public_revoke_changes_only_flag_and_compiled_rows": true,
+  "revocation_persists": true,
+  "reflection_attacks_enabled_revoked_mirror": [
+    0,
+    7,
+    0
+  ],
+  "summoner_three_arms_same_combat_stream": true,
+  "fired_row_origins": {
+    "summoner/enabled-baseline": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 860,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        "origin": "drill:lich"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 870,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        "origin": "drill:lich"
+      }
+    ],
+    "summoner/revoked-baseline": [],
+    "summoner/revoked-boss_focus": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 9,
+          "t": 860,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        "origin": "tactic:boss_focus"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 9,
+          "t": 870,
+          "text": "hit summoned spectral",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        "origin": "tactic:boss_focus"
+      }
+    ],
+    "summoner/revoked-corridor_fighting": [],
+    "reflection/enabled-baseline": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      }
+    ],
+    "reflection/revoked-baseline": [],
+    "reflection/revoked-reflect_read": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 10,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 10,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 10,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 10,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "tactic:reflect_read"
+      }
+    ],
+    "reflection/revoked-corridor_fighting": [],
+    "reflection/enabled-reflect_read": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      }
+    ],
+    "reflection/enabled-corridor_fighting": [
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 70,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 80,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 90,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      },
+      {
+        "event": {
+          "k": "rule",
+          "row": 0,
+          "t": 100,
+          "text": "reflect_melee \u2192 reflect read",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        "origin": "drill:foundry_master"
+      }
+    ]
+  },
+  "actual8h_gold_accounting_checks": 3,
+  "ordinary_catalogue_with_cut287": "6 scenes /18 matched cases /18 next8h outcomes; two original seed identities",
+  "six_counter_superiorities": "NOT_ESTABLISHED"
+}

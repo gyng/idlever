@@ -60,7 +60,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
     if args.len() < 5 {
         return Err(
-            "earn|prepare|trace|absence SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES]".into(),
+            "earn|prepare|trace|absence SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
         );
     }
     idlever_core::chronicle::use_shipping_words();
@@ -136,6 +136,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         assert_eq!(s.lineage.gold, gold);
                         actions.push(json!({"command":"buy_supply","kind":kind,"gold_spent":0}));
                     }
+                }
+            }
+            if let Some(drills) = args.get(7) {
+                for boss in drills.split(',') {
+                    s.revoke_drill(boss, true)?;
+                    actions.push(json!({"command":"revoke_drill","boss":boss,"revoked":true}));
                 }
             }
             s.set_live_decisions(false);

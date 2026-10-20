@@ -84,11 +84,17 @@ reduces hurt35→23 but exposes11 armours callouts versus4 and takes longer.
 No metric is quietly substituted for the named threat.
 
 boss_focus does not improve either Crypt initial floor, and reflect_read does
-not improve the support floor. Source explanation: ai.rs boss_focus immediately
-requires a visible boss; it does not respond to ordinary conjurer summons, even
-though meta.rs's descriptive card rows include a summoned selector. This is a
-measured limitation and a source-backed explanation, not an implemented fix or
-new counter. The claimed six distinct causal counter superiorities remain open.
+not improve the support floor in these metrics. **Interpretation corrected in
+Cut288 (2026-10-20):** the original explanation attributed the summoner tie too
+narrowly to ai.rs's card routine requiring a boss. The actual baseline already
+has a learned Lich drill and fires its summoned selector at t860/t870, hitting
+both blades; L3 boss_focus also compiles a generic summoned-selector extra row.
+The card routine's boss gate therefore does not establish a missing response in
+the entire L3 package. The tie is real; a claimed summoner-response gap from that
+tie was unsupported. Original raw observations/selection/results remain unchanged.
+Cut288 isolates the learned row through explicitly public drill revocation,
+labelled diagnostic intervention rather than silently weakening this baseline.
+The claimed six distinct causal counter superiorities remain open.
 
 ## Reproduction and retained evidence
 

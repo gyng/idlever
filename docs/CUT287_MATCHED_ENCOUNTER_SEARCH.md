@@ -56,10 +56,16 @@ before ten alternatives. All15 selected sends have exact inventory/hero/floor/
 monster/RNG matches; all28 departure observer pairs match full events/saves.
 All15 separate8h outcomes reconcile net Gold with purse changes. Local metrics
 are mixed: corridor reduces measured drain4→1; gas_step does not reduce gas
-hurt, boss_focus does not respond to the ordinary conjurer scene, and reflection
+hurt, boss_focus ties the already-trained summoner baseline, and reflection
 is missing at budget. No additional search, game change or six-counter claim.
 Full per-case results: [evidence/cut287/README.md](evidence/cut287/README.md).
 
 Independent archive/earned-chain/eligibility/matched-send/observer/Gold verifier
 passes over591 raw receipts. Example warnings-denied Clippy, build, scoped
 rustfmt and diff checks pass. All owned jobs are terminal. No game core change.
+
+Interpretation correction (Cut288,2026-10-20): the selected summoner baseline
+already fires its learned Lich selector at t860/t870. L3 boss_focus also includes
+an explicit generic summoned-selector row. Its card routine's boss gate does not
+prove the entire package lacks a conjurer response. Raw measurements stand;
+the previously inferred summoner-response gap is withdrawn pending attribution.

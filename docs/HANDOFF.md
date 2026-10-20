@@ -1,9 +1,53 @@
-# Active backlog — Cut287 five matched encounter scenes measured, 2026-10-20
+# Active backlog — Cut288 six-scene catalogue and counter attribution, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest work measures five matched starting-floor encounter scenes; the route-aware
+Latest work measures six bounded starting-floor encounter scenes and isolates learned counters; the route-aware
 counter packing production fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut288 learned-counter attribution — verified; sixth ordinary scene measured
+
+Contract: [CUT288_LEARNED_COUNTER_ATTRIBUTION.md](CUT288_LEARNED_COUNTER_ATTRIBUTION.md).
+Fixed two earned parents, four public enabled/revoked/explicit/positional arms
+per parent, then exactly two enabled reflection choices and three8h follow-ups.
+Diagnostic helper adds optional public revoke_drill to preparation; game core,
+WASM, defaults, held proposals and deployment remain unchanged.
+
+Correction: Cut287 summoner baseline already fires learned Lich tag:summoned at
+t860/t870; L3 boss_focus also compiles a generic summoned-selector extra. The
+card routine's boss gate did not establish a whole-package response gap. Raw
+metrics stand; that interpretation is withdrawn in the original evidence/docs.
+New summoner enabled/revoked/revoked+boss_focus have identical local combat/move
+streams; learned, generic and explicit L3 rows respectively perform targeting.
+
+Reflection: Master enabled0, publicly revoked7, revoked+mirror0 returned attacks
+at hero; total hurt26 in each. Revoked corridor has22 returned attacks/120 hurt.
+Enabled mirror matches learned baseline locally and at8h; enabled corridor hurts
+31 versus26 and takes longer locally, but8h Gold14030 versus10492,12 runs each,
+deepest28. No overall/survival advantage is inferred from reflection counts alone.
+Policy-dependent passage credits differ at some sends; before-send purse/state
+and actual initial hero/inventory/floor/monster/RNG match. No artificial wallet
+normalization. Quotes and actual fired origins are independently verified.
+
+All10 departures (20 observer continuations) have exact full events/terminal save
+parity at1/100 ticks. Public revocation only changes named flag/generated rows
+and persists after runs. All3 actual8h ledgers/clock deltas reconcile. Independent
+verifier183 raw files passes; archive2386648 bytes /414970868 raw bytes, hashes in
+`docs/evidence/cut288/`. Native build, warnings-denied example Clippy, scoped
+rustfmt/diff checks pass. All owned capture/archive/verifier jobs terminal.
+
+`catalogue-six-scenes.json` joins five Cut287 ordinary entries and one enabled
+reflection entry: SIX bounded current scenes /18 matched sends /18 next8h cases,
+only two original seed identities. This does not rewrite Cut287's reflection0/6
+criterion and does not certify six distinct counter superiorities, new formations,
+per-action coordinates, visual/gate/fun acceptance or population balance. Cut136
+status now records measured catalogue inputs; implementation gates remain open.
+
+Next concrete product candidate: measured gas-step behavior (melees bloat, gas
+harm unchanged, more total hurt). Inspect safe existing ranged/throwable response
+and L3 row reachability, then contract numeric behavior/regression gates before
+core edits. Do not spend another study or author a summoner fix based on the
+withdrawn attribution. R4/build work, balance failures, fun and audits stay open.
 
 ## Cut287 matched-kit search — five eligible scenes measured and verified
 
@@ -24,8 +68,10 @@ gas_step hurt9→15, gas damage stays6; pack_break at the pack scene hurt13→11
 corridor at drain hurt27→7, drain maxHP4→1; boss_focus leaves both Crypt initial
 floors unchanged in these metrics; reflect_read leaves support unchanged;
 corridor at support hurt35→23, but armours callouts4→11 and more time. Full
-traces quote actual tactic/attack events. ai.rs boss_focus requires a boss, so
-ordinary conjurer summons are not its runtime counter. No fix implemented.
+traces quote actual tactic/attack events. Cut288 corrects the source attribution:
+the baseline already fires learned Lich summoned selectors, while L3 boss_focus
+also has a generic extra summoned row. The card routine's boss gate does not
+prove the entire package lacks a conjurer response. No fix implemented.
 
 Separate15 actual8h branches use the same public Scout resume from each original
 selected parent; all report net Gold equals exact purse delta, deepest28. Local
@@ -49,7 +95,7 @@ failures occurred before native work, preserved; renamed scene_selection.py and
 continued same immutable selection. No lost observations or runner-up switch.
 
 Next: investigate reflection/learned counters and
-actual gas/summoner response gaps, then contract any product change with numeric
+actual gas behavior and learned-counter attribution, then contract any change with numeric
 gates informed by these measured baselines. No content formation, success-bar,
 visual/gate/fun/release/deployment acceptance is supplied by this screen.
 

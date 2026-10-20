@@ -1,0 +1,101 @@
+{
+  "status": "SIX_BOUNDED_ORDINARY_SCENES_MEASURED",
+  "ordinary_cases": 18,
+  "next8h_cases": 18,
+  "independent_seed_identities": 2,
+  "six_counter_superiorities": "NOT_ESTABLISHED",
+  "new_formations": "NOT_IMPLEMENTED",
+  "visual_review": "NOT_RUN",
+  "scenes": [
+    {
+      "category": "gas",
+      "evidence": "cut287",
+      "cases": [
+        "trace-s1-d9-a2-baseline",
+        "trace-s1-d9-a2-gas_step",
+        "trace-s1-d9-a2-pack_break"
+      ],
+      "selection": "original frozen selection; same initial floor/RNG/inventory",
+      "next8h_cases": [
+        "absence-s1-d9-a2-baseline",
+        "absence-s1-d9-a2-gas_step",
+        "absence-s1-d9-a2-pack_break"
+      ]
+    },
+    {
+      "category": "pack",
+      "evidence": "cut287",
+      "cases": [
+        "trace-s2-d9-a2-baseline",
+        "trace-s2-d9-a2-gas_step",
+        "trace-s2-d9-a2-pack_break"
+      ],
+      "selection": "original frozen selection; same initial floor/RNG/inventory",
+      "next8h_cases": [
+        "absence-s2-d9-a2-baseline",
+        "absence-s2-d9-a2-gas_step",
+        "absence-s2-d9-a2-pack_break"
+      ]
+    },
+    {
+      "category": "drain",
+      "evidence": "cut287",
+      "cases": [
+        "trace-s1-d14-a2-baseline",
+        "trace-s1-d14-a2-boss_focus",
+        "trace-s1-d14-a2-corridor_fighting"
+      ],
+      "selection": "original frozen selection; same initial floor/RNG/inventory",
+      "next8h_cases": [
+        "absence-s1-d14-a2-baseline",
+        "absence-s1-d14-a2-boss_focus",
+        "absence-s1-d14-a2-corridor_fighting"
+      ]
+    },
+    {
+      "category": "summoner",
+      "evidence": "cut287",
+      "cases": [
+        "trace-s1-d14-a1-baseline",
+        "trace-s1-d14-a1-boss_focus",
+        "trace-s1-d14-a1-corridor_fighting"
+      ],
+      "selection": "original frozen selection; same initial floor/RNG/inventory",
+      "next8h_cases": [
+        "absence-s1-d14-a1-baseline",
+        "absence-s1-d14-a1-boss_focus",
+        "absence-s1-d14-a1-corridor_fighting"
+      ]
+    },
+    {
+      "category": "support",
+      "evidence": "cut287",
+      "cases": [
+        "trace-s2-d19-a1-baseline",
+        "trace-s2-d19-a1-reflect_read",
+        "trace-s2-d19-a1-corridor_fighting"
+      ],
+      "selection": "original frozen selection; same initial floor/RNG/inventory",
+      "next8h_cases": [
+        "absence-s2-d19-a1-baseline",
+        "absence-s2-d19-a1-reflect_read",
+        "absence-s2-d19-a1-corridor_fighting"
+      ]
+    },
+    {
+      "category": "reflection",
+      "evidence": "cut288",
+      "cases": [
+        "trace-reflection-enabled-baseline",
+        "trace-reflection-enabled-reflect_read",
+        "trace-reflection-enabled-corridor_fighting"
+      ],
+      "selection": "existing earned golem parent; enabled learned counter in ordinary baseline; separate public-revocation diagnostic demonstrates threat. Not a Cut287 eligibility pass.",
+      "next8h_cases": [
+        "absence-reflection-enabled-baseline",
+        "absence-reflection-enabled-reflect_read",
+        "absence-reflection-enabled-corridor_fighting"
+      ]
+    }
+  ]
+}
