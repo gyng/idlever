@@ -1,0 +1,5 @@
+Archive verification initially failed at the canonical Session wrapper assertion:
+AssertionError: only Session wrapper additions allowed at load
+The verifier expected others=[]; actual Session serializes its empty BTreeMap
+as others={}. Corrected only that expected schema value. Original/canonical
+saves, gameplay captures, native source and summaries were not rewritten by it.

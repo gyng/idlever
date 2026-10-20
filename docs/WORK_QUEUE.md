@@ -11,7 +11,14 @@ payoff gap; no population or balance claim. Cut297 now fixes tools/wasm.sh
 CARGO_TARGET_DIR/configuration compilation/packaging mismatch. Seven wrapper
 regressions pass (old code fails five); real default/isolated package bytes and
 three earned8h native/WASM pairs match. No rules/module/default pin changed.
-Next: inherited balance diagnosis with a concrete mechanism hypothesis.
+Cut298 now completes ten fixed saved-world continuations/130actual runs and
+four current ordinary trajectories/21camps. Queen counter helps seed2, but its
+legal contact candidate gives no D33 endpoint gain and loses HP protection; no
+adoption. Both first Queen edits occur32h, so Queen-only changes preserving
+prior histories/attendance/PICKED cannot exceed1.10 on this pair. Current
+PICKED40/48h,TUNED40/40h reproduces the inherited failure. Next discriminating
+mechanism: seed2's earlier16h Lich fallback copies, before its24hD23 versus
+PICKEDD28; test legal removal/actual targeting before content or bot changes.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

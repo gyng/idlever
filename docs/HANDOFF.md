@@ -1,11 +1,58 @@
-# Active backlog — Cut297 custom-target WASM packaging fixed, 2026-10-21
+# Active backlog — Cut298 late Queen timing bound diagnosed, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
+Latest diagnosisCut298 finds a conditional late-Queen tuning ceiling on the
+current two-seed D33 regression pair; no candidate/default adopted.
 Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut298 D33 diagnosis — useful Queen counter, late-edit ceiling; no adoption
+
+Contract [CUT298_QUEEN_PEN_DIAGNOSIS.md](CUT298_QUEEN_PEN_DIAGNOSIS.md).
+Ten fixed8h saved-world continuations from four earned32h camps, including two
+TUNED repeated controls, complete130actual runs. Every native reconstruction
+asserts exact actual public replay events; independent archive verification
+re-derives all cases/frames/window summaries, legal whole-state preparations,
+ledger conservation and full byte-exact repeats. Source/runtime/parent hashes
+and324raw JSON receipts are preserved (capture.tar.zst ~12MB).
+
+Queen counter is useful: removing its authored row AND automatic counter pack
+request drops seed2D33→D28, while seed1 staysD33. Same-parent public intervention,
+not matched-inventory combat or population acceptance. Five baseline seed2
+silence windows expire with Queen untouched at95/95 and out of sight. A proposed
+third condition is legally refused before simulation (pen limit2). Amended
+candidate replaces hp>45 with adj>=1 on that row: both endpoints remainD33,
+Gold changes+538/−685, and post-read HP≤45% occurs once/four times on seeds1/2 versus zero
+on both baselines. Most reads
+still have Queen nonadjacent (any hostile satisfies adj>=1). No default adopted.
+All losses preserved; authored finish-started-run tails beyond requested budget
+are explicitly measured, including11963extra ticks for contactseed1. Clock
+budget remains28800s; do not interpret Gold/run counts as equal-tick efficiency.
+
+Current ordinary PICKED/TUNED on regression seeds1/2,3looks/day, D33-or14days,
+complete four trajectories/21camps: PICKED40/48h, TUNED40/40h, median paired ratio
+11/10 FAIL versus1.15. All four32h camp saves are byte-identical to historical
+parents, revalidating those inputs. Both TUNED histories first know/write Queen
+at32h. With earlier histories/PICKED/attendance fixed, improving only this new
+Queen row cannot affect the32h observation; earliest post-edit observation40h
+bounds THIS pair's Queen-only ratio at11/10. Not a population/all-pen/continuous-
+latency ceiling, canonical16seed check or full gate. No further late-Queen sweep.
+
+Next discriminator: current seed2 first differs in lineage at16h in sets/pkg/
+honours (the two Lich fallback copies); at24h TUNEDD23 versus PICKEDD28. Use the
+actual16h TUNED camp for legal removal of just those copies, unchanged/repeat
+controls and actual Lich target traces. History comparison is not yet causal
+proof; inspect before changing public content or bot policy. Worker-away failure,
+calibration, R3/R4/independent fun and explicit broad audits remain open.
+
+Scoped diagnostic Clippy/rustfmt/diff checks pass; no core/WASM/profile/default,
+held Bank/Vat W2/recovery/Guide gap4 or deployment change. Evidence cut298 includes
+both archives, native producers, source identities and initial verifier schema
+correction (empty Session others is a map, not a list). All owned jobs terminal.
+Live dev remains423fe45a. Broad backlog goal stays active.
 
 ## Cut297 fast WASM packages Cargo's effective target — verified
 

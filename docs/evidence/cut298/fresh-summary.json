@@ -1,0 +1,446 @@
+{
+  "scope": "Four ordinary current-runtime trajectories on the two known regression seeds, not independent population confirmation or full gate.",
+  "arrivals_h": {
+    "PICKED-s1": 40.0,
+    "PICKED-s2": 48.0,
+    "TUNED-s1": 40.0,
+    "TUNED-s2": 40.0
+  },
+  "median_paired_ratio": "11/10",
+  "first_queen_opportunities": {
+    "1": {
+      "first_counter_knowledge_h": 32,
+      "first_queen_pen_h": 32,
+      "earliest_post_edit_checkin_h": 40
+    },
+    "2": {
+      "first_counter_knowledge_h": 32,
+      "first_queen_pen_h": 32,
+      "earliest_post_edit_checkin_h": 40
+    }
+  },
+  "conditional_queen_only_ratio_ceiling": "11/10",
+  "ceiling_scope": "Only changes to a Queen pen row first written at32h, preserving both pre32h histories, attendance and PICKED comparison; not a bound on all legal pen play or a population parameter.",
+  "canonical_row_status": "FAIL at two-seed diagnostic scope:1.10 below1.15; explicit16seed row not rerun",
+  "camps": [
+    {
+      "name": "PICKED-s1-d1-c0",
+      "bot": "PICKED",
+      "seed": "1",
+      "checkin_h": 0,
+      "clock_s": 12,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "7bf1b65feeaf70af212d80b969a3b006b06cce965572e87cf76e1d79f374a039"
+    },
+    {
+      "name": "PICKED-s1-d1-c1",
+      "bot": "PICKED",
+      "seed": "1",
+      "checkin_h": 8,
+      "clock_s": 25954,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "f9386aa96256ecd9f9856cb2dcf6202b0ee5f61ad994f23070f7a766ebbb3ac2"
+    },
+    {
+      "name": "PICKED-s1-d1-c2",
+      "bot": "PICKED",
+      "seed": "1",
+      "checkin_h": 16,
+      "clock_s": 54754,
+      "best": 23,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "5d966ec13a1cdf7d2573f2ce4323e8b693befeb83a9f6beb9e7fcdfe85927abc"
+    },
+    {
+      "name": "PICKED-s1-d2-c0",
+      "bot": "PICKED",
+      "seed": "1",
+      "checkin_h": 24,
+      "clock_s": 83554,
+      "best": 25,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "ddc0f3f3d7f37b39f79d83cdb8591ce00f48705bbef9c7be1b4bd4d0a609f2e5"
+    },
+    {
+      "name": "PICKED-s1-d2-c1",
+      "bot": "PICKED",
+      "seed": "1",
+      "checkin_h": 32,
+      "clock_s": 112354,
+      "best": 28,
+      "queen_known": true,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "20ee5025f90860c1e90a738b9340183bbe8f3ea5a253cf40027e7d1498df8750"
+    },
+    {
+      "name": "PICKED-s2-d1-c0",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 0,
+      "clock_s": 12,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "e4a09cfa7e72cfac7dfc1be0037277461bbabbff4928066f198adda1823453bc"
+    },
+    {
+      "name": "PICKED-s2-d1-c1",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 8,
+      "clock_s": 25810,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "003bb2d09b06b4e43ff19a58dd2aa87492e2027bc59f85496a541609ddad1a10"
+    },
+    {
+      "name": "PICKED-s2-d1-c2",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 16,
+      "clock_s": 54610,
+      "best": 18,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "e942e182e3066b5538910211df0bba6f02fac2ad4f9ca3a193f063e50f2eaa1c"
+    },
+    {
+      "name": "PICKED-s2-d2-c0",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 24,
+      "clock_s": 83410,
+      "best": 28,
+      "queen_known": true,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "139e10857d4bae3c813acf4447366ae0708d96d7be9c212338f476d5a98e8917"
+    },
+    {
+      "name": "PICKED-s2-d2-c1",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 32,
+      "clock_s": 112210,
+      "best": 28,
+      "queen_known": true,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "c6b60c290832370f2916888018c340a10c0fca544cfbf8c2181f43dfcf372a46"
+    },
+    {
+      "name": "PICKED-s2-d2-c2",
+      "bot": "PICKED",
+      "seed": "2",
+      "checkin_h": 40,
+      "clock_s": 141010,
+      "best": 32,
+      "queen_known": true,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "272bbc14bc8c766aa3c8bfbfc8b18ec1c521a9d3ccf031a434773f4be3d9f5ba"
+    },
+    {
+      "name": "TUNED-s1-d1-c0",
+      "bot": "TUNED",
+      "seed": "1",
+      "checkin_h": 0,
+      "clock_s": 12,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "7bf1b65feeaf70af212d80b969a3b006b06cce965572e87cf76e1d79f374a039"
+    },
+    {
+      "name": "TUNED-s1-d1-c1",
+      "bot": "TUNED",
+      "seed": "1",
+      "checkin_h": 8,
+      "clock_s": 25954,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "f9386aa96256ecd9f9856cb2dcf6202b0ee5f61ad994f23070f7a766ebbb3ac2"
+    },
+    {
+      "name": "TUNED-s1-d1-c2",
+      "bot": "TUNED",
+      "seed": "1",
+      "checkin_h": 16,
+      "clock_s": 54754,
+      "best": 23,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "5d966ec13a1cdf7d2573f2ce4323e8b693befeb83a9f6beb9e7fcdfe85927abc"
+    },
+    {
+      "name": "TUNED-s1-d2-c0",
+      "bot": "TUNED",
+      "seed": "1",
+      "checkin_h": 24,
+      "clock_s": 83554,
+      "best": 25,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [
+        {
+          "conds": [
+            {
+              "k": "on_see",
+              "t": "stray"
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "nearest"
+          },
+          "origin": "player"
+        }
+      ],
+      "sha256": "b4b924ed08a61b5867c8672c612c2a1d758bc3b7d85958e819ef1b4a63fb0821"
+    },
+    {
+      "name": "TUNED-s1-d2-c1",
+      "bot": "TUNED",
+      "seed": "1",
+      "checkin_h": 32,
+      "clock_s": 112354,
+      "best": 28,
+      "queen_known": true,
+      "queen_pen": true,
+      "pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "brood"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "read",
+            "a": "silence"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "on_see",
+              "t": "stray"
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "nearest"
+          },
+          "origin": "player"
+        }
+      ],
+      "sha256": "085493f09dc254f96db84a872e3e9c0d6127e459c8bb1a08a8f6db3fe102fd0e"
+    },
+    {
+      "name": "TUNED-s2-d1-c0",
+      "bot": "TUNED",
+      "seed": "2",
+      "checkin_h": 0,
+      "clock_s": 12,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "e4a09cfa7e72cfac7dfc1be0037277461bbabbff4928066f198adda1823453bc"
+    },
+    {
+      "name": "TUNED-s2-d1-c1",
+      "bot": "TUNED",
+      "seed": "2",
+      "checkin_h": 8,
+      "clock_s": 25810,
+      "best": 13,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [],
+      "sha256": "003bb2d09b06b4e43ff19a58dd2aa87492e2027bc59f85496a541609ddad1a10"
+    },
+    {
+      "name": "TUNED-s2-d1-c2",
+      "bot": "TUNED",
+      "seed": "2",
+      "checkin_h": 16,
+      "clock_s": 54610,
+      "best": 18,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ],
+      "sha256": "ffdfd0cf6baabe72ad1ae2458ec0244b85189b5ab2647a3f71e47decc7faebe8"
+    },
+    {
+      "name": "TUNED-s2-d2-c0",
+      "bot": "TUNED",
+      "seed": "2",
+      "checkin_h": 24,
+      "clock_s": 83410,
+      "best": 23,
+      "queen_known": false,
+      "queen_pen": false,
+      "pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ],
+      "sha256": "151f5877876f7473a37c76a06085a3b56a438bd162bded8cea1d517d83c37d82"
+    },
+    {
+      "name": "TUNED-s2-d2-c1",
+      "bot": "TUNED",
+      "seed": "2",
+      "checkin_h": 32,
+      "clock_s": 112210,
+      "best": 28,
+      "queen_known": true,
+      "queen_pen": true,
+      "pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "brood"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "read",
+            "a": "silence"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ],
+      "sha256": "5b3d5286015d592ed9d630d8aa32459deb50aedcce75258d6533bad69ee938ca"
+    }
+  ]
+}

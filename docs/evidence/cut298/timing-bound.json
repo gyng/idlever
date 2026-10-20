@@ -1,0 +1,29 @@
+{
+  "scope": "Historical camp facts/source cadence; causal timing bound for ONLY a row first written at32h. Not a new trajectory or full balance row.",
+  "earlier_input": "docs/evidence/cut282/pen/TUNED-s1-d2-c0.json.gz",
+  "earlier_sha256": "be0f22839b3774a32127720e5f30cd0dc761c8f90d9a38aa776832c33b346bb0",
+  "earlier_clock_s": 83554,
+  "earlier_best": 25,
+  "earlier_queen_facts": [],
+  "later_clock_s": 112354,
+  "later_best": 28,
+  "later_queen_facts": [
+    "boss:lurker_queen:counter=read silence",
+    "foe:lurker_queen",
+    "foe:lurker_queen:blind",
+    "foe:lurker_queen:boss",
+    "foe:lurker_queen:brood",
+    "foe:lurker_queen:summoner",
+    "foe:lurker_queen:telegraph"
+  ],
+  "historical_checkin_hours": [
+    24,
+    32
+  ],
+  "canonical_comparison_from_cut282": {
+    "picked_seed1_d33_h": 40,
+    "tuned_seed1_d33_h": 40,
+    "target_ratio": 1.15
+  },
+  "interpretation": "With 8h check-ins, improving only the Queen row first written at32h cannot advance arrival to the32h check-in. Its earliest observable post-edit D33 arrival remains40h; advancing this seed to32h requires an earlier intervention."
+}

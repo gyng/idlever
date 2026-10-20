@@ -1,0 +1,35 @@
+{
+  "command": [
+    "target/cut291-native/fast/examples/stat_probe",
+    "--seeds",
+    "1,2",
+    "--bots",
+    "PICKED,TUNED",
+    "--days",
+    "14",
+    "--until-depth",
+    "33",
+    "--threads",
+    "8",
+    "--out",
+    "target/cut298/fresh/observations.json"
+  ],
+  "binary_sha256": "5e6006524db5f09893d26ef92e9cd08668fc7c2751aca9e13c83b61a1e50d9e0",
+  "producer_sources": {
+    "crates/idlever-core/examples/stat_probe.rs": "805169e7543ce9876dc09d64c504c888b3d294664a16d31c3d9385cf2ed082dc",
+    "crates/idlever-core/examples/dayplayer.rs": "bcd77568fcbbd47fbb9a1341993de7bb59b453e437a7b2ca1dbe518d169033aa",
+    "crates/idlever-core/examples/dayplayer_stat/mod.rs": "a88637cc76e0533b3683abe0e75d8b692b53d959ddc4a7907451c0e64e9dab63"
+  },
+  "core_source_identity": "contact-identity.json",
+  "read_only_export": {
+    "DP_SAVE_DIR": "/home/g/p/riddle/target/cut298/fresh/camps"
+  },
+  "scope": "Four current ordinary trajectories on existing regression seeds, no independent sample or gate acceptance",
+  "additional_parent_commit_modules": {
+    "crates/idlever-core/examples/jobcache_lib/mod.rs": "0728176e767849c668a445c7539428ddc4809aeac6178e9eb7c5fb1772b24db1",
+    "crates/idlever-core/examples/dayplayer_checkpoint/mod.rs": "1eacce0ad498a0d488aa82e95511cdb911017a3c4f09a48f62e9eb6b28330bf0",
+    "crates/idlever-core/examples/dayplayer_rows/mod.rs": "b0e00587cd8a06d4a462d3a5a8be14d9aa75120ab72626b5e252ef4890ef9edb",
+    "crates/idlever-core/examples/dayplayer_hurry/mod.rs": "e7d301b55b00ab2266f2a03f90d85425e55e381efa0a726a0e959c358eb5691e"
+  },
+  "additional_module_note": "Read-only hashes recorded after execution; these tracked modules remain unchanged from base b57c1a4d."
+}

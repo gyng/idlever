@@ -1,0 +1,442 @@
+{
+  "scope": "Read-only reconciliation of current ordinary trajectories; pen/honour differences alone are not declared a proven causal counter effect before an intervention.",
+  "rows": [
+    {
+      "seed": 1,
+      "checkin_h": 0,
+      "picked_best": 13,
+      "tuned_best": 13,
+      "different_game_fields": [],
+      "different_lineage_fields": [],
+      "tuned_pen": []
+    },
+    {
+      "seed": 1,
+      "checkin_h": 8,
+      "picked_best": 13,
+      "tuned_best": 13,
+      "different_game_fields": [],
+      "different_lineage_fields": [],
+      "tuned_pen": []
+    },
+    {
+      "seed": 1,
+      "checkin_h": 16,
+      "picked_best": 23,
+      "tuned_best": 23,
+      "different_game_fields": [],
+      "different_lineage_fields": [],
+      "tuned_pen": []
+    },
+    {
+      "seed": 1,
+      "checkin_h": 24,
+      "picked_best": 25,
+      "tuned_best": 25,
+      "different_game_fields": [
+        "lineage",
+        "stall"
+      ],
+      "different_lineage_fields": [
+        "sets",
+        "pkg",
+        "honours"
+      ],
+      "tuned_pen": [
+        {
+          "conds": [
+            {
+              "k": "on_see",
+              "t": "stray"
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "nearest"
+          },
+          "origin": "player"
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "checkin_h": 32,
+      "picked_best": 28,
+      "tuned_best": 28,
+      "different_game_fields": [
+        "lineage",
+        "deaths",
+        "floor_start",
+        "prov",
+        "reel",
+        "batch",
+        "stall",
+        "last_exit",
+        "sent_state"
+      ],
+      "different_lineage_fields": [
+        "sets",
+        "sent_sets",
+        "row_stats",
+        "night_meter",
+        "last_night_meter",
+        "meters_recent",
+        "pkg",
+        "tree",
+        "honours"
+      ],
+      "tuned_pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "brood"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "read",
+            "a": "silence"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "on_see",
+              "t": "stray"
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "nearest"
+          },
+          "origin": "player"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "checkin_h": 0,
+      "picked_best": 13,
+      "tuned_best": 13,
+      "different_game_fields": [],
+      "different_lineage_fields": [],
+      "tuned_pen": []
+    },
+    {
+      "seed": 2,
+      "checkin_h": 8,
+      "picked_best": 13,
+      "tuned_best": 13,
+      "different_game_fields": [],
+      "different_lineage_fields": [],
+      "tuned_pen": []
+    },
+    {
+      "seed": 2,
+      "checkin_h": 16,
+      "picked_best": 18,
+      "tuned_best": 18,
+      "different_game_fields": [
+        "lineage",
+        "stall"
+      ],
+      "different_lineage_fields": [
+        "sets",
+        "pkg",
+        "honours"
+      ],
+      "tuned_pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "checkin_h": 24,
+      "picked_best": 28,
+      "tuned_best": 23,
+      "different_game_fields": [
+        "lineage",
+        "deaths",
+        "floor_start",
+        "prov",
+        "reel",
+        "stall_runs",
+        "batch",
+        "facts_at_run_start",
+        "stall",
+        "last_exit",
+        "sent_state"
+      ],
+      "different_lineage_fields": [
+        "persistent",
+        "bloodline",
+        "hero_legacy",
+        "heir",
+        "best_depth",
+        "marks",
+        "facts",
+        "unlocks",
+        "graveyard",
+        "trophies",
+        "sets",
+        "kills",
+        "grudges",
+        "total_turns",
+        "next_run_id",
+        "next_vault_id",
+        "rng",
+        "party",
+        "kennel",
+        "gold",
+        "supplies",
+        "classes",
+        "forge",
+        "renown",
+        "rest_left",
+        "bones",
+        "kill_counts",
+        "runs_banked",
+        "runs_died",
+        "banked_depths",
+        "chronicle",
+        "chronicled",
+        "heir_deeds",
+        "heir_best",
+        "gold_ledger",
+        "gold_tally",
+        "reel_pairs",
+        "heirs",
+        "pets",
+        "picked",
+        "night_runs",
+        "night_seen",
+        "den_wakes",
+        "bounty",
+        "sent_sets",
+        "kit",
+        "night_net",
+        "last_night_net",
+        "row_stats",
+        "event_recent",
+        "found_kinds",
+        "last_run",
+        "oaths",
+        "day_net",
+        "night_meter",
+        "last_night_meter",
+        "meters_recent",
+        "pkg",
+        "town",
+        "tree",
+        "run_log",
+        "feats",
+        "honours"
+      ],
+      "tuned_pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "checkin_h": 32,
+      "picked_best": 28,
+      "tuned_best": 28,
+      "different_game_fields": [
+        "lineage",
+        "deaths",
+        "floor_start",
+        "prov",
+        "reel",
+        "stall_runs",
+        "batch",
+        "facts_at_run_start",
+        "last_exit",
+        "sent_state"
+      ],
+      "different_lineage_fields": [
+        "persistent",
+        "bloodline",
+        "hero_legacy",
+        "heir",
+        "marks",
+        "facts",
+        "graveyard",
+        "trophies",
+        "sets",
+        "grudges",
+        "total_turns",
+        "next_run_id",
+        "next_vault_id",
+        "rng",
+        "party",
+        "kennel",
+        "gold",
+        "supplies",
+        "classes",
+        "forge",
+        "renown",
+        "rank",
+        "rest_left",
+        "bones",
+        "kill_counts",
+        "runs_banked",
+        "runs_returned",
+        "runs_died",
+        "banked_depths",
+        "chronicle",
+        "chronicled",
+        "heir_best",
+        "gold_ledger",
+        "gold_tally",
+        "reel_pairs",
+        "heirs",
+        "pets",
+        "picked",
+        "night_runs",
+        "den_wakes",
+        "sent_sets",
+        "night_net",
+        "last_night_net",
+        "row_stats",
+        "event_recent",
+        "last_run",
+        "oaths",
+        "day_net",
+        "night_meter",
+        "last_night_meter",
+        "meters_recent",
+        "pkg",
+        "town",
+        "tree",
+        "run_log",
+        "feats",
+        "honours"
+      ],
+      "tuned_pen": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "brood"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "read",
+            "a": "silence"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "origin": "player"
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "player"
+        }
+      ]
+    }
+  ],
+  "next_discriminator": "Use the current TUNED seed2 16h camp and public removal of only the two early Lich fallback copies; unchanged/repeat controls, equal8h transport, no grants or later choices. Inspect actual Lich fight target priority before any content or bot policy change."
+}
