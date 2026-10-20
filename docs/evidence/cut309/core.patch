@@ -1,0 +1,148 @@
+diff --git a/crates/idlever-core/src/balance.rs b/crates/idlever-core/src/balance.rs
+index 707d5263..e4cb6b6e 100644
+--- a/crates/idlever-core/src/balance.rs
++++ b/crates/idlever-core/src/balance.rs
+@@ -20,9 +20,12 @@ pub struct Balance {
+     pub guarded_home: [i32; 2],
+     pub guarded_dry: [i32; 2],
+     /// Cut230 (owner 2026-10-14): death recovery by the run's deepest floor — [shallow ticks, last shallow
+-    /// floor, first full floor, ramp exponent]; `persistent::recovery_ticks`. The full value is `RECOVERY_TICKS`.
++    /// floor, first full floor, ramp exponent]; `persistent::recovery_ticks`.
+     #[serde(default = "default_recovery")]
+     pub recovery: [u32; 4],
++    /// Cut309: full recovery cap, ticks (10/s). Old profiles retain the shipping12000.
++    #[serde(default = "default_recovery_full_ticks")]
++    pub recovery_full_ticks: u32,
+     /// Cut233 (owner 2026-10-15: the remaining content tunables, a pure refactor — every default is the constant it
+     /// replaced). Each section may be left out of a profile (its shipping values); a section given must be whole.
+     #[serde(default = "default_workers")]
+@@ -48,6 +51,7 @@ pub struct Balance {
+     pub vat: Vat,
+ }
+ fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
++fn default_recovery_full_ticks() -> u32 { DEFAULT.recovery_full_ticks }
+ fn default_workers() -> Workers { DEFAULT.workers }
+ fn default_tree() -> TreeTune { DEFAULT.tree }
+ fn default_rest() -> Rest { DEFAULT.rest }
+@@ -283,6 +287,7 @@ pub const DEFAULT: Balance = Balance {
+     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
+     guarded_home: [30,25], guarded_dry: [45,44],
+     recovery: [600, 14, 28, 1],
++    recovery_full_ticks: 12000,
+     workers: Workers {
+         quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
+         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
+@@ -332,7 +337,8 @@ pub fn parse(text: &str) -> Result<Balance, String> {
+         || b.steady_heal.iter().chain(&b.hunter_heal).chain(&b.guarded_heal).chain(&b.steady_dry)
+             .chain(&b.steady_rest).chain(&b.guarded_home).chain(&b.guarded_dry)
+             .chain([b.bold_heal,b.steady_home].iter()).any(|n| !(1..=100).contains(n))
+-        || b.recovery[0] == 0 || u64::from(b.recovery[0]) > crate::persistent::RECOVERY_TICKS
++        || !(1..=12000).contains(&b.recovery_full_ticks)
++        || b.recovery[0] == 0 || b.recovery[0] > b.recovery_full_ticks
+         || b.recovery[1] >= b.recovery[2] || b.recovery[2] > 40 || !(1..=4).contains(&b.recovery[3]) {
+         return Err("invalid balance bounds or progression ordering".into());
+     }
+@@ -412,6 +418,23 @@ pub fn configure_from_env() -> Result<(), String> {
+ mod tests {
+     use super::*;
+     #[test]
++    fn recovery_cap_profiles_are_bounded_and_backward_compatible() {
++        let mut value = serde_json::to_value(DEFAULT).unwrap();
++        value.as_object_mut().unwrap().remove("recovery_full_ticks");
++        assert_eq!(parse(&value.to_string()).unwrap(), DEFAULT);
++        value["recovery"] = serde_json::json!([150, 14, 28, 1]);
++        value["recovery_full_ticks"] = serde_json::json!(3000);
++        assert_eq!(parse(&value.to_string()).unwrap().recovery_full_ticks, 3000);
++        for cap in [0, 149, 12001, u32::MAX] {
++            value["recovery_full_ticks"] = serde_json::json!(cap);
++            assert!(parse(&value.to_string()).is_err(), "cap {cap}");
++        }
++        value["recovery_full_ticks"] = serde_json::json!(150);
++        assert!(parse(&value.to_string()).is_ok(), "flat curve is legal");
++        value["recovery_full_ticks"] = serde_json::json!("3000");
++        assert!(parse(&value.to_string()).is_err());
++    }
++    #[test]
+     fn shipping_template_and_bounds() {
+         let text = include_str!("../../../tuning/balance.json");
+         assert_eq!(parse(text).unwrap(), DEFAULT);
+diff --git a/crates/idlever-core/src/persistent.rs b/crates/idlever-core/src/persistent.rs
+index 08b0c4c1..bbfdf7be 100644
+--- a/crates/idlever-core/src/persistent.rs
++++ b/crates/idlever-core/src/persistent.rs
+@@ -5,22 +5,26 @@ use crate::{
+ };
+ use serde::{Deserialize, Serialize};
+ 
+-/// The full death recovery (20 game minutes; owner amendment 2026-10-14), from `balance.recovery[2]` down.
++/// Historical/shipping full recovery (20 game minutes); fallback for old stored durations.
+ pub const RECOVERY_TICKS: u64 = 12000;
+ /// Cut230 (owner 2026-10-14, docs/CUT230_EARLY_PACING.md): a death's recovery scales with the run's deepest floor
+ /// (`Run::max_depth`, the floor he fell on or below it): `balance.recovery[0]` ticks to the last shallow floor,
+-/// `RECOVERY_TICKS` from the first full floor, a ramp (`(d−lo)/(hi−lo)` to the exponent) between.
++/// `balance.recovery_full_ticks` from the first full floor, a ramp between.
+ pub fn recovery_ticks(depth: u32) -> u64 {
+-    let [shallow, lo, hi, exp] = crate::balance::get().recovery;
++    let b = crate::balance::get();
++    recovery_curve(depth, b.recovery, u64::from(b.recovery_full_ticks))
++}
++fn recovery_curve(depth: u32, curve: [u32; 4], full: u64) -> u64 {
++    let [shallow, lo, hi, exp] = curve;
+     let shallow = u64::from(shallow);
+     if depth <= lo {
+         return shallow;
+     }
+     if depth >= hi {
+-        return RECOVERY_TICKS;
++        return full;
+     }
+     let (num, den) = (u64::from(depth - lo).pow(exp), u64::from(hi - lo).pow(exp));
+-    shallow + (RECOVERY_TICKS - shallow) * num / den
++    shallow + (full - shallow) * num / den
+ }
+ pub const REBIRTH_DELVES: u32 = 8;
+ pub const REBIRTH_SECONDS: u64 = 3600;
+@@ -249,7 +253,7 @@ pub fn hurry(l: &mut LineageState, away: bool, max_price: i32) -> Result<i32, St
+ }
+ /// The full recovery (a confirmed reclone).
+ pub fn recover(l: &mut LineageState) {
+-    recover_for(l, RECOVERY_TICKS);
++    recover_for(l, u64::from(crate::balance::get().recovery_full_ticks));
+ }
+ /// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
+ pub fn recover_at(l: &mut LineageState, depth: u32) {
+@@ -481,6 +485,22 @@ pub fn rebirth(g: &mut Game, token: &str) -> Result<(), String> {
+ mod tests {
+     use super::*;
+ 
++    #[test]
++    fn recovery_cap_alternatives_preserve_depth_order_and_exact_endpoints() {
++        for (curve, full) in [([600, 14, 28, 1], 12000), ([150, 14, 28, 1], 12000), ([150, 14, 28, 1], 3000)] {
++            let values: Vec<_> = (0..=40).map(|d| recovery_curve(d, curve, full)).collect();
++            assert!(values.windows(2).all(|w| w[0] <= w[1]));
++            assert!(values[..=14].iter().all(|v| *v == u64::from(curve[0])));
++            assert!(values[28..].iter().all(|v| *v == full));
++            assert!(values.iter().all(|v| (u64::from(curve[0])..=full).contains(v)));
++        }
++        assert_eq!(recovery_curve(21, [150, 14, 28, 1], 3000), 1575);
++        for d in 0..=40 {
++            let historical = 600 + (12000 - 600) * u64::from(d.clamp(14, 28) - 14) / 14;
++            assert_eq!(recovery_curve(d, [600, 14, 28, 1], 12000), historical);
++        }
++    }
++
+     fn home() -> Game {
+         let mut g = Game::new_literal(71);
+         g.lineage.gold = 500;
+diff --git a/tuning/balance.json b/tuning/balance.json
+index 4aad50b4..26d7cc6a 100644
+--- a/tuning/balance.json
++++ b/tuning/balance.json
+@@ -15,6 +15,7 @@
+   "guarded_home": [30, 25],
+   "guarded_dry": [45, 44],
+   "recovery": [600, 14, 28, 1],
++  "recovery_full_ticks": 12000,
+   "workers": {
+     "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
+     "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0, "goal": "count" },

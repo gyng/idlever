@@ -5,6 +5,11 @@ active queue by the owner, with research/refinement/redesign authorized. The
 failed15-second candidate is evidence, not an adopted replacement. See current
 [WORK_QUEUE.md](WORK_QUEUE.md) items3–4.
 
+Cut309 adds an optional validated full-recovery cap for compile-free native
+experiments, keeping shipping600/12000ticks. Current original shallow15proposal
+still gives pen1.10; shallow15/full5m gives1.00, both FAIL≥1.15 on reused1/2.
+No duration adoption. See [Cut309](CUT309_RECOVERY_CAP.md).
+
 Delivery history: PARTIAL DELIVERY via [Cut279](CUT279_VAT_MILESTONE.md), 2026-10-19. Vat UI/hurry retained; 15-second curve was held after failed progression gates. Established `[600, 14, 28, 1]` curve restored for the owner-requested deploy-and-pause milestone. Original proposal/results below are historical. Owner decisions 2026-10-18: depth scaler `[150, 14, 28, 1]`; full-skip hurry priced by depth
 (`remaining_min × unit(best) × 0.25`). Q3 (callout once) takes the default. Cut260 is integrated.
 

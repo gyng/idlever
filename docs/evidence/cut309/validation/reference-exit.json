@@ -1,0 +1,19 @@
+{
+  "status": 0,
+  "seconds": 81.2852206369862,
+  "command": [
+    "target/cut309/runtime",
+    "--seeds",
+    "1,2",
+    "--bots",
+    "PICKED,TUNED",
+    "--days",
+    "14",
+    "--until-depth",
+    "33",
+    "--threads",
+    "8",
+    "--out",
+    "docs/evidence/cut309/reference.json"
+  ]
+}

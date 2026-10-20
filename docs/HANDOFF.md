@@ -1,4 +1,4 @@
-# Active backlog — Cut308 ordinary upgrade pilot audited, 2026-10-21
+# Active backlog — Cut309 recovery cap and alternatives verified, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -25,6 +25,48 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut309 — compile-free recovery cap implemented; defaults unchanged
+
+Contract [CUT309_RECOVERY_CAP.md](CUT309_RECOVERY_CAP.md), evidence
+[cut309/README.md](evidence/cut309/README.md). Main balance now accepts optional
+recovery_full_ticks,1..12000 and≥shallow. Missing field remains12000; default
+curve still600/14/28/1. Future death/reclone reads the cap; stored deadlines/
+durations and old fallback remain intact. No shorter duration adopted. Source
+and native runtimes frozen before campaign outcomes. No deployment.
+
+One executable, three complete fixed profiles, reused1/2 PICKED/TUNED D33prefix:
+reference600/12000ticks matches ALL original Cut298 records except elapsed time,
+new default metadata separate. Original shallow15proposal150/12000 yields
+PICKED40/48h,TUNED40/40h, pen1.10 FAIL≥1.15. Alternative150/3000 yields
+PICKED40/40h,TUNED40/40h, pen1.00 FAIL. All earlier arrivals unchanged; deep5m
+advances PICKED2D33/kit48→40h, erasing relative advantage. No observed King;
+all twelve original trajectories retained. All jobs terminal; no rerun/extension.
+No worker-away/fortnight/combined upgrades/population or full-gate claim.
+
+Workspace fast/dev-balance1104pass/6ignored; strict workspace/all-target Clippy,
+three actual profile-process timer checks and independent rational/source/
+profile/parity/arrival/summary audit pass. Actual timer tests cover future deep
+recovery/reclone, whole/sliced/reloaded equality, historical active timers and
+legacy fallback. Pure curve/parser tests include full depth0..40 and invalid
+caps. Native campaign wall81.29/94.07/91.81s under other-build contention, not an
+isolated speed claim. Future cap sweeps can change profiles without recompiling.
+
+WASM rebuilt7152841bytes SHA53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867.
+Default gold pin nowcut309/settlements-inputs-53b9.json; native Gold/ledger/
+ExitLine/expected/complete after-saves unchanged4/4, no regen. Real-WASM fresh
+port5391 browser564checks/24cases passes, all served WASM bodies exact. First
+sandbox Vite/EPERM attempt retained; successful local-access retry changes no
+assertions/package/fixtures. No automatic approval rejection. Format/pin checks
+pass; old evidence/log bytes preserved. No full client/full balance claim.
+
+Next concrete work: an actual earlier pen-policy mechanism, supported by earned
+traces, alongside worker/recovery coordination. Both faster-recovery alternatives
+failed; don't restore them or repeat a price/cap grid as a claimed pen fix.
+Shared-resident upgrade API/UI and suitable fresh independent confirmation stay
+open. Runtime target/cut309/runtime; source240files in cut309/source.tar.zst.
+Dev Vite5391 was started for browser proof; no deploy. Last recorded remote dev
+source423fe45a remains historical, not reverified here. Broad goal stays ACTIVE.
 
 ## Cut308 — ordinary paid-upgrade pilot complete; pen still fails
 

@@ -1,0 +1,30 @@
+{
+  "native_tests": {
+    "exit": 0,
+    "passed": 1104,
+    "ignored": 6,
+    "test_seconds": 140.4,
+    "features": "idlever-core/dev-balance"
+  },
+  "clippy_workspace_all_targets": {
+    "exit": 0,
+    "features": "idlever-core/dev-balance",
+    "warnings": "denied"
+  },
+  "timer_profiles_and_independent_curves": "PASS3/3",
+  "runtime_hashes_unchanged": "PASS",
+  "wasm_build_exit": 0,
+  "native_settlements": "Gold/ledger/ExitLine/expected/whole after-saves unchanged4/4",
+  "browser_settlements": {
+    "exit": 0,
+    "checks": 564,
+    "cases": 24,
+    "fresh_port": 5391,
+    "initial_sandbox_exit": 1,
+    "initial_sandbox_error": "Vite startup EPERM, retained log"
+  },
+  "format_exit": 0,
+  "pin_check_exit": 0,
+  "independent_summary_recheck_exit": 0,
+  "deployment": "none"
+}

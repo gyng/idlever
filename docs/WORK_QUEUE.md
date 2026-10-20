@@ -116,6 +116,16 @@ archive/summary audit pass. No shipping code/API/UI/WASM/deployment change.
 Next address a mechanism before the first40h upgrade choice, coordinating early
 recovery and worker effects; retain pen≥1.15 and worker bars. Shared-resident
 API/UI and fresh independent confirmation remain open. See Cut308/HANDOFF.
+Cut309 now makes the recovery cap compile-free (optional `recovery_full_ticks`,
+validated1..12000, default12000 unchanged). Three fixed reused-seed profiles:
+default original records exact; shallow15pen1.10 FAIL, shallow15/deep5m pen1.00
+FAIL≥1.15. No duration adoption. All early arrivals unchanged; deep5m advances
+PICKED2D33/kit48→40h without advancingTUNED. Workspace1104pass/6ignored, strict
+Clippy, three actual timer/profile probes, independent source/rational audit,
+native settlement4/4 and real-WASM564checks/24cases pass. WASM now7152841bytes/
+53b98bb4; default settlement pin updated without regenerated after-saves. No
+deployment. Next earlier effective pen-policy diagnosis; recovery/worker and
+shared upgrade API/UI remain open. Both failed curves retained. See Cut309.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
@@ -176,8 +186,9 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    existing delivered Vat/workplace behavior while developing a replacement;
    Cut306/307 isolated benefit/earliest-paid/funding prototypes pass their bounded
    screens. A candidate saving policy and prices are now fundable in two actual
-   saved worlds; ordinary fortnight pricing/progression and shared API/UI remain
-   open. No population/default adoption.
+   saved worlds; Cut308 also passes ordinary two-seed fortnight spending11.0738%
+   but fails inherited pen1.15. Shared API/UI and population acceptance remain
+   open. No duration/effect/default adoption.
    The eight failed price screens and Bank's131/3400 actual30-night payback are
    historical diagnostics to address, not acceptance. Revalidate actual utility,
    earned affordability and the original days3–14 spending requirement using

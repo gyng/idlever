@@ -20,9 +20,12 @@ pub struct Balance {
     pub guarded_home: [i32; 2],
     pub guarded_dry: [i32; 2],
     /// Cut230 (owner 2026-10-14): death recovery by the run's deepest floor — [shallow ticks, last shallow
-    /// floor, first full floor, ramp exponent]; `persistent::recovery_ticks`. The full value is `RECOVERY_TICKS`.
+    /// floor, first full floor, ramp exponent]; `persistent::recovery_ticks`.
     #[serde(default = "default_recovery")]
     pub recovery: [u32; 4],
+    /// Cut309: full recovery cap, ticks (10/s). Old profiles retain the shipping12000.
+    #[serde(default = "default_recovery_full_ticks")]
+    pub recovery_full_ticks: u32,
     /// Cut233 (owner 2026-10-15: the remaining content tunables, a pure refactor — every default is the constant it
     /// replaced). Each section may be left out of a profile (its shipping values); a section given must be whole.
     #[serde(default = "default_workers")]
@@ -48,6 +51,7 @@ pub struct Balance {
     pub vat: Vat,
 }
 fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
+fn default_recovery_full_ticks() -> u32 { DEFAULT.recovery_full_ticks }
 fn default_workers() -> Workers { DEFAULT.workers }
 fn default_tree() -> TreeTune { DEFAULT.tree }
 fn default_rest() -> Rest { DEFAULT.rest }
@@ -283,6 +287,7 @@ pub const DEFAULT: Balance = Balance {
     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
     guarded_home: [30,25], guarded_dry: [45,44],
     recovery: [600, 14, 28, 1],
+    recovery_full_ticks: 12000,
     workers: Workers {
         quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
@@ -332,7 +337,8 @@ pub fn parse(text: &str) -> Result<Balance, String> {
         || b.steady_heal.iter().chain(&b.hunter_heal).chain(&b.guarded_heal).chain(&b.steady_dry)
             .chain(&b.steady_rest).chain(&b.guarded_home).chain(&b.guarded_dry)
             .chain([b.bold_heal,b.steady_home].iter()).any(|n| !(1..=100).contains(n))
-        || b.recovery[0] == 0 || u64::from(b.recovery[0]) > crate::persistent::RECOVERY_TICKS
+        || !(1..=12000).contains(&b.recovery_full_ticks)
+        || b.recovery[0] == 0 || b.recovery[0] > b.recovery_full_ticks
         || b.recovery[1] >= b.recovery[2] || b.recovery[2] > 40 || !(1..=4).contains(&b.recovery[3]) {
         return Err("invalid balance bounds or progression ordering".into());
     }
@@ -411,6 +417,23 @@ pub fn configure_from_env() -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn recovery_cap_profiles_are_bounded_and_backward_compatible() {
+        let mut value = serde_json::to_value(DEFAULT).unwrap();
+        value.as_object_mut().unwrap().remove("recovery_full_ticks");
+        assert_eq!(parse(&value.to_string()).unwrap(), DEFAULT);
+        value["recovery"] = serde_json::json!([150, 14, 28, 1]);
+        value["recovery_full_ticks"] = serde_json::json!(3000);
+        assert_eq!(parse(&value.to_string()).unwrap().recovery_full_ticks, 3000);
+        for cap in [0, 149, 12001, u32::MAX] {
+            value["recovery_full_ticks"] = serde_json::json!(cap);
+            assert!(parse(&value.to_string()).is_err(), "cap {cap}");
+        }
+        value["recovery_full_ticks"] = serde_json::json!(150);
+        assert!(parse(&value.to_string()).is_ok(), "flat curve is legal");
+        value["recovery_full_ticks"] = serde_json::json!("3000");
+        assert!(parse(&value.to_string()).is_err());
+    }
     #[test]
     fn shipping_template_and_bounds() {
         let text = include_str!("../../../tuning/balance.json");

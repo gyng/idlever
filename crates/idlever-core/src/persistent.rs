@@ -5,22 +5,26 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 
-/// The full death recovery (20 game minutes; owner amendment 2026-10-14), from `balance.recovery[2]` down.
+/// Historical/shipping full recovery (20 game minutes); fallback for old stored durations.
 pub const RECOVERY_TICKS: u64 = 12000;
 /// Cut230 (owner 2026-10-14, docs/CUT230_EARLY_PACING.md): a death's recovery scales with the run's deepest floor
 /// (`Run::max_depth`, the floor he fell on or below it): `balance.recovery[0]` ticks to the last shallow floor,
-/// `RECOVERY_TICKS` from the first full floor, a ramp (`(d−lo)/(hi−lo)` to the exponent) between.
+/// `balance.recovery_full_ticks` from the first full floor, a ramp between.
 pub fn recovery_ticks(depth: u32) -> u64 {
-    let [shallow, lo, hi, exp] = crate::balance::get().recovery;
+    let b = crate::balance::get();
+    recovery_curve(depth, b.recovery, u64::from(b.recovery_full_ticks))
+}
+fn recovery_curve(depth: u32, curve: [u32; 4], full: u64) -> u64 {
+    let [shallow, lo, hi, exp] = curve;
     let shallow = u64::from(shallow);
     if depth <= lo {
         return shallow;
     }
     if depth >= hi {
-        return RECOVERY_TICKS;
+        return full;
     }
     let (num, den) = (u64::from(depth - lo).pow(exp), u64::from(hi - lo).pow(exp));
-    shallow + (RECOVERY_TICKS - shallow) * num / den
+    shallow + (full - shallow) * num / den
 }
 pub const REBIRTH_DELVES: u32 = 8;
 pub const REBIRTH_SECONDS: u64 = 3600;
@@ -249,7 +253,7 @@ pub fn hurry(l: &mut LineageState, away: bool, max_price: i32) -> Result<i32, St
 }
 /// The full recovery (a confirmed reclone).
 pub fn recover(l: &mut LineageState) {
-    recover_for(l, RECOVERY_TICKS);
+    recover_for(l, u64::from(crate::balance::get().recovery_full_ticks));
 }
 /// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
 pub fn recover_at(l: &mut LineageState, depth: u32) {
@@ -480,6 +484,22 @@ pub fn rebirth(g: &mut Game, token: &str) -> Result<(), String> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn recovery_cap_alternatives_preserve_depth_order_and_exact_endpoints() {
+        for (curve, full) in [([600, 14, 28, 1], 12000), ([150, 14, 28, 1], 12000), ([150, 14, 28, 1], 3000)] {
+            let values: Vec<_> = (0..=40).map(|d| recovery_curve(d, curve, full)).collect();
+            assert!(values.windows(2).all(|w| w[0] <= w[1]));
+            assert!(values[..=14].iter().all(|v| *v == u64::from(curve[0])));
+            assert!(values[28..].iter().all(|v| *v == full));
+            assert!(values.iter().all(|v| (u64::from(curve[0])..=full).contains(v)));
+        }
+        assert_eq!(recovery_curve(21, [150, 14, 28, 1], 3000), 1575);
+        for d in 0..=40 {
+            let historical = 600 + (12000 - 600) * u64::from(d.clamp(14, 28) - 14) / 14;
+            assert_eq!(recovery_curve(d, [600, 14, 28, 1], 12000), historical);
+        }
+    }
 
     fn home() -> Game {
         let mut g = Game::new_literal(71);

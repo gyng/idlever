@@ -130,3 +130,14 @@ replies/saves on three representative camps. Quiet round: packages6.6/7.4/7.5×,
 late wall4.2×, forecasts5.1–11.1×. Evidence includes binary, shipping module,
 bridge, harness and input hashes. These are engine-call timings, not an app FPS
 or cold Rust compilation claim. Routine fresh gate timing is recorded separately.
+
+## Recovery-cap experiments (Cut309)
+
+Complete balance profiles may set `recovery_full_ticks` (1..12000 ticks,
+10ticks/second), with `recovery[0]` no larger than that cap. Profiles omitting
+the field retain12000. This changes future deaths and explicit reclones;
+stored active timers and old saves' historical-duration fallback stay intact.
+The shipping template remains `[600,14,28,1]` with full12000. Shorter curves
+are diagnostic candidates, not adopted defaults. A native dev-balance process
+loads its profile once before game construction; change profiles by restarting
+the process, with no Rust rebuild.

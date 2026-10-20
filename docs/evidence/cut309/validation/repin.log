@@ -1,0 +1,12 @@
+repin: native gold_settlement_repin (cargo --profile fast) …
+repin:
+  wasm 7152841 bytes sha256 53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867
+  default manifest docs/evidence/cut296/settlements-inputs-d5dd.json pins d5dd4c1819e3… → CHANGED
+  new manifest docs/evidence/cut309/settlements-inputs-53b9.json (repinnedFrom docs/evidence/cut296/settlements-inputs-d5dd.json; note_cut309); default switched (edit its "Current package:" comment by hand)
+  settle: Gold, ledger, ExitLine unchanged on 4/4 entries (173.5s)
+    bank-positive: expected unchanged; after-save unchanged
+    death-secured-lost: expected unchanged; after-save unchanged
+    death-fetched-lost: expected unchanged; after-save unchanged
+    multihero-absence: expected unchanged; after-save unchanged
+    (report only; --regen writes the differing after-saves)
+next: cd web && node tests/run.mjs gold-settlements   # browser proof against docs/evidence/cut309/settlements-inputs-53b9.json
