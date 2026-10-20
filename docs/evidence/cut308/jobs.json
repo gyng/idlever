@@ -1,0 +1,50 @@
+{
+  "scope": "ordinary targeted discovery only; not independent/gate acceptance",
+  "seeds": [
+    "1",
+    "2"
+  ],
+  "threads_per_job": 8,
+  "jobs": [
+    {
+      "name": "parity",
+      "runtime": "target/cut308/runtime-candidate",
+      "bots": "PICKED,TUNED",
+      "days": 14,
+      "until_depth": 33,
+      "plan": "off"
+    },
+    {
+      "name": "baseline-picked",
+      "runtime": "target/cut304/runtime-shipping",
+      "bots": "PICKED",
+      "days": 14,
+      "plan": "off"
+    },
+    {
+      "name": "baseline-tuned",
+      "runtime": "target/cut304/runtime-shipping",
+      "bots": "TUNED",
+      "days": 14,
+      "until_depth": 33,
+      "plan": "off"
+    },
+    {
+      "name": "candidate-picked",
+      "runtime": "target/cut308/runtime-candidate",
+      "bots": "PICKED",
+      "days": 14,
+      "plan": "town-first"
+    },
+    {
+      "name": "candidate-tuned",
+      "runtime": "target/cut308/runtime-candidate",
+      "bots": "TUNED",
+      "days": 14,
+      "until_depth": 33,
+      "plan": "town-first"
+    }
+  ],
+  "balance_overrides": false,
+  "other_DP_flags": "cleared"
+}

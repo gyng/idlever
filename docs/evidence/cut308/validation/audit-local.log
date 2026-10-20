@@ -1,0 +1,223 @@
+{
+  "scope": "reused-seed diagnostic; no independent or population acceptance",
+  "status": "FAIL",
+  "no_plan_original_prefix_parity": "PASS",
+  "final_reference_full_shipping_parity": "PASS",
+  "whole_action_audit": {
+    "status": "PASS",
+    "events": 16,
+    "purchases": 10
+  },
+  "spend_median_exact": "525845120/4748535879",
+  "spend_median_pct": 11.073836934148602,
+  "spend_requirement": "PASS",
+  "pen_ratios_exact": [
+    "1",
+    "6/5"
+  ],
+  "pen_median_exact": "11/10",
+  "pen_requirement": "FAIL",
+  "absolute_arrival_requirement": "PASS",
+  "king_requirement_observed_scope": "PASS",
+  "picked": [
+    {
+      "seed": "1",
+      "income_days3_14": 637165,
+      "spend_days3_14": 86400,
+      "share_exact": "17280/127433",
+      "share_pct": 13.560066858662983,
+      "completed_plan_hours": 96.0,
+      "wealth_delta": 213,
+      "available_legacy_delta": 199,
+      "baseline_legacy": 1543,
+      "candidate_legacy": 1742,
+      "kit_hours_baseline_candidate": [
+        56.0,
+        56.0
+      ],
+      "final_kit_baseline_candidate": [
+        {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        }
+      ],
+      "actual_sends_delta": 137
+    },
+    {
+      "seed": "2",
+      "income_days3_14": 1006101,
+      "spend_days3_14": 86400,
+      "share_exact": "3200/37263",
+      "share_pct": 8.58760700963422,
+      "completed_plan_hours": 80.0,
+      "wealth_delta": -5609,
+      "available_legacy_delta": 337,
+      "baseline_legacy": 1115,
+      "candidate_legacy": 1452,
+      "kit_hours_baseline_candidate": [
+        48.0,
+        48.0
+      ],
+      "final_kit_baseline_candidate": [
+        {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        },
+        {
+          "armour": 7,
+          "pack": 4,
+          "weapon": 6
+        }
+      ],
+      "actual_sends_delta": 177
+    }
+  ],
+  "arrivals": [
+    {
+      "bot": "PICKED",
+      "depth": 13,
+      "baseline_hours": [
+        8.0,
+        8.0
+      ],
+      "candidate_hours": [
+        8.0,
+        8.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "PICKED",
+      "depth": 18,
+      "baseline_hours": [
+        16.0,
+        16.0
+      ],
+      "candidate_hours": [
+        16.0,
+        16.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "PICKED",
+      "depth": 23,
+      "baseline_hours": [
+        16.0,
+        24.0
+      ],
+      "candidate_hours": [
+        16.0,
+        24.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "PICKED",
+      "depth": 33,
+      "baseline_hours": [
+        40.0,
+        48.0
+      ],
+      "candidate_hours": [
+        40.0,
+        48.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "TUNED",
+      "depth": 13,
+      "baseline_hours": [
+        8.0,
+        8.0
+      ],
+      "candidate_hours": [
+        8.0,
+        8.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "TUNED",
+      "depth": 18,
+      "baseline_hours": [
+        16.0,
+        16.0
+      ],
+      "candidate_hours": [
+        16.0,
+        16.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "TUNED",
+      "depth": 23,
+      "baseline_hours": [
+        16.0,
+        24.0
+      ],
+      "candidate_hours": [
+        16.0,
+        24.0
+      ],
+      "median_pass": true
+    },
+    {
+      "bot": "TUNED",
+      "depth": 33,
+      "baseline_hours": [
+        40.0,
+        40.0
+      ],
+      "candidate_hours": [
+        40.0,
+        40.0
+      ],
+      "median_pass": true
+    }
+  ],
+  "kings": [
+    {
+      "bot": "PICKED",
+      "seed": "1",
+      "baseline_day": null,
+      "candidate_day": null,
+      "pass": true,
+      "horizon_hours": 336.0
+    },
+    {
+      "bot": "PICKED",
+      "seed": "2",
+      "baseline_day": null,
+      "candidate_day": null,
+      "pass": true,
+      "horizon_hours": 336.0
+    },
+    {
+      "bot": "TUNED",
+      "seed": "1",
+      "baseline_day": null,
+      "candidate_day": null,
+      "pass": true,
+      "horizon_hours": 40.0
+    },
+    {
+      "bot": "TUNED",
+      "seed": "2",
+      "baseline_day": null,
+      "candidate_day": null,
+      "pass": true,
+      "horizon_hours": 40.0
+    }
+  ],
+  "tuned_plan_completion": "right-censored at D33; not a fortnight completion test"
+}

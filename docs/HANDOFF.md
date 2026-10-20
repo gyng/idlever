@@ -1,4 +1,4 @@
-# Active backlog — Cut307 profiles and funded upgrade plan verified, 2026-10-21
+# Active backlog — Cut308 ordinary upgrade pilot audited, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -9,7 +9,7 @@ hold instructions below. Preserve old branches/evidence; this does not approve
 their failed implementations or change numeric acceptance requirements.
 Cut305 controlled worker study, Cut306 isolated utility prototype and Cut307
 compile-free/earliest/funding studies are complete at their bounded scopes;
-next pursue an ordinary targeted fortnight of the candidate purchase policy,
+Cut308 now completes that ordinary candidate-policy pilot; next pursue
 shared-resident API/UI integration and recovery alternatives with
 the worker/pen progression requirements. See WORK_QUEUE items3–4. Current game
 defaults remain unchanged until validated adoption; no automatic deployment.
@@ -25,6 +25,46 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut308 — ordinary paid-upgrade pilot complete; pen still fails
+
+Contract [CUT308_ORDINARY_UPGRADE_PILOT.md](CUT308_ORDINARY_UPGRADE_PILOT.md),
+evidence [cut308/README.md](evidence/cut308/README.md). Isolated Cut307 library
+unchanged; diagnostic examples add an explicit town-first policy after ordinary
+camp choices. Main game/API/UI/Session/defaults/WASM unchanged; no deployment.
+All original five jobs terminal: no-plan PICKED/TUNED1/2 D33 prefix, shipping
+PICKED1/2 full14days/TUNED1/2 prefix, candidate same requests. Four disabled-
+policy records match all Cut298 original fields except elapsed time. Separate
+predeclared disabled-policy full PICKED reference exports final Gold/Legacy;
+ALL original records match completed shipping baseline except elapsed time.
+This additional reference validation is not a candidate rerun or new sample.
+
+Both ordinary PICKED plans pay93200 from owned Gold/Savings and restore `both`
+by96/80h; no grants/removed camp choices. Canonical days3–14 spend86400 each,
+gross637165/1006101, individual13.5601%/8.5876%, median11.0738% PASS≥10%.
+All D13/D18/D23/D33 arrivals unchanged in both roles; PICKED D3340/48h,
+TUNED40/40h, pen median1.10 FAIL≥1.15. TUNED ends at first40h plan action;
+only Bank3 bought, later spending/completion/King right-censored. PICKED covers
+336h, no King. Kit arrivals56/48h and final rungs unchanged. Candidate extra
+sends137/177; wealth+213/−5609; available Legacy+199/+337 (1742/1452final).
+Do not infer economic dominance or earlier progression from extra runs.
+
+Three focused native policy tests/strict probe Clippy pass; original partial-
+move build failure retained before repair. Independent whole16actions/10paid
+purchases, legal withdrawals/reserves/prices, exact Game mutations, final/daily
+ledgers, parity and rational summary audit passes. Six job directories preserve
+58rawfiles/190492597bytes,6955659-byte capture plus full source archive and
+pre-outcome identities. No sample extension, changed bar, worker-away/full
+catalogue/TUNED fortnight/population/full-gate acceptance. Overall discovery
+FAIL; no independent confirmation or adoption justified by this candidate.
+
+Next: address a mechanism BEFORE the first40h town-upgrade choice to repair
+pen progression, coordinating early recovery and worker effects. The utility/
+spending mechanism now has bounded ordinary evidence; avoid another price-only
+sweep as a purported pen fix. Shared-resident API/UI and fresh independent
+confirmation remain open. Both redesign/recovery items and broad backlog ACTIVE.
+All owned native jobs terminal; retained runtimes target/cut308/runtime-candidate
+and target/cut304/runtime-shipping. Temp source path in target/cut308/source-path.txt.
 
 ## Cut307 — immutable profiles and a paid town-first plan, no adoption
 

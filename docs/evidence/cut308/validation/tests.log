@@ -1,0 +1,14 @@
+   Compiling idlever-core v0.1.0 (/tmp/idlever-cut307-core-vmp2_iz9/crates/idlever-core)
+error[E0382]: borrow of partially moved value: `p`
+   --> crates/idlever-core/examples/dayplayer_stat/mod.rs:229:28
+    |
+220 |         upgrade_plan:p.upgrade_plan,
+    |                      -------------- value partially moved here
+...
+229 |         campaign_complete: p.done(),
+    |                            ^ value borrowed here after partial move
+    |
+    = note: partial move occurs because `p.upgrade_plan` has type `upgrade_plan::Plan`, which does not implement the `Copy` trait
+
+For more information about this error, try `rustc --explain E0382`.
+error: could not compile `idlever-core` (example "stat_probe" test) due to 1 previous error

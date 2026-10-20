@@ -1,0 +1,19 @@
+{
+  "status": 0,
+  "seconds": 65.81997063901508,
+  "command": [
+    "target/cut308/runtime-candidate",
+    "--seeds",
+    "1,2",
+    "--bots",
+    "PICKED,TUNED",
+    "--days",
+    "14",
+    "--threads",
+    "8",
+    "--out",
+    "target/cut308/parity/observations.json",
+    "--until-depth",
+    "33"
+  ]
+}

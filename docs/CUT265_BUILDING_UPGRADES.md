@@ -14,6 +14,12 @@ town-first plan funded through actual owned Gold/Savings bydays4–5. The ordina
 fortnight spending/progression rows and shared API/UI adoption remain open;
 see [Cut307](CUT307_COMPILE_FREE_UPGRADES.md).
 
+Cut308 ordinary reused-seed pilot now pays all four upgrades by96/80h and
+passes canonical days3–14 median spend11.0738%≥10%. Absolute arrivals/kit stay
+unchanged; pen median1.10 FAIL≥1.15, so no adoption/independent confirmation.
+See [Cut308](CUT308_ORDINARY_UPGRADE_PILOT.md); next coordinate recovery/worker
+and earlier pen mechanisms. Shared-resident API/UI remain open.
+
 History: held for redesign2026-10-18. Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".
 

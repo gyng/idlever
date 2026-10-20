@@ -1,0 +1,14 @@
+{
+  "frozen_utc": "2026-10-20T21:19:35.806622+00:00",
+  "purpose": "Original shipping SeedOut omits final available Legacy and exact final Gold/Bank. Validation-only disabled-policy PICKED1/2 full fortnight exports finals; require ALL original SeedOut fields match already completed shipping baseline except elapsed time. No candidate rerun, no new seeds or outcomes used to select policy.",
+  "runtime_sha256": "dabed16bb8e13e3e8b0f6ec4228ccfd93110b09d5ab1bcd8539d542128fb6077",
+  "profile_sha256": "73001a0934e312d1e01625b42c1f67f58126675c61bb67200cb1042e44d0f1cc",
+  "request": {
+    "seeds": "1,2",
+    "bots": "PICKED",
+    "days": 14,
+    "threads": 8,
+    "plan": "off"
+  },
+  "comparison": "target/cut308/baseline-picked/observations.json"
+}

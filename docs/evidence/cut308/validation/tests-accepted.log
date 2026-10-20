@@ -1,0 +1,11 @@
+   Compiling idlever-core v0.1.0 (/tmp/idlever-cut307-core-vmp2_iz9/crates/idlever-core)
+    Finished `fast` profile [optimized] target(s) in 47.48s
+     Running unittests examples/stat_probe.rs (target/cut291-native/fast/examples/stat_probe-ffb189731a3e92e7)
+
+running 3 tests
+test dayplayer::upgrade_plan::tests::plan_waits_for_earned_bank_without_issuing_orders ... ok
+test dayplayer::upgrade_plan::tests::disabled_plan_never_changes_game ... ok
+test dayplayer::upgrade_plan::tests::paid_plan_uses_owned_savings_and_restores_order ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 23 filtered out; finished in 0.00s
+

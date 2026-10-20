@@ -105,6 +105,17 @@ no King. No ordinary fortnight/population/UI/Session/default adoption. Next:
 targeted ordinary PICKED/TUNED new-town fortnight discovery1/2 with actual
 canonical days3–14spend/gross and progression, then independent confirmation
 and shared API/UI. Profiles permit subsequent prices/effects without recompiling.
+Cut308 ordinary new-town discovery is complete: both PICKED plans pay93200,
+restore orders by96/80h, median canonical days3–14spend11.0738% PASS≥10%.
+All paired arrival times unchanged; D33pen1.10 FAIL≥1.15. No adoption or new
+independent confirmation. Candidate wealth+213/−5609, available Legacy+199/+337,
+extra sends137/177, identical kit arrivals/rungs; no observed King. TUNED is
+censored at40h/D33, not a fortnight claim. No-plan original prefix/full-reference
+parity, three tests, strict scoped Clippy and independent whole-payment/ledger/
+archive/summary audit pass. No shipping code/API/UI/WASM/deployment change.
+Next address a mechanism before the first40h upgrade choice, coordinating early
+recovery and worker effects; retain pen≥1.15 and worker bars. Shared-resident
+API/UI and fresh independent confirmation remain open. See Cut308/HANDOFF.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
