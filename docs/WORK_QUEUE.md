@@ -79,6 +79,20 @@ receipt verification passes.10.25s native execution; no new default adopted.
 Next: newly authorized Bank/vault/Vat benefit/payback/affordability redesign,
 coordinated with recovery and inherited worker/pen requirements. Full details in
 Cut305/HANDOFF; all original outcomes preserved and no sample extension.
+Cut306 now implements/measures an ISOLATED native Bank/Vat redesign prototype:
+additive Bank yield plus capacity, passive future Vat recovery plus hurry
+discount. Four fixed current earned camps,16continuations/5170runs, four shipping
+controls and exact repeats. All eight narrow utility cases pass: paid3400Bank
+extra-interest payback9–11payments; every future Vat death20%shorter with exact
+rounded timers. Native code/tests/production Clippy and independent full legal
+preparation/ledger/archive/timer checks pass. Bank wealth can fall when existing
+workers buy extra Legacy; all wallet/Legacy/ration tradeoffs retained. All bests
+remainD33. No default/UI/Session integration or broader balance adoption.
+Next: compile-free prototype parameters, late pricing/explicit saving priorities,
+both levels together and earliest purchases; then shared API/UI and independent
+progression evidence. Old33800total is mathematically insufficient for10%of the
+historical598545late income. See Cut306/HANDOFF, including preserved capture/
+fixture/check-scope corrections. Both redesign/recovery items remain active.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
@@ -137,7 +151,9 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
 3. **Bank/vault and Vat redesign — returned to active work by owner.** Research
    and refine the underlying benefits, progression and prices as needed. Preserve
    existing delivered Vat/workplace behavior while developing a replacement;
-   the eight failed price screens and Bank's131/3400 actual30-night payback are
+   Cut306's isolated benefit prototype passes its bounded paid-utility screen;
+   pricing, saving choices, earliest purchases and shared API/UI remain open.
+   The eight failed price screens and Bank's131/3400 actual30-night payback are
    historical diagnostics to address, not acceptance. Revalidate actual utility,
    earned affordability and the original days3–14 spending requirement using
    suitable statistical evidence before adoption. The preserved

@@ -1,0 +1,52 @@
+    Checking idlever-core v0.1.0 (/tmp/idlever-cut306-core-5e_jrxrm/crates/idlever-core)
+error: unused import: `cut306_upgrades::*`
+ --> crates/idlever-core/examples/upgrade_mechanics.rs:2:20
+  |
+2 | use idlever_core::{cut306_upgrades::*, Game};
+  |                    ^^^^^^^^^^^^^^^^^^
+  |
+  = note: `-D unused-imports` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: function `fixture` is never used
+ --> crates/idlever-core/examples/upgrade_mechanics.rs:3:4
+  |
+3 | fn fixture() -> Game {
+  |    ^^^^^^^
+  |
+  = note: `-D dead-code` implied by `-D warnings`
+  = help: to override `-D warnings` add `#[expect(dead_code)]` or `#[allow(dead_code)]`
+
+error: could not compile `idlever-core` (example "upgrade_mechanics") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: couldn't read `crates/idlever-core/src/../../../tuning/balance.json`: No such file or directory (os error 2)
+   --> crates/idlever-core/src/balance.rs:416:20
+    |
+416 |         let text = include_str!("../../../tuning/balance.json");
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut247/earned-fighter-sword.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut247.rs:4:22
+  |
+4 | const EARNED: &str = include_str!("../../../docs/evidence/cut247/earned-fighter-sword.sent.session.json");
+  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut247/earned-three.prepared.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut247.rs:5:21
+  |
+5 | const THREE: &str = include_str!("../../../docs/evidence/cut247/earned-three.prepared.session.json");
+  |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut248/earned-paid-pace.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut248.rs:3:22
+  |
+3 | const EARNED: &str = include_str!("../../../docs/evidence/cut248/earned-paid-pace.sent.session.json");
+  |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `crates/idlever-core/src/../../../docs/evidence/cut248/earned-paid-pace.sent.session.json`: No such file or directory (os error 2)
+ --> crates/idlever-core/src/tests_cut249.rs:4:20
+  |
+4 | const PAID: &str = include_str!("../../../docs/evidence/cut248/earned-paid-pace.sent.session.json");
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `idlever-core` (lib test) due to 5 previous errors

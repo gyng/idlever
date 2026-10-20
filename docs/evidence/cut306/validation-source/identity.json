@@ -1,0 +1,7 @@
+{
+  "scope": "post-utility test-driver cleanup only; all business/runtime sources byte-identical to frozen runtime source",
+  "frozen_driver_sha256": "15477c23dd38f72f573f8890d1d11a90c9c3ad58b24b6f8738c9e5fa7958b9bd",
+  "corrected_driver_sha256": "9abcae54dec2e18db729f686f8d9661fced7592e600c63fdc993e5f6bb66033c",
+  "only_changed_source": "crates/idlever-core/examples/upgrade_mechanics.rs",
+  "change": "Place existing imports/fixture/tests inside cfg(test) module, remove leading blank. All three test bodies preserved; no runtime/acceptance change."
+}

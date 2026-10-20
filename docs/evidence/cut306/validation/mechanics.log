@@ -1,0 +1,10 @@
+    Blocking waiting for file lock on build directory
+   Compiling idlever-core v0.1.0 (/tmp/idlever-cut306-core-5e_jrxrm/crates/idlever-core)
+error[E0433]: cannot find `ExitTier` in `idlever_core`
+  --> crates/idlever-core/examples/upgrade_mechanics.rs:90:49
+   |
+90 |                 g.rest_after(100, idlever_core::ExitTier::Death) as u64,
+   |                                                 ^^^^^^^^ could not find `ExitTier` in `idlever_core`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `idlever-core` (example "upgrade_mechanics" test) due to 1 previous error

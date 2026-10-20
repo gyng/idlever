@@ -5,6 +5,11 @@ to the queue and authorized research/refinement/redesign of vault/Vat as needed.
 See current [WORK_QUEUE.md](WORK_QUEUE.md) item3; do not restore the failed
 candidate unchanged. The proposal and results below remain historical inputs.
 
+Current redesign evidence: [Cut306](CUT306_VAULT_VAT_REDESIGN.md) implements an
+isolated Bank yield/capacity and passive Vat recovery prototype. Its fixed paid
+utility checks pass; final pricing, saving priorities, earliest purchases,
+shared-resident API/UI and broader progression acceptance remain open.
+
 History: held for redesign2026-10-18. Implemented candidate preserved on `hold/cut265-building-upgrades` at `445a1f3f`; excluded from the vat-only delivery. Owner decisions 2026-10-18: Bank, Vat and Kennel (Forge not in B1/B2); PICKED and TUNED buy,
 IDLE never. Q2 (price fixed at the gate depth) takes the default. Implementation follows Cut264. Owner request: "plan for building upgrades".
 

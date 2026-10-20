@@ -1,0 +1,1278 @@
+{
+  "scope": "fixed earned-context utility screen, no population/default acceptance",
+  "contexts": 4,
+  "prototype_continuations": 16,
+  "shipping_controls": 4,
+  "prototype_completed_runs": 5170,
+  "all_no_level_parity": true,
+  "all_repeats_exact": true,
+  "bank_utility": "PASS",
+  "vat_utility": "PASS",
+  "cases": [
+    {
+      "context": "s1-d3",
+      "role": "bank-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 4200,
+      "utility_status": "PASS",
+      "payback_night": 10,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 375,
+          "baseline_ticks": 137900,
+          "treatment_ticks": 144100
+        },
+        {
+          "night": 2,
+          "extra_interest": 679,
+          "baseline_ticks": 422100,
+          "treatment_ticks": 421700
+        },
+        {
+          "night": 3,
+          "extra_interest": 1055,
+          "baseline_ticks": 696100,
+          "treatment_ticks": 707300
+        },
+        {
+          "night": 4,
+          "extra_interest": 1462,
+          "baseline_ticks": 979200,
+          "treatment_ticks": 988200
+        },
+        {
+          "night": 5,
+          "extra_interest": 1814,
+          "baseline_ticks": 1250000,
+          "treatment_ticks": 1259000
+        },
+        {
+          "night": 6,
+          "extra_interest": 2272,
+          "baseline_ticks": 1525800,
+          "treatment_ticks": 1539000
+        },
+        {
+          "night": 7,
+          "extra_interest": 2618,
+          "baseline_ticks": 1796600,
+          "treatment_ticks": 1811500
+        },
+        {
+          "night": 8,
+          "extra_interest": 2963,
+          "baseline_ticks": 2072300,
+          "treatment_ticks": 2097700
+        },
+        {
+          "night": 9,
+          "extra_interest": 3181,
+          "baseline_ticks": 2337600,
+          "treatment_ticks": 2374800
+        },
+        {
+          "night": 10,
+          "extra_interest": 3689,
+          "baseline_ticks": 2613300,
+          "treatment_ticks": 2649800
+        },
+        {
+          "night": 11,
+          "extra_interest": 4113,
+          "baseline_ticks": 2882000,
+          "treatment_ticks": 2928300
+        },
+        {
+          "night": 12,
+          "extra_interest": 4552,
+          "baseline_ticks": 3163700,
+          "treatment_ticks": 3216600
+        },
+        {
+          "night": 13,
+          "extra_interest": 4808,
+          "baseline_ticks": 3445500,
+          "treatment_ticks": 3501600
+        },
+        {
+          "night": 14,
+          "extra_interest": 5249,
+          "baseline_ticks": 3727100,
+          "treatment_ticks": 3774000
+        },
+        {
+          "night": 15,
+          "extra_interest": 5674,
+          "baseline_ticks": 4000900,
+          "treatment_ticks": 4051500
+        },
+        {
+          "night": 16,
+          "extra_interest": 5840,
+          "baseline_ticks": 4282700,
+          "treatment_ticks": 4334300
+        },
+        {
+          "night": 17,
+          "extra_interest": 6334,
+          "baseline_ticks": 4561000,
+          "treatment_ticks": 4609800
+        },
+        {
+          "night": 18,
+          "extra_interest": 6648,
+          "baseline_ticks": 4835700,
+          "treatment_ticks": 4881900
+        },
+        {
+          "night": 19,
+          "extra_interest": 7028,
+          "baseline_ticks": 5114300,
+          "treatment_ticks": 5166400
+        },
+        {
+          "night": 20,
+          "extra_interest": 7372,
+          "baseline_ticks": 5397500,
+          "treatment_ticks": 5441400
+        },
+        {
+          "night": 21,
+          "extra_interest": 7772,
+          "baseline_ticks": 5677300,
+          "treatment_ticks": 5709000
+        },
+        {
+          "night": 22,
+          "extra_interest": 8264,
+          "baseline_ticks": 5953600,
+          "treatment_ticks": 5990900
+        }
+      ],
+      "deaths": 301,
+      "scheduled_base_recovery": 3612000,
+      "scheduled_actual_recovery": 3612000,
+      "recovery_spent_ticks": 3624000,
+      "baseline_recovery_spent_ticks": 3550909,
+      "completed": 347,
+      "baseline_completed": 349,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 16600,
+      "baseline_actual_interest": 8336,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 22685,
+      "baseline_wealth": 23284,
+      "exits": {
+        "death": 301,
+        "return": 28,
+        "bank": 18
+      },
+      "baseline_exits": {
+        "death": 295,
+        "return": 34,
+        "bank": 20
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s1-d3",
+      "role": "vat-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 4200,
+      "utility_status": "PASS",
+      "payback_night": null,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 28,
+          "baseline_ticks": 137900,
+          "treatment_ticks": 124000
+        },
+        {
+          "night": 2,
+          "extra_interest": 50,
+          "baseline_ticks": 422100,
+          "treatment_ticks": 377400
+        },
+        {
+          "night": 3,
+          "extra_interest": 43,
+          "baseline_ticks": 696100,
+          "treatment_ticks": 616500
+        },
+        {
+          "night": 4,
+          "extra_interest": 41,
+          "baseline_ticks": 979200,
+          "treatment_ticks": 865000
+        },
+        {
+          "night": 5,
+          "extra_interest": -14,
+          "baseline_ticks": 1250000,
+          "treatment_ticks": 1100400
+        },
+        {
+          "night": 6,
+          "extra_interest": 17,
+          "baseline_ticks": 1525800,
+          "treatment_ticks": 1342200
+        },
+        {
+          "night": 7,
+          "extra_interest": 83,
+          "baseline_ticks": 1796600,
+          "treatment_ticks": 1586900
+        },
+        {
+          "night": 8,
+          "extra_interest": 151,
+          "baseline_ticks": 2072300,
+          "treatment_ticks": 1835100
+        },
+        {
+          "night": 9,
+          "extra_interest": 139,
+          "baseline_ticks": 2337600,
+          "treatment_ticks": 2078200
+        },
+        {
+          "night": 10,
+          "extra_interest": 150,
+          "baseline_ticks": 2613300,
+          "treatment_ticks": 2318100
+        },
+        {
+          "night": 11,
+          "extra_interest": 195,
+          "baseline_ticks": 2882000,
+          "treatment_ticks": 2558300
+        },
+        {
+          "night": 12,
+          "extra_interest": 246,
+          "baseline_ticks": 3163700,
+          "treatment_ticks": 2801300
+        },
+        {
+          "night": 13,
+          "extra_interest": 277,
+          "baseline_ticks": 3445500,
+          "treatment_ticks": 3040500
+        },
+        {
+          "night": 14,
+          "extra_interest": 252,
+          "baseline_ticks": 3727100,
+          "treatment_ticks": 3288200
+        },
+        {
+          "night": 15,
+          "extra_interest": 351,
+          "baseline_ticks": 4000900,
+          "treatment_ticks": 3532800
+        },
+        {
+          "night": 16,
+          "extra_interest": 251,
+          "baseline_ticks": 4282700,
+          "treatment_ticks": 3779700
+        },
+        {
+          "night": 17,
+          "extra_interest": 341,
+          "baseline_ticks": 4561000,
+          "treatment_ticks": 4032100
+        },
+        {
+          "night": 18,
+          "extra_interest": 304,
+          "baseline_ticks": 4835700,
+          "treatment_ticks": 4288200
+        },
+        {
+          "night": 19,
+          "extra_interest": 284,
+          "baseline_ticks": 5114300,
+          "treatment_ticks": 4542500
+        },
+        {
+          "night": 20,
+          "extra_interest": 440,
+          "baseline_ticks": 5397500,
+          "treatment_ticks": 4778300
+        },
+        {
+          "night": 21,
+          "extra_interest": 377,
+          "baseline_ticks": 5677300,
+          "treatment_ticks": 5027900
+        },
+        {
+          "night": 22,
+          "extra_interest": 286,
+          "baseline_ticks": 5953600,
+          "treatment_ticks": 5271300
+        }
+      ],
+      "deaths": 338,
+      "scheduled_base_recovery": 4056000,
+      "scheduled_actual_recovery": 3244800,
+      "recovery_spent_ticks": 3247962,
+      "baseline_recovery_spent_ticks": 3550909,
+      "completed": 394,
+      "baseline_completed": 349,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 9878,
+      "baseline_actual_interest": 8336,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 23102,
+      "baseline_wealth": 23284,
+      "exits": {
+        "death": 338,
+        "return": 33,
+        "bank": 23
+      },
+      "baseline_exits": {
+        "death": 295,
+        "return": 34,
+        "bank": 20
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s1-d7",
+      "role": "bank-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 3400,
+      "utility_status": "PASS",
+      "payback_night": 9,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 151,
+          "baseline_ticks": 24800,
+          "treatment_ticks": 24800
+        },
+        {
+          "night": 2,
+          "extra_interest": 306,
+          "baseline_ticks": 301900,
+          "treatment_ticks": 301900
+        },
+        {
+          "night": 3,
+          "extra_interest": 1063,
+          "baseline_ticks": 578200,
+          "treatment_ticks": 578200
+        },
+        {
+          "night": 4,
+          "extra_interest": 1289,
+          "baseline_ticks": 860300,
+          "treatment_ticks": 860300
+        },
+        {
+          "night": 5,
+          "extra_interest": 1473,
+          "baseline_ticks": 1127900,
+          "treatment_ticks": 1127900
+        },
+        {
+          "night": 6,
+          "extra_interest": 1751,
+          "baseline_ticks": 1406000,
+          "treatment_ticks": 1406000
+        },
+        {
+          "night": 7,
+          "extra_interest": 2004,
+          "baseline_ticks": 1687600,
+          "treatment_ticks": 1687600
+        },
+        {
+          "night": 8,
+          "extra_interest": 2997,
+          "baseline_ticks": 1960200,
+          "treatment_ticks": 1960200
+        },
+        {
+          "night": 9,
+          "extra_interest": 3405,
+          "baseline_ticks": 2239000,
+          "treatment_ticks": 2239000
+        },
+        {
+          "night": 10,
+          "extra_interest": 3752,
+          "baseline_ticks": 2517800,
+          "treatment_ticks": 2517800
+        },
+        {
+          "night": 11,
+          "extra_interest": 4185,
+          "baseline_ticks": 2784200,
+          "treatment_ticks": 2784200
+        },
+        {
+          "night": 12,
+          "extra_interest": 4693,
+          "baseline_ticks": 3065700,
+          "treatment_ticks": 3065700
+        },
+        {
+          "night": 13,
+          "extra_interest": 5270,
+          "baseline_ticks": 3339600,
+          "treatment_ticks": 3339600
+        },
+        {
+          "night": 14,
+          "extra_interest": 5039,
+          "baseline_ticks": 3615900,
+          "treatment_ticks": 3615900
+        },
+        {
+          "night": 15,
+          "extra_interest": 5526,
+          "baseline_ticks": 3890000,
+          "treatment_ticks": 3890000
+        },
+        {
+          "night": 16,
+          "extra_interest": 6069,
+          "baseline_ticks": 4166900,
+          "treatment_ticks": 4166900
+        },
+        {
+          "night": 17,
+          "extra_interest": 6703,
+          "baseline_ticks": 4450300,
+          "treatment_ticks": 4450300
+        },
+        {
+          "night": 18,
+          "extra_interest": 7454,
+          "baseline_ticks": 4733000,
+          "treatment_ticks": 4733000
+        },
+        {
+          "night": 19,
+          "extra_interest": 7335,
+          "baseline_ticks": 5012600,
+          "treatment_ticks": 5012600
+        },
+        {
+          "night": 20,
+          "extra_interest": 7234,
+          "baseline_ticks": 5286900,
+          "treatment_ticks": 5286900
+        },
+        {
+          "night": 21,
+          "extra_interest": 7933,
+          "baseline_ticks": 5562200,
+          "treatment_ticks": 5562200
+        },
+        {
+          "night": 22,
+          "extra_interest": 8703,
+          "baseline_ticks": 5834800,
+          "treatment_ticks": 5834800
+        }
+      ],
+      "deaths": 280,
+      "scheduled_base_recovery": 3360000,
+      "scheduled_actual_recovery": 3360000,
+      "recovery_spent_ticks": 3351118,
+      "baseline_recovery_spent_ticks": 3351118,
+      "completed": 350,
+      "baseline_completed": 350,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 1,
+      "actual_interest": 40639,
+      "baseline_actual_interest": 31936,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 26130,
+      "baseline_wealth": 20827,
+      "exits": {
+        "death": 280,
+        "return": 56,
+        "bank": 14
+      },
+      "baseline_exits": {
+        "death": 280,
+        "return": 56,
+        "bank": 14
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s1-d7",
+      "role": "vat-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 3400,
+      "utility_status": "PASS",
+      "payback_night": null,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": -238,
+          "baseline_ticks": 24800,
+          "treatment_ticks": 22400
+        },
+        {
+          "night": 2,
+          "extra_interest": -545,
+          "baseline_ticks": 301900,
+          "treatment_ticks": 264100
+        },
+        {
+          "night": 3,
+          "extra_interest": -367,
+          "baseline_ticks": 578200,
+          "treatment_ticks": 511600
+        },
+        {
+          "night": 4,
+          "extra_interest": -663,
+          "baseline_ticks": 860300,
+          "treatment_ticks": 758400
+        },
+        {
+          "night": 5,
+          "extra_interest": -415,
+          "baseline_ticks": 1127900,
+          "treatment_ticks": 999800
+        },
+        {
+          "night": 6,
+          "extra_interest": -631,
+          "baseline_ticks": 1406000,
+          "treatment_ticks": 1246500
+        },
+        {
+          "night": 7,
+          "extra_interest": -410,
+          "baseline_ticks": 1687600,
+          "treatment_ticks": 1487000
+        },
+        {
+          "night": 8,
+          "extra_interest": -330,
+          "baseline_ticks": 1960200,
+          "treatment_ticks": 1732200
+        },
+        {
+          "night": 9,
+          "extra_interest": -224,
+          "baseline_ticks": 2239000,
+          "treatment_ticks": 1969500
+        },
+        {
+          "night": 10,
+          "extra_interest": -149,
+          "baseline_ticks": 2517800,
+          "treatment_ticks": 2215200
+        },
+        {
+          "night": 11,
+          "extra_interest": -27,
+          "baseline_ticks": 2784200,
+          "treatment_ticks": 2458300
+        },
+        {
+          "night": 12,
+          "extra_interest": 253,
+          "baseline_ticks": 3065700,
+          "treatment_ticks": 2704000
+        },
+        {
+          "night": 13,
+          "extra_interest": -39,
+          "baseline_ticks": 3339600,
+          "treatment_ticks": 2950300
+        },
+        {
+          "night": 14,
+          "extra_interest": -158,
+          "baseline_ticks": 3615900,
+          "treatment_ticks": 3198700
+        },
+        {
+          "night": 15,
+          "extra_interest": 446,
+          "baseline_ticks": 3890000,
+          "treatment_ticks": 3447900
+        },
+        {
+          "night": 16,
+          "extra_interest": 404,
+          "baseline_ticks": 4166900,
+          "treatment_ticks": 3699900
+        },
+        {
+          "night": 17,
+          "extra_interest": 356,
+          "baseline_ticks": 4450300,
+          "treatment_ticks": 3946200
+        },
+        {
+          "night": 18,
+          "extra_interest": 293,
+          "baseline_ticks": 4733000,
+          "treatment_ticks": 4188300
+        },
+        {
+          "night": 19,
+          "extra_interest": 83,
+          "baseline_ticks": 5012600,
+          "treatment_ticks": 4438000
+        },
+        {
+          "night": 20,
+          "extra_interest": -258,
+          "baseline_ticks": 5286900,
+          "treatment_ticks": 4686700
+        },
+        {
+          "night": 21,
+          "extra_interest": 83,
+          "baseline_ticks": 5562200,
+          "treatment_ticks": 4932300
+        },
+        {
+          "night": 22,
+          "extra_interest": 354,
+          "baseline_ticks": 5834800,
+          "treatment_ticks": 5171900
+        }
+      ],
+      "deaths": 320,
+      "scheduled_base_recovery": 3840000,
+      "scheduled_actual_recovery": 3072000,
+      "recovery_spent_ticks": 3070243,
+      "baseline_recovery_spent_ticks": 3351118,
+      "completed": 394,
+      "baseline_completed": 350,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 36902,
+      "baseline_actual_interest": 31936,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 19337,
+      "baseline_wealth": 20827,
+      "exits": {
+        "death": 320,
+        "return": 57,
+        "bank": 17
+      },
+      "baseline_exits": {
+        "death": 280,
+        "return": 56,
+        "bank": 14
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s2-d3",
+      "role": "bank-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 4200,
+      "utility_status": "PASS",
+      "payback_night": 9,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 343,
+          "baseline_ticks": 107200,
+          "treatment_ticks": 107200
+        },
+        {
+          "night": 2,
+          "extra_interest": 741,
+          "baseline_ticks": 454800,
+          "treatment_ticks": 454800
+        },
+        {
+          "night": 3,
+          "extra_interest": 1019,
+          "baseline_ticks": 850500,
+          "treatment_ticks": 850500
+        },
+        {
+          "night": 4,
+          "extra_interest": 1356,
+          "baseline_ticks": 1204600,
+          "treatment_ticks": 1204600
+        },
+        {
+          "night": 5,
+          "extra_interest": 1641,
+          "baseline_ticks": 1543600,
+          "treatment_ticks": 1543600
+        },
+        {
+          "night": 6,
+          "extra_interest": 2202,
+          "baseline_ticks": 1900700,
+          "treatment_ticks": 1900700
+        },
+        {
+          "night": 7,
+          "extra_interest": 2825,
+          "baseline_ticks": 2253900,
+          "treatment_ticks": 2253900
+        },
+        {
+          "night": 8,
+          "extra_interest": 3143,
+          "baseline_ticks": 2581900,
+          "treatment_ticks": 2581900
+        },
+        {
+          "night": 9,
+          "extra_interest": 3601,
+          "baseline_ticks": 2888400,
+          "treatment_ticks": 2888400
+        },
+        {
+          "night": 10,
+          "extra_interest": 3948,
+          "baseline_ticks": 3215800,
+          "treatment_ticks": 3215800
+        },
+        {
+          "night": 11,
+          "extra_interest": 4315,
+          "baseline_ticks": 3510700,
+          "treatment_ticks": 3510700
+        },
+        {
+          "night": 12,
+          "extra_interest": 4708,
+          "baseline_ticks": 3828500,
+          "treatment_ticks": 3828500
+        },
+        {
+          "night": 13,
+          "extra_interest": 5084,
+          "baseline_ticks": 4128200,
+          "treatment_ticks": 4128200
+        },
+        {
+          "night": 14,
+          "extra_interest": 5484,
+          "baseline_ticks": 4434000,
+          "treatment_ticks": 4434000
+        },
+        {
+          "night": 15,
+          "extra_interest": 5889,
+          "baseline_ticks": 4717000,
+          "treatment_ticks": 4717000
+        },
+        {
+          "night": 16,
+          "extra_interest": 6311,
+          "baseline_ticks": 5046200,
+          "treatment_ticks": 5046200
+        },
+        {
+          "night": 17,
+          "extra_interest": 6530,
+          "baseline_ticks": 5372000,
+          "treatment_ticks": 5372000
+        },
+        {
+          "night": 18,
+          "extra_interest": 6696,
+          "baseline_ticks": 5687400,
+          "treatment_ticks": 5687400
+        },
+        {
+          "night": 19,
+          "extra_interest": 6843,
+          "baseline_ticks": 5992100,
+          "treatment_ticks": 5992100
+        }
+      ],
+      "deaths": 262,
+      "scheduled_base_recovery": 3142371,
+      "scheduled_actual_recovery": 3142371,
+      "recovery_spent_ticks": 3147714,
+      "baseline_recovery_spent_ticks": 3147714,
+      "completed": 296,
+      "baseline_completed": 296,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 14067,
+      "baseline_actual_interest": 7224,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 21973,
+      "baseline_wealth": 18530,
+      "exits": {
+        "death": 262,
+        "bank": 19,
+        "return": 15
+      },
+      "baseline_exits": {
+        "death": 262,
+        "bank": 19,
+        "return": 15
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s2-d3",
+      "role": "vat-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 4200,
+      "utility_status": "PASS",
+      "payback_night": null,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 6,
+          "baseline_ticks": 107200,
+          "treatment_ticks": 100000
+        },
+        {
+          "night": 2,
+          "extra_interest": 45,
+          "baseline_ticks": 454800,
+          "treatment_ticks": 405800
+        },
+        {
+          "night": 3,
+          "extra_interest": 35,
+          "baseline_ticks": 850500,
+          "treatment_ticks": 722200
+        },
+        {
+          "night": 4,
+          "extra_interest": 4,
+          "baseline_ticks": 1204600,
+          "treatment_ticks": 1012400
+        },
+        {
+          "night": 5,
+          "extra_interest": 67,
+          "baseline_ticks": 1543600,
+          "treatment_ticks": 1336600
+        },
+        {
+          "night": 6,
+          "extra_interest": 98,
+          "baseline_ticks": 1900700,
+          "treatment_ticks": 1682000
+        },
+        {
+          "night": 7,
+          "extra_interest": 155,
+          "baseline_ticks": 2253900,
+          "treatment_ticks": 2001300
+        },
+        {
+          "night": 8,
+          "extra_interest": 186,
+          "baseline_ticks": 2581900,
+          "treatment_ticks": 2288100
+        },
+        {
+          "night": 9,
+          "extra_interest": 79,
+          "baseline_ticks": 2888400,
+          "treatment_ticks": 2607700
+        },
+        {
+          "night": 10,
+          "extra_interest": 226,
+          "baseline_ticks": 3215800,
+          "treatment_ticks": 2900000
+        },
+        {
+          "night": 11,
+          "extra_interest": 398,
+          "baseline_ticks": 3510700,
+          "treatment_ticks": 3176000
+        },
+        {
+          "night": 12,
+          "extra_interest": 427,
+          "baseline_ticks": 3828500,
+          "treatment_ticks": 3472000
+        },
+        {
+          "night": 13,
+          "extra_interest": 458,
+          "baseline_ticks": 4128200,
+          "treatment_ticks": 3748800
+        },
+        {
+          "night": 14,
+          "extra_interest": 507,
+          "baseline_ticks": 4434000,
+          "treatment_ticks": 4013700
+        },
+        {
+          "night": 15,
+          "extra_interest": 544,
+          "baseline_ticks": 4717000,
+          "treatment_ticks": 4303600
+        },
+        {
+          "night": 16,
+          "extra_interest": 549,
+          "baseline_ticks": 5046200,
+          "treatment_ticks": 4578200
+        },
+        {
+          "night": 17,
+          "extra_interest": 508,
+          "baseline_ticks": 5372000,
+          "treatment_ticks": 4860300
+        },
+        {
+          "night": 18,
+          "extra_interest": 560,
+          "baseline_ticks": 5687400,
+          "treatment_ticks": 5144500
+        },
+        {
+          "night": 19,
+          "extra_interest": 551,
+          "baseline_ticks": 5992100,
+          "treatment_ticks": 5397000
+        }
+      ],
+      "deaths": 283,
+      "scheduled_base_recovery": 3391928,
+      "scheduled_actual_recovery": 2713543,
+      "recovery_spent_ticks": 2718822,
+      "baseline_recovery_spent_ticks": 3147714,
+      "completed": 330,
+      "baseline_completed": 296,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 8561,
+      "baseline_actual_interest": 7224,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 27392,
+      "baseline_wealth": 18530,
+      "exits": {
+        "death": 283,
+        "bank": 21,
+        "return": 26
+      },
+      "baseline_exits": {
+        "death": 262,
+        "bank": 19,
+        "return": 15
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s2-d7",
+      "role": "bank-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 3400,
+      "utility_status": "PASS",
+      "payback_night": 11,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": 191,
+          "baseline_ticks": 47500,
+          "treatment_ticks": 47500
+        },
+        {
+          "night": 2,
+          "extra_interest": 309,
+          "baseline_ticks": 426200,
+          "treatment_ticks": 426200
+        },
+        {
+          "night": 3,
+          "extra_interest": 508,
+          "baseline_ticks": 824800,
+          "treatment_ticks": 824800
+        },
+        {
+          "night": 4,
+          "extra_interest": 692,
+          "baseline_ticks": 1205900,
+          "treatment_ticks": 1205900
+        },
+        {
+          "night": 5,
+          "extra_interest": 820,
+          "baseline_ticks": 1588000,
+          "treatment_ticks": 1588000
+        },
+        {
+          "night": 6,
+          "extra_interest": 1967,
+          "baseline_ticks": 1985200,
+          "treatment_ticks": 1985200
+        },
+        {
+          "night": 7,
+          "extra_interest": 2361,
+          "baseline_ticks": 2361300,
+          "treatment_ticks": 2361300
+        },
+        {
+          "night": 8,
+          "extra_interest": 2693,
+          "baseline_ticks": 2734200,
+          "treatment_ticks": 2734200
+        },
+        {
+          "night": 9,
+          "extra_interest": 2961,
+          "baseline_ticks": 3138300,
+          "treatment_ticks": 3138300
+        },
+        {
+          "night": 10,
+          "extra_interest": 3288,
+          "baseline_ticks": 3493700,
+          "treatment_ticks": 3493700
+        },
+        {
+          "night": 11,
+          "extra_interest": 3666,
+          "baseline_ticks": 3877100,
+          "treatment_ticks": 3877100
+        },
+        {
+          "night": 12,
+          "extra_interest": 4060,
+          "baseline_ticks": 4235400,
+          "treatment_ticks": 4235400
+        },
+        {
+          "night": 13,
+          "extra_interest": 3446,
+          "baseline_ticks": 4588900,
+          "treatment_ticks": 4588900
+        },
+        {
+          "night": 14,
+          "extra_interest": 4033,
+          "baseline_ticks": 4954400,
+          "treatment_ticks": 4954400
+        },
+        {
+          "night": 15,
+          "extra_interest": 4677,
+          "baseline_ticks": 5307900,
+          "treatment_ticks": 5307900
+        },
+        {
+          "night": 16,
+          "extra_interest": 5338,
+          "baseline_ticks": 5685900,
+          "treatment_ticks": 5685900
+        },
+        {
+          "night": 17,
+          "extra_interest": 6039,
+          "baseline_ticks": 6043700,
+          "treatment_ticks": 6043700
+        }
+      ],
+      "deaths": 236,
+      "scheduled_base_recovery": 2832000,
+      "scheduled_actual_recovery": 2832000,
+      "recovery_spent_ticks": 2835590,
+      "baseline_recovery_spent_ticks": 2835590,
+      "completed": 258,
+      "baseline_completed": 258,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 0,
+      "actual_interest": 33233,
+      "baseline_actual_interest": 27194,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 20089,
+      "baseline_wealth": 32712,
+      "exits": {
+        "death": 236,
+        "bank": 14,
+        "return": 8
+      },
+      "baseline_exits": {
+        "death": 236,
+        "bank": 14,
+        "return": 8
+      },
+      "reached_30_payments": false
+    },
+    {
+      "context": "s2-d7",
+      "role": "vat-first",
+      "purchase": "paid",
+      "price": 3400,
+      "withdrawal": 3400,
+      "utility_status": "PASS",
+      "payback_night": null,
+      "matched_payments": [
+        {
+          "night": 1,
+          "extra_interest": -238,
+          "baseline_ticks": 47500,
+          "treatment_ticks": 45100
+        },
+        {
+          "night": 2,
+          "extra_interest": -534,
+          "baseline_ticks": 426200,
+          "treatment_ticks": 389200
+        },
+        {
+          "night": 3,
+          "extra_interest": -508,
+          "baseline_ticks": 824800,
+          "treatment_ticks": 730900
+        },
+        {
+          "night": 4,
+          "extra_interest": -654,
+          "baseline_ticks": 1205900,
+          "treatment_ticks": 1054500
+        },
+        {
+          "night": 5,
+          "extra_interest": -716,
+          "baseline_ticks": 1588000,
+          "treatment_ticks": 1402000
+        },
+        {
+          "night": 6,
+          "extra_interest": -194,
+          "baseline_ticks": 1985200,
+          "treatment_ticks": 1733900
+        },
+        {
+          "night": 7,
+          "extra_interest": -624,
+          "baseline_ticks": 2361300,
+          "treatment_ticks": 2063400
+        },
+        {
+          "night": 8,
+          "extra_interest": -210,
+          "baseline_ticks": 2734200,
+          "treatment_ticks": 2393800
+        },
+        {
+          "night": 9,
+          "extra_interest": 46,
+          "baseline_ticks": 3138300,
+          "treatment_ticks": 2715600
+        },
+        {
+          "night": 10,
+          "extra_interest": 427,
+          "baseline_ticks": 3493700,
+          "treatment_ticks": 3036200
+        },
+        {
+          "night": 11,
+          "extra_interest": 782,
+          "baseline_ticks": 3877100,
+          "treatment_ticks": 3373500
+        },
+        {
+          "night": 12,
+          "extra_interest": 1321,
+          "baseline_ticks": 4235400,
+          "treatment_ticks": 3698400
+        },
+        {
+          "night": 13,
+          "extra_interest": 880,
+          "baseline_ticks": 4588900,
+          "treatment_ticks": 4018500
+        },
+        {
+          "night": 14,
+          "extra_interest": 357,
+          "baseline_ticks": 4954400,
+          "treatment_ticks": 4342700
+        },
+        {
+          "night": 15,
+          "extra_interest": -332,
+          "baseline_ticks": 5307900,
+          "treatment_ticks": 4673700
+        },
+        {
+          "night": 16,
+          "extra_interest": -1138,
+          "baseline_ticks": 5685900,
+          "treatment_ticks": 4993400
+        },
+        {
+          "night": 17,
+          "extra_interest": -1248,
+          "baseline_ticks": 6043700,
+          "treatment_ticks": 5306200
+        }
+      ],
+      "deaths": 270,
+      "scheduled_base_recovery": 3240000,
+      "scheduled_actual_recovery": 2592000,
+      "recovery_spent_ticks": 2593690,
+      "baseline_recovery_spent_ticks": 2835590,
+      "completed": 295,
+      "baseline_completed": 258,
+      "horizon_ticks": 6048000,
+      "baseline_horizon_ticks": 6048000,
+      "finish_run_tail_count": 1,
+      "actual_interest": 29797,
+      "baseline_actual_interest": 27194,
+      "best": 33,
+      "baseline_best": 33,
+      "wealth": 32138,
+      "baseline_wealth": 32712,
+      "exits": {
+        "death": 270,
+        "bank": 15,
+        "return": 10
+      },
+      "baseline_exits": {
+        "death": 236,
+        "bank": 14,
+        "return": 8
+      },
+      "reached_30_payments": false
+    }
+  ],
+  "adopted": false
+}

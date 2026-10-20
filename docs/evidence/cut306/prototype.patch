@@ -1,0 +1,202 @@
+--- a/crates/idlever-core/src/lib.rs
++++ b/crates/idlever-core/src/lib.rs
+@@ -55,6 +55,7 @@
+ pub mod tokens;
+ pub mod tools;
+ pub mod town;
++pub mod cut306_upgrades;
+ pub mod tree;
+ pub mod trace;
+ pub mod traits;
+--- a/crates/idlever-core/src/town.rs
++++ b/crates/idlever-core/src/town.rs
+@@ -26,6 +26,8 @@
+ /// The lineage's town (`LineageState::town`).
+ #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+ pub struct Town {
++    #[serde(default, skip_serializing_if="std::collections::BTreeMap::is_empty")]
++    pub levels: std::collections::BTreeMap<String, u32>,
+     #[serde(default)]
+     pub forge_eligible:bool,
+     #[serde(default)]
+@@ -157,7 +159,7 @@
+ 
+ /// The bank holds at most `BANK_NIGHTS` nights of net income (never under 100).
+ pub fn bank_cap(l: &LineageState) -> i32 {
+-    (bank_nights() * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
++    (crate::cut306_upgrades::bank_nights(l) * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
+ }
+ 
+ /// Deposit gold (refused before the bank is built; capped).
+@@ -189,7 +191,7 @@
+ /// A night ended: the bank pays its interest (never negative; the balance may pass the cap by it).
+ pub fn night(l: &mut LineageState) -> i32 {
+     // (Cut 30.5, week 2: the clerk's rank adds a quarter of a percent a night each)
+-    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32;
++    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32 + crate::cut306_upgrades::bank_bonus_permille(l);
+     let i = (l.town.bank.max(0) * permille / 1000).max(0);
+     l.town.bank += i;
+     l.town.interest += i;
+--- a/crates/idlever-core/src/persistent.rs
++++ b/crates/idlever-core/src/persistent.rs
+@@ -229,7 +229,7 @@
+     let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
+     let round = u64::from(v.hurry_round.max(1));
+     let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
+-    Some(p.min(i32::MAX as u64) as i32)
++    Some(crate::cut306_upgrades::hurry_price(l, p.min(i32::MAX as u64) as i32))
+ }
+ /// Cut264 §3: skip the whole recovery for gold — an explicit camp command (never offline, never a bot or a worker).
+ /// Refused with `price changed` when the live price is above `max_price` (the button showed an older one).
+@@ -253,7 +253,7 @@
+ }
+ /// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
+ pub fn recover_at(l: &mut LineageState, depth: u32) {
+-    recover_for(l, recovery_ticks(depth));
++    recover_for(l, crate::cut306_upgrades::recovery_ticks(l, depth));
+ }
+ fn recover_for(l: &mut LineageState, ticks: u64) {
+     l.persistent.recovery_until_tick = l.total_turns.saturating_add(ticks);
+--- a/crates/idlever-core/src/engine.rs
++++ b/crates/idlever-core/src/engine.rs
+@@ -2235,7 +2235,7 @@
+         // QA on 912e135 (qaW: `sword +1 · $300 · 7 nights` after a night of deaths — the purse held at $40 by the heir purse): the
+         // heir purse's top-up refills to a floor and is no income; a night of deaths nets nothing toward a step.
+         // (Cut 28 §1: an oath's price and a forswearing's refund are the player's purchase too)
+-        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone"].iter().any(|p| why.starts_with(p)) {
++        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone", "upgrade "].iter().any(|p| why.starts_with(p)) {
+             self.night_net += delta;
+             self.day_net += delta;
+         }
+@@ -4089,7 +4089,7 @@
+     /// Cut 3: camp rest after a run (`no_rest` halves it).
+     pub fn rest_after(&self, turns: u32, tier: ExitTier) -> u32 {
+         // (Cut230: a death's recovery by the run's deepest floor — the run in hand, else the record)
+-        if tier == ExitTier::Death { return crate::persistent::recovery_ticks(self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
++        if tier == ExitTier::Death { return crate::cut306_upgrades::recovery_ticks(&self.lineage, self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
+         let r = crate::tree::rest_scaled(&self.lineage, crate::offline::rest_after(turns, tier));
+         // Cut 118 §3: the Sleeper's set
+         let r = r - r * crate::feats::bonus_pct(&self.lineage, "rest") / 100;
+@@ -7000,6 +7000,8 @@
+         // (Cut264: the vat's gold hurry is a sink too — a player's tap, never an absence's)
+         // (Cut 120 §6: the apprentice's ration is a sink, as Cut 118 §4 names it — the ledger's apprentice line reconciles)
+         "sinks"
++    } else if why.starts_with("upgrade ") {
++        "town"
+     } else if why.starts_with("hire ") {
+         "hires"
+     } else if why.starts_with("bank ") {
+--- a/crates/idlever-core/src/cut306_upgrades.rs
++++ b/crates/idlever-core/src/cut306_upgrades.rs
+@@ -0,0 +1,111 @@
++//! Cut306 isolated utility prototype. Not shipped, not adopted.
++use crate::{engine::LineageState, Game};
++use serde::Serialize;
++
++#[derive(Debug, Clone, Serialize)]
++pub struct Offer {
++    pub id: String,
++    pub level: u32,
++    pub price: i32,
++    pub gate: u32,
++    pub ready: bool,
++    pub affordable: bool,
++}
++
++pub fn level(l: &LineageState, id: &str) -> u32 {
++    let base = if id == "bank" { 2 } else { 1 };
++    l.town
++        .levels
++        .get(id)
++        .copied()
++        .unwrap_or(base)
++        .clamp(base, base + 2)
++}
++pub fn bank_nights(l: &LineageState) -> i32 {
++    match level(l, "bank") {
++        3 => 5,
++        4 => 8,
++        _ => crate::town::bank_nights(),
++    }
++}
++pub fn bank_bonus_permille(l: &LineageState) -> i32 {
++    match level(l, "bank") {
++        3 => 20,
++        4 => 40,
++        _ => 0,
++    }
++}
++pub fn recovery_off(l: &LineageState) -> u64 {
++    match level(l, "device") {
++        2 => 20,
++        3 => 35,
++        _ => 0,
++    }
++}
++pub fn recovery_ticks(l: &LineageState, depth: u32) -> u64 {
++    (crate::persistent::recovery_ticks(depth) * (100 - recovery_off(l))).div_ceil(100)
++}
++pub fn hurry_price(l: &LineageState, original: i32) -> i32 {
++    let off = match level(l, "device") {
++        2 => 25,
++        3 => 50,
++        _ => return original,
++    };
++    let vat = crate::balance::get().vat;
++    let round = u64::from(vat.hurry_round.max(1));
++    let raw = (original as u64 * (100 - off)).div_ceil(100);
++    (raw.div_ceil(round) * round)
++        .max(u64::from(vat.hurry_floor))
++        .min(i32::MAX as u64) as i32
++}
++pub fn offers(l: &LineageState) -> Vec<Offer> {
++    ["bank", "device"]
++        .into_iter()
++        .filter_map(|id| {
++            let base = if id == "bank" { 2 } else { 1 };
++            let available = if id == "bank" {
++                crate::town::built(l, id) && crate::tree::hired(l, "clerk")
++            } else {
++                crate::persistent::service_availability(l, false)[2]
++            };
++            let level = level(l, id);
++            if !available || level >= base + 2 {
++                return None;
++            }
++            let i = (level - base) as usize;
++            let gate = [13, 23][i];
++            let price = ([8, 20][i] * crate::kit::unit(gate)) as i32;
++            Some(Offer {
++                id: id.into(),
++                level: level + 1,
++                price,
++                gate,
++                ready: l.best_depth >= gate,
++                affordable: crate::tree::purse(l) >= price,
++            })
++        })
++        .collect()
++}
++pub fn purchase(g: &mut Game, id: &str, max_price: i32) -> Result<(), String> {
++    if crate::persistent::away(g) {
++        return Err("hero away".into());
++    }
++    let offer = offers(&g.lineage)
++        .into_iter()
++        .find(|o| o.id == id)
++        .ok_or("no upgrade")?;
++    if !offer.ready {
++        return Err(format!("D{} needed", offer.gate));
++    }
++    if offer.price > max_price {
++        return Err("price changed".into());
++    }
++    if !offer.affordable {
++        return Err("not enough gold".into());
++    }
++    g.lineage
++        .gold_move(-offer.price, &format!("upgrade {id} {}", offer.level));
++    g.lineage.town.levels.insert(id.into(), offer.level);
++    Ok(())
++}
++

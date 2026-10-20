@@ -1,0 +1,36 @@
+{
+  "scope": "experimental fixed earned-context utility, not population/default acceptance",
+  "contexts": [
+    {
+      "label": "s1-d3",
+      "input": "target/cut306/ordinary/camps/PICKED-s1-d3-c2.json",
+      "sha256": "0182b416ef6b5db9b4ba28638c661fc58fc87e2fe5da432da376fa94080907c0"
+    },
+    {
+      "label": "s1-d7",
+      "input": "target/cut306/ordinary/camps/PICKED-s1-d7-c2.json",
+      "sha256": "fc38b1be773cd81731f70b0d189adb5e7776afeb7be3a90d72d63a124759a557"
+    },
+    {
+      "label": "s2-d3",
+      "input": "target/cut306/ordinary/camps/PICKED-s2-d3-c2.json",
+      "sha256": "c15b4d8d526d3873a59eb6042458e2e0d2e7f8ba9e54dcfd7b9eaae7dac54ec5"
+    },
+    {
+      "label": "s2-d7",
+      "input": "target/cut306/ordinary/camps/PICKED-s2-d7-c2.json",
+      "sha256": "75111fd034f779caf0c937e2e046eaf1f1d48fc698e9440116816baf18d4a964"
+    }
+  ],
+  "roles": [
+    "unchanged",
+    "unchanged-repeat",
+    "bank-first",
+    "vat-first"
+  ],
+  "payments": 30,
+  "max_minutes": 10080,
+  "internal_slice_seconds": 10,
+  "final_zero_slice": true,
+  "independent_seeds": false
+}

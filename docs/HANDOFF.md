@@ -1,4 +1,4 @@
-# Active backlog — Cut305 conditional worker study verified, 2026-10-21
+# Active backlog — Cut306 Bank/Vat utility prototype measured, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -7,8 +7,9 @@ authorized research/refinement/redesign of the vault/Vat as needed. Bank/vault/
 Vat upgrade redesign and recovery timing are ACTIVE, superseding all earlier
 hold instructions below. Preserve old branches/evidence; this does not approve
 their failed implementations or change numeric acceptance requirements.
-Cut305 controlled worker study is now complete; next pursue useful
-upgrade effects/payback/earned affordability and recovery alternatives with
+Cut305 controlled worker study and Cut306 isolated utility prototype are now
+complete at their bounded scopes; next pursue late pricing/saving policy,
+shared-resident API/UI integration and recovery alternatives with
 the worker/pen progression requirements. See WORK_QUEUE items3–4. Current game
 defaults remain unchanged until validated adoption; no automatic deployment.
 
@@ -20,8 +21,67 @@ Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and Bank/Vat W2 defaults stay as
-before while their redesign returns to scope. Cut304 checkpoint2a294524 pushed;
-no new release/deployment. Live dev game is still423fe45a.
+before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
+no new release/deployment. Last recorded live dev source is423fe45a; this
+checkpoint does not reverify or deploy that remote site.
+
+## Cut306 — isolated useful Bank/Vat benefits; pricing/integration still open
+
+Contract [CUT306_VAULT_VAT_REDESIGN.md](CUT306_VAULT_VAT_REDESIGN.md), evidence
+[cut306/README.md](evidence/cut306/README.md). No shipping code/default changed.
+Prototype source `/tmp/idlever-cut306-core-5e_jrxrm`, immutable runtimes
+`target/cut306/runtime-{shipping,prototype}`; full source archive/patch and
+pre-outcome source/input/protocol identities retained. Separate purchase API
+exists only in prototype, not shipping client/Session. Both held items ACTIVE.
+Current temporary copy differs from frozen source only by a cleaned test driver;
+the source archive is authoritative for original runtime inputs. See validation-
+source/prepare.py for the corrected validation setup.
+
+Bank L3/L4:5/8-night capacity +20/40permille interest per game night. Vat L2/L3:
+future recovery−20/35%, manual hurry−25/50%, no automatic paid hurry or retroactive
+timer reduction. Original3400/13500 prices only for utility screen. Fresh current
+PICKED seeds1/2×7days,42camps; fixed day3/day7c2contexts D33. Collected Gold only
+1975–2775 but Savings17827–23914. Each first-tier buy legally withdraws owned
+Savings as needed, leaves3live-depth units, pays3400; no grants. Earliest eligible
+purchase contexts are NOT tested by this fixed later-camp screen.
+
+Four shipping controls50.71s;16prototype continuations316.78s/5170actual completed
+runs, including four exact repeats. All unchanged files byte-match shipping.
+Eight paid branches pass narrow utility: Bank ACTUAL extra-interest payback9–11
+matching payments, all future Vat death timers ceil(base*80/100). Independent
+interval intersection checks actual recovery-time counters; ledger/whole legal
+preparations/source/input/archive/utility checks pass.202JSONs/751.4MBraw,
+7.9MiBcapture +1.5MiBsource archive. Native builds and3focused mechanics checks
+pass; actual prototype library/production probe/cleaned driver Clippy passes with warnings
+denied. No whole-workspace, client, WASM or population/gate acceptance claim.
+
+Material tradeoffs retained: Bank endpoint wealth differences−599/+5303/+3443/
+−12623; available Legacy+4/0/0/+1. Last case's extra6039interest−3400price−15262
+extra existing-worker sink spending =−12623wealth, with one extra tithe/Legacy
+point. No invented monetary Legacy valuation. Vat gains45/44/34/37completed
+runs and93/94/52/74available Legacy points, wealth−182/−1490/+8862/−574; all bests
+stillD33. economy.json is post-result descriptive accounting, not new inference.
+
+Original missing-export-directory attempt retained; exact-request rerun produces
+all42camps, observations match except elapsed_seconds and all18partial overlaps
+byte-match. Original contract hash/bytes retained; nonfinal10s transport/one final
+0s close clarified before utility outcomes, at-most-one finish-run tail labelled.
+Synthetic fixture/type-path corrections, unused test-driver-binary Clippy and
+broader library-fixture-missing checks retained. Post-run cleaned validation
+driver wraps identical test tokens in cfg(test); token proof, all3tests, strict
+Clippy on library/both examples and clean driver format pass. Frozen original
+driver/archive untouched; no changed rule/assertion or broad audit pass. No
+candidate utility reruns, source/seed/context selection or bar weakening.
+
+Next concrete work: make isolated benefit/price parameters immutable compile-free
+profiles; retain current results as a reference. Design meaningful late purchases
+around Savings and existing tithe/ration priorities: old total33800 cannot meet
+10%of historical598545late gross even if bought late. Explicit existing worker
+saving choices may redirect surplus from Legacy to upgrades; no silent policy
+change/fund grants/pointless spending. Then test both levels/effects together,
+earliest earned purchases, shared residents/current API/UI and independent
+progression evidence, retaining worker/pen≥1.15/absolute arrival/King bars. Base
+shorter recovery remains coordinated upcoming work. Broad backlog stays active.
 
 ## Cut305 — fixed conditional worker RNG study complete; no adoption
 
