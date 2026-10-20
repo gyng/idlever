@@ -1,0 +1,1934 @@
+{
+  "cases": [
+    {
+      "case": "trace-s1-d9-baseline",
+      "start": 9,
+      "counts": {
+        "later/gas": 82,
+        "later/drain": 11
+      },
+      "examples": {
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 690,
+            "ttl": 40,
+            "x": 3,
+            "y": 22
+          }
+        },
+        "later/drain": {
+          "depth": 12,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 2417
+          }
+        }
+      },
+      "hero_damage": {
+        "first/rest": 0,
+        "later/gas": 60,
+        "later/pink_jelly": 3,
+        "later/goblin_archer": 29,
+        "later/rest": 0,
+        "later/ogre": 3,
+        "later/wraith": 11,
+        "later/jackal": 2,
+        "later/hunger": 0,
+        "later/bloat_mother": 2,
+        "later/goblin": 3,
+        "later/eel": 9
+      },
+      "last_run": {
+        "cause": "goblin_archer",
+        "depth": 13,
+        "kept": 0,
+        "kills": 30,
+        "tier": "death",
+        "turns": 3680,
+        "twists": [
+          "captive",
+          "den",
+          "hunger"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d9-gas_step",
+      "start": 9,
+      "counts": {
+        "later/gas": 138,
+        "later/drain": 16,
+        "later/skeleton_spawn_unattributed": 28,
+        "later/support": 123,
+        "later/hero_reflection": 58
+      },
+      "examples": {
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 700,
+            "ttl": 40,
+            "x": 3,
+            "y": 22
+          }
+        },
+        "later/drain": {
+          "depth": 12,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 50,
+            "t": 4545
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 18,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 171,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead"
+              ],
+              "x": 24,
+              "y": 11
+            },
+            "k": "spawn",
+            "t": 15900
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 17142,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 19,
+          "event": {
+            "dmg": 2,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 203,
+            "t": 18657,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/rest": 0,
+        "later/pink_jelly": 6,
+        "later/goblin_archer": 12,
+        "later/gas": 54,
+        "later/ogre": 11,
+        "later/hunger": 0,
+        "later/wraith": 4,
+        "later/goblin": 1,
+        "later/eel": 8,
+        "later/skeleton": 1,
+        "later/ghoul": 2,
+        "later/lich": 3,
+        "later/slag_crawler": 6,
+        "later/iron_golem": 192
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 21,
+        "kept": 362,
+        "kills": 160,
+        "tier": "bank",
+        "turns": 26428,
+        "twists": [
+          "captive",
+          "den",
+          "vault",
+          "hunger",
+          "nest",
+          "hunger",
+          "den",
+          "nest",
+          "captive",
+          "nest",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d9-pack_break",
+      "start": 9,
+      "counts": {
+        "later/gas": 133,
+        "later/drain": 25,
+        "later/skeleton_spawn_unattributed": 9
+      },
+      "examples": {
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 690,
+            "ttl": 40,
+            "x": 3,
+            "y": 22
+          }
+        },
+        "later/drain": {
+          "depth": 12,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 3814
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 18,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 117,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead"
+              ],
+              "x": 17,
+              "y": 6
+            },
+            "k": "spawn",
+            "t": 9050
+          }
+        }
+      },
+      "hero_damage": {
+        "first/rest": 0,
+        "later/gas": 84,
+        "later/pink_jelly": 2,
+        "later/goblin_archer": 14,
+        "later/ogre": 17,
+        "later/jackal": 2,
+        "later/eel": 4,
+        "later/wraith": 5,
+        "later/hunger": 0,
+        "later/goblin": 2,
+        "later/bloat_mother": 5,
+        "later/skeleton": 43,
+        "later/ghoul": 8,
+        "later/lich": 38
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 18,
+        "kept": 286,
+        "kills": 59,
+        "tier": "bank",
+        "turns": 9950,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "den",
+          "nest"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d14-baseline",
+      "start": 14,
+      "counts": {
+        "first/gas": 20,
+        "later/drain": 28,
+        "later/gas": 77,
+        "later/skeleton_spawn_unattributed": 11,
+        "later/support": 76,
+        "later/hero_reflection": 40
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 120,
+            "ttl": 40,
+            "x": 9,
+            "y": 13
+          }
+        },
+        "later/drain": {
+          "depth": 15,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 1229
+          }
+        },
+        "later/gas": {
+          "depth": 16,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1920,
+            "ttl": 40,
+            "x": 18,
+            "y": 11
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 17,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 64,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead"
+              ],
+              "x": 21,
+              "y": 26
+            },
+            "k": "spawn",
+            "t": 3270
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 6808,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 22,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 139,
+            "t": 11128,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/gas": 12,
+        "first/ogre": 3,
+        "first/skeleton": 3,
+        "first/ghoul": 4,
+        "first/spectral_blade": 2,
+        "first/burst": 9,
+        "later/wraith": 15,
+        "later/skeleton": 9,
+        "later/ghoul": 15,
+        "later/hunger": 0,
+        "later/gas": 42,
+        "later/burst": 12,
+        "later/ogre": 5,
+        "later/lich": 12,
+        "later/smith": 1,
+        "later/iron_golem": 44,
+        "later/slag_crawler": 6,
+        "later/foundry_master": 70,
+        "later/cave_troll": 19,
+        "later/deep_eel": 20,
+        "later/lurker": 80
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 168,
+        "tier": "death",
+        "turns": 26091,
+        "twists": [
+          "lock",
+          "hunger",
+          "lock",
+          "nest",
+          "lock",
+          "vault",
+          "nest",
+          "nest",
+          "captive",
+          "den"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d14-boss_focus",
+      "start": 14,
+      "counts": {
+        "first/gas": 20,
+        "later/drain": 28,
+        "later/gas": 107,
+        "later/skeleton_spawn_unattributed": 10,
+        "later/support": 35,
+        "later/hero_reflection": 46
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 120,
+            "ttl": 40,
+            "x": 9,
+            "y": 13
+          }
+        },
+        "later/drain": {
+          "depth": 15,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 1229
+          }
+        },
+        "later/gas": {
+          "depth": 16,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1920,
+            "ttl": 40,
+            "x": 18,
+            "y": 11
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 17,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 64,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead"
+              ],
+              "x": 21,
+              "y": 26
+            },
+            "k": "spawn",
+            "t": 3270
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 6808,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 21,
+          "event": {
+            "dmg": 2,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 122,
+            "t": 9028,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/gas": 12,
+        "first/ogre": 3,
+        "first/skeleton": 3,
+        "first/ghoul": 4,
+        "first/spectral_blade": 2,
+        "first/burst": 9,
+        "later/wraith": 15,
+        "later/skeleton": 18,
+        "later/ghoul": 15,
+        "later/hunger": 0,
+        "later/gas": 45,
+        "later/burst": 15,
+        "later/ogre": 5,
+        "later/lich": 12,
+        "later/smith": 1,
+        "later/iron_golem": 92,
+        "later/slag_crawler": 12,
+        "later/foundry_master": 79
+      },
+      "last_run": {
+        "cause": "foundry_master",
+        "depth": 23,
+        "kept": 0,
+        "kills": 112,
+        "tier": "death",
+        "turns": 16121,
+        "twists": [
+          "lock",
+          "hunger",
+          "lock",
+          "nest",
+          "lock",
+          "vault",
+          "lock",
+          "nest"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d14-corridor_fighting",
+      "start": 14,
+      "counts": {
+        "first/gas": 30,
+        "later/hero_reflection": 42,
+        "later/skeleton_spawn_unattributed": 4,
+        "later/drain": 12,
+        "later/support": 106
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 150,
+            "ttl": 40,
+            "x": 9,
+            "y": 10
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 18,
+          "event": {
+            "dmg": 7,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 73,
+            "t": 3920,
+            "verb": "reflect"
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 18,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 76,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead",
+                "summoned"
+              ],
+              "x": 5,
+              "y": 13
+            },
+            "k": "spawn",
+            "t": 3920
+          }
+        },
+        "later/drain": {
+          "depth": 18,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 3960
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 5130,
+            "text": "armours"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/gas": 18,
+        "first/ogre": 8,
+        "first/burst": 6,
+        "later/skeleton": 13,
+        "later/ghoul": 3,
+        "later/spectral_blade": 1,
+        "later/lich": 26,
+        "later/wraith": 1,
+        "later/bell_sentinel": 1,
+        "later/slag_crawler": 10,
+        "later/iron_golem": 57,
+        "later/foundry_master": 83,
+        "later/lurker": 70,
+        "later/deep_eel": 12,
+        "later/cave_troll": 26
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 156,
+        "tier": "death",
+        "turns": 26775,
+        "twists": [
+          "lock",
+          "nest",
+          "captive",
+          "captive",
+          "den",
+          "vault",
+          "den",
+          "captive"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d19-baseline",
+      "start": 19,
+      "counts": {
+        "later/support": 69,
+        "later/hero_reflection": 30,
+        "later/gas": 12
+      },
+      "examples": {
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1140,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 20,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 24,
+            "t": 1410,
+            "verb": "reflect"
+          }
+        },
+        "later/gas": {
+          "depth": 22,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 6170,
+            "ttl": 20,
+            "x": 5,
+            "y": 11
+          }
+        }
+      },
+      "hero_damage": {
+        "first/skeleton": 13,
+        "later/skeleton": 21,
+        "later/iron_golem": 41,
+        "later/bell_sentinel": 2,
+        "later/smith": 23,
+        "later/forge_imp": 5,
+        "later/burst": 9,
+        "later/gas": 9,
+        "later/foundry_master": 99
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 331,
+        "kills": 61,
+        "tier": "bank",
+        "turns": 8677,
+        "twists": [
+          "nest",
+          "lock",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d19-reflect_read",
+      "start": 19,
+      "counts": {
+        "later/support": 87,
+        "later/skeleton_spawn_unattributed": 1,
+        "later/gas": 21,
+        "later/hero_reflection": 20
+      },
+      "examples": {
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1140,
+            "text": "armours"
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 21,
+          "event": {
+            "e": {
+              "hp": 22,
+              "id": 46,
+              "kind": "skeleton",
+              "max_hp": 22,
+              "tags": [
+                "undead"
+              ],
+              "x": 19,
+              "y": 29
+            },
+            "k": "spawn",
+            "t": 2910
+          }
+        },
+        "later/gas": {
+          "depth": 21,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 3400,
+            "ttl": 20,
+            "x": 10,
+            "y": 9
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 23,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 70,
+            "t": 7231,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/skeleton": 13,
+        "later/skeleton": 20,
+        "later/bell_sentinel": 2,
+        "later/forge_imp": 3,
+        "later/slag_crawler": 13,
+        "later/iron_golem": 9,
+        "later/foundry_master": 88
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 322,
+        "kills": 56,
+        "tier": "bank",
+        "turns": 9744,
+        "twists": [
+          "lock",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s1-d19-corridor_fighting",
+      "start": 19,
+      "counts": {
+        "later/hero_reflection": 37,
+        "later/support": 112,
+        "later/gas": 25
+      },
+      "examples": {
+        "later/hero_reflection": {
+          "depth": 20,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 23,
+            "t": 1113,
+            "verb": "reflect"
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1480,
+            "text": "armours"
+          }
+        },
+        "later/gas": {
+          "depth": 21,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 3380,
+            "ttl": 20,
+            "x": 11,
+            "y": 6
+          }
+        }
+      },
+      "hero_damage": {
+        "first/forge_imp": 1,
+        "first/slag_crawler": 6,
+        "first/skeleton": 1,
+        "later/iron_golem": 60,
+        "later/burst": 6,
+        "later/gas": 9,
+        "later/slag_crawler": 34,
+        "later/skeleton": 2,
+        "later/smith": 2,
+        "later/foundry_master": 85,
+        "later/mirror_shade": 8,
+        "later/cave_troll": 58,
+        "later/lurker": 85,
+        "later/deep_eel": 33,
+        "later/lurker_queen": 1
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 114,
+        "tier": "death",
+        "turns": 20381,
+        "twists": [
+          "den",
+          "lock",
+          "den",
+          "den"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d9-baseline",
+      "start": 9,
+      "counts": {
+        "first/gas": 7,
+        "later/gas": 122,
+        "later/drain": 26,
+        "later/skeleton_spawn_unattributed": 11,
+        "later/support": 118,
+        "later/hero_reflection": 23
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 9,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 870,
+            "ttl": 40,
+            "x": 21,
+            "y": 17
+          }
+        },
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1170,
+            "ttl": 40,
+            "x": 5,
+            "y": 10
+          }
+        },
+        "later/drain": {
+          "depth": 12,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 3950
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 14,
+          "event": {
+            "e": {
+              "hp": 19,
+              "id": 62,
+              "kind": "skeleton",
+              "max_hp": 19,
+              "tags": [
+                "undead"
+              ],
+              "x": 16,
+              "y": 5
+            },
+            "k": "spawn",
+            "t": 6202
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 15140,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 22,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 208,
+            "t": 19320,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ogre": 9,
+        "first/goblin_archer": 2,
+        "first/gas": 6,
+        "later/gas": 96,
+        "later/eel": 9,
+        "later/goblin": 2,
+        "later/ogre": 28,
+        "later/pink_jelly": 15,
+        "later/wraith": 11,
+        "later/hunger": 0,
+        "later/bloat_mother": 3,
+        "later/ghoul": 13,
+        "later/skeleton": 14,
+        "later/burst": 24,
+        "later/jackal": 4,
+        "later/lich": 7,
+        "later/smith": 7,
+        "later/slag_crawler": 16,
+        "later/iron_golem": 42,
+        "later/foundry_master": 42,
+        "later/lurker": 66,
+        "later/cave_troll": 35,
+        "later/mirror_shade": 5,
+        "later/deep_eel": 27
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 177,
+        "tier": "death",
+        "turns": 31949,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "vault",
+          "captive",
+          "lock",
+          "captive",
+          "den",
+          "lock",
+          "vault",
+          "den"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d9-gas_step",
+      "start": 9,
+      "counts": {
+        "first/gas": 8,
+        "later/gas": 174,
+        "later/drain": 9,
+        "later/skeleton_spawn_unattributed": 5,
+        "later/support": 75,
+        "later/hero_reflection": 26
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 9,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 890,
+            "ttl": 40,
+            "x": 19,
+            "y": 19
+          }
+        },
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1200,
+            "ttl": 40,
+            "x": 4,
+            "y": 9
+          }
+        },
+        "later/drain": {
+          "depth": 12,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 3530
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 16,
+          "event": {
+            "e": {
+              "hp": 20,
+              "id": 103,
+              "kind": "skeleton",
+              "max_hp": 20,
+              "tags": [
+                "undead"
+              ],
+              "x": 10,
+              "y": 9
+            },
+            "k": "spawn",
+            "t": 7480
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 11230,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 21,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 173,
+            "t": 13660,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ogre": 9,
+        "first/goblin_archer": 2,
+        "first/gas": 6,
+        "later/gas": 78,
+        "later/eel": 9,
+        "later/pink_jelly": 1,
+        "later/goblin": 4,
+        "later/jackal": 7,
+        "later/ogre": 22,
+        "later/rest": 0,
+        "later/wraith": 5,
+        "later/hunger": 0,
+        "later/bloat_mother": 3,
+        "later/spectral_blade": 1,
+        "later/ghoul": 17,
+        "later/skeleton": 37,
+        "later/burst": 18,
+        "later/lich": 4,
+        "later/slag_crawler": 85,
+        "later/smith": 9,
+        "later/forge_imp": 3,
+        "later/bell_sentinel": 2,
+        "later/iron_golem": 84
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 534,
+        "kills": 121,
+        "tier": "return",
+        "turns": 17345,
+        "twists": [
+          "captive",
+          "hunger",
+          "captive",
+          "den",
+          "lock",
+          "lock"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d9-pack_break",
+      "start": 9,
+      "counts": {
+        "later/gas": 79,
+        "later/skeleton_spawn_unattributed": 29,
+        "later/drain": 13,
+        "later/hero_reflection": 46,
+        "later/support": 101
+      },
+      "examples": {
+        "later/gas": {
+          "depth": 10,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1320,
+            "ttl": 40,
+            "x": 20,
+            "y": 12
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 15,
+          "event": {
+            "e": {
+              "hp": 20,
+              "id": 87,
+              "kind": "skeleton",
+              "max_hp": 20,
+              "tags": [
+                "undead"
+              ],
+              "x": 25,
+              "y": 5
+            },
+            "k": "spawn",
+            "t": 9094
+          }
+        },
+        "later/drain": {
+          "depth": 18,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 17099
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 19,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 183,
+            "t": 18139,
+            "verb": "reflect"
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 18571,
+            "text": "armours"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ogre": 10,
+        "first/goblin_archer": 3,
+        "first/pink_jelly": 1,
+        "later/gas": 51,
+        "later/goblin_archer": 20,
+        "later/goblin": 3,
+        "later/ogre": 35,
+        "later/hunger": 0,
+        "later/eel": 5,
+        "later/skeleton": 23,
+        "later/lich": 4,
+        "later/iron_golem": 120,
+        "later/slag_crawler": 22,
+        "later/smith": 5,
+        "later/burst": 3,
+        "later/foundry_master": 72,
+        "later/cave_troll": 57,
+        "later/lurker": 67,
+        "later/mirror_shade": 11,
+        "later/deep_eel": 14,
+        "later/lurker_queen": 12
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 193,
+        "tier": "death",
+        "turns": 40158,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "captive",
+          "vault",
+          "den",
+          "vault",
+          "captive",
+          "lock",
+          "captive",
+          "captive"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d14-baseline",
+      "start": 14,
+      "counts": {
+        "first/gas": 9,
+        "later/gas": 44,
+        "later/drain": 26,
+        "later/skeleton_spawn_unattributed": 25,
+        "later/support": 101,
+        "later/hero_reflection": 36
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 800,
+            "ttl": 40,
+            "x": 14,
+            "y": 9
+          }
+        },
+        "later/gas": {
+          "depth": 15,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1410,
+            "ttl": 40,
+            "x": 11,
+            "y": 8
+          }
+        },
+        "later/drain": {
+          "depth": 15,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 1489
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 16,
+          "event": {
+            "e": {
+              "hp": 20,
+              "id": 45,
+              "kind": "skeleton",
+              "max_hp": 20,
+              "tags": [
+                "undead"
+              ],
+              "x": 19,
+              "y": 8
+            },
+            "k": "spawn",
+            "t": 2690
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 7635,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 21,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 128,
+            "t": 12190,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ghoul": 3,
+        "first/skeleton": 2,
+        "first/gas": 6,
+        "later/skeleton": 30,
+        "later/gas": 30,
+        "later/wraith": 7,
+        "later/burst": 12,
+        "later/hunger": 0,
+        "later/ghoul": 5,
+        "later/ogre": 4,
+        "later/lich": 1,
+        "later/slag_crawler": 55,
+        "later/iron_golem": 93,
+        "later/smith": 2,
+        "later/foundry_master": 50,
+        "later/cave_troll": 31,
+        "later/lurker": 133,
+        "later/deep_eel": 64,
+        "later/mirror_shade": 9
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 157,
+        "tier": "death",
+        "turns": 29068,
+        "twists": [
+          "captive",
+          "lock",
+          "hunger",
+          "vault",
+          "den",
+          "den",
+          "vault",
+          "captive",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d14-boss_focus",
+      "start": 14,
+      "counts": {
+        "first/gas": 9,
+        "later/gas": 64,
+        "later/drain": 26,
+        "later/skeleton_spawn_unattributed": 22,
+        "later/support": 106,
+        "later/hero_reflection": 22
+      },
+      "examples": {
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 800,
+            "ttl": 40,
+            "x": 14,
+            "y": 9
+          }
+        },
+        "later/gas": {
+          "depth": 15,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1410,
+            "ttl": 40,
+            "x": 11,
+            "y": 8
+          }
+        },
+        "later/drain": {
+          "depth": 15,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 1489
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 16,
+          "event": {
+            "e": {
+              "hp": 20,
+              "id": 45,
+              "kind": "skeleton",
+              "max_hp": 20,
+              "tags": [
+                "undead"
+              ],
+              "x": 19,
+              "y": 8
+            },
+            "k": "spawn",
+            "t": 2690
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 9133,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 21,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 128,
+            "t": 11490,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ghoul": 3,
+        "first/skeleton": 2,
+        "first/gas": 6,
+        "later/skeleton": 30,
+        "later/gas": 45,
+        "later/wraith": 7,
+        "later/burst": 24,
+        "later/hunger": 0,
+        "later/ghoul": 5,
+        "later/ogre": 4,
+        "later/lich": 1,
+        "later/slag_crawler": 30,
+        "later/smith": 2,
+        "later/iron_golem": 75,
+        "later/foundry_master": 12,
+        "later/deep_eel": 56,
+        "later/cave_troll": 53,
+        "later/lurker": 76,
+        "later/mirror_shade": 9,
+        "later/lurker_queen": 30
+      },
+      "last_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 161,
+        "tier": "death",
+        "turns": 28588,
+        "twists": [
+          "captive",
+          "lock",
+          "hunger",
+          "vault",
+          "den",
+          "captive",
+          "lock",
+          "den",
+          "den",
+          "vault",
+          "captive"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d14-corridor_fighting",
+      "start": 14,
+      "counts": {
+        "first/skeleton_spawn_unattributed": 1,
+        "first/gas": 9,
+        "later/gas": 42,
+        "later/drain": 12,
+        "later/skeleton_spawn_unattributed": 11,
+        "later/hero_reflection": 54,
+        "later/support": 51
+      },
+      "examples": {
+        "first/skeleton_spawn_unattributed": {
+          "depth": 14,
+          "event": {
+            "e": {
+              "hp": 19,
+              "id": 15,
+              "kind": "skeleton",
+              "max_hp": 19,
+              "tags": [
+                "undead"
+              ],
+              "x": 3,
+              "y": 8
+            },
+            "k": "spawn",
+            "t": 800
+          }
+        },
+        "first/gas": {
+          "depth": 14,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1010,
+            "ttl": 40,
+            "x": 13,
+            "y": 7
+          }
+        },
+        "later/gas": {
+          "depth": 15,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 1860,
+            "ttl": 20,
+            "x": 3,
+            "y": 18
+          }
+        },
+        "later/drain": {
+          "depth": 16,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 2499
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 18,
+          "event": {
+            "e": {
+              "hp": 21,
+              "id": 89,
+              "kind": "skeleton",
+              "max_hp": 21,
+              "tags": [
+                "undead",
+                "summoned"
+              ],
+              "x": 4,
+              "y": 3
+            },
+            "k": "spawn",
+            "t": 4590
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 19,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 100,
+            "t": 6277,
+            "verb": "reflect"
+          }
+        },
+        "later/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 6662,
+            "text": "armours"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/ghoul": 1,
+        "first/skeleton": 7,
+        "first/gas": 3,
+        "later/ogre": 13,
+        "later/skeleton": 20,
+        "later/burst": 24,
+        "later/gas": 39,
+        "later/spectral_blade": 1,
+        "later/wraith": 4,
+        "later/hunger": 0,
+        "later/lich": 1,
+        "later/slag_crawler": 38,
+        "later/iron_golem": 195,
+        "later/smith": 3,
+        "later/foundry_master": 33
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 528,
+        "kills": 110,
+        "tier": "bank",
+        "turns": 15216,
+        "twists": [
+          "captive",
+          "lock",
+          "hunger",
+          "den",
+          "lock",
+          "den",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d19-baseline",
+      "start": 19,
+      "counts": {
+        "first/support": 4,
+        "later/support": 19,
+        "later/skeleton_spawn_unattributed": 1,
+        "later/hero_reflection": 26
+      },
+      "examples": {
+        "first/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 790,
+            "text": "armours"
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1800,
+            "text": "armours"
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 20,
+          "event": {
+            "e": {
+              "hp": 22,
+              "id": 31,
+              "kind": "skeleton",
+              "max_hp": 22,
+              "tags": [
+                "undead"
+              ],
+              "x": 21,
+              "y": 12
+            },
+            "k": "spawn",
+            "t": 2040
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 20,
+          "event": {
+            "dmg": 3,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 17,
+            "t": 2430,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/bell_sentinel": 3,
+        "first/forge_imp": 4,
+        "first/slag_crawler": 28,
+        "later/bell_sentinel": 6,
+        "later/skeleton": 12,
+        "later/forge_imp": 2,
+        "later/iron_golem": 43,
+        "later/smith": 5,
+        "later/slag_crawler": 7,
+        "later/foundry_master": 75
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 184,
+        "kills": 35,
+        "tier": "bank",
+        "turns": 7460,
+        "twists": [
+          "captive",
+          "captive",
+          "vault"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d19-reflect_read",
+      "start": 19,
+      "counts": {
+        "first/support": 4,
+        "later/support": 66,
+        "later/skeleton_spawn_unattributed": 1,
+        "later/hero_reflection": 12
+      },
+      "examples": {
+        "first/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 790,
+            "text": "armours"
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1800,
+            "text": "armours"
+          }
+        },
+        "later/skeleton_spawn_unattributed": {
+          "depth": 20,
+          "event": {
+            "e": {
+              "hp": 22,
+              "id": 31,
+              "kind": "skeleton",
+              "max_hp": 22,
+              "tags": [
+                "undead"
+              ],
+              "x": 21,
+              "y": 12
+            },
+            "k": "spawn",
+            "t": 2040
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 23,
+          "event": {
+            "dmg": 1,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 67,
+            "t": 6910,
+            "verb": "reflect"
+          }
+        }
+      },
+      "hero_damage": {
+        "first/bell_sentinel": 3,
+        "first/forge_imp": 4,
+        "first/slag_crawler": 28,
+        "later/bell_sentinel": 6,
+        "later/skeleton": 3,
+        "later/forge_imp": 13,
+        "later/smith": 14,
+        "later/slag_crawler": 8,
+        "later/foundry_master": 44,
+        "later/deep_eel": 15,
+        "later/lurker": 50,
+        "later/cave_troll": 44,
+        "later/siren": 6,
+        "later/mirror_shade": 41
+      },
+      "last_run": {
+        "cause": "cave_troll",
+        "depth": 27,
+        "kept": 0,
+        "kills": 78,
+        "tier": "death",
+        "turns": 16339,
+        "twists": [
+          "captive",
+          "vault",
+          "den",
+          "vault",
+          "captive",
+          "den"
+        ]
+      }
+    },
+    {
+      "case": "trace-s2-d19-corridor_fighting",
+      "start": 19,
+      "counts": {
+        "first/support": 11,
+        "later/support": 67,
+        "later/hero_reflection": 32,
+        "later/gas": 16
+      },
+      "examples": {
+        "first/support": {
+          "depth": 19,
+          "event": {
+            "k": "callout",
+            "t": 800,
+            "text": "armours"
+          }
+        },
+        "later/support": {
+          "depth": 20,
+          "event": {
+            "k": "callout",
+            "t": 1700,
+            "text": "armours"
+          }
+        },
+        "later/hero_reflection": {
+          "depth": 20,
+          "event": {
+            "dmg": 4,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 19,
+            "t": 2130,
+            "verb": "reflect"
+          }
+        },
+        "later/gas": {
+          "depth": 22,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 5240,
+            "ttl": 20,
+            "x": 24,
+            "y": 16
+          }
+        }
+      },
+      "hero_damage": {
+        "first/bell_sentinel": 3,
+        "first/forge_imp": 1,
+        "first/slag_crawler": 19,
+        "later/slag_crawler": 10,
+        "later/smith": 13,
+        "later/forge_imp": 10,
+        "later/iron_golem": 93,
+        "later/skeleton": 12,
+        "later/burst": 6,
+        "later/gas": 9,
+        "later/bell_sentinel": 2,
+        "later/foundry_master": 56
+      },
+      "last_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 269,
+        "kills": 44,
+        "tier": "bank",
+        "turns": 7530,
+        "twists": [
+          "captive",
+          "captive",
+          "lock"
+        ]
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "seed": 1,
+      "start": 9,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": true
+      }
+    },
+    {
+      "seed": 1,
+      "start": 14,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": false
+      }
+    },
+    {
+      "seed": 1,
+      "start": 19,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": false
+      }
+    },
+    {
+      "seed": 2,
+      "start": 9,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": true
+      }
+    },
+    {
+      "seed": 2,
+      "start": 14,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": false
+      }
+    },
+    {
+      "seed": 2,
+      "start": 19,
+      "identical_send": {
+        "floor": true,
+        "monsters": true,
+        "rng": true,
+        "seed": true,
+        "id": true,
+        "route": true,
+        "hero": false
+      }
+    }
+  ]
+}

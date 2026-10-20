@@ -1,0 +1,6 @@
+PASS cargo build --profile fast -p idlever-core --example encounter_catalogue
+PASS cargo clippy --profile fast -p idlever-core --example encounter_catalogue -- -D warnings
+PASS scoped rustfmt and git diff --check
+PASS 18 actual case step(1)/step(100) complete events and complete terminal saves
+PASS forward-pass XZ raw receipt/invariant verifier
+NOT_ESTABLISHED six controlled scenes; NOT_RUN next8h comparisons, visual/content/gates

@@ -1,9 +1,46 @@
-# Active backlog — Cut285 statistical probe scheduling measured, 2026-10-20
+# Active backlog — Cut286 earned encounter discovery screen, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
 This checkpoint commits the route-aware drilled counter packing fix and its
 validation. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut286 earned encounter discovery — first screen captured, R3 remains open
+
+Contract: [CUT286_EARNED_ENCOUNTER_CATALOGUE.md](CUT286_EARNED_ENCOUNTER_CATALOGUE.md).
+New diagnostic `encounter_catalogue` loads earned saves, continues ordinary
+absences, prepares through public commands, and traces actual sends at both
+1/100-tick quanta. Two historical Cut282 day4 camps continued on current core for
+one24h absence each; both earned pack_break. Six legal prepared parents (starts
+9/14/19, two seeds), tactics bought toL3 with earned marks, Scout paused/recovery
+waited, baseline+two legal variants each:18 departures,36 observer continuations.
+All18 have exact full-event and complete-terminal-save parity between quanta.
+Scoped rustfmt and warnings-denied example Clippy pass (exec48776 exit0).
+
+**Not six accepted scenes.** All18 start on matched floor/monsters/run RNG and
+hero equipment/stats, but boss_focus D14 and reflect_read D19 add a fire potion
+on both seeds (four inventory confounds). Later RNG consumption differs by
+choice, so later generated floors can differ. Baseline first floors have zero
+hero reflection/drain events; seed2 D19 shows four smith armours callouts and
+seed2 D9 shows6 gas damage. No later depth result proves a matched-scene counter.
+Skeleton spawns are unattributed; no Lich-summon claim. Positions are tick-boundary
+before/after, not exact intra-tick attack coordinates. Next8h comparisons NOT_RUN.
+
+Evidence: `docs/evidence/cut286/`:279 original raw receipts in capture.tar.xz
+(6.1MiB compressed;~710MB raw), per-file hashes/source/core-tree/native identities,
+all18 discovery summaries including losses, and independent verifier. Final forward-pass XZ check passes (exec97828 exit0),
+including all raw hashes and18 observer/parent comparisons; original gzip check
+also passed. Raw copies target/cut286.
+All capture/preparation/earn/archive/verification workers are terminal. Capture
+workers:47999/82349/54673/9625/86965/
+94673/95401/17136. No game core, content, WASM, balance or deployment change.
+
+Next: explicitly bound new earned departure search for eligible **starting-floor**
+threats; prepare a common eligible fire supply publicly before branching and
+verify sent inventories match. Then quote actual counter actions, add separate
+same-parent next8h checks with common Scout resume, and assess whether six real
+contrasts exist. Do not author formations or claim tactical superiority from
+these unmatched later scenes. R3, R4, balance failures, fun and audits remain open.
 
 ## Cut285 diagnostic scheduler — complete at measured scope
 
