@@ -1,0 +1,65 @@
+diff --git a/crates/idlever-core/examples/lich_target_probe.rs b/crates/idlever-core/examples/lich_target_probe.rs
+index 0b9ed3ce..e097dd0a 100644
+--- a/crates/idlever-core/examples/lich_target_probe.rs
++++ b/crates/idlever-core/examples/lich_target_probe.rs
+@@ -1,4 +1,4 @@
+-//! Cut301: one earned early camp, legal Lich target rewrite; diagnostic, never a gate.
++//! Cut301/310: one earned early camp, legal Lich rewrite; diagnostic, never a gate.
+ use idlever_core::{bloodlines::Session, engine::Capsule, packages, Ev, Replay, RunRec};
+ use serde_json::{json, Value};
+ use std::{collections::BTreeMap, fs, path::Path};
+@@ -75,9 +75,10 @@ fn reconstruct(dir: &Path, cap: &Capsule, rec: &RunRec, replay: &Replay) -> Resu
+ }
+ fn main() -> Result<()> {
+     let args: Vec<_> = std::env::args().skip(1).collect();
+-    if args.len() != 2 {
+-        return Err("lich_target_probe NEW_OUTPUT SAVED_CAMP".into());
++    if args.len() != 2 && !(args.len() == 3 && args[2] == "--combined") {
++        return Err("lich_target_probe NEW_OUTPUT SAVED_CAMP [--combined]".into());
+     }
++    let combined = args.len() == 3;
+     if std::env::var_os("IDLEVER_BALANCE_JSON").is_some()
+         || std::env::var_os("IDLEVER_BALANCE_FILE").is_some()
+     {
+@@ -87,7 +88,7 @@ fn main() -> Result<()> {
+     idlever_core::forecast::set_parallel_sims(false);
+     let out = Path::new(&args[0]);
+     fs::create_dir(out)?;
+-    for input in &args[1..] {
++    for input in &args[1..2] {
+         let raw = fs::read_to_string(input)?;
+         let source = Session::load(&raw)?;
+         assert!(source.run.is_none());
+@@ -98,7 +99,12 @@ fn main() -> Result<()> {
+         fs::write(dir.join("original.json"), &raw)?;
+         fs::write(dir.join("canonical.json"), source.save())?;
+         let source_before = source.save();
+-        let variants = ["unchanged", "target-undead", "unchanged-repeat"];
++        let candidate = if combined {
++            "target-undead-present"
++        } else {
++            "target-undead"
++        };
++        let variants = ["unchanged", candidate, "unchanged-repeat"];
+         let mut control = None;
+         for variant in variants {
+             let branch = dir.join(variant);
+@@ -111,7 +117,7 @@ fn main() -> Result<()> {
+                 s.lineage.clock_s,
+                 s.lineage.total_turns,
+             );
+-            if variant == "target-undead" {
++            if variant == candidate {
+                 let mut rules = s.lineage.rules().clone();
+                 let mut changed = 0;
+                 for row in &mut rules.rows {
+@@ -125,6 +131,9 @@ fn main() -> Result<()> {
+                             ]
+                     {
+                         row.verb.a = Some("tag:undead".into());
++                        if combined {
++                            row.conds[0].t = Some("undead".into());
++                        }
+                         changed += 1;
+                     }
+                 }

@@ -126,6 +126,18 @@ native settlement4/4 and real-WASM564checks/24cases pass. WASM now7152841bytes/
 53b98bb4; default settlement pin updated without regenerated after-saves. No
 deployment. Next earlier effective pen-policy diagnosis; recovery/worker and
 shared upgrade API/UI remain open. Both failed curves retained. See Cut309.
+Cut310 tests the combined Lich undead presence+target rewrite on the original
+earned16h parent. Three fixed8h continuations/38runs execute12.888s. Targets
+spectral0/skeleton1490pass, but D26fails requiredD28, so no ordinary pilot or
+confirmation/adoption. Ordinary-floor14–17 row events73→2435, Gold−499 and
+larger finish-run tail remain visible; target tallies are not damaging hits.
+All baseline/repeat files exact to Cut301; actual public replay/whole legal
+preparation/ledger/packing/source/archive/summary audits pass. Scoped driver
+Clippy/format passes; main library/WASM/defaults unchanged, no deployment.
+Next inspect the existing savedD28 summoned-row removal and test an explicit
+TUNED-only boss-target fallback policy under a new fixed ordinary contract,
+leaving PICKED/automatic drills unchanged. Full pen/worker bars remain. See
+Cut310/HANDOFF; shared upgrade API/UI and recovery coordination remain open.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

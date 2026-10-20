@@ -1,0 +1,91 @@
+{
+  "actual_runs": 38,
+  "cases": [
+    {
+      "variant": "target-undead-present",
+      "best": 26,
+      "outcomes": {
+        "bank": 5,
+        "death": 5,
+        "return": 2
+      },
+      "gold_delta": 8009,
+      "finish_run_ticks_past_budget": 1372,
+      "candidate_row_rule_events_by_floor": {
+        "14": 543,
+        "15": 627,
+        "16": 567,
+        "17": 698,
+        "18": 989,
+        "19": 73,
+        "20": 60,
+        "21": 57,
+        "22": 5,
+        "23": 29,
+        "24": 0,
+        "25": 0,
+        "26": 0
+      },
+      "candidate_row_fired_on": {
+        "ghoul": 1536,
+        "lich": 156,
+        "skeleton": 1490,
+        "wraith": 427
+      }
+    },
+    {
+      "variant": "unchanged",
+      "best": 23,
+      "outcomes": {
+        "bank": 3,
+        "death": 8,
+        "return": 2
+      },
+      "gold_delta": 8508,
+      "finish_run_ticks_past_budget": 185,
+      "candidate_row_rule_events_by_floor": {
+        "14": 25,
+        "15": 20,
+        "16": 13,
+        "17": 15,
+        "18": 306,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0
+      },
+      "candidate_row_fired_on": {
+        "skeleton": 270,
+        "spectral_blade": 101
+      }
+    },
+    {
+      "variant": "unchanged-repeat",
+      "best": 23,
+      "outcomes": {
+        "bank": 3,
+        "death": 8,
+        "return": 2
+      },
+      "gold_delta": 8508,
+      "finish_run_ticks_past_budget": 185,
+      "candidate_row_rule_events_by_floor": {
+        "14": 25,
+        "15": 20,
+        "16": 13,
+        "17": 15,
+        "18": 306,
+        "19": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0
+      },
+      "candidate_row_fired_on": {
+        "skeleton": 270,
+        "spectral_blade": 101
+      }
+    }
+  ]
+}

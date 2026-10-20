@@ -1,4 +1,4 @@
-# Active backlog — Cut309 recovery cap and alternatives verified, 2026-10-21
+# Active backlog — Cut310 combined Lich screen rejected, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -25,6 +25,41 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut310 — combined Lich scope/target fails the saved-world bar
+
+Contract [CUT310_LICH_COMBINED.md](CUT310_LICH_COMBINED.md), evidence
+[cut310/README.md](evidence/cut310/README.md). Diagnostic driver adds explicit
+--combined; original two-argument target-only mode retained. Main library,
+shipping defaults and WASM unchanged. All240 Cut309 source files except this
+archived driver checked unchanged; source-base/driver/patch/input/runtime/
+analyzer/verifier/contract identities frozen before outcomes. No deployment.
+
+Original earned seed2 16h parent; unchanged/combined/repeat public8h Sessions,
+38actual runs,12.888s execution. Combined changes ONLY the authored summoned
+row's presence+selector to undead, retaining hp>45/priority/companion boss row.
+Spectral target tallies0 and skeleton1490 PASS, but bestD26 FAIL requiredD28.
+ControlsD23; previous target-onlyD28. No ordinary pilot or independent sampling
+follows this failed screen. Both controls match Cut301 unchanged EVERY byte;
+all actual reconstruction/public replay events exact. Gold/ledger/packing,
+whole legal preparation, records, target/floor/summary/archive audits pass.
+
+Combined ordinary-floor14–17 row events73→2435; targetsghoul1536,wraith427,
+Lich156/skeleton1490. These are not damaging hits or causal isolation of the
+later depth loss. Gold delta8009vs8508 (−499), bank/return/death5/2/5vs3/2/8,
+finish-run excess1372vs185ticks. Preserve non-equal-tick tradeoffs.94rawfiles/
+43548993bytes archived; scoped Clippy/rustfmt/authored whitespace pass. Raw
+patch context retained. No rerun/extension/default adoption. All owned jobs
+terminal, runtime target/cut310/runtime. WASM7152841bytes/53b98bb4 pin unchanged;
+no core/client/full-gate claim, deployment or held-out Cut300 reuse.
+
+Next concrete policy candidate: original measured removal of the authored
+summoned fallback while retaining the boss-target companion (savedD28), rather
+than another global generated-template scope rewrite. A TUNED-only choice uses
+existing pen control, leaving PICKED/learned automatic drills unchanged. Freeze
+an ordinary-policy contract and retain absolute arrivals/pen≥1.15 before any
+new evidence; old saved result is not whole-campaign acceptance. Broader
+worker/recovery/shared upgrade API/UI and confirmation remain active.
 
 ## Cut309 — compile-free recovery cap implemented; defaults unchanged
 
