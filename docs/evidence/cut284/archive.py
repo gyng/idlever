@@ -8,8 +8,8 @@ raw = Path('target/cut284/v2')
 identity = json.loads((raw/'identity.json').read_text())
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 assert sha('crates/idlever-core/examples/route_counter_probe.rs') == identity['example_sha256']
-assert sha('target/cut282-native/fast/examples/route_counter_probe') == identity['native_sha256']
-assert sha('docs/CUT284_ROUTE_COUNTER_PACKING.md') == identity['contract_sha256']
+assert sha('target/cut284/v2/probe-before') == identity['native_sha256']
+assert sha(archive/'frozen-contract.md') == identity['contract_sha256']
 assert json.loads((raw/'exit.json').read_text())['exit_code'] == 0
 packet = json.loads((raw/'routes.json').read_text())
 assert len(packet['cells']) == 198 and len({c['route'] for c in packet['cells']}) == 13

@@ -1,0 +1,59 @@
+{
+  "focused_native": {
+    "exit": 0,
+    "passed": 3
+  },
+  "workspace_native": {
+    "exit": 0,
+    "passed": 1095,
+    "ignored": 6
+  },
+  "all_target_clippy": {
+    "exit": 0,
+    "warnings": "denied"
+  },
+  "wasm_bridge": {
+    "exit": 0,
+    "sends": 6,
+    "exact_inflight_reload": true
+  },
+  "route_matrix": {
+    "exit": 0,
+    "cells": 198,
+    "errors_before": 32,
+    "errors_after": 0,
+    "otherwise_unchanged": 166
+  },
+  "native_gold_settlements": {
+    "exit": 0,
+    "cases": 4,
+    "expected_and_after_saves": "unchanged"
+  },
+  "browser_gold_settlements": {
+    "exit": 0,
+    "checks": 564,
+    "cases": 24,
+    "evidence": "../gold-settlements/results.json"
+  },
+  "format": {
+    "exit": 0,
+    "scope": "global and final changed files"
+  },
+  "lint": {
+    "exit": 0
+  },
+  "types": {
+    "exit": 0
+  },
+  "copy": {
+    "exit": 0,
+    "violations": 0
+  },
+  "default_manifest_check": {
+    "exit": 0,
+    "manifest": "docs/evidence/cut284/settlements-inputs-1f92.json"
+  },
+  "canonical_full_gate": "NOT_RUN",
+  "fun": "NOT_RUN",
+  "deployment": "NOT_RUN"
+}

@@ -23,9 +23,11 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    statistical study froze gap8 before held-out confirmation (live); absolute
    non-regression and the pen advantage are required. See
    [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
-   Cut284 independently reproduces a concrete counter-packing bug on moved boss
-   routes (32/198 controlled cells); fix it after the frozen-runtime study ends,
-   with actual packing/parity checks. It does not explain the base-route failures.
+   **Cut284 fixed/validated** the moved-route counter-packing defect:0/198 errors,
+   workspace1095 pass/6 ignored, real-WASM sends/parity and564 settlement checks.
+   Cut283's old immutable study continues independently and cannot authorize
+   a default on the new runtime. Guide gap remains4. The route fix does not
+   explain or close the base-route balance failures.
 3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
    W2 effects are held, not unfinished authorized implementation. R3 still needs
    six fresh paired scene measurements. R4's preserved builds authored no class

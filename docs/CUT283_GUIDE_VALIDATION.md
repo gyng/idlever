@@ -32,7 +32,7 @@ it is not a global95% guarantee across future studies.
 
 ## Adoption requires more than the screen
 
-No game change is made while the study runs. A rejected or inconclusive result
+No game change is made to the frozen study runtime. A rejected or inconclusive result
 means retain current defaults and investigate a different cause. Statistical
 acceptance with no observed D33 censoring permits an explicit targeted16-seed
 `tuned-picked,automation-pays` catalog check, preserving both original numeric
@@ -43,3 +43,11 @@ Only after those pass, amend the implementation/validation scope before changing
 the Rust default and tuning profile together. Cover affected deterministic Guide
 semantics, relevant progression/settlement parity, rebuilt WASM and UI-facing
 default consistency. No deployment, held W2 upgrade or recovery change is included.
+
+Execution amendment2026-10-20: Cut284 independently fixes a reproduced route
+packing defect in the current worktree while this study retains its immutable
+old executable, inputs, analysis and claims. Its final verdict still describes
+that old runtime only. It cannot authorize profile adoption on the new runtime;
+fresh current-runtime evidence is required. The original preregistration is
+archived in `evidence/cut283/frozen-contract.md`; no confirmation budget or
+winner changes and no runner-up reuse are permitted.

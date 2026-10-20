@@ -1288,7 +1288,7 @@ pub fn on_run_end_held(l: &mut LineageState, bosses_met: &[String], max_depth: u
 pub fn quartermaster(l: &LineageState) -> Vec<String> {
     let mut out = Vec::new();
     for d in l.pkg.drills.iter().filter(|d| !d.revoked) {
-        let Some(depth) = crate::descent::boss_depth(&d.boss) else { continue };
+        let Some(depth) = l.rules().route().boss_depth(&d.boss) else { continue };
         if l.best_depth + 2 < depth || l.start.max(1) > depth {
             continue;
         }

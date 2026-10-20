@@ -1819,3 +1819,116 @@ fn an_unpicked_temperament_stays_optional_across_incarnations() {
     for _ in 3..24 {g.lineage.new_heir();assert!(g.lineage.pkg.temperament.is_none());assert!(g.lineage.heirs.born.is_none());assert_eq!(g.lineage.pkg.offer.len(),4);}
     assert!(!g.lineage.pkg.temperament_chosen,"no silent random personality selection");
 }
+
+// Cut284 controlled packing fixtures; these grants are not earned progression evidence.
+fn route_counter_camp(route: crate::descent::Route, boss: &str, item: &str, best: u32, start: u32) -> Game {
+    let mut g = Game::new_resident(284);
+    g.lineage.town.home = Some(true);
+    g.lineage.best_depth = best;
+    let active = g.lineage.active_set;
+    g.lineage.sets[active] = g.lineage.rules().clone().with_route(route);
+    g.lineage.light_waystones_on(best, route);
+    for (kind, _) in route.bosses() { g.lineage.kills.insert(kind.into()); }
+    g.set_start(start).unwrap();
+    g.lineage.gold_move(100_000 - g.lineage.gold, "fixture");
+    g.lineage.supplies.clear();
+    g.lineage.last_supplies.clear();
+    g.lineage.last_supply_origins.clear();
+    g.lineage.kit.insert("pack".into(), 2);
+    g.lineage.pkg.runs.insert("steady".into(), 220);
+    for kind in [item, "heal"] {
+        g.lineage.facts.insert(crate::item::ident_fact(&g.lineage.flavours, kind).unwrap());
+        g.lineage.forge.entry(kind.into()).or_default().craftable = true;
+    }
+    g.lineage.pkg.drills.push(packages::Drill {
+        boss: boss.into(), rows: packages::drill_rows(boss, 30), revoked: false, announced: false,
+    });
+    packages::recompile(&mut g.lineage);
+    g
+}
+
+#[test]
+fn quartermaster_route_matrix_matches_reach_skip_identification_and_revocation() {
+    let mut mismatches = Vec::new();
+    let mut cells = 0;
+    for route in crate::descent::Route::all() {
+        for (boss, item) in [("bloat_mother", "fire"), ("lurker_queen", "silence")] {
+            let depth = route.boss_depth(boss).unwrap();
+            let before = crate::engine::WAYSTONES.into_iter().filter(|s| *s <= depth).max().unwrap();
+            let after = crate::engine::WAYSTONES.into_iter().find(|s| *s > depth);
+            let mut cases = vec![(depth - 3, 1, false), (depth - 2, 1, true), (33, before, true)];
+            if let Some(start) = after { cases.push((33, start, false)); }
+            for (best, start, expected) in cases {
+                let g = route_counter_camp(route, boss, item, best, start);
+                let packed = packages::quartermaster(&g.lineage);
+                if packed != if expected { vec![item.to_string()] } else { vec![] } {
+                    mismatches.push(format!("{route:?} {boss} D{best}/start{start}: {packed:?}, expected={expected}"));
+                }
+                let mut unknown = g.clone();
+                unknown.lineage.facts.remove(&crate::item::ident_fact(&unknown.lineage.flavours, item).unwrap());
+                assert!(packages::quartermaster(&unknown.lineage).is_empty(), "unidentified counter on {route:?}");
+                let mut revoked = g;
+                revoked.lineage.pkg.drills[0].revoked = true;
+                assert!(packages::quartermaster(&revoked.lineage).is_empty(), "revoked drill on {route:?}");
+                cells += 1;
+            }
+        }
+    }
+    assert_eq!(cells, 99);
+    assert!(mismatches.is_empty(), "route counter mismatches: {mismatches:#?}");
+}
+
+#[test]
+fn quartermaster_route_moved_counters_reach_actual_saved_send_inventory() {
+    for (route, boss, item, start) in [
+        (0, "bloat_mother", "fire", 9), (0, "lurker_queen", "silence", 24),
+        (1, "bloat_mother", "fire", 5), (2, "bloat_mother", "fire", 14),
+        (8, "lurker_queen", "silence", 19), (16, "lurker_queen", "silence", 29),
+    ] {
+        let route = crate::descent::Route(route);
+        let g = route_counter_camp(route, boss, item, 33, start);
+        let mut loaded = Game::load(&g.save()).unwrap();
+        assert_eq!(loaded.lineage.rules().route(), route);
+        loaded.restock();
+        assert!(loaded.lineage.supplies.iter().any(|s| s.kind == item), "shelf {route:?} {boss}");
+        loaded.start_run(Some(284));
+        let run = loaded.run.as_ref().unwrap();
+        assert_eq!(run.start, start);
+        assert!(run.hero.inv.iter().any(|i| i.kind == item), "inventory {route:?} {boss}");
+        assert!(run.hero.inv.iter().filter(|i| i.kind == "heal").count() >= 2, "sustain {route:?} {boss}");
+    }
+}
+
+#[test]
+fn quartermaster_route_moved_counter_catchup_is_exact_whole_sliced_and_reloaded() {
+    for (route, boss, item, start) in [(2, "bloat_mother", "fire", 14), (16, "lurker_queen", "silence", 29)] {
+        let mut g = route_counter_camp(crate::descent::Route(route), boss, item, 33, start);
+        crate::tree::grant(&mut g.lineage, &crate::tree::LEGACY);
+        g.restock();
+        g.start_run(Some(284));
+        assert!(g.run.as_ref().unwrap().hero.inv.iter().any(|i| i.kind == item), "actual in-flight counter, route{route}");
+        let mut base = crate::bloodlines::Session::new(284);
+        base.active = g;
+        let base = crate::bloodlines::Session::load(&base.save()).unwrap();
+        let mut whole = base.clone();
+        let expected = whole.run_offline_mode(28800, false, true);
+        assert!(expected.runs > 0, "nonvacuous actual sends, route{route}");
+        for reload in [false, true] {
+            let mut sliced = base.clone();
+            let mut left = 28800;
+            let mut i = 0;
+            let report = loop {
+                let seconds = left.min([1, 719, 1280][i % 3]);
+                let last = seconds == left;
+                let r = sliced.run_offline_slice(seconds, last);
+                if last { break r; }
+                assert!(r.slice_pending);
+                left -= seconds;
+                i += 1;
+                if reload { sliced = crate::bloodlines::Session::load(&sliced.save()).unwrap(); }
+            };
+            assert_eq!(report, expected, "complete report route{route}/reload{reload}");
+            assert!(sliced.save() == whole.save(), "complete save route{route}/reload{reload}");
+        }
+    }
+}

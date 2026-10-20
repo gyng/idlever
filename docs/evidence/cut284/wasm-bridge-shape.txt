@@ -1,0 +1,8 @@
+file:///home/g/p/riddle/docs/evidence/cut284/wasm_route_check.mjs:95
+  assert.deepEqual(saved.run.rules.route ?? [], l.sets[l.active_set].route);
+                                   ^
+
+TypeError: Cannot read properties of undefined (reading 'route')
+    at file:///home/g/p/riddle/docs/evidence/cut284/wasm_route_check.mjs:95:36
+
+Node.js v22.18.0

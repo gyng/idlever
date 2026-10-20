@@ -1,0 +1,10 @@
+error[E0609]: no field `drill_packs` on type `wire::ReturnReport`
+    --> crates/idlever-core/src/tests_cut30_pkg.rs:1913:26
+     |
+1913 |         assert!(expected.drill_packs > 0, "counter actually packed, route{route}");
+     |                          ^^^^^^^^^^^ unknown field
+     |
+     = note: available fields are: `discoveries`, `pick`, `legacy_earned`, `slice_pending`, `bloodlines` ... and 56 others
+
+For more information about this error, try `rustc --explain E0609`.
+error: could not compile `idlever-core` (lib test) due to 1 previous error

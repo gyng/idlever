@@ -1,106 +1,97 @@
-# Active backlog — Cut283 confirmation; Cut284 route bug reproduced, 2026-10-20
+# Active backlog — Cut284 fix complete; Cut283 old-runtime study live, 2026-10-20
 
-Owner: continue working on the backlog. The broad goal remains active.
-No game default, held branch, shipping WASM, push/release or deployment changed.
-Frozen gameplay source418eda2f; live dev game remains423fe45a.
+Owner: continue working on the backlog. Broad goal remains active.
+This checkpoint commits the route-aware drilled counter packing fix and its
+validation. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
+before. No push/release/deployment yet. Live dev game is still423fe45a.
 
-## Cut281 calibration complete
-
-Contract: [CUT281_STATISTICAL_CALIBRATION.md](CUT281_STATISTICAL_CALIBRATION.md).
-Frozen native SHA2563f742aa6… (the actual manifest identity; the earlier active
-note incorrectly repeated Cut280's1c16cb8e validation artifact).
-384 observations:128 distinct64-bit seeds ×3 profiles,32 pilot/96 independent
-reference, ordinary PICKED D18/D23 stopping atD23 or7 days.48 native calls,
-1488.67s with other host workloads. No censoring. All six first-conclusive pilot
-verdicts match the reference; three settle at16 seeds and three at32.
-Independent exact-rational verification reproduces all24 intervals; all384
-scalars match48 raw packet digests and frozen native/profile/analysis identities.
-
-**Limited sensitivity:** every reference median/interval is0h. Weaker scars
-still delay10/96 D23 seeds by8h. These median claims do not constrain the tail;
-6/6 correlated agreements are not an empirical95% accuracy estimate or evidence
-of power to reject a meaningful regression. No profile adopted. D33, means,
-tails, search quality and the inherited canonical failures remain open.
-
-Evidence: `docs/evidence/cut281/`, including `frozen-contract.md` (exact original
-preregistration), manifest, all scalar observations/report, native-integrity and
-independent verifier. Raw chunks/snapshot remain in `target/cut281/`.
-Collector exec3776/PID635180 and all children finished. The live cut now appends
-results, so frozen collector resume intentionally refuses that changed identity;
-revalidate with `node docs/evidence/cut281/verify.mjs`, not a new collection.
-
-## Cut282 diagnostic scope complete; inherited failures remain open
-
-Contract: [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
-The original four-day worker reproduction/16 same-camp interventions are
-committed in bcbda842. Pen trace and all three guide profiles now also finish.
-Shipping control reproduces TUNED/PICKED1.10 and worker mean29.93vs30.14.
-Gap6 passes both two-seed rows (ratio1.50; workers29.75vs29.25), but PICKED
-seed1 D33 slows40→72h and the by-hand comparator slows more than workers.
-Gap8 passes workers only (ratio1.10; workers29.89vs29.18); PICKED seed1 slows
-40→48h. **No profile adopted.** All outputs, profiles, source/native identities
-and independent checks are in `docs/evidence/cut282/catalog-screen/`.
-Elapsed696.54s with other jobs; not a speed comparison. Exec1142 finished.
-
-The ordinary two-day PICKED/TUNED trace completes163.55s;24 camps reconcile
-funds and compiled pen prefix/origins. Six exact earned parents archived in
-`docs/evidence/cut282/pen/`, all scalar/rule/counter/preparation metadata retained.
-TUNED writes Queen silence before40h and mirror cadence afterD33; there is no
-accepted wall edit. This is not absent pen writing or a base-route packing bug.
-Two-seed ratio remains1.10 FAIL. Exec2156 finished. Text logs trim trailing
-whitespace only. Frozen preregistrations preserve their original hashes.
-
-## Cut283 protected statistical study — live
-
-Contract: [CUT283_GUIDE_VALIDATION.md](CUT283_GUIDE_VALIDATION.md), fixed spec
-`tuning/studies/guide-protected.json`. Exec session34941, collector PID666428,
-log `target/cut283-guide-protected.log`, directory
-`target/stat-tune/cut283-guide-protected/`. Poll the exact session; do not restart
-on an observation timeout. Discovery4 seeds completed and froze **gap8**;
-gap6 dropped. Phase is confirmation, baseline/winner first8 held-out seeds in
-flight. The planned looks remain8/16/32, four claims/family alpha0.05; do not
-change budgets, winner or claims after results. Small first-look intervals may
-be unbounded. Baseline and both candidates use ordinary PICKED/TUNED untilD33
-or14 days; censored arrival is344h. Absolute PICKED D23/D33 and TUNED D33
-non-regression plus median per-seed PICKED/TUNED ratio≥1.15 are all required.
-
-Manifest identity5dfe37c1…; frozen native3f742aa6…/core9a45a001d0dbc6ea. No
-current/default balance change. Any confirmation D33 censoring prevents adoption
-under this cut. Statistical acceptance would still need the named targeted
-16-seed canonical checks, not a full automatic campaign. Never promote the
-runner-up using these held-out outcomes. Do not edit analysis scripts, core
-rules, spec or balance inputs while this frozen-runtime study finishes.
-
-## Cut284 route counter-packing defect — reproduced, fix next
+## Cut284 production fix complete
 
 Contract: [CUT284_ROUTE_COUNTER_PACKING.md](CUT284_ROUTE_COUNTER_PACKING.md).
-`examples/route_counter_probe.rs` is a controlled fixture diagnostic, not game
-truth changes. It measures198 cells over all13 routes:32 drilled errors,
-16 omitted and16 spurious counter reservations. All99 pen cells and every
-base-route control pass. Independent verifier reconstructs route permutations,
-boss floors, reach/skip/cell coverage and source/native hashes. Scoped Clippy
-warnings-denied/rustfmt pass. Evidence `docs/evidence/cut284/` includes all
-cells and the initial failed fixture setup (base-only waystone lighting caused
-D5-not-lit; corrected to route-aware lighting). No result was dropped.
+`packages::quartermaster` now looks up a drill's boss on the active route,
+matching pen counters. Canonical floors incorrectly omitted or reserved Mother/
+Queen items after forks. The unchanged13-route diagnostic measures0/198 errors
+versus32 before; exactly those32 drill cells change,166 others remain identical,
+including all pen/base controls. Independent archived receipt checks pass.
 
-Cause: drilled `packages::quartermaster` uses canonical `descent::boss_depth`;
-pen counters use the actual route. After Cut283 finishes, fix drilled reach/skip
-checks to use the actual route, add meaningful all-route/identified/revoked and
-actual restock/send tests, rebuild WASM and verify relevant save/settlement
-parity. Old runtime balance evidence must remain historical if production rules
-change. Do not call the base-route regression failures fixed by this route bug.
-No production Rust rule is changed yet; all diagnostic/build processes finished.
-Only the protected statistical study remains live.
+Three focused tests pass:99 drilled reach/skip cases plus unidentified/revoked
+checks; six saved/send inventories retaining two heals; two moved-counter8h
+in-flight Sessions with exact whole/sliced/reloaded reports and saves. Full
+workspace1095 tests pass/6 ignored. All-target Clippy warnings-denied, global
+format/lint/types/copy and final scoped format/manifest checks pass.
 
-Calibration and completed diagnostics are committed together with this handoff.
-No broad staging (many unrelated untracked files). Cut281 inputs stayed immutable
-through collection; its original frozen contract is archived beside the results.
+Fast WASM7547021 bytes, SHA256
+`1f9206e6352466211866e9c4f1d5fe36aa4b9826a17fabbd5c4542f299e24c63`.
+Six controlled public-WASM sends carry counters/two heals and reload exact
+in-flight saves. Native settlements4/4 retain Gold/ledger/ExitLine, expected
+outcomes and complete after-saves; browser real-WASM564 checks/24 cases pass.
+Default: `docs/evidence/cut284/settlements-inputs-1f92.json`. No after-save
+regeneration. Do not rebuild a different WASM profile without repinning its hash.
+These functional/stress widths are not primary phone visual or Safari proof.
 
-Queue reconciliation: Cut273 W1 workplaces/staff are already implemented; pets'
-2-point tolerance was already applied. Remaining audits are not new work or
-pending owner decisions. R3 needs fresh paired scenes; R4's old builds authored
-no class verbs. Held Bank/Vat W2 upgrades and short recovery stay held. Broad
-backlog, independent fun and exhaustive acceptance remain active/open.
+Evidence: `docs/evidence/cut284/validation/`, `fixed/`, `wasm-bridge/`,
+`gold-settlements/`, `fix-verification.txt`; exact pre-fix matrices and original
+contracts preserved. Failed fixture/test scaffolding/launcher attempts are
+retained and explained. No threshold or expected behavior was weakened.
+Cold native compilation and browser637.5s shared the host with other work;
+these are actual validation timings, not performance benchmarks. All Cut284
+native/build/browser processes and its isolated test server have finished.
+
+No whole gate, rare-event/exhaustive audit or independent fun acceptance is
+claimed. The inherited base-route balance failures remain open; this route fix
+is not a claim to fix them. The latest measured values on the old runtime are
+TUNED/PICKED1.10 and worker D18 48vs24h / mean29.93vs30.14.
+
+## Cut283 protected statistical study — old immutable runtime, live
+
+Contract: [CUT283_GUIDE_VALIDATION.md](CUT283_GUIDE_VALIDATION.md), spec
+`tuning/studies/guide-protected.json`. **Exec34941/PID666428**, log
+`target/cut283-guide-protected.log`, output
+`target/stat-tune/cut283-guide-protected/`. Poll this existing session; never
+restart solely on an observation timeout. Manifest identity5dfe37c1…,
+frozen native3f742aa6…/core9a45a001d0dbc6ea; this is pre-Cut284 gameplay.
+
+Discovery4 paired random seeds froze **gap8**, dropped gap6. Held-out looks8
+and16 were inconclusive for all four claims. Final planned32-seed look is in
+flight (16 new baseline/winner pairs); budgets/claims/winner remain immutable.
+PICKED/TUNED stop atD33 or14 days;344h censor cap. Four median claims require
+absolute PICKED D23/D33 and TUNED D33 non-regression and within-candidate paired
+PICKED/TUNED ratio≥1.15. Family alpha0.05 across four claims/three looks; no
+runner-up retry or extra samples after this final budget.
+
+Execution amendment: finish the independent bug fix on current code while this
+immutable old-runtime study finishes. Its analysis/profile/seed schedule has
+not changed. **Its report cannot authorize profile adoption on this new core**;
+fresh current-runtime evidence is required. Original contracts/preregistration
+and frozen winner are in `docs/evidence/cut283/`. No profile adopted.
+
+Next: finish/archive/independently check the completed old-runtime report,
+including censor counts and inconclusive/rejected claims, without treating it
+as current acceptance. Do not repeat expensive studies until a concrete tuning
+hypothesis and useful metric/sensitivity are established. Core changes and
+current WASM are already validated separately above.
+
+## Prior completed diagnosis and remaining queue
+
+Cut281:384 observations/48 calls,32 pilot/96 separate reference, PICKED D18/D23.
+All6 pilot/reference verdicts agree but reference median intervals are0h;
+weaker scars still delay10/96 D23 seeds by8h. No empirical95% accuracy or power
+against a material regression is established. Independent24-interval/raw384
+receipt checks pass; evidence `docs/evidence/cut281/`. No profile adopted.
+
+Cut282 diagnostic scope complete: ordinary worker four-day reproduction,
+16 same-camp continuations,24 reconciled pen-trace camps and a three-profile
+exact two-seed catalog screen. Shipping control reproduces both inherited rows.
+Gap6 passes relative rows partly by slowing PICKED/by-hand; gap8 passes workers
+only. No profile adopted. Pen really writes Queen silence before40h; mirror
+cadence arrives afterD33, and no wall edit is accepted in those traces.
+All outputs/losing cases/identities in `docs/evidence/cut282/`. Exec1142/2156 done.
+
+Cut273 W1 workplaces/staff are already implemented; pets'2-point tolerance was
+already applied. R3 needs fresh paired scenes, R4's old builds authored no class
+verbs; revalidate dated evidence before using it for new acceptance. Held Bank/
+Vat W2 upgrades and short recovery stay held. Broad queue, current balance,
+independent fun and explicitly requested exhaustive acceptance remain open.
 
 # Cut280 statistical tuning — complete 2026-10-20
 
