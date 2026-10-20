@@ -20,6 +20,22 @@ manifest/winner/intervals. The early-D8 candidate measurements tied, so no
 parameter was adopted and no pacing improvement is inferred from the benchmark.
 Evidence: `docs/evidence/cut280/`.
 
+## Native late-game probe scheduling — 2026-10-20
+
+Cut285 gives remaining statistical trajectories spare forecast capacity within
+`--threads`, using the ordinary dayplayer's existing scheduler width. Previously
+all panels stayed serial even when only a few trajectories remained. No policy,
+terminal check-in, horizon, estimator or game default changed.
+
+Three alternating-order pairs on PICKED/TUNED seeds1/2, D33/14d,8 threads measured
+100.448→44.720s,75.315→39.098s,81.757→37.761s: median paired wall ratio0.4619,
+53.8% lower on this workload. All six complete exports match exactly except
+elapsed_seconds. This is four unique trajectories repeated six times, not a
+population balance claim or a rerun/speedup estimate of the full Cut283 study.
+Host load, CPU time, binary/source identity and archived raw outputs are in
+[evidence/cut285/README.md](evidence/cut285/README.md). Changed native probe
+identity correctly prevents reuse as the old immutable study runtime.
+
 ## Build-time phase split — 2026-10-16 (measured; corrects §3.5's engine.rs claim)
 
 Measured on this checkout (32-core WSL2, rustc 1.96.0, GNU ld, no lld/mold; the box was shared,

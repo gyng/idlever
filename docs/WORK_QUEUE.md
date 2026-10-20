@@ -2,7 +2,7 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest production checkpoint is Cut284
+Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut285 (probe scheduling); production is Cut284
 route-aware counter packing, sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
@@ -27,8 +27,10 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    workspace1095 pass/6 ignored, real-WASM sends/parity and564 settlement checks.
    Cut283 finished INCONCLUSIVE at32 seeds, with no censoring. All76 receipts
    and12 intervals independently check; no profile adopted. Its old immutable
-   runtime cannot authorize a default on the new runtime. Next inspect native
-   probe throughput before another expensive late-game study. Guide gap remains4. The route fix does not
+   runtime cannot authorize a default on the new runtime. Cut285 measured
+   a53.8% median wall-time reduction on four repeated D33 trajectories with exact
+   full-export parity. Next: fresh earned R3 scenes; no further expensive study
+   without a concrete mechanism/metric hypothesis. Guide gap remains4. The route fix does not
    explain or close the base-route balance failures.
 3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
    W2 effects are held, not unfinished authorized implementation. R3 still needs

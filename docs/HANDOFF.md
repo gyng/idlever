@@ -1,9 +1,39 @@
-# Active backlog — Cut284 fix complete; Cut283 study archived inconclusive, 2026-10-20
+# Active backlog — Cut285 statistical probe scheduling measured, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
 This checkpoint commits the route-aware drilled counter packing fix and its
 validation. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut285 diagnostic scheduler — complete at measured scope
+
+Contract: [CUT285_STAT_PROBE_THROUGHPUT.md](CUT285_STAT_PROBE_THROUGHPUT.md).
+Only `examples/dayplayer_stat/mod.rs` changes: the existing ordinary dayplayer
+forecast width shares requested threads among remaining trajectories; queued
+jobs reserve their share. Game core, check-in preparation, policies, horizons,
+estimators, confidence budgets, profiles and defaults remain unchanged.
+
+Three sequential alternating-order pairs: PICKED/TUNED seeds1/2 through D33 or
+14d,3 check-ins/day,8 threads. Before→after wall100.448→44.720s,
+75.315→39.098s (after first),81.757→37.761s. Median paired after/before0.4619:
+53.8% lower wall time on this workload, passing predeclared10% bar with no
+regressing pair. Six complete exports match exactly except elapsed_seconds;
+24 repeated trajectories cover four unique seed/bot trajectories, not24 seeds.
+Host load varies and is recorded: no universal speedup, full-study rerun,
+population-balance or gate-duration claim. No owned benchmark/build overlap.
+
+Five focused statistical native tests pass,28.47s. Warnings-denied Clippy for
+both examples, scoped rustfmt and diff checks pass; exec79821 ended0. Raw compressed outputs, timing/load/
+CPU receipts, executable/source hashes, original contract, source snapshots and
+independent `verify.py`/`verification.json` are in `docs/evidence/cut285/`.
+The initial mistaken dayplayer launcher is preserved and supplies no evidence.
+All six benchmark jobs and exec13068 completed. Binaries stay in target/cut285.
+No WASM rebuild/repin, release, push or deployment; compiled game core unchanged.
+
+Next: move to fresh earned R3 paired encounter/build measurements,
+while preserving the open base-route balance failures and held proposals. Avoid
+another expensive parameter study until a concrete mechanism/metric hypothesis
+exists. Cut283's inconclusive result remains final on its immutable old runtime.
 
 ## Cut284 production fix complete
 
@@ -65,8 +95,8 @@ Study3297.489s, preparation0.578s,9 calls/76 observations versus88 matched
 unpruned (13.6% fewer). Host contention and no matched wall-time comparator mean
 this is not proof of a campaign speedup.
 
-Next: inspect/measure native late-game probe throughput before another expensive
-study; establish a concrete tuning hypothesis and useful metric sensitivity.
+Cut285 subsequently measured/improved native probe throughput (above). Before
+another expensive study, establish a concrete hypothesis and useful sensitivity.
 Current core/WASM validation remains Cut284 above. R3/R4 earned comparisons,
 remaining balance failures and independent fun acceptance remain open.
 

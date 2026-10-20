@@ -243,16 +243,29 @@ fn observations(request: &Request, threads: usize) -> Vec<Observation> {
         })
         .collect();
     let next = AtomicUsize::new(0);
+    // Include queued trajectories in the divisor: a new worker must never borrow
+    // capacity still reserved for a trajectory that has not started. As jobs end,
+    // widen forecast panels using the same mechanism as the ordinary dayplayer.
+    let remaining = Mutex::new(jobs.len());
+    let width = &super::WIDTH;
+    width.store((threads / jobs.len().max(1)).max(1), Ordering::Relaxed);
     let records = Mutex::new(Vec::with_capacity(jobs.len()));
     std::thread::scope(|scope| {
         for _ in 0..threads.min(jobs.len()) {
-            let (next, records, jobs) = (&next, &records, &jobs);
+            let (next, records, jobs, remaining) = (&next, &records, &jobs, &remaining);
             scope.spawn(move || loop {
                 let index = next.fetch_add(1, Ordering::Relaxed);
                 let Some((seed, cfg)) = jobs.get(index) else {
                     break;
                 };
-                let record = simulate(*seed, *cfg, request);
+                let record = idlever_core::forecast::with_sim_width(width, || {
+                    simulate(*seed, *cfg, request)
+                });
+                {
+                    let mut left = remaining.lock().expect("remaining trajectories lock");
+                    *left -= 1;
+                    width.store((threads / (*left).max(1)).max(1), Ordering::Relaxed);
+                }
                 eprintln!(
                     "stat_probe {} seed {} {} at {:.1}h D{} ({:.3}s)",
                     record.bot,

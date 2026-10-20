@@ -1,0 +1,164 @@
+[
+  {
+    "name": "before-r1",
+    "argv": [
+      "target/cut285/probe-before",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/before-r1.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 100.44796800400945,
+    "cpu_seconds": 329.082671,
+    "executable_sha256": "0f9b9886ac8570190cd6237ccd2d3d8385e9655441bd81489373b7e6982a36ea",
+    "load_average": [
+      5.06103515625,
+      14.6181640625,
+      27.20751953125
+    ]
+  },
+  {
+    "name": "after-r1",
+    "argv": [
+      "target/cut285/probe-after",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/after-r1.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 44.71950236000703,
+    "cpu_seconds": 278.55511099999995,
+    "executable_sha256": "929122e48aca67922cbda58c0756054750cd8617fac428058f53bfe3b649cff0",
+    "load_average": [
+      5.5908203125,
+      13.4501953125,
+      26.216796875
+    ]
+  },
+  {
+    "name": "after-r2",
+    "argv": [
+      "target/cut285/probe-after",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/after-r2.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 39.09803014798672,
+    "cpu_seconds": 239.47457400000005,
+    "executable_sha256": "929122e48aca67922cbda58c0756054750cd8617fac428058f53bfe3b649cff0",
+    "load_average": [
+      5.349609375,
+      12.4296875,
+      25.33544921875
+    ]
+  },
+  {
+    "name": "before-r2",
+    "argv": [
+      "target/cut285/probe-before",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/before-r2.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 75.31457892700564,
+    "cpu_seconds": 226.9834500000001,
+    "executable_sha256": "0f9b9886ac8570190cd6237ccd2d3d8385e9655441bd81489373b7e6982a36ea",
+    "load_average": [
+      8.9208984375,
+      11.68115234375,
+      24.0517578125
+    ]
+  },
+  {
+    "name": "before-r3",
+    "argv": [
+      "target/cut285/probe-before",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/before-r3.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 81.75749708199874,
+    "cpu_seconds": 274.69015300000007,
+    "executable_sha256": "0f9b9886ac8570190cd6237ccd2d3d8385e9655441bd81489373b7e6982a36ea",
+    "load_average": [
+      7.95947265625,
+      11.1123046875,
+      22.85107421875
+    ]
+  },
+  {
+    "name": "after-r3",
+    "argv": [
+      "target/cut285/probe-after",
+      "--seeds",
+      "1,2",
+      "--bots",
+      "PICKED,TUNED",
+      "--days",
+      "14",
+      "--until-depth",
+      "33",
+      "--threads",
+      "8",
+      "--out",
+      "target/cut285/after-r3.json"
+    ],
+    "exit": 0,
+    "wall_seconds": 37.76119759498397,
+    "cpu_seconds": 232.18194299999982,
+    "executable_sha256": "929122e48aca67922cbda58c0756054750cd8617fac428058f53bfe3b649cff0",
+    "load_average": [
+      6.73779296875,
+      10.431640625,
+      22.12744140625
+    ]
+  }
+]
