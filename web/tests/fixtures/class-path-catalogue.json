@@ -1733,6 +1733,23 @@
               "origin": "class:path:caster_conduct",
               "verb": {
                 "a": "tag:boss",
+                "v": "slow"
+              }
+            },
+            {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "boss"
+                },
+                {
+                  "k": "foes>=",
+                  "n": 2
+                }
+              ],
+              "origin": "class:path:caster_conduct",
+              "verb": {
+                "a": "tag:boss",
                 "v": "bolt"
               }
             }
@@ -2572,9 +2589,9 @@
   ],
   "scope": "Authored native catalogue; not an earned save or owned-eligibility fixture",
   "sourceHashes": {
-    "crates/idlever-core/src/class_tree.rs": "5ae07c31fb2373ff5f086cd8176b61c71699e1afe93d6f5e45ba40e84e8a8ccf",
+    "crates/idlever-core/src/class_tree.rs": "147744b2ef49a7760548ecccc2417ebc2de99bc879707fc702942937f7bee2e4",
     "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369"
   },
-  "generatedBy": "cargo run -q --profile fast -p idlever-core --example cut253_catalogue",
-  "nativeOutputSha256": "b5a9b5786a3f686a3fedbd636459ef9019b70e1e3339d477b9270313a23b058b"
+  "generatedBy": "CARGO_TARGET_DIR=target/cut291-native cargo run -q --profile fast -p idlever-core --example cut253_catalogue",
+  "nativeOutputSha256": "879219def640f197eb7814ce6a63e4328dd2169c8734f01d65d345009e9777e6"
 }

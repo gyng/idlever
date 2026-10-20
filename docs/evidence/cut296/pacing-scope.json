@@ -1,0 +1,33 @@
+{
+  "scope": "Source audit of routine native pacing bots, not a numerical gate pass",
+  "files": {
+    "crates/idlever-core/examples/dayplayer.rs": {
+      "sha256": "bcd77568fcbbd47fbb9a1341993de7bb59b453e437a7b2ca1dbe518d169033aa",
+      "matches": {
+        "learn_class_skill": [],
+        "set_class": [],
+        "class_paths": [],
+        "Class::Caster": []
+      }
+    },
+    "crates/idlever-core/examples/metrics.rs": {
+      "sha256": "4fd3e24ab51974dd44770fcc9901d07811eabcb09f933c6212a907d0e509d2d5",
+      "matches": {
+        "learn_class_skill": [],
+        "set_class": [],
+        "class_paths": [],
+        "Class::Caster": []
+      }
+    },
+    "crates/idlever-core/examples/opening.rs": {
+      "sha256": "25f416403685eb869dff73a50dbcabcfaa10e3ce878fe24ef8fa7277c83d4941",
+      "matches": {
+        "learn_class_skill": [],
+        "set_class": [],
+        "class_paths": [],
+        "Class::Caster": []
+      }
+    }
+  },
+  "conclusion": "No class path purchase or Caster selection in these bots; changed node is owned only through learned class_paths. Therefore no routine pacing configuration exercises Conduct. Earned branch transports and unchanged no-selection/parent controls cover changed behavior; inherited pacing failures remain open."
+}

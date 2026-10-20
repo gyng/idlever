@@ -1,0 +1,15 @@
+{
+  "baseline_run": "target/cut296/baseline",
+  "premature_candidate": {
+    "path": "target/cut296/premature-stale-binary",
+    "status": "FAILED_IDENTITY_BEFORE_GAMEPLAY",
+    "reason": "Launched before compile handle terminal; executable replacement caused sha256sum current_exe (deleted) failure. Excluded.",
+    "log": "Error: \"hash failed: /home/g/p/riddle/target/cut291-native/fast/examples/advanced_campaign (deleted)\"\n"
+  },
+  "valid_candidate": "target/cut296/candidate",
+  "wasm_target_directory_attempt": {
+    "command": "CARGO_TARGET_DIR=target/cut291-native node tools/repin.mjs ... --settle",
+    "finding": "tools/wasm.sh compiles under the environment-selected target but wasm-bindgen reads hard-coded target/wasm32-unknown-unknown. Old fdd96f98 package was emitted. This attempt is not current WASM acceptance.",
+    "correction": "Rerun tools/wasm.sh without target override; repin --no-build after original repin exits; require non-old hash and full native/WASM output parity."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "source_base": "55b06053",
+  "date": "2026-10-21",
+  "archive_sha256": "1817bd3af4e7a4d4532eed938d2edd464ec6d91ab0a65d00042add4e1a8c5ff8",
+  "archive_bytes": 7713576,
+  "summary_sha256": "2539e419b1aa67c42f2a64106a5eca50eff57500fb291b6850fc9969091d162f",
+  "trial_patch_sha256": "7dac81a6ad1faf1fd629868c2f847b018aebdc2874de53e10e6463bffc7e5caf",
+  "final_source_files": {
+    "crates/idlever-core/src/class_tree.rs": "147744b2ef49a7760548ecccc2417ebc2de99bc879707fc702942937f7bee2e4",
+    "crates/idlever-core/src/class_tree_tests.rs": "c0aae9629ce52990ce05039382df9f1a041378cdb51afde02a56c7857ea93169",
+    "web/tests/fixtures/class-path-catalogue.json": "435853bec71c5a3ea7d7c8b63e28f4bb35e23437851396021cb3e702b2c9feef",
+    "web/tests/gold-settlements.mjs": "ddcbe75921ede1b404de4eac498e20069c4cb0e5b95ed07891f35b15499ed361"
+  },
+  "note": "Trial patch retained exactly. Final production comment was clarified and regression expectations updated after trial; authored production tactics are identical to candidate. No runtime effects changed after the measured trial.",
+  "evidence_files": {
+    "docs/evidence/cut296/earned.tar.zst": "1817bd3af4e7a4d4532eed938d2edd464ec6d91ab0a65d00042add4e1a8c5ff8",
+    "docs/evidence/cut296/wasm-check.mjs": "39bcec1e29698178ac3dc3cf10c062be69e3a6f0a49bf2998cd764a49d55e242",
+    "docs/evidence/cut296/pacing-scope.json": "c0440ce5bdfc45184884ba52b9d7da58692121c7aeffd0b78bbdd92764fed783",
+    "docs/evidence/cut296/summary.json": "2539e419b1aa67c42f2a64106a5eca50eff57500fb291b6850fc9969091d162f",
+    "docs/evidence/cut296/README.md": "008e058a57a70e8d11ea067b3663f147c35972fabf9d0c446427a97920c84a74",
+    "docs/evidence/cut296/summarize.py": "65f26b3978bf5b8a52f9cb1f055171b3145b286288dea3415bea9ef83ea4af74",
+    "docs/evidence/cut296/trial-history.json": "c6328ea291c54fa8c683d8f0473ef97802425b2c0141657c3f6c42e3c9ec7f5e",
+    "docs/evidence/cut296/validation.json": "87f4e1a8602bf871610005386523b696935b05e38623a878f44fa35bb6f9eef7",
+    "docs/evidence/cut296/catalogue.json": "879219def640f197eb7814ce6a63e4328dd2169c8734f01d65d345009e9777e6",
+    "docs/evidence/cut296/settlements-inputs-d5dd.json": "d482e786a653dafffda4a193d991fe7b418cb680a612576173c600c164b574f9",
+    "docs/evidence/cut296/wasm-results.json": "952a760f08c4d6518c29ea184b4f9c0781ff284effc9e20f6ce09530a292b530",
+    "docs/evidence/cut296/candidate.patch": "7dac81a6ad1faf1fd629868c2f847b018aebdc2874de53e10e6463bffc7e5caf",
+    "docs/evidence/cut296/frozen-contract.md": "24a9871b1cdcd22526ca9c5a8c042cf29787e71f629a0a09ce2fda41280058bc",
+    "docs/evidence/cut296/verify.py": "19d59e1f2481741ba52a75d4f5c8e03cc95c13ffddff0feb65842753167813d4",
+    "docs/evidence/cut296/source.patch": "ae9337999ea068f0e48b69f200e49f4e940011fdbaee1a8287bb6ec0634b3b80"
+  }
+}

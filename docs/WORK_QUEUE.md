@@ -2,7 +2,14 @@
 
 ## Active backlog resume — 2026-10-21
 
-Owner: continue working on the backlog. Latest product change is Cut295:
+Owner: continue working on the backlog. Latest product change is Cut296:
+Conduct now tries its prerequisite slow before its qualifying bolt. Current
+earned seed1 camp yields four copies versus zero; two control branches remain
+byte-exact,87actual runs retained. Workspace1102pass/6ignored and three complete
+eight-hour native/WASM report/save pairs pass. This closes the bounded earned
+payoff gap; no population or balance claim. Follow-up chore: fix tools/wasm.sh
+CARGO_TARGET_DIR compilation/packaging mismatch observed during validation.
+Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
 absence +8same original in-flight Caster completions). The original blanket
@@ -28,8 +35,7 @@ It also fixes dungeon atlas overflow by excluding117town-only frames (town has
 its own loader). Standalone captures leave full Watch DOM/player recognition
 open; phone Canvas weapon detail remains small. Cut295 now verifies the actual
 replay UI route using current native/WASM data; no normal user pause/scrub or
-ordinary completed-save retention is implied. Next mechanism: current earned
-Caster conduct payoff gap from Cut257, with a bounded source-backed contract.
+ordinary completed-save retention is implied. That earned Conduct payoff gap is now addressed at Cut296 scope.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/

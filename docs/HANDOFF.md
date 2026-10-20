@@ -1,10 +1,46 @@
-# Active backlog — Cut295 child navigation fixed and replay UI validated, 2026-10-21
+# Active backlog — Cut296 earned Conduct payoff restored, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest product fix restores Hero Details child Replay/Appearance navigation (Cut295),
+Latest product fix restores earned Caster Conduct payoff (Cut296), after
+Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut296 Conduct prepares its prerequisite — current earned payoff verified
+
+Contract [CUT296_CASTER_CONDUCT.md](CUT296_CASTER_CONDUCT.md). Conduct's
+child-before-parent bolt suppressed the parent slow needed for the copy. Its
+own existing boss+foes≥2 gate now tries slow before bolt. No effects, adjacency,
+10tick cap, no-recursion, learned-counter or guard priority changes.
+
+One genuine historical seed1 earned Caster camp, current-runtime three-branch
+baseline versus candidate: zero→four nonzero Conduct copies. Selected outcomes
+9runs (7death/2return)→16 (9death/4return/3bank); divergent trajectories, no
+population superiority. Selected parent ward refunds2→0 retained. No-selection
+15runs and parent-only16runs preserve complete after-save, departure, receipt
+and tally bytes across builds. All87 actual completed runs and244 raw JSON
+receipts preserved in7.4MB archive; independent verifier passes. Original input
+and per-trial binary/all-Rust source hashes included. Not a fresh cohort.
+
+Workspace1102pass/6ignored, Clippy clean, formatting/copy/types pass. Native
+settlement Gold/ledger/ExitLine/expected/full after-saves unchanged4/4. Current
+WASM7111856bytes SHA d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb;
+default manifestCut296. Current browser settlements564/564across24cases, all
+served packets match; production web build passes with existing warnings.
+All owned validation jobs terminal. Three complete8h native/WASM reports and whole after-save
+bytes exact. Native catalogue fixture regenerated;648cells/72skills and72
+intentional failed-image fallback checks pass. No routine pacing bot selects
+Caster or learns its class paths; source audit retained, no fresh numerical
+pacing pass or inherited balance closure claimed. Full/exhaustive/fun stay open.
+
+Failed premature launch (identity during binary replacement), stale-packet
+packaging attempt and sandbox localhost-denied browser attempt are retained.
+WASM was rebuilt with the expected target directory and checked directly.
+Evidence docs/evidence/cut296. Follow-up chore: tools/wasm.sh compiles with
+CARGO_TARGET_DIR but packages from fixed target path; fix this mismatch with a
+regression check. Inherited balance/recognition/independent fun remain queued.
+No deployment; live dev423fe45a. Held Bank/Vat W2/recovery/Guide gap4 unchanged.
 
 ## Cut295 replay/Appearance child navigation — verified with declared input amendment
 

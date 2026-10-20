@@ -101,3 +101,13 @@ slowed foe: the caster branch's only `slow` row is `chilling_charge`'s `slow tag
 **once** across the 16 reconstructions of that earned branch. Making this capstone pay in earned play is
 a policy/content decision (give the branch a slowing row, or widen the trigger) — owner tuning, not
 something this fix can paper over.
+
+
+### Follow-up2026-10-21 — Cut296 earns the missing Conduct effect
+
+The unreached finding above is historical. Current-runtime replay of that
+original earned camp shows zero baseline copies; preparing the slow before the
+capstone bolt yields four10tick copies. Both unaffected control branches retain
+whole-save/event bytes. See [CUT296_CASTER_CONDUCT.md](CUT296_CASTER_CONDUCT.md)
+for the87actual runs, costs/losses, native/WASM parity and bounded acceptance.
+This does not infer population strength, universal reachability or fresh pacing.

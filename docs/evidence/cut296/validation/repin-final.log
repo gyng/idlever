@@ -1,0 +1,5 @@
+repin:
+  wasm 7111856 bytes sha256 d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb
+  default manifest docs/evidence/cut292/settlements-inputs-fdd9.json pins fdd96f989ee7… → CHANGED
+  new manifest docs/evidence/cut296/settlements-inputs-d5dd.json (repinnedFrom docs/evidence/cut292/settlements-inputs-fdd9.json; note_cut296); default switched (edit its "Current package:" comment by hand)
+next: cd web && node tests/run.mjs gold-settlements   # browser proof against docs/evidence/cut296/settlements-inputs-d5dd.json

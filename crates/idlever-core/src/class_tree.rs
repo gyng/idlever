@@ -585,10 +585,10 @@ fn advanced_definitions(class:Class)->Vec<Node> {
             ("storm_cell","Storm cell","storm","nova2hits → next bolt one extra line foe at50%",vec![(vec![Cond::n("foes>=",2)],"nova",""),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
             ("ice_lock","Ice lock","frost_guard","warded slow +10ticks once;cap50",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",1)],"slow","nearest")]),
             ("shatter_ward","Shatter ward","nova_guard","warded nova consumes ward → nova cooldown −20ticks",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",2)],"nova","")]),
-            // Byte-identical to `chilling_charge`'s patterns ("slow tag:boss", "bolt nearest") this
-            // pick compiles to nothing (`Row::eq` ignores origin). The bolt at the slowed boss is the
-            // qualifying one, and the second visible foe is the neighbour the copy lands on.
-            ("conduct","Conduct","chilling_charge","qualifying bolt → one visible adjacent slow copy≤10ticks",vec![(vec![Cond::t("foe_tag","boss"),Cond::n("foes>=",2)],"bolt","tag:boss")]),
+            // Cut257 made this pick distinct; Cut296 puts its prerequisite before its bolt.
+            // Class descendants precede parents, so a successful capstone bolt otherwise
+            // starves the parent's slow. Earlier learned counters and guards retain priority.
+            ("conduct","Conduct","chilling_charge","qualifying bolt → one visible adjacent slow copy≤10ticks",vec![(vec![Cond::t("foe_tag","boss"),Cond::n("foes>=",2)],"slow","tag:boss"),(vec![Cond::t("foe_tag","boss"),Cond::n("foes>=",2)],"bolt","tag:boss")]),
             ("last_wall","Last wall","ice_lock","ward absorbs4 → blink cooldown −20ticks once",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("hp<",45),Cond::n("foes>=",1)],"blink","")]),
         ],
         Class::Gunner=>vec![

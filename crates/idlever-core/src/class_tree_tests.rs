@@ -683,6 +683,8 @@ fn ghostwalk_pick_compiles_a_backstab_row() {
 /// origin, so `packages::compile` dropped them and the fourth pick bought no policy change at all
 /// (identical `row_fired` vectors in the preserved evidence). The pick must now add its own row:
 /// the qualifying bolt at the slowed boss, with the visible neighbour it copies onto.
+/// Cut296: its own prerequisite slow must precede that bolt; otherwise every successful
+/// bolt suppresses the parent slow, and the earned selected branch has zero Conduct payoffs.
 #[test]
 fn conduct_pick_is_not_a_duplicate_of_its_parent() {
     let mut g = advanced_home(Class::Caster);
@@ -707,15 +709,24 @@ fn conduct_pick_is_not_a_duplicate_of_its_parent() {
     for row in &parent {
         assert!(picked.contains(row), "the pick keeps every parent row");
     }
-    let own = picked
+    let own: Vec<_> = picked
         .iter()
-        .find(|r| r.origin.as_deref() == Some("class:path:caster_conduct"))
-        .expect("the pick's own row compiled in");
-    assert_eq!(own.conds, vec![Cond::t("foe_tag", "boss"), Cond::n("foes>=", 2)]);
-    assert_eq!(own.verb, Verb::arg("bolt", "tag:boss"));
+        .filter(|r| r.origin.as_deref() == Some("class:path:caster_conduct"))
+        .collect();
+    assert_eq!(own.len(), 2, "prerequisite slow, then qualifying bolt");
+    for row in &own {
+        assert_eq!(row.conds, vec![Cond::t("foe_tag", "boss"), Cond::n("foes>=", 2)]);
+        assert!(
+            !parent.iter().any(|r| r.conds == row.conds && r.verb == row.verb),
+            "not byte-identical to any row the parent already holds"
+        );
+    }
+    assert_eq!(own[0].verb, Verb::arg("slow", "tag:boss"));
+    assert_eq!(own[1].verb, Verb::arg("bolt", "tag:boss"));
     assert!(
-        !parent.iter().any(|r| r.conds == own.conds && r.verb == own.verb),
-        "not byte-identical to any row the parent already holds"
+        picked.iter().position(|r| std::ptr::eq(r, own[0])).unwrap()
+            < picked.iter().position(|r| std::ptr::eq(r, own[1])).unwrap(),
+        "the first successful row wins: a bolt must not starve its own slow prerequisite"
     );
 }
 
