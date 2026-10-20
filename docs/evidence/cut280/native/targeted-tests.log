@@ -1,0 +1,9 @@
+$ cargo test -q --profile fast -p idlever-core --example stat_probe stat_probe::tests -- --test-threads=1
+
+running 5 tests
+.....
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 18 filtered out; finished in 31.69s
+
+
+exit_code: 0
+

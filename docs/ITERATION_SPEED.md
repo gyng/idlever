@@ -1,3 +1,25 @@
+## Statistical tuning default — 2026-10-20
+
+Routine parameter studies now use `tools/tune.sh --name N --spec STUDY.json`:
+compile-free native profiles, paired seeds, staged candidate pruning, one
+frozen winner and independent statistical confirmation. See
+[STATISTICAL_TUNING.md](STATISTICAL_TUNING.md) and Cut280 for confidence,
+censoring, cache/resume and exact-catalog distinctions. Full campaigns remain
+explicit audits; statistical acceptance does not invoke them automatically.
+Legacy bare row commands below still work; `tools/tune.sh --exact ROWS` makes
+their finite-catalog meaning explicit.
+
+Final real early-IDLE study:10.73s total on the measured warm native build,
+40 seed/profile observations versus64 for unpruned search with identical
+winner-confirmation work (37.5% fewer). Synthetic benchmark:96 versus160
+observations (40% fewer),19 versus29 calls. These are bounded study examples,
+not a universal wall-time estimate or a late-game balance result. Cold native
+build costs remain separate; the report exposes preparation/study/total times.
+Completed real-study replay takes0.36s with0 new probe calls and unchanged
+manifest/winner/intervals. The early-D8 candidate measurements tied, so no
+parameter was adopted and no pacing improvement is inferred from the benchmark.
+Evidence: `docs/evidence/cut280/`.
+
 ## Build-time phase split — 2026-10-16 (measured; corrects §3.5's engine.rs claim)
 
 Measured on this checkout (32-core WSL2, rustc 1.96.0, GNU ld, no lld/mold; the box was shared,

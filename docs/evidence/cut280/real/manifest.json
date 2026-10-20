@@ -1,0 +1,1053 @@
+{
+  "format": "idlever-stat-study-v1",
+  "configurationIdentity": "f519413eb02bcd4b000bbd3217240c7764d1686ce6aabb0aa5f43e29d5d42478",
+  "identity": "10bd2e8419ccee3150084b29138c42936ac215a08331fb527df3e57831a1714a",
+  "name": "cut280-scout-final",
+  "createdAt": "2026-10-20T10:38:06.606Z",
+  "native": {
+    "binary": "/home/g/p/riddle/target/stat-tune/cut280-scout-final/probe-3f742aa6cba677a6",
+    "digest": "3f742aa6cba677a6b62b405185f688b6881237a45ffe9441e3bc47e02f894197",
+    "coreKey": "9a45a001d0dbc6ea"
+  },
+  "analysisKey": "e683cdcbebd4cb90a81474610c23a0622441530ea225ee6d8d714bafac4487e2",
+  "spec": {
+    "probe": {
+      "checkins": 3,
+      "bots": [
+        "IDLE"
+      ],
+      "days": 1,
+      "untilDepth": 8
+    },
+    "claims": [
+      {
+        "comparison": "absolute",
+        "rankingScale": 1,
+        "id": "d8-within-day",
+        "metric": {
+          "bot": "IDLE",
+          "field": "arrival_hours",
+          "depth": 8
+        },
+        "estimand": "median",
+        "direction": "at-most",
+        "threshold": 24
+      },
+      {
+        "comparison": "difference",
+        "rankingScale": 1,
+        "id": "d8-no-regression",
+        "metric": {
+          "bot": "IDLE",
+          "field": "arrival_hours",
+          "depth": 8
+        },
+        "estimand": "median",
+        "direction": "at-most",
+        "threshold": 0
+      }
+    ],
+    "discovery": {
+      "stages": [
+        4,
+        8,
+        16
+      ],
+      "keep": 0.5
+    },
+    "confirmation": {
+      "looks": [
+        8,
+        16,
+        32
+      ],
+      "alpha": 0.05
+    },
+    "candidates": [
+      {
+        "name": "shipping",
+        "set": {
+          "workers.scout.price_tenths": 1
+        },
+        "profile": {
+          "level_runs": [
+            10,
+            40,
+            120,
+            200
+          ],
+          "scar_pct": 5,
+          "scar_cap": 30,
+          "drill_meeting": 2,
+          "drill_days": 3,
+          "deep_drill_days": 6,
+          "steady_heal": [
+            30,
+            35
+          ],
+          "hunter_heal": [
+            30,
+            35
+          ],
+          "guarded_heal": [
+            40,
+            45
+          ],
+          "bold_heal": 25,
+          "steady_home": 25,
+          "steady_dry": [
+            40,
+            35
+          ],
+          "steady_rest": [
+            40,
+            60
+          ],
+          "guarded_home": [
+            30,
+            25
+          ],
+          "guarded_dry": [
+            45,
+            44
+          ],
+          "recovery": [
+            600,
+            14,
+            28,
+            1
+          ],
+          "workers": {
+            "quartermaster": {
+              "need": 0,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "porter": {
+              "need": 3,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "scout": {
+              "need": 0,
+              "price_tenths": 1,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "apprentice": {
+              "need": 3,
+              "price_tenths": 30,
+              "fallback_h": 30,
+              "goal": "feat"
+            },
+            "clerk": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "drillmaster": {
+              "need": 2,
+              "price_tenths": 4,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "kennel_hand": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "herald": {
+              "need": 2,
+              "price_tenths": 20,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "guide": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 44,
+              "goal": "feat"
+            },
+            "kennel_keeper": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 48,
+              "goal": "feat"
+            }
+          },
+          "tree": {
+            "reserve_units": 3,
+            "guide_gap": 4,
+            "rank_days": [
+              2,
+              4,
+              8
+            ],
+            "rank_price_units": 1,
+            "porter_bonus_pct": 2,
+            "apprentice_off_pct": 5,
+            "clerk_bonus_permille": 25,
+            "scout_rest_off_pct": 5,
+            "safer_start_pct": 5,
+            "drill_rank_off": 1,
+            "wall_deaths": 2,
+            "wall_near": 2,
+            "wall_retry": 3,
+            "stone_memory": 12
+          },
+          "rest": {
+            "min_ticks": 12000,
+            "cap_ticks": 18000,
+            "turns_div": 2
+          },
+          "gold": {
+            "exit_pct": [
+              100,
+              60,
+              0
+            ],
+            "divisor": 4,
+            "coin_piles": 6,
+            "coin_draw": [
+              3,
+              7
+            ],
+            "nest": [
+              12,
+              4,
+              12
+            ],
+            "picked_cap": 7,
+            "freshness": [
+              1000,
+              800,
+              640,
+              512,
+              410,
+              328,
+              262,
+              250
+            ],
+            "picked_shown": 3,
+            "wake_pay": 40,
+            "bounty_below": 2,
+            "bounty_gold_mult": 2,
+            "bank_pct": 2,
+            "bank_nights": 3,
+            "bank_floor": 100
+          },
+          "kit": {
+            "unit_base": 100,
+            "unit_per_depth": 25,
+            "weapon_mult": [
+              1,
+              4,
+              9,
+              16,
+              25,
+              36
+            ],
+            "armour_mult": [
+              1,
+              4,
+              8,
+              14,
+              22,
+              32,
+              45
+            ],
+            "pack_mult": [
+              2,
+              5,
+              10,
+              16
+            ],
+            "row_mult": [
+              2,
+              5,
+              10,
+              16,
+              22,
+              30
+            ],
+            "pace_tenths": [
+              8,
+              7,
+              6,
+              5,
+              5,
+              4,
+              4
+            ],
+            "supply_cap_max": 8,
+            "commission_units": 10,
+            "commission_floor": 5,
+            "supply_price_cap": 26,
+            "forge_ladder": [
+              5,
+              15,
+              40
+            ]
+          },
+          "unlocks": {
+            "forge_delves": 4,
+            "temperament": [
+              6,
+              5
+            ],
+            "inherited": [
+              8,
+              8
+            ],
+            "family": [
+              12,
+              13
+            ],
+            "hours": {
+              "party": 1,
+              "kennel": 1,
+              "stances": 1,
+              "tactics": 4,
+              "bank": 8,
+              "quests": 12,
+              "class": 16,
+              "start": 20,
+              "tactic2": 56,
+              "automations": 96,
+              "pen": 0
+            },
+            "pen_fallback_h": 8
+          },
+          "stance": {
+            "hunter_home": [
+              20,
+              15
+            ],
+            "hunter_dry": 35,
+            "hunter_rest": 50,
+            "steady_rest_cap": 50,
+            "steady_rest_cap_below": 18,
+            "bold_bank": [
+              25,
+              20
+            ],
+            "bold_rest": 50,
+            "level_marks": 1
+          },
+          "marks": {
+            "rank_base": 100,
+            "trophy": 2,
+            "xp_early": 60,
+            "xp_late": 100,
+            "xp_early_to": 3,
+            "gold_per_mark": 150,
+            "legacy_root": [
+              12,
+              36,
+              108,
+              300,
+              800,
+              2000,
+              5000,
+              12000
+            ],
+            "legacy_effect": [
+              700,
+              1800
+            ],
+            "legacy_start": 20
+          },
+          "monsters": {
+            "depth_cap": 16,
+            "hp_div": 2,
+            "atk_div": 6
+          },
+          "vat": {
+            "hurry_permille": 250,
+            "hurry_min_s": 30,
+            "hurry_round": 5,
+            "hurry_floor": 10
+          }
+        }
+      },
+      {
+        "name": "price4",
+        "set": {
+          "workers.scout.price_tenths": 4
+        },
+        "profile": {
+          "level_runs": [
+            10,
+            40,
+            120,
+            200
+          ],
+          "scar_pct": 5,
+          "scar_cap": 30,
+          "drill_meeting": 2,
+          "drill_days": 3,
+          "deep_drill_days": 6,
+          "steady_heal": [
+            30,
+            35
+          ],
+          "hunter_heal": [
+            30,
+            35
+          ],
+          "guarded_heal": [
+            40,
+            45
+          ],
+          "bold_heal": 25,
+          "steady_home": 25,
+          "steady_dry": [
+            40,
+            35
+          ],
+          "steady_rest": [
+            40,
+            60
+          ],
+          "guarded_home": [
+            30,
+            25
+          ],
+          "guarded_dry": [
+            45,
+            44
+          ],
+          "recovery": [
+            600,
+            14,
+            28,
+            1
+          ],
+          "workers": {
+            "quartermaster": {
+              "need": 0,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "porter": {
+              "need": 3,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "scout": {
+              "need": 0,
+              "price_tenths": 4,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "apprentice": {
+              "need": 3,
+              "price_tenths": 30,
+              "fallback_h": 30,
+              "goal": "feat"
+            },
+            "clerk": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "drillmaster": {
+              "need": 2,
+              "price_tenths": 4,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "kennel_hand": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "herald": {
+              "need": 2,
+              "price_tenths": 20,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "guide": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 44,
+              "goal": "feat"
+            },
+            "kennel_keeper": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 48,
+              "goal": "feat"
+            }
+          },
+          "tree": {
+            "reserve_units": 3,
+            "guide_gap": 4,
+            "rank_days": [
+              2,
+              4,
+              8
+            ],
+            "rank_price_units": 1,
+            "porter_bonus_pct": 2,
+            "apprentice_off_pct": 5,
+            "clerk_bonus_permille": 25,
+            "scout_rest_off_pct": 5,
+            "safer_start_pct": 5,
+            "drill_rank_off": 1,
+            "wall_deaths": 2,
+            "wall_near": 2,
+            "wall_retry": 3,
+            "stone_memory": 12
+          },
+          "rest": {
+            "min_ticks": 12000,
+            "cap_ticks": 18000,
+            "turns_div": 2
+          },
+          "gold": {
+            "exit_pct": [
+              100,
+              60,
+              0
+            ],
+            "divisor": 4,
+            "coin_piles": 6,
+            "coin_draw": [
+              3,
+              7
+            ],
+            "nest": [
+              12,
+              4,
+              12
+            ],
+            "picked_cap": 7,
+            "freshness": [
+              1000,
+              800,
+              640,
+              512,
+              410,
+              328,
+              262,
+              250
+            ],
+            "picked_shown": 3,
+            "wake_pay": 40,
+            "bounty_below": 2,
+            "bounty_gold_mult": 2,
+            "bank_pct": 2,
+            "bank_nights": 3,
+            "bank_floor": 100
+          },
+          "kit": {
+            "unit_base": 100,
+            "unit_per_depth": 25,
+            "weapon_mult": [
+              1,
+              4,
+              9,
+              16,
+              25,
+              36
+            ],
+            "armour_mult": [
+              1,
+              4,
+              8,
+              14,
+              22,
+              32,
+              45
+            ],
+            "pack_mult": [
+              2,
+              5,
+              10,
+              16
+            ],
+            "row_mult": [
+              2,
+              5,
+              10,
+              16,
+              22,
+              30
+            ],
+            "pace_tenths": [
+              8,
+              7,
+              6,
+              5,
+              5,
+              4,
+              4
+            ],
+            "supply_cap_max": 8,
+            "commission_units": 10,
+            "commission_floor": 5,
+            "supply_price_cap": 26,
+            "forge_ladder": [
+              5,
+              15,
+              40
+            ]
+          },
+          "unlocks": {
+            "forge_delves": 4,
+            "temperament": [
+              6,
+              5
+            ],
+            "inherited": [
+              8,
+              8
+            ],
+            "family": [
+              12,
+              13
+            ],
+            "hours": {
+              "party": 1,
+              "kennel": 1,
+              "stances": 1,
+              "tactics": 4,
+              "bank": 8,
+              "quests": 12,
+              "class": 16,
+              "start": 20,
+              "tactic2": 56,
+              "automations": 96,
+              "pen": 0
+            },
+            "pen_fallback_h": 8
+          },
+          "stance": {
+            "hunter_home": [
+              20,
+              15
+            ],
+            "hunter_dry": 35,
+            "hunter_rest": 50,
+            "steady_rest_cap": 50,
+            "steady_rest_cap_below": 18,
+            "bold_bank": [
+              25,
+              20
+            ],
+            "bold_rest": 50,
+            "level_marks": 1
+          },
+          "marks": {
+            "rank_base": 100,
+            "trophy": 2,
+            "xp_early": 60,
+            "xp_late": 100,
+            "xp_early_to": 3,
+            "gold_per_mark": 150,
+            "legacy_root": [
+              12,
+              36,
+              108,
+              300,
+              800,
+              2000,
+              5000,
+              12000
+            ],
+            "legacy_effect": [
+              700,
+              1800
+            ],
+            "legacy_start": 20
+          },
+          "monsters": {
+            "depth_cap": 16,
+            "hp_div": 2,
+            "atk_div": 6
+          },
+          "vat": {
+            "hurry_permille": 250,
+            "hurry_min_s": 30,
+            "hurry_round": 5,
+            "hurry_floor": 10
+          }
+        }
+      },
+      {
+        "name": "price12",
+        "set": {
+          "workers.scout.price_tenths": 12
+        },
+        "profile": {
+          "level_runs": [
+            10,
+            40,
+            120,
+            200
+          ],
+          "scar_pct": 5,
+          "scar_cap": 30,
+          "drill_meeting": 2,
+          "drill_days": 3,
+          "deep_drill_days": 6,
+          "steady_heal": [
+            30,
+            35
+          ],
+          "hunter_heal": [
+            30,
+            35
+          ],
+          "guarded_heal": [
+            40,
+            45
+          ],
+          "bold_heal": 25,
+          "steady_home": 25,
+          "steady_dry": [
+            40,
+            35
+          ],
+          "steady_rest": [
+            40,
+            60
+          ],
+          "guarded_home": [
+            30,
+            25
+          ],
+          "guarded_dry": [
+            45,
+            44
+          ],
+          "recovery": [
+            600,
+            14,
+            28,
+            1
+          ],
+          "workers": {
+            "quartermaster": {
+              "need": 0,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "porter": {
+              "need": 3,
+              "price_tenths": 0,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "scout": {
+              "need": 0,
+              "price_tenths": 12,
+              "fallback_h": 0,
+              "goal": "count"
+            },
+            "apprentice": {
+              "need": 3,
+              "price_tenths": 30,
+              "fallback_h": 30,
+              "goal": "feat"
+            },
+            "clerk": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "drillmaster": {
+              "need": 2,
+              "price_tenths": 4,
+              "fallback_h": 36,
+              "goal": "feat"
+            },
+            "kennel_hand": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "herald": {
+              "need": 2,
+              "price_tenths": 20,
+              "fallback_h": 40,
+              "goal": "feat"
+            },
+            "guide": {
+              "need": 3,
+              "price_tenths": 40,
+              "fallback_h": 44,
+              "goal": "feat"
+            },
+            "kennel_keeper": {
+              "need": 2,
+              "price_tenths": 30,
+              "fallback_h": 48,
+              "goal": "feat"
+            }
+          },
+          "tree": {
+            "reserve_units": 3,
+            "guide_gap": 4,
+            "rank_days": [
+              2,
+              4,
+              8
+            ],
+            "rank_price_units": 1,
+            "porter_bonus_pct": 2,
+            "apprentice_off_pct": 5,
+            "clerk_bonus_permille": 25,
+            "scout_rest_off_pct": 5,
+            "safer_start_pct": 5,
+            "drill_rank_off": 1,
+            "wall_deaths": 2,
+            "wall_near": 2,
+            "wall_retry": 3,
+            "stone_memory": 12
+          },
+          "rest": {
+            "min_ticks": 12000,
+            "cap_ticks": 18000,
+            "turns_div": 2
+          },
+          "gold": {
+            "exit_pct": [
+              100,
+              60,
+              0
+            ],
+            "divisor": 4,
+            "coin_piles": 6,
+            "coin_draw": [
+              3,
+              7
+            ],
+            "nest": [
+              12,
+              4,
+              12
+            ],
+            "picked_cap": 7,
+            "freshness": [
+              1000,
+              800,
+              640,
+              512,
+              410,
+              328,
+              262,
+              250
+            ],
+            "picked_shown": 3,
+            "wake_pay": 40,
+            "bounty_below": 2,
+            "bounty_gold_mult": 2,
+            "bank_pct": 2,
+            "bank_nights": 3,
+            "bank_floor": 100
+          },
+          "kit": {
+            "unit_base": 100,
+            "unit_per_depth": 25,
+            "weapon_mult": [
+              1,
+              4,
+              9,
+              16,
+              25,
+              36
+            ],
+            "armour_mult": [
+              1,
+              4,
+              8,
+              14,
+              22,
+              32,
+              45
+            ],
+            "pack_mult": [
+              2,
+              5,
+              10,
+              16
+            ],
+            "row_mult": [
+              2,
+              5,
+              10,
+              16,
+              22,
+              30
+            ],
+            "pace_tenths": [
+              8,
+              7,
+              6,
+              5,
+              5,
+              4,
+              4
+            ],
+            "supply_cap_max": 8,
+            "commission_units": 10,
+            "commission_floor": 5,
+            "supply_price_cap": 26,
+            "forge_ladder": [
+              5,
+              15,
+              40
+            ]
+          },
+          "unlocks": {
+            "forge_delves": 4,
+            "temperament": [
+              6,
+              5
+            ],
+            "inherited": [
+              8,
+              8
+            ],
+            "family": [
+              12,
+              13
+            ],
+            "hours": {
+              "party": 1,
+              "kennel": 1,
+              "stances": 1,
+              "tactics": 4,
+              "bank": 8,
+              "quests": 12,
+              "class": 16,
+              "start": 20,
+              "tactic2": 56,
+              "automations": 96,
+              "pen": 0
+            },
+            "pen_fallback_h": 8
+          },
+          "stance": {
+            "hunter_home": [
+              20,
+              15
+            ],
+            "hunter_dry": 35,
+            "hunter_rest": 50,
+            "steady_rest_cap": 50,
+            "steady_rest_cap_below": 18,
+            "bold_bank": [
+              25,
+              20
+            ],
+            "bold_rest": 50,
+            "level_marks": 1
+          },
+          "marks": {
+            "rank_base": 100,
+            "trophy": 2,
+            "xp_early": 60,
+            "xp_late": 100,
+            "xp_early_to": 3,
+            "gold_per_mark": 150,
+            "legacy_root": [
+              12,
+              36,
+              108,
+              300,
+              800,
+              2000,
+              5000,
+              12000
+            ],
+            "legacy_effect": [
+              700,
+              1800
+            ],
+            "legacy_start": 20
+          },
+          "monsters": {
+            "depth_cap": 16,
+            "hp_div": 2,
+            "atk_div": 6
+          },
+          "vat": {
+            "hurry_permille": 250,
+            "hurry_min_s": 30,
+            "hurry_round": 5,
+            "hurry_floor": 10
+          }
+        }
+      }
+    ]
+  },
+  "seeds": {
+    "discovery": [
+      "7516135689173547975",
+      "9447138101988969355",
+      "2563271218494948055",
+      "3706739515827319154",
+      "8070556089223215319",
+      "4201866340258720992",
+      "8188072335079307799",
+      "14769625052165936292",
+      "15244247371841637109",
+      "5888725923337240813",
+      "13961659815409007252",
+      "9498056351148650563",
+      "13767512501345751453",
+      "15714763441837542754",
+      "13397006292359809118",
+      "2626380601161409043"
+    ],
+    "confirmation": [
+      "6636449849911688467",
+      "9200825364503519061",
+      "14385359795404959088",
+      "16463230503928955000",
+      "14790376274271930585",
+      "13670997734750550813",
+      "10479057778111990411",
+      "3178102476905548472",
+      "7041140520034212623",
+      "17484511264661635693",
+      "3467041065926208813",
+      "7548981142853014631",
+      "10994947721647132101",
+      "12971348934851479992",
+      "5504618185318952732",
+      "116266372704171350",
+      "14490491064930921776",
+      "9682248429177613588",
+      "2388037640000111521",
+      "5894678867938421477",
+      "2277674145923854727",
+      "7695726680969583964",
+      "15961606770080581340",
+      "16851162658796001223",
+      "588487475883326160",
+      "16946215260385528772",
+      "6214465447583148963",
+      "8324216492846515718",
+      "10034896628052353121",
+      "12327984300741366262",
+      "10229793819177272564",
+      "4461383134273950349"
+    ]
+  }
+}

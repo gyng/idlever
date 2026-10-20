@@ -2712,3 +2712,8 @@ mod counter_copy_tests {
 mod hurry_diagnostic;
 #[allow(dead_code)]
 pub fn picked_hurry_diagnostic() { hurry_diagnostic::run(); }
+
+// Opt-in statistical observations, outside the ordinary policy/main cache-key prefix.
+#[path = "dayplayer_stat/mod.rs"]
+mod stat_probe;
+pub fn statistical_probe() -> Result<(), String> { stat_probe::run() }

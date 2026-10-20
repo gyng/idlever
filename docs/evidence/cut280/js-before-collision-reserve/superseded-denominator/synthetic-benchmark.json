@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-10-20T10:31:00.755Z",
+  "kind": "synthetic-native-protocol-cli-test",
+  "node": "v22.18.0",
+  "sourceSha256": {
+    "tools/stat-tune.mjs": "9785d35c04fa454f8f32d0ed9a0c04e61266b70277b1e29b9c14028682dabaab",
+    "tools/stat-bounds.mjs": "4851a63522b7b1f1edc60ef0a8d835cab32aa3f96f613fbd7ae639ebf54f4577",
+    "tools/stat-tune.test.mjs": "c115fd57ee66e47fe5c1d40e58b913bd7c25a6257ff654f00852a863fdece959",
+    "tools/fixtures/stat-probe-fake.mjs": "75ecf8ccd339413cea15ad9e99f12b0e0d3ecb1dd095953510f724c491fb7ca5",
+    "tools/tune.sh": "8fda8178f20610c7d4ef6f6529f5c5b5059e882ff5a037a3932ea87717b98400"
+  },
+  "candidates": 8,
+  "discoveryStages": [
+    4,
+    8,
+    16
+  ],
+  "confirmationLooks": [
+    8,
+    16,
+    32
+  ],
+  "measured": {
+    "probeCalls": 19,
+    "seedBotProfileObservations": 96,
+    "completedResumeNewProbeCalls": 0,
+    "winner": "x16"
+  },
+  "counterfactual": {
+    "scope": "all candidates plus shared baseline at every discovery/confirmation stage; incremental seed-cache reuse",
+    "probeCalls": 54,
+    "distinctSeedBotProfileObservations": 432,
+    "uncachedRepeatedStageObservations": 756
+  },
+  "savings": {
+    "probeCallPct": 64.81481481481481,
+    "uniqueObservationPct": 77.77777777777779
+  },
+  "reportWork": {
+    "probeCalls": 19,
+    "newSeedProfiles": 96,
+    "cacheHits": 0,
+    "invalidated": 0,
+    "uniqueSeedProfiles": 96,
+    "exhaustiveSeedProfiles": 432,
+    "savedPct": 77.77777777777779
+  },
+  "note": "Synthetic fake-probe counts only. No actual campaign runtime, gameplay speedup, or canonical-gate certification measured."
+}

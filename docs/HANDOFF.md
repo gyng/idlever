@@ -1,3 +1,67 @@
+# Cut280 statistical tuning — complete 2026-10-20
+
+Owner resumed: “Resume and finish statistical tuning to improve iteration
+speed.” The tooling/workflow is complete; game defaults, held upgrades and the
+broader queue remain unchanged. No release, push, deployment or WASM rebuild.
+Contract: [CUT280_STATISTICAL_TUNING.md](CUT280_STATISTICAL_TUNING.md).
+Usage: [STATISTICAL_TUNING.md](STATISTICAL_TUNING.md).
+
+Routine command:
+
+```sh
+CARGO_INCREMENTAL=0 tools/tune.sh --name MY_STUDY --spec tuning/studies/scout-example.json --threads 16
+# Exact finite-catalog checks remain explicit:
+tools/tune.sh --exact tuned-picked,automation-pays --seeds 16
+```
+
+Implementation: native ordinary-policy stat_probe with full64-bit seed IDs and
+bounded horizons; paired staged discovery/pruning; one immutable frozen winner;
+disjoint held-out confirmation with exact median/known-range mean bounds and
+preregistered per-claim/look error allocation. A small collision reserve transfers
+IID coverage to distinct-seed schedules. Complete current reports distinguish
+statistical verdicts, operational errors and canonical gates NOT_RUN. Source,
+profile, probe, seed and analysis identities bind caches and resumes. Exclusive
+writer ownership, stale-lock proof, interruption cleanup and stale-report
+invalidation prevent accidental budget resets or reuse of an old acceptance.
+
+Validation in `docs/evidence/cut280/`:
+
+- 5 focused native tests, Clippy and dev-balance build pass; ordinary policy/
+  cache prefix byte-identical. Shipping WASM remains97afc855…/5478440 bytes.
+- 11 bounds tests,44 CLI integration tests, existing sweep/runtime identity
+  helper and gate-cache regressions pass. Global format/lint, shell syntax and
+  diff checks pass. New tests are wired into routine verification/CI; the
+  existing dayplayer example test command includes the new native module tests.
+- Real `cut280-scout-final`:10.73s total;40 seed/profile observations versus64
+  for unpruned discovery with identical single-winner confirmation (37.5% fewer).
+ 8 held-out seed pairs certify the two declared capped-D8 median claims.
+  Early D8 results tie; price12 wins by name, **no profile is adopted**.
+- Completed replay0.36s,0 new probe calls/observations,40 cache hits, byte-equal
+  manifest and equal winner/confirmation intervals. The first native build was
+  cold; final10.73s uses warm build/preparation0.32s, study10.33s.
+- Synthetic scheduler benchmark96 observations/19 calls versus160/29 with
+  identical confirmation:40% fewer observations,34.48% fewer calls. No universal
+  wall-time gain or exhaustive game-campaign timing is inferred.
+
+Full campaigns are no longer an automatic post-step for routine statistical
+balance claims. They remain explicit for major mechanics/rare/worst-case risk,
+inconclusive evidence or a specifically required catalog/release audit. Scalar
+population medians/means, finite-horizon censoring and paired differences are
+explicit estimands; no existing canonical row is silently translated or weakened.
+The inherited TUNED/PICKED1.10 and worker-away canonical failures remain open.
+
+Artifacts under `target/stat-tune/cut280-scout-final/` support exact zero-work
+resume while source/profile/spec identities match; use a new name for a changed
+study. Each study has its own confidence budget; repeated new studies are not a
+single global95% guarantee. Check-ins/deaths/cache reads never count as new
+independent seeds. Do not edit a frozen winner or reuse confirmation outcomes
+for another candidate. Current scripts do not automatically adopt parameters.
+
+All owned study, browser and native validation jobs are finished. The current
+native stat_probe was built with dev-balance and CARGO_INCREMENTAL=0. No dev
+server/browser was started for this tooling cut. Earlier game delivery and
+metadata checkpoints below remain historical.
+
 # Metadata endpoint follow-up — 2026-10-19
 
 Owner reported HTTP404 from GitHub Pages. Confirmed the index still used

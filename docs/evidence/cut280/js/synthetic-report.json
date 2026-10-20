@@ -1,0 +1,261 @@
+{
+  "format": "idlever-stat-study-v1",
+  "name": "synthetic",
+  "identity": "a5f3bbc62115116d25a444dd190e9bf3a4514e885f545629b0083ccaf9cf266c",
+  "status": "STATISTICALLY_ACCEPTED",
+  "winner": "x16",
+  "canonicalGateStatus": "NOT_RUN",
+  "estimandScope": "Declared finite-horizon population metrics only; no universal/rare-event/canonical-catalog certification",
+  "missingPolicy": "Unreached arrival is imputed as horizon (1 days × 24 hours) plus one effective check-in (24 / effective_checkins_per_day hours for each bot). Ratios and paired differences use these finite imputed values; they do not estimate uncensored arrival times or reproduce canonical ratio missing-value rules.",
+  "familyAlpha": 0.05,
+  "inferenceAlpha": 0.04999999999981811,
+  "collisionReserve": 3.637978807091713e-12,
+  "alphaPerClaim": 0.016666666666606034,
+  "discovery": [
+    {
+      "stage": 0,
+      "n": 4,
+      "ranked": [
+        {
+          "name": "x16",
+          "score": 15,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 16,
+              "margin": 15
+            }
+          ]
+        },
+        {
+          "name": "x14",
+          "score": 13,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 14,
+              "margin": 13
+            }
+          ]
+        },
+        {
+          "name": "x12",
+          "score": 11,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 12,
+              "margin": 11
+            }
+          ]
+        },
+        {
+          "name": "x10",
+          "score": 9,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 10,
+              "margin": 9
+            }
+          ]
+        },
+        {
+          "name": "x8",
+          "score": 7,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 8,
+              "margin": 7
+            }
+          ]
+        },
+        {
+          "name": "x6",
+          "score": 5,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 6,
+              "margin": 5
+            }
+          ]
+        },
+        {
+          "name": "x4",
+          "score": 3,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 4,
+              "margin": 3
+            }
+          ]
+        },
+        {
+          "name": "x2",
+          "score": 1,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 2,
+              "margin": 1
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "x16",
+        "x14",
+        "x12",
+        "x10"
+      ],
+      "dropped": [
+        "x8",
+        "x6",
+        "x4",
+        "x2"
+      ]
+    },
+    {
+      "stage": 1,
+      "n": 8,
+      "ranked": [
+        {
+          "name": "x16",
+          "score": 15,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 16,
+              "margin": 15
+            }
+          ]
+        },
+        {
+          "name": "x14",
+          "score": 13,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 14,
+              "margin": 13
+            }
+          ]
+        },
+        {
+          "name": "x12",
+          "score": 11,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 12,
+              "margin": 11
+            }
+          ]
+        },
+        {
+          "name": "x10",
+          "score": 9,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 10,
+              "margin": 9
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "x16",
+        "x14"
+      ],
+      "dropped": [
+        "x12",
+        "x10"
+      ]
+    },
+    {
+      "stage": 2,
+      "n": 16,
+      "ranked": [
+        {
+          "name": "x16",
+          "score": 15,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 16,
+              "margin": 15
+            }
+          ]
+        },
+        {
+          "name": "x14",
+          "score": 13,
+          "claims": [
+            {
+              "id": "gain",
+              "estimate": 14,
+              "margin": 13
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "x16"
+      ],
+      "dropped": [
+        "x14"
+      ]
+    }
+  ],
+  "confirmation": [
+    {
+      "n": 8,
+      "alphaPerClaim": 0.016666666666606034,
+      "claims": [
+        {
+          "id": "gain",
+          "metric": {
+            "bot": "PICKED",
+            "field": "best_day",
+            "day": 1
+          },
+          "units": "floors",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-least",
+          "threshold": 1,
+          "status": "PASS",
+          "n": 8,
+          "estimate": 16,
+          "lower": 16,
+          "upper": 16,
+          "alpha": 0.016666666666606034,
+          "rank": 1,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    }
+  ],
+  "work": {
+    "probeCalls": 19,
+    "newSeedProfiles": 96,
+    "cacheHits": 0,
+    "invalidated": 0,
+    "uniqueSeedProfiles": 96,
+    "discoverySeedProfiles": 80,
+    "confirmationSeedProfiles": 16,
+    "exhaustiveDiscoverySeedProfiles": 144,
+    "exhaustiveSeedProfiles": 160,
+    "savedPct": 40
+  },
+  "wallSeconds": 1.159,
+  "timing": {
+    "totalSeconds": 1.179,
+    "preparationSeconds": 0.02
+  }
+}

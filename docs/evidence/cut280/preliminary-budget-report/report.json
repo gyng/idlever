@@ -1,0 +1,181 @@
+{
+  "format": "idlever-stat-study-v1",
+  "name": "cut280-scout-benchmark",
+  "identity": "aa85facd64a961c164dba0b5f30ba73b7c8c056afeca62d9cc36ab005d7d7414",
+  "status": "STATISTICALLY_ACCEPTED",
+  "winner": "price12",
+  "canonicalGateStatus": "NOT_RUN",
+  "estimandScope": "Declared finite-horizon population metrics only; no universal/rare-event/canonical-catalog certification",
+  "missingPolicy": "Unreached arrival is imputed as horizon (1 days × 24 hours) plus one effective check-in (24 / effective_checkins_per_day hours for each bot). Ratios and paired differences use these finite imputed values; they do not estimate uncensored arrival times or reproduce canonical ratio missing-value rules.",
+  "familyAlpha": 0.05,
+  "alphaPerClaim": 0.008333333333333333,
+  "discovery": [
+    {
+      "stage": 0,
+      "n": 4,
+      "ranked": [
+        {
+          "name": "price12",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "price4",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "shipping",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "price12",
+        "price4"
+      ],
+      "dropped": [
+        "shipping"
+      ]
+    },
+    {
+      "stage": 1,
+      "n": 8,
+      "ranked": [
+        {
+          "name": "price12",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "price4",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "price12"
+      ],
+      "dropped": [
+        "price4"
+      ]
+    }
+  ],
+  "confirmation": [
+    {
+      "n": 8,
+      "alphaPerClaim": 0.008333333333333333,
+      "claims": [
+        {
+          "id": "d8-within-day",
+          "metric": {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 8
+          },
+          "units": "hours",
+          "comparison": "absolute",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 24,
+          "status": "PASS",
+          "n": 8,
+          "estimate": 8,
+          "lower": 8,
+          "upper": 8,
+          "alpha": 0.008333333333333333,
+          "rank": 1,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "d8-no-regression",
+          "metric": {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 8
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "PASS",
+          "n": 8,
+          "estimate": 0,
+          "lower": 0,
+          "upper": 0,
+          "alpha": 0.008333333333333333,
+          "rank": 1,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    }
+  ],
+  "work": {
+    "probeCalls": 8,
+    "newSeedProfiles": 40,
+    "cacheHits": 0,
+    "invalidated": 0,
+    "uniqueSeedProfiles": 40,
+    "exhaustiveSeedProfiles": 144,
+    "savedPct": 72.22222222222221
+  },
+  "wallSeconds": 12.138
+}

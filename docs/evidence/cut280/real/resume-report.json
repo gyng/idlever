@@ -1,0 +1,190 @@
+{
+  "format": "idlever-stat-study-v1",
+  "name": "cut280-scout-final",
+  "identity": "10bd2e8419ccee3150084b29138c42936ac215a08331fb527df3e57831a1714a",
+  "status": "STATISTICALLY_ACCEPTED",
+  "winner": "price12",
+  "canonicalGateStatus": "NOT_RUN",
+  "estimandScope": "Declared finite-horizon population metrics only; no universal/rare-event/canonical-catalog certification",
+  "missingPolicy": "Unreached arrival is imputed as horizon (1 days × 24 hours) plus one effective check-in (24 / effective_checkins_per_day hours for each bot). Ratios and paired differences use these finite imputed values; they do not estimate uncensored arrival times or reproduce canonical ratio missing-value rules.",
+  "familyAlpha": 0.05,
+  "inferenceAlpha": 0.04999999999981811,
+  "collisionReserve": 3.637978807091713e-12,
+  "alphaPerClaim": 0.008333333333303017,
+  "discovery": [
+    {
+      "stage": 0,
+      "n": 4,
+      "ranked": [
+        {
+          "name": "price12",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "price4",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "shipping",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "price12",
+        "price4"
+      ],
+      "dropped": [
+        "shipping"
+      ]
+    },
+    {
+      "stage": 1,
+      "n": 8,
+      "ranked": [
+        {
+          "name": "price12",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        },
+        {
+          "name": "price4",
+          "score": 0,
+          "claims": [
+            {
+              "id": "d8-within-day",
+              "estimate": 8,
+              "margin": 16
+            },
+            {
+              "id": "d8-no-regression",
+              "estimate": 0,
+              "margin": 0
+            }
+          ]
+        }
+      ],
+      "promoted": [
+        "price12"
+      ],
+      "dropped": [
+        "price4"
+      ]
+    }
+  ],
+  "confirmation": [
+    {
+      "n": 8,
+      "alphaPerClaim": 0.008333333333303017,
+      "claims": [
+        {
+          "id": "d8-within-day",
+          "metric": {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 8
+          },
+          "units": "hours",
+          "comparison": "absolute",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 24,
+          "status": "PASS",
+          "n": 8,
+          "estimate": 8,
+          "lower": 8,
+          "upper": 8,
+          "alpha": 0.008333333333303017,
+          "rank": 1,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        },
+        {
+          "id": "d8-no-regression",
+          "metric": {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 8
+          },
+          "units": "hours",
+          "comparison": "difference",
+          "estimand": "median",
+          "direction": "at-most",
+          "threshold": 0,
+          "status": "PASS",
+          "n": 8,
+          "estimate": 0,
+          "lower": 0,
+          "upper": 0,
+          "alpha": 0.008333333333303017,
+          "rank": 1,
+          "candidateCensored": 0,
+          "baselineCensored": 0
+        }
+      ]
+    }
+  ],
+  "work": {
+    "probeCalls": 0,
+    "newSeedProfiles": 0,
+    "cacheHits": 40,
+    "invalidated": 0,
+    "uniqueSeedProfiles": 40,
+    "discoverySeedProfiles": 24,
+    "confirmationSeedProfiles": 16,
+    "exhaustiveDiscoverySeedProfiles": 48,
+    "exhaustiveSeedProfiles": 64,
+    "savedPct": 37.5
+  },
+  "wallSeconds": 0.042,
+  "timing": {
+    "totalSeconds": 0.308,
+    "preparationSeconds": 0.266
+  }
+}

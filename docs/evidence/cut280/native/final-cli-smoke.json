@@ -1,0 +1,648 @@
+{
+  "schema": 1,
+  "kind": "dayplayer-stat-probe",
+  "milestones": [
+    8,
+    13,
+    18,
+    23,
+    28,
+    29,
+    33
+  ],
+  "request": {
+    "seeds": [
+      "18446744073709551615"
+    ],
+    "bots": [
+      "IDLE"
+    ],
+    "days": 1,
+    "until_depth": 8,
+    "checkins_per_day": 3
+  },
+  "balance": {
+    "level_runs": [
+      10,
+      40,
+      120,
+      200
+    ],
+    "scar_pct": 5,
+    "scar_cap": 30,
+    "drill_meeting": 2,
+    "drill_days": 3,
+    "deep_drill_days": 6,
+    "steady_heal": [
+      30,
+      35
+    ],
+    "hunter_heal": [
+      30,
+      35
+    ],
+    "guarded_heal": [
+      40,
+      45
+    ],
+    "bold_heal": 25,
+    "steady_home": 25,
+    "steady_dry": [
+      40,
+      35
+    ],
+    "steady_rest": [
+      40,
+      60
+    ],
+    "guarded_home": [
+      30,
+      25
+    ],
+    "guarded_dry": [
+      45,
+      44
+    ],
+    "recovery": [
+      600,
+      14,
+      28,
+      1
+    ],
+    "workers": {
+      "quartermaster": {
+        "need": 0,
+        "price_tenths": 0,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "porter": {
+        "need": 3,
+        "price_tenths": 0,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "scout": {
+        "need": 0,
+        "price_tenths": 1,
+        "fallback_h": 0,
+        "goal": "count"
+      },
+      "apprentice": {
+        "need": 3,
+        "price_tenths": 30,
+        "fallback_h": 30,
+        "goal": "feat"
+      },
+      "clerk": {
+        "need": 3,
+        "price_tenths": 40,
+        "fallback_h": 36,
+        "goal": "feat"
+      },
+      "drillmaster": {
+        "need": 2,
+        "price_tenths": 4,
+        "fallback_h": 36,
+        "goal": "feat"
+      },
+      "kennel_hand": {
+        "need": 2,
+        "price_tenths": 30,
+        "fallback_h": 40,
+        "goal": "feat"
+      },
+      "herald": {
+        "need": 2,
+        "price_tenths": 20,
+        "fallback_h": 40,
+        "goal": "feat"
+      },
+      "guide": {
+        "need": 3,
+        "price_tenths": 40,
+        "fallback_h": 44,
+        "goal": "feat"
+      },
+      "kennel_keeper": {
+        "need": 2,
+        "price_tenths": 30,
+        "fallback_h": 48,
+        "goal": "feat"
+      }
+    },
+    "tree": {
+      "reserve_units": 3,
+      "guide_gap": 4,
+      "rank_days": [
+        2,
+        4,
+        8
+      ],
+      "rank_price_units": 1,
+      "porter_bonus_pct": 2,
+      "apprentice_off_pct": 5,
+      "clerk_bonus_permille": 25,
+      "scout_rest_off_pct": 5,
+      "safer_start_pct": 5,
+      "drill_rank_off": 1,
+      "wall_deaths": 2,
+      "wall_near": 2,
+      "wall_retry": 3,
+      "stone_memory": 12
+    },
+    "rest": {
+      "min_ticks": 12000,
+      "cap_ticks": 18000,
+      "turns_div": 2
+    },
+    "gold": {
+      "exit_pct": [
+        100,
+        60,
+        0
+      ],
+      "divisor": 4,
+      "coin_piles": 6,
+      "coin_draw": [
+        3,
+        7
+      ],
+      "nest": [
+        12,
+        4,
+        12
+      ],
+      "picked_cap": 7,
+      "freshness": [
+        1000,
+        800,
+        640,
+        512,
+        410,
+        328,
+        262,
+        250
+      ],
+      "picked_shown": 3,
+      "wake_pay": 40,
+      "bounty_below": 2,
+      "bounty_gold_mult": 2,
+      "bank_pct": 2,
+      "bank_nights": 3,
+      "bank_floor": 100
+    },
+    "kit": {
+      "unit_base": 100,
+      "unit_per_depth": 25,
+      "weapon_mult": [
+        1,
+        4,
+        9,
+        16,
+        25,
+        36
+      ],
+      "armour_mult": [
+        1,
+        4,
+        8,
+        14,
+        22,
+        32,
+        45
+      ],
+      "pack_mult": [
+        2,
+        5,
+        10,
+        16
+      ],
+      "row_mult": [
+        2,
+        5,
+        10,
+        16,
+        22,
+        30
+      ],
+      "pace_tenths": [
+        8,
+        7,
+        6,
+        5,
+        5,
+        4,
+        4
+      ],
+      "supply_cap_max": 8,
+      "commission_units": 10,
+      "commission_floor": 5,
+      "supply_price_cap": 26,
+      "forge_ladder": [
+        5,
+        15,
+        40
+      ]
+    },
+    "unlocks": {
+      "forge_delves": 4,
+      "temperament": [
+        6,
+        5
+      ],
+      "inherited": [
+        8,
+        8
+      ],
+      "family": [
+        12,
+        13
+      ],
+      "hours": {
+        "party": 1,
+        "kennel": 1,
+        "stances": 1,
+        "tactics": 4,
+        "bank": 8,
+        "quests": 12,
+        "class": 16,
+        "start": 20,
+        "tactic2": 56,
+        "automations": 96,
+        "pen": 0
+      },
+      "pen_fallback_h": 8
+    },
+    "stance": {
+      "hunter_home": [
+        20,
+        15
+      ],
+      "hunter_dry": 35,
+      "hunter_rest": 50,
+      "steady_rest_cap": 50,
+      "steady_rest_cap_below": 18,
+      "bold_bank": [
+        25,
+        20
+      ],
+      "bold_rest": 50,
+      "level_marks": 1
+    },
+    "marks": {
+      "rank_base": 100,
+      "trophy": 2,
+      "xp_early": 60,
+      "xp_late": 100,
+      "xp_early_to": 3,
+      "gold_per_mark": 150,
+      "legacy_root": [
+        12,
+        36,
+        108,
+        300,
+        800,
+        2000,
+        5000,
+        12000
+      ],
+      "legacy_effect": [
+        700,
+        1800
+      ],
+      "legacy_start": 20
+    },
+    "monsters": {
+      "depth_cap": 16,
+      "hp_div": 2,
+      "atk_div": 6
+    },
+    "vat": {
+      "hurry_permille": 250,
+      "hurry_min_s": 30,
+      "hurry_round": 5,
+      "hurry_floor": 10
+    }
+  },
+  "records": [
+    {
+      "seed": "18446744073709551615",
+      "bot": "IDLE",
+      "stop_reason": "depth",
+      "completed_days": 0,
+      "campaign_complete": false,
+      "effective_checkins_per_day": 3,
+      "observed_hours": 8.0,
+      "best_depth": 13,
+      "depth_reached_hours": 8.0,
+      "elapsed_seconds": 1.815053635,
+      "seed_out": {
+        "seed": 18446744073709551615,
+        "hours": [
+          8.0,
+          8.0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "best_day": [],
+        "gold_day": [],
+        "stall": 0,
+        "king_day": null,
+        "king_left": null,
+        "stance_level_day": [],
+        "checkins": 1,
+        "grew": 1,
+        "picks": 1,
+        "stage_days": 0,
+        "sends": 17,
+        "stalled": 0,
+        "deaths": 2,
+        "quests": 0,
+        "depth_area": 0,
+        "day1_systems": 0,
+        "max_systems": 3,
+        "max_beats": 7,
+        "new_days": 0,
+        "new_gap": 0,
+        "rules": "",
+        "porter_min": null,
+        "scout_min": 3.35,
+        "scout_sends": 2,
+        "node_open_h": [
+          [
+            "porter",
+            0.0
+          ],
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "drillmaster",
+            0.0
+          ]
+        ],
+        "node_ready_h": [
+          [
+            "scout",
+            0.0
+          ],
+          [
+            "porter",
+            8.0
+          ]
+        ],
+        "node_hired_h": [
+          [
+            "scout",
+            0.05444444444444444
+          ],
+          [
+            "porter",
+            8.0
+          ]
+        ],
+        "unconserved": 0,
+        "chest_max": 0,
+        "kit_h": null,
+        "kit_at": null,
+        "kit_spent_d3": null,
+        "legacy_buys": 0,
+        "timeline": [
+          {
+            "m": -1.0,
+            "k": "hire:quartermaster"
+          },
+          {
+            "m": -1.0,
+            "k": "lit:scout",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "built:house"
+          },
+          {
+            "m": -1.0,
+            "k": "pkg:steady",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:headline",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "system:send",
+            "d": true
+          },
+          {
+            "m": -1.0,
+            "k": "legacy:offer",
+            "d": true
+          },
+          {
+            "m": 1.3291666666666666,
+            "k": "chest:first",
+            "d": true
+          },
+          {
+            "m": 1.3291666666666666,
+            "k": "depth:D1",
+            "minor": true
+          },
+          {
+            "m": 1.3291666666666666,
+            "k": "depth:D2",
+            "minor": true
+          },
+          {
+            "m": 1.3291666666666666,
+            "k": "depth:D3",
+            "minor": true
+          },
+          {
+            "m": 3.2666666666666666,
+            "k": "depth:D4",
+            "minor": true
+          },
+          {
+            "m": 3.35,
+            "k": "hire:scout"
+          },
+          {
+            "m": 3.35,
+            "k": "levelable:steady:2",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "lit:porter",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "plot:blacksmith",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "plot:kennel",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "plot:bank",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:boss_focus",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:guarded",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:iron_gut",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:kite_archers",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:light_hands",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:skittish",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "pkg:unbowed",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "level:steady:2"
+          },
+          {
+            "m": 480.0,
+            "k": "levelable:steady:3",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:meet Mother",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:first gold home",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "system:six delves",
+            "d": true
+          },
+          {
+            "m": 480.0,
+            "k": "boss:goblin_warlord"
+          },
+          {
+            "m": 480.0,
+            "k": "record:D8"
+          },
+          {
+            "m": 480.0,
+            "k": "record:D13"
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D5",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D6",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D7",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D8",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D9",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D10",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D11",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D12",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "depth:D13",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "class:2",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "class:3",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "bloodline2:affordable",
+            "minor": true
+          },
+          {
+            "m": 480.0,
+            "k": "hire:porter"
+          }
+        ],
+        "session_m": 3.35,
+        "looks": [
+          0.0,
+          1.3291666666666666,
+          3.2666666666666666
+        ]
+      }
+    }
+  ]
+}

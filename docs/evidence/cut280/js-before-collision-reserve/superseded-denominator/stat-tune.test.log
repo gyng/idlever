@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls
+ok 1 - prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls
+  ---
+  duration_ms: 1900.225524
+  type: 'test'
+  ...
+# Subtest: list expands a real grid without running a probe
+ok 2 - list expands a real grid without running a probe
+  ---
+  duration_ms: 85.304421
+  type: 'test'
+  ...
+# Subtest: mean claim at its threshold remains inconclusive rather than manufacturing acceptance
+ok 3 - mean claim at its threshold remains inconclusive rather than manufacturing acceptance
+  ---
+  duration_ms: 442.350312
+  type: 'test'
+  ...
+# Subtest: clear contrary observations reject
+ok 4 - clear contrary observations reject
+  ---
+  duration_ms: 366.121454
+  type: 'test'
+  ...
+# Subtest: native missing output is a hard error, never acceptance
+ok 5 - native missing output is a hard error, never acceptance
+  ---
+  duration_ms: 344.134969
+  type: 'test'
+  ...
+# Subtest: native duplicate output is a hard error, never acceptance
+ok 6 - native duplicate output is a hard error, never acceptance
+  ---
+  duration_ms: 330.293448
+  type: 'test'
+  ...
+# Subtest: native wrong-seed output is a hard error, never acceptance
+ok 7 - native wrong-seed output is a hard error, never acceptance
+  ---
+  duration_ms: 216.304618
+  type: 'test'
+  ...
+# Subtest: native wrong-bot output is a hard error, never acceptance
+ok 8 - native wrong-bot output is a hard error, never acceptance
+  ---
+  duration_ms: 265.458931
+  type: 'test'
+  ...
+# Subtest: native wrong-horizon output is a hard error, never acceptance
+ok 9 - native wrong-horizon output is a hard error, never acceptance
+  ---
+  duration_ms: 291.678926
+  type: 'test'
+  ...
+# Subtest: native short-horizon output is a hard error, never acceptance
+ok 10 - native short-horizon output is a hard error, never acceptance
+  ---
+  duration_ms: 351.34579
+  type: 'test'
+  ...
+# Subtest: native wrong-profile output is a hard error, never acceptance
+ok 11 - native wrong-profile output is a hard error, never acceptance
+  ---
+  duration_ms: 308.349566
+  type: 'test'
+  ...
+# Subtest: native wrong-request-seed output is a hard error, never acceptance
+ok 12 - native wrong-request-seed output is a hard error, never acceptance
+  ---
+  duration_ms: 283.221605
+  type: 'test'
+  ...
+# Subtest: native nonfinite-metric output is a hard error, never acceptance
+ok 13 - native nonfinite-metric output is a hard error, never acceptance
+  ---
+  duration_ms: 226.988293
+  type: 'test'
+  ...
+# Subtest: native invalid-json output is a hard error, never acceptance
+ok 14 - native invalid-json output is a hard error, never acceptance
+  ---
+  duration_ms: 303.866928
+  type: 'test'
+  ...
+# Subtest: native observed-negative output is a hard error, never acceptance
+ok 15 - native observed-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 245.65064
+  type: 'test'
+  ...
+# Subtest: native observed-too-large output is a hard error, never acceptance
+ok 16 - native observed-too-large output is a hard error, never acceptance
+  ---
+  duration_ms: 240.392725
+  type: 'test'
+  ...
+# Subtest: native observed-before-arrival output is a hard error, never acceptance
+ok 17 - native observed-before-arrival output is a hard error, never acceptance
+  ---
+  duration_ms: 398.969147
+  type: 'test'
+  ...
+# Subtest: native elapsed-negative output is a hard error, never acceptance
+ok 18 - native elapsed-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 206.735648
+  type: 'test'
+  ...
+# Subtest: native elapsed-null output is a hard error, never acceptance
+ok 19 - native elapsed-null output is a hard error, never acceptance
+  ---
+  duration_ms: 233.58324
+  type: 'test'
+  ...
+# Subtest: native wrong-effective-cadence output is a hard error, never acceptance
+ok 20 - native wrong-effective-cadence output is a hard error, never acceptance
+  ---
+  duration_ms: 223.704431
+  type: 'test'
+  ...
+# Subtest: native gold-fractional output is a hard error, never acceptance
+ok 21 - native gold-fractional output is a hard error, never acceptance
+  ---
+  duration_ms: 225.54521
+  type: 'test'
+  ...
+# Subtest: native best-negative output is a hard error, never acceptance
+ok 22 - native best-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 217.971509
+  type: 'test'
+  ...
+# Subtest: native depth-fractional output is a hard error, never acceptance
+ok 23 - native depth-fractional output is a hard error, never acceptance
+  ---
+  duration_ms: 203.062251
+  type: 'test'
+  ...
+# Subtest: interrupted work resumes completed native jobs and preserves held-out preregistration
+ok 24 - interrupted work resumes completed native jobs and preserves held-out preregistration
+  ---
+  duration_ms: 1868.926457
+  type: 'test'
+  ...
+# Subtest: spec, base profile and executable changes invalidate resume instead of reusing a false PASS
+ok 25 - spec, base profile and executable changes invalidate resume instead of reusing a false PASS
+  ---
+  duration_ms: 4731.946906
+  type: 'test'
+  ...
+# Subtest: corrupt cached jobs are rejected or recomputed, with zero false acceptance from corruption
+ok 26 - corrupt cached jobs are rejected or recomputed, with zero false acceptance from corruption
+  ---
+  duration_ms: 3003.503195
+  type: 'test'
+  ...
+# Subtest: mutating preregistered seeds cannot contaminate held-out confirmation
+ok 27 - mutating preregistered seeds cannot contaminate held-out confirmation
+  ---
+  duration_ms: 1714.16961
+  type: 'test'
+  ...
+# Subtest: corrupt completed caches plus malformed replacement probes cannot retain a stale PASS
+ok 28 - corrupt completed caches plus malformed replacement probes cannot retain a stale PASS
+  ---
+  duration_ms: 1728.760962
+  type: 'test'
+  ...
+# Subtest: ratio units survive ranking normalization, and missing arrivals are explicitly capped
+ok 29 - ratio units survive ranking normalization, and missing arrivals are explicitly capped
+  ---
+  duration_ms: 838.538677
+  type: 'test'
+  ...
+# Subtest: native early-depth stop extracts arrival time without requiring a fabricated complete day
+ok 30 - native early-depth stop extracts arrival time without requiring a fabricated complete day
+  ---
+  duration_ms: 465.548741
+  type: 'test'
+  ...
+# Subtest: day-indexed metrics read the specified day rather than an array default
+ok 31 - day-indexed metrics read the specified day rather than an array default
+  ---
+  duration_ms: 378.407163
+  type: 'test'
+  ...
+# Subtest: a failed held-out winner is rejected without retrying the runner-up
+ok 32 - a failed held-out winner is rejected without retrying the runner-up
+  ---
+  duration_ms: 440.384219
+  type: 'test'
+  ...
+# Subtest: cross-bot ratios preserve requested bot identity
+ok 33 - cross-bot ratios preserve requested bot identity
+  ---
+  duration_ms: 418.65594
+  type: 'test'
+  ...
+# Subtest: a persisted frozen winner cannot be replaced on resume
+ok 34 - a persisted frozen winner cannot be replaced on resume
+  ---
+  duration_ms: 1598.517882
+  type: 'test'
+  ...
+# Subtest: after accepted run, spec-json error cannot leave a current accepted report
+ok 35 - after accepted run, spec-json error cannot leave a current accepted report
+  ---
+  duration_ms: 2456.731895
+  type: 'test'
+  ...
+# Subtest: after accepted run, spec-identity error cannot leave a current accepted report
+ok 36 - after accepted run, spec-identity error cannot leave a current accepted report
+  ---
+  duration_ms: 2319.227731
+  type: 'test'
+  ...
+# Subtest: after accepted run, base-json error cannot leave a current accepted report
+ok 37 - after accepted run, base-json error cannot leave a current accepted report
+  ---
+  duration_ms: 2316.509358
+  type: 'test'
+  ...
+# Subtest: after accepted run, binary-missing error cannot leave a current accepted report
+ok 38 - after accepted run, binary-missing error cannot leave a current accepted report
+  ---
+  duration_ms: 1873.817265
+  type: 'test'
+  ...
+# Subtest: two simultaneous same-output invocations have one exclusive writer and one immutable manifest
+ok 39 - two simultaneous same-output invocations have one exclusive writer and one immutable manifest
+  ---
+  duration_ms: 1711.244976
+  type: 'test'
+  ...
+# Subtest: a lock with a proven dead same-host PID can resume safely
+ok 40 - a lock with a proven dead same-host PID can resume safely
+  ---
+  duration_ms: 586.690435
+  type: 'test'
+  ...
+# Subtest: SIGTERM releases writer ownership and preserves the immutable study for resume
+ok 41 - SIGTERM releases writer ownership and preserves the immutable study for resume
+  ---
+  duration_ms: 698.802295
+  type: 'test'
+  ...
+# Subtest: DAILY and AWAY missing-arrival caps use their actual one-check-in cadence
+ok 42 - DAILY and AWAY missing-arrival caps use their actual one-check-in cadence
+  ---
+  duration_ms: 452.651151
+  type: 'test'
+  ...
+# Subtest: tune.sh dispatches statistical list/help without native work
+ok 43 - tune.sh dispatches statistical list/help without native work
+  ---
+  duration_ms: 170.689305
+  type: 'test'
+  ...
+# Subtest: tune.sh --exact --list retains legacy row dispatch without building Cargo
+ok 44 - tune.sh --exact --list retains legacy row dispatch without building Cargo
+  ---
+  duration_ms: 19.992742
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37852.52587

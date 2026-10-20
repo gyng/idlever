@@ -43,6 +43,8 @@ jobs:
           pnpm --dir web lint
       - name: Test deployment metadata
         run: node --test tools/deployment-meta.test.mjs
+      - name: Test statistical tuning workflow
+        run: node --test tools/stat-bounds.test.mjs tools/stat-tune.test.mjs
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy

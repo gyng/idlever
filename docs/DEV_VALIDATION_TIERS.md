@@ -6,6 +6,14 @@ Owner request, 2026-10-12: aim for 20% of validation time while retaining the mo
 
 Run `tools/verify.sh --quick` for core tests, types and copy checks. Run `(cd web && pnpm -s test)` for the critical client journeys. For a local feature, also run its relevant existing client group: `cd web && node tests/run.mjs <name>`.
 
+Owner2026-10-20: routine balance parameter search/acceptance defaults to
+`tools/tune.sh --name N --spec STUDY.json` with paired discovery and independent
+statistical confirmation. [Statistical tuning](STATISTICAL_TUNING.md) defines
+the supported estimands, confidence budget and cases needing exact/stress
+validation. Full campaigns are explicit exceptions rather than an automatic
+step after every candidate. Deterministic tests for changed rules still apply;
+canonical finite-seed gates retain their original thresholds and verdicts.
+
 The routine client selection spans ten areas: menu/save startup, town/workers, multiple heroes, packages/pen/forecasts, combat/watch/recovery, gold/supplies/gear, death/advice, reports/accounting, classes/endgame, and responsive UI/lighting. Exact names live in `web/tests/lib/suites.mjs`; `node tests/run.mjs --smoke --list` prints the current count and names without launching a browser. Assertions and timing limits are unchanged. Timing-sensitive groups retain isolated execution.
 
 The current full audit adds detailed feature checks. Historical whole walks and repeated viewport cases remain in the exhaustive suite. Run the specific omitted group when changing that feature. This selection does not replace visual GPU checks or native balance validation.

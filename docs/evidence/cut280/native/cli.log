@@ -1,0 +1,6 @@
+$ IDLEVER_BALANCE_JSON=<full tuning/balance.json> target/fast/examples/stat_probe --seeds 18446744073709551615 --bots IDLE --days 1 --until-depth 8 --out docs/evidence/cut280/native/final-cli-smoke.json
+stdout:
+stderr:
+stat_probe IDLE seed 18446744073709551615 depth at 8.0h D13 (1.815s)
+
+exit_code: 0

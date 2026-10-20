@@ -1,0 +1,28 @@
+{
+  "base": "tuning/balance.json",
+  "candidates": [
+    { "name": "shipping", "set": { "workers.scout.price_tenths": 1 } },
+    { "name": "price4", "set": { "workers.scout.price_tenths": 4 } },
+    { "name": "price12", "set": { "workers.scout.price_tenths": 12 } }
+  ],
+  "probe": { "bots": ["IDLE"], "days": 1, "untilDepth": 8 },
+  "claims": [
+    {
+      "id": "d8-within-day",
+      "metric": { "bot": "IDLE", "field": "arrival_hours", "depth": 8 },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 24
+    },
+    {
+      "id": "d8-no-regression",
+      "metric": { "bot": "IDLE", "field": "arrival_hours", "depth": 8 },
+      "comparison": "difference",
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 0
+    }
+  ],
+  "discovery": { "stages": [4, 8, 16], "keep": 0.5 },
+  "confirmation": { "looks": [8, 16, 32], "alpha": 0.05 }
+}
