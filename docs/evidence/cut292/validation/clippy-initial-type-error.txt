@@ -1,0 +1,16 @@
+error[E0308]: mismatched types
+    --> crates/idlever-core/examples/encounter_catalogue.rs:97:71
+     |
+  97 |             write(dir, "packages.json", &idlever_core::packages::wire(s.lineage()));
+     |                                          ---------------------------- ^^^^^^^^^^^ expected `&LineageState`, found `Lineage`
+     |                                          |
+     |                                          arguments to this function are incorrect
+     |
+note: function defined here
+    --> crates/idlever-core/src/packages.rs:1714:8
+     |
+1714 | pub fn wire(l: &LineageState) -> crate::wire::PackagesWire {
+     |        ^^^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `idlever-core` (example "encounter_catalogue") due to 1 previous error

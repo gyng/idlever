@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
     if args.len() < 5 {
         return Err(
-            "earn|prepare|trace|absence|loadout|purchase|reasons SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
+            "earn|prepare|trace|absence|loadout|purchase|reasons|packages SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
         );
     }
     idlever_core::chronicle::use_shipping_words();
@@ -92,6 +92,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     fs::create_dir(dir)?;
     fs::write(dir.join("normalized-input.json"), s.save())?;
     match args[1].as_str() {
+        "packages" => {
+            let before = s.save();
+            write(dir, "packages.json", &idlever_core::packages::wire(&s.active.lineage));
+            if before != s.save() {
+                return Err("package wire read mutated save".into());
+            }
+        }
         "earn" => {
             let hours: u64 = args[4].parse()?;
             if !(1..=24).contains(&hours) {

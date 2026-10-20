@@ -1696,6 +1696,20 @@ pub fn fix_pick(l: &LineageState, cause: &str) -> Option<(String, u8, String)> {
 
 // ---------------------------------------------------------------- the wire
 
+/// Explicit Throw rows use the permission gate; a tactic card's internal actions
+/// are separate and must not be presented as needing the general Throw unlock.
+fn variant_needs(l: &LineageState, id: &str, level: u32) -> Vec<String> {
+    if crate::hero::class_has_verb(l.class, l.class_level(), "throw") || l.unlocks.contains("throw") {
+        return Vec::new();
+    }
+    let needs: Vec<String> = variants(id).map(|names| names.iter().enumerate().map(|(variant, _)| {
+        let mut rows = tactic_lead_rows(id, variant as u8);
+        rows.extend(tactic_rows_v(id, level, variant as u8));
+        if rows.iter().any(|row| row.verb.v == "throw") { "Learn Throw".into() } else { String::new() }
+    }).collect()).unwrap_or_default();
+    if needs.iter().all(String::is_empty) { Vec::new() } else { needs }
+}
+
 /// The lineage's packages on the wire (`Lineage.packages`).
 pub fn wire(l: &LineageState) -> crate::wire::PackagesWire {
     let p = &l.pkg;
@@ -1725,6 +1739,7 @@ pub fn wire(l: &LineageState) -> crate::wire::PackagesWire {
                 trigger: if available(l, d.id) { String::new() } else { trigger_now(l, d, &pending) },
                 level_price: p.owned.contains(d.id).then(|| level_price(l, d.id)).flatten(),
                 variants: variants(d.id).map(|v| v.iter().map(|x| x.to_string()).collect()).unwrap_or_default(),
+                variant_needs: variant_needs(l, d.id, level_of(runs)),
                 variant: (variants(d.id).is_some() && available(l, d.id)).then(|| p.variants.get(d.id).copied().unwrap_or(0) as u32),
                 level_adds: if p.owned.contains(d.id) { level_adds(l, d.id) } else { Vec::new() },
             }

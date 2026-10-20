@@ -557,6 +557,9 @@ export function openPackages(
                         },
                       },
                       name,
+                      p.variant_needs?.[i]
+                        ? h("small", { class: "pkg-variant-needs" }, p.variant_needs[i])
+                        : "",
                       pr && (pr.good !== null || o?.n)
                         ? h(
                             "small",

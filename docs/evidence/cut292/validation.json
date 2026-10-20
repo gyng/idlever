@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "focused_core": {
+    "exit": 0,
+    "passed": 2
+  },
+  "workspace": {
+    "exit": 0,
+    "passed": 1102,
+    "ignored": 6
+  },
+  "clippy": {
+    "initial_helper_type_error_exit": 101,
+    "corrected_workspace_all_targets_exit": 0
+  },
+  "native_settlements": {
+    "exit": 0,
+    "cases": 4,
+    "expected_and_full_after_saves_unchanged": 4
+  },
+  "client": {
+    "types_exit": 0,
+    "lint_exit": 0,
+    "format_exit": 0,
+    "copy_lint_exit": 0,
+    "package_selection_exit": 0,
+    "package_selection_checks": 60,
+    "real_wasm_phone_desktop_purchase_exit": 0
+  },
+  "native_wasm_read_pairs": 4,
+  "logs": {
+    "types.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final-format.txt": "8487229d4114417e052310e5e1daded64a8722527b8b8eefe631c0bf4331b9f9",
+    "repin-check.txt": "0176effc80d6771599bcf6e130f1fb74391aa975ec93e9a2a35ffd5f1c0de3ef",
+    "package-selection.txt": "f26dff092d3609a3fb7b102b21fd9fb929110dce1db4d2b56a3776da780819fb",
+    "core-tests.txt": "bcb11a6f9ec5e57570a565f3494d9a69292efe7a538d912a8d35d1c3ec414077",
+    "repin.txt": "25b832dc5d323144133e4064e5630dc7be4b21336198c74b7ff5f8e9cc98345e",
+    "native-build.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workspace-tests.txt": "4a83e99189e156f813fa806c3e293494eb47067dbdb6d623237a2bd63649b530",
+    "capture.txt": "39cf79e3d412f606b178d22368af7b8403fb37f2841358a842bfc87642d0e34e",
+    "browser.txt": "0851f6cfa2514c9beaebff7d2f852610561702c930beca145c6a720dbfb177e1",
+    "wasm-build.txt": "bef9d430d872161d475a1307c8fb07e19b5cecce54e0cc2570b00498349d3899",
+    "copy-lint.txt": "7985d65b48c13af2c05bdde686df06657897346b60081c014260547027c5366d",
+    "native-build-fixed.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lint.txt": "f893ef8b57c70b2fb04ed74db52a896b013f2c870fa785613509912cd00fb1d2",
+    "wasm-check.txt": "83da17c7ae9b3aa228352e67d4ce0fe6e78d9b2e867350de926920bd17802020",
+    "clippy-initial-type-error.txt": "70ce3a51298389423dbceee947a9c0b9a29305257b1b6d6c87c94a589dbfd97b",
+    "clippy-fixed.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

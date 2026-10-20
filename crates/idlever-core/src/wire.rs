@@ -1963,6 +1963,9 @@ pub struct PackageWire {
     /// Cut 111: a tactic's two L3 row variants (names ≤ 3 words), and the one worn (from L3).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub variants: Vec<String>,
+    /// Unmet ability hints, indexed like variants. Empty when none are missing.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub variant_needs: Vec<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub variant: Option<u32>,
     /// Blind 77030eb: the rows the next level brings or changes to (`packages::level_adds`; empty: none).

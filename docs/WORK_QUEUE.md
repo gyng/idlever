@@ -2,10 +2,14 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest verified production change is Cut291 (accurate missing-Throw refusal;
-core/native/WASM parity and564/564 browser settlement checks pass). Prior
+Owner: continue working on the backlog. Latest verified production change is Cut292 (engine-derived variant ability
+hints; four earned native/WASM read pairs, phone/desktop public purchases,
+workspace1102pass/6ignored and native settlements4/4 unchanged). Cut291 corrected
+missing-Throw refusal with historical564/564 browser settlement checks. Prior
 production fix is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
+Next audit existing Cut253/257 evidence against R4's actual class/loadout
+requirements before choosing new paired builds.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/
@@ -59,8 +63,9 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    wade-in use three fire doses (gas6/3, pack7/0 hurt/gas), with no AI change.
    All28 observer pairs/eight8h ledgers independently verify. Cut291 now fixes
    misleading throw permission block reasons with unchanged execution, red/green
-   tests, four exact native/WASM prefixes and564/564 browser settlement checks. Next examine dependency copy
-   and R4 authored class builds; no six-superiority or population claim. R4's preserved builds authored no class
+   tests, four exact native/WASM prefixes and564/564 browser settlement checks. Cut292 now displays the missing ability
+   beside wade-in with free selection preserved and real public purchases checked.
+   Next examine R4 authored class builds; no six-superiority or population claim. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence

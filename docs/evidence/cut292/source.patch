@@ -1,0 +1,109 @@
+diff --git a/crates/idlever-core/src/lib.rs b/crates/idlever-core/src/lib.rs
+index afbab756..79741883 100644
+--- a/crates/idlever-core/src/lib.rs
++++ b/crates/idlever-core/src/lib.rs
+@@ -507,3 +507,5 @@ mod tests_cut258;
+ mod tests_cut260;
+ #[cfg(test)]
+ mod tests_cut291;
++#[cfg(test)]
++mod tests_cut292;
+diff --git a/crates/idlever-core/src/packages.rs b/crates/idlever-core/src/packages.rs
+index d1858769..1830abb4 100644
+--- a/crates/idlever-core/src/packages.rs
++++ b/crates/idlever-core/src/packages.rs
+@@ -1696,6 +1696,20 @@ pub fn fix_pick(l: &LineageState, cause: &str) -> Option<(String, u8, String)> {
+ 
+ // ---------------------------------------------------------------- the wire
+ 
++/// Explicit Throw rows use the permission gate; a tactic card's internal actions
++/// are separate and must not be presented as needing the general Throw unlock.
++fn variant_needs(l: &LineageState, id: &str, level: u32) -> Vec<String> {
++    if crate::hero::class_has_verb(l.class, l.class_level(), "throw") || l.unlocks.contains("throw") {
++        return Vec::new();
++    }
++    let needs: Vec<String> = variants(id).map(|names| names.iter().enumerate().map(|(variant, _)| {
++        let mut rows = tactic_lead_rows(id, variant as u8);
++        rows.extend(tactic_rows_v(id, level, variant as u8));
++        if rows.iter().any(|row| row.verb.v == "throw") { "Learn Throw".into() } else { String::new() }
++    }).collect()).unwrap_or_default();
++    if needs.iter().all(String::is_empty) { Vec::new() } else { needs }
++}
++
+ /// The lineage's packages on the wire (`Lineage.packages`).
+ pub fn wire(l: &LineageState) -> crate::wire::PackagesWire {
+     let p = &l.pkg;
+@@ -1725,6 +1739,7 @@ pub fn wire(l: &LineageState) -> crate::wire::PackagesWire {
+                 trigger: if available(l, d.id) { String::new() } else { trigger_now(l, d, &pending) },
+                 level_price: p.owned.contains(d.id).then(|| level_price(l, d.id)).flatten(),
+                 variants: variants(d.id).map(|v| v.iter().map(|x| x.to_string()).collect()).unwrap_or_default(),
++                variant_needs: variant_needs(l, d.id, level_of(runs)),
+                 variant: (variants(d.id).is_some() && available(l, d.id)).then(|| p.variants.get(d.id).copied().unwrap_or(0) as u32),
+                 level_adds: if p.owned.contains(d.id) { level_adds(l, d.id) } else { Vec::new() },
+             }
+diff --git a/crates/idlever-core/src/wire.rs b/crates/idlever-core/src/wire.rs
+index 7c88da22..74b20462 100644
+--- a/crates/idlever-core/src/wire.rs
++++ b/crates/idlever-core/src/wire.rs
+@@ -1963,6 +1963,9 @@ pub struct PackageWire {
+     /// Cut 111: a tactic's two L3 row variants (names ≤ 3 words), and the one worn (from L3).
+     #[serde(default, skip_serializing_if = "Vec::is_empty")]
+     pub variants: Vec<String>,
++    /// Unmet ability hints, indexed like variants. Empty when none are missing.
++    #[serde(default, skip_serializing_if = "Vec::is_empty")]
++    pub variant_needs: Vec<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub variant: Option<u32>,
+     /// Blind 77030eb: the rows the next level brings or changes to (`packages::level_adds`; empty: none).
+diff --git a/web/src/cut30.css b/web/src/cut30.css
+index cf835e6a..de0f97ea 100644
+--- a/web/src/cut30.css
++++ b/web/src/cut30.css
+@@ -774,6 +774,7 @@ body:has(> .sheet-wrap:not(.modeless)) .cmd .tile .repeat-badge {
+ }
+ .pkg-variants .chip.pkg-variant {
+   flex: 1 1 0;
++  flex-wrap: wrap;
+   justify-content: center;
+   opacity: 0.7;
+ }
+@@ -782,6 +783,12 @@ body:has(> .sheet-wrap:not(.modeless)) .cmd .tile .repeat-badge {
+   color: var(--acc);
+   box-shadow: inset 0 0 0 1px var(--acc);
+ }
++
++.pkg-variant-needs {
++  display: block;
++  flex-basis: 100%;
++  font-size: 0.75em;
++}
+ /* blind 77030eb (B: a training plaque tap did nothing): the plaque is a button onto the tactics panel */
+ .run-training .training-open {
+   all: unset;
+diff --git a/web/src/engine/types.ts b/web/src/engine/types.ts
+index 465de076..b24932ee 100644
+--- a/web/src/engine/types.ts
++++ b/web/src/engine/types.ts
+@@ -950,6 +950,8 @@ export type Package = {
+   trigger?: string;
+   level_price?: number;
+   variants?: string[];
++  /** Rust's unmet ability hints, indexed like variants; absent when none. */
++  variant_needs?: string[];
+   variant?: number;
+   /** Blind 77030eb (core `packages::level_adds`): the rows the next level brings or changes to; absent: none (or an older core). */
+   level_adds?: Row[];
+diff --git a/web/src/ui/packages.ts b/web/src/ui/packages.ts
+index bb91f13b..0c909bfa 100644
+--- a/web/src/ui/packages.ts
++++ b/web/src/ui/packages.ts
+@@ -557,6 +557,9 @@ export function openPackages(
+                         },
+                       },
+                       name,
++                      p.variant_needs?.[i]
++                        ? h("small", { class: "pkg-variant-needs" }, p.variant_needs[i])
++                        : "",
+                       pr && (pr.good !== null || o?.n)
+                         ? h(
+                             "small",

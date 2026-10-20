@@ -950,6 +950,8 @@ export type Package = {
   trigger?: string;
   level_price?: number;
   variants?: string[];
+  /** Rust's unmet ability hints, indexed like variants; absent when none. */
+  variant_needs?: string[];
   variant?: number;
   /** Blind 77030eb (core `packages::level_adds`): the rows the next level brings or changes to; absent: none (or an older core). */
   level_adds?: Row[];

@@ -1,0 +1,484 @@
+{
+  "all": [
+    {
+      "id": "steady",
+      "name": "Steady",
+      "description": "Heal when hurt · fight nearest · one heal, two at L5",
+      "kind": "stance",
+      "level": 5,
+      "runs": 247,
+      "owned": true
+    },
+    {
+      "id": "guarded",
+      "name": "Guarded",
+      "description": "Heal early · recover between fights",
+      "kind": "stance",
+      "level": 4,
+      "runs": 148,
+      "next_at": 200,
+      "slot": 0,
+      "owned": true,
+      "level_price": 5,
+      "level_adds": [
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            },
+            {
+              "k": "depth>=",
+              "n": 29
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            }
+          ],
+          "verb": {
+            "v": "return"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 44
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bold",
+      "name": "Bold",
+      "description": "Push deeper · fight while hurt",
+      "kind": "stance",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "level_adds": [
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 50
+            }
+          ],
+          "verb": {
+            "v": "rest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hunter",
+      "name": "Hunter",
+      "description": "Prioritise ranged enemies and bosses",
+      "kind": "stance",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "level_adds": [
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "ranged"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:ranged"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 50
+            }
+          ],
+          "verb": {
+            "v": "rest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boss_focus",
+      "name": "boss focus",
+      "description": "Prioritise bosses and their summons",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "variants": [
+        "summons first",
+        "boss first"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "corridor_fighting",
+      "name": "corridor fighting",
+      "description": "Fight groups from narrow corridors",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "variants": [
+        "at three",
+        "at two"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "kite_archers",
+      "name": "kite archers",
+      "description": "Dodge archer shots · target archers",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "variants": [
+        "hunt",
+        "fall back"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "thief_guard",
+      "name": "thief guard",
+      "description": "Prioritise thieves · protect supplies",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2,
+      "variants": [
+        "chase",
+        "head home"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "gas_step",
+      "name": "gas step",
+      "description": "Keep gas enemies at range",
+      "kind": "tactic",
+      "level": 3,
+      "runs": 40,
+      "next_at": 120,
+      "owned": true,
+      "level_price": 4,
+      "variants": [
+        "step away",
+        "wade in"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "pack_break",
+      "name": "pack break",
+      "description": "Split groups · finish weak foes",
+      "kind": "tactic",
+      "level": 3,
+      "runs": 40,
+      "next_at": 120,
+      "owned": true,
+      "level_price": 4,
+      "variants": [
+        "to corridor",
+        "stand"
+      ],
+      "variant": 0
+    },
+    {
+      "id": "cadence",
+      "name": "Mirror rhythm",
+      "description": "Alternate attacks against mirrors",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": false,
+      "trigger": "meet Mirror King"
+    },
+    {
+      "id": "reflect_read",
+      "name": "mirror read",
+      "description": "Shoot or burn reflectors · never melee them",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "noise_discipline",
+      "name": "quiet steps",
+      "description": "Rest to full · slip past blinders",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "deep_march",
+      "name": "deep march",
+      "description": "Press on through explored floors",
+      "kind": "tactic",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "skittish",
+      "name": "skittish",
+      "description": "Retreat when hurt and surrounded",
+      "kind": "temperament",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "unbowed",
+      "name": "unbowed",
+      "description": "Face bosses while healthy",
+      "kind": "temperament",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "light_hands",
+      "name": "light hands",
+      "description": "Collect loot after kills",
+      "kind": "temperament",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    },
+    {
+      "id": "iron_gut",
+      "name": "iron gut",
+      "description": "Try unknown potions while healthy",
+      "kind": "temperament",
+      "level": 1,
+      "runs": 0,
+      "next_at": 10,
+      "owned": true,
+      "level_price": 2
+    }
+  ],
+  "stance": "guarded",
+  "tactic_slots": 2,
+  "temperament_open": true,
+  "offer": [
+    "skittish",
+    "unbowed",
+    "light_hands",
+    "iron_gut"
+  ],
+  "drills": [
+    {
+      "boss": "goblin_warlord",
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          }
+        }
+      ],
+      "revoked": false,
+      "scar": 0
+    },
+    {
+      "boss": "lich",
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 45
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          }
+        }
+      ],
+      "revoked": false,
+      "scar": 0
+    }
+  ],
+  "scars": [
+    [
+      "lurker_queen",
+      15
+    ]
+  ],
+  "pen_open": true,
+  "rows": [
+    {
+      "label": "drill · Lich"
+    },
+    {
+      "label": "drill · Lich"
+    },
+    {
+      "label": "drill · Warlord"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "Guarded"
+    },
+    {
+      "label": "tames strays"
+    },
+    {
+      "label": "Guarded"
+    }
+  ],
+  "build": {
+    "name": "Guarded hero",
+    "picks": [
+      "Guarded"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "wasm": {
+    "bytes": 7111547,
+    "sha256": "fdd96f989ee720759496a9611fab74baf8b803ae812c1ae4b3b36f165a22f494"
+  },
+  "cases": [
+    {
+      "label": "gas-locked",
+      "inputSha256": "eea6c74013f1a99fbe90cbd5a7d191f42264f380a2111ac2843e5adbf88a0729",
+      "saveSha256": "eea6c74013f1a99fbe90cbd5a7d191f42264f380a2111ac2843e5adbf88a0729",
+      "wireReadSaveUnchanged": true,
+      "nativeWasmSaveBytesExact": true,
+      "variantNeeds": [
+        "",
+        "Learn Throw"
+      ]
+    },
+    {
+      "label": "gas-learned",
+      "inputSha256": "e80228e1fdbc00b660b9ba66877af8f04dce07750b54cc9423a9d269ed41ff4b",
+      "saveSha256": "e80228e1fdbc00b660b9ba66877af8f04dce07750b54cc9423a9d269ed41ff4b",
+      "wireReadSaveUnchanged": true,
+      "nativeWasmSaveBytesExact": true,
+      "variantNeeds": []
+    },
+    {
+      "label": "pack-locked",
+      "inputSha256": "9f091edfb3a155fbb70eb57c9c3004773ff63dad7345fa4a47211fbcc433c511",
+      "saveSha256": "9f091edfb3a155fbb70eb57c9c3004773ff63dad7345fa4a47211fbcc433c511",
+      "wireReadSaveUnchanged": true,
+      "nativeWasmSaveBytesExact": true,
+      "variantNeeds": [
+        "",
+        "Learn Throw"
+      ]
+    },
+    {
+      "label": "pack-learned",
+      "inputSha256": "7d75f8e71db3492f59f90ccff0133a3b6f5950560b22073563a0875a16e241ca",
+      "saveSha256": "7d75f8e71db3492f59f90ccff0133a3b6f5950560b22073563a0875a16e241ca",
+      "wireReadSaveUnchanged": true,
+      "nativeWasmSaveBytesExact": true,
+      "variantNeeds": []
+    }
+  ]
+}

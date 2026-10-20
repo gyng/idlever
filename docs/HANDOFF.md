@@ -1,9 +1,32 @@
-# Active backlog — Cut291 Throw feedback fix, 2026-10-20
+# Active backlog — Cut292 variant dependency hint, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest work fixes missing-Throw refusal feedback and retains the six-scene
+Latest work shows missing Throw before variant selection and retains the six-scene
 catalogue; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut292 variant dependency hint — verified
+
+Contract [CUT292_VARIANT_REQUIREMENTS.md](CUT292_VARIANT_REQUIREMENTS.md).
+Rust derives `variant_needs` from actual explicit variant rows. Gas-step wade-in
+shows Learn Throw only without natural/general Throw permission; step-away has
+no false dependency. The existing variant button stays selectable/free. Two core
+regressions pass; four earned gas/pack missing/purchased inputs have unchanged
+complete save bytes and identical native/public-WASM package data. Independent
+verifier passes. Real-WASM phone402×681 and desktop1440×900 selection spends0,
+actual buy spends3marks (91→88), clears hint and retains variant1. Root horizontal
+overflow0; four visible-viewport screenshots, two inspected locked views and dated
+observations retained in docs/evidence/cut292. Existing import toast also visible.
+Client types/lint/copy/format and workspace/all-target Clippy pass. Initial helper
+Clippy type error corrected before earned native capture; failed log retained.
+Workspace1102pass/6ignored, native settlement Gold/ledger/ExitLine/expected and
+complete after-saves unchanged4/4. Existing package selection60/60 across
+320/400/1440 passes. All validation jobs terminal. WASM fdd96f98…,7111547 bytes;
+current default manifest cut292. No fresh full browser settlement run claimed
+(Cut291 historical564/564); scoped real-WASM package proof is current. No gameplay, held
+W2/recovery, Guide gap4, balance/full/exhaustive/fun acceptance or deploy change.
+Next: current earned R4 class-build comparisons, reconciling existing Cut253/257
+class-skill evidence before duplicating it; broader balance and R3 remain open.
 
 ## Cut291 accurate Throw refusal — verified
 
