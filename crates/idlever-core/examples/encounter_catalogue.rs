@@ -56,11 +56,29 @@ fn trace(
     }
     Err("bounded trace did not finish within 200000 ticks".into())
 }
+fn choose(s: &mut Session, choice: &str) -> Result<(), String> {
+    if choice == "baseline" {
+        return Ok(());
+    }
+    let (id, variant) = choice
+        .split_once('@')
+        .map_or((choice, None), |(id, v)| (id, Some(v)));
+    s.equip_package(id, 0)?;
+    if let Some(variant) = variant {
+        s.set_tactic_variant(
+            id,
+            variant
+                .parse::<u32>()
+                .map_err(|_| "invalid tactic variant")?,
+        )?;
+    }
+    Ok(())
+}
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
     if args.len() < 5 {
         return Err(
-            "earn|prepare|trace|absence SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
+            "earn|prepare|trace|absence|loadout|purchase SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES] [REVOKE_DRILLS]".into(),
         );
     }
     idlever_core::chronicle::use_shipping_words();
@@ -94,12 +112,66 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 &json!([{"command":"set_worker","id":"scout","on":true}]),
             );
             fs::write(dir.join("common-away-parent.json"), s.save())?;
-            if let Some(choice) = args.get(5).filter(|c| c.as_str() != "baseline") {
-                s.equip_package(choice, 0)?;
+            if let Some(choice) = args.get(5) {
+                choose(&mut s, choice)?;
             }
             fs::write(dir.join("choice-parent.json"), s.save())?;
             let report = s.run_offline_mode(hours * 3600, false, true);
             write(dir, "report.json", &report);
+        }
+        "purchase" => {
+            if s.run.is_some() {
+                return Err("purchase comparison requires home".into());
+            }
+            write(dir, "offers-before.json", &s.unlocks());
+            let marks = s.lineage.marks;
+            let gold = s.lineage.gold;
+            match s.buy(&args[4]) {
+                Ok(()) => write(
+                    dir,
+                    "purchase.json",
+                    &json!({"id":args[4],"ok":true,
+                    "marks_spent":marks-s.lineage.marks,"gold_spent":gold-s.lineage.gold}),
+                ),
+                Err(error) => {
+                    write(
+                        dir,
+                        "purchase.json",
+                        &json!({"id":args[4],"ok":false,"error":error}),
+                    );
+                    fs::write(dir.join("after-refusal.json"), s.save())?;
+                    return Err(error.into());
+                }
+            }
+        }
+        "loadout" => {
+            if s.run.is_some() {
+                return Err("loadout comparison requires home".into());
+            }
+            let config: idlever_core::kit::StartingConfig =
+                serde_json::from_str(&fs::read_to_string(&args[4])?)?;
+            write(
+                dir,
+                "offers-before.json",
+                &idlever_core::kit::starting_wire(&s.lineage),
+            );
+            let before = s.clone();
+            idlever_core::kit::set_starting(&mut s.active, Some(config.clone()))?;
+            assert_eq!(s.lineage.gold, before.lineage.gold);
+            assert_eq!(s.lineage.marks, before.lineage.marks);
+            assert_eq!(s.lineage.clock_s, before.lineage.clock_s);
+            assert_eq!(s.lineage.rng, before.lineage.rng);
+            assert_eq!(s.lineage.bloodline, before.lineage.bloodline);
+            write(
+                dir,
+                "actions.json",
+                &json!([{"command":"set_starting","config":config,"gold_spent":0}]),
+            );
+            write(
+                dir,
+                "offers-after.json",
+                &idlever_core::kit::starting_wire(&s.lineage),
+            );
         }
         "prepare" => {
             let depth: u32 = args[4].parse()?;
@@ -154,8 +226,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 return Err("trace requires prepared home at requested start".into());
             }
             let before = s.clone();
-            if let Some(choice) = args.get(5).filter(|c| c.as_str() != "baseline") {
-                s.equip_package(choice, 0)?;
+            if let Some(choice) = args.get(5) {
+                choose(&mut s, choice)?;
             }
             assert_eq!(s.lineage.gold, before.lineage.gold);
             assert_eq!(s.lineage.clock_s, before.lineage.clock_s);

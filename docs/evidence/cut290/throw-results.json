@@ -1,0 +1,165 @@
+[
+  {
+    "scene": "gas",
+    "policy": "baseline",
+    "hurt": 9,
+    "gas_hurt": 6,
+    "by_cause": {
+      "jackal": 1,
+      "gas": 6,
+      "pink_jelly": 2
+    },
+    "last_floor_tick": 1220,
+    "fire_use_count": 0,
+    "uses": [],
+    "total_run": {
+      "cause": "gas",
+      "depth": 13,
+      "kept": 0,
+      "kills": 49,
+      "tier": "death",
+      "turns": 6910,
+      "twists": [
+        "captive",
+        "hunger",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "gas",
+    "policy": "gas1",
+    "hurt": 6,
+    "gas_hurt": 3,
+    "by_cause": {
+      "gas": 3,
+      "pink_jelly": 3
+    },
+    "last_floor_tick": 840,
+    "fire_use_count": 3,
+    "uses": [
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 20
+      },
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 30
+      },
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 80
+      }
+    ],
+    "total_run": {
+      "cause": "lich",
+      "depth": 18,
+      "kept": 0,
+      "kills": 109,
+      "tier": "death",
+      "turns": 13047,
+      "twists": [
+        "captive",
+        "nest",
+        "hunger",
+        "nest",
+        "captive",
+        "den",
+        "vault"
+      ]
+    }
+  },
+  {
+    "scene": "pack",
+    "policy": "baseline",
+    "hurt": 13,
+    "gas_hurt": 6,
+    "by_cause": {
+      "pink_jelly": 3,
+      "jackal": 2,
+      "eel": 2,
+      "gas": 6,
+      "rest": 0
+    },
+    "last_floor_tick": 1010,
+    "fire_use_count": 0,
+    "uses": [],
+    "total_run": {
+      "cause": null,
+      "depth": 19,
+      "kept": 453,
+      "kills": 101,
+      "tier": "bank",
+      "turns": 13926,
+      "twists": [
+        "den",
+        "captive",
+        "hunger",
+        "hunger",
+        "vault",
+        "lock"
+      ]
+    }
+  },
+  {
+    "scene": "pack",
+    "policy": "gas1",
+    "hurt": 7,
+    "gas_hurt": 0,
+    "by_cause": {
+      "pink_jelly": 3,
+      "jackal": 2,
+      "eel": 2
+    },
+    "last_floor_tick": 960,
+    "fire_use_count": 3,
+    "uses": [
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 730
+      },
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 740
+      },
+      {
+        "item": "fire potion",
+        "k": "use",
+        "outcome": "fire",
+        "t": 800
+      }
+    ],
+    "total_run": {
+      "cause": "lurker",
+      "depth": 28,
+      "kept": 0,
+      "kills": 217,
+      "tier": "death",
+      "turns": 35096,
+      "twists": [
+        "vault",
+        "captive",
+        "hunger",
+        "nest",
+        "den",
+        "vault",
+        "nest",
+        "vault",
+        "nest",
+        "vault",
+        "captive",
+        "den"
+      ]
+    }
+  }
+]

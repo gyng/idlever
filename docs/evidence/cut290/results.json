@@ -1,0 +1,2018 @@
+{
+  "scope": "24 fixed earned departures; eight matched groups; no AI change",
+  "groups": [
+    {
+      "group": "gas-sword-fire1",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "gas-sword-fire3",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "gas-bow-fire1",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "gas-bow-fire3",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "pack-sword-fire1",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "pack-sword-fire3",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "pack-bow-fire1",
+      "matched_initial_scene_and_hero": true
+    },
+    {
+      "group": "pack-bow-fire3",
+      "matched_initial_scene_and_hero": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "trace-gas-sword-fire1-baseline",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "baseline",
+      "first_floor_hurt": 9,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "jackal": 1,
+        "gas": 6,
+        "pink_jelly": 2
+      },
+      "last_initial_floor_event_tick": 1220,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 7,
+            "dst": 8,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 9
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 110,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 17,
+            "y": 11
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 22,
+        "kept": 389,
+        "kills": 144,
+        "tier": "bank",
+        "turns": 25565,
+        "twists": [
+          "captive",
+          "hunger",
+          "captive",
+          "den",
+          "nest",
+          "vault",
+          "captive",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-sword-fire1-gas0",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "gas0",
+      "first_floor_hurt": 15,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "gas": 6,
+        "jackal": 7,
+        "pink_jelly": 2
+      },
+      "last_initial_floor_event_tick": 1730,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 90,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 180,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 203,
+        "tier": "death",
+        "turns": 33896,
+        "twists": [
+          "captive",
+          "den",
+          "vault",
+          "hunger",
+          "captive",
+          "den",
+          "hunger",
+          "vault",
+          "captive",
+          "vault",
+          "lock",
+          "den",
+          "den"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-sword-fire1-gas1",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "gas1",
+      "first_floor_hurt": 14,
+      "first_floor_gas_hurt": 9,
+      "first_floor_damage_by_cause": {
+        "gas": 9,
+        "jackal": 4,
+        "pink_jelly": 1
+      },
+      "last_initial_floor_event_tick": 1330,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 50,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 12,
+            "y": 15
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 8,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 130,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 150,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 7
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 191,
+        "tier": "death",
+        "turns": 36309,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "vault",
+          "den",
+          "hunger",
+          "lock",
+          "hunger",
+          "vault",
+          "vault",
+          "den",
+          "den",
+          "vault",
+          "captive",
+          "den",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-sword-fire3-baseline",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "baseline",
+      "first_floor_hurt": 9,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "jackal": 1,
+        "gas": 6,
+        "pink_jelly": 2
+      },
+      "last_initial_floor_event_tick": 1220,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 7,
+            "dst": 8,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 9
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 110,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 17,
+            "y": 11
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "gas",
+        "depth": 13,
+        "kept": 0,
+        "kills": 49,
+        "tier": "death",
+        "turns": 6910,
+        "twists": [
+          "captive",
+          "hunger",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-sword-fire3-gas0",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "gas0",
+      "first_floor_hurt": 15,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "gas": 6,
+        "jackal": 7,
+        "pink_jelly": 2
+      },
+      "last_initial_floor_event_tick": 1730,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 90,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 180,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 19,
+        "kept": 278,
+        "kills": 118,
+        "tier": "bank",
+        "turns": 17427,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "vault",
+          "nest",
+          "hunger",
+          "vault",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-sword-fire3-gas1",
+      "scene": "gas",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "gas1",
+      "first_floor_hurt": 14,
+      "first_floor_gas_hurt": 9,
+      "first_floor_damage_by_cause": {
+        "gas": 9,
+        "jackal": 4,
+        "pink_jelly": 1
+      },
+      "last_initial_floor_event_tick": 1330,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 50,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 12,
+            "y": 15
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 8,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 130,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 150,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 7
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "skeleton",
+        "depth": 18,
+        "kept": 0,
+        "kills": 90,
+        "tier": "death",
+        "turns": 10744,
+        "twists": [
+          "captive",
+          "den",
+          "hunger",
+          "den",
+          "lock",
+          "hunger",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-gas-bow-fire1-baseline",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "baseline",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 850,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 5,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 60,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 12
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 70,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "ghoul",
+        "depth": 18,
+        "kept": 0,
+        "kills": 89,
+        "tier": "death",
+        "turns": 14575,
+        "twists": [
+          "captive",
+          "vault",
+          "hunger",
+          "hunger",
+          "den",
+          "nest"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-gas-bow-fire1-gas0",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "gas0",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 1740,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 0,
+            "dst": 2,
+            "hit": false,
+            "k": "attack",
+            "src": 1,
+            "t": 20,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 6,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 19,
+        "kept": 327,
+        "kills": 134,
+        "tier": "return",
+        "turns": 20379,
+        "twists": [
+          "captive",
+          "nest",
+          "den",
+          "hunger",
+          "nest",
+          "captive",
+          "den",
+          "nest",
+          "hunger",
+          "captive"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-gas-bow-fire1-gas1",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "gas1",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 1740,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 0,
+            "dst": 2,
+            "hit": false,
+            "k": "attack",
+            "src": 1,
+            "t": 20,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 6,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 190,
+        "tier": "death",
+        "turns": 34316,
+        "twists": [
+          "captive",
+          "nest",
+          "den",
+          "hunger",
+          "den",
+          "hunger",
+          "captive",
+          "den",
+          "den",
+          "captive",
+          "vault",
+          "captive",
+          "den",
+          "vault",
+          "nest"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-gas-bow-fire3-baseline",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "baseline",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 870,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 5,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 60,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 12
+          }
+        },
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 70,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 21,
+        "kept": 418,
+        "kills": 116,
+        "tier": "bank",
+        "turns": 18510,
+        "twists": [
+          "captive",
+          "vault",
+          "hunger",
+          "vault",
+          "captive",
+          "den",
+          "captive",
+          "vault",
+          "captive"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-gas-bow-fire3-gas0",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "gas0",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 1740,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 0,
+            "dst": 2,
+            "hit": false,
+            "k": "attack",
+            "src": 1,
+            "t": 20,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 6,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 19,
+        "kept": 322,
+        "kills": 114,
+        "tier": "bank",
+        "turns": 17642,
+        "twists": [
+          "captive",
+          "nest",
+          "den",
+          "hunger",
+          "vault",
+          "den",
+          "captive",
+          "hunger",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-gas-bow-fire3-gas1",
+      "scene": "gas",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "gas1",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 1740,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 0,
+            "dst": 2,
+            "hit": false,
+            "k": "attack",
+            "src": 1,
+            "t": 20,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 2,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 30,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 13
+          }
+        },
+        {
+          "event": {
+            "dmg": 6,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 80,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 15,
+            "y": 12
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 204,
+        "tier": "death",
+        "turns": 35743,
+        "twists": [
+          "captive",
+          "nest",
+          "den",
+          "hunger",
+          "hunger",
+          "den",
+          "lock",
+          "nest",
+          "den",
+          "vault",
+          "lock",
+          "captive",
+          "den",
+          "den"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-sword-fire1-baseline",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "baseline",
+      "first_floor_hurt": 13,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 3,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 6
+      },
+      "last_initial_floor_event_tick": 1020,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 750,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 11,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 840,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 22,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 617,
+        "kills": 163,
+        "tier": "return",
+        "turns": 25760,
+        "twists": [
+          "captive",
+          "hunger",
+          "vault",
+          "captive",
+          "den",
+          "vault",
+          "den"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-sword-fire1-gas0",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "gas0",
+      "first_floor_hurt": 16,
+      "first_floor_gas_hurt": 9,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 3,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 9
+      },
+      "last_initial_floor_event_tick": 1100,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 780,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 17,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 12,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 910,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 21,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 611,
+        "kills": 186,
+        "tier": "return",
+        "turns": 29696,
+        "twists": [
+          "den",
+          "captive",
+          "hunger",
+          "vault",
+          "nest",
+          "den",
+          "lock",
+          "hunger",
+          "den",
+          "den",
+          "nest"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-sword-fire1-gas1",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 1,
+      "policy": "gas1",
+      "first_floor_hurt": 13,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 3,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 6
+      },
+      "last_initial_floor_event_tick": 1020,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 750,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 11,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 840,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 22,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 20,
+        "kept": 587,
+        "kills": 126,
+        "tier": "bank",
+        "turns": 16355,
+        "twists": [
+          "captive",
+          "hunger",
+          "den",
+          "hunger",
+          "nest",
+          "den",
+          "nest"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-sword-fire3-baseline",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "baseline",
+      "first_floor_hurt": 13,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 3,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 6,
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 1010,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 750,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 11,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 840,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 22,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 19,
+        "kept": 453,
+        "kills": 101,
+        "tier": "bank",
+        "turns": 13926,
+        "twists": [
+          "den",
+          "captive",
+          "hunger",
+          "hunger",
+          "vault",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-sword-fire3-gas0",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "gas0",
+      "first_floor_hurt": 14,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 4,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 6,
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 1220,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 9,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 780,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 17,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 11,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 910,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 21,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lurker",
+        "depth": 28,
+        "kept": 0,
+        "kills": 232,
+        "tier": "death",
+        "turns": 46342,
+        "twists": [
+          "captive",
+          "hunger",
+          "lock",
+          "captive",
+          "nest",
+          "vault",
+          "den",
+          "den",
+          "vault",
+          "captive",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-sword-fire3-gas1",
+      "scene": "pack",
+      "weapon": "sword",
+      "fire_stock": 3,
+      "policy": "gas1",
+      "first_floor_hurt": 13,
+      "first_floor_gas_hurt": 6,
+      "first_floor_damage_by_cause": {
+        "pink_jelly": 3,
+        "jackal": 2,
+        "eel": 2,
+        "gas": 6,
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 1010,
+      "initial_weapon": "sword",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 750,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 19,
+            "y": 6
+          }
+        },
+        {
+          "event": {
+            "dmg": 11,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 840,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 22,
+            "y": 6
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 21,
+        "kept": 501,
+        "kills": 126,
+        "tier": "bank",
+        "turns": 16122,
+        "twists": [
+          "den",
+          "captive",
+          "hunger",
+          "captive",
+          "den",
+          "lock",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": false
+    },
+    {
+      "case": "trace-pack-bow-fire1-baseline",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "baseline",
+      "first_floor_hurt": 3,
+      "first_floor_gas_hurt": 3,
+      "first_floor_damage_by_cause": {
+        "gas": 3,
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 990,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 12,
+            "dst": 11,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 860,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 27,
+            "y": 9
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 20,
+        "kept": 686,
+        "kills": 119,
+        "tier": "bank",
+        "turns": 18140,
+        "twists": [
+          "nest",
+          "captive",
+          "hunger",
+          "vault",
+          "den",
+          "lock",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-bow-fire1-gas0",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "gas0",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {},
+      "last_initial_floor_event_tick": 1030,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 836,
+        "kills": 153,
+        "tier": "return",
+        "turns": 24865,
+        "twists": [
+          "vault",
+          "captive",
+          "hunger",
+          "den",
+          "hunger",
+          "captive",
+          "vault",
+          "den",
+          "captive"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-bow-fire1-gas1",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 1,
+      "policy": "gas1",
+      "first_floor_hurt": 3,
+      "first_floor_gas_hurt": 3,
+      "first_floor_damage_by_cause": {
+        "gas": 3,
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 990,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 12,
+            "dst": 11,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 860,
+            "verb": "attack"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 27,
+            "y": 9
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "skeleton",
+        "depth": 23,
+        "kept": 0,
+        "kills": 147,
+        "tier": "death",
+        "turns": 23335,
+        "twists": [
+          "nest",
+          "captive",
+          "hunger",
+          "captive",
+          "captive",
+          "vault",
+          "captive",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-bow-fire3-baseline",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "baseline",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 830,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        }
+      ],
+      "total_run": {
+        "cause": "lich",
+        "depth": 18,
+        "kept": 0,
+        "kills": 98,
+        "tier": "death",
+        "turns": 14140,
+        "twists": [
+          "vault",
+          "captive",
+          "hunger",
+          "den",
+          "lock"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-bow-fire3-gas0",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "gas0",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 830,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 18,
+        "kept": 528,
+        "kills": 95,
+        "tier": "return",
+        "turns": 12877,
+        "twists": [
+          "vault",
+          "captive",
+          "hunger",
+          "vault",
+          "den",
+          "nest",
+          "hunger"
+        ]
+      },
+      "cut289_damage_target_only": true
+    },
+    {
+      "case": "trace-pack-bow-fire3-gas1",
+      "scene": "pack",
+      "weapon": "bow",
+      "fire_stock": 3,
+      "policy": "gas1",
+      "first_floor_hurt": 0,
+      "first_floor_gas_hurt": 0,
+      "first_floor_damage_by_cause": {
+        "rest": 0
+      },
+      "last_initial_floor_event_tick": 830,
+      "initial_weapon": "bow",
+      "initial_supplies": [
+        "heal",
+        "heal",
+        "fire",
+        "fire",
+        "fire"
+      ],
+      "first_floor_fire_use_count": 0,
+      "quotes": [
+        {
+          "event": {
+            "dmg": 8,
+            "dst": 6,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 610,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 16,
+            "y": 8
+          }
+        },
+        {
+          "event": {
+            "dmg": 10,
+            "dst": 7,
+            "hit": true,
+            "k": "attack",
+            "src": 1,
+            "t": 660,
+            "verb": "shoot"
+          },
+          "target_kind": "bloat",
+          "before_hero": {
+            "x": 20,
+            "y": 8
+          }
+        }
+      ],
+      "total_run": {
+        "cause": null,
+        "depth": 23,
+        "kept": 600,
+        "kills": 144,
+        "tier": "return",
+        "turns": 26768,
+        "twists": [
+          "vault",
+          "captive",
+          "hunger",
+          "vault",
+          "hunger",
+          "lock",
+          "hunger",
+          "vault",
+          "nest",
+          "lock",
+          "vault"
+        ]
+      },
+      "cut289_damage_target_only": true
+    }
+  ]
+}

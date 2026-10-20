@@ -2,8 +2,8 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut289
-(gas-step candidate rejected, original AI restored); production is Cut284 route-aware counter packing,
+Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut290
+(existing gas loadouts and actual Throw permission measured); production is Cut284 route-aware counter packing,
 sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
@@ -52,7 +52,13 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    Cut289's safe-fire candidate fails fixed gas hurt/gas bars (12/6 versus≤9/≤3),
    so it is rejected and source restored; no game default is changed. First fire
    kills safely, but two remaining melee pops still hurt. Inspect finite ranged
-   resources/positioning before another candidate; keep the bars unchanged. R4's preserved builds authored no class
+   resources/positioning before another candidate; keep the bars unchanged.
+   Cut290 tests24 actual loadout/variant cases plus four paid-Throw cases: owned
+   bow meets damage targets, and a legal3-mark Throw purchase lets existing
+   wade-in use three fire doses (gas6/3, pack7/0 hurt/gas), with no AI change.
+   All28 observer pairs/eight8h ledgers independently verify. Next reproduce/fix
+   misleading throw class/permission block reasons, then examine dependency copy
+   and R4 authored class builds; no six-superiority or population claim. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence

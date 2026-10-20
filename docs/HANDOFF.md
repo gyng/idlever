@@ -1,9 +1,54 @@
-# Active backlog — Cut289 candidate rejected, original AI restored, 2026-10-20
+# Active backlog — Cut290 existing gas preparations measured and verified, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-Latest work measures six bounded starting-floor encounter scenes and isolates learned counters; the route-aware
-counter packing production fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
+Latest work measures earned loadouts/ability permissions and retains the six-scene
+catalogue; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut290 earned loadouts — verified; existing prep works, permission dependency found
+
+Contract: [CUT290_GAS_LOADOUTS.md](CUT290_GAS_LOADOUTS.md). Exactly24 original
+traces: two fixed Fens parents × sword/bow ×1/3 fire (two heals common) × baseline/
+primary/wade-in L3. Eight public set_starting configurations succeed,0 Gold/marks,
+no gear/skill grants; all policy groups have exact initial hero/inventory/world/
+RNG matches. All12 bow cases meet the two DAMAGE-ONLY targets; no sword case
+meets them on gas scene. This does NOT accept the rejected Cut289 AI or its
+whole contract (bow primary gas t1740 exceeds old1730 time bar).
+
+Local tradeoffs: gas bow baseline0/0 hurt/gas at850 ticks, primary0/0 at1740;
+pack bow/one-fire baseline3/3 at990, primary0/0 at1030. Original24 traces use NO
+fire on initial floor; do not attribute stock-driven path/pickup changes to fire
+attacks. Fixed eight8h branches (sword/bow one-fire, baseline/primary, two scenes)
+all reconcile28800s and exact Gold ledgers; deepest28,0 stalls. Gas primary bow
+Gold8523 versus sword8543; pack primary bow11153 versus sword9939. Local safety
+and full-absence return remain separate, not a universal best-build claim.
+
+Source/trace finding: Fighters have no Throw ability/global unlock, so explicit
+variant1 throw row cannot execute despite known stock. Separately preregistered
+follow-up buys throw through public API on each sword/three-fire parent: actual
+available3-mark purchase,0 Gold, no grant/borrow/class change. Four extra matched
+traces show wade-in now USES3 fire doses; gas hurt6/gas3/t840 versus baseline9/6,
+pack7/0/t960 versus baseline13/6. Existing paid permission +prep demonstrate the
+counter at these exact scenes without any AI change. No extra8h throw runs.
+
+Independent verifier passes517 raw receipts, eight public loadouts, two actual
+purchases,28 exact initial-state/whole-event/terminal-save observer pairs (56
+continuations) and eight8h accounting cases. Build, both warnings-denied helper
+Clippy revisions, scoped rustfmt/diff checks pass. All owned jobs terminal.
+Portable evidence `docs/evidence/cut290/`: source/native/three-contract identities,
+full original saves/events/maps/tick-boundary positions/offers/costs, tables and
+verifier. capture.tar.zst6384059 bytes /1235669385 raw; generation2.291s here,
+not a matched campaign speedup. zstd installed; reader uses one forward pass and
+private /tmp reconstruction. Old XZ archives/readers are unchanged. Raw copies
+remain target/cut290. No core/WASM/default, held proposal, release/deploy change.
+
+Next concrete product issue: reproduce/correct throw's misleading block reason.
+Execution gate requires class/global permission, but block_reason's throw branch
+falls through to no line when item/foe exist. Preserve the actual lock and
+behavior; do not invent a new universal gas AI or borrow abilities. Then consider
+package/ability dependency presentation and R4 actual class builds. R3 formation/
+tactical superiority, inherited balance, exhaustive and independent fun remain
+open. Isolated incremental-cache practice also still needs a measured audit.
 
 ## Cut289 gas-step fire candidate — rejected; source/runtime restored and checked
 

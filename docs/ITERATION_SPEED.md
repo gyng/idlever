@@ -36,6 +36,16 @@ Host load, CPU time, binary/source identity and archived raw outputs are in
 [evidence/cut285/README.md](evidence/cut285/README.md). Changed native probe
 identity correctly prevents reuse as the old immutable study runtime.
 
+## Large diagnostic receipt archives — Cut290
+
+`docs/evidence/cut290/archive.py` preserves byte-exact raw files with tar links for
+identical payloads and `zstd -T4 -10 --long=27`. This run archived1.236GB raw
+(705MB unique) to6.384MB in2.291s, excluding simulations and independent checks.
+This is one measured archive cost, not a matched codec or campaign speedup.
+The streaming verifier checks hashes/links and writes private temporary files;
+it needs the installed zstd executable plus Python stdlib. Existing XZ evidence
+and its readers remain unchanged. See Cut290 evidence for the actual manifest.
+
 ## Build-time phase split — 2026-10-16 (measured; corrects §3.5's engine.rs claim)
 
 Measured on this checkout (32-core WSL2, rustc 1.96.0, GNU ld, no lld/mold; the box was shared,
