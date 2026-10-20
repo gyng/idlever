@@ -7,8 +7,11 @@ Conduct now tries its prerequisite slow before its qualifying bolt. Current
 earned seed1 camp yields four copies versus zero; two control branches remain
 byte-exact,87actual runs retained. Workspace1102pass/6ignored and three complete
 eight-hour native/WASM report/save pairs pass. This closes the bounded earned
-payoff gap; no population or balance claim. Follow-up chore: fix tools/wasm.sh
-CARGO_TARGET_DIR compilation/packaging mismatch observed during validation.
+payoff gap; no population or balance claim. Cut297 now fixes tools/wasm.sh
+CARGO_TARGET_DIR/configuration compilation/packaging mismatch. Seven wrapper
+regressions pass (old code fails five); real default/isolated package bytes and
+three earned8h native/WASM pairs match. No rules/module/default pin changed.
+Next: inherited balance diagnosis with a concrete mechanism hypothesis.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

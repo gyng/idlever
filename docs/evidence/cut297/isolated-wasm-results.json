@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "wasm": {
+    "bytes": 7111856,
+    "sha256": "d5dd4c1819e351cdc67fe78bd8ce9f7e9b2b5ec35bd5639a3c14c49b4bde8ecb"
+  },
+  "transport": "480 public runOfflineSlice(60,last) calls per actual earned branch",
+  "cases": [
+    {
+      "label": "no-selection",
+      "inputSha256": "32349ca1adbd69810c5c385555fed3b8bc1bd3c0aa3f4b3c80c02fe7f0dea5fb",
+      "canonicalInputSha256": "32349ca1adbd69810c5c385555fed3b8bc1bd3c0aa3f4b3c80c02fe7f0dea5fb",
+      "afterSha256": "2ce4b0f36031f0458a7ea3f5a194fca2ed112433a8347da6f712e9e4ce05f00d",
+      "nativeWasmReportExact": true,
+      "nativeWasmWholeSaveBytesExact": true,
+      "gold": 2850
+    },
+    {
+      "label": "parent-only",
+      "inputSha256": "610f86f271202fc5a143030cd8d7a26ced81fd21dfb72306bb1dc968b0d60cde",
+      "canonicalInputSha256": "610f86f271202fc5a143030cd8d7a26ced81fd21dfb72306bb1dc968b0d60cde",
+      "afterSha256": "61a6b18281ce13329ee8cf5fec36b0c28b58bf564edda754ecbdccaf79cc4a97",
+      "nativeWasmReportExact": true,
+      "nativeWasmWholeSaveBytesExact": true,
+      "gold": 2775
+    },
+    {
+      "label": "selected",
+      "inputSha256": "cf3247fe23645f744e347862a13099f96836c9d81acd0a911db4d60ddf1ef8a5",
+      "canonicalInputSha256": "cf3247fe23645f744e347862a13099f96836c9d81acd0a911db4d60ddf1ef8a5",
+      "afterSha256": "74a833c411b3b16dd985af2f6584992234c67f68d0c78a29e062d13e3a589f9f",
+      "nativeWasmReportExact": true,
+      "nativeWasmWholeSaveBytesExact": true,
+      "gold": 2775
+    }
+  ]
+}

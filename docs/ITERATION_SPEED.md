@@ -91,6 +91,14 @@ node tools/repin.mjs --dir docs/evidence/cutNNN --note "CutNNN: what changed" [-
 node tools/repin.mjs --check        # hash the pkg against the default manifest; changes nothing (exit 1 if they differ)
 ```
 
+Fast WASM builds resolve Cargo's effective target directory before packaging
+(Cut297), including `CARGO_TARGET_DIR` and `.cargo` configuration. For example,
+`CARGO_TARGET_DIR=target/cut291-native tools/wasm.sh` now packages that build's
+artifact. The old fixed `target/` packaging path could silently reuse an older
+module. `node --test tools/wasm-target.test.mjs` guards custom paths and failures;
+it also runs in quick verification and CI. This correctness fix is not a new
+build-speed benchmark.
+
 1. Runs `tools/wasm.sh` (fast). `--ship` builds the release package instead, and `--no-build` uses the pkg as it is.
 2. Reads the bytes and sha256 of `web/src/engine/pkg/idlever_wasm_bg.wasm`.
 3. Finds the default manifest. It is the literal after `IDLEVER_GOLD_SETTLEMENT_INPUTS ??` in

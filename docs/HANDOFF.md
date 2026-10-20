@@ -1,4 +1,4 @@
-# Active backlog — Cut296 earned Conduct payoff restored, 2026-10-21
+# Active backlog — Cut297 custom-target WASM packaging fixed, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
 Latest product fix restores earned Caster Conduct payoff (Cut296), after
@@ -6,6 +6,32 @@ Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut297 fast WASM packages Cargo's effective target — verified
+
+Contract [CUT297_WASM_TARGET_DIRECTORY.md](CUT297_WASM_TARGET_DIRECTORY.md).
+Fast wrapper now resolves `cargo metadata` target_directory before bindgen,
+covering environment and Cargo configuration with quoted paths. Old code built
+under CARGO_TARGET_DIR but read an older default-target module. Build/metadata
+failure stops packaging; fast debug/profile and shipping branch stay as before.
+
+Seven disposable behavioral regression cases pass; old script fails five
+(nondefault/config paths and metadata failure), with default/build-failure
+controls passing. Tests run in verify.sh quick sidecar and Pages CI. Actual
+isolated-target and default builds produce identical five package files;
+WASM d5dd4c18…7111856bytes, default settlement manifest remainsCut296. Three
+complete earned8h native/WASM reports/after-save pairs match on the isolated
+build; real Cargo metadata also resolves a configured path containing spaces.
+Shell syntax, formatting and lint pass. No game truth changed, so no repeat of
+core tests or balance/full/exhaustive/browser acceptance is claimed. Previous
+Cut296564settlement checks remain applicable to the identical module bytes.
+Sandbox subprocess-denied attempts retained separately from actual red/green
+results. Evidence docs/evidence/cut297. No deploy; live dev423fe45a.
+
+Next: inherited balance diagnosis (TUNED D33/worker-away), with a concrete
+mechanism hypothesis before another expensive study. Client-startup hashing
+cost, recognition and independent fun remain queued. Held Bank/Vat W2,
+recovery and Guide gap4 unchanged. Broad backlog goal remains active.
 
 ## Cut296 Conduct prepares its prerequisite — current earned payoff verified
 

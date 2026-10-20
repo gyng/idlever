@@ -26,5 +26,8 @@ if [ -z "$bg" ] && wasm-bindgen --version 2>/dev/null | grep -q "$want"; then bg
 # DWARF from the pkg anyway, and emitting it was ~45 % of a rebuild after a core edit (13.7 → 7.6 s,
 # docs/ITERATION_SPEED.md round 3). Native line tables are now opt-in (docs/NATIVE_DEV.md).
 CARGO_PROFILE_FAST_DEBUG=0 cargo build -q --profile fast --target wasm32-unknown-unknown -p idlever-wasm
-"$bg" --target web --out-dir web/src/engine/pkg target/wasm32-unknown-unknown/fast/idlever_wasm.wasm
+# Cargo metadata resolves environment overrides and .cargo configuration alike.
+# Never package a stale default-target artifact after building somewhere else.
+wasm_target_dir=$(cargo metadata --no-deps --format-version 1 | node -p 'JSON.parse(require("node:fs").readFileSync(0,"utf8")).target_directory')
+"$bg" --target web --out-dir web/src/engine/pkg "$wasm_target_dir/wasm32-unknown-unknown/fast/idlever_wasm.wasm"
 echo "wasm: fast build → web/src/engine/pkg ($(stat -c %s web/src/engine/pkg/idlever_wasm_bg.wasm) bytes)"

@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: fast WASM packages the default Cargo target
+ok 1 - fast WASM packages the default Cargo target
+  ---
+  duration_ms: 219.112253
+  type: 'test'
+  ...
+# Subtest: fast WASM packages a relative environment target
+ok 2 - fast WASM packages a relative environment target
+  ---
+  duration_ms: 219.164267
+  type: 'test'
+  ...
+# Subtest: fast WASM packages an absolute environment target with spaces
+ok 3 - fast WASM packages an absolute environment target with spaces
+  ---
+  duration_ms: 228.15041
+  type: 'test'
+  ...
+# Subtest: fast WASM respects Cargo-configured target directories
+ok 4 - fast WASM respects Cargo-configured target directories
+  ---
+  duration_ms: 233.517913
+  type: 'test'
+  ...
+# Subtest: Cargo environment target overrides Cargo configuration
+ok 5 - Cargo environment target overrides Cargo configuration
+  ---
+  duration_ms: 233.072781
+  type: 'test'
+  ...
+# Subtest: failed Cargo metadata preserves the old package
+ok 6 - failed Cargo metadata preserves the old package
+  ---
+  duration_ms: 188.343763
+  type: 'test'
+  ...
+# Subtest: failed Cargo build preserves the old package
+ok 7 - failed Cargo build preserves the old package
+  ---
+  duration_ms: 121.590614
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1542.888607
