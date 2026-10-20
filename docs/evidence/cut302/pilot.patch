@@ -1,0 +1,18 @@
+--- shipping/packages.rs
++++ candidate/packages.rs
+@@ -570,6 +570,15 @@
+ /// A boss's counter targets its known distinguishing tag, leaving unrelated bosses to their drill.
+ /// Stored counter facts keep their original fingerprint; only generated/copy templates are scoped.
+ fn scope_drill_row(boss: &str, mut row: Row) -> Row {
++    // The Lich counter attacks undead, leaving spectral blades to ordinary policy.
++    // Keep the summon-presence trigger and the caller's HP guard.
++    if boss == "lich"
++        && row.verb == Verb::arg("attack", "tag:summoned")
++        && row.conds.iter().any(|c| c.k == "foe_tag" && c.t.as_deref() == Some("summoned"))
++    {
++        row.verb = Verb::arg("attack", "tag:undead");
++        return row;
++    }
+     if boss == "lurker_queen" {
+         // Only the generated silence template changes scope. Legacy saved drills used
+         // `blind`, which spent the Queen's scrolls on ordinary lurkers before D28.

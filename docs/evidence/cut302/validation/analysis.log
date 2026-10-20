@@ -1,0 +1,53 @@
+{
+  "scope": "Discovery on reused seeds1/2; isolated target-choice runtime; no independent population or canonical acceptance",
+  "before_median_paired_ratio": "11/10",
+  "after_median_paired_ratio": "11/10",
+  "diagnostic_bars": {
+    "no_d33_censoring": true,
+    "picked_d23_nonregression_each": true,
+    "picked_d33_nonregression_each": true,
+    "tuned_d33_nonregression_each": true,
+    "median_paired_d33_ratio_at_least_1_15": false
+  },
+  "all_discovery_bars_pass": false,
+  "first_seed2_queen_pen_h": 24,
+  "default_adoption": false
+}
+[
+  {
+    "bot": "PICKED",
+    "seed": "1",
+    "before_d23_h": 16.0,
+    "after_d23_h": 16.0,
+    "before_d33_h": 40.0,
+    "after_d33_h": 40.0,
+    "whole_observation_equal_except_elapsed": true
+  },
+  {
+    "bot": "PICKED",
+    "seed": "2",
+    "before_d23_h": 24.0,
+    "after_d23_h": 24.0,
+    "before_d33_h": 48.0,
+    "after_d33_h": 48.0,
+    "whole_observation_equal_except_elapsed": true
+  },
+  {
+    "bot": "TUNED",
+    "seed": "1",
+    "before_d23_h": 16.0,
+    "after_d23_h": 16.0,
+    "before_d33_h": 40.0,
+    "after_d33_h": 40.0,
+    "whole_observation_equal_except_elapsed": true
+  },
+  {
+    "bot": "TUNED",
+    "seed": "2",
+    "before_d23_h": 24.0,
+    "after_d23_h": 24.0,
+    "before_d33_h": 40.0,
+    "after_d33_h": 40.0,
+    "whole_observation_equal_except_elapsed": false
+  }
+]

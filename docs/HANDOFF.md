@@ -1,4 +1,4 @@
-# Active backlog — Cut301 target diagnosis complete, 2026-10-21
+# Active backlog — Cut302 ordinary pilot fails discovery bar, 2026-10-21
 
 Owner: continue working on the backlog. Broad goal remains active.
 Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
@@ -9,6 +9,36 @@ Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
 14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. Cut300 checkpoint13558b1c pushed; no new release/deployment. Live dev game is still423fe45a.
+
+## Cut302 isolated target-choice pilot — FAIL at discovery scope; no adoption
+
+Contract [CUT302_LICH_TARGET_PILOT.md](CUT302_LICH_TARGET_PILOT.md), evidence
+[cut302/README.md](evidence/cut302/README.md). One generated Lich target-selector
+change in a separate temporary workspace. Main core/WASM/defaults untouched.
+Ordinary PICKED/TUNED on reused1/2,3check-ins/day,D33-or14d: PICKED40/48h,
+TUNED40/40h, paired median11/10 unchanged versus≥1.15. No censoring or absolute
+arrival regression. Three whole observations match except timing; TUNED2 differs.
+It writes Queen at24h/D28, reachesD30at32h, stillD33at40h. Useful Cut301 saved-
+camp outcome does not establish whole-policy improvement. No population rejection,
+canonical16seed/full-balance or adoption claim; NO new confirmation study.
+
+Four trajectories/21camp saves/22native JSONs archived with source hashes,
+shipping/candidate runtime digests, original comparator identity and all losses.
+Independent archive verifier re-derives arrivals/pairs/ratio/discovery bars,
+whole-record equality and camp Gold ledgers. Isolated build/Clippy pass;
+rustfmt parse only, no whole-file style claim. No controlled mechanic/core/full/
+WASM/browser/fun acceptance claimed. Build5614/pilot77799/Clippy49120/verifier25564
+all TERMINAL exit0. Main WASM d5dd4c18… and live dev423fe45a unchanged.
+
+Next concrete backlog item: audit/fix client identity startup cost in
+web/tests/lib/run-state.mjs. It re-reads all small untracked files and currently
+hashes only size above32MiB, permitting same-size large-file edits to be missed.
+Measure first, reduce repeat reads while preserving/strengthening content-change
+invalidation, HEAD/tracked diff/path/WASM identity and honest resume labels.
+Do not narrow source coverage simply to pass a speed bar. No automatic Lich
+confirmation after this failed pilot; retain all32Cut300 held-out outcomes and
+its terminal inconclusive verdict separately. Worker-away/pen/R3/R4/recognition/
+calibration/fun remain open; held Bank/Vat W2/recovery/Guide gap4 unchanged.
 
 ## Cut301 target-choice diagnosis — three diagnostic bars pass, no adoption
 

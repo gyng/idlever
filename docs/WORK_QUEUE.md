@@ -39,6 +39,13 @@ selection and1763less Gold remain visible. Three diagnostic bars pass; no defaul
 adopted. Next: frozen isolated generated-template ordinary discovery pilot on
 reused1/2 with absolute arrivals, runtime identities and target/class tradeoffs;
 new independent evidence needed before adoption. Cut300 remains INCONCLUSIVE.
+Cut302 isolated generated-template target-choice ordinary pilot is complete:
+PICKED40/48h,TUNED40/40h, ratio1.10 unchanged, fails≥1.15 discovery bar. Four
+trajectories/21camps preserved; earlier24hQueen edit does not improveD33. No
+new confirmation/adoption. Next concrete chore: client identity startup-cost/
+correctness audit; current>32MiB untracked files hash size only, so same-size
+edits can be missed. Reduce repeat reads without narrowing content coverage or
+weakening resume invalidation. Full details/evidence in HANDOFF/Cut302.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored
