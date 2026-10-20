@@ -1,0 +1,3261 @@
+{
+  "cells": [
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 0,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 0,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 0,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 0,
+      "start": 14
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 0,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 0,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 0,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 0,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 0,
+      "start": 29
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 1,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 1,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 1,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 1,
+      "start": 9
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 1,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 1,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 1,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 1,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 1,
+      "start": 29
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 2,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 2,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 2,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 2,
+      "start": 19
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 2,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 2,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 2,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 2,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 2,
+      "start": 29
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 4,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 4,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 4,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 4,
+      "start": 14
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 4,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 4,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 4,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 4,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 4,
+      "start": 29
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 5,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 5,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 5,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 5,
+      "start": 9
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 25,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 26,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 5,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 5,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 5,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 5,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 28,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 5,
+      "start": 29
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 8,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 8,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 8,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 8,
+      "start": 14
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 8,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 8,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 8,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 8,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 8,
+      "start": 24
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 9,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 9,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 9,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 9,
+      "start": 9
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 9,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 9,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 9,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 9,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 9,
+      "start": 24
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 10,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 10,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 10,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 10,
+      "start": 19
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 20,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 21,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 10,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 10,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 10,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 10,
+      "start": 24
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 23,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        19
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 10,
+      "start": 24
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 16,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 16,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 16,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 16,
+      "start": 14
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 16,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 16,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 16,
+      "start": 29
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 17,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 17,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 17,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 17,
+      "start": 9
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 17,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 17,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 17,
+      "start": 29
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 15,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 16,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 18,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 18,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 18,
+      "start": 19
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 18,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 18,
+      "start": 19
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 18,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 18,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        9,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 18,
+      "start": 29
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 10,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 11,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 20,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 20,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 20,
+      "start": 14
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 13,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 20,
+      "start": 14
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 20,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 20,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 20,
+      "start": 29
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": false,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 5,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 6,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 21,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 21,
+      "start": 5
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 21,
+      "start": 9
+    },
+    {
+      "best": 33,
+      "boss": "bloat_mother",
+      "bossDepth": 8,
+      "case": "skipping",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "fire",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 21,
+      "start": 9
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": true,
+      "pen": false,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 30,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "not-in-reach",
+      "expected": false,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": false,
+      "pen": true,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": false,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 31,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "in-reach",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 21,
+      "start": 1
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": false,
+      "packed": false,
+      "pen": false,
+      "route": 21,
+      "start": 29
+    },
+    {
+      "best": 33,
+      "boss": "lurker_queen",
+      "bossDepth": 33,
+      "case": "crossing",
+      "expected": true,
+      "forks": [
+        5,
+        14,
+        24
+      ],
+      "item": "silence",
+      "matches": true,
+      "packed": true,
+      "pen": true,
+      "route": 21,
+      "start": 29
+    }
+  ],
+  "diagnostic": "controlled fixtures, not earned play",
+  "mismatches": 32,
+  "routes": 13
+}

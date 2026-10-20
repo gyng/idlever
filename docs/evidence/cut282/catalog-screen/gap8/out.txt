@@ -1,0 +1,27 @@
+
+PICKED (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1       8      8     16     32     40     48     48  [18, 33]  stall 0 king None left 100% ×1 L[5, 5]
+   2       8      8     16     24     32     48     48  [23, 33]  stall 0 king None untried L[5, 5]
+
+TUNED (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1       8      8     16     32     32     40     48  [18, 33]  stall 0 king None left 98% ×5 L[5, 5]
+   2       8      8     16     24     32     40     40  [23]  stall 0 king None left 95% ×4 L[5]
+
+AWAY (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1      24     24     48     48     48    168    168  [13, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33]  stall 0 king None left 49% ×219 L[1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+   2      24     24     48     48     48    168    168  [16, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33]  stall 0 king None left 56% ×276 L[1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+AWAY-nodes (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1      24     24     24     72     96    216    216  [18, 21, 23, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33]  stall 0 king None left 62% ×137 L[5, 5, 5, 1, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+   2      24     24     24     48     72    168    168  [18, 23, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33]  stall 0 king None left 52% ×207 L[1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+bots over 2 seeds × 14 days × 3/day (508s)
+
+bar (targeted)                                                                value  result
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.10  FAIL
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.89 vs 29.18  PASS
+dayplayer (targeted: tuned-picked,automation-pays, 508s): FAIL — not a gate pass

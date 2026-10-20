@@ -64,3 +64,29 @@ Keep every candidate result, even a control failure. Do not adopt a profile from
 this screen alone. The control must reproduce inherited failure values before
 interpreting a candidate. Any changed default requires fresh independent
 confirmation and the existing targeted canonical acceptance in a new amendment.
+
+## Pen-layer diagnosis
+
+While the fixed guide screen runs, replay ordinary PICKED/TUNED seeds1/2 through
+two days (six ordinary check-ins), shipping balance, no policy override, verbose
+and pre-absence saves only. These are the same regression seeds, not fresh
+confirmation. Export compiled rule origins, known boss counters, package levels,
+pen edits, preparation and arrivals. Inspect whether actual player-facing
+counter/patch proposals supply a useful deep-wall lever before changing content
+or bot policy. No grants, altered first-session duration or extra edits.
+The source-preserving diagnostic may reproduce a failure; retain it as such.
+
+## Diagnostic scope complete — 2026-10-20
+
+Four-day reproduction and16 legal same-camp continuations are verified; all
+24 pen-trace camps and the fixed three-profile catalog screen are archived.
+Shipping control reproduces both inherited failures. Gap6 passes the two rows
+but slows PICKED and the by-hand comparator; gap8 passes workers only. No
+profile is adopted. Cut283's protected independent statistical study is active.
+Both inherited canonical failures remain open, rather than reclassified.
+
+The pen trace verifies actual Queen counter authoring before40h and finds no
+missing writing/packing defect on the base route. A separate drilled packing
+route inconsistency is reproduced in Cut284. Evidence and numeric limits:
+`docs/evidence/cut282/findings-2026-10-20.md`. Production fixes, held upgrades,
+independent fun and exhaustive acceptance are outside this completed diagnosis.

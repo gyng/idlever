@@ -1,0 +1,39 @@
+{
+  "name": "shipping-gap4",
+  "dir": "shipping-gap4",
+  "set": {
+    "tree.guide_gap": 4
+  },
+  "profileSha": "8333468103dba70125504c876fdbec9fa0717fe94c1b06070ea8026ec31e8b70",
+  "argsKey": "7131c52e454a6293",
+  "exact": false,
+  "verdict": "FAIL",
+  "exit": 1,
+  "rows": {
+    "tuned-picked": {
+      "value": "1.10",
+      "result": "FAIL",
+      "nums": [
+        1.1
+      ],
+      "approx": false
+    },
+    "automation-pays": {
+      "value": "(in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.93 vs 30.14",
+      "result": "FAIL",
+      "nums": [
+        2,
+        3,
+        48,
+        24,
+        29.93,
+        30.14
+      ],
+      "approx": false
+    }
+  },
+  "failedRow": "tuned-picked",
+  "wall": 188.065,
+  "cpu": 678.27,
+  "longestGame": 127
+}

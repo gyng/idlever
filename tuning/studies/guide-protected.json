@@ -1,0 +1,52 @@
+{
+  "base": "tuning/balance.json",
+  "candidates": [
+    { "name": "gap6", "set": { "tree.guide_gap": 6 } },
+    { "name": "gap8", "set": { "tree.guide_gap": 8 } }
+  ],
+  "probe": { "bots": ["PICKED", "TUNED"], "days": 14, "untilDepth": 33 },
+  "claims": [
+    {
+      "id": "picked-d23-no-regression",
+      "metric": { "bot": "PICKED", "field": "arrival_hours", "depth": 23 },
+      "comparison": "difference",
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 0,
+      "rankingScale": 8
+    },
+    {
+      "id": "picked-d33-no-regression",
+      "metric": { "bot": "PICKED", "field": "arrival_hours", "depth": 33 },
+      "comparison": "difference",
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 0,
+      "rankingScale": 8
+    },
+    {
+      "id": "tuned-d33-no-regression",
+      "metric": { "bot": "TUNED", "field": "arrival_hours", "depth": 33 },
+      "comparison": "difference",
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 0,
+      "rankingScale": 8
+    },
+    {
+      "id": "pen-advantage",
+      "metric": {
+        "ratio": [
+          { "bot": "PICKED", "field": "arrival_hours", "depth": 33 },
+          { "bot": "TUNED", "field": "arrival_hours", "depth": 33 }
+        ]
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1.15,
+      "rankingScale": 0.15
+    }
+  ],
+  "discovery": { "stages": [4, 8], "keep": 0.5 },
+  "confirmation": { "looks": [8, 16, 32], "alpha": 0.05 }
+}

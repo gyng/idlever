@@ -1,4 +1,4 @@
-# Active backlog — Cut281 complete; Cut282 targeted screen running, 2026-10-20
+# Active backlog — Cut283 confirmation; Cut284 route bug reproduced, 2026-10-20
 
 Owner: continue working on the backlog. The broad goal remains active.
 No game default, held branch, shipping WASM, push/release or deployment changed.
@@ -29,38 +29,68 @@ Collector exec3776/PID635180 and all children finished. The live cut now appends
 results, so frozen collector resume intentionally refuses that changed identity;
 revalidate with `node docs/evidence/cut281/verify.mjs`, not a new collection.
 
-## Cut282 diagnostics complete; targeted catalog exploration active
+## Cut282 diagnostic scope complete; inherited failures remain open
 
 Contract: [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
-Fresh isolated default-feature build avoids stale shared-target core artifacts;
-missing Hurry APIs in the first shared-target compile were present in source.
-Failure preserved and separate-target gotcha added to AGENTS.md. Isolated build
-and scoped worker_absence Clippy/rustfmt pass. No core game rule is changed.
+The original four-day worker reproduction/16 same-camp interventions are
+committed in bcbda842. Pen trace and all three guide profiles now also finish.
+Shipping control reproduces TUNED/PICKED1.10 and worker mean29.93vs30.14.
+Gap6 passes both two-seed rows (ratio1.50; workers29.75vs29.25), but PICKED
+seed1 D33 slows40→72h and the by-hand comparator slows more than workers.
+Gap8 passes workers only (ratio1.10; workers29.89vs29.18); PICKED seed1 slows
+40→48h. **No profile adopted.** All outputs, profiles, source/native identities
+and independent checks are in `docs/evidence/cut282/catalog-screen/`.
+Elapsed696.54s with other jobs; not a speed comparison. Exec1142 finished.
 
-Ordinary AWAY/AWAY-nodes seeds1/2, four days:134.42s, D18 48vs24h and mean best
-24.12vs25.50 **FAIL**. Diagnostic process exit0 is execution success, not a row
-pass.16 exact exported camps reconcile funds/ledger and native/source identity.
-The two first-session parents differ before later hires;16 legal same-camp24h
-continuations isolate workers/start/forge order,64.17s. Both repeated controls
-match exact final saves/counts; independent prepared-state diffs permit only
-requested fields. Source loaders/parents and all ledgers are unchanged/valid.
+The ordinary two-day PICKED/TUNED trace completes163.55s;24 camps reconcile
+funds and compiled pen prefix/origins. Six exact earned parents archived in
+`docs/evidence/cut282/pen/`, all scalar/rule/counter/preparation metadata retained.
+TUNED writes Queen silence before40h and mirror cadence afterD33; there is no
+accepted wall edit. This is not absent pen writing or a base-route packing bug.
+Two-seed ratio remains1.10 FAIL. Exec2156 finished. Text logs trim trailing
+whitespace only. Frozen preregistrations preserve their original hashes.
 
-Results: starting shallower helps both saves in at least one variant; Forge All
-helps seed1 (+9 floors) but hurts seed2 (−1); pausing Drillmaster changes neither.
-Read `docs/evidence/cut282/findings-2026-10-20.md`; all losing cases retained.
-No general default follows from two saved worlds. Original14-day failures remain.
-Native diagnostic helper is `examples/worker_absence.rs`; no WASM rebuild is
-needed for example-only code. All diagnostic/Clippy processes finished.
+## Cut283 protected statistical study — live
 
-**Live job:** exec session1142, `target/cut282-guide-sweep.log`,
-`target/sweep/cut282-guide-gap/`. It built/snapshotted feature-enabled dayplayer
-fde424a5b59a; fixed profiles guide gap4(control),6,8, two existing regression
-seeds, rows `tuned-picked,automation-pays`,8 threads/2 candidates at once,
-`--no-fail-fast --fresh-jobs`. Poll this exact session before rerunning. This is
-explicit targeted-catalog exploration, not population acceptance or a whole gate.
-Control must reproduce inherited values before interpreting candidates; retain
-all results and freeze any winner before fresh held-out statistical confirmation
-and explicit catalog acceptance. Do not adopt a profile from this screen alone.
+Contract: [CUT283_GUIDE_VALIDATION.md](CUT283_GUIDE_VALIDATION.md), fixed spec
+`tuning/studies/guide-protected.json`. Exec session34941, collector PID666428,
+log `target/cut283-guide-protected.log`, directory
+`target/stat-tune/cut283-guide-protected/`. Poll the exact session; do not restart
+on an observation timeout. Discovery4 seeds completed and froze **gap8**;
+gap6 dropped. Phase is confirmation, baseline/winner first8 held-out seeds in
+flight. The planned looks remain8/16/32, four claims/family alpha0.05; do not
+change budgets, winner or claims after results. Small first-look intervals may
+be unbounded. Baseline and both candidates use ordinary PICKED/TUNED untilD33
+or14 days; censored arrival is344h. Absolute PICKED D23/D33 and TUNED D33
+non-regression plus median per-seed PICKED/TUNED ratio≥1.15 are all required.
+
+Manifest identity5dfe37c1…; frozen native3f742aa6…/core9a45a001d0dbc6ea. No
+current/default balance change. Any confirmation D33 censoring prevents adoption
+under this cut. Statistical acceptance would still need the named targeted
+16-seed canonical checks, not a full automatic campaign. Never promote the
+runner-up using these held-out outcomes. Do not edit analysis scripts, core
+rules, spec or balance inputs while this frozen-runtime study finishes.
+
+## Cut284 route counter-packing defect — reproduced, fix next
+
+Contract: [CUT284_ROUTE_COUNTER_PACKING.md](CUT284_ROUTE_COUNTER_PACKING.md).
+`examples/route_counter_probe.rs` is a controlled fixture diagnostic, not game
+truth changes. It measures198 cells over all13 routes:32 drilled errors,
+16 omitted and16 spurious counter reservations. All99 pen cells and every
+base-route control pass. Independent verifier reconstructs route permutations,
+boss floors, reach/skip/cell coverage and source/native hashes. Scoped Clippy
+warnings-denied/rustfmt pass. Evidence `docs/evidence/cut284/` includes all
+cells and the initial failed fixture setup (base-only waystone lighting caused
+D5-not-lit; corrected to route-aware lighting). No result was dropped.
+
+Cause: drilled `packages::quartermaster` uses canonical `descent::boss_depth`;
+pen counters use the actual route. After Cut283 finishes, fix drilled reach/skip
+checks to use the actual route, add meaningful all-route/identified/revoked and
+actual restock/send tests, rebuild WASM and verify relevant save/settlement
+parity. Old runtime balance evidence must remain historical if production rules
+change. Do not call the base-route regression failures fixed by this route bug.
+No production Rust rule is changed yet; all diagnostic/build processes finished.
+Only the protected statistical study remains live.
 
 Calibration and completed diagnostics are committed together with this handoff.
 No broad staging (many unrelated untracked files). Cut281 inputs stayed immutable

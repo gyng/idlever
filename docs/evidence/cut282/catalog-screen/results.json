@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "name": "cut282-guide-gap",
+    "base": "tuning/balance.json",
+    "rows": [
+      "tuned-picked",
+      "automation-pays"
+    ],
+    "seeds": 2,
+    "failFast": false,
+    "refine": 0,
+    "binKey": "9a45a001d0dbc6ea",
+    "cap": 8,
+    "jobs": 2,
+    "threadsPer": 4,
+    "bin": "/home/g/p/riddle/target/sweep/cut282-guide-gap/dayplayer-fde424a5b59a",
+    "timing": {
+      "wall": 696.543,
+      "ran": 3,
+      "skipped": 0,
+      "sumWall": 999.262,
+      "sumCpu": 3537.51,
+      "sequential": 597
+    }
+  },
+  "objective": {
+    "row": "tuned-picked",
+    "index": 0,
+    "dir": "max"
+  },
+  "ranked": [
+    {
+      "name": "gap6",
+      "dir": "gap6",
+      "set": {
+        "tree.guide_gap": 6
+      },
+      "profileSha": "fd5ed5676577c99e5aac1e3b5a5b4b715ccbfc5390c7a4743857bde8389ff4b1",
+      "argsKey": "7131c52e454a6293",
+      "exact": false,
+      "verdict": "PASS",
+      "exit": 0,
+      "rows": {
+        "tuned-picked": {
+          "value": "1.50",
+          "result": "PASS",
+          "nums": [
+            1.5
+          ],
+          "approx": false
+        },
+        "automation-pays": {
+          "value": "(in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.75 vs 29.25",
+          "result": "PASS",
+          "nums": [
+            2,
+            3,
+            48,
+            24,
+            29.75,
+            29.25
+          ],
+          "approx": false
+        }
+      },
+      "wall": 302.726,
+      "cpu": 1058.7800000000002,
+      "longestGame": 155
+    },
+    {
+      "name": "gap8",
+      "dir": "gap8",
+      "set": {
+        "tree.guide_gap": 8
+      },
+      "profileSha": "33404aef6166b89d25144582a515f1701dde69391815c478c283089f56c086c2",
+      "argsKey": "7131c52e454a6293",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "tuned-picked": {
+          "value": "1.10",
+          "result": "FAIL",
+          "nums": [
+            1.1
+          ],
+          "approx": false
+        },
+        "automation-pays": {
+          "value": "(in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.89 vs 29.18",
+          "result": "PASS",
+          "nums": [
+            2,
+            3,
+            48,
+            24,
+            29.89,
+            29.18
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "tuned-picked",
+      "wall": 508.471,
+      "cpu": 1800.46,
+      "longestGame": 315
+    },
+    {
+      "name": "shipping-gap4",
+      "dir": "shipping-gap4",
+      "set": {
+        "tree.guide_gap": 4
+      },
+      "profileSha": "8333468103dba70125504c876fdbec9fa0717fe94c1b06070ea8026ec31e8b70",
+      "argsKey": "7131c52e454a6293",
+      "exact": false,
+      "verdict": "FAIL",
+      "exit": 1,
+      "rows": {
+        "tuned-picked": {
+          "value": "1.10",
+          "result": "FAIL",
+          "nums": [
+            1.1
+          ],
+          "approx": false
+        },
+        "automation-pays": {
+          "value": "(in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.93 vs 30.14",
+          "result": "FAIL",
+          "nums": [
+            2,
+            3,
+            48,
+            24,
+            29.93,
+            30.14
+          ],
+          "approx": false
+        }
+      },
+      "failedRow": "tuned-picked",
+      "wall": 188.065,
+      "cpu": 678.27,
+      "longestGame": 127
+    }
+  ]
+}

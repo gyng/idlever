@@ -18,8 +18,14 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    retain explicit catalog checks where the existing contract requires them.
    Four-day worker reproduction and16 same-camp interventions are complete.
    Starts and Apprentice policy have nonuniform effects; no default adopted.
-   A fixed guide-gap4/6/8 two-seed targeted row screen is running. See
+   Guide-gap4/6/8 screen is complete: gap6 passes relative rows while slowing
+   PICKED; gap8 passes workers only. No default adopted. Cut283's protected
+   statistical study froze gap8 before held-out confirmation (live); absolute
+   non-regression and the pen advantage are required. See
    [CUT282_BALANCE_DIAGNOSIS.md](CUT282_BALANCE_DIAGNOSIS.md).
+   Cut284 independently reproduces a concrete counter-packing bug on moved boss
+   routes (32/198 controlled cells); fix it after the frozen-runtime study ends,
+   with actual packing/parity checks. It does not explain the base-route failures.
 3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
    W2 effects are held, not unfinished authorized implementation. R3 still needs
    six fresh paired scene measurements. R4's preserved builds authored no class

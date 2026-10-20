@@ -1,0 +1,39 @@
+{
+  "name": "gap8",
+  "dir": "gap8",
+  "set": {
+    "tree.guide_gap": 8
+  },
+  "profileSha": "33404aef6166b89d25144582a515f1701dde69391815c478c283089f56c086c2",
+  "argsKey": "7131c52e454a6293",
+  "exact": false,
+  "verdict": "FAIL",
+  "exit": 1,
+  "rows": {
+    "tuned-picked": {
+      "value": "1.10",
+      "result": "FAIL",
+      "nums": [
+        1.1
+      ],
+      "approx": false
+    },
+    "automation-pays": {
+      "value": "(in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 24 h · mean best 29.89 vs 29.18",
+      "result": "PASS",
+      "nums": [
+        2,
+        3,
+        48,
+        24,
+        29.89,
+        29.18
+      ],
+      "approx": false
+    }
+  },
+  "failedRow": "tuned-picked",
+  "wall": 508.471,
+  "cpu": 1800.46,
+  "longestGame": 315
+}

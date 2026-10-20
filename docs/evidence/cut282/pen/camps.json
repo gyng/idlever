@@ -1,0 +1,6611 @@
+[
+  {
+    "camp": "PICKED-s1-d1-c0",
+    "sha256": "7bf1b65feeaf70af212d80b969a3b006b06cce965572e87cf76e1d79f374a039",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 1,
+    "ci": 0,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 1,
+      "pack": 1,
+      "weapon": 1
+    },
+    "gold": 1295,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "retreat"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 50
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:steady"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 208
+    },
+    "pen_open": false,
+    "boss_counter_facts": [
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100017,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100018,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s1-d1-c1",
+    "sha256": "f9386aa96256ecd9f9856cb2dcf6202b0ee5f61ad994f23070f7a766ebbb3ac2",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 1,
+    "ci": 1,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 3,
+      "pack": 2,
+      "weapon": 2
+    },
+    "gold": 1969,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 225
+    },
+    "pen_open": false,
+    "boss_counter_facts": [
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100051,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100052,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s1-d1-c2",
+    "sha256": "5d966ec13a1cdf7d2573f2ce4323e8b693befeb83a9f6beb9e7fcdfe85927abc",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 1,
+    "ci": 2,
+    "best": 23,
+    "start": 19,
+    "kit": {
+      "armour": 4,
+      "pack": 3,
+      "weapon": 3
+    },
+    "gold": 3077,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 24
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "boss_focus"
+        },
+        "origin": "tactic:boss_focus"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "boss_focus"
+    ],
+    "package_xp": {
+      "guarded": 216,
+      "reflect_read": 201,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5012,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100088,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100089,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s1-d2-c0",
+    "sha256": "ddc0f3f3d7f37b39f79d83cdb8591ce00f48705bbef9c7be1b4bd4d0a609f2e5",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 2,
+    "ci": 0,
+    "best": 25,
+    "start": 19,
+    "kit": {
+      "armour": 4,
+      "pack": 4,
+      "weapon": 4
+    },
+    "gold": 5609,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 26
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 230,
+      "reflect_read": 215,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100118,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100119,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100120,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s1-d2-c1",
+    "sha256": "20ee5025f90860c1e90a738b9340183bbe8f3ea5a253cf40027e7d1498df8750",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 2,
+    "ci": 1,
+    "best": 28,
+    "start": 24,
+    "kit": {
+      "armour": 5,
+      "pack": 4,
+      "weapon": 5
+    },
+    "gold": 5235,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 29
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "ranged"
+          },
+          {
+            "k": "adj>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:ranged"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 244,
+      "kite_archers": 200,
+      "reflect_read": 228,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100154,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100155,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100156,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s1-d2-c2",
+    "sha256": "1c546d7e60d10bf40ce93bf9ea77b0aaf35e608bfb8404b3bfb5dc9375bc97bf",
+    "bot": "PICKED",
+    "seed": 1,
+    "day": 2,
+    "ci": 2,
+    "best": 33,
+    "start": 24,
+    "kit": {
+      "armour": 6,
+      "pack": 4,
+      "weapon": 6
+    },
+    "gold": 6863,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 34
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "ranged"
+          },
+          {
+            "k": "adj>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:ranged"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "temper:unbowed"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 259,
+      "kite_archers": 200,
+      "reflect_read": 230,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence",
+      "boss:mirror_king:counter=tactic cadence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100196,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100197,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100198,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d1-c0",
+    "sha256": "e4a09cfa7e72cfac7dfc1be0037277461bbabbff4928066f198adda1823453bc",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 1,
+    "ci": 0,
+    "best": 13,
+    "start": 5,
+    "kit": {
+      "armour": 1,
+      "weapon": 1
+    },
+    "gold": 1032,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "retreat"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 50
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:steady"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 206
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100014,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100015,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d1-c1",
+    "sha256": "003bb2d09b06b4e43ff19a58dd2aa87492e2027bc59f85496a541609ddad1a10",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 1,
+    "ci": 1,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 3,
+      "pack": 2,
+      "weapon": 2
+    },
+    "gold": 2315,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100044,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100045,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d1-c2",
+    "sha256": "e942e182e3066b5538910211df0bba6f02fac2ad4f9ca3a193f063e50f2eaa1c",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 1,
+    "ci": 2,
+    "best": 18,
+    "start": 14,
+    "kit": {
+      "armour": 4,
+      "pack": 3,
+      "weapon": 4
+    },
+    "gold": 3072,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 19
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "guarded": 217,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100078,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100079,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d2-c0",
+    "sha256": "139e10857d4bae3c813acf4447366ae0708d96d7be9c212338f476d5a98e8917",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 2,
+    "ci": 0,
+    "best": 28,
+    "start": 19,
+    "kit": {
+      "armour": 5,
+      "pack": 4,
+      "weapon": 4
+    },
+    "gold": 6200,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 29
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "corridor_fighting"
+        },
+        "origin": "tactic:corridor_fighting"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "corridor_fighting"
+    ],
+    "package_xp": {
+      "guarded": 229,
+      "noise_discipline": 200,
+      "reflect_read": 205,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100108,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100109,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100110,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "corridor_fighting",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d2-c1",
+    "sha256": "c6b60c290832370f2916888018c340a10c0fca544cfbf8c2181f43dfcf372a46",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 2,
+    "ci": 1,
+    "best": 28,
+    "start": 24,
+    "kit": {
+      "armour": 6,
+      "pack": 4,
+      "weapon": 5
+    },
+    "gold": 8014,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 29
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "corridor_fighting"
+        },
+        "origin": "tactic:corridor_fighting"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "tactic:corridor_fighting"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "corridor_fighting"
+    ],
+    "package_xp": {
+      "corridor_fighting": 213,
+      "guarded": 242,
+      "noise_discipline": 200,
+      "reflect_read": 218,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100137,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100138,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100139,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "corridor_fighting",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "PICKED-s2-d2-c2",
+    "sha256": "272bbc14bc8c766aa3c8bfbfc8b18ec1c521a9d3ccf031a434773f4be3d9f5ba",
+    "bot": "PICKED",
+    "seed": 2,
+    "day": 2,
+    "ci": 2,
+    "best": 32,
+    "start": 24,
+    "kit": {
+      "armour": 7,
+      "pack": 4,
+      "weapon": 6
+    },
+    "gold": 15821,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 33
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "corridor_fighting": 226,
+      "guarded": 255,
+      "noise_discipline": 200,
+      "reflect_read": 220,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100175,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100176,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100177,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "corridor_fighting",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d1-c0",
+    "sha256": "7bf1b65feeaf70af212d80b969a3b006b06cce965572e87cf76e1d79f374a039",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 1,
+    "ci": 0,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 1,
+      "pack": 1,
+      "weapon": 1
+    },
+    "gold": 1295,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "retreat"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 50
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:steady"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 208
+    },
+    "pen_open": false,
+    "boss_counter_facts": [
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100017,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100018,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d1-c1",
+    "sha256": "f9386aa96256ecd9f9856cb2dcf6202b0ee5f61ad994f23070f7a766ebbb3ac2",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 1,
+    "ci": 1,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 3,
+      "pack": 2,
+      "weapon": 2
+    },
+    "gold": 1969,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 225
+    },
+    "pen_open": false,
+    "boss_counter_facts": [
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100051,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100052,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d1-c2",
+    "sha256": "5d966ec13a1cdf7d2573f2ce4323e8b693befeb83a9f6beb9e7fcdfe85927abc",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 1,
+    "ci": 2,
+    "best": 23,
+    "start": 19,
+    "kit": {
+      "armour": 4,
+      "pack": 3,
+      "weapon": 3
+    },
+    "gold": 3077,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 24
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "boss_focus"
+        },
+        "origin": "tactic:boss_focus"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "boss_focus"
+    ],
+    "package_xp": {
+      "guarded": 216,
+      "reflect_read": 201,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5012,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100088,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100089,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d2-c0",
+    "sha256": "b4b924ed08a61b5867c8672c612c2a1d758bc3b7d85958e819ef1b4a63fb0821",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 2,
+    "ci": 0,
+    "best": 25,
+    "start": 19,
+    "kit": {
+      "armour": 4,
+      "pack": 4,
+      "weapon": 4
+    },
+    "gold": 5609,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 26
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 230,
+      "reflect_read": 215,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100118,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100119,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100120,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d2-c1",
+    "sha256": "085493f09dc254f96db84a872e3e9c0d6127e459c8bb1a08a8f6db3fe102fd0e",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 2,
+    "ci": 1,
+    "best": 28,
+    "start": 24,
+    "kit": {
+      "armour": 5,
+      "pack": 4,
+      "weapon": 5
+    },
+    "gold": 5235,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 29
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "ranged"
+          },
+          {
+            "k": "adj>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:ranged"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 244,
+      "kite_archers": 200,
+      "reflect_read": 228,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100154,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100155,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100156,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s1-d2-c2",
+    "sha256": "133a6ec95456b658fe8126694e427b7a3289c11b9f3bb20d97a65c5dfa82a02b",
+    "bot": "TUNED",
+    "seed": 1,
+    "day": 2,
+    "ci": 2,
+    "best": 33,
+    "start": 24,
+    "kit": {
+      "armour": 6,
+      "pack": 4,
+      "weapon": 6
+    },
+    "gold": 8147,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "cadence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "cadence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "on_see",
+            "t": "stray"
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "nearest"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 34
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "ranged"
+          },
+          {
+            "k": "adj>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:ranged"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "boss_focus": 200,
+      "guarded": 257,
+      "kite_archers": 200,
+      "reflect_read": 235,
+      "steady": 225
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence",
+      "boss:mirror_king:counter=tactic cadence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5013,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100203,
+        "kind": "silence",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100204,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100205,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "boss_focus",
+      "cadence",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d1-c0",
+    "sha256": "e4a09cfa7e72cfac7dfc1be0037277461bbabbff4928066f198adda1823453bc",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 1,
+    "ci": 0,
+    "best": 13,
+    "start": 5,
+    "kit": {
+      "armour": 1,
+      "weapon": 1
+    },
+    "gold": 1032,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 35
+          }
+        ],
+        "verb": {
+          "v": "retreat"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:steady"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 50
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:steady"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 206
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100014,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100015,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 1,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d1-c1",
+    "sha256": "003bb2d09b06b4e43ff19a58dd2aa87492e2027bc59f85496a541609ddad1a10",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 1,
+    "ci": 1,
+    "best": 13,
+    "start": 9,
+    "kit": {
+      "armour": 3,
+      "pack": 2,
+      "weapon": 2
+    },
+    "gold": 2315,
+    "bank": 0,
+    "pen": [],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 40
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "depth>=",
+            "n": 14
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100044,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100045,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d1-c2",
+    "sha256": "ffdfd0cf6baabe72ad1ae2458ec0244b85189b5ab2647a3f71e47decc7faebe8",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 1,
+    "ci": 2,
+    "best": 18,
+    "start": 14,
+    "kit": {
+      "armour": 4,
+      "pack": 3,
+      "weapon": 4
+    },
+    "gold": 3072,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 19
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [],
+    "package_xp": {
+      "guarded": 217,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 100078,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100079,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d2-c0",
+    "sha256": "151f5877876f7473a37c76a06085a3b56a438bd162bded8cea1d517d83c37d82",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 2,
+    "ci": 0,
+    "best": 23,
+    "start": 19,
+    "kit": {
+      "armour": 5,
+      "pack": 4,
+      "weapon": 5
+    },
+    "gold": 2180,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 24
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "hp>",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "unknown"
+        },
+        "origin": "temper:iron_gut"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read"
+    ],
+    "package_xp": {
+      "guarded": 230,
+      "reflect_read": 205,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5012,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100113,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100114,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "kite_archers",
+      "reflect_read",
+      "rogue",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d2-c1",
+    "sha256": "5b3d5286015d592ed9d630d8aa32459deb50aedcce75258d6533bad69ee938ca",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 2,
+    "ci": 1,
+    "best": 28,
+    "start": 24,
+    "kit": {
+      "armour": 6,
+      "pack": 4,
+      "weapon": 5
+    },
+    "gold": 6607,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 29
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "corridor_fighting"
+        },
+        "origin": "tactic:corridor_fighting"
+      },
+      {
+        "conds": [
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "hp>",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "unknown"
+        },
+        "origin": "temper:iron_gut"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "corridor_fighting"
+    ],
+    "package_xp": {
+      "guarded": 243,
+      "iron_gut": 6,
+      "noise_discipline": 200,
+      "reflect_read": 218,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5012,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 5013,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100146,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "corridor_fighting",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  },
+  {
+    "camp": "TUNED-s2-d2-c2",
+    "sha256": "ef7bd3259508d6a80e01d57a61b2572908df3c10751a8ce6700cbc37d4dae840",
+    "bot": "TUNED",
+    "seed": 2,
+    "day": 2,
+    "ci": 2,
+    "best": 33,
+    "start": 24,
+    "kit": {
+      "armour": 7,
+      "pack": 4,
+      "weapon": 6
+    },
+    "gold": 8906,
+    "bank": 0,
+    "pen": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "cadence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      }
+    ],
+    "rules": [
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "mirror"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "cadence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "brood"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "read",
+          "a": "silence"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:summoned"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "player"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "hp>",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        },
+        "origin": "drill:goblin_warlord"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 45
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          },
+          {
+            "k": "depth>=",
+            "n": 34
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 25
+          }
+        ],
+        "verb": {
+          "v": "return"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 100
+          }
+        ],
+        "verb": {
+          "v": "rest"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "lacks",
+            "t": "heal"
+          },
+          {
+            "k": "hp<",
+            "n": 44
+          }
+        ],
+        "verb": {
+          "v": "bank"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "heal"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 3
+          },
+          {
+            "k": "hp<",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "back_corridor"
+        },
+        "origin": "stance:guarded"
+      },
+      {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          }
+        ],
+        "verb": {
+          "v": "tactic",
+          "a": "reflect_read"
+        },
+        "origin": "tactic:reflect_read"
+      },
+      {
+        "conds": [],
+        "verb": {
+          "v": "tactic",
+          "a": "kite_archers"
+        },
+        "origin": "tactic:kite_archers"
+      },
+      {
+        "conds": [
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "hp>",
+            "n": 60
+          }
+        ],
+        "verb": {
+          "v": "drink",
+          "a": "unknown"
+        },
+        "origin": "temper:iron_gut"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "tame",
+          "a": "open"
+        },
+        "origin": "drill:tame"
+      },
+      {
+        "conds": [
+          {
+            "k": "foes>=",
+            "n": 1
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "nearest"
+        },
+        "origin": "stance:guarded"
+      }
+    ],
+    "tactics": [
+      "reflect_read",
+      "kite_archers"
+    ],
+    "package_xp": {
+      "corridor_fighting": 211,
+      "guarded": 254,
+      "iron_gut": 6,
+      "noise_discipline": 200,
+      "reflect_read": 224,
+      "steady": 221
+    },
+    "pen_open": true,
+    "boss_counter_facts": [
+      "boss:bloat_mother:counter=throw fire,tag:boss",
+      "boss:foundry_master:counter=tactic reflect_read",
+      "boss:goblin_warlord:counter=attack tag:boss",
+      "boss:lich:counter=attack tag:summoned",
+      "boss:lurker_queen:counter=read silence",
+      "boss:mirror_king:counter=tactic cadence"
+    ],
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "announced": false
+      }
+    ],
+    "supplies": [
+      {
+        "id": 5013,
+        "kind": "fire",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true,
+        "value_claimed": true
+      },
+      {
+        "id": 100187,
+        "kind": "silence",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100188,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      },
+      {
+        "id": 100189,
+        "kind": "heal",
+        "amount": 0,
+        "enchant": 2,
+        "known": true,
+        "auto_packed": true
+      }
+    ],
+    "unlocks": [
+      "cadence",
+      "cond_alert",
+      "cond_loot",
+      "cond_on_kill",
+      "cond_on_see",
+      "cond_party_hp",
+      "cond_turns",
+      "corridor_fighting",
+      "deep_march",
+      "kite_archers",
+      "noise_discipline",
+      "reflect_read",
+      "rogue",
+      "row5",
+      "stair_dance",
+      "tame"
+    ]
+  }
+]
