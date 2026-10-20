@@ -1,5 +1,17 @@
 # Active backlog — Cut304 worker/exit diagnosis verified, 2026-10-21
 
+## Latest owner direction — both held items returned to work
+
+2026-10-21: owner asked to bring the held items back into the queue and explicitly
+authorized research/refinement/redesign of the vault/Vat as needed. Bank/vault/
+Vat upgrade redesign and recovery timing are ACTIVE, superseding all earlier
+hold instructions below. Preserve old branches/evidence; this does not approve
+their failed implementations or change numeric acceptance requirements.
+Finish the already frozen Cut305 controlled worker study, then pursue useful
+upgrade effects/payback/earned affordability and recovery alternatives with
+the worker/pen progression requirements. See WORK_QUEUE items3–4. Current game
+defaults remain unchanged until validated adoption; no automatic deployment.
+
 Owner: continue working on the backlog. Broad goal remains active.
 Cut299 discovered a narrower early Lich counter candidate; Cut300 independent
 confirmation is terminal INCONCLUSIVE at32fresh seeds. No adoption or extension;
@@ -7,8 +19,9 @@ main game remains unchanged. Next hypothesis must differ.
 Latest product fix restores earned Caster Conduct payoff (Cut296), after
 Hero Details child Replay/Appearance navigation (Cut295),
 following actual weapon paintings in Watch (Cut294),
-14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
-before. Cut300 checkpoint13558b1c pushed; no new release/deployment. Live dev game is still423fe45a.
+14 current earned class/loadout sends and missing Throw dependency hints. Six-scene catalogue retained; the route-aware production packing fix remains validated in Cut284. Guide gap remains4; recovery and Bank/Vat W2 defaults stay as
+before while their redesign returns to scope. Cut304 checkpoint2a294524 pushed;
+no new release/deployment. Live dev game is still423fe45a.
 
 ## Cut304 current worker/exit diagnosis — regression reproduced; no adoption
 

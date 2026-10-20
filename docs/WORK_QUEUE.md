@@ -2,6 +2,13 @@
 
 ## Active backlog resume — 2026-10-21
 
+Owner update, 2026-10-21: bring both previously held items back into the work
+queue. Bank/vault and Vat may be researched, refined and redesigned as needed;
+this is broader than repricing the failed W2 implementation. After the current
+Cut305 fixed encounter study, work on the upgrade redesign and recovery timing
+alongside the inherited worker/pen balance requirements. Preserve failed trials
+and unchanged acceptance bars; returning to scope does not adopt either branch.
+
 Owner: continue working on the backlog. Latest product change is Cut296:
 Conduct now tries its prerequisite slow before its qualifying bolt. Current
 earned seed1 camp yields four copies versus zero; two control branches remain
@@ -118,8 +125,22 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    full-export parity. Next: fresh earned R3 scenes; no further expensive study
    without a concrete mechanism/metric hypothesis. Guide gap remains4. The route fix does not
    explain or close the base-route balance failures.
-3. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
-   W2 effects are held, not unfinished authorized implementation. R3 still needs
+3. **Bank/vault and Vat redesign — returned to active work by owner.** Research
+   and refine the underlying benefits, progression and prices as needed. Preserve
+   existing delivered Vat/workplace behavior while developing a replacement;
+   the eight failed price screens and Bank's131/3400 actual30-night payback are
+   historical diagnostics to address, not acceptance. Revalidate actual utility,
+   earned affordability and the original days3–14 spending requirement using
+   suitable statistical evidence before adoption. The preserved
+   `hold/cut265-building-upgrades` branch is reference material, not a merge plan.
+4. **Recovery timing — returned to active work by owner.** Revisit the15-second
+   proposal and alternatives against worker benefit, absolute progression and
+   TUNED/PICKED D33≥1.15. Preserve the failed proposal on
+   `hold/cut264-short-recovery`; diagnose/tune rather than restore it unchanged.
+   Coordinate recovery with the Vat redesign and retain the current curve until
+   a replacement is validated. Do not weaken inherited progression requirements.
+5. **Mechanics/progression review.** Cut273 W1 workplaces/staff are implemented;
+   additional W2 effects now belong to the authorized redesign above. R3 still needs
    six controlled scene measurements. Cut286 captured18 fresh candidate departures
    with exact observer parity, but later RNG/floor divergence and four extra-fire
    inventory differences prevent treating them as six controlled contrasts.
@@ -153,15 +174,16 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence
    before using it to justify a change.
-4. **Independent fun evaluation**, remaining content/UI/art/audio refinement,
+6. **Independent fun evaluation**, remaining content/UI/art/audio refinement,
    and explicitly requested exhaustive acceptance.
 
-**Held by owner:** Bank/Vat upgrade redesign and short-recovery proposal. Do not
-restore those branches as part of calibration or inherited-failure diagnosis.
+**No longer held:** the owner returned Bank/vault/Vat redesign and recovery
+timing to active scope on2026-10-21, including authorization to research/refine/
+redesign. Old hold branches and failed evidence remain preserved. Adoption still
+requires validation; no automatic restoration of those implementations.
 Statistical tooling is complete, not an outstanding implementation item.
-Iteration follow-up: Cut291 observed the client identity routine hashing about
-11.4 GB across19,244 untracked files before its suite starts; audit startup cost
-without weakening source identity/resume correctness (observation, not benchmark).
+Iteration follow-up complete in Cut303: warm identity median12.005s→1.175s with
+full content coverage, including the previous same-size large-file defect fix.
 No automatic deployment is included in this backlog resume.
 
 ## Owner pivot — 2026-10-16 (UI handoff; mechanics + chores here)
