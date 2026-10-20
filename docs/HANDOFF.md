@@ -1,9 +1,57 @@
-# Active backlog — Cut286 earned encounter discovery screen, 2026-10-20
+# Active backlog — Cut287 five matched encounter scenes measured, 2026-10-20
 
 Owner: continue working on the backlog. Broad goal remains active.
-This checkpoint commits the route-aware drilled counter packing fix and its
-validation. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
+Latest work measures five matched starting-floor encounter scenes; the route-aware
+counter packing production fix remains validated in Cut284. Guide gap remains4; recovery and held Bank/Vat W2 upgrades stay as
 before. No push/release/deployment yet. Live dev game is still423fe45a.
+
+## Cut287 matched-kit search — five eligible scenes measured and verified
+
+Contract: [CUT287_MATCHED_ENCOUNTER_SEARCH.md](CUT287_MATCHED_ENCOUNTER_SEARCH.md).
+Diagnostic helper adds optional public common supply preparation and a separate
+actual8h comparison mode. Game core/rules/defaults/WASM remain unchanged.
+Six original Cut286 parents ×three consecutive earned baseline departures =18
+search cases, all captured; no budget extension. Starting-floor eligibility:
+gas3/6, pack3/6, drain4/6, conjurer summons1/6, reflection0/6, smith support4/6.
+Earliest attempt then seed, distinct parent per biome category; five scenes
+frozen before alternatives. Ten alternatives captured:28 total departures and
+56 observer continuations. All raw fine/coarse events and terminal saves match.
+All15 selected sends have exact matching hero INCLUDING inventory, floor,
+monsters and run RNG. Common public fire preparation fixes Cut286's confound.
+
+Mixed first-floor findings (single saved scene each, no population claim):
+gas_step hurt9→15, gas damage stays6; pack_break at the pack scene hurt13→11;
+corridor at drain hurt27→7, drain maxHP4→1; boss_focus leaves both Crypt initial
+floors unchanged in these metrics; reflect_read leaves support unchanged;
+corridor at support hurt35→23, but armours callouts4→11 and more time. Full
+traces quote actual tactic/attack events. ai.rs boss_focus requires a boss, so
+ordinary conjurer summons are not its runtime counter. No fix implemented.
+
+Separate15 actual8h branches use the same public Scout resume from each original
+selected parent; all report net Gold equals exact purse delta, deepest28. Local
+hurt/depth/Gold are separate outcomes, with deaths/ties/losers retained. No claim
+of six counter superiorities, exact intra-tick positions or identical later floors.
+Reflection stays missing; three golem-containing Foundry starts already have a
+Master drill, a source-backed follow-up lead rather than a proven cause of zero
+reflection. Do not silently revoke it or add random search samples.
+
+Capture/absence/native build and warnings-denied Clippy workers all finished.
+Archive exec56698 and independent verifier exec91161 ended0. Portable artifact
+`docs/evidence/cut287/capture.tar.xz`:591 original receipts,1,428,023,551 raw bytes,
+10,205,736 compressed bytes (duplicate payloads use standard tar hard links).
+Final verifier checks all hashes, earned chains,18 reconstructed baseline
+eligibility decisions,28 exact observer pairs,15 exact matched sends and15 Gold
+accounting identities. Scoped rustfmt/diff checks also pass. Raw copies remain
+target/cut287. Frozen selection, both native/harness identities, scripts and
+per-scene/absence summaries are in docs/evidence/cut287. All owned jobs terminal.
+Python select.py initially shadowed stdlib select; two alternative launcher
+failures occurred before native work, preserved; renamed scene_selection.py and
+continued same immutable selection. No lost observations or runner-up switch.
+
+Next: investigate reflection/learned counters and
+actual gas/summoner response gaps, then contract any product change with numeric
+gates informed by these measured baselines. No content formation, success-bar,
+visual/gate/fun/release/deployment acceptance is supplied by this screen.
 
 ## Cut286 earned encounter discovery — first screen captured, R3 remains open
 

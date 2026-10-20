@@ -2,8 +2,9 @@
 
 ## Active backlog resume — 2026-10-20
 
-Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut286 (earned encounter discovery); production is Cut284
-route-aware counter packing, sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
+Owner: continue working on the backlog. Latest diagnostic checkpoint is Cut287
+(five matched encounter scenes); production is Cut284 route-aware counter packing,
+sourcecaacac0d; the deployed game remains Cut279 source423fe45a.
 Older queue/status text below is historical where superseded by HANDOFF.md.
 
 1. **Cut281 calibration complete at bounded scope.**384 observations;6/6 pilot/
@@ -36,8 +37,12 @@ Older queue/status text below is historical where superseded by HANDOFF.md.
    W2 effects are held, not unfinished authorized implementation. R3 still needs
    six controlled scene measurements. Cut286 captured18 fresh candidate departures
    with exact observer parity, but later RNG/floor divergence and four extra-fire
-   inventory differences prevent treating them as six controlled contrasts. Next
-   find eligible starting-floor threats with public common inventory preparation. R4's preserved builds authored no class
+   inventory differences prevent treating them as six controlled contrasts.
+   Cut287 now measures five eligible scenes with15 exact matched-inventory sends,
+   28 total departures and15 separate reconciled8h branches. Reflection remains
+   missing; gas/summoner counters show gaps, so six counter superiorities are not
+   established. Investigate learned counters and those actual behavior gaps before
+   contracting formations or changing tactics. R4's preserved builds authored no class
    verbs; it needs current earned build comparisons, not an assumed dispatch fix.
    The pets tolerance decision was already applied (dayplayer's2-point margin);
    fresh exhaustive acceptance remains separate. Revalidate dated evidence

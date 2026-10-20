@@ -1,0 +1,1358 @@
+{
+  "scope": "5 starting-floor scenes; later run results are separate; reflection missing",
+  "scenes": [
+    {
+      "category": "gas",
+      "eligibility_quote": {
+        "turn": 74,
+        "event": {
+          "k": "overlay",
+          "ov": "gas",
+          "t": 74,
+          "ttl": 40,
+          "x": 18,
+          "y": 7
+        }
+      },
+      "cases": [
+        {
+          "case": "trace-s1-d9-a2-baseline",
+          "choice": "baseline",
+          "first_floor": {
+            "last_event_tick": 1220,
+            "hero_damage": {
+              "jackal": 1,
+              "gas": 6,
+              "pink_jelly": 2
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "attack:nearest": 22,
+              "explore:": 76,
+              "rest:": 3,
+              "pick_up:": 14,
+              "descend:": 7
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 22,
+            "kept": 389,
+            "kills": 144,
+            "tier": "bank",
+            "turns": 25565,
+            "twists": [
+              "captive",
+              "hunger",
+              "captive",
+              "den",
+              "nest",
+              "vault",
+              "captive",
+              "lock"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 389,
+            "kept": 389,
+            "secured": null,
+            "lost": null,
+            "reached": 22,
+            "reason": "no heals \u00b7 banked",
+            "tier": "bank"
+          }
+        },
+        {
+          "case": "trace-s1-d9-a2-gas_step",
+          "choice": "gas_step",
+          "first_floor": {
+            "last_event_tick": 1730,
+            "hero_damage": {
+              "gas": 6,
+              "jackal": 7,
+              "pink_jelly": 2
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "tactic:gas_step": 21,
+              "explore:": 91,
+              "attack:nearest": 26,
+              "pick_up:": 21,
+              "rest:": 5,
+              "descend:": 9
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 90,
+                  "text": "gas step bloat",
+                  "verb": {
+                    "a": "gas_step",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 2,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 90,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 16,
+                  "y": 13
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 180,
+                  "text": "gas step bloat",
+                  "verb": {
+                    "a": "gas_step",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 7,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 180,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 15,
+                  "y": 12
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": "lurker",
+            "depth": 28,
+            "kept": 0,
+            "kills": 203,
+            "tier": "death",
+            "turns": 33896,
+            "twists": [
+              "captive",
+              "den",
+              "vault",
+              "hunger",
+              "captive",
+              "den",
+              "hunger",
+              "vault",
+              "captive",
+              "vault",
+              "lock",
+              "den",
+              "den"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 1008,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 28,
+            "reason": "slain \u00b7 lurker",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s1-d9-a2-pack_break",
+          "choice": "pack_break",
+          "first_floor": {
+            "last_event_tick": 1450,
+            "hero_damage": {
+              "jackal": 2,
+              "gas": 6,
+              "pink_jelly": 8
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "tactic:pack_break": 32,
+              "explore:": 76,
+              "rest:": 5,
+              "pick_up:": 22,
+              "descend:": 10
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 70,
+                  "text": "pack break jackal",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 7,
+                  "dst": 4,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 70,
+                  "verb": "attack"
+                },
+                "target_kind": "jackal",
+                "tick_boundary_hero_position": {
+                  "x": 17,
+                  "y": 12
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 90,
+                  "text": "pack break bloat",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 2,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 90,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 16,
+                  "y": 13
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 140,
+                  "text": "pack break bloat",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 8,
+                  "dst": 8,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 140,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 18,
+                  "y": 9
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 708,
+            "kills": 151,
+            "tier": "bank",
+            "turns": 23679,
+            "twists": [
+              "captive",
+              "nest",
+              "hunger",
+              "lock",
+              "den",
+              "lock",
+              "lock",
+              "den",
+              "captive",
+              "vault"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 708,
+            "kept": 708,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "no heals \u00b7 banked",
+            "tier": "bank"
+          }
+        }
+      ]
+    },
+    {
+      "category": "pack",
+      "eligibility_quote": {
+        "turn": 187,
+        "event": {
+          "dmg": 1,
+          "dst": 1,
+          "hit": true,
+          "k": "attack",
+          "src": 3,
+          "t": 187,
+          "verb": "attack"
+        }
+      },
+      "cases": [
+        {
+          "case": "trace-s2-d9-a2-baseline",
+          "choice": "baseline",
+          "first_floor": {
+            "last_event_tick": 1020,
+            "hero_damage": {
+              "pink_jelly": 3,
+              "jackal": 2,
+              "eel": 2,
+              "gas": 6
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 14,
+              "explore:": 55,
+              "attack:nearest": 21,
+              "rest:": 5,
+              "descend:": 7
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 617,
+            "kills": 163,
+            "tier": "return",
+            "turns": 25760,
+            "twists": [
+              "captive",
+              "hunger",
+              "vault",
+              "captive",
+              "den",
+              "vault",
+              "den"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 617,
+            "kept": 617,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "hurt \u00b7 went home",
+            "tier": "return"
+          }
+        },
+        {
+          "case": "trace-s2-d9-a2-gas_step",
+          "choice": "gas_step",
+          "first_floor": {
+            "last_event_tick": 1100,
+            "hero_damage": {
+              "pink_jelly": 3,
+              "jackal": 2,
+              "eel": 2,
+              "gas": 9
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 13,
+              "explore:": 57,
+              "attack:nearest": 16,
+              "rest:": 6,
+              "tactic:gas_step": 11,
+              "descend:": 7
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 780,
+                  "text": "gas step bloat",
+                  "verb": {
+                    "a": "gas_step",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 6,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 780,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 17,
+                  "y": 6
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 910,
+                  "text": "gas step bloat",
+                  "verb": {
+                    "a": "gas_step",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 12,
+                  "dst": 7,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 910,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 21,
+                  "y": 6
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 611,
+            "kills": 186,
+            "tier": "return",
+            "turns": 29696,
+            "twists": [
+              "den",
+              "captive",
+              "hunger",
+              "vault",
+              "nest",
+              "den",
+              "lock",
+              "hunger",
+              "den",
+              "den",
+              "nest"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 611,
+            "kept": 611,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "hurt \u00b7 went home",
+            "tier": "return"
+          }
+        },
+        {
+          "case": "trace-s2-d9-a2-pack_break",
+          "choice": "pack_break",
+          "first_floor": {
+            "last_event_tick": 1040,
+            "hero_damage": {
+              "pink_jelly": 2,
+              "jackal": 4,
+              "eel": 2,
+              "gas": 3
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 18,
+              "explore:": 57,
+              "tactic:pack_break": 18,
+              "rest:": 4,
+              "descend:": 7
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 170,
+                  "text": "pack break pink",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 10,
+                  "dst": 5,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 170,
+                  "verb": "attack"
+                },
+                "target_kind": "pink_jelly",
+                "tick_boundary_hero_position": {
+                  "x": 16,
+                  "y": 23
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 180,
+                  "text": "pack break pink",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 5,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 180,
+                  "verb": "attack"
+                },
+                "target_kind": "pink_jelly",
+                "tick_boundary_hero_position": {
+                  "x": 16,
+                  "y": 23
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 190,
+                  "text": "pack break pink",
+                  "verb": {
+                    "a": "pack_break",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 11,
+                  "dst": 10,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 190,
+                  "verb": "attack"
+                },
+                "target_kind": "pink_jelly",
+                "tick_boundary_hero_position": {
+                  "x": 16,
+                  "y": 23
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": "foundry_master",
+            "depth": 23,
+            "kept": 0,
+            "kills": 187,
+            "tier": "death",
+            "turns": 34809,
+            "twists": [
+              "nest",
+              "captive",
+              "hunger",
+              "nest",
+              "hunger",
+              "captive",
+              "lock",
+              "vault",
+              "vault"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 835,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "slain \u00b7 Master",
+            "tier": "death"
+          }
+        }
+      ]
+    },
+    {
+      "category": "drain",
+      "eligibility_quote": {
+        "turn": 50,
+        "event": {
+          "cause": "drain",
+          "delta": -1,
+          "id": 1,
+          "k": "max_hp",
+          "max": 51,
+          "t": 50
+        }
+      },
+      "cases": [
+        {
+          "case": "trace-s1-d14-a2-baseline",
+          "choice": "baseline",
+          "first_floor": {
+            "last_event_tick": 1840,
+            "hero_damage": {
+              "wraith": 4,
+              "skeleton": 8,
+              "ghoul": 15
+            },
+            "drain_max_hp_lost": 4,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 21,
+              "attack:nearest": 71,
+              "rest:": 10,
+              "explore:": 71,
+              "paralysed:": 3,
+              "descend:": 8
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": "ogre",
+            "depth": 18,
+            "kept": 0,
+            "kills": 46,
+            "tier": "death",
+            "turns": 5974,
+            "twists": [
+              "vault",
+              "hunger",
+              "vault"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 182,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 18,
+            "reason": "slain \u00b7 ogre",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s1-d14-a2-boss_focus",
+          "choice": "boss_focus",
+          "first_floor": {
+            "last_event_tick": 1840,
+            "hero_damage": {
+              "wraith": 4,
+              "skeleton": 8,
+              "ghoul": 15
+            },
+            "drain_max_hp_lost": 4,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 21,
+              "attack:nearest": 71,
+              "rest:": 10,
+              "explore:": 71,
+              "paralysed:": 3,
+              "descend:": 8
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": "ogre",
+            "depth": 18,
+            "kept": 0,
+            "kills": 47,
+            "tier": "death",
+            "turns": 6031,
+            "twists": [
+              "vault",
+              "hunger",
+              "vault"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 186,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 18,
+            "reason": "slain \u00b7 ogre",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s1-d14-a2-corridor_fighting",
+          "choice": "corridor_fighting",
+          "first_floor": {
+            "last_event_tick": 1483,
+            "hero_damage": {
+              "wraith": 1,
+              "skeleton": 1,
+              "ghoul": 5
+            },
+            "drain_max_hp_lost": 1,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "pick_up:": 15,
+              "tactic:corridor_fighting": 46,
+              "rest:": 4,
+              "explore:": 73,
+              "paralysed:": 1,
+              "attack:nearest": 1,
+              "descend:": 5
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 12,
+                  "t": 50,
+                  "text": "corridor fighting wraith",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 11,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 50,
+                  "verb": "attack"
+                },
+                "target_kind": "wraith",
+                "tick_boundary_hero_position": {
+                  "x": 12,
+                  "y": 24
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 12,
+                  "t": 190,
+                  "text": "corridor fighting wraith",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 12,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 190,
+                  "verb": "attack"
+                },
+                "target_kind": "wraith",
+                "tick_boundary_hero_position": {
+                  "x": 12,
+                  "y": 16
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 12,
+                  "t": 200,
+                  "text": "corridor fighting wraith",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 8,
+                  "dst": 12,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 200,
+                  "verb": "attack"
+                },
+                "target_kind": "wraith",
+                "tick_boundary_hero_position": {
+                  "x": 12,
+                  "y": 16
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 20,
+            "kept": 386,
+            "kills": 90,
+            "tier": "bank",
+            "turns": 18329,
+            "twists": [
+              "hunger",
+              "vault",
+              "lock",
+              "captive"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 386,
+            "kept": 386,
+            "secured": null,
+            "lost": null,
+            "reached": 20,
+            "reason": "no heals \u00b7 banked",
+            "tier": "bank"
+          }
+        }
+      ]
+    },
+    {
+      "category": "summoner",
+      "eligibility_quote": {
+        "turn": 850,
+        "event": {
+          "e": {
+            "hp": 3,
+            "id": 17,
+            "kind": "spectral_blade",
+            "max_hp": 3,
+            "tags": [
+              "summoned"
+            ],
+            "x": 25,
+            "y": 18
+          },
+          "k": "spawn",
+          "t": 850
+        }
+      },
+      "cases": [
+        {
+          "case": "trace-s1-d14-a1-baseline",
+          "choice": "baseline",
+          "first_floor": {
+            "last_event_tick": 1170,
+            "hero_damage": {
+              "gas": 12,
+              "ogre": 3,
+              "skeleton": 3,
+              "ghoul": 4,
+              "spectral_blade": 2,
+              "burst": 9
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 2,
+            "rule_counts": {
+              "explore:": 41,
+              "pick_up:": 13,
+              "attack:nearest": 49,
+              "rest:": 10,
+              "attack:tag:summoned": 2,
+              "descend:": 2
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 461,
+            "kills": 113,
+            "tier": "return",
+            "turns": 16159,
+            "twists": [
+              "lock",
+              "hunger",
+              "lock",
+              "nest",
+              "lock",
+              "vault",
+              "lock",
+              "nest"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 461,
+            "kept": 461,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "hurt \u00b7 went home",
+            "tier": "return"
+          }
+        },
+        {
+          "case": "trace-s1-d14-a1-boss_focus",
+          "choice": "boss_focus",
+          "first_floor": {
+            "last_event_tick": 1170,
+            "hero_damage": {
+              "gas": 12,
+              "ogre": 3,
+              "skeleton": 3,
+              "ghoul": 4,
+              "spectral_blade": 2,
+              "burst": 9
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 2,
+            "rule_counts": {
+              "explore:": 41,
+              "pick_up:": 13,
+              "attack:nearest": 49,
+              "rest:": 10,
+              "attack:tag:summoned": 2,
+              "descend:": 2
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": "foundry_master",
+            "depth": 23,
+            "kept": 0,
+            "kills": 112,
+            "tier": "death",
+            "turns": 16121,
+            "twists": [
+              "lock",
+              "hunger",
+              "lock",
+              "nest",
+              "lock",
+              "vault",
+              "lock",
+              "nest"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 461,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "slain \u00b7 Master",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s1-d14-a1-corridor_fighting",
+          "choice": "corridor_fighting",
+          "first_floor": {
+            "last_event_tick": 1110,
+            "hero_damage": {
+              "gas": 18,
+              "ogre": 8,
+              "burst": 6
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 0,
+            "spectral_blade_spawns": 2,
+            "rule_counts": {
+              "explore:": 44,
+              "pick_up:": 11,
+              "tactic:corridor_fighting": 39,
+              "rest:": 9,
+              "attack:tag:summoned": 1,
+              "descend:": 7
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 150,
+                  "text": "corridor fighting bloat",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 10,
+                  "dst": 8,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 150,
+                  "verb": "attack"
+                },
+                "target_kind": "bloat",
+                "tick_boundary_hero_position": {
+                  "x": 9,
+                  "y": 10
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 160,
+                  "text": "corridor fighting ogre",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 0,
+                  "dst": 7,
+                  "hit": false,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 160,
+                  "verb": "attack"
+                },
+                "target_kind": "ogre",
+                "tick_boundary_hero_position": {
+                  "x": 9,
+                  "y": 10
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 170,
+                  "text": "corridor fighting ogre",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 8,
+                  "dst": 7,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 170,
+                  "verb": "attack"
+                },
+                "target_kind": "ogre",
+                "tick_boundary_hero_position": {
+                  "x": 9,
+                  "y": 10
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 471,
+            "kills": 81,
+            "tier": "bank",
+            "turns": 12082,
+            "twists": [
+              "lock",
+              "nest",
+              "captive",
+              "captive",
+              "den",
+              "lock",
+              "vault"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 471,
+            "kept": 471,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "no heals \u00b7 banked",
+            "tier": "bank"
+          }
+        }
+      ]
+    },
+    {
+      "category": "support",
+      "eligibility_quote": {
+        "turn": 790,
+        "event": {
+          "k": "callout",
+          "t": 790,
+          "text": "armours"
+        }
+      },
+      "cases": [
+        {
+          "case": "trace-s2-d19-a1-baseline",
+          "choice": "baseline",
+          "first_floor": {
+            "last_event_tick": 1240,
+            "hero_damage": {
+              "bell_sentinel": 3,
+              "forge_imp": 4,
+              "slag_crawler": 28
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 4,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "explore:": 47,
+              "attack:nearest": 56,
+              "rest:": 10,
+              "pick_up:": 6,
+              "descend:": 5
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": "lurker",
+            "depth": 28,
+            "kept": 0,
+            "kills": 76,
+            "tier": "death",
+            "turns": 13945,
+            "twists": [
+              "captive",
+              "captive",
+              "vault",
+              "den"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 731,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 28,
+            "reason": "slain \u00b7 lurker",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s2-d19-a1-reflect_read",
+          "choice": "reflect_read",
+          "first_floor": {
+            "last_event_tick": 1240,
+            "hero_damage": {
+              "bell_sentinel": 3,
+              "forge_imp": 4,
+              "slag_crawler": 28
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 4,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "explore:": 47,
+              "attack:nearest": 56,
+              "rest:": 10,
+              "pick_up:": 6,
+              "descend:": 5
+            },
+            "action_quotes": []
+          },
+          "total_run": {
+            "cause": "cave_troll",
+            "depth": 27,
+            "kept": 0,
+            "kills": 78,
+            "tier": "death",
+            "turns": 16339,
+            "twists": [
+              "captive",
+              "vault",
+              "den",
+              "vault",
+              "captive",
+              "den"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 587,
+            "kept": 0,
+            "secured": null,
+            "lost": null,
+            "reached": 27,
+            "reason": "slain \u00b7 cave troll",
+            "tier": "death"
+          }
+        },
+        {
+          "case": "trace-s2-d19-a1-corridor_fighting",
+          "choice": "corridor_fighting",
+          "first_floor": {
+            "last_event_tick": 1630,
+            "hero_damage": {
+              "bell_sentinel": 3,
+              "forge_imp": 1,
+              "slag_crawler": 19
+            },
+            "drain_max_hp_lost": 0,
+            "reflection_attacks_at_hero": 0,
+            "support_armours_callouts": 11,
+            "spectral_blade_spawns": 0,
+            "rule_counts": {
+              "explore:": 64,
+              "tactic:corridor_fighting": 73,
+              "rest:": 8,
+              "pick_up:": 16,
+              "descend:": 2
+            },
+            "action_quotes": [
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 130,
+                  "text": "corridor fighting bell",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 0,
+                  "dst": 2,
+                  "hit": false,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 130,
+                  "verb": "attack"
+                },
+                "target_kind": "bell_sentinel",
+                "tick_boundary_hero_position": {
+                  "x": 4,
+                  "y": 7
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 140,
+                  "text": "corridor fighting bell",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 2,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 140,
+                  "verb": "attack"
+                },
+                "target_kind": "bell_sentinel",
+                "tick_boundary_hero_position": {
+                  "x": 4,
+                  "y": 7
+                }
+              },
+              {
+                "tactic_rule": {
+                  "k": "rule",
+                  "row": 10,
+                  "t": 150,
+                  "text": "corridor fighting bell",
+                  "verb": {
+                    "a": "corridor_fighting",
+                    "v": "tactic"
+                  }
+                },
+                "attack": {
+                  "dmg": 9,
+                  "dst": 2,
+                  "hit": true,
+                  "k": "attack",
+                  "src": 1,
+                  "t": 150,
+                  "verb": "attack"
+                },
+                "target_kind": "bell_sentinel",
+                "tick_boundary_hero_position": {
+                  "x": 4,
+                  "y": 7
+                }
+              }
+            ]
+          },
+          "total_run": {
+            "cause": null,
+            "depth": 23,
+            "kept": 266,
+            "kills": 49,
+            "tier": "bank",
+            "turns": 7932,
+            "twists": [
+              "captive",
+              "captive",
+              "lock"
+            ]
+          },
+          "total_run_exit": {
+            "carried": 266,
+            "kept": 266,
+            "secured": null,
+            "lost": null,
+            "reached": 23,
+            "reason": "no heals \u00b7 banked",
+            "tier": "bank"
+          }
+        }
+      ]
+    }
+  ]
+}

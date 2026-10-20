@@ -59,7 +59,9 @@ fn trace(
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<_> = std::env::args().collect();
     if args.len() < 5 {
-        return Err("earn|prepare|trace SAVE NEW_OUT ARG [CARDS/CHOICE]".into());
+        return Err(
+            "earn|prepare|trace|absence SAVE NEW_OUT ARG [CARDS/CHOICE] [COMMON_SUPPLIES]".into(),
+        );
     }
     idlever_core::chronicle::use_shipping_words();
     idlever_core::forecast::set_parallel_sims(false);
@@ -77,6 +79,25 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             if !(1..=24).contains(&hours) {
                 return Err("earned continuation must be 1..24h".into());
             }
+            let report = s.run_offline_mode(hours * 3600, false, true);
+            write(dir, "report.json", &report);
+        }
+        "absence" => {
+            let hours: u64 = args[4].parse()?;
+            if hours != 8 || s.run.is_some() {
+                return Err("absence comparison requires a home parent and exactly8h".into());
+            }
+            s.set_worker("scout", true)?;
+            write(
+                dir,
+                "actions.json",
+                &json!([{"command":"set_worker","id":"scout","on":true}]),
+            );
+            fs::write(dir.join("common-away-parent.json"), s.save())?;
+            if let Some(choice) = args.get(5).filter(|c| c.as_str() != "baseline") {
+                s.equip_package(choice, 0)?;
+            }
+            fs::write(dir.join("choice-parent.json"), s.save())?;
             let report = s.run_offline_mode(hours * 3600, false, true);
             write(dir, "report.json", &report);
         }
@@ -104,6 +125,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         actions.push(
                             json!({"command":"spend_level","id":id,"price":price,"level":level}),
                         );
+                    }
+                }
+            }
+            if let Some(supplies) = args.get(6) {
+                for kind in supplies.split(',') {
+                    if !s.lineage.supplies.iter().any(|item| item.kind == kind) {
+                        let gold = s.lineage.gold;
+                        s.buy_supply(kind)?;
+                        assert_eq!(s.lineage.gold, gold);
+                        actions.push(json!({"command":"buy_supply","kind":kind,"gold_spent":0}));
                     }
                 }
             }

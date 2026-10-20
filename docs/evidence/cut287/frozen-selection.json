@@ -1,0 +1,452 @@
+{
+  "candidates": [
+    {
+      "seed": 1,
+      "start": 9,
+      "attempt": 1,
+      "case": "trace-s1-d9-a1-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 2,
+      "start": 9,
+      "attempt": 1,
+      "case": "trace-s2-d9-a1-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 1,
+      "start": 9,
+      "attempt": 2,
+      "case": "trace-s1-d9-a2-baseline",
+      "eligible": {
+        "pack": {
+          "turn": 27,
+          "event": {
+            "dmg": 0,
+            "dst": 1,
+            "hit": false,
+            "k": "attack",
+            "src": 5,
+            "t": 27,
+            "verb": "attack"
+          }
+        },
+        "gas": {
+          "turn": 74,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 74,
+            "ttl": 40,
+            "x": 18,
+            "y": 7
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 9,
+      "attempt": 2,
+      "case": "trace-s2-d9-a2-baseline",
+      "eligible": {
+        "pack": {
+          "turn": 187,
+          "event": {
+            "dmg": 1,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 3,
+            "t": 187,
+            "verb": "attack"
+          }
+        },
+        "gas": {
+          "turn": 750,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 750,
+            "ttl": 40,
+            "x": 19,
+            "y": 6
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "start": 9,
+      "attempt": 3,
+      "case": "trace-s1-d9-a3-baseline",
+      "eligible": {
+        "gas": {
+          "turn": 60,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 60,
+            "ttl": 40,
+            "x": 14,
+            "y": 16
+          }
+        },
+        "pack": {
+          "turn": 360,
+          "event": {
+            "dmg": 0,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 5,
+            "t": 360,
+            "verb": "attack"
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 9,
+      "attempt": 3,
+      "case": "trace-s2-d9-a3-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 1,
+      "start": 14,
+      "attempt": 1,
+      "case": "trace-s1-d14-a1-baseline",
+      "eligible": {
+        "summoner": {
+          "turn": 850,
+          "event": {
+            "e": {
+              "hp": 3,
+              "id": 17,
+              "kind": "spectral_blade",
+              "max_hp": 3,
+              "tags": [
+                "summoned"
+              ],
+              "x": 25,
+              "y": 18
+            },
+            "k": "spawn",
+            "t": 850
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 14,
+      "attempt": 1,
+      "case": "trace-s2-d14-a1-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 1,
+      "start": 14,
+      "attempt": 2,
+      "case": "trace-s1-d14-a2-baseline",
+      "eligible": {
+        "drain": {
+          "turn": 50,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 50
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 14,
+      "attempt": 2,
+      "case": "trace-s2-d14-a2-baseline",
+      "eligible": {
+        "drain": {
+          "turn": 125,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 125
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "start": 14,
+      "attempt": 3,
+      "case": "trace-s1-d14-a3-baseline",
+      "eligible": {
+        "drain": {
+          "turn": 659,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 659
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 14,
+      "attempt": 3,
+      "case": "trace-s2-d14-a3-baseline",
+      "eligible": {
+        "drain": {
+          "turn": 1717,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 53,
+            "t": 1717
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "start": 19,
+      "attempt": 1,
+      "case": "trace-s1-d19-a1-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 2,
+      "start": 19,
+      "attempt": 1,
+      "case": "trace-s2-d19-a1-baseline",
+      "eligible": {
+        "support": {
+          "turn": 790,
+          "event": {
+            "k": "callout",
+            "t": 790,
+            "text": "armours"
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "start": 19,
+      "attempt": 2,
+      "case": "trace-s1-d19-a2-baseline",
+      "eligible": {}
+    },
+    {
+      "seed": 2,
+      "start": 19,
+      "attempt": 2,
+      "case": "trace-s2-d19-a2-baseline",
+      "eligible": {
+        "support": {
+          "turn": 110,
+          "event": {
+            "k": "callout",
+            "t": 110,
+            "text": "armours"
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "start": 19,
+      "attempt": 3,
+      "case": "trace-s1-d19-a3-baseline",
+      "eligible": {
+        "support": {
+          "turn": 220,
+          "event": {
+            "k": "callout",
+            "t": 220,
+            "text": "armours"
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "start": 19,
+      "attempt": 3,
+      "case": "trace-s2-d19-a3-baseline",
+      "eligible": {
+        "support": {
+          "turn": 160,
+          "event": {
+            "k": "callout",
+            "t": 160,
+            "text": "armours"
+          }
+        }
+      }
+    }
+  ],
+  "selected": [
+    {
+      "category": "gas",
+      "seed": 1,
+      "start": 9,
+      "attempt": 2,
+      "case": "trace-s1-d9-a2-baseline",
+      "eligible": {
+        "pack": {
+          "turn": 27,
+          "event": {
+            "dmg": 0,
+            "dst": 1,
+            "hit": false,
+            "k": "attack",
+            "src": 5,
+            "t": 27,
+            "verb": "attack"
+          }
+        },
+        "gas": {
+          "turn": 74,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 74,
+            "ttl": 40,
+            "x": 18,
+            "y": 7
+          }
+        }
+      },
+      "parent_sha256": "208da882d4746521a84fad3c4cfd236ce8143373702c5f9be1d65a2fbf540ee9"
+    },
+    {
+      "category": "pack",
+      "seed": 2,
+      "start": 9,
+      "attempt": 2,
+      "case": "trace-s2-d9-a2-baseline",
+      "eligible": {
+        "pack": {
+          "turn": 187,
+          "event": {
+            "dmg": 1,
+            "dst": 1,
+            "hit": true,
+            "k": "attack",
+            "src": 3,
+            "t": 187,
+            "verb": "attack"
+          }
+        },
+        "gas": {
+          "turn": 750,
+          "event": {
+            "k": "overlay",
+            "ov": "gas",
+            "t": 750,
+            "ttl": 40,
+            "x": 19,
+            "y": 6
+          }
+        }
+      },
+      "parent_sha256": "a45c03bbf32a97af98041d12a252e9455fd4d3412b37dddcbe7b95f7dd41fee9"
+    },
+    {
+      "category": "drain",
+      "seed": 1,
+      "start": 14,
+      "attempt": 2,
+      "case": "trace-s1-d14-a2-baseline",
+      "eligible": {
+        "drain": {
+          "turn": 50,
+          "event": {
+            "cause": "drain",
+            "delta": -1,
+            "id": 1,
+            "k": "max_hp",
+            "max": 51,
+            "t": 50
+          }
+        }
+      },
+      "parent_sha256": "11151e4dcc7933f25ecad3417f86477b629701ef28e6fbcefddc48f6ba8fc879"
+    },
+    {
+      "category": "summoner",
+      "seed": 1,
+      "start": 14,
+      "attempt": 1,
+      "case": "trace-s1-d14-a1-baseline",
+      "eligible": {
+        "summoner": {
+          "turn": 850,
+          "event": {
+            "e": {
+              "hp": 3,
+              "id": 17,
+              "kind": "spectral_blade",
+              "max_hp": 3,
+              "tags": [
+                "summoned"
+              ],
+              "x": 25,
+              "y": 18
+            },
+            "k": "spawn",
+            "t": 850
+          }
+        }
+      },
+      "parent_sha256": "12afb89a43bc2cab9ec593eb25b4bc55d1930628320140ccade1e4f9354fdf4f"
+    },
+    {
+      "category": "support",
+      "seed": 2,
+      "start": 19,
+      "attempt": 1,
+      "case": "trace-s2-d19-a1-baseline",
+      "eligible": {
+        "support": {
+          "turn": 790,
+          "event": {
+            "k": "callout",
+            "t": 790,
+            "text": "armours"
+          }
+        }
+      },
+      "parent_sha256": "e05d600cfc0cd3d69a20a273c18bdfc9cbe8126bc9d9e42cc88b531754c2a13e"
+    }
+  ],
+  "missing": [
+    "reflection"
+  ],
+  "selection_reads": "18 baseline traces only; no alternate results",
+  "counts": {
+    "gas": 3,
+    "pack": 3,
+    "drain": 4,
+    "summoner": 1,
+    "reflection": 0,
+    "support": 4
+  }
+}
