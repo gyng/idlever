@@ -53,3 +53,19 @@ exact-rational binomial ranks/arithmetic. Positive confirmation only permits
 the next validation stage: original canonical16seed bars, relevant worker/
 recovery/upgrade regressions and ordinary-policy adoption checks. No default,
 WASM, client or deployment change from this study. Broad backlog remains active.
+
+## Terminal result — 2026-10-21
+
+All32fresh paired seed units/128trajectories complete at the original single
+look. INCONCLUSIVE: pen97/84≈1.15476[1,1.25] cannot establish≥1.15. Four median
+absolute-arrival differences0[0,0]PASS; no censoring or hard-check failures.
+Original/candidate D33 arrivals match on all32seeds;30TUNED complete records
+unchanged except elapsed time. These latter comparisons are descriptive.
+Independent exact-rational and archived transport audits agree. No native
+rerun, sample extension, default adoption or deployment. Original frozen contract
+and all source/spec identities remain intact in evidence/cut312. Broad goal active.
+
+Provenance clarification: the earlier aggregate Cut300 result was already known
+and its contract reviewed during setup; exclusion loaded only its seed schedule,
+without per-seed packet reuse/pooling. Original frozen wording and numerical
+design are preserved; see evidence/cut312/provenance-note.md.

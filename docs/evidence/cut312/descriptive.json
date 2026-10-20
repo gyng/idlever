@@ -1,0 +1,3295 @@
+{
+  "scope": "post-result descriptive only; no new confidence claim or candidate selection",
+  "n": 32,
+  "tuned_d33_faster_tie_slower": [
+    0,
+    32,
+    0
+  ],
+  "tuned_d33_delta_min_max": [
+    0.0,
+    0.0
+  ],
+  "tuned_original_records_unchanged": 30,
+  "control_pen_median_exact": "97/84",
+  "candidate_pen_median_exact": "97/84",
+  "candidate_ratio_at_least_1_15": 16,
+  "all_seed_prefix_tradeoffs": [
+    {
+      "seed": "1627761450169374113",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 108,
+            "deaths": 60,
+            "gold_day": [
+              2417,
+              15634
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 108,
+            "deaths": 60,
+            "gold_day": [
+              2417,
+              15634
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 78,
+            "deaths": 37,
+            "gold_day": [
+              2417
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 78,
+            "deaths": 37,
+            "gold_day": [
+              2417
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/5",
+      "candidate_pen_ratio_exact": "7/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6436752353615519585",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              64.0,
+              64.0
+            ],
+            "observed_hours": 64.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 141,
+            "deaths": 67,
+            "gold_day": [
+              4486,
+              16261
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              64.0,
+              64.0
+            ],
+            "observed_hours": 64.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 141,
+            "deaths": 67,
+            "gold_day": [
+              4486,
+              16261
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 118,
+            "deaths": 42,
+            "gold_day": [
+              4486,
+              11536
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 118,
+            "deaths": 42,
+            "gold_day": [
+              4486,
+              11536
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "8/7",
+      "candidate_pen_ratio_exact": "8/7",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "7500546151541295530",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 80,
+            "deaths": 35,
+            "gold_day": [
+              3388
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 80,
+            "deaths": 35,
+            "gold_day": [
+              3388
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 77,
+            "deaths": 31,
+            "gold_day": [
+              3388
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 77,
+            "deaths": 31,
+            "gold_day": [
+              3388
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "5353985405118738015",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 139,
+            "deaths": 59,
+            "gold_day": [
+              4965,
+              13925,
+              2237
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 139,
+            "deaths": 59,
+            "gold_day": [
+              4965,
+              13925,
+              2237
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 39,
+            "gold_day": [
+              4965,
+              13668
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 39,
+            "gold_day": [
+              4965,
+              13668
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "3/2",
+      "candidate_pen_ratio_exact": "3/2",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "11057496785197317630",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 110,
+            "deaths": 48,
+            "gold_day": [
+              6102,
+              10381
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 110,
+            "deaths": 48,
+            "gold_day": [
+              6102,
+              10381
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 23,
+            "gold_day": [
+              6102
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 23,
+            "gold_day": [
+              6102
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/5",
+      "candidate_pen_ratio_exact": "7/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "15510646593067788997",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 32,
+            "gold_day": [
+              3075,
+              16134
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 32,
+            "gold_day": [
+              3075,
+              16134
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 31,
+            "gold_day": [
+              3075,
+              14078
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 31,
+            "gold_day": [
+              3075,
+              14078
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "800447759844627154",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 85,
+            "deaths": 44,
+            "gold_day": [
+              4003
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 85,
+            "deaths": 44,
+            "gold_day": [
+              4003
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 85,
+            "deaths": 44,
+            "gold_day": [
+              4003
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 85,
+            "deaths": 44,
+            "gold_day": [
+              4003
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "10185955290100290466",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 132,
+            "deaths": 61,
+            "gold_day": [
+              3730,
+              15646
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 132,
+            "deaths": 61,
+            "gold_day": [
+              3730,
+              15646
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 33,
+            "gold_day": [
+              3730
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 33,
+            "gold_day": [
+              3730
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/5",
+      "candidate_pen_ratio_exact": "7/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6896945141708994623",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 38,
+            "gold_day": [
+              3255,
+              14886
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 38,
+            "gold_day": [
+              3255,
+              14886
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 74,
+            "deaths": 30,
+            "gold_day": [
+              3255
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 74,
+            "deaths": 30,
+            "gold_day": [
+              3255
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "6/5",
+      "candidate_pen_ratio_exact": "6/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6351888525333182668",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              64.0,
+              64.0
+            ],
+            "observed_hours": 64.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 128,
+            "deaths": 50,
+            "gold_day": [
+              2882,
+              17813
+            ],
+            "kit_h": 64.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              64.0,
+              64.0
+            ],
+            "observed_hours": 64.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 128,
+            "deaths": 50,
+            "gold_day": [
+              2882,
+              17813
+            ],
+            "kit_h": 64.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 117,
+            "deaths": 34,
+            "gold_day": [
+              2882,
+              18535
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 117,
+            "deaths": 34,
+            "gold_day": [
+              2882,
+              18535
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "8/7",
+      "candidate_pen_ratio_exact": "8/7",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "4352449171073184632",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 149,
+            "deaths": 57,
+            "gold_day": [
+              4828,
+              12207,
+              4067
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 149,
+            "deaths": 57,
+            "gold_day": [
+              4828,
+              12207,
+              4067
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 122,
+            "deaths": 40,
+            "gold_day": [
+              4828,
+              9455
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 122,
+            "deaths": 40,
+            "gold_day": [
+              4828,
+              9455
+            ],
+            "kit_h": 56.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "9/7",
+      "candidate_pen_ratio_exact": "9/7",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "14807165924673009652",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 34,
+            "gold_day": [
+              2174
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 34,
+            "gold_day": [
+              2174
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 95,
+            "deaths": 40,
+            "gold_day": [
+              2174,
+              17736
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 95,
+            "deaths": 40,
+            "gold_day": [
+              2174,
+              17736
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "5/6",
+      "candidate_pen_ratio_exact": "5/6",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "15174761208239175953",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 36,
+            "gold_day": [
+              4263
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 36,
+            "gold_day": [
+              4263
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 28,
+            "gold_day": [
+              4263
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 28,
+            "gold_day": [
+              4263
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "15043114637909765561",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 146,
+            "deaths": 49,
+            "gold_day": [
+              4841,
+              7588,
+              6121
+            ],
+            "kit_h": 64.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              40.0,
+              40.0,
+              40.0,
+              72.0,
+              72.0
+            ],
+            "observed_hours": 72.0,
+            "completed_days": 3,
+            "stop_reason": "depth",
+            "sends": 146,
+            "deaths": 49,
+            "gold_day": [
+              4841,
+              7588,
+              6121
+            ],
+            "kit_h": 64.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 106,
+            "deaths": 28,
+            "gold_day": [
+              4858,
+              9003
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              32.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 104,
+            "deaths": 28,
+            "gold_day": [
+              4858,
+              13154
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "3/2",
+      "candidate_pen_ratio_exact": "3/2",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "16171763972355615708",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 96,
+            "deaths": 48,
+            "gold_day": [
+              5663,
+              13974
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 96,
+            "deaths": 48,
+            "gold_day": [
+              5663,
+              13974
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 78,
+            "deaths": 28,
+            "gold_day": [
+              5663
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 78,
+            "deaths": 28,
+            "gold_day": [
+              5663
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "6/5",
+      "candidate_pen_ratio_exact": "6/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "11171424496892580927",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              32.0
+            ],
+            "observed_hours": 32.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 71,
+            "deaths": 30,
+            "gold_day": [
+              5383
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              32.0
+            ],
+            "observed_hours": 32.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 71,
+            "deaths": 30,
+            "gold_day": [
+              5383
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 83,
+            "deaths": 32,
+            "gold_day": [
+              5806
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 82,
+            "deaths": 30,
+            "gold_day": [
+              5383
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "4/5",
+      "candidate_pen_ratio_exact": "4/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "14181207613106114142",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 90,
+            "deaths": 40,
+            "gold_day": [
+              3797,
+              11751
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 90,
+            "deaths": 40,
+            "gold_day": [
+              3797,
+              11751
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 76,
+            "deaths": 29,
+            "gold_day": [
+              3797
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 76,
+            "deaths": 29,
+            "gold_day": [
+              3797
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "6/5",
+      "candidate_pen_ratio_exact": "6/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6168979333316994640",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 49,
+            "gold_day": [
+              4767,
+              23404
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 49,
+            "gold_day": [
+              4767,
+              23404
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 83,
+            "deaths": 31,
+            "gold_day": [
+              4767
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 83,
+            "deaths": 31,
+            "gold_day": [
+              4767
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "6/5",
+      "candidate_pen_ratio_exact": "6/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "13015088795812209485",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 102,
+            "deaths": 28,
+            "gold_day": [
+              5659,
+              12711
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 102,
+            "deaths": 28,
+            "gold_day": [
+              5659,
+              12711
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 29,
+            "gold_day": [
+              5659,
+              11790
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 29,
+            "gold_day": [
+              5659,
+              11790
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6067847164201874247",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              32.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 118,
+            "deaths": 51,
+            "gold_day": [
+              2140,
+              8968
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              32.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 118,
+            "deaths": 51,
+            "gold_day": [
+              2140,
+              8968
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 103,
+            "deaths": 33,
+            "gold_day": [
+              2140,
+              10755
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              32.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 103,
+            "deaths": 33,
+            "gold_day": [
+              2140,
+              10755
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/6",
+      "candidate_pen_ratio_exact": "7/6",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "5375002402737342488",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 111,
+            "deaths": 38,
+            "gold_day": [
+              4057,
+              11252
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              56.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 111,
+            "deaths": 38,
+            "gold_day": [
+              4057,
+              11252
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 96,
+            "deaths": 27,
+            "gold_day": [
+              4057,
+              13437
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 96,
+            "deaths": 27,
+            "gold_day": [
+              4057,
+              13437
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/6",
+      "candidate_pen_ratio_exact": "7/6",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "12123165818797045206",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 33,
+            "gold_day": [
+              2704
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 33,
+            "gold_day": [
+              2704
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 33,
+            "gold_day": [
+              2704
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              40.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 33,
+            "gold_day": [
+              2704
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "4710651110270010748",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 53,
+            "gold_day": [
+              5396,
+              12488
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 53,
+            "gold_day": [
+              5396,
+              12488
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 53,
+            "gold_day": [
+              5396,
+              12488
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 98,
+            "deaths": 53,
+            "gold_day": [
+              5396,
+              12488
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "1253088577694343881",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 44,
+            "gold_day": [
+              5816
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 86,
+            "deaths": 44,
+            "gold_day": [
+              5816
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 37,
+            "gold_day": [
+              5816
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 37,
+            "gold_day": [
+              5816
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "11071365658613322109",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 34,
+            "gold_day": [
+              5934
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 34,
+            "gold_day": [
+              5934
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 32,
+            "gold_day": [
+              5934
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 81,
+            "deaths": 32,
+            "gold_day": [
+              5934
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "14340640128725010961",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 49,
+            "gold_day": [
+              5795,
+              9813
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 100,
+            "deaths": 49,
+            "gold_day": [
+              5795,
+              9813
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 83,
+            "deaths": 27,
+            "gold_day": [
+              5795
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 83,
+            "deaths": 27,
+            "gold_day": [
+              5795
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "6/5",
+      "candidate_pen_ratio_exact": "6/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "12095098104143124780",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              16.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 115,
+            "deaths": 47,
+            "gold_day": [
+              2456,
+              13796
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              16.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 115,
+            "deaths": 47,
+            "gold_day": [
+              2456,
+              13796
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              16.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 21,
+            "gold_day": [
+              2456
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              16.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 21,
+            "gold_day": [
+              2456
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/5",
+      "candidate_pen_ratio_exact": "7/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "4064624169670938553",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 124,
+            "deaths": 76,
+            "gold_day": [
+              2729,
+              12598
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              48.0,
+              56.0
+            ],
+            "observed_hours": 56.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 124,
+            "deaths": 76,
+            "gold_day": [
+              2729,
+              12598
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 88,
+            "deaths": 44,
+            "gold_day": [
+              2729
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 88,
+            "deaths": 44,
+            "gold_day": [
+              2729
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "7/5",
+      "candidate_pen_ratio_exact": "7/5",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "3997434002757698242",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 51,
+            "gold_day": [
+              2062,
+              15175
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 97,
+            "deaths": 51,
+            "gold_day": [
+              2062,
+              15175
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 94,
+            "deaths": 38,
+            "gold_day": [
+              2062,
+              15049
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              24.0,
+              24.0,
+              32.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 94,
+            "deaths": 38,
+            "gold_day": [
+              2062,
+              15049
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "9392086663861097477",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 34,
+            "gold_day": [
+              4916
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 84,
+            "deaths": 34,
+            "gold_day": [
+              4916
+            ],
+            "kit_h": 40.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              32.0
+            ],
+            "observed_hours": 32.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 69,
+            "deaths": 18,
+            "gold_day": [
+              4916
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              24.0,
+              32.0,
+              32.0
+            ],
+            "observed_hours": 32.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 69,
+            "deaths": 18,
+            "gold_day": [
+              4916
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "5/4",
+      "candidate_pen_ratio_exact": "5/4",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "1471931270232823272",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 104,
+            "deaths": 36,
+            "gold_day": [
+              2825,
+              13968
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 104,
+            "deaths": 36,
+            "gold_day": [
+              2825,
+              13968
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 102,
+            "deaths": 33,
+            "gold_day": [
+              2825,
+              12356
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              32.0,
+              40.0,
+              40.0,
+              48.0,
+              48.0
+            ],
+            "observed_hours": 48.0,
+            "completed_days": 2,
+            "stop_reason": "depth",
+            "sends": 102,
+            "deaths": 33,
+            "gold_day": [
+              2825,
+              12356
+            ],
+            "kit_h": 48.0,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    },
+    {
+      "seed": "6221850872029415683",
+      "roles": {
+        "PICKED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 91,
+            "deaths": 38,
+            "gold_day": [
+              3802
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 91,
+            "deaths": 38,
+            "gold_day": [
+              3802
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        },
+        "TUNED": {
+          "control": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 34,
+            "gold_day": [
+              3802
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          },
+          "candidate": {
+            "hours": [
+              8.0,
+              8.0,
+              16.0,
+              24.0,
+              32.0,
+              40.0,
+              40.0
+            ],
+            "observed_hours": 40.0,
+            "completed_days": 1,
+            "stop_reason": "depth",
+            "sends": 89,
+            "deaths": 34,
+            "gold_day": [
+              3802
+            ],
+            "kit_h": null,
+            "king_day": null,
+            "unconserved": 0
+          }
+        }
+      },
+      "shipping_pen_ratio_exact": "1",
+      "candidate_pen_ratio_exact": "1",
+      "tuned_d33_delta_hours": 0.0
+    }
+  ]
+}

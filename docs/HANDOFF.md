@@ -1,4 +1,4 @@
-# Active backlog — Cut312 confirmation RUNNING; Cut313 compatibility repaired, 2026-10-21
+# Active backlog — Cut312 terminal INCONCLUSIVE; no policy adoption, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -26,42 +26,47 @@ before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
 
-## Cut312 — protected independent confirmation RUNNING; poll before work
+## Cut312 — protected confirmation terminal INCONCLUSIVE; all jobs finished
 
 Contract [CUT312_BOSS_ONLY_CONFIRMATION.md](CUT312_BOSS_ONLY_CONFIRMATION.md),
-evidence [cut312/README.md](evidence/cut312/README.md). Native collector is a
-LIVE owned job at this checkpoint: tool exec session **18166**, last verified by
-poll this turn; last observed operational count28/64 trajectories in EACH mode.
-This line is a locator, not future proof of liveness. Poll that exact handle
-first. Do NOT relaunch because a wait expires or a state file says collecting.
-If the handle is missing, audit actual process/OS-lock/receipts before resume.
-Unreceipted packets are fail-closed, never blindly overwritten/replayed.
+evidence [cut312/README.md](evidence/cut312/README.md). Collector session18166
+returnedexit0; original32fresh seed pairs/128ordinary trajectories completed at
+the ONE planned look. No live native job, missing batch, rerun or extension.
+Do NOT relaunch for new samples or follow the conditional adoption note.
 
-Current command: python3 docs/evidence/cut312/collect.py target/cut312/study
- docs/evidence/cut312/spec.json. Collector log: cut312/validation/collector.log;
-only completion counts may be read until all32pairs finish. No outcome look has
-been taken by the agent. Collector automatically performs the ONE planned32pair
-look only after both64-trajectory packets complete. When terminal, inspect its
-actual exit/report; independently run python3 docs/evidence/cut312/verify.py
- target/cut312/study, then preserve/archive every original packet/receipt/log.
-Do not change frozen code/spec/source/runtime or extend/resample this study.
+Pen estimate97/84≈1.15476, interval[1,1.25], INCONCLUSIVE against≥1.15.
+All four capped absolute-arrival median differences0[0,0]PASS. No D33censoring
+or hard failures: all32PICKED original records exact across modes excluding
+elapsed, earlyTUNEDD13/D18 equal, conserved, no earlier reported King. This is
+observed-prefix King evidence only. Both modes have identicalD33arrival on
+EVERY fresh seed;30/32completeTUNED records unchanged except elapsed. Both
+sampled pen medians97/84;16/32candidate ratios≥1.15. These latter comparisons
+are post-result descriptive, not added confidence claims. The two-seed discovery
+gain did not generalize to D33outcomes in this cohort. No default adoption.
 
-Fresh crypto-u64 IDs exclude0..10000 and Cut300's32schedule (only schedule read).
-Same Cut311 executable target/cut312/runtime, immutable modesoriginal and
-lich-boss-only; mode is in every job key/receipt/packet. Source240files checked
-unchanged.8threads/mode,16total. Five capped median claims: PICKEDD23/D33,
-TUNEDD23/D33 non-regression and candidate pen≥1.15. Familyalpha0.05−2^-38,
-one look32, rank9bounds9/24. Exact budget/rank frozen before outcomes. Censoring
-prevents adoption; PICKED whole original-record parity, TUNEDD13/D18 equality,
-conservation and observed-prefix King are hard safeguards. No current result.
-Six synthetic analyzer checks and collector/zero-work-resume/mode-corruption/
-flag-clearing/exact-rational verification tests pass. Copies of math/JSON
-modules are frozen locally; unrelated Cut313 repair does not change this study.
+Native packets/receipts/logs/state/manifest/planned look preserved:10rawfiles,
+2120285bytes,30856-byte study.tar.zst. Collection1351.83s under concurrent tool
+work is not an isolated benchmark. Frozen Node and independent exact-rational
+Python analyses agree, including mode-aware jobs, source/spec/hash/u64 identities,
+rank9/32 and five-claim family budget. Archive transport and both frozen analyses
+pass. Reproduce python3 docs/evidence/cut312/verify-archive.py; descriptive32seed
+role/clock/Gold/kit/sends/deaths/King table in descriptive.json. No native replay
+needed for either audit. Original frozen programs/spec unchanged after outcomes.
 
-Positive confirmation only permits original canonical16seed/relevant regression
-validation, not automatic policy adoption or deployment. Rejected/inconclusive
-means no extension/default change; choose a different hypothesis. Cut300 stays
-INCONCLUSIVE and is not pooled/reused as new confirmation. Broad goal ACTIVE.
+No pooling with Cut300 or reuse of either cohort as new independent evidence.
+No main policy/library/balance/WASM/client/deployment change. WASM remains
+7152841bytes/53b98bb4. Source-cache default-salting concern recorded before the
+outcome in adoption-notes.md is CONDITIONAL and was not implemented.
+
+Next concrete work: shared-resident Bank/Vat core API prototype using Cut306/307
+paid utility/profile design. Inspect current Session/Town ownership, implement
+explicit legal funding and all-resident level/benefit sync, old-save/default parity
+and refused/stale-price atomicity in isolation before UI. This is ACTIVE authorized
+redesign work, not acceptance of its prices/effects or relaxation of pen/worker/
+recovery bars. UI and independent progression acceptance remain required before
+adoption. Separately inspect existing vocabulary for the saved Queen proximity/
+scroll-use gap before adding a pen mechanism; do not repeat tiny Lich rewrites
+with no sampledD33effect. Broad backlog remains ACTIVE; no new deploy.
 
 ## Cut313 — legacy optional recovery-cap metadata compatibility repaired
 
@@ -80,7 +85,7 @@ pass. Full tests75.95s under concurrent native work, not a speed benchmark.
 Original failure/accepted logs and before/accepted source archive/patch retained.
 No game campaigns, sampling/alpha/claim/cache-identity/schema/WASM/client/default
 or deployment change. All Cut312 frozen-file hashes checked unchanged after the
-repair; its collection remains sealed and active. No additional native job.
+repair while collection was sealed; Cut312 is now terminal. No additional native job.
 
 ## Cut311 — TUNED-only boss fallback passes two-seed discovery; no adoption
 
