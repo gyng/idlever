@@ -18,6 +18,7 @@ fn main() {
     let mut cur: Option<(u32, u32, u64, u32)> = None; // run id, start depth, wall second it began, deepest
     let mut purse = g.lineage.gold;
     let mut timed = false;
+    let mut why = String::new();
     let counts = |g: &Game| {
         (
             g.lineage.runs_banked,
@@ -40,6 +41,16 @@ fn main() {
                 Some(c) if c.0 == r.id => {
                     c.3 = c.3.max(r.depth);
                     timed = r.timed_out;
+                    if let Some(i) = r.exit_row.or(r.homeward) {
+                        let set =
+                            &g.lineage.sets[g.lineage.active_set.min(g.lineage.sets.len() - 1)];
+                        why = set
+                            .rows
+                            .get(i.max(0) as usize)
+                            .map(|row| format!("row {i}: {row:?}"))
+                            .unwrap_or(format!("row {i}"));
+                        why.truncate(110);
+                    }
                 }
                 _ => cur = Some((r.id, r.depth, s, r.depth)),
             }
@@ -67,6 +78,9 @@ fn main() {
                 secs as f64 / 60.0 / f64::from(floors),
                 if timed { " (cap)" } else { "" }
             );
+            if !why.is_empty() {
+                println!("       {}", std::mem::take(&mut why));
+            }
         }
     }
     lens.sort_unstable();

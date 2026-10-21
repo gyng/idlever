@@ -46,7 +46,15 @@ not in a town between runs.
 ## 3. The model
 
 **An expedition is one hero life at real speed.** The hero departs, descends floor by floor at 1×, rests at
-camps, and ends the expedition by dying, by retreating (the existing Return/Bank decisions), or at the bottom.
+camps, and ends the expedition by dying, by a deliberate bank, by running out of supplies, or at the bottom.
+
+0. **Hurt means rest, not home** (decided 2026-10-22). The probe shows late runs end on the hero's own safety
+   rows: `hp < 25% → return` and `lacks heal · hp < 35% → bank` fire after 1–4 floors, and each is a walk home
+   plus a 20–30 min rest. In a roguelike a hurt hero backs off and rests. So during an expedition a `return`
+   walks to the floor's up-stairs and **rests there until healed** (◇ ~1 HP/s, wandering foes can still find him),
+   then the dive resumes. The player's rows keep their words; the verb's meaning changes (the glossary and the
+   pen say "retreat · rest"). `bank` stays a real exit, chosen with a carry worth taking home. An expedition also
+   ends when supplies are spent and he is still hurt (◇ the rest heals only to ◇ 60% without a heal in the pack).
 
 1. **Length (the owner left this to us).** Typical expedition ◇: 30–60 min early (D1–D8), 1–3 h in the
    midgame, 6–12 h late (an overnight dive). Floor pace ◇ 3–6 min, slower at bosses. The 120k-tick cap rises
