@@ -765,7 +765,7 @@ pub fn forecast_with(game: &Game, rules: &RuleSet, sims: u32) -> Forecast {
             let reach = reach_at(d);
             let wall = wall_on(route, d, reach, reach_at(d.saturating_sub(1)));
             let try_ = if d > start { try_row(game, rules, d) } else { None };
-            ForecastDepth { depth: d, reach, pm: Some(half_width(reach, ended.len())), try_, wall, bounty: game.lineage.bounty == Some(d), boss: route.boss(d).map(str::to_string), affix: route.boss(d).and_then(|k| affixes.iter().find(|(b, _)| b == k)).map(|(_, a)| a.word().to_string()), biome: (!route.is_base()).then(|| route.biome(d).name().to_string()), clear: None }
+            ForecastDepth { depth: d, reach, pm: Some(half_width(reach, ended.len())), try_, wall, bounty: game.lineage.bounty == Some(d), boss: crate::engine::boss_on(route, d).map(str::to_string), affix: crate::engine::boss_on(route, d).and_then(|k| affixes.iter().find(|(b, _)| b == k)).map(|(_, a)| a.word().to_string()), biome: (!route.is_base()).then(|| route.biome(crate::engine::content_of(d)).name().to_string()), clear: None }
         })
         .collect();
     let mut causes: BTreeMap<String, u32> = BTreeMap::new();
@@ -1524,7 +1524,7 @@ pub fn paired(a: &[SimResult], b: &[SimResult], f: impl Fn(&SimResult) -> f64) -
 /// counter's verb, the row names it (`D9 0% · warlord · try: attack boss`). Position is the
 /// point: the client inserts it at the top, and the gate measures that placement.
 pub fn try_row(game: &Game, rules: &RuleSet, depth: u32) -> Option<ForecastTry> {
-    let kind = rules.route().boss(depth.checked_sub(1)?)?;
+    let kind = crate::engine::boss_on(rules.route(), depth.checked_sub(1)?)?;
     let row = crate::facts::boss_counter_row(&game.lineage.facts, kind)?;
     if crate::trace::has_counter_verb(rules, &row) {
         return None;
@@ -1550,7 +1550,7 @@ pub fn wall_at(depth: u32, reach: f64, reach_above: f64) -> Option<String> {
 
 /// `wall_at` on a route (Cut 26 §1).
 pub fn wall_on(route: crate::descent::Route, depth: u32, reach: f64, reach_above: f64) -> Option<String> {
-    let kind = route.boss(depth.checked_sub(1)?)?;
+    let kind = crate::engine::boss_on(route, depth.checked_sub(1)?)?;
     (reach <= WALL_REACH + 1e-9 && reach_above > WALL_REACH + 1e-9).then(|| kind.to_string())
 }
 

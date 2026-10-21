@@ -20,7 +20,15 @@ import type {
   Vocabulary,
   VsMove,
 } from "./engine/types";
-import { combosIn, isCardRow, isFreeSupply, isPkgRow, ownRowCount, setWhyGloss } from "./ui/tokens";
+import {
+  combosIn,
+  depthStretchFrom,
+  isCardRow,
+  isFreeSupply,
+  isPkgRow,
+  ownRowCount,
+  setWhyGloss,
+} from "./ui/tokens";
 import { selectEngine, type EngineKind } from "./engine/index";
 import { readBlob, writeBlob, clearBlob, randomSeed, type SaveBlob } from "./store";
 import type { DevHistory } from "./dev/history";
@@ -2352,6 +2360,7 @@ export function start(dev: DevOptions | null = null): App {
   applySkin(); // Cut 17: the frames packed in web/public/ui (tools/ui-skin.py); absent ones keep the flat CSS
   const app = new App(root, dev);
   initTips(app);
+  depthStretchFrom(() => app.lineage?.expedition?.stretch); // Cut317: content depths read as the stretched dungeon's floors
   setGlossaryOpener((t) => openGlossary(app, t));
   audio.arm(); // Cut 10 §4: the WebAudio context opens on the first gesture
   if (dev) (window as unknown as { __idlever: App }).__idlever = app;

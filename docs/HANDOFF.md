@@ -1,5 +1,59 @@
 # Parked — v0.1.0-alpha.3 milestone, 2026-10-21
 
+## Cut317 — Expeditions, profile only (2026-10-22)
+
+Owner: heroes should live in the dungeon in real time, no speed-up outside replays, gold to the bank at
+porter rest stops, edits while delving; then "camps … a rest level · safe zone", "start fresh", "d33 is
+way too short" (both: dive past the King and stretch to D99), a town crier. Contract:
+[CUT317](CUT317_EXPEDITIONS.md).
+
+- **Status:**
+  - Everything is behind `balance.expedition` (off in shipping) and lives in
+    `tuning/studies/cut317-expedition.json` (on, stretch 3, laps, rest 2–5 min, porter need 2).
+  - Shipping is byte-identical: all core tests, replay hashes and settlements pass.
+  - See it on the native dev server:
+    `IDLEVER_BALANCE_FILE=$PWD/tuning/studies/cut317-expedition.json IDLEVER_NATIVE_PORT=5368 tools/native-dev.sh`.
+- **Core:**
+  - **Rest and retreat.** A `return` row rests the hero (retreat) while nothing awake is in sight.
+  - **Progress clock.** It ends stalemates: 20 min without a new floor or more gold sends him home with the
+    carry. The shipping game has this bug: a plate gunner vs. a lurker queen, or a bank walk with no path,
+    stands until the 120k cap.
+  - **Camps.** A safe rest floor every ~10 min of diving (the first at 5). The haul is paid up: to the purse
+    with the porter, to the chest before him.
+  - **Queued edits.** `carried_sets` are renewed at porter camps, recorded as `Input::Kit`.
+  - **Start fresh at D1.**
+  - **Depth.** The stretch splits content depth from floor (`engine::{content_of, band_floor, reach,
+    boss_floor, boss_on}`); laps go past the bottom a tier harder.
+  - **Town crier.** Core cries go in `LineageState.cries`.
+  - **When expeditions start.** They begin only after the first session's scout and porter
+    (`Game::expedition_now`).
+- **Client:**
+  - An expedition plays at a true 1×; the Run tile replaces Speed.
+  - The pen shows "waits · camp Nm".
+  - The crier rings for live cries.
+  - Depths read as floors: rule chips, the depth rail's forks, stones, bounty and bosses, the forecast's
+    bosses, and swift floors.
+- **Gates** (`gates.mjs --rows … --seeds 8 --balance` the profile): all 15 core pacing rows pass:
+  - the IDLE milestones, gold, stall and King rows
+  - PICKED vs IDLE and outpace
+  - TUNED vs PICKED and RANDOM vs PICKED
+  - stalls, porter, scout and workers-daily
+
+  This is targeted, not a gate pass. The full `--full` / exhaustive audit on the profile has not been run.
+- **Open:**
+  - Adopt into shipping: a full gate run on the profile, re-pinned settlements, a fun-eval.
+  - The camp drawn as its own room (a fire, the porter).
+  - The gunner's lurker-queen stalemate as content.
+  - A real 1× live session watched end to end through a camp. The headless capture only caught one while
+    catching up.
+  - The dayplayer's first session still charges a watched run at 4×; expeditions begin after it, so it
+    did not matter here.
+- **Client routine subset:** 44/46.
+  - `worker-first-act` is a known failure from before Cut316.
+  - `menu-materials` fails at 320 px waiting for the Journal's `forge` glossary term. It is time-dependent,
+    not caused by Cut316 or Cut317: the pre-Cut317 baseline da600ee2 passed at 22:00 and failed twice an hour
+    later with the same WASM. Not investigated further.
+
 ## Cut316 — UI revamp on the hub's grammar (2026-10-21)
 
 The owner asked for a UI refresh that keeps the chunky framed style ("I like the hub and live

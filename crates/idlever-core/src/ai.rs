@@ -901,7 +901,7 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         // Cut317 §3.0: on an expedition a `return` is a retreat — rest while nothing awake is in sight, else back off
         // toward the up-stairs (`turn::choose_and_act` keeps him resting until healed). He leaves on it only once the
         // retreat is spent.
-        "return" if crate::balance::get().expedition.on && run.homeward.is_none() && !run.retreat_spent() => {
+        "return" if run.expedition && run.homeward.is_none() && !run.retreat_spent() => {
             if !run.retreat {
                 run.retreat = true;
                 run.retreat_at = run.turn;

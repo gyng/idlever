@@ -70,7 +70,7 @@ fn an_edit_while_delving_reaches_him_at_the_next_porter_camp_and_replays() {
     balance::with_test_profile(expedition(), || {
         let mut g = Game::load(GUNNER).unwrap();
         g.tap = Some(std::collections::BTreeMap::new());
-        while g.run.as_ref().is_none_or(|r| r.in_camp || r.turn < 600) {
+        while g.run.as_ref().is_none_or(|r| !r.expedition || r.in_camp || r.turn < 600) {
             g.advance(1000);
         }
         let id = g.run.as_ref().unwrap().id;

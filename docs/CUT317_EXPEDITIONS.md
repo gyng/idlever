@@ -228,6 +228,61 @@ the pen shows `depth ≥` in the player's floors.
 Still open on the client: the camp drawn as its own room (a fire, the porter); floors beyond D33 on the depth
 rail and the forecast; the pen's `depth ≥` shown in the player's floors.
 
+## 3f. Retune, round 1 (2026-10-22)
+
+Targeted pacing rows (`gates.mjs --rows … --balance`, 2 seeds):
+
+- **Flat profile** (stretch 1, the expedition mechanics alone): progression races. IDLE reaches D13 at day 0.3 and
+  D23 at day 2.2, with heroes ~90 % in the dungeon against ~50 % before. PICKED ≥ 1.5× IDLE fails at D13 (1.00),
+  RANDOM-slower fails, and the porter is at worst min 15.1.
+- **Stretched profile** (stretch 3): the extra floors restore the pacing. IDLE D8 by day 1, D13 at day 1.0, D23
+  at day 4.8. PICKED 3.0× / 5.3× / 5.5× IDLE at D13/D18/D23; TUNED 2.35× PICKED at D33; RANDOM slower; no stalls;
+  workers cost the daily player nothing.
+
+Changes made while getting there:
+
+- The dayplayer's `--rows` stop (`dayplayer_rows`) reads a record through `reach`. Read as a floor, it stopped
+  TUNED at floor 33 (content 11), which showed as `NaN`.
+- **Expeditions begin after the first session's two hires** (`Game::expedition_now`: the scout and the porter).
+  Before them, a send by hand is a short classic run. A long first expedition held back every chore counted at a
+  run's report: the scout went from min 2.5 to 37 in a harness that modelled taps during the dive. So every
+  expedition has its porter.
+- **Camps**: the first comes at half the spacing. Every camp secures the carry and pays it up at once
+  (`Game::camp_haul`): to the purse with the porter, to the chest before him (his chore).
+- **Porter need 2** (shipping 3) in the profile. The classic first runs dive the stretched floors, so each takes
+  longer; with 3 he came at min 13.0, worst 15.4, against 12 / 15. Need 2: min 10.2, worst 11.6.
+
+The scout comes at min 5.6 against shipping's 2.5, still inside the gate of 15.
+
+## 3g. Round 1 result, 8 seeds (2026-10-22)
+
+All 15 targeted rows pass on the profile (`--seeds 8`):
+
+| Row | Result |
+| --- | --- |
+| IDLE D8 by day 1 | 8/8 |
+| IDLE D13 | median day 0.7 |
+| IDLE D23 | 8/8 by day 4.7 |
+| IDLE stall | 1 d |
+| IDLE gold | 14/14 |
+| IDLE King | 0/8 |
+| PICKED vs IDLE (D13/D18/D23) | 2.0× / 3.25× / 4.67× |
+| outpace | 100 % |
+| stalls (IDLE / PICKED) | 0.73 % / 0 |
+| TUNED vs PICKED | 1.43× |
+| RANDOM slower | 8/8 · 8/8 |
+| porter | min 11.5, worst 13.2 |
+| scout | min 4.5, worst 6.7 |
+| workers-daily | 30.35 vs 29.20 |
+
+Not a gate pass: the routine `--full` and exhaustive audit on the profile remain before adoption.
+
+Loose ends fixed before the commit:
+
+- The rule snapshot at the send read the previous run (expeditions never carried their rules).
+- The next-camp countdown now knows the first camp's half spacing.
+- Swift floors compare as floors.
+
 ## 4. Gates
 
 The hard invariants in AGENTS.md stand. In particular, Idle alone progresses: IDLE D8 on day 1, D23 by day 12,

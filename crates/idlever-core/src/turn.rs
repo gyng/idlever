@@ -292,7 +292,7 @@ pub fn return_due(run: &Run) -> bool {
 /// `RETURN_TICKS` later, the carry kept, instead of the run cap's empty hands. A committed return is on its own
 /// timer (`return_due`); a bank walk has none, so a bank he cannot finish is clocked too.
 fn progress_clock(run: &mut Run, cx: &mut Ctx) {
-    if !crate::balance::get().expedition.on || (run.homeward.is_some() && !run.homeward_bank) || run.over.is_some() {
+    if !run.expedition || (run.homeward.is_some() && !run.homeward_bank) || run.over.is_some() {
         return;
     }
     let mark = (run.depth, run.carried().max(0) as u32);
@@ -316,7 +316,9 @@ fn progress_clock(run: &mut Run, cx: &mut Ctx) {
 /// later death loses only what he finds after it. Then its down-stairs take him on (`descend`, the camp left).
 fn enter_camp(run: &mut Run, cx: &mut Ctx) -> bool {
     let e = crate::balance::get().expedition;
-    if !e.on || run.in_camp || run.over.is_some() || run.turn.saturating_sub(run.camp_at) < e.camp_every_ticks {
+    // the first camp comes at half the spacing: early in a dive the porter is met (and a new town sees him) sooner
+    let every = if run.camps == 0 { e.camp_every_ticks / 2 } else { e.camp_every_ticks };
+    if !run.expedition || run.in_camp || run.over.is_some() || run.turn.saturating_sub(run.camp_at) < every {
         return false;
     }
     run.in_camp = true;
@@ -356,16 +358,23 @@ fn enter_camp(run: &mut Run, cx: &mut Ctx) -> bool {
     run.retreat = false;
     run.hero.poison = (0, 0);
     run.hero.hp = run.hero.max_hp;
-    let banked = if run.porter { run.secure_carry() } else { 0 };
+    // the camp's haul goes up whether or not the porter is hired: before him it waits in the town's chest for a hand
+    // to collect (his chore), with him it lands in the purse (`Game::camp_haul`)
+    let banked = run.secure_carry();
+    run.camp_pay = true;
     run.kit_due = run.porter;
     let vision = run.vision(cx.unlocks);
     run.floor.map.update_vision(run.hero.pos, vision);
     let d = run.depth;
     cx.events.push(Ev::Descend { t: run.turn, depth: d, biome: "camp".into() });
-    if banked > 0 {
+    if banked > 0 && run.porter {
         run.cries.push(("camp".into(), format!("banked ${banked}")));
         note(run, cx, format!("Camp under D{d}. The porter took ${banked} up."));
         callout(run, cx, "porter · banked");
+    } else if banked > 0 {
+        run.cries.push(("camp".into(), format!("cached ${banked}")));
+        note(run, cx, format!("Camp under D{d}. ${banked} left for the town to fetch."));
+        callout(run, cx, "camp · cached");
     } else {
         note(run, cx, format!("Camp under D{d}."));
         callout(run, cx, "camp");
@@ -870,7 +879,7 @@ fn choose_and_act(run: &mut Run, cx: &mut Ctx, v: &View) -> (i32, Verb) {
             }
             // Cut317: on an expedition a `return` commits home only once its retreat is spent (`ai` rests him)
             let home = row.verb.v == "bank"
-                || (row.verb.v == "return" && (!crate::balance::get().expedition.on || run.retreat_spent()));
+                || (row.verb.v == "return" && (!run.expedition || run.retreat_spent()));
             if run.over.is_none() && run.homeward.is_none() && home {
                 run.retreat = false;
                 run.homeward = Some(i as i32);
@@ -2416,7 +2425,7 @@ pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dm
         run.summoned_kills += 1;
     } else if !m.neutral {
         let depth = run.depth;
-        if crate::balance::get().expedition.on && crate::defs::monster_def(&kind).boss {
+        if run.expedition && crate::defs::monster_def(&kind).boss {
             run.cries.push(("boss".into(), format!("slew {}", crate::sifter::boss_short(&kind))));
         }
         run.kills.push((run.turn, kind.clone(), depth));
@@ -2941,7 +2950,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if next > run.record_mark {
         run.record_mark = next;
         run.secure_carry();
-        if crate::balance::get().expedition.on {
+        if run.expedition {
             run.cries.push(("record".into(), format!("D{next} record")));
         }
     }

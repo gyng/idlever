@@ -1209,7 +1209,12 @@ export type LiveRun = {
   camps?: number; // Cut317: camps made this expedition
 };
 /** Cut317 (core): expeditions — the porter's camps, an edit waiting for the next one, when it is due (absent: expeditions off). */
-export type Expedition = { porter: boolean; waiting?: boolean; next_camp_s?: number };
+export type Expedition = {
+  porter: boolean;
+  waiting?: boolean;
+  next_camp_s?: number;
+  stretch?: number;
+};
 /** Cut317 §3.8 (core): a town crier's line — `t` the lineage's ticks (order, and "new since heard"), the hero, the kind, ≤ 3 words. */
 export type CryLine = { t: number; who: string; k: string; text: string };
 /** RUNS_UI (core) — `advance(ms)`: the open app's clock run on the lineage (rest, then the next run, unwatched; a run in flight stays in

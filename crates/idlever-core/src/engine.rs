@@ -237,6 +237,10 @@ pub fn reach(floor: u32) -> u32 {
 /// Cut317 §3c: the floor a content depth's single events stand on (its band's last; the first descent's) — a boss's
 /// floor as the player counts floors. Shipping: the depth itself.
 pub fn boss_floor(content: u32) -> u32 { content * crate::balance::get().expedition.stretch.max(1) }
+/// Cut317 §3c: the boss whose floor this is — a floor's content depth's boss, on its band's last floor. Shipping: `route.boss`.
+pub fn boss_on(route: Route, floor: u32) -> Option<&'static str> {
+    if band_floor(floor) { route.boss(content_of(floor)) } else { None }
+}
 /// Cut317 §3c: descents past the first bottom a floor lies (each a tier harder; 0 without laps).
 pub fn lap_of(floor: u32) -> u32 {
     if crate::balance::get().expedition.laps { floor.saturating_sub(1) / lap_floors() } else { 0 }
@@ -578,6 +582,10 @@ pub struct Run {
     pub progress_mark: (u32, u32),
     #[serde(default, skip_serializing_if = "is_zero_u32")]
     pub progress_at: u32,
+    /// Cut317: this run is an expedition (decided at the send, `Game::expedition_now`: expeditions on, the scout and the
+    /// porter hired — before them the sends by hand are short classic runs).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub expedition: bool,
     /// Cut317 §3.3: the porter meets him at camps (hired at the send); the last camp's turn (0: the send), camps made,
     /// and the turn the camp's rest ends.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
@@ -591,6 +599,9 @@ pub struct Run {
     /// Cut317: he stands in a camp (the safe room between two floors).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub in_camp: bool,
+    /// Cut317 §3.3: a camp secured the carry this tick; it is paid up before the next (`Game::camp_haul`).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub camp_pay: bool,
     /// Cut317 §3.5: a porter camp was made this tick; the kit renews before the next (`Game::kit_at_camp`).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub kit_due: bool,
@@ -3718,7 +3729,12 @@ impl Game {
             crate::wire::ExpeditionWire {
                 porter: crate::tree::porter(&self.lineage),
                 waiting: self.lineage.carried_sets.as_ref().is_some_and(|c| *c != (self.lineage.sets.clone(), self.lineage.active_set)),
-                next_camp_s: run.map(|r| e.camp_every_ticks.saturating_sub(r.turn.saturating_sub(r.camp_at)) / crate::offline::TICKS_PER_SECOND as u32),
+                stretch: e.stretch.max(1),
+                // (the first camp of a dive comes at half the spacing, `turn::enter_camp`)
+                next_camp_s: run.filter(|r| r.expedition).map(|r| {
+                    let every = if r.camps == 0 { e.camp_every_ticks / 2 } else { e.camp_every_ticks };
+                    every.saturating_sub(r.turn.saturating_sub(r.camp_at)) / crate::offline::TICKS_PER_SECOND as u32
+                }),
             }
         });
         l.guns=crate::firearm::offers(&self.lineage,self.run.is_some());
@@ -4104,6 +4120,13 @@ impl Game {
     }
 
     /// RUNS_UI: an input the live run took, on its capsule (replayed at its tick).
+    /// Cut317: a send now sets out on an expedition — expeditions on, and the first session's two hires made: the scout
+    /// (who books the delves) and the porter (who meets the hero at camps). Before them a send by hand is a short classic
+    /// run, so the first session reads as ever and every expedition has its porter.
+    pub fn expedition_now(&self) -> bool {
+        crate::balance::get().expedition.on && crate::tree::auto_send(&self.lineage) && crate::tree::porter(&self.lineage)
+    }
+
     /// Cut317 §3.5: the porter's camp brings the town's sets down — the kit renews before the next tick, and a change
     /// is recorded on the run's capsule so its replay plays the same rows from the same tick.
     fn kit_at_camp(&mut self) {
@@ -4118,6 +4141,26 @@ impl Game {
             self.lineage.carried_sets = Some(now.clone());
             self.input(id, t, Input::Kit(now.0, now.1));
         }
+    }
+
+    /// Cut317 §3.3: a camp's haul goes up to town at once — the purse with the porter, the chest before him (`tree::on_gold`
+    /// takes a `secured ` haul there, his chore) — and the exit pays the rest (`kept − credited`). A sim pays at its exit.
+    fn camp_haul(&mut self) {
+        if self.sim {
+            return;
+        }
+        let Some(run) = self.run.as_mut() else { return };
+        if !run.camp_pay {
+            return;
+        }
+        run.camp_pay = false;
+        let due = run.secured - run.credited;
+        if due <= 0 || run.over.is_some() {
+            return;
+        }
+        run.credited += due;
+        let why = format!("secured D{} camp", run.depth);
+        self.lineage.gold_move(due, &why);
     }
 
     /// Cut317 §3.8: the run's milestones reach the town crier, stamped by the lineage's ticks (an absence's town clock
@@ -4461,6 +4504,7 @@ impl Game {
         for it in hero.inv.iter_mut().chain(hero.weapon.iter_mut()).chain(hero.armour.iter_mut()).chain(hero.helm.iter_mut()).chain(hero.boots.iter_mut()) {
             it.value_claimed = true;
         }
+        let expedition = self.expedition_now();
         let mut run = Run {
             hero_name: crate::persistent::name(&self.lineage),
             gun_reload: None,
@@ -4546,12 +4590,14 @@ impl Game {
             retreat_at: 0,
             progress_mark: (0, 0),
             progress_at: 0,
-            porter: crate::balance::get().expedition.on && crate::tree::porter(&self.lineage),
+            expedition,
+            porter: expedition && crate::tree::porter(&self.lineage),
             camp_at: 0,
             camps: 0,
             camp_until: 0,
             in_camp: false,
             kit_due: false,
+            camp_pay: false,
             bottoms: 0,
             cries: Vec::new(),
             wall_seen: false,
@@ -4781,7 +4827,7 @@ impl Game {
             crate::honours::at_send(&mut run, &self.lineage);
         }
         // Cut317 §3.5: an expedition carries its kit down; town edits reach it at porter camps
-        self.lineage.carried_sets = crate::balance::get().expedition.on.then(|| (self.lineage.sets.clone(), self.lineage.active_set));
+        self.lineage.carried_sets = run.expedition.then(|| (self.lineage.sets.clone(), self.lineage.active_set));
         self.run = Some(run);
         if let Some(coins) = paid {
             let d = self.run.as_ref().map_or(1, |r| r.depth);
@@ -4842,7 +4888,7 @@ impl Game {
     /// `pay_start` for the floor `want` (Cut 118: a goal's stone).
     fn pay_start_at(&mut self, want: u32) -> (u32, Option<String>, i32) {
         // Cut317 (owner: "start fresh"): an expedition always starts at the top — no stone, guide or goal skips it
-        let want = if crate::balance::get().expedition.on { 1 } else { want.max(1) };
+        let want = if self.expedition_now() { 1 } else { want.max(1) };
         if want == 1 {
             return (1, None, 0);
         }
@@ -5049,6 +5095,7 @@ impl Game {
             return;
         }
         self.kit_at_camp();
+        self.camp_haul();
         self.cries_in();
         crate::armour_sets::departure(self);
         // Take control is the watched run's alone: a sim (a forecast, a verdict's replay) or an absence plays the rules
@@ -5327,7 +5374,7 @@ impl Game {
         });
         Snapshot {
             camp: run.in_camp,
-            swift: run.depth < crate::feats::swift_to(l, run.route),
+            swift: run.depth < boss_floor(crate::feats::swift_to(l, run.route)),
             depth: run.depth,
             difficulty: run.difficulty,
             modifier_catalogue: crate::endgame::catalogue(run.difficulty),
@@ -5476,7 +5523,7 @@ impl Game {
         let mut run = self.run.take()?;
         self.lineage.carried_sets = None;
         // Cut317 §3.8: the crier hears the run's last milestones and how it ended
-        if crate::balance::get().expedition.on && !self.sim {
+        if run.expedition && !self.sim {
             let (who, at) = (run.hero_name.clone(), self.lineage.total_turns);
             for (k, text) in std::mem::take(&mut run.cries) {
                 self.lineage.cry(at, &who, &k, text);

@@ -51,6 +51,7 @@ import {
   glossOf,
   isCardRow,
   needsN,
+  numShown,
   ownRowCount,
   rowLabel,
   ruleName,
@@ -722,7 +723,7 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
                       close();
                     },
                   },
-                  `${n}${pctish ? "%" : ""}`,
+                  `${numShown(existing.k, n)}${pctish ? "%" : ""}`,
                 ),
               ),
             ),
@@ -791,7 +792,7 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
         h(
           "button",
           { class: `chip num${n === cur ? " on" : ""}`, onclick: () => done(n) },
-          `${n}${pctish ? "%" : ""}`,
+          `${numShown(c.k, n)}${pctish ? "%" : ""}`,
         ),
       );
     body.appendChild(grid);

@@ -2423,7 +2423,12 @@ pub struct ExpeditionWire {
     /// Seconds of diving until the next camp is due (absent at home).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub next_camp_s: Option<u32>,
+    /// Floors a content depth spans (`balance.expedition.stretch`): the client shows a content depth (a rule's `depth ≥`,
+    /// a forecast's band) as its first floor, `(n − 1) × stretch + 1`.
+    #[serde(default = "one_u32")]
+    pub stretch: u32,
 }
+fn one_u32() -> u32 { 1 }
 
 /// RUNS_UI: `Game::advance` — the runs it finished and the run under way after it.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]

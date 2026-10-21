@@ -1,5 +1,16 @@
 # Content and refinement queue — 2026-10-13
 
+## Cut317 — Expeditions (2026-10-22, profile only)
+
+[CUT317](CUT317_EXPEDITIONS.md). Built and gated (targeted rows, 8 seeds) behind
+`tuning/studies/cut317-expedition.json`. Next:
+- adopt into shipping (full gates on the profile, re-pin settlements, fun-eval)
+- the camp's own art (fire, porter)
+- the gunner/lurker-queen stalemate as content
+- a real 1× live pass through a camp
+
+The shipping stalemate (frozen runs until the 120k cap) is fixed by the progress clock once adopted.
+
 ## Cut316 — UI revamp in progress (2026-10-21)
 
 The owner's UI rework, on the hub and live view's grammar: see [CUT316](CUT316_UI_REVAMP_PLAN.md)

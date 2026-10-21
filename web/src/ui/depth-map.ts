@@ -1,5 +1,6 @@
 import type { Lineage } from "../engine/types";
 import { h, replace } from "./dom";
+import { depthShown } from "./tokens";
 import "../depth-map.css";
 export type DepthLandmark = { depth: number; kind: "boss"; id: string; label: string };
 export type DepthMark = {
@@ -19,11 +20,18 @@ export function knownDepthMarks(
     { depth: start, kind: "start", label: "Start" },
     { depth: L.best_depth, kind: "record", label: "Record" },
   ];
-  for (const d of L.waystones ?? []) marks.push({ depth: d, kind: "waystone", label: "Waystone" });
+  // Cut317 §3c: stones, forks and the bounty are placed by content depth; the rail counts floors (the band's first)
+  for (const d of L.waystones ?? [])
+    marks.push({ depth: depthShown(d), kind: "waystone", label: "Waystone" });
   for (const f of L.forks ?? [])
-    marks.push({ depth: f.depth, kind: "fork", label: "Fork", detail: f.taken });
+    marks.push({ depth: depthShown(f.depth), kind: "fork", label: "Fork", detail: f.taken });
   if (L.bounty)
-    marks.push({ depth: L.bounty.depth, kind: "bounty", label: "Bounty", detail: L.bounty.needs });
+    marks.push({
+      depth: depthShown(L.bounty.depth),
+      kind: "bounty",
+      label: "Bounty",
+      detail: L.bounty.needs,
+    });
   for (const b of L.depth_landmarks ?? [])
     marks.push({ depth: b.depth, kind: "boss", id: b.id, label: b.label });
   return marks

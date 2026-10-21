@@ -1006,7 +1006,7 @@ pub fn wire(l: &LineageState) -> FeatsWire {
         trial_marks: l.feats.trial_marks,
         sealed: l.feats.sealed.len() as u32,
         sets,
-        swift_to: swift_to(l, route),
+        swift_to: crate::engine::boss_floor(swift_to(l, route)), // Cut317: a floor, as the client counts
         sinks,
         sink_order: l.orders.sink.clone(),
         feats: l.feats.feats.saturating_sub(l.feats.feats_used),

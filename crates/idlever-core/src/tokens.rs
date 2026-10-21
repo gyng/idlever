@@ -25,9 +25,11 @@ pub fn identified_kinds(l: &LineageState, cat: Cat) -> Vec<&'static str> {
     ITEMS.iter().filter(|i| i.cat == cat && is_identified(&l.facts, &l.flavours, i.kind)).map(|i| i.kind).collect()
 }
 
-/// Cut 21 §3: the deepest `depth ≥` threshold the editor offers — best + 2, at least 8.
+/// Cut 21 §3: the deepest `depth ≥` threshold the editor offers — best + 2, at least 8. Cut317: in content depth (rows are
+/// written against it), the record read through `engine::reach`, never past the last content depth.
 pub fn depth_max(l: &LineageState) -> u32 {
-    (l.best_depth + 2).max(8)
+    let d = (crate::engine::reach(l.best_depth) + 2).max(8);
+    if crate::balance::get().expedition.stretch > 1 { d.min(crate::descent::ENDING_DEPTH - 1) } else { d }
 }
 
 pub fn vocabulary(l: &LineageState) -> Vocabulary {

@@ -184,9 +184,24 @@ const nice = (s: string): string => ARG[s] ?? s.replace(/_/g, " ");
 export function condName(k: string): string {
   return COND[k] ?? nice(k);
 }
+/** Cut317 §3c: rules are written against the content depth; an expedition's stretched dungeon counts floors — a content depth reads
+ *  as its band's first floor, `(n − 1) × stretch + 1` (shipping: n). Read from the lineage's wire (`depthStretchFrom`). */
+let stretchOf: () => number | undefined = () => 1;
+/** The App registers where the stretch is read (its lineage's `expedition.stretch`), once. */
+export function depthStretchFrom(fn: () => number | undefined): void {
+  stretchOf = fn;
+}
+export function depthShown(n: number): number {
+  const s = Math.max(1, stretchOf() ?? 1);
+  return s > 1 && n > 0 ? (n - 1) * s + 1 : n;
+}
+/** A number in a condition as the player reads it (`depth ≥ 55` for content D19 at stretch 3). */
+export function numShown(k: string, n: number): number {
+  return k === "depth>=" ? depthShown(n) : n;
+}
 export function condLabel(c: Cond): string {
   const name = condName(c.k);
-  if (c.n !== undefined) return `${name} ${c.n}${PCT.has(c.k) ? "%" : ""}`;
+  if (c.n !== undefined) return `${name} ${numShown(c.k, c.n)}${PCT.has(c.k) ? "%" : ""}`;
   if (c.t !== undefined) return `${name} ${nice(c.t)}`;
   return name;
 }
@@ -249,7 +264,7 @@ const qualOf = (c: Cond, verb: string): string | undefined => {
     case "hp>":
       return c.n !== undefined ? /* copy:rule_token */ `over ${c.n}%` : undefined;
     case "depth>=":
-      return c.n !== undefined ? /* copy:rule_token */ `at D${c.n}` : undefined;
+      return c.n !== undefined ? /* copy:rule_token */ `at D${depthShown(c.n)}` : undefined;
     case "foe_tag":
       return c.t && !verb.includes(nice(c.t)) ? /* copy:rule_token */ `vs ${nice(c.t)}` : undefined;
     case "foes>=":

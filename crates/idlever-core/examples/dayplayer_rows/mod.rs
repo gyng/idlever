@@ -466,7 +466,7 @@ impl Plan {
                     p.day >= n.days
                         || match n.until {
                             Until::Never => false,
-                            Until::Depth(d) => p.g.lineage.best_depth >= d,
+                            Until::Depth(d) => idlever_core::engine::reach(p.g.lineage.best_depth) >= d, // Cut317: content reached
                             Until::Reached23 => p.reached23,
                             Until::StanceDayEnd(l) => p.ci == 0 && p.out.stance_level_day.last().is_some_and(|x| *x >= l),
                         }
