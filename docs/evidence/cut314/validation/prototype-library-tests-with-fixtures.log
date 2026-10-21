@@ -1,0 +1,92 @@
+
+running 1110 tests
+....................................................................................... 87/1110
+....................................................................................... 174/1110
+....................................................................................... 261/1110
+............................................................................. 338/1110
+tests::a_boss_that_cannot_be_hurt_drives_the_hero_off --- FAILED
+.... 343/1110
+tests::a_card_reads_its_best_place_and_its_situation --- FAILED
+.......................................................................... 418/1110
+tests::an_edits_paired_delta_is_the_bars_difference_and_tighter_than_them --- FAILED
+..............................i........................................................ 506/1110
+....................................................................................... 593/1110
+....................................................................................... 680/1110
+....................iii....................i........i... 736/1110
+tests_cut118::retired_wishes_preserve_genuine_paid_history_and_absence_parity --- FAILED
+. 738/1110
+tests_cut118::retired_wishes_waiting_days_and_live_advance_are_exact --- FAILED
+....................................................................................... 826/1110
+............................................ 870/1110
+tests_cut27_seams::a_written_corridor_row_does_not_shuffle_before_a_pack_that_never_comes --- FAILED
+..... 876/1110
+tests_cut27_seams::as_stall_set_no_longer_loops_the_card_with_a_chore --- FAILED
+.....................................test class_tree::tests::original_six_nodes_make_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+...........test legacy::tests::new_effects_keep_whole_sliced_and_reloaded_eight_hour_state_and_reports_exact has been running for over 60 seconds
+............................test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+........... 964/1110
+..........test tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor has been running for over 60 seconds
+test tests::a_deaths_notes_never_say_saved_him has been running for over 60 seconds
+test tests::a_dice_death_at_a_full_base_says_nothing_beats_it has been running for over 60 seconds
+........ 982/1110
+tests_cut30_pkg::mirror_rhythm_earned_save_keeps_whole_sliced_and_reloaded_catchup_exact --- FAILED
+...................................................test tests::boss_deaths_show_the_counter_row_first has been running for over 60 seconds
+.................................... 1070/1110
+........................................
+failures:
+
+---- tests::a_boss_that_cannot_be_hurt_drives_the_hero_off stdout ----
+
+thread 'tests::a_boss_that_cannot_be_hurt_drives_the_hero_off' (6126) panicked at crates/idlever-core/src/tests.rs:10465:133:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::a_card_reads_its_best_place_and_its_situation stdout ----
+
+thread 'tests::a_card_reads_its_best_place_and_its_situation' (6319) panicked at crates/idlever-core/src/tests.rs:6356:139:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests::an_edits_paired_delta_is_the_bars_difference_and_tighter_than_them stdout ----
+
+thread 'tests::an_edits_paired_delta_is_the_bars_difference_and_tighter_than_them' (10891) panicked at crates/idlever-core/src/tests.rs:9783:125:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests_cut118::retired_wishes_preserve_genuine_paid_history_and_absence_parity stdout ----
+
+thread 'tests_cut118::retired_wishes_preserve_genuine_paid_history_and_absence_parity' (40296) panicked at crates/idlever-core/src/tests_cut118.rs:374:101:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests_cut118::retired_wishes_waiting_days_and_live_advance_are_exact stdout ----
+
+thread 'tests_cut118::retired_wishes_waiting_days_and_live_advance_are_exact' (40298) panicked at crates/idlever-core/src/tests_cut118.rs:403:67:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests_cut27_seams::a_written_corridor_row_does_not_shuffle_before_a_pack_that_never_comes stdout ----
+
+thread 'tests_cut27_seams::a_written_corridor_row_does_not_shuffle_before_a_pack_that_never_comes' (53429) panicked at crates/idlever-core/src/tests_cut27_seams.rs:293:125:
+B's set: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests_cut27_seams::as_stall_set_no_longer_loops_the_card_with_a_chore stdout ----
+
+thread 'tests_cut27_seams::as_stall_set_no_longer_loops_the_card_with_a_chore' (53559) panicked at crates/idlever-core/src/tests_cut27_seams.rs:10:131:
+AS's stall set: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+---- tests_cut30_pkg::mirror_rhythm_earned_save_keeps_whole_sliced_and_reloaded_catchup_exact stdout ----
+
+thread 'tests_cut30_pkg::mirror_rhythm_earned_save_keeps_whole_sliced_and_reloaded_catchup_exact' (61691) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1440:136:
+called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+
+
+failures:
+    tests::a_boss_that_cannot_be_hurt_drives_the_hero_off
+    tests::a_card_reads_its_best_place_and_its_situation
+    tests::an_edits_paired_delta_is_the_bars_difference_and_tighter_than_them
+    tests_cut118::retired_wishes_preserve_genuine_paid_history_and_absence_parity
+    tests_cut118::retired_wishes_waiting_days_and_live_advance_are_exact
+    tests_cut27_seams::a_written_corridor_row_does_not_shuffle_before_a_pack_that_never_comes
+    tests_cut27_seams::as_stall_set_no_longer_loops_the_card_with_a_chore
+    tests_cut30_pkg::mirror_rhythm_earned_save_keeps_whole_sliced_and_reloaded_catchup_exact
+
+test result: FAILED. 1096 passed; 8 failed; 6 ignored; 0 measured; 0 filtered out; finished in 96.83s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

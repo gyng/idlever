@@ -164,6 +164,17 @@ Cut313 fixes the reproduced optional-cap metadata regression in the general
 tuner: omitted cap may match ONLY exact numeric12000, explicit/other values stay
 strict. Focused2/full46synthetic checks, format/lint pass. No game/default/cache
 identity/inference change, and all Cut312 frozen hashes remain exact.
+Cut314 implements the shared Bank/Vat Session API in isolation: explicit owned
+Savings permission/Gold-only purchase, pure town-wide readiness and complete
+pre-mutation validation, shared levels and payer receipts. Ten refusals preserve
+whole save bytes; ten payments independently audited,2/3resident lifecycle and
+paid background parity pass. New ordinary recovery and emitted Rest agree;
+old timers unchanged. Six earned no-level shipping/prototype outputs exact,
+including a bounded captured combat replay. No main library/default/UI/WASM
+adoption or deployment. Next shared wire/client quotes/funding confirmation in
+isolation, then resident journeys and independent progression acceptance.
+Existing worker/pen/recovery bars remain open; Cut312 remains INCONCLUSIVE.
+See Cut314/HANDOFF for preserved fixture corrections and final check status.
 Prior product change is Cut295:
 Hero Details child Replay/Appearance navigation restored,15owner/lifetime checks
 and56real UI viewing flows pass with an explicit input amendment (48restored

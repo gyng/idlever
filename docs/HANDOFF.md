@@ -1,4 +1,4 @@
-# Active backlog — Cut312 terminal INCONCLUSIVE; no policy adoption, 2026-10-21
+# Active backlog — Cut314 shared upgrade API prototype, 2026-10-21
 
 ## Latest owner direction — both held items returned to work
 
@@ -25,6 +25,47 @@ following actual weapon paintings in Watch (Cut294),
 before while their redesign returns to scope. Cut305 checkpoint4f325c34 pushed;
 no new release/deployment. Last recorded live dev source is423fe45a; this
 checkpoint does not reverify or deploy that remote site.
+
+## Cut314 — shared-resident upgrade API isolated; acceptance checkpoint
+
+Contract [CUT314_SHARED_UPGRADE_API.md](CUT314_SHARED_UPGRADE_API.md), evidence
+[cut314/README.md](evidence/cut314/README.md). Native Session prototype implements
+pure town-wide readiness, explicit Gold-only/Savings funding, complete refusal
+validation before mutation, one price debit, shared levels via town_from and
+payer/wallet receipts. Main adds only a diagnostic example; shipping library,
+wire/UI/defaults/WASM unchanged. Cut312 remains INCONCLUSIVE with no adoption.
+
+Ten whole-byte-identical refusals; ten successful purchases including all four
+levels on2/3resident fixtures, legacy chest exclusion and successful Gold-only.
+Independent whole-payment accounting/personal/RNG/timer/order audit passes.
+New resident/selection/load inherit levels; paid background whole/sliced/reload
+agrees. Stored12000ticks preserved; new ordinary D28recovery7800ticks and
+public Rest780seconds agree. Confirmed stat-reset recovery stays12000ticks.
+The old isolated prototype missed emitted Rest; both paths are now hooked.
+
+Earned seed2parent plus two actual250Gold resident additions: six shipping/
+prototype files byte-identical (Game, Session before/after, read, report, combat
+replay),3600s whole versus60s slices/reloads exact. Input has no retained
+capsules; one bounded cloned combat run supplies actual replay coverage.
+Original missing-replay assertion and blanket paid-load assertion failures are
+retained. Existing load reprices synthetic stale unsworn oaths; expected load
+now uses identical level-free state and restores only levels, with second-load
+byte stability. No load normalization added. First library build missed three
+compile-time fixtures; the next run passed1096/ignored6 with8missing-runtime-
+fixture failures. All15inputs now copied unchanged; original failures retained.
+Focused mechanics/rustfmt/scoped warnings-denied Clippy pass. All eight affected
+library rechecks pass:1104total passed across the original/recheck runs,6ignored,
+not a fresh single green full run. Independent accounting/archive audit passes.
+All Cut314 jobs terminal; actual sources/fixtures/snapshots/receipts archived.
+Next integration inspection records a payer/level-bound stale quote requirement
+for the wire layer; native max_price alone does not bind selected identity.
+
+Next: isolated shared wire/client quotes and explicit funding confirmation,
+then browser/resident journeys and independent progression acceptance. This
+bounded API result does not adopt prices/effects or satisfy worker/pen/recovery
+pacing bars. MainWASM7152841bytes/53b98bb4/default gold pin unchanged. No deploy.
+Broad backlog remains active. Do not restart Cut312 or treat reused camps as
+fresh statistical evidence.
 
 ## Cut312 — protected confirmation terminal INCONCLUSIVE; all jobs finished
 

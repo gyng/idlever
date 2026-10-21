@@ -1,0 +1,17 @@
+{
+  "source": "/tmp/idlever-cut314-current-kpebakxj",
+  "base_head": "1b2c601db0f978f5b1d2364d749bb9fbc833cf7f",
+  "runtimes": {
+    "target/cut314/runtime-shipping-replay": "78142bd6320779c375015a4503cb6bf13700ccbe40459e833ec4b12c23f950a3",
+    "target/cut314/runtime-prototype-replay": "d1eebc360f3197396a128e09533bf6159257064d692d113c2a4ab619043623df",
+    "target/cut314/runtime-mechanics-final": "0ebba31f17d988cd4267e4f41c0863d93067e1e280a1cdfa15726b54947883f8"
+  },
+  "input": {
+    "path": "target/cut299/parent.json",
+    "sha256": "ffdfd0cf6baabe72ad1ae2458ec0244b85189b5ab2647a3f71e47decc7faebe8"
+  },
+  "profile_sha256": "73001a0934e312d1e01625b42c1f67f58126675c61bb67200cb1042e44d0f1cc",
+  "wasm_sha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867",
+  "scope": "fixed controlled mechanics and same earned camp, no independent population tuning",
+  "correction": "first strict replay-presence check failed because bot input lacks capsules; add one bounded combat witness from same unchanged camp"
+}

@@ -1,0 +1,735 @@
+--- a/crates/idlever-core/examples/cut314-budget.json
++++ b/crates/idlever-core/examples/cut314-budget.json
+@@ -0,0 +1,31 @@
++{
++  "schema": 1,
++  "gate_depth": [
++    13,
++    23
++  ],
++  "bank_price_units": [
++    8,
++    64
++  ],
++  "vat_price_units": [
++    8,
++    64
++  ],
++  "bank_nights": [
++    5,
++    8
++  ],
++  "bank_bonus_permille": [
++    20,
++    40
++  ],
++  "vat_recovery_off_pct": [
++    20,
++    35
++  ],
++  "vat_hurry_off_pct": [
++    25,
++    50
++  ]
++}
+--- a/crates/idlever-core/examples/shared_upgrade_probe.rs
++++ b/crates/idlever-core/examples/shared_upgrade_probe.rs
+@@ -0,0 +1,311 @@
++//! Controlled mechanics fixtures only. No earned affordability or progression claim.
++use idlever_core::{bloodlines::Session, cut306_upgrades as upgrades, persistent, Game};
++use serde_json::{json, Value};
++use std::{fs, io::Write, sync::OnceLock};
++
++fn configure() {
++    static INIT: OnceLock<()> = OnceLock::new();
++    INIT.get_or_init(|| upgrades::configure_profile(include_str!("cut314-budget.json")).unwrap());
++}
++fn snapshot(s: &Session) -> Value {
++    serde_json::from_str(&s.save()).unwrap()
++}
++fn wallet(s: &Session) -> i64 {
++    i64::from(s.active.lineage.gold) + i64::from(s.active.lineage.town.bank)
++}
++fn personal(mut value: Value) -> Value {
++    fn strip(g: &mut Value) {
++        let l = g["lineage"].as_object_mut().unwrap();
++        for key in ["gold", "gold_tally", "gold_ledger"] {
++            l.remove(key);
++        }
++        for key in ["bank", "levels"] {
++            l["town"].as_object_mut().unwrap().remove(key);
++        }
++        l["tree"].as_object_mut().unwrap().remove("ledger");
++    }
++    strip(&mut value);
++    for g in value["others"].as_object_mut().unwrap().values_mut() {
++        strip(g);
++    }
++    value
++}
++fn fixture(slots: usize) -> Session {
++    configure();
++    let mut g = Game::new_resident(1);
++    g.lineage.gold = 200000;
++    g.lineage.tree.ledger = 200000;
++    g.lineage.tree.chest = 0;
++    g.lineage.best_depth = 33;
++    g.lineage.persistent.defeats = 1;
++    g.lineage.town.built.push(("bank".into(), 0));
++    g.lineage.tree.hired.push(("clerk".into(), 0));
++    let mut s = Session::load(&g.save()).unwrap();
++    for _ in 1..slots {
++        s.add_bloodline().unwrap();
++    }
++    s.active.lineage.gold = 1000;
++    s.active.lineage.town.bank = 199000;
++    s.active.lineage.tree.ledger = 200000;
++    // Close the existing lazy town mirrors before testing a purchase's exact delta.
++    for id in 2..=slots as u32 {
++        s.select_bloodline(id).unwrap();
++    }
++    s.select_bloodline(1).unwrap();
++    for (id, game) in
++        std::iter::once((1, &mut s.active)).chain(s.others.iter_mut().map(|(id, g)| (*id, g)))
++    {
++        game.lineage.total_turns = u64::from(id) * 100;
++        game.lineage.clock_s = u64::from(id) * 10;
++        game.lineage.last_night_net = 1000;
++        game.lineage.last_day_net = 4000;
++        persistent::recover_at(&mut game.lineage, 28);
++    }
++    s.select_bloodline(2).unwrap();
++    assert_eq!(s.active.lineage.best_depth, 0);
++    assert_eq!(s.active.lineage.persistent.defeats, 0);
++    s
++}
++fn refusal(label: &str, mut s: Session, id: &str, max: i32, savings: bool) -> Value {
++    let before = s.save();
++    let error = s.upgrade_building(id, max, savings).unwrap_err();
++    assert_eq!(s.save(), before, "whole refusal {label}");
++    json!({"label":label,"id":id,"max_price":max,"use_savings":savings,"error":error,
++        "before":serde_json::from_str::<Value>(&before).unwrap(),"after":snapshot(&s)})
++}
++fn pay(s: &mut Session, id: &str, price: i32, use_savings: bool) -> Value {
++    let before = snapshot(s);
++    let total = wallet(s);
++    let quote = s.building_upgrade_offers();
++    assert_eq!(snapshot(s), before, "quotes are pure");
++    let receipt = s.upgrade_building(id, price, use_savings).unwrap();
++    assert_eq!(receipt.price, price);
++    assert_eq!(wallet(s), total - i64::from(price));
++    assert_eq!(
++        personal(snapshot(s)),
++        personal(before.clone()),
++        "personal/RNG/timers/orders untouched"
++    );
++    for g in std::iter::once(&s.active).chain(s.others.values()) {
++        assert_eq!(g.lineage.gold, s.active.lineage.gold);
++        assert_eq!(g.lineage.town.bank, s.active.lineage.town.bank);
++        assert_eq!(g.lineage.tree.ledger, wallet(s));
++        assert_eq!(g.lineage.town.levels, s.active.lineage.town.levels);
++    }
++    json!({"request":{"id":id,"max_price":price,"use_savings":use_savings},"before":before,"quotes":quote,"receipt":receipt,"after":snapshot(s)})
++}
++fn all_cases() -> Value {
++    let mut refusals = Vec::new();
++    refusals.push(refusal("unknown", fixture(2), "unknown", i32::MAX, true));
++    let mut s = fixture(2);
++    s.active.lineage.town.built.retain(|(id, _)| id != "bank");
++    refusals.push(refusal("unbuilt", s, "bank", i32::MAX, true));
++    let mut s = fixture(2);
++    s.active.lineage.tree.hired.retain(|(id, _)| id != "clerk");
++    refusals.push(refusal("no-clerk", s, "bank", i32::MAX, true));
++    let mut s = fixture(2);
++    s.others.get_mut(&1).unwrap().lineage.persistent.defeats = 0;
++    refusals.push(refusal("vat-unearned", s, "device", i32::MAX, true));
++    let mut s = fixture(2);
++    s.active.lineage.best_depth = 0;
++    s.others.get_mut(&1).unwrap().lineage.best_depth = 0;
++    refusals.push(refusal("depth", s, "bank", i32::MAX, true));
++    let mut s = fixture(2);
++    s.active.send();
++    s.active.run.as_mut().unwrap().turn = 1;
++    refusals.push(refusal("away", s, "bank", i32::MAX, true));
++    refusals.push(refusal("stale-price", fixture(2), "bank", 3399, true));
++    refusals.push(refusal("gold-only", fixture(2), "bank", 3400, false));
++    let mut s = fixture(2);
++    s.active.lineage.town.bank = 100;
++    s.active.lineage.tree.ledger = 1100;
++    refusals.push(refusal("combined-poor", s, "bank", 3400, true));
++    let mut s = fixture(2);
++    s.active.lineage.town.levels.insert("bank".into(), 4);
++    refusals.push(refusal("max-level", s, "bank", i32::MAX, true));
++
++    let mut sequences = Vec::new();
++    let mut lifecycle = None;
++    let mut future = None;
++    let mut background = None;
++    for slots in [2, 3] {
++        let mut s = fixture(slots);
++        let before = snapshot(&s);
++        let quotes = s.building_upgrade_offers();
++        assert_eq!(snapshot(&s), before);
++        assert_eq!(quotes.len(), 2);
++        assert!(quotes
++            .iter()
++            .all(|q| q.offer.ready && q.affordable_with_savings && q.home));
++        assert_eq!(
++            s.active.lineage.best_depth, 0,
++            "readiness is town-wide, not forged personal depth"
++        );
++        assert_eq!(s.active.lineage.persistent.defeats, 0);
++        let mut purchases = Vec::new();
++        for (id, price) in [
++            ("bank", 3400),
++            ("device", 3400),
++            ("device", 43200),
++            ("bank", 43200),
++        ] {
++            purchases.push(pay(&mut s, id, price, true));
++        }
++        assert_eq!(wallet(&s), 106800);
++        assert!(s.building_upgrade_offers().is_empty());
++        for g in std::iter::once(&s.active).chain(s.others.values()) {
++            assert_eq!(upgrades::bank_nights(&g.lineage), 8);
++            assert_eq!(upgrades::bank_bonus_permille(&g.lineage), 40);
++            assert_eq!(upgrades::recovery_ticks(&g.lineage, 28), 7800);
++            assert_eq!(
++                persistent::recovery_total(&g.lineage),
++                12000,
++                "existing recovery untouched"
++            );
++        }
++        let saved = s.save();
++        let loaded = Session::load(&saved).unwrap();
++        // Existing Game::load reprices unsworn oaths. Establish the exact expected
++        // load using the SAME paid state with only our new levels removed.
++        let mut control = snapshot(&s);
++        control["lineage"]["town"]
++            .as_object_mut()
++            .unwrap()
++            .remove("levels");
++        for game in control["others"].as_object_mut().unwrap().values_mut() {
++            game["lineage"]["town"]
++                .as_object_mut()
++                .unwrap()
++                .remove("levels");
++        }
++        let mut expected = snapshot(&Session::load(&control.to_string()).unwrap());
++        let levels = serde_json::to_value(&s.active.lineage.town.levels).unwrap();
++        expected["lineage"]["town"]["levels"] = levels.clone();
++        for game in expected["others"].as_object_mut().unwrap().values_mut() {
++            game["lineage"]["town"]["levels"] = levels.clone();
++        }
++        assert_eq!(
++            snapshot(&loaded),
++            expected,
++            "paid load differs only by preserved levels"
++        );
++        assert_eq!(
++            loaded.save(),
++            Session::load(&loaded.save()).unwrap().save(),
++            "second load stable"
++        );
++        if slots == 2 {
++            let old = snapshot(&s);
++            s.active.bank_withdraw(250).unwrap();
++            s.add_bloodline().unwrap();
++            assert_eq!(
++                wallet(&s),
++                106550,
++                "only the existing resident price is paid"
++            );
++            assert_eq!(
++                s.others[&3].lineage.town.levels,
++                s.active.lineage.town.levels
++            );
++            for id in [1, 2, 3] {
++                s.select_bloodline(id).unwrap();
++                assert_eq!(wallet(&s), 106550);
++            }
++            lifecycle = Some(json!({"before":old,"after":snapshot(&s),"resident_price":250}));
++        } else {
++            let mut whole = loaded.clone();
++            let mut sliced = loaded;
++            let report = whole.run_offline_mode(1300, false, true);
++            let mut last = None;
++            for i in 0..13 {
++                last = Some(sliced.run_offline_slice(100, i == 12));
++                if i < 12 {
++                    sliced = Session::load(&sliced.save()).unwrap();
++                }
++            }
++            assert_eq!(
++                whole.save(),
++                sliced.save(),
++                "paid background whole/sliced/reloaded"
++            );
++            assert_eq!(
++                serde_json::to_value(&report).unwrap(),
++                serde_json::to_value(last.unwrap()).unwrap()
++            );
++            for game in std::iter::once(&whole.active).chain(whole.others.values()) {
++                assert_eq!(game.lineage.town.levels, s.active.lineage.town.levels);
++            }
++            background = Some(
++                json!({"seconds":1300,"before":snapshot(&Session::load(&saved).unwrap()),"after":snapshot(&whole),"report":report}),
++            );
++            s.select_bloodline(1).unwrap();
++            let mut g = s.active.clone();
++            g.lineage.rest_left = 0;
++            g.lineage.persistent.recovery_until_tick = g.lineage.total_turns;
++            g.send();
++            let run = g.run.as_mut().unwrap();
++            run.max_depth = 28;
++            run.hero.hp = 0;
++            run.over = Some(idlever_core::engine::ExitTier::Death);
++            g.events.clear();
++            g.finish_run().unwrap();
++            let duration = persistent::recovery_total(&g.lineage);
++            assert_eq!(duration, 7800);
++            assert!(
++                g.events
++                    .iter()
++                    .any(|e| matches!(e, idlever_core::Ev::Rest { seconds: 780, .. })),
++                "public rest matches paid timer"
++            );
++            future = Some(
++                json!({"duration_ticks":duration,"events":g.events,"after":serde_json::from_str::<Value>(&g.save()).unwrap()}),
++            );
++            persistent::recover(&mut g.lineage);
++            assert_eq!(
++                persistent::recovery_total(&g.lineage),
++                12000,
++                "stat reset reclones unchanged"
++            );
++        }
++        sequences
++            .push(json!({"slots":slots,"before":before,"quotes":quotes,"purchases":purchases}));
++    }
++    // Legacy uncollected chest is not spendable funding.
++    let mut s = fixture(2);
++    s.active.lineage.tree.chest = 900;
++    s.select_bloodline(1).unwrap();
++    s.select_bloodline(2).unwrap();
++    let chest = pay(&mut s, "bank", 3400, true);
++    assert_eq!(chest["receipt"]["withdrawal"], 3300);
++    assert_eq!(s.active.lineage.tree.chest, 900);
++    assert_eq!(idlever_core::tree::purse(&s.active.lineage), 0);
++    let mut s = fixture(2);
++    s.active.lineage.gold = 4000;
++    s.active.lineage.town.bank = 196000;
++    s.select_bloodline(1).unwrap();
++    s.select_bloodline(2).unwrap();
++    let gold_only = pay(&mut s, "bank", 3400, false);
++    assert_eq!(gold_only["receipt"]["withdrawal"], 0);
++    assert_eq!(s.active.lineage.town.bank, 196000);
++    json!({"paid_background":background,"gold_only":gold_only,"schema":1,"scope":"controlled mechanics fixtures, not earned pacing","profile":upgrades::current_profile(),
++        "refusals":refusals,"sequences":sequences,"lifecycle":lifecycle,"future_death":future,"legacy_chest":chest})
++}
++fn main() {
++    let path = std::env::args().nth(1).expect("NEW_JSON_OUTPUT");
++    let result = all_cases();
++    fs::OpenOptions::new()
++        .write(true)
++        .create_new(true)
++        .open(path)
++        .unwrap()
++        .write_all(serde_json::to_vec(&result).unwrap().as_slice())
++        .unwrap();
++    println!("PASS10atomic refusals,10paid transactions,2/3resident scopes, legacy chest, timers and lifecycle");
++}
++#[cfg(test)]
++mod tests {
++    #[test]
++    fn shared_upgrade_contract() {
++        let _ = super::all_cases();
++    }
++}
+--- a/crates/idlever-core/src/bloodlines.rs
++++ b/crates/idlever-core/src/bloodlines.rs
+@@ -726,3 +726,77 @@
+         assert!(old.boss_knowledge.is_empty());
+     }
+ }
++
++// Isolated Cut314 addition inside bloodlines.rs; town_from stays the shared authority.
++impl Session {
++    pub fn building_upgrade_offers(&self) -> Vec<crate::cut306_upgrades::SessionOffer> {
++        let mut residents = std::iter::once(&self.active).chain(self.others.values());
++        let depth = residents.clone().map(|g| g.lineage.best_depth).max().unwrap_or(0);
++        let device = residents.any(|g| {
++            crate::persistent::service_availability(&g.lineage, crate::persistent::away(g))[2]
++        });
++        let purse = crate::tree::purse(&self.active.lineage);
++        let savings = self.active.lineage.town.bank;
++        crate::cut306_upgrades::offers_for(&self.active.lineage, depth, device)
++            .into_iter()
++            .map(|offer| {
++                let withdrawal = (offer.price - purse).max(0);
++                crate::cut306_upgrades::SessionOffer {
++                    offer,
++                    purse,
++                    savings,
++                    withdrawal,
++                    affordable_with_savings: withdrawal <= savings,
++                    home: !crate::persistent::away(&self.active),
++                }
++            })
++            .collect()
++    }
++
++    /// Explicit town command. Refusals perform no withdrawal, synchronization or tick.
++    pub fn upgrade_building(
++        &mut self,
++        id: &str,
++        max_price: i32,
++        use_savings: bool,
++    ) -> Result<crate::cut306_upgrades::Purchase, String> {
++        if crate::persistent::away(&self.active) {
++            return Err("hero away".into());
++        }
++        let quote = self.building_upgrade_offers().into_iter()
++            .find(|o| o.offer.id == id).ok_or("no upgrade")?;
++        if !quote.offer.ready {
++            return Err(format!("D{} needed", quote.offer.gate));
++        }
++        if quote.offer.price > max_price {
++            return Err("price changed".into());
++        }
++        if quote.withdrawal > 0 && (!use_savings || !quote.affordable_with_savings) {
++            return Err("not enough gold".into());
++        }
++        // Every fallible eligibility/funding check precedes mutation. The validated
++        // withdrawal is exact, and no public single-hero eligibility is substituted
++        // for the town-wide quote after funds move.
++        if quote.withdrawal > 0 {
++            let got = self.active.bank_withdraw(quote.withdrawal)
++                .expect("validated positive owned Savings withdrawal");
++            assert_eq!(got, quote.withdrawal);
++        }
++        self.active.lineage.gold_move(-quote.offer.price,
++            &format!("upgrade {id} {}", quote.offer.level));
++        self.active.lineage.town.levels.insert(id.into(), quote.offer.level);
++        for g in self.others.values_mut() {
++            town_from(&self.active.lineage, &mut g.lineage);
++        }
++        Ok(crate::cut306_upgrades::Purchase {
++            payer: self.selected,
++            id: id.into(),
++            level: quote.offer.level,
++            price: quote.offer.price,
++            withdrawal: quote.withdrawal,
++            gold_after: self.active.lineage.gold,
++            purse_after: crate::tree::purse(&self.active.lineage),
++            savings_after: self.active.lineage.town.bank,
++        })
++    }
++}
+--- a/crates/idlever-core/src/cut306_upgrades.rs
++++ b/crates/idlever-core/src/cut306_upgrades.rs
+@@ -0,0 +1,207 @@
++//! Cut306 isolated utility prototype. Not shipped, not adopted.
++use crate::{engine::LineageState, Game};
++use serde::{Deserialize, Serialize};
++use std::sync::OnceLock;
++
++/// Process-local experimental content. Never serialized into game saves.
++#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
++#[serde(deny_unknown_fields)]
++pub struct Profile {
++    pub schema: u32,
++    pub gate_depth: [u32; 2],
++    pub bank_price_units: [u32; 2],
++    pub vat_price_units: [u32; 2],
++    pub bank_nights: [i32; 2],
++    pub bank_bonus_permille: [i32; 2],
++    pub vat_recovery_off_pct: [u64; 2],
++    pub vat_hurry_off_pct: [u64; 2],
++}
++impl Default for Profile {
++    fn default() -> Self {
++        Self {
++            schema: 1,
++            gate_depth: [13, 23],
++            bank_price_units: [8, 20],
++            vat_price_units: [8, 20],
++            bank_nights: [5, 8],
++            bank_bonus_permille: [20, 40],
++            vat_recovery_off_pct: [20, 35],
++            vat_hurry_off_pct: [25, 50],
++        }
++    }
++}
++impl Profile {
++    pub fn parse(raw: &str) -> Result<Self, String> {
++        let p: Self = serde_json::from_str(raw).map_err(|e| e.to_string())?;
++        if p.schema != 1 {
++            return Err("unsupported upgrade profile schema".into());
++        }
++        fn ordered<T: PartialOrd + Copy>(v: [T; 2], lo: T, hi: T) -> bool {
++            lo <= v[0] && v[0] <= v[1] && v[1] <= hi
++        }
++        if !ordered(p.gate_depth, 1, 33)
++            || !ordered(p.bank_price_units, 1, 1000)
++            || !ordered(p.vat_price_units, 1, 1000)
++            || !ordered(p.bank_nights, 3, 16)
++            || !ordered(p.bank_bonus_permille, 0, 100)
++            || !ordered(p.vat_recovery_off_pct, 0, 80)
++            || !ordered(p.vat_hurry_off_pct, 0, 90)
++        {
++            return Err("upgrade profile range/order invalid".into());
++        }
++        Ok(p)
++    }
++}
++static PROFILE: OnceLock<Profile> = OnceLock::new();
++pub fn configure_profile(raw: &str) -> Result<(), String> {
++    let profile = Profile::parse(raw)?;
++    PROFILE
++        .set(profile)
++        .map_err(|_| "upgrade profile already initialized".into())
++}
++pub fn current_profile() -> &'static Profile {
++    PROFILE.get_or_init(Profile::default)
++}
++
++#[derive(Debug, Clone, Serialize)]
++pub struct Offer {
++    pub id: String,
++    pub level: u32,
++    pub price: i32,
++    pub gate: u32,
++    pub ready: bool,
++    pub affordable: bool,
++}
++
++pub fn level(l: &LineageState, id: &str) -> u32 {
++    let base = if id == "bank" { 2 } else { 1 };
++    l.town
++        .levels
++        .get(id)
++        .copied()
++        .unwrap_or(base)
++        .clamp(base, base + 2)
++}
++pub fn bank_nights(l: &LineageState) -> i32 {
++    match level(l, "bank") {
++        3 => current_profile().bank_nights[0],
++        4 => current_profile().bank_nights[1],
++        _ => crate::town::bank_nights(),
++    }
++}
++pub fn bank_bonus_permille(l: &LineageState) -> i32 {
++    match level(l, "bank") {
++        3 => current_profile().bank_bonus_permille[0],
++        4 => current_profile().bank_bonus_permille[1],
++        _ => 0,
++    }
++}
++pub fn recovery_off(l: &LineageState) -> u64 {
++    match level(l, "device") {
++        2 => current_profile().vat_recovery_off_pct[0],
++        3 => current_profile().vat_recovery_off_pct[1],
++        _ => 0,
++    }
++}
++pub fn recovery_ticks(l: &LineageState, depth: u32) -> u64 {
++    (crate::persistent::recovery_ticks(depth) * (100 - recovery_off(l))).div_ceil(100)
++}
++pub fn hurry_price(l: &LineageState, original: i32) -> i32 {
++    let off = match level(l, "device") {
++        2 => current_profile().vat_hurry_off_pct[0],
++        3 => current_profile().vat_hurry_off_pct[1],
++        _ => return original,
++    };
++    let vat = crate::balance::get().vat;
++    let round = u64::from(vat.hurry_round.max(1));
++    let raw = (original as u64 * (100 - off)).div_ceil(100);
++    (raw.div_ceil(round) * round)
++        .max(u64::from(vat.hurry_floor))
++        .min(i32::MAX as u64) as i32
++}
++pub fn offers(l: &LineageState) -> Vec<Offer> {
++    offers_for(
++        l,
++        l.best_depth,
++        crate::persistent::service_availability(l, false)[2],
++    )
++}
++pub fn offers_for(l: &LineageState, depth: u32, device: bool) -> Vec<Offer> {
++    if !l.town.home.unwrap_or(true) {
++        return Vec::new();
++    }
++    ["bank", "device"]
++        .into_iter()
++        .filter_map(|id| {
++            let base = if id == "bank" { 2 } else { 1 };
++            let available = if id == "bank" {
++                crate::town::built(l, id) && crate::tree::hired(l, "clerk")
++            } else {
++                device
++            };
++            let level = level(l, id);
++            if !available || level >= base + 2 {
++                return None;
++            }
++            let i = (level - base) as usize;
++            let gate = current_profile().gate_depth[i];
++            let units = if id == "bank" {
++                current_profile().bank_price_units[i]
++            } else {
++                current_profile().vat_price_units[i]
++            };
++            let price = (units * crate::kit::unit(gate)) as i32;
++            Some(Offer {
++                id: id.into(),
++                level: level + 1,
++                price,
++                gate,
++                ready: depth >= gate,
++                affordable: crate::tree::purse(l) >= price,
++            })
++        })
++        .collect()
++}
++pub fn purchase(g: &mut Game, id: &str, max_price: i32) -> Result<(), String> {
++    if crate::persistent::away(g) {
++        return Err("hero away".into());
++    }
++    let offer = offers(&g.lineage)
++        .into_iter()
++        .find(|o| o.id == id)
++        .ok_or("no upgrade")?;
++    if !offer.ready {
++        return Err(format!("D{} needed", offer.gate));
++    }
++    if offer.price > max_price {
++        return Err("price changed".into());
++    }
++    if !offer.affordable {
++        return Err("not enough gold".into());
++    }
++    g.lineage
++        .gold_move(-offer.price, &format!("upgrade {id} {}", offer.level));
++    g.lineage.town.levels.insert(id.into(), offer.level);
++    Ok(())
++}
++
++#[derive(Debug, Clone, Serialize)]
++pub struct SessionOffer {
++    pub offer: Offer,
++    pub purse: i32,
++    pub savings: i32,
++    pub withdrawal: i32,
++    pub affordable_with_savings: bool,
++    pub home: bool,
++}
++#[derive(Debug, Clone, Serialize)]
++pub struct Purchase {
++    pub payer: u32,
++    pub id: String,
++    pub level: u32,
++    pub price: i32,
++    pub withdrawal: i32,
++    pub gold_after: i32,
++    pub purse_after: i32,
++    pub savings_after: i32,
++}
+--- a/crates/idlever-core/src/engine.rs
++++ b/crates/idlever-core/src/engine.rs
+@@ -2235,7 +2235,7 @@
+         // QA on 912e135 (qaW: `sword +1 · $300 · 7 nights` after a night of deaths — the purse held at $40 by the heir purse): the
+         // heir purse's top-up refills to a floor and is no income; a night of deaths nets nothing toward a step.
+         // (Cut 28 §1: an oath's price and a forswearing's refund are the player's purchase too)
+-        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone"].iter().any(|p| why.starts_with(p)) {
++        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone", "upgrade "].iter().any(|p| why.starts_with(p)) {
+             self.night_net += delta;
+             self.day_net += delta;
+         }
+@@ -4089,7 +4089,7 @@
+     /// Cut 3: camp rest after a run (`no_rest` halves it).
+     pub fn rest_after(&self, turns: u32, tier: ExitTier) -> u32 {
+         // (Cut230: a death's recovery by the run's deepest floor — the run in hand, else the record)
+-        if tier == ExitTier::Death { return crate::persistent::recovery_ticks(self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
++        if tier == ExitTier::Death { return crate::cut306_upgrades::recovery_ticks(&self.lineage, self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
+         let r = crate::tree::rest_scaled(&self.lineage, crate::offline::rest_after(turns, tier));
+         // Cut 118 §3: the Sleeper's set
+         let r = r - r * crate::feats::bonus_pct(&self.lineage, "rest") / 100;
+@@ -5538,7 +5538,7 @@
+         let tally = std::mem::take(&mut self.row_tally);
+         self.lineage.fold_row_tally(&tally);
+         // Camp rest (Cut 2 §1): as long as the expedition, capped; a death is a fixed wake.
+-        let rest = if tier == ExitTier::Death { crate::persistent::recovery_ticks(run.max_depth) as u32 } else { self.rest_after(run.turn, tier) };
++        let rest = if tier == ExitTier::Death { crate::cut306_upgrades::recovery_ticks(&self.lineage, run.max_depth) as u32 } else { self.rest_after(run.turn, tier) };
+         self.lineage.rest_left = rest;
+         self.lineage.rest_watched = self.watched && !self.sim && !self.offline;
+         self.events.push(Ev::Rest { t, seconds: rest.div_ceil(crate::offline::TICKS_PER_SECOND as u32) });
+@@ -7000,6 +7000,8 @@
+         // (Cut264: the vat's gold hurry is a sink too — a player's tap, never an absence's)
+         // (Cut 120 §6: the apprentice's ration is a sink, as Cut 118 §4 names it — the ledger's apprentice line reconciles)
+         "sinks"
++    } else if why.starts_with("upgrade ") {
++        "town"
+     } else if why.starts_with("hire ") {
+         "hires"
+     } else if why.starts_with("bank ") {
+--- a/crates/idlever-core/src/lib.rs
++++ b/crates/idlever-core/src/lib.rs
+@@ -55,6 +55,7 @@
+ pub mod tokens;
+ pub mod tools;
+ pub mod town;
++pub mod cut306_upgrades;
+ pub mod tree;
+ pub mod trace;
+ pub mod traits;
+--- a/crates/idlever-core/src/persistent.rs
++++ b/crates/idlever-core/src/persistent.rs
+@@ -233,7 +233,7 @@
+     let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
+     let round = u64::from(v.hurry_round.max(1));
+     let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
+-    Some(p.min(i32::MAX as u64) as i32)
++    Some(crate::cut306_upgrades::hurry_price(l, p.min(i32::MAX as u64) as i32))
+ }
+ /// Cut264 §3: skip the whole recovery for gold — an explicit camp command (never offline, never a bot or a worker).
+ /// Refused with `price changed` when the live price is above `max_price` (the button showed an older one).
+@@ -257,7 +257,7 @@
+ }
+ /// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
+ pub fn recover_at(l: &mut LineageState, depth: u32) {
+-    recover_for(l, recovery_ticks(depth));
++    recover_for(l, crate::cut306_upgrades::recovery_ticks(l, depth));
+ }
+ fn recover_for(l: &mut LineageState, ticks: u64) {
+     l.persistent.recovery_until_tick = l.total_turns.saturating_add(ticks);
+--- a/crates/idlever-core/src/town.rs
++++ b/crates/idlever-core/src/town.rs
+@@ -26,6 +26,8 @@
+ /// The lineage's town (`LineageState::town`).
+ #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+ pub struct Town {
++    #[serde(default, skip_serializing_if="std::collections::BTreeMap::is_empty")]
++    pub levels: std::collections::BTreeMap<String, u32>,
+     #[serde(default)]
+     pub forge_eligible:bool,
+     #[serde(default)]
+@@ -157,7 +159,7 @@
+ 
+ /// The bank holds at most `BANK_NIGHTS` nights of net income (never under 100).
+ pub fn bank_cap(l: &LineageState) -> i32 {
+-    (bank_nights() * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
++    (crate::cut306_upgrades::bank_nights(l) * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
+ }
+ 
+ /// Deposit gold (refused before the bank is built; capped).
+@@ -189,7 +191,7 @@
+ /// A night ended: the bank pays its interest (never negative; the balance may pass the cap by it).
+ pub fn night(l: &mut LineageState) -> i32 {
+     // (Cut 30.5, week 2: the clerk's rank adds a quarter of a percent a night each)
+-    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32;
++    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32 + crate::cut306_upgrades::bank_bonus_permille(l);
+     let i = (l.town.bank.max(0) * permille / 1000).max(0);
+     l.town.bank += i;
+     l.town.interest += i;
