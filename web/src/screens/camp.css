@@ -52,7 +52,7 @@
   }
 }
 @layer screens {
-  /* desktop: both rails are the carved wall the live view stands in (pillar art), not empty slate */
+  /* desktop: both rails are the carved wall the live view stands in (pillar art), not empty slate; one scale for both (100% made the narrow right one smaller) */
   @media (min-width: 1024px) {
     main.camp .heroes-col,
     main.camp::before {
@@ -62,7 +62,7 @@
           color-mix(in srgb, var(--k-bg) 45%, transparent) 40%,
           transparent 78%
         ),
-        url("/ui/deco/pillar.webp") center bottom / 100% auto no-repeat,
+        url("/ui/deco/pillar.webp") center bottom / var(--wide-l) auto no-repeat,
         var(--k-surface);
     }
     main.camp::before {
