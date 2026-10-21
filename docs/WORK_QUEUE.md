@@ -8,6 +8,8 @@ Owner UI queue addition: indicators for Gold growth rates and related resource
 trends (implementation item40). Queued only.
 Owner UI queue addition: hero hover outline/glow matching building hover
 feedback (implementation item41). Queued only.
+Owner UI/art queue addition: live hero portrait with emotions/reactions in the
+live delve/watch UI (implementation item42). Queued only.
 
 Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
 isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
@@ -484,6 +486,8 @@ more labels or uniformly stronger upgrades.
 | 40 | Gold growth rates and resource trends | Show readable indicators of how quickly Gold and other useful progression resources are growing. | Audit existing economy totals/history and choose useful resource indicators before adding UI. Show explicit units and measurement windows (for example Gold/hour); distinguish actual earnings, spending/net change and any forecast. Reconcile observed rates with authoritative Rust receipts over elapsed game time, including offline catch-up, transfers, multiple heroes and save/reload; transfers must not appear as new earnings. Handle short/no history without invented precision, keep indicators compact on phone/desktop, and put calculation details in optional help. |
 
 | 41 | Hero hover outline/glow | Give heroes an outline/glow on hover similar to the existing building hover effect, making their interactivity consistent. | Reuse the building hover treatment where practical and preserve the hero silhouette/readability. Highlight the actual hovered hero with multiple residents, clear the effect on pointer exit or scene changes, and preserve click-to-details and camera gestures. Verify day/night, zoom levels and renderer fallbacks; provide matching keyboard-focus feedback without relying on hover for touch access. |
+
+| 42 | Reactive hero portrait in live delve/watch | Include a live portrait of the watched hero, with emotion/reaction art that makes the delve feel personal and responsive. | Prototype a compact portrait in the existing watch UI using the correct hero identity and established art direction. Choose expressive states from actual combat/run events, such as calm, attacking, hurt, danger, healing and victory/defeat. Keep reactions aligned with the visible replay cursor, including pause, speed changes, seeking and archived runs; avoid implying events before they happen. Preserve readable combat and controls on phone/desktop, bound reaction duration to avoid flicker, support reduced motion and provide a portrait fallback while art loads. Coordinate with the live-view feedback pass and hero appearance assets. |
 
 ### Guild, persistent heroes and deliberate rebirth — owner addition
 

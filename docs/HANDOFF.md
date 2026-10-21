@@ -8,6 +8,8 @@ Also queued: Gold growth-rate and related resource-trend UI indicators
 (WORK_QUEUE item40), with clear time windows and reconciled earnings/net change.
 Also queued: hero hover outline/glow matching building hover feedback
 (WORK_QUEUE item41). Implementation remains paused.
+Also queued: live delve/watch hero portrait with emotion/reaction art tied to
+the visible run events (WORK_QUEUE item42). Queued only.
 
 After parking, owner explicitly requested deployment. Alpha.3's exact product
 source 510bd647 was redeployed to both sites; Pages run39535708405 attempt2
