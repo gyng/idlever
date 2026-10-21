@@ -888,7 +888,7 @@ fn trigger_now(l: &LineageState, d: &PackageDef, pending: &[String]) -> String {
 
 /// Tactic slots: one from the Warlord slain, two from the Lich met.
 pub fn tactic_slots(l: &LineageState) -> usize {
-    let lich = l.pkg.meets.get("lich").copied().unwrap_or(0) > 0 || l.best_depth >= 18;
+    let lich = l.pkg.meets.get("lich").copied().unwrap_or(0) > 0 || crate::engine::reach(l.best_depth) >= 18;
     if !l.kills.contains("goblin_warlord") && !l.pkg.owned.iter().any(|id| def(id).is_some_and(|d| d.kind == Kind::Tactic)) {
         0
     } else if lich {

@@ -23,6 +23,7 @@ import { conceptCap, conceptIcon, type Term } from "./concepts";
 import { wallTablet } from "./wall";
 import { meterCompare, meterPanel, secs } from "./meters";
 import { anyNew, hasCurriculum, sysOpen } from "./systems";
+import { awayText } from "./report";
 import { lookStud } from "./look";
 import type { App, Mounted } from "../app";
 import type {
@@ -294,6 +295,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       flashRow(i);
     },
   });
+  // Cut317: an edit made while the hero delves waits for the porter's next camp (or, before the porter, the next send)
+  const kitWait = h("small", { class: "kit-wait num", hidden: true });
   // Cut 21 §1: where the send starts — its own tablet beside the rules and the cage (`start → D9 · $90`), carved when the first
   // waystone lights; the tap opens the picker (D1 and each lit waystone, each with its forecast move and toll)
   const startTab = h("button", {
@@ -601,6 +604,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         descentSlot,
         pkgStrip.el,
         routeTab,
+        kitWait,
         editor.el,
         startTab,
         ordersTab,
@@ -748,6 +752,12 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     const main = well.querySelector<HTMLElement>(".camp-main");
     if (main) main.hidden = fresh;
     editor.el.hidden = !pen;
+    const ex = app.lineage.expedition;
+    kitWait.hidden = !pen || !ex?.waiting;
+    kitWait.textContent =
+      ex?.porter && ex.next_camp_s != null
+        ? /* copy:callout */ `waits · camp ${awayText(ex.next_camp_s)}`
+        : /* copy:callout */ "waits · next send";
     el.classList.toggle("prepen", !pen);
     pkgStrip.paint();
   }

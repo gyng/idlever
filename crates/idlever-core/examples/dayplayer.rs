@@ -728,7 +728,7 @@ fn first_session_chores(g: &mut Game, ask: &Ask) -> u32 {
             taps += 1;
         }
     }
-    let reserve = 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32;
+    let reserve = 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32;
     let apprentice_all = idlever_core::tree::on(&g.lineage, "apprentice") && idlever_core::tree::forge_share(&g.lineage).is_none();
     if !apprentice_all && forge_due(g, reserve) && ask.has("forge") { taps += forge(g, reserve); }
     taps += by_hand_rest(g, ask);
@@ -743,7 +743,7 @@ fn first_session_chores(g: &mut Game, ask: &Ask) -> u32 {
 /// HANDS: every open chore by hand at a check-in — the forge's steps keeping the shelf's money, a deposit
 /// above the next step, the worn stance's levels, the herald's swap, the guide's start, the pets.
 fn hands_chores(g: &mut Game) {
-    let reserve = 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32;
+    let reserve = 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32;
     let stance = g.lineage.pkg.stance.clone();
     while idlever_core::packages::level_price(&g.lineage, &stance).is_some_and(|m| m <= g.lineage.marks) {
         if g.spend_level(&stance).is_err() {
@@ -882,8 +882,9 @@ fn beats_now(g: &Game) -> Vec<(String, bool, bool)> {
             v.push((format!("boss:{k}"), false, false));
         }
     }
+    // Cut317 §3c: milestones, stalls and reserves read a record as the content it reached (`engine::reach`; the floor at stretch 1)
     for m in MILESTONES {
-        if l.best_depth >= m {
+        if idlever_core::engine::reach(l.best_depth) >= m {
             v.push((format!("record:D{m}"), false, false));
         }
     }
@@ -896,7 +897,7 @@ fn beats_now(g: &Game) -> Vec<(String, bool, bool)> {
     if l.systems.contains("death") {
         v.push(("death:first".into(), false, false));
     }
-    for d in 1..=l.best_depth {
+    for d in 1..=idlever_core::engine::reach(l.best_depth) {
         v.push((format!("depth:D{d}"), false, true));
     }
     for n in 2..=l.class_level() {
@@ -1215,7 +1216,7 @@ mod session_chore_tests {
         let taps = first_session_chores(&mut g, &Ask::new(&cfg));
         assert!(taps > 0);
         assert_eq!(taps, idlever_core::tree::count(&g.lineage, "apprentice") - before);
-        assert!(g.lineage.gold >= 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32);
+        assert!(g.lineage.gold >= 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32);
         assert!(g.lineage.gold < original.lineage.gold);
         let off = Cfg { bot: Bot::Tuned, without: Some("forge") };
         let mut disabled = original.clone();
@@ -1243,7 +1244,7 @@ mod session_chore_tests {
         let next = idlever_core::kit::ladders(&g.lineage).iter().filter_map(|l| l.next.as_ref().map(|x| x.price as i32)).min().unwrap_or(0);
         assert_eq!(first_session_chores(&mut g, &Ask::new(&cfg)), 1);
         assert!(g.lineage.town.bank > 0);
-        assert!(g.lineage.gold >= next + 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32);
+        assert!(g.lineage.gold >= next + 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32);
         assert_eq!(g.lineage.town.bank, idlever_core::town::bank_nights() * g.lineage.last_night_net);
         assert_eq!(g.lineage.gold + g.lineage.town.bank, wealth);
         let off = Cfg { bot: Bot::Tuned, without: Some("bank") };
@@ -1346,7 +1347,7 @@ impl Play {
             self.new_today |= !rep.systems_opened.is_empty() || !rep.packages.is_empty() || !rep.bests.is_empty();
             let hours = (*k * interval) as f64 / 3600.0;
             for (i, m) in MILESTONES.iter().enumerate() {
-                if out.hours[i].is_none() && g.lineage.best_depth >= *m {
+                if out.hours[i].is_none() && idlever_core::engine::reach(g.lineage.best_depth) >= *m {
                     out.hours[i] = Some(hours);
                 }
             }
@@ -1363,7 +1364,7 @@ impl Play {
             }
             if verbose {
                 eprintln!("  [{}] day {} ci {} runs {} bank {} ret {} stalled {} deaths {:?} best D{} wearing {:?}", cfg.label(), day + 1, ci, rep.runs, rep.banked, rep.returned, rep.stalled, rep.deaths.iter().map(|d| format!("{}×{}", d.cause, d.n)).collect::<Vec<_>>(), g.lineage.best_depth, g.lineage.pkg.equipped());
-                if g.lineage.best_depth >= 26 {
+                if idlever_core::engine::reach(g.lineage.best_depth) >= 26 {
                     let pen: Vec<String> = g.lineage.pkg.pen.iter().map(|r| r.describe()).collect();
                     eprintln!("    qm {:?} shelf {:?} pen {:?} queen counter {} silence id {}", idlever_core::packages::quartermaster(&g.lineage), g.lineage.supplies.iter().map(|s| s.kind.clone()).collect::<Vec<_>>(), pen, idlever_core::facts::boss_counter_known(&g.lineage.facts, "lurker_queen"), idlever_core::item::is_identified(&g.lineage.facts, &g.lineage.flavours, "silence"));
                 }
@@ -1429,7 +1430,7 @@ impl Play {
                         write_own_rows(g, pets);
                         // a wall's counter, written once its fact is known (the drill is days away; at the deep
                         // walls a week): the boss on the record's floor or the next, not yet slain nor drilled
-                        let best = g.lineage.best_depth;
+                        let best = idlever_core::engine::reach(g.lineage.best_depth);
                         let route = g.lineage.rules().route();
                         for b in [best, best + 1].into_iter().filter_map(|d| route.boss(d)) {
                             // (the Foundry only where the route puts it deep — its drill late: above that a
@@ -1492,7 +1493,7 @@ impl Play {
                         }
                     }
                     // (the purse keeps the shelf's money: three units — a few sends' potions at depth)
-                    let reserve = 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32;
+                    let reserve = 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32;
                     // (blind 1fb7786: the apprentice's `half` order leaves the rest of the purse to the player's own taps)
                     let apprentice_all = idlever_core::tree::on(&g.lineage, "apprentice") && idlever_core::tree::forge_share(&g.lineage).is_none();
                     if !apprentice_all && forge_due(g, reserve) && ask.has("forge") {
@@ -1503,7 +1504,7 @@ impl Play {
                     if idlever_core::town::built(&g.lineage, "bank") && !idlever_core::tree::on(&g.lineage, "clerk") {
                         // the purse keeps the next forge step and the shelf's money; the rest earns
                         let next = idlever_core::kit::ladders(&g.lineage).iter().filter_map(|l| l.next.as_ref().map(|x| x.price as i32)).min().unwrap_or(0);
-                        let spare = g.lineage.gold - next - 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32;
+                        let spare = g.lineage.gold - next - 3 * idlever_core::kit::unit(idlever_core::engine::reach(g.lineage.best_depth)) as i32;
                         if spare > 0 && ask.has("bank") {
                             let _ = g.bank_deposit(spare);
                         }
@@ -1533,7 +1534,7 @@ impl Play {
     fn day_end(&mut self, cfg: &Cfg) {
         let (seed, day, verbose) = (self.seed, self.day, self.verbose);
         let Play { g, out, .. } = self;
-        let best = g.lineage.best_depth;
+        let best = idlever_core::engine::reach(g.lineage.best_depth);
         if std::env::var("DP_PHASES").is_ok() {
             eprintln!("  [{}] s{seed} day {} D{best} pen {} cpu {:.0}", cfg.label(), day + 1, g.lineage.pkg.pen_open, proc_cpu());
         }

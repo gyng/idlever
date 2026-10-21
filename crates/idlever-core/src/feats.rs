@@ -681,7 +681,7 @@ pub fn kit_complete(l: &LineageState) -> bool {
 }
 
 fn unit(l: &LineageState) -> i32 {
-    crate::kit::unit(l.best_depth) as i32
+    crate::kit::unit(crate::engine::reach(l.best_depth)) as i32
 }
 
 /// The next tithe point's price (the rate falls as the points are bought).
@@ -842,7 +842,7 @@ pub fn king_pct(l: &LineageState) -> u32 {
     if l.slain_here("mirror_king") {
         return 100;
     }
-    (l.best_depth * 100 / (crate::descent::ENDING_DEPTH - 1)).min(99)
+    (crate::engine::reach(l.best_depth) * 100 / (crate::descent::ENDING_DEPTH - 1)).min(99)
 }
 
 // ---------------------------------------------------------------- the wire

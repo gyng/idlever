@@ -59,7 +59,7 @@ fn hurry_off(l: &LineageState) -> u64 {
 }
 /// A future death's recovery on `depth`, after the Vat's reduction (rounded up to the tick).
 pub fn recovery_ticks(l: &LineageState, depth: u32) -> u64 {
-    (crate::persistent::recovery_ticks(depth) * (100 - recovery_off(l))).div_ceil(100)
+    (crate::persistent::recovery_ticks(crate::engine::reach(depth).max(1)) * (100 - recovery_off(l))).div_ceil(100)
 }
 pub fn hurry_price(l: &LineageState, original: i32) -> i32 {
     let off = hurry_off(l);
@@ -121,7 +121,7 @@ pub fn offers_for(l: &LineageState, depth: u32, device: bool) -> Vec<Offer> {
 }
 /// One hero's own offers (its record, its own Vat) — the single-hero game and the bots.
 pub fn offers(l: &LineageState) -> Vec<Offer> {
-    offers_for(l, l.best_depth, crate::persistent::service_availability(l, false)[2])
+    offers_for(l, crate::engine::reach(l.best_depth), crate::persistent::service_availability(l, false)[2])
 }
 
 /// A quote for the selected hero: the purse and Savings it would pay from and the exact withdrawal it needs.
@@ -211,11 +211,11 @@ pub fn buy(g: &mut crate::Game, payer: u32, depth: u32, device: bool, r: &Reques
 impl crate::Game {
     /// A lone hero's quotes (its own record and Vat); a Session overrides with the town-wide ones.
     pub fn building_upgrade_offers(&self) -> Vec<SessionOffer> {
-        quotes(self, 1, self.lineage.best_depth, crate::persistent::service_availability(&self.lineage, false)[2])
+        quotes(self, 1, crate::engine::reach(self.lineage.best_depth), crate::persistent::service_availability(&self.lineage, false)[2])
     }
     pub fn upgrade_building(&mut self, r: &Request) -> Result<Purchase, String> {
         let device = crate::persistent::service_availability(&self.lineage, false)[2];
-        buy(self, 1, self.lineage.best_depth, device, r)
+        buy(self, 1, crate::engine::reach(self.lineage.best_depth), device, r)
     }
 }
 

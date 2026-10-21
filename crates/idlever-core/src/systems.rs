@@ -118,7 +118,7 @@ fn triggered(l: &LineageState, id: &str, plateau: bool) -> bool {
         "party" => l.facts.contains("stray") || l.all_companions().next().is_some(),
         "kennel" => crate::town::built(l, "kennel"),
         "stances" => warlord_met || l.facts.contains("foe:goblin_captain"),
-        "tactics" | "start" | "quests" => l.kills.contains("goblin_warlord") || !l.waystones.is_empty() && l.best_depth >= 9,
+        "tactics" | "start" | "quests" => l.kills.contains("goblin_warlord") || !l.waystones.is_empty() && crate::engine::reach(l.best_depth) >= 9,
         "bank" => crate::town::built(l, "bank"),
         "temperament" => crate::packages::temperament_open(l),
         "pen" | "edit" | "dial" | "unlocks" | "reorder" | "vs" | "tags" | "walls" | "divergence" | "route" => pen || crate::packages::mother_met(l),

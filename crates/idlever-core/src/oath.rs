@@ -114,7 +114,7 @@ fn fire_title(boss: &str) -> String {
 /// while no day has closed (Cut 28), never under the forge's unit (`kit::unit`: $100 + $25 a floor of
 /// the best depth), in tens.
 pub fn price(l: &LineageState) -> i32 {
-    let unit = crate::kit::unit(l.best_depth) as i32;
+    let unit = crate::kit::unit(crate::engine::reach(l.best_depth)) as i32;
     let income = if l.day > 0 { l.last_day_net.max(0) / 4 } else { l.last_night_net.max(0) / 2 };
     (unit.max(income) + 5) / 10 * 10
 }

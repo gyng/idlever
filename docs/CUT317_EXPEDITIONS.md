@@ -196,6 +196,38 @@ condition. Open for step 2: the gates in floor space (class stages D23/D28/29/33
 legacy nodes, boss-record comparisons, unlock depths, the forge unit, the recovery curve) scale to floors, and
 the pen shows `depth ≥` in the player's floors.
 
+## 3e. Client and crier (2026-10-22)
+
+- **Wire**:
+  - `Snapshot.camp`
+  - `LiveRun.{camp, camps}`
+  - `Lineage.expedition {porter, waiting, next_camp_s}`, present only when expeditions are on
+  - `Lineage.cries[]`
+  - boss landmarks on the stretched floors (`engine::boss_floor`)
+- **Live view at 1×** (`ui/watch.ts`, `live1x`):
+  - an expedition is watched in the plain mode at a true 1×: no 4× travel over a quiet stretch, no news jump
+  - the Speed tile becomes "Run" with only the run controls (meters, Turn back)
+  - no speed choices, no skip and no rate badge
+  - replays keep theirs
+- **Camp** in the live view: the camp's `Descend` reads "camp · porter" and marks the stage (`data-camp`), and
+  no floor is recorded for it.
+- **Pen**: "waits · camp 10m" above the rules while an edit waits for the porter ("waits · next send" before him).
+- **Crier** (`LineageState.cries`, `CRIES_KEPT` 30): the core cries:
+  - a new record ("D24 record")
+  - a boss slain ("slew Warlord")
+  - a porter's camp ("banked $512")
+  - a bottom passed ("deeper still")
+  - the end: "fell on D40" or "home · $4511"
+
+  Lines are stamped by the lineage's ticks, so whole and sliced absences stay byte-identical. The town crier
+  rings for the newest unheard line ("Vale · D24 record") and opens the diary. Shipping cries nothing.
+- Verified on the native dev server with the profile (`IDLEVER_BALANCE_FILE`, port 5368): expedition 1×
+  controls, the pen's waiting line, `waiting` cleared at the porter's camp, camps in the live view. Shipping
+  client tests unchanged (watch-console, ui:frame, screens, pen-edit, editor-packages, depth-rail).
+
+Still open on the client: the camp drawn as its own room (a fire, the porter); floors beyond D33 on the depth
+rail and the forecast; the pen's `depth ≥` shown in the player's floors.
+
 ## 4. Gates
 
 The hard invariants in AGENTS.md stand. In particular, Idle alone progresses: IDLE D8 on day 1, D23 by day 12,

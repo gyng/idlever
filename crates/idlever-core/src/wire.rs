@@ -93,6 +93,9 @@ fn is_zero_i32(n: &i32) -> bool {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Snapshot {
+    /// Cut317 §3.3: this floor is a camp (the safe room between two floors).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub camp: bool,
     /// Cut 118 §5: this floor is swift (its band boss cleared `feats::SWIFT_CLEARS` times): the watch plays it as one beat.
     #[serde(default, skip_serializing_if = "is_false")]
     pub swift: bool,
@@ -2392,6 +2395,34 @@ pub struct LiveRun {
     pub hp: i32,
     pub max_hp: i32,
     pub turn: u32,
+    /// Cut317: at a camp now, and camps made this expedition.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub camp: bool,
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub camps: u32,
+}
+
+/// Cut317 §3.8: a town crier's line — when (the lineage's ticks, ordering and "new since heard"), whose hero, the kind (`record`, `boss`, `camp`, `bottom`,
+/// `death`, `home`) and its words (≤ 3, a name or a number besides).
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct CryLine {
+    pub t: u64,
+    pub who: String,
+    pub k: String,
+    pub text: String,
+}
+
+/// Cut317: the expedition's state for the town — the porter's camps and an edit waiting for the next one.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct ExpeditionWire {
+    /// The porter meets the hero at camps (banks the carry, brings edits down).
+    pub porter: bool,
+    /// An edit in town the hero has not yet received (it reaches him at the next porter camp).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub waiting: bool,
+    /// Seconds of diving until the next camp is due (absent at home).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub next_camp_s: Option<u32>,
 }
 
 /// RUNS_UI: `Game::advance` — the runs it finished and the run under way after it.
@@ -2593,6 +2624,12 @@ pub struct Lineage {
     /// five minutes of history.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gold_rate: Option<crate::rates::GoldRateWire>,
+    /// Cut317: present when expeditions are on (`balance.expedition`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub expedition: Option<ExpeditionWire>,
+    /// Cut317 §3.8: the town crier's lines, newest last.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub cries: Vec<CryLine>,
     /// Cut 6 §5: bosses whose counter row is known, with the row and its ≤ 3-word text.
     #[serde(default)]
     pub counters: Vec<Counter>,

@@ -98,3 +98,29 @@ fn an_edit_while_delving_reaches_him_at_the_next_porter_camp_and_replays() {
         assert_eq!(g.replay(id).unwrap().hash, crate::engine::events_hash(tapped), "the run replays with its camp edit");
     });
 }
+
+#[test]
+fn the_crier_hears_the_expedition_and_keeps_a_short_feed() {
+    balance::with_test_profile(expedition(), || {
+        let mut g = Game::load(GUNNER).unwrap();
+        assert!(g.lineage.cries.is_empty(), "nothing cried before");
+        for _ in 0..6 * 3600 {
+            g.advance(1000);
+        }
+        let kinds: std::collections::BTreeSet<&str> = g.lineage.cries.iter().map(|c| c.k.as_str()).collect();
+        assert!(kinds.contains("camp"), "the porter's camps are cried: {kinds:?}");
+        assert!(kinds.contains("home") || kinds.contains("death"), "an expedition's end is cried: {kinds:?}");
+        assert!(g.lineage.cries.len() <= crate::engine::CRIES_KEPT);
+        assert!(g.lineage.cries.windows(2).all(|w| w[0].t <= w[1].t), "newest last");
+        assert!(g.lineage.cries.iter().all(|c| crate::rules::word_count(&c.text) <= 3), "≤ 3 words a cry");
+    });
+}
+
+#[test]
+fn shipping_cries_nothing() {
+    let mut g = Game::load(GUNNER).unwrap();
+    for _ in 0..3600 {
+        g.advance(1000);
+    }
+    assert!(g.lineage.cries.is_empty(), "the crier's feed is an expedition's");
+}

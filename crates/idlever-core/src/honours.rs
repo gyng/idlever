@@ -352,7 +352,7 @@ pub const DEFS: &[Def] = &[
     entry!("c_lone", "Lone Wolf", "Foundry Master, no companion", "challenges", |s| kill_of(s, BAND[3], |r, k| sent(r) && r.honours.party == 0 && r.tamed.is_empty() && k.allies == 0)),
     entry!("c_bare", "Bare Steel", "Foundry Master, forge unbought", "challenges", |s| forge_unbought(s.l) && kill_of(s, BAND[3], |_, _| true)),
     entry!("c_one", "One Trick", "Lich with one tactic only", "challenges", |s| kill_of(s, BAND[2], |r, _| sent(r) && r.honours.tactics == 1 && !r.honours.temper)),
-    entry!("c_noexit", "No Way Back", "new record, no exit rows", "challenges", |s| run_of(s).is_some_and(|r| sent(r) && !r.honours.exit_rows && r.max_depth >= 18 && new_record(r))),
+    entry!("c_noexit", "No Way Back", "new record, no exit rows", "challenges", |s| run_of(s).is_some_and(|r| sent(r) && !r.honours.exit_rows && crate::engine::reach(r.max_depth) >= 18 && new_record(r))),
     entry!("c_first", "First Sight", "slay the Queen, first meeting", "challenges", |s| kill_of(s, BAND[4], |r, _| sent(r) && !r.honours.met.iter().any(|m| m == BAND[4]))),
     entry!("c_flawless", "Flawless", "Queen or King, untouched", "challenges", |s| kill(s, |_, k| BAND[4..].contains(&k.kind.as_str()) && k.untouched)),
     entry!("c_three", "Three Lines", "slay a boss, three rows", "challenges", |s| kill(s, |r, _| sent(r) && r.honours.rows <= 3)),

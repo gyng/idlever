@@ -64,7 +64,7 @@ fn completed(l:&LineageState)->u32 {
 fn earned_stages(l:&LineageState)->usize {
     if !expanded(l.class) || !crate::tree::hired(l,"scout") { return 0; }
     STAGES.iter().take_while(|(_,level,depth,runs)|
-        l.class_level()>=*level && crate::legacy::deepest(l)>=*depth && completed(l)>=*runs
+        l.class_level()>=*level && crate::legacy::deepest_reach(l)>=*depth && completed(l)>=*runs
     ).count()
 }
 fn next_pick(l:&LineageState)->Option<PickMilestone> {
@@ -77,7 +77,7 @@ fn next_pick(l:&LineageState)->Option<PickMilestone> {
         (stage,level,depth,runs,true)
     };
     Some(PickMilestone {stage:stage.into(),level:l.class_level(),required_level,
-        depth:crate::legacy::deepest(l),required_depth,completed:completed(l),required_completed,
+        depth:crate::legacy::deepest_reach(l),required_depth,completed:completed(l),required_completed,
         scout:crate::tree::hired(l,"scout"),requires_scout})
 }
 fn home_block(l: &LineageState, away: bool) -> Option<String> {
@@ -625,7 +625,7 @@ fn qualified(l:&LineageState,node:&Node,defs:&[Node],ancestors:&mut std::collect
     let advanced=defs.iter().position(|n|n.id==node.id).is_some_and(|i|i>=6);
     let stage=if defs.iter().position(|n|n.id==node.id).is_some_and(|i|i>=10) {3}else{1};
     owned.is_some_and(|s|s.contains(&node.id)) && l.class_level()>=node.required_level
-        && crate::legacy::deepest(l)>=node.required_depth && (!advanced||earned_stages(l)>=stage)
+        && crate::legacy::deepest_reach(l)>=node.required_depth && (!advanced||earned_stages(l)>=stage)
         && node.parent.as_ref().is_none_or(|p|defs.iter().find(|n|&n.id==p)
             .is_some_and(|parent|qualified(l,parent,defs,ancestors)))
 }
@@ -638,7 +638,7 @@ fn node_block(l: &LineageState, away: bool, node: &Node) -> Option<String> {
     home_block(l, away).or_else(|| {
         if l.class_level() < node.required_level {
             Some(format!("reach class level {}", node.required_level))
-        } else if crate::legacy::deepest(l) < node.required_depth {
+        } else if crate::legacy::deepest_reach(l) < node.required_depth {
             Some(format!("reach D{}", node.required_depth))
         } else if !parent_qualified(l,node) {
             Some("learn parent skill".into())
@@ -672,7 +672,7 @@ pub fn offers(l: &LineageState, away: bool) -> Tree {
     let blocked = home.clone().or_else(|| {
         if l.class_level() < 3 {
             Some("reach class level 3".into())
-        } else if crate::legacy::deepest(l) < 8 {
+        } else if crate::legacy::deepest_reach(l) < 8 {
             Some("reach D8".into())
         } else {
             None

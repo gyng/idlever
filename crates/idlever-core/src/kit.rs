@@ -424,7 +424,7 @@ pub fn unit(best_depth: u32) -> u32 {
 /// fixed the first time the forge is shown (`lock_unit`: a step owned, or the purse able to buy
 /// a first step) — every step's price is then fixed for good; until then it is today's.
 pub fn unit_of(l: &LineageState) -> u32 {
-    l.kit_unit.unwrap_or_else(|| unit(l.best_depth))
+    l.kit_unit.unwrap_or_else(|| unit(crate::engine::reach(l.best_depth)))
 }
 
 /// Cut 24 §3: fix the unit (`LineageState::kit_unit`) once the forge is shown — a step owned, or
@@ -433,16 +433,16 @@ pub fn unit_of(l: &LineageState) -> u32 {
 pub fn lock_unit(l: &mut LineageState) {
     // QA on 0c6e126: the row slots' price is shown from the first camp — fixed at the first exit that has a best floor
     if l.row_unit.is_none() && l.best_depth >= 1 {
-        l.row_unit = Some(l.kit_unit.unwrap_or_else(|| unit(l.best_depth)));
+        l.row_unit = Some(l.kit_unit.unwrap_or_else(|| unit(crate::engine::reach(l.best_depth))));
     }
     if l.kit_unit.is_some() {
         return;
     }
-    let first = KIT_SLOTS.iter().map(|s| mults(s)[0]).min().unwrap_or(1) * unit(l.best_depth);
+    let first = KIT_SLOTS.iter().map(|s| mults(s)[0]).min().unwrap_or(1) * unit(crate::engine::reach(l.best_depth));
     // QA on 0c6e126 (qaZ: every forge price +10 % after an absence with nothing bought): the forge tile is carved at the first salvage
     // (`Lineage.forge`) and shows the ladders' prices from then — shown is fixed
     if KIT_SLOTS.iter().any(|s| owned(l, s) > 0) || l.gold >= first as i32 || !l.forge.is_empty() {
-        l.kit_unit = Some(unit(l.best_depth));
+        l.kit_unit = Some(unit(crate::engine::reach(l.best_depth)));
     }
 }
 

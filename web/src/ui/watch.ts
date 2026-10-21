@@ -694,8 +694,15 @@ export function renderWatch(app: App): Mounted {
   // Cut 17 §1: `⏸ / ▶` is the console's gem (the glyph stays the button's text; the icon is drawn over it)
   const pause = gem({ label: "", cls: "hud-btn", onclick: () => togglePause() });
   // the last chosen mode is the next run's (app.watchMode, persisted — QA on e0f87e7: "`fast` chosen in run 3 was not remembered")
-  const mode0: Mode =
-    app.watchMode === "fast" || app.watchMode === "one" ? app.watchMode : "fights";
+  // Cut317 (owner: "no speedup controls etc, that's only for replays"): an expedition is watched live at a true 1× — no speed
+  // choice, no skip, no 4× travel or news jump over a quiet stretch; the picture keeps the world's clock
+  const live1x = !!app.lineage?.expedition;
+  const oneMax = live1x ? 1 : ONE_MAX;
+  const mode0: Mode = live1x
+    ? "one"
+    : app.watchMode === "fast" || app.watchMode === "one"
+      ? app.watchMode
+      : "fights";
   const modeBtn: Record<Mode, HTMLButtonElement> = {
     fights: tile({
       id: "fights",
@@ -812,17 +819,17 @@ export function renderWatch(app: App): Mounted {
     id: "speed",
     cls: "hud-btn",
     icon: "fast",
-    label: /* copy:button */ "Speed",
+    label: live1x ? /* copy:button */ "Run" : /* copy:button */ "Speed",
     onclick: () => {
       openWindow((close) => {
         for (const m of Object.keys(modeBtn) as Mode[]) modeBtn[m].onclick = close;
         return h(
           "div",
           { class: "sheet-body watch-options" },
-          h("div", { class: "label" }, /* copy:label */ "Watch speed"),
-          h("div", { class: "chips" }, modeBtn.one, modeBtn.fights, modeBtn.fast),
+          live1x ? null : h("div", { class: "label" }, /* copy:label */ "Watch speed"),
+          live1x ? null : h("div", { class: "chips" }, modeBtn.one, modeBtn.fights, modeBtn.fast),
           h("div", { class: "label" }, /* copy:label */ "Run controls"),
-          h("div", { class: "chips" }, skip, meterTile, bail),
+          h("div", { class: "chips" }, live1x ? null : skip, meterTile, bail),
         );
       });
     },
@@ -858,6 +865,10 @@ export function renderWatch(app: App): Mounted {
   });
   speedBtn.append(speedBadge);
   speedBtn.dataset.mode = mode0;
+  // (the tile stays for the run controls — meters, Turn back — without the speed choices)
+  speedBadge.hidden = live1x;
+  speedMode.hidden = live1x;
+  skip.hidden = live1x;
   const cons = renderConsole({
     portrait: face.el,
     tiles: [speedBtn, toTown],
@@ -2717,6 +2728,23 @@ export function renderWatch(app: App): Mounted {
           }
           break;
         case "descend": {
+          // Cut317: a camp — the safe room between two floors (no new depth); the porter meets him there
+          if (ev.biome === "camp") {
+            at(ev.t, () => {
+              hideBeat();
+              el.dataset.camp = "1";
+              ambient(
+                app.lineage.expedition?.porter
+                  ? /* copy:callout */ "camp · porter"
+                  : /* copy:callout */ "camp",
+                true,
+              );
+            });
+            break;
+          }
+          at(ev.t, () => {
+            delete el.dataset.camp;
+          });
           descends.push(ev.t); // Cut 18 §1
           at(ev.t, () => {
             chore = null;
@@ -2934,7 +2962,7 @@ export function renderWatch(app: App): Mounted {
           break;
         // Cut 122 §7: the walk home committed, its length foreseen — past HOME_FOLD_S of watch time it folds into one beat (homeJump)
         case "homeward": {
-          const travel = mode === "one" ? ONE_MAX : earlyFloor() ? EARLY_TRAVEL : RATE[mode];
+          const travel = mode === "one" ? oneMax : earlyFloor() ? EARLY_TRAVEL : RATE[mode];
           if (!home && ev.ticks / (10 * travel) > HOME_FOLD_S) {
             home = { from: ev.t, to: ev.t + ev.ticks, bank: ev.bank, shown: false, done: false };
             el.dataset.homeward = String(ev.ticks);
@@ -3855,7 +3883,7 @@ export function renderWatch(app: App): Mounted {
       if (key !== newsKey || !playing || beatHeld() || viewerTick() >= endingFrom) {
         newsKey = key;
         newsAt = wall;
-      } else if (wall - newsAt > NEWS_MAX_MS) {
+      } else if (!live1x && wall - newsAt > NEWS_MAX_MS) {
         newsAt = wall;
         void deadJump();
         return;
@@ -4361,7 +4389,7 @@ export function renderWatch(app: App): Mounted {
     // A confirmed stall has already held its flag for300 ticks. Its quiet
     // stretch keeps the mode's minimum instead of resetting to the early8x
     // travel floor after every landing (the stall contract requires>=16x).
-    const base = earlyFloor() && !stalling() ? EARLY_TRAVEL : mode === "one" ? ONE_MAX : RATE[mode],
+    const base = earlyFloor() && !stalling() ? EARLY_TRAVEL : mode === "one" ? oneMax : RATE[mode],
       age = performance.now() - deadSince;
     // `fights` tops out at DEAD_MAX_FIGHTS (a stretch the core cuts at 60 actions is ~1 s there; its engine lead stays short of a fight);
     // blind 5331f40 (A: "even on Speed Normal the badge jumped 1× … 128× … 16×"): `one` never ramps past ONE_MAX — a long dead
@@ -4370,7 +4398,7 @@ export function renderWatch(app: App): Mounted {
       age < DEAD_RAMP_MS
         ? base
         : Math.min(
-            mode === "fights" ? DEAD_MAX_FIGHTS : mode === "one" ? ONE_MAX : FAST_MAX,
+            mode === "fights" ? DEAD_MAX_FIGHTS : mode === "one" ? oneMax : FAST_MAX,
             base * 2 ** (1 + Math.floor((age - DEAD_RAMP_MS) / DEAD_STEP_MS)),
           );
     // lands DEAD_LAND_MS before the next move, the stairs, the ending; never past the frontier (the engine is stepped to the lead)

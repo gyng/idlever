@@ -363,6 +363,7 @@ fn enter_camp(run: &mut Run, cx: &mut Ctx) -> bool {
     let d = run.depth;
     cx.events.push(Ev::Descend { t: run.turn, depth: d, biome: "camp".into() });
     if banked > 0 {
+        run.cries.push(("camp".into(), format!("banked ${banked}")));
         note(run, cx, format!("Camp under D{d}. The porter took ${banked} up."));
         callout(run, cx, "porter · banked");
     } else {
@@ -2415,6 +2416,9 @@ pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dm
         run.summoned_kills += 1;
     } else if !m.neutral {
         let depth = run.depth;
+        if crate::balance::get().expedition.on && crate::defs::monster_def(&kind).boss {
+            run.cries.push(("boss".into(), format!("slew {}", crate::sifter::boss_short(&kind))));
+        }
         run.kills.push((run.turn, kind.clone(), depth));
         run.kills_floor += 1;
         run.kill_since_action = true;
@@ -2902,6 +2906,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if crate::engine::lap_of(next) > crate::engine::lap_of(run.depth) {
         run.bottoms += 1;
         run.difficulty += 1;
+        run.cries.push(("bottom".into(), "deeper still".into()));
         note(run, cx, "The bottom gave way. Deeper, and harder.".into());
         callout(run, cx, "deeper still");
     }
@@ -2936,6 +2941,9 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if next > run.record_mark {
         run.record_mark = next;
         run.secure_carry();
+        if crate::balance::get().expedition.on {
+            run.cries.push(("record".into(), format!("D{next} record")));
+        }
     }
     // Cut225: a decoy or construct never follows the hero down; it expires with the floor.
     if run.tools.is_some() {

@@ -111,6 +111,7 @@ export type ManualAct =
   | { k: "wait" }
   | { k: "attack_until"; hp: number }; // blind b58b431: one order — the nearest foe, then the same foe, until it falls or hp < `hp` %
 export type Snapshot = {
+  camp?: boolean; // Cut317 (core): this floor is a camp — the safe room between two floors
   swift?: boolean; // Cut 118 §5 (core): this floor is swift (its band boss cleared 3×) — the watch plays it as one beat
   difficulty?: number;
   modifier_catalogue?: ModifierInfo[];
@@ -1204,7 +1205,13 @@ export type LiveRun = {
   hp: number;
   max_hp: number;
   turn: number;
+  camp?: boolean; // Cut317: at a camp now
+  camps?: number; // Cut317: camps made this expedition
 };
+/** Cut317 (core): expeditions — the porter's camps, an edit waiting for the next one, when it is due (absent: expeditions off). */
+export type Expedition = { porter: boolean; waiting?: boolean; next_camp_s?: number };
+/** Cut317 §3.8 (core): a town crier's line — `t` the lineage's ticks (order, and "new since heard"), the hero, the kind, ≤ 3 words. */
+export type CryLine = { t: number; who: string; k: string; text: string };
 /** RUNS_UI (core) — `advance(ms)`: the open app's clock run on the lineage (rest, then the next run, unwatched; a run in flight stays in
  *  flight at the budget's end). `ended` the runs it finished (refresh the lineage then), `live` the run under way after it. */
 /** Cut260 §2 (core): `credited` — checkpoint gold the run under way paid into the purse during this advance (absent = none). */
@@ -1824,6 +1831,8 @@ export type Lineage = {
   vault_pref?: string; // Cut 5 §4: what an unwatched vault choice takes (`weapon | armour | potion | scroll`)
   ascended?: string[]; // Cut 5: variants the lineage has finished the dungeon with
   gold_ledger?: GoldLine[]; // Rust's bounded movement history, oldest first (`GOLD_LEDGER_CAP`)
+  expedition?: Expedition; // Cut317: present when expeditions are on
+  cries?: CryLine[]; // Cut317 §3.8: the town crier's lines, newest last
   gold_rate?: GoldRate; // queue 40: the purse's growth on the town clock (Rust `rates`); absent under 5 min of history
   counters?: Counter[]; // Cut 6 §5: bosses whose counter row is known
   combos?: ComboHit[]; // Cut 8B §1: the active set's combos, in row order (recomputed on setRules)

@@ -229,7 +229,7 @@ pub fn hurry_price(l: &LineageState, away: bool) -> Option<i32> {
     if left == 0 || left_s < u64::from(v.hurry_min_s) {
         return None;
     }
-    let unit = u64::from(crate::kit::unit(l.best_depth));
+    let unit = u64::from(crate::kit::unit(crate::engine::reach(l.best_depth)));
     let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
     let round = u64::from(v.hurry_round.max(1));
     let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
@@ -284,7 +284,7 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
         Some("Build a house".into())
     } else if remaining(l) > 0 {
         Some("Finish recovery".into())
-    } else if legacy::deepest(l) < 8 {
+    } else if legacy::deepest_reach(l) < 8 {
         Some("Reach D8".into())
     } else if allocation.upgrades.is_empty() && l.heirs.blood.is_none() && l.heirs.bloodline.is_none() {
         Some("No attribute commitments".into())

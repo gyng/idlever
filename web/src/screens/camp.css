@@ -118,3 +118,10 @@
     }
   }
 }
+@layer screens {
+  /* Cut317: a live expedition plays at 1× — the Run tile carries no speed mode or rate (their legacy display overrode [hidden]) */
+  .watch-speed-badge[hidden],
+  .watch-speed-mode[hidden] {
+    display: none;
+  }
+}

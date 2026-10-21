@@ -82,6 +82,8 @@ pub fn empty_effects(mask:&u16)->bool {*mask==0}
 pub fn deepest(l:&LineageState)->u32 {
     l.hero_legacy.iter().map(|h|h.best_depth).max().unwrap_or(0).max(l.best_depth)
 }
+/// Cut317 §3c: the deepest record as content reached (a gate's tuned depth compares with this).
+pub fn deepest_reach(l:&LineageState)->u32 { crate::engine::reach(deepest(l)) }
 
 pub fn current(l: &LineageState) -> Option<&BloodlineLegacy> { l.bloodline.as_ref() }
 pub fn ensure(l: &mut LineageState) {

@@ -40,7 +40,7 @@ fn home_block(l:&LineageState,away:bool)->Option<String> {
 fn blocked(l:&LineageState,away:bool,style:Style)->Option<String> {
     home_block(l,away).or_else(||if style.parent()!=l.class {Some(format!("choose {}",style.parent().name()))}
         else if l.class_level()<REQUIRED_LEVEL {Some(format!("reach class level {REQUIRED_LEVEL}"))}
-        else if crate::legacy::deepest(l)<REQUIRED_DEPTH {Some(format!("reach D{REQUIRED_DEPTH}"))}else{None})
+        else if crate::legacy::deepest_reach(l)<REQUIRED_DEPTH {Some(format!("reach D{REQUIRED_DEPTH}"))}else{None})
 }
 fn default_row(style:Style)->Row {
     Row{conds:vec![Cond::n(if style==Style::Sentinel {"adj>="}else{"foes>="},1)],
@@ -56,7 +56,7 @@ pub fn offers(l:&LineageState,away:bool)->Choice {
             let blocked=blocked(l,away,style);
             Offer{id:style,name:style.name().into(),parent:style.parent().name().into(),level,xp:p.map_or(0,|p|p.xp),
                 next:if level>=crate::engine::MAX_LEVEL {0}else{crate::hero::xp_to_next(level)},
-                required_level:REQUIRED_LEVEL,required_depth:REQUIRED_DEPTH,deepest:crate::legacy::deepest(l),
+                required_level:REQUIRED_LEVEL,required_depth:REQUIRED_DEPTH,deepest:crate::legacy::deepest_reach(l),
                 selected:l.specializations.get(style.parent().name())==Some(&style),available:blocked.is_none(),blocked,
                 cooldown_ticks:COOLDOWN,duration_ticks:if style==Style::Sentinel {RIPOSTE_DURATION}else{HEX_DURATION},
                 effect:if style==Style::Sentinel {format!("Halve one melee hit · counter {COUNTER_DAMAGE}")}else{format!("Enemy attacks deal {HEX_REDUCTION} less damage")},tactic:default_row(style)}
@@ -64,7 +64,7 @@ pub fn offers(l:&LineageState,away:bool)->Choice {
 }
 pub fn zero(n:&i32)->bool {*n==0}
 pub fn current(l:&LineageState)->Option<Style> {
-    l.specializations.get(l.class.name()).copied().filter(|s|s.parent()==l.class&&l.class_level()>=REQUIRED_LEVEL&&crate::legacy::deepest(l)>=REQUIRED_DEPTH)
+    l.specializations.get(l.class.name()).copied().filter(|s|s.parent()==l.class&&l.class_level()>=REQUIRED_LEVEL&&crate::legacy::deepest_reach(l)>=REQUIRED_DEPTH)
 }
 pub fn has(h:&Hero,style:Style)->bool {h.specialization==Some(style)&&h.class==style.parent()&&h.level>=REQUIRED_LEVEL}
 pub fn choose(g:&mut Game,id:&str)->Result<(),String> {

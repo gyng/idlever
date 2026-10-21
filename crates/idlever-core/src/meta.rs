@@ -106,7 +106,7 @@ pub const UNLOCKS: &[UnlockDef] = &[
 /// Cut 29 §1: the band bosses met — each whose floor the lineage's best depth has reached, or
 /// whom it has seen (`foe:<kind>`) or slain.
 pub fn bosses_met(l: &LineageState) -> u32 {
-    crate::descent::BOSS_DEPTHS.iter().filter(|(k, d)| l.best_depth >= *d || l.kills.contains(*k) || l.facts.contains(&format!("foe:{k}"))).count() as u32
+    crate::descent::BOSS_DEPTHS.iter().filter(|(k, d)| crate::engine::reach(l.best_depth) >= *d || l.kills.contains(*k) || l.facts.contains(&format!("foe:{k}"))).count() as u32
 }
 
 /// Cut 29 §1: the lineage's tier — 0 before the first bank, 1 after it, then one more per band
@@ -225,7 +225,7 @@ pub fn class_gate(l: &LineageState, c: crate::hero::Class) -> Option<String> {
         Some("Build Guildhouse".into())
     } else if completed < delves {
         Some(format!("Complete {} more delves", delves - completed))
-    } else if crate::legacy::deepest(l) < depth {
+    } else if crate::legacy::deepest_reach(l) < depth {
         Some(format!("Reach D{depth}"))
     } else {
         None
@@ -246,7 +246,7 @@ pub fn earned_classes(l: &LineageState) -> Vec<crate::wire::EarnedClass> {
                 scout: crate::tree::hired(l, "scout"),
                 completed: l.persistent.completed,
                 required_completed,
-                depth: crate::legacy::deepest(l),
+                depth: crate::legacy::deepest_reach(l),
                 required_depth,
                 level: l.classes.get(c.name()).map_or(1, |p| p.level),
                 signature: c.signature().into(),
@@ -258,7 +258,7 @@ pub fn earned_classes(l: &LineageState) -> Vec<crate::wire::EarnedClass> {
 /// The fact/trophy gate of an unlock: `None` when open, else the human-readable need.
 pub fn gate(l: &LineageState, id: &str) -> Option<String> {
     let need = |ok: bool, text: &str| if ok { None } else { Some(text.to_string()) };
-    if id=="gunner" {return need(crate::legacy::deepest(l)>=13,"reach D13");}
+    if id=="gunner" {return need(crate::legacy::deepest_reach(l)>=13,"reach D13");}
     // Cut 29 §1: the tier first (a boss met opens it), then the unlock's own fact gate.
     if let Some(d) = def(id) {
         if tier(l) < d.tier {

@@ -284,7 +284,7 @@ pub fn reached(l: &LineageState, track: &str, stage: &str) -> bool {
         }
         ("scale", w) if w.starts_with("waystone D") => w.trim_start_matches("waystone D").parse::<u32>().is_ok_and(|d| l.stones().contains(&d)),
         // (the King's floor: the descent's last band seen)
-        ("scale", "the bottom") => l.best_depth >= crate::descent::BANDS[crate::descent::BANDS.len() - 1].1,
+        ("scale", "the bottom") => crate::engine::reach(l.best_depth) >= crate::descent::BANDS[crate::descent::BANDS.len() - 1].1,
         ("scale", "party slot 2") => l.party_slots() >= 2,
         ("scale", "party slots 3–4") => l.party_slots() >= 4,
         ("town", b) => built(l, b),

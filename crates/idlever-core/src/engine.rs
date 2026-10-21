@@ -225,6 +225,18 @@ pub const REMEMBER_ACTIONS: u32 = 10;
 pub const MAX_TURNS_PER_RUN: u32 = 120_000;
 /// Cut317 §3c: floors one descent spans (the content to the bottom) at the stretch in force.
 pub fn lap_floors() -> u32 { (crate::descent::ENDING_DEPTH - 1) * crate::balance::get().expedition.stretch.max(1) }
+/// Cut317 §3c: the content a record floor has reached — the last content depth whose band it has finished (its
+/// boss's floor); the bottom's once a lap is passed. Gates tuned in content (class stages D23, the Lich at D18, the forge
+/// unit, the recovery curve) read a record through it. Shipping: the floor itself.
+pub fn reach(floor: u32) -> u32 {
+    if lap_of(floor) > 0 {
+        return crate::descent::ENDING_DEPTH - 1;
+    }
+    floor / crate::balance::get().expedition.stretch.max(1)
+}
+/// Cut317 §3c: the floor a content depth's single events stand on (its band's last; the first descent's) — a boss's
+/// floor as the player counts floors. Shipping: the depth itself.
+pub fn boss_floor(content: u32) -> u32 { content * crate::balance::get().expedition.stretch.max(1) }
 /// Cut317 §3c: descents past the first bottom a floor lies (each a tier harder; 0 without laps).
 pub fn lap_of(floor: u32) -> u32 {
     if crate::balance::get().expedition.laps { floor.saturating_sub(1) / lap_floors() } else { 0 }
@@ -239,6 +251,8 @@ pub fn band_floor(floor: u32) -> bool {
     let s = crate::balance::get().expedition.stretch.max(1);
     floor.saturating_sub(lap_of(floor) * lap_floors()).is_multiple_of(s)
 }
+/// Cut317 §3.8: the crier's lines kept on the lineage.
+pub const CRIES_KEPT: usize = 30;
 /// Cut317: the run cap in force — the shipping `MAX_TURNS_PER_RUN`, or an expedition profile's longer net.
 #[inline]
 pub fn run_cap() -> u32 { crate::balance::get().expedition.run_cap_ticks }
@@ -583,6 +597,9 @@ pub struct Run {
     /// Cut317 §3c: bottoms dived past on laps this run (each made the run a tier harder).
     #[serde(default, skip_serializing_if = "is_zero_u32")]
     pub bottoms: u32,
+    /// Cut317 §3.8: milestones for the town crier, waiting to reach the lineage (`Game::cries_in`): (kind, words).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub cries: Vec<(String, String)>,
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub wall_seen: bool,
     /// Cut 29 §3: the run's meters (the run, the fight in progress; `meters.rs`) — real runs only.
@@ -1654,6 +1671,10 @@ pub struct LineageState {
     /// renewed from `sets` at each porter camp. An edit in town waits for the next camp (`Game::kit_at_camp`).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub carried_sets: Option<(Vec<RuleSet>, usize)>,
+    /// Cut317 §3.8 (owner: "a town crier that espouses hero milestones"): the crier's lines as they happened, newest
+    /// last, the last `CRIES_KEPT`.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub cries: Vec<crate::wire::CryLine>,
     // Cut 9
     /// §6: the (threat, resolution) pairs of the last `REEL_ABSENCES` reels, oldest first —
     /// the next reel skips them.
@@ -2054,6 +2075,12 @@ fn default_vault_pref() -> String {
 }
 
 impl LineageState {
+    /// Cut317 §3.8: one line for the town crier (the last `CRIES_KEPT` stay).
+    pub fn cry(&mut self, t: u64, who: &str, k: &str, text: String) {
+        self.cries.push(crate::wire::CryLine { t, who: who.to_string(), k: k.to_string(), text });
+        let over = self.cries.len().saturating_sub(CRIES_KEPT);
+        self.cries.drain(..over);
+    }
     /// Cut 122 §3: `kind` has fallen in this descent (the first dungeon's: ever).
     pub fn slain_here(&self, kind: &str) -> bool {
         match &self.descent_kills {
@@ -2140,6 +2167,7 @@ impl LineageState {
             gold_tally: BTreeMap::new(),
             gold_rate: Default::default(),
             carried_sets: None,
+            cries: Vec::new(),
             reel_pairs: Vec::new(),
             trait_offer: offer.to_vec(),
             heirs: crate::traits::fresh(),
@@ -2531,6 +2559,8 @@ impl LineageState {
             vault_pref: self.vault_pref.clone(),
             gold_ledger: self.gold_ledger.clone(),
             gold_rate: crate::rates::wire(self),
+            expedition: None,
+            cries: self.cries.clone(),
             counters: self.counters(),
             combos: self.rules().combos(),
             picked: self.picked_clean(),
@@ -3665,7 +3695,7 @@ impl Game {
         l.journal=Some(crate::journal::wire(&self.lineage,crate::persistent::away(self)));
         l.persistent_hero=Some(crate::persistent::wire(&self.lineage,crate::persistent::away(self)));
         if let (Some(p),Some(r))=(l.persistent_hero.as_mut(),self.run.as_ref()){p.progression.actual_inherited=r.worn.blood.map(|s|crate::traits::card(s,"commitment",&self.lineage.facts));p.progression.actual_temperament=self.sent_state.as_ref().and_then(|s|s.lineage.pkg.temperament.clone());p.progression.actual_family=self.sent_state.as_ref().and_then(|s|s.lineage.heirs.bloodline.map(|w|w.word().into()));}
-        if let Some(run)=&self.run { l.depth_landmarks=run.route.bosses().into_iter().filter(|(kind,_)|self.lineage.facts.contains(&format!("foe:{kind}"))).map(|(kind,depth)|crate::wire::DepthLandmark{depth,kind:"boss".into(),id:kind.into(),label:kind_title(kind)}).collect(); }
+        if let Some(run)=&self.run { l.depth_landmarks=run.route.bosses().into_iter().filter(|(kind,_)|self.lineage.facts.contains(&format!("foe:{kind}"))).map(|(kind,depth)|crate::wire::DepthLandmark{depth:boss_floor(depth),kind:"boss".into(),id:kind.into(),label:kind_title(kind)}).collect(); }
         if self.lineage.endgame.is_some() || self.lineage.ended { l.endgame = Some(self.descent_progress()); }
         l.return_pick = crate::returns::wire(&self.lineage);
         let (kinds, gold) = self.repeat_plan();
@@ -3681,6 +3711,16 @@ impl Game {
         }
         // RUNS_UI: the run under way and the runs a replay is held for
         l.live = self.live_run();
+        // Cut317: the expedition — the porter, an edit waiting for his next camp, and when that camp is due
+        let e = crate::balance::get().expedition;
+        l.expedition = e.on.then(|| {
+            let run = self.run.as_ref().filter(|r| r.over.is_none());
+            crate::wire::ExpeditionWire {
+                porter: crate::tree::porter(&self.lineage),
+                waiting: self.lineage.carried_sets.as_ref().is_some_and(|c| *c != (self.lineage.sets.clone(), self.lineage.active_set)),
+                next_camp_s: run.map(|r| e.camp_every_ticks.saturating_sub(r.turn.saturating_sub(r.camp_at)) / crate::offline::TICKS_PER_SECOND as u32),
+            }
+        });
         l.guns=crate::firearm::offers(&self.lineage,self.run.is_some());
         l.class_tree=Some(crate::class_tree::offers(&self.lineage,crate::persistent::away(self)));
         l.class_styles=Some(crate::specialization::offers(&self.lineage,crate::persistent::away(self)));
@@ -3692,7 +3732,7 @@ impl Game {
 
     /// RUNS_UI: the run under way (begun, not over).
     pub fn live_run(&self) -> Option<crate::wire::LiveRun> {
-        self.run.as_ref().filter(|r| r.turn > 0 && r.over.is_none()).map(|r| crate::wire::LiveRun { activity: if r.homeward.is_some() { "returning" } else if r.meters.quiet < crate::meters::FIGHT_GAP && r.meters.run.fights > 0 { "combat" } else { "exploring" }.into(), run_id: r.id, heir: r.heir, depth: r.depth, start: r.start.max(1), hp: r.hero.hp, max_hp: r.hero.max_hp, turn: r.turn })
+        self.run.as_ref().filter(|r| r.turn > 0 && r.over.is_none()).map(|r| crate::wire::LiveRun { activity: if r.homeward.is_some() { "returning" } else if r.meters.quiet < crate::meters::FIGHT_GAP && r.meters.run.fights > 0 { "combat" } else { "exploring" }.into(), run_id: r.id, heir: r.heir, depth: r.depth, start: r.start.max(1), hp: r.hero.hp, max_hp: r.hero.max_hp, turn: r.turn, camp: r.in_camp, camps: r.camps })
     }
 
     /// RUNS_UI: the open app's clock (`offline::advance`).
@@ -4077,6 +4117,19 @@ impl Game {
         if self.lineage.carried_sets.as_ref() != Some(&now) {
             self.lineage.carried_sets = Some(now.clone());
             self.input(id, t, Input::Kit(now.0, now.1));
+        }
+    }
+
+    /// Cut317 §3.8: the run's milestones reach the town crier, stamped by the lineage's ticks (an absence's town clock
+    /// moves only at its end, so a whole and a sliced absence would stamp differently).
+    fn cries_in(&mut self) {
+        let Some(run) = self.run.as_mut() else { return };
+        if run.cries.is_empty() {
+            return;
+        }
+        let (who, at) = (run.hero_name.clone(), self.lineage.total_turns);
+        for (k, text) in std::mem::take(&mut run.cries) {
+            self.lineage.cry(at, &who, &k, text);
         }
     }
 
@@ -4500,6 +4553,7 @@ impl Game {
             in_camp: false,
             kit_due: false,
             bottoms: 0,
+            cries: Vec::new(),
             wall_seen: false,
             route2: self.lineage.unlocks.contains("route2"),
             tamed_grudges: Vec::new(),
@@ -4995,6 +5049,7 @@ impl Game {
             return;
         }
         self.kit_at_camp();
+        self.cries_in();
         crate::armour_sets::departure(self);
         // Take control is the watched run's alone: a sim (a forecast, a verdict's replay) or an absence plays the rules
         if (self.sim || self.lineage.in_absence) && self.run.as_ref().is_some_and(|r| r.manual) {
@@ -5271,6 +5326,7 @@ impl Game {
             run.kept(tier)
         });
         Snapshot {
+            camp: run.in_camp,
             swift: run.depth < crate::feats::swift_to(l, run.route),
             depth: run.depth,
             difficulty: run.difficulty,
@@ -5417,8 +5473,21 @@ impl Game {
     /// on a death stays on the floor as bones without another converted-value payment.
     pub fn finish_run(&mut self) -> Option<RunOutcome> {
         let class_stage_before=crate::class_tree::earned_stage(&self.lineage);
-        let run = self.run.take()?;
+        let mut run = self.run.take()?;
         self.lineage.carried_sets = None;
+        // Cut317 §3.8: the crier hears the run's last milestones and how it ended
+        if crate::balance::get().expedition.on && !self.sim {
+            let (who, at) = (run.hero_name.clone(), self.lineage.total_turns);
+            for (k, text) in std::mem::take(&mut run.cries) {
+                self.lineage.cry(at, &who, &k, text);
+            }
+            let d = run.max_depth;
+            match run.over {
+                Some(ExitTier::Death) => self.lineage.cry(at, &who, "death", format!("fell on D{d}")),
+                Some(_) => self.lineage.cry(at, &who, "home", format!("home · ${}", run.carried().max(0))),
+                None => {}
+            }
+        }
         self.capsules.1 = false;   // (its capsule stays held in memory; the save carries none but a band boss's kill)
         if !self.sim && run.kills.iter().any(|(_, k, _)| !k.starts_with("spectral_") && crate::defs::monster_def(k).boss) {
             self.capsules.keep_kill(run.id);

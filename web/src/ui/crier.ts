@@ -359,6 +359,7 @@ export function townCrier(app: App): { el: HTMLElement; paint(home: boolean): vo
   const paint = (home: boolean): void => {
     const r = app.lastAbsence?.report;
     const cs = r && home && !heard.has(r) ? cries(r, app.lineage) : [];
+    if (!cs.length && home && paintLive()) return;
     el.hidden = !cs.length;
     el.dataset.crier = String(cs.length);
     if (!r || !cs.length) {
@@ -389,5 +390,85 @@ export function townCrier(app: App): { el: HTMLElement; paint(home: boolean): vo
       el.classList.add("ringing");
     }
   };
+  /** Cut317 §3.8 (owner: "a town crier that espouses hero milestones"): the core's lines as they happen — the newest unheard, the
+   *  name and its ≤ 3 words; a tap reads them into the diary. */
+  const paintLive = (): boolean => {
+    const lines = (app.lineage.cries ?? []).filter((c) => c.t > heardT(app.lineage));
+    if (!lines.length) return false;
+    const last = lines[lines.length - 1]!;
+    const who = last.who.split(/\s+/)[0] ?? last.who;
+    el.hidden = false;
+    el.dataset.crier = String(lines.length);
+    replace(
+      el,
+      figure(),
+      h(
+        "span",
+        { class: "crier-cry num" },
+        `${who} · ${last.text}`,
+        lines.length > 1 ? h("small", { class: "crier-more" }, ` +${lines.length - 1}`) : "",
+      ),
+    );
+    el.setAttribute("aria-label", `${last.who} · ${last.text}`);
+    el.onclick = (e: Event) => {
+      e.stopPropagation();
+      setHeardT(app.lineage, last.t);
+      el.hidden = true;
+      el.dataset.crier = "0";
+      const cs: Cry[] = [...lines]
+        .reverse()
+        .map((c) => ({ k: c.k, short: c.text, long: `${c.who} · ${c.text}` }));
+      const diary = writeDiary(app.lineage, cs);
+      openWindow(
+        () =>
+          h(
+            "div",
+            { class: "sheet-body crier-scroll", "data-crier": "scroll" },
+            h("div", { class: "label row-label" }, /* copy:label */ "Hero's diary"),
+            h(
+              "ul",
+              { class: "lines crier-lines" },
+              ...diary.map((d, i) =>
+                h(
+                  "li",
+                  { class: `crier-line k-${d.k}${i < cs.length ? " new" : ""}`, "data-k": d.k },
+                  h("small", { class: "crier-day num dim" }, /* copy:callout */ `day ${d.day}`),
+                  " ",
+                  d.text,
+                ),
+              ),
+            ),
+          ),
+        { anchor: el },
+      );
+    };
+    if (rungT !== last.t) {
+      rungT = last.t;
+      el.classList.remove("ringing");
+      void el.offsetWidth;
+      el.classList.add("ringing");
+    }
+    return true;
+  };
+  let rungT = -1;
   return { el, paint };
+}
+
+/** Cut317 §3.8: the newest core cry this viewer heard (browser storage, a convenience: at worst he cries a line again). */
+function heardKey(L: Pick<Lineage, "seed">): string {
+  return /* copy:none */ `idlever.crier.heard.${L.seed}`;
+}
+function heardT(L: Pick<Lineage, "seed">): number {
+  try {
+    return Number(localStorage.getItem(heardKey(L)) ?? 0) || 0;
+  } catch {
+    return 0;
+  }
+}
+function setHeardT(L: Pick<Lineage, "seed">, t: number): void {
+  try {
+    localStorage.setItem(heardKey(L), String(t));
+  } catch {
+    /* private mode: this visit only */
+  }
 }
