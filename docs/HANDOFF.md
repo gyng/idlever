@@ -6,6 +6,8 @@ Owner queue addition after deployment: scrollwheel zoom for live view and home
 base, recorded as WORK_QUEUE implementation item39. Queued only; work stays paused.
 Also queued: Gold growth-rate and related resource-trend UI indicators
 (WORK_QUEUE item40), with clear time windows and reconciled earnings/net change.
+Also queued: hero hover outline/glow matching building hover feedback
+(WORK_QUEUE item41). Implementation remains paused.
 
 After parking, owner explicitly requested deployment. Alpha.3's exact product
 source 510bd647 was redeployed to both sites; Pages run39535708405 attempt2

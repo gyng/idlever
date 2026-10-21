@@ -6,6 +6,8 @@ Owner queue addition, 2026-10-21: scrollwheel zoom in both the live view and
 home base (implementation item39). Queued for resume; work remains paused.
 Owner UI queue addition: indicators for Gold growth rates and related resource
 trends (implementation item40). Queued only.
+Owner UI queue addition: hero hover outline/glow matching building hover
+feedback (implementation item41). Queued only.
 
 Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
 isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
@@ -480,6 +482,8 @@ more labels or uniformly stronger upgrades.
 | 39 | Scrollwheel scene zoom | Allow mouse scrollwheel zoom in both the live view and home base. | Audit existing scene camera controls, then implement bounded zoom over each scene with consistent wheel direction and smooth, usable steps. Preserve hero tracking, panning, object selection and building interactions. Wheel events over panels/menus retain normal scrolling; preserve browser Ctrl/Cmd+wheel zoom. Verify both scenes with a mouse wheel and trackpad, minimum/maximum zoom, scene transitions and existing touch controls. |
 
 | 40 | Gold growth rates and resource trends | Show readable indicators of how quickly Gold and other useful progression resources are growing. | Audit existing economy totals/history and choose useful resource indicators before adding UI. Show explicit units and measurement windows (for example Gold/hour); distinguish actual earnings, spending/net change and any forecast. Reconcile observed rates with authoritative Rust receipts over elapsed game time, including offline catch-up, transfers, multiple heroes and save/reload; transfers must not appear as new earnings. Handle short/no history without invented precision, keep indicators compact on phone/desktop, and put calculation details in optional help. |
+
+| 41 | Hero hover outline/glow | Give heroes an outline/glow on hover similar to the existing building hover effect, making their interactivity consistent. | Reuse the building hover treatment where practical and preserve the hero silhouette/readability. Highlight the actual hovered hero with multiple residents, clear the effect on pointer exit or scene changes, and preserve click-to-details and camera gestures. Verify day/night, zoom levels and renderer fallbacks; provide matching keyboard-focus feedback without relying on hover for touch access. |
 
 ### Guild, persistent heroes and deliberate rebirth — owner addition
 
