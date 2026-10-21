@@ -1,3 +1,4 @@
+import "../screens/camp.css";
 import { classIcon } from "./class-icons";
 import { heroRoster } from "./heroes";
 // Camp: lineage strip · set tabs · rule editor · forecast · loadouts · unlocks · send.
@@ -800,7 +801,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           tile({
             id: "packages",
             label: /* copy:button */ "tactics",
-            icon: "unlocks",
+            icon: "fights",
             glyph: "✦",
             fresh: freshSys("stances", "tactics", "tactic2", "temperament"),
             onclick: (e: Event) => {
@@ -909,7 +910,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         tile({
           id: "packages",
           label: /* copy:button */ "tactics",
-          icon: "unlocks",
+          icon: "fights",
           glyph: "✦",
           fresh: freshSys("stances", "tactics", "tactic2", "temperament"),
           onclick: (e: Event) => {

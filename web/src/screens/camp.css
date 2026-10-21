@@ -1,0 +1,53 @@
+/* Cut316: the camp's chrome on the kit — every console picture carries its word (D3); the phone top bar fits its stats. */
+@layer screens {
+  /* D3: the home console's pictures are labelled (they were names on hover only) */
+  .camp .console .cmd .home-icon-command .tl {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    clip-path: none;
+    max-width: 100%;
+    font: 600 var(--k-fs-1) / 1.1 var(--k-body);
+    letter-spacing: 0.02em;
+    color: var(--k-text);
+    display: block;
+    white-space: normal;
+    text-align: center;
+  }
+  .camp .console .cmd .home-icon-command .tl::first-letter {
+    text-transform: uppercase;
+  }
+  .camp .console .cmd .home-icon-command {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 2px;
+  }
+  .camp .console .cmd .home-icon-command > .ico {
+    width: 28px;
+    height: 28px;
+  }
+  /* the phone top bar: five stats and the menu in one line, nothing clipped */
+  @media (max-width: 480px) {
+    .topbar .stats {
+      gap: 2px;
+      min-width: 0;
+    }
+    .topbar .stats > .stat {
+      padding-inline: var(--k-1);
+      min-width: 0;
+      white-space: nowrap;
+    }
+  }
+}
+@layer screens {
+  /* a two-word label takes a second line: its picture steps down to keep the tile's height */
+  .camp .console .cmd .home-icon-command:has(.tl.two) > .ico {
+    width: 20px;
+    height: 20px;
+  }
+  .camp .console .cmd .home-icon-command .tl.two {
+    line-height: 1;
+  }
+}
