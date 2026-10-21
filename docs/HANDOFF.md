@@ -17,6 +17,11 @@ view… everything else is kind of ass… redo the ui from scratch if needed"). 
 - Review loop: `node tools/ui-capture.mjs --out DIR` (earned save, 1440 + 402, reports dark text),
   then `python3 tools/ui-diff.py A B --sheet X.png` and `tools/ui-sheet.py`.
 - Final routine client subset: 44/45 (`worker-first-act`, pre-existing). Not deployed. Remaining: Phase F, deleting the legacy CSS as screens are rebuilt.
+- Second wave (same day): Workers, Unlocks, pen rail, Settings legacy retired; queue items 39
+  (wheel zoom), 40 (Gold rates, Rust `rates`), 41 (hero hover glow) and 42 (portrait moods)
+  implemented with their own gates (`scene-zoom`, `gold-rate` + `tests_queue40`, `hero-mood`).
+  Native lib 1114 + 6 new pass; clippy clean. Open: `home-residents` first-Escape regression
+  from the wider hub (WORK_QUEUE has the evidence). Not deployed.
 
 ## Cut315 — Bank/Vat redesign and recovery adopted (2026-10-21)
 

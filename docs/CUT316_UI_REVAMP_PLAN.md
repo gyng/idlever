@@ -214,11 +214,23 @@ every width with whole-word labels.
 - `worker-first-act`, `runsui`, `hero-frame`, `bloodline-tabs` and `hero-upgrade-feedback` (all in
   the alpha.3 audit)
 
+**Second wave, 2026-10-21:**
+
+| Commit | What changed |
+| --- | --- |
+| ceb4a953 | Workers sheet (inset cards, gilt frame on the one to buy, names as names, roster chips, Orders as label · slabs), Unlocks slab-tile grid, docked panel titles like windows, desktop pen rail widens while open |
+| (this wave) | Settings legacy rules retired, worker names kept whole; phone windows end above the console again (the `layout` gem check had regressed); queue 39–42 (wheel zoom, Gold rates, hero hover, reactive portrait) |
+
+Ratchet now 1537 colours · 667 font sizes · 184 `html body` · 10 `!important`.
+
+Baselines on clean worktrees (4a9cf41b pre-Cut316 and the wave's HEAD): `layout` (9 of 56),
+`chrome-layout`, `cut30town` and `persistent-camp` fail identically before Cut316 and are not
+caused by it. `home-residents` regressed at 43206b6b (see WORK_QUEUE, open regression).
+
 **Still open:**
+- `home-residents` first-Escape regression (WORK_QUEUE).
 - Phase F: the legacy CSS itself. The ratchet stands at 1567 colours, 681 font sizes, 194
   `html body` and 10 `!important`. Delete rules as screens are rebuilt; do not add to the layer.
-- Works/worker cards (uppercase names in gold boxes).
-- The desktop rules-pen rail width.
 - Unlock card art.
 - A real-art pass on title and section plates (D5).
-- Queue items 39–42 on the kit.
+- Queue 42's real per-emotion art; queue 39's GPU/real-mouse pass.

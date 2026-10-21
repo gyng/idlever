@@ -5,8 +5,16 @@
 The owner's UI rework, on the hub and live view's grammar: see [CUT316](CUT316_UI_REVAMP_PLAN.md)
 §6.
 - Done: phases A–C and the first screen waves.
-- Next: Phase F, retiring the legacy CSS (ratchet in `tools/style-ratchet.json`); Works cards and
-  the rules-pen rail; then queue items 39–42 on the kit.
+- Done 2026-10-21 (second wave): Workers sheet, Unlocks shelf, docked panel titles, desktop pen
+  rail, Settings legacy rules retired; phone windows end above the console again (the gem stays
+  reachable); queue items 39–42 below implemented.
+- Open regression (since 43206b6b, the wider hub): `home-residents` part `reincarnating`, 1440 px,
+  mouse mode, hero 2: the first Escape after opening the hub never reaches the page (no keydown
+  at window capture, focus correct, sheet stack correct; a second Escape closes it; a raw CDP
+  Escape alone is also swallowed; forcing the old 46rem window width passes). Suspected Chrome /
+  Playwright drag-interception state after the click; not root-caused. Passes at 7c2de692.
+- Next: Phase F continues (ratchet in `tools/style-ratchet.json`); real per-emotion portrait art
+  (item 42); a GPU/real-mouse pass on wheel zoom (item 39).
 
 ## Cut315 — Bank/Vat and recovery adopted (2026-10-21)
 
@@ -19,13 +27,32 @@ queued.
 ## Parked by owner — 2026-10-21
 
 Owner queue addition, 2026-10-21: scrollwheel zoom in both the live view and
-home base (implementation item39). Queued for resume; work remains paused.
+home base (implementation item39). Implemented 2026-10-21: `web/src/render/zoom.ts`;
+town zooms toward the cursor up to 2.5× (clamped to the framed view, mouse drag-pans
+when zoomed), the live view around the tracked hero up to 2× the map scale; whole
+texel steps; Ctrl/Cmd+wheel, pinch and wheels over panels pass through; each scene
+mounts at 1×. Gate `web/tests/scene-zoom.mjs`. Open: real mouse/trackpad and GPU
+check, touch pinch, the live view's 2D fallback has no zoom.
 Owner UI queue addition: indicators for Gold growth rates and related resource
-trends (implementation item40). Queued only.
+trends (implementation item40). Implemented 2026-10-21 for Gold: Rust `rates`
+measures the purse on the town clock (`clock_s`) in ten-minute buckets for a day;
+Bank deposits/withdrawals are transfers and excluded, refunds lower spending, an
+absence's movements spread evenly over its span (whole and sliced absences agree;
+residents share the town's one rate). `Lineage.gold_rate` carries the last hour and
+day (absent under five minutes). The Gold sheet shows Earned/Spent/Net per hour and
+the day's net with their window; the desktop top bar shows net `/h`. Tests:
+`tests_queue40` (6), `web/tests/gold-rate.mjs`. Other resources' trends remain open.
 Owner UI queue addition: hero hover outline/glow matching building hover
-feedback (implementation item41). Queued only.
+feedback (implementation item41). Implemented 2026-10-21: home heroes register
+with the Cut272 silhouette glow as `resident:N`; hover lights the hero a click
+would choose, keyboard focus lights the focused hero, touch skips hover, lost GL
+keeps the old ring. Covered by `web/tests/scene-zoom.mjs` (part `hero`).
 Owner UI/art queue addition: live hero portrait with emotions/reactions in the
-live delve/watch UI (implementation item42). Queued only.
+live delve/watch UI (implementation item42). Prototype in place
+(2026-10-21): CSS reactions on the existing painted portrait (`data-mood`
+calm·attack·hurt·danger·heal·win·down, `web/src/ui/hero-mood.ts`,
+`web/src/screens/portrait.css`), driven from events at the replay cursor;
+gate `web/tests/hero-mood.mjs`. Real per-emotion portrait art remains open.
 
 Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
 isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
