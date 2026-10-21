@@ -17,6 +17,7 @@ import { rowLabel } from "./tokens";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillChip } from "./class-skills";
 import "../hero-hub.css";
+import "../screens/hero-hub.css";
 import { equipmentFigure, type EquipmentPhase } from "./hero-equipment-figure";
 
 export type HeroHubSection = "gear" | "skills" | "behaviour" | "companions" | "attributes";
@@ -727,25 +728,28 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
             /* copy:button */ "Run log",
           ),
         ),
-        h(
-          "div",
-          { class: "hero-hub-residents", "aria-label": /* copy:label */ "Heroes" },
-          ...(L.hero_slots ?? []).map((resident) =>
-            h(
-              "button",
-              {
-                class: "btn",
-                "data-hub-resident": resident.id,
-                "aria-pressed": String(resident.id === L.selected_bloodline),
-                disabled: !hooks.selectResident,
-                onclick: (e: Event) => {
-                  if (headerCurrent(e)) hooks.selectResident?.(resident.id, selected);
-                },
-              },
-              resident.hero_name,
+        // Cut316: the resident switch only when there is a choice
+        (L.hero_slots ?? []).length < 2
+          ? h("span", { hidden: true })
+          : h(
+              "div",
+              { class: "hero-hub-residents", "aria-label": /* copy:label */ "Heroes" },
+              ...(L.hero_slots ?? []).map((resident) =>
+                h(
+                  "button",
+                  {
+                    class: "btn",
+                    "data-hub-resident": resident.id,
+                    "aria-pressed": String(resident.id === L.selected_bloodline),
+                    disabled: !hooks.selectResident,
+                    onclick: (e: Event) => {
+                      if (headerCurrent(e)) hooks.selectResident?.(resident.id, selected);
+                    },
+                  },
+                  resident.hero_name,
+                ),
+              ),
             ),
-          ),
-        ),
       );
     }
     select(selected);

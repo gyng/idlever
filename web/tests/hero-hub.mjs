@@ -350,10 +350,11 @@ try {
     );
     checks++;
     if (width === 400 && scale === 1) {
+      // Cut316: a phone keeps all five tabs on one row (a contained scrolling strip)
       assert.equal(
-        new Set(result.tabs.map((tab) => Math.round(tab.x))).size,
-        2,
-        "normal400 uses two tab columns",
+        new Set(result.tabs.map((tab) => Math.round(tab.y))).size,
+        1,
+        "normal400 keeps the tabs on one row",
       );
       checks++;
     }
@@ -688,7 +689,16 @@ try {
       await page.evaluate((scale) => {
         document.documentElement.style.fontSize = `${16 * scale}px`;
       }, scale);
-      for (const width of new Set([15 * 16 * scale - 1, 15 * 16 * scale + 1, 419, 421])) {
+      // Cut316: the tabs are one row at every width — five equal columns from 34rem of hub, a scrolling strip
+      // (contained: the hub itself never scrolls sideways) below it; every label stays one whole-word line.
+      for (const width of new Set([
+        15 * 16 * scale - 1,
+        15 * 16 * scale + 1,
+        419,
+        421,
+        34 * 16 * scale - 1,
+        34 * 16 * scale + 1,
+      ])) {
         await host.evaluate((node, width) => {
           node.style.width = `${width}px`;
         }, width);
@@ -702,21 +712,23 @@ try {
             return {
               text: tab.textContent,
               x: r.x,
+              y: r.y,
               w: r.width,
               h: r.height,
               lines: range.getClientRects().length,
             };
           }),
         }));
-        const expected = width <= 15 * 16 * scale ? 1 : width <= 420 ? 2 : 3;
+        const expected = result.tabs.length;
+        const ys = new Set(result.tabs.map((tab) => Math.round(tab.y)));
+        assert.equal(ys.size, 1, "one row of tabs");
         assert.equal(new Set(result.tabs.map((tab) => Math.round(tab.x))).size, expected);
-        assert.ok(result.scrollWidth <= result.width + 1);
+        assert.ok(result.scrollWidth <= result.width + 1, "the hub never scrolls sideways");
         assert.ok(result.tabs.every((tab) => tab.w >= 43.9 && tab.h >= 43.9));
-        if (scale === 1 && width === 421)
-          assert.ok(
-            result.tabs.every((tab) => tab.lines === 1),
-            "normal desktop boundary retains whole-word labels",
-          );
+        assert.ok(
+          result.tabs.every((tab) => tab.lines === 1),
+          "every tab keeps a whole-word, one-line label",
+        );
         checks += 3;
         records.push({
           entry: entry.id,

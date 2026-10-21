@@ -1,0 +1,56 @@
+/* Cut316: the hub, compacted — portrait · identity · actions on one band; five tabs in one row; the content gets the height. */
+@layer screens {
+  .sheet-wrap.centered > .game-window:has(> .hero-hub) {
+    width: min(940px, 100%);
+  }
+  @container hero-navigation (min-width: 34rem) {
+    .hero-hub-header {
+      grid-template-columns: 72px minmax(0, 1fr) auto;
+      align-items: start;
+    }
+    .hero-hub-header > .hero-hub-secondary {
+      grid-column: auto;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .hero-hub-tabs {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  /* narrow: one scrolling row of tabs instead of three rows */
+  @container hero-navigation (max-width: 34rem) {
+    .hero-hub-tabs {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      grid-auto-columns: minmax(5.5rem, max-content);
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+      /* a scroll container's automatic minimum is 0: the hub's grid would squeeze the row to nothing */
+      min-block-size: calc(var(--k-target) + var(--k-2));
+    }
+    .hero-hub-header {
+      grid-template-columns: 56px minmax(0, 1fr);
+    }
+    .hero-hub-face {
+      width: 56px;
+      height: 68px;
+    }
+  }
+  .hero-hub .hero-hub-tabs button.hero-hub-tab {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+  .hero-hub-identity > h2 {
+    font: 600 var(--k-fs-5) / 1.05 var(--k-display);
+  }
+}
+@layer screens {
+  /* 200% text on a phone: the face takes its own row, as before (the identity column would be too narrow) */
+  @container hero-navigation (max-width: 8rem) {
+    .hero-hub-header {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}

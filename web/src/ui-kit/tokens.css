@@ -54,8 +54,8 @@
     --k-4: 1rem;
     --k-6: 1.5rem;
     --k-8: 2rem;
-    --k-target: 2.75rem; /* 44px minimum hit area */
-    --k-slab-h: 3rem; /* default slab height */
+    --k-target: 44px; /* minimum hit area — CSS px, so 200% text does not double it (Cut256) */
+    --k-slab-h: 48px; /* large slab height */
     --k-frame: 12px; /* painted frame thickness (windows) */
     --k-frame-sm: 8px; /* painted frame thickness (slabs, tiles) */
     --k-window-max: 46rem;

@@ -50,7 +50,6 @@
     color: var(--k-text);
     box-shadow: 0 18px 40px var(--k-shade);
     padding: var(--k-4) var(--k-4) var(--k-6);
-    width: min(var(--k-window-max), calc(100vw - var(--k-4)));
   }
   /* phone: a full-height sheet under the top bar, edge to edge */
   @media (max-width: 700px) {
@@ -157,7 +156,19 @@
      same slab with a lit state (aria-pressed / aria-selected / .on) — never a `name on` text chip. */
   :where(.game-window, .sheet, .panel[data-panel], .k-surface)
     :where(button, .k-slab):where(
-      :not(.stud, .sheet-x, .sheet-back, .x, .close-stud, .k-bare, .tile, .town-hit, .icon-only)
+      :not(
+        .stud,
+        .sheet-x,
+        .sheet-back,
+        .x,
+        .close-stud,
+        .k-bare,
+        .tile,
+        .town-hit,
+        .icon-only,
+        .grip,
+        .card > button
+      )
     ) {
     min-height: var(--k-target);
     min-width: var(--k-target);
