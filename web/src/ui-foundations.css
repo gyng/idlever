@@ -482,7 +482,6 @@
     min-width: 0;
     overflow-wrap: anywhere;
   }
-  html body .game-window[data-menu-purpose="settings"] .srow,
   html body .game-window[data-menu-purpose="town"] .bank-line {
     background: var(--ui-inset);
     color: var(--ui-text);
@@ -495,17 +494,6 @@
   /* Savings amounts sit on dark workshop inset, so use its existing gilt ink. */
   html body .game-window[data-material="forge"] .bank-sheet .bank-line > .gold {
     color: var(--gilt);
-  }
-  html body .game-window[data-menu-purpose="settings"] .srow {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--ui-space-2);
-    margin-block: var(--ui-space-2);
-    box-shadow: inset 4px 0 var(--gilt);
-  }
-  html body .game-window[data-menu-purpose="settings"] .srow > .label {
-    flex: 1 1 8rem;
   }
   html
     body

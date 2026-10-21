@@ -52,14 +52,15 @@
     box-shadow: 0 18px 40px var(--k-shade);
     padding: var(--k-4) var(--k-4) var(--k-6);
   }
-  /* phone: a full-height sheet under the top bar, edge to edge */
+  /* phone: a full-height sheet between the top bar and the console, edge to edge */
   @media (max-width: 700px) {
     .sheet-wrap.centered {
-      padding: calc(var(--window-top, 0px) + var(--k-1)) var(--k-1) var(--k-1);
+      padding: calc(var(--window-top, 0px) + var(--k-1)) var(--k-1)
+        calc(var(--window-bottom, 0px) + var(--k-1));
     }
     .sheet-wrap.centered > .game-window {
       width: 100%;
-      height: calc(100dvh - var(--window-top, 0px) - var(--k-2));
+      height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - var(--k-2));
       max-height: none;
       padding: var(--k-3) var(--k-3) var(--k-6);
     }

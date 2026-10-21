@@ -20,6 +20,7 @@
     font: 600 var(--k-fs-2) / 1.2 var(--k-body);
     text-transform: capitalize;
     letter-spacing: 0;
+    margin: 0;
   }
   .settings .srow.workers-row {
     display: block;
@@ -27,8 +28,13 @@
   }
   .settings .workers-chips {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 7rem), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
     gap: var(--k-2);
+  }
+  /* a worker's name stays whole (the window's overflow-wrap: anywhere split `reception|ist`) */
+  .settings .worker-switch {
+    overflow-wrap: normal;
+    white-space: nowrap;
   }
   .settings .worker-switch small {
     margin-left: var(--k-1);

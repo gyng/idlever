@@ -370,16 +370,6 @@
     min-width: 36px;
     min-height: 36px;
   }
-  .game-window .settings .srow {
-    padding: 8px 0;
-    border-bottom: 1px solid #99876755;
-    gap: 10px;
-  }
-  .game-window .settings .srow .label {
-    font: 600 14px/1.25 var(--control-font);
-    letter-spacing: 0.04em;
-    margin: 0;
-  }
   .sheet-body :is(.ta, .name-input) {
     font: 400 13px/1.4 var(--body-font);
     border: 3px solid #6d6d66;
@@ -446,12 +436,6 @@
     }
     .game-window .legacy-buy {
       max-width: 46%;
-    }
-    .game-window .settings .srow {
-      flex-wrap: wrap;
-    }
-    .game-window .settings .srow .label {
-      flex: 1 0 90px;
     }
   }
   /* Centering owns the full backdrop, replacing the old console-offset sheet. */
