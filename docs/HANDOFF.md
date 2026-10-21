@@ -1,4 +1,37 @@
-# Active backlog — v0.1.0-alpha.3 deployed, 2026-10-21
+# Parked — v0.1.0-alpha.3 milestone, 2026-10-21
+
+## Owner parking checkpoint — 2026-10-21
+
+Owner requested parking at a clean milestone and an updated handoff. Work is
+paused here: alpha.3 is published on both sites, and Cut314's isolated native
+shared-upgrade API has archived acceptance evidence. This is a bounded milestone,
+not completion of the client audit, progression requirements or fun acceptance.
+This checkpoint supersedes older active-goal, next-action and no-deploy notes
+below. Bank/vault/Vat redesign and recovery remain in scope on resume; parking
+does not return them to the held backlog.
+
+Before this documentation update, main and origin/main both pointed to
+78c13834 and the tracked tree was clean. The deployed product source remains
+510bd647c137447ca19c7ffcb9664c1dd340aeec, tag v0.1.0-alpha.3. Subsequent receipt
+and parking commits change documentation/evidence only; no redeployment is
+needed. Historical dirty worktrees and unrelated untracked files are preserved.
+
+Both offline evidence verifiers passed again at parking:
+`python3 docs/evidence/deploy-20261021/verify.py` and
+`python3 docs/evidence/cut314/verify.py`. They verify the retained publication
+and prototype evidence; they do not rerun browser acceptance or full tuning.
+The current client audit remains 144/175 passing, 31 failing. Supported local
+Node is v22.18.0; avoid large disposable builds while /tmp space is constrained.
+
+Resume with `docs/evidence/deploy-20261021/client-final-summary.json`: triage
+the 31 failures against current behavior, separating stale references/selectors
+from actual defects without weakening checks or silently replacing evidence.
+Then continue isolated Bank/Vat wire/UI integration: bind quotes to payer and
+level, confirm Gold/Savings funding explicitly, and validate resident/browser
+journeys before progression acceptance. Worker-away benefit, pen D33 advantage
+and coordinated recovery alternatives remain open. Cut312 is terminal
+INCONCLUSIVE: do not restart, extend or adopt that candidate. Do not restore the
+rejected historical Bank/Vat rules. See WORK_QUEUE for the remaining work.
 
 ## Owner deployment checkpoint — 2026-10-21
 

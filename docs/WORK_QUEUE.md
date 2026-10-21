@@ -1,5 +1,19 @@
 # Content and refinement queue — 2026-10-13
 
+## Parked by owner — 2026-10-21
+
+Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
+isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
+supersedes historical active-goal/next-action notes below. Both evidence
+verifiers passed again. This parking update changes documentation only.
+
+First on resume: triage the current client audit's 31 failures using
+`docs/evidence/deploy-20261021/client-final-summary.json`, then continue isolated
+shared Bank/Vat wire/UI with payer/level-bound quotes and explicit Gold/Savings
+confirmation. Progression, worker/pen, recovery and independent fun acceptance
+remain open. Bank/vault/Vat and recovery stay in scope, not held. Cut312 remains
+terminal INCONCLUSIVE with no restart, extension or adoption.
+
 ## Publication checkpoint — 2026-10-21
 
 Owner requested completed work merged/pushed/deployed. Source510bd647 is pushed
