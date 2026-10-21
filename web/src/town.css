@@ -472,6 +472,23 @@
     outline: 2px solid #e3c183;
     outline-offset: 2px;
   }
+  /* queue 41: where the view draws his own silhouette outline (render/town-glow.ts), the ring stands down; it stays the fallback */
+  .town-home-hero.glow-sprite:hover,
+  .town-home-hero.glow-sprite.kw-open {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .town-home-hero.glow-sprite:focus-visible {
+    outline: none;
+  }
+  /* queue 39: a zoomed scene drags on its open ground */
+  .town[data-zoom]:not([data-zoom="1"]) > canvas {
+    cursor: grab;
+  }
+  .town[data-panning] > canvas {
+    cursor: grabbing;
+  }
   .town-home-hero:active {
     background: #e3c18333;
   }

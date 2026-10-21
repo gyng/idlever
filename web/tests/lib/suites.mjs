@@ -66,6 +66,7 @@ export const SMOKE_AREAS = Object.freeze({
     "worker-purchases",
     "worker-first-act",
     "building-upgrades",
+    "gold-rate",
   ],
   "multiple heroes": ["bloodline-founding", "bloodline-training"],
   "packages, pen and forecasts": [

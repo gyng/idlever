@@ -17,6 +17,8 @@ import { h } from "./dom";
 import { openWindow as openSheet } from "./sheet";
 import { goldWords } from "./gold-words";
 import { exitKind } from "./exit-kind";
+import { stats } from "../ui-kit/kit";
+import { signed, windowWord } from "./gold-rate";
 
 /** The ledger word of the exit `x` ended with: read off the line's own lead (`returned $0 · … · stalled` is a return that
  *  kept nothing — its keep share alone would say `died`); a timed-out return's ledger line is `lost thread D3` or
@@ -98,6 +100,48 @@ export function openGoldSheet(app: App, only?: ExitLine, newer: ExitLine[] = [])
         ?.why.replace(/_/g, " ")
     : undefined;
   openSheet(() => {
+    // queue 40: how fast the purse grows — per hour of the town clock, with the window it covers; the day's net beside it
+    const rates = (): HTMLElement | "" => {
+      const r = L.gold_rate,
+        w = r?.hour ?? r?.day;
+      if (!w) return "";
+      const el = stats(
+        [
+          {
+            key: "earned",
+            label: /* copy:label */ "Earned / h",
+            value: signed(w.earned_h),
+            gold: true,
+            note: windowWord(w),
+          },
+          {
+            key: "spent",
+            label: /* copy:label */ "Spent / h",
+            value: signed(-w.spent_h),
+            note: windowWord(w),
+          },
+          {
+            key: "net",
+            label: /* copy:label */ "Net / h",
+            value: signed(w.net_h),
+            note: windowWord(w),
+          },
+          ...(r?.day && r.hour
+            ? [
+                {
+                  key: "day",
+                  label: /* copy:label */ "Net · day",
+                  value: signed(r.day.net),
+                  note: windowWord(r.day),
+                },
+              ]
+            : []),
+        ],
+        "gold-rates",
+      );
+      el.title = /* copy:tooltip */ "town clock · Bank excluded · away time averaged";
+      return el;
+    };
     const fmt = (d: number): string => `${d < 0 ? "−" : d > 0 ? "+" : ""}$${Math.abs(d)}`;
     const list = h("div", { class: "gold-lines" });
     const body = h("div", { class: "sheet-body gold-sheet" });
@@ -129,6 +173,7 @@ export function openGoldSheet(app: App, only?: ExitLine, newer: ExitLine[] = [])
           h("span", { class: "num gold" }, `$${L.gold}`),
           ...chips,
         ),
+        filtered && range ? "" : rates(),
         list,
       );
       // QA e75ec29 (Q: "the default view sums to the balance it heads" — the run's lines alone came to −$30 under `$10`): the run's view

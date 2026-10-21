@@ -297,7 +297,9 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
     game.offline = false;
     // Cut 29 §1: the night's mark — ◆1 for each day this absence covered whose sends came home (a
     // bank or a return), each day once.
+    let clock_before = game.lineage.clock_s;
     game.lineage.clock_s += elapsed_s;
+    crate::rates::commit(&mut game.lineage, clock_before);
     // Cut 30 §5: the board at the return shows the day's quest (a quest kept yesterday gives way to
     // today's draw, from the record the absence reached).
     game.lineage.town.today = (game.lineage.clock_s / crate::engine::DAY_S) as u32;
@@ -956,6 +958,10 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
     game.advance_rem.1 = ticks % TICKS_PER_SECOND;
     game.lineage.clock_s += ticks / TICKS_PER_SECOND;
     let clock = game.lineage.clock_s;
+    // (inside a resident town's absence the absence's end commits its whole span: whole and sliced absences agree)
+    if game.offline_absence.is_none() {
+        crate::rates::commit(&mut game.lineage, clock0);
+    }
     // Close income and expire chosen oaths at the committed clock boundary,
     // not at whichever transport call happens to follow it.
     crate::oath::new_day(&mut game.lineage,(clock / crate::engine::DAY_S) as u32);

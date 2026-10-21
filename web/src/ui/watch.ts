@@ -147,6 +147,7 @@ import { classInteractionText } from "./class-interaction";
 import { openDiscovery } from "./legendary-discovery";
 import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
+import { bindWheelZoom } from "../render/zoom";
 import { verbsAt } from "../engine/classes";
 import { openWindow } from "./sheet";
 import { goldFindClass, itemIcon, itemName } from "./items"; // run-clear
@@ -177,6 +178,8 @@ import {
   type Prompt,
 } from "./decide"; // Cut 270: live decisions, the boss chest, flags, the milestone log
 import { reducedMotion } from "../render/quality";
+import { HeroMood, moodOf } from "./hero-mood"; // queue 42: the portrait reacts at the cursor
+import "../screens/portrait.css";
 // RUNS_UI: the town tile's first-watches caption
 
 type Tier = "bank" | "return" | "death";
@@ -548,6 +551,11 @@ export function renderWatch(app: App): Mounted {
     hp: 1,
     label: h("span", { class: "watch-vitals" }, hpText, rationEl, gun.el),
   });
+  // Queue 42: the portrait's mood — from the events the picture has played (hero-mood.ts), never one ahead of it
+  const moods = new HeroMood();
+  face.el.classList.add("hero-mood");
+  face.el.dataset.mood = "calm";
+  let moodCursor = -Infinity;
   let playedGun: GunSnap | null = null;
   function paintGun(): void {
     if (viewer?.gun) playedGun = viewer.gun();
@@ -1675,6 +1683,8 @@ export function renderWatch(app: App): Mounted {
     });
     playedGun = s.hero.gun ?? null;
     paintGun();
+    // queue 42: the well is the watched hero's (his snapshot's class; the look is the lineage's while it is his class)
+    face.paint(s.hero.class, s.hero.class === app.lineage.class ? app.lineage.look : "");
     hud.hp = s.hero.hp;
     hud.maxHp = s.hero.max_hp;
     hud.depth = s.depth;
@@ -2400,6 +2410,10 @@ export function renderWatch(app: App): Mounted {
         drainOn = null; // the stairs, the end, a blow: the stretch is over
       else if (drainOn && (ev.k === "hurt" || ev.k === "max_hp") && ev.id === heroId)
         drainEvs.add(ev);
+      {
+        const m = moodOf(ev, heroId, ev.k === "hurt" && isDrain(ev));
+        if (m) moods.note(ev.t, m);
+      }
       if (
         ev.k === "telegraph" ||
         ev.k === "attack" ||
@@ -3628,6 +3642,27 @@ export function renderWatch(app: App): Mounted {
     }
     viewer.setKeepOut(rects);
   }
+  /** Queue 42: the portrait's mood at `cursor` (the tick the HUD was released to; a frozen picture keeps its cursor). */
+  function paintMood(cursor: number): void {
+    const frozen = !Number.isFinite(cursor) || paused || hidden;
+    if (Number.isFinite(cursor)) moodCursor = cursor;
+    if (!Number.isFinite(moodCursor)) return;
+    const low = hud.hp > 0 && hud.maxHp > 0 && hud.hp / hud.maxHp < 0.3;
+    const st = moods.at(moodCursor, low, performance.now(), frozen);
+    const fe = face.el;
+    fe.dataset.paused = paused || hidden ? "1" : "0";
+    if (fe.dataset.mood === st.mood && fe.dataset.moodT === String(st.t)) return;
+    if (fe.dataset.mood !== st.mood)
+      dev("__moodLog", {
+        mood: st.mood,
+        t: st.t,
+        cursor: moodCursor,
+        tick: viewerTick(),
+        ms: Math.round(performance.now()),
+      });
+    fe.dataset.mood = st.mood;
+    fe.dataset.moodT = String(st.t);
+  }
   function pump(): void {
     if (done || disposed || !viewer || !snap) return;
     // blind 7f7fc2b (B: `Hand control · awaits order` with the run over — arrows and `descend` inert): once the run is over or the exit
@@ -3639,6 +3674,7 @@ export function renderWatch(app: App): Mounted {
     // take control: no fold, no jump, no travel, no world clock — the engine steps when the hero acts (the core waits for him)
     if (snap.manual && !held && !exitTier) {
       manualPump();
+      paintMood(viewerTick());
       return;
     }
     paintWatchStatus();
@@ -3702,6 +3738,11 @@ export function renderWatch(app: App): Mounted {
     worldT = Math.max(worldT, now);
     paintScrub(now);
     if (!still) release(cardWait ? Math.min(now, fightFrom) : now); // Cut 10 §1: a fight waiting on the card keeps its HUD at the first frame
+    // queue 42: the mood reads what was released — the card's first frame, a held beat's stop at most; a frozen picture keeps it
+    if (!still) {
+      const upTo = cardWait ? Math.min(now, fightFrom) : now;
+      paintMood(beatHeld() && heldBeat && !heldBeat.exit ? Math.min(upTo, beatStop()) : upTo);
+    } else paintMood(NaN);
     if (still) {
       /* the picture is frozen: straight to the world's step below */
     } else if (goLiveOwed && !inflight && (worldT - engineTick <= LEAD_FAST || held)) {
@@ -5221,6 +5262,16 @@ export function renderWatch(app: App): Mounted {
   // take control: the map's taps and clicks drive him while in hand (control.ts); otherwise a tap reads the last reason
   ticker.onclick = whyTap;
   ctl.bindMap(canvas, () => viewer);
+  // queue 39: the wheel over the picture zooms it (around the tracked hero); a wheel over the HUD, a panel or the page scrolls as ever
+  const offWheelZoom = bindWheelZoom(canvas, {
+    accept: (e) => e.target === canvas,
+    can: (dir) => !!viewer?.canZoom?.(dir),
+    step: (dir) => {
+      const ok = !!viewer?.zoom?.(dir);
+      canvas.dataset.zoom = String(viewer?.zoomed?.() ?? 1);
+      return ok;
+    },
+  });
   canvas.onclick = (): void => {
     if (!ctl.on()) whyTap();
   };
@@ -5598,6 +5649,7 @@ export function renderWatch(app: App): Mounted {
       dockFontObserver.disconnect();
       dockMedia.removeEventListener("change", placeDock);
       ctl.dispose();
+      offWheelZoom();
       depthMap.dispose();
       depthMap.el.removeEventListener("toggle", mapKeepOut);
       audio.bed(null);

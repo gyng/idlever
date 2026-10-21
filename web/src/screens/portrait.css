@@ -1,0 +1,139 @@
+/* Queue 42: the watched hero's portrait reacts to what the replay has played (hero-mood.ts sets `data-mood`).
+   One-shot reactions (hurt, attack) run once per mood; the watch holds every mood at least 450 ms, so nothing strobes.
+   Reduced motion: no shake or nudge, the colour change only. A paused picture pauses the reaction. */
+@layer screens {
+  .portrait.hero-mood .face,
+  .portrait.hero-mood .ring,
+  .portrait.hero-mood .rim {
+    transition:
+      filter 180ms ease-out,
+      box-shadow 180ms ease-out;
+  }
+  .portrait.hero-mood[data-paused="1"] .face,
+  .portrait.hero-mood[data-paused="1"] .ring,
+  .portrait.hero-mood[data-paused="1"] .rim {
+    animation-play-state: paused;
+  }
+
+  /* the well's stand-in while the face's art loads: a head and shoulders in the iron's moonlight */
+  .portrait.hero-mood[data-art="wait"] .face::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: var(--k-umbra);
+    background-image:
+      radial-gradient(circle at 50% 38%, var(--k-moon) 0 17%, transparent 18%),
+      radial-gradient(ellipse 46% 34% at 50% 100%, var(--k-moon) 0 96%, transparent 100%);
+  }
+
+  /* hurt: a red flash on the face and a small shake */
+  .portrait.hero-mood[data-mood="hurt"] .face {
+    box-shadow:
+      inset 0 0 14px var(--k-ink),
+      inset 0 0 0 999px color-mix(in srgb, var(--k-blood) 38%, transparent);
+    animation: hero-mood-shake 260ms ease-out 1;
+  }
+  .portrait.hero-mood[data-mood="hurt"] .rim {
+    box-shadow:
+      inset 0 0 0 1px var(--k-danger),
+      0 0 10px var(--k-blood);
+  }
+
+  /* attack: a forward nudge, an ember edge */
+  .portrait.hero-mood[data-mood="attack"] .face {
+    filter: brightness(1.12) contrast(1.05);
+    animation: hero-mood-lunge 240ms ease-out 1;
+  }
+  .portrait.hero-mood[data-mood="attack"] .rim {
+    box-shadow:
+      inset 0 0 0 1px var(--k-ember),
+      0 0 8px color-mix(in srgb, var(--k-ember) 70%, transparent);
+  }
+
+  /* heal: a green glow */
+  .portrait.hero-mood[data-mood="heal"] .face {
+    filter: brightness(1.1) saturate(1.1);
+    box-shadow:
+      inset 0 0 14px var(--k-ink),
+      inset 0 0 0 999px color-mix(in srgb, var(--k-good) 22%, transparent);
+  }
+  .portrait.hero-mood[data-mood="heal"] .rim {
+    box-shadow:
+      inset 0 0 0 1px var(--k-good),
+      0 0 12px var(--k-good);
+  }
+
+  /* danger (hp low, nothing newer): the hp ring pulses slowly */
+  .portrait.hero-mood[data-mood="danger"] .ring {
+    animation: hero-mood-pulse 1100ms ease-in-out infinite alternate;
+  }
+  .portrait.hero-mood[data-mood="danger"] .rim {
+    box-shadow:
+      inset 0 0 0 1px var(--k-danger),
+      0 0 8px color-mix(in srgb, var(--k-danger) 60%, transparent);
+  }
+
+  /* win (banked or home alive): a gold glow */
+  .portrait.hero-mood[data-mood="win"] .face {
+    filter: brightness(1.1) sepia(0.2) saturate(1.15);
+  }
+  .portrait.hero-mood[data-mood="win"] .rim {
+    box-shadow:
+      inset 0 0 0 1px var(--k-gold),
+      0 0 14px var(--k-gilt);
+  }
+
+  /* down (died): grey, dimmed */
+  .portrait.hero-mood[data-mood="down"] .face {
+    filter: grayscale(1) brightness(0.62) contrast(1.05);
+  }
+  .portrait.hero-mood[data-mood="down"] .ring {
+    opacity: 0.45;
+  }
+
+  @keyframes hero-mood-shake {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-2px, 1px);
+    }
+    50% {
+      transform: translate(2px, -1px);
+    }
+    75% {
+      transform: translate(-1px, 0);
+    }
+  }
+  @keyframes hero-mood-lunge {
+    0%,
+    100% {
+      transform: none;
+    }
+    40% {
+      transform: translateY(-2px) scale(1.06);
+    }
+  }
+  @keyframes hero-mood-pulse {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portrait.hero-mood[data-mood] .face,
+    .portrait.hero-mood[data-mood] .ring {
+      animation: none;
+    }
+    .portrait.hero-mood[data-mood] .face,
+    .portrait.hero-mood[data-mood] .ring,
+    .portrait.hero-mood[data-mood] .rim {
+      transition: none;
+    }
+  }
+}

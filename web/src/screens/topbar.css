@@ -1,0 +1,17 @@
+/* Queue 40: the Gold stat's growth rate — a quiet signed figure after the purse on desktop; phones keep the bar's numbers only. */
+@layer screens {
+  .topbar .stat.gold .gold-rate {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .topbar .stat.gold .gold-rate {
+      display: inline;
+      margin-left: var(--k-1);
+      font: 600 var(--k-fs-1) / 1 var(--k-num);
+      color: var(--k-muted);
+    }
+    .topbar .stat.gold .gold-rate:not([data-net-h^="-"]):not([data-net-h="0"]) {
+      color: var(--k-good);
+    }
+  }
+}

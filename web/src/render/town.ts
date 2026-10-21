@@ -15,6 +15,7 @@ import type { Lineage, ReturnReport } from "../engine/types";
 import { paintTownTerrain, terrainMaterialVersion, townGrassRoots } from "./town-terrain";
 import { effectsLevel } from "./fxpref";
 import { GlowLayer, type Glow } from "./town-glow";
+import { nextZoomLevel, zoomScale } from "./zoom";
 import { paintHomeService, isHomeServiceArt } from "./home-service-art";
 import {
   volumeKind,
@@ -1295,6 +1296,8 @@ export type TownStats = {
   staked?: string;
   markers: string[];
   view: [number, number, number, number];
+  /** queue 39: the wheel zoom's scale over the framed default (1: the default) */
+  zoom: number;
   chest?: string;
   /** Cut 228: the Forge's present work as drawn (null: the smith idles, no sparks) */
   forge: {
@@ -1351,6 +1354,14 @@ export type TownView = {
   haulAt(to: "house" | "bank"): Pt;
   /** Cut272: whether this id's highlight is drawn on its sprite (GL live, the sprite standing); false: a CSS outline stands in */
   glowsSprite(id: string): boolean;
+  /** queue 39: one wheel-zoom step in (+1) or out (-1), the texel under the client point held still; false at a bound */
+  zoom(dir: 1 | -1, clientX?: number, clientY?: number): boolean;
+  /** queue 39: whether a zoom step in `dir` is possible now */
+  canZoom(dir: 1 | -1): boolean;
+  /** queue 39: drag the zoomed view by CSS px (held inside the default view); false when not zoomed */
+  pan(dx: number, dy: number): boolean;
+  /** queue 39: the shown scale over the framed default (1 = the default view) */
+  zoomed(): number;
   dispose(): void;
 };
 const IDLE_MS = 10_000,
@@ -2871,6 +2882,8 @@ export function createTownView(host: HTMLElement): TownView {
       if (F.n > previousQuads) {
         if (!mappedHero) F.quads[F.n - 1]!.relief = 0;
         if (import.meta.env.DEV) F.quads[F.n - 1]!.actorId = w.id;
+        // queue 41: a resident hero's quad lights by his own silhouette on hover/focus, as a building's does
+        if (w.id.startsWith("resident:")) tagGlow(w.id, previousQuads);
       }
       if (!w.pet) lantern(x, y - (step ? 1 : 0), flip, night, fade);
       if (w.carry) {
@@ -3017,6 +3030,10 @@ export function createTownView(host: HTMLElement): TownView {
   const dusted = new Set<string>();
 
   // -- the camera: the stage's box fits the view, k = whole device px per texel --
+  // queue 39: the wheel zoom (a ZOOM_LEVELS index; 0 = the framed default) and its view's centre (texels; null: the default's)
+  let zoomLevel = 0,
+    zoomBase = 1,
+    zoomCenter: Pt | null = null;
   function fit(): void {
     const s = state;
     if (!s) return;
@@ -3061,16 +3078,31 @@ export function createTownView(host: HTMLElement): TownView {
     const up = Math.ceil(kf),
       fitsUp = W / up >= x1 - x0 - 2 * M - 4 && H / up >= y1 - y0 - 2 * M - 8;
     // (a low-density screen — fewer than 2 device px a texel — scales by a fraction instead: the town at k = 1 was a postage stamp)
-    const k =
+    const k1 =
       up > kf && fitsUp ? up : kf < 2 ? Math.max(1, Math.floor(kf * 8) / 8) : Math.floor(kf);
-    const w = Math.ceil(W / k),
-      h = Math.ceil(H / k);
+    const w1 = Math.ceil(W / k1),
+      h1 = Math.ceil(H / k1);
     let cx = (x0 + x1) / 2,
       cy = (y0 + y1) / 2;
-    cx = Math.max(w / 2, Math.min(MAP_W * TILE - w / 2, cx));
-    cy = Math.max(h / 2, Math.min(MAP_H * TILE - h / 2, cy));
-    const nx0 = Math.round(cx - w / 2),
-      ny0 = Math.round(cy - h / 2);
+    cx = Math.max(w1 / 2, Math.min(MAP_W * TILE - w1 / 2, cx));
+    cy = Math.max(h1 / 2, Math.min(MAP_H * TILE - h1 / 2, cy));
+    let nx0 = Math.round(cx - w1 / 2),
+      ny0 = Math.round(cy - h1 / 2);
+    let k = k1,
+      w = w1,
+      h = h1;
+    // queue 39: a wheel zoom over the framed default — a whole-px scale ≤ 2.5×, its view held inside the default's (never off the scene)
+    zoomBase = k1;
+    if (zoomLevel > 0) {
+      k = zoomScale(k1, zoomLevel);
+      w = Math.ceil(W / k);
+      h = Math.ceil(H / k);
+      const zc = (zoomCenter ??= { x: nx0 + w1 / 2, y: ny0 + h1 / 2 });
+      zc.x = Math.max(nx0 + w / 2, Math.min(nx0 + w1 - w / 2, zc.x));
+      zc.y = Math.max(ny0 + h / 2, Math.min(ny0 + h1 - h / 2, zc.y));
+      nx0 = Math.max(nx0, Math.min(nx0 + w1 - w, Math.round(zc.x - w / 2)));
+      ny0 = Math.max(ny0, Math.min(ny0 + h1 - h, Math.round(zc.y - h / 2)));
+    }
     if (
       nx0 !== F.x0 ||
       ny0 !== F.y0 ||
@@ -3482,6 +3514,7 @@ export function createTownView(host: HTMLElement): TownView {
         staked: s?.staked?.id,
         markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [],
         view: [F.x0, F.y0, F.w, F.h],
+        zoom: zoomLevel ? F.k / zoomBase : 1,
         chest: s?.chest?.state,
         forge: forging()
           ? {
@@ -3582,7 +3615,51 @@ export function createTownView(host: HTMLElement): TownView {
     },
     glowsSprite(id) {
       if (!gl || glLost || !state || id === "staked") return false;
+      // queue 41: a resident hero's own silhouette (his `resident:N` quad)
+      if (id.startsWith("resident:")) return actorRect(Number(id.slice(9))) !== null;
       return this.rectOf(id as Parameters<TownView["rectOf"]>[0]) !== null;
+    },
+    zoom(dir, clientX, clientY) {
+      if (!state) return false;
+      const next = nextZoomLevel((l) => zoomScale(zoomBase, l), zoomLevel, dir);
+      if (next === null) return false;
+      const dpr = window.devicePixelRatio || 1;
+      const r = el.getBoundingClientRect();
+      // the texel under the pointer (the view's centre without one) stays under it
+      const px = clientX === undefined ? r.width / 2 : clientX - r.left,
+        py = clientY === undefined ? r.height / 2 : clientY - r.top;
+      const wx = F.x0 + (px * dpr) / F.k,
+        wy = F.y0 + (py * dpr) / F.k;
+      zoomLevel = next;
+      if (next === 0) zoomCenter = null;
+      else {
+        const k = zoomScale(zoomBase, next);
+        const w = Math.ceil(F.W / k),
+          h = Math.ceil(F.H / k);
+        zoomCenter = { x: wx - (px * dpr) / k + w / 2, y: wy - (py * dpr) / k + h / 2 };
+      }
+      fit();
+      sizeDirty = true;
+      layoutDirty = true;
+      poke();
+      return true;
+    },
+    canZoom(dir) {
+      return !!state && nextZoomLevel((l) => zoomScale(zoomBase, l), zoomLevel, dir) !== null;
+    },
+    pan(dx, dy) {
+      if (!zoomLevel || !zoomCenter) return false;
+      const dpr = window.devicePixelRatio || 1;
+      zoomCenter.x -= (dx * dpr) / F.k;
+      zoomCenter.y -= (dy * dpr) / F.k;
+      fit();
+      sizeDirty = true;
+      layoutDirty = true;
+      poke();
+      return true;
+    },
+    zoomed() {
+      return zoomLevel ? F.k / zoomBase : 1;
     },
     dispose() {
       disposed = true;

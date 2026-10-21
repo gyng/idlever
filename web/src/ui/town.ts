@@ -27,6 +27,7 @@ import { openWindow as openSheet, closeAllSheets } from "./sheet";
 import { tile, paintFace } from "./frame";
 import { audio } from "../audio";
 import { effectsLevel } from "../render/fxpref";
+import { bindWheelZoom } from "../render/zoom";
 import { createGoldTransferFx, goldTransfers, visibleGoldPoint } from "./gold-transfers";
 import { questShown } from "./quest";
 import {
@@ -346,6 +347,47 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   );
   let arrivalTimer = 0;
   const view = createTownView(el);
+  // queue 39: the wheel zooms the scene (its canvas, a building's or a hero's target), never a panel, pill or tooltip over it
+  const sceneTarget = (t: EventTarget | null): boolean => {
+    const n = t as HTMLElement | null;
+    if (!n || !el.contains(n)) return false;
+    if (n === el || (n.tagName === "CANVAS" && n.parentElement === el)) return true;
+    return !!n.closest?.(".town-hit, [data-home-hero]");
+  };
+  const offWheel = bindWheelZoom(el, {
+    accept: (e) => sceneTarget(e.target),
+    can: (dir) => view.canZoom(dir),
+    step: (dir, x, y) => {
+      const ok = view.zoom(dir, x, y);
+      el.dataset.zoom = String(view.zoomed());
+      return ok;
+    },
+  });
+  // queue 39: a zoomed scene drags with the mouse on its open ground (the targets keep their clicks; touch keeps its taps)
+  let drag: { id: number; x: number; y: number } | null = null;
+  const onDragStart = (e: PointerEvent): void => {
+    const t = e.target as HTMLElement;
+    if (e.pointerType !== "mouse" || e.button !== 0 || view.zoomed() <= 1) return;
+    if (t.tagName !== "CANVAS" || t.parentElement !== el) return;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY };
+    t.setPointerCapture?.(e.pointerId);
+    el.dataset.panning = "1";
+  };
+  const onDragMove = (e: PointerEvent): void => {
+    if (!drag || e.pointerId !== drag.id) return;
+    view.pan(e.clientX - drag.x, e.clientY - drag.y);
+    drag.x = e.clientX;
+    drag.y = e.clientY;
+  };
+  const onDragEnd = (e: PointerEvent): void => {
+    if (!drag || e.pointerId !== drag.id) return;
+    drag = null;
+    delete el.dataset.panning;
+  };
+  el.addEventListener("pointerdown", onDragStart);
+  el.addEventListener("pointermove", onDragMove);
+  el.addEventListener("pointerup", onDragEnd);
+  el.addEventListener("pointercancel", onDragEnd);
   let chestOpenUntil = 0,
     chestTimer = 0;
   const coins = createGoldTransferFx();
@@ -508,6 +550,9 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     if (key === actorKey) return;
     actorKey = key;
     if (actorHits.querySelector(".kw-open") || delveFaces.querySelector(".kw-open")) closeTip();
+    // queue 41: the rebuilt buttons drop the old ones' lit heroes (a hover or focus never outlives its button)
+    hoverActor(null);
+    for (const id of actorButtons.keys()) view.highlight(`resident:${id}`, "focus", false);
     actorButtons.clear();
     actorHits.replaceChildren();
     delveFaces.replaceChildren();
@@ -522,27 +567,35 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         "aria-label": `${name} · ${away ? "Watch delve" : "Hero details"}`,
         title: `${name} · ${heroPresence(slot).text}`,
         onclick: (e: Event) => {
-          let id = slot.id;
           const pointer = e as MouseEvent;
-          if (!away && pointer.detail > 0) {
-            const townBox = el.getBoundingClientRect();
-            let distance = Infinity;
-            for (const candidate of actorButtons.keys()) {
-              const r = view.actorRect(candidate);
-              if (!r) continue;
-              const d = Math.hypot(
-                pointer.clientX - townBox.left - r.x - r.w / 2,
-                pointer.clientY - townBox.top - r.y - r.h / 2,
-              );
-              if (d < distance) {
-                distance = d;
-                id = candidate;
-              }
-            }
-          }
+          const id =
+            !away && pointer.detail > 0
+              ? nearestActor(pointer.clientX, pointer.clientY, slot.id)
+              : slot.id;
           void chooseActor(id, away, e.currentTarget as HTMLElement);
         },
       });
+      if (!away) {
+        // queue 41: hover lights the hero the click would choose (the nearest drawn one, where targets overlap); keyboard focus
+        // lights the button's own hero. Touch taps go straight to his details, no hover needed.
+        const onHover = (e: PointerEvent): void => {
+          if (e.pointerType === "touch") return;
+          hoverActor(nearestActor(e.clientX, e.clientY, slot.id));
+        };
+        button.addEventListener("pointerenter", onHover);
+        button.addEventListener("pointermove", onHover);
+        button.addEventListener("pointerleave", (e: PointerEvent) => {
+          const to = e.relatedTarget as HTMLElement | null;
+          if (!to?.closest?.("[data-home-hero]")) hoverActor(null);
+        });
+        button.addEventListener("focus", () => {
+          if (button.matches(":focus-visible"))
+            view.highlight(`resident:${slot.id}`, "focus", true);
+        });
+        button.addEventListener("blur", () =>
+          view.highlight(`resident:${slot.id}`, "focus", false),
+        );
+      }
       detailHost(button, () => {
         const current = app.lineage.hero_slots?.find((s) => s.id === slot.id);
         // Cut 228: why he stands at the anvil — the step Rust says the Forge just made for him
@@ -577,6 +630,34 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     }
     layoutActors();
   }
+  /** the drawn home hero nearest a client point (the one a click there chooses); `fallback` when none is drawn */
+  function nearestActor(clientX: number, clientY: number, fallback: number): number {
+    const townBox = el.getBoundingClientRect();
+    let id = fallback,
+      distance = Infinity;
+    for (const candidate of actorButtons.keys()) {
+      const r = view.actorRect(candidate);
+      if (!r) continue;
+      const d = Math.hypot(
+        clientX - townBox.left - r.x - r.w / 2,
+        clientY - townBox.top - r.y - r.h / 2,
+      );
+      if (d < distance) {
+        distance = d;
+        id = candidate;
+      }
+    }
+    return id;
+  }
+  // queue 41: the one home hero lit by the pointer (his own silhouette, as a building's), null: none
+  let hoveredActor: number | null = null;
+  function hoverActor(id: number | null): void {
+    if (id === hoveredActor) return;
+    if (hoveredActor !== null) view.highlight(`resident:${hoveredActor}`, "hover", false);
+    hoveredActor = id;
+    if (id !== null) view.highlight(`resident:${id}`, "hover", true);
+    el.dataset.heroHover = id === null ? "" : String(id);
+  }
   function layoutActors(): void {
     const targets = new Map(view.actorTargets().map((target) => [target.id, target]));
     let reservationsChanged = false;
@@ -609,7 +690,10 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         width: `${r.w}px`,
         height: `${r.h}px`,
       });
+      // queue 41: his own outline is the hover/focus cue where the view draws it; the ring stays the fallback
+      button.classList.toggle("glow-sprite", view.glowsSprite(`resident:${id}`));
     }
+    if (hoveredActor !== null && !targets.has(hoveredActor)) hoverActor(null);
     if (reservationsChanged && el.isConnected && !tag.hidden) placeTag();
     const cave = view.rectOf("mouth");
     if (cave)
@@ -1209,6 +1293,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       clearTimeout(arrivalTimer);
       clearTimeout(calloutTimer);
       coins.dispose();
+      offWheel();
+      el.removeEventListener("pointerdown", onDragStart);
+      el.removeEventListener("pointermove", onDragMove);
+      el.removeEventListener("pointerup", onDragEnd);
+      el.removeEventListener("pointercancel", onDragEnd);
       view.dispose();
     },
   };
@@ -1418,6 +1507,9 @@ export function exposeTown(ui: TownUi | null): void {
     setHour: (x: number | null) => ui.view.setHour(x),
     // Cut272: drive the silhouette glow directly (QA captures, the tests)
     highlight: (id: string, on = true) => ui.view.highlight(id, "hover", on),
+    // queue 39: the wheel zoom (a step in or out around the view's centre; the shown scale over the default)
+    zoom: (dir: 1 | -1) => ui.view.zoom(dir),
+    zoomed: () => ui.view.zoomed(),
     ready: (ids: string[]) => ui.view.setReady(ids),
     pulse: (id: string) => ui.view.pulse(id),
     haul: (to: "house" | "bank" = "house") => ui.view.haul(to),

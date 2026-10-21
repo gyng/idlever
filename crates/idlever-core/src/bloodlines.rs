@@ -46,6 +46,7 @@ fn worker_feats_from(source: &LineageState, dest: &mut LineageState) {
 fn town_from(source: &LineageState, dest: &mut LineageState) {
     dest.gold=source.gold;
     dest.gold_tally.clone_from(&source.gold_tally);
+    dest.gold_rate.clone_from(&source.gold_rate);
     if dest.gold_ledger.len()!=source.gold_ledger.len()||dest.gold_ledger.last()!=source.gold_ledger.last(){dest.gold_ledger=source.gold_ledger.clone();}
     let forge=dest.town.forge_eligible||source.town.forge_eligible||crate::town::forge_qualified(source);
     let kennel=dest.town.kennel_eligible||source.town.kennel_eligible||crate::town::kennel_qualified(source);
@@ -252,7 +253,8 @@ impl Session {
             // A watched tick advances every active hero on the same town clock.
             // The original single-hero watch keeps its historical paused clock.
             let clock_ticks=self.active.advance_rem.1+ticks;
-            self.active.advance_rem.1=clock_ticks%10;self.active.lineage.clock_s+=clock_ticks/10;
+            self.active.advance_rem.1=clock_ticks%10;let c0=self.active.lineage.clock_s;self.active.lineage.clock_s+=clock_ticks/10;
+            crate::rates::commit(&mut self.active.lineage,c0);
             self.background(ticks*100);
         }
         r
@@ -326,6 +328,8 @@ impl Session {
         let finish=|g:&mut Game,full:bool,with_stall:bool|{
             let before=g.offline_absence.take().expect("absence initialized");
             g.offline=false;
+            // queue 40: the absence's purse movements spread over its whole span (as the single-hero absence's commit)
+            let from=g.lineage.clock_s.saturating_sub(before.elapsed_s);crate::rates::commit(&mut g.lineage,from);
             let mut r=crate::offline::report_with(g,before.elapsed_s,&before.facts_before,&before.class,before.rank_before,false,full,with_stall);
             crate::offline::settle_due(g,&mut r);
             r.grew=crate::town::grew(&before.grew_before,&crate::town::snap(&g.lineage));

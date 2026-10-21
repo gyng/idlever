@@ -3,6 +3,8 @@ import { heroRoster } from "./heroes";
 // the top bar (iron plate: the heir, `$`, `◆`, `★`, the best depth, the settings stud), the well (the place itself), and the
 // console (carved stone: the portrait well with its hp ring, a 4 × 2 command card of tiles, the primary gem). Each screen builds
 // its frame from these parts (so `main.<screen>` holds its console: the tiles are the screen's buttons).
+import "../screens/topbar.css";
+import { perHour, windowWord } from "./gold-rate";
 import { conceptCap, type Concept, type Term } from "./concepts";
 import { kwHost, kwText } from "./tips";
 const withCap = (el: HTMLElement | "", c: Concept, words?: string): HTMLElement | "" => {
@@ -297,6 +299,18 @@ export function renderBar(
                 h("small", { class: "resource-label" }, /* copy:label */ "Gold"),
                 `$${L.gold}`,
                 drop ? h("small", { class: "gold-drop", title: drop.title }, drop.text) : "",
+                // queue 40: the purse's net growth per hour of the town clock (desktop; the Gold sheet has the breakdown)
+                L.gold_rate?.hour
+                  ? h(
+                      "small",
+                      {
+                        class: "gold-rate num",
+                        "data-net-h": L.gold_rate.hour.net_h,
+                        title: /* copy:tooltip */ `net per hour · ${windowWord(L.gold_rate.hour)}`,
+                      },
+                      perHour(L.gold_rate.hour.net_h),
+                    )
+                  : "",
               ),
               "gold",
             )
@@ -464,7 +478,12 @@ function portraitMini(app: App): { readonly el: HTMLElement; paint(): void } {
   };
 }
 
-export type Portrait = { el: HTMLElement; set(hp: number, label?: Node | string): void };
+export type Portrait = {
+  el: HTMLElement;
+  set(hp: number, label?: Node | string): void;
+  /** Repaints the well for a hero (`cls`, `look`): the watched hero, once his snapshot names him. */
+  paint(cls: string, look?: string): void;
+};
 /** The portrait well: the class sprite in a round iron ring, an hp ring around it (`hp` 0..1), a label plate under it.
  *  With `onclick` it is a button (`cls`: the camp's class picker). */
 export function portrait(
@@ -484,7 +503,29 @@ export function portrait(
   const el = o.onclick
     ? h("button", { class: cls, onclick: o.onclick }, ...kids)
     : h("div", { class: cls }, ...kids);
-  paintFace(face, app.lineage.class, 66, app.lineage.look);
+  // Queue 42: `data-art` is `wait` until the face's art has decoded (`ready`); the well's silhouette stands in meanwhile
+  let painted = "";
+  const paint = (cls: string, look = ""): void => {
+    const key = `${cls}_${look}`;
+    if (key === painted) return;
+    painted = key;
+    el.dataset.art = "wait";
+    el.dataset.hero = cls;
+    face.style.backgroundImage = "";
+    paintFace(face, cls, 66, look);
+    const ready = (): void => {
+      const src = /url\("?([^")]+)"?\)/.exec(face.style.backgroundImage)?.[1];
+      if (!src) return;
+      const img = new Image();
+      img.onload = () => {
+        if (painted === key) el.dataset.art = "ready";
+      };
+      img.src = src;
+    };
+    if (face.style.backgroundImage) ready();
+    else void loadAtlas().then(ready); // the sprite crop paints once the atlas is in
+  };
+  paint(app.lineage.class, app.lineage.look);
   setHeroLook(app.lineage.look); // hero looks: the renderer's hero follows
   const set = (hp: number, text?: Node | string): void => {
     const p = Math.max(0, Math.min(1, hp));
@@ -493,7 +534,7 @@ export function portrait(
     if (text !== undefined) replace(label, text);
   };
   set(o.hp ?? 1, o.label ?? "");
-  return { el, set };
+  return { el, set, paint };
 }
 
 // --- the console: portrait well · command card (4 × 2) · the primary gem ---

@@ -1824,6 +1824,7 @@ export type Lineage = {
   vault_pref?: string; // Cut 5 §4: what an unwatched vault choice takes (`weapon | armour | potion | scroll`)
   ascended?: string[]; // Cut 5: variants the lineage has finished the dungeon with
   gold_ledger?: GoldLine[]; // Rust's bounded movement history, oldest first (`GOLD_LEDGER_CAP`)
+  gold_rate?: GoldRate; // queue 40: the purse's growth on the town clock (Rust `rates`); absent under 5 min of history
   counters?: Counter[]; // Cut 6 §5: bosses whose counter row is known
   combos?: ComboHit[]; // Cut 8B §1: the active set's combos, in row order (recomputed on setRules)
   picked?: number[]; // Cut 16 §1: depths picked clean now (as ReturnReport.picked)
@@ -2511,3 +2512,19 @@ export type SeekOption = {
   sims: number;
   current: boolean;
 };
+
+/** Queue 40 (Rust `rates::RateWindow`): one window of the town clock — earned and spent exclude Bank transfers; refunds lower spent. */
+export interface GoldRateWindow {
+  window_s: number;
+  earned: number;
+  spent: number;
+  net: number;
+  earned_h: number;
+  spent_h: number;
+  net_h: number;
+}
+/** Queue 40 (Rust `rates::GoldRateWire`): the last hour and the last day, each absent while history is too short. */
+export interface GoldRate {
+  hour?: GoldRateWindow;
+  day?: GoldRateWindow;
+}

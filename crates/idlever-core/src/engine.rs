@@ -1582,6 +1582,9 @@ pub struct LineageState {
     /// report diffs it against the absence's start, so its terms add up to the purse's change.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub gold_tally: BTreeMap<String, i64>,
+    /// Queue item 40: the purse's earned and spent on the town clock (`rates`), for its growth rate.
+    #[serde(default, skip_serializing_if = "crate::rates::GoldRate::is_empty")]
+    pub gold_rate: crate::rates::GoldRate,
     // Cut 9
     /// §6: the (threat, resolution) pairs of the last `REEL_ABSENCES` reels, oldest first —
     /// the next reel skips them.
@@ -2066,6 +2069,7 @@ impl LineageState {
             vault_pref: default_vault_pref(),
             gold_ledger: Vec::new(),
             gold_tally: BTreeMap::new(),
+            gold_rate: Default::default(),
             reel_pairs: Vec::new(),
             trait_offer: offer.to_vec(),
             heirs: crate::traits::fresh(),
@@ -2228,6 +2232,7 @@ impl LineageState {
                     self.gold_tally.insert(k.to_string(), i64::from(delta));
                 }
             }
+            crate::rates::record(self, delta, why, k);
         }
         // Cut 30.5: the haul chest and the gold ledger
         crate::tree::on_gold(self, delta, why);
@@ -2455,6 +2460,7 @@ impl LineageState {
             chronicle: self.chronicle.clone(),
             vault_pref: self.vault_pref.clone(),
             gold_ledger: self.gold_ledger.clone(),
+            gold_rate: crate::rates::wire(self),
             counters: self.counters(),
             combos: self.rules().combos(),
             picked: self.picked_clean(),

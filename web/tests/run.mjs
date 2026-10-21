@@ -241,6 +241,7 @@ const CURRENT_OWN = {
   "hero-appearance": 14,
   "hero-grounding": 11,
   "hero-names": 6,
+  "hero-mood": 60,
   "hero-presence": 5,
   "hero-slot-looks": 12,
   "hero-summary": 8,

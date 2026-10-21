@@ -18,6 +18,9 @@ export interface Viewer {
   setQuiet?(on: boolean): void; // Cut 22: a held beat owns the line — no callout or caption drawn over the fight meanwhile
   setTacticRows?(rows: number[], meaningful: number[]): void;
   stats?(): unknown; // renderer diagnostics (dev: `window.__viewer.stats()` while a run is mounted)
+  zoom?(dir: 1 | -1): boolean; // queue 39: one wheel-zoom step (the real renderer; the 2D stand-ins have none)
+  canZoom?(dir: 1 | -1): boolean;
+  zoomed?(): number;
 }
 type RenderMod = {
   createViewer(canvas: HTMLCanvasElement, opts?: { baseTexels?: number }): Viewer;

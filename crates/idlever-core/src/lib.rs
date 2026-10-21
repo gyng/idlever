@@ -1,6 +1,7 @@
 //! Idlever core: deterministic roguelike sim, rule engine, facts, forecast, offline batch,
 //! chronicle, sifter, meta. All game truth lives here. See docs/CUT1.md.
 pub mod ai;
+pub mod rates;
 pub mod balance;
 pub mod chronicle;
 pub mod decide;
@@ -512,3 +513,5 @@ mod tests_cut291;
 mod tests_cut292;
 #[cfg(test)]
 mod tests_cut315;
+#[cfg(test)]
+mod tests_queue40;

@@ -2589,6 +2589,10 @@ pub struct Lineage {
     /// Cut 6 §1: the last 20 gold movements, oldest first (`ledger` is the bestiary).
     #[serde(default)]
     pub gold_ledger: Vec<GoldLine>,
+    /// Queue item 40: the purse's growth over the last hour and day of the town clock (`rates`); absent under
+    /// five minutes of history.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub gold_rate: Option<crate::rates::GoldRateWire>,
     /// Cut 6 §5: bosses whose counter row is known, with the row and its ≤ 3-word text.
     #[serde(default)]
     pub counters: Vec<Counter>,

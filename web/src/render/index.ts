@@ -68,6 +68,7 @@ import { View2D } from "./view2d";
 import { CombatCues, type CueBody, type CuePixel } from "./combat-cues";
 import { toolCuePixels, toolFade, toolFeet } from "./tool-cues";
 import { effectsLevel } from "./fxpref";
+import { nextZoomLevel, zoomScale } from "./zoom";
 import { visibleLandmarkPieces, type LandmarkDraw } from "./landmarks";
 export { createFallbackViewer } from "./fallback";
 import type { Ev, GunSnap, Snapshot } from "./types";
@@ -130,6 +131,9 @@ export type Viewer = {
   debugBiome?(): string; // Cut 16 §3: the biome the floor draws in (its palette)
   debugLandmarks?(): unknown[];
   preload?(snap: Snapshot): void; // add unknown entities before a batch's events
+  zoom?(dir: 1 | -1): boolean; // queue 39: one wheel-zoom step in (+1) or out (-1) around the tracked centre; false at a bound
+  canZoom?(dir: 1 | -1): boolean; // queue 39: whether a step in `dir` is possible now
+  zoomed?(): number; // queue 39: the wheel zoom's level scale (1 = the framed default)
 };
 
 export type DebugRect = {
@@ -147,6 +151,7 @@ export type DebugRect = {
 export type DebugLabel = { text: string; x: number; y: number; id: number; w?: number; h?: number }; // CSS px: the label's centre x and its cell's bottom y; w · h its box (Cut 15 §4)
 
 export type ViewerStats = {
+  zoom?: number; // queue 39: the wheel zoom's level scale (1 = the framed default)
   heroKind?: string; // resolved render identity from the loaded run snapshot
   movementTrail?: { steps: number; quads: number };
   combatCues?: { active: number; quads: number; events: number };
@@ -222,6 +227,7 @@ const MAX_LIGHTS = 12; // art pass: torches lighting the blit (nearest the camer
 const LEAD_TILES = 1.5,
   LEAD_TAU = 0.6; // Cut 121 §3: the map camera's lead toward the hero's walk (tiles) and its easing (s)
 const ROOM_LOOK = 9; // gfx round 5: the camera's lean looks this many tiles around the hero
+const WATCH_ZOOM_MAX = 2; // queue 39: the live view's wheel zoom bound over the map's k (the town's is ZOOM_MAX, 2.5×)
 const ATLAS_WAIT_MS = 1500; // gfx round 6: the longest the first frame waits for the atlas
 const PLATE_MAX = 5; // gfx round 1: name plates in a crowd (the nearest hostiles; round 6: 3 → 5, the stacking rule culls a pile)
 const BOSS_TITLE_MS = 2200; // gfx round 1: the boss's title plate on his entrance
@@ -329,6 +335,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     devH = 0,
     dpr = 1;
   let lastCss = "";
+  let zoomLevel = 0; // queue 39: the wheel zoom (a ZOOM_LEVELS index; 0 = the framed default), kept across floors and frames
   let mode: Frame = "map",
     fixedFocus: Focus | null = null,
     cutFrames = 0; // Cut 8A
@@ -481,7 +488,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     devW = Math.max(1, Math.round(cw * d));
     devH = Math.max(1, Math.round(ch * d));
     kMap = Math.max(1, Math.floor(Math.min(devW, devH) / baseTexels));
-    const nextK = mode === "fight" ? fightK() : kMap;
+    const nextK = zoomK(zoomLevel);
     const key = `${cw}x${ch}@${d}:${nextK}`;
     if (key === lastCss) return false;
     lastCss = key;
@@ -502,12 +509,25 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     blit.material.uniforms.uTargetEnv!.value.set(W, H);
     stats.k = k;
     stats.kMap = kMap;
+    stats.zoom = zoomLevel ? k / (mode === "fight" ? fightK() : kMap) : 1;
     stats.frame = mode;
     stats.dpr = dpr;
     stats.device = [devW, devH];
     stats.envTexels = [iw, ih];
     stats.target = [W * 2, H * 2];
     return true;
+  }
+  // queue 39: a wheel-zoom level's k — the frame's own k (the map's, or the fight's) scaled by the level in whole even steps, never
+  // past 2× the map's (the fight frame, already closer, zooms less before that bound). The town goes to 2.5×; here 2.5× put a
+  // fifth of the screen per env texel and read as blocks (the gfx round 7 complaint about the fight's own 2×)
+  function zoomK(level: number): number {
+    const base = mode === "fight" ? fightK() : kMap;
+    if (level <= 0) return base;
+    const most = Math.max(
+      base,
+      kMap >= 4 ? 2 * Math.floor((kMap * WATCH_ZOOM_MAX) / 2) : Math.floor(kMap * WATCH_ZOOM_MAX),
+    );
+    return Math.min(zoomScale(base, level, true), most);
   }
   // Cut 8A: the fight frame's k — 2× the map's; with a fixed focus, the largest even k that fits the (2r+1)-tile square on
   // the short axis, never below the map's k (odd k would split sprite texels across device pixels)
@@ -690,7 +710,11 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       stats.lead = [Math.round(leadX * 10) / 10, Math.round(leadY * 10) / 10];
       const foe = mode === "fight" ? null : nearestHostile(h);
       if (mode === "fight") fightTarget(hx, hy);
-      else if (foe) {
+      else if (zoomLevel > 0 && !fixedFocus) {
+        // queue 39: zoomed in, the map camera holds the hero at the middle (no foe midpoint or lean — a closer view has no room)
+        cam.tx = hx;
+        cam.ty = hy;
+      } else if (foe) {
         const [ex, ey] = feet(foe);
         const mx = (hx + ex) / 2,
           my = (hy + ey + TILE) / 2,
@@ -709,7 +733,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       if (mode !== "fight" && !fixedFocus) {
         cam.tx += leadX;
         cam.ty += leadY;
-        frameSeen(hx, hy);
+        if (!zoomLevel) frameSeen(hx, hy);
         // gfx round 22 (rater AW: "the camera pan reds the whole map", "the whole screen swims"): the map camera holds still while its
         // framing moves less than a fifth of the view across / a sixth down, then glides to the new framing in one move — the room
         // stays put while the hero and his foes move in it
@@ -2416,6 +2440,21 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     resize() {
       lastCss = "";
       measure();
+    },
+    zoom(dir) {
+      if (glLost) return false;
+      const next = nextZoomLevel(zoomK, zoomLevel, dir);
+      if (next === null) return false;
+      zoomLevel = next;
+      lastCss = "";
+      measure(); // the camera keeps its centre (the hero tracked as before); the view re-frames around it
+      return true;
+    },
+    canZoom(dir) {
+      return !glLost && nextZoomLevel(zoomK, zoomLevel, dir) !== null;
+    },
+    zoomed() {
+      return stats.zoom ?? 1;
     },
     dispose() {
       disposed = true;
