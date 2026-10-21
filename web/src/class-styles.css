@@ -86,21 +86,4 @@
       justify-self: end;
     }
   }
-
-  /* Portrait and identity remain inside the parchment on narrow phones. */
-  .hero-identity {
-    min-width: 0;
-    flex: 1;
-    overflow-wrap: anywhere;
-  }
-  .hero-identity .hero-name {
-    display: block;
-  }
-  .hero-class-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 10px;
-    margin-top: 4px;
-    font-size: 16px;
-  }
 }

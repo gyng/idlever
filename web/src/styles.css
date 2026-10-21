@@ -196,9 +196,6 @@
   .chip.cls-offer:disabled {
     opacity: 1;
   }
-  .chip.cls-offer .rule.locked {
-    opacity: 0.55;
-  }
   .gear {
     min-width: 36px;
     min-height: var(--tap);
@@ -439,26 +436,6 @@
     border-color: var(--hp);
     color: #ffb2ad;
   }
-  .btn-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  .btn-row .btn {
-    flex: 1;
-  }
-  .send-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(transparent, var(--bg) 40%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-  }
   .send {
     display: block;
     flex: 1;
@@ -466,14 +443,6 @@
     max-width: 496px;
     min-height: 56px;
     font-size: 18px;
-  }
-  .send-bar .rest {
-    color: var(--dim);
-    font-size: 13px;
-    white-space: nowrap;
-  }
-  .send-bar .rest[hidden] {
-    display: none;
   }
 
   /* forecast */
@@ -1607,10 +1576,6 @@
       gap: 4px;
     }
   }
-  .ending .send-bar {
-    flex-direction: column;
-    gap: 8px;
-  }
   .ascension-status {
     color: var(--bone);
     font: 600 16px/1.3 var(--sans);
@@ -1623,39 +1588,7 @@
   }
   #app[inert] {
     opacity: 0.55;
-  }
-  /* Cut 5 §4: the vault choice sheet — three items, one tap */
-  .vault-choice .chips {
-    gap: 10px;
-  }
-  .vault-choice .chip.item {
-    min-height: 52px;
-    padding: 0 18px;
-    font-size: 17px;
-  }
-  .vault-choice .glyph {
-    color: var(--acc);
-    font-weight: 400;
-  }
-  .vault-choice .vault-full {
-    font-size: 13px;
-    margin: -4px 0 8px;
   } /* the pick is salvaged at the exit (QA on 3d71c33) */
-  .vault-choice .grace {
-    height: 3px;
-    margin-top: 12px;
-    background: var(--line, #282e48);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .vault-choice .grace i {
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: var(--acc);
-    transition-property: width;
-    transition-timing-function: linear;
-  }
 
   .morgue-text {
     white-space: pre-wrap;
@@ -1753,18 +1686,6 @@
     text-transform: none;
     letter-spacing: 0;
     font-size: 13px;
-  }
-  .send-bar .rest.chip {
-    min-height: 36px;
-    padding: 0 12px;
-    border-style: dashed;
-    background: transparent;
-    cursor: pointer;
-  }
-  .send-bar .rest.chip.on {
-    color: var(--acc);
-    border-color: var(--acc);
-    border-style: solid;
   }
   .stake .kept {
     color: var(--ok);
@@ -3847,11 +3768,6 @@
   .report .ledger-btn .news-lead {
     font-weight: 700;
     color: var(--dusk);
-  }
-  .keep-news {
-    margin: 6px 0 2px;
-    font-weight: 600;
-    color: #334061;
   } /* Cut 24 §2 (the sheet is parchment) */
 
   /* the ending keeps its full-bleed title art (not a framed place) */
@@ -4120,17 +4036,6 @@
     font-size: 12px;
     letter-spacing: 0;
   }
-  /* the keep sheet: what the prices are, what the exit already sold */
-  .keep-legend,
-  .keep-cut {
-    margin-top: 6px;
-    font-size: 12px;
-  }
-  .vault .keep-auto {
-    flex-basis: 100%;
-    margin: 0 0 2px 2px;
-    font-size: 12px;
-  }
   /* the shaft: a first pass reads provisional until the refine lands; each notch's ± beside its reach */
   .shaft.rough .notch .dp {
     opacity: 1;
@@ -4331,53 +4236,6 @@
     gap: 6px;
     min-width: 0;
   }
-  .row.tablet.compact.cage-tab {
-    min-height: 48px;
-    border-color: #38486c;
-    background: linear-gradient(#24283f, #181724);
-  }
-  .row.tablet.compact.cage-tab[hidden] {
-    display: none;
-  }
-  .row.tablet.compact.cage-tab .rn {
-    display: flex;
-    justify-content: center;
-  }
-  .row.tablet.compact.cage-tab .rn .ico {
-    width: 26px;
-    height: 26px;
-  }
-  .row.tablet.compact.cage-tab .rtext {
-    font-size: 17px;
-    color: #dbd7c9;
-  }
-  .row.tablet.compact.cage-tab .arrow {
-    color: var(--acc);
-  }
-  .cage-picker .cage-opts {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  .cage-picker .cage-opt {
-    min-height: 48px;
-    justify-content: center;
-    font-size: 17px;
-  }
-  .cage-picker .cage-opt .delta {
-    margin-left: 4px;
-    font-size: 15px;
-  }
-  .cage-picker .cage-opt .delta.up {
-    color: var(--ok, var(--mist));
-  }
-  .cage-picker .cage-opt .delta.down {
-    color: var(--hp);
-  }
-  .cage-picker .cage-opt .delta.flat {
-    opacity: 0.6;
-  }
   /* Cut 19 §3: `repeat · $120` rides the loadout tile's top edge; its own tap target (the tile opens the shelf) */
   .cmd .tile.badged {
     overflow: visible;
@@ -4430,19 +4288,8 @@
     pointer-events: auto;
     cursor: pointer;
   }
-  .watch .ticker.cage.show .cage-line {
-    display: inline-block;
-    padding: 4px 12px;
-    border: 1px solid rgba(219, 186, 124, 0.6);
-    border-radius: 14px;
-    background: rgba(13, 12, 20, 0.55);
-  }
   .gold-line .capped {
     color: var(--warn);
-  }
-  .skin-tablet .row.tablet.compact.cage-tab {
-    background: linear-gradient(rgba(68, 93, 134, 0.28), rgba(28, 27, 43, 0.35));
-    background-clip: padding-box;
   }
 
   /* QA 1a2a4a9: the loadout tile's pack count (`2/3`), a small plate on its top-right corner */
@@ -4885,25 +4732,6 @@
     line-height: 1;
   }
   /* Cut 28 §3: the mode pill hangs at the gem's foot — off its centre, so a tap there always sends; a tap on the pill steps the mode */
-  .gem.send .send-mode {
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    z-index: 1;
-    padding: 3px 8px;
-    min-height: 18px;
-    cursor: pointer;
-    pointer-events: auto;
-    border-radius: 6px;
-    background: rgba(13, 12, 20, 0.86);
-    box-shadow: inset 0 0 0 1px #39496d;
-    color: #e2d7bd;
-    font: 600 10px/1.2 var(--sans);
-    letter-spacing: 0.04em;
-    text-transform: none;
-  }
   .start-opt .start-death {
     font-weight: 400;
   }
@@ -5053,18 +4881,6 @@
     align-items: center;
     gap: 8px;
   }
-  .forge .kit-name {
-    font-family: var(--display, inherit);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 12px;
-    min-width: 60px;
-  }
-  .forge .pips {
-    display: inline-flex;
-    gap: 3px;
-    flex: 1;
-  }
   .forge .pip {
     width: 12px;
     height: 12px;
@@ -5075,33 +4891,6 @@
   .forge .pip.on {
     background: #dc8830;
     box-shadow: 0 0 4px rgba(255, 174, 86, 0.6);
-  }
-  .forge .kit-next {
-    justify-content: flex-start;
-    min-height: 44px;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .forge .kit-next.off {
-    opacity: 0.55;
-  }
-  .forge .kit-next.armed {
-    border-color: var(--acc);
-  }
-  .forge .kit-next.armed .kit-ok {
-    color: var(--acc);
-    font-weight: 700;
-  }
-  .forge .kit-top {
-    align-self: center;
-  }
-  .forge .kit-later {
-    font-size: 11px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .forge .simple-kit .kit-slot {
     grid-template-rows: auto auto;
@@ -6028,12 +5817,6 @@
   .oath-foot .chip.swear.armed {
     background: #930012;
     color: #fdf2d8;
-  }
-  .oath-foot .oath-state {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
   }
   .oath-foot .why {
     flex-basis: 100%;
@@ -6990,16 +6773,6 @@
     display: inline-flex;
     align-items: center;
     gap: 3px;
-  }
-  .fc-causes .foe-face {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow:
-      0 0 0 1px var(--mist),
-      0 0 0 2px var(--ink),
-      0 1px 2px rgba(13, 12, 20, 0.6);
   }
   /* gfx round 18 (raters, every round: "the title wraps 'ATTACK / BOSS'", "four grey sub-lines before any stat"): the headline fits its width
    (balanced, a size down on a phone), the lines under it run on as one paragraph separated by dots */

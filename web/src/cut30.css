@@ -308,19 +308,10 @@
     object-fit: cover;
     object-position: 50% 25%;
   }
-  .track-head {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
   .track-name {
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-  }
-  .track-stage {
-    color: #7a5c1e;
-    font-size: 15px;
   }
   .track-bar,
   .quest-bar {
@@ -336,11 +327,6 @@
     display: block;
     height: 100%;
     background: linear-gradient(90deg, var(--gilt), var(--acc));
-  }
-  .track-next {
-    display: block;
-    color: #435a82;
-    font-size: 12px;
   }
   @keyframes glint-ring {
     0% {
