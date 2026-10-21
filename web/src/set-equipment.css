@@ -1,99 +1,102 @@
-/* Set equipment inherits the Forge iron or Bloodlines ink material. */
-.set-equipment,
-.set-collection,
-.set-family,
-.set-bonuses,
-.set-intent,
-.set-slot {
-  display: grid;
-  gap: var(--ui-space-2);
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
-}
-.set-equipment,
-.set-collection {
-  gap: var(--ui-space-3);
-}
-.set-family,
-.set-slot {
-  padding: var(--ui-space-3);
-  border: 2px solid var(--ui-edge);
-  background: var(--ui-inset);
-}
-.set-family :is(h3, h4, p),
-.set-slot :is(h3, h4, p) {
-  margin: 0;
-}
-.set-family h3,
-.set-slot summary {
-  color: var(--ui-text);
-  font-size: var(--ui-body);
-}
-.set-counts,
-.set-actions,
-.set-slot-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ui-space-2);
-  min-inline-size: 0;
-}
-.set-equipment :is(button, summary, select, input),
-.set-collection :is(button, summary, select, input) {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-  max-inline-size: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-.set-equipment :is(button, select, input):focus-visible,
-.set-collection :is(button, select, input):focus-visible {
-  outline: 3px solid var(--ui-focus);
-  outline-offset: 2px;
-}
-.set-bonus {
-  padding-inline-start: var(--ui-space-2);
-  border-inline-start: 3px solid var(--ui-edge);
-  color: var(--ui-text);
-}
-.set-bonus[data-active="true"] {
-  border-inline-start-color: var(--ui-selected);
-}
-.set-bonus-status,
-.set-pin-status {
-  font-size: var(--ui-body);
-  color: var(--ui-text);
-}
-.set-piece-choice[aria-pressed="true"],
-.set-follow-choice[aria-pressed="true"] {
-  border-color: var(--ui-selected);
-}
-.set-equipment-slots,
-.set-pieces,
-.set-piece,
-.set-source-focus {
-  display: grid;
-  gap: var(--ui-space-2);
-  min-inline-size: 0;
-}
-.set-equipment-line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ui-space-2);
-}
-.set-pieces {
-  gap: var(--ui-space-3);
-}
-.set-family :is(button, summary):hover:not(:disabled) {
-  border-color: var(--ui-focus);
-}
-.set-family button:active:not(:disabled) {
-  box-shadow: inset 0 2px 3px var(--ink);
-}
-.set-family:focus-visible {
-  outline: 3px solid var(--ui-focus);
-  outline-offset: 2px;
-}
-.set-bonus {
-  display: grid;
-  gap: var(--ui-space-1);
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Set equipment inherits the Forge iron or Bloodlines ink material. */
+  .set-equipment,
+  .set-collection,
+  .set-family,
+  .set-bonuses,
+  .set-intent,
+  .set-slot {
+    display: grid;
+    gap: var(--ui-space-2);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+  .set-equipment,
+  .set-collection {
+    gap: var(--ui-space-3);
+  }
+  .set-family,
+  .set-slot {
+    padding: var(--ui-space-3);
+    border: 2px solid var(--ui-edge);
+    background: var(--ui-inset);
+  }
+  .set-family :is(h3, h4, p),
+  .set-slot :is(h3, h4, p) {
+    margin: 0;
+  }
+  .set-family h3,
+  .set-slot summary {
+    color: var(--ui-text);
+    font-size: var(--ui-body);
+  }
+  .set-counts,
+  .set-actions,
+  .set-slot-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ui-space-2);
+    min-inline-size: 0;
+  }
+  .set-equipment :is(button, summary, select, input),
+  .set-collection :is(button, summary, select, input) {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    max-inline-size: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .set-equipment :is(button, select, input):focus-visible,
+  .set-collection :is(button, select, input):focus-visible {
+    outline: 3px solid var(--ui-focus);
+    outline-offset: 2px;
+  }
+  .set-bonus {
+    padding-inline-start: var(--ui-space-2);
+    border-inline-start: 3px solid var(--ui-edge);
+    color: var(--ui-text);
+  }
+  .set-bonus[data-active="true"] {
+    border-inline-start-color: var(--ui-selected);
+  }
+  .set-bonus-status,
+  .set-pin-status {
+    font-size: var(--ui-body);
+    color: var(--ui-text);
+  }
+  .set-piece-choice[aria-pressed="true"],
+  .set-follow-choice[aria-pressed="true"] {
+    border-color: var(--ui-selected);
+  }
+  .set-equipment-slots,
+  .set-pieces,
+  .set-piece,
+  .set-source-focus {
+    display: grid;
+    gap: var(--ui-space-2);
+    min-inline-size: 0;
+  }
+  .set-equipment-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ui-space-2);
+  }
+  .set-pieces {
+    gap: var(--ui-space-3);
+  }
+  .set-family :is(button, summary):hover:not(:disabled) {
+    border-color: var(--ui-focus);
+  }
+  .set-family button:active:not(:disabled) {
+    box-shadow: inset 0 2px 3px var(--ink);
+  }
+  .set-family:focus-visible {
+    outline: 3px solid var(--ui-focus);
+    outline-offset: 2px;
+  }
+  .set-bonus {
+    display: grid;
+    gap: var(--ui-space-1);
+  }
 }

@@ -1,497 +1,500 @@
-/* Cut 29 client (docs/CUT29.md): the curriculum's reveals, the meters, the standing orders, the late sinks — kept apart from styles.css
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Cut 29 client (docs/CUT29.md): the curriculum's reveals, the meters, the standing orders, the late sinks — kept apart from styles.css
    (other tracks edit it at the same time) */
-/* Cut 29 §2: the report's `opened` plaques — the systems an absence opened, each glinting once */
-.sys-opened {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin: 6px 0;
-}
-.sys-opened > .label {
-  margin-right: 2px;
-}
-.sys-plaque {
-  position: relative;
-  overflow: hidden;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px 2px 4px;
-  border-radius: 6px;
-  border: 1px solid rgba(246, 212, 149, 0.45);
-  background: rgba(28, 27, 43, 0.55);
-  color: var(--acc);
-  font-size: 13px;
-}
-.sys-plaque .ico {
-  width: 20px;
-  height: 20px;
-}
-.sys-plaque .ico.glyph::before {
-  font-size: 15px;
-  line-height: 20px;
-}
-.sys-plaque.reveal {
-  animation: carve 0.7s ease-out both;
-}
-.sys-plaque.reveal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 30%,
-    rgba(255, 227, 163, 0.7) 50%,
-    transparent 70%
-  );
-  transform: translateX(-120%);
-  animation: glint 1.1s 0.35s ease-out both;
-  pointer-events: none;
-}
-/* Cut 29 §3: the meters — a label column and its figures; units always; the time split as one bar with a 2 px gap between parts */
-.meters {
-  display: grid;
-  gap: 3px;
-  font-size: 13px;
-  line-height: 1.3;
-}
-.meters .mhead {
-  margin-bottom: 2px;
-}
-.meters .mrow {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 6px;
-  align-items: baseline;
-}
-.meters .mlab {
-  font: 600 11px/1.3 var(--sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
-.meters .mval b {
-  font-weight: 700;
-}
-.meters .mtime {
-  align-items: center;
-}
-.meters .msplit {
-  display: flex;
-  gap: 2px;
-  height: 8px;
-  border-radius: 4px;
-  overflow: hidden;
-  min-width: 120px;
-}
-.meters .msplit .seg {
-  min-width: 3px;
-}
-.meters .seg.fight,
-.meters .k.fight .sw {
-  background: var(--hp);
-}
-.meters .seg.travel,
-.meters .k.travel .sw {
-  background: #617ea7;
-}
-.meters .seg.chores,
-.meters .k.chores .sw {
-  background: var(--info);
-}
-.meters .seg.rest,
-.meters .k.rest .sw {
-  background: var(--ok);
-}
-.meters .msplit-key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 10px;
-  margin-top: 3px;
-  font-size: 12px;
-}
-.meters .msplit-key .sw {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  margin-right: 4px;
-  vertical-align: 0;
-}
-.meters .mrule {
-  white-space: nowrap;
-}
-.mcmp .mcmp-row {
-  display: grid;
-  grid-template-columns: 64px auto auto auto 1fr auto;
-  gap: 5px;
-  align-items: baseline;
-}
-.mcmp .dlt.up {
-  color: var(--ok);
-}
-.mcmp .dlt.down {
-  color: var(--hp);
-}
-.parchment .mcmp .dlt.up {
-  color: #576e86;
-}
-.parchment .mcmp .dlt.down {
-  color: var(--blood);
-}
-.forecast .mcmp {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--line);
-}
-.fight-meters {
-  margin-top: 10px;
-  padding: 10px 12px;
-}
-.meters-slot.filled {
-  padding: 10px 12px;
-  overflow: auto;
-  color: var(--fg);
-}
-.meters-slot.filled::before {
-  content: none;
-}
-/* the watch's compact meter: one line over the stage, under the HUD */
-.watch .meter-box {
-  position: absolute;
-  left: 8px;
-  top: 46px;
-  z-index: 3;
-  pointer-events: none;
-}
-.watch .meter-line {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(13, 12, 20, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(66, 90, 130, 0.5);
-  color: var(--fg);
-  font-size: 13px;
-}
-.watch .meter-line .m-scope {
-  font: 600 10px/1 var(--sans);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.watch .meter-line[data-scope="fight"] .m-scope {
-  color: var(--hp);
-}
-.watch .meter-line .dealt b {
-  color: var(--acc);
-}
-.watch .meter-line .taken b {
-  color: #e49792;
-}
-.watch .meter-line .healed b {
-  color: var(--ok);
-}
-/* Cut 29 §4: the standing orders — one tablet, one sheet */
-.row.tablet.compact.orders-tab[hidden],
-.repeat-add[hidden],
-.wall-host[hidden] {
-  display: none;
-}
-.orders-tab .orders-head {
-  font-weight: 600;
-  margin-right: 4px;
-}
-.orders-tab .orders-sum {
-  font-size: 13px;
-}
-.orders-sheet .order-rows {
-  display: grid;
-  gap: 8px;
-  margin-top: 6px;
-}
-.orders-sheet .order-row {
-  display: grid;
-  grid-template-columns: 104px 1fr;
-  gap: 8px;
-  align-items: center;
-}
-.orders-sheet .olab {
-  font: 600 12px/1.2 var(--sans);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  opacity: 0.8;
-}
-/* Cut 29 §1/§5: the oath board's late sinks — slots, the draw, the works */
-.oath-sinks {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid var(--ink-line, rgba(48, 59, 91, 0.35));
-}
-.oath-sinks .why {
-  margin-left: 4px;
-}
-.oath-works .works-built {
-  font-size: 13px;
-}
-.oath-kept-extra {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 6px;
-}
-/* Cut 29 §4: the repeat's missing kind, one tap */
-.repeat-add {
-  margin: 4px 0;
-}
-.repeat-add .repeat-add-chip {
-  border-style: dashed;
-}
-/* Cut 29 §1 (E1): the wall's edit as a patch tablet */
-.wall-host:empty {
-  display: none;
-}
-.patch.tablet.wall-edit {
-  display: grid;
-  gap: 6px;
-  padding: 10px 12px;
-  text-align: left;
-}
-.wall-edit .wall-edits .chip {
-  font-size: 13px;
-}
-.wall-edit .wall-foot {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-.wall-edit .wall-foot .up {
-  color: var(--ok);
-}
-.wall-edit .wall-apply {
-  margin-left: auto;
-}
-/* gfx raters: a death headline wraps between its ` · ` segments, never inside one (`D8 · NO / RULE FOR IT`) */
-.death .death-line .cause .seg {
-  display: inline-block;
-}
-/* gfx raters: the desktop column's shaft waits for a forecast past its first floor (no column of `?`) */
-.side-col > .shaft.unknown {
-  visibility: hidden;
-}
-/* gfx raters (every round: the forecast panel read as "web bars"): each floor is the shaft's hex gem lit by its reach, the track a thin rail */
-.forecast .bar {
-  grid-template-columns: 62px 1fr 64px;
-}
-.forecast .bar .d {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.forecast .bar .hex {
-  flex: none;
-  width: 18px;
-  height: 20px;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  --reach: 0;
-  background:
-    radial-gradient(
-      circle at 42% 36%,
-      rgb(220 230 242 / calc(var(--reach) * 0.95)),
-      rgb(120 152 196 / calc(0.12 + var(--reach) * 0.85)) 58%,
-      rgb(28 27 43 / 0.95) 100%
-    ),
-    #171621;
-}
-.forecast .bar.unknown .hex {
-  background: #111019;
-  box-shadow: inset 0 0 0 1px #292f4a;
-}
-.forecast .bar .track {
-  height: 4px;
-  border-radius: 2px;
-}
-.forecast .bar .track .fill {
-  background: linear-gradient(90deg, var(--blood), var(--ember));
-} /* phase 2 r28: hot, not pale blue */
-/* Cut 29 §4: a tablet lifted by a long press */
-.editor .row.tablet.lifted {
-  box-shadow:
-    0 8px 18px rgba(13, 12, 20, 0.7),
-    0 0 0 2px var(--acc);
-  z-index: 5;
-  position: relative;
-}
-/* Cut 29 (owner): the forecast's ± as a noise band (a blurred bar as wide as the spread; the `±7` text stays for readers and tools, unseen),
+  /* Cut 29 §2: the report's `opened` plaques — the systems an absence opened, each glinting once */
+  .sys-opened {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0;
+  }
+  .sys-opened > .label {
+    margin-right: 2px;
+  }
+  .sys-plaque {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px 2px 4px;
+    border-radius: 6px;
+    border: 1px solid rgba(246, 212, 149, 0.45);
+    background: rgba(28, 27, 43, 0.55);
+    color: var(--acc);
+    font-size: 13px;
+  }
+  .sys-plaque .ico {
+    width: 20px;
+    height: 20px;
+  }
+  .sys-plaque .ico.glyph::before {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .sys-plaque.reveal {
+    animation: carve 0.7s ease-out both;
+  }
+  .sys-plaque.reveal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgba(255, 227, 163, 0.7) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    animation: glint 1.1s 0.35s ease-out both;
+    pointer-events: none;
+  }
+  /* Cut 29 §3: the meters — a label column and its figures; units always; the time split as one bar with a 2 px gap between parts */
+  .meters {
+    display: grid;
+    gap: 3px;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  .meters .mhead {
+    margin-bottom: 2px;
+  }
+  .meters .mrow {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 6px;
+    align-items: baseline;
+  }
+  .meters .mlab {
+    font: 600 11px/1.3 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .meters .mval b {
+    font-weight: 700;
+  }
+  .meters .mtime {
+    align-items: center;
+  }
+  .meters .msplit {
+    display: flex;
+    gap: 2px;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 120px;
+  }
+  .meters .msplit .seg {
+    min-width: 3px;
+  }
+  .meters .seg.fight,
+  .meters .k.fight .sw {
+    background: var(--hp);
+  }
+  .meters .seg.travel,
+  .meters .k.travel .sw {
+    background: #617ea7;
+  }
+  .meters .seg.chores,
+  .meters .k.chores .sw {
+    background: var(--info);
+  }
+  .meters .seg.rest,
+  .meters .k.rest .sw {
+    background: var(--ok);
+  }
+  .meters .msplit-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    margin-top: 3px;
+    font-size: 12px;
+  }
+  .meters .msplit-key .sw {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: 0;
+  }
+  .meters .mrule {
+    white-space: nowrap;
+  }
+  .mcmp .mcmp-row {
+    display: grid;
+    grid-template-columns: 64px auto auto auto 1fr auto;
+    gap: 5px;
+    align-items: baseline;
+  }
+  .mcmp .dlt.up {
+    color: var(--ok);
+  }
+  .mcmp .dlt.down {
+    color: var(--hp);
+  }
+  .parchment .mcmp .dlt.up {
+    color: #576e86;
+  }
+  .parchment .mcmp .dlt.down {
+    color: var(--blood);
+  }
+  .forecast .mcmp {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .fight-meters {
+    margin-top: 10px;
+    padding: 10px 12px;
+  }
+  .meters-slot.filled {
+    padding: 10px 12px;
+    overflow: auto;
+    color: var(--fg);
+  }
+  .meters-slot.filled::before {
+    content: none;
+  }
+  /* the watch's compact meter: one line over the stage, under the HUD */
+  .watch .meter-box {
+    position: absolute;
+    left: 8px;
+    top: 46px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .watch .meter-line {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(13, 12, 20, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(66, 90, 130, 0.5);
+    color: var(--fg);
+    font-size: 13px;
+  }
+  .watch .meter-line .m-scope {
+    font: 600 10px/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .watch .meter-line[data-scope="fight"] .m-scope {
+    color: var(--hp);
+  }
+  .watch .meter-line .dealt b {
+    color: var(--acc);
+  }
+  .watch .meter-line .taken b {
+    color: #e49792;
+  }
+  .watch .meter-line .healed b {
+    color: var(--ok);
+  }
+  /* Cut 29 §4: the standing orders — one tablet, one sheet */
+  .row.tablet.compact.orders-tab[hidden],
+  .repeat-add[hidden],
+  .wall-host[hidden] {
+    display: none;
+  }
+  .orders-tab .orders-head {
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .orders-tab .orders-sum {
+    font-size: 13px;
+  }
+  .orders-sheet .order-rows {
+    display: grid;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .orders-sheet .order-row {
+    display: grid;
+    grid-template-columns: 104px 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+  .orders-sheet .olab {
+    font: 600 12px/1.2 var(--sans);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  /* Cut 29 §1/§5: the oath board's late sinks — slots, the draw, the works */
+  .oath-sinks {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--ink-line, rgba(48, 59, 91, 0.35));
+  }
+  .oath-sinks .why {
+    margin-left: 4px;
+  }
+  .oath-works .works-built {
+    font-size: 13px;
+  }
+  .oath-kept-extra {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  /* Cut 29 §4: the repeat's missing kind, one tap */
+  .repeat-add {
+    margin: 4px 0;
+  }
+  .repeat-add .repeat-add-chip {
+    border-style: dashed;
+  }
+  /* Cut 29 §1 (E1): the wall's edit as a patch tablet */
+  .wall-host:empty {
+    display: none;
+  }
+  .patch.tablet.wall-edit {
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px;
+    text-align: left;
+  }
+  .wall-edit .wall-edits .chip {
+    font-size: 13px;
+  }
+  .wall-edit .wall-foot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .wall-edit .wall-foot .up {
+    color: var(--ok);
+  }
+  .wall-edit .wall-apply {
+    margin-left: auto;
+  }
+  /* gfx raters: a death headline wraps between its ` · ` segments, never inside one (`D8 · NO / RULE FOR IT`) */
+  .death .death-line .cause .seg {
+    display: inline-block;
+  }
+  /* gfx raters: the desktop column's shaft waits for a forecast past its first floor (no column of `?`) */
+  .side-col > .shaft.unknown {
+    visibility: hidden;
+  }
+  /* gfx raters (every round: the forecast panel read as "web bars"): each floor is the shaft's hex gem lit by its reach, the track a thin rail */
+  .forecast .bar {
+    grid-template-columns: 62px 1fr 64px;
+  }
+  .forecast .bar .d {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .forecast .bar .hex {
+    flex: none;
+    width: 18px;
+    height: 20px;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    --reach: 0;
+    background:
+      radial-gradient(
+        circle at 42% 36%,
+        rgb(220 230 242 / calc(var(--reach) * 0.95)),
+        rgb(120 152 196 / calc(0.12 + var(--reach) * 0.85)) 58%,
+        rgb(28 27 43 / 0.95) 100%
+      ),
+      #171621;
+  }
+  .forecast .bar.unknown .hex {
+    background: #111019;
+    box-shadow: inset 0 0 0 1px #292f4a;
+  }
+  .forecast .bar .track {
+    height: 4px;
+    border-radius: 2px;
+  }
+  .forecast .bar .track .fill {
+    background: linear-gradient(90deg, var(--blood), var(--ember));
+  } /* phase 2 r28: hot, not pale blue */
+  /* Cut 29 §4: a tablet lifted by a long press */
+  .editor .row.tablet.lifted {
+    box-shadow:
+      0 8px 18px rgba(13, 12, 20, 0.7),
+      0 0 0 2px var(--acc);
+    z-index: 5;
+    position: relative;
+  }
+  /* Cut 29 (owner): the forecast's ± as a noise band (a blurred bar as wide as the spread; the `±7` text stays for readers and tools, unseen),
    the move as a signed chip — a tinted pill, `+6` / `−4` */
-.pm.band {
-  display: inline-block;
-  vertical-align: middle;
-  width: calc(var(--pmw, 8) * 1px);
-  height: 4px;
-  margin: 0 3px;
-  border-radius: 2px;
-  font-size: 0 !important;
-  color: transparent;
-  overflow: hidden;
-  opacity: 0.75;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(219, 186, 124, 0.7) 30%,
-    rgba(219, 186, 124, 0.7) 70%,
-    transparent
-  );
-}
-:is(.sheet, .panel, .parchment) .pm.band {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(61, 80, 117, 0.65) 30%,
-    rgba(61, 80, 117, 0.65) 70%,
-    transparent
-  );
-}
-.vsm.dlt {
-  display: inline-block;
-  padding: 0 4px;
-  border-radius: 7px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.35;
-}
-.vsm.dlt.up {
-  background: rgba(150, 174, 200, 0.2);
-  color: #b3cbe5;
-  box-shadow: inset 0 0 0 1px rgba(150, 174, 200, 0.45);
-}
-.vsm.dlt.down {
-  background: rgba(225, 61, 72, 0.2);
-  color: #e49792;
-  box-shadow: inset 0 0 0 1px rgba(225, 61, 72, 0.45);
-}
-:is(.sheet, .panel, .parchment) .vsm.dlt.up {
-  color: #576e86;
-}
-:is(.sheet, .panel, .parchment) .vsm.dlt.down {
-  color: var(--blood);
-}
-/* Cut 29 (owner: `12/12` beside its fix): the death gem says `apply`; the count stays on the lit fix tablet (`survives 12/12`) */
-.gem.patch-gem .gem-in:has(.gem-w) .gem-n {
-  display: none;
-}
-.gem.patch-gem .gem-in:has(.gem-w) .gem-w {
-  font-size: 17px;
-}
-.patch.top .surv {
-  font-weight: 700;
-}
-/* Cut 29 (owner): a world concept's icon, and its caption the first time a viewer sees it */
-.concept {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.concept-ico {
-  vertical-align: middle;
-}
-.ico.concept-ico {
-  width: 18px;
-  height: 18px;
-}
-.ico.glyph.concept-ico::before {
-  font-size: 14px;
-  line-height: 18px;
-}
-.row.tablet .rn .ico.concept-ico {
-  width: 26px;
-  height: 26px;
-}
-.concept-cap {
-  display: inline-block;
-  margin-left: 6px;
-  padding: 0 6px;
-  border-radius: 8px;
-  font: italic 500 11px/1.5 var(--sans);
-  letter-spacing: 0.02em;
-  color: #fad798;
-  background: rgba(174, 192, 212, 0.16);
-  box-shadow: inset 0 0 0 1px rgba(174, 192, 212, 0.4);
-  white-space: nowrap;
-  vertical-align: middle;
-  text-transform: none;
-}
-:is(.sheet, .panel, .parchment) .concept-cap {
-  color: #a5001e;
-  background: rgba(129, 119, 96, 0.14);
-  box-shadow: inset 0 0 0 1px rgba(164, 188, 214, 0.35);
-}
-.stat .concept-cap {
-  margin-left: 4px;
-  font-size: 10px;
-}
-.topbar .stat {
-  position: relative;
-}
-.topbar .stat .concept-cap {
-  position: static;
-  transform: none;
-  margin: 0 0 0 4px;
-  max-width: 100%;
-  white-space: normal;
-  pointer-events: none;
-}
-.notch .concept-cap,
-.forecast .concept-cap {
-  display: table;
-  margin: 2px 0 0;
-  white-space: normal;
-}
-.notch .concept-cap {
-  white-space: nowrap;
-  font-size: 9.5px;
-  padding: 0 4px;
-  margin-left: -2px;
-}
-.concept-cap::after {
-  content: attr(data-cap);
-}
-/* blind pass 9: the watch's `fights only` tile was cut to `fights o…` — a two-word label wraps in its tile */
-.cmd .tile .tl.two {
-  font-size: 9.5px;
-  letter-spacing: -0.03em;
-  text-overflow: clip;
-}
-/* blind pass 9: the shaft's `D1` in the display face read `DI` — the floor numbers take the condensed face (its 1 has a flag) */
-.notch .dl {
-  font-family: var(--sans);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-/* Cut 120 §3: `same for all` sits at the row's end, quieter than the order's own chips */
-.orders-sheet .olab:has(.share) {
-  display: grid;
-  gap: 4px;
-  justify-items: start;
-}
-.orders-sheet .chip.share {
-  opacity: 0.75;
-  font: 500 10px/1.1 var(--sans);
-  letter-spacing: 0;
-  text-transform: none;
-  padding: 3px 6px;
-  min-height: 0;
-}
-.orders-sheet .chip.share.on {
-  opacity: 1;
-}
-.orders-sheet .order-row .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  align-items: center;
+  .pm.band {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(var(--pmw, 8) * 1px);
+    height: 4px;
+    margin: 0 3px;
+    border-radius: 2px;
+    font-size: 0 !important;
+    color: transparent;
+    overflow: hidden;
+    opacity: 0.75;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(219, 186, 124, 0.7) 30%,
+      rgba(219, 186, 124, 0.7) 70%,
+      transparent
+    );
+  }
+  :is(.sheet, .panel, .parchment) .pm.band {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(61, 80, 117, 0.65) 30%,
+      rgba(61, 80, 117, 0.65) 70%,
+      transparent
+    );
+  }
+  .vsm.dlt {
+    display: inline-block;
+    padding: 0 4px;
+    border-radius: 7px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .vsm.dlt.up {
+    background: rgba(150, 174, 200, 0.2);
+    color: #b3cbe5;
+    box-shadow: inset 0 0 0 1px rgba(150, 174, 200, 0.45);
+  }
+  .vsm.dlt.down {
+    background: rgba(225, 61, 72, 0.2);
+    color: #e49792;
+    box-shadow: inset 0 0 0 1px rgba(225, 61, 72, 0.45);
+  }
+  :is(.sheet, .panel, .parchment) .vsm.dlt.up {
+    color: #576e86;
+  }
+  :is(.sheet, .panel, .parchment) .vsm.dlt.down {
+    color: var(--blood);
+  }
+  /* Cut 29 (owner: `12/12` beside its fix): the death gem says `apply`; the count stays on the lit fix tablet (`survives 12/12`) */
+  .gem.patch-gem .gem-in:has(.gem-w) .gem-n {
+    display: none;
+  }
+  .gem.patch-gem .gem-in:has(.gem-w) .gem-w {
+    font-size: 17px;
+  }
+  .patch.top .surv {
+    font-weight: 700;
+  }
+  /* Cut 29 (owner): a world concept's icon, and its caption the first time a viewer sees it */
+  .concept {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .concept-ico {
+    vertical-align: middle;
+  }
+  .ico.concept-ico {
+    width: 18px;
+    height: 18px;
+  }
+  .ico.glyph.concept-ico::before {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .row.tablet .rn .ico.concept-ico {
+    width: 26px;
+    height: 26px;
+  }
+  .concept-cap {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 0 6px;
+    border-radius: 8px;
+    font: italic 500 11px/1.5 var(--sans);
+    letter-spacing: 0.02em;
+    color: #fad798;
+    background: rgba(174, 192, 212, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(174, 192, 212, 0.4);
+    white-space: nowrap;
+    vertical-align: middle;
+    text-transform: none;
+  }
+  :is(.sheet, .panel, .parchment) .concept-cap {
+    color: #a5001e;
+    background: rgba(129, 119, 96, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(164, 188, 214, 0.35);
+  }
+  .stat .concept-cap {
+    margin-left: 4px;
+    font-size: 10px;
+  }
+  .topbar .stat {
+    position: relative;
+  }
+  .topbar .stat .concept-cap {
+    position: static;
+    transform: none;
+    margin: 0 0 0 4px;
+    max-width: 100%;
+    white-space: normal;
+    pointer-events: none;
+  }
+  .notch .concept-cap,
+  .forecast .concept-cap {
+    display: table;
+    margin: 2px 0 0;
+    white-space: normal;
+  }
+  .notch .concept-cap {
+    white-space: nowrap;
+    font-size: 9.5px;
+    padding: 0 4px;
+    margin-left: -2px;
+  }
+  .concept-cap::after {
+    content: attr(data-cap);
+  }
+  /* blind pass 9: the watch's `fights only` tile was cut to `fights o…` — a two-word label wraps in its tile */
+  .cmd .tile .tl.two {
+    font-size: 9.5px;
+    letter-spacing: -0.03em;
+    text-overflow: clip;
+  }
+  /* blind pass 9: the shaft's `D1` in the display face read `DI` — the floor numbers take the condensed face (its 1 has a flag) */
+  .notch .dl {
+    font-family: var(--sans);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  /* Cut 120 §3: `same for all` sits at the row's end, quieter than the order's own chips */
+  .orders-sheet .olab:has(.share) {
+    display: grid;
+    gap: 4px;
+    justify-items: start;
+  }
+  .orders-sheet .chip.share {
+    opacity: 0.75;
+    font: 500 10px/1.1 var(--sans);
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 3px 6px;
+    min-height: 0;
+  }
+  .orders-sheet .chip.share.on {
+    opacity: 1;
+  }
+  .orders-sheet .order-row .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
 }

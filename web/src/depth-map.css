@@ -1,257 +1,260 @@
-.watch-depth-map {
-  position: absolute;
-  right: 10px;
-  top: 122px;
-  z-index: 7;
-  width: 80px;
-  color: var(--bone, #eadfc5);
-  font-family: var(--sans);
-  filter: drop-shadow(0 3px 4px #0d0c14);
-}
-.watch-depth-map > summary {
-  position: relative;
-  list-style: none;
-  cursor: pointer;
-  min-height: 44px;
-  padding: 9px 7px;
-  background: linear-gradient(100deg, #1c1b2bee, #2b3350e8 50%, #0d0c14ee);
-  border: 1px solid #55647f;
-  border-radius: 3px;
-  box-shadow:
-    inset 2px 0 #eadfc51a,
-    inset -2px 0 #0d0c14;
-}
-.watch-depth-map > summary::-webkit-details-marker {
-  display: none;
-}
-.depth-map-current {
-  display: block;
-  font-size: 1rem;
-  line-height: 1.25;
-}
-.depth-map-lane {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 0.625rem;
-  line-height: 1.4;
-  white-space: nowrap;
-  color: #a4bcd6;
-}
-.depth-map-rail {
-  position: relative;
-  display: block;
-  width: 2px;
-  height: 138px;
-  margin: 14px 8px 8px;
-  background: repeating-linear-gradient(to bottom, #a4bcd66b 0 2px, #2b3350 2px 14px);
-  box-shadow: 1px 0 #0d0c14;
-}
-.depth-map-rail i {
-  position: absolute;
-  top: calc(var(--at)*1%);
-  left: 0;
-  font-size: 0.75rem;
-  line-height: 1;
-  font-style: normal;
-  transform: translate(-50%, -50%);
-  color: #a4bcd6;
-}
-.depth-map-rail .depth-map-position {
-  left: 9px;
-  color: #c01530;
-  text-shadow: 0 0 1px #eadfc5;
-  font-size: 0.9375rem;
-}
-.depth-map-details {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: min(240px, calc(100vw - 24px));
-  padding: 12px;
-  background: linear-gradient(120deg, #1c1b2b, #2b3350 54%, #1c1b2b);
-  border: 1px solid #a4bcd6;
-  box-shadow:
-    inset 0 2px #eadfc51a,
-    0 4px 12px #0d0c14;
-  box-sizing: border-box;
-}
-.watch-depth-map[open] > summary {
-  z-index: 1;
-}
-.watch-depth-map[open] .depth-map-details {
-  right: 86px;
-}
-.depth-map-details > b {
-  display: block;
-  font-size: 0.875rem;
-  margin-bottom: 8px;
-}
-.depth-map-list {
-  max-height: min(352px, calc(100dvh - 230px));
-  overflow: auto;
-  overscroll-behavior: contain;
-  overflow-anchor: none;
-}
-.depth-map-stop {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  min-height: 44px;
-  text-align: left;
-  padding: 6px 8px;
-  background: #0d0c1466;
-  border: 1px solid #55647f66;
-  color: #eadfc5;
-  font-family: inherit;
-  font-size: 0.75rem;
-  cursor: pointer;
-}
-.depth-map-stop > span:first-child {
-  width: 16px;
-  color: #a4bcd6;
-}
-.depth-map-stop > b {
-  min-width: 30px;
-}
-.depth-map-stop + .depth-map-stop {
-  border-top: 0;
-}
-.depth-map-inspection {
-  font-size: 0.75rem;
-  margin: 8px 0 0;
-  color: #a4bcd6;
-}
-.depth-map-inspection:empty {
-  display: none;
-}
-.watch-depth-map summary:hover,
-.depth-map-stop:hover {
-  background-color: #4d6c994d;
-  filter: brightness(1.2);
-}
-.watch-depth-map summary:focus-visible,
-.depth-map-stop:focus-visible {
-  outline: 2px solid #eadfc5;
-  outline-offset: 2px;
-}
-.depth-map-stop:active {
-  background: #4d6c99;
-}
-@media (max-width: 359px) {
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
   .watch-depth-map {
-    right: 6px;
+    position: absolute;
+    right: 10px;
+    top: 122px;
+    z-index: 7;
     width: 80px;
+    color: var(--bone, #eadfc5);
+    font-family: var(--sans);
+    filter: drop-shadow(0 3px 4px #0d0c14);
+  }
+  .watch-depth-map > summary {
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+    min-height: 44px;
+    padding: 9px 7px;
+    background: linear-gradient(100deg, #1c1b2bee, #2b3350e8 50%, #0d0c14ee);
+    border: 1px solid #55647f;
+    border-radius: 3px;
+    box-shadow:
+      inset 2px 0 #eadfc51a,
+      inset -2px 0 #0d0c14;
+  }
+  .watch-depth-map > summary::-webkit-details-marker {
+    display: none;
+  }
+  .depth-map-current {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+  .depth-map-lane {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.625rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: #a4bcd6;
+  }
+  .depth-map-rail {
+    position: relative;
+    display: block;
+    width: 2px;
+    height: 138px;
+    margin: 14px 8px 8px;
+    background: repeating-linear-gradient(to bottom, #a4bcd66b 0 2px, #2b3350 2px 14px);
+    box-shadow: 1px 0 #0d0c14;
+  }
+  .depth-map-rail i {
+    position: absolute;
+    top: calc(var(--at)*1%);
+    left: 0;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-style: normal;
+    transform: translate(-50%, -50%);
+    color: #a4bcd6;
+  }
+  .depth-map-rail .depth-map-position {
+    left: 9px;
+    color: #c01530;
+    text-shadow: 0 0 1px #eadfc5;
+    font-size: 0.9375rem;
+  }
+  .depth-map-details {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: min(240px, calc(100vw - 24px));
+    padding: 12px;
+    background: linear-gradient(120deg, #1c1b2b, #2b3350 54%, #1c1b2b);
+    border: 1px solid #a4bcd6;
+    box-shadow:
+      inset 0 2px #eadfc51a,
+      0 4px 12px #0d0c14;
+    box-sizing: border-box;
+  }
+  .watch-depth-map[open] > summary {
+    z-index: 1;
   }
   .watch-depth-map[open] .depth-map-details {
     right: 86px;
-    width: calc(100vw - 108px);
   }
-}
+  .depth-map-details > b {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 8px;
+  }
+  .depth-map-list {
+    max-height: min(352px, calc(100dvh - 230px));
+    overflow: auto;
+    overscroll-behavior: contain;
+    overflow-anchor: none;
+  }
+  .depth-map-stop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    text-align: left;
+    padding: 6px 8px;
+    background: #0d0c1466;
+    border: 1px solid #55647f66;
+    color: #eadfc5;
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+  }
+  .depth-map-stop > span:first-child {
+    width: 16px;
+    color: #a4bcd6;
+  }
+  .depth-map-stop > b {
+    min-width: 30px;
+  }
+  .depth-map-stop + .depth-map-stop {
+    border-top: 0;
+  }
+  .depth-map-inspection {
+    font-size: 0.75rem;
+    margin: 8px 0 0;
+    color: #a4bcd6;
+  }
+  .depth-map-inspection:empty {
+    display: none;
+  }
+  .watch-depth-map summary:hover,
+  .depth-map-stop:hover {
+    background-color: #4d6c994d;
+    filter: brightness(1.2);
+  }
+  .watch-depth-map summary:focus-visible,
+  .depth-map-stop:focus-visible {
+    outline: 2px solid #eadfc5;
+    outline-offset: 2px;
+  }
+  .depth-map-stop:active {
+    background: #4d6c99;
+  }
+  @media (max-width: 359px) {
+    .watch-depth-map {
+      right: 6px;
+      width: 80px;
+    }
+    .watch-depth-map[open] .depth-map-details {
+      right: 86px;
+      width: calc(100vw - 108px);
+    }
+  }
 
-.depth-map-rail .depth-map-notch {
-  left: -4px;
-  transform: translate(0, -50%);
-  white-space: nowrap;
-}
-.depth-map-notch > small {
-  font-size: 0.5625rem;
-  line-height: 1;
-  margin-left: 7px;
-  color: #eadfc5;
-}
-.depth-map-rail .depth-map-position {
-  left: -10px;
-}
+  .depth-map-rail .depth-map-notch {
+    left: -4px;
+    transform: translate(0, -50%);
+    white-space: nowrap;
+  }
+  .depth-map-notch > small {
+    font-size: 0.5625rem;
+    line-height: 1;
+    margin-left: 7px;
+    color: #eadfc5;
+  }
+  .depth-map-rail .depth-map-position {
+    left: -10px;
+  }
 
-.depth-map-stop > span:last-child {
-  min-width: 0;
-  flex: 1;
-  overflow-wrap: anywhere;
-}
-.depth-map-stop > b {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-.depth-map-details > b {
-  line-height: 1.25;
-}
+  .depth-map-stop > span:last-child {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+  }
+  .depth-map-stop > b {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .depth-map-details > b {
+    line-height: 1.25;
+  }
 
-/* Cut234 (package report #6): the slim strip below the desk width — floor ticks, the hero's dot,
+  /* Cut234 (package report #6): the slim strip below the desk width — floor ticks, the hero's dot,
    the next boss; a tap widens it (per viewer). The wide rail carries a slim tab on its left. */
-.depth-map-slim .depth-map-rail .depth-map-next {
-  color: var(--gilt, #d8b25a);
-}
-.watch-depth-map.depth-map-slim {
-  right: 6px;
-  width: max(28px, 1.75rem);
-}
-.depth-map-slim > summary {
-  padding: 6px 2px;
-  text-align: center;
-}
-.depth-map-slim .depth-map-current {
-  font-size: 0.625rem;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-.depth-map-slim .depth-map-lane,
-.depth-map-slim .depth-map-notch > small {
-  display: none;
-}
-.depth-map-slim .depth-map-rail {
-  height: 112px;
-  margin: 10px auto 6px;
-}
-.depth-map-slim .depth-map-rail .depth-map-notch {
-  left: 0;
-  transform: translate(-50%, -50%);
-  font-size: 0.625rem;
-}
-.depth-map-slim .depth-map-rail .depth-map-position {
-  left: -6px;
-  font-size: 0.75rem;
-  transform: translate(-50%, -50%);
-}
-.depth-map-fold {
-  position: absolute;
-  right: 90px;
-  top: 122px;
-  z-index: 7;
-  width: 28px;
-  height: 44px;
-  padding: 0;
-  color: #a4bcd6;
-  font: 1rem/1 var(--sans);
-  background: linear-gradient(100deg, #1c1b2bdd, #2b3350d8);
-  border: 1px solid #55647f;
-  border-right: 0;
-  border-radius: 3px 0 0 3px;
-  cursor: pointer;
-}
-.depth-map-fold[hidden],
-.watch-depth-map[open] + .depth-map-fold {
-  display: none;
-}
-/* the visible tab stays 28px; its touch target reaches 44px into the scene on the left */
-.depth-map-fold::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 0 -16px;
-}
-.depth-map-fold:hover {
-  filter: brightness(1.2);
-}
-.depth-map-fold:focus-visible {
-  outline: 2px solid #eadfc5;
-  outline-offset: 2px;
-}
-@media (max-width: 359px) {
-  .depth-map-fold {
-    right: 86px;
+  .depth-map-slim .depth-map-rail .depth-map-next {
+    color: var(--gilt, #d8b25a);
   }
-}
-.watch-depth-map.depth-map-slim[open] .depth-map-details {
-  right: 34px;
+  .watch-depth-map.depth-map-slim {
+    right: 6px;
+    width: max(28px, 1.75rem);
+  }
+  .depth-map-slim > summary {
+    padding: 6px 2px;
+    text-align: center;
+  }
+  .depth-map-slim .depth-map-current {
+    font-size: 0.625rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .depth-map-slim .depth-map-lane,
+  .depth-map-slim .depth-map-notch > small {
+    display: none;
+  }
+  .depth-map-slim .depth-map-rail {
+    height: 112px;
+    margin: 10px auto 6px;
+  }
+  .depth-map-slim .depth-map-rail .depth-map-notch {
+    left: 0;
+    transform: translate(-50%, -50%);
+    font-size: 0.625rem;
+  }
+  .depth-map-slim .depth-map-rail .depth-map-position {
+    left: -6px;
+    font-size: 0.75rem;
+    transform: translate(-50%, -50%);
+  }
+  .depth-map-fold {
+    position: absolute;
+    right: 90px;
+    top: 122px;
+    z-index: 7;
+    width: 28px;
+    height: 44px;
+    padding: 0;
+    color: #a4bcd6;
+    font: 1rem/1 var(--sans);
+    background: linear-gradient(100deg, #1c1b2bdd, #2b3350d8);
+    border: 1px solid #55647f;
+    border-right: 0;
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+  }
+  .depth-map-fold[hidden],
+  .watch-depth-map[open] + .depth-map-fold {
+    display: none;
+  }
+  /* the visible tab stays 28px; its touch target reaches 44px into the scene on the left */
+  .depth-map-fold::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 -16px;
+  }
+  .depth-map-fold:hover {
+    filter: brightness(1.2);
+  }
+  .depth-map-fold:focus-visible {
+    outline: 2px solid #eadfc5;
+    outline-offset: 2px;
+  }
+  @media (max-width: 359px) {
+    .depth-map-fold {
+      right: 86px;
+    }
+  }
+  .watch-depth-map.depth-map-slim[open] .depth-map-details {
+    right: 34px;
+  }
 }

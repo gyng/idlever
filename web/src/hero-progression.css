@@ -1,59 +1,62 @@
-.hero-build-section {
-  display: grid;
-  gap: var(--ui-space-2, 8px);
-  min-width: 0;
-  padding: var(--ui-space-3, 12px);
-  border: 2px solid var(--ui-edge, #b89448);
-  background: var(--ui-inset, #1c1b2b);
-  color: var(--ui-text, #eadfc5);
-}
-.hero-build-section :is(h3, h4, p) {
-  margin: 0;
-}
-.hero-build-section :is(h3, h4, p, small, b, span, button) {
-  overflow-wrap: anywhere;
-}
-.hero-build-section :is(p, small) {
-  line-height: 1.5;
-}
-.hero-build-status {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ui-space-2, 8px);
-}
-.hero-build-choices {
-  display: grid;
-  gap: var(--ui-space-2, 8px);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-}
-.hero-lasting-choices {
-  display: grid;
-  gap: var(--ui-space-3, 12px);
-}
-.hero-trait-card {
-  display: grid;
-  gap: var(--ui-space-2, 8px);
-  min-width: 0;
-  padding: var(--ui-space-2, 8px);
-  border: 1px solid var(--ui-edge, #b89448);
-}
-.hero-build-section button {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-  max-width: 100%;
-  white-space: normal;
-  box-sizing: border-box;
-}
-.hero-build-section .hero-temperament {
-  display: grid;
-  align-content: start;
-  gap: var(--ui-space-2, 8px);
-  text-align: start;
-}
-.hero-build-section button small {
-  font: inherit;
-  font-size: var(--ui-detail, 0.875rem);
-}
-.hero-build-feedback:empty {
-  display: none;
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  .hero-build-section {
+    display: grid;
+    gap: var(--ui-space-2, 8px);
+    min-width: 0;
+    padding: var(--ui-space-3, 12px);
+    border: 2px solid var(--ui-edge, #b89448);
+    background: var(--ui-inset, #1c1b2b);
+    color: var(--ui-text, #eadfc5);
+  }
+  .hero-build-section :is(h3, h4, p) {
+    margin: 0;
+  }
+  .hero-build-section :is(h3, h4, p, small, b, span, button) {
+    overflow-wrap: anywhere;
+  }
+  .hero-build-section :is(p, small) {
+    line-height: 1.5;
+  }
+  .hero-build-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ui-space-2, 8px);
+  }
+  .hero-build-choices {
+    display: grid;
+    gap: var(--ui-space-2, 8px);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  }
+  .hero-lasting-choices {
+    display: grid;
+    gap: var(--ui-space-3, 12px);
+  }
+  .hero-trait-card {
+    display: grid;
+    gap: var(--ui-space-2, 8px);
+    min-width: 0;
+    padding: var(--ui-space-2, 8px);
+    border: 1px solid var(--ui-edge, #b89448);
+  }
+  .hero-build-section button {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    max-width: 100%;
+    white-space: normal;
+    box-sizing: border-box;
+  }
+  .hero-build-section .hero-temperament {
+    display: grid;
+    align-content: start;
+    gap: var(--ui-space-2, 8px);
+    text-align: start;
+  }
+  .hero-build-section button small {
+    font: inherit;
+    font-size: var(--ui-detail, 0.875rem);
+  }
+  .hero-build-feedback:empty {
+    display: none;
+  }
 }

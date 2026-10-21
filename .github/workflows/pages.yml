@@ -66,6 +66,8 @@ jobs:
         run: tools/wasm.sh --ship
       - name: Check chrome copy
         run: node tools/copy-lint.mjs
+      - name: Check style tokens (Cut316 ratchet)
+        run: node tools/style-lint.mjs
       - name: Build site
         run: pnpm --dir web build
         env:

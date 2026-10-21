@@ -1,56 +1,8 @@
-/* Primary resource meaning stays accessible beside its familiar gold icon/$.
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Primary resource meaning stays accessible beside its familiar gold icon/$.
    Legacy and best depth retain their text labels. */
-html body .topbar .gold > .resource-label {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-/* Give the individual sunk pills room around their contents. */
-html body .topbar .stats {
-  gap: 8px;
-}
-html body .topbar .stat {
-  min-height: 44px;
-  height: auto;
-  padding-inline: 8px;
-}
-.legacy-sigil {
-  display: none;
-}
-
-/* A single primary row at phone size. Mature towns use the portrait here;
-   the selected hero's full identity remains in the roster and accessible text.
-   Larger text/large totals can scroll the resource strip without hiding Settings. */
-@media (max-width: 600px) {
-  html body main.frame > header.topbar {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) 44px;
-    align-content: start;
-    align-items: center;
-    gap: 0 4px;
-    min-height: 0;
-    padding: env(safe-area-inset-top) 2px 0;
-    border-width: 6px;
-    border-image-width: 6px;
-  }
-  html body main.frame > .topbar > .build-banner {
-    display: none;
-  }
-  html body main.frame > .topbar > .heir {
-    grid-area: 1 / 1;
-    min-width: 0;
-    max-width: 9rem;
-    min-height: 44px;
-    font-size: 0.875rem;
-  }
-  html body main.frame > .topbar:has(.marks, .rank, .best) > .heir .heir-identity,
-  html body main.frame > .topbar > .trait,
-  html body main.frame > .topbar .resource-label,
-  html body main.frame > .topbar .best-label {
+  html body .topbar .gold > .resource-label {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -58,157 +10,211 @@ html body .topbar .stat {
     clip-path: inset(50%);
     white-space: nowrap;
   }
-  html body main.frame > .topbar > .gear {
-    grid-area: 1 / 3;
-    min-width: 44px;
-    min-height: 44px;
+
+  /* Give the individual sunk pills room around their contents. */
+  html body .topbar .stats {
+    gap: 8px;
   }
-  html body main.frame > .topbar > .stats {
-    grid-area: 1 / 2;
-    min-width: 0;
-    margin: 0;
-    gap: 6px;
-    padding: 3px 2px;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-padding-inline: 4px;
-    scrollbar-width: thin;
-  }
-  html body main.frame > .topbar .stat {
-    flex: 0 0 auto;
-    min-width: 44px;
+  html body .topbar .stat {
     min-height: 44px;
     height: auto;
-    box-sizing: border-box;
-    font-size: 0.875rem;
-    padding: 4px 8px;
-    gap: 3px;
+    padding-inline: 8px;
   }
-  html body main.frame > .topbar .stat .ico {
-    width: 16px;
-    height: 16px;
-    flex: 0 0 auto;
-  }
-  html body main.frame > .topbar .legacy-sigil {
-    display: inline-block;
-    color: #b8c9db;
-    font: 700 16px/1 var(--sans);
-  }
-  html body main.frame > .topbar .legacy-sigil::before {
-    content: "✧";
-  }
-  html body main.frame > .topbar .concept-cap {
+  .legacy-sigil {
     display: none;
   }
-  html body main.frame > .topbar > :is(.asc, .offers) {
-    grid-column: 1 / -1;
-  }
-}
 
-@media (min-width: 1024px) {
-  html body main.frame > .console {
-    justify-self: center;
-    inline-size: max-content;
-    max-inline-size: calc(100% - 1rem);
-    border-width: 12px;
-    margin-block-end: 8px;
-  }
-  html body main.frame > .console .console-row {
-    margin: 0;
-    max-inline-size: 100%;
-    grid-template-columns: 72px minmax(0, 1fr) 5rem;
-    gap: 12px;
-  }
-  html body main.frame.camp > .console .console-row {
-    grid-template-columns: minmax(0, 1fr) 5rem;
-  }
-  html body main.frame > .console .cmd {
-    max-inline-size: 100%;
-    inline-size: min(74vw, calc(var(--dock-count, 8) * 5.25rem + (var(--dock-count, 8) - 1) * 6px));
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 5.25rem));
-    grid-auto-rows: minmax(4.5rem, auto);
-    gap: 6px;
-  }
-  html body main.frame > .console .cmd .tile.empty:not(.tile-gap) {
-    display: none;
-  }
-  html body main.frame .console .cmd .tile {
-    min-inline-size: 44px;
-    min-block-size: 44px;
-    box-sizing: border-box;
-  }
-  html body main.frame .console .cmd .tile .tl {
-    font-size: 0.875rem;
-    line-height: 1.2;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-  html body main.frame > .console .portrait {
-    inline-size: 72px;
-    block-size: 72px;
-  }
-  html body main.frame > .console .gem {
-    inline-size: 5rem;
-    min-inline-size: 5rem;
-    block-size: 5rem;
-    font-size: 1rem;
+  /* A single primary row at phone size. Mature towns use the portrait here;
+   the selected hero's full identity remains in the roster and accessible text.
+   Larger text/large totals can scroll the resource strip without hiding Settings. */
+  @media (max-width: 600px) {
+    html body main.frame > header.topbar {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) 44px;
+      align-content: start;
+      align-items: center;
+      gap: 0 4px;
+      min-height: 0;
+      padding: env(safe-area-inset-top) 2px 0;
+      border-width: 6px;
+      border-image-width: 6px;
+    }
+    html body main.frame > .topbar > .build-banner {
+      display: none;
+    }
+    html body main.frame > .topbar > .heir {
+      grid-area: 1 / 1;
+      min-width: 0;
+      max-width: 9rem;
+      min-height: 44px;
+      font-size: 0.875rem;
+    }
+    html body main.frame > .topbar:has(.marks, .rank, .best) > .heir .heir-identity,
+    html body main.frame > .topbar > .trait,
+    html body main.frame > .topbar .resource-label,
+    html body main.frame > .topbar .best-label {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    html body main.frame > .topbar > .gear {
+      grid-area: 1 / 3;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    html body main.frame > .topbar > .stats {
+      grid-area: 1 / 2;
+      min-width: 0;
+      margin: 0;
+      gap: 6px;
+      padding: 3px 2px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-padding-inline: 4px;
+      scrollbar-width: thin;
+    }
+    html body main.frame > .topbar .stat {
+      flex: 0 0 auto;
+      min-width: 44px;
+      min-height: 44px;
+      height: auto;
+      box-sizing: border-box;
+      font-size: 0.875rem;
+      padding: 4px 8px;
+      gap: 3px;
+    }
+    html body main.frame > .topbar .stat .ico {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+    }
+    html body main.frame > .topbar .legacy-sigil {
+      display: inline-block;
+      color: #b8c9db;
+      font: 700 16px/1 var(--sans);
+    }
+    html body main.frame > .topbar .legacy-sigil::before {
+      content: "✧";
+    }
+    html body main.frame > .topbar .concept-cap {
+      display: none;
+    }
+    html body main.frame > .topbar > :is(.asc, .offers) {
+      grid-column: 1 / -1;
+    }
   }
 
-  html body main.frame.watch.floating-controls .stage > .console {
-    position: absolute;
-    inset: auto var(--watch-dock-right, 104px) 8px auto;
-    z-index: 10;
-    inline-size: max-content;
-    max-inline-size: calc(100% - var(--watch-dock-right, 104px) - 8px);
-    border-width: 12px;
-    padding: 0;
-    margin: 0;
-  }
-  html body main.frame.watch.floating-controls .console-row {
-    margin: 0;
-    grid-template-columns: 72px minmax(0, 1fr) 5rem;
-    gap: 12px;
-  }
-  html body main.frame.watch.floating-controls .console .cmd {
-    max-inline-size: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  html body main.frame.watch.floating-controls .console .cmd .tile {
-    inline-size: 5.25rem;
-    min-block-size: 4.5rem;
-  }
-  html body main.frame.watch.floating-controls .console .portrait {
-    inline-size: 72px;
-    block-size: 72px;
-  }
-  html body main.frame.watch.floating-controls .console .gem {
-    inline-size: 5rem;
-    min-inline-size: 5rem;
-    block-size: 5rem;
-    font-size: 1rem;
-  }
-  html body main.frame.watch.floating-controls .watch-messages {
-    bottom: calc(var(--watch-dock-h, 0px) + 20px);
-  }
-}
+  @media (min-width: 1024px) {
+    html body main.frame > .console {
+      justify-self: center;
+      inline-size: max-content;
+      max-inline-size: calc(100% - 1rem);
+      border-width: 12px;
+      margin-block-end: 8px;
+    }
+    html body main.frame > .console .console-row {
+      margin: 0;
+      max-inline-size: 100%;
+      grid-template-columns: 72px minmax(0, 1fr) 5rem;
+      gap: 12px;
+    }
+    html body main.frame.camp > .console .console-row {
+      grid-template-columns: minmax(0, 1fr) 5rem;
+    }
+    html body main.frame > .console .cmd {
+      max-inline-size: 100%;
+      inline-size: min(
+        74vw,
+        calc(var(--dock-count, 8) * 5.25rem + (var(--dock-count, 8) - 1) * 6px)
+      );
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 5.25rem));
+      grid-auto-rows: minmax(4.5rem, auto);
+      gap: 6px;
+    }
+    html body main.frame > .console .cmd .tile.empty:not(.tile-gap) {
+      display: none;
+    }
+    html body main.frame .console .cmd .tile {
+      min-inline-size: 44px;
+      min-block-size: 44px;
+      box-sizing: border-box;
+    }
+    html body main.frame .console .cmd .tile .tl {
+      font-size: 0.875rem;
+      line-height: 1.2;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    html body main.frame > .console .portrait {
+      inline-size: 72px;
+      block-size: 72px;
+    }
+    html body main.frame > .console .gem {
+      inline-size: 5rem;
+      min-inline-size: 5rem;
+      block-size: 5rem;
+      font-size: 1rem;
+    }
 
-/* owner 2026-10-14 (more live view, less chrome): with the dock floating, the hand toggle floats too, in the stage's bottom-left corner,
+    html body main.frame.watch.floating-controls .stage > .console {
+      position: absolute;
+      inset: auto var(--watch-dock-right, 104px) 8px auto;
+      z-index: 10;
+      inline-size: max-content;
+      max-inline-size: calc(100% - var(--watch-dock-right, 104px) - 8px);
+      border-width: 12px;
+      padding: 0;
+      margin: 0;
+    }
+    html body main.frame.watch.floating-controls .console-row {
+      margin: 0;
+      grid-template-columns: 72px minmax(0, 1fr) 5rem;
+      gap: 12px;
+    }
+    html body main.frame.watch.floating-controls .console .cmd {
+      max-inline-size: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    html body main.frame.watch.floating-controls .console .cmd .tile {
+      inline-size: 5.25rem;
+      min-block-size: 4.5rem;
+    }
+    html body main.frame.watch.floating-controls .console .portrait {
+      inline-size: 72px;
+      block-size: 72px;
+    }
+    html body main.frame.watch.floating-controls .console .gem {
+      inline-size: 5rem;
+      min-inline-size: 5rem;
+      block-size: 5rem;
+      font-size: 1rem;
+    }
+    html body main.frame.watch.floating-controls .watch-messages {
+      bottom: calc(var(--watch-dock-h, 0px) + 20px);
+    }
+  }
+
+  /* owner 2026-10-14 (more live view, less chrome): with the dock floating, the hand toggle floats too, in the stage's bottom-left corner,
    instead of holding a full-width row under the stage; the messages rise above the pad while the hand is on */
-@media (min-width: 1024px) {
-  html body main.frame.watch.floating-controls > .ctl.ctl-slab {
-    /* Cut262: the hand toggle's tile lands a frame after the slab; its height is held so the slab does not rise into place */
-    min-height: 106px;
-    grid-area: well;
-    align-self: end;
-    justify-self: start;
-    margin: 0 0 8px 8px;
-    z-index: 12;
-  }
-  html body main.frame.watch.floating-controls:has(> .ctl[data-on="1"]) .watch-messages {
-    bottom: calc(max(var(--watch-dock-h, 0px), 11rem) + 20px);
+  @media (min-width: 1024px) {
+    html body main.frame.watch.floating-controls > .ctl.ctl-slab {
+      /* Cut262: the hand toggle's tile lands a frame after the slab; its height is held so the slab does not rise into place */
+      min-height: 106px;
+      grid-area: well;
+      align-self: end;
+      justify-self: start;
+      margin: 0 0 8px 8px;
+      z-index: 12;
+    }
+    html body main.frame.watch.floating-controls:has(> .ctl[data-on="1"]) .watch-messages {
+      bottom: calc(max(var(--watch-dock-h, 0px), 11rem) + 20px);
+    }
   }
 }

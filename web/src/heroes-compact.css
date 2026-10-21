@@ -1,115 +1,118 @@
-/* Owner 2026-10-14 ("the hero list on left can be more compact"; an MMO party frame for reference): on desktop each roster row is a
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Owner 2026-10-14 ("the hero list on left can be more compact"; an MMO party frame for reference): on desktop each roster row is a
    party frame — a small portrait, the name, one class line, a thin XP rail and the activity — about half the old card's height.
    The whole frame still jumps to the hero; Details stays, small, in the frame's corner. */
-@media (min-width: 1024px) {
-  /* the compact frames need less column: the camp's left column narrows and the town takes the width */
-  :root {
-    --camp-l: var(--wide-l);
+  @media (min-width: 1024px) {
+    /* the compact frames need less column: the camp's left column narrows and the town takes the width */
+    :root {
+      --camp-l: var(--wide-l);
+    }
+    html body .hero-roster .hero-list {
+      gap: 6px;
+    }
+    html body .hero-roster .hero-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-width: 2px;
+    }
+    html body .hero-roster .hero-jump {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    html body .hero-roster .hero-thumb {
+      width: 40px;
+      height: 48px;
+      border-width: 2px;
+    }
+    html body .hero-roster .hero-info {
+      display: grid;
+      gap: 1px;
+      min-width: 0;
+    }
+    html body .hero-roster .hero-info b {
+      font: 600 15px/1.15 var(--display);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    html body .hero-roster .hero-class-name {
+      font-size: 11px;
+      line-height: 1.25;
+    }
+    html body .hero-roster .hero-class-name .class-icon {
+      width: 12px;
+      height: 12px;
+    }
+    html body .hero-roster .hero-build {
+      font-size: 10px;
+      line-height: 1.2;
+    }
+    html body .hero-roster .hero-xp {
+      font-size: 10px;
+      line-height: 1.2;
+    }
+    html body .hero-roster .hero-xp-track {
+      width: 100%;
+      height: 3px;
+    }
+    html body .hero-roster .hero-action {
+      margin-top: 1px;
+      font: 400 12px/1.25 var(--body-font);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    html body .hero-roster .hero-notice {
+      font-size: 10px;
+    }
+    html body .hero-roster .hero-row > .hero-details {
+      align-self: start;
+      min-height: 44px;
+      padding: 2px 8px;
+      font-size: 12px;
+    }
   }
-  html body .hero-roster .hero-list {
-    gap: 6px;
+
+  /* A confirmed founding quote sits on the dark bloodline folio, not parchment. */
+  html body .game-window[data-material="bloodlines"] .bloodline-founding > .gold {
+    color: var(--gilt);
   }
-  html body .hero-roster .hero-row {
+
+  /* Home's roster opener lives once in the stable command dock at every width. */
+  html body .camp .console .home-heroes-command {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+  html body .camp[data-first="1"] .console .cmd:has([data-tile="heroes"]) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 8px;
-    border-width: 2px;
   }
-  html body .hero-roster .hero-jump {
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr);
-    align-items: center;
-    gap: 8px;
-    min-width: 0;
+
+  @media (max-width: 1023px) {
+    html body .camp .hero-mobile:not(:has(.hero-expand)) {
+      display: block;
+    }
+    html body .camp .hero-mobile:not(:has(.hero-expand)) > .hero-row {
+      inline-size: 100%;
+      min-inline-size: 0;
+    }
   }
-  html body .hero-roster .hero-thumb {
-    width: 40px;
-    height: 48px;
-    border-width: 2px;
-  }
-  html body .hero-roster .hero-info {
-    display: grid;
-    gap: 1px;
-    min-width: 0;
-  }
-  html body .hero-roster .hero-info b {
-    font: 600 15px/1.15 var(--display);
+  html body .camp .console .heroes-command-face {
+    position: relative;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
-  html body .hero-roster .hero-class-name {
-    font-size: 11px;
-    line-height: 1.25;
+  html body .camp .console .heroes-command-face::before {
+    content: "♟";
   }
-  html body .hero-roster .hero-class-name .class-icon {
-    width: 12px;
-    height: 12px;
+  html body .camp .console .heroes-command-portrait {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
   }
-  html body .hero-roster .hero-build {
-    font-size: 10px;
-    line-height: 1.2;
-  }
-  html body .hero-roster .hero-xp {
-    font-size: 10px;
-    line-height: 1.2;
-  }
-  html body .hero-roster .hero-xp-track {
-    width: 100%;
-    height: 3px;
-  }
-  html body .hero-roster .hero-action {
-    margin-top: 1px;
-    font: 400 12px/1.25 var(--body-font);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  html body .hero-roster .hero-notice {
-    font-size: 10px;
-  }
-  html body .hero-roster .hero-row > .hero-details {
-    align-self: start;
-    min-height: 44px;
-    padding: 2px 8px;
-    font-size: 12px;
-  }
-}
-
-/* A confirmed founding quote sits on the dark bloodline folio, not parchment. */
-html body .game-window[data-material="bloodlines"] .bloodline-founding > .gold {
-  color: var(--gilt);
-}
-
-/* Home's roster opener lives once in the stable command dock at every width. */
-html body .camp .console .home-heroes-command {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-}
-html body .camp[data-first="1"] .console .cmd:has([data-tile="heroes"]) {
-  display: grid;
-}
-
-@media (max-width: 1023px) {
-  html body .camp .hero-mobile:not(:has(.hero-expand)) {
-    display: block;
-  }
-  html body .camp .hero-mobile:not(:has(.hero-expand)) > .hero-row {
-    inline-size: 100%;
-    min-inline-size: 0;
-  }
-}
-html body .camp .console .heroes-command-face {
-  position: relative;
-  overflow: hidden;
-}
-html body .camp .console .heroes-command-face::before {
-  content: "♟";
-}
-html body .camp .console .heroes-command-portrait {
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
 }

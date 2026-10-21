@@ -1,757 +1,760 @@
-.hero-hub {
-  container-type: inline-size;
-  container-name: hero-navigation;
-  overflow-wrap: anywhere;
-  display: grid;
-  gap: 1rem;
-  min-width: 0;
-  color: var(--ui-text, #eadfc5);
-}
-.hero-hub :is(h2, h3, p) {
-  margin: 0;
-}
-.hero-hub :is(button, small, strong, span, h2, h3) {
-  overflow-wrap: anywhere;
-}
-.hero-hub button {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-  max-width: 100%;
-  white-space: normal;
-}
-.hero-hub-header {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 2px solid var(--ui-edge, #b89448);
-}
-/* At 200% root text every rem gap doubles while the face keeps its 72 CSS px, so on a narrow hub the
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  .hero-hub {
+    container-type: inline-size;
+    container-name: hero-navigation;
+    overflow-wrap: anywhere;
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+    color: var(--ui-text, #eadfc5);
+  }
+  .hero-hub :is(h2, h3, p) {
+    margin: 0;
+  }
+  .hero-hub :is(button, small, strong, span, h2, h3) {
+    overflow-wrap: anywhere;
+  }
+  .hero-hub button {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .hero-hub-header {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--ui-edge, #b89448);
+  }
+  /* At 200% root text every rem gap doubles while the face keeps its 72 CSS px, so on a narrow hub the
    identity column collapsed to ~60px and its own words hung 3px out of the window. From 8rem of hub
    width down the block takes its own row under the face — `rem`, so bigger text reaches the threshold at
    a wider viewport, the same font-relative convention as the tab rules below. */
-@container hero-navigation (max-width: 8rem) {
-  .hero-hub-header {
-    grid-template-columns: minmax(0, 1fr);
+  @container hero-navigation (max-width: 8rem) {
+    .hero-hub-header {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
-}
-.hero-hub-face {
-  width: 72px;
-  height: 88px;
-  background-repeat: no-repeat;
-  border: 1px solid var(--ui-edge, #b89448);
-  display: grid;
-  place-items: center;
-}
-.hero-hub-face img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 30%;
-}
-/* The short identity values pack onto shared lines (the name and the training fold keep their own row), so
-   a 200% header is a few wrapped lines instead of one line per value. */
-.hero-hub-identity {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.125rem 0.5rem;
-  min-width: 0;
-}
-.hero-hub-identity > * {
-  min-inline-size: 0;
-}
-.hero-hub-identity > h2,
-.hero-hub-identity > [data-hub-training] {
-  flex: 1 0 100%;
-}
-/* Cut256: the fold keeps a 44 CSS px target instead of the material's font-scaled 2.75rem height (88px at
-   a 200% root font), like the Hub's other controls. */
-.hero-hub .hero-hub-identity [data-hub-training] > summary {
-  display: flex;
-  align-items: center;
-  min-block-size: 44px;
-  padding-block: 4px 5px;
-  cursor: pointer;
-}
-.hero-hub-secondary,
-.hero-hub-residents {
-  grid-column: 1/-1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.hero-hub-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.5rem;
-}
-.hero-hub-tab[aria-selected="true"] {
-  border-color: var(--ui-edge, #b89448);
-  color: #ffdfa4;
-  box-shadow: inset 0 -3px #b89448;
-}
-.hero-hub button:hover:not(:disabled) {
-  filter: brightness(1.18);
-}
-.hero-hub button:active:not(:disabled) {
-  filter: brightness(0.92);
-}
-.hero-hub :is(button, summary, input):focus-visible {
-  outline: 2px solid #ffdfa4;
-  outline-offset: 3px;
-}
-.hero-hub-content,
-.hero-hub-panel {
-  min-width: 0;
-}
-.hero-hub-panel {
-  display: grid;
-  gap: 1rem;
-}
-.hero-hub-panel[hidden] {
-  display: none;
-}
-.hero-hub-doll {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border: 2px solid var(--ui-edge, #b89448);
-  background: radial-gradient(ellipse at 50% 30%, #302b39, #171720 72%);
-}
-/* Cut271: the equipment diagram spans the section; the slot cards (Actual · Next delve) sit under it. */
-.hero-hub-figure {
-  grid-column: 1/-1;
-  min-width: 0;
-  display: grid;
-  justify-items: center;
-}
-.hero-hub-sprite {
-  display: block;
-  max-width: 100%;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 8px 3px #000a);
-}
-.hero-hub-silhouette {
-  font-size: 5rem;
-  color: #b89448;
-}
-.hero-hub-gear-anchor {
-  display: grid;
-  align-content: start;
-  gap: 0.4rem;
-  text-align: start;
-}
-.hero-hub .hero-life-panel {
-  padding: 0;
-  overflow: visible;
-  max-height: none;
-}
-.hero-hub .pkg-strip {
-  display: grid;
-  gap: 0.5rem;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-hub * {
-    scroll-behavior: auto;
-  }
-}
-
-.hero-hub :is([data-hub-slot-phase], [data-hub-slot-shared]) {
-  display: grid;
-  gap: 0.2rem;
-  border-top: 1px solid #b8944866;
-  padding-top: 0.3rem;
-}
-.hero-hub-totals {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  gap: 1rem;
-}
-.hero-hub-totals article {
-  padding: 0.75rem;
-  border: 1px solid #b8944866;
-  background: #171720;
-}
-.hero-hub-totals dl {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 0.4rem;
-}
-.hero-hub-totals dd {
-  margin: 0;
-  text-align: end;
-  overflow-wrap: anywhere;
-}
-.hero-hub [data-family-phase] {
-  display: block;
-  margin-top: 0.5rem;
-}
-
-.hero-hub :is(input, select, summary) {
-  min-block-size: 44px;
-  min-inline-size: 44px;
-  max-width: 100%;
-}
-.hero-hub summary {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.hero-hub-totals :is(dt, dd) {
-  min-width: 0;
-}
-
-.hero-hub :is([data-family-descriptors], .hero-trait-card) {
-  display: grid;
-  gap: 0.5rem;
-}
-.hero-hub [data-temperament-phase] {
-  display: block;
-  margin-top: 0.5rem;
-}
-
-.hero-hub-actual-build {
-  display: grid;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border: 1px solid #b8944866;
-  background: #171720;
-}
-.hero-hub-actual-build article {
-  display: grid;
-  gap: 0.35rem;
-}
-
-.hero-hub :is([data-detail-tip], [data-kwh], .kw-on[tabindex="0"]) {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-  display: inline-flex;
-  align-items: center;
-  max-width: 100%;
-}
-
-.hero-hub-panel {
-  grid-template-columns: minmax(0, 1fr);
-  container-type: inline-size;
-  container-name: hero-folio;
-}
-.hero-hub
-  :is(
-    .bloodline-loadouts,
-    .starting-kits,
-    .starting-gear,
-    .bloodline-prepared,
-    .bloodline-catalogue,
-    .hero-hub-gear-effects
-  ) {
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.hero-hub .bloodline-loadouts {
-  grid-template-columns: minmax(0, 1fr);
-}
-.hero-hub-gear-effects article,
-.hero-hub-gear-effects section {
-  display: grid;
-  gap: 0.5rem;
-  min-width: 0;
-  margin-block: 0.75rem;
-}
-.sheet-body.hero-hub button.hero-hub-gear-anchor {
-  padding: 0.5rem;
-  min-width: 44px;
-}
-/* Font-relative: large text stacks the doll before side cards get cramped. */
-@container hero-folio (max-width:30rem) {
-  .hero-hub-doll {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border-width: 1px;
-  }
-  .hero-hub-figure {
-    grid-column: 1;
-  }
-  .hero-hub-sprite {
-    max-width: min(100%, 132px);
-  }
-  .hero-hub-gear-anchor[data-hub-slot] {
-    grid-column: 1;
-  }
-}
-@container hero-folio (max-width:280px) {
-  .hero-hub-doll,
-  .hero-hub .bloodline-prepared,
-  .hero-hub .bloodline-catalogue {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .hero-hub-gear-anchor[data-hub-slot] {
-    grid-column: 1;
-  }
-}
-@container hero-navigation (max-width:420px) {
-  .hero-hub-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@container hero-navigation (max-width:15rem) {
-  .hero-hub-tabs {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* Cut220 visual refinement: quiet slot cards, readable Actual/Next rows, compact tabs. */
-/* Hub controls keep a 44 CSS px target without the material's font-scaled 2.75rem height. */
-.hero-hub .hero-hub-tabs button.hero-hub-tab,
-.hero-hub :is(.hero-hub-secondary, .hero-hub-residents) button.btn,
-.sheet-body.hero-hub button.hero-hub-gear-anchor {
-  min-block-size: 44px;
-}
-.hero-hub .hero-hub-tabs button.hero-hub-tab {
-  padding: 4px 0.5rem 5px;
-  line-height: 1.2;
-  overflow-wrap: break-word;
-}
-.hero-hub :is(.hero-hub-secondary, .hero-hub-residents) button.btn {
-  padding-block: 4px 5px;
-  line-height: 1.2;
-}
-/* The tablet frame keeps its 8px art border; only the inner padding tightens,
-   leaving the selected control's 3px inset rule clear of the text. */
-html.skin-tablet body .game-window[data-material] .hero-hub-tabs button.hero-hub-tab,
-html.skin-tablet
-  body
-  .game-window[data-material]
-  :is(.hero-hub-secondary, .hero-hub-residents)
-  button.btn {
-  padding-block: 2px 5px;
-}
-@container hero-navigation (max-width:420px) {
-  .hero-hub-tabs {
-    gap: 0.375rem;
-  }
-}
-
-.sheet-body.hero-hub button.hero-hub-gear-anchor {
-  gap: 0.3rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #b8944899;
-  background: #222a40;
-  box-shadow: inset 0 1px #a4bcd626;
-  color: var(--ui-text, #eadfc5);
-}
-/* Whole words where they fit; grid children may shrink so a long word breaks, not overflows. */
-.hero-hub .hero-hub-gear-anchor :is(b, small, strong, span) {
-  overflow-wrap: break-word;
-  min-width: 0;
-}
-.hero-hub .hero-hub-gear-anchor .hero-hub-slot-name {
-  color: var(--acc, #dbba7c);
-  font-size: var(--ui-detail, 0.875rem);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.hero-hub .hero-hub-gear-anchor .hero-hub-item {
-  color: var(--ui-text, #eadfc5);
-  font-weight: 600;
-}
-.hero-hub .hero-hub-gear-anchor [data-hub-slot-shared] > strong,
-.hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] > strong {
-  color: var(--mist, #a4bcd6);
-  font-weight: 400;
-}
-/* Actual and Next read as two labelled rows; they stack only when the card is too narrow. */
-.hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.5rem;
-  row-gap: 0;
-}
-.hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] > strong {
-  flex: 0 1 auto;
-  inline-size: min(5.5em, 100%);
-}
-.hero-hub .hero-hub-gear-anchor .hero-hub-phase-value {
-  flex: 1 1 min(7em, 100%);
-  min-width: 0;
-}
-.hero-hub .hero-hub-gear-anchor .hero-hub-origin::before {
-  content: " · ";
-}
-.hero-hub .hero-hub-gear-anchor [data-hub-slot-phase="next"] {
-  border-top-style: dashed;
-}
-
-/* Framed skill buttons keep both text lines inside the frame's inner gilt rule. */
-html.skin-button
-  .sheet-body.hero-hub
-  .class-tree-panel
-  button.chip:is(.class-path-choose, .class-path-remove),
-html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style-choose {
-  /* Cut266: 12px, not 8px — at 200% text the first and last line boxes touched the frame's inner gilt
-     band (contrast 1.2–3.3 against it at 320 CSS px) */
-  padding-block: 12px;
-}
-@container hero-folio (max-width:280px) {
-  .hero-hub-doll {
-    padding: 0.25rem;
-  }
-  .sheet-body.hero-hub button.hero-hub-gear-anchor {
-    padding-inline: 0.5rem;
-  }
-}
-
-/* Narrow folios stack each Legacy upgrade's button under its text, so copy keeps its width. */
-@container hero-folio (max-width:30rem) {
-  .sheet-body.hero-hub .legacy-tree .legacy-upgrade {
-    grid-template-columns: 32px minmax(0, 1fr);
-  }
-  .sheet-body.hero-hub .legacy-tree button.legacy-buy {
-    grid-column: 1/-1;
-    justify-self: stretch;
-    max-width: none;
-  }
-}
-/* Cut225: the class's abilities in Skills, every rung (reached lit) */
-.hero-hub-abilities {
-  display: grid;
-  gap: 6px;
-  margin: 8px 0;
-}
-.hero-hub-abilities h4 {
-  margin: 0;
-}
-.hero-hub-abilities .ladder {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-/* a rung not yet reached stays readable on the Hub's dark material (the parchment's ink would not) */
-.hero-hub .hero-hub-abilities .chip.rung:not(.on) {
-  color: #cfc5b0;
-  border-color: #4a4f66;
-  background: rgba(23, 22, 34, 0.6);
-}
-
-/* the class name as a title (the wire word is lower case) */
-.hero-hub-class {
-  text-transform: capitalize;
-}
-
-/* Cut271 (owner 2026-10-18, "More abstract"): framed slot tiles around a plain silhouette, joined by
-   leader lines. The body is 8 × 16 diagram units (viewBox 100×200); each slot's --doll-y is its tile
-   centre in units, the height its leader line leaves the body's edge (REGIONS in hero-equipment-figure.ts). */
-.hero-equipment-figure {
-  align-content: start;
-  gap: 0.5rem;
-}
-.hero-equipment-phases {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.375rem;
-  min-width: 0;
-}
-.hero-equipment-phases button[aria-pressed="true"] {
-  border-color: var(--gilt, #b89448);
-  box-shadow: inset 0 -3px var(--gilt, #b89448);
-  color: var(--bone, #eadfc5);
-}
-.hero-equipment-stage {
-  --doll-u: 1rem;
-  --doll-tile: max(2.75rem, 3.5 * var(--doll-u));
-  position: relative;
-  inline-size: min(100%, 34rem);
-  block-size: calc(18 * var(--doll-u));
-}
-.hero-equipment-body {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: calc(50% - 4 * var(--doll-u));
-  inline-size: calc(8 * var(--doll-u));
-  block-size: calc(16 * var(--doll-u));
-  display: block;
-  overflow: visible;
-}
-.hero-equipment-leader {
-  stroke: #b8944870;
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-.hero-equipment-joint {
-  fill: #b8944899;
-}
-.hero-equipment-slot {
-  position: absolute;
-  inset-block-start: calc(var(--doll-y) * var(--doll-u) - var(--doll-tile) / 2);
-  inline-size: calc(50% - 4 * var(--doll-u));
-  display: flex;
-  align-items: flex-start;
-}
-.hero-equipment-slot[data-doll-slot="helm"] {
-  --doll-y: 3.5;
-}
-.hero-equipment-slot[data-doll-slot="weapon"] {
-  --doll-y: 11;
-}
-.hero-equipment-slot[data-doll-slot="armour"] {
-  --doll-y: 5;
-}
-.hero-equipment-slot[data-doll-slot="boots"] {
-  --doll-y: 12.5;
-}
-.hero-equipment-slot[data-doll-side="start"] {
-  inset-inline-start: 0;
-}
-.hero-equipment-slot[data-doll-side="end"] {
-  inset-inline-end: 0;
-  flex-direction: row-reverse;
-}
-.hero-equipment-card {
-  display: grid;
-  justify-items: center;
-  gap: 0.25rem;
-  flex: 0 1 auto;
-  min-inline-size: var(--doll-tile);
-  max-inline-size: min(7rem, 100% - 0.5rem);
-}
-.hero-equipment-tile {
-  position: relative;
-  display: grid;
-  place-items: center;
-  inline-size: var(--doll-tile);
-  block-size: var(--doll-tile);
-  box-sizing: border-box;
-  border: 1px solid #b8944899;
-  background: #1c2132;
-  box-shadow: inset 0 0 0 2px #0e111a;
-}
-.hero-equipment-tile > :is(svg, img) {
-  grid-area: 1/1;
-  inline-size: 82%;
-  block-size: 82%;
-  object-fit: contain;
-}
-.hero-equipment-slot[data-doll-art="empty"] .hero-equipment-tile {
-  border-style: dashed;
-  border-color: #b8944866;
-  background: #171a26;
-}
-.hero-equipment-name {
-  max-inline-size: 100%;
-  font-size: var(--ui-detail, 0.875rem);
-  line-height: 1.2;
-  text-align: center;
-  color: var(--ui-text, #eadfc5);
-  overflow-wrap: break-word;
-}
-.hero-equipment-name::first-letter {
-  text-transform: uppercase;
-}
-.hero-equipment-name.is-empty::first-letter {
-  text-transform: none;
-}
-.hero-equipment-name.is-empty {
-  color: #b9b2a3;
-  font-style: italic;
-}
-.hero-equipment-lead {
-  flex: 1 1 0;
-  min-inline-size: 0.5rem;
-  margin-block-start: calc(var(--doll-tile) / 2);
-  border-block-start: 1px solid #b8944870;
-}
-/* A slot that changes between Actual and Next delve: a brighter frame, lead and joint, in both views. */
-.hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile {
-  border: 2px solid #dbba7c;
-}
-.hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile::after {
-  content: "";
-  position: absolute;
-  inset-block-start: -5px;
-  inset-inline-end: -5px;
-  inline-size: 8px;
-  block-size: 8px;
-  background: #dbba7c;
-  transform: rotate(45deg);
-}
-.hero-equipment-slot[data-doll-change="1"] .hero-equipment-lead {
-  border-block-start-color: #dbba7c;
-}
-.hero-equipment-leader[data-doll-change="1"] {
-  stroke: #dbba7c;
-}
-.hero-equipment-joint[data-doll-change="1"] {
-  fill: #dbba7c;
-}
-.hero-equipment-tile:focus-visible {
-  outline: 2px solid #ffdfa4;
-  outline-offset: 3px;
-}
-/* A phone folio draws the diagram at three quarters; tiles keep a 44px target. */
-@container hero-folio (max-width:30rem) {
-  .hero-equipment-stage {
-    --doll-u: 0.75rem;
-  }
-}
-/* Too narrow for tiles beside the body (large text on a phone): the slots line up in two columns. */
-@container hero-folio (max-width:17rem) {
-  .hero-equipment-stage {
+  .hero-hub-face {
+    width: 72px;
+    height: 88px;
+    background-repeat: no-repeat;
+    border: 1px solid var(--ui-edge, #b89448);
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem 0.5rem;
-    block-size: auto;
+    place-items: center;
   }
-  .hero-equipment-body,
-  .hero-equipment-lead {
+  .hero-hub-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+  }
+  /* The short identity values pack onto shared lines (the name and the training fold keep their own row), so
+   a 200% header is a few wrapped lines instead of one line per value. */
+  .hero-hub-identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.125rem 0.5rem;
+    min-width: 0;
+  }
+  .hero-hub-identity > * {
+    min-inline-size: 0;
+  }
+  .hero-hub-identity > h2,
+  .hero-hub-identity > [data-hub-training] {
+    flex: 1 0 100%;
+  }
+  /* Cut256: the fold keeps a 44 CSS px target instead of the material's font-scaled 2.75rem height (88px at
+   a 200% root font), like the Hub's other controls. */
+  .hero-hub .hero-hub-identity [data-hub-training] > summary {
+    display: flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding-block: 4px 5px;
+    cursor: pointer;
+  }
+  .hero-hub-secondary,
+  .hero-hub-residents {
+    grid-column: 1/-1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .hero-hub-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .hero-hub-tab[aria-selected="true"] {
+    border-color: var(--ui-edge, #b89448);
+    color: #ffdfa4;
+    box-shadow: inset 0 -3px #b89448;
+  }
+  .hero-hub button:hover:not(:disabled) {
+    filter: brightness(1.18);
+  }
+  .hero-hub button:active:not(:disabled) {
+    filter: brightness(0.92);
+  }
+  .hero-hub :is(button, summary, input):focus-visible {
+    outline: 2px solid #ffdfa4;
+    outline-offset: 3px;
+  }
+  .hero-hub-content,
+  .hero-hub-panel {
+    min-width: 0;
+  }
+  .hero-hub-panel {
+    display: grid;
+    gap: 1rem;
+  }
+  .hero-hub-panel[hidden] {
     display: none;
   }
-  .hero-equipment-slot {
-    position: static;
-    inline-size: auto;
-    justify-content: center;
+  .hero-hub-doll {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 2px solid var(--ui-edge, #b89448);
+    background: radial-gradient(ellipse at 50% 30%, #302b39, #171720 72%);
   }
-  .hero-equipment-card {
-    max-inline-size: 100%;
+  /* Cut271: the equipment diagram spans the section; the slot cards (Actual · Next delve) sit under it. */
+  .hero-hub-figure {
+    grid-column: 1/-1;
+    min-width: 0;
+    display: grid;
+    justify-items: center;
   }
-}
-@container hero-folio (max-width:11rem) {
-  .hero-equipment-stage {
+  .hero-hub-sprite {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 8px 3px #000a);
+  }
+  .hero-hub-silhouette {
+    font-size: 5rem;
+    color: #b89448;
+  }
+  .hero-hub-gear-anchor {
+    display: grid;
+    align-content: start;
+    gap: 0.4rem;
+    text-align: start;
+  }
+  .hero-hub .hero-life-panel {
+    padding: 0;
+    overflow: visible;
+    max-height: none;
+  }
+  .hero-hub .pkg-strip {
+    display: grid;
+    gap: 0.5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-hub * {
+      scroll-behavior: auto;
+    }
+  }
+
+  .hero-hub :is([data-hub-slot-phase], [data-hub-slot-shared]) {
+    display: grid;
+    gap: 0.2rem;
+    border-top: 1px solid #b8944866;
+    padding-top: 0.3rem;
+  }
+  .hero-hub-totals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+  }
+  .hero-hub-totals article {
+    padding: 0.75rem;
+    border: 1px solid #b8944866;
+    background: #171720;
+  }
+  .hero-hub-totals dl {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+  .hero-hub-totals dd {
+    margin: 0;
+    text-align: end;
+    overflow-wrap: anywhere;
+  }
+  .hero-hub [data-family-phase] {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .hero-hub :is(input, select, summary) {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    max-width: 100%;
+  }
+  .hero-hub summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-hub-totals :is(dt, dd) {
+    min-width: 0;
+  }
+
+  .hero-hub :is([data-family-descriptors], .hero-trait-card) {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .hero-hub [data-temperament-phase] {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .hero-hub-actual-build {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid #b8944866;
+    background: #171720;
+  }
+  .hero-hub-actual-build article {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .hero-hub :is([data-detail-tip], [data-kwh], .kw-on[tabindex="0"]) {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .hero-hub-panel {
+    grid-template-columns: minmax(0, 1fr);
+    container-type: inline-size;
+    container-name: hero-folio;
+  }
+  .hero-hub
+    :is(
+      .bloodline-loadouts,
+      .starting-kits,
+      .starting-gear,
+      .bloodline-prepared,
+      .bloodline-catalogue,
+      .hero-hub-gear-effects
+    ) {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-hub .bloodline-loadouts {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-
-/* Cut264 contrast review: the sticky close stud covered the ends of lower gear lines while the
-   window scrolled. Keep navigation outside the folio's scroll area so no text passes beneath it. */
-html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 44px minmax(0, 1fr) 16px;
-  row-gap: 4px;
-  overflow: hidden;
-}
-html body .game-window[data-material]:has(> .hero-hub) > :is(.close-stud, .sheet-back) {
-  position: static;
-  grid-row: 1;
-  grid-column: 1;
-  float: none;
-  margin: 0;
-  align-self: center;
-}
-html body .game-window[data-material]:has(> .hero-hub) > .close-stud {
-  justify-self: end;
-}
-html body .game-window[data-material]:has(> .hero-hub) > .sheet-back {
-  justify-self: start;
-}
-html body .game-window[data-material] > .hero-hub {
-  grid-row: 2;
-  grid-column: 1;
-  min-height: 0;
-  overflow: auto;
-  align-content: start;
-  scrollbar-width: thin;
-  scrollbar-color: var(--ui-edge) var(--ui-surface);
-}
-html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::before {
-  content: none;
-}
-html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::after {
-  content: "▾";
-  position: static;
-  grid-row: 3;
-  grid-column: 1;
-  height: 16px;
-  margin: 0;
-  padding: 0;
-  background: none;
-  color: var(--ui-muted);
-  font: 600 16px/16px var(--sans);
-  text-align: center;
-  visibility: hidden;
-}
-html
-  body
-  .sheet-wrap.centered
-  > .game-window[data-material][data-more="1"]:has(> .hero-hub)::after {
-  visibility: visible;
-}
-.hero-hub .hero-hub-tabs {
-  scroll-margin-top: 4px;
-}
-/* One window size for every section: the Attributes tree no longer widens the window (and the others
-   no longer shrink it back), and a short section no longer re-centres the window under the tabs. */
-html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
-  height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - 32px);
-}
-@media (min-width: 900px) {
-  html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
-    width: min(940px, 100%);
-    max-width: 940px;
+  .hero-hub-gear-effects article,
+  .hero-hub-gear-effects section {
+    display: grid;
+    gap: 0.5rem;
+    min-width: 0;
+    margin-block: 0.75rem;
   }
-}
-/* Cut266 review: the Hub's folds are flex rows, which drops the browser's disclosure marker, so `Gear
+  .sheet-body.hero-hub button.hero-hub-gear-anchor {
+    padding: 0.5rem;
+    min-width: 44px;
+  }
+  /* Font-relative: large text stacks the doll before side cards get cramped. */
+  @container hero-folio (max-width:30rem) {
+    .hero-hub-doll {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-width: 1px;
+    }
+    .hero-hub-figure {
+      grid-column: 1;
+    }
+    .hero-hub-sprite {
+      max-width: min(100%, 132px);
+    }
+    .hero-hub-gear-anchor[data-hub-slot] {
+      grid-column: 1;
+    }
+  }
+  @container hero-folio (max-width:280px) {
+    .hero-hub-doll,
+    .hero-hub .bloodline-prepared,
+    .hero-hub .bloodline-catalogue {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .hero-hub-gear-anchor[data-hub-slot] {
+      grid-column: 1;
+    }
+  }
+  @container hero-navigation (max-width:420px) {
+    .hero-hub-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @container hero-navigation (max-width:15rem) {
+    .hero-hub-tabs {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Cut220 visual refinement: quiet slot cards, readable Actual/Next rows, compact tabs. */
+  /* Hub controls keep a 44 CSS px target without the material's font-scaled 2.75rem height. */
+  .hero-hub .hero-hub-tabs button.hero-hub-tab,
+  .hero-hub :is(.hero-hub-secondary, .hero-hub-residents) button.btn,
+  .sheet-body.hero-hub button.hero-hub-gear-anchor {
+    min-block-size: 44px;
+  }
+  .hero-hub .hero-hub-tabs button.hero-hub-tab {
+    padding: 4px 0.5rem 5px;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+  .hero-hub :is(.hero-hub-secondary, .hero-hub-residents) button.btn {
+    padding-block: 4px 5px;
+    line-height: 1.2;
+  }
+  /* The tablet frame keeps its 8px art border; only the inner padding tightens,
+   leaving the selected control's 3px inset rule clear of the text. */
+  html.skin-tablet body .game-window[data-material] .hero-hub-tabs button.hero-hub-tab,
+  html.skin-tablet
+    body
+    .game-window[data-material]
+    :is(.hero-hub-secondary, .hero-hub-residents)
+    button.btn {
+    padding-block: 2px 5px;
+  }
+  @container hero-navigation (max-width:420px) {
+    .hero-hub-tabs {
+      gap: 0.375rem;
+    }
+  }
+
+  .sheet-body.hero-hub button.hero-hub-gear-anchor {
+    gap: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #b8944899;
+    background: #222a40;
+    box-shadow: inset 0 1px #a4bcd626;
+    color: var(--ui-text, #eadfc5);
+  }
+  /* Whole words where they fit; grid children may shrink so a long word breaks, not overflows. */
+  .hero-hub .hero-hub-gear-anchor :is(b, small, strong, span) {
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+  .hero-hub .hero-hub-gear-anchor .hero-hub-slot-name {
+    color: var(--acc, #dbba7c);
+    font-size: var(--ui-detail, 0.875rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hero-hub .hero-hub-gear-anchor .hero-hub-item {
+    color: var(--ui-text, #eadfc5);
+    font-weight: 600;
+  }
+  .hero-hub .hero-hub-gear-anchor [data-hub-slot-shared] > strong,
+  .hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] > strong {
+    color: var(--mist, #a4bcd6);
+    font-weight: 400;
+  }
+  /* Actual and Next read as two labelled rows; they stack only when the card is too narrow. */
+  .hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.5rem;
+    row-gap: 0;
+  }
+  .hero-hub .hero-hub-gear-anchor [data-hub-slot-phase] > strong {
+    flex: 0 1 auto;
+    inline-size: min(5.5em, 100%);
+  }
+  .hero-hub .hero-hub-gear-anchor .hero-hub-phase-value {
+    flex: 1 1 min(7em, 100%);
+    min-width: 0;
+  }
+  .hero-hub .hero-hub-gear-anchor .hero-hub-origin::before {
+    content: " · ";
+  }
+  .hero-hub .hero-hub-gear-anchor [data-hub-slot-phase="next"] {
+    border-top-style: dashed;
+  }
+
+  /* Framed skill buttons keep both text lines inside the frame's inner gilt rule. */
+  html.skin-button
+    .sheet-body.hero-hub
+    .class-tree-panel
+    button.chip:is(.class-path-choose, .class-path-remove),
+  html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style-choose {
+    /* Cut266: 12px, not 8px — at 200% text the first and last line boxes touched the frame's inner gilt
+     band (contrast 1.2–3.3 against it at 320 CSS px) */
+    padding-block: 12px;
+  }
+  @container hero-folio (max-width:280px) {
+    .hero-hub-doll {
+      padding: 0.25rem;
+    }
+    .sheet-body.hero-hub button.hero-hub-gear-anchor {
+      padding-inline: 0.5rem;
+    }
+  }
+
+  /* Narrow folios stack each Legacy upgrade's button under its text, so copy keeps its width. */
+  @container hero-folio (max-width:30rem) {
+    .sheet-body.hero-hub .legacy-tree .legacy-upgrade {
+      grid-template-columns: 32px minmax(0, 1fr);
+    }
+    .sheet-body.hero-hub .legacy-tree button.legacy-buy {
+      grid-column: 1/-1;
+      justify-self: stretch;
+      max-width: none;
+    }
+  }
+  /* Cut225: the class's abilities in Skills, every rung (reached lit) */
+  .hero-hub-abilities {
+    display: grid;
+    gap: 6px;
+    margin: 8px 0;
+  }
+  .hero-hub-abilities h4 {
+    margin: 0;
+  }
+  .hero-hub-abilities .ladder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  /* a rung not yet reached stays readable on the Hub's dark material (the parchment's ink would not) */
+  .hero-hub .hero-hub-abilities .chip.rung:not(.on) {
+    color: #cfc5b0;
+    border-color: #4a4f66;
+    background: rgba(23, 22, 34, 0.6);
+  }
+
+  /* the class name as a title (the wire word is lower case) */
+  .hero-hub-class {
+    text-transform: capitalize;
+  }
+
+  /* Cut271 (owner 2026-10-18, "More abstract"): framed slot tiles around a plain silhouette, joined by
+   leader lines. The body is 8 × 16 diagram units (viewBox 100×200); each slot's --doll-y is its tile
+   centre in units, the height its leader line leaves the body's edge (REGIONS in hero-equipment-figure.ts). */
+  .hero-equipment-figure {
+    align-content: start;
+    gap: 0.5rem;
+  }
+  .hero-equipment-phases {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+  .hero-equipment-phases button[aria-pressed="true"] {
+    border-color: var(--gilt, #b89448);
+    box-shadow: inset 0 -3px var(--gilt, #b89448);
+    color: var(--bone, #eadfc5);
+  }
+  .hero-equipment-stage {
+    --doll-u: 1rem;
+    --doll-tile: max(2.75rem, 3.5 * var(--doll-u));
+    position: relative;
+    inline-size: min(100%, 34rem);
+    block-size: calc(18 * var(--doll-u));
+  }
+  .hero-equipment-body {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: calc(50% - 4 * var(--doll-u));
+    inline-size: calc(8 * var(--doll-u));
+    block-size: calc(16 * var(--doll-u));
+    display: block;
+    overflow: visible;
+  }
+  .hero-equipment-leader {
+    stroke: #b8944870;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+  .hero-equipment-joint {
+    fill: #b8944899;
+  }
+  .hero-equipment-slot {
+    position: absolute;
+    inset-block-start: calc(var(--doll-y) * var(--doll-u) - var(--doll-tile) / 2);
+    inline-size: calc(50% - 4 * var(--doll-u));
+    display: flex;
+    align-items: flex-start;
+  }
+  .hero-equipment-slot[data-doll-slot="helm"] {
+    --doll-y: 3.5;
+  }
+  .hero-equipment-slot[data-doll-slot="weapon"] {
+    --doll-y: 11;
+  }
+  .hero-equipment-slot[data-doll-slot="armour"] {
+    --doll-y: 5;
+  }
+  .hero-equipment-slot[data-doll-slot="boots"] {
+    --doll-y: 12.5;
+  }
+  .hero-equipment-slot[data-doll-side="start"] {
+    inset-inline-start: 0;
+  }
+  .hero-equipment-slot[data-doll-side="end"] {
+    inset-inline-end: 0;
+    flex-direction: row-reverse;
+  }
+  .hero-equipment-card {
+    display: grid;
+    justify-items: center;
+    gap: 0.25rem;
+    flex: 0 1 auto;
+    min-inline-size: var(--doll-tile);
+    max-inline-size: min(7rem, 100% - 0.5rem);
+  }
+  .hero-equipment-tile {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: var(--doll-tile);
+    block-size: var(--doll-tile);
+    box-sizing: border-box;
+    border: 1px solid #b8944899;
+    background: #1c2132;
+    box-shadow: inset 0 0 0 2px #0e111a;
+  }
+  .hero-equipment-tile > :is(svg, img) {
+    grid-area: 1/1;
+    inline-size: 82%;
+    block-size: 82%;
+    object-fit: contain;
+  }
+  .hero-equipment-slot[data-doll-art="empty"] .hero-equipment-tile {
+    border-style: dashed;
+    border-color: #b8944866;
+    background: #171a26;
+  }
+  .hero-equipment-name {
+    max-inline-size: 100%;
+    font-size: var(--ui-detail, 0.875rem);
+    line-height: 1.2;
+    text-align: center;
+    color: var(--ui-text, #eadfc5);
+    overflow-wrap: break-word;
+  }
+  .hero-equipment-name::first-letter {
+    text-transform: uppercase;
+  }
+  .hero-equipment-name.is-empty::first-letter {
+    text-transform: none;
+  }
+  .hero-equipment-name.is-empty {
+    color: #b9b2a3;
+    font-style: italic;
+  }
+  .hero-equipment-lead {
+    flex: 1 1 0;
+    min-inline-size: 0.5rem;
+    margin-block-start: calc(var(--doll-tile) / 2);
+    border-block-start: 1px solid #b8944870;
+  }
+  /* A slot that changes between Actual and Next delve: a brighter frame, lead and joint, in both views. */
+  .hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile {
+    border: 2px solid #dbba7c;
+  }
+  .hero-equipment-slot[data-doll-change="1"] .hero-equipment-tile::after {
+    content: "";
+    position: absolute;
+    inset-block-start: -5px;
+    inset-inline-end: -5px;
+    inline-size: 8px;
+    block-size: 8px;
+    background: #dbba7c;
+    transform: rotate(45deg);
+  }
+  .hero-equipment-slot[data-doll-change="1"] .hero-equipment-lead {
+    border-block-start-color: #dbba7c;
+  }
+  .hero-equipment-leader[data-doll-change="1"] {
+    stroke: #dbba7c;
+  }
+  .hero-equipment-joint[data-doll-change="1"] {
+    fill: #dbba7c;
+  }
+  .hero-equipment-tile:focus-visible {
+    outline: 2px solid #ffdfa4;
+    outline-offset: 3px;
+  }
+  /* A phone folio draws the diagram at three quarters; tiles keep a 44px target. */
+  @container hero-folio (max-width:30rem) {
+    .hero-equipment-stage {
+      --doll-u: 0.75rem;
+    }
+  }
+  /* Too narrow for tiles beside the body (large text on a phone): the slots line up in two columns. */
+  @container hero-folio (max-width:17rem) {
+    .hero-equipment-stage {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem 0.5rem;
+      block-size: auto;
+    }
+    .hero-equipment-body,
+    .hero-equipment-lead {
+      display: none;
+    }
+    .hero-equipment-slot {
+      position: static;
+      inline-size: auto;
+      justify-content: center;
+    }
+    .hero-equipment-card {
+      max-inline-size: 100%;
+    }
+  }
+  @container hero-folio (max-width:11rem) {
+    .hero-equipment-stage {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* Cut264 contrast review: the sticky close stud covered the ends of lower gear lines while the
+   window scrolled. Keep navigation outside the folio's scroll area so no text passes beneath it. */
+  html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 44px minmax(0, 1fr) 16px;
+    row-gap: 4px;
+    overflow: hidden;
+  }
+  html body .game-window[data-material]:has(> .hero-hub) > :is(.close-stud, .sheet-back) {
+    position: static;
+    grid-row: 1;
+    grid-column: 1;
+    float: none;
+    margin: 0;
+    align-self: center;
+  }
+  html body .game-window[data-material]:has(> .hero-hub) > .close-stud {
+    justify-self: end;
+  }
+  html body .game-window[data-material]:has(> .hero-hub) > .sheet-back {
+    justify-self: start;
+  }
+  html body .game-window[data-material] > .hero-hub {
+    grid-row: 2;
+    grid-column: 1;
+    min-height: 0;
+    overflow: auto;
+    align-content: start;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ui-edge) var(--ui-surface);
+  }
+  html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::before {
+    content: none;
+  }
+  html body .sheet-wrap.centered > .game-window[data-material]:has(> .hero-hub)::after {
+    content: "▾";
+    position: static;
+    grid-row: 3;
+    grid-column: 1;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: var(--ui-muted);
+    font: 600 16px/16px var(--sans);
+    text-align: center;
+    visibility: hidden;
+  }
+  html
+    body
+    .sheet-wrap.centered
+    > .game-window[data-material][data-more="1"]:has(> .hero-hub)::after {
+    visibility: visible;
+  }
+  .hero-hub .hero-hub-tabs {
+    scroll-margin-top: 4px;
+  }
+  /* One window size for every section: the Attributes tree no longer widens the window (and the others
+   no longer shrink it back), and a short section no longer re-centres the window under the tabs. */
+  html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
+    height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - 32px);
+  }
+  @media (min-width: 900px) {
+    html body .sheet-wrap.centered > .sheet:has(> .hero-hub) {
+      width: min(940px, 100%);
+      max-width: 940px;
+    }
+  }
+  /* Cut266 review: the Hub's folds are flex rows, which drops the browser's disclosure marker, so `Gear
    effects`, `Current gear` and the slot folds read as headings. The game's quiet caret marks them. */
-.hero-hub details > summary {
-  cursor: pointer;
-}
-.hero-hub details > summary::-webkit-details-marker {
-  display: none;
-}
-.hero-hub details > summary::before {
-  content: "▸";
-  margin-inline-end: 6px;
-  color: var(--acc, #dbba7c);
-}
-.hero-hub details[open] > summary::before {
-  content: "▾";
-}
-/* the prepare chips' `Free` / requirement sat flush against the item name (`leashFree`) */
-.hero-hub .bloodline-prepare small {
-  margin-inline-start: 0.35em;
-}
-/* the header's class word matches the Skills title (the wire word is lower case) */
-.hero-hub-identity > span {
-  text-transform: capitalize;
-}
-/* the Legacy wallet over the Attributes tree: count, the next rank it works toward, its share filled */
-.hero-hub-wallet {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.75rem;
-}
-.hero-hub-wallet small {
-  color: var(--ui-muted, #a4bcd6);
-}
-.hero-hub-wallet .legacy-bar {
-  flex: 1 0 100%;
-}
-/* the Actual pets card: one pet per tight block (default h4 margins left a blank line around each name) */
-.hero-hub-actual-build h4 {
-  margin: 0;
-}
-.hero-hub-actual-build article + article {
-  padding-top: 0.5rem;
-  border-top: 1px solid #b8944833;
-}
-/* the kit name field matches the hero name field (the browser's grey box read as disabled) */
-.hero-hub input[type="text"] {
-  box-sizing: border-box;
-  padding: var(--ui-space-2, 0.5rem);
-  color: var(--ui-text, #eadfc5);
-  background: var(--ui-inset, #171720);
-  border: 2px solid var(--ui-edge, #b89448);
-  font: inherit;
-}
-.hero-hub input::placeholder {
-  color: var(--ui-muted, #a4bcd6);
-  opacity: 1;
+  .hero-hub details > summary {
+    cursor: pointer;
+  }
+  .hero-hub details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .hero-hub details > summary::before {
+    content: "▸";
+    margin-inline-end: 6px;
+    color: var(--acc, #dbba7c);
+  }
+  .hero-hub details[open] > summary::before {
+    content: "▾";
+  }
+  /* the prepare chips' `Free` / requirement sat flush against the item name (`leashFree`) */
+  .hero-hub .bloodline-prepare small {
+    margin-inline-start: 0.35em;
+  }
+  /* the header's class word matches the Skills title (the wire word is lower case) */
+  .hero-hub-identity > span {
+    text-transform: capitalize;
+  }
+  /* the Legacy wallet over the Attributes tree: count, the next rank it works toward, its share filled */
+  .hero-hub-wallet {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+  }
+  .hero-hub-wallet small {
+    color: var(--ui-muted, #a4bcd6);
+  }
+  .hero-hub-wallet .legacy-bar {
+    flex: 1 0 100%;
+  }
+  /* the Actual pets card: one pet per tight block (default h4 margins left a blank line around each name) */
+  .hero-hub-actual-build h4 {
+    margin: 0;
+  }
+  .hero-hub-actual-build article + article {
+    padding-top: 0.5rem;
+    border-top: 1px solid #b8944833;
+  }
+  /* the kit name field matches the hero name field (the browser's grey box read as disabled) */
+  .hero-hub input[type="text"] {
+    box-sizing: border-box;
+    padding: var(--ui-space-2, 0.5rem);
+    color: var(--ui-text, #eadfc5);
+    background: var(--ui-inset, #171720);
+    border: 2px solid var(--ui-edge, #b89448);
+    font: inherit;
+  }
+  .hero-hub input::placeholder {
+    color: var(--ui-muted, #a4bcd6);
+    opacity: 1;
+  }
 }

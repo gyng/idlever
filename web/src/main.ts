@@ -1,4 +1,7 @@
 // Entry. app.ts owns the state machine (client track); render/ owns the viewer (renderer track).
+import "./layers.css"; // Cut316: declares the cascade layers first
+import "./ui-kit/tokens.css";
+import "./ui-kit/kit.css";
 import "./styles.css";
 import "./wide.css";
 import "./cut29.css"; // Cut 29 client: reveals, meters, orders, sinks   // the wide frame (desktop ≥ 1024 px): rules left, the well centre, the shaft right

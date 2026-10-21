@@ -1,1034 +1,1012 @@
-/* RUNS_UI (docs/RUNS_UI.md) — the run lanes under the town, the runs log sheet, the run replay. Palette only, quiet: one accent for
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* RUNS_UI (docs/RUNS_UI.md) — the run lanes under the town, the runs log sheet, the run replay. Palette only, quiet: one accent for
    the live beat (EMBER), GILT for `auto` lit, a new best and the log's count. */
 
-/* --- the lanes: the rest line's place, under the town, above the console --- */
-.rest-line.lanes-line {
-  display: block;
-  margin: 0;
-  padding: 4px 8px 6px;
-  background: linear-gradient(rgba(13, 12, 20, 0), rgba(13, 12, 20, 0.85) 30%);
-}
-.rest-line.lanes-line[hidden] {
-  display: none;
-}
-.lanes {
-  display: flex;
-  align-items: stretch;
-  gap: 6px;
-}
-.lanes .lane-rows {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.lane {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  width: 100%;
-  padding: 3px 10px 3px 4px;
-  border: 0;
-  border-radius: 20px;
-  background: rgba(23, 22, 34, 0.9);
-  box-shadow: 0 0 0 1px #2b3350;
-  color: var(--bone);
-  font: 15px/1.15 var(--sans);
-  text-align: left;
-}
-button.lane {
-  cursor: pointer;
-}
-button.lane:active {
-  transform: translateY(1px);
-  background: rgba(31, 31, 49, 0.95);
-}
-.lane .lane-face {
-  flex: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--umbra) center / cover no-repeat;
-  box-shadow: 0 0 0 1px #39496d;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--dim);
-  font-size: 16px;
-  overflow: hidden;
-  image-rendering: pixelated;
-}
-.lane .lane-name {
-  flex: none;
-  font-size: 13px;
-  color: var(--dim);
-  white-space: nowrap;
-}
-.lane .lane-state {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-}
-.lane .ls-w {
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-.lane .ls-go {
-  color: var(--acc);
-  font-size: 13px;
-}
-.lane .lane-beat {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--dim);
-}
-.lane[data-state="live"] .lane-beat {
-  background: var(--ember);
-  box-shadow: 0 0 6px var(--ember);
-}
-.lane[data-state="live"] .ls-w {
-  color: #f2b067;
-}
-.lane[data-state="rests"] .lane-beat {
-  background: var(--moon);
-}
-.lane[data-state="waits"] .lane-beat {
-  background: var(--acc);
-}
-.lane[data-state="waits"] {
-  box-shadow: 0 0 0 1px rgba(219, 186, 124, 0.55);
-}
-[data-juice="on"] .lane[data-state="live"] .lane-beat {
-  animation: lane-beat 0.9s ease-in-out infinite;
-}
-[data-juice="on"] .lane[data-state="rests"] .lane-beat {
-  animation: lane-beat 3.2s ease-in-out infinite;
-}
-[data-juice="on"] .lane[data-state="waits"] .lane-beat {
-  animation: lane-beat 1.6s ease-in-out infinite;
-}
-@keyframes lane-beat {
-  0%,
-  100% {
-    transform: scale(0.75);
-    opacity: 0.55;
+  /* --- the lanes: the rest line's place, under the town, above the console --- */
+  .rest-line.lanes-line {
+    display: block;
+    margin: 0;
+    padding: 4px 8px 6px;
+    background: linear-gradient(rgba(13, 12, 20, 0), rgba(13, 12, 20, 0.85) 30%);
   }
-  40% {
-    transform: scale(1.15);
-    opacity: 1;
+  .rest-line.lanes-line[hidden] {
+    display: none;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  .lane .lane-beat {
-    animation: none !important;
+  .lanes {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
   }
-}
-.lane .lane-gauge {
-  position: relative;
-  flex: 1;
-  min-width: 36px;
-  max-width: 260px;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(77, 108, 153, 0.3);
-  overflow: visible;
-}
-.lane .lane-gauge .fill {
-  display: block;
-  height: 100%;
-  border-radius: 3px;
-  background: var(--moon);
-}
-.lane .lane-gauge.g-hp .fill {
-  background: linear-gradient(90deg, var(--clot), var(--blood));
-}
-.lane .lane-gauge small {
-  position: absolute;
-  right: 0;
-  top: -13px;
-  font-size: 10px;
-  color: var(--dim);
-}
-.lane[data-state="waits"] .lane-state {
-  flex: 1;
-}
-.lane .lane-auto {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 1px 7px;
-  border-radius: 9px;
-  font-size: 12px;
-  color: #6e7a90;
-  box-shadow: inset 0 0 0 1px #39496d;
-  white-space: nowrap;
-}
-.lane .lane-auto.on {
-  color: #f3d192;
-  box-shadow: inset 0 0 0 1px var(--gilt);
-}
-.lane .lane-auto .la-g {
-  font-size: 12px;
-}
-.lane .lane-go {
-  flex: none;
-  color: var(--dim);
-  font-size: 13px;
-}
-.lane.lane-more {
-  min-height: 26px;
-  justify-content: center;
-  font-size: 13px;
-  color: var(--dim);
-}
-.lanes .lanes-log {
-  flex: none;
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  min-width: 48px;
-  min-height: 40px;
-  padding: 2px 6px;
-  border: 0;
-  border-radius: 12px;
-  cursor: pointer;
-  background: rgba(23, 22, 34, 0.9);
-  box-shadow: 0 0 0 1px #2b3350;
-  color: var(--bone);
-}
-.lanes .lanes-log[hidden] {
-  display: none;
-}
-.lanes .lanes-log .ll-ico {
-  font-size: 15px;
-  line-height: 1;
-  color: var(--mist);
-}
-.lanes .lanes-log .ll-l {
-  font-size: 12px;
-  color: var(--dim);
-}
-.lanes .lanes-log .ll-n {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 9px;
-  font-size: 11px;
-  line-height: 18px;
-  background: var(--gilt);
-  color: var(--ink);
-  text-align: center;
-}
-.lanes .lanes-log:active {
-  transform: translateY(1px);
-}
-
-/* --- the runs log --- */
-.runs-sheet .runs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  max-height: min(64vh, 560px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-.runs-sheet .runs-list > * {
-  flex-shrink: 0;
-}
-.runs-fold {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 2px;
-  width: 100%;
-  min-height: 40px;
-  padding: 6px 8px;
-  border: 0;
-  border-radius: 6px;
-  cursor: pointer;
-  background: var(--panel2);
-  color: var(--bone);
-  font: 15px/1.2 var(--sans);
-  text-align: left;
-}
-.runs-fold > * {
-  flex-shrink: 0;
-}
-.runs-fold .rf-car {
-  width: 16px;
-  color: var(--dim);
-}
-.runs-fold .rf-w {
-  font-weight: 600;
-  text-transform: lowercase;
-}
-.runs-fold .rf-d.best {
-  color: #f3d192;
-}
-.runs-fold .rf-t {
-  margin-left: auto;
-}
-.runs-fold.on {
-  box-shadow: inset 2px 0 0 var(--gilt);
-}
-.run-entry {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 4px 4px 22px;
-  border-bottom: 1px solid rgba(43, 51, 80, 0.45);
-}
-.run-entry.fresh .re-id {
-  color: #f3d192;
-}
-.run-entry .re-body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  padding: 2px 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-}
-button.re-body {
-  cursor: pointer;
-}
-.run-entry .re-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 9px;
-  font-size: 15px;
-  white-space: normal;
-}
-.run-entry .re-id {
-  min-width: 34px;
-  color: var(--dim);
-  font-weight: 400;
-}
-.run-entry .re-tier {
-  width: 14px;
-  text-align: center;
-  color: var(--dim);
-}
-.run-entry .re-tier.t-death {
-  color: var(--blood);
-}
-.run-entry .re-tier.t-bank {
-  color: var(--acc);
-}
-.run-entry .re-d.best {
-  color: #f3d192;
-}
-.run-entry .re-best {
-  margin-left: 1px;
-  font-size: 12px;
-}
-.run-entry .re-f {
-  color: var(--mist);
-}
-.run-entry .re-sub {
-  font-size: 12px;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-.run-entry[data-tier="death"] .re-sub {
-  color: #c98a93;
-}
-.run-entry .re-play {
-  flex: none;
-  width: 44px;
-  height: 36px;
-  border: 0;
-  border-radius: 18px;
-  cursor: pointer;
-  background: var(--umbra);
-  box-shadow: 0 0 0 1px #39496d;
-  color: var(--acc);
-  font-size: 14px;
-}
-.run-entry .re-play:active {
-  transform: translateY(1px);
-}
-.run-entry.sampled {
-  padding: 6px 4px 6px 22px;
-  font-size: 13px;
-}
-
-/* --- the replay --- */
-.run-replay .run-replay-view {
-  display: block;
-  width: 100%;
-  height: min(52vh, 420px);
-  border-radius: 6px;
-  background: #000;
-}
-.run-replay .rr-floors {
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-.run-replay .rr-floors .chip.on {
-  box-shadow: inset 0 0 0 1px var(--gilt);
-  color: #f3d192;
-}
-
-/* --- the watch's way back (the run goes on) --- */
-.tile.town-btn .ico.glyph::before {
-  color: #f3d192;
-}
-
-/* --- desktop: the lanes under the town in the centre column --- */
-@media (min-width: 1024px) {
-  main.camp .well-wrap > .rest-line.lanes-line {
-    padding: 6px 24px 8px;
-    background: none;
+  .lanes .lane-rows {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   .lane {
-    min-height: 46px;
-    font-size: 17px;
-    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    width: 100%;
+    padding: 3px 10px 3px 4px;
+    border: 0;
+    border-radius: 20px;
+    background: rgba(23, 22, 34, 0.9);
+    box-shadow: 0 0 0 1px #2b3350;
+    color: var(--bone);
+    font: 15px/1.15 var(--sans);
+    text-align: left;
   }
-  .lane .lane-name,
-  .lane .ls-go {
-    font-size: 15px;
+  button.lane {
+    cursor: pointer;
+  }
+  button.lane:active {
+    transform: translateY(1px);
+    background: rgba(31, 31, 49, 0.95);
   }
   .lane .lane-face {
-    width: 36px;
-    height: 36px;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--umbra) center / cover no-repeat;
+    box-shadow: 0 0 0 1px #39496d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dim);
+    font-size: 16px;
+    overflow: hidden;
+    image-rendering: pixelated;
+  }
+  .lane .lane-name {
+    flex: none;
+    font-size: 13px;
+    color: var(--dim);
+    white-space: nowrap;
+  }
+  .lane .lane-state {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .lane .ls-w {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .lane .ls-go {
+    color: var(--acc);
+    font-size: 13px;
+  }
+  .lane .lane-beat {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dim);
+  }
+  .lane[data-state="live"] .lane-beat {
+    background: var(--ember);
+    box-shadow: 0 0 6px var(--ember);
+  }
+  .lane[data-state="live"] .ls-w {
+    color: #f2b067;
+  }
+  .lane[data-state="rests"] .lane-beat {
+    background: var(--moon);
+  }
+  .lane[data-state="waits"] .lane-beat {
+    background: var(--acc);
+  }
+  .lane[data-state="waits"] {
+    box-shadow: 0 0 0 1px rgba(219, 186, 124, 0.55);
+  }
+  [data-juice="on"] .lane[data-state="live"] .lane-beat {
+    animation: lane-beat 0.9s ease-in-out infinite;
+  }
+  [data-juice="on"] .lane[data-state="rests"] .lane-beat {
+    animation: lane-beat 3.2s ease-in-out infinite;
+  }
+  [data-juice="on"] .lane[data-state="waits"] .lane-beat {
+    animation: lane-beat 1.6s ease-in-out infinite;
+  }
+  @keyframes lane-beat {
+    0%,
+    100% {
+      transform: scale(0.75);
+      opacity: 0.55;
+    }
+    40% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lane .lane-beat {
+      animation: none !important;
+    }
+  }
+  .lane .lane-gauge {
+    position: relative;
+    flex: 1;
+    min-width: 36px;
+    max-width: 260px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(77, 108, 153, 0.3);
+    overflow: visible;
+  }
+  .lane .lane-gauge .fill {
+    display: block;
+    height: 100%;
+    border-radius: 3px;
+    background: var(--moon);
+  }
+  .lane .lane-gauge.g-hp .fill {
+    background: linear-gradient(90deg, var(--clot), var(--blood));
+  }
+  .lane .lane-gauge small {
+    position: absolute;
+    right: 0;
+    top: -13px;
+    font-size: 10px;
+    color: var(--dim);
+  }
+  .lane[data-state="waits"] .lane-state {
+    flex: 1;
   }
   .lane .lane-auto {
-    font-size: 14px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 7px;
+    border-radius: 9px;
+    font-size: 12px;
+    color: #6e7a90;
+    box-shadow: inset 0 0 0 1px #39496d;
+    white-space: nowrap;
+  }
+  .lane .lane-auto.on {
+    color: #f3d192;
+    box-shadow: inset 0 0 0 1px var(--gilt);
+  }
+  .lane .lane-auto .la-g {
+    font-size: 12px;
+  }
+  .lane .lane-go {
+    flex: none;
+    color: var(--dim);
+    font-size: 13px;
+  }
+  .lane.lane-more {
+    min-height: 26px;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--dim);
   }
   .lanes .lanes-log {
-    min-width: 56px;
+    flex: none;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    min-width: 48px;
+    min-height: 40px;
+    padding: 2px 6px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgba(23, 22, 34, 0.9);
+    box-shadow: 0 0 0 1px #2b3350;
+    color: var(--bone);
   }
-}
+  .lanes .lanes-log[hidden] {
+    display: none;
+  }
+  .lanes .lanes-log .ll-ico {
+    font-size: 15px;
+    line-height: 1;
+    color: var(--mist);
+  }
+  .lanes .lanes-log .ll-l {
+    font-size: 12px;
+    color: var(--dim);
+  }
+  .lanes .lanes-log .ll-n {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    font-size: 11px;
+    line-height: 18px;
+    background: var(--gilt);
+    color: var(--ink);
+    text-align: center;
+  }
+  .lanes .lanes-log:active {
+    transform: translateY(1px);
+  }
 
-/* the log's two tabs: runs · heirs (the chronicle) */
-.runs-sheet .log-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  margin-top: 4px;
-}
-.runs-sheet .log-tab {
-  flex-shrink: 0;
-  min-height: 32px;
-  padding: 4px 10px;
-  border: 0;
-  border-radius: 4px;
-  background: none;
-  cursor: pointer;
-  color: var(--dim);
-  font: 12px var(--sans);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.runs-sheet .log-tab.on {
-  color: var(--bone);
-  box-shadow: inset 0 -2px 0 var(--gilt);
-}
-.runs-sheet .chronicle {
-  max-height: min(64vh, 560px);
-  overflow-y: auto;
-}
-.tiles .tile.plaque.to-log {
-  cursor: pointer;
-}
-.tiles .tile.plaque.to-log::before {
-  content: "☰";
-  position: absolute;
-  top: 4px;
-  right: 6px;
-  font-size: 11px;
-  color: var(--ink-dim);
-}
-.run-entry .re-f {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 2px;
-}
-.run-entry .re-gem {
-  font-size: 10px;
-}
-.run-entry .re-gem {
-  color: var(--r-lit, var(--dim));
-} /* run-clear's rarity pigments (items.css) */
-.run-card-sheet .run-clear {
-  margin: 6px 0 10px;
-}
-.run-card-sheet .re-play-wide {
-  margin-top: 4px;
-}
-
-/* the log is a parchment sheet: INK on BONE (the folds stay dark plaques) */
-.runs-sheet .run-entry {
-  border-bottom-color: var(--ink-line);
-  color: var(--ink-text);
-}
-.runs-sheet .run-entry .re-id {
-  color: var(--ink-dim);
-}
-.runs-sheet .run-entry.fresh .re-id {
-  color: #7a5a14;
-  font-weight: 700;
-}
-.runs-sheet .run-entry .dim,
-.runs-sheet .run-entry .re-sub {
-  color: var(--ink-dim);
-}
-.runs-sheet .run-entry .re-d.best,
-.runs-sheet .run-entry .re-best {
-  color: #7a5a14;
-}
-.runs-sheet .run-entry .re-tier {
-  color: var(--ink-dim);
-}
-.runs-sheet .run-entry .re-tier.t-bank {
-  color: #7a5a14;
-}
-.runs-sheet .run-entry .re-tier.t-death {
-  color: #8c1022;
-}
-.runs-sheet .run-entry[data-tier="death"] .re-sub {
-  color: #8c1022;
-}
-.runs-sheet .run-entry .gold {
-  color: #6b4e12;
-}
-.runs-sheet .run-entry .re-gem {
-  color: var(--r, var(--ink-dim));
-}
-.runs-sheet .run-entry.sampled {
-  color: var(--ink-dim);
-}
-.runs-sheet .log-tab {
-  color: var(--ink-dim);
-}
-.runs-sheet .log-tab.on {
-  color: var(--ink-text);
-  font-weight: 700;
-  box-shadow: inset 0 -2px 0 var(--gilt);
-}
-.runs-sheet .log-tab .num {
-  margin-left: 4px;
-  font-weight: 400;
-}
-.runs-sheet .chronicle .cline {
-  color: var(--ink-text);
-}
-/* the watch's `town` tile: the run goes on — a ↻ on its corner */
-.tile.town-btn::after {
-  content: "↻";
-  position: absolute;
-  top: 3px;
-  right: 6px;
-  font-size: 14px;
-  line-height: 1;
-  color: #f3d192;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
-}
-.tile.town-btn:disabled::after {
-  opacity: 0.35;
-}
-/* the watch's HUD: the run going on now, and by itself */
-.watch .hud .live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-left: 8px;
-  padding: 1px 8px;
-  border-radius: 9px;
-  background: rgba(13, 12, 20, 0.72);
-  box-shadow: inset 0 0 0 1px rgba(232, 146, 58, 0.55);
-  color: #f2b067;
-  font: 600 12px/18px var(--sans);
-  letter-spacing: 0.04em;
-}
-.watch .hud .live-badge[hidden] {
-  display: none;
-}
-.watch .hud .live-badge .lane-beat {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ember);
-  box-shadow: 0 0 6px var(--ember);
-}
-[data-juice="on"] .watch .hud .live-badge .lane-beat {
-  animation: lane-beat 0.9s ease-in-out infinite;
-}
-.watch .hud .live-badge .lb-auto {
-  color: #f3d192;
-  font-weight: 400;
-}
-/* the town tile's one-time caption, over the tile (the concept captions' look) */
-.tile.town-btn .goes-on-cap {
-  position: absolute;
-  left: calc(100% + 8px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 6;
-  pointer-events: none;
-  width: max-content;
-  max-width: 84px;
-  text-align: left;
-  padding: 1px 8px;
-  border-radius: 8px;
-  font: italic 500 12px/1.5 var(--sans);
-  color: #f3d192;
-  background: rgba(13, 12, 20, 0.9);
-  box-shadow: inset 0 0 0 1px var(--gilt);
-}
-.tile.town-btn .goes-on-cap::before {
-  content: "↻ " attr(data-cap);
-}
-.tile.town-btn:disabled .goes-on-cap {
-  display: none;
-}
-.cmd .tile.town-btn {
-  overflow: visible;
-  z-index: 4;
-}
-
-/* Owner follow-up: a quiet viewer with a persistent, bounded event history. */
-.watch .combat-log {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 8px;
-  z-index: 8;
-  padding: 0;
-  background: none;
-  border: 0;
-  color: #eee7db;
-  font: 12px/1.5 var(--sans);
-  text-shadow:
-    0 1px 2px #000,
-    1px 0 2px #000;
-}
-.watch .combat-lines {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-height: 54px;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-.watch .combat-lines::-webkit-scrollbar {
-  display: none;
-}
-.watch .combat-lines li {
-  padding: 0;
-  min-height: 18px;
-  line-height: 18px;
-}
-.watch .log-depth {
-  font: inherit;
-  color: #ada99f;
-}
-.watch .log-hurt {
-  color: #ff9292;
-}
-.watch .log-damage,
-.watch .log-gold {
-  color: #f5cf79;
-}
-.watch .log-heal {
-  color: #94d9a1;
-}
-.watch .log-item {
-  color: #a9cfff;
-}
-.watch .log-warning {
-  color: #edb978;
-}
-.watch .log-fell {
-  color: #c5b9b0;
-}
-.watch .log-floor {
-  color: #bdd7bb;
-}
-/* One transparent stack lets wrapped causes and history share the map safely. */
-.watch .watch-messages {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 8;
-  pointer-events: none;
-}
-.watch.frame .watch-messages > :is(.ticker, .beat-why, .why-tip, .combat-log) {
-  position: static;
-  inset: auto;
-  min-width: 0;
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-.watch.frame .watch-messages > :is(.ticker, .beat-why, .why-tip):not(.show),
-.watch .combat-log:has(.combat-lines:empty) {
-  display: none;
-}
-.watch .watch-messages > .ticker.cut,
-.watch[data-frame="fight"]
-  .watch-messages
-  > .ticker.show:not(.hurt):not(.ambient):not(.beat):not(.rule) {
-  display: none;
-}
-.watch .watch-messages .ticker,
-.watch .watch-messages .beat-why {
-  padding: 0;
-}
-.watch .watch-messages .combat-log {
-  pointer-events: auto;
-}
-.watch .tactic-observer {
-  display: flex;
-  gap: 5px;
-  pointer-events: auto;
-  align-self: flex-start;
-}
-.watch .tactic-observer[hidden] {
-  display: none;
-}
-.watch .tactic-cue {
-  width: 36px;
-  height: 36px;
-  padding: 2px;
-  background: #15151ad9;
-  border: 2px ridge #686572;
-  box-shadow: inset 0 0 5px #000;
-  border-radius: 4px;
-  opacity: 0.65;
-  transition:
-    border-color 0.15s,
-    opacity 0.15s;
-}
-.watch .tactic-cue .icon-socket {
-  flex: 0 0 28px;
-  width: 28px;
-  height: 28px;
-  background: none;
-  border: 0;
-  box-shadow: none;
-}
-.watch .tactic-cue .ico,
-.watch .tactic-cue .icon-socket .ico {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.watch .tactic-cue:is(.acting, :hover, :focus-visible) {
-  opacity: 1;
-  border-color: #eac77c;
-  box-shadow:
-    inset 0 0 5px #000,
-    0 0 8px #eac77c55;
-}
-@media (max-width: 600px) {
-  .watch .tactic-cue {
+  /* --- the runs log --- */
+  .runs-sheet .runs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-height: min(64vh, 560px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .runs-sheet .runs-list > * {
+    flex-shrink: 0;
+  }
+  .runs-fold {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px;
+    width: 100%;
+    min-height: 40px;
+    padding: 6px 8px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    background: var(--panel2);
+    color: var(--bone);
+    font: 15px/1.2 var(--sans);
+    text-align: left;
+  }
+  .runs-fold > * {
+    flex-shrink: 0;
+  }
+  .runs-fold .rf-car {
+    width: 16px;
+    color: var(--dim);
+  }
+  .runs-fold .rf-w {
+    font-weight: 600;
+    text-transform: lowercase;
+  }
+  .runs-fold .rf-d.best {
+    color: #f3d192;
+  }
+  .runs-fold .rf-t {
+    margin-left: auto;
+  }
+  .runs-fold.on {
+    box-shadow: inset 2px 0 0 var(--gilt);
+  }
+  .run-entry {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 4px 4px 22px;
+    border-bottom: 1px solid rgba(43, 51, 80, 0.45);
+  }
+  .run-entry.fresh .re-id {
+    color: #f3d192;
+  }
+  .run-entry .re-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 2px 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+  }
+  button.re-body {
+    cursor: pointer;
+  }
+  .run-entry .re-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 9px;
+    font-size: 15px;
+    white-space: normal;
+  }
+  .run-entry .re-id {
+    min-width: 34px;
+    color: var(--dim);
+    font-weight: 400;
+  }
+  .run-entry .re-tier {
+    width: 14px;
+    text-align: center;
+    color: var(--dim);
+  }
+  .run-entry .re-tier.t-death {
+    color: var(--blood);
+  }
+  .run-entry .re-tier.t-bank {
+    color: var(--acc);
+  }
+  .run-entry .re-d.best {
+    color: #f3d192;
+  }
+  .run-entry .re-best {
+    margin-left: 1px;
+    font-size: 12px;
+  }
+  .run-entry .re-f {
+    color: var(--mist);
+  }
+  .run-entry .re-sub {
+    font-size: 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .run-entry[data-tier="death"] .re-sub {
+    color: #c98a93;
+  }
+  .run-entry .re-play {
+    flex: none;
     width: 44px;
-    height: 44px;
+    height: 36px;
+    border: 0;
+    border-radius: 18px;
+    cursor: pointer;
+    background: var(--umbra);
+    box-shadow: 0 0 0 1px #39496d;
+    color: var(--acc);
+    font-size: 14px;
+  }
+  .run-entry .re-play:active {
+    transform: translateY(1px);
+  }
+  .run-entry.sampled {
+    padding: 6px 4px 6px 22px;
+    font-size: 13px;
+  }
+
+  /* --- the replay --- */
+  .run-replay .run-replay-view {
+    display: block;
+    width: 100%;
+    height: min(52vh, 420px);
+    border-radius: 6px;
+    background: #000;
+  }
+  .run-replay .rr-floors {
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .run-replay .rr-floors .chip.on {
+    box-shadow: inset 0 0 0 1px var(--gilt);
+    color: #f3d192;
+  }
+
+  /* --- the watch's way back (the run goes on) --- */
+  .tile.town-btn .ico.glyph::before {
+    color: #f3d192;
+  }
+
+  /* --- desktop: the lanes under the town in the centre column --- */
+  @media (min-width: 1024px) {
+    main.camp .well-wrap > .rest-line.lanes-line {
+      padding: 6px 24px 8px;
+      background: none;
+    }
+    .lane {
+      min-height: 46px;
+      font-size: 17px;
+      padding-right: 14px;
+    }
+    .lane .lane-name,
+    .lane .ls-go {
+      font-size: 15px;
+    }
+    .lane .lane-face {
+      width: 36px;
+      height: 36px;
+    }
+    .lane .lane-auto {
+      font-size: 14px;
+    }
+    .lanes .lanes-log {
+      min-width: 56px;
+    }
+  }
+
+  /* the log's two tabs: runs · heirs (the chronicle) */
+  .runs-sheet .log-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .runs-sheet .log-tab {
+    flex-shrink: 0;
+    min-height: 32px;
+    padding: 4px 10px;
+    border: 0;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    color: var(--dim);
+    font: 12px var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .runs-sheet .log-tab.on {
+    color: var(--bone);
+    box-shadow: inset 0 -2px 0 var(--gilt);
+  }
+  .runs-sheet .chronicle {
+    max-height: min(64vh, 560px);
+    overflow-y: auto;
+  }
+  .tiles .tile.plaque.to-log {
+    cursor: pointer;
+  }
+  .tiles .tile.plaque.to-log::before {
+    content: "☰";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 11px;
+    color: var(--ink-dim);
+  }
+  .run-entry .re-f {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .run-entry .re-gem {
+    font-size: 10px;
+  }
+  .run-entry .re-gem {
+    color: var(--r-lit, var(--dim));
+  } /* run-clear's rarity pigments (items.css) */
+  .run-card-sheet .run-clear {
+    margin: 6px 0 10px;
+  }
+  .run-card-sheet .re-play-wide {
+    margin-top: 4px;
+  }
+
+  /* the log is a parchment sheet: INK on BONE (the folds stay dark plaques) */
+  .runs-sheet .run-entry {
+    border-bottom-color: var(--ink-line);
+    color: var(--ink-text);
+  }
+  .runs-sheet .run-entry .re-id {
+    color: var(--ink-dim);
+  }
+  .runs-sheet .run-entry.fresh .re-id {
+    color: #7a5a14;
+    font-weight: 700;
+  }
+  .runs-sheet .run-entry .dim,
+  .runs-sheet .run-entry .re-sub {
+    color: var(--ink-dim);
+  }
+  .runs-sheet .run-entry .re-d.best,
+  .runs-sheet .run-entry .re-best {
+    color: #7a5a14;
+  }
+  .runs-sheet .run-entry .re-tier {
+    color: var(--ink-dim);
+  }
+  .runs-sheet .run-entry .re-tier.t-bank {
+    color: #7a5a14;
+  }
+  .runs-sheet .run-entry .re-tier.t-death {
+    color: #8c1022;
+  }
+  .runs-sheet .run-entry[data-tier="death"] .re-sub {
+    color: #8c1022;
+  }
+  .runs-sheet .run-entry .gold {
+    color: #6b4e12;
+  }
+  .runs-sheet .run-entry .re-gem {
+    color: var(--r, var(--ink-dim));
+  }
+  .runs-sheet .run-entry.sampled {
+    color: var(--ink-dim);
+  }
+  .runs-sheet .log-tab {
+    color: var(--ink-dim);
+  }
+  .runs-sheet .log-tab.on {
+    color: var(--ink-text);
+    font-weight: 700;
+    box-shadow: inset 0 -2px 0 var(--gilt);
+  }
+  .runs-sheet .log-tab .num {
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .runs-sheet .chronicle .cline {
+    color: var(--ink-text);
+  }
+  /* the watch's `town` tile: the run goes on — a ↻ on its corner */
+  .tile.town-btn::after {
+    content: "↻";
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    font-size: 14px;
+    line-height: 1;
+    color: #f3d192;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  }
+  .tile.town-btn:disabled::after {
+    opacity: 0.35;
+  }
+  /* the watch's HUD: the run going on now, and by itself */
+  .watch .hud .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 8px;
+    padding: 1px 8px;
+    border-radius: 9px;
+    background: rgba(13, 12, 20, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(232, 146, 58, 0.55);
+    color: #f2b067;
+    font: 600 12px/18px var(--sans);
+    letter-spacing: 0.04em;
+  }
+  .watch .hud .live-badge[hidden] {
+    display: none;
+  }
+  .watch .hud .live-badge .lane-beat {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 6px var(--ember);
+  }
+  [data-juice="on"] .watch .hud .live-badge .lane-beat {
+    animation: lane-beat 0.9s ease-in-out infinite;
+  }
+  .watch .hud .live-badge .lb-auto {
+    color: #f3d192;
+    font-weight: 400;
+  }
+  /* the town tile's one-time caption, over the tile (the concept captions' look) */
+  .tile.town-btn .goes-on-cap {
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 6;
+    pointer-events: none;
+    width: max-content;
+    max-width: 84px;
+    text-align: left;
+    padding: 1px 8px;
+    border-radius: 8px;
+    font: italic 500 12px/1.5 var(--sans);
+    color: #f3d192;
+    background: rgba(13, 12, 20, 0.9);
+    box-shadow: inset 0 0 0 1px var(--gilt);
+  }
+  .tile.town-btn .goes-on-cap::before {
+    content: "↻ " attr(data-cap);
+  }
+  .tile.town-btn:disabled .goes-on-cap {
+    display: none;
+  }
+  .cmd .tile.town-btn {
+    overflow: visible;
+    z-index: 4;
+  }
+
+  /* Owner follow-up: a quiet viewer with a persistent, bounded event history. */
+  .watch .combat-log {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 8px;
+    z-index: 8;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: #eee7db;
+    font: 12px/1.5 var(--sans);
+    text-shadow:
+      0 1px 2px #000,
+      1px 0 2px #000;
+  }
+  .watch .combat-lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 54px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .watch .combat-lines::-webkit-scrollbar {
+    display: none;
+  }
+  .watch .combat-lines li {
+    padding: 0;
+    min-height: 18px;
+    line-height: 18px;
+  }
+  .watch .log-depth {
+    font: inherit;
+    color: #ada99f;
+  }
+  .watch .log-hurt {
+    color: #ff9292;
+  }
+  .watch .log-damage,
+  .watch .log-gold {
+    color: #f5cf79;
+  }
+  .watch .log-heal {
+    color: #94d9a1;
+  }
+  .watch .log-item {
+    color: #a9cfff;
+  }
+  .watch .log-warning {
+    color: #edb978;
+  }
+  .watch .log-fell {
+    color: #c5b9b0;
+  }
+  .watch .log-floor {
+    color: #bdd7bb;
+  }
+  /* One transparent stack lets wrapped causes and history share the map safely. */
+  .watch .watch-messages {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 8;
+    pointer-events: none;
+  }
+  .watch.frame .watch-messages > :is(.ticker, .beat-why, .why-tip, .combat-log) {
+    position: static;
+    inset: auto;
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .watch.frame .watch-messages > :is(.ticker, .beat-why, .why-tip):not(.show),
+  .watch .combat-log:has(.combat-lines:empty) {
+    display: none;
+  }
+  .watch .watch-messages > .ticker.cut,
+  .watch[data-frame="fight"]
+    .watch-messages
+    > .ticker.show:not(.hurt):not(.ambient):not(.beat):not(.rule) {
+    display: none;
+  }
+  .watch .watch-messages .ticker,
+  .watch .watch-messages .beat-why {
+    padding: 0;
+  }
+  .watch .watch-messages .combat-log {
+    pointer-events: auto;
+  }
+  .watch .tactic-observer {
+    display: flex;
+    gap: 5px;
+    pointer-events: auto;
+    align-self: flex-start;
+  }
+  .watch .tactic-observer[hidden] {
+    display: none;
+  }
+  .watch .tactic-cue {
+    width: 36px;
+    height: 36px;
+    padding: 2px;
+    background: #15151ad9;
+    border: 2px ridge #686572;
+    box-shadow: inset 0 0 5px #000;
+    border-radius: 4px;
+    opacity: 0.65;
+    transition:
+      border-color 0.15s,
+      opacity 0.15s;
   }
   .watch .tactic-cue .icon-socket {
-    flex-basis: 34px;
-    width: 34px;
-    height: 34px;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: 0;
+    box-shadow: none;
   }
-}
-.watch .hud .live-badge {
-  font-size: 13px;
-  border-radius: 3px;
-}
-.watch-options .chips {
-  margin: 12px 0 20px;
-}
-.report-summary h2 {
-  margin: 0 0 18px;
-  color: var(--bone);
-  font-size: 25px;
-  font-weight: 400;
-}
-.report-basics {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-bottom: 22px;
-}
-.camp[data-first="1"] .camp-main {
-  display: none;
-}
-.camp[data-first="1"] .next-pill {
-  display: none;
-}
-
-.town-tag:not(:disabled) {
-  pointer-events: auto;
-  cursor: pointer;
-  border-color: var(--gilt);
-  color: var(--bone);
-}
-.town-tag:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
-
-.camp[data-first="1"] .topbar :is(.marks, .rank, .best) {
-  display: none;
-}
-
-.report .report-summary h2 {
-  color: var(--ink);
-}
-.report .tiles.report-basics {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-.report .report-basics .tile.plaque {
-  grid-template-columns: minmax(0, 1fr);
-  justify-items: center;
-  padding: 12px 7px;
-  text-align: center;
-}
-.report .report-basics .tile.plaque .ico {
-  display: none;
-}
-.report .report-gold {
-  cursor: pointer;
-}
-.report .report-basics .tile.plaque b {
-  font-size: 25px;
-}
-
-/* A bloodline row owns the hero summary; class controls live in Details. */
-.hero-roster {
-  min-width: 0;
-}
-.hero-roster-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.hero-roster-head h2 {
-  margin: 0;
-  font: 25px var(--display);
-}
-.hero-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.hero-row {
-  --dim: #8a9ab4;
-  display: flex;
-  align-items: center;
-  min-width: 0;
-  padding: 10px;
-  gap: 6px;
-  background: linear-gradient(120deg, var(--panel2), var(--ink));
-  border: 1px solid var(--line);
-  border-radius: 5px;
-}
-.hero-row.selected {
-  border-color: var(--gilt);
-  box-shadow: inset 3px 0 var(--gilt);
-}
-.hero-jump {
-  display: flex;
-  align-items: flex-start;
-  flex: 1;
-  gap: 10px;
-  min-width: 0;
-  text-align: left;
-  min-height: 44px;
-  color: var(--bone);
-}
-.hero-thumb {
-  width: 44px;
-  height: 52px;
-  flex: none;
-  background: center / cover no-repeat;
-  border: 1px solid var(--moon);
-  border-radius: 4px;
-}
-.hero-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-.hero-info b {
-  font: 21px var(--display);
-}
-.hero-class-name {
-  font-size: 15px;
-  color: var(--mist);
-  text-transform: capitalize;
-}
-.hero-xp {
-  font-size: 13px;
-  color: var(--dim);
-}
-.hero-action {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 15px;
-}
-.hero-action .lane-beat {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--acc);
-}
-.hero-action .lane-beat.live {
-  background: var(--ember);
-}
-.hero-notice {
-  color: var(--acc);
-  font-size: 12px;
-}
-.hero-details,
-.hero-expand {
-  min-height: 44px;
-  padding: 8px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--mist);
-  font-size: 14px;
-}
-.hero-add {
-  display: flex;
-  justify-content: space-between;
-  min-height: 44px;
-}
-.hero-add:disabled {
-  opacity: 0.5;
-}
-.hero-rules {
-  margin-top: 20px;
-}
-.hero-rules summary {
-  min-height: 44px;
-  padding: 10px 0;
-  cursor: pointer;
-  color: var(--dim);
-}
-.hero-mobile {
-  display: flex;
-  gap: 6px;
-  align-items: stretch;
-}
-.hero-mobile .hero-row {
-  flex: 1;
-  padding: 6px;
-  gap: 4px;
-}
-.hero-mobile .hero-thumb {
-  width: 32px;
-  height: 40px;
-}
-.hero-mobile .hero-info {
-  gap: 1px;
-}
-.hero-mobile .hero-info b,
-.hero-mobile .hero-action {
-  font-size: 14px;
-}
-.hero-mobile .hero-class-name,
-.hero-mobile .hero-xp {
-  font-size: 11px;
-}
-.hero-mobile .hero-notice {
-  display: none;
-}
-.hero-desktop,
-.hero-roster-head {
-  display: none;
-}
-.heroes-col .hero-roster {
-  width: 100%;
-}
-.camp .console .well-slot {
-  display: none;
-}
-.camp .console-row {
-  grid-template-columns: minmax(0, 1fr) 96px;
-}
-.camp .console-row > .gem-slot {
-  grid-column: 2;
-}
-.camp[data-first="1"] .console .cmd:not(:has([data-tile="journal"])) {
-  display: none;
-}
-.hero-list > .hero-history {
-  display: flex;
-  justify-content: space-between;
-}
-.hero-history:disabled {
-  opacity: 0.5;
-}
-@media (min-width: 1024px) {
-  .hero-mobile {
+  .watch .tactic-cue .ico,
+  .watch .tactic-cue .icon-socket .ico {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .watch .tactic-cue:is(.acting, :hover, :focus-visible) {
+    opacity: 1;
+    border-color: #eac77c;
+    box-shadow:
+      inset 0 0 5px #000,
+      0 0 8px #eac77c55;
+  }
+  @media (max-width: 600px) {
+    .watch .tactic-cue {
+      width: 44px;
+      height: 44px;
+    }
+    .watch .tactic-cue .icon-socket {
+      flex-basis: 34px;
+      width: 34px;
+      height: 34px;
+    }
+  }
+  .watch .hud .live-badge {
+    font-size: 13px;
+    border-radius: 3px;
+  }
+  .watch-options .chips {
+    margin: 12px 0 20px;
+  }
+  .report-summary h2 {
+    margin: 0 0 18px;
+    color: var(--bone);
+    font-size: 25px;
+    font-weight: 400;
+  }
+  .report-basics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 22px;
+  }
+  .camp[data-first="1"] .camp-main {
     display: none;
+  }
+  .camp[data-first="1"] .next-pill {
+    display: none;
+  }
+
+  .town-tag:not(:disabled) {
+    pointer-events: auto;
+    cursor: pointer;
+    border-color: var(--gilt);
+    color: var(--bone);
+  }
+  .town-tag:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
+
+  .camp[data-first="1"] .topbar :is(.marks, .rank, .best) {
+    display: none;
+  }
+
+  .report .report-summary h2 {
+    color: var(--ink);
+  }
+  .report .tiles.report-basics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .report .report-basics .tile.plaque {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    padding: 12px 7px;
+    text-align: center;
+  }
+  .report .report-basics .tile.plaque .ico {
+    display: none;
+  }
+  .report .report-gold {
+    cursor: pointer;
+  }
+  .report .report-basics .tile.plaque b {
+    font-size: 25px;
+  }
+
+  /* A bloodline row owns the hero summary; class controls live in Details. */
+  .hero-roster {
+    min-width: 0;
   }
   .hero-roster-head {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
   }
-  .hero-desktop {
-    display: block;
+  .hero-roster-head h2 {
+    margin: 0;
+    font: 25px var(--display);
   }
-  /* owner 2026-10-14 (more live view, less chrome): the centre's pick, batch and offer share one row instead of stacked
+  .hero-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-row {
+    --dim: #8a9ab4;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    padding: 10px;
+    gap: 6px;
+    background: linear-gradient(120deg, var(--panel2), var(--ink));
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .hero-row.selected {
+    border-color: var(--gilt);
+    box-shadow: inset 3px 0 var(--gilt);
+  }
+  .hero-jump {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    gap: 10px;
+    min-width: 0;
+    text-align: left;
+    min-height: 44px;
+    color: var(--bone);
+  }
+  .hero-thumb {
+    width: 44px;
+    height: 52px;
+    flex: none;
+    background: center / cover no-repeat;
+    border: 1px solid var(--moon);
+    border-radius: 4px;
+  }
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .hero-info b {
+    font: 21px var(--display);
+  }
+  .hero-class-name {
+    font-size: 15px;
+    color: var(--mist);
+    text-transform: capitalize;
+  }
+  .hero-xp {
+    font-size: 13px;
+    color: var(--dim);
+  }
+  .hero-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+  }
+  .hero-action .lane-beat {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--acc);
+  }
+  .hero-action .lane-beat.live {
+    background: var(--ember);
+  }
+  .hero-notice {
+    color: var(--acc);
+    font-size: 12px;
+  }
+  .hero-details,
+  .hero-expand {
+    min-height: 44px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--mist);
+    font-size: 14px;
+  }
+  .hero-add {
+    display: flex;
+    justify-content: space-between;
+    min-height: 44px;
+  }
+  .hero-add:disabled {
+    opacity: 0.5;
+  }
+  .hero-rules {
+    margin-top: 20px;
+  }
+  .hero-rules summary {
+    min-height: 44px;
+    padding: 10px 0;
+    cursor: pointer;
+    color: var(--dim);
+  }
+  .hero-mobile {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .hero-mobile .hero-row {
+    flex: 1;
+    padding: 6px;
+    gap: 4px;
+  }
+  .hero-mobile .hero-thumb {
+    width: 32px;
+    height: 40px;
+  }
+  .hero-mobile .hero-info {
+    gap: 1px;
+  }
+  .hero-mobile .hero-info b,
+  .hero-mobile .hero-action {
+    font-size: 14px;
+  }
+  .hero-mobile .hero-class-name,
+  .hero-mobile .hero-xp {
+    font-size: 11px;
+  }
+  .hero-mobile .hero-notice {
+    display: none;
+  }
+  .hero-desktop,
+  .hero-roster-head {
+    display: none;
+  }
+  .heroes-col .hero-roster {
+    width: 100%;
+  }
+  .camp .console .well-slot {
+    display: none;
+  }
+  .camp .console-row {
+    grid-template-columns: minmax(0, 1fr) 96px;
+  }
+  .camp .console-row > .gem-slot {
+    grid-column: 2;
+  }
+  .camp[data-first="1"] .console .cmd:not(:has([data-tile="journal"])) {
+    display: none;
+  }
+  .hero-list > .hero-history {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hero-history:disabled {
+    opacity: 0.5;
+  }
+  @media (min-width: 1024px) {
+    .hero-mobile {
+      display: none;
+    }
+    .hero-roster-head {
+      display: flex;
+    }
+    .hero-desktop {
+      display: block;
+    }
+    /* owner 2026-10-14 (more live view, less chrome): the centre's pick, batch and offer share one row instead of stacked
      strips (the control ladder rides the town's task tracker, ui/tasks.ts), and the heroes column runs down beside the console instead of stopping above a full-width dock row */
-  main.camp.frame {
-    grid-template-columns: var(--camp-l, var(--wide-l)) auto auto minmax(0, 1fr) auto var(--wide-r);
-    grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
-    grid-template-areas:
-      "bar bar bar bar bar bar"
-      "rules well well well well side"
-      "rules well well well well meters"
-      "rules vs vs vs vs meters"
-      "rules sline sline sline sline meters"
-      "rules rest rest rest rest meters"
-      "rules pick batch offer offer meters"
-      "rules feats feats feats feats meters"
-      "rules con con con con con";
-  }
-  main.camp .camp-well > .return-pick {
-    grid-area: pick;
-    align-self: center;
-  }
-  main.camp .camp-well > .checkin-batch {
-    grid-area: batch;
-    align-self: center;
-  }
-  html body main.frame.camp > .console {
-    margin-block: 6px;
-  }
-  /* below 1200 px the one-row dock no longer fits beside the heroes column: it spans the frame again */
-  @media (max-width: 1199px) {
     main.camp.frame {
+      grid-template-columns: var(--camp-l, var(--wide-l)) auto auto minmax(0, 1fr) auto var(
+          --wide-r
+        );
       grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
       grid-template-areas:
         "bar bar bar bar bar bar"
@@ -1039,974 +1017,1001 @@ button.re-body {
         "rules rest rest rest rest meters"
         "rules pick batch offer offer meters"
         "rules feats feats feats feats meters"
-        "con con con con con con";
+        "rules con con con con con";
+    }
+    main.camp .camp-well > .return-pick {
+      grid-area: pick;
+      align-self: center;
+    }
+    main.camp .camp-well > .checkin-batch {
+      grid-area: batch;
+      align-self: center;
+    }
+    html body main.frame.camp > .console {
+      margin-block: 6px;
+    }
+    /* below 1200 px the one-row dock no longer fits beside the heroes column: it spans the frame again */
+    @media (max-width: 1199px) {
+      main.camp.frame {
+        grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
+        grid-template-areas:
+          "bar bar bar bar bar bar"
+          "rules well well well well side"
+          "rules well well well well meters"
+          "rules vs vs vs vs meters"
+          "rules sline sline sline sline meters"
+          "rules rest rest rest rest meters"
+          "rules pick batch offer offer meters"
+          "rules feats feats feats feats meters"
+          "con con con con con con";
+      }
+    }
+    main.camp .well-wrap > .heroes-col {
+      grid-area: rules;
+      align-self: stretch;
+      padding: 20px 16px;
+      background: var(--umbra);
+      overflow: auto;
+      border: 1px solid var(--line);
+    }
+    main.camp .camp-main > .tablets,
+    main.camp .camp-well > .tabs {
+      display: none;
+    }
+    main.camp.hero-editing .well-wrap > .heroes-col {
+      display: none;
+    }
+    main.camp.hero-editing .camp-main > .tablets {
+      display: flex;
+      padding-top: 64px;
+    }
+    main.camp.hero-editing .camp-well > .tabs {
+      display: flex;
+      grid-area: rules;
+      align-self: start;
+      z-index: 2;
+    }
+    .camp .console-row {
+      grid-template-columns: minmax(0, 1fr) 124px;
+    }
+    main.frame.watch {
+      grid-template-columns: var(--wide-l) minmax(0, 1fr) var(--wide-r);
+    }
+    .hero-row {
+      flex-wrap: wrap;
+    }
+    .hero-details {
+      margin-left: auto;
     }
   }
-  main.camp .well-wrap > .heroes-col {
-    grid-area: rules;
-    align-self: stretch;
-    padding: 20px 16px;
-    background: var(--umbra);
-    overflow: auto;
-    border: 1px solid var(--line);
+
+  /* A held or earlier picture is not the current live view. */
+  .watch .hud .live-badge[data-status="paused"] .lane-beat,
+  .watch .hud .live-badge[data-status="earlier"] .lane-beat,
+  .watch .hud .live-badge[data-status="ended"] .lane-beat {
+    animation: none;
+    box-shadow: none;
+    background: #c6bdab;
   }
-  main.camp .camp-main > .tablets,
-  main.camp .camp-well > .tabs {
+
+  .report-upgrade {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 0 0 16px;
+    text-align: left;
+  }
+  .report-upgrade-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .report-upgrade-copy small {
+    font-size: 14px;
+  }
+  .preparation-host[hidden] {
     display: none;
   }
-  main.camp.hero-editing .well-wrap > .heroes-col {
-    display: none;
+  .preparation-section {
+    margin: 0 0 16px;
   }
-  main.camp.hero-editing .camp-main > .tablets {
+  .preparation-section > h3 {
+    margin: 0 0 6px;
+  }
+  .preparation-obstacle {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  .preparation-obstacle .unit-label-text {
+    text-transform: capitalize;
+  }
+  .preparation-actions {
+    display: grid;
+    gap: 8px;
+  }
+  .preparation-action,
+  .preparation-action.report-upgrade {
     display: flex;
-    padding-top: 64px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 56px;
+    margin: 0;
+    text-align: left;
+    white-space: normal;
   }
-  main.camp.hero-editing .camp-well > .tabs {
+  .preparation-action > .ico {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+  }
+  .preparation-action > .report-upgrade-copy {
+    flex: 1;
+    overflow-wrap: anywhere;
+  }
+  .preparation-fold {
+    margin-top: 12px;
+  }
+  .preparation-fold > summary {
+    cursor: pointer;
+    min-height: 44px;
     display: flex;
-    grid-area: rules;
-    align-self: start;
-    z-index: 2;
+    align-items: center;
+    color: var(--bone);
+    font: 600 18px var(--display);
   }
-  .camp .console-row {
-    grid-template-columns: minmax(0, 1fr) 124px;
+  .preparation-fold > summary::before {
+    content: "▸";
+    margin-right: 8px;
   }
-  main.frame.watch {
-    grid-template-columns: var(--wide-l) minmax(0, 1fr) var(--wide-r);
+  .preparation-fold[open] > summary::before {
+    content: "▾";
   }
-  .hero-row {
+  .preparation-build-icon .ico {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+  }
+  .report-class-xp {
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  .class-xp-line {
+    display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
+    gap: 5px 10px;
+    margin-top: 5px;
+    font-size: 16px;
   }
-  .hero-details {
-    margin-left: auto;
+  .class-xp-owner {
+    flex-basis: 100%;
+    color: #63563f;
+    font-size: 13px;
   }
-}
-
-/* A held or earlier picture is not the current live view. */
-.watch .hud .live-badge[data-status="paused"] .lane-beat,
-.watch .hud .live-badge[data-status="earlier"] .lane-beat,
-.watch .hud .live-badge[data-status="ended"] .lane-beat {
-  animation: none;
-  box-shadow: none;
-  background: #c6bdab;
-}
-
-.report-upgrade {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  margin: 0 0 16px;
-  text-align: left;
-}
-.report-upgrade-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-.report-upgrade-copy small {
-  font-size: 14px;
-}
-.preparation-host[hidden] {
-  display: none;
-}
-.preparation-section {
-  margin: 0 0 16px;
-}
-.preparation-section > h3 {
-  margin: 0 0 6px;
-}
-.preparation-obstacle {
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-.preparation-obstacle .unit-label-text {
-  text-transform: capitalize;
-}
-.preparation-actions {
-  display: grid;
-  gap: 8px;
-}
-.preparation-action,
-.preparation-action.report-upgrade {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: 56px;
-  margin: 0;
-  text-align: left;
-  white-space: normal;
-}
-.preparation-action > .ico {
-  flex: 0 0 44px;
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-.preparation-action > .report-upgrade-copy {
-  flex: 1;
-  overflow-wrap: anywhere;
-}
-.preparation-fold {
-  margin-top: 12px;
-}
-.preparation-fold > summary {
-  cursor: pointer;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  color: var(--bone);
-  font: 600 18px var(--display);
-}
-.preparation-fold > summary::before {
-  content: "▸";
-  margin-right: 8px;
-}
-.preparation-fold[open] > summary::before {
-  content: "▾";
-}
-.preparation-build-icon .ico {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-}
-.report-class-xp {
-  margin: 0 0 18px;
-  color: var(--ink);
-}
-.class-xp-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 5px 10px;
-  margin-top: 5px;
-  font-size: 16px;
-}
-.class-xp-owner {
-  flex-basis: 100%;
-  color: #63563f;
-  font-size: 13px;
-}
-.class-xp-gain,
-.class-xp-level {
-  color: #684e20;
-}
-
-/* Playback mode remains visible without adding another console control. */
-.watch .tile[data-tile="speed"] {
-  overflow: visible;
-}
-.watch .watch-speed-mode {
-  display: block;
-  margin-top: 3px;
-  white-space: nowrap;
-  font: 600 11px/15px var(--sans);
-  color: var(--bone);
-  text-shadow: 0 1px 3px #000;
-}
-/* blind c4705f9: the clock the picture plays at, always on the speed tile; lit when it is not 1× */
-.watch .tile[data-tile="speed"] .watch-speed-badge {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  display: inline-flex;
-  /* stacked: an inline "now" ran into the icon once the rate was wider than 8× (1.5×, 36×) */
-  flex-direction: column;
-  align-items: flex-end;
-  pointer-events: none;
-}
-/* the badge carries the clock: the old Cut 15 corner mark (styles.css `.cmd .tile[data-rate]::after`) drew it twice */
-.watch .tile[data-tile="speed"][data-rate]::after {
-  content: none;
-}
-.watch .tile[data-tile="speed"] > .ico {
-  translate: -18px 0;
-}
-.watch .tile[data-tile="speed"] .watch-speed-now {
-  font: 600 10px/10px var(--sans);
-  color: var(--bone);
-  opacity: 0.8;
-  text-shadow: 0 1px 2px #000;
-}
-.watch .tile[data-tile="speed"] .watch-speed-rate {
-  padding: 0 4px;
-  border-radius: 7px;
-  font: 700 13px/17px var(--num);
-  color: var(--bone);
-  background: rgba(13, 12, 20, 0.72);
-  text-shadow: 0 1px 2px #000;
-  pointer-events: none;
-}
-.watch .tile[data-tile="speed"].sped .watch-speed-rate {
-  color: #1a1208;
-  background: #f3d192;
-  text-shadow: none;
-}
-.watch .tile[data-tile="speed"].sped .watch-speed-mode {
-  color: #f3d192;
-}
-/* the mode is a choice: a quiet caret says the tile opens its options */
-.watch .watch-speed-mode::after {
-  content: " ▾";
-  opacity: 0.7;
-}
-.watch button.speed-why {
-  border: 0;
-  cursor: pointer;
-}
-.watch .combat-lines {
-  overflow-anchor: none;
-}
-.watch .combat-lines:focus-visible {
-  outline: 1px solid var(--gilt);
-  outline-offset: 2px;
-}
-.watch .log-latest {
-  display: block;
-  margin: 0 0 4px auto;
-  padding: 3px 6px;
-  border: 0;
-  background: none;
-  box-shadow: none;
-  color: #f5cf79;
-  font: 600 12px/18px var(--sans);
-  text-shadow: 0 1px 3px #000;
-}
-.watch .log-latest[hidden] {
-  display: none;
-}
-
-/* Hero presence uses a quiet activity light, separate from the watched frame. */
-.hero-action[data-activity="combat"] .lane-beat {
-  background: #e7867d;
-  box-shadow: 0 0 5px #a83e42;
-}
-.hero-action[data-activity="exploring"] .lane-beat {
-  background: #9ac9ad;
-}
-.hero-action[data-activity="returning"] .lane-beat {
-  background: #f3ce88;
-}
-.hero-action[data-activity="ended"] .lane-beat {
-  background: #a9a394;
-  box-shadow: none;
-}
-/* The selected watch mode remains readable on the parchment, including held fights. */
-.watch-options .hud-btn.on,
-.watch-options .hud-btn.on.slowed {
-  background: #34291f;
-  color: #f0d9a5;
-  border-color: #8c683d;
-  box-shadow:
-    inset 0 2px 5px #16120e,
-    0 0 0 1px #c29a60;
-}
-
-/* Home roster: portrait wells and quiet XP rails inside the shared chunky chrome. */
-.hero-row {
-  position: relative;
-  padding: 14px;
-  gap: 10px;
-  border-radius: 2px;
-  background: linear-gradient(135deg, #292735, #14131e 65%);
-  border-color: #596173;
-  box-shadow:
-    inset 0 1px 0 #8892a466,
-    inset 0 -3px 0 #080910,
-    0 3px 6px #0006;
-}
-.hero-row.selected {
-  border-color: #bda36b;
-  box-shadow:
-    inset 0 1px 0 #efd6a077,
-    inset 3px 0 #bda36b,
-    inset 0 -3px 0 #080910,
-    0 3px 8px #0008;
-}
-.hero-thumb {
-  width: 64px;
-  height: 76px;
-  border: 3px ridge #8991a2;
-  border-radius: 2px;
-  box-shadow:
-    inset 0 0 12px #000,
-    0 2px 4px #0009;
-  background-color: #0a0c13;
-}
-.hero-info {
-  flex: 1;
-  gap: 5px;
-}
-.hero-info b {
-  line-height: 1.15;
-  text-shadow: 0 2px 0 #000;
-  overflow-wrap: anywhere;
-}
-.hero-class-name {
-  font-size: 13px;
-  line-height: 1.35;
-  color: #bdc5d5;
-}
-.hero-xp {
-  font-size: 12px;
-  color: #b1bdcf;
-}
-.hero-xp-track {
-  display: block;
-  width: min(100%, 150px);
-  height: 5px;
-  background: #080b12;
-  border: 1px solid #475166;
-  box-shadow: 0 1px 0 #ffffff10;
-}
-.hero-xp-track > i {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, #708aa3, #bdcbdc);
-}
-.hero-action {
-  margin-top: 3px;
-  color: #e4d7b5;
-  font-size: 14px;
-  line-height: 1.3;
-}
-.hero-action[data-activity="combat"] {
-  color: #ffba9d;
-}
-.hero-action[data-activity="exploring"] {
-  color: #b9d8cc;
-}
-.hero-action[data-activity="returning"] {
-  color: #e6c581;
-}
-.hero-action .lane-beat {
-  flex: none;
-  box-shadow: 0 0 5px currentColor;
-}
-.hero-notice {
-  font-size: 12px;
-  color: #f0cf86;
-}
-.hero-jump:focus-visible {
-  outline: 2px solid #e6c581;
-  outline-offset: 4px;
-}
-.hero-row:hover {
-  background: linear-gradient(135deg, #343141, #191823 65%);
-}
-.hero-mobile .hero-row {
-  padding: 9px 7px;
-}
-.hero-mobile .hero-thumb {
-  width: 40px;
-  height: 48px;
-  border-width: 2px;
-}
-.hero-mobile .hero-info {
-  gap: 2px;
-}
-.hero-mobile .hero-class-name {
-  font-size: 11px;
-}
-.hero-mobile .hero-xp-track {
-  height: 4px;
-  max-width: 110px;
-}
-.hero-mobile .hero-action {
-  margin-top: 2px;
-  font-size: 12px;
-}
-@media (min-width: 1024px) {
-  main.camp .well-wrap > .heroes-col {
-    background: radial-gradient(ellipse at top left, #25233488, transparent 65%), #11111b;
-    border-right: 3px ridge #525b6b;
+  .class-xp-gain,
+  .class-xp-level {
+    color: #684e20;
   }
-  .hero-roster-head {
-    padding-bottom: 12px;
-    border-bottom: 1px solid #5a5364;
+
+  /* Playback mode remains visible without adding another console control. */
+  .watch .tile[data-tile="speed"] {
+    overflow: visible;
   }
-  .hero-roster-head h2 {
-    color: #ebd4a6;
-    text-shadow: 0 2px 0 #000;
+  .watch .watch-speed-mode {
+    display: block;
+    margin-top: 3px;
+    white-space: nowrap;
+    font: 600 11px/15px var(--sans);
+    color: var(--bone);
+    text-shadow: 0 1px 3px #000;
   }
+  /* blind c4705f9: the clock the picture plays at, always on the speed tile; lit when it is not 1× */
+  .watch .tile[data-tile="speed"] .watch-speed-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: inline-flex;
+    /* stacked: an inline "now" ran into the icon once the rate was wider than 8× (1.5×, 36×) */
+    flex-direction: column;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+  /* the badge carries the clock: the old Cut 15 corner mark (styles.css `.cmd .tile[data-rate]::after`) drew it twice */
+  .watch .tile[data-tile="speed"][data-rate]::after {
+    content: none;
+  }
+  .watch .tile[data-tile="speed"] > .ico {
+    translate: -18px 0;
+  }
+  .watch .tile[data-tile="speed"] .watch-speed-now {
+    font: 600 10px/10px var(--sans);
+    color: var(--bone);
+    opacity: 0.8;
+    text-shadow: 0 1px 2px #000;
+  }
+  .watch .tile[data-tile="speed"] .watch-speed-rate {
+    padding: 0 4px;
+    border-radius: 7px;
+    font: 700 13px/17px var(--num);
+    color: var(--bone);
+    background: rgba(13, 12, 20, 0.72);
+    text-shadow: 0 1px 2px #000;
+    pointer-events: none;
+  }
+  .watch .tile[data-tile="speed"].sped .watch-speed-rate {
+    color: #1a1208;
+    background: #f3d192;
+    text-shadow: none;
+  }
+  .watch .tile[data-tile="speed"].sped .watch-speed-mode {
+    color: #f3d192;
+  }
+  /* the mode is a choice: a quiet caret says the tile opens its options */
+  .watch .watch-speed-mode::after {
+    content: " ▾";
+    opacity: 0.7;
+  }
+  .watch button.speed-why {
+    border: 0;
+    cursor: pointer;
+  }
+  .watch .combat-lines {
+    overflow-anchor: none;
+  }
+  .watch .combat-lines:focus-visible {
+    outline: 1px solid var(--gilt);
+    outline-offset: 2px;
+  }
+  .watch .log-latest {
+    display: block;
+    margin: 0 0 4px auto;
+    padding: 3px 6px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    color: #f5cf79;
+    font: 600 12px/18px var(--sans);
+    text-shadow: 0 1px 3px #000;
+  }
+  .watch .log-latest[hidden] {
+    display: none;
+  }
+
+  /* Hero presence uses a quiet activity light, separate from the watched frame. */
+  .hero-action[data-activity="combat"] .lane-beat {
+    background: #e7867d;
+    box-shadow: 0 0 5px #a83e42;
+  }
+  .hero-action[data-activity="exploring"] .lane-beat {
+    background: #9ac9ad;
+  }
+  .hero-action[data-activity="returning"] .lane-beat {
+    background: #f3ce88;
+  }
+  .hero-action[data-activity="ended"] .lane-beat {
+    background: #a9a394;
+    box-shadow: none;
+  }
+  /* The selected watch mode remains readable on the parchment, including held fights. */
+  .watch-options .hud-btn.on,
+  .watch-options .hud-btn.on.slowed {
+    background: #34291f;
+    color: #f0d9a5;
+    border-color: #8c683d;
+    box-shadow:
+      inset 0 2px 5px #16120e,
+      0 0 0 1px #c29a60;
+  }
+
+  /* Home roster: portrait wells and quiet XP rails inside the shared chunky chrome. */
   .hero-row {
-    align-items: flex-start;
+    position: relative;
+    padding: 14px;
+    gap: 10px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #292735, #14131e 65%);
+    border-color: #596173;
+    box-shadow:
+      inset 0 1px 0 #8892a466,
+      inset 0 -3px 0 #080910,
+      0 3px 6px #0006;
   }
-  .hero-details {
-    align-self: end;
+  .hero-row.selected {
+    border-color: #bda36b;
+    box-shadow:
+      inset 0 1px 0 #efd6a077,
+      inset 3px 0 #bda36b,
+      inset 0 -3px 0 #080910,
+      0 3px 8px #0008;
   }
-}
-.camp .town::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 0 2px #11141b,
-    inset 0 0 0 3px #7b839044,
-    inset 0 -18px 24px -18px #05060c;
-}
-
-/* Report earnings: one compact line per persistent bloodline. */
-.report-legacy-earned .class-xp-owner {
-  flex-basis: auto;
-  margin-right: auto;
-}
-
-.saved-set-label {
-  align-self: center;
-  font-size: 12px;
-}
-.report .resource-purpose {
-  grid-column: 1 / -1;
-  font-size: 12px;
-  color: #c4baa1;
-}
-.legacy-earned-purpose {
-  display: block;
-}
-/* take control: the watch's hand-driving panel — the console's own carved tiles (frame.ts `tile`) set in a stone slab; the pad's
-   one stone arrow turned in 45° steps, the wait an hourglass; the toggle rests pressed (`on`) while the hand is on the hero */
-.ctl.ctl-slab {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 8px 10px;
-  position: relative;
-  z-index: 3;
-  background: linear-gradient(180deg, #1a1926, var(--umbra) 60%, #13121b);
-  box-shadow:
-    inset 0 0 0 1px var(--ink),
-    inset 0 2px 0 rgba(164, 188, 214, 0.08),
-    0 -2px 8px rgba(0, 0, 0, 0.5);
-}
-.skin-console .ctl.ctl-slab {
-  border: 14px solid transparent;
-  border-image: url(/ui/frames/console.png) 48 fill / 18px stretch;
-  background-clip: padding-box;
-  padding: 2px 4px;
-}
-.ctl .ctl-toggle-slot {
-  display: flex;
-  align-items: center;
-  flex: 0 0 72px;
-}
-.ctl .cmd {
-  display: grid;
-  gap: 4px;
-  margin: 0;
-  padding: 0;
-}
-.ctl .ctl-pad {
-  grid-template-columns: repeat(3, 46px);
-  grid-template-rows: repeat(3, 46px);
-}
-.ctl .ctl-verbs {
-  grid-template-columns: repeat(2, 74px);
-  grid-auto-rows: 46px;
-  align-content: center;
-}
-.ctl .ctl-verb {
-  flex-direction: column;
-  gap: 0;
-  padding: 2px 2px 3px;
-}
-html body .ctl .cmd .tile.ctl-verb .tl,
-html body .ctl .cmd .tile.ctl-toggle .tl {
-  font-size: 12px;
-  line-height: 1.05;
-}
-.ctl .tile {
-  min-height: 44px;
-  min-width: 44px;
-}
-.ctl .ctl-toggle {
-  width: 72px;
-  min-height: 96px;
-}
-/* Automatic watch keeps only the hand toggle. Author grid/flex declarations must respect the panel's hidden state. */
-.ctl.ctl-slab[hidden],
-.ctl [hidden] {
-  display: none;
-}
-.ctl[data-on="0"] .ctl-toggle {
-  min-height: 52px;
-}
-.ctl[data-on="0"] .ctl-toggle-slot {
-  display: flex;
-}
-.ctl[data-on="0"] .ctl-toggle .ico {
-  width: 24px;
-  height: 24px;
-}
-.ctl .ctl-pad .tile .tl {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-} /* the arrow is the read; the word stays for readers */
-.ctl .ctl-pad .tile .ico {
-  transform: rotate(var(--rot, 0deg));
-  width: 26px;
-  height: 26px;
-  image-rendering: pixelated;
-}
-.ctl .ctl-verb .ico {
-  width: 20px;
-  height: 20px;
-}
-.ctl[data-on="1"][data-awaiting="1"] .ctl-pad .tile:not(.ctl-wait) {
-  box-shadow:
-    0 0 0 1px var(--acc),
-    0 0 8px rgba(232, 146, 58, 0.35);
-}
-/* blind b58b431: the last hand order's outcome over the slab (`moved`, `can't · wall`, `paralysed · 3`, `foe down`) */
-.ctl .ctl-note {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, -4px);
-  max-width: calc(100% - 16px);
-  padding: 1px 8px;
-  border-radius: 9px;
-  background: rgba(12, 11, 18, 0.86);
-  box-shadow: 0 0 0 1px var(--ink);
-  color: var(--fg);
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  pointer-events: none;
-}
-.ctl .ctl-note:empty {
-  display: none;
-}
-.ctl .ctl-note[data-refused="1"] {
-  color: #e8923a;
-}
-.ctl .ctl-note[data-pending="1"] {
-  opacity: 0.6;
-}
-/* owner 2026-10-10 ("keyboard works? and consider mobile/touch"): each tile's key in its corner where a mouse hovers (a phone has no
-   keys); the slab never zooms on a double tap nor selects on a long press; under 480 px the actions go icon-only (the word in the
-   tooltip and aria-label), the toggle narrows — every tile still ≥ 44 px, nothing past the edge at 360 */
-.ctl .ctl-key {
-  display: block;
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  padding: 1px 3px;
-  border: 0;
-  border-radius: 2px;
-  background: rgba(10, 12, 18, 0.72);
-  color: #e8dcc0;
-  font: 700 11px/1 var(--mono, ui-monospace, monospace);
-  pointer-events: none;
-  text-shadow: 0 1px 1px var(--ink);
-}
-/* owner 2026-10-10: the shortcut shows on every button, touch included */
-.ctl .ctl-pad,
-.ctl .ctl-verbs,
-.ctl .ctl-toggle-slot {
-  touch-action: manipulation;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-@media (max-width: 479px) {
-  .ctl.ctl-slab {
-    gap: 6px;
-    padding: 6px 4px;
+  .hero-thumb {
+    width: 64px;
+    height: 76px;
+    border: 3px ridge #8991a2;
+    border-radius: 2px;
+    box-shadow:
+      inset 0 0 12px #000,
+      0 2px 4px #0009;
+    background-color: #0a0c13;
   }
-  .skin-console .ctl.ctl-slab {
-    padding: 2px 0;
+  .hero-info {
+    flex: 1;
+    gap: 5px;
   }
-  .ctl .ctl-toggle-slot {
-    flex: 0 0 52px;
+  .hero-info b {
+    line-height: 1.15;
+    text-shadow: 0 2px 0 #000;
+    overflow-wrap: anywhere;
   }
-  .ctl .ctl-toggle {
-    width: 52px;
+  .hero-class-name {
+    font-size: 13px;
+    line-height: 1.35;
+    color: #bdc5d5;
   }
-  html body .ctl .cmd .tile.ctl-toggle .tl {
+  .hero-xp {
+    font-size: 12px;
+    color: #b1bdcf;
+  }
+  .hero-xp-track {
+    display: block;
+    width: min(100%, 150px);
+    height: 5px;
+    background: #080b12;
+    border: 1px solid #475166;
+    box-shadow: 0 1px 0 #ffffff10;
+  }
+  .hero-xp-track > i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #708aa3, #bdcbdc);
+  }
+  .hero-action {
+    margin-top: 3px;
+    color: #e4d7b5;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .hero-action[data-activity="combat"] {
+    color: #ffba9d;
+  }
+  .hero-action[data-activity="exploring"] {
+    color: #b9d8cc;
+  }
+  .hero-action[data-activity="returning"] {
+    color: #e6c581;
+  }
+  .hero-action .lane-beat {
+    flex: none;
+    box-shadow: 0 0 5px currentColor;
+  }
+  .hero-notice {
+    font-size: 12px;
+    color: #f0cf86;
+  }
+  .hero-jump:focus-visible {
+    outline: 2px solid #e6c581;
+    outline-offset: 4px;
+  }
+  .hero-row:hover {
+    background: linear-gradient(135deg, #343141, #191823 65%);
+  }
+  .hero-mobile .hero-row {
+    padding: 9px 7px;
+  }
+  .hero-mobile .hero-thumb {
+    width: 40px;
+    height: 48px;
+    border-width: 2px;
+  }
+  .hero-mobile .hero-info {
+    gap: 2px;
+  }
+  .hero-mobile .hero-class-name {
     font-size: 11px;
   }
-  .ctl .ctl-verbs {
-    grid-template-columns: repeat(2, 46px);
+  .hero-mobile .hero-xp-track {
+    height: 4px;
+    max-width: 110px;
   }
-  .ctl .ctl-verb .tl {
+  .hero-mobile .hero-action {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+  @media (min-width: 1024px) {
+    main.camp .well-wrap > .heroes-col {
+      background: radial-gradient(ellipse at top left, #25233488, transparent 65%), #11111b;
+      border-right: 3px ridge #525b6b;
+    }
+    .hero-roster-head {
+      padding-bottom: 12px;
+      border-bottom: 1px solid #5a5364;
+    }
+    .hero-roster-head h2 {
+      color: #ebd4a6;
+      text-shadow: 0 2px 0 #000;
+    }
+    .hero-row {
+      align-items: flex-start;
+    }
+    .hero-details {
+      align-self: end;
+    }
+  }
+  .camp .town::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    box-shadow:
+      inset 0 0 0 2px #11141b,
+      inset 0 0 0 3px #7b839044,
+      inset 0 -18px 24px -18px #05060c;
+  }
+
+  /* Report earnings: one compact line per persistent bloodline. */
+  .report-legacy-earned .class-xp-owner {
+    flex-basis: auto;
+    margin-right: auto;
+  }
+
+  .saved-set-label {
+    align-self: center;
+    font-size: 12px;
+  }
+  .report .resource-purpose {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: #c4baa1;
+  }
+  .legacy-earned-purpose {
+    display: block;
+  }
+  /* take control: the watch's hand-driving panel — the console's own carved tiles (frame.ts `tile`) set in a stone slab; the pad's
+   one stone arrow turned in 45° steps, the wait an hourglass; the toggle rests pressed (`on`) while the hand is on the hero */
+  .ctl.ctl-slab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 10px;
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(180deg, #1a1926, var(--umbra) 60%, #13121b);
+    box-shadow:
+      inset 0 0 0 1px var(--ink),
+      inset 0 2px 0 rgba(164, 188, 214, 0.08),
+      0 -2px 8px rgba(0, 0, 0, 0.5);
+  }
+  .skin-console .ctl.ctl-slab {
+    border: 14px solid transparent;
+    border-image: url(/ui/frames/console.png) 48 fill / 18px stretch;
+    background-clip: padding-box;
+    padding: 2px 4px;
+  }
+  .ctl .ctl-toggle-slot {
+    display: flex;
+    align-items: center;
+    flex: 0 0 72px;
+  }
+  .ctl .cmd {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+  }
+  .ctl .ctl-pad {
+    grid-template-columns: repeat(3, 46px);
+    grid-template-rows: repeat(3, 46px);
+  }
+  .ctl .ctl-verbs {
+    grid-template-columns: repeat(2, 74px);
+    grid-auto-rows: 46px;
+    align-content: center;
+  }
+  .ctl .ctl-verb {
+    flex-direction: column;
+    gap: 0;
+    padding: 2px 2px 3px;
+  }
+  html body .ctl .cmd .tile.ctl-verb .tl,
+  html body .ctl .cmd .tile.ctl-toggle .tl {
+    font-size: 12px;
+    line-height: 1.05;
+  }
+  .ctl .tile {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .ctl .ctl-toggle {
+    width: 72px;
+    min-height: 96px;
+  }
+  /* Automatic watch keeps only the hand toggle. Author grid/flex declarations must respect the panel's hidden state. */
+  .ctl.ctl-slab[hidden],
+  .ctl [hidden] {
+    display: none;
+  }
+  .ctl[data-on="0"] .ctl-toggle {
+    min-height: 52px;
+  }
+  .ctl[data-on="0"] .ctl-toggle-slot {
+    display: flex;
+  }
+  .ctl[data-on="0"] .ctl-toggle .ico {
+    width: 24px;
+    height: 24px;
+  }
+  .ctl .ctl-pad .tile .tl {
     position: absolute;
     width: 1px;
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
+  } /* the arrow is the read; the word stays for readers */
+  .ctl .ctl-pad .tile .ico {
+    transform: rotate(var(--rot, 0deg));
+    width: 26px;
+    height: 26px;
+    image-rendering: pixelated;
   }
   .ctl .ctl-verb .ico {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
-  .ctl .ctl-until::after {
-    content: "↻";
+  .ctl[data-on="1"][data-awaiting="1"] .ctl-pad .tile:not(.ctl-wait) {
+    box-shadow:
+      0 0 0 1px var(--acc),
+      0 0 8px rgba(232, 146, 58, 0.35);
+  }
+  /* blind b58b431: the last hand order's outcome over the slab (`moved`, `can't · wall`, `paralysed · 3`, `foe down`) */
+  .ctl .ctl-note {
     position: absolute;
-    left: 3px;
-    bottom: 2px;
-    font-size: 11px;
-    line-height: 1;
-    color: #f3d192;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -4px);
+    max-width: calc(100% - 16px);
+    padding: 1px 8px;
+    border-radius: 9px;
+    background: rgba(12, 11, 18, 0.86);
+    box-shadow: 0 0 0 1px var(--ink);
+    color: var(--fg);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+  .ctl .ctl-note:empty {
+    display: none;
+  }
+  .ctl .ctl-note[data-refused="1"] {
+    color: #e8923a;
+  }
+  .ctl .ctl-note[data-pending="1"] {
+    opacity: 0.6;
+  }
+  /* owner 2026-10-10 ("keyboard works? and consider mobile/touch"): each tile's key in its corner where a mouse hovers (a phone has no
+   keys); the slab never zooms on a double tap nor selects on a long press; under 480 px the actions go icon-only (the word in the
+   tooltip and aria-label), the toggle narrows — every tile still ≥ 44 px, nothing past the edge at 360 */
+  .ctl .ctl-key {
+    display: block;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    padding: 1px 3px;
+    border: 0;
+    border-radius: 2px;
+    background: rgba(10, 12, 18, 0.72);
+    color: #e8dcc0;
+    font: 700 11px/1 var(--mono, ui-monospace, monospace);
+    pointer-events: none;
     text-shadow: 0 1px 1px var(--ink);
   }
-}
-/* the map while in hand: the tile under the mouse, a move cursor over the floor and an attack cursor over a foe */
-.watch .ctl-hover {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-  box-sizing: border-box;
-  border: 1px solid rgba(232, 146, 58, 0.6);
-  border-radius: 2px;
-  box-shadow: 0 0 6px rgba(232, 146, 58, 0.25);
-}
-.watch .ctl-hover[data-foe="1"] {
-  border-color: rgba(224, 90, 74, 0.85);
-  box-shadow: 0 0 6px rgba(224, 90, 74, 0.35);
-}
-.watch canvas[data-ctl-cursor="move"] {
-  cursor: pointer;
-}
-.watch canvas[data-ctl-cursor="attack"] {
-  cursor: crosshair;
-}
-/* Cut 117 §1: the gold head's equation — each term whole on its line when the tile is narrow */
-.report .report-gold .report-ledger {
-  display: block;
-  font-size: 11px;
-  line-height: 1.25;
-}
-.report .report-gold .report-ledger > span {
-  white-space: nowrap;
-}
-/* Cut 121 §3 (A, B: "speed swings 2× ↔ 32× on its own"): the automatic rate's reason, small in the stage's corner (`fight · 2×`) */
-.watch .speed-why {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 9;
-  padding: 2px 7px;
-  border-radius: 9px;
-  pointer-events: auto;
-  font: 600 12px/16px var(--num);
-  color: #f3d192;
-  background: rgba(13, 12, 20, 0.74);
-  box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.35);
-  text-shadow: 0 1px 2px #000;
-  white-space: nowrap;
-  transition: opacity 0.2s;
-}
-.watch .speed-why[hidden] {
-  display: none;
-}
-/* blind e33d50b-c (Hand froze the run 4 minutes; the way back sat in the order panel): whose move it is, and one tap back to auto */
-.watch .hand-cue {
-  position: absolute;
-  left: 50%;
-  top: 52px;
-  translate: -50% 0;
-  z-index: 10;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 6px 0 12px;
-  border: 0;
-  border-radius: 22px;
-  font: 600 13px/16px var(--sans);
-  color: var(--bone);
-  background: rgba(13, 12, 20, 0.82);
-  box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.45);
-  text-shadow: 0 1px 2px #000;
-  cursor: pointer;
-}
-.watch .hand-cue[hidden] {
-  display: none;
-}
-.watch .hand-cue[data-awaiting="1"] .hand-cue-who {
-  color: #f3d192;
-}
-.watch .hand-cue-back {
-  padding: 5px 10px;
-  border-radius: 16px;
-  color: #1a1208;
-  background: #f3d192;
-  text-shadow: none;
-}
-.watch .hand-cue:focus-visible {
-  outline: 2px solid var(--gilt);
-  outline-offset: 2px;
-}
-.watch .speed-why[data-why="fight"],
-.watch .speed-why[data-why="scene"],
-.watch .speed-why[data-why="near"] {
-  color: #efa19b;
-  box-shadow: inset 0 0 0 1px rgba(239, 161, 155, 0.35);
-}
-
-/* Owner 2026-10-10: one HUD line — the depth, the purse as two icons beside it (`D1 [coins]$2 [chest]$0`), the badge at its right end
-   (`Live`, `Paused`, `Hand`; what each means is its tip). Under the swift strip the whole line steps down (`data-strip`). */
-.watch .hud.top .hud-line {
-  display: flex;
-  flex: 1 1 100%;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-}
-.watch .hud-line > .depth,
-.watch .hud-line > .alert {
-  flex: none;
-}
-.watch .hud-line > .alert {
-  min-width: 0;
-}
-.watch .hud-line > .alert:empty {
-  display: none;
-}
-.watch .hud-line > .stake {
-  flex: 0 1 auto;
-  flex-basis: auto;
-  min-width: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 1px 7px 1px 4px;
-  line-height: 20px;
-}
-.watch .hud-line > .stake[hidden] {
-  display: none;
-}
-.watch .hud-line > .live-badge {
-  flex: none;
-  margin-left: auto;
-}
-.watch .stake .purse {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  flex: none;
-  cursor: help;
-  border-radius: 3px;
-  outline-offset: 1px;
-}
-.watch .stake .purse .ico {
-  width: 24px;
-  height: 24px;
-  margin: -2px 0;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 1px 1px var(--ink));
-}
-.watch .stake .purse .ico.glyph::before {
-  font-size: 15px;
-  line-height: 24px;
-}
-.watch .stake .purse.carried .ico.glyph::before {
-  color: #f3d192;
-}
-.watch .stake .purse.kept {
-  color: var(--ok);
-}
-.watch .stake .purse.kept[data-state="past"] {
-  color: var(--dim);
-}
-.watch .stake .purse.kept[data-state="past"] .ico {
-  opacity: 0.55;
-  filter: grayscale(0.6) drop-shadow(0 1px 1px var(--ink));
-}
-.watch .stake .purse-v {
-  white-space: nowrap;
-}
-/* the purse's news, a line under it: `−$37 swap → leather +1`, `Heading home`, `Path blocked` */
-.watch .hud.top .stake-note {
-  flex: 0 1 auto;
-  display: flex;
-  gap: 8px;
-  min-width: 0;
-  max-width: 100%;
-  margin: -4px 0 0 30px;
-  padding: 1px 7px;
-  border-radius: 3px;
-  background: rgba(13, 12, 20, 0.62);
-  font-size: 13px;
-  line-height: 18px;
-  color: var(--dim);
-  text-shadow: 0 1px 4px var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-}
-.watch .hud.top .stake-note[hidden],
-.watch .stake-note > [hidden] {
-  display: none;
-}
-.watch .stake-note > * {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.watch .stake-note .loot-drop {
-  color: #efa19b;
-}
-.watch .stake-note .returning {
-  color: #ffc9c3;
-}
-.watch .stake-note .stalling {
-  color: var(--warn);
-}
-@keyframes purse-gain {
-  0% {
-    text-shadow: 0 0 10px var(--ok);
-    transform: scale(1.18);
+  /* owner 2026-10-10: the shortcut shows on every button, touch included */
+  .ctl .ctl-pad,
+  .ctl .ctl-verbs,
+  .ctl .ctl-toggle-slot {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
-  100% {
+  @media (max-width: 479px) {
+    .ctl.ctl-slab {
+      gap: 6px;
+      padding: 6px 4px;
+    }
+    .skin-console .ctl.ctl-slab {
+      padding: 2px 0;
+    }
+    .ctl .ctl-toggle-slot {
+      flex: 0 0 52px;
+    }
+    .ctl .ctl-toggle {
+      width: 52px;
+    }
+    html body .ctl .cmd .tile.ctl-toggle .tl {
+      font-size: 11px;
+    }
+    .ctl .ctl-verbs {
+      grid-template-columns: repeat(2, 46px);
+    }
+    .ctl .ctl-verb .tl {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+    .ctl .ctl-verb .ico {
+      width: 24px;
+      height: 24px;
+    }
+    .ctl .ctl-until::after {
+      content: "↻";
+      position: absolute;
+      left: 3px;
+      bottom: 2px;
+      font-size: 11px;
+      line-height: 1;
+      color: #f3d192;
+      text-shadow: 0 1px 1px var(--ink);
+    }
+  }
+  /* the map while in hand: the tile under the mouse, a move cursor over the floor and an attack cursor over a foe */
+  .watch .ctl-hover {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 1px solid rgba(232, 146, 58, 0.6);
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(232, 146, 58, 0.25);
+  }
+  .watch .ctl-hover[data-foe="1"] {
+    border-color: rgba(224, 90, 74, 0.85);
+    box-shadow: 0 0 6px rgba(224, 90, 74, 0.35);
+  }
+  .watch canvas[data-ctl-cursor="move"] {
+    cursor: pointer;
+  }
+  .watch canvas[data-ctl-cursor="attack"] {
+    cursor: crosshair;
+  }
+  /* Cut 117 §1: the gold head's equation — each term whole on its line when the tile is narrow */
+  .report .report-gold .report-ledger {
+    display: block;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+  .report .report-gold .report-ledger > span {
+    white-space: nowrap;
+  }
+  /* Cut 121 §3 (A, B: "speed swings 2× ↔ 32× on its own"): the automatic rate's reason, small in the stage's corner (`fight · 2×`) */
+  .watch .speed-why {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 9;
+    padding: 2px 7px;
+    border-radius: 9px;
+    pointer-events: auto;
+    font: 600 12px/16px var(--num);
+    color: #f3d192;
+    background: rgba(13, 12, 20, 0.74);
+    box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.35);
+    text-shadow: 0 1px 2px #000;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .watch .speed-why[hidden] {
+    display: none;
+  }
+  /* blind e33d50b-c (Hand froze the run 4 minutes; the way back sat in the order panel): whose move it is, and one tap back to auto */
+  .watch .hand-cue {
+    position: absolute;
+    left: 50%;
+    top: 52px;
+    translate: -50% 0;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 6px 0 12px;
+    border: 0;
+    border-radius: 22px;
+    font: 600 13px/16px var(--sans);
+    color: var(--bone);
+    background: rgba(13, 12, 20, 0.82);
+    box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.45);
+    text-shadow: 0 1px 2px #000;
+    cursor: pointer;
+  }
+  .watch .hand-cue[hidden] {
+    display: none;
+  }
+  .watch .hand-cue[data-awaiting="1"] .hand-cue-who {
+    color: #f3d192;
+  }
+  .watch .hand-cue-back {
+    padding: 5px 10px;
+    border-radius: 16px;
+    color: #1a1208;
+    background: #f3d192;
     text-shadow: none;
-    transform: none;
   }
-}
-[data-juice="on"] .watch .stake .purse.kept.gain {
-  animation: purse-gain 1.2s ease-out;
-}
-.watch .hud .live-badge {
-  cursor: help;
-}
-.watch .hud .hud-line > .live-badge {
-  margin-left: auto;
-}
-/* the hand: the dot is his state — beating while he awaits an order, steady while he acts */
-.watch .hud .live-badge[data-status="hand"] {
-  box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.6);
-  color: #f3d192;
-}
-.watch .hud .live-badge[data-status="hand"] .lane-beat {
-  background: #f3d192;
-  box-shadow: 0 0 6px #f3d192;
-}
-.watch .hud .live-badge[data-status="hand"][data-await="0"] .lane-beat {
-  animation: none;
-  box-shadow: none;
-}
-@media (max-width: 420px) {
-  .watch .hud-line {
-    gap: 6px;
+  .watch .hand-cue:focus-visible {
+    outline: 2px solid var(--gilt);
+    outline-offset: 2px;
+  }
+  .watch .speed-why[data-why="fight"],
+  .watch .speed-why[data-why="scene"],
+  .watch .speed-why[data-why="near"] {
+    color: #efa19b;
+    box-shadow: inset 0 0 0 1px rgba(239, 161, 155, 0.35);
+  }
+
+  /* Owner 2026-10-10: one HUD line — the depth, the purse as two icons beside it (`D1 [coins]$2 [chest]$0`), the badge at its right end
+   (`Live`, `Paused`, `Hand`; what each means is its tip). Under the swift strip the whole line steps down (`data-strip`). */
+  .watch .hud.top .hud-line {
+    display: flex;
+    flex: 1 1 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+  }
+  .watch .hud-line > .depth,
+  .watch .hud-line > .alert {
+    flex: none;
+  }
+  .watch .hud-line > .alert {
+    min-width: 0;
+  }
+  .watch .hud-line > .alert:empty {
+    display: none;
   }
   .watch .hud-line > .stake {
-    gap: 6px;
-    font-size: 13px;
+    flex: 0 1 auto;
+    flex-basis: auto;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1px 7px 1px 4px;
+    line-height: 20px;
   }
-}
+  .watch .hud-line > .stake[hidden] {
+    display: none;
+  }
+  .watch .hud-line > .live-badge {
+    flex: none;
+    margin-left: auto;
+  }
+  .watch .stake .purse {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    flex: none;
+    cursor: help;
+    border-radius: 3px;
+    outline-offset: 1px;
+  }
+  .watch .stake .purse .ico {
+    width: 24px;
+    height: 24px;
+    margin: -2px 0;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 1px 1px var(--ink));
+  }
+  .watch .stake .purse .ico.glyph::before {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .watch .stake .purse.carried .ico.glyph::before {
+    color: #f3d192;
+  }
+  .watch .stake .purse.kept {
+    color: var(--ok);
+  }
+  .watch .stake .purse.kept[data-state="past"] {
+    color: var(--dim);
+  }
+  .watch .stake .purse.kept[data-state="past"] .ico {
+    opacity: 0.55;
+    filter: grayscale(0.6) drop-shadow(0 1px 1px var(--ink));
+  }
+  .watch .stake .purse-v {
+    white-space: nowrap;
+  }
+  /* the purse's news, a line under it: `−$37 swap → leather +1`, `Heading home`, `Path blocked` */
+  .watch .hud.top .stake-note {
+    flex: 0 1 auto;
+    display: flex;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+    margin: -4px 0 0 30px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    background: rgba(13, 12, 20, 0.62);
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--dim);
+    text-shadow: 0 1px 4px var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .watch .hud.top .stake-note[hidden],
+  .watch .stake-note > [hidden] {
+    display: none;
+  }
+  .watch .stake-note > * {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .watch .stake-note .loot-drop {
+    color: #efa19b;
+  }
+  .watch .stake-note .returning {
+    color: #ffc9c3;
+  }
+  .watch .stake-note .stalling {
+    color: var(--warn);
+  }
+  @keyframes purse-gain {
+    0% {
+      text-shadow: 0 0 10px var(--ok);
+      transform: scale(1.18);
+    }
+    100% {
+      text-shadow: none;
+      transform: none;
+    }
+  }
+  [data-juice="on"] .watch .stake .purse.kept.gain {
+    animation: purse-gain 1.2s ease-out;
+  }
+  .watch .hud .live-badge {
+    cursor: help;
+  }
+  .watch .hud .hud-line > .live-badge {
+    margin-left: auto;
+  }
+  /* the hand: the dot is his state — beating while he awaits an order, steady while he acts */
+  .watch .hud .live-badge[data-status="hand"] {
+    box-shadow: inset 0 0 0 1px rgba(243, 209, 146, 0.6);
+    color: #f3d192;
+  }
+  .watch .hud .live-badge[data-status="hand"] .lane-beat {
+    background: #f3d192;
+    box-shadow: 0 0 6px #f3d192;
+  }
+  .watch .hud .live-badge[data-status="hand"][data-await="0"] .lane-beat {
+    animation: none;
+    box-shadow: none;
+  }
+  @media (max-width: 420px) {
+    .watch .hud-line {
+      gap: 6px;
+    }
+    .watch .hud-line > .stake {
+      gap: 6px;
+      font-size: 13px;
+    }
+  }
 
-/* The first-town Journal remains reachable without moving the House plot. */
-.camp .camp-well {
-  position: relative;
-}
-.camp .early-journal {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 6;
-  min-width: 80px;
-  min-height: 44px;
-}
+  /* The first-town Journal remains reachable without moving the House plot. */
+  .camp .camp-well {
+    position: relative;
+  }
+  .camp .early-journal {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 6;
+    min-width: 80px;
+    min-height: 44px;
+  }
 
-/* blind e33d50b: the speed sheet's modes each carry what they do (`steady`, `skips travel`, `all quick`) */
-.sheet-body.watch-options .tile .tl .mode-cap {
-  display: block;
-  margin-top: 2px;
-  font: 500 11px/13px var(--sans);
-  letter-spacing: 0;
-  text-transform: none;
-  opacity: 0.75;
-  white-space: nowrap;
-}
-/* the reason chip is a control: its hit area reaches 44px without growing the chip */
-.watch button.speed-why::before {
-  content: "";
-  position: absolute;
-  inset: -12px -6px;
-}
+  /* blind e33d50b: the speed sheet's modes each carry what they do (`steady`, `skips travel`, `all quick`) */
+  .sheet-body.watch-options .tile .tl .mode-cap {
+    display: block;
+    margin-top: 2px;
+    font: 500 11px/13px var(--sans);
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.75;
+    white-space: nowrap;
+  }
+  /* the reason chip is a control: its hit area reaches 44px without growing the chip */
+  .watch button.speed-why::before {
+    content: "";
+    position: absolute;
+    inset: -12px -6px;
+  }
 
-/* Cut262 (owner: "lots of layout shift on desktop"): the watch's bottom-anchored message stack kept its combat history at 0–3 lines, so
+  /* Cut262 (owner: "lots of layout shift on desktop"): the watch's bottom-anchored message stack kept its combat history at 0–3 lines, so
    every new line lifted the tactic cues and the ticker above it. On desktop the history keeps its three-line box from the first frame
    (blank until a line lands), and the cues above it stand still. */
-@media (min-width: 1024px) {
-  html body .watch.frame .watch-messages > .combat-log:has(.combat-lines:empty) {
-    display: block;
-    visibility: hidden;
-  }
-  html body .watch.frame .watch-messages .combat-lines {
-    height: 54px;
-  }
-  /* the stack's own box stands still too: a fixed foot-anchored box (a ticker that comes and goes rises inside it, over the map,
+  @media (min-width: 1024px) {
+    html body .watch.frame .watch-messages > .combat-log:has(.combat-lines:empty) {
+      display: block;
+      visibility: hidden;
+    }
+    html body .watch.frame .watch-messages .combat-lines {
+      height: 54px;
+    }
+    /* the stack's own box stands still too: a fixed foot-anchored box (a ticker that comes and goes rises inside it, over the map,
      instead of moving the whole stack's top edge) */
-  html body .watch.frame .watch-messages {
-    height: 140px;
-    justify-content: flex-end;
+    html body .watch.frame .watch-messages {
+      height: 140px;
+      justify-content: flex-end;
+    }
+    html body .watch .watch-speed-badge {
+      min-width: 28px;
+      text-align: center;
+    }
   }
-  html body .watch .watch-speed-badge {
-    min-width: 28px;
-    text-align: center;
-  }
-}
-/* Cut262: the docked fold strip comes and goes over a run's first seconds; on desktop the HUD keeps the strip's row reserved instead of
+  /* Cut262: the docked fold strip comes and goes over a run's first seconds; on desktop the HUD keeps the strip's row reserved instead of
    stepping down and back up under it (styles.css `.watch[data-strip="1"] .hud.top`) */
-@media (min-width: 1024px) {
-  html body .watch.frame .hud.top {
-    top: 22px;
+  @media (min-width: 1024px) {
+    html body .watch.frame .hud.top {
+      top: 22px;
+    }
   }
-}
-/* Owner 2026-10-18: the carried tip's pack list — quiet rows, label left, $ right (the plate lives on <body>) */
-.pack-worth {
-  --gf-gold: #f3d192;
-  list-style: none;
-  margin: 6px 0 0;
-  padding: 0;
-  font-size: 13px;
-}
-.pack-worth li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 20px;
-}
-.pack-worth .pw-k {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.pack-worth .pw-v {
-  flex: none;
-  color: var(--dim);
-}
-.pack-worth li.gold-find {
-  display: flex;
-}
-.pack-worth li.gold-find .gf-gold {
-  color: #f3d192;
-}
-.pack-worth .pw-dim .pw-k {
-  color: var(--dim);
-}
-.pack-worth .pw-total {
-  margin-top: 3px;
-  padding-top: 3px;
-  border-top: 1px solid var(--dusk);
-}
-.pack-worth .pw-total .pw-v {
-  color: var(--bone);
+  /* Owner 2026-10-18: the carried tip's pack list — quiet rows, label left, $ right (the plate lives on <body>) */
+  .pack-worth {
+    --gf-gold: #f3d192;
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+    font-size: 13px;
+  }
+  .pack-worth li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 20px;
+  }
+  .pack-worth .pw-k {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .pack-worth .pw-v {
+    flex: none;
+    color: var(--dim);
+  }
+  .pack-worth li.gold-find {
+    display: flex;
+  }
+  .pack-worth li.gold-find .gf-gold {
+    color: #f3d192;
+  }
+  .pack-worth .pw-dim .pw-k {
+    color: var(--dim);
+  }
+  .pack-worth .pw-total {
+    margin-top: 3px;
+    padding-top: 3px;
+    border-top: 1px solid var(--dusk);
+  }
+  .pack-worth .pw-total .pw-v {
+    color: var(--bone);
+  }
 }

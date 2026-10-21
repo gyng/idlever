@@ -1,0 +1,3 @@
+/* Cut316: cascade order. Later layers win regardless of selector specificity:
+   legacy (every pre-Cut316 stylesheet) < tokens < kit (ui-kit/) < screens (per-screen layout). */
+@layer legacy, tokens, kit, screens;

@@ -1,46 +1,49 @@
-/* Named discoveries use each screen's existing iron or ink material. */
-.legendary-description {
-  display: grid;
-  gap: var(--ui-space-2);
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
-}
-.legendary-description p {
-  margin: 0;
-  font-size: var(--ui-body);
-  line-height: 1.5;
-}
-.legendary-description b {
-  color: var(--ui-selected);
-}
-.legendary-collection {
-  display: grid;
-  gap: var(--ui-space-3);
-  min-inline-size: 0;
-}
-.legendary-card {
-  display: grid;
-  gap: var(--ui-space-2);
-  min-inline-size: 0;
-  padding: var(--ui-space-3);
-  background: var(--ui-inset);
-  border: 2px solid var(--ui-edge);
-  overflow-wrap: anywhere;
-}
-.legendary-card h3 {
-  margin: 0;
-  color: var(--ui-text);
-  font-size: var(--ui-body);
-}
-.legendary-card :is(button, small) {
-  max-inline-size: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-.starting-gear-row.legendary-choice {
-  border-color: var(--ui-selected);
-}
-.starting-gear-row:focus-visible {
-  outline: 3px solid var(--ui-focus);
-  outline-offset: 2px;
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Named discoveries use each screen's existing iron or ink material. */
+  .legendary-description {
+    display: grid;
+    gap: var(--ui-space-2);
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+  }
+  .legendary-description p {
+    margin: 0;
+    font-size: var(--ui-body);
+    line-height: 1.5;
+  }
+  .legendary-description b {
+    color: var(--ui-selected);
+  }
+  .legendary-collection {
+    display: grid;
+    gap: var(--ui-space-3);
+    min-inline-size: 0;
+  }
+  .legendary-card {
+    display: grid;
+    gap: var(--ui-space-2);
+    min-inline-size: 0;
+    padding: var(--ui-space-3);
+    background: var(--ui-inset);
+    border: 2px solid var(--ui-edge);
+    overflow-wrap: anywhere;
+  }
+  .legendary-card h3 {
+    margin: 0;
+    color: var(--ui-text);
+    font-size: var(--ui-body);
+  }
+  .legendary-card :is(button, small) {
+    max-inline-size: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .starting-gear-row.legendary-choice {
+    border-color: var(--ui-selected);
+  }
+  .starting-gear-row:focus-visible {
+    outline: 3px solid var(--ui-focus);
+    outline-offset: 2px;
+  }
 }

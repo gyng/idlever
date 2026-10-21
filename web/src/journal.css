@@ -1,135 +1,138 @@
-/* Cut208: parchment chapters, stable text flow, no animated chrome. */
-.journal-panel {
-  display: grid;
-  gap: var(--ui-space-4);
-  min-width: 0;
-  color: var(--ui-text, var(--ink));
-  font-size: var(--ui-body);
-}
-.journal-panel :is(p, h2, h3) {
-  margin: 0;
-}
-.journal-panel :is(p, h2, h3, small, button, summary) {
-  overflow-wrap: anywhere;
-}
-.journal-heading {
-  font: bold var(--ui-title) var(--display);
-}
-.journal-step {
-  display: grid;
-  gap: var(--ui-space-2);
-  padding: var(--ui-space-3);
-  border: 2px solid var(--ui-edge, var(--gilt));
-  background: var(--ui-inset, #ded2b8);
-  min-width: 0;
-}
-.journal-step[data-recommended="true"] {
-  border-width: 3px;
-}
-.journal-step h3 {
-  font-size: var(--ui-body);
-}
-.journal-step p {
-  line-height: 1.5;
-}
-.journal-step small {
-  color: var(--ui-muted);
-  font-size: var(--ui-detail);
-}
-.journal-step progress {
-  width: 100%;
-  max-width: 100%;
-  accent-color: var(--dusk);
-}
-.journal-chapter {
-  border-top: 2px solid var(--ui-edge, var(--gilt));
-  min-width: 0;
-}
-.journal-chapter > summary {
-  cursor: pointer;
-  min-height: 44px;
-  display: list-item;
-  align-content: center;
-  padding: var(--ui-space-2);
-  font-weight: bold;
-}
-.journal-chapter > summary:hover {
-  background: var(--ui-inset);
-}
-.journal-chapter > summary:focus-visible {
-  outline: 3px solid var(--ui-focus);
-  outline-offset: 2px;
-}
-.journal-entries {
-  display: grid;
-  gap: var(--ui-space-3);
-  padding-block: var(--ui-space-2);
-}
-.journal-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--ui-space-2);
-}
-.journal-panel button {
-  min-height: 44px;
-  min-width: 44px;
-  max-width: 100%;
-  white-space: normal;
-}
-.journal-panel .quest-card {
-  min-width: 0;
-}
-.journal-panel .quest-main {
-  min-width: 0;
-}
-.journal-status {
-  min-height: 1.5em;
-  font-size: var(--ui-detail);
-  color: var(--ui-muted);
-}
-.journal-discovery {
-  display: grid;
-  gap: var(--ui-space-1);
-}
-.journal-discovery strong {
-  font-size: var(--ui-body);
-}
-/* Physical target floor survives skin and material logical-size overrides. */
-html body .game-window[data-material="journal"] .journal-panel :is(button, summary) {
-  min-inline-size: 44px;
-  min-block-size: 44px;
-  box-sizing: border-box;
-}
-/* Cut234: the glossary — met terms only, each its plate's gloss; the entry a plate opened wears a gilt rim. */
-.journal-term {
-  display: grid;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  gap: var(--ui-space-1);
-  padding: var(--ui-space-1) var(--ui-space-2);
-  border-left: 3px solid transparent;
-  scroll-margin: var(--ui-space-4);
-}
-.journal-term strong {
-  display: flex;
-  align-items: center;
-  gap: var(--ui-space-1);
-  font-size: var(--ui-body);
-}
-.journal-term strong .ico {
-  width: 16px;
-  height: 16px;
-  flex: none;
-}
-.journal-term p {
-  color: var(--ui-muted);
-  font-size: var(--ui-detail);
-}
-.journal-term-hit {
-  border-left-color: var(--gilt);
-  background: var(--ui-inset);
-}
-.journal-term:focus-visible {
-  outline: 3px solid var(--ui-focus);
-  outline-offset: 2px;
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Cut208: parchment chapters, stable text flow, no animated chrome. */
+  .journal-panel {
+    display: grid;
+    gap: var(--ui-space-4);
+    min-width: 0;
+    color: var(--ui-text, var(--ink));
+    font-size: var(--ui-body);
+  }
+  .journal-panel :is(p, h2, h3) {
+    margin: 0;
+  }
+  .journal-panel :is(p, h2, h3, small, button, summary) {
+    overflow-wrap: anywhere;
+  }
+  .journal-heading {
+    font: bold var(--ui-title) var(--display);
+  }
+  .journal-step {
+    display: grid;
+    gap: var(--ui-space-2);
+    padding: var(--ui-space-3);
+    border: 2px solid var(--ui-edge, var(--gilt));
+    background: var(--ui-inset, #ded2b8);
+    min-width: 0;
+  }
+  .journal-step[data-recommended="true"] {
+    border-width: 3px;
+  }
+  .journal-step h3 {
+    font-size: var(--ui-body);
+  }
+  .journal-step p {
+    line-height: 1.5;
+  }
+  .journal-step small {
+    color: var(--ui-muted);
+    font-size: var(--ui-detail);
+  }
+  .journal-step progress {
+    width: 100%;
+    max-width: 100%;
+    accent-color: var(--dusk);
+  }
+  .journal-chapter {
+    border-top: 2px solid var(--ui-edge, var(--gilt));
+    min-width: 0;
+  }
+  .journal-chapter > summary {
+    cursor: pointer;
+    min-height: 44px;
+    display: list-item;
+    align-content: center;
+    padding: var(--ui-space-2);
+    font-weight: bold;
+  }
+  .journal-chapter > summary:hover {
+    background: var(--ui-inset);
+  }
+  .journal-chapter > summary:focus-visible {
+    outline: 3px solid var(--ui-focus);
+    outline-offset: 2px;
+  }
+  .journal-entries {
+    display: grid;
+    gap: var(--ui-space-3);
+    padding-block: var(--ui-space-2);
+  }
+  .journal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ui-space-2);
+  }
+  .journal-panel button {
+    min-height: 44px;
+    min-width: 44px;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .journal-panel .quest-card {
+    min-width: 0;
+  }
+  .journal-panel .quest-main {
+    min-width: 0;
+  }
+  .journal-status {
+    min-height: 1.5em;
+    font-size: var(--ui-detail);
+    color: var(--ui-muted);
+  }
+  .journal-discovery {
+    display: grid;
+    gap: var(--ui-space-1);
+  }
+  .journal-discovery strong {
+    font-size: var(--ui-body);
+  }
+  /* Physical target floor survives skin and material logical-size overrides. */
+  html body .game-window[data-material="journal"] .journal-panel :is(button, summary) {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    box-sizing: border-box;
+  }
+  /* Cut234: the glossary — met terms only, each its plate's gloss; the entry a plate opened wears a gilt rim. */
+  .journal-term {
+    display: grid;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    gap: var(--ui-space-1);
+    padding: var(--ui-space-1) var(--ui-space-2);
+    border-left: 3px solid transparent;
+    scroll-margin: var(--ui-space-4);
+  }
+  .journal-term strong {
+    display: flex;
+    align-items: center;
+    gap: var(--ui-space-1);
+    font-size: var(--ui-body);
+  }
+  .journal-term strong .ico {
+    width: 16px;
+    height: 16px;
+    flex: none;
+  }
+  .journal-term p {
+    color: var(--ui-muted);
+    font-size: var(--ui-detail);
+  }
+  .journal-term-hit {
+    border-left-color: var(--gilt);
+    background: var(--ui-inset);
+  }
+  .journal-term:focus-visible {
+    outline: 3px solid var(--ui-focus);
+    outline-offset: 2px;
+  }
 }

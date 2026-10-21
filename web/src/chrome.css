@@ -1,1194 +1,1199 @@
-/* Shared material components over the packed skin: window, control, socket,
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Shared material components over the packed skin: window, control, socket,
    inset row, gauge. Art remains the same; all frames have CSS fallbacks. */
-@font-face {
-  font-family: "Fira Sans";
-  src: url("/fonts/fira-400.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Fira Sans";
-  src: url("/fonts/fira-600.woff2") format("woff2");
-  font-weight: 500 900;
-  font-display: swap;
-}
-:root {
-  --body-font: "Fira Sans", sans-serif;
-  --control-font: "Idlever Num", sans-serif;
-  --control-size: 14px;
-  --window-title: 24px;
-  --edge-light: #6d819f;
-  --edge-dark: #080b13;
-}
-body .sheet-wrap.centered {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--window-top, 0px) + 16px) 12px calc(var(--window-bottom, 0px) + 16px);
-}
-body .sheet-wrap.centered.under {
-  display: none;
-}
-body .sheet-wrap.centered > .sheet {
-  position: relative;
-  width: min(640px, 100%);
-  max-width: 640px;
-  margin: 0;
-  max-height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - 32px);
-  transform-origin: center;
-}
-/* Framed parchment for management; report keeps the scroll, death the banner. */
-html.skin-panel .sheet-wrap.centered > .game-window {
-  border: 18px solid transparent;
-  padding: 12px 14px 16px;
-  border-image: url("/ui/frames/panel.png") 28 fill / 18px stretch;
-  border-radius: 2px;
-  background: #e1d6bd;
-  box-shadow:
-    0 18px 40px #05060ecc,
-    0 3px 0 #080a12,
-    0 0 0 2px #080a12;
-}
-.game-window .sheet-body {
-  font: 400 15px/1.45 var(--body-font);
-  color: var(--ink-text);
-}
-.ending-body.sheet-body {
-  border: 2px solid var(--edge-light);
-  border-radius: 2px;
-  background: linear-gradient(#202a3bed, #0e1522f5);
-  color: #eadfc5;
-  box-shadow:
-    inset 0 2px 0 #8894aa66,
-    inset 0 -3px 0 #070b16,
-    0 18px 40px #05060ecc;
-}
-html.skin-panel .ending-body.sheet-body {
-  border: 14px solid transparent;
-  border-image: url("/ui/frames/panel.png") 28 / 14px stretch;
-}
-.ascension-review .ascension-gold {
-  color: #745015;
-}
-.game-window .sheet-body > .label:first-child,
-.game-window .pkg-top > .label {
-  margin: 0 48px 18px 0;
-  font: 700 var(--window-title)/1.15 var(--display);
-  color: #252e44;
-  letter-spacing: 0.04em;
-}
-.game-window .close-stud {
-  top: 1px;
-  right: 1px;
-}
-.game-window .sheet-back {
-  top: 1px;
-  left: 1px;
-}
-.game-window:has(.sheet-back) .sheet-body > .label:first-child {
-  margin-left: 40px;
-}
-/* Legacy unfold predates the juice preference gate; keep text steady too. */
-@media (prefers-reduced-motion: reduce) {
-  html .sheet-wrap > .sheet,
-  html .panel-host > .panel {
-    animation: none;
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("/fonts/fira-400.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
   }
-}
-/* All ordinary game controls share a tactile bevel. Gems/studs and map hits
-   already have their own packed art; the text combat log keeps basic styling. */
-:is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .death-sheet, .preparation-host)
-  button:is(.chip, .btn, .card, .tab, .hero-details, .hero-expand, .details-fold, .pkg-rows-btn),
-.game-control,
-.death button.game-control,
-.camp .next-pill.game-control,
-.patches .patches-more.game-control,
-.sheet-body button.game-control,
-.camp .tabs button.game-control,
-.hero-roster-head .btn,
-.town-tag[role="button"] {
-  min-height: 44px;
-  border: 2px solid #34415b;
-  border-radius: 2px;
-  padding: 8px 12px;
-  background: linear-gradient(#36445e 0%, #222b40 44%, #161d2d 48%, #1e2638 100%);
-  box-shadow:
-    inset 0 2px 0 #8894aa66,
-    inset 2px 0 0 #71819a33,
-    inset 0 -3px 0 #070b16,
-    0 2px 3px #080b1380;
-  color: #eadfc5;
-  font: 600 var(--control-size)/1.25 var(--control-font);
-  letter-spacing: 0.025em;
-  text-shadow: 0 1px 1px #060812;
-  white-space: normal;
-}
-html.skin-tablet
-  :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
-  button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn),
-html.skin-tablet .game-control,
-html.skin-tablet .death button.game-control,
-html.skin-tablet .camp .next-pill.game-control,
-html.skin-tablet .patches .patches-more.game-control,
-html.skin-tablet .sheet-body button.game-control,
-html.skin-tablet .camp .tabs button.game-control,
-html.skin-tablet .town-tag[role="button"] {
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  padding: 3px 8px;
-}
-:is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
-  button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):hover:not(:disabled),
-.game-control:hover:not(:disabled) {
-  filter: brightness(1.15);
-}
-:is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
-  button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):active:not(:disabled),
-.game-control:active:not(:disabled) {
-  transform: translateY(1px);
-  filter: brightness(0.9);
-}
-:is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
-  button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):focus-visible,
-.game-control:focus-visible {
-  outline: 2px solid var(--acc);
-  outline-offset: 3px;
-}
-:is(.sheet-body, .panel-body, .hero-roster) button:is(.chip, .btn):disabled {
-  opacity: 0.62;
-  filter: saturate(0.4);
-}
-.sheet-body button.buy:disabled,
-.panel-body button.buy:disabled {
-  opacity: 0.4;
-}
-:is(.sheet-body, .panel-body, .hero-roster) button:is(.chip, .btn).on,
-.game-control.on {
-  outline: 2px solid var(--gilt);
-  outline-offset: -2px;
-}
-:is(.sheet-body, .panel-body, .hero-roster) button:is(.danger, .armed) {
-  color: #ffd5cc;
-  box-shadow:
-    inset 0 0 0 2px #a54842,
-    0 2px 3px #080b1380;
-}
-/* A common menu scale, regardless of screen or width. */
-html .cmd .tile .tl {
-  font: 600 var(--control-size)/1.15 var(--control-font);
-  letter-spacing: 0.015em;
-  text-transform: none;
-  white-space: normal;
-  text-align: center;
-}
-html .cmd .tile {
-  min-width: 0;
-}
-/* Icon socket: styles use existing painted portraits, tactics action families. */
-.icon-socket {
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid #43536d;
-  border-radius: 2px;
-  background: radial-gradient(ellipse at 50% 20%, #35415c, #111725 80%);
-  box-shadow:
-    inset 0 2px 5px #050712,
-    0 1px 0 #d5c9ab88,
-    0 0 0 1px #0c111d;
-}
-.icon-socket .ico {
-  width: 38px;
-  height: 38px;
-  filter: drop-shadow(0 2px 1px #000);
-}
-.pkg-panel .chip.pkg {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  padding: 10px;
-  border: 2px solid #40516c;
-  border-radius: 2px;
-  background: linear-gradient(115deg, #29344a, #131b2b 90%);
-  box-shadow:
-    inset 0 1px 0 #8a99b155,
-    inset 0 -3px 0 #080d17,
-    0 2px 3px #0b101b66;
-  text-align: left;
-  min-width: 0;
-}
-html.skin-tablet .pkg-panel button.chip.pkg {
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  padding: 6px;
-}
-.pkg-panel .chip.pkg.on {
-  outline: 2px solid #b89448;
-  outline-offset: -2px;
-}
-.pkg-panel .chip.pkg.on .icon-socket {
-  border-color: #bc9b50;
-}
-.pkg-panel .pkg-copy {
-  display: flex;
-  flex: 1;
-  min-width: 0;
-  flex-direction: column;
-  gap: 4px;
-}
-.pkg-panel .pkg-name {
-  font: 600 17px/1.2 var(--control-font);
-  color: #f2d6a0;
-}
-.pkg-panel .chip.pkg .pkg-description {
-  font: 400 13px/1.35 var(--body-font);
-  color: #ddd4c4;
-}
-.pkg-panel .pkg-price {
-  flex: 0 0 auto;
-  font-size: 13px;
-}
-.pkg-panel .pkg-top {
-  align-items: baseline;
-  gap: 16px;
-}
-.pkg-panel .pkg-top > .label {
-  margin-bottom: 0;
-}
-.pkg-panel .pkg-headline {
-  font: 600 15px/1.2 var(--control-font);
-  color: #5f4b26;
-}
-.pkg-panel .pkg-sec {
-  padding: 12px 0 16px;
-  border-bottom: 2px solid #9b896944;
-}
-.pkg-panel .pkg-head {
-  margin: 0 0 10px;
-  font: 600 14px/1.2 var(--control-font);
-  color: #33425d;
-  letter-spacing: 0.09em;
-}
-.pkg-panel .pkg-equipped {
-  align-items: center;
-  gap: 12px;
-}
-.pkg-panel .pkg-slot {
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.pkg-panel .pkg-slot .pkg.on {
-  flex: 1 1 100%;
-}
-/* blind ad71e72 (A: two worn tactics squeezed into slivers, `archer change shots`): a slot is a column only where its card and its
-   buttons fit side by side; the card takes its row and the buttons wrap under it */
-.pkg-panel .pkg-slots {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 10px;
-}
-.pkg-panel .pkg-slots .pkg-slot {
-  min-width: 0;
-}
-.pkg-panel .pkg-slots .pkg-slot .pkg.on {
-  flex: 1 1 100%;
-  min-width: 0;
-}
-.pkg-panel .pkg-slots .pkg-slot.empty .pkg-change {
-  width: 100%;
-  min-height: 52px;
-}
-.pkg-panel .pkg-alts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-}
-.pkg-panel .pkg-alts .pkg {
-  width: 100%;
-}
-.pkg-panel .pkg-compare {
-  margin-top: 16px;
-}
-.pkg-panel .lvl-bar,
-.hero-sheet .xp-bar {
-  height: 7px;
-  background: #070d19;
-  border: 1px solid #4d5f78;
-  border-radius: 2px;
-  box-shadow: inset 0 1px 2px #000;
-}
-.pkg-panel .lvl-bar .fill {
-  background: linear-gradient(#f1d794, #b68e3c 55%, #7a5826);
-  box-shadow: inset 0 1px 0 #fff0c8;
-}
-/* Shared recessed rows: hero gilt, forge bronze, workers blue. */
-.game-window :is(.legacy-upgrade, .kit-slot, .game-inset) {
-  padding: 12px;
-  border: 2px solid #a29375;
-  border-radius: 2px;
-  background: linear-gradient(110deg, #f2e8d0aa, #a7946b33);
-  box-shadow:
-    inset 0 1px 2px #79644955,
-    0 1px 0 #fff3da88;
-}
-.game-window .forge .kit-slot {
-  border-color: #94754d;
-}
-.game-window :is(.legacy-upgrade, .kit-head) b {
-  font: 600 17px/1.25 var(--control-font);
-}
-.game-window .legacy-upgrade small {
-  font: 400 12px/1.4 var(--body-font);
-}
-.game-window .legacy-buy {
-  flex-shrink: 0;
-}
-.game-window .legacy-buy small {
-  display: inline;
-  font: inherit;
-}
-.game-window .hero-line {
-  margin-bottom: 8px;
-  font: 600 20px/1.25 var(--control-font);
-}
-.game-window .hero-legacy {
-  margin-bottom: 16px;
-  color: #675020;
-}
-.game-window .forge-item {
-  font: 600 16px/1.3 var(--control-font);
-}
-.game-window .forge-item .it-ico {
-  min-width: 36px;
-  min-height: 36px;
-}
-.game-window .settings .srow {
-  padding: 8px 0;
-  border-bottom: 1px solid #99876755;
-  gap: 10px;
-}
-.game-window .settings .srow .label {
-  font: 600 14px/1.25 var(--control-font);
-  letter-spacing: 0.04em;
-  margin: 0;
-}
-.sheet-body :is(.ta, .name-input) {
-  font: 400 13px/1.4 var(--body-font);
-  border: 3px solid #6d6d66;
-  border-radius: 2px;
-  background: #161e2d;
-  box-shadow: inset 0 3px 8px #030711;
-  color: var(--bone);
-}
-.game-window details > summary {
-  cursor: pointer;
-  min-height: 44px;
-  padding: 12px 0;
-  font: 600 14px/1.3 var(--control-font);
-  color: #33425d;
-}
-.hero-roster .hero-row {
-  border: 3px ridge #596173;
-  border-radius: 2px;
-  box-shadow:
-    inset 0 1px 0 #8892a466,
-    inset 0 -3px 0 #080910,
-    0 3px 6px #0006;
-}
-.hero-roster .hero-row.selected {
-  border-color: #bda36b;
-}
-.hero-roster .hero-thumb {
-  border: 3px ridge #8991a2;
-  box-shadow:
-    inset 0 0 12px #000,
-    0 2px 4px #0009;
-  border-radius: 2px;
-}
-.hero-roster .hero-info b {
-  font: 600 20px/1.2 var(--display);
-}
-.hero-roster .hero-action {
-  font: 400 14px/1.4 var(--body-font);
-}
-@media (max-width: 520px) {
-  html.skin-panel .sheet-wrap.centered > .game-window {
-    border-width: 14px;
-    border-image-width: 14px;
-    padding: 10px 8px 12px;
+  @font-face {
+    font-family: "Fira Sans";
+    src: url("/fonts/fira-600.woff2") format("woff2");
+    font-weight: 500 900;
+    font-display: swap;
   }
-  .game-window .pkg-equipped {
-    flex-wrap: wrap;
+  :root {
+    --body-font: "Fira Sans", sans-serif;
+    --control-font: "Idlever Num", sans-serif;
+    --control-size: 14px;
+    --window-title: 24px;
+    --edge-light: #6d819f;
+    --edge-dark: #080b13;
   }
-  .pkg-panel .pkg-equipped .pkg-slot {
-    flex-basis: 100%;
+  body .sheet-wrap.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--window-top, 0px) + 16px) 12px calc(var(--window-bottom, 0px) + 16px);
   }
-  .pkg-panel .pkg-equipped > .pkg-change {
-    margin-left: auto;
+  body .sheet-wrap.centered.under {
+    display: none;
   }
-  .pkg-panel .pkg-alts {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .pkg-panel .chip.pkg {
-    gap: 8px;
-  }
-  .game-window .legacy-upgrade {
-    gap: 8px;
-    padding: 8px;
-  }
-  .game-window .legacy-buy {
-    max-width: 46%;
-  }
-  .game-window .settings .srow {
-    flex-wrap: wrap;
-  }
-  .game-window .settings .srow .label {
-    flex: 1 0 90px;
-  }
-}
-/* Centering owns the full backdrop, replacing the old console-offset sheet. */
-body.framed .sheet-wrap.centered:not(.modeless) {
-  bottom: 0;
-  padding-bottom: calc(var(--window-bottom, 0px) + 16px);
-}
-html body .cmd .tile .tl,
-html body .cmd .tile .tl.two {
-  font-size: var(--control-size);
-  letter-spacing: 0.015em;
-}
-/* The same header plate on every management window. */
-.game-window .sheet-body > .label:first-child,
-.game-window .pkg-top {
-  display: flex;
-  align-items: center;
-  min-height: 56px;
-  padding: 6px 48px 6px 12px;
-  margin: 0 0 18px;
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  background: #172033;
-  color: #eadfc5;
-  text-shadow: 0 1px 2px #070a12;
-}
-.game-window .pkg-top > .label {
-  color: #eadfc5;
-  margin: 0;
-}
-.game-window .pkg-top .pkg-headline {
-  color: #e8ca87;
-}
-.game-window:has(.sheet-back) .sheet-body > .label:first-child {
-  padding-left: 40px;
-  margin-left: 0;
-}
-html.skin-tablet .game-window .pkg-panel .chip.pkg:not(.locked) {
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  padding: 6px;
-}
-.game-window .forge-item .item-ico {
-  width: 44px;
-  height: 44px;
-  border-radius: 0;
-  box-shadow: none;
-}
-.game-window .forge-item .item-pic {
-  width: 44px;
-  height: 44px;
-}
-.game-window .wnode {
-  border: 2px solid #8390a0;
-  border-radius: 2px;
-  padding: 10px;
-  background: #c6c9c344;
-  box-shadow: inset 0 1px 3px #3e4b6555;
-}
-.game-window .wnode .wn-ico {
-  border-radius: 2px;
-  box-shadow:
-    inset 0 2px 5px #060a13,
-    0 0 0 2px #53617c;
-}
-.game-window .wnode .hire-btn {
-  min-height: 44px;
-}
-.game-window .wnode.lit {
-  border-color: #b3924f;
-}
-@media (max-width: 520px) {
-  .game-window .pkg-top {
-    flex-wrap: wrap;
-    gap: 3px 12px;
-  }
-  .game-window .pkg-top .pkg-headline {
-    font-size: 13px;
-  }
-}
-.game-window .hero-line {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.hero-window-face {
-  display: inline-block;
-  flex: 0 0 72px;
-  width: 72px;
-  height: 84px;
-  background-repeat: no-repeat;
-  border: 3px solid #53617a;
-  border-radius: 2px;
-  box-shadow:
-    inset 0 0 6px #050813,
-    0 0 0 1px #0b111e;
-}
-.hero-window-face.painted {
-  background-size: cover;
-}
-.legacy-upgrade .upgrade-copy {
-  flex: 1;
-  min-width: 0;
-}
-@media (max-width: 520px) {
-  .legacy-upgrade .icon-socket {
-    flex-basis: 32px;
-    width: 32px;
-    height: 36px;
-  }
-  .legacy-upgrade .icon-socket .ico {
-    width: 26px;
-    height: 26px;
-  }
-}
-@media (max-width: 520px) {
-  .game-window .pkg-equipped {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 8px;
-  }
-  .pkg-panel .pkg-equipped .pkg-slot {
-    flex-basis: auto;
-  }
-  .pkg-panel .pkg-equipped > .pkg-change {
+  body .sheet-wrap.centered > .sheet {
+    position: relative;
+    width: min(640px, 100%);
+    max-width: 640px;
     margin: 0;
-    padding-left: 4px;
-    padding-right: 4px;
+    max-height: calc(100dvh - var(--window-top, 0px) - var(--window-bottom, 0px) - 32px);
+    transform-origin: center;
   }
-  .pkg-panel .pkg-equipped .icon-socket {
-    flex-basis: 36px;
-    width: 36px;
-    height: 40px;
+  /* Framed parchment for management; report keeps the scroll, death the banner. */
+  html.skin-panel .sheet-wrap.centered > .game-window {
+    border: 18px solid transparent;
+    padding: 12px 14px 16px;
+    border-image: url("/ui/frames/panel.png") 28 fill / 18px stretch;
+    border-radius: 2px;
+    background: #e1d6bd;
+    box-shadow:
+      0 18px 40px #05060ecc,
+      0 3px 0 #080a12,
+      0 0 0 2px #080a12;
   }
-  .pkg-panel .pkg-equipped .icon-socket .ico {
-    width: 28px;
-    height: 28px;
+  .game-window .sheet-body {
+    font: 400 15px/1.45 var(--body-font);
+    color: var(--ink-text);
   }
-  .pkg-panel .pkg-sec {
-    padding-top: 8px;
-    padding-bottom: 10px;
-    margin-bottom: 4px;
+  .ending-body.sheet-body {
+    border: 2px solid var(--edge-light);
+    border-radius: 2px;
+    background: linear-gradient(#202a3bed, #0e1522f5);
+    color: #eadfc5;
+    box-shadow:
+      inset 0 2px 0 #8894aa66,
+      inset 0 -3px 0 #070b16,
+      0 18px 40px #05060ecc;
   }
-  .pkg-panel .pkg-name {
-    font-size: 16px;
+  html.skin-panel .ending-body.sheet-body {
+    border: 14px solid transparent;
+    border-image: url("/ui/frames/panel.png") 28 / 14px stretch;
   }
-}
-
-.town-tag[role="button"]:hover {
-  filter: brightness(1.15);
-}
-.town-tag[role="button"]:focus-visible {
-  outline: 2px solid var(--gilt);
-  outline-offset: 3px;
-}
-.town-tag[aria-busy="true"] {
-  cursor: progress;
-}
-
-/* Watch and report use a compact card sized to their available actions. */
-html .console .cmd-compact {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(80px, auto);
-  max-width: 260px;
-}
-html .console .cmd-compact > .tile:only-child {
-  grid-column: 1 / -1;
-}
-html .console .cmd-compact .tile .tl {
-  overflow: visible;
-  text-overflow: clip;
-}
-@media (max-width: 359px) {
-  html .console .cmd-compact {
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: minmax(56px, auto);
+  .ascension-review .ascension-gold {
+    color: #745015;
   }
-  html .console .cmd-compact .tile {
-    flex-direction: row;
-    gap: 6px;
+  .game-window .sheet-body > .label:first-child,
+  .game-window .pkg-top > .label {
+    margin: 0 48px 18px 0;
+    font: 700 var(--window-title)/1.15 var(--display);
+    color: #252e44;
+    letter-spacing: 0.04em;
   }
-  html .console .cmd-compact .tile .ico {
-    flex: 0 0 24px;
-    width: 24px;
-    height: 24px;
+  .game-window .close-stud {
+    top: 1px;
+    right: 1px;
   }
-  html .console .cmd-compact .tile .tl {
+  .game-window .sheet-back {
+    top: 1px;
+    left: 1px;
+  }
+  .game-window:has(.sheet-back) .sheet-body > .label:first-child {
+    margin-left: 40px;
+  }
+  /* Legacy unfold predates the juice preference gate; keep text steady too. */
+  @media (prefers-reduced-motion: reduce) {
+    html .sheet-wrap > .sheet,
+    html .panel-host > .panel {
+      animation: none;
+    }
+  }
+  /* All ordinary game controls share a tactile bevel. Gems/studs and map hits
+   already have their own packed art; the text combat log keeps basic styling. */
+  :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .death-sheet, .preparation-host)
+    button:is(.chip, .btn, .card, .tab, .hero-details, .hero-expand, .details-fold, .pkg-rows-btn),
+  .game-control,
+  .death button.game-control,
+  .camp .next-pill.game-control,
+  .patches .patches-more.game-control,
+  .sheet-body button.game-control,
+  .camp .tabs button.game-control,
+  .hero-roster-head .btn,
+  .town-tag[role="button"] {
+    min-height: 44px;
+    border: 2px solid #34415b;
+    border-radius: 2px;
+    padding: 8px 12px;
+    background: linear-gradient(#36445e 0%, #222b40 44%, #161d2d 48%, #1e2638 100%);
+    box-shadow:
+      inset 0 2px 0 #8894aa66,
+      inset 2px 0 0 #71819a33,
+      inset 0 -3px 0 #070b16,
+      0 2px 3px #080b1380;
+    color: #eadfc5;
+    font: 600 var(--control-size)/1.25 var(--control-font);
+    letter-spacing: 0.025em;
+    text-shadow: 0 1px 1px #060812;
+    white-space: normal;
+  }
+  html.skin-tablet
+    :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
+    button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn),
+  html.skin-tablet .game-control,
+  html.skin-tablet .death button.game-control,
+  html.skin-tablet .camp .next-pill.game-control,
+  html.skin-tablet .patches .patches-more.game-control,
+  html.skin-tablet .sheet-body button.game-control,
+  html.skin-tablet .camp .tabs button.game-control,
+  html.skin-tablet .town-tag[role="button"] {
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    padding: 3px 8px;
+  }
+  :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
+    button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):hover:not(:disabled),
+  .game-control:hover:not(:disabled) {
+    filter: brightness(1.15);
+  }
+  :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
+    button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):active:not(
+      :disabled
+    ),
+  .game-control:active:not(:disabled) {
+    transform: translateY(1px);
+    filter: brightness(0.9);
+  }
+  :is(.sheet-body, .panel-body, .hero-roster, .report-sheet, .preparation-host)
+    button:is(.chip, .btn, .card, .hero-details, .details-fold, .pkg-rows-btn):focus-visible,
+  .game-control:focus-visible {
+    outline: 2px solid var(--acc);
+    outline-offset: 3px;
+  }
+  :is(.sheet-body, .panel-body, .hero-roster) button:is(.chip, .btn):disabled {
+    opacity: 0.62;
+    filter: saturate(0.4);
+  }
+  .sheet-body button.buy:disabled,
+  .panel-body button.buy:disabled {
+    opacity: 0.4;
+  }
+  :is(.sheet-body, .panel-body, .hero-roster) button:is(.chip, .btn).on,
+  .game-control.on {
+    outline: 2px solid var(--gilt);
+    outline-offset: -2px;
+  }
+  :is(.sheet-body, .panel-body, .hero-roster) button:is(.danger, .armed) {
+    color: #ffd5cc;
+    box-shadow:
+      inset 0 0 0 2px #a54842,
+      0 2px 3px #080b1380;
+  }
+  /* A common menu scale, regardless of screen or width. */
+  html .cmd .tile .tl {
+    font: 600 var(--control-size)/1.15 var(--control-font);
+    letter-spacing: 0.015em;
+    text-transform: none;
+    white-space: normal;
+    text-align: center;
+  }
+  html .cmd .tile {
     min-width: 0;
   }
-}
-
-.hero-sheet .hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-}
-.hero-sheet .hero-actions > .chip {
-  min-height: 44px;
-}
-
-/* Creature dispositions read by silhouette; the containing card carries selection. */
-.icon-socket.expressive-emblem {
-  flex: 0 0 52px;
-  width: 52px;
-  height: 52px;
-  border: 0;
-  background: none;
-  box-shadow: none;
-}
-.icon-socket.expressive-emblem .ico {
-  width: 52px;
-  height: 52px;
-}
-@media (max-width: 520px) {
-  .pkg-panel .pkg-equipped .icon-socket.expressive-emblem {
-    flex-basis: 44px;
+  /* Icon socket: styles use existing painted portraits, tactics action families. */
+  .icon-socket {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #43536d;
+    border-radius: 2px;
+    background: radial-gradient(ellipse at 50% 20%, #35415c, #111725 80%);
+    box-shadow:
+      inset 0 2px 5px #050712,
+      0 1px 0 #d5c9ab88,
+      0 0 0 1px #0c111d;
+  }
+  .icon-socket .ico {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 2px 1px #000);
+  }
+  .pkg-panel .chip.pkg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 2px solid #40516c;
+    border-radius: 2px;
+    background: linear-gradient(115deg, #29344a, #131b2b 90%);
+    box-shadow:
+      inset 0 1px 0 #8a99b155,
+      inset 0 -3px 0 #080d17,
+      0 2px 3px #0b101b66;
+    text-align: left;
+    min-width: 0;
+  }
+  html.skin-tablet .pkg-panel button.chip.pkg {
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    padding: 6px;
+  }
+  .pkg-panel .chip.pkg.on {
+    outline: 2px solid #b89448;
+    outline-offset: -2px;
+  }
+  .pkg-panel .chip.pkg.on .icon-socket {
+    border-color: #bc9b50;
+  }
+  .pkg-panel .pkg-copy {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pkg-panel .pkg-name {
+    font: 600 17px/1.2 var(--control-font);
+    color: #f2d6a0;
+  }
+  .pkg-panel .chip.pkg .pkg-description {
+    font: 400 13px/1.35 var(--body-font);
+    color: #ddd4c4;
+  }
+  .pkg-panel .pkg-price {
+    flex: 0 0 auto;
+    font-size: 13px;
+  }
+  .pkg-panel .pkg-top {
+    align-items: baseline;
+    gap: 16px;
+  }
+  .pkg-panel .pkg-top > .label {
+    margin-bottom: 0;
+  }
+  .pkg-panel .pkg-headline {
+    font: 600 15px/1.2 var(--control-font);
+    color: #5f4b26;
+  }
+  .pkg-panel .pkg-sec {
+    padding: 12px 0 16px;
+    border-bottom: 2px solid #9b896944;
+  }
+  .pkg-panel .pkg-head {
+    margin: 0 0 10px;
+    font: 600 14px/1.2 var(--control-font);
+    color: #33425d;
+    letter-spacing: 0.09em;
+  }
+  .pkg-panel .pkg-equipped {
+    align-items: center;
+    gap: 12px;
+  }
+  .pkg-panel .pkg-slot {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pkg-panel .pkg-slot .pkg.on {
+    flex: 1 1 100%;
+  }
+  /* blind ad71e72 (A: two worn tactics squeezed into slivers, `archer change shots`): a slot is a column only where its card and its
+   buttons fit side by side; the card takes its row and the buttons wrap under it */
+  .pkg-panel .pkg-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 10px;
+  }
+  .pkg-panel .pkg-slots .pkg-slot {
+    min-width: 0;
+  }
+  .pkg-panel .pkg-slots .pkg-slot .pkg.on {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .pkg-panel .pkg-slots .pkg-slot.empty .pkg-change {
+    width: 100%;
+    min-height: 52px;
+  }
+  .pkg-panel .pkg-alts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .pkg-panel .pkg-alts .pkg {
+    width: 100%;
+  }
+  .pkg-panel .pkg-compare {
+    margin-top: 16px;
+  }
+  .pkg-panel .lvl-bar,
+  .hero-sheet .xp-bar {
+    height: 7px;
+    background: #070d19;
+    border: 1px solid #4d5f78;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 2px #000;
+  }
+  .pkg-panel .lvl-bar .fill {
+    background: linear-gradient(#f1d794, #b68e3c 55%, #7a5826);
+    box-shadow: inset 0 1px 0 #fff0c8;
+  }
+  /* Shared recessed rows: hero gilt, forge bronze, workers blue. */
+  .game-window :is(.legacy-upgrade, .kit-slot, .game-inset) {
+    padding: 12px;
+    border: 2px solid #a29375;
+    border-radius: 2px;
+    background: linear-gradient(110deg, #f2e8d0aa, #a7946b33);
+    box-shadow:
+      inset 0 1px 2px #79644955,
+      0 1px 0 #fff3da88;
+  }
+  .game-window .forge .kit-slot {
+    border-color: #94754d;
+  }
+  .game-window :is(.legacy-upgrade, .kit-head) b {
+    font: 600 17px/1.25 var(--control-font);
+  }
+  .game-window .legacy-upgrade small {
+    font: 400 12px/1.4 var(--body-font);
+  }
+  .game-window .legacy-buy {
+    flex-shrink: 0;
+  }
+  .game-window .legacy-buy small {
+    display: inline;
+    font: inherit;
+  }
+  .game-window .hero-line {
+    margin-bottom: 8px;
+    font: 600 20px/1.25 var(--control-font);
+  }
+  .game-window .hero-legacy {
+    margin-bottom: 16px;
+    color: #675020;
+  }
+  .game-window .forge-item {
+    font: 600 16px/1.3 var(--control-font);
+  }
+  .game-window .forge-item .it-ico {
+    min-width: 36px;
+    min-height: 36px;
+  }
+  .game-window .settings .srow {
+    padding: 8px 0;
+    border-bottom: 1px solid #99876755;
+    gap: 10px;
+  }
+  .game-window .settings .srow .label {
+    font: 600 14px/1.25 var(--control-font);
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+  .sheet-body :is(.ta, .name-input) {
+    font: 400 13px/1.4 var(--body-font);
+    border: 3px solid #6d6d66;
+    border-radius: 2px;
+    background: #161e2d;
+    box-shadow: inset 0 3px 8px #030711;
+    color: var(--bone);
+  }
+  .game-window details > summary {
+    cursor: pointer;
+    min-height: 44px;
+    padding: 12px 0;
+    font: 600 14px/1.3 var(--control-font);
+    color: #33425d;
+  }
+  .hero-roster .hero-row {
+    border: 3px ridge #596173;
+    border-radius: 2px;
+    box-shadow:
+      inset 0 1px 0 #8892a466,
+      inset 0 -3px 0 #080910,
+      0 3px 6px #0006;
+  }
+  .hero-roster .hero-row.selected {
+    border-color: #bda36b;
+  }
+  .hero-roster .hero-thumb {
+    border: 3px ridge #8991a2;
+    box-shadow:
+      inset 0 0 12px #000,
+      0 2px 4px #0009;
+    border-radius: 2px;
+  }
+  .hero-roster .hero-info b {
+    font: 600 20px/1.2 var(--display);
+  }
+  .hero-roster .hero-action {
+    font: 400 14px/1.4 var(--body-font);
+  }
+  @media (max-width: 520px) {
+    html.skin-panel .sheet-wrap.centered > .game-window {
+      border-width: 14px;
+      border-image-width: 14px;
+      padding: 10px 8px 12px;
+    }
+    .game-window .pkg-equipped {
+      flex-wrap: wrap;
+    }
+    .pkg-panel .pkg-equipped .pkg-slot {
+      flex-basis: 100%;
+    }
+    .pkg-panel .pkg-equipped > .pkg-change {
+      margin-left: auto;
+    }
+    .pkg-panel .pkg-alts {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .pkg-panel .chip.pkg {
+      gap: 8px;
+    }
+    .game-window .legacy-upgrade {
+      gap: 8px;
+      padding: 8px;
+    }
+    .game-window .legacy-buy {
+      max-width: 46%;
+    }
+    .game-window .settings .srow {
+      flex-wrap: wrap;
+    }
+    .game-window .settings .srow .label {
+      flex: 1 0 90px;
+    }
+  }
+  /* Centering owns the full backdrop, replacing the old console-offset sheet. */
+  body.framed .sheet-wrap.centered:not(.modeless) {
+    bottom: 0;
+    padding-bottom: calc(var(--window-bottom, 0px) + 16px);
+  }
+  html body .cmd .tile .tl,
+  html body .cmd .tile .tl.two {
+    font-size: var(--control-size);
+    letter-spacing: 0.015em;
+  }
+  /* The same header plate on every management window. */
+  .game-window .sheet-body > .label:first-child,
+  .game-window .pkg-top {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 6px 48px 6px 12px;
+    margin: 0 0 18px;
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    background: #172033;
+    color: #eadfc5;
+    text-shadow: 0 1px 2px #070a12;
+  }
+  .game-window .pkg-top > .label {
+    color: #eadfc5;
+    margin: 0;
+  }
+  .game-window .pkg-top .pkg-headline {
+    color: #e8ca87;
+  }
+  .game-window:has(.sheet-back) .sheet-body > .label:first-child {
+    padding-left: 40px;
+    margin-left: 0;
+  }
+  html.skin-tablet .game-window .pkg-panel .chip.pkg:not(.locked) {
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    padding: 6px;
+  }
+  .game-window .forge-item .item-ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .game-window .forge-item .item-pic {
     width: 44px;
     height: 44px;
   }
-  .pkg-panel .pkg-equipped .icon-socket.expressive-emblem .ico {
-    width: 44px;
+  .game-window .wnode {
+    border: 2px solid #8390a0;
+    border-radius: 2px;
+    padding: 10px;
+    background: #c6c9c344;
+    box-shadow: inset 0 1px 3px #3e4b6555;
+  }
+  .game-window .wnode .wn-ico {
+    border-radius: 2px;
+    box-shadow:
+      inset 0 2px 5px #060a13,
+      0 0 0 2px #53617c;
+  }
+  .game-window .wnode .hire-btn {
+    min-height: 44px;
+  }
+  .game-window .wnode.lit {
+    border-color: #b3924f;
+  }
+  @media (max-width: 520px) {
+    .game-window .pkg-top {
+      flex-wrap: wrap;
+      gap: 3px 12px;
+    }
+    .game-window .pkg-top .pkg-headline {
+      font-size: 13px;
+    }
+  }
+  .game-window .hero-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-window-face {
+    display: inline-block;
+    flex: 0 0 72px;
+    width: 72px;
+    height: 84px;
+    background-repeat: no-repeat;
+    border: 3px solid #53617a;
+    border-radius: 2px;
+    box-shadow:
+      inset 0 0 6px #050813,
+      0 0 0 1px #0b111e;
+  }
+  .hero-window-face.painted {
+    background-size: cover;
+  }
+  .legacy-upgrade .upgrade-copy {
+    flex: 1;
+    min-width: 0;
+  }
+  @media (max-width: 520px) {
+    .legacy-upgrade .icon-socket {
+      flex-basis: 32px;
+      width: 32px;
+      height: 36px;
+    }
+    .legacy-upgrade .icon-socket .ico {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  @media (max-width: 520px) {
+    .game-window .pkg-equipped {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+    }
+    .pkg-panel .pkg-equipped .pkg-slot {
+      flex-basis: auto;
+    }
+    .pkg-panel .pkg-equipped > .pkg-change {
+      margin: 0;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    .pkg-panel .pkg-equipped .icon-socket {
+      flex-basis: 36px;
+      width: 36px;
+      height: 40px;
+    }
+    .pkg-panel .pkg-equipped .icon-socket .ico {
+      width: 28px;
+      height: 28px;
+    }
+    .pkg-panel .pkg-sec {
+      padding-top: 8px;
+      padding-bottom: 10px;
+      margin-bottom: 4px;
+    }
+    .pkg-panel .pkg-name {
+      font-size: 16px;
+    }
+  }
+
+  .town-tag[role="button"]:hover {
+    filter: brightness(1.15);
+  }
+  .town-tag[role="button"]:focus-visible {
+    outline: 2px solid var(--gilt);
+    outline-offset: 3px;
+  }
+  .town-tag[aria-busy="true"] {
+    cursor: progress;
+  }
+
+  /* Watch and report use a compact card sized to their available actions. */
+  html .console .cmd-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(80px, auto);
+    max-width: 260px;
+  }
+  html .console .cmd-compact > .tile:only-child {
+    grid-column: 1 / -1;
+  }
+  html .console .cmd-compact .tile .tl {
+    overflow: visible;
+    text-overflow: clip;
+  }
+  @media (max-width: 359px) {
+    html .console .cmd-compact {
+      grid-template-columns: minmax(0, 1fr);
+      grid-auto-rows: minmax(56px, auto);
+    }
+    html .console .cmd-compact .tile {
+      flex-direction: row;
+      gap: 6px;
+    }
+    html .console .cmd-compact .tile .ico {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+    }
+    html .console .cmd-compact .tile .tl {
+      min-width: 0;
+    }
+  }
+
+  .hero-sheet .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .hero-sheet .hero-actions > .chip {
+    min-height: 44px;
+  }
+
+  /* Creature dispositions read by silhouette; the containing card carries selection. */
+  .icon-socket.expressive-emblem {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .icon-socket.expressive-emblem .ico {
+    width: 52px;
+    height: 52px;
+  }
+  @media (max-width: 520px) {
+    .pkg-panel .pkg-equipped .icon-socket.expressive-emblem {
+      flex-basis: 44px;
+      width: 44px;
+      height: 44px;
+    }
+    .pkg-panel .pkg-equipped .icon-socket.expressive-emblem .ico {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  /* Boss counters retain parchment contrast within shared chunky dark cards. */
+  .pkg-panel .pkg-drill {
+    padding: 10px;
+    border: 2px solid #40516c;
+    color: #eadbbd;
+    background: linear-gradient(115deg, #29344a, #131b2b);
+    box-shadow:
+      inset 0 1px 0 #8a99b155,
+      inset 0 -3px 0 #080d17;
+  }
+  .pkg-panel .pkg-drill .counter-face {
+    flex: 0 0 40px;
+    width: 40px;
     height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
-}
-
-/* Boss counters retain parchment contrast within shared chunky dark cards. */
-.pkg-panel .pkg-drill {
-  padding: 10px;
-  border: 2px solid #40516c;
-  color: #eadbbd;
-  background: linear-gradient(115deg, #29344a, #131b2b);
-  box-shadow:
-    inset 0 1px 0 #8a99b155,
-    inset 0 -3px 0 #080d17;
-}
-.pkg-panel .pkg-drill .counter-face {
-  flex: 0 0 40px;
-  width: 40px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.pkg-panel .pkg-drill .counter-face img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-.pkg-panel .pkg-drill .counter-copy {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.pkg-panel .pkg-drill .counter-name {
-  color: #f2d6a0;
-  font: 600 17px/1.2 var(--control-font);
-}
-.pkg-panel .pkg-drill .counter-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font: 400 14px/1.3 var(--body-font);
-}
-.pkg-panel .pkg-drill .counter-action {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-wrap: anywhere;
-}
-.pkg-panel .pkg-drill .counter-action > .ico {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-}
-.pkg-panel .pkg-drill.revoked .counter-actions {
-  color: #bac5d7;
-}
-.pkg-panel .pkg-drill.revoked .drill {
-  opacity: 1;
-  text-decoration: none;
-}
-.pkg-panel .pkg-drill .drill {
-  min-width: 44px;
-  min-height: 44px;
-}
-.pkg-panel .pkg-drill .scar {
-  color: #e7b894;
-}
-html.skin-tablet .pkg-panel .pkg-drill {
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  padding: 6px;
-}
-
-/* A marked foundation and a carved command plaque: the first town action. */
-.town .town-foundation {
-  width: 164px;
-  height: 108px;
-  filter: drop-shadow(0 4px 2px #060912);
-}
-.town-foundation img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-}
-.town-foundation:not(.painted) img {
-  visibility: hidden;
-}
-.town-foundation.painted svg {
-  visibility: hidden;
-}
-html .town-tag.build-marker[role="button"] {
-  min-height: 64px;
-  min-width: 168px;
-  gap: 8px;
-  padding: 4px 10px;
-  border: 3px solid #60718b;
-  border-radius: 2px;
-  background: #182034;
-  color: var(--bone);
-  box-shadow: inset 0 2px 0 #a4bcd6;
-  filter: brightness(var(--build-brightness, 1)) drop-shadow(0 var(--build-shadow-y, 4px) 0 #070b14)
-    drop-shadow(0 7px 6px #050914cc);
-}
-html.skin-button .town-tag.build-marker[role="button"] {
-  border: solid transparent;
-  border-width: 11px 28px;
-  border-image: none;
-  padding: 0 2px;
-  background: none;
-  box-shadow: none;
-  isolation: isolate;
-  filter: brightness(var(--build-brightness, 1));
-}
-/* Shadow only the painted frame's alpha, not the border box, text or plot connector.
-   The transparent layout border above keeps the existing padding and hit area. */
-html.skin-button .town-tag.build-marker[role="button"]::after {
-  content: "";
-  position: absolute;
-  inset: -11px -28px;
-  z-index: -1;
-  pointer-events: none;
-  background: url("/ui/frames/button.png") center / 100% 100% no-repeat;
-  filter: drop-shadow(0 var(--build-shadow-y, 4px) 0 #070b14) drop-shadow(0 7px 6px #050914cc);
-}
-.town-tag.build-marker::before {
-  content: "";
-  position: absolute;
-  left: calc(50% + var(--build-anchor-offset, 0px) - 1px);
-  bottom: calc(100% + 2px);
-  height: 13px;
-  width: 2px;
-  background: #b89448;
-  box-shadow: 0 0 0 1px #0d0c14;
-  pointer-events: none;
-}
-.town-tag.build-marker.marker-above::before {
-  bottom: auto;
-  top: calc(100% + 2px);
-}
-.town-tag.build-marker .build-copy {
-  align-items: flex-start;
-  gap: 0;
-}
-.town-tag.build-marker .build-title {
-  font: 700 22px/1.05 var(--display);
-  letter-spacing: 0.01em;
-}
-.town-tag.build-marker .dim {
-  font: 600 13px/1.3 var(--control-font);
-  color: #c5b998;
-}
-.town-tag.build-marker .ico {
-  width: 30px;
-  height: 30px;
-  flex: 0 0 30px;
-}
-.town-tag.build-marker[role="button"]:hover {
-  --build-brightness: 1.15;
-}
-.town-tag.build-marker[role="button"]:active {
-  --build-brightness: 0.9;
-  --build-shadow-y: 2px;
-  margin-top: 2px;
-}
-.town-tag.build-marker[aria-busy="true"] {
-  --build-brightness: 0.8;
-}
-
-/* The camp keeps run diagnostics behind one carved, keyboard-accessible control. */
-.camp-run-details {
-  overflow-anchor: none;
-}
-.camp-run-details > summary.btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  min-height: 48px;
-  width: 100%;
-  cursor: pointer;
-}
-.camp-run-details > summary::before {
-  content: "▸";
-  color: var(--gold);
-}
-.camp-run-details[open] > summary::before {
-  content: "▾";
-}
-.camp-run-details > summary::-webkit-details-marker {
-  display: none;
-}
-.camp-run-details > summary small {
-  font-size: 14px;
-  white-space: nowrap;
-}
-.camp-run-details > .meters {
-  margin-top: 12px;
-}
-html.skin-button .camp-run-details > summary.btn {
-  border: solid transparent;
-  border-width: 11px 22px;
-  border-radius: 0;
-  border-image: url("/ui/frames/button.png") 22 78 22 78 fill / 11px 22px stretch;
-  padding: 2px 3px;
-  background: none;
-  min-height: 58px;
-}
-.camp-run-details > summary.btn:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
-
-.hero-progress {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px 14px;
-  font-size: 16px;
-  margin: 8px 0 4px;
-}
-.hero-menu-presence {
-  margin-bottom: 12px;
-}
-
-.game-window .hero-menu-presence {
-  color: #48584d;
-  font-weight: 600;
-}
-.game-window .hero-menu-presence[data-activity="combat"] {
-  color: #8b3e2b;
-}
-.game-window .hero-menu-presence[data-activity="returning"] {
-  color: #72521e;
-}
-.hero-sheet .hero-actions {
-  margin-bottom: 16px;
-}
-
-/* Audited omissions use the same control/row materials as other management UI. */
-.game-window .runs-sheet .log-tab.game-control {
-  color: #eadfc5;
-  font-variant-caps: normal;
-  text-transform: none;
-  letter-spacing: 0.025em;
-}
-.game-window .runs-sheet .log-tab.game-control.on {
-  color: #f2d6a0;
-}
-.game-window .runs-sheet .runs-fold.game-control {
-  display: flex;
-  width: 100%;
-  text-align: left;
-}
-.game-window .runs-sheet .game-control .dim,
-.game-window .runs-sheet .game-control .rf-car {
-  color: #bdc5d5;
-}
-.game-window .runs-sheet .runs-fold.game-control .gold {
-  color: #e6c581;
-}
-.game-window .chronicle .game-inset {
-  margin: 6px 0;
-  padding: 10px;
-  min-height: 44px;
-}
-.game-window .chronicle button.game-inset:hover {
-  background: #f4e8cd;
-}
-.game-window .chronicle button.game-inset:focus-visible {
-  outline: 2px solid #76591e;
-  outline-offset: 2px;
-}
-.game-window .runs-sheet .re-play.game-control {
-  min-width: 44px;
-  min-height: 44px;
-  width: auto;
-  height: auto;
-}
-.look-sheet .looks {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-.look-sheet .look.game-control {
-  min-width: 0;
-  color: #eadfc5;
-}
-.look-sheet .look.game-control .look-well {
-  width: min(72px, 100%);
-  height: auto;
-  aspect-ratio: 1;
-  flex: none;
-}
-.look-sheet .look.game-control .look-name {
-  color: #eadfc5;
-  font: 600 14px/1.25 var(--control-font);
-  opacity: 1;
-}
-.look-sheet .look.game-control.on .look-name {
-  color: #f2d6a0;
-}
-.sheet-body .name-input {
-  font-size: 16px;
-}
-.camp .tabs {
-  flex-wrap: wrap;
-}
-.camp .tabs .game-control {
-  min-width: 44px;
-  max-width: 100%;
-}
-.camp .tabs .game-control small {
-  color: #bdc5d5;
-}
-/* Companion selection is a carved command, with separate rule/dismiss studs.
-   Keep the portrait silhouette outside the tablet and text readable on it. */
-.party .card.comp {
-  border: 2px ridge #596173;
-  border-radius: 2px;
-  background: #141c2b;
-  gap: 4px;
-  padding: 4px;
-}
-.party .card.comp.on {
-  border-color: #bda36b;
-}
-.party .comp-main.game-control {
-  min-width: 0;
-  padding: 4px 6px;
-  overflow-wrap: anywhere;
-}
-.party .comp-main.game-control .name {
-  font: 600 16px/1.3 var(--control-font);
-}
-.party .comp-main.game-control :is(.dim, .tags, .hp) {
-  color: #bdc5d5;
-}
-.party .card.comp .game-control:is(.grip, .drop-pet) {
-  min-width: 44px;
-  padding: 2px;
-  color: #eadfc5;
-}
-.party .pet-face {
-  margin-left: 4px;
-}
-.party .chip.egg {
-  flex-wrap: wrap;
-  gap: 4px;
-}
-.party .chip.egg .hatch.game-control {
-  min-height: 44px;
-  margin-left: 0;
-}
-.death .death-more.game-control {
-  text-decoration: none;
-  letter-spacing: 0.025em;
-  text-transform: none;
-}
-.game-control:disabled {
-  opacity: 0.62;
-  filter: saturate(0.4);
-}
-
-/* Anchored inventory windows share command materials and sit above map labels. */
-.camp .panel-host {
-  z-index: 6;
-}
-.panel .panel-body > section > .label:first-child {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  margin: 0 0 12px;
-  padding: 2px 8px;
-  border: 8px solid transparent;
-  border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
-  color: #eadfc5;
-  font: 600 20px/1.2 var(--display);
-  text-shadow: 0 1px 2px #070a12;
-  letter-spacing: 0.025em;
-}
-.panel .panel-body > section > .label:first-child .dim {
-  color: #bdc5d5;
-}
-.panel-body button.chip .item-name,
-.panel-body .packed .item-name {
-  color: var(--r-lit);
-}
-.panel-body button:is(.chip, .card) .dim,
-.panel-body .packed .dim,
-.panel-body .packed .x {
-  color: #bdc5d5;
-}
-.panel-body button:is(.chip, .card) .gold {
-  color: #e6c581;
-}
-
-/* Watch commands use the same carved material as management commands.
-   These tiles live outside the console's .cmd, so retain explicit materials. */
-.game-window .watch-options .chips {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-.game-window .watch-options button.game-control {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  min-height: 80px;
-  margin: 0;
-  gap: 4px;
-  backdrop-filter: none;
-}
-.game-window .watch-options .game-control .ico {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
-}
-.game-window .watch-options .game-control .tl {
-  font: inherit;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-.game-window .watch-options .game-control.on {
-  color: #f2d6a0;
-}
-.game-window .watch-options .game-control.bail {
-  color: #ffd5cc;
-}
-/* Cut 117 §2: the panel opened on a plaque's own tactic (a drill, a levelled package) rings it */
-.pkg-panel .pkg-focus {
-  outline: 3px solid #d9b45a;
-  outline-offset: 2px;
-  box-shadow: 0 0 12px rgba(217, 180, 90, 0.6);
-}
-
-/* Archive guidance belongs to the page, not to a fake history entry. */
-.chronicle-empty {
-  padding: 16px;
-  display: grid;
-  gap: 10px;
-}
-.chronicle-empty p {
-  margin: 0;
-  line-height: 1.5;
-}
-.chronicle-identity {
-  color: var(--gold);
-}
-/* Stable home chrome targets: packed frames stay, geometry never shrinks on reveal. */
-html body .camp .console-row {
-  margin: 0;
-  grid-template-columns: minmax(0, 1fr) 88px;
-}
-html body .camp .console .cmd .tile {
-  min-width: 44px;
-  min-height: 44px;
-}
-html body .camp .console .cmd .tile.reveal {
-  animation: none;
-  transform: none;
-}
-html body .camp .console .cmd .tile.reveal::before {
-  content: none;
-  animation: none;
-}
-html body .camp .console .cmd .tile:active {
-  transform: translateY(1px);
-}
-html body .camp .console .cmd .tile .ico {
-  flex: 0 0 30px;
-  width: 30px;
-  height: 30px;
-  max-width: 100%;
-}
-html body .topbar .stat {
-  min-height: 44px;
-  height: auto;
-}
-html body .topbar .gear {
-  min-width: 44px;
-  width: 44px;
-  flex: 0 0 44px;
-}
-@media (min-width: 1024px) {
-  html body .camp .console-row {
-    margin-inline: auto;
-    grid-template-columns: minmax(0, 1fr) 124px;
-  }
-  html body .camp .console .cmd .tile .ico {
-    flex-basis: 40px;
+  .pkg-panel .pkg-drill .counter-face img {
     width: 40px;
     height: 40px;
+    object-fit: contain;
   }
-}
-html body .topbar button.stat.gold {
-  min-height: 44px;
-  height: auto;
-}
-/* 320px (owner 2026-10-14 audit): beside the gem the dock's tiles are ~45px wide, too narrow for a word at the menu size (`Jour…`,
-   `com…`); under 360px the painted icon carries the tile and the word stays the button's accessible name (the tip still names it) */
-@media (max-width: 359px) {
-  html body main.frame > .console .cmd:not(.cmd-compact) .tile .tl {
+  .pkg-panel .pkg-drill .counter-copy {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pkg-panel .pkg-drill .counter-name {
+    color: #f2d6a0;
+    font: 600 17px/1.2 var(--control-font);
+  }
+  .pkg-panel .pkg-drill .counter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font: 400 14px/1.3 var(--body-font);
+  }
+  .pkg-panel .pkg-drill .counter-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-wrap: anywhere;
+  }
+  .pkg-panel .pkg-drill .counter-action > .ico {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+  }
+  .pkg-panel .pkg-drill.revoked .counter-actions {
+    color: #bac5d7;
+  }
+  .pkg-panel .pkg-drill.revoked .drill {
+    opacity: 1;
+    text-decoration: none;
+  }
+  .pkg-panel .pkg-drill .drill {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .pkg-panel .pkg-drill .scar {
+    color: #e7b894;
+  }
+  html.skin-tablet .pkg-panel .pkg-drill {
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    padding: 6px;
+  }
+
+  /* A marked foundation and a carved command plaque: the first town action. */
+  .town .town-foundation {
+    width: 164px;
+    height: 108px;
+    filter: drop-shadow(0 4px 2px #060912);
+  }
+  .town-foundation img {
     position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+  .town-foundation:not(.painted) img {
+    visibility: hidden;
+  }
+  .town-foundation.painted svg {
+    visibility: hidden;
+  }
+  html .town-tag.build-marker[role="button"] {
+    min-height: 64px;
+    min-width: 168px;
+    gap: 8px;
+    padding: 4px 10px;
+    border: 3px solid #60718b;
+    border-radius: 2px;
+    background: #182034;
+    color: var(--bone);
+    box-shadow: inset 0 2px 0 #a4bcd6;
+    filter: brightness(var(--build-brightness, 1))
+      drop-shadow(0 var(--build-shadow-y, 4px) 0 #070b14) drop-shadow(0 7px 6px #050914cc);
+  }
+  html.skin-button .town-tag.build-marker[role="button"] {
+    border: solid transparent;
+    border-width: 11px 28px;
+    border-image: none;
+    padding: 0 2px;
+    background: none;
+    box-shadow: none;
+    isolation: isolate;
+    filter: brightness(var(--build-brightness, 1));
+  }
+  /* Shadow only the painted frame's alpha, not the border box, text or plot connector.
+   The transparent layout border above keeps the existing padding and hit area. */
+  html.skin-button .town-tag.build-marker[role="button"]::after {
+    content: "";
+    position: absolute;
+    inset: -11px -28px;
+    z-index: -1;
+    pointer-events: none;
+    background: url("/ui/frames/button.png") center / 100% 100% no-repeat;
+    filter: drop-shadow(0 var(--build-shadow-y, 4px) 0 #070b14) drop-shadow(0 7px 6px #050914cc);
+  }
+  .town-tag.build-marker::before {
+    content: "";
+    position: absolute;
+    left: calc(50% + var(--build-anchor-offset, 0px) - 1px);
+    bottom: calc(100% + 2px);
+    height: 13px;
+    width: 2px;
+    background: #b89448;
+    box-shadow: 0 0 0 1px #0d0c14;
+    pointer-events: none;
+  }
+  .town-tag.build-marker.marker-above::before {
+    bottom: auto;
+    top: calc(100% + 2px);
+  }
+  .town-tag.build-marker .build-copy {
+    align-items: flex-start;
+    gap: 0;
+  }
+  .town-tag.build-marker .build-title {
+    font: 700 22px/1.05 var(--display);
+    letter-spacing: 0.01em;
+  }
+  .town-tag.build-marker .dim {
+    font: 600 13px/1.3 var(--control-font);
+    color: #c5b998;
+  }
+  .town-tag.build-marker .ico {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+  .town-tag.build-marker[role="button"]:hover {
+    --build-brightness: 1.15;
+  }
+  .town-tag.build-marker[role="button"]:active {
+    --build-brightness: 0.9;
+    --build-shadow-y: 2px;
+    margin-top: 2px;
+  }
+  .town-tag.build-marker[aria-busy="true"] {
+    --build-brightness: 0.8;
+  }
+
+  /* The camp keeps run diagnostics behind one carved, keyboard-accessible control. */
+  .camp-run-details {
+    overflow-anchor: none;
+  }
+  .camp-run-details > summary.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 48px;
+    width: 100%;
+    cursor: pointer;
+  }
+  .camp-run-details > summary::before {
+    content: "▸";
+    color: var(--gold);
+  }
+  .camp-run-details[open] > summary::before {
+    content: "▾";
+  }
+  .camp-run-details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .camp-run-details > summary small {
+    font-size: 14px;
     white-space: nowrap;
   }
+  .camp-run-details > .meters {
+    margin-top: 12px;
+  }
+  html.skin-button .camp-run-details > summary.btn {
+    border: solid transparent;
+    border-width: 11px 22px;
+    border-radius: 0;
+    border-image: url("/ui/frames/button.png") 22 78 22 78 fill / 11px 22px stretch;
+    padding: 2px 3px;
+    background: none;
+    min-height: 58px;
+  }
+  .camp-run-details > summary.btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .hero-progress {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 14px;
+    font-size: 16px;
+    margin: 8px 0 4px;
+  }
+  .hero-menu-presence {
+    margin-bottom: 12px;
+  }
+
+  .game-window .hero-menu-presence {
+    color: #48584d;
+    font-weight: 600;
+  }
+  .game-window .hero-menu-presence[data-activity="combat"] {
+    color: #8b3e2b;
+  }
+  .game-window .hero-menu-presence[data-activity="returning"] {
+    color: #72521e;
+  }
+  .hero-sheet .hero-actions {
+    margin-bottom: 16px;
+  }
+
+  /* Audited omissions use the same control/row materials as other management UI. */
+  .game-window .runs-sheet .log-tab.game-control {
+    color: #eadfc5;
+    font-variant-caps: normal;
+    text-transform: none;
+    letter-spacing: 0.025em;
+  }
+  .game-window .runs-sheet .log-tab.game-control.on {
+    color: #f2d6a0;
+  }
+  .game-window .runs-sheet .runs-fold.game-control {
+    display: flex;
+    width: 100%;
+    text-align: left;
+  }
+  .game-window .runs-sheet .game-control .dim,
+  .game-window .runs-sheet .game-control .rf-car {
+    color: #bdc5d5;
+  }
+  .game-window .runs-sheet .runs-fold.game-control .gold {
+    color: #e6c581;
+  }
+  .game-window .chronicle .game-inset {
+    margin: 6px 0;
+    padding: 10px;
+    min-height: 44px;
+  }
+  .game-window .chronicle button.game-inset:hover {
+    background: #f4e8cd;
+  }
+  .game-window .chronicle button.game-inset:focus-visible {
+    outline: 2px solid #76591e;
+    outline-offset: 2px;
+  }
+  .game-window .runs-sheet .re-play.game-control {
+    min-width: 44px;
+    min-height: 44px;
+    width: auto;
+    height: auto;
+  }
+  .look-sheet .looks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .look-sheet .look.game-control {
+    min-width: 0;
+    color: #eadfc5;
+  }
+  .look-sheet .look.game-control .look-well {
+    width: min(72px, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    flex: none;
+  }
+  .look-sheet .look.game-control .look-name {
+    color: #eadfc5;
+    font: 600 14px/1.25 var(--control-font);
+    opacity: 1;
+  }
+  .look-sheet .look.game-control.on .look-name {
+    color: #f2d6a0;
+  }
+  .sheet-body .name-input {
+    font-size: 16px;
+  }
+  .camp .tabs {
+    flex-wrap: wrap;
+  }
+  .camp .tabs .game-control {
+    min-width: 44px;
+    max-width: 100%;
+  }
+  .camp .tabs .game-control small {
+    color: #bdc5d5;
+  }
+  /* Companion selection is a carved command, with separate rule/dismiss studs.
+   Keep the portrait silhouette outside the tablet and text readable on it. */
+  .party .card.comp {
+    border: 2px ridge #596173;
+    border-radius: 2px;
+    background: #141c2b;
+    gap: 4px;
+    padding: 4px;
+  }
+  .party .card.comp.on {
+    border-color: #bda36b;
+  }
+  .party .comp-main.game-control {
+    min-width: 0;
+    padding: 4px 6px;
+    overflow-wrap: anywhere;
+  }
+  .party .comp-main.game-control .name {
+    font: 600 16px/1.3 var(--control-font);
+  }
+  .party .comp-main.game-control :is(.dim, .tags, .hp) {
+    color: #bdc5d5;
+  }
+  .party .card.comp .game-control:is(.grip, .drop-pet) {
+    min-width: 44px;
+    padding: 2px;
+    color: #eadfc5;
+  }
+  .party .pet-face {
+    margin-left: 4px;
+  }
+  .party .chip.egg {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .party .chip.egg .hatch.game-control {
+    min-height: 44px;
+    margin-left: 0;
+  }
+  .death .death-more.game-control {
+    text-decoration: none;
+    letter-spacing: 0.025em;
+    text-transform: none;
+  }
+  .game-control:disabled {
+    opacity: 0.62;
+    filter: saturate(0.4);
+  }
+
+  /* Anchored inventory windows share command materials and sit above map labels. */
+  .camp .panel-host {
+    z-index: 6;
+  }
+  .panel .panel-body > section > .label:first-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    margin: 0 0 12px;
+    padding: 2px 8px;
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    color: #eadfc5;
+    font: 600 20px/1.2 var(--display);
+    text-shadow: 0 1px 2px #070a12;
+    letter-spacing: 0.025em;
+  }
+  .panel .panel-body > section > .label:first-child .dim {
+    color: #bdc5d5;
+  }
+  .panel-body button.chip .item-name,
+  .panel-body .packed .item-name {
+    color: var(--r-lit);
+  }
+  .panel-body button:is(.chip, .card) .dim,
+  .panel-body .packed .dim,
+  .panel-body .packed .x {
+    color: #bdc5d5;
+  }
+  .panel-body button:is(.chip, .card) .gold {
+    color: #e6c581;
+  }
+
+  /* Watch commands use the same carved material as management commands.
+   These tiles live outside the console's .cmd, so retain explicit materials. */
+  .game-window .watch-options .chips {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .game-window .watch-options button.game-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 80px;
+    margin: 0;
+    gap: 4px;
+    backdrop-filter: none;
+  }
+  .game-window .watch-options .game-control .ico {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+  }
+  .game-window .watch-options .game-control .tl {
+    font: inherit;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  .game-window .watch-options .game-control.on {
+    color: #f2d6a0;
+  }
+  .game-window .watch-options .game-control.bail {
+    color: #ffd5cc;
+  }
+  /* Cut 117 §2: the panel opened on a plaque's own tactic (a drill, a levelled package) rings it */
+  .pkg-panel .pkg-focus {
+    outline: 3px solid #d9b45a;
+    outline-offset: 2px;
+    box-shadow: 0 0 12px rgba(217, 180, 90, 0.6);
+  }
+
+  /* Archive guidance belongs to the page, not to a fake history entry. */
+  .chronicle-empty {
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .chronicle-empty p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  .chronicle-identity {
+    color: var(--gold);
+  }
+  /* Stable home chrome targets: packed frames stay, geometry never shrinks on reveal. */
+  html body .camp .console-row {
+    margin: 0;
+    grid-template-columns: minmax(0, 1fr) 88px;
+  }
+  html body .camp .console .cmd .tile {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  html body .camp .console .cmd .tile.reveal {
+    animation: none;
+    transform: none;
+  }
+  html body .camp .console .cmd .tile.reveal::before {
+    content: none;
+    animation: none;
+  }
+  html body .camp .console .cmd .tile:active {
+    transform: translateY(1px);
+  }
   html body .camp .console .cmd .tile .ico {
-    flex-basis: 36px;
-    width: 36px;
-    height: 36px;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    max-width: 100%;
+  }
+  html body .topbar .stat {
+    min-height: 44px;
+    height: auto;
+  }
+  html body .topbar .gear {
+    min-width: 44px;
+    width: 44px;
+    flex: 0 0 44px;
+  }
+  @media (min-width: 1024px) {
+    html body .camp .console-row {
+      margin-inline: auto;
+      grid-template-columns: minmax(0, 1fr) 124px;
+    }
+    html body .camp .console .cmd .tile .ico {
+      flex-basis: 40px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  html body .topbar button.stat.gold {
+    min-height: 44px;
+    height: auto;
+  }
+  /* 320px (owner 2026-10-14 audit): beside the gem the dock's tiles are ~45px wide, too narrow for a word at the menu size (`Jour…`,
+   `com…`); under 360px the painted icon carries the tile and the word stays the button's accessible name (the tip still names it) */
+  @media (max-width: 359px) {
+    html body main.frame > .console .cmd:not(.cmd-compact) .tile .tl {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    html body .camp .console .cmd .tile .ico {
+      flex-basis: 36px;
+      width: 36px;
+      height: 36px;
+    }
   }
 }

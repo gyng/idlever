@@ -1,540 +1,543 @@
-/* Cut 270 (docs/CUT270_LIVE_DECISIONS.md): the decision prompt, the boss chest, the flag lane and the milestone log.
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Cut 270 (docs/CUT270_LIVE_DECISIONS.md): the decision prompt, the boss chest, the flag lane and the milestone log.
    Quiet surfaces (the owner's density rule): one strip, one pill, one fold; nothing dims the HUD. */
 
-/* ---- the prompt: a strip over the map's bottom edge, above the combat log */
-.watch .decide-host {
-  position: absolute;
-  left: 50%;
-  bottom: calc(var(--watch-dock-h, 0px) + 12px);
-  transform: translateX(-50%);
-  z-index: 14;
-  width: min(500px, calc(100% - 24px));
-  pointer-events: none;
-}
-.decide {
-  pointer-events: auto;
-  display: grid;
-  gap: 6px;
-  padding: 8px 10px 10px;
-  border: 1px solid rgba(219, 186, 124, 0.45);
-  border-radius: 8px;
-  background: rgba(13, 12, 20, 0.88);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-  color: var(--bone);
-  font: 14px/1.2 var(--sans);
-  animation: decide-in 160ms ease-out;
-}
-.decide.decided {
-  opacity: 0.55;
-  transition: opacity 500ms ease-in;
-}
-.decide-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.decide-title {
-  font: 600 13px/1 var(--sans);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--acc);
-  white-space: nowrap;
-}
-.decide-bar {
-  flex: 1;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(164, 188, 214, 0.18);
-  overflow: hidden;
-}
-.decide-fill {
-  display: block;
-  height: 100%;
-  background: var(--acc);
-  transform-origin: left center;
-  transition: transform 60ms linear;
-}
-.decide.frozen .decide-fill {
-  background: var(--mist);
-}
-.decide-opts {
-  display: flex;
-  gap: 6px;
-}
-.decide-opt {
-  flex: 1 1 0;
-  min-width: 0;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 8px;
-  border: 1px solid var(--dusk);
-  border-radius: 6px;
-  background: rgba(43, 51, 80, 0.55);
-  color: var(--bone);
-  font: 15px/1.1 var(--sans);
-  cursor: pointer;
-}
-.decide-opt:hover,
-.decide-opt:focus-visible {
-  border-color: var(--acc);
-  outline: none;
-}
-.decide-opt.is-default {
-  border-color: rgba(219, 186, 124, 0.7);
-}
-.decide-opt.tone-safe {
-  background: rgba(77, 108, 153, 0.35);
-}
-.decide-opt.tone-go {
-  background: rgba(92, 11, 28, 0.55);
-}
-.decide-opt.is-picked {
-  border-color: var(--acc);
-  background: rgba(184, 148, 72, 0.35);
-}
-.decide-opt:disabled {
-  cursor: default;
-}
-.decide-label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.decide-key {
-  font: 11px/1 var(--num, var(--sans));
-  color: var(--dim);
-  border: 1px solid var(--dusk);
-  border-radius: 3px;
-  padding: 2px 4px;
-}
-.decide-auto {
-  font-size: 11px;
-  color: var(--acc);
-  opacity: 0.85;
-}
-@media (pointer: coarse), (max-width: 480px) {
+  /* ---- the prompt: a strip over the map's bottom edge, above the combat log */
+  .watch .decide-host {
+    position: absolute;
+    left: 50%;
+    bottom: calc(var(--watch-dock-h, 0px) + 12px);
+    transform: translateX(-50%);
+    z-index: 14;
+    width: min(500px, calc(100% - 24px));
+    pointer-events: none;
+  }
+  .decide {
+    pointer-events: auto;
+    display: grid;
+    gap: 6px;
+    padding: 8px 10px 10px;
+    border: 1px solid rgba(219, 186, 124, 0.45);
+    border-radius: 8px;
+    background: rgba(13, 12, 20, 0.88);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    color: var(--bone);
+    font: 14px/1.2 var(--sans);
+    animation: decide-in 160ms ease-out;
+  }
+  .decide.decided {
+    opacity: 0.55;
+    transition: opacity 500ms ease-in;
+  }
+  .decide-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .decide-title {
+    font: 600 13px/1 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--acc);
+    white-space: nowrap;
+  }
+  .decide-bar {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(164, 188, 214, 0.18);
+    overflow: hidden;
+  }
+  .decide-fill {
+    display: block;
+    height: 100%;
+    background: var(--acc);
+    transform-origin: left center;
+    transition: transform 60ms linear;
+  }
+  .decide.frozen .decide-fill {
+    background: var(--mist);
+  }
+  .decide-opts {
+    display: flex;
+    gap: 6px;
+  }
+  .decide-opt {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border: 1px solid var(--dusk);
+    border-radius: 6px;
+    background: rgba(43, 51, 80, 0.55);
+    color: var(--bone);
+    font: 15px/1.1 var(--sans);
+    cursor: pointer;
+  }
+  .decide-opt:hover,
+  .decide-opt:focus-visible {
+    border-color: var(--acc);
+    outline: none;
+  }
+  .decide-opt.is-default {
+    border-color: rgba(219, 186, 124, 0.7);
+  }
+  .decide-opt.tone-safe {
+    background: rgba(77, 108, 153, 0.35);
+  }
+  .decide-opt.tone-go {
+    background: rgba(92, 11, 28, 0.55);
+  }
+  .decide-opt.is-picked {
+    border-color: var(--acc);
+    background: rgba(184, 148, 72, 0.35);
+  }
+  .decide-opt:disabled {
+    cursor: default;
+  }
+  .decide-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .decide-key {
+    font: 11px/1 var(--num, var(--sans));
+    color: var(--dim);
+    border: 1px solid var(--dusk);
+    border-radius: 3px;
+    padding: 2px 4px;
+  }
+  .decide-auto {
+    font-size: 11px;
+    color: var(--acc);
+    opacity: 0.85;
+  }
+  @media (pointer: coarse), (max-width: 480px) {
+    .decide-key {
+      display: none;
+    }
+  }
+  .watch[data-deciding] .watch-messages > .ticker.beat {
+    visibility: hidden;
+  }
+  @keyframes decide-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  /* ---- the flag lane: one pill under the HUD — an icon and ≤ 3 words in the kind's tint */
+  .watch .watch-flag {
+    position: absolute;
+    top: calc(var(--hud-h, 64px) + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--flag, var(--dusk));
+    background: rgba(13, 12, 20, 0.78);
+    color: var(--flag-lit, var(--bone));
+    font: 600 13px/1.2 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+  }
+  .watch .watch-flag[hidden] {
     display: none;
   }
-}
-.watch[data-deciding] .watch-messages > .ticker.beat {
-  visibility: hidden;
-}
-@keyframes decide-in {
-  from {
+  .watch .watch-flag.show {
+    animation: flag-in 1800ms ease-out forwards;
+  }
+  .watch .watch-flag .ico {
+    width: 16px;
+    height: 16px;
+  }
+  .watch-flag[data-tone="danger"] {
+    --flag: var(--blood);
+    --flag-lit: #f08a92;
+  }
+  .watch-flag[data-tone="gold"] {
+    --flag: var(--gilt);
+    --flag-lit: var(--acc);
+  }
+  .watch-flag[data-tone="rare"] {
+    --flag: var(--r-legendary);
+    --flag-lit: var(--r-legendary-lit);
+  }
+  .watch-flag[data-tone="calm"] {
+    --flag: var(--moon);
+    --flag-lit: var(--mist);
+  }
+  @keyframes flag-in {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -4px);
+    }
+    10%,
+    80% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* ---- the boss chest: centred over the map, inside the kill's beat */
+  .watch .chest-host {
+    position: absolute;
+    inset: 0;
+    z-index: 13;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    padding-top: max(40px, 7%);
+    pointer-events: none;
+  }
+  .chest-reveal {
+    --size: min(260px, 46vmin);
+    --r-tint: var(--r-common-lit);
+    position: relative;
+    width: var(--size);
+    height: calc(var(--size) * 1.25);
+    display: grid;
+    place-items: center;
+    animation: chest-fade var(--end) linear forwards;
+  }
+  .chest-reveal.rarity-uncommon {
+    --r-tint: var(--r-uncommon-lit);
+  }
+  .chest-reveal.rarity-rare {
+    --r-tint: var(--r-rare-lit);
+  }
+  .chest-reveal.rarity-epic {
+    --r-tint: var(--r-epic-lit);
+  }
+  .chest-reveal.rarity-legendary {
+    --r-tint: var(--r-legendary-lit);
+  }
+  .chest-reveal > * {
+    grid-area: 1 / 1;
+  }
+  .chest-body {
+    position: relative;
+    width: 86%;
+    aspect-ratio: 1;
+    align-self: center;
+  }
+  .chest-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    opacity: 0;
+  }
+  .chest-reveal[data-state="closed"] .chest-frame.closed,
+  .chest-reveal[data-state="cracked"] .chest-frame.cracked,
+  .chest-reveal[data-state="open"] .chest-frame.open {
+    opacity: 1;
+  }
+  .chest-reveal[data-state="closed"] .chest-body {
+    animation: chest-shake 340ms ease-in-out 2;
+  }
+  .chest-rays,
+  .chest-ring {
+    width: 120%;
+    height: auto;
+    aspect-ratio: 1;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .chest-reveal[data-state="open"] .chest-rays {
+    opacity: 0.85;
+    animation: chest-rays 2400ms linear forwards;
+    mix-blend-mode: screen;
+  }
+  .chest-reveal[data-state="open"] .chest-ring {
+    opacity: 0.9;
+    animation: chest-ring 900ms ease-out forwards;
+    mix-blend-mode: screen;
+  }
+  .chest-sparks {
+    position: relative;
+    width: 0;
+    height: 0;
+  }
+  .chest-sparks .spark {
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    background-size: 400% 200%;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+  }
+  .chest-sparks .spark.coin {
+    background-position: calc(var(--k) * 33.33%) 0;
+  }
+  .chest-sparks .spark.glint {
+    background-position: calc(var(--k) * 33.33%) 100%;
+  }
+  .chest-sparks .spark.prim {
+    border-radius: 50%;
+    background: var(--acc);
+    width: 6px;
+    height: 6px;
+  }
+  .chest-sparks .spark.prim.glint {
+    background: var(--r-tint);
+  }
+  .chest-reveal[data-state="open"] .chest-sparks .spark {
+    animation: chest-spark 900ms ease-out forwards;
+  }
+  .chest-reward {
+    align-self: end;
+    justify-self: center;
     opacity: 0;
     transform: translateY(6px);
   }
-}
-
-/* ---- the flag lane: one pill under the HUD — an icon and ≤ 3 words in the kind's tint */
-.watch .watch-flag {
-  position: absolute;
-  top: calc(var(--hud-h, 64px) + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 12;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--flag, var(--dusk));
-  background: rgba(13, 12, 20, 0.78);
-  color: var(--flag-lit, var(--bone));
-  font: 600 13px/1.2 var(--sans);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  pointer-events: none;
-  white-space: nowrap;
-  opacity: 0;
-}
-.watch .watch-flag[hidden] {
-  display: none;
-}
-.watch .watch-flag.show {
-  animation: flag-in 1800ms ease-out forwards;
-}
-.watch .watch-flag .ico {
-  width: 16px;
-  height: 16px;
-}
-.watch-flag[data-tone="danger"] {
-  --flag: var(--blood);
-  --flag-lit: #f08a92;
-}
-.watch-flag[data-tone="gold"] {
-  --flag: var(--gilt);
-  --flag-lit: var(--acc);
-}
-.watch-flag[data-tone="rare"] {
-  --flag: var(--r-legendary);
-  --flag-lit: var(--r-legendary-lit);
-}
-.watch-flag[data-tone="calm"] {
-  --flag: var(--moon);
-  --flag-lit: var(--mist);
-}
-@keyframes flag-in {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -4px);
+  .chest-reward-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--r-tint);
+    background: rgba(13, 12, 20, 0.82);
+    color: var(--r-tint);
+    font: 600 14px/1.2 var(--sans);
+    white-space: nowrap;
   }
-  10%,
-  80% {
-    opacity: 1;
-    transform: translate(-50%, 0);
+  .chest-reward-line.dim {
+    color: var(--dim);
+    border-color: var(--dusk);
   }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* ---- the boss chest: centred over the map, inside the kill's beat */
-.watch .chest-host {
-  position: absolute;
-  inset: 0;
-  z-index: 13;
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  padding-top: max(40px, 7%);
-  pointer-events: none;
-}
-.chest-reveal {
-  --size: min(260px, 46vmin);
-  --r-tint: var(--r-common-lit);
-  position: relative;
-  width: var(--size);
-  height: calc(var(--size) * 1.25);
-  display: grid;
-  place-items: center;
-  animation: chest-fade var(--end) linear forwards;
-}
-.chest-reveal.rarity-uncommon {
-  --r-tint: var(--r-uncommon-lit);
-}
-.chest-reveal.rarity-rare {
-  --r-tint: var(--r-rare-lit);
-}
-.chest-reveal.rarity-epic {
-  --r-tint: var(--r-epic-lit);
-}
-.chest-reveal.rarity-legendary {
-  --r-tint: var(--r-legendary-lit);
-}
-.chest-reveal > * {
-  grid-area: 1 / 1;
-}
-.chest-body {
-  position: relative;
-  width: 86%;
-  aspect-ratio: 1;
-  align-self: center;
-}
-.chest-frame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-  opacity: 0;
-}
-.chest-reveal[data-state="closed"] .chest-frame.closed,
-.chest-reveal[data-state="cracked"] .chest-frame.cracked,
-.chest-reveal[data-state="open"] .chest-frame.open {
-  opacity: 1;
-}
-.chest-reveal[data-state="closed"] .chest-body {
-  animation: chest-shake 340ms ease-in-out 2;
-}
-.chest-rays,
-.chest-ring {
-  width: 120%;
-  height: auto;
-  aspect-ratio: 1;
-  opacity: 0;
-  pointer-events: none;
-}
-.chest-reveal[data-state="open"] .chest-rays {
-  opacity: 0.85;
-  animation: chest-rays 2400ms linear forwards;
-  mix-blend-mode: screen;
-}
-.chest-reveal[data-state="open"] .chest-ring {
-  opacity: 0.9;
-  animation: chest-ring 900ms ease-out forwards;
-  mix-blend-mode: screen;
-}
-.chest-sparks {
-  position: relative;
-  width: 0;
-  height: 0;
-}
-.chest-sparks .spark {
-  position: absolute;
-  left: -8px;
-  top: -8px;
-  width: 16px;
-  height: 16px;
-  opacity: 0;
-  background-size: 400% 200%;
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-}
-.chest-sparks .spark.coin {
-  background-position: calc(var(--k) * 33.33%) 0;
-}
-.chest-sparks .spark.glint {
-  background-position: calc(var(--k) * 33.33%) 100%;
-}
-.chest-sparks .spark.prim {
-  border-radius: 50%;
-  background: var(--acc);
-  width: 6px;
-  height: 6px;
-}
-.chest-sparks .spark.prim.glint {
-  background: var(--r-tint);
-}
-.chest-reveal[data-state="open"] .chest-sparks .spark {
-  animation: chest-spark 900ms ease-out forwards;
-}
-.chest-reward {
-  align-self: end;
-  justify-self: center;
-  opacity: 0;
-  transform: translateY(6px);
-}
-.chest-reward-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--r-tint);
-  background: rgba(13, 12, 20, 0.82);
-  color: var(--r-tint);
-  font: 600 14px/1.2 var(--sans);
-  white-space: nowrap;
-}
-.chest-reward-line.dim {
-  color: var(--dim);
-  border-color: var(--dusk);
-}
-.chest-gold {
-  color: var(--acc);
-}
-.chest-reveal .chest-reward {
-  animation: chest-reward 300ms ease-out var(--reward) forwards;
-}
-/* the code primitive: a box and a lid, a ring (a missing art id) */
-.chest-prim .box,
-.chest-prim .lid {
-  position: absolute;
-  left: 18%;
-  right: 18%;
-  border: 3px solid var(--gilt);
-  background: #5a3b1d;
-}
-.chest-prim .box {
-  top: 48%;
-  bottom: 18%;
-  border-radius: 0 0 4px 4px;
-}
-.chest-prim .lid {
-  top: 30%;
-  height: 18%;
-  border-radius: 8px 8px 0 0;
-  transform-origin: 0 100%;
-}
-.chest-prim.cracked .lid {
-  transform: rotate(-12deg);
-}
-.chest-prim.open .lid {
-  transform: rotate(-58deg) translateY(-6px);
-}
-.chest-prim-ring,
-.chest-prim-rays {
-  border-radius: 50%;
-  border: 3px solid var(--r-tint);
-  box-shadow: 0 0 18px var(--r-tint);
-}
-.chest-prim-rays {
-  border: 0;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--r-tint) 45%, transparent) 0%,
-    transparent 65%
-  );
-}
-/* still: reduced motion or effects off — the open chest and the reward, nothing moves */
-.chest-reveal.still {
-  animation: none;
-}
-.chest-reveal.still .chest-frame.open,
-.chest-reveal.still .chest-ring {
-  opacity: 1;
-}
-.chest-reveal.still .chest-rays,
-.chest-reveal.still .chest-sparks {
-  display: none;
-}
-.chest-reveal.still .chest-ring {
-  animation: none;
-  opacity: 0.7;
-}
-.chest-reveal.still .chest-reward {
-  animation: none;
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .chest-reveal,
-  .chest-reveal * {
-    animation: none !important;
+  .chest-gold {
+    color: var(--acc);
   }
   .chest-reveal .chest-reward {
-    opacity: 1;
-    transform: none;
+    animation: chest-reward 300ms ease-out var(--reward) forwards;
   }
-  .decide,
-  .watch .watch-flag.show {
+  /* the code primitive: a box and a lid, a ring (a missing art id) */
+  .chest-prim .box,
+  .chest-prim .lid {
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    border: 3px solid var(--gilt);
+    background: #5a3b1d;
+  }
+  .chest-prim .box {
+    top: 48%;
+    bottom: 18%;
+    border-radius: 0 0 4px 4px;
+  }
+  .chest-prim .lid {
+    top: 30%;
+    height: 18%;
+    border-radius: 8px 8px 0 0;
+    transform-origin: 0 100%;
+  }
+  .chest-prim.cracked .lid {
+    transform: rotate(-12deg);
+  }
+  .chest-prim.open .lid {
+    transform: rotate(-58deg) translateY(-6px);
+  }
+  .chest-prim-ring,
+  .chest-prim-rays {
+    border-radius: 50%;
+    border: 3px solid var(--r-tint);
+    box-shadow: 0 0 18px var(--r-tint);
+  }
+  .chest-prim-rays {
+    border: 0;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--r-tint) 45%, transparent) 0%,
+      transparent 65%
+    );
+  }
+  /* still: reduced motion or effects off — the open chest and the reward, nothing moves */
+  .chest-reveal.still {
+    animation: none;
+  }
+  .chest-reveal.still .chest-frame.open,
+  .chest-reveal.still .chest-ring {
+    opacity: 1;
+  }
+  .chest-reveal.still .chest-rays,
+  .chest-reveal.still .chest-sparks {
+    display: none;
+  }
+  .chest-reveal.still .chest-ring {
+    animation: none;
+    opacity: 0.7;
+  }
+  .chest-reveal.still .chest-reward {
     animation: none;
     opacity: 1;
-  }
-}
-@keyframes chest-shake {
-  25% {
-    transform: rotate(-3deg);
-  }
-  75% {
-    transform: rotate(3deg);
-  }
-}
-@keyframes chest-rays {
-  from {
-    transform: rotate(0deg) scale(0.6);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.85;
-  }
-  to {
-    transform: rotate(80deg) scale(1.05);
-    opacity: 0;
-  }
-}
-@keyframes chest-ring {
-  from {
-    transform: scale(0.3);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1.15);
-    opacity: 0;
-  }
-}
-@keyframes chest-spark {
-  0% {
-    opacity: 1;
-    transform: rotate(var(--a)) translateY(0) scale(0.6);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--a)) translateY(calc(-1 * var(--d))) scale(1);
-  }
-}
-@keyframes chest-reward {
-  to {
-    opacity: 1;
     transform: none;
   }
-}
-@keyframes chest-fade {
-  0%,
-  88% {
-    opacity: 1;
+  @media (prefers-reduced-motion: reduce) {
+    .chest-reveal,
+    .chest-reveal * {
+      animation: none !important;
+    }
+    .chest-reveal .chest-reward {
+      opacity: 1;
+      transform: none;
+    }
+    .decide,
+    .watch .watch-flag.show {
+      animation: none;
+      opacity: 1;
+    }
   }
-  100% {
-    opacity: 0;
+  @keyframes chest-shake {
+    25% {
+      transform: rotate(-3deg);
+    }
+    75% {
+      transform: rotate(3deg);
+    }
   }
-}
+  @keyframes chest-rays {
+    from {
+      transform: rotate(0deg) scale(0.6);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.85;
+    }
+    to {
+      transform: rotate(80deg) scale(1.05);
+      opacity: 0;
+    }
+  }
+  @keyframes chest-ring {
+    from {
+      transform: scale(0.3);
+      opacity: 1;
+    }
+    to {
+      transform: scale(1.15);
+      opacity: 0;
+    }
+  }
+  @keyframes chest-spark {
+    0% {
+      opacity: 1;
+      transform: rotate(var(--a)) translateY(0) scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(var(--a)) translateY(calc(-1 * var(--d))) scale(1);
+    }
+  }
+  @keyframes chest-reward {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes chest-fade {
+    0%,
+    88% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 
-/* ---- the milestone log: beside the run on a desktop, a fold under the map on a phone (fixed height: filling it moves nothing) */
-.watch .milestone-log {
-  margin: 6px 12px 0;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: rgba(23, 22, 34, 0.7);
-  color: var(--bone);
-  font: 13px/1.35 var(--sans);
-}
-.watch .milestone-log > summary {
-  cursor: pointer;
-  padding: 6px 10px;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--dim);
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.watch .milestone-log .ms-count {
-  color: var(--acc);
-}
-.watch .milestones {
-  list-style: none;
-  margin: 0;
-  padding: 0 10px 8px;
-  height: 132px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-.watch .milestones .ms {
-  display: grid;
-  grid-template-columns: 34px 16px 1fr;
-  align-items: baseline;
-  gap: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.watch .milestones .ms-depth {
-  color: var(--dim);
-}
-.watch .milestones .ms-ico {
-  color: var(--dim);
-  text-align: center;
-}
-.watch .milestones .tone-gold .ms-ico,
-.watch .milestones .tone-legendary .ms-ico {
-  color: var(--acc);
-}
-.watch .milestones .tone-danger .ms-ico {
-  color: #f08a92;
-}
-.watch .milestones .tone-rare .ms-ico {
-  color: var(--r-rare-lit);
-}
-.watch .milestones .tone-epic .ms-ico {
-  color: var(--r-epic-lit);
-}
-.watch .milestones .ms-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.watch .rules-col .milestone-log {
-  flex: none;
-  margin: 0;
-  background: rgba(13, 12, 20, 0.62);
-}
-.watch .rules-col .milestones {
-  height: 220px;
+  /* ---- the milestone log: beside the run on a desktop, a fold under the map on a phone (fixed height: filling it moves nothing) */
+  .watch .milestone-log {
+    margin: 6px 12px 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: rgba(23, 22, 34, 0.7);
+    color: var(--bone);
+    font: 13px/1.35 var(--sans);
+  }
+  .watch .milestone-log > summary {
+    cursor: pointer;
+    padding: 6px 10px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--dim);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .watch .milestone-log .ms-count {
+    color: var(--acc);
+  }
+  .watch .milestones {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px 8px;
+    height: 132px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .watch .milestones .ms {
+    display: grid;
+    grid-template-columns: 34px 16px 1fr;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .watch .milestones .ms-depth {
+    color: var(--dim);
+  }
+  .watch .milestones .ms-ico {
+    color: var(--dim);
+    text-align: center;
+  }
+  .watch .milestones .tone-gold .ms-ico,
+  .watch .milestones .tone-legendary .ms-ico {
+    color: var(--acc);
+  }
+  .watch .milestones .tone-danger .ms-ico {
+    color: #f08a92;
+  }
+  .watch .milestones .tone-rare .ms-ico {
+    color: var(--r-rare-lit);
+  }
+  .watch .milestones .tone-epic .ms-ico {
+    color: var(--r-epic-lit);
+  }
+  .watch .milestones .ms-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .watch .rules-col .milestone-log {
+    flex: none;
+    margin: 0;
+    background: rgba(13, 12, 20, 0.62);
+  }
+  .watch .rules-col .milestones {
+    height: 220px;
+  }
 }

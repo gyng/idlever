@@ -1,116 +1,119 @@
-.skill-icon {
-  display: inline-flex;
-  width: 32px;
-  height: 32px;
-  flex: 0 0 auto;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  background: #1c1b2b;
-  border: 1px solid #55647f;
-  box-shadow:
-    inset 0 1px #a4bcd640,
-    inset 0 -2px #0d0c14;
-  vertical-align: middle;
-  box-sizing: border-box;
-}
-.skill-icon[data-size="24"] {
-  width: 24px;
-  height: 24px;
-}
-.skill-icon[data-size="48"] {
-  width: 48px;
-  height: 48px;
-}
-.skill-icon > svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 1px;
-  box-sizing: border-box;
-}
-.skill-icon > .skill-paint {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.skill-icon .skill-mark {
-  fill: #eadfc5;
-  stroke: #0d0c14;
-  stroke-width: 1.7;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-.skill-icon .skill-mark.mist {
-  fill: #a4bcd6;
-}
-.skill-icon .skill-mark.ink {
-  fill: #0d0c14;
-}
-.skill-icon .skill-mark.line {
-  fill: none;
-  stroke: #eadfc5;
-  stroke-width: 3;
-}
-.skill-icon .skill-mark.line.mist {
-  stroke: #a4bcd6;
-}
-.skill-icon .skill-mark.line.ink {
-  stroke: #0d0c14;
-  stroke-width: 2.5;
-}
-.skill-icon[data-state="locked"] {
-  border-style: dashed;
-}
-.skill-icon[data-state="available"] {
-  border-color: #a4bcd6;
-}
-.skill-icon[data-state="learned"] {
-  border-color: #b89448;
-}
-.skill-icon::after {
-  z-index: 1;
-  position: absolute;
-  right: -2px;
-  bottom: -2px;
-  width: 9px;
-  height: 9px;
-  background: #1c1b2b;
-  border: 1px solid #55647f;
-  box-sizing: border-box;
-}
-.skill-icon[data-state="locked"]::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border: 2px solid #a4bcd6;
-  border-top-width: 3px;
-  border-radius: 3px 3px 0 0;
-}
-.skill-icon[data-state="available"]::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: #a4bcd6;
-  border: 1px solid #0d0c14;
-  transform: rotate(45deg);
-}
-.skill-icon[data-state="learned"]::after {
-  content: "";
-  border-color: #b89448;
-  background: #1c1b2b;
-}
-.skill-icon[data-state="learned"]::before {
-  content: "";
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  bottom: 1px;
-  width: 5px;
-  height: 3px;
-  border: solid #eadfc5;
-  border-width: 0 0 2px 2px;
-  transform: rotate(-45deg);
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  .skill-icon {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: #1c1b2b;
+    border: 1px solid #55647f;
+    box-shadow:
+      inset 0 1px #a4bcd640,
+      inset 0 -2px #0d0c14;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+  .skill-icon[data-size="24"] {
+    width: 24px;
+    height: 24px;
+  }
+  .skill-icon[data-size="48"] {
+    width: 48px;
+    height: 48px;
+  }
+  .skill-icon > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    box-sizing: border-box;
+  }
+  .skill-icon > .skill-paint {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .skill-icon .skill-mark {
+    fill: #eadfc5;
+    stroke: #0d0c14;
+    stroke-width: 1.7;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .skill-icon .skill-mark.mist {
+    fill: #a4bcd6;
+  }
+  .skill-icon .skill-mark.ink {
+    fill: #0d0c14;
+  }
+  .skill-icon .skill-mark.line {
+    fill: none;
+    stroke: #eadfc5;
+    stroke-width: 3;
+  }
+  .skill-icon .skill-mark.line.mist {
+    stroke: #a4bcd6;
+  }
+  .skill-icon .skill-mark.line.ink {
+    stroke: #0d0c14;
+    stroke-width: 2.5;
+  }
+  .skill-icon[data-state="locked"] {
+    border-style: dashed;
+  }
+  .skill-icon[data-state="available"] {
+    border-color: #a4bcd6;
+  }
+  .skill-icon[data-state="learned"] {
+    border-color: #b89448;
+  }
+  .skill-icon::after {
+    z-index: 1;
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 9px;
+    height: 9px;
+    background: #1c1b2b;
+    border: 1px solid #55647f;
+    box-sizing: border-box;
+  }
+  .skill-icon[data-state="locked"]::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 2px solid #a4bcd6;
+    border-top-width: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+  .skill-icon[data-state="available"]::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #a4bcd6;
+    border: 1px solid #0d0c14;
+    transform: rotate(45deg);
+  }
+  .skill-icon[data-state="learned"]::after {
+    content: "";
+    border-color: #b89448;
+    background: #1c1b2b;
+  }
+  .skill-icon[data-state="learned"]::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 1px;
+    width: 5px;
+    height: 3px;
+    border: solid #eadfc5;
+    border-width: 0 0 2px 2px;
+    transform: rotate(-45deg);
+  }
 }

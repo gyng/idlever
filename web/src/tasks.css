@@ -1,280 +1,283 @@
-/* Owner 2026-10-14: the task tracker over the town (ui/tasks.ts). Owner's reference: an MMO quest list — frameless text on the scene's
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* Owner 2026-10-14: the task tracker over the town (ui/tasks.ts). Owner's reference: an MMO quest list — frameless text on the scene's
    right edge, gold titles, indented objective lines, a soft ink shadow for legibility instead of a panel. Quiet: one gold pip for the
    recommended step; a finished group leaves. */
-.task-tracker {
-  position: absolute;
-  z-index: 3;
-  top: 52px;
-  right: 8px;
-  width: max-content;
-  /* Cut 229: px like its 12px text; a rem cap grew to 480px at a 200% root font and covered the scene's right-edge buildings */
-  max-width: min(240px, calc(100% - 16px));
-  max-height: calc(100% - 64px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: none;
-  /* Cut 229: frameless text over the town: only its controls take the pointer; the fade, headings and gaps pass taps to the
-     buildings beneath (home-residents found its group head over the house at 320px) */
-  pointer-events: none;
-  color: var(--bone);
-  font-size: 12px;
-  text-shadow:
-    0 1px 1px #000,
-    0 0 3px #000,
-    0 0 6px rgba(0, 0, 0, 0.8);
-}
-/* the panel, not a button: none of the shared control's chrome or press nudge */
-html body .task-tracker.game-control {
-  min-height: 0;
-  padding: 0 0 0 18px;
-  border: 0;
-  /* no panel: a soft ink fade from the right edge keeps the text legible over the busy town */
-  background: linear-gradient(90deg, transparent, rgba(8, 8, 14, 0.6) 18px, rgba(8, 8, 14, 0.6));
-  border-radius: 0 4px 4px 0;
-  mask-image: linear-gradient(180deg, #000 calc(100% - 10px), transparent);
-  box-shadow: none;
-}
-html body .task-tracker.game-control:active {
-  transform: none;
-  filter: none;
-}
-.task-summary,
-.task-entry,
-.task-door {
-  pointer-events: auto;
-}
-.task-tracker[hidden] {
-  display: none;
-}
-.task-summary {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 0 2px;
-  border-bottom: 1px solid rgba(184, 148, 72, 0.55);
-  cursor: pointer;
-  list-style: none;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--acc);
-}
-.task-summary::-webkit-details-marker {
-  display: none;
-}
-.task-summary::before {
-  content: "▸";
-  font-size: 10px;
-}
-.task-fold[open] > .task-summary::before {
-  content: "▾";
-}
-.task-count {
-  margin-left: auto;
-  color: var(--dim);
-  font-weight: normal;
-}
-.task-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 6px 2px 4px;
-}
-.task-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 0;
-  font-size: 10px;
-  font-weight: normal;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--dim);
-}
-.task-head small {
-  letter-spacing: 0;
-}
-.task-entry {
-  all: unset;
-  /* Cut262: `all: unset` inherited the tracker's pointer-events: none, so on desktop the town canvas took every task tap */
-  pointer-events: auto;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 12px minmax(0, 1fr);
-  column-gap: 4px;
-  width: 100%;
-  min-height: 44px;
-  padding: 1px 0;
-  cursor: pointer;
-  line-height: 1.25;
-}
-.task-entry > :not(.task-pip) {
-  grid-column: 2;
-}
-.task-title {
-  color: var(--acc);
-  font-weight: 600;
-  font-size: 1rem;
-}
-.task-entry:hover .task-title,
-.task-entry:focus-visible .task-title {
-  color: #f2d27a;
-}
-.task-entry:focus-visible {
-  outline: 1px solid var(--acc);
-  outline-offset: 2px;
-}
-.task-pip {
-  grid-row: 1;
-  align-self: center;
-  justify-self: center;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--dim);
-  border-radius: 50%;
-}
-.task-entry[data-state="ready"] .task-pip {
-  border-color: var(--acc);
-}
-.task-entry[data-recommended="true"] .task-pip {
-  background: var(--acc);
-  border-color: var(--acc);
-  box-shadow: 0 0 4px var(--gilt);
-}
-/* the lit rungs' doors (Cut 120 §8): small gold links under the Control entry */
-.task-doors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px 10px;
-  padding-left: 16px;
-}
-.task-door {
-  all: unset;
-  pointer-events: auto;
-  cursor: pointer;
-  min-height: 24px;
-  color: var(--acc);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
-}
-.task-door:focus-visible {
-  outline: 1px solid var(--acc);
-  outline-offset: 2px;
-}
-/* the objective line under its title: `- 3/5 sends` */
-.task-obj {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  color: var(--bone);
-  opacity: 0.85;
-  font-size: 11px;
-}
-.task-obj::before {
-  content: "- ";
-}
-/* Cut231 §5: the next worker's count toward its trigger — a thin bar under it, the time fallback quieter (`- 2/3 sends · or 6h`) */
-.task-eta {
-  color: var(--dim);
-}
-.task-bar {
-  display: block;
-  max-width: 120px;
-  height: 3px;
-  margin: 2px 0 1px;
-  border-radius: 2px;
-  background: rgba(77, 108, 153, 0.4);
-  overflow: hidden;
-}
-.task-bar .fill {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, var(--gilt), var(--acc));
-}
-.task-quest .quest-bar {
-  margin-top: 2px;
-}
-/* phone: folded by default, at the scene's foot-left (the top holds the pill and the forge's price); its foot follows the scrolling
-   well's visible floor (tasks.ts `--task-floor`); a dark wash keeps it legible over the busy town */
-@media (max-width: 1023px) {
   .task-tracker {
-    top: auto;
-    right: auto;
-    left: 8px;
-    bottom: calc(100% - var(--task-floor, 100%) + 56px);
-    max-height: calc(var(--task-floor, 100%) - 112px);
-    border-radius: 6px;
+    position: absolute;
+    z-index: 3;
+    top: 52px;
+    right: 8px;
+    width: max-content;
+    /* Cut 229: px like its 12px text; a rem cap grew to 480px at a 200% root font and covered the scene's right-edge buildings */
+    max-width: min(240px, calc(100% - 16px));
+    max-height: calc(100% - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    /* Cut 229: frameless text over the town: only its controls take the pointer; the fade, headings and gaps pass taps to the
+     buildings beneath (home-residents found its group head over the house at 320px) */
+    pointer-events: none;
+    color: var(--bone);
+    font-size: 12px;
+    text-shadow:
+      0 1px 1px #000,
+      0 0 3px #000,
+      0 0 6px rgba(0, 0, 0, 0.8);
   }
-  /* Cut 229: focus and scroll-into-view keep the town's targets above the chip (its foot sits 56px over the well's floor) */
-  main.camp .camp-well:has(> .town > .task-tracker:not([hidden])) {
-    scroll-padding-bottom: 104px;
-  }
+  /* the panel, not a button: none of the shared control's chrome or press nudge */
   html body .task-tracker.game-control {
-    /* a washed panel here, folded unless the player opens it: the panel takes its own taps */
+    min-height: 0;
+    padding: 0 0 0 18px;
+    border: 0;
+    /* no panel: a soft ink fade from the right edge keeps the text legible over the busy town */
+    background: linear-gradient(90deg, transparent, rgba(8, 8, 14, 0.6) 18px, rgba(8, 8, 14, 0.6));
+    border-radius: 0 4px 4px 0;
+    mask-image: linear-gradient(180deg, #000 calc(100% - 10px), transparent);
+    box-shadow: none;
+  }
+  html body .task-tracker.game-control:active {
+    transform: none;
+    filter: none;
+  }
+  .task-summary,
+  .task-entry,
+  .task-door {
     pointer-events: auto;
-    padding: 0;
-    background: rgba(13, 12, 20, 0.72);
-    mask-image: none;
+  }
+  .task-tracker[hidden] {
+    display: none;
   }
   .task-summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     min-height: 44px;
-    padding: 0 10px;
-    border-bottom: 0;
+    padding: 0 2px;
+    border-bottom: 1px solid rgba(184, 148, 72, 0.55);
+    cursor: pointer;
+    list-style: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--acc);
+  }
+  .task-summary::-webkit-details-marker {
+    display: none;
+  }
+  .task-summary::before {
+    content: "▸";
+    font-size: 10px;
+  }
+  .task-fold[open] > .task-summary::before {
+    content: "▾";
+  }
+  .task-count {
+    margin-left: auto;
+    color: var(--dim);
+    font-weight: normal;
   }
   .task-groups {
-    padding: 0 10px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px 2px 4px;
+  }
+  .task-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0;
+    font-size: 10px;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .task-head small {
+    letter-spacing: 0;
   }
   .task-entry {
+    all: unset;
+    /* Cut262: `all: unset` inherited the tracker's pointer-events: none, so on desktop the town canvas took every task tap */
+    pointer-events: auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 12px minmax(0, 1fr);
+    column-gap: 4px;
+    width: 100%;
     min-height: 44px;
+    padding: 1px 0;
+    cursor: pointer;
+    line-height: 1.25;
   }
-}
+  .task-entry > :not(.task-pip) {
+    grid-column: 2;
+  }
+  .task-title {
+    color: var(--acc);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .task-entry:hover .task-title,
+  .task-entry:focus-visible .task-title {
+    color: #f2d27a;
+  }
+  .task-entry:focus-visible {
+    outline: 1px solid var(--acc);
+    outline-offset: 2px;
+  }
+  .task-pip {
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--dim);
+    border-radius: 50%;
+  }
+  .task-entry[data-state="ready"] .task-pip {
+    border-color: var(--acc);
+  }
+  .task-entry[data-recommended="true"] .task-pip {
+    background: var(--acc);
+    border-color: var(--acc);
+    box-shadow: 0 0 4px var(--gilt);
+  }
+  /* the lit rungs' doors (Cut 120 §8): small gold links under the Control entry */
+  .task-doors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    padding-left: 16px;
+  }
+  .task-door {
+    all: unset;
+    pointer-events: auto;
+    cursor: pointer;
+    min-height: 24px;
+    color: var(--acc);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+  }
+  .task-door:focus-visible {
+    outline: 1px solid var(--acc);
+    outline-offset: 2px;
+  }
+  /* the objective line under its title: `- 3/5 sends` */
+  .task-obj {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: var(--bone);
+    opacity: 0.85;
+    font-size: 11px;
+  }
+  .task-obj::before {
+    content: "- ";
+  }
+  /* Cut231 §5: the next worker's count toward its trigger — a thin bar under it, the time fallback quieter (`- 2/3 sends · or 6h`) */
+  .task-eta {
+    color: var(--dim);
+  }
+  .task-bar {
+    display: block;
+    max-width: 120px;
+    height: 3px;
+    margin: 2px 0 1px;
+    border-radius: 2px;
+    background: rgba(77, 108, 153, 0.4);
+    overflow: hidden;
+  }
+  .task-bar .fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--gilt), var(--acc));
+  }
+  .task-quest .quest-bar {
+    margin-top: 2px;
+  }
+  /* phone: folded by default, at the scene's foot-left (the top holds the pill and the forge's price); its foot follows the scrolling
+   well's visible floor (tasks.ts `--task-floor`); a dark wash keeps it legible over the busy town */
+  @media (max-width: 1023px) {
+    .task-tracker {
+      top: auto;
+      right: auto;
+      left: 8px;
+      bottom: calc(100% - var(--task-floor, 100%) + 56px);
+      max-height: calc(var(--task-floor, 100%) - 112px);
+      border-radius: 6px;
+    }
+    /* Cut 229: focus and scroll-into-view keep the town's targets above the chip (its foot sits 56px over the well's floor) */
+    main.camp .camp-well:has(> .town > .task-tracker:not([hidden])) {
+      scroll-padding-bottom: 104px;
+    }
+    html body .task-tracker.game-control {
+      /* a washed panel here, folded unless the player opens it: the panel takes its own taps */
+      pointer-events: auto;
+      padding: 0;
+      background: rgba(13, 12, 20, 0.72);
+      mask-image: none;
+    }
+    .task-summary {
+      min-height: 44px;
+      padding: 0 10px;
+      border-bottom: 0;
+    }
+    .task-groups {
+      padding: 0 10px 8px;
+    }
+    .task-entry {
+      min-height: 44px;
+    }
+  }
 
-/* Cut262: a task that can be completed now — its pip fills and its title brightens, with a faint gold band behind it (quiet: no
+  /* Cut262: a task that can be completed now — its pip fills and its title brightens, with a faint gold band behind it (quiet: no
    motion). Its tap rings the building or control that completes it (`.task-point`, below). */
-.task-entry[data-can="true"] .task-pip {
-  background: var(--acc);
-  border-color: var(--acc);
-  box-shadow: 0 0 5px var(--gilt);
-}
-.task-entry[data-can="true"] {
-  background: linear-gradient(90deg, rgba(219, 186, 124, 0.16), transparent 85%);
-  border-radius: 3px;
-}
-.task-entry[data-can="true"] .task-title {
-  color: #f2d27a;
-}
-/* the surface a task's tap points at: a gold ring, two soft pulses, then gone (ui/tasks.ts pointAt) */
-.task-point,
-.town-hit.task-point {
-  outline: 2px solid var(--acc, #dbba7c);
-  outline-offset: 2px;
-  box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
-  animation: task-point 1.2s ease-in-out 2;
-}
-/* Cut272: a town target whose sprite carries the two pulses itself (render/town-glow.ts) wears no box ring */
-.town-hit.task-point.glow-pulse {
-  outline: none;
-  box-shadow: none;
-  animation: none;
-}
-@keyframes task-point {
-  0%,
-  100% {
-    outline-color: var(--acc, #dbba7c);
+  .task-entry[data-can="true"] .task-pip {
+    background: var(--acc);
+    border-color: var(--acc);
+    box-shadow: 0 0 5px var(--gilt);
+  }
+  .task-entry[data-can="true"] {
+    background: linear-gradient(90deg, rgba(219, 186, 124, 0.16), transparent 85%);
+    border-radius: 3px;
+  }
+  .task-entry[data-can="true"] .task-title {
+    color: #f2d27a;
+  }
+  /* the surface a task's tap points at: a gold ring, two soft pulses, then gone (ui/tasks.ts pointAt) */
+  .task-point,
+  .town-hit.task-point {
+    outline: 2px solid var(--acc, #dbba7c);
+    outline-offset: 2px;
     box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
+    animation: task-point 1.2s ease-in-out 2;
   }
-  50% {
-    outline-color: rgba(219, 186, 124, 0.35);
-    box-shadow: 0 0 4px rgba(184, 148, 72, 0.25);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .task-point {
+  /* Cut272: a town target whose sprite carries the two pulses itself (render/town-glow.ts) wears no box ring */
+  .town-hit.task-point.glow-pulse {
+    outline: none;
+    box-shadow: none;
     animation: none;
+  }
+  @keyframes task-point {
+    0%,
+    100% {
+      outline-color: var(--acc, #dbba7c);
+      box-shadow: 0 0 14px var(--gilt, rgba(184, 148, 72, 0.7));
+    }
+    50% {
+      outline-color: rgba(219, 186, 124, 0.35);
+      box-shadow: 0 0 4px rgba(184, 148, 72, 0.25);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .task-point {
+      animation: none;
+    }
   }
 }

@@ -1,0 +1,72 @@
+/* Cut316: THE design tokens. The only stylesheet that spells a colour (tools/style-lint.mjs).
+   Values are taken from the hero hub and the live view — the owner's reference screens:
+   one dark slate material, painted metal frames, filled bevelled slabs, gilt for selection, bone serif titles.
+   Prefix --k-. Legacy names (--acc, --dim, --tap, --ui-*) are aliases kept until the legacy layer is gone. */
+@layer tokens {
+  :root {
+    /* palette — docs/ART_DIRECTION.md §2 */
+    --k-ink: #0d0c14;
+    --k-umbra: #1c1b2b;
+    --k-dusk: #2b3350;
+    --k-moon: #4d6c99;
+    --k-mist: #a4bcd6;
+    --k-bone: #eadfc5;
+    --k-blood: #c01530;
+    --k-clot: #5c0b1c;
+    --k-ember: #e8923a;
+    --k-gilt: #b89448;
+    --k-gold: #dbba7c;
+
+    /* roles */
+    --k-bg: var(--k-ink);
+    --k-surface: #12111c; /* window body under the hatch */
+    --k-surface-hatch: #a4bcd607; /* the hub's diagonal grain */
+    --k-inset: #0a0912; /* wells, sections, inputs */
+    --k-raised: #232842; /* slab face */
+    --k-raised-hi: #2e3558; /* slab face, hover */
+    --k-raised-lo: #181c30; /* slab face, pressed */
+    --k-text: var(--k-bone);
+    --k-muted: #93a6c2; /* meta lines; ≥ 4.5:1 on --k-surface */
+    --k-faint: #6c7c97; /* disabled; decorative only */
+    --k-edge: #3b4466; /* hairline rules between rows */
+    --k-select: var(--k-gilt);
+    --k-focus: var(--k-mist);
+    --k-good: #8fc49a;
+    --k-warn: var(--k-ember);
+    --k-danger: #e0455a;
+    --k-shade: #05060ecc; /* drop shadow under windows */
+    --k-scrim: #05060e99; /* behind a modal */
+
+    /* type — five steps, nothing smaller than --k-fs-1 */
+    --k-display: "Grenze", Georgia, "Times New Roman", serif;
+    --k-body: "Fira Sans Extra Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+    --k-num: "Idlever Num", "Fira Sans Extra Condensed", "Arial Narrow", sans-serif;
+    --k-fs-1: 0.8125rem; /* 13px — meta, captions */
+    --k-fs-2: 0.9375rem; /* 15px — body, buttons */
+    --k-fs-3: 1.125rem; /* 18px — row titles, big buttons */
+    --k-fs-4: 1.5rem; /* 24px — section numerals, window titles on phone */
+    --k-fs-5: 2rem; /* 32px — window titles, hero names */
+
+    /* space and size */
+    --k-1: 0.25rem;
+    --k-2: 0.5rem;
+    --k-3: 0.75rem;
+    --k-4: 1rem;
+    --k-6: 1.5rem;
+    --k-8: 2rem;
+    --k-target: 2.75rem; /* 44px minimum hit area */
+    --k-slab-h: 3rem; /* default slab height */
+    --k-frame: 12px; /* painted frame thickness (windows) */
+    --k-frame-sm: 8px; /* painted frame thickness (slabs, tiles) */
+    --k-window-max: 46rem;
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --k-fs-1: 0.875rem;
+      --k-fs-2: 1rem;
+      --k-fs-3: 1.25rem;
+      --k-fs-4: 1.625rem;
+      --k-fs-5: 2.25rem;
+    }
+  }
+}

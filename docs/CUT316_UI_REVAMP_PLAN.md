@@ -153,6 +153,10 @@ captures what the owner likes.
 
 ## 4. Owner decisions before Phase A
 
+**Decided 2026-10-21:** "do your recommendations. redo the ui from scratch if
+needed." D1 drop parchment as a window skin; D2 merge duplicate routes; D3 label
+the phone console; D4 keep copy budgets; D5 CSS first on existing frame art.
+
 - **D1 Parchment.** Drop parchment as a window skin and keep it only as page
   content (recommended), or keep a journal material.
 - **D2 Navigation duplicates.** Crate/Loadouts/tent all open the hub; quest board

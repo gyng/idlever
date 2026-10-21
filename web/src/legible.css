@@ -1,69 +1,72 @@
-/* c30-legible (the owner, a new player: "I didn't understand why there were new buildings or why the run ended early"): a run's end
+/* Cut316: legacy layer — kit/screens layers win; migrate rules out, never in */
+@layer legacy {
+  /* c30-legible (the owner, a new player: "I didn't understand why there were new buildings or why the run ended early"): a run's end
    says why under its sum; a building's arrival says what raised it; the staked plot wears its tag. Palette only, quiet. */
-.watch .beat-why {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 12px;
-  padding: 0 12px;
-  text-align: center;
-  font: 600 17px/1.2 var(--sans);
-  color: var(--mist);
-  letter-spacing: 0.03em;
-  text-shadow: 0 2px 8px var(--ink);
-  opacity: 0;
-  transition: opacity 0.2s;
-  pointer-events: none;
-  z-index: 2;
-}
-.watch .beat-why.show {
-  opacity: 1;
-}
-.watch.has-why .ticker {
-  bottom: 36px;
-}
-.town-arrival {
-  position: absolute;
-  left: 50%;
-  top: 12px;
-  transform: translateX(-50%);
-  pointer-events: none;
-  white-space: nowrap;
-  padding: 3px 10px;
-  border-radius: 5px;
-  font: 700 17px/1.25 var(--sans);
-  color: var(--bone);
-  background: rgba(13, 12, 20, 0.72);
-  border: 1px solid var(--gilt);
-  opacity: 0;
-  transition: opacity 0.35s;
-  z-index: 3;
-}
-.town-arrival.show {
-  opacity: 1;
-}
-.town-arrival .arrow {
-  color: var(--gilt);
-}
-/* Arrival is marked by the scene's construction glint and label. The invisible
+  .watch .beat-why {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    padding: 0 12px;
+    text-align: center;
+    font: 600 17px/1.2 var(--sans);
+    color: var(--mist);
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 8px var(--ink);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .watch .beat-why.show {
+    opacity: 1;
+  }
+  .watch.has-why .ticker {
+    bottom: 36px;
+  }
+  .town-arrival {
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font: 700 17px/1.25 var(--sans);
+    color: var(--bone);
+    background: rgba(13, 12, 20, 0.72);
+    border: 1px solid var(--gilt);
+    opacity: 0;
+    transition: opacity 0.35s;
+    z-index: 3;
+  }
+  .town-arrival.show {
+    opacity: 1;
+  }
+  .town-arrival .arrow {
+    color: var(--gilt);
+  }
+  /* Arrival is marked by the scene's construction glint and label. The invisible
    building hit rectangle must not cast a UI box glow across the terrain. */
-.report .tile .tile-why {
-  grid-column: 1 / -1;
-  justify-self: end;
-  margin-top: 3px;
-  font: 600 14px/1.1 var(--sans);
-  color: var(--mist);
-  letter-spacing: 0.02em;
-}
-.town-tag:not(.flash) {
-  background: rgba(13, 12, 20, 0.66);
-  box-shadow: 0 0 0 1px rgba(138, 106, 42, 0.7);
-}
-.town-tag.flash {
-  box-shadow: 0 0 0 2px var(--gilt);
-}
-/* Cut264: the first clone's callout, over the vat (cool mist border, not the gilt of a construction) */
-.town-clone-callout {
-  border-color: #a4bcd6;
-  font-size: 15px;
+  .report .tile .tile-why {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: 3px;
+    font: 600 14px/1.1 var(--sans);
+    color: var(--mist);
+    letter-spacing: 0.02em;
+  }
+  .town-tag:not(.flash) {
+    background: rgba(13, 12, 20, 0.66);
+    box-shadow: 0 0 0 1px rgba(138, 106, 42, 0.7);
+  }
+  .town-tag.flash {
+    box-shadow: 0 0 0 2px var(--gilt);
+  }
+  /* Cut264: the first clone's callout, over the vat (cool mist border, not the gilt of a construction) */
+  .town-clone-callout {
+    border-color: #a4bcd6;
+    font-size: 15px;
+  }
 }
