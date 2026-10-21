@@ -88,3 +88,23 @@
     }
   }
 }
+@layer screens {
+  /* desktop: the town runs down to the frame's foot; the centre's chips and the console stand on it (was a dead band under the scene) */
+  @media (min-width: 1024px) {
+    main.camp .camp-well > .town {
+      grid-row: well-start / con-end;
+    }
+    main.camp
+      :is(
+        .camp-well > .return-pick,
+        .camp-well > .checkin-batch,
+        .camp-well > .control-ladder,
+        .camp-well > .camp-feats,
+        .well-wrap > .shaft-vs-host,
+        .well-wrap > .div-line
+      ) {
+      position: relative;
+      z-index: 3;
+    }
+  }
+}
