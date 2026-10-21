@@ -164,7 +164,10 @@ fn stray_due_depths(run: &Run, band: &Band, lost: &[Lost]) -> Vec<u32> {
 /// floor). A kind that cannot be placed here (a lock with no doors, a cave with no room)
 /// falls through to the next; the floor's word is what was placed.
 pub fn place_twist(run: &mut Run, lost: &[Lost]) {
-    let depth = run.depth;
+    let depth = run.content_depth();
+    if !run.band_floor() {
+        return; // Cut317 §3c: a band's twist stands on its last floor
+    }
     let Some(band) = band_on(run.route, depth) else { return };
     let mut rng = run.rng.side(crate::rng::hash_str("twist") ^ depth as u64);
     let last = run.last_twist.clone();
@@ -241,7 +244,7 @@ fn place_den(run: &mut Run) -> bool {
     }
     for p in chosen {
         let id = run.new_id();
-        let mut m = crate::endgame::spawn(run, id, "monkey", p, run.depth, true);
+        let mut m = crate::endgame::spawn(run, id, "monkey", p, run.content_depth(), true);
         m.situation = Some("den".into());
         m.dormant = true;
         m.awake = false;
@@ -308,7 +311,7 @@ fn place_lock(run: &mut Run) -> bool {
     run.monsters.retain(|m| !lock.contains(&m.pos) || m.ally);
     for p in &lock {
         let id = run.new_id();
-        let mut m = crate::endgame::spawn(run, id, "bloat", *p, run.depth, true);
+        let mut m = crate::endgame::spawn(run, id, "bloat", *p, run.content_depth(), true);
         m.situation = Some("lock".into());
         m.awake = false;
         run.monsters.push(m);
@@ -322,7 +325,7 @@ fn place_captive(run: &mut Run) -> bool {
     let down = run.floor.stairs_down;
     run.monsters.retain(|m| m.pos != down || m.ally);
     let id = run.new_id();
-    let mut m = Monster::spawn(id, "captive", down, run.depth);
+    let mut m = Monster::spawn(id, "captive", down, run.content_depth());
     m.situation = Some("captive".into());
     m.neutral = true;
     m.awake = false;
@@ -350,7 +353,7 @@ fn place_hunger(run: &mut Run) -> bool {
     for k in 0..3 {
         let Some(p) = spots.get(n / 4 + k * n / 4).copied() else { break };
         let id = run.new_id();
-        let mut m = crate::endgame::spawn(run, id, "wraith", p, run.depth, true);
+        let mut m = crate::endgame::spawn(run, id, "wraith", p, run.content_depth(), true);
         m.situation = Some("hunger".into());
         m.awake = true;
         m.last_seen = Some(hero);
@@ -673,7 +676,7 @@ pub const OMEN_PCT: u32 = 33;
 /// must not pass the Queen on a spring).
 pub fn omen(run: &mut Run, cx: &mut Ctx) {
     use crate::descent::Biome;
-    let depth = run.depth;
+    let depth = run.content_depth();
     if depth < 2 || run.route.boss(depth).is_some() {
         return;
     }

@@ -1,6 +1,6 @@
 //! The game: lineage state, the live run, and the public API mirrored by the wasm bridge.
 use crate::defs::{spawn_table, Cat};
-use crate::descent::{Biome, Grudge, Route, ENDING_DEPTH};
+use crate::descent::{Biome, Grudge, Route};
 use crate::gen::{generate, Floor};
 use crate::geom::Pos;
 use crate::hero::{mastery_card, xp_to_next, Class, Hero, Trait};
@@ -61,6 +61,8 @@ pub enum Input {
     Control(bool),
     /// Take control: the hero's next action.
     Act(Manual),
+    /// Cut317 §3.5: the sets the porter carried down at a camp (replayed into the town's sets before the tick).
+    Kit(Vec<RuleSet>, usize),
 }
 
 /// Take control: one hand-chosen action — a step (dx, dy: a foe there is attacked), a verb as the rules write
@@ -221,6 +223,22 @@ pub const REMEMBER_ACTIONS: u32 = 10;
 /// (tier `return`, yield ×0: a stalemate is not a policy; the DEFAULT set must yield nothing
 /// over 8 h, and a stall that kept the return's share paid it). Cut 3: a D30 run needs ~75 000.
 pub const MAX_TURNS_PER_RUN: u32 = 120_000;
+/// Cut317 §3c: floors one descent spans (the content to the bottom) at the stretch in force.
+pub fn lap_floors() -> u32 { (crate::descent::ENDING_DEPTH - 1) * crate::balance::get().expedition.stretch.max(1) }
+/// Cut317 §3c: descents past the first bottom a floor lies (each a tier harder; 0 without laps).
+pub fn lap_of(floor: u32) -> u32 {
+    if crate::balance::get().expedition.laps { floor.saturating_sub(1) / lap_floors() } else { 0 }
+}
+/// Cut317 §3c: a floor's content depth.
+pub fn content_of(floor: u32) -> u32 {
+    let s = crate::balance::get().expedition.stretch.max(1);
+    floor.saturating_sub(lap_of(floor) * lap_floors()).div_ceil(s)
+}
+/// Cut317 §3c: a floor is its content depth's last (the one its single events stand on).
+pub fn band_floor(floor: u32) -> bool {
+    let s = crate::balance::get().expedition.stretch.max(1);
+    floor.saturating_sub(lap_of(floor) * lap_floors()).is_multiple_of(s)
+}
 /// Cut317: the run cap in force — the shipping `MAX_TURNS_PER_RUN`, or an expedition profile's longer net.
 #[inline]
 pub fn run_cap() -> u32 { crate::balance::get().expedition.run_cap_ticks }
@@ -546,6 +564,25 @@ pub struct Run {
     pub progress_mark: (u32, u32),
     #[serde(default, skip_serializing_if = "is_zero_u32")]
     pub progress_at: u32,
+    /// Cut317 §3.3: the porter meets him at camps (hired at the send); the last camp's turn (0: the send), camps made,
+    /// and the turn the camp's rest ends.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub porter: bool,
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub camp_at: u32,
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub camps: u32,
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub camp_until: u32,
+    /// Cut317: he stands in a camp (the safe room between two floors).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub in_camp: bool,
+    /// Cut317 §3.5: a porter camp was made this tick; the kit renews before the next (`Game::kit_at_camp`).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub kit_due: bool,
+    /// Cut317 §3c: bottoms dived past on laps this run (each made the run a tier harder).
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub bottoms: u32,
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub wall_seen: bool,
     /// Cut 29 §3: the run's meters (the run, the fight in progress; `meters.rs`) — real runs only.
@@ -1234,8 +1271,15 @@ impl Run {
         self.next_item_id
     }
     pub fn biome(&self) -> Biome {
-        self.route.biome(self.depth)
+        self.route.biome(self.content_depth())
     }
+    /// Cut317 §3c: the depth this floor's content is generated and scaled as. `depth` is the floor — shown, recorded,
+    /// lit as a stone. With the stretch a content depth spans `stretch` floors; each lap past the bottom starts the
+    /// content over. Shipping (stretch 1, no laps): the floor itself.
+    pub fn content_depth(&self) -> u32 { content_of(self.depth) }
+    /// Cut317 §3c: the floor that holds its content depth's single events (boss, lieutenant, set pieces): the band's
+    /// last. Shipping: every floor.
+    pub fn band_floor(&self) -> bool { band_floor(self.depth) }
     pub fn allies(&self) -> impl Iterator<Item = &Monster> {
         self.monsters.iter().filter(|m| m.ally && m.hp > 0)
     }
@@ -1606,6 +1650,10 @@ pub struct LineageState {
     /// Queue item 40: the purse's earned and spent on the town clock (`rates`), for its growth rate.
     #[serde(default, skip_serializing_if = "crate::rates::GoldRate::is_empty")]
     pub gold_rate: crate::rates::GoldRate,
+    /// Cut317 §3.5: the sets (and active one) the hero in the dungeon plays on an expedition — taken at the send,
+    /// renewed from `sets` at each porter camp. An edit in town waits for the next camp (`Game::kit_at_camp`).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub carried_sets: Option<(Vec<RuleSet>, usize)>,
     // Cut 9
     /// §6: the (threat, resolution) pairs of the last `REEL_ABSENCES` reels, oldest first —
     /// the next reel skips them.
@@ -2091,6 +2139,7 @@ impl LineageState {
             gold_ledger: Vec::new(),
             gold_tally: BTreeMap::new(),
             gold_rate: Default::default(),
+            carried_sets: None,
             reel_pairs: Vec::new(),
             trait_offer: offer.to_vec(),
             heirs: crate::traits::fresh(),
@@ -3677,6 +3726,10 @@ impl Game {
                         Input::Control(on) => { let _ = g.take_control(*on); }
                         Input::Act(a) => { let _ = g.act(a.clone()); }
                         Input::Bail => g.bail(),
+                        Input::Kit(sets, active) => {
+                            g.lineage.sets = sets.clone();
+                            g.lineage.active_set = *active;
+                        }
                     }
                 }
                 // blind b58b431 (B: a Lurker Queen kill read `not held`): a foe seen and slain between the
@@ -4011,6 +4064,22 @@ impl Game {
     }
 
     /// RUNS_UI: an input the live run took, on its capsule (replayed at its tick).
+    /// Cut317 §3.5: the porter's camp brings the town's sets down — the kit renews before the next tick, and a change
+    /// is recorded on the run's capsule so its replay plays the same rows from the same tick.
+    fn kit_at_camp(&mut self) {
+        let Some(run) = self.run.as_mut() else { return };
+        if !run.kit_due {
+            return;
+        }
+        run.kit_due = false;
+        let (id, t) = (run.id, run.turn);
+        let now = (self.lineage.sets.clone(), self.lineage.active_set);
+        if self.lineage.carried_sets.as_ref() != Some(&now) {
+            self.lineage.carried_sets = Some(now.clone());
+            self.input(id, t, Input::Kit(now.0, now.1));
+        }
+    }
+
     pub(crate) fn input(&mut self, id: u32, t: u32, inp: Input) {
         if let Some(c) = self.capsules.0.iter_mut().rev().find(|c| c.id == id) {
             c.inputs.push((t, inp));
@@ -4269,7 +4338,7 @@ impl Game {
         let wanted = goal.unwrap_or(self.lineage.start.max(1));
         let mut rng = Rng::new(seed);
         let route = self.lineage.rules().route();
-        let floor = generate(&mut rng, route.biome(start), start);
+        let floor = generate(&mut rng, route.biome(content_of(start)), content_of(start));
         let mut hero = Hero::new(self.lineage.class, floor.stairs_up);
         hero.apply_level(self.lineage.class_level());
         crate::legacy::apply(&self.lineage, &mut hero);
@@ -4424,6 +4493,13 @@ impl Game {
             retreat_at: 0,
             progress_mark: (0, 0),
             progress_at: 0,
+            porter: crate::balance::get().expedition.on && crate::tree::porter(&self.lineage),
+            camp_at: 0,
+            camps: 0,
+            camp_until: 0,
+            in_camp: false,
+            kit_due: false,
+            bottoms: 0,
             wall_seen: false,
             route2: self.lineage.unlocks.contains("route2"),
             tamed_grudges: Vec::new(),
@@ -4650,6 +4726,8 @@ impl Game {
         if !self.sim {
             crate::honours::at_send(&mut run, &self.lineage);
         }
+        // Cut317 §3.5: an expedition carries its kit down; town edits reach it at porter camps
+        self.lineage.carried_sets = crate::balance::get().expedition.on.then(|| (self.lineage.sets.clone(), self.lineage.active_set));
         self.run = Some(run);
         if let Some(coins) = paid {
             let d = self.run.as_ref().map_or(1, |r| r.depth);
@@ -4744,18 +4822,22 @@ impl Game {
     pub fn ctx(&mut self) -> (&mut Run, Ctx<'_>) {
         let Game { run, lineage, events, sim, prov, row_tally, .. } = self;
         let run = run.as_mut().expect("no live run");
-        let set = lineage.active_set.min(lineage.sets.len() - 1);
+        // Cut317 §3.5: an expedition plays the kit it carries, not the town's sets as they are edited
+        let (sets, set) = match &lineage.carried_sets {
+            Some((s, a)) if !s.is_empty() => (s.as_slice(), (*a).min(s.len() - 1)),
+            _ => (lineage.sets.as_slice(), lineage.active_set.min(lineage.sets.len() - 1)),
+        };
         let town=&mut *lineage.town;
         let cx = Ctx {
             vault_pref: &lineage.vault_pref,
             lost: &lineage.lost,
-            sets: &lineage.sets,
+            sets,
             active_set: set,
             trophies: &lineage.trophies,
             facts: &mut lineage.facts,
             kill_counts: &mut lineage.kill_counts,
             flavours: &lineage.flavours,
-            rules: &lineage.sets[set],
+            rules: &sets[set],
             unlocks: &lineage.unlocks,
             grudges: &lineage.grudges,
             forge: &lineage.forge,
@@ -4912,6 +4994,7 @@ impl Game {
         if self.run.as_ref().is_none_or(|r| r.over.is_some()) {
             return;
         }
+        self.kit_at_camp();
         crate::armour_sets::departure(self);
         // Take control is the watched run's alone: a sim (a forecast, a verdict's replay) or an absence plays the rules
         if (self.sim || self.lineage.in_absence) && self.run.as_ref().is_some_and(|r| r.manual) {
@@ -4988,10 +5071,14 @@ impl Game {
             crate::turn::end_run(run, &mut cx, ExitTier::Return);
         }
         self.lineage.total_turns += 1;
-        if self.run.as_ref().unwrap().depth >= ENDING_DEPTH {
+        // Cut317 §3c: the bottom reached (`Run.ended`), or dived past on laps (`Run.bottoms`): each tier passed completes
+        let (ended, bottoms, tier) = self.run.as_ref().map_or((false, 0, 0), |r| (r.ended || content_of(r.depth) >= crate::descent::ENDING_DEPTH, r.bottoms, r.difficulty));
+        if ended || bottoms > 0 {
             self.lineage.ended = true;
             if let Some(p) = &mut self.lineage.endgame {
-                let _ = p.complete(self.run.as_ref().unwrap().difficulty);
+                for t in tier - bottoms..tier + u32::from(ended) {
+                    let _ = p.complete(t);
+                }
             }
             let v = self.lineage.variant.clone();
             if !v.is_empty() && !self.lineage.ascended.contains(&v) {
@@ -5331,6 +5418,7 @@ impl Game {
     pub fn finish_run(&mut self) -> Option<RunOutcome> {
         let class_stage_before=crate::class_tree::earned_stage(&self.lineage);
         let run = self.run.take()?;
+        self.lineage.carried_sets = None;
         self.capsules.1 = false;   // (its capsule stays held in memory; the save carries none but a band boss's kill)
         if !self.sim && run.kills.iter().any(|(_, k, _)| !k.starts_with("spectral_") && crate::defs::monster_def(k).boss) {
             self.capsules.keep_kill(run.id);
@@ -5654,7 +5742,7 @@ impl Game {
         // watched bank is worth half again (presence, inside the 1.5–3× band; offline unchanged).
         // Cut 7: XP is keyed on the content depth (`descent::tier_depth`), so a Fens floor is
         // worth what it was before the Warrens grew three floors.
-        let raw: u32 = run.kills.iter().map(|(_, _, d)| 2 + crate::descent::tier_depth(*d)).sum::<u32>() / 4 + 3 * crate::descent::tier_depth(run.max_depth);
+        let raw: u32 = run.kills.iter().map(|(_, _, d)| 2 + crate::descent::tier_depth(content_of(*d))).sum::<u32>() / 4 + 3 * crate::descent::tier_depth(content_of(run.max_depth));
         let mut xp = raw * pct as u32 / 100;
         if self.watched && !self.sim && tier == ExitTier::Bank {
             xp += xp / 2;
@@ -7196,7 +7284,9 @@ pub fn kill_value(kind: &str) -> u32 {
 
 /// Fill a freshly generated floor with monsters and items for the run's depth.
 pub fn populate_floor(run: &mut Run, grudges: &[Grudge], forge: &BTreeMap<String, ForgeRow>, hunter: Option<&Grudge>) {
-    let depth = run.depth;
+    // Cut317 §3c: the floor's content; its single events (boss, lieutenant) stand on the band's last floor; grudges
+    // remember floors
+    let (depth, floor) = (run.content_depth(), run.depth);
     let biome = run.biome();
     let mut open = run.floor.open_tiles();
     let hero = run.hero.pos;
@@ -7252,7 +7342,7 @@ pub fn populate_floor(run: &mut Run, grudges: &[Grudge], forge: &BTreeMap<String
     // way (he holds the stairs), with goblins round him.
     // Cut 26 §1: the route's — a biome's boss on the last floor of the band it sits in, the
     // Captain on the Burrows' first floor.
-    if let Some(boss) = run.route.boss(depth).or_else(|| run.route.lieutenant(depth)) {
+    if let Some(boss) = run.band_floor().then(|| run.route.boss(depth).or_else(|| run.route.lieutenant(depth))).flatten() {
         let near: Vec<Pos> = run
             .floor
             .open_tiles()
@@ -7289,7 +7379,7 @@ pub fn populate_floor(run: &mut Run, grudges: &[Grudge], forge: &BTreeMap<String
     // from D3, awake and already on the hero's trail.
     // Cut 24 §2 (AK: `Ulak is avenged.`, then Ulak again): an avenged grudge retires for good.
     let hunted = hunter.filter(|h| depth >= 3 && !h.avenged && !h.tamed);
-    for g in grudges.iter().filter(|g| g.lives_on(depth, biome) && !g.avenged && !g.tamed).chain(hunted) {
+    for g in grudges.iter().filter(|g| g.lives_on(floor, biome) && !g.avenged && !g.tamed).chain(hunted) {
         let pos = take(&mut run.rng, &open, &mut cursor);
         if run.occupied(pos) {
             continue;
@@ -7478,7 +7568,7 @@ pub fn spawn_party(run: &mut Run, party: &[Companion]) {
         let id = run.new_id();
         let mut m = companion_monster(id, c, q);
         // A waystone enters this floor directly; match the health normal descent gives here.
-        m.max_hp = pet_max_hp(c, run.depth);
+        m.max_hp = pet_max_hp(c, run.content_depth());
         m.hp = m.max_hp;
         run.monsters.push(m);
         let mut rec = c.clone();
@@ -7576,7 +7666,7 @@ pub fn place_situations(run: &mut Run, lost: &[Lost]) {
     if run.floor.rooms.is_empty() {
         return;
     }
-    let depth = run.depth;
+    let depth = run.content_depth();
     // A side stream: the floor's own rng is untouched by what the situations draw.
     let mut rng = run.rng.side(hash_str("situations") ^ depth as u64);
     let mut n = if depth == 1 { 1 } else { rng.chance(80) as usize };
@@ -7692,7 +7782,7 @@ fn room_interior(run: &Run, ri: usize) -> Option<Pos> {
 /// Returns whether it was placed (a floor without a free room places nothing).
 pub fn place_room_kind(run: &mut Run, rng: &mut Rng, kind: &str, near: bool, used: &mut Vec<usize>) -> bool {
     use crate::tiles::Tile;
-    let depth = run.depth;
+    let depth = run.content_depth();
     let Some(p) = situation_spot(run, rng, near, used) else { return false };
     // Nothing else stands on the tile (monsters and items may have landed there).
     run.items.retain(|fi| fi.pos != p);
@@ -7741,7 +7831,7 @@ pub fn place_room_kind(run: &mut Run, rng: &mut Rng, kind: &str, near: bool, use
 pub fn place_stray(run: &mut Run, rng: &mut Rng, kind: &str, name: &str, used: &mut Vec<usize>) -> bool {
     let Some(p) = situation_spot(run, rng, false, used) else { return false };
     let id = run.new_id();
-    let mut m = Monster::spawn(id, kind, p, run.depth);
+    let mut m = Monster::spawn(id, kind, p, run.content_depth());
     m.stray = true;
     m.name = Some(name.to_string());
     m.level = 1;

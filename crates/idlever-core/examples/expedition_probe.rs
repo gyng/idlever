@@ -20,6 +20,8 @@ fn main() {
     let mut purse = g.lineage.gold;
     let mut timed = false;
     let mut why = String::new();
+    let mut camps = (0u32, 0i32);
+    let mut deep = (0u32, 0u32);
     let counts = |g: &Game| {
         (
             g.lineage.runs_banked,
@@ -149,6 +151,8 @@ fn main() {
                 Some(c) if c.0 == r.id => {
                     c.3 = c.3.max(r.depth);
                     timed = r.timed_out;
+                    camps = (r.camps, r.secured);
+                    deep = (r.content_depth(), r.bottoms);
                     if let Some(i) = r.exit_row.or(r.homeward) {
                         let set =
                             &g.lineage.sets[g.lineage.active_set.min(g.lineage.sets.len() - 1)];
@@ -180,12 +184,21 @@ fn main() {
             lens.push(secs);
             let floors = (to + 1).saturating_sub(from).max(1);
             println!(
-                "{id:>4} {:>6.1} {from:>5} {to:>5} {:>7.1} {:>9.1} {exit}{} purse{gold:+}",
+                "{id:>4} {:>6.1} {from:>5} {to:>5} {:>7.1} {:>9.1} {exit}{} purse{gold:+} camps {} secured {} content D{} bottoms {}",
                 at as f64 / 3600.0,
                 secs as f64 / 60.0,
                 secs as f64 / 60.0 / f64::from(floors),
-                if timed { " (cap)" } else { "" }
+                if timed { " (cap)" } else { "" },
+                camps.0,
+                camps.1,
+                deep.0,
+                deep.1
             );
+            if std::env::var("PROBE_WHY").is_ok() {
+                if let Some(x) = &g.last_exit {
+                    println!("       exit: {} · cause {:?} · reason {:?}", x.text.chars().take(160).collect::<String>(), x.cause, x.reason);
+                }
+            }
             if !why.is_empty() {
                 println!("       {}", std::mem::take(&mut why));
             }

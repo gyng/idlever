@@ -69,9 +69,10 @@ camps, and ends the expedition by dying, by a deliberate bank, by running out of
 2. **Town time is short.** The alive-run rest falls from 20–30 min to ◇ 2–5 min (resupply). Death recovery is
    unchanged (Cut315: 15 s early, 20 min deep); dying deep costs time. Target ◇: after the porter, a hero is in
    the dungeon ≥ 80 % of wall time.
-3. **Camps by time, not floor count** (owner: "3 floors depends on floor size"). The hero makes camp at the first
-   stairs after ◇ 10 min of diving since the last camp (or the departure), so big floors space camps out and a camp
-   always sits on a floor boundary. He rests ◇ 30 s there. With the porter hired, the porter meets
+3. **Camps by time, not floor count** (owner: "3 floors depends on floor size"), **a rest level** (owner: "camps
+   I'm feeling it's like a rest level · safe zone in the dungeon"). After ◇ 10 min of diving since the last camp
+   (or the departure), the next stairs down lead to a camp: a safe room between two floors (no new depth, nothing
+   hostile, no wandering spawns). He heals whole at the fire and rests ◇ 30 s, then takes its stairs on. With the porter hired, the porter meets
    him there: the whole carry goes to the bank (secured: it can never be lost again) and queued changes come
    down. Before the porter, a camp is only a rest; the record-floor checkpoint behaves as today.
 4. **Death costs what was found since the last camp, plus recovery time.** Nothing else (owner left this open; this keeps
@@ -117,6 +118,21 @@ thread", losing the carry since the last record floor. In `earned-gunner-home`, 
 | `earned-gunner-home` | 7 · 200 min (5 capped) · 85 % | 23 · 68 min · 82 % |
 | `earned-first-ascension-clear` | 59 · 4.5 min · 18 % | 109 · 5.9 min · 44 % |
 
+## 3b'. Phases 2–3 built (2026-10-22)
+
+- **Camps** (`turn::enter_camp`, `gen::camp_floor`): a 13×7 lit room, up-stairs west, down-stairs east. Entering
+  heals him whole, clears poison, and with the porter (`Run.porter`, hired at the send) secures the whole carry
+  (`secure_carry`). The camp is a safe zone: `tick_alert` spawns nothing there, and he sits out `camp_rest_ticks`
+  before the chores take the stairs. `Ev::Descend { biome: "camp" }` marks it for the client.
+- **Queued edits** (`LineageState.carried_sets`, `Game::kit_at_camp`): an expedition plays the sets it left with.
+  Edits in town change `sets` only; at each porter camp the carried sets renew from the town's before the next
+  tick, recorded as `Input::Kit` on the run's capsule so the replay applies the same rows at the same tick.
+- Tests (`tests_cut317.rs`, a thread-local test profile): shipping has no expeditions; expeditions start at D1;
+  camps are safe and banked; no run approaches the shipping cap; whole = sliced absence (byte-identical save);
+  an edit waits for the next porter camp, then applies, and the run's replay hash equals its live events.
+- Probe, 24 h: gunner 16 expeditions · median 84 min · 90 % in dungeon · 5–6 camps each; first-ascension 24 ·
+  49 min · 91 %.
+
 ## 3c. Depth model (shared by "dive past the King" and "stretch to D99")
 
 Today one field, `Run.depth`, is both the floor number the player sees and records, and the depth content reads
@@ -128,9 +144,57 @@ the run (`turn::descend`, `ENDING_DEPTH`). Both owner picks need the two separat
   ⌈floor / 3⌉ (three floors a band, the boss on the band's last). Past the bottom, the tier rises by one and the
   content depth restarts at D1, harder (the numbered descents' tier bonus).
 
-Plan: introduce `content_depth()` / `tier()` on `Run`, move content reads onto them, then keep records,
-stones, displays and gates on the floor. Its own phase, with its own gates; a refactor that leaves shipping
-byte-identical first (stretch ×1, no laps), then the profile turns it on.
+Survey (2026-10-22): `descent::tier_depth` already maps a depth to "the content depth" for stat, group, item
+and XP scaling, so the new accessor feeds it. Content flows through five chokepoints: `Run::biome`, `descend` /
+the first floor's `generate`, `populate_floor`'s `let depth`, `place_situations` / `place_twist` / omen, and
+about 15 mid-floor spawn calls that pass `run.depth`. Then there are about 8–10 single-floor decisions (boss,
+lieutenant, flagship situation, grudges, guests, bounty, the biome-change event), each of which must happen on
+exactly one of a band's three floors. About 40–60 ambiguous sites compare boss floors, forks or waystones with
+records; one floor-from-content helper on `Route` cuts these to about 5. About 25 floor-space literals need a
+rescale-or-keep decision each (unlock gates, `QUEEN_PACK_DEPTH`, `DEEP_FROM`, class-tree stages…), and about 10
+economy sites are keyed on the record. The ~250 pure floor sites stay. The tier bonus lives only in
+`endgame::spawn`; four direct `Monster::spawn` sites skip it today.
+
+Plan:
+1. `Run::content_depth()` (= `depth` at stretch 1, lap 0) and `Run::band_floor()` (a band's last floor, the
+   one that holds its single events: always true at stretch 1). Route the chokepoints and single events through
+   them; shipping stays byte-identical (all core tests, replay hashes, gold settlements).
+2. `Route` floor-from-content helpers for bosses, forks and waystones; literal gates expressed in content depth
+   and converted where they meet records.
+3. The profile turns on `stretch: 3` and `laps` (past the bottom: tier + 1, content back to D1, floors count on).
+
+## 3d. Depth step 1 and the stretch on (2026-10-22)
+
+`engine::{content_of, band_floor, lap_of, lap_floors}` and `Run::{content_depth, band_floor}`; shipping (stretch
+1, no laps) byte-identical (1119 core tests, replay hashes, settlements). Content now reads the content depth:
+
+- generation, biome and the first floor
+- `populate_floor`, its spawns and budgets
+- situations, omens and room kinds
+- mid-floor, alert and rest spawns
+- pet HP
+- run XP
+- the rows' `depth>=` condition (rows are written against the content: the packages' D19 Foundry)
+
+Boss and lieutenant stand on a band's last floor, and twists too. Grudges, bones and texts stay on floors. The
+bottom is the content's: with laps the content wraps to D1, the run's difficulty rises (`Run.bottoms`), and
+each tier passed completes.
+
+Profile (stretch 3, laps on), 24 h:
+
+| Save | Expeditions | Median | Deepest | In dungeon |
+| --- | --- | --- | --- | --- |
+| first-ascension | 7 | 233 min | D84 (content D28) | 97 % |
+| gunner | 9 | 80 min | D84 | 96 % |
+
+The first-ascension expeditions end on "hurt · went home" or "no heals · banked". The gunner still meets
+stalemates at content D5/D11/D24/D28, which the progress clock ends (tuning).
+
+Before the profile could stretch, the rows' `depth>=` read the floor. Deep tactics then fired on floor 24 against
+the Warlord (content D8), whose HP never moved, so he "repelled" every expedition there. Hence the content
+condition. Open for step 2: the gates in floor space (class stages D23/D28/29/33, the specialization's D23,
+legacy nodes, boss-record comparisons, unlock depths, the forge unit, the recovery curve) scale to floors, and
+the pen shows `depth ≥` in the player's floors.
 
 ## 4. Gates
 

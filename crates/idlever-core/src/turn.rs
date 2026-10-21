@@ -309,6 +309,69 @@ fn progress_clock(run: &mut Run, cx: &mut Ctx) {
     }
 }
 
+/// Cut317 §3.3 (owner: "camps I'm feeling it's like a rest level · safe zone in the dungeon"): a camp, entered in
+/// place of the next floor once `camp_every_ticks` have passed since the last (or the send) — timed, not counted, so
+/// big floors space camps out. A room with nothing in it (`gen::camp_floor`), under the floor he left (no new depth):
+/// he heals whole at the fire, rests `camp_rest_ticks`, and with the porter hired his whole carry is secured — a
+/// later death loses only what he finds after it. Then its down-stairs take him on (`descend`, the camp left).
+fn enter_camp(run: &mut Run, cx: &mut Ctx) -> bool {
+    let e = crate::balance::get().expedition;
+    if !e.on || run.in_camp || run.over.is_some() || run.turn.saturating_sub(run.camp_at) < e.camp_every_ticks {
+        return false;
+    }
+    run.in_camp = true;
+    run.camp_at = run.turn;
+    run.camps += 1;
+    run.camp_until = run.turn + e.camp_rest_ticks;
+    if run.tools.is_some() {
+        crate::tools::leave_floor(run, cx);
+    }
+    run.floor = crate::gen::camp_floor();
+    let up = run.floor.stairs_up;
+    run.hero.pos = up;
+    run.hero_dist_pos = None;
+    run.monsters.retain(|m| m.ally && m.hp > 0);
+    let spots: Vec<Pos> = up.neighbours8().into_iter().filter(|q| run.floor.map.passable(*q) && *q != up).collect();
+    for (i, m) in run.monsters.iter_mut().enumerate() {
+        m.pos = spots.get(i % spots.len().max(1)).copied().unwrap_or(up);
+    }
+    run.items.clear();
+    run.overlays.clear();
+    run.floor_turn = 0;
+    run.alert = 0;
+    run.kills_floor = 0;
+    run.rests = 0;
+    run.noise = None;
+    run.hunt = None;
+    run.chase = None;
+    run.last_target = None;
+    run.known_foes.clear();
+    run.seen_ids.clear();
+    run.last_visible = vec![u32::MAX];
+    run.recent_pos.clear();
+    run.verb_ring.clear();
+    run.stuck_until = 0;
+    run.stuck_fires = 0;
+    run.stuck_first_t = None;
+    run.retreat = false;
+    run.hero.poison = (0, 0);
+    run.hero.hp = run.hero.max_hp;
+    let banked = if run.porter { run.secure_carry() } else { 0 };
+    run.kit_due = run.porter;
+    let vision = run.vision(cx.unlocks);
+    run.floor.map.update_vision(run.hero.pos, vision);
+    let d = run.depth;
+    cx.events.push(Ev::Descend { t: run.turn, depth: d, biome: "camp".into() });
+    if banked > 0 {
+        note(run, cx, format!("Camp under D{d}. The porter took ${banked} up."));
+        callout(run, cx, "porter · banked");
+    } else {
+        note(run, cx, format!("Camp under D{d}."));
+        callout(run, cx, "camp");
+    }
+    true
+}
+
 /// Ticks left of a committed return's walk (`None`: no return walking).
 pub fn return_left(run: &Run) -> Option<u32> {
     if run.homeward.is_none() || run.homeward_bank {
@@ -690,6 +753,13 @@ fn choose_and_act(run: &mut Run, cx: &mut Ctx, v: &View) -> (i32, Verb) {
         let verb = Verb::new("explore");
         emit_rule(run, cx, -2, &verb, "hazard → step out");
         once_rows_why(run, cx, &format!("hazard first · {}", hz.unwrap_or("gas")));
+        return (-2, verb);
+    }
+    // Cut317 §3.3: the camp's rest — a safe room, so he sits by the fire until it ends; then the stairs on.
+    if run.in_camp && run.turn < run.camp_until {
+        let verb = Verb::new("rest");
+        emit_rule(run, cx, -2, &verb, "camp → rest");
+        all_rows_why(run, cx, "camp", None);
         return (-2, verb);
     }
     // Cut317 §3.0: an expedition's retreat. With nothing awake in sight he rests until healed and the rows wait;
@@ -1619,7 +1689,8 @@ pub fn cond_holds(run: &Run, cx: &Ctx, v: &View, c: &Cond) -> bool {
         "unknown_item" => h.inv.iter().any(|i| i.is_consumable() && !i.is_known(cx.facts, cx.flavours)),
         "lacks" => !h.inv.iter().any(|i| i.kind == t),
         "floor_seen>=" => run.floor.map.seen_pct() >= n,
-        "depth>=" => run.depth as i32 >= n,
+        // Cut317 §3c: rows are written against the content (packages' D19 Foundry, D28 Deep), not the stretched floor
+        "depth>=" => run.content_depth() as i32 >= n,
         "alert>=" => run.alert >= n,
         "in_corridor" => run.floor.map.is_corridor(h.pos),
         "path_stairs" => {
@@ -2105,7 +2176,7 @@ pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dm
                     (-2..=2).flat_map(|dy| (-2..=2).map(move |dx| wp.step((dx, dy)))).find(|q| q.cheb(wp) == 2 && free(q) && run.floor.map.los(wp, *q))
                 })?;
                 let id = run.new_id();
-                let depth = run.depth;
+                let depth = run.content_depth();
                 let mut g = crate::endgame::spawn(run, id, "goblin", q, depth, false);
                 g.awake = true;
                 g.last_seen = Some(run.hero.pos);
@@ -2284,7 +2355,7 @@ pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dm
             let free = pos.neighbours8().into_iter().find(|q| run.floor.map.passable(*q) && !run.occupied(*q));
             if let Some(q) = free {
                 let nid = run.new_id();
-                let depth = run.depth;
+                let depth = run.content_depth();
                 let mut child = crate::endgame::spawn_split(nid, &kind, q, depth, run.monsters[mi].modifiers);
                 child.hp = half;
                 child.max_hp = run.monsters[mi].max_hp;
@@ -2664,7 +2735,7 @@ pub fn rest_clock(run: &mut Run, cx: &mut Ctx) {
     if run.alert < 5 {
         return;
     }
-    let table = crate::defs::spawn_table(run.biome(), run.depth);
+    let table = crate::defs::spawn_table(run.biome(), run.content_depth());
     let packs: Vec<(&str, u32, i32, i32)> = table.iter().copied().filter(|t| t.2 >= 2).collect();
     let pool = if packs.is_empty() { table.clone() } else { packs };
     let weights: Vec<u32> = pool.iter().map(|t| if t.0 == "captive" || t.0 == "eel" { 0 } else { t.1 }).collect();
@@ -2691,7 +2762,7 @@ pub fn rest_clock(run: &mut Run, cx: &mut Ctx) {
             }
         };
         let id = run.new_id();
-        let depth = run.depth;
+        let depth = run.content_depth();
         let mut m = crate::endgame::spawn(run, id, kind, pos, depth, true);
         m.awake = true;
         m.last_seen = Some(hero);
@@ -2707,11 +2778,14 @@ pub fn rest_clock(run: &mut Run, cx: &mut Ctx) {
 pub const ALERT_EVERY: u32 = 800;
 
 fn tick_alert(run: &mut Run, cx: &mut Ctx) {
+    if run.in_camp {
+        return; // Cut317: the camp is a safe zone — nothing wanders in
+    }
     if run.floor_turn == 0 || !run.floor_turn.is_multiple_of(ALERT_EVERY) || run.alert >= 8 {
         return;
     }
     run.alert += 1;
-    let table = crate::defs::spawn_table(run.biome(), run.depth);
+    let table = crate::defs::spawn_table(run.biome(), run.content_depth());
     let weights: Vec<u32> = table.iter().map(|t| if t.0 == "captive" || t.0 == "eel" { 0 } else { t.1 }).collect();
     let hero = run.hero.pos;
     let n = 1 + run.alert / 4;
@@ -2728,7 +2802,7 @@ fn tick_alert(run: &mut Run, cx: &mut Ctx) {
         }
         let pos = *run.rng.pick(&cands);
         let id = run.new_id();
-        let depth = run.depth;
+        let depth = run.content_depth();
         let mut m = crate::endgame::spawn(run, id, kind, pos, depth, true);
         m.awake = true;
         m.last_seen = Some(hero);
@@ -2803,6 +2877,10 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
             crate::provenance::seen(run, cx, &kind, 0, 0);
         }
     }
+    if enter_camp(run, cx) {
+        return;
+    }
+    run.in_camp = false;
     let next = run.depth + 1;
     // Cut 3: chalk in the pack marks the floor left behind (`chalk:<depth>`): the next heir here
     // goes straight for the stairs.
@@ -2819,7 +2897,15 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
         }
         learn(run, cx, format!("chalk:{d}"));
     }
-    if next >= ENDING_DEPTH {
+    // Cut317 §3c: the bottom is the content's (the stretch's D99); with laps the content wraps to D1 instead, a tier harder
+    let content = crate::engine::content_of(next);
+    if crate::engine::lap_of(next) > crate::engine::lap_of(run.depth) {
+        run.bottoms += 1;
+        run.difficulty += 1;
+        note(run, cx, "The bottom gave way. Deeper, and harder.".into());
+        callout(run, cx, "deeper still");
+    }
+    if content >= ENDING_DEPTH {
         run.depth = next;
         run.max_depth = run.max_depth.max(next);
         run.ended = true;
@@ -2829,7 +2915,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
         end_run(run, cx, ExitTier::Bank);
         return;
     }
-    let biome = run.route.biome(next);
+    let biome = run.route.biome(content);
     // Cut 22 §3 (AH: "most edits moved the forecast less than its ±10–13 error"): in a
     // forecast's sim, each floor draws from a stream of its own — (run seed, depth) — so two
     // sims on one seed walk into the same floors whatever their rules did above (common random
@@ -2839,7 +2925,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if run.floor_streams {
         run.rng = crate::rng::Rng::derive(run.seed, FLOOR_STREAM ^ next as u64);
     }
-    let floor = generate(&mut run.rng, biome, next);
+    let floor = generate(&mut run.rng, biome, content);
     run.depth = next;
     if next > run.max_depth {
         run.depth_t.push((next, run.turn));
@@ -2865,7 +2951,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
         // Cut 20 §2: a companion comes down the stairs at ≥ 60 % of its hp, back in the fight.
         if m.is_companion() {
             if let Some(c) = m.cid.and_then(|cid| run.companion(cid)) {
-                let max = crate::engine::pet_max_hp(c, next);
+                let max = crate::engine::pet_max_hp(c, content);
                 if max > m.max_hp {
                     m.hp += max - m.max_hp;
                     m.max_hp = max;
@@ -2939,7 +3025,7 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     let vision = run.vision(cx.unlocks);
     run.floor.map.update_vision(run.hero.pos, vision);
     cx.events.push(Ev::Descend { t: run.turn, depth: next, biome: biome.name().into() });
-    if run.route.biome(next - 1) != biome {
+    if run.route.biome(crate::engine::content_of(next - 1)) != biome {
         learn(run, cx, format!("biome:{}", biome.name()));
     }
     note(run, cx, format!("D{}: {}.", next, biome.title()));
@@ -2979,7 +3065,7 @@ fn foresee_ending(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View) {
     // Cut 19 §2: a return walks to the up-stairs as a bank does.
     // Cut 27 §3: a return is out where he stands once its walk is spent.
     let banking = (matches!(verb.v.as_str(), "bank" | "return") && (0..=3).contains(&steps_to(run, run.floor.stairs_up))) || return_left(run).is_some_and(|l| l <= 30);
-    let bottom = verb.v == "descend" && run.depth + 1 >= ENDING_DEPTH && (0..=3).contains(&steps_to(run, run.floor.stairs_down));
+    let bottom = verb.v == "descend" && crate::engine::content_of(run.depth + 1) >= ENDING_DEPTH && (0..=3).contains(&steps_to(run, run.floor.stairs_down));
     let ticks = if run.over.is_some() {
         Some(0)
     } else if dying || banking || bottom {

@@ -299,13 +299,23 @@ pub struct Upgrades {
 /// Cut317 §3: an expedition is one hero life at real speed. `on`: a `return` row rests the hero until healed
 /// (`Run.retreat`) instead of walking him home — `bank` stays the exit — and the progress clock ends a stalled run
 /// (`turn::progress_clock`). `run_cap_ticks`: the run's safety cap (shipping 120 000, 3 h 20 min), a net and never
-/// a pacing device.
+/// a pacing device. Camps (`turn::enter_camp`): `camp_every_ticks` after the last camp (or the send), the next stairs
+/// down lead to a safe room where he heals, rests `camp_rest_ticks`, and with the porter hired his carry is secured.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Expedition {
     pub on: bool,
     pub run_cap_ticks: u32,
+    pub camp_every_ticks: u32,
+    pub camp_rest_ticks: u32,
+    /// Cut317 §3c: floors a content depth spans (1: today's dungeon; 3: D1–D99, a band's single events on its last).
+    #[serde(default = "one")]
+    pub stretch: u32,
+    /// Cut317 §3c: past the bottom the dive goes on — the next tier, content from D1 again, the floors counting on.
+    #[serde(default)]
+    pub laps: bool,
 }
+fn one() -> u32 { 1 }
 
 const fn w(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
     Worker { need, price_tenths, fallback_h, goal: Goal::Count }
@@ -365,7 +375,7 @@ pub const DEFAULT: Balance = Balance {
         gate_depth: [13, 23], bank_price_units: [8, 64], vat_price_units: [8, 64], bank_nights: [5, 8],
         bank_bonus_permille: [20, 40], vat_recovery_off_pct: [20, 35], vat_hurry_off_pct: [25, 50],
     },
-    expedition: Expedition { on: false, run_cap_ticks: 120_000 },
+    expedition: Expedition { on: false, run_cap_ticks: 120_000, camp_every_ticks: 6000, camp_rest_ticks: 300, stretch: 1, laps: false },
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -439,13 +449,30 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
         || !ordered(up.bank_nights, 3, 16) || !ordered(up.bank_bonus_permille, 0, 100)
         || !ordered(up.vat_recovery_off_pct, 0, 80) || !ordered(up.vat_hurry_off_pct, 0, 90) { return Err("upgrades"); }
     // a day of ticks is 864 000; ten days bound a single expedition
-    if !(120_000..=8_640_000).contains(&b.expedition.run_cap_ticks) { return Err("expedition"); }
+    let e = &b.expedition;
+    if !(120_000..=8_640_000).contains(&e.run_cap_ticks) || !(600..=72_000).contains(&e.camp_every_ticks)
+        || e.camp_rest_ticks > 6000 || !(1..=5).contains(&e.stretch) { return Err("expedition"); }
     Ok(())
 }
 #[cfg(feature = "dev-balance")]
 static PROFILE: std::sync::OnceLock<Balance> = std::sync::OnceLock::new();
+#[cfg(test)]
+thread_local! {
+    static TEST_PROFILE: std::cell::Cell<Option<&'static Balance>> = const { std::cell::Cell::new(None) };
+}
+/// Cut317: a test plays under a profile on its own thread (the process profile is install-once).
+#[cfg(test)]
+pub fn with_test_profile<R>(b: Balance, f: impl FnOnce() -> R) -> R {
+    let leaked: &'static Balance = Box::leak(Box::new(b));
+    TEST_PROFILE.with(|c| c.set(Some(leaked)));
+    let out = f();
+    TEST_PROFILE.with(|c| c.set(None));
+    out
+}
 #[inline]
 pub fn get() -> &'static Balance {
+    #[cfg(test)]
+    if let Some(b) = TEST_PROFILE.with(|c| c.get()) { return b; }
     #[cfg(feature = "dev-balance")]
     if let Some(b) = PROFILE.get() { return b; }
     &DEFAULT

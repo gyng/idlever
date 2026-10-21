@@ -66,6 +66,22 @@ impl Floor {
 /// generator never moves the rolls that follow it (combat, loot, situations).
 pub const GEN_TAG: u64 = 0x6765_6e5f_706c_616e;
 
+/// Cut317 §3.3 (owner: "camps I'm feeling it's like a rest level · safe zone in the dungeon"): the camp between two
+/// floors — one lit room, the up-stairs at its west end and the down-stairs at its east, nothing else on it.
+pub fn camp_floor() -> Floor {
+    let (w, h) = (15, 9);
+    let mut map = Map::new(w, h, Tile::Wall);
+    for y in 1..h - 1 {
+        for x in 1..w - 1 {
+            map.set(Pos { x, y }, Tile::Floor);
+        }
+    }
+    let (up, down) = (Pos { x: 2, y: h / 2 }, Pos { x: w - 3, y: h / 2 });
+    map.set(up, Tile::StairsUp);
+    map.set(down, Tile::StairsDown);
+    Floor { map, stairs_up: up, stairs_down: down, rooms: vec![Rect { x: 1, y: 1, w: w - 2, h: h - 2 }], vision: crate::descent::VISION_LIT }
+}
+
 pub fn generate(caller: &mut Rng, biome: Biome, depth: u32) -> Floor {
     let rng = &mut Rng::derive(caller.next_u64(), GEN_TAG);
     for attempt in 0..8 {

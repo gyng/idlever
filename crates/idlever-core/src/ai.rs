@@ -2204,7 +2204,7 @@ fn verb_read(run: &mut Run, cx: &mut Ctx, a: &str, v: &View) -> bool {
             let free = hp.neighbours8().into_iter().find(|q| run.floor.map.passable(*q) && !run.occupied(*q));
             if let Some(q) = free {
                 let id = run.new_id();
-                let depth = run.depth;
+                let depth = run.content_depth();
                 let mut m = Monster::spawn(id, "spectral_hound", q, depth);
                 m.ally = true;
                 m.awake = true;
@@ -3339,7 +3339,7 @@ fn summon_near(run: &mut Run, cx: &mut Ctx, at: Pos, kind: &str, n: usize, ttl: 
         }
         let q = cands.remove(run.rng.below(cands.len() as u32) as usize);
         let id = run.new_id();
-        let depth = run.depth;
+        let depth = run.content_depth();
         let mut m = crate::endgame::spawn(run, id, kind, q, depth, false);
         m.awake = true;
         m.last_seen = Some(run.hero.pos);
@@ -4328,7 +4328,7 @@ fn try_companion_verb(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &Verb, v: &V
             run.monsters[mi].hp -= half;
             let id = run.new_id();
             let kind = run.monsters[mi].kind.clone();
-            let depth = run.depth;
+            let depth = run.content_depth();
             let mut child = Monster::spawn(id, &kind, q, depth);
             child.ally = true;
             child.awake = true;
