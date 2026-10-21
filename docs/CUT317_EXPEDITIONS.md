@@ -25,7 +25,15 @@ Status: **draft for owner review** (numbers marked ◇ are proposals).
 | Live view speeds fights/fast/one (≤ 4×), pause, skip | watch.ts:285, 332, 811 |
 | The crier is client-only: one cry after an absence | ui/crier.ts |
 
-So a hero spends roughly half its time in town, and the live view is watched at 4×.
+Measured (`examples/expedition_probe.rs`, 24 h of the open app's clock, 2026-10-22):
+
+| Save | Runs | Median run | Floor pace | In dungeon | Ends |
+| --- | --- | --- | --- | --- | --- |
+| `earned-gunner-home` (midgame, starts D1) | 7 | 200 min | 2–8 min | 85 % | 5 of 7 hit the 120k-tick cap mid-dive (D24–D28); the carry since the last record floor is lost |
+| `earned-first-ascension-clear` (late, starts D29) | 59 | 4.5 min | ~1 min | 18 % | return after 1–4 floors, then a 20–30 min rest |
+
+So the midgame already lives in the dungeon but is cut off by the cap; the late game is mostly rest. Floor
+pace varies ~8×, which is why camps are timed, not counted. The live view is watched at 4×.
 
 ## 2. Reference: what real roguelikes are like
 
@@ -46,7 +54,9 @@ camps, and ends the expedition by dying, by retreating (the existing Return/Bank
 2. **Town time is short.** The alive-run rest falls from 20–30 min to ◇ 2–5 min (resupply). Death recovery is
    unchanged (Cut315: 15 s early, 20 min deep); dying deep costs time. Target ◇: after the porter, a hero is in
    the dungeon ≥ 80 % of wall time.
-3. **Camps every ◇ 3 floors.** The hero rests ◇ 30 s at a camp floor. With the porter hired, the porter meets
+3. **Camps by time, not floor count** (owner: "3 floors depends on floor size"). The hero makes camp at the first
+   stairs after ◇ 10 min of diving since the last camp (or the departure), so big floors space camps out and a camp
+   always sits on a floor boundary. He rests ◇ 30 s there. With the porter hired, the porter meets
    him there: the whole carry goes to the bank (secured: it can never be lost again) and queued changes come
    down. Before the porter, a camp is only a rest; the record-floor checkpoint behaves as today.
 4. **Death costs what was found since the last camp, plus recovery time.** Nothing else (owner left this open; this keeps
@@ -83,6 +93,7 @@ New, measured by the dayplayer (16 seeds × 14 days) and native tests:
 | Expedition length, median, days 5–14 | 1–3 h; P90 ≥ 6 h |
 | In-dungeon share of wall time after the porter, median seed | ≥ 80 % |
 | Floor pace, median | 3–6 min |
+| Camp spacing | first stairs after ≥ 10 min since the last camp; median gap 10–15 min |
 | Camp banking | 100 % of carry at a camp is secured; a later death loses only the post-camp carry |
 | Edit at camp | a queued edit applies at the next camp tick exactly; whole = sliced offline, byte-identical save |
 | Replay | `replay_hash_per_route` + a new route with a mid-run edit |
