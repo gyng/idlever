@@ -4,6 +4,8 @@
 // Cut 14: `slowdowns` row — `on` / `off` (`app.slowdowns`, persisted): the watch's fight / near / scene holds, or the flat rate.
 import type { App } from "../app";
 import { h, copyText, replace } from "./dom";
+import { section } from "../ui-kit/kit";
+import "../screens/settings.css";
 import { closeEverything, openWindow as openSheet } from "./sheet";
 import { audio } from "../audio";
 import { workerNodes } from "./works";
@@ -288,50 +290,60 @@ export function openSettings(app: App, onClose?: () => void): void {
         return b;
       };
 
+      // Cut316: three framed groups — the town's workers, the game's feel, the save and its tools
       body.append(
         h("div", { class: "label row-label" }, /* copy:label */ "Settings"),
-        row(
-          /* copy:label */ "menu",
-          h(
-            "button",
-            {
-              class: "btn main-menu-button",
-              onclick: () => {
-                leave();
-                window.dispatchEvent(new Event("idlever:menu"));
-              },
-            },
-            /* copy:button */ "Main menu",
-          ),
-        ),
         hired.length
-          ? h(
-              "div",
-              { class: "srow workers-row" },
-              h("span", { class: "label" }, /* copy:label */ "workers"),
+          ? section(/* copy:label */ "Workers", [
               h(
-                "span",
-                { class: "chips" },
-                ...hired.map((n) => workerChip(n.id, n.name, !n.paused)),
+                "div",
+                { class: "srow workers-row" },
+                h(
+                  "span",
+                  { class: "chips workers-chips" },
+                  ...hired.map((n) => workerChip(n.id, n.name, !n.paused)),
+                ),
               ),
-            )
+            ])
           : "",
-        ...preferenceRows(app),
-        row(/* copy:label */ "save", saveOut, saveIn),
-        row(/* copy:label */ "rules", rulesOut, rulesIn),
-        row(/* copy:label */ "debug", debugOut, debugCopy),
-        debugStatus,
-        area,
-        row(
-          /* copy:label */ "engine",
-          h("span", { class: "badge num" }, app.kind === "wasm" ? `wasm ${app.version}` : app.kind),
-        ),
-        // the seed in decimal (both QA players on 952e306 decoded `#d3` as 211 in hex)
-        row(
-          /* copy:label */ "lineage",
-          h("span", { class: "num dim" }, /* copy:label */ `seed ${app.lineage.seed}`),
-          reset,
-        ),
+        section(/* copy:label */ "Game", [
+          row(
+            /* copy:label */ "menu",
+            h(
+              "button",
+              {
+                class: "btn main-menu-button",
+                onclick: () => {
+                  leave();
+                  window.dispatchEvent(new Event("idlever:menu"));
+                },
+              },
+              /* copy:button */ "Main menu",
+            ),
+          ),
+          ...preferenceRows(app),
+        ]),
+        section(/* copy:label */ "Data", [
+          row(/* copy:label */ "save", saveOut, saveIn),
+          row(/* copy:label */ "rules", rulesOut, rulesIn),
+          row(/* copy:label */ "debug", debugOut, debugCopy),
+          debugStatus,
+          area,
+          row(
+            /* copy:label */ "engine",
+            h(
+              "span",
+              { class: "badge num" },
+              app.kind === "wasm" ? `wasm ${app.version}` : app.kind,
+            ),
+          ),
+          // the seed in decimal (both QA players on 952e306 decoded `#d3` as 211 in hex)
+          row(
+            /* copy:label */ "lineage",
+            h("span", { class: "num dim" }, /* copy:label */ `seed ${app.lineage.seed}`),
+            reset,
+          ),
+        ]),
       );
       return body;
     },

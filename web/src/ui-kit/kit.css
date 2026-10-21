@@ -52,6 +52,18 @@
     padding: var(--k-4) var(--k-4) var(--k-6);
     width: min(var(--k-window-max), calc(100vw - var(--k-4)));
   }
+  /* phone: a full-height sheet under the top bar, edge to edge */
+  @media (max-width: 700px) {
+    .sheet-wrap.centered {
+      padding: calc(var(--window-top, 0px) + var(--k-1)) var(--k-1) var(--k-1);
+    }
+    .sheet-wrap.centered > .game-window {
+      width: 100%;
+      height: calc(100dvh - var(--window-top, 0px) - var(--k-2));
+      max-height: none;
+      padding: var(--k-3) var(--k-3) var(--k-6);
+    }
+  }
   html:not(.skin-tablet) .sheet-wrap.centered > .game-window {
     border: 4px solid var(--k-gilt);
     border-image: none;
@@ -106,14 +118,6 @@
     background-color: transparent;
   }
 
-  /* window title — the hub's big serif name */
-  .game-window :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title) {
-    font: 600 var(--k-fs-5) / 1.1 var(--k-display);
-    letter-spacing: 0.01em;
-    text-transform: none;
-    color: var(--k-text);
-    margin: 0 0 var(--k-4);
-  }
   /* body text and the small roles — nothing below --k-fs-1 */
   .game-window :where(.sheet-body) {
     font-size: var(--k-fs-2);
@@ -131,6 +135,18 @@
     letter-spacing: 0.02em;
     text-transform: none;
     color: var(--k-text);
+  }
+  /* window title — the hub's big serif name */
+  .game-window :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title) {
+    font: 600 var(--k-fs-5) / 1.1 var(--k-display);
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--k-text);
+    margin: 0 0 var(--k-4);
+  }
+  .game-window
+    :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title)::first-letter {
+    text-transform: uppercase;
   }
   .game-window :where(.gold, .num.gold) {
     color: var(--k-gold);
@@ -167,7 +183,12 @@
     box-shadow: inset 0 2px var(--k-ink);
   }
   :where(.game-window, .sheet, .panel[data-panel], .k-surface)
-    :where(button, .k-slab):where(.on, [aria-pressed="true"], [aria-selected="true"]) {
+    :where(button, .k-slab):where(
+      .on,
+      [aria-pressed="true"],
+      [aria-selected="true"],
+      [aria-checked="true"]
+    ) {
     outline: 3px solid var(--k-select);
     outline-offset: -4px;
     color: var(--k-gold);
@@ -258,7 +279,7 @@
   /* ── stats — label · big numeral · note ────────────────────────────────────────────────────────────── */
   .k-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 6.25rem), 1fr));
     gap: var(--k-2);
     margin: 0 0 var(--k-3);
   }
@@ -301,6 +322,12 @@
   }
   .k-row:last-child {
     border-bottom: 0;
+  }
+  .k-row > :not(.k-row-label):last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--k-2);
   }
   .k-row > .k-row-label {
     display: grid;

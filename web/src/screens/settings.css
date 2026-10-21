@@ -1,0 +1,48 @@
+/* Cut316: Settings on the kit — three framed groups of plain rows; worker switches as an even slab grid. */
+@layer screens {
+  .settings .srow {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: var(--k-2);
+    min-height: var(--k-target);
+    margin: 0;
+    padding: var(--k-1) 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--k-edge);
+    box-shadow: none;
+  }
+  .settings .k-section > .srow:last-child {
+    border-bottom: 0;
+  }
+  .settings .srow > .label {
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+    text-transform: capitalize;
+    letter-spacing: 0;
+  }
+  .settings .srow.workers-row {
+    display: block;
+    border: 0;
+  }
+  .settings .workers-chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 7rem), 1fr));
+    gap: var(--k-2);
+  }
+  .settings .worker-switch small {
+    margin-left: var(--k-1);
+  }
+  .settings .ta {
+    width: 100%;
+    margin: var(--k-2) 0;
+    background: var(--k-inset);
+    color: var(--k-text);
+    border: 1px solid var(--k-edge);
+    font: var(--k-fs-1) / 1.35 var(--k-num);
+  }
+  .settings .badge {
+    color: var(--k-muted);
+    font-size: var(--k-fs-1);
+  }
+}

@@ -149,7 +149,17 @@ export function heroLifePanel(
     fingerprint = next;
     const atHome = L.town?.home !== false && hero.state !== "away";
     const children: Node[] = [
-      h("h2", { class: "hero-life-heading" }, hero.name),
+      // Cut316 (D2): the building names its own window; the hero it serves is the meta line
+      h(
+        "h2",
+        { class: "hero-life-heading" },
+        mode === "rebirth"
+          ? /* copy:label */ "Clone vat"
+          : mode === "recovery"
+            ? /* copy:label */ "Recovery pool"
+            : hero.name,
+      ),
+      ...(mode === "hero" ? [] : [h("div", { class: "hero-life-for dim" }, hero.name)]),
       h(
         "div",
         { class: "hero-life-state", "data-hero-state": hero.state },

@@ -208,10 +208,12 @@ export function openSheet(
       const bar = document.querySelector("main.frame > .topbar")?.getBoundingClientRect();
       const console = document.querySelector("main.frame > .console")?.getBoundingClientRect();
       wrap.style.setProperty("--window-top", `${Math.max(0, bar?.bottom ?? 0)}px`);
+      // Cut316: on a phone a window is a full-height sheet over the console (the console's controls wait under it)
+      const phone = typeof matchMedia !== "undefined" && matchMedia("(max-width: 700px)").matches;
       wrap.style.setProperty(
         "--window-bottom",
         // (a hidden console — the homeless camp's — measures 0 × 0 at the top: it reserves nothing)
-        `${Math.max(0, console?.height ? innerHeight - console.top : 0)}px`,
+        `${phone ? 0 : Math.max(0, console?.height ? innerHeight - console.top : 0)}px`,
       );
     };
     // blind e33d50b-b (`compare outcomes` cut off at the panel edge, "no scroll affordance"): a window with more below says so

@@ -48,6 +48,7 @@ import { classSkillLadder } from "./class-skills";
 import { kwHost, detailHost, closeTip } from "./tips";
 import { HOME_BUILDINGS, buildingDetails, type HomeBuilding } from "./building-help";
 import { buildingUpgradeRow } from "./building-upgrades";
+import { meter, slab, slabs, stats } from "../ui-kit/kit";
 import type { Term } from "./concepts";
 /** docs/TOOLTIPS.md: a building's tip (long-press / hover; its tap stays its panel) */
 const HIT_TERM: Record<string, Term> = /* copy:none */ {
@@ -1246,58 +1247,27 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
         }
         const room = Math.max(0, T.bank_cap - T.bank),
           put = Math.min(L.gold, room);
+        // Cut316: the kit — title, the three numbers as stat tiles, the fill as a gauge, the acts as slabs
         replace(
           body,
           h("div", { class: "label row-label" }, /* copy:label */ "Savings"),
-          h(
-            "div",
-            { class: "bank-line num" },
-            h("b", { class: "gold" }, `$${T.bank}`),
-            " ",
-            h("span", { class: "dim" }, /* copy:label */ "saved"),
-            h(
-              "span",
-              { class: "dim bank-capacity" },
-              ` · $${T.bank_cap} `,
-              /* copy:label */ "capacity",
-            ),
-          ),
-          h(
-            "div",
-            { class: "bank-bar", "aria-hidden": "true" },
-            h("span", {
-              class: "fill",
-              style: `width:${Math.round(Math.min(1, T.bank / Math.max(1, T.bank_cap)) * 100)}%`,
+          stats([
+            { key: "saved", label: /* copy:label */ "Saved", value: `$${T.bank}`, gold: true },
+            { key: "capacity", label: /* copy:label */ "Capacity", value: `$${T.bank_cap}` },
+            { key: "interest", label: /* copy:label */ "Interest paid", value: `$${T.interest}` },
+          ]),
+          meter(T.bank / Math.max(1, T.bank_cap), { label: /* copy:label */ "Savings filled" }),
+          slabs(
+            slab(/* copy:button */ `Deposit $${put}`, {
+              cls: "bank-in",
+              disabled: put <= 0 || !app.engine.bankDeposit,
+              onClick: () => void act(() => app.engine.bankDeposit!(put)),
             }),
-          ),
-          T.interest > 0
-            ? h(
-                "div",
-                { class: "num dim bank-interest" },
-                /* copy:callout */ `interest $${T.interest}`,
-              )
-            : "",
-          h(
-            "div",
-            { class: "chips bank-acts" },
-            h(
-              "button",
-              {
-                class: "chip bank-in",
-                disabled: put <= 0 || !app.engine.bankDeposit,
-                onclick: () => void act(() => app.engine.bankDeposit!(put)),
-              },
-              /* copy:button */ `deposit $${put}`,
-            ),
-            h(
-              "button",
-              {
-                class: "chip bank-out",
-                disabled: T.bank <= 0 || !app.engine.bankWithdraw,
-                onclick: () => void act(() => app.engine.bankWithdraw!(T.bank)),
-              },
-              /* copy:button */ `withdraw $${T.bank}`,
-            ),
+            slab(/* copy:button */ `Withdraw $${T.bank}`, {
+              cls: "bank-out",
+              disabled: T.bank <= 0 || !app.engine.bankWithdraw,
+              onClick: () => void act(() => app.engine.bankWithdraw!(T.bank)),
+            }),
           ),
           buildingUpgradeRow(app, "bank", () => body.isConnected && paint()) ?? "",
         );

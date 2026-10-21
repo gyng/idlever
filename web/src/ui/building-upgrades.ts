@@ -1,7 +1,7 @@
 import type { App } from "../app";
 import type { BuildingUpgrade, UpgradeReceipt } from "../engine/types";
 import { h } from "./dom";
-import "../building-upgrades.css";
+import { rows, section } from "../ui-kit/kit";
 
 const ROMAN = ["", "I", "II", "III", "IV", "V"];
 const roman = (level: number): string => ROMAN[level] ?? String(level);
@@ -19,19 +19,15 @@ export function buildingUpgradeRow(
   if (!row) return null;
   const engine = app.engine;
   const next = row.next;
-  const el = h(
-    "section",
-    { class: "building-upgrade", "data-upgrade": id, "data-upgrade-level": row.level },
-    h(
-      "div",
-      { class: "building-upgrade-now" },
-      h("b", { class: "num" }, /* copy:label */ `Level ${roman(row.level)}`),
-      h("span", { class: "dim num" }, row.effect),
-    ),
-  );
+  const now = { label: /* copy:label */ `Level ${roman(row.level)}`, note: row.effect, key: "now" };
   if (!next) {
-    el.append(h("span", { class: "dim building-upgrade-max" }, /* copy:label */ "Fully upgraded"));
-    return el;
+    const done = section(/* copy:label */ "Upgrades", [
+      rows([{ ...now, end: h("span", { class: "dim" }, /* copy:label */ "Fully upgraded") }]),
+    ]);
+    done.classList.add("building-upgrade");
+    done.dataset.upgrade = id;
+    done.dataset.upgradeLevel = String(row.level);
+    return done;
   }
   const atHome = app.lineage.town?.home !== false;
   const needsSavings = next.withdrawal > 0;
@@ -93,14 +89,19 @@ export function buildingUpgradeRow(
       (needsSavings && (!useSavings || !next.affordable_with_savings));
   };
   sync();
-  el.append(
-    h(
-      "div",
-      { class: "building-upgrade-next" },
-      h("span", { class: "num" }, /* copy:label */ `Next ${roman(next.level)}`),
-      h("span", { class: "dim num" }, next.effect),
-    ),
-    h("div", { class: "building-upgrade-acts" }, toggle ?? "", buy),
-  );
+  const el = section(/* copy:label */ "Upgrades", [
+    rows([
+      now,
+      {
+        label: /* copy:label */ `Next ${roman(next.level)}`,
+        note: next.effect,
+        key: "next",
+        end: h("div", { class: "building-upgrade-acts" }, toggle ?? "", buy),
+      },
+    ]),
+  ]);
+  el.classList.add("building-upgrade");
+  el.dataset.upgrade = id;
+  el.dataset.upgradeLevel = String(row.level);
   return el;
 }

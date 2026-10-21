@@ -51,7 +51,10 @@ export function section(
 ): HTMLElement {
   return h(
     "section",
-    { class: `k-section${opts.gilt ? " k-gilt" : ""}${opts.cls ? ` ${opts.cls}` : ""}`, ...opts.attrs },
+    {
+      class: `k-section${opts.gilt ? " k-gilt" : ""}${opts.cls ? ` ${opts.cls}` : ""}`,
+      ...opts.attrs,
+    },
     title ? h("h3", { class: "k-section-title" }, title) : null,
     ...children,
   );
@@ -113,7 +116,12 @@ export function rows(
       h(
         "div",
         { class: `k-row${r.cls ? ` ${r.cls}` : ""}`, "data-row": r.key },
-        h("div", { class: "k-row-label" }, h("b", {}, r.label), r.note ? h("small", {}, r.note) : null),
+        h(
+          "div",
+          { class: "k-row-label" },
+          h("b", {}, r.label),
+          r.note ? h("small", {}, r.note) : null,
+        ),
         r.end ?? null,
       ),
     ),
@@ -157,7 +165,9 @@ export function tile(opts: {
     { class: `k-tile k-bare${opts.cls ? ` ${opts.cls}` : ""}`, onclick: opts.onClick },
     opts.icon ?? null,
     h("span", {}, opts.label),
-    opts.badge !== undefined && opts.badge !== null ? h("b", { class: "k-badge" }, opts.badge) : null,
+    opts.badge !== undefined && opts.badge !== null
+      ? h("b", { class: "k-badge" }, opts.badge)
+      : null,
   );
 }
 /** The gauge: `share` 0..1. */
