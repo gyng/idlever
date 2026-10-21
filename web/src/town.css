@@ -262,8 +262,8 @@
     color: #f3d192;
     font-size: 13px;
   }
-  .town-tag[hidden] {
-    display: none;
+  .town-tag.town-tag[hidden] {
+    display: none; /* outranks the [role=button] display below */
   }
   .town-tag[role="button"] {
     pointer-events: auto;

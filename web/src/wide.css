@@ -624,7 +624,7 @@
     height: 18px;
     object-fit: contain;
   }
-  .depth-mobile-goal {
+  .depth-mobile-goal:not([hidden]) {
     display: block;
     border-top: 1px solid #384254;
     padding-top: 4px;
@@ -637,7 +637,7 @@
     background: #141923;
   }
   @media (min-width: 1024px) {
-    .depth-mobile-goal,
+    .depth-mobile-goal.depth-mobile-goal,
     .report-progress-goal {
       display: none;
     }
