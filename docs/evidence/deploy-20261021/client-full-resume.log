@@ -1,0 +1,287 @@
+$ node tests/run.mjs --full --failed
+client suite: full (175 selected; 175 current full; 218 exhaustive groups)
+Historical extra cases require --exhaustive; see docs/evidence/cut181/final-scope/current-mapping.json
+failed: 169 to run, 6 passes reused from /home/g/p/riddle/target/client-tests/last-full.json (510bd647c1+dirty:8716783f wasm:53b98bb42148)
+ok* boss-beat-quiet reused: passed 2026-10-21T02:48:51.718Z (12.2s), identical identity; not rerun
+ok* enemy-surfaces  reused: passed 2026-10-21T02:49:23.469Z (18.0s), identical identity; not rerun
+ok* enemy-tips      reused: passed 2026-10-21T02:49:05.420Z (13.7s), identical identity; not rerun
+ok* fights:break    reused: passed 2026-10-21T02:47:12.839Z (9.5s), identical identity; not rerun
+ok* hero-hub        reused: passed 2026-10-21T02:46:48.175Z (589.0s), identical identity; not rerun
+ok* survivor-builds reused: passed 2026-10-21T02:36:59.222Z (345.9s), identical identity; not rerun
+FAIL wish-retirement 18.6s (16.7s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: WASM/native settled full-save equality
+         at file:///home/g/p/riddle/web/tests/wish-retirement.mjs:212:12 {
+FAIL clarity:core,watch 74.4s (55.8s)  clarity core,watch: FAIL (3 assertion(s), 0 error(s))
+     clarity core,watch: FAIL (3 assertion(s), 0 error(s))
+     FAIL greyed supplies say why ($5 in hand): 
+     FAIL exit lines lead with the tier and the sum, newest first: "haul $84 · $84 carried · bank keeps 100% → $84" · "haul $61 · $102 carried · return keeps 60% → $61"
+     FAIL ▶▶| from behind lands on the frontier (tick 320 ≥ 260, speed 0, card 0)
+FAIL cut12           103.7s (29.3s)  cut12: FAIL (1 assertion(s), 2 error(s))
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.panel .fc-refine:visible')
+     cut12: FAIL (1 assertion(s), 2 error(s))
+     FAIL the kennel's leash reads free (QA 92eb880: kennel was unexplained): "leash · free×"
+     failure state: {"screen":"camp","forecast":{"depths":[{"depth":1,"reach":1,"pm":0,"clear":0.77},{"depth":2,"reach":0.77,"pm":0.08248317161700318,"clear":0.22077922077922077},{"depth":3,"reach":0.17,"pm":0.07362402868629235,"clear":0},{"depth":4,"reach":0,"pm":0},{"depth":5,"reach":0,"pm":0,"bounty":true,"boss":"goblin_warlord"}],"causes":[{"cause":"goblin","share":0.3},{"cause":"jackal","share":0.29},{"cause":"jackal pack","share":0.07}],"known_to":4,"sims":100,"low":1,"ends":{"bank":0,"return":0.25,"death":0.75,"gold":9.87,"pm":0.08487048957087498},"refined":true,"start":1},"busy":false,"panels":[{"name":"forecast","text":"FORECAST\n100 samples\nMore samples\nFLOOR CHANCE\nD1\n100%\nD2\n77%±8\nD3\n17%±7\nD4\n<1%\n· killer: goblin\nD5\n<1%\n· warlord\n · bounty · 2× gold · item\nD5+\n?\nRUN OUTCOMES full haul <1% · turn back 25% · death 75%±8 · avg $10/run\nNEXT WALL\nWarlord D8\ncounter · ?\nTHIS CHANGE\n · D4 same\n · full haul same\n · death −17\nwritten: 2 of 4 rules\nKILLERS\nunseen goblin\n22%\nunseen jackal\n22%\nunseen jackal\n5%"}],"refinements":[{"hidden":false,"disabled":true,"rendered":true,"text":"More samples"}]}
+FAIL runsui          149.6s (45.8s)  runsui: 2 FAIL
+       - waiting for locator('.hero-row[data-state=live]:visible .hero-jump').first()
+     FAIL left mid-run: the lane reads live with his floor and hp (undefined; run 1 = 1)
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+ok   take-control    232.5s (128.8s)  take-control: ok (62 checks)
+ok   boss-kill-beat  324.9s (221.0s)  boss-kill-beat: ok (27 checks)
+FAIL cut29           352.6s (203.0s)  cut29: FAIL (4 assertion(s), 1 error(s))
+     walk aborted: timeout waiting for visible marks caption remembered
+     cut29: FAIL (4 assertion(s), 1 error(s))
+     FAIL a find that is no decision opens no keep sheet: settled by autoKeep (×0, sheet false, watch)
+     FAIL the settled exit says its one line ([])
+     FAIL day 0: only send · headline open — 1 tiles, no editor (false), no vs line (false)
+     FAIL the Warlord slain opens the forge, the loadout and the packages, no edit yet (heroes · packages* · loadout*)
+ok   exit-keep-close 355.6s (30.7s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+FAIL live-decisions  379.9s (147.3s)  live-decisions: 1 FAILED
+     FAIL auto-pick at the deadline: option 0, 6299 ms watched (excl. 3 s paused)
+FAIL gold-transfers  418.3s (38.4s)  Node.js v22.18.0
+       - waiting for locator('[data-tile="forge"]').first()
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/gold-transfers.mjs:118:57 {
+ok   ctxloss         420.9s (68.2s)  ctxloss: ok (19 checks)
+ok   legacy-earned   455.9s (35.0s)  1440 11 Legacy owner/merge/old wire and actual WASM gain 40 PASS
+ok   screens         479.4s (61.2s)  screens: ok (59 checks · 9 screens linted · 34 buttons clicked · 59.6s)
+ok   bloodline-founding 490.5s (34.6s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+ok   gold-settlements 521.2s (165.6s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":7152841,"sha256":"53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"},{"bytes":7152841,"sha256":"53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"},{"bytes":7152841,"sha256":"53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"},{"bytes":7152841,"sha256":"53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"}]}
+ok   chrome          527.9s (48.4s)  chrome: 184 checks PASS
+ok   ui:frame        531.8s (41.3s)  ui: ok (60 checks · 39.8s)
+ok   chunky-controls 554.4s (33.2s)  1440 actual run tabs/fold/material/appearance parent/read-only/rename reload PASS
+ok   post-clear-town 557.3s (25.4s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+ok   audio           582.2s (25.0s)  audio: ok (76 checks)
+ok   watch-speed-rate 589.5s (35.0s)  watch-speed-rate: PASS
+FAIL cut28           597.1s (69.2s)  cut28: 25/26 ok
+       - waiting for locator('.hero-class')
+     FAIL threw: locator.isEnabled: Timeout 30000ms exceeded.
+ok   cut26           611.3s (29.0s)  cut26: ok (24 checks)
+ok   legacy-tree     613.4s (23.9s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   town-save       636.6s (39.4s)  39 manual construction persistence checks PASS
+ok   cut122          639.2s (25.8s)  cut122: 94 checks PASS
+ok   watch-console   651.4s (40.1s)  1440 labels/touch/geometry/speed/pause/Town PASS
+ok   compact-depth   670.1s (30.9s)  1920 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS
+ok   watch-normal-news 671.0s (34.5s)  watch-normal-news: ok (6 checks)
+FAIL control-visibility 676.8s (25.4s)  Node.js v22.18.0
+       if (!ok) throw Error(message);
+     Error: 1440: compact slab 106
+         at check (file:///home/g/p/riddle/web/tests/control-visibility.mjs:35:18)
+         at file:///home/g/p/riddle/web/tests/control-visibility.mjs:75:5
+ok   leeching        687.7s (17.6s)  1440 {"recoveries":2,"foeHP":14} real-worker recovery/reload/poison/replay seek/log colour/viewport PASS
+ok   combat-rules    687.8s (11.0s)  400 18 combat decisions/counts/paused release/batch and action boundaries PASS
+ok   death-fix-discovery 698.1s (27.0s)  400 13 comparison boundaries / actual free fix ordering / prices / no mutation PASS
+ok   pen-edit        710.0s (22.2s)  pen-edit: all ok
+ok   ambient-motes   711.4s (23.7s)  1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS
+ok   watch-log       722.8s (24.7s)  400 1 ordered floor attribution and80-entry bound PASS
+ok   king-advice-scope 734.8s (23.4s)  400 King replay scope/count/price/eligibility checks PASS
+ok   history-pick-price 735.0s (25.0s)  400 historical TRY Rust price/single request/no game mutation PASS
+ok   ready-plots     739.8s (17.0s)  18 ready-plot geometry/resize/fallback cases and locked construction PASS
+ok   report-supply-limit 753.5s (13.7s)  1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS
+ok   town-clock      753.9s (19.1s)  town-clock: PASS (36 checks)
+ok   class-switch    754.3s (19.3s)  400 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+ok   companion-chrome 765.3s (11.4s)  1440 companion/death material/layout/select/dismiss/rules/breed/hatch/details/morgue PASS
+ok   combat-identity 769.0s (15.6s)  400 27 combat identity/delayed actors/fallback/colours/bounds PASS
+ok   numbered-descents 782.0s (16.7s)  1440 preview/cancel/stale/locked/refusal/success/client-state/no-repeat/viewport PASS
+FAIL hero-upgrade-feedback 789.0s (34.7s)  Node.js v22.18.0
+       - waiting for locator('.sheet-wrap .hero-sheet .hero-history summary')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/hero-upgrade-feedback.mjs:55:70 {
+ok   watch-status    790.1s (21.0s)  1440 status/paused core progress/resume/ending PASS
+FAIL bloodline-tabs  796.2s (6.1s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+         at file:///home/g/p/riddle/web/tests/bloodline-tabs.mjs:26:12
+         at runNextTicks (node:internal/process/task_queues:65:5)
+         at process.processImmediate (node:internal/timers:453:9)
+         at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+FAIL armour-sets     803.4s (14.4s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/web/tests/armour-sets.mjs:310:14 {
+ok   achievements    814.0s (32.0s)  achievements: ok (39 checks)
+FAIL chrome-layout   818.4s (14.9s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: camp/1024/1: Heroes label clipped
+         at file:///home/g/p/riddle/web/tests/chrome-layout.mjs:137:18 {
+ok   class-tools     820.1s (6.0s)  class-tools: 43 checks
+ok   combat-cues     821.2s (1.1s)  43 replay cue semantics PASS
+FAIL cut305:sheet,rank 831.1s (9.9s)  cut305: 1 failed
+     FAIL mid: the trunk's five done in one dim row, the next ≤ 2 silhouettes; 11 items on screen (≤ 7 nodes + the done row)
+FAIL building-fx     833.4s (37.2s)  Node.js v22.18.0
+       - waiting for locator('[data-building-info="tent"]')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/building-fx.mjs:85:54 {
+ok   death-actions   844.5s (13.4s)  1440 recorded boss tooltip PASS
+ok   editor-packages 864.4s (19.9s)  1440 authored/package disclosure/add/promotion/highlight/binding checks PASS
+ok   free-preparation 874.3s (9.8s)  {"fixture":"controlled unlocked loadout","version":"0.1.0","checks":85,"delves":[{"run":1,"gold":0,"heals":1},{"run":2,"gold":0,"heals":1},{"run":3,"gold":0,"heals":1}],"forgePrice":100}
+ok   depth-rail      886.4s (53.0s)  depth-rail: 31 checks PASS; unobscured watch % {"320":96.8,"400":97.6,"768":98.7,"1440":97.4} (real WASM)
+FAIL hero-frame      894.2s (7.8s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^Mara of the Lantern Vale · Life \d+$/. Input:
+         at file:///home/g/p/riddle/web/tests/hero-frame.mjs:63:14 {
+ok   glossary        897.6s (23.3s)  glossary: 32 checks PASS; registry 63 terms, every one an entry once met (real WASM)
+ok   hero-hub-navigation 934.2s (40.0s)  {"checks":15,"errors":[],"cases":["real Appearance choice survives parent disposal","detached Appearance control cannot write","detached Run log control cannot read/open","real Run log replay opens after parent disposal","late unchanged replay response ignored after close","late unchanged replay response ignored after resident","late unchanged replay response ignored after incarnation","late unchanged replay response ignored after engine"],"status":"PASS"}
+ok   hero-life-camp  943.1s (8.9s)  28 actual camp recovery checks PASS (shallow 1m, older-save 20m); cleared-world flag controlled, no earned win claim
+ok   home-building-help 973.5s (30.4s)  1440: real WASM ready/hidden-unready/built four-building help, no accidental build, viewport, hover and hero details PASS
+ok   class-tree      974.7s (156.3s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+ok   hero-life       997.6s (100.0s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-600","recovering-590","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+ok   home-forge-work 1014.3s (40.7s)  home-forge-work: 31 checks PASS (real WASM, public actions, Full and reduced motion)
+ok   home-resident-phases 1021.8s (7.5s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+ok   home-heroes     1030.0s (55.4s)  1440: three real home actors, exact selection/details, two actual delves/portraits/watch and offline state reconciliation PASS
+ok   home-label-layout 1039.5s (41.9s)  {"contract":"Cut207 actual home label layout","results":[{"width":320,"state":"ready-house","labels":[],"fixed":[{"id":"town-tag num build-marker","x":109.2734375,"y":688,"w":203.453125,"h":64}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":320,"state":"locked-forge","labels":[],"fixed":[{"id":"coin","x":8.09375,"y":639,"w":10,"h":13}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":320,"state":"earned-night","labels":[],"fixed":[{"id":"sword","x":104.234375,"y":267,"w":10,"h":13},{"id":"rune","x":107.09375,"y":426,"w":10,"h":13},{"id":"coin","x":195.09375,"y":250,"w":10,"h":13},{"id":"next-pill game-control gold","x":8,"y":70,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":320,"state":"earned-all-night","labels":[],"fixed":[{"id":"sword","x":104.234375,"y":267,"w":10,"h":13},{"id":"rune","x":255.609375,"y":413,"w":10,"h":13},{"id":"rune","x":249.125,"y":267,"w":10,"h":13},{"id":"rune","x":107.09375,"y":426,"w":10,"h":13},{"id":"coin","x":195.09375,"y":250,"w":10,"h":13},{"id":"next-pill game-control gold","x":8,"y":70,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":320,"state":"earned-quest-night","labels":[],"fixed":[{"id":"sword","x":104.875,"y":267,"w":10,"h":13},{"id":"rune","x":107.09375,"y":426,"w":10,"h":13},{"id":"coin","x":139.09375,"y":299,"w":10,"h":13},{"id":"town-tag num build-marker marker-above","x":117.3828125,"y":132,"w":195.234375,"h":64},{"id":"next-pill game-control gold","x":8,"y":70,"w":135.40625,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":400,"state":"ready-house","labels":[],"fixed":[{"id":"town-tag num build-marker","x":166.2734375,"y":688,"w":203.453125,"h":64}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":400,"state":"locked-forge","labels":[],"fixed":[{"id":"coin","x":48.09375,"y":639,"w":10,"h":13}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":400,"state":"earned-night","labels":[],"fixed":[{"id":"sword","x":144.234375,"y":267,"w":10,"h":13},{"id":"rune","x":147.09375,"y":426,"w":10,"h":13},{"id":"coin","x":235.09375,"y":250,"w":10,"h":13},{"id":"next-pill game-control gold","x":8,"y":70,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":400,"state":"earned-all-night","labels":[],"fixed":[{"id":"sword","x":144.234375,"y":267,"w":10,"h":13},{"id":"rune","x":295.609375,"y":413,"w":10,"h":13},{"id":"rune","x":289.125,"y":267,"w":10,"h":13},{"id":"rune","x":147.09375,"y":426,"w":10,"h":13},{"id":"coin","x":235.09375,"y":250,"w":10,"h":13},{"id":"next-pill game-control gold","x":8,"y":70,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":400,"state":"earned-quest-night","labels":[],"fixed":[{"id":"sword","x":144.875,"y":267,"w":10,"h":13},{"id":"rune","x":147.09375,"y":426,"w":10,"h":13},{"id":"coin","x":179.09375,"y":299,"w":10,"h":13},{"id":"town-tag num build-marker marker-above","x":181.3828125,"y":132,"w":195.234375,"h":64},{"id":"next-pill game-control gold","x":8,"y":70,"w":135.40625,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":1440,"state":"ready-house","labels":[],"fixed":[{"id":"town-tag num build-marker marker-above","x":781.2734375,"y":644,"w":203.453125,"h":64}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":1440,"state":"locked-forge","labels":[],"fixed":[{"id":"coin","x":598.09375,"y":661,"w":10,"h":13}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":1440,"state":"earned-night","labels":[],"fixed":[{"id":"sword","x":645.625,"y":255,"w":10,"h":13},{"id":"rune","x":647.046875,"y":592,"w":10,"h":13},{"id":"coin","x":813.09375,"y":243,"w":10,"h":13},{"id":"next-pill game-control gold","x":296,"y":90,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":1440,"state":"earned-all-night","labels":[],"fixed":[{"id":"sword","x":665.3125,"y":251,"w":10,"h":13},{"id":"rune","x":911.609375,"y":488,"w":10,"h":13},{"id":"rune","x":901.5625,"y":251,"w":10,"h":13},{"id":"rune","x":666.390625,"y":525,"w":10,"h":13},{"id":"coin","x":803.09375,"y":237,"w":10,"h":13},{"id":"next-pill game-control gold","x":296,"y":90,"w":120.703125,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false},{"width":1440,"state":"earned-quest-night","labels":[],"fixed":[{"id":"sword","x":666.59375,"y":238,"w":10,"h":13},{"id":"rune","x":666.390625,"y":512,"w":10,"h":13},{"id":"coin","x":712.09375,"y":303,"w":10,"h":13},{"id":"town-tag num build-marker","x":779.3828125,"y":542,"w":195.234375,"h":64},{"id":"next-pill game-control gold","x":296,"y":90,"w":135.40625,"h":44}],"collisions":[],"outside":[],"captionCollisions":[],"overflow":false}]}
+ok   home-services   1040.7s (10.7s)  home-services: 38 checks PASS (real WASM; earned + labelled recovery fixtures)
+ok   journal         1047.4s (8.0s)  journal: 48 synthetic DOM-contract checks passed; real progression acceptance remains separate
+FAIL journal-earned  1048.1s (7.4s)  Node.js v22.18.0
+     TypeError: Cannot read properties of null (reading 'current')
+         at file:///home/g/p/riddle/web/tests/journal-earned.mjs:97:33
+ok   landmarks       1049.3s (1.2s)  988 landmark layout/knowledge checks PASS
+ok   journal-real    1065.6s (18.2s)  {"source":"actual fresh seed1, real House/Delve actions","results":[{"width":320,"scale":1,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":110.859375,"height":44},"cageControls":0},{"width":320,"scale":2,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":150.8125,"height":104.78125},"cageControls":0},{"width":400,"scale":1,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":110.859375,"height":44},"cageControls":0},{"width":400,"scale":2,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":204.703125,"height":68.390625},"cageControls":0},{"width":1440,"scale":1,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":123.40625,"height":44.796875},"cageControls":0},{"width":1440,"scale":2,"recommended":1,"overflow":false,"innerOverflow":false,"button":{"width":228.8125,"height":73.59375},"cageControls":0}]}
+FAIL legendary-catalogue 1087.4s (38.1s)  Node.js v22.18.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/legendary-catalogue.mjs:133:18 {
+ok   legendary-forge-consistency 1098.4s (11.0s)  {"checks":16,"records":[{"seed":1,"ordinaryRows":24,"ownedRows":1,"readOnly":true},{"seed":13,"ordinaryRows":24,"ownedRows":1,"readOnly":true}],"result":"PASS"}
+ok   home-residents  1102.2s (80.4s)  home-residents: 542 checks PASS; actual paid3rest and/or labelled controlled Core3reincarnation, perfixture6layouts/36mouse-keyboard inspections, unchanged restored save
+ok   legendary-discovery 1103.5s (37.8s)  legendary-discovery[all]: 221 checks PASS; earned seeds1/13 Watch/report receipts,12 modal+12 report layouts, readonly gear navigation; 18 controlled actual Death receipt layouts/retained gear
+FAIL legendary-gear  1106.0s (7.6s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/web/tests/legendary-gear.mjs:126:12 {
+ok   live-depth-map  1109.5s (7.3s)  live-depth-map: 63 checks PASS (real WASM, controlled map labels and movement)
+FAIL loot-economy    1112.0s (6.0s)  Node.js v22.18.0
+     page.evaluate: Error: bank: reconciled ledger
+         at check (eval at evaluate (:311:30), <anonymous>:12:29)
+         at eval (eval at evaluate (:311:30), <anonymous>:209:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/loot-economy.mjs:19:29 {
+ok   live-inventory  1120.6s (17.1s)  ]
+ok   save-history    1123.1s (11.1s)  save-history: 18 checks PASS
+ok   skill-icons     1130.2s (9.6s)  {"cells":648,"unique":72,"paintings":648,"failedImages":72,"errors":[]}
+ok   sold-finds      1143.5s (20.4s)  sold-finds PASS
+FAIL starting-kits   1166.6s (36.4s)  Node.js v22.18.0
+       - waiting for locator('.sheet-wrap:not(.under) [data-bloodline-panel="loadouts"]').locator('[data-starting-kits]') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/starting-kits.mjs:46:16 {
+ok   menu-materials  1205.0s (95.5s)  118 menu material/focus checks PASS
+ok   town-ux         1221.0s (54.4s)  town-ux: 19 checks PASS
+ok   town-glow       1238.1s (94.5s)  town-glow: ok
+ok   vat             1241.3s (20.3s)  vat: 42 checks PASS (real WASM; growing · hurry · ready · night light)
+FAIL ui-clarity      1241.8s (36.7s)  Node.js v22.18.0
+       - waiting for locator('.sheet-wrap:not(.under) .hero-actions') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/ui-clarity.mjs:84:62 {
+ok   watch-weapons   1247.3s (5.5s)  {"checks":341,"phases":[{"phase":"full","checks":113,"variantCases":18,"kind":"controlled fixture; no earned progression claim"},{"phase":"missing-variants","checks":113,"variantCases":18,"kind":"controlled fixture; no earned progression claim"},{"phase":"no-art","checks":113,"variantCases":18,"kind":"controlled fixture; no earned progression claim"}],"errors":[],"contextRestore":{"kind":"hero_gunner_male_short_gun","lost":true,"restored":true},"status":"PASS"}
+ok   watch-loot-skill 1254.6s (16.6s)  {"contract":"Cut210 controlled automatic loot and Cut205 factual live skill","results":[{"lane":"automatic","automatic":{"selected":1,"pendingChoice":null,"cageSheet":false,"cageTicker":false,"cageState":null,"firstBatch":15,"rawAtPickup":30,"carryAtPickup":7,"goldAtPickup":500},"raw":30,"carry":7,"gold":507,"engineGold":507,"exit":"return","pending":null},{"lane":"preference","raw":12,"carry":3},{"lane":"skill","skill":{"id":"fighter_recovery","name":"Recovery"},"filtered":{"tagged":1,"ordinary":0}}]}
+ok   watch-message-spacing 1258.2s (16.9s)  1440 wrapped messages/gaps/bounds/plain overlay/ticker/history/controls PASS
+ok   workplaces      1272.5s (17.9s)  workplaces: PASS
+ok   ascension-refusal 1279.2s (21.0s)  800x400 33 ascension review/cancel/refusal/single-flight/success PASS
+ok   encounter-modifiers 1284.2s (11.7s)  1440 encounter metadata/played state/counters/fallback/keyboard/viewport/read-only PASS
+ok   first-plot      1294.2s (15.0s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   patch-overflow  1306.9s (22.8s)  patch-overflow: ok (25 checks)
+ok   class-styles    1310.3s (16.1s)  400 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+FAIL item-icons      1313.0s (6.0s)  Node.js v22.18.0
+     page.evaluate: Error: report found item icons
+         at check (eval at evaluate (:311:30), <anonymous>:11:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:175:9)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/item-icons.mjs:24:28 {
+ok   tactic-observer 1324.1s (11.1s)  1440 42 tactic ownership/clock/target/read-only checks PASS
+ok   shaft-wrap      1325.5s (15.2s)  shaft-wrap: 8 checks PASS
+ok   boss-counters   1336.2s (10.7s)  1440 23 boss counter clarity checks PASS
+ok   telegraph-names 1341.0s (16.9s)  1000 17 recorded rally/priority/lifetime/visibility checks PASS
+ok   class-locks     1346.9s (10.7s)  1440 gate/token-short/available/owned/viewport/exact-save PASS
+ok   death-hero      1350.4s (9.5s)  1440 9 historical death hero checks PASS
+ok   game-menu       1364.8s (17.9s)  27 game menu checks PASS
+ok   return-pick     1377.4s (12.6s)  return-pick: ok (10 checks)
+ok   run-training    1386.9s (9.5s)  1440 18 run training visibility checks PASS
+ok   unit-icons      1398.0s (11.1s)  1440 guide art/unknown concealment/fallback/death adjacency/historical class PASS
+FAIL hunger-legible  1401.3s (50.9s)  Node.js v22.18.0
+       if (!ok) throw Error(m);
+     Error: 400: the bite's callout names its cause ()
+         at check (file:///home/g/p/riddle/web/tests/hunger-legible.mjs:13:18)
+         at file:///home/g/p/riddle/web/tests/hunger-legible.mjs:87:5
+ok   checkpoint-gold 1408.6s (10.6s)  400 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS
+FAIL hero-appearance 1414.0s (5.4s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')
+         at eval (eval at evaluate (:311:30), <anonymous>:34:23)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/hero-appearance.mjs:14:23 {
+ok   watch-meters    1421.3s (20.0s)  1440 8 watch meters/trailing paint/paused frontier/resume/disposal PASS
+FAIL report-hero-upgrade 1427.9s (6.6s)  Node.js v22.18.0
+     page.evaluate: Error: opens existing hero upgrades
+         at check (eval at evaluate (:311:30), <anonymous>:7:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:58:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/report-hero-upgrade.mjs:14:28 {
+ok   mirror-rhythm   1428.3s (14.3s)  400 real first-clear lock/earned availability, visible icon/equip, no currency change, one guarded row, cancel/reload PASS
+ok   bloodline-training 1439.7s (11.3s)  1440 22 bloodline training attribution checks PASS
+ok   training-icons  1440.0s (12.1s)  1440 training art/text/fallback/gap/centering/wrapping PASS
+ok   debug-export    1450.2s (10.5s)  400 shipping debug export, restore, live watch and recovery PASS
+ok   locked-cond     1450.8s (10.7s)  locked-cond: ok (19 checks)
+ok   gunner-observer 1461.8s (11.6s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   hero-slot-looks 1461.8s (11.0s)  1440 18 slot/report appearance checks PASS
+ok   portrait-fallback 1472.7s (10.9s)  1440 healthy portrait/failure same-unit fallback/primitive/frame/historical identity/save PASS
+ok   package-selection 1473.7s (11.9s)  1440 20 selected Tactics checks PASS
+ok   tactic-change   1482.8s (9.1s)  tactic-change: ok (4 checks)
+ok   unit-label      1491.8s (9.0s)  1440 16 unit label spacing/centering/long-name/fallback PASS
+ok   wall-preparation 1501.5s (9.7s)  1440 39 wall preparation/read-only/manual/stale/lifecycle PASS
+FAIL run-card-gold   1510.9s (38.2s)  Node.js v22.18.0
+       - waiting for locator('.hero-row.selected:visible .hero-details')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/run-card-gold.mjs:100:65 {
+ok   hero-grounding  1513.9s (12.4s)  hero-grounding: ok (2 widths)
+ok   numbers-agree   1518.8s (7.9s)  11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   report-juice    1526.3s (12.4s)  13 level-up highlight/reveal timing/no shift/skip/settled checks PASS
+ok   cut28d          1528.5s (9.7s)  cut28d: ok (17 checks)
+ok   report-bosses   1536.8s (10.6s)  1440 32 boss victories/ownership/slice merge/old wire checks PASS
+ok   rules-lock      1537.5s (9.0s)  400 read-only/requirements/center/Escape/exact-save/open PASS
+ok   chronicle-unit-labels 1544.6s (7.1s)  400 historical ownership/old fallback/spacing/read-only open/kept-death id PASS
+ok   hero-summary    1548.6s (11.7s)  400 9 hero/class progress and read-only live summary PASS
+ok   counter-name    1550.6s (6.0s)  10 counter name checks PASS
+ok   report-reading  1556.2s (7.6s)  400 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   report-time-scope 1557.0s (6.4s)  400 completed whole runs/assigned rest/absence/aggregate/exit fallback/exact save PASS
+ok   rest-callout    1562.6s (6.4s)  29 rest callout/observer/seek/reset checks PASS
+ok   captive-fact-copy 1563.9s (6.9s)  report traits, enemy tooltip and exact save PASS
+ok   forecast-requests 1569.7s (7.1s)  400 16 forecast lifecycle checks PASS
+ok   forge-requests  1570.8s (6.9s)  400 34 Forge request checks PASS
+FAIL hero-names      1575.4s (5.7s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')
+         at eval (eval at evaluate (:311:30), <anonymous>:54:57)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/hero-names.mjs:14:27 {
+ok   live-roster     1576.7s (5.9s)  400 20 live roster/send/poll/dedup/late reply/recovery PASS
+ok   package-requests 1582.4s (7.0s)  package-requests: 44 checks PASS
+FAIL persistent-camp 1583.2s (6.5s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'disabled')
+         at eval (eval at evaluate (:311:30), <anonymous>:27:51)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/persistent-camp.mjs:14:28 {
+ok   recent-progress 1588.9s (6.4s)  400 20 recent progress checks PASS
+ok   watch-keepout   1589.1s (5.9s)  watch keep-out: immediate DOM nameplate removal PASS
+ok   death-forecast-said 1596.1s (7.0s)  400 10 death forecast-said checks PASS
+FAIL worker-first-act 1601.7s (12.8s)  Node.js v22.18.0
+     page.evaluate: Error: fresh wire: a send goal, the scout counting ({"kind":"send","node":"scout","text":"send"} undefined)
+         at check (eval at evaluate (:311:30), <anonymous>:5:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:13:7)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/web/tests/worker-first-act.mjs:136:23 {
+ok   death-price-lanes 1604.6s (8.5s)  death-price-lanes: 13 snapshot/cache checks PASS
+ok   gpu-diagnostics 1607.3s (5.7s)  GPU diagnostics: 741 protocol checks PASS
+ok   hero-presence   1611.8s (7.1s)  400 22 presence/epoch/freshness/compatibility/identity checks PASS
+ok   item-icon-fallback 1613.9s (6.5s)  failed packed image keeps identity/rarity/name and unframed primitive PASS
+ok   legacy-wire     1617.2s (5.4s)  real WASM obsolete respec refuses toward Reclone preview; complete save unchanged PASS
+ok   package-lanes   1619.5s (5.7s)  package-lanes: 19 checks PASS
+ok   package-paired  1622.9s (5.7s)  package-paired: 26 checks PASS
+FAIL report-actions  1625.4s (5.8s)  Node.js v22.18.0
+     page.evaluate: Error: no raw storage ID or zero cost
+         at check (eval at evaluate (:311:30), <anonymous>:7:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:38:7)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/web/tests/report-actions.mjs:14:23 {
+ok   report-choices  1629.6s (6.8s)  400 23 earned choice visibility/ownership/direct sections/no auto-equip PASS
+ok   report-class-xp 1631.2s (5.8s)  400 20 class XP/visible rewards/slot identity/slice merges/old wire PASS
+ok   report-exit-depth 1636.2s (6.6s)  8 report exit-depth checks PASS
+ok   watch-end-caption 1637.7s (6.5s)  19 picture-clock/end/seek/reset caption checks PASS
+ok   worker-purchases 1642.6s (6.3s)  400 7 worker purchase checks PASS
+ok   worker-pause    1668.6s (421.3s)  worker-pause 186 checks PASS
+ok   clarity:paint   1704.6s (36.0s)  clarity paint: ok (5 checks)
+ok   watch-live-edge 1737.6s (33.1s)  watch-live-edge: ok (10 checks)
+FAIL: 144/175 client gates in 1737.6s — ran fresh 169 (138 ok, 31 failed); reused 6 earlier passes (identical identity, labelled ok*, not fresh evidence)
+[ELIFECYCLE] Command failed with exit code 1.

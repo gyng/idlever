@@ -1,5 +1,19 @@
 # Content and refinement queue — 2026-10-13
 
+## Publication checkpoint — 2026-10-21
+
+Owner requested completed work merged/pushed/deployed. Source510bd647 is pushed
+and live asv0.1.0-alpha.3 on both Pages andCloudflare dev; see
+[deployment evidence](evidence/deploy-20261021/README.md) and HANDOFF. Completed
+branch work is integrated or patch-equivalent; rejected prototypes/old dirty
+worktrees remain preserved. Experimental Bank/Vat redesign is NOT adopted.
+Main/release CI, native1104, tooling108 and both live artifact/real-WASM/reload
+checks pass. Current client audit144/175pass,31fail; exact failures and the
+/tmp-full correction are retained and disclosed. Client-reference/selector/
+interaction triage joins the active work; original upgrade/worker/pen/recovery
+and independent progression/fun requirements remain open. No backlog closure
+or broad acceptance claim follows from this publication.
+
 ## Active backlog resume — 2026-10-21
 
 Owner update, 2026-10-21: bring both previously held items back into the work

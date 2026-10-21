@@ -1,0 +1,3175 @@
+{
+  "format": "idlever-client-run",
+  "suite": "full",
+  "mode": "failed",
+  "identity": {
+    "format": "idlever-client-identity-v2",
+    "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+    "dirty": true,
+    "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+    "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+  },
+  "startedAt": "2026-10-21T02:51:53.760Z",
+  "finished": true,
+  "selected": [
+    "achievements",
+    "ambient-motes",
+    "armour-sets",
+    "ascension-refusal",
+    "audio",
+    "bloodline-founding",
+    "bloodline-tabs",
+    "bloodline-training",
+    "boss-beat-quiet",
+    "boss-counters",
+    "boss-kill-beat",
+    "building-fx",
+    "captive-fact-copy",
+    "checkpoint-gold",
+    "chrome",
+    "chrome-layout",
+    "chronicle-unit-labels",
+    "chunky-controls",
+    "clarity:core,watch",
+    "clarity:paint",
+    "class-locks",
+    "class-styles",
+    "class-switch",
+    "class-tools",
+    "class-tree",
+    "combat-cues",
+    "combat-identity",
+    "combat-rules",
+    "compact-depth",
+    "companion-chrome",
+    "control-visibility",
+    "counter-name",
+    "ctxloss",
+    "cut12",
+    "cut122",
+    "cut26",
+    "cut28",
+    "cut28d",
+    "cut29",
+    "cut305:sheet,rank",
+    "death-actions",
+    "death-fix-discovery",
+    "death-forecast-said",
+    "death-hero",
+    "death-price-lanes",
+    "debug-export",
+    "depth-rail",
+    "editor-packages",
+    "encounter-modifiers",
+    "enemy-surfaces",
+    "enemy-tips",
+    "exit-keep-close",
+    "fights:break",
+    "first-plot",
+    "forecast-requests",
+    "forge-requests",
+    "free-preparation",
+    "game-menu",
+    "glossary",
+    "gold-settlements",
+    "gold-transfers",
+    "gpu-diagnostics",
+    "gunner-observer",
+    "hero-appearance",
+    "hero-frame",
+    "hero-grounding",
+    "hero-hub",
+    "hero-hub-navigation",
+    "hero-life",
+    "hero-life-camp",
+    "hero-names",
+    "hero-presence",
+    "hero-slot-looks",
+    "hero-summary",
+    "hero-upgrade-feedback",
+    "history-pick-price",
+    "home-building-help",
+    "home-forge-work",
+    "home-heroes",
+    "home-label-layout",
+    "home-resident-phases",
+    "home-residents",
+    "home-services",
+    "hunger-legible",
+    "item-icon-fallback",
+    "item-icons",
+    "journal",
+    "journal-earned",
+    "journal-real",
+    "king-advice-scope",
+    "landmarks",
+    "leeching",
+    "legacy-earned",
+    "legacy-tree",
+    "legacy-wire",
+    "legendary-catalogue",
+    "legendary-discovery",
+    "legendary-forge-consistency",
+    "legendary-gear",
+    "live-decisions",
+    "live-depth-map",
+    "live-inventory",
+    "live-roster",
+    "locked-cond",
+    "loot-economy",
+    "menu-materials",
+    "mirror-rhythm",
+    "numbered-descents",
+    "numbers-agree",
+    "package-lanes",
+    "package-paired",
+    "package-requests",
+    "package-selection",
+    "patch-overflow",
+    "pen-edit",
+    "persistent-camp",
+    "portrait-fallback",
+    "post-clear-town",
+    "ready-plots",
+    "recent-progress",
+    "report-actions",
+    "report-bosses",
+    "report-choices",
+    "report-class-xp",
+    "report-exit-depth",
+    "report-hero-upgrade",
+    "report-juice",
+    "report-reading",
+    "report-supply-limit",
+    "report-time-scope",
+    "rest-callout",
+    "return-pick",
+    "rules-lock",
+    "run-card-gold",
+    "run-training",
+    "runsui",
+    "save-history",
+    "screens",
+    "shaft-wrap",
+    "skill-icons",
+    "sold-finds",
+    "starting-kits",
+    "survivor-builds",
+    "tactic-change",
+    "tactic-observer",
+    "take-control",
+    "telegraph-names",
+    "town-clock",
+    "town-glow",
+    "town-save",
+    "town-ux",
+    "training-icons",
+    "ui:frame",
+    "ui-clarity",
+    "unit-icons",
+    "unit-label",
+    "vat",
+    "wall-preparation",
+    "watch-console",
+    "watch-end-caption",
+    "watch-keepout",
+    "watch-live-edge",
+    "watch-log",
+    "watch-loot-skill",
+    "watch-message-spacing",
+    "watch-meters",
+    "watch-normal-news",
+    "watch-speed-rate",
+    "watch-status",
+    "watch-weapons",
+    "wish-retirement",
+    "worker-first-act",
+    "worker-pause",
+    "worker-purchases",
+    "workplaces"
+  ],
+  "results": {
+    "boss-beat-quiet": {
+      "name": "boss-beat-quiet",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.192,
+      "endedAtSeconds": 1120.708,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:48:51.718Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "enemy-surfaces": {
+      "name": "enemy-surfaces",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 18.048,
+      "endedAtSeconds": 1152.459,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:49:23.469Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "enemy-tips": {
+      "name": "enemy-tips",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.701,
+      "endedAtSeconds": 1134.41,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:49:05.420Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "fights:break": {
+      "name": "fights:break",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.471,
+      "endedAtSeconds": 1021.829,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:47:12.839Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "hero-hub": {
+      "name": "hero-hub",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 588.951,
+      "endedAtSeconds": 997.165,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:46:48.175Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "survivor-builds": {
+      "name": "survivor-builds",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 345.93,
+      "endedAtSeconds": 408.211,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:36:59.222Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      },
+      "reused": true
+    },
+    "wish-retirement": {
+      "name": "wish-retirement",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 16.655,
+      "endedAtSeconds": 18.588,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: WASM/native settled full-save equality",
+      "finishedAt": "2026-10-21T02:52:12.349Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "clarity:core,watch": {
+      "name": "clarity:core,watch",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 55.807,
+      "endedAtSeconds": 74.397,
+      "firstFailure": "clarity core,watch: FAIL (3 assertion(s), 0 error(s))",
+      "finishedAt": "2026-10-21T02:53:08.158Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut12": {
+      "name": "cut12",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 29.279,
+      "endedAtSeconds": 103.678,
+      "firstFailure": "walk aborted: locator.click: Timeout 5000ms exceeded.",
+      "finishedAt": "2026-10-21T02:53:37.439Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "runsui": {
+      "name": "runsui",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 45.825,
+      "endedAtSeconds": 149.649,
+      "firstFailure": "- waiting for locator('.hero-row[data-state=live]:visible .hero-jump').first()",
+      "finishedAt": "2026-10-21T02:54:23.409Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "take-control": {
+      "name": "take-control",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 128.849,
+      "endedAtSeconds": 232.531,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:55:46.291Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "boss-kill-beat": {
+      "name": "boss-kill-beat",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 221.019,
+      "endedAtSeconds": 324.853,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:57:18.613Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut29": {
+      "name": "cut29",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 202.974,
+      "endedAtSeconds": 352.624,
+      "firstFailure": "walk aborted: timeout waiting for visible marks caption remembered",
+      "finishedAt": "2026-10-21T02:57:46.384Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "exit-keep-close": {
+      "name": "exit-keep-close",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 30.71,
+      "endedAtSeconds": 355.564,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:57:49.324Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "live-decisions": {
+      "name": "live-decisions",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 147.319,
+      "endedAtSeconds": 379.853,
+      "firstFailure": "FAIL auto-pick at the deadline: option 0, 6299 ms watched (excl. 3 s paused)",
+      "finishedAt": "2026-10-21T02:58:13.613Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "gold-transfers": {
+      "name": "gold-transfers",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 38.421,
+      "endedAtSeconds": 418.276,
+      "firstFailure": "- waiting for locator('[data-tile=\"forge\"]').first()",
+      "finishedAt": "2026-10-21T02:58:52.037Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ctxloss": {
+      "name": "ctxloss",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 68.237,
+      "endedAtSeconds": 420.863,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:58:54.623Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legacy-earned": {
+      "name": "legacy-earned",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 35.021,
+      "endedAtSeconds": 455.887,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:59:29.647Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "screens": {
+      "name": "screens",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 61.17,
+      "endedAtSeconds": 479.449,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T02:59:53.209Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "bloodline-founding": {
+      "name": "bloodline-founding",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 34.612,
+      "endedAtSeconds": 490.5,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:00:04.260Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "gold-settlements": {
+      "name": "gold-settlements",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 165.605,
+      "endedAtSeconds": 521.19,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:00:34.950Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "chrome": {
+      "name": "chrome",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 48.42,
+      "endedAtSeconds": 527.871,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:00:41.631Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ui:frame": {
+      "name": "ui:frame",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 41.346,
+      "endedAtSeconds": 531.848,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:00:45.609Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "chunky-controls": {
+      "name": "chunky-controls",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 33.249,
+      "endedAtSeconds": 554.443,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:01:08.203Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "post-clear-town": {
+      "name": "post-clear-town",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 25.422,
+      "endedAtSeconds": 557.272,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:01:11.032Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "audio": {
+      "name": "audio",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 24.961,
+      "endedAtSeconds": 582.234,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:01:35.994Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-speed-rate": {
+      "name": "watch-speed-rate",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 35.013,
+      "endedAtSeconds": 589.458,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:01:43.218Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut28": {
+      "name": "cut28",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 69.24,
+      "endedAtSeconds": 597.113,
+      "firstFailure": "- waiting for locator('.hero-class')",
+      "finishedAt": "2026-10-21T03:01:50.873Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut26": {
+      "name": "cut26",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 29.033,
+      "endedAtSeconds": 611.268,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:02:05.028Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legacy-tree": {
+      "name": "legacy-tree",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 23.91,
+      "endedAtSeconds": 613.369,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:02:07.129Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "town-save": {
+      "name": "town-save",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 39.438,
+      "endedAtSeconds": 636.552,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:02:30.312Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut122": {
+      "name": "cut122",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 25.788,
+      "endedAtSeconds": 639.158,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:02:32.918Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-console": {
+      "name": "watch-console",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 40.08,
+      "endedAtSeconds": 651.35,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:02:45.110Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "compact-depth": {
+      "name": "compact-depth",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 30.909,
+      "endedAtSeconds": 670.07,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:03.830Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-normal-news": {
+      "name": "watch-normal-news",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 34.485,
+      "endedAtSeconds": 671.039,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:04.799Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "control-visibility": {
+      "name": "control-visibility",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 25.421,
+      "endedAtSeconds": 676.772,
+      "firstFailure": "if (!ok) throw Error(message);",
+      "finishedAt": "2026-10-21T03:03:10.532Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "leeching": {
+      "name": "leeching",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 17.606,
+      "endedAtSeconds": 687.679,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:21.439Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "combat-rules": {
+      "name": "combat-rules",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.038,
+      "endedAtSeconds": 687.811,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:21.572Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "death-fix-discovery": {
+      "name": "death-fix-discovery",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 27.042,
+      "endedAtSeconds": 698.082,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:31.843Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "pen-edit": {
+      "name": "pen-edit",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 22.211,
+      "endedAtSeconds": 710.024,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:43.785Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ambient-motes": {
+      "name": "ambient-motes",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 23.731,
+      "endedAtSeconds": 711.411,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:45.171Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-log": {
+      "name": "watch-log",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 24.692,
+      "endedAtSeconds": 722.776,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:03:56.536Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "king-advice-scope": {
+      "name": "king-advice-scope",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 23.434,
+      "endedAtSeconds": 734.846,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:08.606Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "history-pick-price": {
+      "name": "history-pick-price",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 24.982,
+      "endedAtSeconds": 735.008,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:08.768Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ready-plots": {
+      "name": "ready-plots",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 17,
+      "endedAtSeconds": 739.777,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:13.537Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-supply-limit": {
+      "name": "report-supply-limit",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.702,
+      "endedAtSeconds": 753.48,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:27.240Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "town-clock": {
+      "name": "town-clock",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 19.077,
+      "endedAtSeconds": 753.924,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:27.684Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "class-switch": {
+      "name": "class-switch",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 19.319,
+      "endedAtSeconds": 754.328,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:28.088Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "companion-chrome": {
+      "name": "companion-chrome",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.421,
+      "endedAtSeconds": 765.346,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:39.106Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "combat-identity": {
+      "name": "combat-identity",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 15.556,
+      "endedAtSeconds": 769.037,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:42.797Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "numbered-descents": {
+      "name": "numbered-descents",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.701,
+      "endedAtSeconds": 782.048,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:04:55.808Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-upgrade-feedback": {
+      "name": "hero-upgrade-feedback",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 34.718,
+      "endedAtSeconds": 789.047,
+      "firstFailure": "- waiting for locator('.sheet-wrap .hero-sheet .hero-history summary')",
+      "finishedAt": "2026-10-21T03:05:02.808Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-status": {
+      "name": "watch-status",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 21.049,
+      "endedAtSeconds": 790.088,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:05:03.848Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "bloodline-tabs": {
+      "name": "bloodline-tabs",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 6.073,
+      "endedAtSeconds": 796.163,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:",
+      "finishedAt": "2026-10-21T03:05:09.923Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "armour-sets": {
+      "name": "armour-sets",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 14.381,
+      "endedAtSeconds": 803.43,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "finishedAt": "2026-10-21T03:05:17.190Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "achievements": {
+      "name": "achievements",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 31.994,
+      "endedAtSeconds": 814.044,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:05:27.804Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "chrome-layout": {
+      "name": "chrome-layout",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 14.935,
+      "endedAtSeconds": 818.366,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: camp/1024/1: Heroes label clipped",
+      "finishedAt": "2026-10-21T03:05:32.126Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "class-tools": {
+      "name": "class-tools",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.036,
+      "endedAtSeconds": 820.085,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:05:33.846Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "combat-cues": {
+      "name": "combat-cues",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 1.068,
+      "endedAtSeconds": 821.156,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:05:34.916Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut305:sheet,rank": {
+      "name": "cut305:sheet,rank",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 9.912,
+      "endedAtSeconds": 831.069,
+      "firstFailure": "FAIL mid: the trunk's five done in one dim row, the next ≤ 2 silhouettes; 11 items on screen (≤ 7 nodes + the done row)",
+      "finishedAt": "2026-10-21T03:05:44.829Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "building-fx": {
+      "name": "building-fx",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 37.239,
+      "endedAtSeconds": 833.403,
+      "firstFailure": "- waiting for locator('[data-building-info=\"tent\"]')",
+      "finishedAt": "2026-10-21T03:05:47.163Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "death-actions": {
+      "name": "death-actions",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.441,
+      "endedAtSeconds": 844.512,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:05:58.272Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "editor-packages": {
+      "name": "editor-packages",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 19.925,
+      "endedAtSeconds": 864.439,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:06:18.199Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "free-preparation": {
+      "name": "free-preparation",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.829,
+      "endedAtSeconds": 874.269,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:06:28.029Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "depth-rail": {
+      "name": "depth-rail",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 52.954,
+      "endedAtSeconds": 886.359,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:06:40.119Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-frame": {
+      "name": "hero-frame",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 7.812,
+      "endedAtSeconds": 894.172,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^Mara of the Lantern Vale · Life \\d+$/. Input:",
+      "finishedAt": "2026-10-21T03:06:47.932Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "glossary": {
+      "name": "glossary",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 23.329,
+      "endedAtSeconds": 897.599,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:06:51.359Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-hub-navigation": {
+      "name": "hero-hub-navigation",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 40.027,
+      "endedAtSeconds": 934.201,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:07:27.961Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-life-camp": {
+      "name": "hero-life-camp",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 8.892,
+      "endedAtSeconds": 943.099,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:07:36.859Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-building-help": {
+      "name": "home-building-help",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 30.428,
+      "endedAtSeconds": 973.529,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:08:07.289Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "class-tree": {
+      "name": "class-tree",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 156.286,
+      "endedAtSeconds": 974.654,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:08:08.414Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-life": {
+      "name": "hero-life",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 99.973,
+      "endedAtSeconds": 997.573,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:08:31.334Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-forge-work": {
+      "name": "home-forge-work",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 40.746,
+      "endedAtSeconds": 1014.276,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:08:48.036Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-resident-phases": {
+      "name": "home-resident-phases",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.52,
+      "endedAtSeconds": 1021.798,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:08:55.558Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-heroes": {
+      "name": "home-heroes",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 55.365,
+      "endedAtSeconds": 1030.02,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:03.780Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-label-layout": {
+      "name": "home-label-layout",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 41.883,
+      "endedAtSeconds": 1039.458,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:13.218Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-services": {
+      "name": "home-services",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.683,
+      "endedAtSeconds": 1040.704,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:14.464Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "journal": {
+      "name": "journal",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.973,
+      "endedAtSeconds": 1047.433,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:21.193Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "journal-earned": {
+      "name": "journal-earned",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 7.432,
+      "endedAtSeconds": 1048.138,
+      "firstFailure": "TypeError: Cannot read properties of null (reading 'current')",
+      "finishedAt": "2026-10-21T03:09:21.898Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "landmarks": {
+      "name": "landmarks",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 1.161,
+      "endedAtSeconds": 1049.301,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:23.061Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "journal-real": {
+      "name": "journal-real",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 18.206,
+      "endedAtSeconds": 1065.641,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:09:39.401Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legendary-catalogue": {
+      "name": "legendary-catalogue",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 38.134,
+      "endedAtSeconds": 1087.437,
+      "firstFailure": "name: 'TimeoutError'",
+      "finishedAt": "2026-10-21T03:10:01.198Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legendary-forge-consistency": {
+      "name": "legendary-forge-consistency",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.992,
+      "endedAtSeconds": 1098.432,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:12.192Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "home-residents": {
+      "name": "home-residents",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 80.446,
+      "endedAtSeconds": 1102.245,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:16.005Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legendary-discovery": {
+      "name": "legendary-discovery",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 37.826,
+      "endedAtSeconds": 1103.469,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:17.229Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legendary-gear": {
+      "name": "legendary-gear",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 7.588,
+      "endedAtSeconds": 1106.021,
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:",
+      "finishedAt": "2026-10-21T03:10:19.782Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "live-depth-map": {
+      "name": "live-depth-map",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.258,
+      "endedAtSeconds": 1109.504,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:23.264Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "loot-economy": {
+      "name": "loot-economy",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 5.952,
+      "endedAtSeconds": 1111.979,
+      "firstFailure": "page.evaluate: Error: bank: reconciled ledger",
+      "finishedAt": "2026-10-21T03:10:25.739Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "live-inventory": {
+      "name": "live-inventory",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 17.149,
+      "endedAtSeconds": 1120.621,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:34.381Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "save-history": {
+      "name": "save-history",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.108,
+      "endedAtSeconds": 1123.089,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:36.849Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "skill-icons": {
+      "name": "skill-icons",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.553,
+      "endedAtSeconds": 1130.175,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:43.935Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "sold-finds": {
+      "name": "sold-finds",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 20.437,
+      "endedAtSeconds": 1143.53,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:10:57.290Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "starting-kits": {
+      "name": "starting-kits",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 36.443,
+      "endedAtSeconds": 1166.62,
+      "firstFailure": "- waiting for locator('.sheet-wrap:not(.under) [data-bloodline-panel=\"loadouts\"]').locator('[data-starting-kits]') to be visible",
+      "finishedAt": "2026-10-21T03:11:20.380Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "menu-materials": {
+      "name": "menu-materials",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 95.535,
+      "endedAtSeconds": 1205.041,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:11:58.801Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "town-ux": {
+      "name": "town-ux",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 54.395,
+      "endedAtSeconds": 1221.017,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:14.777Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "town-glow": {
+      "name": "town-glow",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 94.521,
+      "endedAtSeconds": 1238.054,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:31.814Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "vat": {
+      "name": "vat",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 20.273,
+      "endedAtSeconds": 1241.292,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:35.052Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ui-clarity": {
+      "name": "ui-clarity",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 36.712,
+      "endedAtSeconds": 1241.762,
+      "firstFailure": "- waiting for locator('.sheet-wrap:not(.under) .hero-actions') to be visible",
+      "finishedAt": "2026-10-21T03:12:35.522Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-weapons": {
+      "name": "watch-weapons",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.533,
+      "endedAtSeconds": 1247.298,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:41.058Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-loot-skill": {
+      "name": "watch-loot-skill",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.568,
+      "endedAtSeconds": 1254.624,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:48.384Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-message-spacing": {
+      "name": "watch-message-spacing",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.908,
+      "endedAtSeconds": 1258.203,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:12:51.963Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "workplaces": {
+      "name": "workplaces",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 17.871,
+      "endedAtSeconds": 1272.498,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:06.258Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "ascension-refusal": {
+      "name": "ascension-refusal",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 21.017,
+      "endedAtSeconds": 1279.224,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:12.984Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "encounter-modifiers": {
+      "name": "encounter-modifiers",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.661,
+      "endedAtSeconds": 1284.166,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:17.926Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "first-plot": {
+      "name": "first-plot",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 14.991,
+      "endedAtSeconds": 1294.218,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:27.978Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "patch-overflow": {
+      "name": "patch-overflow",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 22.756,
+      "endedAtSeconds": 1306.927,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:40.687Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "class-styles": {
+      "name": "class-styles",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.076,
+      "endedAtSeconds": 1310.297,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:44.057Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "item-icons": {
+      "name": "item-icons",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 6.045,
+      "endedAtSeconds": 1312.977,
+      "firstFailure": "page.evaluate: Error: report found item icons",
+      "finishedAt": "2026-10-21T03:13:46.738Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "tactic-observer": {
+      "name": "tactic-observer",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.115,
+      "endedAtSeconds": 1324.103,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:57.863Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "shaft-wrap": {
+      "name": "shaft-wrap",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 15.184,
+      "endedAtSeconds": 1325.484,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:13:59.244Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "boss-counters": {
+      "name": "boss-counters",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.717,
+      "endedAtSeconds": 1336.204,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:09.964Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "telegraph-names": {
+      "name": "telegraph-names",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.86,
+      "endedAtSeconds": 1340.968,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:14.728Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "class-locks": {
+      "name": "class-locks",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.709,
+      "endedAtSeconds": 1346.919,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:20.679Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "death-hero": {
+      "name": "death-hero",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.456,
+      "endedAtSeconds": 1350.428,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:24.188Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "game-menu": {
+      "name": "game-menu",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 17.9,
+      "endedAtSeconds": 1364.822,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:38.583Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "return-pick": {
+      "name": "return-pick",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.578,
+      "endedAtSeconds": 1377.408,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:14:51.168Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "run-training": {
+      "name": "run-training",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.489,
+      "endedAtSeconds": 1386.901,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:00.661Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "unit-icons": {
+      "name": "unit-icons",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.08,
+      "endedAtSeconds": 1397.988,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:11.748Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hunger-legible": {
+      "name": "hunger-legible",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 50.894,
+      "endedAtSeconds": 1401.326,
+      "firstFailure": "if (!ok) throw Error(m);",
+      "finishedAt": "2026-10-21T03:15:15.086Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "checkpoint-gold": {
+      "name": "checkpoint-gold",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.635,
+      "endedAtSeconds": 1408.631,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:22.391Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-appearance": {
+      "name": "hero-appearance",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 5.407,
+      "endedAtSeconds": 1414.041,
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')",
+      "finishedAt": "2026-10-21T03:15:27.801Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-meters": {
+      "name": "watch-meters",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 19.969,
+      "endedAtSeconds": 1421.3,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:35.060Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-hero-upgrade": {
+      "name": "report-hero-upgrade",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 6.619,
+      "endedAtSeconds": 1427.923,
+      "firstFailure": "page.evaluate: Error: opens existing hero upgrades",
+      "finishedAt": "2026-10-21T03:15:41.683Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "mirror-rhythm": {
+      "name": "mirror-rhythm",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 14.268,
+      "endedAtSeconds": 1428.314,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:42.074Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "bloodline-training": {
+      "name": "bloodline-training",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.338,
+      "endedAtSeconds": 1439.658,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:53.418Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "training-icons": {
+      "name": "training-icons",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.115,
+      "endedAtSeconds": 1440.043,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:15:53.803Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "debug-export": {
+      "name": "debug-export",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.503,
+      "endedAtSeconds": 1450.165,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:03.925Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "locked-cond": {
+      "name": "locked-cond",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.717,
+      "endedAtSeconds": 1450.765,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:04.525Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "gunner-observer": {
+      "name": "gunner-observer",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.584,
+      "endedAtSeconds": 1461.753,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:15.513Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-slot-looks": {
+      "name": "hero-slot-looks",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.027,
+      "endedAtSeconds": 1461.795,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:15.555Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "portrait-fallback": {
+      "name": "portrait-fallback",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.899,
+      "endedAtSeconds": 1472.7,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:26.460Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "package-selection": {
+      "name": "package-selection",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.919,
+      "endedAtSeconds": 1473.679,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:27.439Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "tactic-change": {
+      "name": "tactic-change",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.113,
+      "endedAtSeconds": 1482.797,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:36.557Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "unit-label": {
+      "name": "unit-label",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.009,
+      "endedAtSeconds": 1491.81,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:45.570Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "wall-preparation": {
+      "name": "wall-preparation",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.677,
+      "endedAtSeconds": 1501.491,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:16:55.251Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "run-card-gold": {
+      "name": "run-card-gold",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 38.2,
+      "endedAtSeconds": 1510.905,
+      "firstFailure": "- waiting for locator('.hero-row.selected:visible .hero-details')",
+      "finishedAt": "2026-10-21T03:17:04.665Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-grounding": {
+      "name": "hero-grounding",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.37,
+      "endedAtSeconds": 1513.865,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:07.625Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "numbers-agree": {
+      "name": "numbers-agree",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.888,
+      "endedAtSeconds": 1518.802,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:12.562Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-juice": {
+      "name": "report-juice",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.411,
+      "endedAtSeconds": 1526.279,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:20.039Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "cut28d": {
+      "name": "cut28d",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.652,
+      "endedAtSeconds": 1528.464,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:22.224Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-bosses": {
+      "name": "report-bosses",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.562,
+      "endedAtSeconds": 1536.845,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:30.605Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "rules-lock": {
+      "name": "rules-lock",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.042,
+      "endedAtSeconds": 1537.511,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:31.271Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "chronicle-unit-labels": {
+      "name": "chronicle-unit-labels",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.079,
+      "endedAtSeconds": 1544.597,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:38.357Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-summary": {
+      "name": "hero-summary",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 11.741,
+      "endedAtSeconds": 1548.59,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:42.350Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "counter-name": {
+      "name": "counter-name",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.969,
+      "endedAtSeconds": 1550.572,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:44.332Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-reading": {
+      "name": "report-reading",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.595,
+      "endedAtSeconds": 1556.19,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:49.950Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-time-scope": {
+      "name": "report-time-scope",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.406,
+      "endedAtSeconds": 1556.989,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:50.749Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "rest-callout": {
+      "name": "rest-callout",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.379,
+      "endedAtSeconds": 1562.574,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:56.334Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "captive-fact-copy": {
+      "name": "captive-fact-copy",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.925,
+      "endedAtSeconds": 1563.919,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:17:57.679Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "forecast-requests": {
+      "name": "forecast-requests",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.123,
+      "endedAtSeconds": 1569.703,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:03.463Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "forge-requests": {
+      "name": "forge-requests",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.851,
+      "endedAtSeconds": 1570.775,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:04.535Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-names": {
+      "name": "hero-names",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 5.697,
+      "endedAtSeconds": 1575.408,
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')",
+      "finishedAt": "2026-10-21T03:18:09.168Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "live-roster": {
+      "name": "live-roster",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.898,
+      "endedAtSeconds": 1576.677,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:10.437Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "package-requests": {
+      "name": "package-requests",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.03,
+      "endedAtSeconds": 1582.441,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:16.202Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "persistent-camp": {
+      "name": "persistent-camp",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 6.501,
+      "endedAtSeconds": 1583.184,
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'disabled')",
+      "finishedAt": "2026-10-21T03:18:16.944Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "recent-progress": {
+      "name": "recent-progress",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.407,
+      "endedAtSeconds": 1588.853,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:22.613Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-keepout": {
+      "name": "watch-keepout",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.931,
+      "endedAtSeconds": 1589.123,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:22.883Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "death-forecast-said": {
+      "name": "death-forecast-said",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.966,
+      "endedAtSeconds": 1596.094,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:29.854Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "worker-first-act": {
+      "name": "worker-first-act",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 12.788,
+      "endedAtSeconds": 1601.651,
+      "firstFailure": "page.evaluate: Error: fresh wire: a send goal, the scout counting ({\"kind\":\"send\",\"node\":\"scout\",\"text\":\"send\"} undefined)",
+      "finishedAt": "2026-10-21T03:18:35.411Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "death-price-lanes": {
+      "name": "death-price-lanes",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 8.516,
+      "endedAtSeconds": 1604.628,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:38.388Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "gpu-diagnostics": {
+      "name": "gpu-diagnostics",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.67,
+      "endedAtSeconds": 1607.349,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:41.109Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "hero-presence": {
+      "name": "hero-presence",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.14,
+      "endedAtSeconds": 1611.773,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:45.533Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "item-icon-fallback": {
+      "name": "item-icon-fallback",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.52,
+      "endedAtSeconds": 1613.877,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:47.637Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "legacy-wire": {
+      "name": "legacy-wire",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.385,
+      "endedAtSeconds": 1617.162,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:50.922Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "package-lanes": {
+      "name": "package-lanes",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.665,
+      "endedAtSeconds": 1619.546,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:53.306Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "package-paired": {
+      "name": "package-paired",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.685,
+      "endedAtSeconds": 1622.861,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:18:56.621Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-actions": {
+      "name": "report-actions",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 5.84,
+      "endedAtSeconds": 1625.389,
+      "firstFailure": "page.evaluate: Error: no raw storage ID or zero cost",
+      "finishedAt": "2026-10-21T03:18:59.149Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-choices": {
+      "name": "report-choices",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.762,
+      "endedAtSeconds": 1629.631,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:03.391Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-class-xp": {
+      "name": "report-class-xp",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.761,
+      "endedAtSeconds": 1631.16,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:04.920Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "report-exit-depth": {
+      "name": "report-exit-depth",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.57,
+      "endedAtSeconds": 1636.205,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:09.965Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-end-caption": {
+      "name": "watch-end-caption",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.502,
+      "endedAtSeconds": 1637.68,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:11.440Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "worker-purchases": {
+      "name": "worker-purchases",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.344,
+      "endedAtSeconds": 1642.554,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:16.314Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "worker-pause": {
+      "name": "worker-pause",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 421.28,
+      "endedAtSeconds": 1668.58,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:19:42.340Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "clarity:paint": {
+      "name": "clarity:paint",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 35.979,
+      "endedAtSeconds": 1704.564,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:20:18.324Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    },
+    "watch-live-edge": {
+      "name": "watch-live-edge",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 33.054,
+      "endedAtSeconds": 1737.62,
+      "firstFailure": null,
+      "finishedAt": "2026-10-21T03:20:51.380Z",
+      "identity": {
+        "format": "idlever-client-identity-v2",
+        "head": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+        "dirty": true,
+        "dirtyHash": "8716783f8707dce52469cf2a07c1ff7a182605092152de05f6cb86153f03cce1",
+        "wasmSha256": "53b98bb4214856e1de7a4fc875ca7b2f916bc66ee0f0d397bce7314de2692867"
+      }
+    }
+  },
+  "updatedAt": "2026-10-21T03:20:51.385Z"
+}

@@ -1,0 +1,140 @@
+$ node tests/run.mjs --full
+client suite: full (175 selected; 175 current full; 218 exhaustive groups)
+Historical extra cases require --exhaustive; see docs/evidence/cut181/final-scope/current-mapping.json
+ok   survivor-builds 408.2s (345.9s)  {"checks":805,"layouts":36,"result":"PASS"}
+ok   hero-hub        997.2s (589.0s)  {"result":"PASS","checks":10632,"views":30,"cases":8}
+FAIL wish-retirement 1012.4s (15.2s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: WASM/native settled full-save equality
+         at file:///home/g/p/riddle/web/tests/wish-retirement.mjs:212:12 {
+ok   fights:break    1021.8s (9.5s)  fights: ok (6 checks)
+FAIL clarity:core,watch 1081.3s (59.5s)  clarity core,watch: FAIL (3 assertion(s), 63 error(s))
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+FAIL cut12           1108.5s (27.2s)  cut12: FAIL (1 assertion(s), 2 error(s))
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.supplies .chip.buy').filter({ hasText: 'heal potion' }).first()
+           - element is not visible
+           - element is not visible
+           - element is not visible
+     cut12: FAIL (1 assertion(s), 2 error(s))
+     FAIL the kennel's leash reads free (QA 92eb880: kennel was unexplained): "leash · free×"
+     failure state: {"screen":"camp","forecast":{"depths":[{"depth":1,"reach":1,"pm":0,"clear":0.875},{"depth":2,"reach":0.875,"pm":0.2291765149399039,"clear":0},{"depth":3,"reach":0,"pm":0},{"depth":4,"reach":0,"pm":0},{"depth":5,"reach":0,"pm":0,"bounty":true,"boss":"goblin_warlord"}],"causes":[{"cause":"goblin","share":0.75},{"cause":"jackal","share":0.25}],"known_to":4,"sims":8,"low":13,"ends":{"bank":0,"return":0,"death":1,"gold":0,"pm":0},"refined":false,"start":1},"busy":false,"panels":[],"refinements":[{"hidden":false,"disabled":false,"rendered":false,"text":"More samples"}]}
+ok   boss-beat-quiet 1120.7s (12.2s)  1440 18 immediate callout/caption hold, frames, release, expiry and nameplates PASS
+ok   enemy-tips      1134.4s (13.7s)  1440 enemy hover/tap/keyboard/Escape/viewport and owner knowledge PASS
+ok   enemy-surfaces  1152.5s (18.0s)  1440 death hover/trace tap/longpress/owner/environment checks PASS
+FAIL bloodline-founding 1159.4s (6.8s)  Node.js v26.5.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/bloodline-founding.mjs:15:16 {
+FAIL gold-transfers  1159.6s (7.0s)  Node.js v26.5.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/gold-transfers.mjs:46:14 {
+FAIL screens         1159.9s (7.3s)  screens: FAIL (0 assertion(s), 1 error(s), 0 screens, 0 clicks, 6.0s)
+     walk aborted: page.evaluate: Target crashed 
+     screens: FAIL (0 assertion(s), 1 error(s), 0 screens, 0 clicks, 6.0s)
+FAIL legacy-earned   1160.4s (7.8s)  Node.js v26.5.0
+     page.evaluate: Error: actual earned import
+         at eval (eval at evaluate (:311:30), <anonymous>:8:17)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/legacy-earned.mjs:23:31 {
+FAIL gold-settlements 1161.7s (9.1s)  Node.js v26.5.0
+     [pid=2228363][err] [1021/104931.276219:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x2f140015b400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     [pid=2228363][err] [1021/104932.098519:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x2f140015b400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+         at /home/g/p/riddle/web/tests/gold-settlements.mjs:71:18 {
+FAIL exit-keep-close 1161.7s (9.2s)  Node.js v26.5.0
+     [pid=2228331][err] [1021/104930.840865:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x2cd40015d000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     [pid=2228331][err] [1021/104931.584533:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x2cd40015d000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     [pid=2228331][err] [1021/104932.156229:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x2cd40015d000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+         at /home/g/p/riddle/web/tests/exit-keep-close.mjs:19:16 {
+FAIL chunky-controls 1164.4s (4.5s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/chunky-controls.mjs:18:13 {
+FAIL chrome          1167.9s (8.5s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/chrome.mjs:38:15 {
+FAIL audio           1170.9s (6.5s)  audio: FAIL (0 assertion(s), 20 error(s))
+     console.error: THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Could not create a WebGL context, VENDOR = 0xffff, DEVICE = 0xffff, GL_VENDOR = Google Inc. (Google), GL_RENDERER = ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0), GL_VERSION = 5.0.0, Sandboxed = no, Optimus = no, AMD switchable = no, Reset notification strategy = 0x8252, ErrorMessage = BindToCurrentSequence failed: .
+     console.error: THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context with your selected attributes.
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     walk aborted: locator.count: Target crashed 
+FAIL legacy-tree     1174.2s (3.3s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/legacy-tree.mjs:18:16 {
+FAIL town-save       1179.1s (5.0s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/town-save.mjs:37:15 {
+FAIL cut29           1181.3s (28.8s)  cut29: FAIL (0 assertion(s), 2 error(s))
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     walk aborted: timeout waiting for camp
+     cut29: FAIL (0 assertion(s), 2 error(s))
+FAIL watch-console   1182.6s (3.4s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/watch-console.mjs:13:13 {
+FAIL cut28           1184.5s (24.0s)  cut28: 1/2 ok
+     FAIL threw: timeout waiting for camp
+FAIL compact-depth   1186.2s (1.7s)  Node.js v26.5.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/compact-depth.mjs:14:13 {
+FAIL ui:frame        1186.4s (26.8s)  ui: FAIL (0 assertion(s), 5 error(s), 24.7s)
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     walk aborted: page.evaluate: Target crashed 
+     ui: FAIL (0 assertion(s), 5 error(s), 24.7s)
+FAIL cut26           1190.8s (22.9s)  cut26: FAIL (0 assertion(s), 2 error(s))
+     console.error: Failed to load resource: net::ERR_INSUFFICIENT_RESOURCES
+     walk aborted: timeout waiting for camp (screen=undefined booted=undefined)
+     cut26: FAIL (0 assertion(s), 2 error(s))
+FAIL ctxloss         1191.9s (39.3s)  ctxloss: FAIL (0 assertion(s), 1 error(s))
+     walk aborted: timeout: the watch (fake)
+     ctxloss: FAIL (0 assertion(s), 1 error(s))
+FAIL combat-rules    1193.6s (1.7s)  Node.js v26.5.0
+         throw new Error(message || "Assertion error");
+     Error: Assertion error
+         at assert (/home/g/p/riddle/node_modules/.pnpm/playwright-core@1.62.1/node_modules/playwright-core/lib/coreBundle.js:463:11)
+         at _CRSession._onMessage (/home/g/p/riddle/node_modules/.pnpm/playwright-core@1.62.1/node_modules/playwright-core/lib/coreBundle.js:34801:11)
+         at CRConnection._onMessage (/home/g/p/riddle/node_modules/.pnpm/playwright-core@1.62.1/node_modules/playwright-core/lib/coreBundle.js:34738:20)
+         at Immediate.<anonymous> (/home/g/p/riddle/node_modules/.pnpm/playwright-core@1.62.1/node_modules/playwright-core/lib/coreBundle.js:39193:30)
+         at process.processImmediate (node:internal/timers:534:21)
+FAIL watch-speed-rate 1194.3s (32.6s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/watch-speed-rate.mjs:20:13 {
+FAIL post-clear-town 1194.3s (32.6s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/post-clear-town.mjs:26:13 {
+FAIL watch-log       1198.1s (3.8s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/watch-log.mjs:19:15 {
+FAIL cut122          1198.1s (16.8s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/cut122.mjs:246:16 {
+
+SIGINT: state kept in /home/g/p/riddle/target/client-tests/last-full.json; rerun with --failed
+[ELIFECYCLE] Command failed with exit code 130.

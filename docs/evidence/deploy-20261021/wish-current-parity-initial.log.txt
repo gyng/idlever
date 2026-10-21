@@ -1,0 +1,70 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+... Skipped lines
+
+  {
+    graves: [
+      {
+        day: 4,
+        depth: 4,
+...
+    lit_by: {
++     death: 'first death',
+      exits: 'first gold home'
+    },
+    log: {
+      banner: 1
+    },
+
+    at file:///home/g/p/riddle/target/deploy-20261021/wish-current-parity.mjs:26:10
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:453:9)
+    at process.callbackTrampoline (node:internal/async_hooks:130:17) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    log: { banner: 1 },
+    wish_at: 324000,
+    lit_by: { death: 'first death', exits: 'first gold home' },
+    graves: [ { depth: 4, heir: 1, name: 'Galen', gold: 23, run: 1, day: 4 } ],
+    stones: [
+      {
+        heir: 1,
+        name: 'Galen',
+        depth: 4,
+        cause: 'jackal',
+        epitaph: 'fell to jackal, D4',
+        day: 4,
+        run: 1,
+        grave_gold: 23,
+        legacy: 5
+      }
+    ]
+  },
+  expected: {
+    log: { banner: 1 },
+    wish_at: 324000,
+    lit_by: { exits: 'first gold home' },
+    graves: [ { depth: 4, heir: 1, name: 'Galen', gold: 23, run: 1, day: 4 } ],
+    stones: [
+      {
+        heir: 1,
+        name: 'Galen',
+        depth: 4,
+        cause: 'jackal',
+        epitaph: 'fell to jackal, D4',
+        day: 4,
+        run: 1,
+        grave_gold: 23,
+        legacy: 5
+      }
+    ]
+  },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v22.18.0

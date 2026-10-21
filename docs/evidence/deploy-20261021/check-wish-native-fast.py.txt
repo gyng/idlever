@@ -1,0 +1,30 @@
+import subprocess,json,gzip,hashlib
+from pathlib import Path
+r=Path('target/deploy-20261021/wish-current-native-fast');r.mkdir(exist_ok=True)
+binary=Path('target/deploy-20261021/native-current')
+m=json.load(open('docs/evidence/cut222/wish-inputs.json'));old=json.load(open('docs/evidence/cut222/core/retirement-checks-final.json'))
+p=subprocess.Popen([str(binary.resolve())],stdin=subprocess.PIPE,stdout=subprocess.PIPE,text=True)
+i=0
+def call(method,args):
+ global i
+ i+=1;p.stdin.write(json.dumps(dict(id=i,method=method,args=args))+'\n');p.stdin.flush();v=json.loads(p.stdout.readline());assert v['ok'],v;return v['r']
+def diff(a,b,path=''):
+ out=[]
+ if type(a)!=type(b):return [(path,a,b)]
+ if isinstance(a,dict):
+  for k in a.keys()|b.keys():
+   if k not in a or k not in b:out.append((path+'/'+k,'missing' if k not in a else a[k],'missing' if k not in b else b[k]))
+   else:out+=diff(a[k],b[k],path+'/'+k)
+ elif isinstance(a,list):
+  if len(a)!=len(b):out.append((path+'/length',len(a),len(b)))
+  for n,(x,y) in enumerate(zip(a,b)):out+=diff(x,y,path+'/'+str(n))
+ elif a!=b:out.append((path,a,b))
+ return out
+records=[]
+for e in m['entries']:
+ raw=gzip.decompress(Path(e['home']).read_bytes()).decode();call('load',[raw]);call('runOfflineSlice',[86400,True]);current=call('save',[])
+ (r/(e['id']+'.json')).write_text(current)
+ expected=next(x for x in old['entries'] if x['id']==e['id']);historic=gzip.decompress(Path(expected['after24h']).read_bytes()).decode()
+ delta=diff(json.loads(historic),json.loads(current));records.append({'id':e['id'],'diff':delta,'currentSha256':hashlib.sha256(current.encode()).hexdigest()});print(e['id'],len(delta),delta[:8])
+p.stdin.close();assert p.wait()==0
+(r/'diff.json').write_text(json.dumps({'nativeBinarySha256':hashlib.sha256(binary.read_bytes()).hexdigest(),'records':records},indent=2)+'\n')

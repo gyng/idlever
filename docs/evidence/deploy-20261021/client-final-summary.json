@@ -1,0 +1,134 @@
+{
+  "source": "510bd647c137447ca19c7ffcb9664c1dd340aeec",
+  "suite": "current full175groups",
+  "completed": 175,
+  "passing": 144,
+  "failing": 31,
+  "reused_passes": 6,
+  "failures": [
+    {
+      "group": "wish-retirement",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: WASM/native settled full-save equality"
+    },
+    {
+      "group": "clarity:core,watch",
+      "firstFailure": "clarity core,watch: FAIL (3 assertion(s), 0 error(s))"
+    },
+    {
+      "group": "cut12",
+      "firstFailure": "walk aborted: locator.click: Timeout 5000ms exceeded."
+    },
+    {
+      "group": "runsui",
+      "firstFailure": "- waiting for locator('.hero-row[data-state=live]:visible .hero-jump').first()"
+    },
+    {
+      "group": "cut29",
+      "firstFailure": "walk aborted: timeout waiting for visible marks caption remembered"
+    },
+    {
+      "group": "live-decisions",
+      "firstFailure": "FAIL auto-pick at the deadline: option 0, 6299 ms watched (excl. 3 s paused)"
+    },
+    {
+      "group": "gold-transfers",
+      "firstFailure": "- waiting for locator('[data-tile=\"forge\"]').first()"
+    },
+    {
+      "group": "cut28",
+      "firstFailure": "- waiting for locator('.hero-class')"
+    },
+    {
+      "group": "control-visibility",
+      "firstFailure": "if (!ok) throw Error(message);"
+    },
+    {
+      "group": "hero-upgrade-feedback",
+      "firstFailure": "- waiting for locator('.sheet-wrap .hero-sheet .hero-history summary')"
+    },
+    {
+      "group": "bloodline-tabs",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:"
+    },
+    {
+      "group": "armour-sets",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+    },
+    {
+      "group": "chrome-layout",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: camp/1024/1: Heroes label clipped"
+    },
+    {
+      "group": "cut305:sheet,rank",
+      "firstFailure": "FAIL mid: the trunk's five done in one dim row, the next \u2264 2 silhouettes; 11 items on screen (\u2264 7 nodes + the done row)"
+    },
+    {
+      "group": "building-fx",
+      "firstFailure": "- waiting for locator('[data-building-info=\"tent\"]')"
+    },
+    {
+      "group": "hero-frame",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^Mara of the Lantern Vale \u00b7 Life \\d+$/. Input:"
+    },
+    {
+      "group": "journal-earned",
+      "firstFailure": "TypeError: Cannot read properties of null (reading 'current')"
+    },
+    {
+      "group": "legendary-catalogue",
+      "firstFailure": "name: 'TimeoutError'"
+    },
+    {
+      "group": "legendary-gear",
+      "firstFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+    },
+    {
+      "group": "loot-economy",
+      "firstFailure": "page.evaluate: Error: bank: reconciled ledger"
+    },
+    {
+      "group": "starting-kits",
+      "firstFailure": "- waiting for locator('.sheet-wrap:not(.under) [data-bloodline-panel=\"loadouts\"]').locator('[data-starting-kits]') to be visible"
+    },
+    {
+      "group": "ui-clarity",
+      "firstFailure": "- waiting for locator('.sheet-wrap:not(.under) .hero-actions') to be visible"
+    },
+    {
+      "group": "item-icons",
+      "firstFailure": "page.evaluate: Error: report found item icons"
+    },
+    {
+      "group": "hunger-legible",
+      "firstFailure": "if (!ok) throw Error(m);"
+    },
+    {
+      "group": "hero-appearance",
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'querySelector')"
+    },
+    {
+      "group": "report-hero-upgrade",
+      "firstFailure": "page.evaluate: Error: opens existing hero upgrades"
+    },
+    {
+      "group": "run-card-gold",
+      "firstFailure": "- waiting for locator('.hero-row.selected:visible .hero-details')"
+    },
+    {
+      "group": "hero-names",
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')"
+    },
+    {
+      "group": "persistent-camp",
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of null (reading 'disabled')"
+    },
+    {
+      "group": "worker-first-act",
+      "firstFailure": "page.evaluate: Error: fresh wire: a send goal, the scout counting ({\"kind\":\"send\",\"node\":\"scout\",\"text\":\"send\"} undefined)"
+    },
+    {
+      "group": "report-actions",
+      "firstFailure": "page.evaluate: Error: no raw storage ID or zero cost"
+    }
+  ]
+}

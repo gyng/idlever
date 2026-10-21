@@ -1,4 +1,46 @@
-# Active backlog — Cut314 shared upgrade API prototype, 2026-10-21
+# Active backlog — v0.1.0-alpha.3 deployed, 2026-10-21
+
+## Owner deployment checkpoint — 2026-10-21
+
+Owner explicitly requested everything merged/pushed/deployed. Completed main
+work is pushed and deployed as prerelease[v0.1.0-alpha.3](https://github.com/gyng/idlever/releases/tag/v0.1.0-alpha.3),
+exact source510bd647c137447ca19c7ffcb9664c1dd340aeec. Both
+[Pages](https://gyng.github.io/idlever/) and[Cloudflare dev](https://dev.idlever.awoo.party/)
+are live. Evidence:[deploy-20261021/README.md](evidence/deploy-20261021/README.md).
+A following receipt/docs commit changes no product source; deployed source is510bd647.
+This explicit publication supersedes earlier no-deploy notes for this checkpoint.
+
+43local branches audited: completed non-ancestor menu/terrain/worker branches
+are patch-equivalent to main. Rejected historical Bank/Vat implementation and
+old dirty worktrees remain preserved, without restoring failed rules. Cut314
+API remains isolated; this release does not enable its paid effects/UI or adopt
+shorter recovery/pen candidates. Broad backlog/adoption requirements stay open.
+
+Main CI and release build+deploy39535708405PASS. Local1104native/6ignored,
+108tooling, format/lint/type/copy/cache checks pass. Ambient Node26/sandbox
+child-spawn EPERM failures were retained; supported Node22/approved permissions
+pass. CF394file clean artifact preserved before disposable-worktree cleanup;
+7live files exact. Pages393file release artifact,9live program/metadata/preview
+files exact. Real-WASM first-town/save-reload/public metadata/CORS and zero
+page/network/HTTP-error smoke PASS at402×681CSSpx. Actual seeds/saves/input/
+17px text scale retained. CF WASM5481252bytes/88e9309a; Pages5417106/4292bdc8,
+each matched to its own producer. Pages metadata max-age=600, CF no-cache.
+
+Current client audit is NOT GREEN:144/175pass,31fail. Resume169fresh groups
+(138pass/31fail),6same-identity earlier passes labelled reused. Initial run hit
+/tmp100%full; after preserving the artifact, removing this deployment's own
+clean worktree freed4.3GB. Resource failures then cleared; actual remaining
+copy/selector/interaction/timing/reference failures are preserved and disclosed
+in release notes. No gate/assertion weakened or product code changed to ship.
+Six original wish-history24h saves match CURRENT native and BOTH deployed WASM
+full bytes, preserving original Gold/ledger/history/RNG; old Cut222 full-save
+reference remains failing, not silently re-pinned. Independent Python integer
+check passes. This does not certify complete client/exhaustive balance/fun work.
+
+Next: triage31current-client failures against actual current surfaces, preserving
+old evidence; shared Bank/Vat wire/UI integration still requires payer/level-
+bound quote validation, real browser journeys and independent progression
+acceptance. Do not restart Cut312 or claim the whole backlog complete.
 
 ## Latest owner direction — both held items returned to work
 

@@ -1,0 +1,125 @@
+test result: ok. 1104 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 165.77s
+$ pnpm fmt --check
+$ cd .. && web/node_modules/.bin/oxfmt web/src web/tests web/*.ts web/*.json tools .github README.md .oxfmtrc.json .oxlintrc.json --check
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 150ms on 504 files using 32 threads.
+$ cd .. && web/node_modules/.bin/oxlint web/src web/tests web/*.ts tools --deny-warnings
+copy-lint: 116 files, 2938 tagged literals, 0 violations
+✔ ../tools/camp-check.test.mjs (163.278567ms)
+✖ ../tools/client-identity.test.mjs (351.741758ms)
+✖ ../tools/client-resume.test.mjs (20635.723455ms)
+✖ ../tools/deployment-meta.test.mjs (434.404234ms)
+✔ ../tools/exact-json.test.mjs (170.566069ms)
+✖ ../tools/fun-eval.test.mjs (2462.704709ms)
+✔ ../tools/gold-range.test.mjs (784.009041ms)
+✔ ../tools/native-codegen.test.mjs (257.972816ms)
+✖ ../tools/native-host.test.mjs (1737.172816ms)
+✔ ../tools/native-watch.test.mjs (351.888223ms)
+✔ ../tools/runtime-key.test.mjs (6119.105217ms)
+✔ ../tools/stat-bounds.test.mjs (183.460937ms)
+✖ ../tools/stat-tune.test.mjs (25705.580258ms)
+node:internal/errors:999
+  const err = new Error(message);
+              ^
+
+Error: Command failed: node /home/g/p/riddle/tools/sweep.mjs --name selftest-410 --bin /tmp/sweep-test-eHewJr/dayplayer --grid {"grid":{"recovery.1":[12,14,16],"recovery.2":[28,29]},"candidates":[{"name":"bad","set":{"recovery.1":30}}]} --rows tuned-picked,picked-idle --threads 4
+file:///home/g/p/riddle/tools/sweep.mjs:306
+      throw new Error(`sweep: no row ${r} (dayplayer --rows ? lists them)`);
+            ^
+
+Error: sweep: no row tuned-picked (dayplayer --rows ? lists them)
+    at main (file:///home/g/p/riddle/tools/sweep.mjs:306:13)
+    at file:///home/g/p/riddle/tools/sweep.mjs:540:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.5.0
+
+    at genericNodeError (node:internal/errors:999:15)
+    at wrappedFn (node:internal/errors:544:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at sweep (file:///home/g/p/riddle/tools/sweep.test.mjs:163:3)
+    at file:///home/g/p/riddle/tools/sweep.test.mjs:186:3 {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'file:///home/g/p/riddle/tools/sweep.mjs:306\n' +
+      '      throw new Error(`sweep: no row ${r} (dayplayer --rows ? lists them)`);\n' +
+      '            ^\n' +
+      '\n' +
+      'Error: sweep: no row tuned-picked (dayplayer --rows ? lists them)\n' +
+      '    at main (file:///home/g/p/riddle/tools/sweep.mjs:306:13)\n' +
+      '    at file:///home/g/p/riddle/tools/sweep.mjs:540:9\n' +
+      '    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n' +
+      '    at async node:internal/modules/esm/loader:650:26\n' +
+      '    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n' +
+      '\n' +
+      'Node.js v26.5.0\n'
+  ],
+  pid: 470,
+  stdout: '',
+  stderr: 'file:///home/g/p/riddle/tools/sweep.mjs:306\n' +
+    '      throw new Error(`sweep: no row ${r} (dayplayer --rows ? lists them)`);\n' +
+    '            ^\n' +
+    '\n' +
+    'Error: sweep: no row tuned-picked (dayplayer --rows ? lists them)\n' +
+    '    at main (file:///home/g/p/riddle/tools/sweep.mjs:306:13)\n' +
+    '    at file:///home/g/p/riddle/tools/sweep.mjs:540:9\n' +
+    '    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n' +
+    '    at async node:internal/modules/esm/loader:650:26\n' +
+    '    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n' +
+    '\n' +
+    'Node.js v26.5.0\n'
+}
+
+Node.js v26.5.0
+✖ ../tools/sweep.test.mjs (377.061338ms)
+✖ ../tools/wasm-target.test.mjs (2450.125435ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 7
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25784.97368
+
+✖ failing tests:
+
+test at ../tools/client-identity.test.mjs:1:1
+✖ ../tools/client-identity.test.mjs (351.741758ms)
+  'test failed'
+
+test at ../tools/client-resume.test.mjs:1:1
+✖ ../tools/client-resume.test.mjs (20635.723455ms)
+  'test failed'
+
+test at ../tools/deployment-meta.test.mjs:1:1
+✖ ../tools/deployment-meta.test.mjs (434.404234ms)
+  'test failed'
+
+test at ../tools/fun-eval.test.mjs:1:1
+✖ ../tools/fun-eval.test.mjs (2462.704709ms)
+  'test failed'
+
+test at ../tools/native-host.test.mjs:1:1
+✖ ../tools/native-host.test.mjs (1737.172816ms)
+  'test failed'
+
+test at ../tools/stat-tune.test.mjs:1:1
+✖ ../tools/stat-tune.test.mjs (25705.580258ms)
+  'test failed'
+
+test at ../tools/sweep.test.mjs:1:1
+✖ ../tools/sweep.test.mjs (377.061338ms)
+  'test failed'
+
+test at ../tools/wasm-target.test.mjs:1:1
+✖ ../tools/wasm-target.test.mjs (2450.125435ms)
+  'test failed'

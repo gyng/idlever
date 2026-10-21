@@ -1,0 +1,661 @@
+TAP version 13
+# Subtest: saved-camp checks reject incomplete or ambiguous requests
+ok 1 - saved-camp checks reject incomplete or ambiguous requests
+  ---
+  duration_ms: 3.725729
+  type: 'test'
+  ...
+# Subtest: references bind exact inputs and workloads and require uncorrupted full bytes
+ok 2 - references bind exact inputs and workloads and require uncorrupted full bytes
+  ---
+  duration_ms: 2.629949
+  type: 'test'
+  ...
+# fatal: not a git repository (or any parent up to mount point /)
+# Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+# Subtest: unchanged cold/warm identity is equal; warm reads no untracked content
+ok 3 - unchanged cold/warm identity is equal; warm reads no untracked content
+  ---
+  duration_ms: 450.330184
+  type: 'test'
+  ...
+# Subtest: same-size small and large edits with restored mtime invalidate cached identity
+ok 4 - same-size small and large edits with restored mtime invalidate cached identity
+  ---
+  duration_ms: 907.465823
+  type: 'test'
+  ...
+# Subtest: rename/add/delete, tracked edits, HEAD and WASM changes invalidate
+ok 5 - rename/add/delete, tracked edits, HEAD and WASM changes invalidate
+  ---
+  duration_ms: 1099.836934
+  type: 'test'
+  ...
+# Subtest: symlink target content is followed and ignored content stays outside identity
+ok 6 - symlink target content is followed and ignored content stays outside identity
+  ---
+  duration_ms: 393.290785
+  type: 'test'
+  ...
+# Subtest: directory symlinks hash link text without traversing dependency trees
+ok 7 - directory symlinks hash link text without traversing dependency trees
+  ---
+  duration_ms: 473.724593
+  type: 'test'
+  ...
+# Subtest: missing/corrupt/checksum-tampered/unwritable cache falls back to full content
+ok 8 - missing/corrupt/checksum-tampered/unwritable cache falls back to full content
+  ---
+  duration_ms: 568.696248
+  type: 'test'
+  ...
+# Subtest: Git failure and unreadable source fail closed
+ok 9 - Git failure and unreadable source fail closed
+  ---
+  duration_ms: 245.284074
+  type: 'test'
+  ...
+# Subtest: a source changed during hashing refuses identity and publishes no cache
+ok 10 - a source changed during hashing refuses identity and publishes no cache
+  ---
+  duration_ms: 223.261841
+  type: 'test'
+  ...
+# Subtest: concurrent independent writers publish a usable complete cache
+ok 11 - concurrent independent writers publish a usable complete cache
+  ---
+  duration_ms: 842.552139
+  type: 'test'
+  ...
+# Subtest: plan: failed refuses without earlier state; resume runs everything
+ok 12 - plan: failed refuses without earlier state; resume runs everything
+  ---
+  duration_ms: 7.220137
+  type: 'test'
+  ...
+# Subtest: --failed and --resume rerun only what needs it, and identity changes invalidate
+ok 13 - --failed and --resume rerun only what needs it, and identity changes invalidate
+  ---
+  duration_ms: 3398.165644
+  type: 'test'
+  ...
+# Subtest: same-size large untracked edit refuses earlier runner passes
+ok 14 - same-size large untracked edit refuses earlier runner passes
+  ---
+  duration_ms: 1534.489993
+  type: 'test'
+  ...
+# Subtest: a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+ok 15 - a hard kill mid-run leaves a valid state; --failed runs only the unfinished
+  ---
+  duration_ms: 951.413139
+  type: 'test'
+  ...
+# Subtest: artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+ok 16 - artifact identity is stable JSON with full SHA, exact UTC deployment time, and optional real version
+  ---
+  duration_ms: 47.794517
+  type: 'test'
+  ...
+# Subtest: rejects missing, short or decorated identities, invalid versions, and invalid base paths
+ok 17 - rejects missing, short or decorated identities, invalid versions, and invalid base paths
+  ---
+  duration_ms: 13.777024
+  type: 'test'
+  ...
+# Subtest: headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+ok 18 - headers preserve asset policy and configure JSON, public CORS and revalidation at both bases
+  ---
+  duration_ms: 55.298975
+  type: 'test'
+  ...
+# Subtest: source worker bypasses metadata, including navigations and queries, while assets retain caching
+ok 19 - source worker bypasses metadata, including navigations and queries, while assets retain caching
+  ---
+  duration_ms: 10.074307
+  type: 'test'
+  ...
+# Subtest: artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+ok 20 - artifact guard bypasses older rollback workers and preserves their non-metadata fetches
+  ---
+  duration_ms: 44.062227
+  type: 'test'
+  ...
+# Subtest: CLI stamps the artifact with the provided full source SHA and release version
+ok 21 - CLI stamps the artifact with the provided full source SHA and release version
+  ---
+  duration_ms: 158.717951
+  type: 'test'
+  ...
+# Subtest: pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+ok 22 - pipelines stamp checked-out identities after build and before upload; precache excludes metadata
+  ---
+  duration_ms: 14.590107
+  type: 'test'
+  ...
+# Subtest: optional changelog and preview fields retain schema 1 and resolve under either public base
+ok 23 - optional changelog and preview fields retain schema 1 and resolve under either public base
+  ---
+  duration_ms: 60.587873
+  type: 'test'
+  ...
+# Subtest: optional public links and images reject unsafe URLs, missing descriptions and markup before stamping
+ok 24 - optional public links and images reject unsafe URLs, missing descriptions and markup before stamping
+  ---
+  duration_ms: 10.630985
+  type: 'test'
+  ...
+# Subtest: save comparison detects adjacent integers that Number rounds together
+ok 25 - save comparison detects adjacent integers that Number rounds together
+  ---
+  duration_ms: 5.310479
+  type: 'test'
+  ...
+# Subtest: comparison preserves safe counters, floats, arrays and quoted seed-like text
+ok 26 - comparison preserves safe counters, floats, arrays and quoted seed-like text
+  ---
+  duration_ms: 0.83682
+  type: 'test'
+  ...
+# Subtest: the manifest is the recorded sha256sum format and follows the bytes
+ok 27 - the manifest is the recorded sha256sum format and follows the bytes
+  ---
+  duration_ms: 96.91098
+  type: 'test'
+  ...
+# Subtest: freeze is byte-deterministic, refuses a package other than the frozen one, and heals from the source
+ok 28 - freeze is byte-deterministic, refuses a package other than the frozen one, and heals from the source
+  ---
+  duration_ms: 3683.950918
+  type: 'test'
+  ...
+# Subtest: the packet is the frozen brief plus the four briefed documents, and check catches anything else
+ok 29 - the packet is the frozen brief plus the four briefed documents, and check catches anything else
+  ---
+  duration_ms: 1974.791311
+  type: 'test'
+  ...
+# Subtest: collect keys the card by candidate, rater and date and never overwrites one
+ok 30 - collect keys the card by candidate, rater and date and never overwrites one
+  ---
+  duration_ms: 1910.233631
+  type: 'test'
+  ...
+# Subtest: the score comes from the cards alone and repeats to the byte
+ok 31 - the score comes from the cards alone and repeats to the byte
+  ---
+  duration_ms: 2220.540616
+  type: 'test'
+  ...
+# Subtest: collect reads a card's build as a claim about the build, with or without provenance
+ok 32 - collect reads a card's build as a claim about the build, with or without provenance
+  ---
+  duration_ms: 2473.624984
+  type: 'test'
+  ...
+# Subtest: shared wallet matches equal-valued exits by bloodline and retains intervening movements
+ok 33 - shared wallet matches equal-valued exits by bloodline and retains intervening movements
+  ---
+  duration_ms: 12.909935
+  type: 'test'
+  ...
+# Subtest: pet-fetched Gold remains with its death after later shared-wallet exits
+ok 34 - pet-fetched Gold remains with its death after later shared-wallet exits
+  ---
+  duration_ms: 0.862889
+  type: 'test'
+  ...
+# Subtest: native bridge covers every client method and rejects unsupported bindings
+ok 35 - native bridge covers every client method and rejects unsupported bindings
+  ---
+  duration_ms: 22.512566
+  type: 'test'
+  ...
+# Subtest: checkpoint memento accounts for every serde-skipped engine field
+ok 36 - checkpoint memento accounts for every serde-skipped engine field
+  ---
+  duration_ms: 6.057729
+  type: 'test'
+  ...
+# Subtest: native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+ok 37 - native sessions isolate, order calls, recover from request errors and preserve state across rebuild
+  ---
+  duration_ms: 379.374674
+  type: 'test'
+  ...
+# Subtest: native transport rejects remote connections and cross-origin requests
+ok 38 - native transport rejects remote connections and cross-origin requests
+  ---
+  duration_ms: 1097.911956
+  type: 'test'
+  ...
+# Subtest: native edits coalesce, serialize and rebuild edits that arrive during a build
+ok 39 - native edits coalesce, serialize and rebuild edits that arrive during a build
+  ---
+  duration_ms: 93.264722
+  type: 'test'
+  ...
+# Subtest: failed builds surface errors, recover on an edit and stop after close
+ok 40 - failed builds surface errors, recover on an edit and stop after close
+  ---
+  duration_ms: 80.322025
+  type: 'test'
+  ...
+# Subtest: only compilation inputs trigger builds, not generated outputs or browser assets
+ok 41 - only compilation inputs trigger builds, not generated outputs or browser assets
+  ---
+  duration_ms: 1.38068
+  type: 'test'
+  ...
+# Subtest: test-only edits skip rebuilds only with current cfg declaration and compiler proof
+ok 42 - test-only edits skip rebuilds only with current cfg declaration and compiler proof
+  ---
+  duration_ms: 61.274321
+  type: 'test'
+  ...
+# Subtest: real compiler separates unit tests from runtime and included inputs
+ok 43 - real compiler separates unit tests from runtime and included inputs
+  ---
+  duration_ms: 23311.575561
+  type: 'test'
+  ...
+# Subtest: descriptive median handles odd/even values without mutating inputs
+ok 44 - descriptive median handles odd/even values without mutating inputs
+  ---
+  duration_ms: 7.716148
+  type: 'test'
+  ...
+# Subtest: zero observations are unbounded and inconclusive for either estimand
+ok 45 - zero observations are unbounded and inconclusive for either estimand
+  ---
+  duration_ms: 3.16634
+  type: 'test'
+  ...
+# Subtest: four favorable seeds cannot certify a median at 95 percent
+ok 46 - four favorable seeds cannot certify a median at 95 percent
+  ---
+  duration_ms: 1.293389
+  type: 'test'
+  ...
+# Subtest: eight seeds use the total two-sided budget and include exact tail equality
+ok 47 - eight seeds use the total two-sided budget and include exact tail equality
+  ---
+  duration_ms: 0.51256
+  type: 'test'
+  ...
+# Subtest: sixteen-seed interval agrees with exact binomial tails
+ok 48 - sixteen-seed interval agrees with exact binomial tails
+  ---
+  duration_ms: 1.0876
+  type: 'test'
+  ...
+# Subtest: ties and threshold equality keep inclusive PASS and strict FAIL semantics
+ok 49 - ties and threshold equality keep inclusive PASS and strict FAIL semantics
+  ---
+  duration_ms: 0.932949
+  type: 'test'
+  ...
+# Subtest: mean uses paired-value magnitudes rather than only signs
+ok 50 - mean uses paired-value magnitudes rather than only signs
+  ---
+  duration_ms: 0.9817
+  type: 'test'
+  ...
+# Subtest: fixed range permits constant data and stable extreme finite estimates
+ok 51 - fixed range permits constant data and stable extreme finite estimates
+  ---
+  duration_ms: 0.31232
+  type: 'test'
+  ...
+# Subtest: large-n median tails do not underflow into invented certainty
+ok 52 - large-n median tails do not underflow into invented certainty
+  ---
+  duration_ms: 6.357128
+  type: 'test'
+  ...
+# Subtest: invalid observations and claims fail closed
+ok 53 - invalid observations and claims fail closed
+  ---
+  duration_ms: 5.176488
+  type: 'test'
+  ...
+# Subtest: all 2^16 null paths respect the family budget at preregistered looks
+ok 54 - all 2^16 null paths respect the family budget at preregistered looks
+  ---
+  duration_ms: 68.684892
+  type: 'test'
+  ...
+# Subtest: legacy recovery cap metadata accepts only the materialized historical default
+ok 55 - legacy recovery cap metadata accepts only the materialized historical default
+  ---
+  duration_ms: 3759.391907
+  type: 'test'
+  ...
+# Subtest: explicit recovery cap metadata stays exact and incompatible omissions are refused
+ok 56 - explicit recovery cap metadata stays exact and incompatible omissions are refused
+  ---
+  duration_ms: 4739.802057
+  type: 'test'
+  ...
+# Subtest: prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls
+ok 57 - prunes substantial native work, freezes one held-out winner, and completed resume makes zero probe calls
+  ---
+  duration_ms: 3398.21671
+  type: 'test'
+  ...
+# Subtest: list expands a real grid without running a probe
+ok 58 - list expands a real grid without running a probe
+  ---
+  duration_ms: 185.232899
+  type: 'test'
+  ...
+# Subtest: mean claim at its threshold remains inconclusive rather than manufacturing acceptance
+ok 59 - mean claim at its threshold remains inconclusive rather than manufacturing acceptance
+  ---
+  duration_ms: 677.045789
+  type: 'test'
+  ...
+# Subtest: clear contrary observations reject
+ok 60 - clear contrary observations reject
+  ---
+  duration_ms: 531.10705
+  type: 'test'
+  ...
+# Subtest: native missing output is a hard error, never acceptance
+ok 61 - native missing output is a hard error, never acceptance
+  ---
+  duration_ms: 347.808322
+  type: 'test'
+  ...
+# Subtest: native duplicate output is a hard error, never acceptance
+ok 62 - native duplicate output is a hard error, never acceptance
+  ---
+  duration_ms: 330.136286
+  type: 'test'
+  ...
+# Subtest: native wrong-seed output is a hard error, never acceptance
+ok 63 - native wrong-seed output is a hard error, never acceptance
+  ---
+  duration_ms: 329.083173
+  type: 'test'
+  ...
+# Subtest: native wrong-bot output is a hard error, never acceptance
+ok 64 - native wrong-bot output is a hard error, never acceptance
+  ---
+  duration_ms: 356.100601
+  type: 'test'
+  ...
+# Subtest: native wrong-horizon output is a hard error, never acceptance
+ok 65 - native wrong-horizon output is a hard error, never acceptance
+  ---
+  duration_ms: 352.36029
+  type: 'test'
+  ...
+# Subtest: native short-horizon output is a hard error, never acceptance
+ok 66 - native short-horizon output is a hard error, never acceptance
+  ---
+  duration_ms: 311.123222
+  type: 'test'
+  ...
+# Subtest: native wrong-profile output is a hard error, never acceptance
+ok 67 - native wrong-profile output is a hard error, never acceptance
+  ---
+  duration_ms: 311.810499
+  type: 'test'
+  ...
+# Subtest: native wrong-request-seed output is a hard error, never acceptance
+ok 68 - native wrong-request-seed output is a hard error, never acceptance
+  ---
+  duration_ms: 387.03168
+  type: 'test'
+  ...
+# Subtest: native nonfinite-metric output is a hard error, never acceptance
+ok 69 - native nonfinite-metric output is a hard error, never acceptance
+  ---
+  duration_ms: 433.576882
+  type: 'test'
+  ...
+# Subtest: native invalid-json output is a hard error, never acceptance
+ok 70 - native invalid-json output is a hard error, never acceptance
+  ---
+  duration_ms: 408.12885
+  type: 'test'
+  ...
+# Subtest: native observed-negative output is a hard error, never acceptance
+ok 71 - native observed-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 291.096561
+  type: 'test'
+  ...
+# Subtest: native observed-too-large output is a hard error, never acceptance
+ok 72 - native observed-too-large output is a hard error, never acceptance
+  ---
+  duration_ms: 274.526733
+  type: 'test'
+  ...
+# Subtest: native observed-before-arrival output is a hard error, never acceptance
+ok 73 - native observed-before-arrival output is a hard error, never acceptance
+  ---
+  duration_ms: 352.717852
+  type: 'test'
+  ...
+# Subtest: native elapsed-negative output is a hard error, never acceptance
+ok 74 - native elapsed-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 893.569453
+  type: 'test'
+  ...
+# Subtest: native elapsed-null output is a hard error, never acceptance
+ok 75 - native elapsed-null output is a hard error, never acceptance
+  ---
+  duration_ms: 781.026096
+  type: 'test'
+  ...
+# Subtest: native wrong-effective-cadence output is a hard error, never acceptance
+ok 76 - native wrong-effective-cadence output is a hard error, never acceptance
+  ---
+  duration_ms: 684.442903
+  type: 'test'
+  ...
+# Subtest: native gold-fractional output is a hard error, never acceptance
+ok 77 - native gold-fractional output is a hard error, never acceptance
+  ---
+  duration_ms: 408.734691
+  type: 'test'
+  ...
+# Subtest: native best-negative output is a hard error, never acceptance
+ok 78 - native best-negative output is a hard error, never acceptance
+  ---
+  duration_ms: 517.80251
+  type: 'test'
+  ...
+# Subtest: native depth-fractional output is a hard error, never acceptance
+ok 79 - native depth-fractional output is a hard error, never acceptance
+  ---
+  duration_ms: 410.480031
+  type: 'test'
+  ...
+# Subtest: interrupted work resumes completed native jobs and preserves held-out preregistration
+ok 80 - interrupted work resumes completed native jobs and preserves held-out preregistration
+  ---
+  duration_ms: 3325.006306
+  type: 'test'
+  ...
+# Subtest: spec, base profile and executable changes invalidate resume instead of reusing a false PASS
+ok 81 - spec, base profile and executable changes invalidate resume instead of reusing a false PASS
+  ---
+  duration_ms: 10121.668477
+  type: 'test'
+  ...
+# Subtest: corrupt cached jobs are rejected or recomputed, with zero false acceptance from corruption
+ok 82 - corrupt cached jobs are rejected or recomputed, with zero false acceptance from corruption
+  ---
+  duration_ms: 5896.001936
+  type: 'test'
+  ...
+# Subtest: mutating preregistered seeds cannot contaminate held-out confirmation
+ok 83 - mutating preregistered seeds cannot contaminate held-out confirmation
+  ---
+  duration_ms: 2637.776203
+  type: 'test'
+  ...
+# Subtest: corrupt completed caches plus malformed replacement probes cannot retain a stale PASS
+ok 84 - corrupt completed caches plus malformed replacement probes cannot retain a stale PASS
+  ---
+  duration_ms: 4096.540254
+  type: 'test'
+  ...
+# Subtest: ratio units survive ranking normalization, and missing arrivals are explicitly capped
+ok 85 - ratio units survive ranking normalization, and missing arrivals are explicitly capped
+  ---
+  duration_ms: 1179.975368
+  type: 'test'
+  ...
+# Subtest: native early-depth stop extracts arrival time without requiring a fabricated complete day
+ok 86 - native early-depth stop extracts arrival time without requiring a fabricated complete day
+  ---
+  duration_ms: 752.931725
+  type: 'test'
+  ...
+# Subtest: day-indexed metrics read the specified day rather than an array default
+ok 87 - day-indexed metrics read the specified day rather than an array default
+  ---
+  duration_ms: 1474.402969
+  type: 'test'
+  ...
+# Subtest: a failed held-out winner is rejected without retrying the runner-up
+ok 88 - a failed held-out winner is rejected without retrying the runner-up
+  ---
+  duration_ms: 924.768078
+  type: 'test'
+  ...
+# Subtest: cross-bot ratios preserve requested bot identity
+ok 89 - cross-bot ratios preserve requested bot identity
+  ---
+  duration_ms: 1086.971979
+  type: 'test'
+  ...
+# Subtest: a persisted frozen winner cannot be replaced on resume
+ok 90 - a persisted frozen winner cannot be replaced on resume
+  ---
+  duration_ms: 3862.844549
+  type: 'test'
+  ...
+# Subtest: after accepted run, spec-json error cannot leave a current accepted report
+ok 91 - after accepted run, spec-json error cannot leave a current accepted report
+  ---
+  duration_ms: 2832.514773
+  type: 'test'
+  ...
+# Subtest: after accepted run, spec-identity error cannot leave a current accepted report
+ok 92 - after accepted run, spec-identity error cannot leave a current accepted report
+  ---
+  duration_ms: 2823.549236
+  type: 'test'
+  ...
+# Subtest: after accepted run, base-json error cannot leave a current accepted report
+ok 93 - after accepted run, base-json error cannot leave a current accepted report
+  ---
+  duration_ms: 2840.787818
+  type: 'test'
+  ...
+# Subtest: after accepted run, binary-missing error cannot leave a current accepted report
+ok 94 - after accepted run, binary-missing error cannot leave a current accepted report
+  ---
+  duration_ms: 3206.504093
+  type: 'test'
+  ...
+# Subtest: two simultaneous same-output invocations have one exclusive writer and one immutable manifest
+ok 95 - two simultaneous same-output invocations have one exclusive writer and one immutable manifest
+  ---
+  duration_ms: 2385.703579
+  type: 'test'
+  ...
+# Subtest: a lock with a proven dead same-host PID can resume safely
+ok 96 - a lock with a proven dead same-host PID can resume safely
+  ---
+  duration_ms: 849.304399
+  type: 'test'
+  ...
+# Subtest: SIGTERM releases writer ownership and preserves the immutable study for resume
+ok 97 - SIGTERM releases writer ownership and preserves the immutable study for resume
+  ---
+  duration_ms: 1007.795728
+  type: 'test'
+  ...
+# Subtest: DAILY and AWAY missing-arrival caps use their actual one-check-in cadence
+ok 98 - DAILY and AWAY missing-arrival caps use their actual one-check-in cadence
+  ---
+  duration_ms: 611.125621
+  type: 'test'
+  ...
+# Subtest: tune.sh dispatches statistical list/help without native work
+ok 99 - tune.sh dispatches statistical list/help without native work
+  ---
+  duration_ms: 391.916498
+  type: 'test'
+  ...
+# Subtest: tune.sh --exact --list retains legacy row dispatch without building Cargo
+ok 100 - tune.sh --exact --list retains legacy row dispatch without building Cargo
+  ---
+  duration_ms: 47.555757
+  type: 'test'
+  ...
+# sweep.test: all PASS
+# Subtest: tools/sweep.test.mjs
+ok 14 - tools/sweep.test.mjs
+  ---
+  duration_ms: 6113.912749
+  type: 'test'
+  ...
+# Subtest: fast WASM packages the default Cargo target
+ok 102 - fast WASM packages the default Cargo target
+  ---
+  duration_ms: 904.604544
+  type: 'test'
+  ...
+# Subtest: fast WASM packages a relative environment target
+ok 103 - fast WASM packages a relative environment target
+  ---
+  duration_ms: 935.381973
+  type: 'test'
+  ...
+# Subtest: fast WASM packages an absolute environment target with spaces
+ok 104 - fast WASM packages an absolute environment target with spaces
+  ---
+  duration_ms: 1091.623359
+  type: 'test'
+  ...
+# Subtest: fast WASM respects Cargo-configured target directories
+ok 105 - fast WASM respects Cargo-configured target directories
+  ---
+  duration_ms: 908.342585
+  type: 'test'
+  ...
+# Subtest: Cargo environment target overrides Cargo configuration
+ok 106 - Cargo environment target overrides Cargo configuration
+  ---
+  duration_ms: 862.414016
+  type: 'test'
+  ...
+# Subtest: failed Cargo metadata preserves the old package
+ok 107 - failed Cargo metadata preserves the old package
+  ---
+  duration_ms: 520.148105
+  type: 'test'
+  ...
+# Subtest: failed Cargo build preserves the old package
+ok 108 - failed Cargo build preserves the old package
+  ---
+  duration_ms: 346.355503
+  type: 'test'
+  ...
+1..108
+# tests 108
+# suites 0
+# pass 108
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 74618.750321
