@@ -184,3 +184,41 @@ Captures are in the session scratchpad
 
 Contact sheets and `AUDIT.md` are already copied to `docs/evidence/cut316/`; copy the full captures there when the plan is accepted. Counts come
 from a read-only scan of `web/src` at `0a45061f` + the Cut315 working tree.
+
+## 6. Progress — 2026-10-21
+
+Delivered, one commit per step, with before/after captures sent to the owner at each checkpoint:
+
+| Phase | Commit | What changed |
+| --- | --- | --- |
+| A | 60c3c570 | All 46 legacy stylesheets in `@layer legacy` (pixel-identical: ≤ 0.03 % on 54 captures). `ui-kit/tokens.css` (the only colour source), `tools/style-lint.mjs` + `style-ratchet.json` in verify.sh and CI, and review tools `ui-capture.mjs` / `ui-diff.py` / `ui-sheet.py` |
+| B/C | 60c3c570 | `ui-kit/kit.css` (window, slab, section, header, stats, rows, tabs, tile, meter) + `kit.ts` builders. Every `openWindow`, sheet and camp panel moves onto the hub's slate, painted tablet frame and slabs. Parchment window skins retired by re-pointing the legacy role variables |
+| D1 | 7dd256cc | Settings (three framed groups), Savings (stat tiles, gauge, slabs), building-upgrade rows, Vat/Pool titled by building. Phone windows are full-height sheets |
+| D3 | 7c2de692 | Phone console labelled; Tactics gets its own icon; phone top bar fits all stats |
+| D | 43206b6b | Hub compacted: actions beside the identity, five tabs in one row (a scrolling strip on phone). Kit targets are fixed 44 CSS px |
+| D2 | b81aa106 | Tactics title band, rules-pen rule cards, gold-ledger amounts (were invisible), title case. `ui-capture` reports dark text in any window (none left) |
+| D4 | 117f2da9 | Report and every `.parchment` panel on slate; the death banner art stays |
+| D4 | 077a5204 | Desktop camp rails show the live view's pillar art; hero card at the kit's floor sizes |
+
+Owner decisions: D1 done (parchment is no longer a window skin), D3 done, D4/D5 held. D2: the
+Vat and the Pool now name themselves. The crate, Loadouts and tent open the same hub on different
+tabs, and the quest board opens the Journal; these were judged distinct routes rather than
+duplicates and left as they are.
+
+Tests updated to the new design (not weakened): `hero-hub` tab geometry, which is now one row at
+every width with whole-word labels.
+
+**Pre-existing failures confirmed on earlier commits**, each run without these changes:
+- `legible` (fails on 0a45061f)
+- `cut23` and `cut24` (exhaustive-only)
+- `worker-first-act`, `runsui`, `hero-frame`, `bloodline-tabs` and `hero-upgrade-feedback` (all in
+  the alpha.3 audit)
+
+**Still open:**
+- Phase F: the legacy CSS itself. The ratchet stands at 1567 colours, 681 font sizes, 194
+  `html body` and 10 `!important`. Delete rules as screens are rebuilt; do not add to the layer.
+- Works/worker cards (uppercase names in gold boxes).
+- The desktop rules-pen rail width.
+- Unlock card art.
+- A real-art pass on title and section plates (D5).
+- Queue items 39–42 on the kit.

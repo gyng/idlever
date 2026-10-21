@@ -1,5 +1,23 @@
 # Parked — v0.1.0-alpha.3 milestone, 2026-10-21
 
+## Cut316 — UI revamp on the hub's grammar (2026-10-21)
+
+The owner asked for a UI refresh that keeps the chunky framed style ("I like the hub and live
+view… everything else is kind of ass… redo the ui from scratch if needed"). See
+[CUT316](CUT316_UI_REVAMP_PLAN.md) §6.
+
+- All legacy CSS is in `@layer legacy`. New styling goes in `web/src/ui-kit/` (tokens, kit) and
+  `web/src/screens/`.
+- `tools/style-lint.mjs` ratchets the legacy counts down and forbids new colour or font-size
+  literals outside `tokens.css`. It runs in verify.sh and CI.
+- Every window, sheet, camp panel and parchment panel now uses the hub's slate, painted tablet
+  frame and slabs.
+- Rebuilt screens: Settings, Savings, Vat/Pool, Tactics, the rules pen, the gold ledger, the
+  report, the hub's header and tabs, the phone console and top bar, and the desktop rails.
+- Review loop: `node tools/ui-capture.mjs --out DIR` (earned save, 1440 + 402, reports dark text),
+  then `python3 tools/ui-diff.py A B --sheet X.png` and `tools/ui-sheet.py`.
+- Final routine client subset: 44/45 (`worker-first-act`, pre-existing). Not deployed. Remaining: Phase F, deleting the legacy CSS as screens are rebuilt.
+
 ## Cut315 — Bank/Vat redesign and recovery adopted (2026-10-21)
 
 Owner: "finish up bank value redesign + recovery tuning. we will queue up a

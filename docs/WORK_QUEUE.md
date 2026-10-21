@@ -1,5 +1,13 @@
 # Content and refinement queue — 2026-10-13
 
+## Cut316 — UI revamp in progress (2026-10-21)
+
+The owner's UI rework, on the hub and live view's grammar: see [CUT316](CUT316_UI_REVAMP_PLAN.md)
+§6.
+- Done: phases A–C and the first screen waves.
+- Next: Phase F, retiring the legacy CSS (ratchet in `tools/style-ratchet.json`); Works cards and
+  the rules-pen rail; then queue items 39–42 on the kit.
+
 ## Cut315 — Bank/Vat and recovery adopted (2026-10-21)
 
 Items3 (Bank/vault/Vat redesign) and4 (recovery timing) below are DELIVERED
