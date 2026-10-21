@@ -49,6 +49,9 @@ pub struct Balance {
     /// Cut264 (docs/CUT264_CLONE_VAT.md §3): the clone vat's gold hurry.
     #[serde(default = "default_vat")]
     pub vat: Vat,
+    /// Cut315: the Bank/Vat upgrades (`upgrades.rs`).
+    #[serde(default = "default_upgrades")]
+    pub upgrades: Upgrades,
 }
 fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
 fn default_recovery_full_ticks() -> u32 { DEFAULT.recovery_full_ticks }
@@ -62,6 +65,7 @@ fn default_stance() -> Stance { DEFAULT.stance }
 fn default_marks() -> Marks { DEFAULT.marks }
 fn default_monsters() -> Monsters { DEFAULT.monsters }
 fn default_vat() -> Vat { DEFAULT.vat }
+fn default_upgrades() -> Upgrades { DEFAULT.upgrades }
 
 /// A worker's hire trigger and price (`tree::NODES`): chores by hand that light it, its price in tenths of a forge
 /// unit (0: free), the lineage age (h) that lights it without the count once its chore exists (0: none).
@@ -273,6 +277,21 @@ pub struct Vat {
     pub hurry_floor: u32,
 }
 
+/// Cut315 (Cut306–308): each building's two upgrade levels — Bank L3/L4, Vat L2/L3. The record they need, their
+/// prices in forge units at that depth, the Bank's nights of capacity and extra interest a night (permille, on
+/// Savings, beside the Clerk's), the Vat's cut to a future death's recovery and to the hurry (%).
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Upgrades {
+    pub gate_depth: [u32; 2],
+    pub bank_price_units: [u32; 2],
+    pub vat_price_units: [u32; 2],
+    pub bank_nights: [i32; 2],
+    pub bank_bonus_permille: [i32; 2],
+    pub vat_recovery_off_pct: [u64; 2],
+    pub vat_hurry_off_pct: [u64; 2],
+}
+
 const fn w(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
     Worker { need, price_tenths, fallback_h, goal: Goal::Count }
 }
@@ -286,7 +305,7 @@ pub const DEFAULT: Balance = Balance {
     steady_heal: [30,35], hunter_heal: [30,35], guarded_heal: [40,45], bold_heal: 25,
     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
     guarded_home: [30,25], guarded_dry: [45,44],
-    recovery: [600, 14, 28, 1],
+    recovery: [150, 14, 28, 1],
     recovery_full_ticks: 12000,
     workers: Workers {
         quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
@@ -327,6 +346,10 @@ pub const DEFAULT: Balance = Balance {
     },
     monsters: Monsters { depth_cap: 16, hp_div: 2, atk_div: 6 },
     vat: Vat { hurry_permille: 250, hurry_min_s: 30, hurry_round: 5, hurry_floor: 10 },
+    upgrades: Upgrades {
+        gate_depth: [13, 23], bank_price_units: [8, 64], vat_price_units: [8, 64], bank_nights: [5, 8],
+        bank_bonus_permille: [20, 40], vat_recovery_off_pct: [20, 35], vat_hurry_off_pct: [25, 50],
+    },
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -394,6 +417,11 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
     if !(1..=40).contains(&mo.depth_cap) || !(1..=40).contains(&mo.hp_div) || !(1..=40).contains(&mo.atk_div) { return Err("monsters"); }
     let v = &b.vat;
     if !(1..=10_000).contains(&v.hurry_permille) || v.hurry_min_s > 3600 || !(1..=1000).contains(&v.hurry_round) || v.hurry_floor > 100_000 { return Err("vat"); }
+    let up = &b.upgrades;
+    fn ordered<T: PartialOrd + Copy>(v: [T; 2], lo: T, hi: T) -> bool { lo <= v[0] && v[0] <= v[1] && v[1] <= hi }
+    if !ordered(up.gate_depth, 1, 33) || !ordered(up.bank_price_units, 1, 1000) || !ordered(up.vat_price_units, 1, 1000)
+        || !ordered(up.bank_nights, 3, 16) || !ordered(up.bank_bonus_permille, 0, 100)
+        || !ordered(up.vat_recovery_off_pct, 0, 80) || !ordered(up.vat_hurry_off_pct, 0, 90) { return Err("upgrades"); }
     Ok(())
 }
 #[cfg(feature = "dev-balance")]

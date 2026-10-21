@@ -3,6 +3,7 @@ import type { HeroRebirth, PersistentHero, Lineage } from "../engine/types";
 import { h, replace, spanOf } from "./dom";
 import { openWindow } from "./sheet";
 import { lastingChoices } from "./hero-progression";
+import { buildingUpgradeRow } from "./building-upgrades";
 import "../hero-life.css";
 
 export type HeroLifeMode = "hero" | "recovery" | "rebirth";
@@ -119,6 +120,7 @@ export function heroLifePanel(
       L.bloodline,
       L.legacy_upgrades,
       L.town?.home,
+      L.town?.upgrades,
       L.gold,
       mode,
       reviewed?.preview.token,
@@ -223,6 +225,10 @@ export function heroLifePanel(
         ),
       );
     }
+    // Cut315: the Vat's upgrade (shorter future clones, cheaper hurry) beside its clone
+    const vatUpgrade =
+      mode === "hero" ? null : buildingUpgradeRow(app, "device", () => refresh(true));
+    if (vatUpgrade) children.push(vatUpgrade);
     if (mode !== "rebirth") {
       const input = h("input", {
         id: nameId,

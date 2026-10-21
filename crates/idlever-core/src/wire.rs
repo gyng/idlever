@@ -1812,6 +1812,34 @@ pub struct TownWire {
     /// Cut273: the workplaces standing and the lit one's plot (`town::workplaces_wire`).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub workplaces: Vec<WorkplaceWire>,
+    /// Cut315: the Bank's and the Vat's upgrade levels, their effects and the next level's quote (`upgrades::wire`).
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub upgrades: Vec<BuildingUpgradeWire>,
+}
+
+/// Cut315: a building's upgrade level (Bank 2–4, Vat 1–3), what it gives now, and the next level on offer.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct BuildingUpgradeWire {
+    pub id: String,
+    pub level: u32,
+    pub max: u32,
+    pub effect: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub next: Option<BuildingUpgradeNext>,
+}
+/// Cut315: the next level's quote for the selected hero — echo `payer`, `level` and `price` in the request.
+/// `withdrawal` is the Savings it needs beyond the purse (0: the purse pays).
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct BuildingUpgradeNext {
+    pub level: u32,
+    pub price: i32,
+    pub gate_depth: u32,
+    pub ready: bool,
+    pub effect: String,
+    pub payer: u32,
+    pub purse: i32,
+    pub withdrawal: i32,
+    pub affordable_with_savings: bool,
 }
 
 /// Cut273: a workplace — its level (0: an unbuilt plot), its top level, its staff hired, the build on offer.

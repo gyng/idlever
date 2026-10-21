@@ -1,5 +1,13 @@
 # Content and refinement queue — 2026-10-13
 
+## Cut315 — Bank/Vat and recovery adopted (2026-10-21)
+
+Items3 (Bank/vault/Vat redesign) and4 (recovery timing) below are DELIVERED
+by [Cut315](CUT315_BANK_VAT_ADOPTION.md): shipping upgrades, wire/UI, bots, and a
+15 s shallow clone. The inherited pen≥1.15 and worker-away failures remain open
+as separate items. Next per owner: a comprehensive UI rework/refresh, to be
+queued.
+
 ## Parked by owner — 2026-10-21
 
 Owner queue addition, 2026-10-21: scrollwheel zoom in both the live view and

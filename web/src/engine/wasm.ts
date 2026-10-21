@@ -37,6 +37,8 @@ import type {
   Replay,
   ManualAct,
   SeekOption,
+  UpgradeReceipt,
+  UpgradeRequest,
 } from "./types";
 
 type GameObj = Record<string, (...args: unknown[]) => unknown>;
@@ -442,6 +444,9 @@ export class WasmEngine implements Engine {
   }
   promote(id: string): Lineage {
     return this.call("promote", id);
+  }
+  upgradeBuilding(request: UpgradeRequest): { receipt: UpgradeReceipt; lineage: Lineage } {
+    return this.call("upgradeBuilding", JSON.stringify(request));
   }
   hurryClone(maxPrice: number): Lineage {
     return this.call("hurryClone", maxPrice);

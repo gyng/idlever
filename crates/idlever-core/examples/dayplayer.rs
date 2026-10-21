@@ -21,7 +21,8 @@ const PICKED_L_KING: &str = "PICKED+L King no sooner than day 7 (median), never 
 const PICKED_L_PURSE: &str = "PICKED+L purse at day 3 spent ≥ 50 % of income since Kit complete";
 /// Milestones (Cut 30 §6: time-to-milestone = simulated hours to reach each).
 const MILESTONES: [u32; 7] = [8, 13, 18, 23, 28, 29, 33];
-const SYSTEMS: [&str; 6] = ["packages", "pen", "forge", "pets", "bank", "quests"];
+const UPGRADE_SPEND: &str = "PICKED Bank/Vat upgrades ≥ 10 % of days 3–14 income (median)";
+const SYSTEMS: [&str; 7] = ["packages", "pen", "forge", "pets", "bank", "quests", "buildings"];
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
 enum Bot {
@@ -147,6 +148,16 @@ struct SeedOut {
     kit_at: Option<(i64, i64)>,
     #[serde(default)]
     kit_spent_d3: Option<(i64, f64)>,
+    /// Cut315: Bank/Vat upgrade gold spent and income (earned + fetched + recovered), cumulative at each day's end;
+    /// the Bank's interest paid in all.
+    #[serde(default)]
+    upgrade_spend: Vec<i64>,
+    #[serde(default)]
+    income_day: Vec<i64>,
+    #[serde(default)]
+    upgrade_spent: i64,
+    #[serde(default)]
+    bank_interest: i32,
     /// Cut 121 §1: the Legacy upgrades bought by hand (PICKED+L) and the points spent.
     #[serde(default)]
     legacy_buys: u32,
@@ -1074,6 +1085,9 @@ struct Play {
     /// Cut 30.5: the first session's seconds (the first absence is the check-in interval less them)
     session_s: u64,
     counter_copies: Vec<CounterCopy>,
+    /// Cut315: the engaged player's Bank/Vat upgrade plan
+    #[serde(default)]
+    upgrades: upgrade_plan::Plan,
 }
 
 /// Internal check-in snapshot, not a player save: Game::load applies camp
@@ -1264,7 +1278,7 @@ impl Play {
         }
         let out = SeedOut { seed, hours: vec![None; MILESTONES.len()], ..Default::default() };
         let rng = Rng::derive(seed, 0x5EED_0B07);
-        Play { seed, days, checkins, interval, verbose, g, out, rng, last_best: 0, stall_cur: 0, reached23: false, k: 0, last_key: None, cool: 0, last_wall: None, gap: 0, wealth0: 0, new_today: false, level0: 0, stages0: Vec::new(), opened: false, day: 0, ci: 0, session_s: 0, counter_copies: Vec::new() }
+        Play { seed, days, checkins, interval, verbose, g, out, rng, last_best: 0, stall_cur: 0, reached23: false, k: 0, last_key: None, cool: 0, last_wall: None, gap: 0, wealth0: 0, new_today: false, level0: 0, stages0: Vec::new(), opened: false, day: 0, ci: 0, session_s: 0, counter_copies: Vec::new(), upgrades: Default::default() }
     }
 
     fn done(&self) -> bool {
@@ -1283,7 +1297,7 @@ impl Play {
             self.stages0 = idlever_core::town::stage_set(&g.lineage);
             self.opened = false;
         }
-        let Play { g, out, rng, k, last_key, cool, last_wall, session_s, counter_copies, .. } = self;
+        let Play { g, out, rng, k, last_key, cool, last_wall, session_s, counter_copies, upgrades, .. } = self;
         {
             *k += 1;
             let tuned = g.lineage.pkg.pen_open && ask.q(Q::Tuned) == 1;
@@ -1494,6 +1508,10 @@ impl Play {
                             let _ = g.bank_deposit(spare);
                         }
                     }
+                    // Cut315: the Bank/Vat upgrades, saved for once Bank III is ready (`dayplayer_upgrades`)
+                    if arm == 2 && ask.has("buildings") {
+                        out.upgrade_spent += upgrades.step(g);
+                    }
                 }
             }
             note_nodes(g, out, hours_now);
@@ -1523,6 +1541,9 @@ impl Play {
         out.depth_area += best;
         out.quests = g.lineage.town.quests_done;
         out.gold_day.push(g.lineage.gold as i64 + g.lineage.town.bank as i64 - self.wealth0);
+        out.upgrade_spend.push(out.upgrade_spent);
+        out.income_day.push(income(g));
+        out.bank_interest = g.lineage.town.interest;
         if day == 2 {
             if let Some((i0, w0)) = out.kit_at {
                 let earned = income(g) - i0;
@@ -2044,6 +2065,17 @@ fn main() {
         let mut sorted = falls.clone();
         sorted.sort_unstable();
         infos.push(("Cut 118: PICKED wealth no longer monotone by day 14 (seeds; median falling days)".into(), format!("{seeds_falling}/{n} · {}", sorted[n / 2])));
+        // Cut315 (Cut265's requirement): the Bank/Vat upgrades are a real late sink — PICKED spends ≥ 10 % of its
+        // days 3–14 income on them (day 14's cumulative less day 2's), median seed; a fortnight's games only
+        if picked.iter().all(|o| o.upgrade_spend.len() >= 14 && o.income_day.len() >= 14) {
+            let share: Vec<f64> = picked.iter().map(|o| {
+                let (spent, earned) = (o.upgrade_spend[13] - o.upgrade_spend[1], o.income_day[13] - o.income_day[1]);
+                if earned > 0 { 100.0 * spent as f64 / earned as f64 } else { 0.0 }
+            }).collect();
+            let done = picked.iter().filter(|o| o.upgrade_spend[13] > 0).count();
+            let m = median(share);
+            bars.push((UPGRADE_SPEND.into(), format!("{m:.1}% ({done}/{n} seeds buying)"), m >= 10.0));
+        }
     }
     // Cut 121 §1: PICKED+L (PICKED spending its Legacy `balanced` by hand at each check-in, as every rater does) —
     // the King no sooner than day 7 on the median seed and never before day 4 (an unslain seed counts as day 15);
@@ -2149,6 +2181,11 @@ fn main() {
                     let g = |o: &SeedOut| o.gold_day.iter().sum::<i64>() as f64 / o.gold_day.len().max(1) as f64;
                     let (a, b) = (mean(t, &g), mean(w, &g));
                     (a, b, "$/day", a > b * 1.01)
+                }
+                "buildings" => {
+                    let g = |o: &SeedOut| o.bank_interest as f64;
+                    let (a, b) = (mean(t, &g), mean(w, &g));
+                    (a, b, "interest paid", a > b)
                 }
                 "pets" => {
                     let d = |o: &SeedOut| 100.0 * o.deaths as f64 / o.sends.max(1) as f64;
@@ -2757,6 +2794,8 @@ mod counter_copy_tests {
 }
 
 // Opt-in diagnostic only, deliberately after main: ordinary policy and its source-cache salt stay unchanged.
+#[path = "dayplayer_upgrades/mod.rs"]
+mod upgrade_plan;
 #[path = "dayplayer_hurry/mod.rs"]
 mod hurry_diagnostic;
 #[allow(dead_code)]

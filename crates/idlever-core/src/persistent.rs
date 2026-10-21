@@ -233,7 +233,7 @@ pub fn hurry_price(l: &LineageState, away: bool) -> Option<i32> {
     let raw = (left_s * unit * u64::from(v.hurry_permille)).div_ceil(60_000);
     let round = u64::from(v.hurry_round.max(1));
     let p = (raw.div_ceil(round) * round).max(u64::from(v.hurry_floor));
-    Some(p.min(i32::MAX as u64) as i32)
+    Some(crate::upgrades::hurry_price(l, p.min(i32::MAX as u64) as i32))
 }
 /// Cut264 §3: skip the whole recovery for gold — an explicit camp command (never offline, never a bot or a worker).
 /// Refused with `price changed` when the live price is above `max_price` (the button showed an older one).
@@ -257,7 +257,7 @@ pub fn recover(l: &mut LineageState) {
 }
 /// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
 pub fn recover_at(l: &mut LineageState, depth: u32) {
-    recover_for(l, recovery_ticks(depth));
+    recover_for(l, crate::upgrades::recovery_ticks(l, depth));
 }
 fn recover_for(l: &mut LineageState, ticks: u64) {
     l.persistent.recovery_until_tick = l.total_turns.saturating_add(ticks);

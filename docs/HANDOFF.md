@@ -1,5 +1,32 @@
 # Parked — v0.1.0-alpha.3 milestone, 2026-10-21
 
+## Cut315 — Bank/Vat redesign and recovery adopted (2026-10-21)
+
+Owner: "finish up bank value redesign + recovery tuning. we will queue up a
+comprehensive ui rework/refresh after". [CUT315](CUT315_BANK_VAT_ADOPTION.md) and its
+[evidence](evidence/cut315/README.md). The Cut306–314 design is now the shipping
+game:
+
+- Bank L3/L4: +2%/+4% a night on Savings, holding 5/8 nights.
+- Vat L2/L3: −20%/−35% on future recovery, −25%/−50% on hurry.
+- Prices: D13/D23 gates, 3400/43200 Gold, numbers in `balance::Upgrades`.
+- Levels are shared across the town. Requests are bound to the quote's payer,
+  level and price, and Savings are used only with the explicit toggle.
+- Shallow recovery drops from 60 s to 15 s (`recovery [150,14,28,1]`); the
+  20 min deep cap is unchanged.
+
+Engaged bots run the town-first saving plan. The new routine bar passes:
+PICKED spends 10.9% of days 3–14 income on upgrades. Routine `--full`: every
+bar passes except the two inherited failures, with identical arrival hours:
+
+- pen 1.10 against ≥ 1.15;
+- workers-away D18 48 vs 24 h, mean best 29.93 vs 30.32.
+
+Neither is caused or moved by Cut315; both remain open, not relaxed. The UI is
+functional and plain, ahead of the owner's queued UI rework. The TUNED
+system-removal arms (the new `buildings` system) need `--exhaustive`, which
+was not run. Final: native 1109/0 fail; client subset 43/45 (worker-first-act pre-existing, clarity:paint load flake that passes alone). Not committed or deployed.
+
 ## Owner parking checkpoint — 2026-10-21
 
 Owner queue addition after deployment: scrollwheel zoom for live view and home

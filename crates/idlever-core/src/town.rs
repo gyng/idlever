@@ -26,6 +26,8 @@ pub fn home_default() -> bool { true }
 /// The lineage's town (`LineageState::town`).
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Town {
+    #[serde(default, skip_serializing_if="std::collections::BTreeMap::is_empty")]
+    pub levels: std::collections::BTreeMap<String, u32>,
     #[serde(default)]
     pub forge_eligible:bool,
     #[serde(default)]
@@ -157,7 +159,7 @@ pub fn level(l: &LineageState, id: &str) -> u32 {
 
 /// The bank holds at most `BANK_NIGHTS` nights of net income (never under 100).
 pub fn bank_cap(l: &LineageState) -> i32 {
-    (bank_nights() * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
+    (crate::upgrades::bank_nights(l) * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
 }
 
 /// Deposit gold (refused before the bank is built; capped).
@@ -189,7 +191,7 @@ pub fn withdraw(l: &mut LineageState, amount: i32) -> Result<i32, String> {
 /// A night ended: the bank pays its interest (never negative; the balance may pass the cap by it).
 pub fn night(l: &mut LineageState) -> i32 {
     // (Cut 30.5, week 2: the clerk's rank adds a quarter of a percent a night each)
-    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32;
+    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32 + crate::upgrades::bank_bonus_permille(l);
     let i = (l.town.bank.max(0) * permille / 1000).max(0);
     l.town.bank += i;
     l.town.interest += i;
@@ -606,6 +608,7 @@ pub fn wire(l: &LineageState) -> TownWire {
         workers: if l.pkg.literal { Vec::new() } else { crate::tree::posts(l) },
         workplaces: workplaces_wire(l),
         forge_work: None,
+        upgrades: Vec::new(),
     }
 }
 

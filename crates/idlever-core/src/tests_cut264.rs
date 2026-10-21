@@ -18,14 +18,15 @@ fn dead_at(depth: u32, gold: i32) -> Game {
 }
 
 #[test]
-fn retained_curve_is_one_minute_shallow_and_twenty_minutes_deep() {
-    assert_eq!(recovery_ticks(1), 600);
-    assert_eq!(recovery_ticks(14), 600);
-    assert_eq!(recovery_ticks(21), 600 + (RECOVERY_TICKS - 600) * 7 / 14);
+fn curve_is_fifteen_seconds_shallow_and_twenty_minutes_deep() {
+    // (Cut315: the owner's 15 s early clone, adopted with the Bank/Vat redesign; was 600 ticks)
+    assert_eq!(recovery_ticks(1), 150);
+    assert_eq!(recovery_ticks(14), 150);
+    assert_eq!(recovery_ticks(21), 150 + (RECOVERY_TICKS - 150) * 7 / 14);
     assert_eq!(recovery_ticks(28), RECOVERY_TICKS);
     assert_eq!(recovery_ticks(40), RECOVERY_TICKS);
     let g = dead_at(5, 0);
-    assert_eq!(remaining(&g.lineage), 600);
+    assert_eq!(remaining(&g.lineage), 150);
     assert_eq!(persistent::life_state(&g.lineage, false), "reincarnating");
 }
 
@@ -47,8 +48,8 @@ fn hurry_price_is_live_by_depth_and_falls_with_time() {
     // D21: 10 min left ≈ $1,560 (owner's example); D30, 20 min ≈ $4,250
     let mut g = dead_at(21, 0);
     let left_s = remaining(&g.lineage).div_ceil(10);
-    assert_eq!(left_s, 630);
-    g.rest_tick(300);
+    assert_eq!(left_s, 608);
+    g.rest_tick(75);
     assert_eq!(remaining(&g.lineage), 6000);
     assert_eq!(persistent::hurry_price(&g.lineage, false), Some(1565));
     let g = dead_at(30, 0);
@@ -65,10 +66,8 @@ fn hurry_price_is_live_by_depth_and_falls_with_time() {
     assert!(persistent::hurry_price(&g.lineage, false).is_some(), "29.9 s left reads 30 s: still offered");
     g.rest_tick(10);
     assert_eq!(persistent::hurry_price(&g.lineage, false), None, "under 30 s: not offered");
-    let mut g = dead_at(5, 0);
-    assert_eq!(persistent::hurry_price(&g.lineage, false), Some(60), "the retained 60 s clone has a live offer");
-    g.rest_tick(310);
-    assert_eq!(persistent::hurry_price(&g.lineage, false), None, "a shallow clone below 30 s is not offered");
+    let g = dead_at(5, 0);
+    assert_eq!(persistent::hurry_price(&g.lineage, false), None, "a 15 s shallow clone is under 30 s: not offered");
     // the floor: a tiny unit still costs `hurry_floor`
     let mut g = dead_at(28, 0);
     g.lineage.best_depth = 0;

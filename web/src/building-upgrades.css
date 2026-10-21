@@ -1,0 +1,28 @@
+.building-upgrade {
+  display: grid;
+  gap: 0.375rem;
+  padding-block: 0.75rem;
+  margin-block-start: 0.5rem;
+  border-block-start: 1px solid var(--ui-edge, #b89448);
+}
+.building-upgrade-now,
+.building-upgrade-next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+.building-upgrade-acts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+.building-upgrade-acts .btn,
+.building-upgrade-acts .chip {
+  min-block-size: 44px;
+  white-space: normal;
+}
+.building-upgrade-savings[aria-pressed="true"] {
+  outline: 2px solid var(--ui-edge, #b89448);
+}

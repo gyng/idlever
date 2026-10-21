@@ -8057,3 +8057,90 @@ type Fk264 = {
     return this.lineage();
   };
 }
+
+// Cut315 (core `upgrades.rs`): the Bank's and the Vat's upgrade levels, shared by the town. The core's prices (units ×
+// unit(gate) = 100 + 25·gate), gates D13/D23 and effect words; the purse pays, a shortfall needs `use_savings`.
+type Fk315 = Fk30 & { s: Fk30["s"] & { up315?: Record<string, number> } };
+{
+  const P = FakeEngine.prototype as unknown as Record<string, (...a: unknown[]) => unknown>;
+  const GATE = [13, 23],
+    UNITS = [8, 64];
+  const BASE: Record<string, number> = { bank: 2, device: 1 };
+  const EFFECT: Record<string, string[]> = {
+    bank: ["3 nights", "+2%/night · 5 nights", "+4%/night · 8 nights"],
+    device: ["no discount", "−20% clone · −25% hurry", "−35% clone · −50% hurry"],
+  };
+  const level = (e: Fk315, id: string): number => (e.s.up315 ??= {})[id] ?? BASE[id];
+  const quote = (e: Fk315, L: Lineage, id: string) => {
+    const lv = level(e, id),
+      i = lv - BASE[id];
+    if (i >= 2) return undefined;
+    const price = UNITS[i] * (100 + 25 * GATE[i]);
+    const purse = L.gold,
+      savings = L.town?.bank ?? 0;
+    const withdrawal = Math.max(0, price - purse);
+    return {
+      level: lv + 1,
+      price,
+      gate_depth: GATE[i],
+      ready: (L.best_depth ?? 0) >= GATE[i],
+      effect: EFFECT[id][i + 1],
+      payer: L.selected_bloodline ?? 1,
+      purse,
+      withdrawal,
+      affordable_with_savings: withdrawal <= savings,
+    };
+  };
+  const lin = P.lineage;
+  P.lineage = function (this: Fk315): Lineage {
+    const L = lin.call(this) as Lineage;
+    if (!L.town) return L;
+    const ids = [
+      ...(L.town.buildings.some((b) => b.id === "bank") ? ["bank"] : []),
+      ...(L.persistent_hero?.device.available ? ["device"] : []),
+    ] as ("bank" | "device")[];
+    if (ids.length)
+      L.town.upgrades = ids.map((id) => ({
+        id,
+        level: level(this, id),
+        max: BASE[id] + 2,
+        effect: EFFECT[id][level(this, id) - BASE[id]],
+        ...(quote(this, L, id) ? { next: quote(this, L, id) } : {}),
+      }));
+    return L;
+  };
+  P.upgradeBuilding = function (this: Fk315, request: unknown) {
+    const r = request as {
+      id: string;
+      payer: number;
+      level: number;
+      max_price: number;
+      use_savings: boolean;
+    };
+    const L = this.lineage();
+    const q = L.town?.upgrades?.find((u) => u.id === r.id)?.next;
+    if (!q) throw new Error("no upgrade");
+    if (q.payer !== r.payer) throw new Error("hero changed");
+    if (q.level !== r.level || q.price > r.max_price) throw new Error("price changed");
+    if (!q.ready) throw new Error(`D${q.gate_depth} needed`);
+    if (q.withdrawal > 0 && (!r.use_savings || !q.affordable_with_savings))
+      throw new Error("not enough gold");
+    if (q.withdrawal > 0) P.bankWithdraw.call(this, q.withdrawal);
+    this.gold(-q.price, `upgrade ${r.id} ${q.level}`);
+    (this.s.up315 ??= {})[r.id] = q.level;
+    const after = this.lineage();
+    return {
+      receipt: {
+        payer: q.payer,
+        id: r.id,
+        level: q.level,
+        price: q.price,
+        withdrawal: q.withdrawal,
+        gold_after: after.gold,
+        purse_after: after.gold,
+        savings_after: after.town?.bank ?? 0,
+      },
+      lineage: after,
+    };
+  };
+}

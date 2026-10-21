@@ -47,6 +47,7 @@ import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
 import { kwHost, detailHost, closeTip } from "./tips";
 import { HOME_BUILDINGS, buildingDetails, type HomeBuilding } from "./building-help";
+import { buildingUpgradeRow } from "./building-upgrades";
 import type { Term } from "./concepts";
 /** docs/TOOLTIPS.md: a building's tip (long-press / hover; its tap stays its panel) */
 const HIT_TERM: Record<string, Term> = /* copy:none */ {
@@ -1298,6 +1299,7 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
               /* copy:button */ `withdraw $${T.bank}`,
             ),
           ),
+          buildingUpgradeRow(app, "bank", () => body.isConnected && paint()) ?? "",
         );
       };
       const act = async (fn: () => Promise<Lineage>): Promise<void> => {

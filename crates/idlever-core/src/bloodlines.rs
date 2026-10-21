@@ -215,6 +215,8 @@ impl Session {
         }
         // Cut 228: the Forge's present work across every hero's own clock (read model)
         if self.active.lineage.town.home!=Some(false) { l.town.forge_work=crate::town::forge_work(std::iter::once(&self.active).chain(self.others.values())); }
+        // Cut315: the Bank/Vat upgrades, quoted for the selected hero on the town's readiness
+        { let (depth, device) = self.upgrade_readiness(); l.town.upgrades = crate::upgrades::wire(&self.active, self.selected, depth, device); }
         let slot=|id:u32,g:&Game| {
             // (a run the rest clock readied but has not begun is no delve: the hero still rests)
             let live=g.run.as_ref().filter(|r|r.over.is_none()&&(r.turn>0||g.lineage.rest_left==0));
@@ -724,5 +726,28 @@ mod victory_knowledge_tests {
         assert!(Session::victory_knowledge(&a,&[]).is_empty());
         let old:crate::wire::BloodlineReturn=serde_json::from_str(r#"{"id":1,"name":"One","runs":1,"deepest":13,"gold":0}"#).unwrap();
         assert!(old.boss_knowledge.is_empty());
+    }
+}
+
+// Cut315: the Bank/Vat upgrades are the town's — readiness from any resident, levels shared through town_from.
+impl Session {
+    fn upgrade_readiness(&self) -> (u32, bool) {
+        let residents = || std::iter::once(&self.active).chain(self.others.values());
+        let depth = residents().map(|g| g.lineage.best_depth).max().unwrap_or(0);
+        let device = residents().any(|g| crate::persistent::service_availability(&g.lineage, crate::persistent::away(g))[2]);
+        (depth, device)
+    }
+    pub fn building_upgrade_offers(&self) -> Vec<crate::upgrades::SessionOffer> {
+        let (depth, device) = self.upgrade_readiness();
+        crate::upgrades::quotes(&self.active, self.selected, depth, device)
+    }
+    /// Explicit town command, bound to the quote's payer/level/price. Refusals change nothing.
+    pub fn upgrade_building(&mut self, r: &crate::upgrades::Request) -> Result<crate::upgrades::Purchase, String> {
+        let (depth, device) = self.upgrade_readiness();
+        let receipt = crate::upgrades::buy(&mut self.active, self.selected, depth, device, r)?;
+        for g in self.others.values_mut() {
+            town_from(&self.active.lineage, &mut g.lineage);
+        }
+        Ok(receipt)
     }
 }

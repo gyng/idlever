@@ -920,6 +920,44 @@ export type Town = {
   workers?: WorkerPost[];
   forge_work?: ForgeWork;
   workplaces?: Workplace[]; // Cut273: the workplaces standing and the lit one's plot
+  upgrades?: BuildingUpgrade[]; // Cut315: the Bank's and the Vat's levels and the next one's quote
+};
+/** Cut315 (core `upgrades::wire`): a building's upgrade level (Bank 2–4, Vat 1–3), its effect now, the next level's
+ *  quote for the selected hero. Echo `payer`, `level` and `price` in `upgradeBuilding`; `withdrawal` is the Savings
+ *  needed beyond the purse (0: the purse pays). */
+export type BuildingUpgrade = {
+  id: "bank" | "device";
+  level: number;
+  max: number;
+  effect: string;
+  next?: {
+    level: number;
+    price: number;
+    gate_depth: number;
+    ready: boolean;
+    effect: string;
+    payer: number;
+    purse: number;
+    withdrawal: number;
+    affordable_with_savings: boolean;
+  };
+};
+export type UpgradeRequest = {
+  id: string;
+  payer: number;
+  level: number;
+  max_price: number;
+  use_savings: boolean;
+};
+export type UpgradeReceipt = {
+  payer: number;
+  id: string;
+  level: number;
+  price: number;
+  withdrawal: number;
+  gold_after: number;
+  purse_after: number;
+  savings_after: number;
 };
 /** Cut273 (core `town::workplaces_wire`): a workplace — level 0 an unbuilt plot; `next` the build on offer (the lit worker). */
 export type Workplace = {
@@ -2165,6 +2203,8 @@ export interface Engine {
   openChest?(): Lineage; // the haul chest into the purse (`Works.chest` → `gold`); the porter's chore
   setWorker?(id: string, on: boolean): Lineage; // switch a hired worker off (its chore by hand again) or back on
   promote?(id: string): Lineage;
+  /** Cut315: buy a Bank/Vat level, bound to the shown quote (stale payer/level/price refused) */
+  upgradeBuilding?(request: UpgradeRequest): { receipt: UpgradeReceipt; lineage: Lineage };
   hurryClone?(maxPrice: number): Lineage; // Cut264: skip the clone's recovery for gold (refused `price changed` above maxPrice)
   setPerk?(worker: string, perk: string): Lineage; // Cut 120 §2: a hired worker's rank-II perk chip (`WorkNode.perks`)                        // week 2: the worker rank on offer (`Works.lit_rank`; II 5 days after the hire, III 9; a forge unit × the rank less one)
   // RUNS_UI (core; docs/RUNS_UI.md): runs go on while the app is open, and any held run replays

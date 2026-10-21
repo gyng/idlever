@@ -55,6 +55,7 @@ pub mod tiles;
 pub mod tokens;
 pub mod tools;
 pub mod town;
+pub mod upgrades;
 pub mod tree;
 pub mod trace;
 pub mod traits;
@@ -509,3 +510,5 @@ mod tests_cut260;
 mod tests_cut291;
 #[cfg(test)]
 mod tests_cut292;
+#[cfg(test)]
+mod tests_cut315;

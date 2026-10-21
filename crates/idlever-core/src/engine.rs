@@ -2235,7 +2235,7 @@ impl LineageState {
         // QA on 912e135 (qaW: `sword +1 · $300 · 7 nights` after a night of deaths — the purse held at $40 by the heir purse): the
         // heir purse's top-up refills to a floor and is no income; a night of deaths nets nothing toward a step.
         // (Cut 28 §1: an oath's price and a forswearing's refund are the player's purchase too)
-        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone"].iter().any(|p| why.starts_with(p)) {
+        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish", "hurry clone", "upgrade "].iter().any(|p| why.starts_with(p)) {
             self.night_net += delta;
             self.day_net += delta;
         }
@@ -3553,6 +3553,7 @@ impl Game {
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
         l.town.forge_work = crate::town::forge_work([self]);
+        l.town.upgrades = crate::upgrades::wire(self, 1, self.lineage.best_depth, crate::persistent::service_availability(&self.lineage, false)[2]);
         let build = crate::hero_build::equipment(self);
         l.starting_kits.actual_weapon = build.actual.slots[0].kind.clone().unwrap_or_default();
         l.starting_kits.actual_armour = build.actual.slots[2].kind.clone();
@@ -4089,7 +4090,7 @@ impl Game {
     /// Cut 3: camp rest after a run (`no_rest` halves it).
     pub fn rest_after(&self, turns: u32, tier: ExitTier) -> u32 {
         // (Cut230: a death's recovery by the run's deepest floor — the run in hand, else the record)
-        if tier == ExitTier::Death { return crate::persistent::recovery_ticks(self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
+        if tier == ExitTier::Death { return crate::upgrades::recovery_ticks(&self.lineage, self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
         let r = crate::tree::rest_scaled(&self.lineage, crate::offline::rest_after(turns, tier));
         // Cut 118 §3: the Sleeper's set
         let r = r - r * crate::feats::bonus_pct(&self.lineage, "rest") / 100;
@@ -5538,7 +5539,7 @@ impl Game {
         let tally = std::mem::take(&mut self.row_tally);
         self.lineage.fold_row_tally(&tally);
         // Camp rest (Cut 2 §1): as long as the expedition, capped; a death is a fixed wake.
-        let rest = if tier == ExitTier::Death { crate::persistent::recovery_ticks(run.max_depth) as u32 } else { self.rest_after(run.turn, tier) };
+        let rest = if tier == ExitTier::Death { crate::upgrades::recovery_ticks(&self.lineage, run.max_depth) as u32 } else { self.rest_after(run.turn, tier) };
         self.lineage.rest_left = rest;
         self.lineage.rest_watched = self.watched && !self.sim && !self.offline;
         self.events.push(Ev::Rest { t, seconds: rest.div_ceil(crate::offline::TICKS_PER_SECOND as u32) });
@@ -6986,7 +6987,8 @@ pub fn gold_term(why: &str) -> &'static str {
         "earned"
     } else if why.starts_with("wake pay") {
         "heir"
-    } else if why.starts_with("forge commission") || why.starts_with("works ") {
+    } else if why.starts_with("forge commission") || why.starts_with("works ") || why.starts_with("upgrade ") {
+        // (Cut315: a Bank/Vat upgrade is the town's building work too)
         "works"
     } else if why.starts_with("forge ") {
         "forge"

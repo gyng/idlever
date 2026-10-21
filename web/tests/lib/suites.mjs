@@ -60,7 +60,13 @@ export const SMOKE_AREAS = Object.freeze({
     "menu-materials",
     "achievements",
   ],
-  "town and automation": ["first-plot", "town-save", "worker-purchases", "worker-first-act"],
+  "town and automation": [
+    "first-plot",
+    "town-save",
+    "worker-purchases",
+    "worker-first-act",
+    "building-upgrades",
+  ],
   "multiple heroes": ["bloodline-founding", "bloodline-training"],
   "packages, pen and forecasts": [
     "package-selection",

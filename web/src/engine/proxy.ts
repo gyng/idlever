@@ -117,6 +117,7 @@ const METHODS: (keyof Engine)[] = [
   "openChest",
   "setWorker",
   "promote",
+  "upgradeBuilding",
   "hurryClone",
   "setPerk", // Cut 30.5: optional likewise (no works tree without them)
   "advance",

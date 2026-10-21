@@ -691,6 +691,15 @@ impl Game {
         Ok(js(&self.inner.lineage()))
     }
 
+    /// Cut315: buy a Bank/Vat upgrade level. `request` is `{id, payer, level, max_price, use_savings}` echoed from the
+    /// quote in `town.upgrades` (stale payer/level/price refused); returns `{receipt, lineage}`.
+    #[wasm_bindgen(js_name = upgradeBuilding)]
+    pub fn upgrade_building(&mut self, request: &str) -> Result<String, JsError> {
+        let r: idlever_core::upgrades::Request = serde_json::from_str(request).map_err(|e| err(e.to_string()))?;
+        let receipt = self.inner.upgrade_building(&r).map_err(err)?;
+        Ok(format!("{{\"receipt\":{},\"lineage\":{}}}", js(&receipt), js(&self.inner.lineage())))
+    }
+
     /// Cut264: skip the clone's recovery for gold (refused with `price changed` above `max_price`); returns the Lineage.
     #[wasm_bindgen(js_name = hurryClone)]
     pub fn hurry_clone(&mut self, max_price: i32) -> Result<String, JsError> {
