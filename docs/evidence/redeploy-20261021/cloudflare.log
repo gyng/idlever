@@ -1,0 +1,37 @@
+[INFO]: 🎯  Checking for the Wasm target...
+[INFO]: 🌀  Compiling to Wasm...
+    Finished `release` profile [optimized] target(s) in 0.03s
+[INFO]: ⬇️  Installing wasm-bindgen...
+[INFO]: Optimizing wasm binaries with `wasm-opt`...
+[INFO]: Optional fields missing from Cargo.toml: 'description', 'repository', and 'license'. These are not necessary, but recommended
+[INFO]: ✨   Done in 2m 56s
+[INFO]: 📦   Your wasm pkg is ready to publish at web/src/engine/pkg.
+$ tsc && vite build
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/runs.ts is dynamically imported by src/ui/chronicle.ts but also statically imported by src/ui/hero-hub.ts, src/ui/report.ts, dynamic import will not move module into another chunk.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 900 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/town.ts is dynamically imported by src/ui/chronicle.ts, src/ui/hero-life.ts, src/ui/legendary-gear.ts but also statically imported by src/ui/camp.ts, src/ui/frame.ts, src/ui/heroes.ts, src/ui/preparation.ts, dynamic import will not move module into another chunk.
+
+deploy-cf: built 510bd647c137, wasm 88e9309a8def175f (5481252 bytes)
+
+ ⛅️ wrangler 4.151.1
+────────────────────
+🌀 Building list of assets...
+✨ Read 409 files from the assets directory /home/g/p/riddle/target/redeploy-20261021/tmp/idlever-cf-9uznPs/web/dist
+🌀 Starting asset upload...
+🌀 Found 1 new or modified static asset to upload. Proceeding with upload...
++ /meta.json
+Uploaded 1 of 1 asset
+✨ Success! Uploaded 1 file (391 already uploaded) (1.77 sec)
+
+Total Upload: 0.34 KiB / gzip: 0.24 KiB
+Uploaded idlever-dev (10.68 sec)
+Deployed idlever-dev triggers (5.08 sec)
+  https://idlever-dev.gyng.workers.dev
+  dev.idlever.awoo.party (custom domain)
+Current Version ID: 5729f8d6-bc48-4711-b997-b0b0fcbe6c23
+deploy-cf: 510bd647c137 live at https://dev.idlever.awoo.party/
