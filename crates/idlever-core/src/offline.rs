@@ -184,7 +184,7 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
         // 20-minute rest yields its run).
         if last && game.run.as_ref().is_some_and(|r| r.over.is_none() && (r.turn > 0 || consumed >= budget)) {
             let before = game.run.as_ref().unwrap().turn;
-            game.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
+            game.run_to_end(crate::engine::run_cap());
             game.events.clear();
             consumed += (game.run.as_ref().unwrap().turn - before) as u64;
         }
@@ -202,7 +202,7 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
                     game.lineage.rest_left = 0;
                     game.start_run(None);
                     crate::tree::scout_sent(game);
-                    game.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
+                    game.run_to_end(crate::engine::run_cap());
                     let (turns, tier, cause) = {
                         let r = game.run.as_ref().unwrap();
                         (r.turn, r.over.unwrap_or(ExitTier::Return), if r.over == Some(ExitTier::Death) { r.death_cause.clone() } else { None })
@@ -275,7 +275,7 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
     // A final zero-length transport call can close a run left by the previous slice.
     if last && absence.elapsed_s > 0 && game.run.as_ref().is_some_and(|r| r.over.is_none()) {
         let before = game.run.as_ref().unwrap().turn;
-        game.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
+        game.run_to_end(crate::engine::run_cap());
         consumed += u64::from(game.run.as_ref().unwrap().turn - before);
         game.events.clear();
         settle_completed_run(game, consumed, &mut stall);
@@ -416,7 +416,7 @@ fn settle_completed_run(game: &mut Game, consumed: u64, stall: &mut u32) {
 pub(crate) fn finish_return_run(game: &mut Game) {
     if game.run.as_ref().is_none_or(|r| r.over.is_some()) { return; }
     let before = game.run.as_ref().unwrap().turn;
-    game.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
+    game.run_to_end(crate::engine::run_cap());
     let extra = u64::from(game.run.as_ref().unwrap().turn - before);
     let mut stall = game.stall_runs;
     settle_completed_run(game, extra, &mut stall);

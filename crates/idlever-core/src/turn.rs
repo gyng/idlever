@@ -286,6 +286,29 @@ pub fn return_due(run: &Run) -> bool {
     run.over.is_none() && run.homeward.is_some() && !run.homeward_bank && run.home_at.is_some_and(|(t, ..)| run.turn >= t + RETURN_TICKS)
 }
 
+/// Cut317: an expedition's progress clock, its hunger clock. No new floor and no more gold carried for `STALL_GIVE_UP`
+/// ticks — a fight neither side can finish (armour no foe gets through, a regenerating queen whose spawn he kills
+/// for nothing), a floor he cannot leave — and he commits a return (row −2, the engine's): out where he stands
+/// `RETURN_TICKS` later, the carry kept, instead of the run cap's empty hands. A committed return is on its own
+/// timer (`return_due`); a bank walk has none, so a bank he cannot finish is clocked too.
+fn progress_clock(run: &mut Run, cx: &mut Ctx) {
+    if !crate::balance::get().expedition.on || (run.homeward.is_some() && !run.homeward_bank) || run.over.is_some() {
+        return;
+    }
+    let mark = (run.depth, run.carried().max(0) as u32);
+    if mark != run.progress_mark {
+        run.progress_mark = mark;
+        run.progress_at = run.turn;
+    } else if run.turn.saturating_sub(run.progress_at) > crate::engine::STALL_GIVE_UP {
+        run.retreat = false;
+        run.homeward_bank = false;
+        run.homeward = Some(run.homeward.unwrap_or(-2));
+        run.home_at = Some((run.turn, run.hero.hp_pct(), run.hero.hp));
+        run.home_return = true;
+        crate::chronicle::note(run, cx, "Wore out. Went home.".into());
+    }
+}
+
 /// Ticks left of a committed return's walk (`None`: no return walking).
 pub fn return_left(run: &Run) -> Option<u32> {
     if run.homeward.is_none() || run.homeward_bank {
@@ -383,6 +406,7 @@ fn hero_action(run: &mut Run, cx: &mut Ctx) {
     // Cut 27 §3: a return walks from anywhere — `RETURN_TICKS` after it committed he is out
     // where he stands (the stairs, if he reaches them first, as before); a bank still walks to
     // the up-stairs.
+    progress_clock(run, cx);
     if return_due(run) {
         if run.exit_row.is_none() {
             run.exit_row = run.homeward;
@@ -668,6 +692,19 @@ fn choose_and_act(run: &mut Run, cx: &mut Ctx, v: &View) -> (i32, Verb) {
         once_rows_why(run, cx, &format!("hazard first · {}", hz.unwrap_or("gas")));
         return (-2, verb);
     }
+    // Cut317 §3.0: an expedition's retreat. With nothing awake in sight he rests until healed and the rows wait;
+    // when he cannot rest (poison, a hazard), a foe shows or the retreat is spent, the rows decide as ever.
+    if run.retreat {
+        if run.hero.hp >= run.hero.max_hp {
+            run.retreat = false;
+        } else if !run.retreat_spent() && ai::calm(run, v) && ai::rest_now(run, cx) {
+            run.retreat_at = run.turn;
+            let verb = Verb::new("rest");
+            emit_rule(run, cx, -2, &verb, "retreat → rest");
+            all_rows_why(run, cx, "resting", None);
+            return (-2, verb);
+        }
+    }
     // Cut 3 `recall_sense`: below 15% with a recall scroll in the pack, read it (a free row).
     if hp_pct < 15 && cx.unlocks.contains("recall_sense") && run.hero.inv.iter().any(|i| i.kind == "recall") {
         let verb = Verb::arg("read", "recall");
@@ -760,7 +797,11 @@ fn choose_and_act(run: &mut Run, cx: &mut Ctx, v: &View) -> (i32, Verb) {
             if run.over.is_some() && run.exit_row.is_none() {
                 run.exit_row = Some(i as i32);
             }
-            if run.over.is_none() && run.homeward.is_none() && matches!(row.verb.v.as_str(), "return" | "bank") {
+            // Cut317: on an expedition a `return` commits home only once its retreat is spent (`ai` rests him)
+            let home = row.verb.v == "bank"
+                || (row.verb.v == "return" && (!crate::balance::get().expedition.on || run.retreat_spent()));
+            if run.over.is_none() && run.homeward.is_none() && home {
+                run.retreat = false;
                 run.homeward = Some(i as i32);
                 run.home_at = Some((run.turn, hp_pct, run.hero.hp));
                 run.homeward_bank = row.verb.v == "bank";

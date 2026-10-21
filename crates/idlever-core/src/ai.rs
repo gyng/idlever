@@ -898,6 +898,25 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         // 60 % (`ExitTier::Return`). Foes can reach him on the way: a hurt hero walking home is
         // the run's tension, not a door out of it (rater AB: `hp < 20% → return` made death 1 %).
         // The player's own `bail` stays instant (`turn::choose_and_act`), as does a recall scroll.
+        // Cut317 §3.0: on an expedition a `return` is a retreat — rest while nothing awake is in sight, else back off
+        // toward the up-stairs (`turn::choose_and_act` keeps him resting until healed). He leaves on it only once the
+        // retreat is spent.
+        "return" if crate::balance::get().expedition.on && run.homeward.is_none() && !run.retreat_spent() => {
+            if !run.retreat {
+                run.retreat = true;
+                run.retreat_at = run.turn;
+            }
+            if calm(run, v) && rest_now(run, cx) {
+                run.retreat_at = run.turn;
+                return true;
+            }
+            let s = run.floor.stairs_up;
+            if run.hero.pos == s {
+                return true;
+            }
+            let parent = hero_path_home(run, s);
+            step_towards(run, cx, s, &parent)
+        }
         "bank" | "return" => {
             let tier = if verb.v == "bank" { ExitTier::Bank } else { ExitTier::Return };
             let s = run.floor.stairs_up;
@@ -961,8 +980,14 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
 }
 
 /// Rest: +4 HP with no foe in view, not poisoned, not in a hazard. Every rest is a noise.
-fn verb_rest(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
-    if run.hero.hp < run.hero.max_hp && v.foes.is_empty() && run.hero.poison.1 == 0 && !in_hazard(run, run.hero.pos) {
+fn verb_rest(run: &mut Run, cx: &mut Ctx, v: &View) -> bool { v.foes.is_empty() && rest_now(run, cx) }
+
+/// Cut317: an expedition's retreat rests while nothing awake is in sight (a sleeper is scenery).
+pub(crate) fn calm(run: &Run, v: &View) -> bool { v.foes.iter().all(|&i| !run.monsters[i].awake) }
+
+/// One rest: heal, the rest's noise and clock. Not while poisoned or standing in a hazard.
+pub(crate) fn rest_now(run: &mut Run, cx: &mut Ctx) -> bool {
+    if run.hero.hp < run.hero.max_hp && cx.variant != "no_rest" && run.hero.poison.1 == 0 && !in_hazard(run, run.hero.pos) {
         // Cut 30: `rested` — a live gift heals more on a rest.
         let extra = crate::traits::rest_extra_now(run, cx);
         let inherited=i32::from(crate::legacy::has(&run.hero,crate::legacy::RESTORATION));

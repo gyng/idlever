@@ -221,6 +221,13 @@ pub const REMEMBER_ACTIONS: u32 = 10;
 /// (tier `return`, yield ×0: a stalemate is not a policy; the DEFAULT set must yield nothing
 /// over 8 h, and a stall that kept the return's share paid it). Cut 3: a D30 run needs ~75 000.
 pub const MAX_TURNS_PER_RUN: u32 = 120_000;
+/// Cut317: the run cap in force — the shipping `MAX_TURNS_PER_RUN`, or an expedition profile's longer net.
+#[inline]
+pub fn run_cap() -> u32 { crate::balance::get().expedition.run_cap_ticks }
+/// Cut317: five minutes of a retreat with no rest and he goes home.
+pub const RETREAT_GIVE_UP: u32 = 3000;
+/// Cut317: twenty minutes with no new floor and no gold gained (a fight neither side can finish) and he goes home.
+pub const STALL_GIVE_UP: u32 = 12_000;
 /// Oscillation-guard firings on one floor before the run ends as `stalled` and gets a verdict.
 pub const STALL_FIRES: u32 = 3;
 /// QA on 1a2a4a9: the ledger's zero line when the re-pack ran short of gold.
@@ -528,6 +535,17 @@ pub struct Run {
     pub oath_said: Option<(bool, String)>,
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub home_return: bool,
+    /// Cut317 §3.0: an expedition's `return` — he rests where he stands until healed, then dives on.
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub retreat: bool,
+    /// Cut317: the turn the retreat began or last healed; `retreat_spent` after `RETREAT_GIVE_UP` ticks without rest.
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub retreat_at: u32,
+    /// Cut317: the progress clock — (depth, gold carried) and the turn it last moved (`turn::progress_clock`).
+    #[serde(default, skip_serializing_if = "is_zero_pair")]
+    pub progress_mark: (u32, u32),
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub progress_at: u32,
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub wall_seen: bool,
     /// Cut 29 §3: the run's meters (the run, the fight in progress; `meters.rs`) — real runs only.
@@ -1289,6 +1307,9 @@ impl Run {
     pub fn financial_pct(&self, tier: ExitTier) -> i32 {
         if tier == ExitTier::Death { 0 } else { 100 }
     }
+    /// Cut317: a retreat that found no rest for `RETREAT_GIVE_UP` ticks (a foe awake in sight, poison, a hazard)
+    /// gives up: the next `return` walks him home and ends the run as ever.
+    pub fn retreat_spent(&self) -> bool { self.retreat && self.turn.saturating_sub(self.retreat_at) > RETREAT_GIVE_UP }
     /// All the run carried: the secured gold and the carry since.
     pub fn carried(&self) -> i32 {
         self.secured + self.loot.max(0)
@@ -3643,7 +3664,7 @@ impl Game {
             let mut cur = crate::wire::ReplayFloor { snapshot: g.snapshot(), events: Vec::new() };
             let mut inputs = cap.inputs.iter().peekable();
             let mut n = 0u32;
-            while g.run.as_ref().is_some_and(|r| r.over.is_none()) && n < MAX_TURNS_PER_RUN {
+            while g.run.as_ref().is_some_and(|r| r.over.is_none()) && n < run_cap() {
                 let turn = g.run.as_ref().map_or(0, |r| r.turn);
                 while let Some((_, inp)) = inputs.next_if(|(t, _)| *t <= turn) {
                     match inp {
@@ -4399,6 +4420,10 @@ impl Game {
             oath: crate::oath::sworn(&self.lineage).cloned(),
             oath_said: None,
             home_return: false,
+            retreat: false,
+            retreat_at: 0,
+            progress_mark: (0, 0),
+            progress_at: 0,
             wall_seen: false,
             route2: self.lineage.unlocks.contains("route2"),
             tamed_grudges: Vec::new(),
@@ -4684,7 +4709,8 @@ impl Game {
 
     /// `pay_start` for the floor `want` (Cut 118: a goal's stone).
     fn pay_start_at(&mut self, want: u32) -> (u32, Option<String>, i32) {
-        let want = want.max(1);
+        // Cut317 (owner: "start fresh"): an expedition always starts at the top — no stone, guide or goal skips it
+        let want = if crate::balance::get().expedition.on { 1 } else { want.max(1) };
         if want == 1 {
             return (1, None, 0);
         }
@@ -4925,7 +4951,7 @@ impl Game {
         }
         let n = cx.events[before..].iter().filter(|e| e.renderable()).count() as u32;
         run.renderable_events += n;
-        if run.turn >= MAX_TURNS_PER_RUN && run.over.is_none() {
+        if run.turn >= run_cap() && run.over.is_none() {
             run.timed_out = true;
             crate::chronicle::note(run, &mut cx, "Lost the thread. Came home empty-handed.".into());
             crate::turn::end_run(run, &mut cx, ExitTier::Return);
@@ -5023,7 +5049,7 @@ impl Game {
             // Armour healing runs before actions; a quiet span may age its
             // timer but must never skip a healing boundary, even if periods change.
             .min(crate::armour_sets::HEAL_TICKS - 1 - run.turn % crate::armour_sets::HEAL_TICKS)
-            .min(MAX_TURNS_PER_RUN.saturating_sub(run.turn + 1));
+            .min(run_cap().saturating_sub(run.turn + 1));
         if !self.sim && !NO_HISTORY.with(|c| c.get()) {
             let rem = run.turn % HISTORY_STRIDE;
             quiet = quiet.min(if rem == 0 { 0 } else { HISTORY_STRIDE - rem });
@@ -7790,6 +7816,10 @@ fn past(tier: &str) -> String {
         "death" => "died".into(),
         t => t.to_string(),
     }
+}
+
+fn is_zero_pair(p: &(u32, u32)) -> bool {
+    *p == (0, 0)
 }
 
 fn is_zero_u32(n: &u32) -> bool {

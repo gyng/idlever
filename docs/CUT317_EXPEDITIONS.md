@@ -56,9 +56,16 @@ camps, and ends the expedition by dying, by a deliberate bank, by running out of
    pen say "retreat · rest"). `bank` stays a real exit, chosen with a carry worth taking home. An expedition also
    ends when supplies are spent and he is still hurt (◇ the rest heals only to ◇ 60% without a heal in the pack).
 
-1. **Length (the owner left this to us).** Typical expedition ◇: 30–60 min early (D1–D8), 1–3 h in the
-   midgame, 6–12 h late (an overnight dive). Floor pace ◇ 3–6 min, slower at bosses. The 120k-tick cap rises
-   to ◇ 24 h, so it is a safety net and not a pacing device.
+1. **Length (the owner left this to us).** Typical expedition ◇: 30–60 min early (D1–D8), 1–2 h for a full
+   dive. The dungeon has a bottom (D33) and floors take ~1–4 min, so one expedition is at most ~2 h; an overnight
+   absence is several expeditions, not one. The 120k-tick cap rises to 24 h, a net and not a pacing device.
+   Owner 2026-10-22: **"start fresh"**: every expedition starts at D1 (no guide or waystone skip). **"d33 is way
+   too short"** → both:
+   - **Dive past the King** (phase 1b): after D33 the expedition carries on into the next, harder descent (the
+     numbered descents / Ascension tiers) instead of ending. Reuses all content; a strong hero dives for hours.
+   - **Stretch to D99** (phase 7): three times the floors per biome, bosses at the same relative places
+     (Warlord D24, King D99). Touches ~366 depth references in the core, the route tables, the client depth rail
+     and every depth-based gate (translated ×3, never weakened).
 2. **Town time is short.** The alive-run rest falls from 20–30 min to ◇ 2–5 min (resupply). Death recovery is
    unchanged (Cut315: 15 s early, 20 min deep); dying deep costs time. Target ◇: after the porter, a hero is in
    the dungeon ≥ 80 % of wall time.
@@ -86,6 +93,44 @@ camps, and ends the expedition by dying, by a deliberate bank, by running out of
      boss slain, camp reached and banked sum, new class/level, death (cause), return. One cry at a time,
      ≤ 3 words + a name and a number (copy budgets hold), and a tap opens the diary (today's crier sheet). A
      cry is the core's event, so offline catch-up yields the same cries, summarised on return.
+
+## 3b. Phase 1 prototype (2026-10-22, `tuning/studies/cut317-expedition.json`)
+
+`balance.expedition {on, run_cap_ticks}` (off in shipping); rest after an alive run 2–5 min. In the core:
+
+- **Retreat** (`Run.retreat`): a `return` rests the hero (`ai::rest_now`) while nothing awake is in sight — a
+  sleeper is scenery — and the rows wait until he is healed. A foe in sight: his rows fight, or the `return`
+  backs him toward the up-stairs. Five minutes without a rest (`RETREAT_GIVE_UP`) and the next `return` walks
+  him home as ever.
+- **Start fresh**: in an expedition every send starts at D1 (`Game::pay_start_at`).
+- **Progress clock** (`turn::progress_clock`, the expedition's hunger clock): no new floor and no more gold
+  carried for 20 min (`STALL_GIVE_UP`) and he commits a return (out where he stands `RETURN_TICKS` later, carry
+  kept). A bank walk he cannot finish is clocked too.
+
+The probe found a **shipping stalemate**, masked until now by the run cap. A gunner in plate at D24–D28 is
+surrounded: no foe's blow gets through (0 damage), and his long gun cannot outpace a lurker queen who heals and
+spawns. Or a bank walk has no path home. The run then stands still until the 120k-tick cap ends it as "Lost the
+thread", losing the carry since the last record floor. In `earned-gunner-home`, 5 of 7 shipping runs ended this way.
+
+| Save, 24 h | Shipping: runs · median · in dungeon | Prototype: runs · median · in dungeon |
+| --- | --- | --- |
+| `earned-gunner-home` | 7 · 200 min (5 capped) · 85 % | 23 · 68 min · 82 % |
+| `earned-first-ascension-clear` | 59 · 4.5 min · 18 % | 109 · 5.9 min · 44 % |
+
+## 3c. Depth model (shared by "dive past the King" and "stretch to D99")
+
+Today one field, `Run.depth`, is both the floor number the player sees and records, and the depth content reads
+(biome, spawn tables, boss floors, loot, waystones, the forecast): 366 references in the core. Reaching D34 ends
+the run (`turn::descend`, `ENDING_DEPTH`). Both owner picks need the two separated:
+
+- **floor**: the number shown, recorded, lit as a stone and gated. It counts up without end.
+- **content depth + tier**: what the floor is generated and scaled as. For the stretch, content depth =
+  ⌈floor / 3⌉ (three floors a band, the boss on the band's last). Past the bottom, the tier rises by one and the
+  content depth restarts at D1, harder (the numbered descents' tier bonus).
+
+Plan: introduce `content_depth()` / `tier()` on `Run`, move content reads onto them, then keep records,
+stones, displays and gates on the floor. Its own phase, with its own gates; a refactor that leaves shipping
+byte-identical first (stretch ×1, no laps), then the profile turns it on.
 
 ## 4. Gates
 

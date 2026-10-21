@@ -52,6 +52,9 @@ pub struct Balance {
     /// Cut315: the Bank/Vat upgrades (`upgrades.rs`).
     #[serde(default = "default_upgrades")]
     pub upgrades: Upgrades,
+    /// Cut317: expeditions (docs/CUT317_EXPEDITIONS.md). Off in shipping until its gates pass.
+    #[serde(default = "default_expedition")]
+    pub expedition: Expedition,
 }
 fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
 fn default_recovery_full_ticks() -> u32 { DEFAULT.recovery_full_ticks }
@@ -66,6 +69,7 @@ fn default_marks() -> Marks { DEFAULT.marks }
 fn default_monsters() -> Monsters { DEFAULT.monsters }
 fn default_vat() -> Vat { DEFAULT.vat }
 fn default_upgrades() -> Upgrades { DEFAULT.upgrades }
+fn default_expedition() -> Expedition { DEFAULT.expedition }
 
 /// A worker's hire trigger and price (`tree::NODES`): chores by hand that light it, its price in tenths of a forge
 /// unit (0: free), the lineage age (h) that lights it without the count once its chore exists (0: none).
@@ -292,6 +296,17 @@ pub struct Upgrades {
     pub vat_hurry_off_pct: [u64; 2],
 }
 
+/// Cut317 §3: an expedition is one hero life at real speed. `on`: a `return` row rests the hero until healed
+/// (`Run.retreat`) instead of walking him home — `bank` stays the exit — and the progress clock ends a stalled run
+/// (`turn::progress_clock`). `run_cap_ticks`: the run's safety cap (shipping 120 000, 3 h 20 min), a net and never
+/// a pacing device.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Expedition {
+    pub on: bool,
+    pub run_cap_ticks: u32,
+}
+
 const fn w(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
     Worker { need, price_tenths, fallback_h, goal: Goal::Count }
 }
@@ -350,6 +365,7 @@ pub const DEFAULT: Balance = Balance {
         gate_depth: [13, 23], bank_price_units: [8, 64], vat_price_units: [8, 64], bank_nights: [5, 8],
         bank_bonus_permille: [20, 40], vat_recovery_off_pct: [20, 35], vat_hurry_off_pct: [25, 50],
     },
+    expedition: Expedition { on: false, run_cap_ticks: 120_000 },
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -422,6 +438,8 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
     if !ordered(up.gate_depth, 1, 33) || !ordered(up.bank_price_units, 1, 1000) || !ordered(up.vat_price_units, 1, 1000)
         || !ordered(up.bank_nights, 3, 16) || !ordered(up.bank_bonus_permille, 0, 100)
         || !ordered(up.vat_recovery_off_pct, 0, 80) || !ordered(up.vat_hurry_off_pct, 0, 90) { return Err("upgrades"); }
+    // a day of ticks is 864 000; ten days bound a single expedition
+    if !(120_000..=8_640_000).contains(&b.expedition.run_cap_ticks) { return Err("expedition"); }
     Ok(())
 }
 #[cfg(feature = "dev-balance")]

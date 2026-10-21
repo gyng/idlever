@@ -5,6 +5,7 @@
 use idlever_core::Game;
 
 fn main() {
+    idlever_core::balance::configure_from_env().expect("IDLEVER_BALANCE_JSON");
     let args: Vec<String> = std::env::args().collect();
     let path = args.get(1).expect("SAVE.json");
     let hours: u64 = args
@@ -37,6 +38,113 @@ fn main() {
         total += 1;
         if let Some(r) = &g.run {
             inside += 1;
+            if (s + 1) % 3600 == 0 {
+                println!(
+                    "       h{:<3} run {} D{} turn {} hp {}/{} carry {} rests {} retreat {}",
+                    (s + 1) / 3600,
+                    r.id,
+                    r.depth,
+                    r.turn,
+                    r.hero.hp,
+                    r.hero.max_hp,
+                    r.carried(),
+                    r.rests,
+                    r.retreat
+                );
+                println!(
+                    "             pos {:?} up {:?} poison {:?} manual {} ring {:?} spent {} at {} foes {}",
+                    r.hero.pos,
+                    r.floor.stairs_up,
+                    r.hero.poison,
+                    r.manual,
+                    r.verb_ring,
+                    r.retreat_spent(),
+                    r.retreat_at,
+                    r.monsters.iter().filter(|m| m.hp > 0 && m.hostile()).count()
+                );
+                if std::env::var("PROBE_MAP").is_ok() && r.retreat_spent() {
+                    use idlever_core::tiles::Tile;
+                    let m = &r.floor.map;
+                    for y in 0..m.h {
+                        let row: String = (0..m.w)
+                            .map(|x| {
+                                let p = idlever_core::geom::Pos { x, y };
+                                if p == r.hero.pos {
+                                    return '@';
+                                }
+                                if let Some(mo) =
+                                    r.monsters.iter().find(|mo| mo.hp > 0 && mo.pos == p)
+                                {
+                                    return if mo.awake { 'M' } else { 'm' };
+                                }
+                                match m.get(p) {
+                                    Tile::Wall => '#',
+                                    Tile::Floor => '.',
+                                    Tile::Door => '+',
+                                    Tile::StairsUp => '<',
+                                    Tile::StairsDown => '>',
+                                    Tile::Water => '~',
+                                    Tile::Chasm => ' ',
+                                    _ => '*',
+                                }
+                            })
+                            .collect();
+                        println!("             {row}");
+                    }
+                    for mo in r
+                        .monsters
+                        .iter()
+                        .filter(|mo| mo.hp > 0 && mo.hostile() && mo.pos.cheb(r.hero.pos) <= 3)
+                    {
+                        println!(
+                            "             near: {} {:?} awake {} dormant {}",
+                            mo.kind, mo.pos, mo.awake, mo.dormant
+                        );
+                    }
+                    println!("             why {:?}", r.rows_why);
+                    println!(
+                        "             hero vanish {} paralysed {} confused {} class {:?}",
+                        r.hero.vanish_t, r.hero.paralysed, r.hero.confused, r.hero.class
+                    );
+                    let before = r.turn;
+                    let st = g.step(20);
+                    let adv = g.advance(0);
+                    for e in st.events.iter().take(40) {
+                        println!(
+                            "             ev {}",
+                            format!("{e:?}").chars().take(160).collect::<String>()
+                        );
+                    }
+                    let r = g.run.as_ref().unwrap();
+                    println!(
+                        "             +2s turn {} -> {} ended {:?} hp {}",
+                        before, r.turn, adv.ended, r.hero.hp
+                    );
+                    println!(
+                        "             hero energy {} speed {} pace {} actions {} awaiting {}",
+                        r.hero.energy,
+                        r.hero.speed(),
+                        r.hero.pace,
+                        r.actions,
+                        r.awaiting
+                    );
+                    for mo in r
+                        .monsters
+                        .iter()
+                        .filter(|mo| mo.hp > 0 && mo.pos.cheb(r.hero.pos) <= 1)
+                    {
+                        println!(
+                            "             adj {} energy {} speed {} hp {} ally {}",
+                            mo.kind,
+                            mo.energy,
+                            mo.effective_speed(),
+                            mo.hp,
+                            mo.ally
+                        );
+                    }
+                    std::process::exit(0);
+                }
+            }
             match &mut cur {
                 Some(c) if c.0 == r.id => {
                     c.3 = c.3.max(r.depth);
