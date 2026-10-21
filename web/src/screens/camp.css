@@ -51,3 +51,32 @@
     line-height: 1;
   }
 }
+@layer screens {
+  /* desktop: both rails are the carved wall the live view stands in (pillar art), not empty slate */
+  @media (min-width: 1024px) {
+    main.camp .heroes-col,
+    main.camp::before {
+      background:
+        linear-gradient(
+          var(--k-bg),
+          color-mix(in srgb, var(--k-bg) 45%, transparent) 40%,
+          transparent 78%
+        ),
+        url("/ui/deco/pillar.webp") center bottom / 100% auto no-repeat,
+        var(--k-surface);
+    }
+    main.camp::before {
+      content: "";
+      grid-column: 6;
+      grid-row: 2 / -1;
+      pointer-events: none;
+    }
+    /* the hero card's words at the kit's floor size */
+    main.camp .hero-roster :is(small, .dim, .meta, .sub) {
+      font-size: var(--k-fs-1);
+    }
+    main.camp .hero-roster :is(b, strong, .name) {
+      font-size: var(--k-fs-2);
+    }
+  }
+}
