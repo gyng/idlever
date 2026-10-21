@@ -208,23 +208,6 @@
   .orders-tab .orders-sum {
     font-size: 13px;
   }
-  .orders-sheet .order-rows {
-    display: grid;
-    gap: 8px;
-    margin-top: 6px;
-  }
-  .orders-sheet .order-row {
-    display: grid;
-    grid-template-columns: 104px 1fr;
-    gap: 8px;
-    align-items: center;
-  }
-  .orders-sheet .olab {
-    font: 600 12px/1.2 var(--sans);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
   /* Cut 29 §1/§5: the oath board's late sinks — slots, the draw, the works */
   .oath-sinks {
     display: grid;
@@ -490,11 +473,5 @@
   }
   .orders-sheet .chip.share.on {
     opacity: 1;
-  }
-  .orders-sheet .order-row .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    align-items: center;
   }
 }

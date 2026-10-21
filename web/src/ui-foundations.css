@@ -482,7 +482,6 @@
     min-width: 0;
     overflow-wrap: anywhere;
   }
-  html body .game-window[data-menu-purpose="works"] .wnode,
   html body .game-window[data-menu-purpose="settings"] .srow,
   html body .game-window[data-menu-purpose="town"] .bank-line {
     background: var(--ui-inset);
@@ -496,20 +495,6 @@
   /* Savings amounts sit on dark workshop inset, so use its existing gilt ink. */
   html body .game-window[data-material="forge"] .bank-sheet .bank-line > .gold {
     color: var(--gilt);
-  }
-  html body .game-window[data-menu-purpose="works"] .wnode.lit {
-    border-color: var(--gilt);
-  }
-  html body .game-window[data-menu-purpose="works"] .wnode.sil {
-    opacity: 1;
-  }
-  html body .game-window[data-menu-purpose="works"] .wnode.sil :is(.wn-name, .wn-state, .wn-tip) {
-    color: var(--ui-muted);
-  }
-  html body .game-window[data-menu-purpose="works"] .sheet-body > .label:first-child {
-    border-bottom-style: double;
-    border-bottom-width: 4px;
-    padding-bottom: var(--ui-space-2);
   }
   html body .game-window[data-menu-purpose="settings"] .srow {
     display: flex;
@@ -587,13 +572,6 @@
   }
   html body .game-window[data-menu-purpose] .label .kw {
     color: inherit;
-  }
-  html body .game-window[data-menu-purpose="works"] .works-done {
-    opacity: 1;
-    color: var(--ui-muted);
-  }
-  html body .game-window[data-menu-purpose="works"] .wd-mark {
-    color: var(--ui-muted);
   }
   /* (Cut316: the records' ink-on-paper colour went with the parchment) */
   html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry {

@@ -80,3 +80,11 @@
     }
   }
 }
+@layer screens {
+  /* the rules pen needs room for a whole row (trigger → verb) on one line: the left rail widens while it is open */
+  @media (min-width: 1024px) {
+    main.camp.hero-editing {
+      --camp-l: clamp(380px, 30vw, 500px);
+    }
+  }
+}

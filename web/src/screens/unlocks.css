@@ -1,0 +1,112 @@
+/* Cut316: the camp's docked panels (Unlocks, Loadout, party) title themselves like every window — the big serif name over a
+   gilt rule, no framed band — and the Unlocks shelf is an even grid of slab tiles: name and lines on top, the price at the foot. */
+@layer screens {
+  .panel .panel-body > section > :is(.label, .row-label):first-child {
+    display: flex;
+    align-items: baseline;
+    gap: var(--k-2);
+    min-height: 0;
+    margin: 0 0 var(--k-3);
+    padding: 0 var(--k-6) var(--k-2) 0;
+    border: 0;
+    border-bottom: 2px solid var(--k-gilt);
+    border-image: none;
+    background: none;
+    color: var(--k-gold);
+    font: 600 var(--k-fs-4) / 1.1 var(--k-display);
+    letter-spacing: 0.01em;
+    text-shadow: none;
+    text-transform: capitalize;
+  }
+  .panel .panel-body > section > :is(.label, .row-label):first-child .dim {
+    color: var(--k-muted);
+    font: 500 var(--k-fs-1) / 1.2 var(--k-body);
+    text-transform: none;
+  }
+
+  .unlocks .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+    gap: var(--k-2);
+    margin: 0 0 var(--k-3);
+  }
+  .unlocks .card {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: start;
+    justify-items: stretch;
+    gap: var(--k-1);
+    min-height: 5rem;
+    padding: var(--k-2) var(--k-3);
+    text-align: left;
+    opacity: 1;
+  }
+  .unlocks .card .card-main {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .unlocks .card .card-main > span {
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+    color: var(--k-text);
+    text-transform: capitalize;
+  }
+  .unlocks .card :is(.needs, .carries, .delta) {
+    font: 500 var(--k-fs-1) / 1.2 var(--k-body);
+    letter-spacing: 0;
+    color: var(--k-muted);
+  }
+  .unlocks .card .delta.up {
+    color: var(--k-good);
+  }
+  .unlocks .card .delta.down {
+    color: var(--k-warn);
+  }
+  .unlocks .card .cost {
+    justify-self: end;
+    font: 600 var(--k-fs-2) / 1.2 var(--k-num);
+    color: var(--k-muted);
+    white-space: nowrap;
+  }
+  .unlocks .card.buyable {
+    background: var(--k-dusk);
+    box-shadow:
+      inset 0 1px var(--k-gilt),
+      inset 0 -2px var(--k-ink);
+  }
+  .unlocks .card.buyable .cost {
+    color: var(--k-gold);
+  }
+  .unlocks .card.gated,
+  .unlocks .card.off {
+    background: var(--k-inset);
+    box-shadow: none;
+  }
+  .unlocks .card.off .card-main > span {
+    color: var(--k-muted);
+  }
+  .unlocks .card.done {
+    background: none;
+    border: 1px dashed var(--k-edge);
+    border-image: none;
+    box-shadow: none;
+  }
+  .unlocks .card.done .card-main > span,
+  .unlocks .card.done .cost {
+    color: var(--k-faint);
+  }
+  .unlocks .card.done.empty {
+    visibility: hidden;
+  }
+  .unlocks > .more {
+    margin: 0 0 var(--k-3);
+  }
+  .unlocks .chips.owned {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--k-2);
+  }
+  .unlocks .chips.owned .chip small {
+    color: var(--k-muted);
+  }
+}

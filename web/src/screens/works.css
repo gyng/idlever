@@ -1,0 +1,299 @@
+/* Cut316: the Workers sheet on the kit — one card per worker on offer (inset, hairline; the one to buy framed in gilt),
+   silhouettes dashed and quiet, the hired roster as a strip of named chips, the branches as hairline rows.
+   Names are written as names (`Lili · Porter II`), never shouted. The Orders rows (also the Tactics panel's) sit label | slabs. */
+@layer screens {
+  .works-sheet .works-trunk {
+    display: grid;
+    gap: var(--k-2);
+    margin: 0 0 var(--k-3);
+  }
+  .wnode {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr auto;
+    align-items: center;
+    gap: var(--k-3);
+    padding: var(--k-2) var(--k-3);
+    background: var(--k-inset);
+    border: 1px solid var(--k-edge);
+    border-radius: 0;
+    box-shadow: inset 0 1px var(--k-ink);
+    color: var(--k-text);
+  }
+  .wnode.lit {
+    background: var(--k-umbra);
+    border: 2px solid var(--k-gilt);
+    box-shadow:
+      inset 0 1px var(--k-raised-hi),
+      0 0 0 1px var(--k-ink);
+  }
+  .wnode.sil {
+    grid-template-columns: 2.75rem 1fr;
+    background: none;
+    border: 1px dashed var(--k-edge);
+    box-shadow: none;
+    color: var(--k-muted);
+  }
+  .wnode.focus {
+    outline: 2px solid var(--k-select);
+    outline-offset: 2px;
+  }
+
+  .wnode .wn-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--k-ink);
+    border: 2px solid var(--k-edge);
+    border-radius: 0;
+    box-shadow: inset 0 2px 4px var(--k-shade);
+    overflow: hidden;
+  }
+  .wnode.lit .wn-ico {
+    border-color: var(--k-gilt);
+  }
+  .wnode .wn-ico .ico {
+    width: 2rem;
+    height: 2rem;
+  }
+  .wnode .wn-ico .ico.glyph::before {
+    font: 700 var(--k-fs-3) / 1 var(--k-display);
+    line-height: 2rem;
+    color: var(--k-gold);
+  }
+  .wnode.sil .wn-ico {
+    background: none;
+    border-style: dashed;
+    box-shadow: none;
+  }
+  .wnode.sil .wn-ico img.ico {
+    filter: brightness(0);
+    opacity: 0.5;
+  }
+  .wnode.sil .wn-ico .ico.glyph::before {
+    color: var(--k-faint);
+  }
+
+  .wnode .wn-main {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .wnode .wn-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 var(--k-2);
+  }
+  .wnode .wn-name {
+    font: 600 var(--k-fs-3) / 1.15 var(--k-display);
+    letter-spacing: 0;
+    text-transform: capitalize;
+  }
+  .wnode .wn-person {
+    color: var(--k-text);
+    white-space: nowrap;
+  }
+  .wnode .wn-sep {
+    color: var(--k-faint);
+  }
+  .wnode .wn-role {
+    color: var(--k-muted);
+    font-family: var(--k-body);
+    font-size: var(--k-fs-2);
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+  .wnode.rank .wn-name .wn-person,
+  .wnode.rank .wn-name .wn-role {
+    display: block;
+  }
+  .wnode.rank .wn-name .wn-sep {
+    display: none;
+  }
+  .wnode.sil .wn-name {
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+    color: var(--k-muted);
+  }
+  .wnode .wn-state {
+    font: 500 var(--k-fs-1) / 1.2 var(--k-num);
+    color: var(--k-muted);
+  }
+  .wnode.lit .wn-state {
+    color: var(--k-gold);
+  }
+  .wnode .wn-eta {
+    font-size: var(--k-fs-1);
+    color: var(--k-faint);
+  }
+  .wnode .wn-tip {
+    display: block;
+    font-size: var(--k-fs-1);
+    font-style: normal;
+    color: var(--k-muted);
+  }
+  .wnode .wn-bar {
+    display: block;
+    position: relative;
+    height: 0.625rem;
+    margin: var(--k-1) 0 2px;
+    border: 3px solid transparent;
+    border-image: url("/ui/frames/gauge.png") 8 / 3px stretch;
+    border-radius: 0;
+    background: var(--k-ink);
+    overflow: hidden;
+  }
+  .wnode .wn-bar .fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(var(--k-gold), var(--k-gilt));
+  }
+  .wnode :is(.hire-btn, .promote-btn) {
+    white-space: nowrap;
+  }
+  .wnode :is(.hire-btn, .promote-btn).short {
+    color: var(--k-muted);
+  }
+
+  /* the hired roster: one strip of named chips under the trunk */
+  .works-done {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--k-1) var(--k-2);
+    padding: var(--k-2) var(--k-3);
+    background: var(--k-inset);
+    border: 1px solid var(--k-edge);
+    opacity: 1;
+    font-size: var(--k-fs-1);
+  }
+  .works-done .wd-mark {
+    color: var(--k-good);
+    font-weight: 700;
+  }
+  .works-done .wd {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--k-1);
+    padding: 2px var(--k-2) 2px 2px;
+    background: var(--k-umbra);
+    border: 1px solid var(--k-edge);
+    color: var(--k-text);
+  }
+  .works-done .wd small {
+    font: 600 var(--k-fs-1) / 1.2 var(--k-body);
+  }
+  .works-done .wd .wd-rank {
+    color: var(--k-gold);
+  }
+  .works-done .wd .ico {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .works-done .wd .ico.glyph::before {
+    font-size: var(--k-fs-1);
+    line-height: 1.25rem;
+    font-weight: 700;
+  }
+  .works-done .wd.off {
+    color: var(--k-faint);
+    text-decoration: line-through;
+  }
+
+  /* the four branches: hairline rows, the stage now in gold, the next under it */
+  .works-branches {
+    margin: 0 0 var(--k-3);
+    border-top: 1px solid var(--k-edge);
+  }
+  .wbranch {
+    display: grid;
+    grid-template-columns: 2rem auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--k-2);
+    align-items: center;
+    min-height: var(--k-target);
+    padding: var(--k-1) 0;
+    border-bottom: 1px solid var(--k-edge);
+  }
+  .wbranch .wb-ico {
+    grid-row: 1 / span 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--k-ink);
+    border: 1px solid var(--k-edge);
+    overflow: hidden;
+  }
+  .wbranch .wb-ico .ico {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .wbranch .wb-ico img.track-hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+  }
+  .wbranch .wb-name {
+    font: 600 var(--k-fs-1) / 1.2 var(--k-body);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+  }
+  .wbranch .wb-now {
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+    color: var(--k-gold);
+  }
+  .wbranch .wb-next {
+    grid-column: 2 / span 2;
+    font-size: var(--k-fs-1);
+    color: var(--k-muted);
+  }
+
+  /* Orders (the Guild's and the Tactics panel's): label | slabs; the label stacks over them when narrow */
+  .orders-sheet .order-rows {
+    display: grid;
+    gap: var(--k-2);
+    margin: var(--k-2) 0 0;
+  }
+  .orders-sheet .order-row {
+    display: grid;
+    grid-template-columns: minmax(6rem, 8rem) 1fr;
+    gap: var(--k-2) var(--k-3);
+    align-items: center;
+  }
+  .orders-sheet .olab {
+    font: 600 var(--k-fs-1) / 1.2 var(--k-body);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+    opacity: 1;
+  }
+  .orders-sheet .order-row .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--k-2);
+    align-items: center;
+  }
+  @media (max-width: 480px) {
+    .orders-sheet .order-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  .guild-orders {
+    margin: var(--k-3) 0 0;
+    padding: var(--k-3) 0 0;
+    border-top: 1px solid var(--k-edge);
+  }
+  .guild-orders .guild-order.offered {
+    margin-left: calc(-1 * var(--k-3));
+    padding-left: calc(var(--k-3) - 2px);
+    border-left: 2px solid var(--k-select);
+  }
+  .guild-orders .guild-orders-more {
+    margin-top: var(--k-3);
+  }
+}

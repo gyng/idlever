@@ -4220,15 +4220,6 @@
     font-weight: 600;
   }
   /* Cut 18 §5: a tile the lineage can buy now glows — with marks or with gold alike; the gold price rides beside the marks (`◆3 · $450`) */
-  .unlocks .card.buyable {
-    border-color: #97762b;
-    box-shadow:
-      0 0 10px rgba(174, 192, 212, 0.28),
-      inset 0 0 0 1px rgba(174, 192, 212, 0.18);
-  }
-  .unlocks .card.gold-ok .cost {
-    color: #f3d192;
-  }
   .card .cost {
     white-space: nowrap;
   }

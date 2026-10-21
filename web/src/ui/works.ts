@@ -4,6 +4,7 @@
 // once the trunk is done), the arrival's beat (`LILI ARRIVES`, ≤ 2 words) and the report's worker lines (`apprentice · +2 steps`).
 // All truth is the core's (`Lineage.tree`): the client draws the nodes, their states and the pill as the wire sends them.
 import "../works.css";
+import "../screens/works.css";
 import type { App } from "../app";
 import type { Lineage, ReturnReport, WorkNode, WorkerAct, Works } from "../engine/types";
 import { h, replace } from "./dom";
