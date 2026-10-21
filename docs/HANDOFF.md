@@ -2,6 +2,9 @@
 
 ## Owner parking checkpoint — 2026-10-21
 
+Owner queue addition after deployment: scrollwheel zoom for live view and home
+base, recorded as WORK_QUEUE implementation item39. Queued only; work stays paused.
+
 After parking, owner explicitly requested deployment. Alpha.3's exact product
 source 510bd647 was redeployed to both sites; Pages run39535708405 attempt2
 build/deploy succeeded, and Cloudflare Worker version is

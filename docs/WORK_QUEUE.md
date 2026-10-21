@@ -2,6 +2,9 @@
 
 ## Parked by owner — 2026-10-21
 
+Owner queue addition, 2026-10-21: scrollwheel zoom in both the live view and
+home base (implementation item39). Queued for resume; work remains paused.
+
 Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
 isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
 supersedes historical active-goal/next-action notes below. Both evidence
@@ -471,6 +474,8 @@ more labels or uniformly stronger upgrades.
 | 36 | Persistent hero names, stats and needs | Let players name their persistent heroes and develop deliberate long-term stat identities, such as Strength-focused heroes. Consider refactoring Legacy to support that identity; needs should give base recovery/training a reason. | Audit existing name/attribute/Legacy/class ownership before adding parallel systems. Distinguish hero name from bloodline name and preserve identity/history across ordinary reincarnation. Stats grow slowly through earned milestones and are harder to change than builds/specs. Prototype one Strength-focused hero and one balanced alternative at similar progression. Any needs must avoid hunger/mood upkeep or penalties for absence; use understandable recovery/readiness and meaningful optional routines. |
 | 37 | Easy builds/specs; deliberate hero NG+ | Firm distinction: builds/specs should be easy to change; lasting stats should be slower to gain/change. Consider optional hero NG+/rebirth as a deliberate reset for bad stat commitments, distinct from ordinary death recovery. | Define easy/free loadout and spec changes separately from long-term attributes and NG+ eligibility/reset/retention rules. Preview exactly what resets/persists, require explicit confirmation, and keep ordinary death from silently rerolling stats. Review existing harder-descents/ascension systems before adding another reset layer. Avoid irreversible early traps or routine paid rerolls; prove a usable route to correct an unwanted stat build without making stats freely swappable each delve. |
 | 38 | Building construction and upgrade animations | Give home buildings visible build FX/animation so construction feels like an event: plot → assembly/reveal → completed building, with material-appropriate feedback. | Prototype one real building purchase, then cover all supported buildings/upgrades. Explore short assembly/scaffolding, dust/hammer/material cues and a restrained completion effect in the original ink/wash style. Trigger only from successful authoritative construction/upgrade events, coordinate with gold-flow FX, and keep names/tooltips/targets readable. If construction is instant, animation is presentation only: no invented timer, extra cost, delayed usability or extra confirmation. Check cancellation/insufficient funds, multiple builds, reload/offline completion, day/night, phone/desktop, reduced motion/full/low/off and GL/Canvas fallbacks; post matched clips and measured frame costs. |
+
+| 39 | Scrollwheel scene zoom | Allow mouse scrollwheel zoom in both the live view and home base. | Audit existing scene camera controls, then implement bounded zoom over each scene with consistent wheel direction and smooth, usable steps. Preserve hero tracking, panning, object selection and building interactions. Wheel events over panels/menus retain normal scrolling; preserve browser Ctrl/Cmd+wheel zoom. Verify both scenes with a mouse wheel and trackpad, minimum/maximum zoom, scene transitions and existing touch controls. |
 
 ### Guild, persistent heroes and deliberate rebirth — owner addition
 
