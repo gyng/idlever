@@ -4,6 +4,8 @@
 
 Owner queue addition, 2026-10-21: scrollwheel zoom in both the live view and
 home base (implementation item39). Queued for resume; work remains paused.
+Owner UI queue addition: indicators for Gold growth rates and related resource
+trends (implementation item40). Queued only.
 
 Work is paused at the published v0.1.0-alpha.3 milestone and the archived Cut314
 isolated native API checkpoint. See HANDOFF's parking checkpoint first; it
@@ -476,6 +478,8 @@ more labels or uniformly stronger upgrades.
 | 38 | Building construction and upgrade animations | Give home buildings visible build FX/animation so construction feels like an event: plot → assembly/reveal → completed building, with material-appropriate feedback. | Prototype one real building purchase, then cover all supported buildings/upgrades. Explore short assembly/scaffolding, dust/hammer/material cues and a restrained completion effect in the original ink/wash style. Trigger only from successful authoritative construction/upgrade events, coordinate with gold-flow FX, and keep names/tooltips/targets readable. If construction is instant, animation is presentation only: no invented timer, extra cost, delayed usability or extra confirmation. Check cancellation/insufficient funds, multiple builds, reload/offline completion, day/night, phone/desktop, reduced motion/full/low/off and GL/Canvas fallbacks; post matched clips and measured frame costs. |
 
 | 39 | Scrollwheel scene zoom | Allow mouse scrollwheel zoom in both the live view and home base. | Audit existing scene camera controls, then implement bounded zoom over each scene with consistent wheel direction and smooth, usable steps. Preserve hero tracking, panning, object selection and building interactions. Wheel events over panels/menus retain normal scrolling; preserve browser Ctrl/Cmd+wheel zoom. Verify both scenes with a mouse wheel and trackpad, minimum/maximum zoom, scene transitions and existing touch controls. |
+
+| 40 | Gold growth rates and resource trends | Show readable indicators of how quickly Gold and other useful progression resources are growing. | Audit existing economy totals/history and choose useful resource indicators before adding UI. Show explicit units and measurement windows (for example Gold/hour); distinguish actual earnings, spending/net change and any forecast. Reconcile observed rates with authoritative Rust receipts over elapsed game time, including offline catch-up, transfers, multiple heroes and save/reload; transfers must not appear as new earnings. Handle short/no history without invented precision, keep indicators compact on phone/desktop, and put calculation details in optional help. |
 
 ### Guild, persistent heroes and deliberate rebirth — owner addition
 
