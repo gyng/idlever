@@ -68,7 +68,8 @@
     main.camp::before {
       content: "";
       grid-column: 6;
-      grid-row: 2 / -1;
+      /* the heroes column's rows, so both pillars stand on the same floor at every width */
+      grid-row: rules-start / rules-end;
       pointer-events: none;
     }
     /* the hero card's words at the kit's floor size */
@@ -89,10 +90,11 @@
   }
 }
 @layer screens {
-  /* desktop: the town runs down to the frame's foot; the centre's chips and the console stand on it (was a dead band under the scene) */
+  /* desktop: the town runs down to the console; the centre's chips stand on it (was a dead band under the scene).
+     It stops at the console: buildings framed under the dock (and its Reuse badge) could not be clicked. */
   @media (min-width: 1024px) {
     main.camp .camp-well > .town {
-      grid-row: well-start / con-end;
+      grid-row: well-start / con-start;
     }
     main.camp
       :is(

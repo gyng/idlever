@@ -17,8 +17,9 @@
     :root {
       /* Cut262 (owner: "lots of layout shift on desktop"): one column pair for every screen — camp, watch, report and death had three
        (camp 288/245, watch 317/202, report 403/245 at 1440 px), so the roster and the well jumped sideways on each screen change */
+      /* owner 2026-10-21: the two rails are one width (their pillar art read as two sizes) */
       --wide-l: clamp(280px, 20vw, 360px);
-      --wide-r: clamp(220px, 16vw, 270px);
+      --wide-r: var(--wide-l);
     }
     body.framed {
       font-size: 18px;

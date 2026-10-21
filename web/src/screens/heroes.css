@@ -1,0 +1,106 @@
+/* Cut316: a hero card — portrait beside name, class and level (each one line), the XP bar under them,
+   then the hero's state; Details sits bottom right so the words get the card's whole width. */
+@layer screens {
+  :is(.hero-roster, .heroes-sheet) .hero-row {
+    display: grid;
+    position: relative;
+    padding: 0;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-row > .hero-jump {
+    grid-area: 1 / 1;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    grid-template-areas:
+      "thumb name"
+      "thumb cls"
+      "thumb xp"
+      "thumb track"
+      "act act"
+      "note note";
+    column-gap: var(--k-2);
+    row-gap: 2px;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    padding: var(--k-2);
+    text-align: left;
+    /* one frame: the article's; the jump is its click target, not a second card inside it */
+    background: none;
+    border: 0;
+    border-image: none;
+    box-shadow: none;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-jump > .hero-info {
+    display: contents;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-jump > .hero-thumb {
+    grid-area: thumb;
+    align-self: start;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > b {
+    grid-area: name;
+    font: 600 var(--k-fs-3) / 1.15 var(--k-display);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > .hero-class-name {
+    grid-area: cls;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
+    color: var(--k-muted);
+    font: 500 var(--k-fs-1) / 1.2 var(--k-body);
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-class-name > .class-icon,
+  :is(.hero-roster, .heroes-sheet) .hero-class-name > .class-icon img {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    object-fit: contain;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > .hero-xp {
+    grid-area: xp;
+    margin: 0;
+    color: var(--k-text);
+    font: 600 var(--k-fs-1) / 1.2 var(--k-num);
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > .hero-xp-track {
+    grid-area: track;
+    width: 100%;
+    height: 6px;
+    margin: 2px 0 0;
+    background: var(--k-inset);
+    box-shadow: 0 0 0 1px var(--k-edge);
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-xp-track > i {
+    height: 100%;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > .hero-action {
+    grid-area: act;
+    margin-top: var(--k-1);
+    padding-right: 6rem;
+    font: 500 var(--k-fs-2) / 1.2 var(--k-body);
+    white-space: nowrap;
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-info > .hero-notice {
+    grid-area: note;
+    padding-right: 6rem;
+    color: var(--k-gold);
+    font: 600 var(--k-fs-1) / 1.2 var(--k-body);
+  }
+  :is(.hero-roster, .heroes-sheet) .hero-row > .hero-details {
+    grid-area: 1 / 1;
+    align-self: end;
+    justify-self: end;
+    position: relative;
+    z-index: 1;
+    margin: 0 var(--k-2) var(--k-2) 0;
+  }
+}
