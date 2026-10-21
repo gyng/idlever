@@ -2,6 +2,15 @@
 
 ## Owner parking checkpoint — 2026-10-21
 
+After parking, owner explicitly requested deployment. Alpha.3's exact product
+source 510bd647 was redeployed to both sites; Pages run39535708405 attempt2
+build/deploy succeeded, and Cloudflare Worker version is
+5729f8d6-bc48-4711-b997-b0b0fcbe6c23. Both fresh public browser smokes pass
+metadata/source, real WASM, new town and save/reload, with no browser/network/
+HTTP errors. WASM hashes match the earlier respective shipping artifacts.
+Receipts: [redeploy-20261021](evidence/redeploy-20261021/README.md).
+No gameplay changes or new release; backlog remains paused as requested.
+
 Owner requested parking at a clean milestone and an updated handoff. Work is
 paused here: alpha.3 is published on both sites, and Cut314's isolated native
 shared-upgrade API has archived acceptance evidence. This is a bounded milestone,
