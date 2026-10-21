@@ -1,0 +1,36 @@
+/* Cut316: the report on slate — the summary heading and the collect fold read as the hub's title and a slab. */
+@layer screens {
+  .report-sheet {
+    padding: var(--k-3);
+  }
+  .report-sheet .report-summary h2 {
+    background: none;
+    color: var(--k-text);
+    font: 600 var(--k-fs-5) / 1.1 var(--k-display);
+    padding: 0;
+    border-bottom: 2px solid var(--k-gilt);
+    margin: 0 0 var(--k-3);
+  }
+  .report-sheet .report-away {
+    color: var(--k-muted);
+  }
+  .report-sheet .collect-send summary {
+    min-height: var(--k-target);
+    padding: 0 var(--k-3);
+    background: var(--k-raised);
+    color: var(--k-text);
+    border: 1px solid var(--k-edge);
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+  }
+  .report-sheet .pick-head {
+    background: none;
+    color: var(--k-text);
+  }
+  .report-sheet .pick-head .dim {
+    color: var(--k-muted);
+  }
+  .report-sheet .pick-default-tag {
+    background: var(--k-gilt);
+    color: var(--k-ink);
+  }
+}

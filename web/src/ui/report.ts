@@ -1,3 +1,4 @@
+import "../screens/report.css";
 import { supplyLimit, reportIncome } from "./report-supplies";
 import { counterName, namedCounters } from "./counter-name";
 import { goldWords } from "./gold-words";

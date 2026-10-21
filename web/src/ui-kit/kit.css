@@ -9,7 +9,8 @@
      the legacy role variables are re-pointed here so every old rule that reads them gets the slate values. */
   .game-window,
   .sheet,
-  .panel[data-panel] {
+  .panel[data-panel],
+  .parchment {
     --ui-surface: var(--k-surface);
     --ui-inset: var(--k-inset);
     --ui-text: var(--k-text);
@@ -430,5 +431,23 @@
   .game-window :where(.sheet-body > :first-child > .row-label:first-child),
   .game-window :where(.sheet-body > :first-child > .row-label:first-child) * {
     text-transform: capitalize;
+  }
+}
+@layer kit {
+  /* D1: `.parchment` panels (report, death trace, fight meters, run clear) are slate under the painted frame */
+  .parchment {
+    background-color: var(--k-surface);
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0 6px,
+      var(--k-surface-hatch) 6px 7px,
+      transparent 7px 13px
+    );
+    border: var(--k-frame) solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 / var(--k-frame) stretch;
+    border-radius: 0;
+    color: var(--k-text);
+    box-shadow: 0 12px 30px var(--k-shade);
+    filter: none;
   }
 }
