@@ -108,3 +108,11 @@
     }
   }
 }
+@layer screens {
+  /* desktop: the console centres on the town it stands on (its row also spanned the right rail, which pushed it right) */
+  @media (min-width: 1200px) {
+    main.camp.frame > .console {
+      grid-column: well-start / well-end;
+    }
+  }
+}
