@@ -143,9 +143,10 @@
     color: var(--k-text);
     margin: 0 0 var(--k-4);
   }
-  .game-window
-    :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title)::first-letter {
-    text-transform: uppercase;
+  /* title case — it reaches through the inline-block keyword spans that ::first-letter cannot */
+  .game-window :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title),
+  .game-window :where(.sheet-body > .label:first-child, .sheet-body > h2:first-child, .k-title) * {
+    text-transform: capitalize;
   }
   .game-window :where(.gold, .num.gold) {
     color: var(--k-gold);
@@ -399,5 +400,35 @@
   }
   .k-meter.k-hp > i {
     background: linear-gradient(var(--k-danger), var(--k-blood));
+  }
+}
+@layer kit {
+  /* ── ledger rows (gold, runs) — amount left in numerals, up good, down muted ─────────────────────── */
+  .game-window :where(.lrow) > .k {
+    color: var(--k-text);
+    font-family: var(--k-num);
+    font-weight: 600;
+  }
+  .game-window :where(.lrow.up) > .k {
+    color: var(--k-good);
+  }
+  .game-window :where(.lrow.down) > .k {
+    color: var(--k-muted);
+  }
+  .game-window :where(.ledger .dot.on) {
+    color: var(--k-gold);
+  }
+}
+@layer kit {
+  /* the title inside a top wrapper (label + headline): the same big serif title */
+  .game-window :where(.sheet-body > :first-child > .row-label:first-child) {
+    font: 600 var(--k-fs-5) / 1.1 var(--k-display);
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--k-text);
+  }
+  .game-window :where(.sheet-body > :first-child > .row-label:first-child),
+  .game-window :where(.sheet-body > :first-child > .row-label:first-child) * {
+    text-transform: capitalize;
   }
 }

@@ -1,0 +1,108 @@
+/* Cut316: the rules pen — each rule a framed card (grip · its chips flowing inline · ×), conditions plain, the verb lit gold;
+   card (package) rows dimmed as read-only. Chips keep their 44 px targets. */
+@layer screens {
+  .editor .rows {
+    display: grid;
+    gap: var(--k-2);
+  }
+  .editor .row.tablet {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--k-1) var(--k-2);
+    margin: 0;
+    padding: var(--k-1) var(--k-2) var(--k-1) var(--k-1);
+    background: var(--k-umbra);
+    border: 1px solid var(--k-edge);
+    border-left: 3px solid var(--k-moon);
+    border-image: none;
+    box-shadow: inset 0 1px var(--k-ink);
+  }
+  .editor .row.tablet:has(> .updown) {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+  }
+  /* the grip keeps its width; an empty × placeholder takes none */
+  .editor .row.tablet > .grip {
+    min-width: 28px;
+    justify-content: center;
+  }
+  .editor .row.tablet > .x.none {
+    display: none;
+  }
+  .editor .row.tablet:has(> .updown):has(> .x.none) {
+    grid-template-columns: auto auto minmax(0, 1fr);
+  }
+  .editor .row.tablet.locked {
+    border-left-color: var(--k-edge);
+    opacity: 0.85;
+  }
+  .editor .row.tablet.fresh {
+    border-left-color: var(--k-gilt);
+  }
+  .editor .row > .chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--k-1);
+    min-width: 0;
+  }
+  .editor .row .chip {
+    min-height: var(--k-target);
+    padding: 0 var(--k-2);
+    background: var(--k-raised);
+    color: var(--k-text);
+    border: 1px solid var(--k-edge);
+    border-image: none;
+    border-radius: 0;
+    font: 600 var(--k-fs-2) / 1.1 var(--k-body);
+    box-shadow: inset 0 1px var(--k-moon);
+  }
+  .editor .row .chip.verb {
+    background: var(--k-dusk);
+    color: var(--k-gold);
+    border-color: var(--k-gilt);
+  }
+  .editor .row .chip.cond.add {
+    background: transparent;
+    border-style: dashed;
+    color: var(--k-muted);
+    box-shadow: none;
+  }
+  .editor .row .chip.locked {
+    background: transparent;
+    box-shadow: none;
+    color: var(--k-muted);
+  }
+  .editor .row .chip.verb.locked {
+    color: var(--k-gold);
+  }
+  .editor .rows-head {
+    font: 600 var(--k-fs-1) / 1.2 var(--k-body);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--k-muted);
+  }
+}
+@layer screens {
+  /* a card's read-only inner rows: plain spans, not controls — compact, one line where they fit */
+  .editor .row.locked:not(.tablet) {
+    display: block;
+    padding: 2px 0;
+    border: 0;
+    background: none;
+  }
+  .editor .row.locked:not(.tablet) > .chips {
+    gap: 2px var(--k-1);
+  }
+  .editor .row.locked:not(.tablet) .chip {
+    min-height: 0;
+    padding: 2px var(--k-1);
+    border: 0;
+    background: none;
+    box-shadow: none;
+    font-size: var(--k-fs-1);
+  }
+  .editor .row.locked:not(.tablet) .chip.verb {
+    color: var(--k-gold);
+  }
+}

@@ -1,0 +1,36 @@
+/* Cut316: Tactics — the title band plain (title left, the floor headline right), sections as kit groups. */
+@layer screens {
+  .pkg-panel .pkg-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--k-2) var(--k-4);
+    margin: 0 0 var(--k-4);
+    padding: 0 3rem var(--k-2) 0;
+    background: none;
+    border: 0;
+    border-image: none;
+    border-bottom: 2px solid var(--k-gilt);
+    box-shadow: none;
+  }
+  .pkg-panel .pkg-top .pkg-headline {
+    font: 600 var(--k-fs-3) / 1.2 var(--k-num);
+    color: var(--k-gold);
+  }
+  .pkg-panel .pkg-sec {
+    background: var(--k-inset);
+    border: 1px solid var(--k-edge);
+    padding: var(--k-3);
+    margin: 0 0 var(--k-3);
+  }
+  .pkg-panel .pkg-head {
+    font: 600 var(--k-fs-3) / 1.2 var(--k-display);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    margin: 0 0 var(--k-2);
+  }
+  .pkg-panel .pkg-head::first-letter {
+    text-transform: uppercase;
+  }
+}

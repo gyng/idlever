@@ -78,6 +78,29 @@ try {
       await p.waitForTimeout(700);
       await p.screenshot({ path: `${dir}/${name}.png` });
       log.push(name);
+      // Cut316: every window is dark slate — dark text inside one is invisible. Report it (label · colour · class).
+      const dark = await p.evaluate(() => {
+        const lum = (c) => {
+          const m = c.match(/[\d.]+/g);
+          if (!m) return 1;
+          const [r, g, b, a = 1] = m.map(Number);
+          if (a < 0.5) return 1;
+          const f = (v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+          return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+        };
+        const out = [];
+        for (const host of document.querySelectorAll(".game-window, .sheet, .panel[data-panel]"))
+          for (const el of host.querySelectorAll("*")) {
+            const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+            if (!own || !el.getClientRects().length) continue;
+            const cs = getComputedStyle(el);
+            if (cs.visibility === "hidden" || +cs.opacity === 0) continue;
+            if (lum(cs.color) < 0.08)
+              out.push(`${el.textContent.trim().slice(0, 24)} · ${cs.color} · ${el.className}`);
+          }
+        return out;
+      });
+      if (dark.length) log.push(`DARK ${name}: ${dark.length} — ${dark.slice(0, 6).join(" | ")}`);
     };
     const click = (p, sel) => p.locator(sel).first().click({ timeout: 5000 });
     async function state(name, fn) {

@@ -595,10 +595,7 @@
   html body .game-window[data-menu-purpose="works"] .wd-mark {
     color: var(--ui-muted);
   }
-  html body .game-window[data-menu-purpose="records"] .gold-sheet .lrow .k,
-  html body .game-window[data-menu-purpose="records"] .ledger .dot.on {
-    color: var(--ink);
-  }
+  /* (Cut316: the records' ink-on-paper colour went with the parchment) */
   html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry {
     --ink-dim: var(--mist);
   }

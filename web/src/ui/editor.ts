@@ -1,3 +1,4 @@
+import "../screens/editor.css";
 // Rule editor: rows as token chips `[cond] [cond] → [verb]`, drag grip to reorder (pointer events),
 // tap a chip to swap it from the unlocked vocabulary (bottom sheet). Thumb-sized targets.
 // Cut 4 §1: over budget (a patch on a full set) shows `5/4` in red and marks the rows the engine would drop;

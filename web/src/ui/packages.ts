@@ -8,6 +8,7 @@
 // The pen (§2 "the pen is a late stage"): `penOpen` is the client's one read of it — the rule editor, the tablets, the trace and the
 // verdict's detail wait for it. A lineage with no packages on the wire (an older core, a harness's literal set) has the pen open.
 import "../cut30.css";
+import "../screens/packages.css";
 import type { App } from "../app";
 import type { Lineage, Package, Packages, PkgOption } from "../engine/types";
 import { h, replace, twoTap } from "./dom";
