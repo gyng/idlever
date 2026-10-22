@@ -5,7 +5,7 @@
 <p align="center"><strong>Idle roguelike</strong></p>
 
 <p align="center">
-  <a href="https://gyng.github.io/idlever/">Play</a> ·
+  <a href="https://dev.idlever.awoo.party/">Play</a> ·
   <a href="https://github.com/gyng/idlever/releases/tag/v0.1.0-alpha.2">Alpha release</a>
 </p>
 

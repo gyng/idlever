@@ -2950,7 +2950,8 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if next > run.record_mark {
         run.record_mark = next;
         run.secure_carry();
-        if run.expedition {
+        // (the crier calls a record at a boss's floor and every tenth: a fresh dive sets one every floor)
+        if run.expedition && (next.is_multiple_of(10) || crate::engine::boss_on(run.route, next).is_some()) {
             run.cries.push(("record".into(), format!("D{next} record")));
         }
     }

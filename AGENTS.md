@@ -74,16 +74,14 @@ separate exhaustive audits and fun-rating goal remain unfinished.
 | Art          | art/ART.md, docs/ART_DIRECTION.md                                  |
 | Validation   | docs/DEV_VALIDATION_TIERS.md, eval/RATING.md, eval/PACKAGE_EVAL.md |
 
-## GitHub Pages releases
+## Site and releases
 
-Pushes, pull requests and manual workflow runs validate the site. Publishing a
-versioned GitHub release deploys its exact tagged build to
-https://gyng.github.io/idlever/. Prereleases deploy through the same workflow.
-A push alone does not deploy. The github-pages environment permits `v*` tags;
-production deployments serialize. See docs/CUT187_ALPHA_RELEASE.md.
-A separate dev site, https://dev.idlever.awoo.party/ (Cloudflare Worker
-`idlever-dev`), deploys by hand: `tools/deploy-cf.sh [REF]` builds a clean
-committed ref at base `/`. See docs/DEPLOY_CLOUDFLARE.md.
+Owner 2026-10-22: GitHub Pages is retired (disabled on the repository). The site is
+https://dev.idlever.awoo.party/ (Cloudflare Worker `idlever-dev`), the repository's homepage link. It deploys by
+hand: `tools/deploy-cf.sh [REF]` builds a clean committed ref at base `/` (set `TMPDIR` to a disk with room
+if `/tmp` is full). See docs/DEPLOY_CLOUDFLARE.md. `.github/workflows/pages.yml` ("Site build") still checks
+that pushes, pull requests and releases build; it no longer deploys. Earlier Pages releases and tags stay as
+history (docs/CUT187_ALPHA_RELEASE.md).
 
 Current brand: Idlever; repository `gyng/idlever`, Pages base `/idlever/`.
 `IDLEVER_BASE` selects the build base. Active crates, generated WASM names,

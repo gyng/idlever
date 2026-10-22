@@ -1,4 +1,4 @@
-name: GitHub Pages
+name: Site build
 
 on:
   push:
@@ -76,22 +76,5 @@ jobs:
         run: node tools/deployment-meta.mjs web/dist "$(git rev-parse HEAD)" /idlever/ "$RELEASE_VERSION"
         env:
           RELEASE_VERSION: ${{ github.event_name == 'release' && github.event.release.tag_name || '' }}
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: web/dist
-
-  deploy:
-    # Publishing a versioned release (including an alpha) deploys its tagged build.
-    if: github.event_name == 'release' && startsWith(github.event.release.tag_name, 'v')
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy site
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # 2026-10-22 (owner): GitHub Pages retired — the site lives at https://dev.idlever.awoo.party/
+      # (tools/deploy-cf.sh); this workflow only checks that the site builds.
