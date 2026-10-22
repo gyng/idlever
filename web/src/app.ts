@@ -1036,6 +1036,16 @@ export class App {
       // The report carries the id and pays for it only if the player opens `deepest`; older cores
       // that hand over a finished `worst_death` are untouched.
       if (worst && !merged!.worst_death) merged!.worst_death_id = worst.id;
+      // owner 2026-10-22: the catch-up does not close itself by default — a welcome back, then Continue
+      if (loader && merged) {
+        const L = await this.engine.lineage();
+        loader.cries((L.cries ?? []).filter((c) => c.t > criedFrom));
+        // the absence's income (`gold.earned`), not the purse's change: the workers bank and spend while he is away
+        await loader.finish({
+          runs: merged.runs,
+          gold: merged.gold?.earned ?? merged.gold?.home ?? 0,
+        });
+      }
     } finally {
       b.done();
       loader?.close();

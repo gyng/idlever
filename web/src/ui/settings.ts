@@ -12,6 +12,7 @@ import { workerNodes } from "./works";
 import { autoOn, setAutoOn } from "./autodismiss";
 import { captureDebug, debugFilename, downloadDebug, debugNote } from "../debug";
 import { effectsLevel, nextEffectsLevel, setEffectsLevel, type FxLevel } from "../render/fxpref";
+import { catchupAuto, setCatchupAuto } from "./catchup";
 
 /** Shared preferences: title settings and the live game use the same controls. */
 export function preferenceRows(app?: App): HTMLElement[] {
@@ -102,11 +103,28 @@ export function preferenceRows(app?: App): HTMLElement[] {
     autoOn() ? /* copy:button */ "on" : /* copy:button */ "off",
   );
 
+  // owner 2026-10-22: the return's catch-up waits for Continue by default (`stays`); `auto` closes it after its welcome back
+  const catchupBtn = h(
+    "button",
+    {
+      class: `btn catchup-auto${catchupAuto() ? " on" : ""}`,
+      "aria-pressed": String(catchupAuto()),
+      onclick: () => {
+        setCatchupAuto(!catchupAuto());
+        catchupBtn.classList.toggle("on", catchupAuto());
+        catchupBtn.setAttribute("aria-pressed", String(catchupAuto()));
+        replace(catchupBtn, catchupAuto() ? /* copy:button */ "auto" : /* copy:button */ "stays");
+      },
+    },
+    catchupAuto() ? /* copy:button */ "auto" : /* copy:button */ "stays",
+  );
+
   return [
     row(/* copy:label */ "sound", mute),
     row(/* copy:label */ "slowdowns", slowButton),
     row(/* copy:label */ "effects", effects),
     row(/* copy:label */ "auto continue", auto),
+    row(/* copy:label */ "catch-up", catchupBtn),
   ];
 }
 

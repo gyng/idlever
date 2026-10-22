@@ -2,6 +2,40 @@
 
 Owner request, 2026-10-12: aim for 20% of validation time while retaining the most useful routine coverage. This is a risk-based selection, not a measured claim of 80% assertion coverage or defect detection.
 
+## Budgets (owner 2026-10-22)
+
+Owner, 2026-10-22: "a simple change like that shouldn't have taken so long to verify". Every tier below has a wall-clock
+budget, and the agent picks the **lowest tier that covers the change**. Running a higher tier is a choice that needs a
+reason, such as a failure, a deploy or a system change. It is not a habit.
+
+When a run overruns its budget, stop. Report what passed, what is still running and why, and do not start further
+checks unasked. Budgets are wall time on this machine (warm caches, no other heavy agents).
+
+| Tier                  | When                                                                                 | What                                                                                                                                                      | Budget                         |
+| --------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **T0 edit**           | Copy, CSS, an animation timing, a client tweak with no logic change                   | `tsc` (12 s) + `pnpm --dir web lint` + `fmt:check` + copy-lint + style-lint (≈ 2 s together)                                                                | **20 s**                       |
+| **T1 look**           | T0, plus anything visible where the look is the question                              | T0, then one targeted screenshot or a short probe of the changed screen (fake engine or a saved fixture, not a long absence)                               | **1 min**                      |
+| **T2 feature**        | Client logic, wire use or a screen flow                                               | T0, plus the one or two client groups that touch it (`node tests/run.mjs <name>`; median group 15 s, p90 55 s)                                             | **3 min**                      |
+| **T3 core**           | A Rust rule or content change                                                         | `cargo test --workspace --profile fast` (≈ 36 s) + clippy + `tools/wasm.sh` (≈ 8 s), plus the tests and targeted rows it touches (`gates.mjs --rows …`)     | **5 min**                      |
+| **T4 confirm/deploy** | A commit pushed for deploy, a daily deploy                                            | T3 where Rust changed + `pnpm -s test` (46 groups, ≈ 5 min: 1214 s of group time over 4 workers, 2026-10-22). If pacing or economy can move, add `daily-confirm` (≈ 10–15 min, below). Then `tools/deploy-cf.sh` | **8 min** (+15 for the study) |
+| **T5 release/audit**  | Releases, major system changes, owner-requested audits                                | `gates.mjs --full`, `pnpm test:full` (175 groups, ≈ 29 min), `--exhaustive`                                                                                | asked for; ≥ 30 min            |
+
+Build budgets:
+
+| Build            | Command                    | Budget  |
+| ---------------- | -------------------------- | ------- |
+| type check       | `tsc --noEmit -p web`      | 15 s    |
+| fast wasm        | `tools/wasm.sh`            | 15 s    |
+| native dev       | `tools/native-dev.sh`      | 60 s    |
+| preview ship     | `tools/ship.sh --preview`  | 40 s    |
+| release wasm     | `tools/wasm.sh --ship`     | 2.5 min |
+| cohort ship      | `tools/ship.sh`            | 2.5 min |
+| deploy           | `tools/deploy-cf.sh`       | 5 min   |
+
+A build that overruns by 2× is a defect to report (a cold cache, a stale server, load from another agent). It is not
+something to wait out silently. When a budget no longer matches measured reality, update this table with the new
+measurement and its date; never stretch a budget without saying so.
+
 ## Daily deploys default to the confirm tier (owner 2026-10-22)
 
 A routine or daily deploy (`tools/deploy-cf.sh`) is accepted on the **confirm tier**:

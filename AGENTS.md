@@ -92,6 +92,18 @@ is still `/home/g/p/riddle`. See docs/CUT190_IDLEVER_RENAME.md.
 
 ## Validation and iteration commands — use the cheapest that answers the question
 
+Owner 2026-10-22: **verification and builds have budgets** (docs/DEV_VALIDATION_TIERS.md § Budgets).
+Pick the lowest tier that covers the change:
+
+- T0 edit: 20 s
+- T1 look: 1 min
+- T2 feature: 3 min
+- T3 core: 5 min
+- T4 deploy: 8 min, plus the study
+- T5 audit: asked for
+
+When a run overruns, stop and report; do not escalate unasked.
+
 ```sh
 # Owner 2026-10-22: a routine/daily deploy defaults to the CONFIRM tier — core tests + clippy + lint, the routine
 # client subset, and (if pacing/economy can move) tools/tune.sh --name daily-$(date +%F) --spec tuning/studies/daily-confirm.json --threads 24

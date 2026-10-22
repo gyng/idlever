@@ -1,4 +1,5 @@
-/* Owner 2026-10-22: the catch-up loader — a framed slab over the locked page while the absence plays (ui/catchup.ts). */
+/* Owner 2026-10-22: the catch-up loader — a framed slab over the locked page while the absence plays (ui/catchup.ts): centred,
+   its milestones revealed one at a time, the porter's gold spinning up, a welcome back at the end. */
 @layer screens {
   .catchup {
     position: fixed;
@@ -7,23 +8,43 @@
     display: grid;
     place-items: center;
     padding: var(--k-4);
-    background: color-mix(in srgb, var(--k-bg) 82%, transparent);
+    background: color-mix(in srgb, var(--k-bg) 84%, transparent);
+    animation: catchup-fade 0.25s ease-out;
+  }
+  .catchup.leaving {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
   }
   .catchup-panel {
+    position: relative;
     width: min(100%, 30rem);
     display: grid;
     gap: var(--k-2);
+    justify-items: stretch;
+    text-align: center;
     padding: var(--k-4);
     background: var(--k-surface);
     border: 1px solid var(--k-edge);
     box-shadow:
       0 0 0 1px var(--k-ink),
       inset 0 1px var(--k-moon);
+    animation: catchup-rise 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+    overflow: visible;
+  }
+  .catchup.welcome .catchup-panel {
+    border-color: var(--k-gilt);
+    box-shadow:
+      0 0 0 1px var(--k-ink),
+      0 0 28px color-mix(in srgb, var(--k-gilt) 35%, transparent),
+      inset 0 1px var(--k-moon);
   }
   .catchup-title {
     margin: 0;
     color: var(--k-gold);
     font: 600 var(--k-fs-5) / 1.1 var(--k-display);
+  }
+  .catchup.welcome .catchup-title {
+    animation: catchup-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1);
   }
   .catchup-away {
     margin: 0;
@@ -45,33 +66,63 @@
     font-size: var(--k-fs-1);
   }
   .catchup-bar {
+    position: relative;
     height: var(--k-2);
     background: var(--k-inset);
     border: 1px solid var(--k-edge);
     overflow: hidden;
   }
   .catchup-fill {
+    position: relative;
     display: block;
     width: 0;
     height: 100%;
     background: var(--k-gilt);
     transition: width 0.2s linear;
+    overflow: hidden;
   }
-  .catchup-bank {
-    color: var(--k-gold);
-    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+  /* a shine running down the draining bar */
+  .catchup-fill::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -40%;
+    width: 40%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--k-text) 55%, transparent),
+      transparent
+    );
+    animation: catchup-shine 1.4s linear infinite;
   }
   .catchup-done {
     color: var(--k-muted);
     font-size: var(--k-fs-1);
   }
+  .catchup-bank {
+    margin: 0;
+    color: var(--k-gold);
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+  }
+  .catchup-bank-num {
+    display: inline-block;
+    margin-left: var(--k-1);
+    min-width: 6ch;
+    font-size: var(--k-fs-4);
+  }
+  .catchup-bank.bump .catchup-bank-num {
+    animation: catchup-bump 0.45s ease-out;
+  }
+  /* a fixed height (the eight shown) so the panel never jumps as lines arrive */
   .catchup-cries {
     display: grid;
+    align-content: start;
     gap: var(--k-1);
     margin: var(--k-1) 0 0;
     padding: 0;
     list-style: none;
-    min-height: 6rem;
+    height: calc(8 * (var(--k-fs-2) * 1.2 + 2 * var(--k-1) + var(--k-1)));
+    overflow: hidden;
   }
   .catchup-cry {
     padding: var(--k-1) var(--k-2);
@@ -79,25 +130,131 @@
     border-left: 3px solid var(--k-edge);
     color: var(--k-text);
     font: 500 var(--k-fs-2) / 1.2 var(--k-body);
-    animation: catchup-in 0.3s ease-out;
+    animation: catchup-in 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
   }
   .catchup-cry.k-boss,
   .catchup-cry.k-record,
   .catchup-cry.k-bottom {
     border-left-color: var(--k-gilt);
     color: var(--k-gold);
+    animation:
+      catchup-in 0.35s cubic-bezier(0.2, 1.4, 0.4, 1),
+      catchup-glow 1.2s ease-out;
   }
   .catchup-cry.k-death {
     border-left-color: var(--k-danger);
   }
+  .catchup-foot {
+    display: grid;
+    gap: var(--k-3);
+    justify-items: center;
+  }
+  .catchup-foot:empty {
+    display: none;
+  }
+  .catchup-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--k-2);
+    width: 100%;
+  }
+  .catchup-stat {
+    display: grid;
+    gap: 2px;
+    padding: var(--k-2) var(--k-1);
+    background: var(--k-inset);
+    border: 1px solid var(--k-edge);
+    animation: catchup-pop 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) backwards;
+  }
+  .catchup-stat:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+  .catchup-stat:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+  .catchup-stat:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+  .catchup-stat b {
+    color: var(--k-gold);
+    font: 600 var(--k-fs-3) / 1.1 var(--k-body);
+  }
+  .catchup-stat small {
+    color: var(--k-muted);
+    font-size: var(--k-fs-1);
+  }
+  .catchup-go {
+    min-width: 10rem;
+    min-height: var(--k-target);
+  }
+  /* sparks over a big reveal (effects: full · low; none when off or reduced motion) */
+  .catchup-spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--k-text);
+    pointer-events: none;
+    animation: catchup-spark 0.85s ease-out forwards;
+  }
+  .catchup-spark.gold {
+    background: var(--k-gold);
+    box-shadow: 0 0 6px var(--k-gilt);
+  }
+  @keyframes catchup-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes catchup-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+    }
+  }
   @keyframes catchup-in {
     from {
       opacity: 0;
-      transform: translateY(-4px);
+      transform: translateY(-8px) scale(0.94);
+    }
+  }
+  @keyframes catchup-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.7);
+    }
+  }
+  @keyframes catchup-bump {
+    40% {
+      transform: scale(1.18);
+    }
+  }
+  @keyframes catchup-glow {
+    from {
+      box-shadow: 0 0 18px var(--k-gilt);
+    }
+    to {
+      box-shadow: none;
+    }
+  }
+  @keyframes catchup-shine {
+    to {
+      transform: translateX(350%);
+    }
+  }
+  @keyframes catchup-spark {
+    to {
+      opacity: 0;
+      transform: translate(var(--dx), var(--dy)) scale(0.4);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .catchup-cry {
+    .catchup,
+    .catchup-panel,
+    .catchup-cry,
+    .catchup-stat,
+    .catchup.welcome .catchup-title,
+    .catchup-bank.bump .catchup-bank-num,
+    .catchup-fill::after {
       animation: none;
     }
     .catchup-fill {
