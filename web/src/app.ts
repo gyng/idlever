@@ -300,6 +300,12 @@ export class App {
       })
       .catch(() => undefined);
   }
+  /** Owner 2026-10-22 ("an obvious back to town button"): the one way home from every screen away from the town (ui/frame.ts
+   *  `homeTile` / the rail's head): the watch leaves as `leaveWatch` (the run goes on), every other screen goes to the camp */
+  goTown(): void {
+    if (this.view.kind === "watch") this.leaveWatch();
+    else if (this.view.kind !== "camp") this.go({ kind: "camp" });
+  }
   /** RUNS_UI: back from a hidden tab — an absence's report when it was long enough to be one (the boot's rule), else the clock goes on */
   private async backFromHidden(): Promise<void> {
     const away = (Date.now() - this.hiddenAt) / 1000;
@@ -858,8 +864,17 @@ export class App {
     this.root = root;
     this.dev = dev;
     // QA on 952e306 ("old death screen, no back/close, Escape inert"): Escape with no sheet open leaves a kept death for the camp
+    // Owner 2026-10-22: Escape is the way home's key on every screen away from the town — it presses the visible home control (so a
+    // screen's guard holds: the watch's ended run), never while he is driven by hand or the report's reveal still plays (Escape skips it)
     onEscapeIdle(() => {
-      if (this.view.kind === "death" && this.view.kept) this.go({ kind: "camp" });
+      const k = this.view.kind;
+      if (k !== "watch" && k !== "death" && k !== "report") return;
+      if (document.querySelector('.ctl[data-on="1"], main[data-settled="0"]')) return;
+      const homes = [...this.root.querySelectorAll<HTMLButtonElement>(".home-btn")];
+      const home = homes.find((b) => b.offsetParent !== null);
+      if (home) {
+        if (!home.disabled) home.click();
+      } else if (k !== "watch") this.go({ kind: "camp" });
     });
   }
 

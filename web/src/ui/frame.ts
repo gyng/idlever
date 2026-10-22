@@ -30,6 +30,8 @@ import { createGoldTransferFx, goldTransferEndpoint } from "./gold-transfers";
 import { revealed } from "./reveal";
 import { onPackages, packagesShown } from "./packages";
 import { legacyBar, legacyNext, legacyNextText } from "./legacy";
+import { slab } from "../ui-kit/kit";
+import "../screens/home.css";
 
 /** docs/TOOLTIPS.md: an element's tip (a host: never marked; a control keeps its tap — long-press or hover shows it). */
 const withTip = <E extends HTMLElement>(el: E, t?: Term): E => (t ? kwHost(el, t) : el);
@@ -676,6 +678,45 @@ export function renderConsole(o: {
   return { el, setTiles };
 }
 
+// --- the way home (owner 2026-10-22: "an obvious back to town button on top left maybe above heroes") ---
+
+const HOME_WORD = /* copy:button */ "Town";
+/** The console's way home: the same tile on every screen away from the town (the watch, the death), pinned at a phone's foot in
+ *  thumb reach. `id` keeps a screen's old tile id (the death's `camp`); the route is `app.goTown()` unless the screen guards it. */
+export function homeTile(
+  app: App,
+  o: { id?: string; cls?: string; onclick?: () => void } = {},
+): HTMLButtonElement {
+  const b = tile({
+    id: o.id ?? "town",
+    cls: `home-btn${o.cls ? ` ${o.cls}` : ""}`,
+    icon: "camp",
+    glyph: "⌂",
+    label: HOME_WORD,
+    onclick: o.onclick ?? (() => app.goTown()),
+  });
+  b.setAttribute("aria-keyshortcuts", "Escape");
+  return b;
+}
+/** Desktop: the way home heads the heroes rail, top left above the heroes (wideCols); the same route and key as the tile. */
+function homeRail(app: App): HTMLButtonElement {
+  const b = slab(
+    [
+      icon("camp", "⌂"),
+      h("span", { class: "home-word" }, HOME_WORD),
+      h("kbd", { class: "home-key", "aria-hidden": "true" }, /* copy:label */ "Esc"),
+    ],
+    {
+      tone: "primary",
+      size: "lg",
+      cls: "home-btn home-rail",
+      onClick: () => app.goTown(),
+      attrs: { "aria-keyshortcuts": "Escape", "data-home": "rail" },
+    },
+  );
+  return withTip(b, app.view.kind === "watch" ? "live" : undefined);
+}
+
 /** A panel's close stud (×) — every sheet and panel carries one (Cut 15 QA: "no close control"). */
 export const stud = (close: () => void): HTMLButtonElement =>
   h("button", {
@@ -708,6 +749,8 @@ export function wideCols(
 ): {
   els: HTMLElement[];
   dispose(): void;
+  /** the rail's way home (the watch disables it with its own tile once the run has ended) */
+  home?: HTMLButtonElement;
   slot?: HTMLElement;
   paintDepth?(): void;
   setPresence?(snap: Snapshot, ended: boolean): void;
@@ -731,9 +774,11 @@ export function wideCols(
     ),
   );
   const heroes = heroRoster(app);
+  const home = homeRail(app);
   const left = h(
     "aside",
     { class: "rules-col heroes-col" },
+    h("div", { class: "k-surface home-slot" }, home),
     heroes.el,
     h(
       "details",
@@ -775,6 +820,7 @@ export function wideCols(
   // Cut 30 §2: no rule tablets before the pen — the left column holds the worn packages (read-only plaques) until it opens
   return {
     els: [left, right],
+    home,
     dispose: () => {
       heroes.dispose();
       off();

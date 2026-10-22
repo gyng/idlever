@@ -333,7 +333,7 @@ try {
     const townTile = await page.evaluate(() =>
       document.querySelector(".console .tile[data-tile=town]")?.textContent.trim(),
     );
-    check(townTile === "Town menu", `the watch carries \`town\` (${townTile})`);
+    check(townTile === "Town", `the watch carries \`town\` (${townTile})`);
     await page.locator(".console .tile[data-tile=town]").click();
     await camp();
     const a = await until(

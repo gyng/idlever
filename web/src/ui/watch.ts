@@ -133,6 +133,7 @@ import type {
 import { h, clear, items, replace, spanOf } from "./dom";
 import {
   gem,
+  homeTile,
   paintPortrait,
   paintSprite,
   portrait,
@@ -754,12 +755,9 @@ export function renderWatch(app: App): Mounted {
   });
   // RUNS_UI (docs/RUNS_UI.md): back to the town while he goes on — leaving the watch never stops the run (the town's lane shows it live;
   // the open app's clock plays it on, unwatched). The ↻ on the tile is the mark; its tip says the rest
-  const toTown = tile({
-    id: "town",
+  // owner 2026-10-22: the one way home (frame.ts `homeTile`; a desktop also heads the heroes rail with it, `wide.home`)
+  const toTown = homeTile(app, {
     cls: "hud-btn town-btn",
-    icon: "camp",
-    glyph: "⌂",
-    label: /* copy:button */ "Town menu",
     onclick: () => {
       if (!done) app.leaveWatch();
     },
@@ -5384,6 +5382,7 @@ export function renderWatch(app: App): Mounted {
     pause.disabled = true;
     for (const b of [modeBtn.fights, modeBtn.fast, modeBtn.one, skip, bail, speedBtn, toTown])
       b.disabled = true;
+    if (wide.home) wide.home.disabled = true;
     paintWatchStatus(); // Keep the ended state visible while its last picture plays.
   }
   function nextGem(): void {
