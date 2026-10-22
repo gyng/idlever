@@ -351,7 +351,7 @@ try {
     check(s.mode === "fights", `fights is the default mode (${s.mode})`);
     check(
       s.buttons.join(" ") === "speed town" && s.modeLabel === "Fights only",
-      `two primary watch controls: Speed · Town menu (${s.buttons.join(" · ")})`,
+      `two primary watch controls: Speed · Town (${s.buttons.join(" · ")})`,
     );
     // the card: the ambient line over the map, the clock held; then the first fight at 1×
     // Cut 15 §4: the card is short (≤ 1.2 s; 0.5 s before a beat — seed 5 opens on a situation), so the tap is made in the page the

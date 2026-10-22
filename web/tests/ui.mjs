@@ -2332,8 +2332,8 @@ try {
       cmd.length === 2 &&
         // first-hour pass 2026-10-17: the live clock reads `now 8×`, apart from the mode
         /^Speed (Normal|Fast|Fights only)now\d+(\.\d+)?×$/.test(cmd[0]) &&
-        cmd[1] === "Town menu",
-      `watch: Speed groups controls and Town menu stays visible (${cmd.join(" · ")})`,
+        cmd[1] === "Town",
+      `watch: Speed groups controls and Town stays visible (${cmd.join(" · ")})`,
     );
     await shot("ui-watch");
     let s = await state();
@@ -2423,7 +2423,7 @@ try {
         morgue: !!document.querySelector(".death .death-details .death-morgue"),
       }));
       check(
-        d.banner && d.seal && d.morgue && d.tiles.includes("town"),
+        d.banner && d.seal && d.morgue && d.tiles.includes("Town"),
         `death: the line on the banner, the verdict in the seal, camp on the card, the morgue under details (${d.tiles.join(" · ")}; morgue ${d.morgue})`,
       );
       await shot("ui-death");

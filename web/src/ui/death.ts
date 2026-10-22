@@ -46,7 +46,7 @@ import {
   tradeOffEl,
 } from "./patches";
 import { closeX, openSheet, openWindow } from "./sheet";
-import { gem, portrait, renderBar, renderConsole, tile, wideCols } from "./frame";
+import { gem, homeTile, portrait, renderBar, renderConsole, tile, wideCols } from "./frame";
 import { lostLabel, noteText, refName, rowLabel, ruleName, setRefRows, verbLabel } from "./tokens";
 import { traceTable } from "./trace";
 import { mergeFinds, renamer } from "./report";
@@ -960,12 +960,7 @@ export function renderDeath(
             onclick: () => app.go({ kind: "report", report: from.report, absence: from.absence }),
           })
         : null,
-      tile({
-        id: "camp",
-        label: /* copy:button */ "town",
-        icon: "camp",
-        onclick: () => app.go({ kind: "camp" }),
-      }),
+      homeTile(app, { id: "camp" }), // owner 2026-10-22: the one way home (its old id kept)
     ],
   });
   const enemyKind = drove?.boss ?? d.cause;

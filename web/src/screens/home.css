@@ -1,0 +1,33 @@
+/* The way home (owner 2026-10-22: "an obvious back to town button on top left maybe above heroes"). Desktop: a full-width gold slab
+   heading the heroes rail on every screen away from the town (ui/frame.ts `homeRail`). A phone keeps the console's Town tile, pinned
+   at the foot in thumb reach (`homeTile`). */
+@layer screens {
+  .heroes-col > .home-slot {
+    display: grid;
+    flex: none;
+  }
+  .home-slot > .home-rail {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--k-2);
+    width: 100%;
+    text-align: left;
+  }
+  .home-rail > .ico {
+    width: var(--k-6);
+    height: var(--k-6);
+    flex: none;
+  }
+  .home-rail > .home-word {
+    flex: 1;
+    font-family: var(--k-display);
+    letter-spacing: 0.04em;
+  }
+  .home-rail > .home-key {
+    padding: 0 var(--k-1);
+    border: 1px solid var(--k-edge);
+    color: var(--k-muted);
+    font: 600 var(--k-fs-1) / 1.4 var(--k-body);
+  }
+}

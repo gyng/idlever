@@ -32,6 +32,12 @@
 - **Check first:** the existing back/close affordances and the Escape handling, so this replaces them rather than
   adding a second route. Copy is ≤ 3 words (e.g. "town"), with an icon and a hotkey.
 - **Gates:** T1 look on desktop and phone, plus the T2 groups for the screens it touches.
+- **Done (2026-10-22, agent branch):** one route `app.goTown()` (the watch leaves via `leaveWatch`, so the run goes
+  on). One component in `ui/frame.ts`: `homeTile` (the watch's and the death's console tile, labelled `Town`) and,
+  on desktop, a gold `Town · Esc` slab heading the heroes rail on the watch, report and death (`wideCols`). On a
+  phone the console is pinned at the foot, so the tile stays in thumb reach. Escape with nothing open presses the
+  visible home control. It does nothing while he is driven by hand or the report's reveal plays. Sheets and hero
+  windows keep their close stud. Escape closes them first. The report's `town` gem stays as its primary action.
 
 ## Queued (owner 2026-10-22): tuning speed — PICKED's decision cost
 

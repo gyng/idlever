@@ -288,7 +288,7 @@ try {
       "the manual death's clock",
     );
     check(
-      /tile/.test(manual.cls) && manual.text === "town",
+      /tile/.test(manual.cls) && manual.text === "Town",
       "before the Scout, the death clock returns to Town",
     );
     await until(
@@ -345,7 +345,7 @@ try {
         "the death's clock",
       );
       check(
-        /tile/.test(c.cls) && c.text === "town",
+        /tile/.test(c.cls) && c.text === "Town",
         `lever \`${lever.kind}\`: the ring on the Town tile, not the gem (${c.cls.split(" ")[0]} ${c.text})`,
       );
       await until(

@@ -106,7 +106,7 @@ try {
     );
     check(
       `${width}: clear town exit`,
-      (await page.locator("button[data-tile=town]").innerText()).includes("Town menu"),
+      (await page.locator("button[data-tile=town]").innerText()).includes("Town"),
     );
     await page.locator("button[data-tile=town]").click();
     await page.waitForSelector("main.camp");
