@@ -314,10 +314,21 @@ fn progress_clock(run: &mut Run, cx: &mut Ctx) {
 /// big floors space camps out. A room with nothing in it (`gen::camp_floor`), under the floor he left (no new depth):
 /// he heals whole at the fire, rests `camp_rest_ticks`, and with the porter hired his whole carry is secured — a
 /// later death loses only what he finds after it. Then its down-stairs take him on (`descend`, the camp left).
+/// The ticks between camps for the next one: the first camp comes at half the spacing (early in a dive the porter is
+/// met, and a new town sees him, sooner).
+pub(crate) fn camp_every(run: &Run) -> u32 {
+    let e = crate::balance::get().expedition;
+    if run.camps == 0 { e.camp_every_ticks / 2 } else { e.camp_every_ticks }
+}
+/// Live view: ticks until the next camp is due (0 = the next stairs down lead to it); `None` at a camp, after the
+/// run's end and on a classic run.
+pub(crate) fn camp_in(run: &Run) -> Option<u32> {
+    (run.expedition && !run.in_camp && run.over.is_none())
+        .then(|| camp_every(run).saturating_sub(run.turn.saturating_sub(run.camp_at)))
+}
 fn enter_camp(run: &mut Run, cx: &mut Ctx) -> bool {
     let e = crate::balance::get().expedition;
-    // the first camp comes at half the spacing: early in a dive the porter is met (and a new town sees him) sooner
-    let every = if run.camps == 0 { e.camp_every_ticks / 2 } else { e.camp_every_ticks };
+    let every = camp_every(run);
     if !run.expedition || run.in_camp || run.over.is_some() || run.turn.saturating_sub(run.camp_at) < every {
         return false;
     }

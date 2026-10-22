@@ -99,6 +99,11 @@ pub struct Snapshot {
     /// Cut317: this run is an expedition (watched live at 1×; a classic run keeps the watch's speeds).
     #[serde(default, skip_serializing_if = "is_false")]
     pub expedition: bool,
+    /// Live view (owner 2026-10-22, "make live view more observable"): run ticks until the next camp is due on this
+    /// expedition, read at this snapshot's tick (`turn::camp_in`); 0 = the next stairs down lead to it. Absent at a
+    /// camp, after the run's end and on a classic run. (The lineage's `next_camp_s` is the engine's latest, not the picture's.)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub camp_in: Option<u32>,
     /// Cut 118 §5: this floor is swift (its band boss cleared `feats::SWIFT_CLEARS` times): the watch plays it as one beat.
     #[serde(default, skip_serializing_if = "is_false")]
     pub swift: bool,

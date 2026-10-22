@@ -163,6 +163,7 @@ import { foldFloorsOf, openFoldReplay } from "./replay";
 import { audio, type CueName, type CueOpts } from "../audio";
 import { controlPanel } from "./control"; // take control (a secondary mode): the hero by hand
 import { detailHost } from "./tips"; // RUNS_UI: the live badge's tip; the carried / secured icons' tips
+import { watchInventory } from "./watch-inventory"; // owner 2026-10-22: the live pack as a text list
 import { createDepthMap, knownDepthMarks, type DepthMark } from "./depth-map";
 import { deathWhy, goldWords } from "./gold-words";
 import {
@@ -687,6 +688,8 @@ export function renderWatch(app: App): Mounted {
   const lootDropEl = h("span", { class: "loot-drop down", hidden: true });
   const stakeMore = h("span", { class: "stake-more" });
   const stake = h("div", { class: "stake num", role: "group" }, carryEl, keptEl);
+  // owner 2026-10-22 (a readable live view): the pack, the carry at risk vs secured, the next camp, his intent — from hudSnap
+  const inv = watchInventory();
   // the purse's news (a fall's size and cause, `Heading home`, `Path blocked`) on its own line under it, so the icons never clip
   const stakeNote = h("div", { class: "stake-note num", hidden: true }, lootDropEl, stakeMore);
   let keptGainTimer = 0;
@@ -1227,6 +1230,8 @@ export function renderWatch(app: App): Mounted {
     leftCol.append(ms.el);
     ms.el.open = true;
   }
+  if (wide.slot) wide.slot.before(inv.el);
+  else ms.el.before(inv.el);
   const stage = el.querySelector<HTMLElement>(".stage")!;
   const dockMedia = matchMedia("(min-width: 1024px)");
   const placeDock = (): void => {
@@ -1735,6 +1740,7 @@ export function renderWatch(app: App): Mounted {
     // older snapshot of the same run is behind what the strip already shows, and never reads as a fall
     if (s.stake && s.run.id === lastLootRun && s.turn < lastLootTurn) return;
     hudSnap = s;
+    inv.paint(s, !!app.lineage.expedition?.porter);
     if (s.meters) {
       lastMeters = s.meters;
       paintMeters();
