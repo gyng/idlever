@@ -1,0 +1,37 @@
+{
+  "base": "tuning/balance.json",
+  "params": [
+    { "path": "expedition.camp_every_ticks", "min": 3000, "max": 12000, "integer": true },
+    { "path": "rest.cap_ticks", "min": 1500, "max": 6000, "integer": true }
+  ],
+  "probe": { "bots": ["IDLE"], "days": 12, "untilDepth": 23 },
+  "claims": [
+    {
+      "id": "idle-d8-day1",
+      "metric": { "bot": "IDLE", "field": "arrival_hours", "depth": 8 },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 24,
+      "rankingScale": 24
+    },
+    {
+      "id": "idle-d13-day4",
+      "metric": { "bot": "IDLE", "field": "arrival_hours", "depth": 13 },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 96,
+      "rankingScale": 96
+    },
+    {
+      "id": "idle-d23-day12",
+      "metric": { "bot": "IDLE", "field": "arrival_hours", "depth": 23 },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 288,
+      "rankingScale": 288
+    }
+  ],
+  "budget": { "initial": 10, "iterations": 8, "batch": 3, "seedsPerPoint": 4, "holdout": 3 },
+  "objective": "worst-margin",
+  "confirm": { "looks": [8, 16, 32], "alpha": 0.05 }
+}

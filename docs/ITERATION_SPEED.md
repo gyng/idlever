@@ -20,6 +20,8 @@ manifest/winner/intervals. The early-D8 candidate measurements tied, so no
 parameter was adopted and no pacing improvement is inferred from the benchmark.
 Evidence: `docs/evidence/cut280/`.
 
+Range searches over a few numeric parameters: `tools/surrogate.mjs` (GP surrogate + batch expected improvement on short probes, then one candidate to `tools/tune.sh` confirmation; STATISTICAL_TUNING.md "Surrogate search").
+
 ## Native late-game probe scheduling — 2026-10-20
 
 Cut285 gives remaining statistical trajectories spare forecast capacity within

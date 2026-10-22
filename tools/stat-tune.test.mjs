@@ -829,3 +829,51 @@ test("tune.sh --exact --list retains legacy row dispatch without building Cargo"
   assert.match(r.stdout, /dayplayer legacy rows: --rows \?/);
   assert.match(r.stdout, /opening legacy rows: --rows \?/);
 });
+
+test("per-bot depth stops: each bot ends at its own milestone, daily metrics only for a bot that runs the horizon", async () => {
+  const { normalizeSpec, untilOf } = await import("./stat-tune.mjs");
+  const base = JSON.parse(readFileSync(join(root, "tuning/balance.json"), "utf8"));
+  const study = (untilDepth, claims) => ({
+    candidates: [{ name: "x", set: { "rest.min_ticks": 1200 } }],
+    probe: { bots: ["IDLE", "PICKED"], days: 14, untilDepth },
+    claims,
+  });
+  const arrival = (bot, depth) => ({
+    id: `${bot}-${depth}`,
+    metric: { bot, field: "arrival_hours", depth },
+    estimand: "median",
+    direction: "at-most",
+    threshold: 300,
+  });
+  const spec = normalizeSpec(
+    study({ IDLE: 23, PICKED: 33 }, [arrival("IDLE", 23), arrival("PICKED", 33)]),
+    base,
+  );
+  assert.equal(untilOf(spec.probe, "IDLE"), 23);
+  assert.equal(untilOf(spec.probe, "PICKED"), 33);
+  assert.equal(untilOf({ untilDepth: 8 }, "TUNED"), 8, "a number stops every bot");
+  assert.equal(untilOf({}, "IDLE"), undefined);
+  assert.throws(
+    () => normalizeSpec(study({ IDLE: 13 }, [arrival("IDLE", 23)]), base),
+    /stops before/,
+  );
+  assert.throws(
+    () => normalizeSpec(study({ TUNED: 23 }, [arrival("IDLE", 23)]), base),
+    /probe\.bots/,
+  );
+  const gold = {
+    id: "g",
+    metric: { bot: "PICKED", field: "gold_day", day: 2 },
+    estimand: "median",
+    direction: "at-least",
+    threshold: 1,
+  };
+  assert.doesNotThrow(
+    () => normalizeSpec(study({ IDLE: 23 }, [arrival("IDLE", 23), gold]), base),
+    "PICKED runs the horizon",
+  );
+  assert.throws(
+    () => normalizeSpec(study({ IDLE: 23, PICKED: 23 }, [gold]), base),
+    /omit untilDepth/,
+  );
+});

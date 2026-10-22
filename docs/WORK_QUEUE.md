@@ -1,5 +1,24 @@
 # Content and refinement queue — 2026-10-13
 
+## Queued (owner 2026-10-22): deeper hero levels — a higher cap with a deeper class tree, then endless ranks
+
+Owner: "how quick do heroes level up? feels like we need deeper level trees" → option 3, queued first.
+
+- **Evidence** (dayplayer, 2 seeds, class level by day):
+  - On expeditions IDLE reaches the L10 cap on day 4; PICKED, which changes classes, on days 8–10.
+  - On the classic balance IDLE reached it on day 6.
+  - A lineage plays well past two weeks, so a hero spends most of it maxed.
+  - The curve (`hero::xp_to_next`: `xp_early 60 × L²` to L3, then `xp_late 100 × L²`) totals ~28k XP to L10.
+  - Expeditions dive three floors per content depth, about three times the kills.
+- **Shape:**
+  1. A higher cap (◇ L30): the curve stretched so L10 still lands around day 3–4 and the cap near the King
+     (days 12–14). Each new level gives something real: class-tree picks, skills and branches, sized against
+     the D99 dungeon and its content-depth gates (`engine::reach`, `class_tree::STAGES`).
+  2. Past the cap, endless small ranks (a stat or a passive-grid point each, like Paragon), so every run
+     still progresses.
+- **Gates:** a level-pace row in the dayplayer (level by day for IDLE and PICKED); the existing pacing rows must
+  hold (`cut317-adopt` claims); XP is a content input to gold and pacing, so rerun the statistical study.
+
 ## Cut317 — Expeditions (2026-10-22, shipped)
 
 [CUT317](CUT317_EXPEDITIONS.md). Shipped 2026-10-22 (statistical study accepted; see HANDOFF). Next:

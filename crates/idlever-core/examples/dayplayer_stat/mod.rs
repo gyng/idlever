@@ -18,7 +18,13 @@ struct Request {
     bots: Vec<String>,
     days: usize,
     until_depth: Option<u32>,
+    /// A stop per bot (`--until-depth IDLE=23,PICKED=33`): each bot ends at its own milestone (the rest run the horizon).
+    #[serde(skip_serializing_if = "std::collections::BTreeMap::is_empty")]
+    until_by_bot: std::collections::BTreeMap<String, u32>,
     checkins_per_day: u64,
+}
+impl Request {
+    fn until_for(&self, bot: &str) -> Option<u32> { self.until_by_bot.get(bot).copied().or(self.until_depth) }
 }
 struct Options {
     request: Request,
@@ -162,16 +168,23 @@ fn parse(args: &[String]) -> Result<Options, String> {
         values.get("--checkins").copied().unwrap_or("3"),
         "--checkins",
     )?;
-    let until_depth = values
-        .get("--until-depth")
-        .map(|s| number::<u32>(s, "--until-depth"))
-        .transpose()?;
+    let (mut until_depth, mut until_by_bot) = (None, std::collections::BTreeMap::new());
+    if let Some(v) = values.get("--until-depth") {
+        if v.contains('=') {
+            for pair in v.split(',') {
+                let (bot, d) = pair.split_once('=').ok_or("--until-depth BOT=D,BOT=D")?;
+                until_by_bot.insert(bot.to_string(), number::<u32>(d, "--until-depth")?);
+            }
+        } else {
+            until_depth = Some(number::<u32>(v, "--until-depth")?);
+        }
+    }
     if days == 0 || threads == 0 || checkins == 0 || checkins > 86_400 {
         return Err(
             "days/threads/checkins must be positive; checkins must not exceed 86400".into(),
         );
     }
-    if until_depth.is_some_and(|d| !MILESTONES.contains(&d)) {
+    if until_depth.iter().chain(until_by_bot.values()).any(|d| !MILESTONES.contains(d)) {
         return Err(format!("--until-depth must be one of {MILESTONES:?}"));
     }
     if u64::try_from(days)
@@ -187,6 +200,7 @@ fn parse(args: &[String]) -> Result<Options, String> {
             bots: bots.into_iter().collect(),
             days,
             until_depth,
+            until_by_bot,
             checkins_per_day: checkins,
         },
         threads,
@@ -207,7 +221,7 @@ fn simulate(seed: u64, cfg: Cfg, request: &Request) -> Observation {
     while !p.done() {
         p.step(&Ask::new(&cfg));
         if request
-            .until_depth
+            .until_for(&cfg.label())
             .is_some_and(|d| idlever_core::engine::reach(p.g.lineage.best_depth) >= d) // Cut317: content reached
         {
             reached = Some((p.k * p.interval) as f64 / 3600.0);
@@ -358,6 +372,7 @@ mod tests {
             bots: bots.iter().map(|s| s.to_string()).collect(),
             days: 1,
             until_depth,
+            until_by_bot: Default::default(),
             checkins_per_day: 3,
         }
     }

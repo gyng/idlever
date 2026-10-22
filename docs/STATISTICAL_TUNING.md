@@ -51,6 +51,12 @@ must be fixed before discovery. `probe` declares policy `bots`, `days`, optional
 choices, first session and check-ins. DAILY/AWAY retain their ordinary effective
 cadence. `untilDepth` stops after an actual check-in reaching a recorded
 milestone; it never supplies fabricated remaining daily observations.
+`untilDepth` may also be `{BOT: milestone}`: each bot stops at its own milestone,
+and a bot left out runs the whole horizon. A daily metric needs its bot to run the
+horizon. A study whose claims are all absolute never simulates the BASELINE
+profile, which halves its work; a `comparison: "difference"` claim still pairs it.
+Together these cut a 14-day, 3-bot study to the days its claims actually read
+(2026-10-22).
 
 Every claim has a unique `id`, scalar `metric`, `estimand` (`median` or `mean`),
 `direction` (`at-least` or `at-most`) and finite `threshold`. Optional
@@ -132,3 +138,50 @@ Contract: [Cut280](CUT280_STATISTICAL_TUNING.md). Primary references:
 [NIST binomial intervals](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm),
 [Howard et al.](https://arxiv.org/abs/1810.08240),
 [Hoeffding](https://doi.org/10.1080/01621459.1963.10500830).
+
+## Surrogate search (tools/surrogate.mjs)
+
+Use it when the question is "where in this numeric range" rather than "which of
+these few fixed candidates": two to about five continuous/integer parameters,
+claims that move smoothly with them, and a grid that would cost hundreds of
+seed-runs. It replaces the grid/discovery stage only, never confirmation.
+
+```sh
+node tools/surrogate.mjs --name camp-rest --spec tuning/studies/surrogate-example.json --threads 12
+# then, exactly as printed at the end of target/surrogate/camp-rest/report.md:
+tools/tune.sh --name surrogate-camp-rest-confirm --spec target/surrogate/camp-rest/confirm-spec.json --threads 12
+```
+
+The spec has `base`, `params` (`{path, min, max, integer?}` in `tools/sweep.mjs`
+path syntax), `probe` and `claims` exactly as above (absolute claims only), a
+`budget` (`initial` maximin Latin-hypercube points, `iterations` acquisition
+rounds of `batch` points, `seedsPerPoint`, `holdout` points) and an optional
+`objective` (`worst-margin` default, `mean-margin`, or `{"claim": ID}`).
+Margins are stat-tune's discovery margins, `(estimate − threshold) × direction
+/ rankingScale`; set `rankingScale` so claims are comparable. `worst-margin`
+adds 0.01 × the mean margin so a claim that is flat across the range (for
+example IDLE D8 always at 8 h) does not tie every point.
+
+What runs: the same `stat_probe` native executable (`dev-balance`, profiles via
+`IDLEVER_BALANCE_JSON`) on one fixed seed set for every point (common random
+numbers); one Matérn-5/2 Gaussian process per claim on the unit-scaled
+parameters, hyperparameters by maximum marginal likelihood (deterministic random
+search), heteroscedastic noise from each point's seed variance (median: π/2 ·
+s²/n, shrunk to the pooled value) times a fitted multiplier, plus a fitted
+nugget; batch expected
+improvement on the objective (Monte Carlo over the per-claim posteriors,
+kriging-believer batches) maximised over a dense Latin-hypercube candidate set.
+The final model's predicted-best point becomes `confirm-spec.json` (one
+candidate). Held-out points, never used to fit, report the model's
+out-of-sample error. Observations are cached per executable/profile/probe/seed
+in `target/surrogate/NAME/jobs/`; rerunning resumes, and editing the budget or
+ranges reuses every matching observation. Threads are capped at 12.
+
+Limits: the report is `EXPLORATORY_ONLY`, with no confidence statement; the
+seed set is small and shared, so the optimum can fit those seeds (confirmation
+uses fresh seeds). Arrival hours are quantised to check-ins and censored at the
+horizon, so the surface has steps and flat censored plateaus the GP smooths
+over; read the per-point censor counts. Independent per-claim GPs ignore
+correlations between claims. Past ~6 parameters or for categorical/boolean
+switches, use fixed `candidates` in tune.sh instead. Paired `difference`
+claims are not modelled.

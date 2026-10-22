@@ -202,7 +202,7 @@ function checkMetric(metric, probe, level = 0) {
       "arrival_hours needs a milestone depth",
     );
     requireThat(
-      probe.untilDepth === undefined || probe.untilDepth >= metric.depth,
+      untilOf(probe, metric.bot) === undefined || untilOf(probe, metric.bot) >= metric.depth,
       "probe stops before the requested arrival depth",
     );
   } else {
@@ -218,8 +218,8 @@ function checkMetric(metric, probe, level = 0) {
       "daily metric needs a day within the horizon",
     );
     requireThat(
-      probe.untilDepth === undefined,
-      "daily metrics need completed days; omit untilDepth",
+      untilOf(probe, metric.bot) === undefined,
+      "daily metrics need completed days; omit untilDepth for that bot",
     );
   }
 }
@@ -250,8 +250,14 @@ export function normalizeSpec(input, base) {
     "probe.checkins must divide 24",
   );
   requireThat(
-    probe.untilDepth === undefined || MILESTONES.includes(probe.untilDepth),
-    "untilDepth must be a recorded milestone",
+    probe.untilDepth === undefined ||
+      MILESTONES.includes(probe.untilDepth) ||
+      (typeof probe.untilDepth === "object" &&
+        probe.untilDepth !== null &&
+        Object.entries(probe.untilDepth).every(
+          ([bot, d]) => probe.bots.includes(bot) && MILESTONES.includes(d),
+        )),
+    "untilDepth must be a recorded milestone, or {BOT: milestone} for bots in probe.bots",
   );
   const discovery = { stages: [4, 8, 16], keep: 0.5, ...input.discovery };
   keys(discovery, ["stages", "keep"], "discovery");
@@ -332,9 +338,19 @@ function scalar(records, metric, probe) {
   );
   return { value: record.seed_out[metric.field][metric.day - 1], censored: false };
 }
+/** `probe.untilDepth` is a milestone for every bot, or `{BOT: milestone}` — each bot then stops at its own (a bot
+ *  left out runs the whole horizon). Stopping a bot once its claims are answered saves most of a long study. */
+export function untilOf(probe, bot) {
+  const u = probe.untilDepth;
+  return typeof u === "number" ? u : u?.[bot];
+}
 function sample(candidate, baseline, claim, probe) {
   const a = scalar(candidate, claim.metric, probe);
-  const b = scalar(baseline, claim.metric, probe);
+  // an absolute claim never reads the baseline (none is simulated when no claim compares against it)
+  const b =
+    claim.comparison === "difference"
+      ? scalar(baseline, claim.metric, probe)
+      : { value: 0, censored: false };
   const value = claim.comparison === "difference" ? a.value - b.value : a.value;
   requireThat(Number.isFinite(value), "nonfinite metric observation");
   if (claim.estimand === "mean")
@@ -370,7 +386,12 @@ function validatePacket(packet, seeds, profile, probe) {
       same([...request.bots].sort(), [...probe.bots].sort()) &&
       request.days === probe.days &&
       request.checkins_per_day === probe.checkins &&
-      (request.until_depth ?? null) === (probe.untilDepth ?? null),
+      (request.until_depth ?? null) ===
+        (typeof probe.untilDepth === "number" ? probe.untilDepth : null) &&
+      same(
+        Object.entries(request.until_by_bot ?? {}).sort(),
+        Object.entries(typeof probe.untilDepth === "object" ? probe.untilDepth : {}).sort(),
+      ),
     "native request/horizon identity mismatch",
   );
   // Cut309 profiles may omit this optional field; Rust then emits its historical default.
@@ -422,7 +443,7 @@ function validatePacket(packet, seeds, profile, probe) {
     requireThat(
       ["depth", "horizon"].includes(r.stop_reason) &&
         r.campaign_complete === (r.completed_days === probe.days) &&
-        (r.stop_reason === "depth" ? probe.untilDepth !== undefined : r.campaign_complete),
+        (r.stop_reason === "depth" ? untilOf(probe, r.bot) !== undefined : r.campaign_complete),
       "native stopping metadata mismatch",
     );
     requireThat(
@@ -444,7 +465,7 @@ function validatePacket(packet, seeds, profile, probe) {
       );
     if (r.stop_reason === "depth")
       requireThat(
-        r.seed_out.hours[MILESTONES.indexOf(probe.untilDepth)] !== null,
+        r.seed_out.hours[MILESTONES.indexOf(untilOf(probe, r.bot))] !== null,
         "depth stop without the milestone",
       );
   }
@@ -666,6 +687,9 @@ async function run(argv, context) {
     cachedJobs = new Set(),
     children = context.children;
   const baseline = { name: "BASELINE", profile: base };
+  // the baseline is simulated only for a claim that compares against it (an absolute study halves its work)
+  const withBaseline = (list) =>
+    spec.claims.some((c) => c.comparison === "difference") ? [baseline, ...list] : list;
   const profiles = new Map(
     [baseline, ...spec.candidates].map((p) => [hash(canonical(p.profile)), p]),
   );
@@ -726,7 +750,16 @@ async function run(argv, context) {
           String(threadsPer),
           "--out",
           packetPath,
-          ...(spec.probe.untilDepth ? ["--until-depth", String(spec.probe.untilDepth)] : []),
+          ...(spec.probe.untilDepth === undefined
+            ? []
+            : [
+                "--until-depth",
+                typeof spec.probe.untilDepth === "number"
+                  ? String(spec.probe.untilDepth)
+                  : Object.entries(spec.probe.untilDepth)
+                      .map(([bot, d]) => `${bot}=${d}`)
+                      .join(","),
+              ]),
         ];
         work.probeCalls++;
         console.error(`stat-tune: ${state.phase} ${p.name}: ${missing.length} new paired seeds`);
@@ -778,7 +811,7 @@ async function run(argv, context) {
   let active = [...spec.candidates];
   for (const [stage, n] of spec.discovery.stages.entries()) {
     const seeds = manifest.seeds.discovery.slice(0, n);
-    await ensure([baseline, ...active], seeds);
+    await ensure(withBaseline(active), seeds);
     const ranked = active
       .map((p) => {
         const claims = spec.claims.map((c) => {
@@ -827,7 +860,7 @@ async function run(argv, context) {
   let status = "INCONCLUSIVE";
   for (const n of spec.confirmation.looks) {
     const seeds = manifest.seeds.confirmation.slice(0, n);
-    await ensure([baseline, winner], seeds);
+    await ensure(withBaseline([winner]), seeds);
     const claims = spec.claims.map((c) => {
       const observations = values(winner, seeds, c);
       return {
