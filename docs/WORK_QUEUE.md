@@ -1,5 +1,19 @@
 # Content and refinement queue — 2026-10-13
 
+## Queued (owner 2026-10-22): tuning speed — PICKED's decision cost
+
+Measured with `DP_PHASES=1`, one seed, `--threads 1`, PICKED to D33: 175 s, of which 127 s (73 %) is the bot's own
+package picks (forecast sims at each check-in to rank options) and 47 s the game. TUNED's time is its pen search
+in the same way.
+
+- **Idea:** memoise or cheapen the bot's forecasts. Options are reread across check-ins and largely across seeds
+  with the same state. Fewer samples for a clear winner; reuse the camp's forecast between reads.
+- **Target:** PICKED to D33 in ≤ 60 s a seed, so a `tune.sh` confirmation (32 seeds × 3 bots, 24 threads) lands
+  under ~10 min.
+- **Guard:** the bots' choices must not change, or must change only within the gate rows' tolerance. Measure the
+  rows before and after (`gates.mjs --rows … --seeds 8`).
+- **Then:** the pace model's 13–65 s per send-changing profile, toward the < 1 s predict tier.
+
 ## Queued (owner 2026-10-22): deeper hero levels — a higher cap with a deeper class tree, then endless ranks
 
 Owner: "how quick do heroes level up? feels like we need deeper level trees" → option 3, queued first.

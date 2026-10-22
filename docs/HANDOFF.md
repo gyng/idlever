@@ -1,4 +1,38 @@
-# Parked — v0.1.0-alpha.3 milestone, 2026-10-21
+# Parked — 2026-10-22 (Cut317 expeditions shipped; faster tuning)
+
+## Resume here
+
+- **Live:** https://dev.idlever.awoo.party/ at f5f962f5 (`tools/deploy-cf.sh`; set `TMPDIR` to a disk with room
+  when /tmp is full). GitHub Pages is retired; the repository homepage links the dev site.
+- **The game ships Cut317 expeditions**, the one-week absence cap and the catch-up loader (sections below,
+  AGENTS.md amendments). Old saves load as they are ("fresh start").
+- **Tuning tools,** from fastest to strongest (docs/STATISTICAL_TUNING.md, docs/PACE_MODEL.md):
+  1. `pace_model predict|search`: rank candidates. 0.1–0.2 s for rest, XP or drill changes; 13–65 s for changes
+     that alter a send. IDLE ~9 h mean error; PICKED D29/D33 48–64 h early.
+  2. `node tools/surrogate.mjs`: GP plus batch expected improvement over a few numeric parameters on short probes.
+  3. `tools/tune.sh`: held-out statistical confirmation of one winner. Per-bot `untilDepth` stops and no baseline
+     for absolute claims cut a seed from 1667 s to 175 s.
+- **Next, in order** (WORK_QUEUE):
+  1. PICKED's decision cost (73 % of a PICKED game's CPU)
+  2. deeper hero levels (a higher cap with a deeper class tree, then endless ranks), sized with the pace model and
+     confirmed with `tune.sh`
+  3. new fixtures for the old-save client groups
+  4. the full gates and a playtest on the shipping defaults
+- **Known failing client groups** (all explained below):
+  - `worker-first-act` (pre-existing)
+  - `menu-materials` (time-dependent)
+  - `king-advice-scope`, `death-fix-discovery`, `boss-kill-beat` (old-save scenarios)
+  - `runclear` (stale, exhaustive-only)
+  - `gold-settlements` `bank-positive` (old save)
+- **Iteration timings** measured 2026-10-22:
+  - a core edit rebuilds `stat_probe` in ~19 s; a balance JSON change needs no rebuild
+  - IDLE to D23: 15 s a seed
+  - PICKED to D33: 175 s (47 s game, 127 s package picks)
+  - TUNED to D33: 96 s
+  - an 8 h absence for one lineage: 1.2 s plus 0.7 s of verdicts
+- **Target cycle times:** predict < 1 s, explore 1–5 min, confirm ≤ 10–15 min, full gate ≤ 1 h.
+
+## Earlier — v0.1.0-alpha.3 milestone, 2026-10-21
 
 ## Cut317 — Expeditions shipped (2026-10-22)
 
