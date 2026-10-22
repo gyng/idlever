@@ -233,6 +233,10 @@ const KEEP_MS = 100; // Cut 28 §4: the keep-out rects' refresh (a layout read)
 const PULSE_MS = 120; // Cut 14 §6: the strip's dot retriggers its beat at most this often
 const CATCHUP_RATE = 32; // Cut 14 §6: `fast` on the map, behind live by more than the lead: the picture catches up at this rate
 const CATCHUP_MAX = 200;
+// owner 2026-10-22: back from a hidden tab far behind (> CATCHUP_FAR ticks), the world steps in CATCHUP_FAR_MAX batches
+// (an hour away ≈ 36000 ticks: well under a second, not ~5 s at CATCHUP_MAX) under a `catching up` banner
+const CATCHUP_FAR = 1500;
+const CATCHUP_FAR_MAX = 3000;
 const LEAD_PROBE = 120; // Cut 18 §1: `fast`'s engine lead — a fight is costed (shown or dropped, as under the card) before the picture meets it
 // Cut 24 §1 (AL: a Warlord fight > 4 min at 1× with the boss bar full; AK: ~100 s of retreat ↔ pack break): the watch never shows more
 // than 15 s without an hp change, a kill, a pickup or a descent — a stretch DEAD_TICKS past the last of them plays as travel (the mode's
@@ -3605,6 +3609,10 @@ export function renderWatch(app: App): Mounted {
   /** Cut 14 §6: the world's rate — the viewer's decisions read off the engine's own tick; ≥ 1× while the run is live, 0 once it is over. */
   function worldRate(): number {
     if (done || held || exitTier) return 0;
+    // owner 2026-10-22 ("tabbing out seems to pause the game. implement live view catch up"): an expedition's world is the
+    // wall clock (no speed-up, as offline) — a hidden tab ran it at `fast` and came back to minutes of a frozen picture
+    // while the engine chewed through game-hours
+    if (live1x) return 1;
     if (!frozen() && beatHeld() && heldBeat && !heldBeat.exit) return Math.max(0, speed); // Cut 18 §1: a held beat is the watch's own pacing — the world keeps the picture's pace (no catch-up owed after it)
     if (fightOn && app.slowdowns)
       return mode === "fights" &&
@@ -3790,6 +3798,7 @@ export function renderWatch(app: App): Mounted {
       /* the picture is frozen: straight to the world's step below */
     } else if (goLiveOwed && !inflight && (worldT - engineTick <= LEAD_FAST || held)) {
       goLiveOwed = false;
+      if (banner.classList.contains("catchup")) banner.classList.remove("show", "catchup");
       goLive();
       now = viewerTick();
     } // Cut 14 §6: back from a hidden tab, the world caught up (Cut 18: before the floor queue — goLive drains it)
@@ -3905,7 +3914,9 @@ export function renderWatch(app: App): Mounted {
       }
     }
     // QA ad71e72: a long dead stretch jumps (the engine steps ahead to the next move; the picture lands just before it)
+    // owner 2026-10-22: never on an expedition — it plays in real time (no speed-up, no skip)
     if (
+      !live1x &&
       playing &&
       el.dataset.dead === "1" &&
       deadFrom > 0 &&
@@ -3933,19 +3944,21 @@ export function renderWatch(app: App): Mounted {
     if (engineTick >= want) return;
     const gap = worldT - engineTick;
     let n =
-      gap > BATCH_FAST
-        ? Math.min(CATCHUP_MAX, Math.ceil(gap))
-        : Math.min(
-            CATCHUP_MAX,
-            Math.max(
-              speed >= AUTO_FAST ? Math.max(BATCH_FAST, Math.ceil(speed * 0.6)) : BATCH,
-              Math.ceil(want - engineTick),
-            ),
-          );
+      gap > CATCHUP_FAR
+        ? Math.min(CATCHUP_FAR_MAX, Math.ceil(gap))
+        : gap > BATCH_FAST
+          ? Math.min(CATCHUP_MAX, Math.ceil(gap))
+          : Math.min(
+              CATCHUP_MAX,
+              Math.max(
+                speed >= AUTO_FAST ? Math.max(BATCH_FAST, Math.ceil(speed * 0.6)) : BATCH,
+                Math.ceil(want - engineTick),
+              ),
+            );
     // Cut 24 §1: a dead stretch's longer lead is walked in `fights`'s own batches — a fight's close is met within one (the engine waits there)
     if (el.dataset.dead === "1" && mode === "fights") n = Math.min(n, BATCH_FIGHTS);
     inflight = true;
-    const target = Math.min(want, engineTick + CATCHUP_MAX);
+    const target = Math.min(want, engineTick + (gap > CATCHUP_FAR ? CATCHUP_FAR_MAX : CATCHUP_MAX));
     const chain = (k: number, left: number): void => {
       app.engine
         .step(k)
@@ -4854,6 +4867,8 @@ export function renderWatch(app: App): Mounted {
   const foldedAway = new Set<number>(); // floors a fold already stepped (a fold that gave up on one never folds it again)
   /** Is the floor the picture meets next (a queued load, else the HUD's own floor with the engine on it) the first of a folded stretch? */
   function foldDue(): boolean {
+    // owner 2026-10-22 ("on delve it shouldn't immediately skip to D8"): an expedition plays every floor in real time
+    if (live1x) return false;
     if (folding || held || exitTier || done || !foldSet.size || overridden || !snap || !viewer)
       return false;
     const d = loads.length ? loads[0].snap.depth : hud.depth;
@@ -5681,7 +5696,13 @@ export function renderWatch(app: App): Mounted {
     if (document.hidden) autoDecide();
     liveOn(!document.hidden);
     freeze(paused, document.hidden);
-    if (!hidden) goLiveOwed = true;
+    if (!hidden) {
+      goLiveOwed = true;
+      // the wall clock ran while hidden: the world it owes is caught up under a banner (cleared by the landing's seek)
+      const owed =
+        worldT + ((performance.now() - lastPumpMs) / 1000) * 10 * worldRate() - engineTick;
+      if (owed > CATCHUP_FAR) showBanner(/* copy:callout */ "catching up", 60_000, "catchup");
+    }
     applySpeed();
   };
   document.addEventListener("visibilitychange", onVisibility);
