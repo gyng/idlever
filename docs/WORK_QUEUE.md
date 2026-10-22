@@ -1,6 +1,6 @@
 # Content and refinement queue — 2026-10-13
 
-## Queued (owner 2026-10-22): take items automatically; a readable live view
+## Done 2026-10-23: take items automatically; a readable live view
 
 - **Ask:** "make take item automatic ie, remove feature. in the live view, show inventory as a text list on a side
   with hover tooltips and/or consider how we can make live view more understandable/clearer/observable".
@@ -22,8 +22,12 @@
   - a short event log (picked up, levelled, near death)
 - **Gates:** core tests for the auto-take (determinism, replay hash, an old-save load); T1 look on desktop and phone;
   T2 for the watch groups (`watch-live-edge`, `live-decisions`, `ctxloss`).
+- **Done:** the target was the live cache decision ("Take one"). The owner then removed the boss (fight/turn back) and
+  hurt (push on/turn back) decisions too, so no live decision is asked (f1ef9cc2). The pack panel shows at risk vs
+  secured, next camp and intent (f60ae676). An expedition plays in real time: tab-out catches up, with no fold or
+  dead-stretch skip (6552955f). Town tooltips, the bobbing build marker and townsfolk hover were added too (71d33c9c).
 
-## Queued (owner 2026-10-22): an obvious back-to-town button
+## Done 2026-10-23: an obvious back-to-town button
 
 - **Ask:** "add an obvious back to town button on top left maybe above heroes or better place".
 - **Scope:** every screen that leaves town (watch, report, death, the hero views and the sheets). There should be
