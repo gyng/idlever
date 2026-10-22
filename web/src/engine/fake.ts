@@ -4316,8 +4316,7 @@ export class FakeEngine implements Engine {
     for (let i = 0; i < turns && !this.live.over; i++) {
       events.push(...simTurn(this.live, ctx));
       this.s.totalTurns += 10;
-      // Cut 270 (`?decide=1` only): a hurt record at turn 3 and a chest at 5 — once each a run (owner 2026-10-22: the boss and
-      // cache decisions are gone; the hero fights and takes his pick himself)
+      // Cut 270 (`?decide=1` only): a chest at turn 5, once a run (owner 2026-10-22: no live decision is asked any more)
       if (FAKE_DECIDE && this.liveOn && !this.live.over) {
         const r = this.live,
           seen = (this.decidedIn[r.id] ??= []);
@@ -4337,24 +4336,6 @@ export class FakeEngine implements Engine {
                 }),
           });
         }
-        const open = (d: Decision): void => {
-          seen.push(d.kind);
-          this.pendingDecision = d;
-        };
-        if (r.turn >= 3 && !seen.includes("hurt"))
-          open({
-            id: `${at}-hurt`,
-            kind: "hurt",
-            t: at,
-            depth: r.depth,
-            title: "Hurt · record",
-            options: [
-              { id: "push", label: "Push on", tone: "go" },
-              { id: "back", label: "Turn back", tone: "safe" },
-            ],
-            default: 0,
-          });
-        if (this.pendingDecision) break;
       }
     }
     if (this.live.over && !this.settled.has(this.live.id)) {

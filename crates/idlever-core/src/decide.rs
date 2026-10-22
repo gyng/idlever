@@ -5,17 +5,8 @@
 //! whose decisions all auto-resolve is the run with decisions off, byte for byte. Never in an absence,
 //! an `advance`, a fold, a sim or a harness: those never open one, and any tick clears one pending.
 //! Also the boss chest (`Chest`): what a band boss's kill tick gave, a side channel of the step.
-use crate::engine::{Game, Run};
+use crate::engine::Game;
 use serde::{Deserialize, Serialize};
-
-/// At most this many per run, one per floor.
-pub const PER_RUN: u32 = 3;
-/// Never in a run's first ticks (30 s at 1×).
-pub const MIN_TICK: u32 = 300;
-/// Never on the lineage's first sends.
-pub const MIN_SENDS: u32 = 2;
-/// A record reached under this share of max HP opens `hurt`.
-pub const HURT_PCT: i32 = 50;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct DecisionOption {
@@ -69,12 +60,8 @@ pub struct Live {
     /// The client watches with live decisions on (`setLiveDecisions`).
     pub on: bool,
     pub pending: Option<Decision>,
-    /// (run id, decisions opened, floors with one, boss kinds offered, `hurt` offered).
+    /// The run the log is for.
     run: u32,
-    n: u32,
-    floors: Vec<u32>,
-    bosses: Vec<String>,
-    hurt: bool,
     /// Decisions resolved this run: (id, option index, chosen by hand).
     pub log: Vec<(String, u32, bool)>,
 }
@@ -112,61 +99,14 @@ fn rarity_rank(s: &str) -> u8 {
     }
 }
 
-/// The run may open a decision now (the watched run alone).
-fn allowed(g: &Game, r: &Run) -> bool {
-    g.live.on
-        && g.watched
-        && !g.sim
-        && !g.offline
-        && !g.lineage.in_absence
-        && !g.lineage.pkg.literal
-        && r.id > MIN_SENDS
-        && r.over.is_none()
-        && r.turn >= MIN_TICK
-        && !r.manual
-        && !r.bail
-        && r.homeward.is_none()
-        && g.live.n < PER_RUN
-        && !g.live.floors.contains(&r.depth)
-}
-
-/// Cut 270: after a watched tick, the moment it made relevant (a pure read; the caps are noted).
+/// Cut 270: after a watched tick, the moment it made relevant. Owner 2026-10-22 ("make take item automatic ie, remove
+/// feature" · "remove boss fight/turn back also" · "remove the push on/turn back live decision also"): none is asked any
+/// more — the hero takes his `vault_pref` pick, fights as his rows say and pushes on hurt. The machinery stays for the
+/// boss chest and old capsules' recorded picks.
 pub fn detect(g: &mut Game) -> Option<Decision> {
     let id = g.run.as_ref()?.id;
     g.live.reset_for(id);
-    let r = g.run.as_ref()?;
-    if !allowed(g, r) {
-        return None;
-    }
-    // owner 2026-10-22 ("make take item automatic ie, remove feature" · "remove boss fight/turn back also"): the cache and the boss
-    // are never asked — the hero takes his `vault_pref` pick and fights as his rows say
-    let d = hurt(g, r)?;
-    let depth = r.depth;
-    let live = &mut g.live;
-    live.n += 1;
-    live.floors.push(depth);
-    match d.kind.as_str() {
-        "boss" => live.bosses.push(d.options[0].id.clone()),
-        "hurt" => live.hurt = true,
-        _ => {}
-    }
-    Some(d)
-}
-
-fn turn_back(id: &str) -> DecisionOption {
-    DecisionOption { id: id.into(), label: /* copy:callout */ "Turn back".into(), tone: "safe".into(), item: None }
-}
-
-/// D3: a record floor reached this tick (deeper than the lineage's best at send) under HURT_PCT.
-fn hurt(g: &Game, r: &Run) -> Option<Decision> {
-    if g.live.hurt || r.floor_turn > 1 || r.depth_t.last().is_none_or(|(d, t)| *d != r.depth || *t + 1 < r.turn) {
-        return None;
-    }
-    if r.depth <= r.best_at_send.unwrap_or(u32::MAX) || r.hero.hp * 100 >= r.hero.max_hp * HURT_PCT {
-        return None;
-    }
-    let push = DecisionOption { id: "push".into(), label: /* copy:callout */ "Push on".into(), tone: "go".into(), item: None };
-    Some(Decision { id: format!("{}-hurt", r.turn), kind: "hurt".into(), t: r.turn, depth: r.depth, title: /* copy:callout */ "Hurt · record".into(), options: vec![push, turn_back("back")], default: 0 })
+    None
 }
 
 impl Game {
