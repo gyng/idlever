@@ -1,5 +1,28 @@
 # Content and refinement queue — 2026-10-13
 
+## Queued (owner 2026-10-22): take items automatically; a readable live view
+
+- **Ask:** "make take item automatic ie, remove feature. in the live view, show inventory as a text list on a side
+  with hover tooltips and/or consider how we can make live view more understandable/clearer/observable".
+- **Take → automatic.** Remove the manual take step; the core takes the item itself, and the feature (its button,
+  wire call and copy) goes. The likely target is the return pick (`returns.rs`, `ui/return-pick.ts`: "one pick of
+  three"), which would take a deterministic default. Confirm the target with the owner before cutting: it could
+  instead be a gear/found-item take. Deterministic, and it is announced (the report names what was taken). Old saves
+  holding an untaken pick resolve it on load.
+- **Live view inventory.** A side text list (desktop: a rail beside the map; phone: a collapsible strip) showing
+  carry gold, kit and found items. Each row has a hover/tap tooltip: what it is, its value, and why it was taken or
+  equipped. It updates as he picks up, sells and banks at camp.
+- **Observability pass.** Audit what a viewer cannot tell from the live view today. Candidates, within the clutter
+  budget and copy ≤ 3 words:
+  - his current intent (descend · fight · flee · rest · to camp)
+  - which row just fired (named, briefly)
+  - HP/threat at a glance
+  - distance to the next camp and boss
+  - carry at risk vs banked
+  - a short event log (picked up, levelled, near death)
+- **Gates:** core tests for the auto-take (determinism, replay hash, an old-save load); T1 look on desktop and phone;
+  T2 for the watch groups (`watch-live-edge`, `live-decisions`, `ctxloss`).
+
 ## Queued (owner 2026-10-22): an obvious back-to-town button
 
 - **Ask:** "add an obvious back to town button on top left maybe above heroes or better place".
