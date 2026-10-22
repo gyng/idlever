@@ -1,0 +1,162 @@
+{
+  "base": "tuning/balance.json",
+  "candidates": [
+    {
+      "name": "expeditions",
+      "set": {
+        "expedition.on": true,
+        "expedition.run_cap_ticks": 864000,
+        "expedition.camp_every_ticks": 6000,
+        "expedition.camp_rest_ticks": 300,
+        "expedition.stretch": 3,
+        "expedition.laps": true,
+        "rest.min_ticks": 1200,
+        "rest.cap_ticks": 3000,
+        "workers.porter.need": 2
+      }
+    }
+  ],
+  "probe": {
+    "bots": [
+      "IDLE",
+      "PICKED",
+      "TUNED"
+    ],
+    "days": 12,
+    "untilDepth": {
+      "PICKED": 33,
+      "TUNED": 33
+    }
+  },
+  "claims": [
+    {
+      "id": "idle-d8-day1",
+      "metric": {
+        "bot": "IDLE",
+        "field": "arrival_hours",
+        "depth": 8
+      },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 24
+    },
+    {
+      "id": "idle-d13-day4",
+      "metric": {
+        "bot": "IDLE",
+        "field": "arrival_hours",
+        "depth": 13
+      },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 96
+    },
+    {
+      "id": "idle-d23-day12",
+      "metric": {
+        "bot": "IDLE",
+        "field": "arrival_hours",
+        "depth": 23
+      },
+      "estimand": "median",
+      "direction": "at-most",
+      "threshold": 288
+    },
+    {
+      "id": "picked-d13",
+      "metric": {
+        "ratio": [
+          {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 13
+          },
+          {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 13
+          }
+        ]
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1.5
+    },
+    {
+      "id": "picked-d23",
+      "metric": {
+        "ratio": [
+          {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 23
+          },
+          {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 23
+          }
+        ]
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1.5
+    },
+    {
+      "id": "tuned-d33",
+      "metric": {
+        "ratio": [
+          {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 33
+          },
+          {
+            "bot": "TUNED",
+            "field": "arrival_hours",
+            "depth": 33
+          }
+        ]
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1.15
+    },
+    {
+      "id": "idle-gold-day2",
+      "metric": {
+        "bot": "IDLE",
+        "field": "gold_day",
+        "day": 2
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1
+    },
+    {
+      "id": "idle-gold-day10",
+      "metric": {
+        "bot": "IDLE",
+        "field": "gold_day",
+        "day": 10
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1
+    }
+  ],
+  "discovery": {
+    "stages": [
+      4
+    ],
+    "keep": 0.5
+  },
+  "confirmation": {
+    "looks": [
+      8,
+      16,
+      32
+    ],
+    "alpha": 0.05
+  }
+}

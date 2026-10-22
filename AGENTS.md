@@ -93,6 +93,9 @@ is still `/home/g/p/riddle`. See docs/CUT190_IDLEVER_RENAME.md.
 ## Validation and iteration commands — use the cheapest that answers the question
 
 ```sh
+# Owner 2026-10-22: a routine/daily deploy defaults to the CONFIRM tier — core tests + clippy + lint, the routine
+# client subset, and (if pacing/economy can move) tools/tune.sh --name daily-$(date +%F) --spec tuning/studies/daily-confirm.json --threads 24
+# (must be STATISTICALLY_ACCEPTED). Full/exhaustive gates are for releases and major system changes. docs/DEV_VALIDATION_TIERS.md.
 tools/verify.sh --quick        # tests (fast profile) ∥ format/lint + tsc + copy-lint
 tools/tune.sh --name N --spec STUDY.json  # routine statistical tuning: paired discovery + independent confirmation; docs/STATISTICAL_TUNING.md
 tools/tune.sh --exact <row-ids> # explicit finite-catalog check: full seed counts, targeted requirements, fail-fast; --list lists rows; never a full gate pass

@@ -31,6 +31,8 @@
   - TUNED to D33: 96 s
   - an 8 h absence for one lineage: 1.2 s plus 0.7 s of verdicts
 - **Target cycle times:** predict < 1 s, explore 1–5 min, confirm ≤ 10–15 min, full gate ≤ 1 h.
+- **Daily deploys default to the confirm tier** (owner, DEV_VALIDATION_TIERS.md): tests, lint, the routine
+  client subset, and `tools/tune.sh --name daily-$(date +%F) --spec tuning/studies/daily-confirm.json --threads 24` when pacing or economy can move. Full gates are for releases.
 
 ## Earlier — v0.1.0-alpha.3 milestone, 2026-10-21
 

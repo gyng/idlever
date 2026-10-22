@@ -2,6 +2,22 @@
 
 Owner request, 2026-10-12: aim for 20% of validation time while retaining the most useful routine coverage. This is a risk-based selection, not a measured claim of 80% assertion coverage or defect detection.
 
+## Daily deploys default to the confirm tier (owner 2026-10-22)
+
+A routine or daily deploy (`tools/deploy-cf.sh`) is accepted on the **confirm tier**:
+
+- the core tests (`cargo test --workspace --profile fast`), clippy and web lint/tsc/copy/style
+- the routine client subset (`cd web && pnpm -s test`)
+- for any change that can move pacing or economy, the statistical confirmation of the shipping claims:
+  `tools/tune.sh --name daily-$(date +%F) --spec tuning/studies/daily-confirm.json --threads 24`
+
+  This uses per-bot stops (IDLE 12 days, PICKED and TUNED to D33) and no baseline; ~10–15 min est. It must end
+  `STATISTICALLY_ACCEPTED`. `INCONCLUSIVE` or `REJECTED` blocks the deploy until it is understood.
+
+The full and exhaustive gates (`gates.mjs --full` / `--exhaustive`, `pnpm test:full`) are for releases and major
+system changes, not daily deploys. Faster tiers exist to choose what to confirm, not to replace confirmation:
+`pace_model predict` (< 1 s) and `tools/surrogate.mjs` (minutes).
+
 ## Routine work
 
 Run `tools/verify.sh --quick` for core tests, types and copy checks. Run `(cd web && pnpm -s test)` for the critical client journeys. For a local feature, also run its relevant existing client group: `cd web && node tests/run.mjs <name>`.
