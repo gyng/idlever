@@ -15,6 +15,13 @@ fn main() {
         .and_then(|s| s.parse().ok())
         .unwrap_or(24);
     let mut g = Game::load(&std::fs::read_to_string(path).expect("read save")).expect("load save");
+    // `--absence H`: time one absence of H hours (the return after idle), then stop
+    if let Some(h) = args.iter().position(|a| a == "--absence").and_then(|i| args.get(i + 1)).and_then(|s| s.parse::<u64>().ok()) {
+        let t = std::time::Instant::now();
+        let r = g.run_offline(h * 3600);
+        println!("absence {h} h: {:.2} s native · {} runs · {} ticks", t.elapsed().as_secs_f64(), r.runs, g.lineage.total_turns);
+        return;
+    }
     let (mut inside, mut total) = (0u64, 0u64);
     let mut cur: Option<(u32, u32, u64, u32)> = None; // run id, start depth, wall second it began, deepest
     let mut purse = g.lineage.gold;
