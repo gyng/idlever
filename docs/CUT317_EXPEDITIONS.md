@@ -321,7 +321,7 @@ Owner: "cap to one week and have a catch up loader screen · show progress and a
 - An absence counts at most a week (`offline::ABSENCE_CAP_S`). Whole absences clamp in the core, and the client's
   sliced catch-up stops at `Lineage.absence_cap_s`.
 - `ui/catchup.ts` covers absences of 10 min or more. It shows:
-  - the time away, with "a week counts" when capped
+  - the time away, with "capped at 7d" when capped
   - a progress bar of the time played
   - the porter's running banked total
   - the crier's milestones, newest first: records on boss floors and every 10th, bosses slain, deaths, the

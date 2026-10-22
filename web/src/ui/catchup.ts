@@ -33,7 +33,7 @@ export function openCatchup(totalS: number, awayS: number): Catchup {
         "p",
         { class: "catchup-away num" },
         /* copy:callout */ `away ${awayText(awayS)}`,
-        capped ? h("small", { class: "catchup-cap" }, /* copy:callout */ " · a week counts") : "",
+        capped ? h("small", { class: "catchup-cap" }, /* copy:callout */ " · capped at 7d") : "",
       ),
       h(
         "div",

@@ -58,7 +58,7 @@ saves. Contract: [CUT317](CUT317_EXPEDITIONS.md) (§3h shipped). AGENTS.md has t
   also announce milestones"):
   - An absence counts at most a week (`offline::ABSENCE_CAP_S`, wire `Lineage.absence_cap_s`; AGENTS.md amended).
   - Absences of 10 min or more get a loader (`ui/catchup.ts`) over the locked page. It shows how long he was away
-    ("· a week counts" when capped), the progress of the time played, the porter's running banked total, and
+    ("· capped at 7d" when capped), the progress of the time played, the porter's running banked total, and
     the crier's milestones as they happen (records, bosses, deaths, the bottom).
   - A 9-day absence plays exactly a week: ~30 s in headless WASM, 50 runs.
 - **GitHub Pages retired:** disabled on the repository. The homepage link and the README point at the dev site;
