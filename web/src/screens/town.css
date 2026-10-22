@@ -1,0 +1,86 @@
+/* Owner 2026-10-22: the town's next-build marker and its townsfolk targets (ui/town.ts). */
+@layer screens {
+  /* the task list's next build: a small hammer bobbing over its target; still at reduced motion or effects low, gone at off */
+  .town-next-build {
+    position: absolute;
+    /* (the tag's layer, under the task tracker and the pill that follow it) */
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -100%);
+    pointer-events: none;
+    border-radius: 50%;
+    background: var(--k-scrim);
+    box-shadow:
+      0 0 0 1px var(--k-gilt),
+      0 0 8px color-mix(in srgb, var(--k-gold) 45%, transparent);
+    color: var(--k-gold);
+    font-size: var(--k-fs-1);
+    line-height: 1;
+  }
+  .town-next-build[hidden],
+  .town-next-build[data-fx="off"] {
+    display: none;
+  }
+  .town-next-build .ico {
+    width: 16px;
+    height: 16px;
+  }
+  .town-next-build::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    border: 4px solid transparent;
+    border-top-color: var(--k-gilt);
+    border-bottom: 0;
+    transform: translateX(-50%);
+  }
+  .town-next-build[data-fx="full"] {
+    animation: town-next-build-bob 1.8s ease-in-out infinite;
+  }
+  @keyframes town-next-build-bob {
+    0%,
+    100% {
+      transform: translate(-50%, -100%);
+    }
+    50% {
+      transform: translate(-50%, calc(-100% - 5px));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .town-next-build[data-fx="full"] {
+      animation: none;
+    }
+  }
+
+  /* a hired worker at his post: an oval target over his sprite; his own outline is the cue where the view draws it */
+  .town-folk {
+    position: absolute;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .town-folk:not(.glow-sprite):hover,
+  .town-folk:not(.glow-sprite).kw-open {
+    border-color: color-mix(in srgb, var(--k-gold) 55%, transparent);
+    background: color-mix(in srgb, var(--k-gold) 10%, transparent);
+  }
+  .town-folk:focus-visible {
+    outline: 2px solid var(--k-focus);
+    outline-offset: 2px;
+  }
+  .town-folk.glow-sprite:focus-visible {
+    outline: none;
+  }
+  .town-folk-aside {
+    color: var(--k-muted);
+    font-style: italic;
+  }
+}
