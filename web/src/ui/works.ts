@@ -45,6 +45,67 @@ const BLURB: Record<string, string> = {
   kennel_keeper: "breeds · frees spare pets",
 };
 export const blurb = (id: string): string => BLURB[id] ?? "";
+/** Owner 2026-10-22 ("Hires a receptionist (who just wants a peaceful life)"): each worker's character, a wry aside for the build
+ *  tip and the townsfolk tip. Flavour only, the client's own words; the role and name stay the wire's. */
+/* copy:tooltip */
+const ASIDE: Record<string, string> = {
+  quartermaster: "who counts every bandage twice",
+  porter: "who never asks what is in the sack",
+  scout: "who just wants a peaceful life",
+  apprentice: "who has strong opinions about anvils",
+  clerk: "who smiles only at compound interest",
+  drillmaster: "who has never once whispered",
+  kennel_hand: "who prefers the pets to people",
+  herald: "who reads every notice aloud",
+  guide: "who swears he knows a shortcut",
+  kennel_keeper: "who names every pup after a snack",
+};
+/** Owner 2026-10-22 ("Runs will proceed automatically"): what a worker's arrival automates, in plain words */
+/* copy:tooltip */
+const AUTOMATES: Record<string, string> = {
+  quartermaster: "Packs are stocked before every run",
+  porter: "Hauls come home on their own",
+  scout: "Runs will proceed automatically",
+  apprentice: "Forge upgrades are bought automatically",
+  clerk: "Spare gold is banked automatically",
+  drillmaster: "Stances level up automatically",
+  kennel_hand: "The best pets join runs automatically",
+  herald: "Stale quests are swapped automatically",
+  guide: "Runs start deeper automatically",
+  kennel_keeper: "Pets are bred automatically",
+};
+export const workerAside = (id: string): string => ASIDE[id] ?? "";
+export const workerAutomates = (id: string): string => AUTOMATES[id] ?? "";
+/** `Arina the receptionist`, or `a receptionist` before her arrival (the wire names her once she comes) */
+export const workerWho = (n: Pick<WorkNode, "name" | "person">): string =>
+  n.person
+    ? /* copy:tooltip */ `${n.person} the ${n.name}`
+    : `${/^[aeiou]/i.test(n.name) ? /* copy:none */ "an" : /* copy:none */ "a"} ${n.name}`;
+/** the worker with the aside: `a receptionist (who just wants a peaceful life)` */
+export const workerWithAside = (n: Pick<WorkNode, "id" | "name" | "person">): string => {
+  const aside = ASIDE[n.id];
+  return aside ? `${workerWho(n)} (${aside})` : workerWho(n);
+};
+/** Owner 2026-10-22: a workplace build's tip — `Build Guildhouse` · `Hires a receptionist (…)` · `Runs will proceed automatically`,
+ *  then its price. Names, roles, workplace and price are the wire's (`WorkNode`). */
+export function buildTip(n: WorkNode): Node[] {
+  const verb = buildVerb(n);
+  const what = workerAutomates(n.id);
+  return [
+    h(
+      "div",
+      { class: "kw-tip-head" },
+      h("b", null, `${verb[0]!.toUpperCase()}${verb.slice(1)} ${buildLabel(n)}`),
+    ),
+    h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ `Hires ${workerWithAside(n)}`),
+    what ? h("div", { class: "kw-tip-gloss" }, what) : null,
+    h(
+      "div",
+      { class: "building-help-state num" },
+      n.price ? `$${n.price}` : /* copy:tooltip */ "Free",
+    ),
+  ].filter((x): x is HTMLDivElement => !!x);
+}
 /** week 2: a worker's rank as a numeral (`II`); none at rank 1 */
 export const rankNum = (r?: number): string =>
   r && r > 1 ? (["", "I", "II", "III", "IV", "V"][r] ?? String(r)) : "";

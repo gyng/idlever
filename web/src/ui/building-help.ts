@@ -1,5 +1,6 @@
 import type { Lineage } from "../engine/types";
 import { h } from "./dom";
+import { workerWithAside } from "./works";
 
 /** Purpose belongs to the building; availability is always read from Rust's town wire. */
 export const HOME_BUILDINGS = /* copy:none */ ["house", "blacksmith", "kennel", "bank"] as const;
@@ -41,9 +42,25 @@ export function buildingDetails(L: Lineage, id: HomeBuilding): Node[] {
       ? /* copy:tooltip */ "Ready to build · Free"
       : /* copy:tooltip */ "Locked";
   const requirement = !standing && next ? town?.next_trigger : undefined;
+  // Owner 2026-10-22: an unbuilt building's tip reads `Build Forge` · its purpose · who it later houses (`Later hires an apprentice (…)`);
+  // the staff and their roles are the wire's (`Town.workplaces`, `Works.nodes`)
+  const staffId = standing ? undefined : town?.workplaces?.find((w) => w.id === id)?.staff?.[0];
+  const staff = staffId ? L.tree?.nodes.find((n) => n.id === staffId) : undefined;
+  const later = standing
+    ? null
+    : staff
+      ? /* copy:tooltip */ `Later hires ${workerWithAside(staff)}`
+      : id === "house"
+        ? /* copy:tooltip */ "A resident moves in"
+        : null;
   return [
-    h("div", { class: "kw-tip-head" }, h("b", null, PURPOSE[id].name)),
+    h(
+      "div",
+      { class: "kw-tip-head" },
+      h("b", null, standing ? PURPOSE[id].name : /* copy:tooltip */ `Build ${PURPOSE[id].name}`),
+    ),
     h("div", { class: "kw-tip-gloss" }, PURPOSE[id].purpose),
+    later ? h("div", { class: "kw-tip-gloss" }, later) : null,
     h(
       "div",
       { class: "building-help-state num" },
@@ -61,14 +78,7 @@ export function buildingDetails(L: Lineage, id: HomeBuilding): Node[] {
           /* copy:callout */ `Forging ${town.forge_work.step}`,
         )
       : null,
-    h(
-      "div",
-      { class: "kw-tip-gloss" },
-      standing
-        ? PURPOSE[id].action
-        : next && town?.next_ready
-          ? /* copy:tooltip */ "Construct with Build · opening help spends nothing"
-          : /* copy:tooltip */ "Meet the requirement to unlock construction",
-    ),
+    // (an unbuilt plot's status and requirement say what raises it; its old how-to line would be a fourth gloss)
+    standing ? h("div", { class: "kw-tip-gloss" }, PURPOSE[id].action) : null,
   ].filter((n): n is HTMLDivElement => !!n);
 }

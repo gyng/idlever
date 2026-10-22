@@ -7,6 +7,8 @@ import { heroPresence, heroAway } from "./hero-presence";
 // details and a normal tap opens the existing panel. Purchases remain inside it.
 import "../town.css";
 import "../legible.css";
+import "../screens/town.css";
+import { taskSurface } from "./tasks";
 import type { App } from "../app";
 import type { HeroService, HeroSlot, Lineage, ReturnReport } from "../engine/types";
 import {
@@ -31,8 +33,11 @@ import { bindWheelZoom } from "../render/zoom";
 import { createGoldTransferFx, goldTransfers, visibleGoldPoint } from "./gold-transfers";
 import { questShown } from "./quest";
 import {
+  blurb,
   buildLabel,
   buildNode,
+  buildTip,
+  workerAside,
   featText,
   nextPill,
   nodeIcon,
@@ -333,12 +338,40 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const crier = townCrier(app);
   // Cut 118 (owner amendment §4): the graveyard at the scene's foot, left — a stone per fallen heir (the newest few), epitaphs on hover
   const yard = townGraveyard(app);
+  // Owner 2026-10-22 ("if the building is next in the quest list, add a bobbing build indicator over it"): the task tracker's next
+  // build (its first shown entry that builds or hires, the recommended first), as a small hammer bobbing over its target
+  const nextBuild = h(
+    "span",
+    { class: "town-next-build", hidden: true, "aria-hidden": "true" },
+    icon("forge", "⚒"),
+  );
+  let nextBuildAt: string | null = null;
+  const nextBuildSurface = (): string | null => {
+    const J = app.lineage.journal;
+    if (!J) return null;
+    const builds = (k?: string): boolean =>
+      k === "build_town" || k === "build_workplace" || k === "hire";
+    // (as the tracker shows them: per chapter, its first open entry, the recommended first)
+    const shown = J.chapters.flatMap((c) =>
+      c.entries
+        .filter((e) => e.state === "active" || e.state === "ready")
+        .sort((a, b) => Number(b.id === J.recommended) - Number(a.id === J.recommended))
+        .slice(0, 1),
+    );
+    const e =
+      shown.find((x) => x.id === J.recommended && builds(x.action?.kind)) ??
+      shown.find((x) => builds(x.action?.kind));
+    return e ? taskSurface(app, e) : null;
+  };
+  // the hired workers' targets (townsfolk), by worker id
+  const folk = new Map<string, HTMLElement>();
   el.append(
     hits,
     actorHits,
     delveFaces,
     foundation,
     tag,
+    nextBuild,
     arrival,
     cloneCallout,
     pill.el,
@@ -352,7 +385,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const n = t as HTMLElement | null;
     if (!n || !el.contains(n)) return false;
     if (n === el || (n.tagName === "CANVAS" && n.parentElement === el)) return true;
-    return !!n.closest?.(".town-hit, [data-home-hero]");
+    return !!n.closest?.(".town-hit, .town-folk, [data-home-hero]");
   };
   const offWheel = bindWheelZoom(el, {
     accept: (e) => sceneTarget(e.target),
@@ -602,7 +635,13 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         const fitting = forgeFitting(app.lineage, current);
         return current
           ? [
-              h("div", { class: "kw-tip-head" }, current.hero_name || current.name),
+              // owner 2026-10-22 (townsfolk tips): the name and the role, his class
+              h(
+                "div",
+                { class: "kw-tip-head" },
+                h("b", null, current.hero_name || current.name),
+                current.class ? ` · ${current.class}` : null,
+              ),
               h("div", { class: "kw-tip-gloss" }, heroPresence(current).text),
               fitting
                 ? h(
@@ -884,8 +923,13 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         b.setAttribute("aria-label", `${label} · ${actionNames}`);
         b.title = `${label} · ${actionNames}`;
       }
+      // Owner 2026-10-22: the build's tip — `Build Guildhouse` · `Hires a receptionist (…)` · what it automates · the price
       if (w.id === "worker")
-        detailHost(b, () => [h("strong", null, b.getAttribute("aria-label") ?? label)]);
+        detailHost(b, () => {
+          const id = state?.workers.find((x) => x.lit)?.id;
+          const node = id ? app.lineage.tree?.nodes.find((n) => n.id === id) : undefined;
+          return node ? buildTip(node) : [h("strong", null, b.getAttribute("aria-label") ?? label)];
+        });
       b.dataset.worker = lit?.id ?? "";
       const holder =
         b.querySelector(".town-markers") ?? b.appendChild(h("span", { class: "town-markers" }));
@@ -1002,6 +1046,9 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       tag.dataset.next = s.staked.id;
     } else tag.hidden = true;
     tag.classList.toggle("build-marker", s.staked?.ready === true);
+    paintFolk(s);
+    nextBuildAt = nextBuildSurface();
+    nextBuild.dataset.at = nextBuildAt ?? "";
     // Cut272: what can act now shimmers on its own sprite (the eave lantern stays the second cue)
     view.setReady(
       [...btns.entries()].filter(([, b]) => b.dataset.ready === "true").map(([id]) => rid(id)),
@@ -1074,6 +1121,105 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     }
     foundation.hidden = state?.staked?.ready !== true;
     foundation.dataset.fx = effectsLevel();
+    layoutFolk();
+    placeNextBuild();
+  }
+  /** Owner 2026-10-22: the bobbing build marker rides above the next build's target (above its tag on the staked plot) */
+  function placeNextBuild(): void {
+    const b = nextBuildAt ? btns.get(nextBuildAt) : undefined;
+    if (!b || b.hidden || !el.clientWidth) {
+      nextBuild.hidden = true;
+      return;
+    }
+    const left = Number.parseFloat(b.style.left),
+      bTop = Number.parseFloat(b.style.top);
+    let top = bTop;
+    if (nextBuildAt === "staked" && !tag.hidden && tag.offsetHeight) {
+      const tagTop = Number.parseFloat(tag.style.top) - tag.offsetHeight;
+      if (tagTop < top) top = tagTop;
+    }
+    const half = 12;
+    const cx = Math.max(half + 4, Math.min(el.clientWidth - half - 4, left + b.offsetWidth / 2));
+    nextBuild.hidden = false;
+    nextBuild.dataset.fx = effectsLevel();
+    Object.assign(nextBuild.style, {
+      left: `${Math.round(cx)}px`,
+      top: `${Math.round(Math.max(half * 2 + 4, top - 4))}px`,
+    });
+  }
+  /** Owner 2026-10-22 ("hover and select townsfolk"): the hired workers at their posts, each a target over his own sprite */
+  function paintFolk(s: TownState): void {
+    const hired = s.home ? s.workers.filter((w) => !w.lit) : [];
+    for (const [id, b] of folk)
+      if (!hired.some((w) => w.id === id)) {
+        view.highlight(`worker:${id}`, "hover", false);
+        view.highlight(`worker:${id}`, "focus", false);
+        b.remove();
+        folk.delete(id);
+      }
+    for (const w of hired) {
+      const node = app.lineage.tree?.nodes.find((n) => n.id === w.id);
+      const name = node ? workerTitle(node) : w.id;
+      let b = folk.get(w.id);
+      if (!b) {
+        const id = w.id;
+        const btn = h("button", {
+          class: "town-folk",
+          "data-folk": id,
+          hidden: true,
+          onclick: () => {
+            closeTip();
+            openWorks(app, id, btn);
+          },
+        });
+        btn.addEventListener("pointerenter", () => view.highlight(`worker:${id}`, "hover", true));
+        btn.addEventListener("pointerleave", () => view.highlight(`worker:${id}`, "hover", false));
+        btn.addEventListener("focus", () => {
+          if (btn.matches(":focus-visible")) view.highlight(`worker:${id}`, "focus", true);
+        });
+        btn.addEventListener("blur", () => view.highlight(`worker:${id}`, "focus", false));
+        detailHost(btn, () => folkDetails(id));
+        btn.append(h("span", { class: "vh" }, name));
+        folk.set(id, btn);
+        actorHits.append(btn);
+        b = btn;
+      }
+      b.setAttribute("aria-label", name);
+      b.querySelector(".vh")!.textContent = name;
+      b.dataset.paused = w.paused ? "true" : "false";
+    }
+  }
+  /** a worker's tip: `Arina · receptionist`, her aside, what she does now (`books his delves`, or off duty) */
+  function folkDetails(id: string): Node[] {
+    const node = app.lineage.tree?.nodes.find((n) => n.id === id);
+    if (!node) return [];
+    const aside = workerAside(id);
+    const now = node.paused ? /* copy:tooltip */ "Off duty" : blurb(id);
+    return [
+      h("div", { class: "kw-tip-head" }, h("b", null, workerTitle(node))),
+      aside ? h("div", { class: "kw-tip-gloss town-folk-aside" }, `(${aside})`) : null,
+      now ? h("div", { class: "kw-tip-gloss" }, now) : null,
+    ].filter((n): n is HTMLDivElement => !!n);
+  }
+  function layoutFolk(): void {
+    for (const [id, b] of folk) {
+      const r = view.rectOf(`worker:${id}`);
+      if (!r || !el.isConnected || !el.clientWidth) {
+        b.hidden = true;
+        continue;
+      }
+      // ≥ 36 × 44 px over the sprite (a worker stands before his building: the target keeps clear of most of its body)
+      const w = Math.max(36, r.w),
+        hh = Math.max(44, r.h);
+      b.hidden = false;
+      b.classList.toggle("glow-sprite", view.glowsSprite(`worker:${id}`));
+      Object.assign(b.style, {
+        left: `${Math.round(r.x + r.w / 2 - w / 2)}px`,
+        top: `${Math.round(r.y + r.h - hh)}px`,
+        width: `${Math.round(w)}px`,
+        height: `${Math.round(hh)}px`,
+      });
+    }
   }
   view.onLayout(() => {
     layout();
