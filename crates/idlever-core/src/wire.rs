@@ -2638,6 +2638,9 @@ pub struct Lineage {
     /// Cut317 §3.8: the town crier's lines, newest last.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub cries: Vec<CryLine>,
+    /// The longest absence that counts (`offline::ABSENCE_CAP_S`, a week): the client's catch-up stops there.
+    #[serde(default)]
+    pub absence_cap_s: u64,
     /// Cut 6 §5: bosses whose counter row is known, with the row and its ≤ 3-word text.
     #[serde(default)]
     pub counters: Vec<Counter>,

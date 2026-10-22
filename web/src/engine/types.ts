@@ -1839,6 +1839,7 @@ export type Lineage = {
   gold_ledger?: GoldLine[]; // Rust's bounded movement history, oldest first (`GOLD_LEDGER_CAP`)
   expedition?: Expedition; // Cut317: present when expeditions are on
   cries?: CryLine[]; // Cut317 §3.8: the town crier's lines, newest last
+  absence_cap_s?: number; // owner 2026-10-22: the longest absence that counts (a week); the catch-up stops there
   gold_rate?: GoldRate; // queue 40: the purse's growth on the town clock (Rust `rates`); absent under 5 min of history
   counters?: Counter[]; // Cut 6 §5: bosses whose counter row is known
   combos?: ComboHit[]; // Cut 8B §1: the active set's combos, in row order (recomputed on setRules)

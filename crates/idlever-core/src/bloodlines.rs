@@ -293,6 +293,7 @@ impl Session {
         }).collect()
     }
     pub fn run_offline_mode(&mut self,seconds:u64,full:bool,last:bool)->ReturnReport {
+        let seconds=seconds.min(crate::offline::ABSENCE_CAP_S); // owner 2026-10-22: an absence counts at most a week
         if self.others.is_empty(){return if full {self.active.run_offline(seconds)}else if last{crate::offline::run_offline_quick(&mut self.active,seconds)}else{crate::offline::run_offline_counts(&mut self.active,seconds)};}
         self.run_offline_multi(seconds,full,true,last)
     }

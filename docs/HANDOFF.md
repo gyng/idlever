@@ -46,9 +46,24 @@ saves. Contract: [CUT317](CUT317_EXPEDITIONS.md) (§3h shipped). AGENTS.md has t
       later with the same WASM.
     - `king-advice-scope`, `death-fix-discovery`: replay deaths from pre-Cut317 saves. Under "fresh start" they
       need new fixtures.
+    - Beyond the routine subset:
+      - `boss-kill-beat` (full suite) replays the old first-clear save to the Foundry Master and expects a classic
+        run. He is on floor 69 now, so it needs a new scenario.
+      - `runclear` (exhaustive-only) reads `lineage.vault`, which an earlier cut retired. It is stale and not a
+        Cut317 failure.
   - **`gold-settlements`:** re-pinned to `docs/evidence/cut317/settlements-inputs-0fa2.json`. 3/4 entries replay
     unchanged; `bank-positive` pays $13 181 against the pinned $11 621. An old save's record converts to a
     smaller forge unit, so the fixture is pending regeneration.
+- **Return after idle** (owner, same day: "cap to one week and have a catch up loader screen · show progress and
+  also announce milestones"):
+  - An absence counts at most a week (`offline::ABSENCE_CAP_S`, wire `Lineage.absence_cap_s`; AGENTS.md amended).
+  - Absences of 10 min or more get a loader (`ui/catchup.ts`) over the locked page. It shows how long he was away
+    ("· a week counts" when capped), the progress of the time played, the porter's running banked total, and
+    the crier's milestones as they happen (records, bosses, deaths, the bottom).
+  - A 9-day absence plays exactly a week: ~30 s in headless WASM, 50 runs.
+- **GitHub Pages retired:** disabled on the repository. The homepage link and the README point at the dev site;
+  `pages.yml` only checks the build.
+- **Crier:** records are cried only on boss floors and every 10th floor.
 - **Not run:** `gates.mjs --full` and `--exhaustive` on the shipping defaults; a fun-eval playtest.
 - **Open:**
   - new fixtures for the three old-save groups

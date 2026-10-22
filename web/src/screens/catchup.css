@@ -1,0 +1,97 @@
+/* Owner 2026-10-22: the catch-up loader — a framed slab over the locked page while the absence plays (ui/catchup.ts). */
+@layer screens {
+  .catchup {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: var(--k-4);
+    background: color-mix(in srgb, var(--k-bg) 82%, transparent);
+  }
+  .catchup-panel {
+    width: min(100%, 30rem);
+    display: grid;
+    gap: var(--k-2);
+    padding: var(--k-4);
+    background: var(--k-surface);
+    border: 1px solid var(--k-edge);
+    box-shadow:
+      0 0 0 1px var(--k-ink),
+      inset 0 1px var(--k-moon);
+  }
+  .catchup-title {
+    margin: 0;
+    color: var(--k-gold);
+    font: 600 var(--k-fs-5) / 1.1 var(--k-display);
+  }
+  .catchup-away {
+    margin: 0;
+    color: var(--k-text);
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+  }
+  .catchup-cap {
+    color: var(--k-muted);
+    font-size: var(--k-fs-1);
+  }
+  .catchup-bar {
+    height: var(--k-2);
+    background: var(--k-inset);
+    border: 1px solid var(--k-edge);
+    overflow: hidden;
+  }
+  .catchup-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--k-gilt);
+    transition: width 0.2s linear;
+  }
+  .catchup-bank {
+    color: var(--k-gold);
+    font: 600 var(--k-fs-2) / 1.2 var(--k-body);
+  }
+  .catchup-done {
+    color: var(--k-muted);
+    font-size: var(--k-fs-1);
+  }
+  .catchup-cries {
+    display: grid;
+    gap: var(--k-1);
+    margin: var(--k-1) 0 0;
+    padding: 0;
+    list-style: none;
+    min-height: 6rem;
+  }
+  .catchup-cry {
+    padding: var(--k-1) var(--k-2);
+    background: var(--k-umbra);
+    border-left: 3px solid var(--k-edge);
+    color: var(--k-text);
+    font: 500 var(--k-fs-2) / 1.2 var(--k-body);
+    animation: catchup-in 0.3s ease-out;
+  }
+  .catchup-cry.k-boss,
+  .catchup-cry.k-record,
+  .catchup-cry.k-bottom {
+    border-left-color: var(--k-gilt);
+    color: var(--k-gold);
+  }
+  .catchup-cry.k-death {
+    border-left-color: var(--k-danger);
+  }
+  @keyframes catchup-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .catchup-cry {
+      animation: none;
+    }
+    .catchup-fill {
+      transition: none;
+    }
+  }
+}

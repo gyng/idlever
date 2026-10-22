@@ -2572,6 +2572,7 @@ impl LineageState {
             gold_rate: crate::rates::wire(self),
             expedition: None,
             cries: self.cries.clone(),
+            absence_cap_s: crate::offline::ABSENCE_CAP_S,
             counters: self.counters(),
             combos: self.rules().combos(),
             picked: self.picked_clean(),

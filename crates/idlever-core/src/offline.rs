@@ -127,8 +127,13 @@ pub fn rest_after(turns: u32, tier: ExitTier) -> u32 {
 }
 
 fn run_offline_with(game: &mut Game, elapsed_s: u64, full: bool, with_stall: bool) -> ReturnReport {
-    run_offline_partition(game, elapsed_s, full, with_stall, true, false)
+    run_offline_partition(game, elapsed_s.min(ABSENCE_CAP_S), full, with_stall, true, false)
 }
+
+/// Owner 2026-10-22 ("cap to one week and have a catch up loader screen"): an absence counts at most a week. Whole
+/// absences clamp here and in `Session::run_offline_mode`; the client's sliced catch-up reads it from the wire
+/// (`Lineage.absence_cap_s`) and stops there.
+pub const ABSENCE_CAP_S: u64 = 7 * 24 * 3600;
 
 fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall: bool, last: bool, transport: bool) -> ReturnReport {
     let mut absence = game.offline_absence.take().unwrap_or_else(|| begin_absence(game));

@@ -154,3 +154,14 @@ fn the_classic_dungeon_cries_nothing() {
     }
     assert!(g.lineage.cries.is_empty(), "the crier's feed is an expedition's");
 }
+
+#[test]
+fn an_absence_counts_at_most_a_week() {
+    let mut a = Session::load(GUNNER).unwrap();
+    let mut b = Session::load(GUNNER).unwrap();
+    let ra = a.run_offline_mode(9 * 24 * 3600, false, true);
+    b.run_offline_mode(crate::offline::ABSENCE_CAP_S, false, true);
+    assert_eq!(ra.elapsed_s, crate::offline::ABSENCE_CAP_S, "owner 2026-10-22: a week counts at most");
+    assert_eq!(a.save(), b.save(), "nine days away plays exactly as a week");
+    assert_eq!(a.active.lineage().absence_cap_s, crate::offline::ABSENCE_CAP_S, "the client reads the cap");
+}

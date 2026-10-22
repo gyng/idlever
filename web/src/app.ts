@@ -42,6 +42,7 @@ import { renderEnding } from "./ui/ending";
 import { closeAllSheets, onEscapeIdle } from "./ui/sheet";
 import { lastRun, type RunLog } from "./ui/runlog";
 import { showBusy } from "./ui/progress";
+import { openCatchup } from "./ui/catchup";
 import { toast } from "./ui/dom";
 import { audio } from "./audio";
 import { debugNote } from "./debug";
@@ -103,6 +104,10 @@ const SAVE_DEBOUNCE_MS = 1000;
 const OFFLINE_SLICE_S = 30 * 60,
   OFFLINE_SLICE_MAX_S = 2 * 3600,
   OFFLINE_SLICES = 6;
+/** Owner 2026-10-22: an absence counts at most a week (`Lineage.absence_cap_s`, the core's; this only for an older wire). */
+const CATCHUP_CAP_S = 7 * 24 * 3600;
+/** The catch-up loader stands over absences this long (a shorter one keeps the plain bar). */
+const CATCHUP_LOADER_S = 10 * 60;
 /** Cut 28 §2: the quiet the camp keeps before the move's attribution is asked. */
 const MOVE_QUIET_MS = 1500;
 /** Cut 20 §3: an edit's forecast waits this long for the next edit (was 250 ms; the first paint is due ≤ 1 s after the edit). */
@@ -958,10 +963,17 @@ export class App {
   async runOfflineChunked(elapsedS: number): Promise<ReturnReport> {
     if (!Number.isSafeInteger(elapsedS) || elapsedS < 0)
       throw new RangeError("invalid offline elapsed seconds");
+    // owner 2026-10-22: an absence counts at most a week (the core's `ABSENCE_CAP_S`); the catch-up loader shows its progress
+    // and the crier's lines as the slices play
+    const awayS = elapsedS;
+    elapsedS = Math.min(elapsedS, this.lineage.absence_cap_s || CATCHUP_CAP_S);
     this.offlineRunning = true;
     this.offlineIncomplete = true;
     this.root.inert = true;
     const b = showBusy(/* copy:label */ "offline");
+    const loader = elapsedS >= CATCHUP_LOADER_S ? openCatchup(elapsedS, awayS) : null;
+    const criedFrom = Math.max(0, ...(this.lineage.cries ?? []).map((c) => c.t));
+    loader?.progress(0);
     let merged: ReturnReport | null = null;
     let quick = true,
       sliced = true,
@@ -1000,6 +1012,14 @@ export class App {
           }
         } else r = await this.engine.runOffline(Math.min(left, slice));
         callsCompleted++;
+        if (loader) {
+          loader.progress(elapsedS - Math.max(0, left - slice));
+          // the crier's new lines, every other slice (a lineage read costs a few ms)
+          if (callsCompleted % 2 === 0 || left <= slice) {
+            const L = await this.engine.lineage();
+            loader.cries((L.cries ?? []).filter((c) => c.t > criedFrom));
+          }
+        }
         // Current cores settle one report at the real boundary. Older cores
         // still return additive per-slice reports and retain their merge path.
         if (r.slice_pending) continue;
@@ -1017,6 +1037,7 @@ export class App {
       if (worst && !merged!.worst_death) merged!.worst_death_id = worst.id;
     } finally {
       b.done();
+      loader?.close();
       this.root.inert = false;
       this.offlineRunning = false;
     }

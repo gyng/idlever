@@ -212,7 +212,8 @@ New towns and unbuilt legacy plots require manual construction.
 - Art never blocks the game: every sprite id has a primitive fallback.
 - Copy: callout ≤ 3 words, verdict 1 word, no sentences in chrome (`eval/copy-budgets.json`,
   `tools/copy-lint.mjs`). No tutorial text.
-- Offline is uncapped after the scout; before then an absence finishes at most the run in flight.
+- Offline is uncapped after the scout (owner amendment 2026-10-22: up to one week — `offline::ABSENCE_CAP_S`; a longer
+  absence counts a week, and the catch-up loader says so); before then an absence finishes at most the run in flight.
   Nothing punishes absence; chest gold does not decay and funds restocking. IDLE taps only until
   the scout is hired, then makes no picks or edits; its early delta from Cut 30 is bounded.
   Uncapped progress respects time away: a cap would require frequent check-ins to avoid
