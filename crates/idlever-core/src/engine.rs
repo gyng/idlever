@@ -3733,8 +3733,7 @@ impl Game {
                 stretch: e.stretch.max(1),
                 // (the first camp of a dive comes at half the spacing, `turn::enter_camp`)
                 next_camp_s: run.filter(|r| r.expedition).map(|r| {
-                    let every = if r.camps == 0 { e.camp_every_ticks / 2 } else { e.camp_every_ticks };
-                    every.saturating_sub(r.turn.saturating_sub(r.camp_at)) / crate::offline::TICKS_PER_SECOND as u32
+                    crate::turn::camp_every(r).saturating_sub(r.turn.saturating_sub(r.camp_at)) / crate::offline::TICKS_PER_SECOND as u32
                 }),
             }
         });
@@ -5377,6 +5376,7 @@ impl Game {
         Snapshot {
             camp: run.in_camp,
             expedition: run.expedition,
+            camp_in: crate::turn::camp_in(run),
             swift: run.depth < boss_floor(crate::feats::swift_to(l, run.route)),
             depth: run.depth,
             difficulty: run.difficulty,

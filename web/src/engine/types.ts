@@ -113,6 +113,7 @@ export type ManualAct =
 export type Snapshot = {
   camp?: boolean; // Cut317 (core): this floor is a camp — the safe room between two floors
   expedition?: boolean; // Cut317: this run is an expedition (watched live at 1×)
+  camp_in?: number; // live view (core): run ticks until the next camp is due at this snapshot's tick (0 = the next stairs); absent at a camp, after the end, on a classic run
   swift?: boolean; // Cut 118 §5 (core): this floor is swift (its band boss cleared 3×) — the watch plays it as one beat
   difficulty?: number;
   modifier_catalogue?: ModifierInfo[];

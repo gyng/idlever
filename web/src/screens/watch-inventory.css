@@ -1,0 +1,136 @@
+/* The live pack (ui/watch-inventory.ts): a quiet text list. Desktop: in the right rail under the shaft; phone: a closed
+   strip under the map whose head still reads his intent, the gold at risk and the next camp. Tokens only (ui-kit/tokens.css). */
+.watch .watch-inv {
+  margin: var(--k-2) var(--k-3) 0;
+  border: 1px solid var(--k-edge);
+  border-radius: 4px;
+  background: var(--k-inset);
+  color: var(--k-text);
+  font-family: var(--k-body);
+  font-size: var(--k-fs-1);
+  line-height: 1.35;
+}
+.watch .watch-inv.wide {
+  margin: 0;
+  flex: none;
+}
+.watch .watch-inv > summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--k-2);
+  min-height: 32px;
+  padding: var(--k-1) var(--k-3);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.watch .watch-inv .wi-title {
+  color: var(--k-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.watch .watch-inv .wi-intent {
+  color: var(--k-muted);
+}
+.watch .watch-inv[data-intent="fight"] .wi-intent {
+  color: var(--k-danger);
+}
+.watch .watch-inv[data-intent="camp"] .wi-intent {
+  color: var(--k-good);
+}
+.watch .watch-inv[data-intent="home"] .wi-intent {
+  color: var(--k-gold);
+}
+.watch .watch-inv .wi-sum {
+  margin-left: auto;
+  display: flex;
+  gap: var(--k-2);
+  color: var(--k-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.watch .watch-inv .wi-sum-risk {
+  color: var(--k-gold);
+}
+/* open, the purse rows carry the numbers: the head keeps only the intent */
+.watch .watch-inv[open] .wi-sum {
+  display: none;
+}
+.watch .watch-inv ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.watch .watch-inv li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--k-2);
+  min-height: 22px;
+  padding: 0 var(--k-3);
+  cursor: default;
+}
+.watch .watch-inv li:hover,
+.watch .watch-inv li:focus-visible {
+  background: var(--k-raised-lo);
+}
+.watch .watch-inv .wi-k {
+  display: flex;
+  align-items: center;
+  gap: var(--k-1);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.watch .watch-inv .wi-k .item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.watch .watch-inv .wi-v {
+  color: var(--k-muted);
+  text-align: right;
+}
+.watch .watch-inv .wi-n {
+  color: var(--k-muted);
+}
+.watch .watch-inv .wi-purse {
+  padding-bottom: var(--k-1);
+  border-bottom: 1px solid var(--k-edge);
+}
+.watch .watch-inv .wi-risk .wi-v {
+  color: var(--k-gold);
+}
+.watch .watch-inv .wi-kept .wi-v {
+  color: var(--k-good);
+}
+.watch .watch-inv .wi-found .wi-v {
+  color: var(--k-gold);
+}
+.watch .watch-inv .wi-list {
+  max-height: 14rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  padding-bottom: var(--k-1);
+}
+/* a phone keeps the map: the open strip scrolls inside a short well (the milestone fold's rule: opening it moves little) */
+.watch .watch-inv:not(.wide) .wi-list {
+  max-height: 5.5rem;
+}
+.watch .watch-inv:not(.wide) .wi-purse {
+  display: flex;
+  flex-wrap: wrap;
+}
+.watch .watch-inv:not(.wide) .wi-purse li {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: space-between;
+}
+.watch .watch-inv .wi-sec-h {
+  margin: var(--k-1) var(--k-3) 0;
+  color: var(--k-muted);
+  font-size: var(--k-fs-1);
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
