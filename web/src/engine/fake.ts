@@ -4316,7 +4316,8 @@ export class FakeEngine implements Engine {
     for (let i = 0; i < turns && !this.live.over; i++) {
       events.push(...simTurn(this.live, ctx));
       this.s.totalTurns += 10;
-      // Cut 270 (`?decide=1` only): a boss decision at turn 3, a chest at 5, a cache pick at 8 — once each a run
+      // Cut 270 (`?decide=1` only): a hurt record at turn 3 and a chest at 5 — once each a run (owner 2026-10-22: the boss and
+      // cache decisions are gone; the hero fights and takes his pick himself)
       if (FAKE_DECIDE && this.liveOn && !this.live.over) {
         const r = this.live,
           seen = (this.decidedIn[r.id] ??= []);
@@ -4340,45 +4341,16 @@ export class FakeEngine implements Engine {
           seen.push(d.kind);
           this.pendingDecision = d;
         };
-        if (r.turn >= 3 && !seen.includes("boss"))
+        if (r.turn >= 3 && !seen.includes("hurt"))
           open({
-            id: `${at}-boss`,
-            kind: "boss",
+            id: `${at}-hurt`,
+            kind: "hurt",
             t: at,
             depth: r.depth,
-            title: "Boss ahead",
+            title: "Hurt · record",
             options: [
-              { id: "goblin_warlord", label: "Fight", tone: "go" },
+              { id: "push", label: "Push on", tone: "go" },
               { id: "back", label: "Turn back", tone: "safe" },
-            ],
-            default: 0,
-          });
-        else if (r.turn >= 8 && !seen.includes("cache"))
-          open({
-            id: `${at}-cache`,
-            kind: "cache",
-            t: at,
-            depth: r.depth,
-            title: "Take one",
-            options: [
-              {
-                id: "901",
-                label: "sword +1",
-                tone: "item",
-                item: { id: 901, kind: "sword", label: "sword +1" } as InvItem,
-              },
-              {
-                id: "902",
-                label: "mail +1",
-                tone: "item",
-                item: { id: 902, kind: "mail", label: "mail +1" } as InvItem,
-              },
-              {
-                id: "903",
-                label: "heal",
-                tone: "item",
-                item: { id: 903, kind: "heal", label: "heal" } as InvItem,
-              },
             ],
             default: 0,
           });

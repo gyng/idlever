@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Cut 270 (docs/CUT270_LIVE_DECISIONS.md): the watch's live decisions on the fake engine (`?decide=1`: a boss decision at t30, a
-// chest at t50, a cache pick at t80, each run). The prompt opens on its tick with ≤ 3-word options and the default marked; 5 s of
+// Cut 270 (docs/CUT270_LIVE_DECISIONS.md): the watch's live decisions on the fake engine (`?decide=1`: a hurt record at t30 and a
+// chest at t50, each run; owner 2026-10-22: the boss and cache decisions are gone). The prompt opens on its tick with ≤ 3-word options and the default marked; 5 s of
 // wall time auto-picks it; ⏸ freezes the countdown with the prompt open; keys 1–3 and ≥ 44 px taps choose; turning back ends the run
 // as a return. Each decision, the chest and the run's floors and exit land in the milestone log; flags are rate-limited.
 // Cut 277: a kill that dropped nothing (`&nodrop=1`) shows no chest and logs none.
@@ -56,7 +56,7 @@ const log = (p) => p.evaluate(() => window.__decideLog ?? []);
 try {
   if (part.includes("desk")) {
     const { p, errors } = await open({ width: 1440, height: 900 });
-    await promptOf(p, "boss");
+    await promptOf(p, "hurt");
     const shape = await p.evaluate(() => {
       const d = document.querySelector(".decide");
       return {
@@ -72,7 +72,7 @@ try {
         words(shape.title) <= 3,
       `labels ≤ 3 words (${shape.title}: ${shape.labels.join(" | ")})`,
     );
-    check(shape.auto === "Fight", `the default (today's) is marked auto (${shape.auto})`);
+    check(shape.auto === "Push on", `the default (today's) is marked auto (${shape.auto})`);
     // ⏸ freezes the countdown and keeps the prompt open (a direct click: the gem's actionability wait is not the test)
     const pauseGem = (label) =>
       p.evaluate((l) => document.querySelector(`.console [aria-label='${l}']`).click(), label);
@@ -109,17 +109,23 @@ try {
       picked.pick === 0 && !picked.byHand && watched >= 4600 && watched <= 5800,
       `auto-pick at the deadline: option ${picked.pick}, ${Math.round(watched)} ms watched (excl. 3 s paused)`,
     );
-    // keys: `2` takes the cache's second item
-    await promptOf(p, "cache");
-    await p.keyboard.press("2");
-    await p.waitForFunction(
-      () => (window.__decideLog ?? []).filter((x) => x.pick !== undefined).length >= 2,
-    );
-    const k = (await log(p)).filter((x) => x.pick !== undefined)[1];
-    check(k.pick === 1 && k.byHand, `key 2 picks option 2 by hand (${JSON.stringify(k)})`);
+    // keys: `2` takes the second option, by hand (a fresh run: one decision a run)
+    {
+      const k2 = await open({ width: 1440, height: 900 });
+      await promptOf(k2.p, "hurt");
+      await k2.p.keyboard.press("2");
+      await k2.p.waitForFunction(() =>
+        (window.__decideLog ?? []).some((x) => x.pick !== undefined),
+      );
+      const k = (await log(k2.p)).find((x) => x.pick !== undefined);
+      check(k.pick === 1 && k.byHand, `key 2 picks option 2 by hand (${JSON.stringify(k)})`);
+      const ms2 = await k2.p.evaluate(() => window.__msLog.map((m) => `${m.kind}:${m.text}`));
+      check(ms2.includes("decision:Turn back"), `the hand's pick in the log (${ms2.join(", ")})`);
+      await k2.p.close();
+    }
     const ms = await p.evaluate(() => window.__msLog.map((m) => `${m.kind}:${m.text}`));
     check(
-      ms.includes("decision:auto · Fight") && ms.includes("decision:mail +1"),
+      ms.includes("decision:auto · Push on"),
       `decisions in the milestone log (${ms.filter((m) => m.startsWith("decision")).join(", ")})`,
     );
     check(
@@ -161,7 +167,7 @@ try {
   }
   if (part.includes("phone")) {
     const { p, errors } = await open({ width: 402, height: 681 }, "fast");
-    await promptOf(p, "boss");
+    await promptOf(p, "hurt");
     const sizes = await p.evaluate(() =>
       [...document.querySelectorAll(".decide-opt")].map((x) => {
         const r = x.getBoundingClientRect();
@@ -189,7 +195,7 @@ try {
     await p.close();
     // the log's fold is closed and fixed: filling it (a decision, the chest) moves nothing on the phone
     const q = await open({ width: 402, height: 681 });
-    await promptOf(q.p, "boss");
+    await promptOf(q.p, "hurt");
     const rects = () =>
       q.p.evaluate(() => {
         const r = document.querySelector(".watch .stage").getBoundingClientRect();
@@ -198,7 +204,7 @@ try {
       });
     const before = await rects();
     await q.p.locator(".decide-opt[data-i='0']").tap();
-    await promptOf(q.p, "cache");
+    await q.p.waitForFunction((n) => (window.__msLog?.length ?? 0) > n, before.n);
     const after = await rects();
     check(
       after.n > before.n && after.at.every((v, i) => Math.abs(v - before.at[i]) < 1),
@@ -293,9 +299,11 @@ try {
         if (document.querySelector(".chest-reveal")) window.__chestSeen++;
       }).observe(document.body, { childList: true, subtree: true });
     });
-    // the cache prompt (t80) comes after the empty kill's record (t50)
-    await promptOf(p, "cache");
-    await p.waitForTimeout(1500);
+    // past the empty kill's record (t50): the hurt prompt (t30) auto-picks first
+    await p.waitForFunction(() => +document.querySelector(".watch").dataset.tick >= 60, null, {
+      timeout: 60_000,
+    });
+    await p.waitForTimeout(500);
     const r = await p.evaluate(() => ({
       seen: window.__chestSeen,
       log: (window.__chestLog ?? []).length,

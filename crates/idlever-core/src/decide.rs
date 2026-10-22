@@ -6,7 +6,6 @@
 //! an `advance`, a fold, a sim or a harness: those never open one, and any tick clears one pending.
 //! Also the boss chest (`Chest`): what a band boss's kill tick gave, a side channel of the step.
 use crate::engine::{Game, Run};
-use crate::tiles::Tile;
 use serde::{Deserialize, Serialize};
 
 /// At most this many per run, one per floor.
@@ -139,7 +138,9 @@ pub fn detect(g: &mut Game) -> Option<Decision> {
     if !allowed(g, r) {
         return None;
     }
-    let d = cache(g, r).or_else(|| boss(g, r)).or_else(|| hurt(g, r))?;
+    // owner 2026-10-22 ("make take item automatic ie, remove feature" · "remove boss fight/turn back also"): the cache and the boss
+    // are never asked — the hero takes his `vault_pref` pick and fights as his rows say
+    let d = hurt(g, r)?;
     let depth = r.depth;
     let live = &mut g.live;
     live.n += 1;
@@ -156,42 +157,6 @@ fn turn_back(id: &str) -> DecisionOption {
     DecisionOption { id: id.into(), label: /* copy:callout */ "Turn back".into(), tone: "safe".into(), item: None }
 }
 
-/// D1: the floor's closed cache, first seen (the hero walks to it next: `ai::vault_step`).
-fn cache(g: &Game, r: &Run) -> Option<Decision> {
-    if r.vault_cage.len() < 2 || r.vault_want.is_some() {
-        return None;
-    }
-    let goal = r.tile_pos(Tile::Vault)?;
-    if !r.floor.map.is_seen(goal) {
-        return None;
-    }
-    let l = &g.lineage;
-    let options: Vec<DecisionOption> = r
-        .vault_cage
-        .iter()
-        .map(|it| {
-            let inv = crate::engine::item_wire(it, &l.facts, &l.flavours);
-            let label = short(&inv.label);
-            DecisionOption { id: it.id.to_string(), label, tone: "item".into(), item: Some(inv) }
-        })
-        .collect();
-    let default = crate::turn::vault_pick(&r.vault_cage, &l.vault_pref) as u32;
-    Some(Decision { id: format!("{}-cache", r.turn), kind: "cache".into(), t: r.turn, depth: r.depth, title: /* copy:callout */ "Take one".into(), options, default })
-}
-
-/// D2: a band boss in view for the first time on this floor (once a kind a run).
-fn boss(g: &Game, r: &Run) -> Option<Decision> {
-    if r.boss_seen_t != Some(r.turn) {
-        return None;
-    }
-    let m = r.monsters.iter().find(|m| m.hp > 0 && m.is_boss() && !m.ally && r.floor.map.is_visible(m.pos))?;
-    if g.live.bosses.contains(&m.kind) {
-        return None;
-    }
-    let fight = DecisionOption { id: m.kind.clone(), label: /* copy:callout */ "Fight".into(), tone: "go".into(), item: None };
-    Some(Decision { id: format!("{}-boss", r.turn), kind: "boss".into(), t: r.turn, depth: r.depth, title: /* copy:callout */ "Boss ahead".into(), options: vec![fight, turn_back("back")], default: 0 })
-}
-
 /// D3: a record floor reached this tick (deeper than the lineage's best at send) under HURT_PCT.
 fn hurt(g: &Game, r: &Run) -> Option<Decision> {
     if g.live.hurt || r.floor_turn > 1 || r.depth_t.last().is_none_or(|(d, t)| *d != r.depth || *t + 1 < r.turn) {
@@ -202,11 +167,6 @@ fn hurt(g: &Game, r: &Run) -> Option<Decision> {
     }
     let push = DecisionOption { id: "push".into(), label: /* copy:callout */ "Push on".into(), tone: "go".into(), item: None };
     Some(Decision { id: format!("{}-hurt", r.turn), kind: "hurt".into(), t: r.turn, depth: r.depth, title: /* copy:callout */ "Hurt · record".into(), options: vec![push, turn_back("back")], default: 0 })
-}
-
-/// An item's label in ≤ 3 words (`sword +1`, `potion of healing` → `healing potion`… as the item reads).
-fn short(label: &str) -> String {
-    label.split_whitespace().take(3).collect::<Vec<_>>().join(" ")
 }
 
 impl Game {
