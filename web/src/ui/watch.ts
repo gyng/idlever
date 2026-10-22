@@ -695,14 +695,12 @@ export function renderWatch(app: App): Mounted {
   const pause = gem({ label: "", cls: "hud-btn", onclick: () => togglePause() });
   // the last chosen mode is the next run's (app.watchMode, persisted — QA on e0f87e7: "`fast` chosen in run 3 was not remembered")
   // Cut317 (owner: "no speedup controls etc, that's only for replays"): an expedition is watched live at a true 1× — no speed
-  // choice, no skip, no 4× travel or news jump over a quiet stretch; the picture keeps the world's clock
-  const live1x = !!app.lineage?.expedition;
-  const oneMax = live1x ? 1 : ONE_MAX;
-  const mode0: Mode = live1x
-    ? "one"
-    : app.watchMode === "fast" || app.watchMode === "one"
-      ? app.watchMode
-      : "fights";
+  // choice, no skip, no 4× travel or news jump over a quiet stretch; the picture keeps the world's clock. Known at the send
+  // (`Snapshot.expedition`, `expedition1x`); a classic run (the first session's sends by hand) keeps the watch's speeds.
+  let live1x = false;
+  let oneMax = ONE_MAX;
+  const mode0: Mode =
+    app.watchMode === "fast" || app.watchMode === "one" ? app.watchMode : "fights";
   const modeBtn: Record<Mode, HTMLButtonElement> = {
     fights: tile({
       id: "fights",
@@ -819,7 +817,7 @@ export function renderWatch(app: App): Mounted {
     id: "speed",
     cls: "hud-btn",
     icon: "fast",
-    label: live1x ? /* copy:button */ "Run" : /* copy:button */ "Speed",
+    label: /* copy:button */ "Speed",
     onclick: () => {
       openWindow((close) => {
         for (const m of Object.keys(modeBtn) as Mode[]) modeBtn[m].onclick = close;
@@ -865,10 +863,23 @@ export function renderWatch(app: App): Mounted {
   });
   speedBtn.append(speedBadge);
   speedBtn.dataset.mode = mode0;
-  // (the tile stays for the run controls — meters, Turn back — without the speed choices)
-  speedBadge.hidden = live1x;
-  speedMode.hidden = live1x;
-  skip.hidden = live1x;
+  /** Cut317: the run is an expedition — the plain mode at a true 1×; the tile stays for the run controls (meters, Turn back) as
+   *  "Run", without the speed choices, skip or rate. The viewer's chosen speed for classic runs is kept. */
+  function expedition1x(): void {
+    live1x = true;
+    oneMax = 1;
+    const kept = app.watchMode;
+    setMode("one");
+    if (app.watchMode !== kept) {
+      app.watchMode = kept;
+      app.persist();
+    }
+    const tl = speedBtn.querySelector(".tl");
+    if (tl?.firstChild) tl.firstChild.textContent = /* copy:button */ "Run";
+    speedBadge.hidden = true;
+    speedMode.hidden = true;
+    skip.hidden = true;
+  }
   const cons = renderConsole({
     portrait: face.el,
     tiles: [speedBtn, toTown],
@@ -5584,6 +5595,7 @@ export function renderWatch(app: App): Mounted {
       return;
     }
     if (disposed) return;
+    if (s.expedition) expedition1x();
     if (!document.hidden) liveOn(true); // Cut 270: live decisions while the watch is up and visible
     await app.syncWatchLineage();
     if (disposed) return;

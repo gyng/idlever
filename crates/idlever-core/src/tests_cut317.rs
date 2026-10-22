@@ -3,19 +3,49 @@ use crate::{balance, bloodlines::Session, Game};
 
 const GUNNER: &str = include_str!("../../../web/tests/fixtures/earned-gunner-home.json");
 
+/// Shipping, flat: expeditions as `DEFAULT` ships them, without the stretch (these tests read depths as floors).
 fn expedition() -> balance::Balance {
     let mut b = balance::DEFAULT;
-    b.expedition.on = true;
-    b.expedition.run_cap_ticks = 864_000;
-    b.rest.min_ticks = 1200;
-    b.rest.cap_ticks = 3000;
+    b.expedition.stretch = 1;
+    b.expedition.laps = false;
     b
 }
 
 #[test]
-fn shipping_has_no_expeditions() {
-    assert!(!balance::get().expedition.on);
+fn shipping_has_expeditions_and_the_classic_suite_does_not() {
+    let e = balance::DEFAULT.expedition;
+    assert!(e.on && e.stretch == 3 && e.laps && e.run_cap_ticks == 864_000, "owner 2026-10-22: expeditions shipped");
+    assert_eq!((balance::DEFAULT.rest.min_ticks, balance::DEFAULT.rest.cap_ticks), (1200, 3000));
+    assert!(!balance::get().expedition.on, "the pre-Cut317 unit suite runs the classic dungeon");
     assert_eq!(crate::engine::run_cap(), crate::engine::MAX_TURNS_PER_RUN);
+}
+
+#[test]
+fn the_shipping_stretch_reaches_d99_and_laps_on() {
+    balance::with_test_profile(balance::DEFAULT, || {
+        use crate::engine::{band_floor, boss_floor, content_of, lap_of, reach};
+        assert_eq!((content_of(1), content_of(3), content_of(4), content_of(99)), (1, 1, 2, 33));
+        assert!(band_floor(24) && !band_floor(23), "a band's boss stands on its last floor");
+        assert_eq!((boss_floor(8), boss_floor(33)), (24, 99));
+        assert_eq!((reach(23), reach(24), reach(99)), (7, 8, 33));
+        assert_eq!((lap_of(99), lap_of(100), content_of(100)), (0, 1, 1), "past the bottom: the next tier from D1");
+    });
+}
+
+#[test]
+fn shipping_expeditions_dive_the_stretched_dungeon_from_a_save() {
+    balance::with_test_profile(balance::DEFAULT, || {
+        let mut g = Game::load(GUNNER).unwrap();
+        let mut deepest = 0;
+        for _ in 0..4 * 3600 {
+            g.advance(1000);
+            if let Some(r) = g.run.as_ref().filter(|r| r.expedition) {
+                deepest = deepest.max(r.depth);
+                assert_eq!(r.content_depth(), crate::engine::content_of(r.depth));
+            }
+        }
+        assert!(deepest > 33, "an expedition dives past the old bottom's number: D{deepest}");
+    });
 }
 
 #[test]
@@ -117,7 +147,7 @@ fn the_crier_hears_the_expedition_and_keeps_a_short_feed() {
 }
 
 #[test]
-fn shipping_cries_nothing() {
+fn the_classic_dungeon_cries_nothing() {
     let mut g = Game::load(GUNNER).unwrap();
     for _ in 0..3600 {
         g.advance(1000);

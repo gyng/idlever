@@ -1,0 +1,64 @@
+{
+  "base": "tuning/balance.json",
+  "candidates": [
+    {
+      "name": "expeditions",
+      "set": {
+        "expedition.on": true,
+        "expedition.run_cap_ticks": 864000,
+        "expedition.camp_every_ticks": 6000,
+        "expedition.camp_rest_ticks": 300,
+        "expedition.stretch": 3,
+        "expedition.laps": true,
+        "rest.min_ticks": 1200,
+        "rest.cap_ticks": 3000,
+        "workers.porter.need": 2
+      }
+    }
+  ],
+  "probe": {
+    "bots": [
+      "IDLE",
+      "PICKED"
+    ],
+    "days": 4,
+    "untilDepth": 13,
+    "checkins": 8
+  },
+  "claims": [
+    {
+      "id": "picked-d13",
+      "metric": {
+        "ratio": [
+          {
+            "bot": "IDLE",
+            "field": "arrival_hours",
+            "depth": 13
+          },
+          {
+            "bot": "PICKED",
+            "field": "arrival_hours",
+            "depth": 13
+          }
+        ]
+      },
+      "estimand": "median",
+      "direction": "at-least",
+      "threshold": 1.5
+    }
+  ],
+  "discovery": {
+    "stages": [
+      4
+    ],
+    "keep": 0.5
+  },
+  "confirmation": {
+    "looks": [
+      8,
+      16,
+      32
+    ],
+    "alpha": 0.05
+  }
+}

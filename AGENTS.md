@@ -173,6 +173,15 @@ checks remain historical/stress evidence, not representative mobile review.
 
 ## Hard invariants
 
+Owner amendment 2026-10-22 (Cut317, "yes turn on the new features"; "fresh start is fine"): expeditions ship.
+After the first session's scout and porter, a hero dives in real time from D1. A `return` row rests him; camps
+(safe rest floors) bank the carry; edits wait for the porter's next camp; the live view plays at 1×. The dungeon is
+D1–D99 (3 floors a content depth, bosses on a band's last floor), and laps go past the bottom a tier harder. Depth
+milestones in the invariants below are **content** depths (`engine::reach` of the record floor: D23 is floor 69).
+Old saves load as they are, their depths read as floors. The pre-Cut317 unit suite runs the classic dungeon
+(`balance::CLASSIC` under `cfg(test)`); the shipping game is covered by `tests_cut317`, the gates and the
+statistical study `tuning/studies/cut317-adopt.json`.
+
 Owner economy amendment2026-10-13 (Cut196): accepted found-item pickups convert
 their value once into carried Gold. Alive Bank/Return credit100% of remaining
 carry; Death credits secured Gold plus explicitly named protection. Return

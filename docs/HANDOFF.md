@@ -1,58 +1,62 @@
 # Parked — v0.1.0-alpha.3 milestone, 2026-10-21
 
-## Cut317 — Expeditions, profile only (2026-10-22)
+## Cut317 — Expeditions shipped (2026-10-22)
 
-Owner: heroes should live in the dungeon in real time, no speed-up outside replays, gold to the bank at
-porter rest stops, edits while delving; then "camps … a rest level · safe zone", "start fresh", "d33 is
-way too short" (both: dive past the King and stretch to D99), a town crier. Contract:
-[CUT317](CUT317_EXPEDITIONS.md).
+Owner: heroes live in the dungeon in real time; no speed-up outside replays; gold to the bank at porter rest stops;
+edits while delving. Then "camps … a rest level · safe zone", "start fresh", "d33 is way too short" (both: dive past
+the King and stretch to D99), a town crier, and "yes turn on the new features" with "fresh start is fine" for old
+saves. Contract: [CUT317](CUT317_EXPEDITIONS.md) (§3h shipped). AGENTS.md has the owner amendment.
 
-- **Status:**
-  - Everything is behind `balance.expedition` (off in shipping) and lives in
-    `tuning/studies/cut317-expedition.json` (on, stretch 3, laps, rest 2–5 min, porter need 2).
-  - Shipping is byte-identical: all core tests, replay hashes and settlements pass.
-  - See it on the native dev server:
-    `IDLEVER_BALANCE_FILE=$PWD/tuning/studies/cut317-expedition.json IDLEVER_NATIVE_PORT=5368 tools/native-dev.sh`.
+- **Shipping defaults** (`balance::DEFAULT` = `tuning/balance.json`):
+  - expeditions on
+  - run cap 24 h
+  - camps every 10 min (the first at 5), a 30 s rest at each
+  - stretch 3 (D1–D99) with laps past the bottom
+  - town rest 2–5 min
+  - porter after 2 chests
+- **When expeditions start:** after the first session's scout and porter (`Game::expedition_now`). Before
+  them a send by hand is a classic run. A harness's literal lineage stays classic.
 - **Core:**
-  - **Rest and retreat.** A `return` row rests the hero (retreat) while nothing awake is in sight.
-  - **Progress clock.** It ends stalemates: 20 min without a new floor or more gold sends him home with the
-    carry. The shipping game has this bug: a plate gunner vs. a lurker queen, or a bank walk with no path,
-    stands until the 120k cap.
-  - **Camps.** A safe rest floor every ~10 min of diving (the first at 5). The haul is paid up: to the purse
-    with the porter, to the chest before him.
-  - **Queued edits.** `carried_sets` are renewed at porter camps, recorded as `Input::Kit`.
-  - **Start fresh at D1.**
-  - **Depth.** The stretch splits content depth from floor (`engine::{content_of, band_floor, reach,
-    boss_floor, boss_on}`); laps go past the bottom a tier harder.
-  - **Town crier.** Core cries go in `LineageState.cries`.
-  - **When expeditions start.** They begin only after the first session's scout and porter
-    (`Game::expedition_now`).
+  - A `return` rests the hero (retreat).
+  - The progress clock ends stalemates. This was a shipping bug: a plate gunner vs. a lurker queen, or a bank
+    walk with no path, stood until the 120k cap.
+  - Camps are safe rest floors and pay their haul up (purse with the porter, chest before him).
+  - Edits wait for the porter (`carried_sets`, replayed via `Input::Kit`).
+  - Expeditions start fresh at D1.
+  - Content depth is separate from the floor (`engine::{content_of, band_floor, reach, boss_floor, boss_on}`).
+  - The crier's lines live in `LineageState.cries`.
 - **Client:**
-  - An expedition plays at a true 1×; the Run tile replaces Speed.
+  - An expedition run plays at a true 1× (`Snapshot.expedition`; Speed becomes Run; classic runs keep speeds).
   - The pen shows "waits · camp Nm".
   - The crier rings for live cries.
-  - Depths read as floors: rule chips, the depth rail's forks, stones, bounty and bosses, the forecast's
-    bosses, and swift floors.
-- **Gates** (`gates.mjs --rows … --seeds 8 --balance` the profile): all 15 core pacing rows pass:
-  - the IDLE milestones, gold, stall and King rows
-  - PICKED vs IDLE and outpace
-  - TUNED vs PICKED and RANDOM vs PICKED
-  - stalls, porter, scout and workers-daily
-
-  This is targeted, not a gate pass. The full `--full` / exhaustive audit on the profile has not been run.
+  - Depths read as floors: chips, pickers, rail, forecast bosses, swift floors.
+- **Confidence:**
+  - **Statistical study** `cut317-adopt` + `cut317-adopt-d13b` (held-out seeds, α 0.05): all 8 claims accepted.
+    - IDLE D8 within 8 h, D13 within 16 h, D23 within 112 h (gates 24 / 96 / 288 h)
+    - PICKED vs IDLE: 2× at D13, 4.5× at D23
+    - TUNED vs PICKED: 2.5× at D33
+    - IDLE net gold positive on days 2 and 10
+  - **Targeted canonical rows**, 8 seeds: 15/15.
+  - **Core:** 1123 tests. The pre-Cut317 suite runs `balance::CLASSIC` under `cfg(test)`; `tests_cut317` covers
+    the shipping game.
+  - **Clippy** clean.
+  - **Client routine subset:** 42/46.
+    - `worker-first-act`: pre-existing.
+    - `menu-materials`: time-dependent; the pre-Cut317 baseline da600ee2 passed at 22:00 and failed an hour
+      later with the same WASM.
+    - `king-advice-scope`, `death-fix-discovery`: replay deaths from pre-Cut317 saves. Under "fresh start" they
+      need new fixtures.
+  - **`gold-settlements`:** re-pinned to `docs/evidence/cut317/settlements-inputs-0fa2.json`. 3/4 entries replay
+    unchanged; `bank-positive` pays $13 181 against the pinned $11 621. An old save's record converts to a
+    smaller forge unit, so the fixture is pending regeneration.
+- **Not run:** `gates.mjs --full` and `--exhaustive` on the shipping defaults; a fun-eval playtest.
 - **Open:**
-  - Adopt into shipping: a full gate run on the profile, re-pinned settlements, a fun-eval.
-  - The camp drawn as its own room (a fire, the porter).
-  - The gunner's lurker-queen stalemate as content.
-  - A real 1× live session watched end to end through a camp. The headless capture only caught one while
-    catching up.
-  - The dayplayer's first session still charges a watched run at 4×; expeditions begin after it, so it
-    did not matter here.
-- **Client routine subset:** 44/46.
-  - `worker-first-act` is a known failure from before Cut316.
-  - `menu-materials` fails at 320 px waiting for the Journal's `forge` glossary term. It is time-dependent,
-    not caused by Cut316 or Cut317: the pre-Cut317 baseline da600ee2 passed at 22:00 and failed twice an hour
-    later with the same WASM. Not investigated further.
+  - new fixtures for the three old-save groups
+  - the camp drawn as its own room (fire, porter)
+  - the gunner/lurker-queen stalemate as content
+  - expedition forecasts' cost in WASM (`clarity:paint`'s refine came within 3 s on a quiet machine but missed
+    under load)
+  - a real 1× live pass through a camp
 
 ## Cut316 — UI revamp on the hub's grammar (2026-10-21)
 

@@ -96,6 +96,9 @@ pub struct Snapshot {
     /// Cut317 §3.3: this floor is a camp (the safe room between two floors).
     #[serde(default, skip_serializing_if = "is_false")]
     pub camp: bool,
+    /// Cut317: this run is an expedition (watched live at 1×; a classic run keeps the watch's speeds).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub expedition: bool,
     /// Cut 118 §5: this floor is swift (its band boss cleared `feats::SWIFT_CLEARS` times): the watch plays it as one beat.
     #[serde(default, skip_serializing_if = "is_false")]
     pub swift: bool,

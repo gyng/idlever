@@ -112,6 +112,7 @@ export type ManualAct =
   | { k: "attack_until"; hp: number }; // blind b58b431: one order — the nearest foe, then the same foe, until it falls or hp < `hp` %
 export type Snapshot = {
   camp?: boolean; // Cut317 (core): this floor is a camp — the safe room between two floors
+  expedition?: boolean; // Cut317: this run is an expedition (watched live at 1×)
   swift?: boolean; // Cut 118 §5 (core): this floor is swift (its band boss cleared 3×) — the watch plays it as one beat
   difficulty?: number;
   modifier_catalogue?: ModifierInfo[];

@@ -7,7 +7,7 @@ they're delving". Follow-up: "run length you decide, what's actual roguelike gam
 actual roguelike games · porter: early hire · town: yes, we need to fill it out. also a town crier that
 espouses hero milestones".
 
-Status: **draft for owner review** (numbers marked ◇ are proposals).
+Status: **shipped 2026-10-22** (owner: "yes turn on the new features"; old saves: "fresh start is fine"). Numbers marked ◇ were proposals; §3h records what shipped.
 
 ## 1. What a run is today (survey, 2026-10-21)
 
@@ -282,6 +282,37 @@ Loose ends fixed before the commit:
 - The rule snapshot at the send read the previous run (expeditions never carried their rules).
 - The next-camp countdown now knows the first camp's half spacing.
 - Swift floors compare as floors.
+
+## 3h. Shipped (2026-10-22)
+
+Shipping `DEFAULT` and `tuning/balance.json`:
+
+- `expedition {on, run_cap_ticks 864 000, camp_every_ticks 6000, camp_rest_ticks 300, stretch 3, laps}`
+- `rest 1200–3000` ticks
+- `workers.porter.need 2`
+
+Expeditions start after the first session's scout and porter. A harness's literal lineage stays on classic runs,
+for exact exit tiers and the metrics. The live view goes 1× only for an expedition run (`Snapshot.expedition`).
+
+Evidence:
+
+- **Statistical study** `cut317-adopt` (`tools/tune.sh`, 32 held-out confirmation seeds, α 0.05 across claims):
+  - **Confirmed:**
+    - IDLE D8 within a day (8 h); D13 by day 4 (16 h); D23 by day 12 (112 h)
+    - PICKED ≥ 1.5× IDLE at D23 (4.5× [3.7, 5])
+    - TUNED ≥ 1.15× PICKED at D33 (2.5× [1.5, 3.3])
+    - IDLE net gold on days 2 and 10
+  - **Inconclusive:** PICKED ≥ 1.5× at D13 (2.0× [1, 2]), quantised by 3 check-ins a day. A follow-up with 8
+    check-ins is `cut317-adopt-d13`.
+- **Targeted canonical rows**, 8 seeds: all 15 pass (§3g).
+- **Core:** 1123 tests. The pre-Cut317 suite runs `balance::CLASSIC` under `cfg(test)`. The shipping game is
+  `tests_cut317`: stretch and laps, a shipping dive past floor 33, camps, edits, crier, whole = sliced.
+- **Client routine subset** after the flip: see HANDOFF. Two groups replay deaths from pre-Cut317 saves
+  (`king-advice-scope`, `death-fix-discovery`). Under "fresh start" those saves describe a dungeon that no longer
+  ships, and they need new fixtures.
+
+Not done: the routine `--full` and exhaustive gates on the shipping defaults, the gold-settlement re-pin, a
+fun-eval playtest.
 
 ## 4. Gates
 

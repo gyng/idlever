@@ -18,7 +18,7 @@
   "recovery_full_ticks": 12000,
   "workers": {
     "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
-    "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
+    "porter": { "need": 2, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
     "scout": { "need": 0, "price_tenths": 1, "fallback_h": 0, "goal": "count" },
     "apprentice": { "need": 3, "price_tenths": 30, "fallback_h": 30, "goal": "feat" },
     "clerk": { "need": 3, "price_tenths": 40, "fallback_h": 36, "goal": "feat" },
@@ -44,7 +44,7 @@
     "wall_retry": 3,
     "stone_memory": 12
   },
-  "rest": { "min_ticks": 12000, "cap_ticks": 18000, "turns_div": 2 },
+  "rest": { "min_ticks": 1200, "cap_ticks": 3000, "turns_div": 2 },
   "gold": {
     "exit_pct": [100, 60, 0],
     "divisor": 4,
@@ -116,11 +116,11 @@
     "vat_hurry_off_pct": [25, 50]
   },
   "expedition": {
-    "on": false,
-    "run_cap_ticks": 120000,
+    "on": true,
+    "run_cap_ticks": 864000,
     "camp_every_ticks": 6000,
     "camp_rest_ticks": 300,
-    "stretch": 1,
-    "laps": false
+    "stretch": 3,
+    "laps": true
   }
 }

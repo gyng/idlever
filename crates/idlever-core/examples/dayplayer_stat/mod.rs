@@ -208,7 +208,7 @@ fn simulate(seed: u64, cfg: Cfg, request: &Request) -> Observation {
         p.step(&Ask::new(&cfg));
         if request
             .until_depth
-            .is_some_and(|d| p.g.lineage.best_depth >= d)
+            .is_some_and(|d| idlever_core::engine::reach(p.g.lineage.best_depth) >= d) // Cut317: content reached
         {
             reached = Some((p.k * p.interval) as f64 / 3600.0);
             break;

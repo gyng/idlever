@@ -1,10 +1,11 @@
 # Content and refinement queue — 2026-10-13
 
-## Cut317 — Expeditions (2026-10-22, profile only)
+## Cut317 — Expeditions (2026-10-22, shipped)
 
-[CUT317](CUT317_EXPEDITIONS.md). Built and gated (targeted rows, 8 seeds) behind
-`tuning/studies/cut317-expedition.json`. Next:
-- adopt into shipping (full gates on the profile, re-pin settlements, fun-eval)
+[CUT317](CUT317_EXPEDITIONS.md). Shipped 2026-10-22 (statistical study accepted; see HANDOFF). Next:
+- `gates.mjs --full` on the shipping defaults, a fun-eval playtest
+- new fixtures for `king-advice-scope`, `death-fix-discovery` and the `bank-positive` gold settlement (old saves,
+  "fresh start")
 - the camp's own art (fire, porter)
 - the gunner/lurker-queen stalemate as content
 - a real 1× live pass through a camp

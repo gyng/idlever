@@ -178,6 +178,11 @@ fn main() {
                 "?"
             };
             before = now;
+            if exit == "death" && std::env::var("PROBE_VERDICT").is_ok() {
+                let t = std::time::Instant::now();
+                let v = g.death(id);
+                println!("       verdict {:.2}s ({} ticks run) {}", t.elapsed().as_secs_f64(), s - at, v.is_some());
+            }
             let gold = g.lineage.gold - purse;
             purse = g.lineage.gold;
             let secs = s - at;

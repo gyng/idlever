@@ -4124,7 +4124,8 @@ impl Game {
     /// (who books the delves) and the porter (who meets the hero at camps). Before them a send by hand is a short classic
     /// run, so the first session reads as ever and every expedition has its porter.
     pub fn expedition_now(&self) -> bool {
-        crate::balance::get().expedition.on && crate::tree::auto_send(&self.lineage) && crate::tree::porter(&self.lineage)
+        // (a harness's literal lineage — exact exit tiers, the metrics — stays on classic runs)
+        crate::balance::get().expedition.on && !self.lineage.pkg.literal && crate::tree::auto_send(&self.lineage) && crate::tree::porter(&self.lineage)
     }
 
     /// Cut317 §3.5: the porter's camp brings the town's sets down — the kit renews before the next tick, and a change
@@ -5374,6 +5375,7 @@ impl Game {
         });
         Snapshot {
             camp: run.in_camp,
+            expedition: run.expedition,
             swift: run.depth < boss_floor(crate::feats::swift_to(l, run.route)),
             depth: run.depth,
             difficulty: run.difficulty,

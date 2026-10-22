@@ -333,7 +333,7 @@ pub const DEFAULT: Balance = Balance {
     recovery: [150, 14, 28, 1],
     recovery_full_ticks: 12000,
     workers: Workers {
-        quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
+        quartermaster: w(0, 0, 0), porter: w(2, 0, 0), scout: w(0, 1, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
         drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
     },
     tree: TreeTune {
@@ -341,7 +341,8 @@ pub const DEFAULT: Balance = Balance {
         porter_bonus_pct: 2, apprentice_off_pct: 5, clerk_bonus_permille: 25, scout_rest_off_pct: 5, safer_start_pct: 5, drill_rank_off: 1,
         wall_deaths: 2, wall_near: 2, wall_retry: 3, stone_memory: 12,
     },
-    rest: Rest { min_ticks: 20 * 60 * 10, cap_ticks: 30 * 60 * 10, turns_div: 2 },
+    // Cut317: a hero lives in the dungeon — two to five minutes in town between expeditions (was 20–30)
+    rest: Rest { min_ticks: 2 * 60 * 10, cap_ticks: 5 * 60 * 10, turns_div: 2 },
     gold: Gold {
         exit_pct: [100, 60, 0], divisor: 4, coin_piles: 6, coin_draw: [3, 7], nest: [12, 4, 12],
         picked_cap: 7, freshness: [1000, 800, 640, 512, 410, 328, 262, 250], picked_shown: 3,
@@ -375,7 +376,8 @@ pub const DEFAULT: Balance = Balance {
         gate_depth: [13, 23], bank_price_units: [8, 64], vat_price_units: [8, 64], bank_nights: [5, 8],
         bank_bonus_permille: [20, 40], vat_recovery_off_pct: [20, 35], vat_hurry_off_pct: [25, 50],
     },
-    expedition: Expedition { on: false, run_cap_ticks: 120_000, camp_every_ticks: 6000, camp_rest_ticks: 300, stretch: 1, laps: false },
+    // Cut317 (owner 2026-10-22: "yes turn on the new features"): expeditions shipped
+    expedition: Expedition { on: true, run_cap_ticks: 864_000, camp_every_ticks: 6000, camp_rest_ticks: 300, stretch: 3, laps: true },
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -456,6 +458,16 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
 }
 #[cfg(feature = "dev-balance")]
 static PROFILE: std::sync::OnceLock<Balance> = std::sync::OnceLock::new();
+/// Cut317: the classic dungeon (before expeditions shipped: no expeditions, D1–D33, 20–30 min rests, the porter after
+/// 3 chests). The pre-Cut317 unit suite was written against its depths and runs on it (`get` under `cfg(test)`); the
+/// shipping expedition game is covered by `tests_cut317` (on `DEFAULT`), the dayplayer gates and the statistical study.
+#[cfg(test)]
+pub const CLASSIC: Balance = Balance {
+    expedition: Expedition { on: false, run_cap_ticks: 120_000, camp_every_ticks: 6000, camp_rest_ticks: 300, stretch: 1, laps: false },
+    rest: Rest { min_ticks: 20 * 60 * 10, cap_ticks: 30 * 60 * 10, turns_div: 2 },
+    workers: Workers { porter: w(3, 0, 0), ..DEFAULT.workers },
+    ..DEFAULT
+};
 #[cfg(test)]
 thread_local! {
     static TEST_PROFILE: std::cell::Cell<Option<&'static Balance>> = const { std::cell::Cell::new(None) };
@@ -472,10 +484,15 @@ pub fn with_test_profile<R>(b: Balance, f: impl FnOnce() -> R) -> R {
 #[inline]
 pub fn get() -> &'static Balance {
     #[cfg(test)]
-    if let Some(b) = TEST_PROFILE.with(|c| c.get()) { return b; }
-    #[cfg(feature = "dev-balance")]
-    if let Some(b) = PROFILE.get() { return b; }
-    &DEFAULT
+    {
+        TEST_PROFILE.with(|c| c.get()).unwrap_or(&CLASSIC)
+    }
+    #[cfg(not(test))]
+    {
+        #[cfg(feature = "dev-balance")]
+        if let Some(b) = PROFILE.get() { return b; }
+        &DEFAULT
+    }
 }
 /// Call before constructing any game; a second installation is an error.
 pub fn configure_from_env() -> Result<(), String> {
