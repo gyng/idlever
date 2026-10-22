@@ -21,6 +21,7 @@ parameter was adopted and no pacing improvement is inferred from the benchmark.
 Evidence: `docs/evidence/cut280/`.
 
 Range searches over a few numeric parameters: `tools/surrogate.mjs` (GP surrogate + batch expected improvement on short probes, then one candidate to `tools/tune.sh` confirmation; STATISTICAL_TUNING.md "Surrogate search").
+Pacing prediction (seconds per profile, no fortnight played): `pace_model` predicts IDLE/PICKED milestone hours, level by day and daily gold from a one-time calibration; rank candidates with `pace_model search`, then confirm the winner with `tools/tune.sh` (docs/PACE_MODEL.md).
 
 ## Native late-game probe scheduling — 2026-10-20
 
