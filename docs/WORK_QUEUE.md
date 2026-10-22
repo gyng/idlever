@@ -1,5 +1,15 @@
 # Content and refinement queue — 2026-10-13
 
+## Queued (owner 2026-10-22): an obvious back-to-town button
+
+- **Ask:** "add an obvious back to town button on top left maybe above heroes or better place".
+- **Scope:** every screen that leaves town (watch, report, death, the hero views and the sheets). There should be
+  one consistent, obvious way home, top-left by default. A better spot is fine if it reads more clearly: on desktop
+  above the heroes rail; on phone (402×681) within thumb reach, never hidden behind a scroll.
+- **Check first:** the existing back/close affordances and the Escape handling, so this replaces them rather than
+  adding a second route. Copy is ≤ 3 words (e.g. "town"), with an icon and a hotkey.
+- **Gates:** T1 look on desktop and phone, plus the T2 groups for the screens it touches.
+
 ## Queued (owner 2026-10-22): tuning speed — PICKED's decision cost
 
 Measured with `DP_PHASES=1`, one seed, `--threads 1`, PICKED to D33: 175 s, of which 127 s (73 %) is the bot's own
