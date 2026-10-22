@@ -79,8 +79,9 @@ separate exhaustive audits and fun-rating goal remain unfinished.
 Owner 2026-10-22: GitHub Pages is retired (disabled on the repository). The site is
 https://dev.idlever.awoo.party/ (Cloudflare Worker `idlever-dev`), the repository's homepage link. It deploys by
 hand: `tools/deploy-cf.sh [REF]` builds a clean committed ref at base `/` (set `TMPDIR` to a disk with room
-if `/tmp` is full). See docs/DEPLOY_CLOUDFLARE.md. `.github/workflows/pages.yml` ("Site build") still checks
-that pushes, pull requests and releases build; it no longer deploys. Earlier Pages releases and tags stay as
+if `/tmp` is full). See docs/DEPLOY_CLOUDFLARE.md. `.github/workflows/pages.yml` ("Site build") is
+manual only (owner 2026-10-22: GitHub Actions minutes are low): no push, pull request or release triggers it, and
+it never deploys. Local checks are the CI. Earlier Pages releases and tags stay as
 history (docs/CUT187_ALPHA_RELEASE.md).
 
 Current brand: Idlever; repository `gyng/idlever`, Pages base `/idlever/`.

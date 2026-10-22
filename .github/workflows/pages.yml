@@ -1,12 +1,9 @@
 name: Site build
 
+# Owner 2026-10-22 ("don't auto build/push site on GH low on actions" · "ci also"): manual only — run it from the
+# Actions tab when wanted. Local checks (tools/verify.sh) and tools/deploy-cf.sh are the routine path.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
-  release:
-    types: [published]
 
 permissions:
   contents: read
