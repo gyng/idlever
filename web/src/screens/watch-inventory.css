@@ -14,6 +14,12 @@
   margin: 0;
   flex: none;
 }
+/* the narrowest phones (≤ 340 px, the 320 stress width) keep every pixel for the map: the depth rail's ≤ 3.5% cover holds */
+@media (max-width: 340px) {
+  .watch .watch-inv:not(.wide) {
+    display: none;
+  }
+}
 .watch .watch-inv > summary {
   cursor: pointer;
   display: flex;

@@ -995,7 +995,7 @@ try {
       await details.waitFor();
       const text = await details.innerText();
       const workplace = l.tree?.nodes.find((node) => node.id === lit.id)?.workplace_name;
-      assert.ok(text.includes(name) && text.includes("arrives"), JSON.stringify({ name, text }));
+      assert.ok(text.includes(name) && text.includes("Hires"), JSON.stringify({ name, text }));
       if (workplace) assert.ok(text.includes(workplace));
       assert.ok(text.includes(lit.price ? `$${lit.price}` : "free"));
       await page.keyboard.press("Escape");
