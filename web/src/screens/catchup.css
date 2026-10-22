@@ -34,6 +34,16 @@
     color: var(--k-muted);
     font-size: var(--k-fs-1);
   }
+  .catchup-scale {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--k-2);
+  }
+  .catchup-capmark {
+    color: var(--k-muted);
+    font-size: var(--k-fs-1);
+  }
   .catchup-bar {
     height: var(--k-2);
     background: var(--k-inset);

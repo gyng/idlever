@@ -965,13 +965,14 @@ export class App {
       throw new RangeError("invalid offline elapsed seconds");
     // owner 2026-10-22: an absence counts at most a week (the core's `ABSENCE_CAP_S`); the catch-up loader shows its progress
     // and the crier's lines as the slices play
-    const awayS = elapsedS;
-    elapsedS = Math.min(elapsedS, this.lineage.absence_cap_s || CATCHUP_CAP_S);
+    const awayS = elapsedS,
+      capS = this.lineage.absence_cap_s || CATCHUP_CAP_S;
+    elapsedS = Math.min(elapsedS, capS);
     this.offlineRunning = true;
     this.offlineIncomplete = true;
     this.root.inert = true;
     const b = showBusy(/* copy:label */ "offline");
-    const loader = elapsedS >= CATCHUP_LOADER_S ? openCatchup(elapsedS, awayS) : null;
+    const loader = elapsedS >= CATCHUP_LOADER_S ? openCatchup(elapsedS, awayS, capS) : null;
     const criedFrom = Math.max(0, ...(this.lineage.cries ?? []).map((c) => c.t));
     loader?.progress(0);
     let merged: ReturnReport | null = null;

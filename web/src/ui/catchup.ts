@@ -1,6 +1,6 @@
 // Owner 2026-10-22 ("cap to one week and have a catch up loader screen · show progress and also announce milestones"): the
 // return after an absence. The core plays the time away in slices (`App.runOfflineChunked`); this screen stands over the locked
-// page meanwhile — how long he was away (a week counts at most), the share played, and the crier's lines as they happen.
+// page meanwhile — how long he was away against the cap (a week), draining as it plays, and the crier's lines as they happen.
 import "../screens/catchup.css";
 import type { CryLine } from "../engine/types";
 import { h } from "./dom";
@@ -16,7 +16,8 @@ export type Catchup = {
 
 const SHOWN = 8;
 
-export function openCatchup(totalS: number, awayS: number): Catchup {
+/** `totalS` the time to play (the absence, capped), `awayS` the absence itself, `capS` the cap: the bar's full scale. */
+export function openCatchup(totalS: number, awayS: number, capS: number): Catchup {
   const fill = h("i", { class: "catchup-fill" });
   const done = h("small", { class: "catchup-done num" });
   const list = h("ul", { class: "catchup-cries", "aria-live": "polite" });
@@ -33,12 +34,29 @@ export function openCatchup(totalS: number, awayS: number): Catchup {
         "p",
         { class: "catchup-away num" },
         /* copy:callout */ `away ${awayText(awayS)}`,
-        capped ? h("small", { class: "catchup-cap" }, /* copy:callout */ " · capped at 7d") : "",
+        capped
+          ? h(
+              "small",
+              { class: "catchup-cap" },
+              /* copy:callout */ ` · capped at ${awayText(capS)}`,
+            )
+          : "",
       ),
+      // owner 2026-10-22: the bar's scale is the cap (its end marked); filled to the time away, it drains as it plays
       h(
         "div",
-        { class: "catchup-bar", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": "100" },
-        fill,
+        { class: "catchup-scale" },
+        h(
+          "div",
+          {
+            class: "catchup-bar",
+            role: "progressbar",
+            "aria-valuemin": "0",
+            "aria-valuemax": "100",
+          },
+          fill,
+        ),
+        h("small", { class: "catchup-capmark num" }, awayText(capS)),
       ),
       done,
       bank,
@@ -51,10 +69,14 @@ export function openCatchup(totalS: number, awayS: number): Catchup {
     banked = 0;
   return {
     progress(doneS) {
-      const pct = totalS > 0 ? Math.min(100, Math.round((100 * doneS) / totalS)) : 100;
-      fill.style.width = `${pct}%`;
-      bar.setAttribute("aria-valuenow", String(pct));
-      done.textContent = /* copy:callout */ `${awayText(doneS)} of ${awayText(totalS)}`;
+      const left = Math.max(0, totalS - doneS);
+      fill.style.width = `${capS > 0 ? Math.min(100, (100 * left) / capS) : 0}%`;
+      bar.setAttribute(
+        "aria-valuenow",
+        String(totalS > 0 ? Math.round((100 * doneS) / totalS) : 100),
+      );
+      done.textContent =
+        left > 0 ? /* copy:callout */ `${awayText(left)} left` : /* copy:callout */ "done";
     },
     cries(lines) {
       // the core keeps its last lines only: what is new is what is later than the last heard (`t`), not past an index
